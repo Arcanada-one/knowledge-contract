@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  scaffold:
+    name: scaffold
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check public scaffold
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          required = ('README.md', 'LICENSE', 'LICENSE-CODE', 'SECURITY.md')
+          for name in required:
+              content = Path(name).read_text(encoding='utf-8')
+              if not content.strip():
+                  raise SystemExit(f'{name} is empty')
+          readme = Path('README.md').read_text(encoding='utf-8')
+          if '3.0.0-draft.1' not in readme or 'research remains in progress' not in readme:
+              raise SystemExit('README must identify the target and research status')
+          print('scaffold files and status: OK')
+          PY
+
+  security-audit:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    uses: Arcanada-one/datarim/.github/workflows/reusable-security-audit.yml@5a204199acd5b708ea63d99f6d642848f532bead
+    with:
+      stack: framework
+      datarim_ref: 5a204199acd5b708ea63d99f6d642848f532bead
+      runner_labels: '["ubuntu-latest"]'
