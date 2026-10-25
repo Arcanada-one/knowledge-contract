@@ -12,7 +12,7 @@ jobs:
   scaffold:
     name: scaffold
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: [self-hosted, linux, ci-general]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -40,3 +40,4 @@ jobs:
     with:
       stack: framework
       datarim_ref: 5a204199acd5b708ea63d99f6d642848f532bead
+      runner_labels: '["ubuntu-latest"]'
