@@ -6,6 +6,8 @@ Knowledge Contract is a research program for selecting and reusing evidence for 
 
 The repository currently contains project information, governance files, and empty directories for [specifications](spec/), [papers](papers/), [articles](articles/), and [schemas](schemas/). Research content will be added after its publication review.
 
+The planned public site for this research hub is [contract.place](https://contract.place); site availability is tracked separately from this repository scaffold.
+
 ## Licensing
 
 Text and documentation are licensed under [Creative Commons Attribution 4.0 International](LICENSE). Code and schemas, when added, are licensed under [Apache License 2.0](LICENSE-CODE). Contributions must identify any material that needs a different license before it is submitted.
