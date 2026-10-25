@@ -23,7 +23,7 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          required = ('README.md', 'LICENSE', 'LICENSE-CODE', 'SECURITY.md')
+          required = ('README.md', 'LICENSE', 'LICENSE-CODE', 'SECURITY.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md')
           for name in required:
               content = Path(name).read_text(encoding='utf-8')
               if not content.strip():
@@ -31,8 +31,37 @@ jobs:
           readme = Path('README.md').read_text(encoding='utf-8')
           if '3.0.0-draft.1' not in readme or 'research remains in progress' not in readme:
               raise SystemExit('README must identify the target and research status')
+          for name in ('spec', 'papers', 'articles', 'schemas'):
+              if not (Path(name) / '.gitkeep').is_file():
+                  raise SystemExit(f'{name}/ scaffold is missing')
           print('scaffold files and status: OK')
           PY
+
+  markdown-lint:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2@0.24.0 '**/*.md'
+
+  link-check:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --offline --no-progress './**/*.md'
+          fail: true
+          failIfEmpty: true
 
   security-audit:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository

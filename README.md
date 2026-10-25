@@ -4,7 +4,7 @@ Knowledge Contract is a research program for selecting and reusing evidence for 
 
 ## Repository status
 
-The repository currently contains only project information and governance files. Rules, specifications, papers, and articles will be added after their publication review.
+The repository currently contains project information, governance files, and empty directories for [specifications](spec/), [papers](papers/), [articles](articles/), and [schemas](schemas/). Research content will be added after its publication review.
 
 ## Licensing
 
@@ -13,3 +13,7 @@ Text and documentation are licensed under [Creative Commons Attribution 4.0 Inte
 ## Security
 
 Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md).
+
+## Participation
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidance and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community expectations.
