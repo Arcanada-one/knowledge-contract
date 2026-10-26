@@ -6,6 +6,8 @@ Knowledge Contract Arcana is part of the [Arcanada ecosystem](https://arcanada.a
 
 The repository currently contains project information, governance files, and empty directories for [specifications](spec/), [papers](papers/), [articles](articles/), and [schemas](schemas/). Research content will be added after its publication review.
 
+The [public corpus allowlist](corpus/README.md) currently has no approved entries. A public file or merged proposal is not automatically an indexed or admitted knowledge source.
+
 The public home is [contract.place](https://contract.place), with [site source](https://github.com/Arcanada-one/contract-place-site). The [Arcanada project page](https://arcanada.ai/en/ecosystem/contract-place) and existing [architecture](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-architecture) and [version 2](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-v2) articles provide context. This scaffold does not contain those published articles or the unpublished research package.
 
 ## Licensing
