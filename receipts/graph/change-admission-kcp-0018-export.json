@@ -1,0 +1,48 @@
+{
+  "schema": "ProvisionalChangeAdmissionReceipt/v1",
+  "work_item": "KCP-0018",
+  "repository": "Arcanada-one/knowledge-contract",
+  "base_sha": "21f4331b7944feee5562d1193e6843cf442e04b9",
+  "source_head_sha": "62f4ceacd9397acc221458bfcdaed94e6cc76684",
+  "captured_at_utc": "2026-10-26T21:04:23.316745+00:00",
+  "graph": "manual fallback: no installed graph verifier in this public repository",
+  "canonical_admission": "not_measured",
+  "change_set": [
+    ".github/workflows/ci.yml",
+    "corpus/README.md",
+    "corpus/decisions/README.md",
+    "tools/export_corpus.py",
+    "tools/test_export_corpus.py"
+  ],
+  "impact_set": [
+    {
+      "entity": "public corpus allowlist parser and rights decision gate",
+      "edge": "data/config",
+      "verifier": "14 local unittest boundary cases including malformed rows, exact review body, independent identity, correction/withdrawal and digest refusal",
+      "verdict": "verified",
+      "evidence": "python3 -B -m unittest tools.test_export_corpus -q: 14/14 PASS at source head"
+    },
+    {
+      "entity": "candidate bundle publication and exact-main executable binding",
+      "edge": "code/consumer",
+      "verifier": "unit controls plus resulting-main CLI run pending",
+      "verdict": "not_measured",
+      "owner": "KCP-0018 resulting-main CI",
+      "expires_at_utc": "2026-11-02T00:00:00Z"
+    },
+    {
+      "entity": "live nonempty public corpus review, rights, secret scan and index ingestion",
+      "edge": "external/runtime",
+      "verifier": "no approved rows exist in current allowlist",
+      "verdict": "not_measured",
+      "owner": "KCP-0016 corpus decision and KCP-0018 ingest work",
+      "expires_at_utc": "2026-11-02T00:00:00Z"
+    }
+  ],
+  "admission": "paused_safe_until_ci_and_independent_review",
+  "limitations": [
+    "Current allowlist has zero approved entries; no corpus file is exported or ingested.",
+    "Canonical graph admission is not implemented in this repository; manual receipt is not a native CAR.",
+    "KC2 admission and Scrutator projection remain not measured / not applied."
+  ]
+}
