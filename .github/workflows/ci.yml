@@ -9,6 +9,32 @@ permissions:
   contents: read
 
 jobs:
+  candidate-export:
+    name: candidate-export
+    runs-on: [self-hosted, linux, arcana-prod, arcana-prd-host]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check fail-closed export boundaries without network or index writes
+        run: python3 -B -m unittest tools.test_export_corpus -v
+      - name: Exercise exact-main candidate export without index writes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          out="$(mktemp -d)/candidate"
+          python3 -B tools/export_corpus.py --output "$out"
+          python3 - "$out/manifest.json" <<'PY'
+          import json, sys
+          from pathlib import Path
+          manifest = json.loads(Path(sys.argv[1]).read_text())
+          assert manifest['schema'] == 'KnowledgeContractCandidateExport/v1'
+          assert manifest['scrutator_projection'] == 'not_applied'
+          assert manifest['kc2_runtime_admission'] == 'not_measured'
+          print('CANDIDATE_EXPORT_READBACK_PASS rows=' + str(manifest['row_count']))
+          PY
   scaffold:
     name: scaffold
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
