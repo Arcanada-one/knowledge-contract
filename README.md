@@ -1,12 +1,12 @@
-# Knowledge Contract
+# Knowledge Contract Arcana
 
-Knowledge Contract is a research program for selecting and reusing evidence for a specified task under current scope, policy, and provenance. This repository is a public scaffold for future rules, specifications, papers, and articles targeting Knowledge Contract `3.0.0-draft.1`; the research remains in progress, and no draft package is published here. Runtime adoption and empirical effectiveness are not claimed.
+Knowledge Contract Arcana is part of the [Arcanada ecosystem](https://arcanada.ai/en/). It studies how people and agents can reuse knowledge while preserving source, scope, evidence, and conditions of use. This repository is a public scaffold for future rules, specifications, papers, and articles targeting Knowledge Contract `3.0.0-draft.1`; the research remains in progress, and no draft package is published here. Runtime adoption and empirical effectiveness are not claimed.
 
 ## Repository status
 
 The repository currently contains project information, governance files, and empty directories for [specifications](spec/), [papers](papers/), [articles](articles/), and [schemas](schemas/). Research content will be added after its publication review.
 
-The planned public site for this research hub is [contract.place](https://contract.place); site availability is tracked separately from this repository scaffold.
+The public home is [contract.place](https://contract.place), with [site source](https://github.com/Arcanada-one/contract-place-site). The [Arcanada project page](https://arcanada.ai/en/ecosystem/contract-place) and existing [architecture](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-architecture) and [version 2](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-v2) articles provide context. This scaffold does not contain those published articles or the unpublished research package.
 
 ## Licensing
 

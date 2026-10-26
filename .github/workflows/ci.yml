@@ -29,8 +29,8 @@ jobs:
               if not content.strip():
                   raise SystemExit(f'{name} is empty')
           readme = Path('README.md').read_text(encoding='utf-8')
-          if '3.0.0-draft.1' not in readme or 'research remains in progress' not in readme:
-              raise SystemExit('README must identify the target and research status')
+          if 'Knowledge Contract Arcana' not in readme or '3.0.0-draft.1' not in readme or 'research remains in progress' not in readme:
+              raise SystemExit('README must identify the project, target, and research status')
           for name in ('spec', 'papers', 'articles', 'schemas'):
               if not (Path(name) / '.gitkeep').is_file():
                   raise SystemExit(f'{name}/ scaffold is missing')
