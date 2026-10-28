@@ -4,13 +4,13 @@ Knowledge Contract Arcana is part of the [Arcanada ecosystem](https://arcanada.a
 
 ## Purpose
 
-Knowledge Contract Arcana is about managing knowledge and its reuse by people and agents: contracts for managing the heritage of human knowledge. Each piece of knowledge travels with its source, author, scope and evidence.
+Knowledge Contract Arcana is about managing knowledge and its reuse by people and agents: contracts for managing the heritage of human knowledge. The contract is designed so that each piece of knowledge will travel with its source, author, scope and evidence.
 
 It is designed to replace the hand-written skills, rules and prompt files that are kept separately in each agent harness with one unified knowledge contract. The contract is meant to evolve itself (changes admitted only on evidence, versioned, with rollback) and to improve through the community and contributors, so that it stays ahead of any single harness or skill set.
 
-- **Working today:** the public research hub at [contract.place](https://contract.place), this open repository, open licensing with mandatory attribution, and published research (the architecture article and version 2).
-- **Planned, not built:** the unified contract that replaces per-harness skills, rules and prompt files; the self-evolution loop; community intake and review; a sourced corpus of human knowledge on meaning management; knowledge selection with a provenance receipt for every answer; search and access for people and agents (graph and vector search, an API and an MCP server).
-- **Open and closed:** the knowledge, specifications, papers, schemas, site and reference code are open (see Licensing). The backend engine that processes, admits and evolves contracts stays closed and proprietary.
+- **Working today:** the public hub at [contract.place](https://contract.place); the licensing and attribution mechanics (CC BY 4.0 for text, Apache-2.0 for code, [NOTICE](NOTICE), [ATTRIBUTION.md](ATTRIBUTION.md), [CITATION.cff](CITATION.cff), REUSE compliance, DCO sign-off, and a [source register](SOURCES.md) with a CI check); this repository as a public scaffold with rules, governance and tools; and two published articles on arcanada.ai (the architecture article and version 2).
+- **Planned, not built:** published specifications and papers in this repository; a sourced corpus of human knowledge on meaning management (the [corpus allowlist](corpus/README.md) has no approved entries yet); the unified contract that replaces per-harness skills, rules and prompt files; the self-evolution loop; community intake and review; knowledge selection with a provenance receipt for every answer; search and access for people and agents (graph and vector search, an API and an MCP server).
+- **Open and closed:** whatever knowledge, specifications, papers, schemas and reference code are published here and on the site is open (see Licensing). The backend engine that processes, admits and evolves contracts stays closed and proprietary.
 
 ## Repository status
 
