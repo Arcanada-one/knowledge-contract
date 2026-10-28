@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below and keep the attribution described in ATTRIBUTION.md."
+title: "Knowledge Contract Arcana"
+type: dataset
+authors:
+  - family-names: Valentov
+    given-names: Pavel
+    orcid: "https://orcid.org/0009-0001-2567-4584"
+    affiliation: "Independent Researcher"
+url: "https://contract.place"
+repository-code: "https://github.com/Arcanada-one/knowledge-contract"
+license: CC-BY-4.0
+abstract: "Open knowledge about meaning management for people and agents: rules, specifications, papers and articles that preserve source, scope, evidence and conditions of use. Text is CC BY 4.0; code and schemas are Apache-2.0."
+keywords:
+  - knowledge contract
+  - meaning management
+  - attribution

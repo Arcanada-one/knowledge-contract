@@ -1,0 +1,20 @@
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
