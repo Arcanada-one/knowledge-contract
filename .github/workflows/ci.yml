@@ -65,14 +65,14 @@ jobs:
 
   licensing:
     name: licensing
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Source register and DCO tool tests
-        run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco -v
+      # No fork filter and no secrets on this job or on `dco`: fork PRs must run both, because a skipped required check counts as passed.
+      - name: Source register, DCO and workflow tests
+        run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco tools.test_ci_workflow -v
       - name: Every papers/ and spec/ file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint
@@ -84,7 +84,7 @@ jobs:
 
   dco:
     name: dco
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

@@ -16,7 +16,7 @@ For a correction, identify the earlier path and immutable revision, explain the 
 
 ## Sign off every commit (DCO)
 
-Contributions are accepted under the [Developer Certificate of Origin 1.1](https://developercertificate.org/): add a `Signed-off-by:` line to every commit with `git commit -s`. There is no CLA. Inbound equals outbound: you license your contribution under the license of the file you change (CC BY 4.0 for text, Apache-2.0 for code and schemas), and you keep your copyright. Substantial contributors are credited in the git history and in `CONTRIBUTORS` and `CITATION.cff`. CI fails a pull request that has a commit without a sign-off; fix it with `git rebase --signoff` and a force-push of your own branch.
+Contributions are accepted under the [Developer Certificate of Origin 1.1](https://developercertificate.org/): add a `Signed-off-by:` line to every commit with `git commit -s`. There is no CLA. Inbound equals outbound: you license your contribution under the license of the file you change (CC BY 4.0 for text, Apache-2.0 for code and schemas), and you keep your copyright. Substantial contributors are credited in the git history and in `CONTRIBUTORS` and `CITATION.cff`. The sign-off must be in the last paragraph of the commit message and its name and email must match the commit's author or committer. CI fails a pull request that has a non-merge commit without such a sign-off (merge commits are not checked; the commits they bring are); automation commits from the allow-listed bot authors in `tools/check_dco.py` are exempt. Fix a missing sign-off with `git rebase --signoff` and a force-push of your own branch.
 
 ## Credit sources
 

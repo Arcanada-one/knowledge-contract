@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Fail when a file under papers/ or spec/ has no source declaration.
 
-A file is covered when SOURCES.md has a table row whose last cell contains the
-file path in backticks, or (Markdown only) its front matter has a `sources:`
-key that is a non-empty list or the literal `none`.
+A file is covered when either:
+- SOURCES.md has a table row whose last cell (Where) contains the file path in
+  backticks, or
+- (Markdown only) its front matter has `sources: none`, or `sources:` with a
+  non-empty list (flow `[a, b]` or block `- a`) in which every entry equals the
+  Source cell of a SOURCES.md row (case-insensitive).
+`sources: []`, `sources: ""` and an empty `sources:` do not count.
 """
 from __future__ import annotations
 
@@ -16,42 +20,55 @@ FRONT_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.S)
 SOURCES_KEY_RE = re.compile(r"^sources:[ \t]*(.*)$", re.M)
 
 
-def register_paths(sources_md: str) -> set[str]:
-    covered: set[str] = set()
+def register(sources_md: str) -> tuple[set[str], set[str]]:
+    """Return (paths covered by a row's Where cell, folded Source names)."""
+    paths: set[str] = set()
+    names: set[str] = set()
     for line in sources_md.splitlines():
         if not line.startswith("|"):
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
-        if len(cells) < 6:
+        if len(cells) < 6 or set(cells[0]) <= {"-", " ", ":"} or cells[0].lower() == "source":
             continue
-        covered.update(re.findall(r"`([^`]+)`", cells[-1]))
-    return covered
+        paths.update(re.findall(r"`([^`]+)`", cells[-1]))
+        names.add(cells[0].casefold())
+    return paths, names
 
 
-def front_matter_declares(text: str) -> bool:
+def declared_entries(text: str) -> list[str] | None:
+    """Front-matter `sources:` as a list of entries; ['none'] for none; None if absent or empty."""
     match = FRONT_RE.match(text)
     if not match:
-        return False
+        return None
     block = match.group(1)
     key = SOURCES_KEY_RE.search(block)
     if not key:
-        return False
+        return None
     inline = key.group(1).strip()
-    if inline.lower() == "none":
-        return True
-    if inline and not inline.startswith("#"):
-        return True
-    after = block[key.end():].splitlines()
-    return any(re.match(r"\s+-\s+\S", item) for item in after[:50] if item.strip()) and bool(
-        after and re.match(r"\s+-\s+\S", next((i for i in after if i.strip()), ""))
-    )
+    if inline == "none":
+        return ["none"]
+    if inline.startswith("[") and inline.endswith("]"):
+        items = [i.strip().strip("'\"").strip() for i in inline[1:-1].split(",")]
+    elif inline:
+        return None
+    else:
+        items = []
+        for line in block[key.end():].splitlines():
+            if not line.strip():
+                continue
+            item = re.match(r"\s+-\s+(.*\S)\s*$", line)
+            if not item:
+                break
+            items.append(item.group(1).strip().strip("'\"").strip())
+    items = [i for i in items if i]
+    return items or None
 
 
 def check(root: Path) -> list[str]:
     sources_md = root / "SOURCES.md"
     if not sources_md.is_file():
         return ["SOURCES.md is missing"]
-    covered = register_paths(sources_md.read_text(encoding="utf-8"))
+    covered, names = register(sources_md.read_text(encoding="utf-8"))
     problems: list[str] = []
     for top in ROOTS:
         base = root / top
@@ -61,9 +78,16 @@ def check(root: Path) -> list[str]:
             rel = path.relative_to(root).as_posix()
             if rel in covered:
                 continue
-            if path.suffix == ".md" and front_matter_declares(path.read_text(encoding="utf-8")):
+            entries = declared_entries(path.read_text(encoding="utf-8")) if path.suffix == ".md" else None
+            if entries == ["none"]:
                 continue
-            problems.append(f"{rel}: no SOURCES.md row and no front-matter `sources:` (use `sources: none` if there are none)")
+            if entries:
+                unknown = [e for e in entries if e.casefold() not in names]
+                if not unknown:
+                    continue
+                problems.append(f"{rel}: front-matter sources not in the SOURCES.md register: {', '.join(unknown)}")
+                continue
+            problems.append(f"{rel}: no SOURCES.md row and no valid front-matter `sources:` (a non-empty list of registered sources, or `sources: none`)")
     return problems
 
 
