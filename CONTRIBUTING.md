@@ -2,7 +2,7 @@
 
 Knowledge Contract research is in progress. Open an issue to discuss a proposed change before preparing a pull request. A proposal should state its scope, evidence, and the affected specification or document. Publication of a draft requires separate review; a submitted proposal does not imply adoption.
 
-Keep contributions in English, provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](LICENSE); code and schemas are offered under [Apache-2.0](LICENSE-CODE). Raise any licensing exception before submitting material.
+Keep contributions in English, provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](LICENSE); code and schemas are offered under [Apache-2.0](LICENSE-CODE). Raise any licensing exception before submitting material. The project policy is in [OPENNESS.md](OPENNESS.md).
 
 Report security concerns through the private channel in [SECURITY.md](SECURITY.md).
 
@@ -13,3 +13,11 @@ Use the [pull request template](.github/pull_request_template.md) for each propo
 A pull request is a proposal. Review must confirm both public publication rights and the intended status before a path can be added to the [corpus allowlist](corpus/README.md). Only a merged commit and an explicitly allowlisted path can become an indexing input. Publication does not establish scientific validity, current applicability, or agent authority to act.
 
 For a correction, identify the earlier path and immutable revision, explain the changed claim, and request a `supersedes` relation. Keep the earlier revision traceable in Git history. For a withdrawal, state the affected path and revision privately if disclosure would cause harm; reviewers must remove it from the public allowlist and record the decision before another index generation is promoted.
+
+## Sign off every commit (DCO)
+
+Contributions are accepted under the [Developer Certificate of Origin 1.1](https://developercertificate.org/): add a `Signed-off-by:` line to every commit with `git commit -s`. There is no CLA. Inbound equals outbound: you license your contribution under the license of the file you change (CC BY 4.0 for text, Apache-2.0 for code and schemas), and you keep your copyright. Substantial contributors are credited in the git history and in `CONTRIBUTORS` and `CITATION.cff`. CI fails a pull request that has a commit without a sign-off; fix it with `git rebase --signoff` and a force-push of your own branch.
+
+## Credit sources
+
+Reuse of this project must credit the author and link to the source ([ATTRIBUTION.md](ATTRIBUTION.md)); contributions follow the same rule for what they build on. Register every third-party source of a paper or specification in [SOURCES.md](SOURCES.md), or declare `sources: none` in the file's front matter. CI fails a new file under `papers/` or `spec/` that has neither.

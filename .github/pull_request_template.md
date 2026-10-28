@@ -25,3 +25,8 @@
 - Allowlist path and merged commit to record after merge, if approved:
 
 A merged pull request does not itself authorize indexing or confer scientific or agent-use authority. The corpus allowlist must be updated from an immutable merged commit after review.
+
+## Licensing and sign-off
+
+- Every commit is signed off (`git commit -s`, Developer Certificate of Origin 1.1):
+- Third-party sources registered in `SOURCES.md` or `sources: none` declared:
