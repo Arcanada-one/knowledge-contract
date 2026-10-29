@@ -653,8 +653,8 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
         raise ExportError("rights_basis does not quote the holder string REUSE.toml assigns at the source commit")
     if "DCO" not in chain[0]["obj"]["rights_basis"]:  # check: rights_basis_mentions_dco
         raise ExportError("rights_basis does not say that contributor parts rest on DCO sign-offs")
-    authors = re.findall(r"^Author:[ \t]*(.+)$", show(source, "NOTICE") or "", flags=re.M)
-    if not any(author.startswith(row["rights_holder"]) for author in authors):  # check: notice_author
+    authors = [line.split(",", 1)[0].strip() for line in re.findall(r"^Author:[ \t]*(.+)$", show(source, "NOTICE") or "", flags=re.M)]
+    if row["rights_holder"] not in authors:  # check: notice_author
         raise ExportError("rights holder is not the author named in NOTICE at the source commit")
     return refs
 

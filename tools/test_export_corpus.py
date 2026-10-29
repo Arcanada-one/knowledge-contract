@@ -572,7 +572,7 @@ class DecisionRouteTests(unittest.TestCase):
         for text in (b"see https://github.com/Arcanada-one and 8.8.8.8", b"contract.place and arcanada.ai", b"2001:db8::1 and fe80ab", b"1.127.0.0.1x"):
             self.assertIsNone(export.DENY_SHAPE.search(text), text)
         for text in (b"10.1.2.3", b"172.20.0.1", b"192.168.1.5", b"100.100.1.1", b"arcana-example", b"x.example.ts.net", b"/run/user/1000/a",
-                     b"127.0.0.1", b"127.12.0.9", b"169.254.10.1", b"fd12:3456:789a::1", b"FC00::1", b"fdab::", b"Arcana-DEVS", b"/HOME/x", b"X.Example.TS.NET", b"/Users/a", b"/RUN/USER/1"):
+                     b"127.0.0.1", b"127.12.0.9", b"169.254.10.1", b"fd12:3456:789a::1", b"FC00::1", b"fdab::", b"Arcana-Example", b"/HOME/x", b"X.Example.TS.NET", b"/Users/a", b"/RUN/USER/1"):
             self.assertIsNotNone(export.DENY_SHAPE.search(text), text)
 
     def test_license_outside_the_two_and_unmerged_row_change_are_refused(self) -> None:
@@ -873,6 +873,15 @@ class DecisionRouteTests(unittest.TestCase):
         self.refuses("not the author named in NOTICE", decision_over={"rights_holder": "Another Person"}, row_holder="Another Person")
         manifest, _ = self.world(decision_over={"rights_holder": "Corrected Holder"}, row_holder="Corrected Holder").run()
         self.assertEqual(manifest["entries"][0]["rights_holder"], "Corrected Holder")
+
+    def test_the_notice_author_must_equal_the_rights_holder_not_merely_start_with_it(self) -> None:
+        for holder in ("Pavel Va", "Pavel Valento", "Pavel Valentov Junior", "Pavel"):
+            with self.subTest(holder=holder):
+                if len(holder.split()) < 2:
+                    continue  # a single word is refused earlier as not a named person
+                self.refuses("not the author named in NOTICE", decision_over={"rights_holder": holder}, row_holder=holder)
+        manifest, _ = self.world().run()
+        self.assertEqual(manifest["entries"][0]["rights_holder"], "Pavel Valentov")
 
     def test_squash_merged_decision_pull_request_is_refused(self) -> None:
         self.refuses("head not recoverable: a decision pull request must be merged", squash_decision=True)
