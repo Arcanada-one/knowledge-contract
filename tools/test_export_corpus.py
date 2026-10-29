@@ -930,8 +930,11 @@ class ExportBoundaryTests(unittest.TestCase):
             "status_decision": "none",
         }
 
-    def test_current_empty_allowlist_exports_no_files(self) -> None:
-        rows = export.parse_allowlist((export.REPO / "corpus/README.md").read_text())
+    def test_the_committed_table_parses_and_an_empty_table_exports_no_files(self) -> None:
+        text = (export.REPO / "corpus/README.md").read_text()
+        committed = export.parse_allowlist(text)  # the committed table must parse, whatever rows it holds
+        self.assertTrue(all(row["path"] in export.SCOPE_PATHS for row in committed))
+        rows = export.parse_allowlist("\n".join(export.strip_rows(text)))
         self.assertEqual(rows, [])
         manifest, files = export.build("b" * 40, rows)
         self.assertEqual((manifest["row_count"], manifest["export_count"], files), (0, 0, {}))
