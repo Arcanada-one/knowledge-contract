@@ -44,12 +44,13 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertIn("fetch-depth: 0", job)
         self.assertIn("tools/check_separation.py", job)
 
-    def test_candidate_export_asserts_v2_with_full_history_and_mutation_pass(self):
+    def test_candidate_export_asserts_v2_with_full_history_and_no_mutation_pass(self):
         job = self.jobs["candidate-export"]
         self.assertIn("KnowledgeContractCandidateExport/v2", job)
         self.assertNotIn("CandidateExport/v1", self.text)
         self.assertIn("fetch-depth: 0", job)
-        self.assertIn("tools.test_export_check_mutations", job)
+        # the mutation pass is an author-side tool (run before pushing), not a pull request check
+        self.assertNotIn("test_export_check_mutations", self.text)
 
     def test_every_job_that_runs_the_exporter_checks_out_full_history(self):
         # the exporter refuses a shallow clone

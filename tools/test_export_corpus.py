@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import tempfile
 from contextlib import ExitStack
@@ -30,13 +31,16 @@ REUSE_DEFAULT = """version = 1
 [[annotations]]
 path = "**"
 precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Example Holder and contributors"
 SPDX-License-Identifier = "CC-BY-4.0"
 
 [[annotations]]
 path = ["tools/**", "schemas/**"]
 precedence = "override"
+SPDX-FileCopyrightText = "2026 Example Holder and contributors"
 SPDX-License-Identifier = "Apache-2.0"
 """
+REUSE_HOLDER = "2026 Example Holder and contributors"
 REUSE_TWO_OVERRIDES = REUSE_DEFAULT + """
 [[annotations]]
 path = "articles/**"
@@ -83,7 +87,7 @@ def review_digest(repo: Path, base: str, head: str) -> tuple[str, list[str], byt
 
 def decision_obj(path: str, sha: str, status: str = "current", batch: str = "b1", **over) -> dict:
     obj = {"schema": export.DECISION_SCHEMA, "path": path, "sha256": sha, "rights_holder": HOLDER, "license": "CC-BY-4.0",
-           "status": status, "upstream": "original", "rights_basis": "author declaration in NOTICE; REUSE.toml holder string quoted",
+           "status": status, "upstream": "original", "rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}",
            "third_party": "none found", "attribution": "credit line present",
            "limits": "does not establish identity or agent-text copyright", "receipt": f"{RECEIPT}{batch}.json"}
     obj.update(over)
@@ -108,6 +112,13 @@ class World:
         write(self.repo, "LICENSE", "Official license text placeholder\n")
         self.S = commit(self.repo, "content")
         self.E = commit(self.repo, "gap commit on main") if o.get("main_gap") else None
+        self.X = None
+        if o.get("source_side_merged"):
+            git(self.repo, "checkout", "-q", "-b", "content-side", self.S)
+            self.X = commit(self.repo, "content step on a side branch")
+            git(self.repo, "checkout", "-q", "main")
+            git(self.repo, "merge", "--no-ff", "-q", "-m", "merge the side branch", "content-side")
+            self.M = git(self.repo, "rev-parse", "HEAD")
         self.sha = {d: ("e" * 64 if o.get("bad_blob_digest") else hashlib.sha256(c).hexdigest()) for d, c in self.contents.items()}
         self.merged: dict[str, int] = {}
         self.heads: dict[int, str] = {}
@@ -120,11 +131,17 @@ class World:
                 objs[0]["extra"] = "x"
             if o.get("duplicate"):
                 objs.append({**objs[0], "attribution": "second line, same tuple"})
-            self.decision_pr("b1", objs)
+            ups = o.get("upstreams", {})
+            for obj in objs:
+                if obj["path"] in ups:
+                    obj["upstream"] = ups[obj["path"]]
+            self.decision_pr("b1", objs, parent=self.M if o.get("source_side_merged") else None)
         if o.get("source_on_side"):
             self.source = self.batches["b1"]["C"]
         elif o.get("source_is_decision"):
             self.source = self.batches["b1"]["I"]
+        elif o.get("source_side_merged"):
+            self.source = self.X
         elif o.get("source_init"):
             self.source = self.init_commit
         elif o.get("source_gap"):
@@ -143,7 +160,7 @@ class World:
         lines = [export.canonical(x) for x in objs]
         if o.get("repeat_line"):
             lines.append(lines[0])
-        write(repo, f"{DEC}{batch}.jsonl", "\n".join(lines) + "\n")
+        write(repo, f"{DEC}{batch}.jsonl", "\n".join(lines) + "\n" if lines else "")
         info = {}
         if o.get("source_on_side"):
             git(repo, "commit", "-q", "--allow-empty", "-m", "side-branch content step")
@@ -153,7 +170,7 @@ class World:
         if o.get("decision_extra_path"):
             write(repo, "notes.txt", "unrelated")
         if o.get("reviewed_receipt_path"):
-            write(repo, RECEIPT + "early.txt", "receipt-area file inside the reviewed diff")
+            write(repo, RECEIPT + "b1/reviewer-9.md", "receipt-area file inside the reviewed diff")
         d1 = commit(repo, "decision lines")
         info["D1"] = d1
         base = git(repo, "merge-base", d1, git(repo, "rev-parse", "main"))
@@ -164,11 +181,29 @@ class World:
             blob = subprocess.run(("git", "show", f"{base}:{x['path']}"), cwd=repo, env=ENV, check=True, stdout=subprocess.PIPE).stdout
             blobs += f"BLOB {x['path']} {x['sha256']} {x['upstream']} {len(blob)}\n".encode() + blob + b"\n"
         decl = b""
-        for name in export.DECLARATION_FILES:
-            blob = subprocess.run(("git", "show", f"{self.S}:{name}"), cwd=repo, env=ENV, check=True, stdout=subprocess.PIPE).stdout
-            decl += f"DECL {name} {len(blob)}\n".encode() + blob + b"\n"
+        ups = sorted({x["upstream"] for x in objs})
+        parsed = {u: export.UPSTREAM_RE.fullmatch(u) for u in ups}
+        for u in ups:
+            if u != "original" and parsed[u] is None:
+                continue
+            if u != "original" and parsed[u].group(1) != export.SOURCE:
+                continue
+            commit_ = self.S if u == "original" else parsed[u].group(2)
+            files_ = []
+            for name in export.DECLARATION_FILES:
+                got = subprocess.run(("git", "show", f"{commit_}:{name}"), cwd=repo, env=ENV, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                if got.returncode == 0:
+                    files_.append((name, got.stdout))
+            decl += f"UPSTREAM {u}\n".encode() + b"".join(f"DECL {n} {len(b_)}\n".encode() + b_ + b"\n" for n, b_ in files_)
         if o.get("input_without_decl"):
             decl = b""
+        for u in [u for u in ups if parsed[u] is not None and parsed[u].group(1) != export.SOURCE]:
+            if o.get("external_decl_missing"):
+                decl += f"UPSTREAM {u}\n".encode()
+            elif o.get("external_decl_empty"):
+                decl += f"UPSTREAM {u}\nDECL LICENSE 0\n\n".encode()
+            elif not o.get("external_decl_absent"):
+                decl += f"UPSTREAM {u}\nDECL REUSE.toml 13\nrecorded-bits\n".encode()
         retained = diff + b"--sources--\n" + blobs + b"--declarations--\n" + decl + b"--checklist--\n" + export.CHECKLIST_TEXT.encode()
         if o.get("input_without_blobs"):
             retained = diff + b"--sources--\n--declarations--\n" + decl + b"--checklist--\n" + export.CHECKLIST_TEXT.encode()
@@ -208,11 +243,11 @@ class World:
         lsha = [hashlib.sha256(x.encode()).hexdigest() for x in added]
         listed = lsha[:-1] if o.get("receipt_lines") == "SUBSET" else (lsha + ["9" * 64] if o.get("receipt_lines") == "SUPERSET" else o.get("receipt_lines", lsha))
         receipt = {"reviewed_head": head, "base": o.get("receipt_base", base), "diff_sha256": o.get("receipt_diff", digest),
-                   "files": names, "decision_lines_sha256": listed, "reviewers": reviewers}
-        if not o.get("no_receipt"):
+                   "decision_lines_sha256": listed, "reviewers": reviewers}
+        if not o.get("no_receipt") and not o.get("late_receipt"):
             write(repo, f"{RECEIPT}{batch}.json", json.dumps(receipt, sort_keys=True))
         if o.get("receipt_commit_extra"):
-            write(repo, DEC + "late.txt", "a decision-area change made after the reviewed head")
+            write(repo, DEC + "zz.jsonl", "")
         d2 = commit(repo, "receipt")
         git(repo, "checkout", "-q", "main")
         if o.get("squash_decision"):
@@ -227,6 +262,9 @@ class World:
             else:
                 git(repo, "merge", "--no-ff", "-q", "-m", f"decision change {batch} (#{number})", f"pr-{batch}")
             i = git(repo, "rev-parse", "HEAD")
+        if o.get("late_receipt"):
+            write(repo, f"{RECEIPT}{batch}.json", json.dumps(receipt, sort_keys=True))
+            commit(repo, "late receipt")
         info.update(I=i, D2=d2, lsha=lsha, lines=added, number=number)
         if not o.get("unmerged_decision"):
             self.merged[i] = number
@@ -476,7 +514,8 @@ class DecisionRouteTests(unittest.TestCase):
             w.run(r)
 
     def test_receipt_failures_are_refused(self) -> None:
-        self.refuses("receipt does not bind tuple: receipt missing", no_receipt=True)
+        self.refuses("its receipt file is missing", no_receipt=True)
+        self.refuses("receipt does not bind tuple: receipt missing", late_receipt=True)
         self.refuses("decision lines differ from the lines the change adds", receipt_lines=["f" * 64])
         self.refuses("decision lines differ from the lines the change adds", docs=DOCS, receipt_lines="SUBSET")
         self.refuses("diff digest does not match git", receipt_diff="2" * 64)
@@ -515,7 +554,7 @@ class DecisionRouteTests(unittest.TestCase):
     def test_public_addresses_and_domains_are_not_denied_but_private_ones_are(self) -> None:
         for text in (b"see https://github.com/Arcanada-one and 8.8.8.8", b"contract.place and arcanada.ai"):
             self.assertIsNone(export.DENY_SHAPE.search(text))
-        for text in (b"10.1.2.3", b"172.20.0.1", b"192.168.1.5", b"100.100.1.1", b"arcana-prd", b"x.example.ts.net", b"/run/user/1000/a"):
+        for text in (b"10.1.2.3", b"172.20.0.1", b"192.168.1.5", b"100.100.1.1", b"arcana-example", b"x.example.ts.net", b"/run/user/1000/a"):
             self.assertIsNotNone(export.DENY_SHAPE.search(text), text)
 
     def test_license_outside_the_two_and_unmerged_row_change_are_refused(self) -> None:
@@ -543,7 +582,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.refuses("license declarations and the pinned checklist", input_without_decl=True)
 
     def test_license_declarations_must_exist_at_the_source_commit(self) -> None:
-        self.refuses("license declaration is missing at the source commit", source_init=True)
+        self.refuses("license declaration is missing at the declared commit", source_init=True)
 
     def test_receipt_must_name_its_own_batch(self) -> None:
         self.refuses("receipt names another batch", decision_over={"receipt": RECEIPT + "b9.json"})
@@ -560,14 +599,14 @@ class DecisionRouteTests(unittest.TestCase):
                     w.run(r)
 
     def test_status_that_the_decision_file_does_not_hold_is_refused(self) -> None:
-        w = self.world(no_rows=True)
+        w = self.world(no_rows=True, main_gap=True)
         for status in ("withdrawn", "superseded"):
             with self.subTest(status=status):
                 rows = [w.row(DOCS[0], "b1", 0, status, w.cell("b1", 0))]
                 if status == "superseded":
                     rows.append({**w.row(DOCS[0], "b1", 0), "source_commit": w.E or w.S, "sha256": "c" * 64, "supersedes": w.sha[DOCS[0]]})
                 r = w.add_rows(rows)
-                with self.assertRaises(export.ExportError):
+                with self.assertRaisesRegex(export.ExportError, "no merged decision matches row"):
                     w.run(r)
 
     def test_a_path_outside_the_six_documents_is_refused(self) -> None:
@@ -595,6 +634,70 @@ class DecisionRouteTests(unittest.TestCase):
 
     def test_transcript_lacking_only_one_of_session_or_digest_is_refused(self) -> None:
         self.refuses("does not embed its session id and input digest", no_embed=True)
+
+    # ---- decision-tree layout, upstream declarations, holder strings, isolation of single guards ----
+    def test_any_file_outside_the_allowed_layout_is_refused(self) -> None:
+        for name in ("b2.v2.jsonl", "sub/b2.jsonl", "B2.JSONL", "b2.jsonl.txt", "receipts/b2.v1.json", "receipts/b1/notes.txt", ".hidden.jsonl"):
+            with self.subTest(name=name):
+                w = self.world()
+                write(w.repo, DEC + name, export.canonical(decision_obj(DOCS[0], w.sha[DOCS[0]], "withdrawn", "b2")) + "\n")
+                w.main = commit(w.repo, f"stray file {name} (#90)")
+                w.merged[w.main] = 90
+                with self.assertRaisesRegex(export.ExportError, "outside the allowed layout"):
+                    w.run()
+
+    def test_upstream_field_is_parsed_and_its_commit_must_exist(self) -> None:
+        self.refuses("upstream is neither original nor repo@commit:path", decision_over={"upstream": "somewhere in the world"})
+        self.refuses("upstream commit does not exist", decision_over={"upstream": f"Arcanada-one/knowledge-contract@{'a' * 40}:README.md"})
+
+    def test_upstream_in_this_repository_reads_declarations_at_the_upstream_commit(self) -> None:
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        probe = World(Path(temp.name))
+        upstream = f"Arcanada-one/knowledge-contract@{probe.S}:README.md"
+        manifest, files = self.world(upstreams={DOCS[0]: upstream}).run()
+        self.assertEqual(set(files), {DOCS[0]})
+
+    def test_upstream_in_another_repository_needs_recorded_declarations(self) -> None:
+        ext = f"Arcanada-one/contract-place-site@{'7' * 40}:public/llms.txt"
+        manifest, files = self.world(docs=DOCS[:2], upstreams={DOCS[1]: ext}).run()
+        self.assertEqual(manifest["row_count"], 2)
+        for knob in ("external_decl_absent", "external_decl_missing", "external_decl_empty"):
+            with self.subTest(knob=knob):
+                with self.assertRaisesRegex(export.ExportError, "external license declarations|other upstream repositories"):
+                    self.world(docs=DOCS[:2], upstreams={DOCS[1]: ext}, **{knob: True}).run()
+
+    def test_rights_holder_must_be_a_named_person_and_basis_must_quote_the_reuse_holder(self) -> None:
+        for holder in ("Knowledge Contract Arcana contributors", "TBD", "pavel", "Pavel Valentov and contributors"):
+            with self.subTest(holder=holder):
+                self.refuses("rights holder is not a named person", decision_over={"rights_holder": holder})
+        self.refuses("does not quote the holder string", decision_over={"rights_basis": "author declaration only"})
+
+    def test_tree_write_once_fires_alone_when_an_unreferenced_batch_file_is_renamed(self) -> None:
+        w = self.world()
+        w.decision_pr("b7", [], parent=w.main)
+        (w.repo / DEC / "b7.jsonl").rename(w.repo / DEC / "b8.jsonl")
+        w.main = commit(w.repo, "rename an empty batch file (#91)")
+        w.merged[w.main] = 91
+        with self.assertRaisesRegex(export.ExportError, "write-once"):
+            w.run()
+        with patch.object(export, "check_write_once", lambda m: None):
+            self.assertEqual(w.run()[0]["row_count"], 1)
+
+    def test_source_first_parent_fires_alone_for_a_side_branch_commit_that_is_an_ancestor_of_the_base(self) -> None:
+        w = self.world(source_side_merged=True)
+        with self.assertRaisesRegex(export.ExportError, "first-parent commit of main"):
+            w.run()
+        with patch.object(export, "first_parent_order", lambda m: {**{r: i for i, r in enumerate(git(w.repo, "rev-list", "--first-parent", "--reverse", m).split())}, w.X: 10 ** 6}):
+            self.assertEqual(w.run()[0]["row_count"], 1)
+
+    @unittest.skipUnless(shutil.which("gitleaks"), "gitleaks binary not installed: real secret_scan test skipped")
+    def test_real_gitleaks_scan_quarantines_a_secret_shape_that_the_builtin_pattern_misses(self) -> None:
+        token = "xoxb-" + "123456789012-1234567890123-" + "AbCdEfGhIjKlMnOpQrStUvWx"
+        self.assertIsNone(export.SECRET_SHAPE.search(token.encode()))
+        with self.assertRaisesRegex(export.ExportError, "quarantined"):
+            export.secret_scan(("token = " + token + "\n").encode())
+        export.secret_scan(b"plain public text about a bounded statement\n")
 
     def test_checklist_is_pinned_by_digest(self) -> None:
         w = self.world()

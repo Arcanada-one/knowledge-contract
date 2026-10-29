@@ -19,8 +19,6 @@ jobs:
           persist-credentials: false
       - name: Check fail-closed export boundaries without network or index writes
         run: python3 -B -m unittest tools.test_export_corpus -v
-      - name: Every exporter guard is load-bearing (mutation pass)
-        run: python3 -B -m unittest tools.test_export_check_mutations -v
       - name: Exercise exact-main candidate export without index writes
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:

@@ -43,7 +43,16 @@ DECISION_SCHEMA = "KnowledgeContractPublicationDecision/v2"
 DECISION_KEYS = frozenset(("schema", "path", "sha256", "rights_holder", "license", "status", "upstream",
                            "rights_basis", "third_party", "attribution", "limits", "receipt"))
 DECISION_TEXT_KEYS = ("rights_holder", "upstream", "rights_basis", "third_party", "attribution", "limits")
-RECEIPT_KEYS = frozenset(("reviewed_head", "base", "diff_sha256", "files", "decision_lines_sha256", "reviewers"))
+RECEIPT_KEYS = frozenset(("reviewed_head", "base", "diff_sha256", "decision_lines_sha256", "reviewers"))
+# The only files the decision tree may hold. Batch names use [A-Za-z0-9_-] only: no dots, no case tricks, no subdirectories.
+BATCH = r"[A-Za-z0-9][A-Za-z0-9_-]*"
+TREE_LAYOUT = (
+    re.compile(rf"corpus/publication-decisions/{BATCH}\.jsonl"),
+    re.compile(rf"corpus/publication-decisions/receipts/{BATCH}\.json"),
+    re.compile(rf"corpus/publication-decisions/receipts/{BATCH}/reviewer-[1-9][0-9]*\.(?:md|input\.txt)"),
+)
+UPSTREAM_RE = re.compile(r"^([A-Za-z0-9._-]+/[A-Za-z0-9._-]+)@([0-9a-f]{40}):([A-Za-z0-9][A-Za-z0-9_./-]*)$")
+PERSON_RE = re.compile(r"^[A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+)+$")
 REVIEWER_KEYS = frozenset(("session_id", "model", "input_digest", "transcript_sha256", "verdict"))
 # Scope fixed by DEC-AUP-0171 item 7: only these six already-public documents may be listed until a later DEC changes it.
 SCOPE_PATHS = frozenset((
@@ -229,7 +238,7 @@ def glob_match(pattern: str, path: str) -> bool:
     return re.fullmatch(regex, path) is not None
 
 
-def reuse_license(commit: str, path: str) -> str:
+def reuse_terms(commit: str, path: str) -> tuple[str, list[str]]:
     """The license REUSE.toml at `commit` assigns to `path` (override beats aggregate; ambiguity refuses)."""
     text = show(commit, "REUSE.toml")
     if text is None:
@@ -240,7 +249,7 @@ def reuse_license(commit: str, path: str) -> str:
         raise ExportError("REUSE.toml is not valid TOML") from error
     if not isinstance(annotations, list):
         raise ExportError("REUSE.toml has no annotations")
-    hits: list[tuple[str, str]] = []
+    hits: list[tuple[str, str, list[str]]] = []
     for annotation in annotations:
         patterns = annotation.get("path") if isinstance(annotation, dict) else None
         patterns = [patterns] if isinstance(patterns, str) else patterns
@@ -249,16 +258,18 @@ def reuse_license(commit: str, path: str) -> str:
         license_id = annotation.get("SPDX-License-Identifier")
         if not isinstance(license_id, str):
             raise ExportError("REUSE.toml annotation does not carry a single license identifier")
-        hits.append((str(annotation.get("precedence", "closest")), license_id))
-    overrides = [license_id for precedence, license_id in hits if precedence == "override"]
+        holder = annotation.get("SPDX-FileCopyrightText", [])
+        holders = [holder] if isinstance(holder, str) else [h for h in holder if isinstance(h, str)] if isinstance(holder, list) else []
+        hits.append((str(annotation.get("precedence", "closest")), license_id, holders))
+    overrides = [(license_id, holders) for precedence, license_id, holders in hits if precedence == "override"]
     if len(overrides) > 1:  # check: single_override
         raise ExportError("more than one REUSE.toml override matches the path")
     if overrides:
         return overrides[0]
-    licenses = {license_id for _, license_id in hits}
+    licenses = {license_id for _, license_id, _ in hits}
     if len(licenses) != 1:
         raise ExportError("REUSE.toml does not assign exactly one license to the path")
-    return licenses.pop()
+    return licenses.pop(), sorted({h for _, _, holders in hits for h in holders})
 
 
 DECISION_FILE_RE = re.compile(r"corpus/publication-decisions/[A-Za-z0-9][A-Za-z0-9_-]*\.jsonl")
@@ -293,10 +304,12 @@ def load_decisions(main_sha: str) -> list[dict]:
     for entry in listing:
         meta, _, name = entry.partition("\t")
         mode, kind = meta.split()[:2]
-        if not re.fullmatch(r"corpus/publication-decisions/[A-Za-z0-9][A-Za-z0-9_-]*\.jsonl", name):
-            continue
+        if not any(layout.fullmatch(name) for layout in TREE_LAYOUT):  # check: tree_layout
+            raise ExportError("decision tree holds a file outside the allowed layout")
         if mode not in {"100644", "100755"} or kind != "blob":
             raise ExportError("decision file is not a regular blob")
+        if not DECISION_FILE_RE.fullmatch(name):
+            continue
         for number, line in enumerate((show(main_sha, name) or "").splitlines()):
             try:
                 obj = json.loads(line)
@@ -312,6 +325,12 @@ def load_decisions(main_sha: str) -> list[dict]:
                 raise ExportError("decision line malformed")
             if obj["receipt"] != f"{RECEIPT_DIR}{Path(name).stem}.json":  # check: receipt_own_batch
                 raise ExportError("decision line malformed: receipt names another batch")
+            if command("git", "cat-file", "-e", f"{main_sha}:{obj['receipt']}", check=False).returncode:  # check: receipt_file_exists
+                raise ExportError("decision line malformed: its receipt file is missing")
+            if not PERSON_RE.fullmatch(obj["rights_holder"]) or "contributors" in obj["rights_holder"].lower():  # check: rights_holder_person
+                raise ExportError("decision line malformed: rights holder is not a named person")
+            if obj["upstream"] != "original" and not UPSTREAM_RE.fullmatch(obj["upstream"]):  # check: upstream_format
+                raise ExportError("decision line malformed: upstream is neither original nor repo@commit:path")
             if line in seen_lines:  # check: repeat_line
                 raise ExportError("decision line malformed: repeated line")
             seen_lines.add(line)
@@ -437,18 +456,49 @@ def retained_record(main_sha: str, intro: str, head: str, final_head: str, path:
     return at_main.stdout
 
 
-def own_repo_upstream(upstream: str) -> bool:
-    return upstream == "original" or upstream.startswith(SOURCE + "@")
+def upstream_commit(upstream: str, source: str) -> str | None:
+    """Commit whose declarations the reviewers saw: the source commit for original text, the upstream commit for this repository, None for another repository."""
+    if upstream == "original":
+        return source
+    repo, commit_, _ = UPSTREAM_RE.fullmatch(upstream).groups()
+    return commit_ if repo == SOURCE else None
 
 
-def declarations(source: str) -> bytes:
+def declarations(commit_: str) -> bytes:
+    if command("git", "cat-file", "-e", f"{commit_}^{{commit}}", check=False).returncode:  # check: upstream_commit_exists
+        raise ExportError("upstream commit does not exist in this repository")
     out = b""
     for name in DECLARATION_FILES:
-        blob = command("git", "show", f"{source}:{name}", check=False)
+        blob = command("git", "show", f"{commit_}:{name}", check=False)
         if blob.returncode:  # check: declaration_present
-            raise ExportError("license declaration is missing at the source commit")
+            raise ExportError("license declaration is missing at the declared commit")
         out += f"DECL {name} {len(blob.stdout)}\n".encode() + blob.stdout + b"\n"
     return out
+
+
+def external_sections(middle: bytes) -> list[str]:
+    """Parse recorded-only declaration sections of other repositories; returns their upstream strings."""
+    seen, pos = [], 0
+    try:
+        while pos < len(middle):
+            end = middle.index(b"\n", pos)
+            header = middle[pos:end].decode()
+            if not header.startswith("UPSTREAM "):
+                raise ValueError
+            pos, records = end + 1, 0
+            while middle.startswith(b"DECL ", pos):
+                end = middle.index(b"\n", pos)
+                parts = middle[pos:end].decode().split(" ")
+                length = int(parts[2]) if len(parts) == 3 and parts[2].isdigit() else 0
+                if length == 0 or middle[end + 1 + length:end + 2 + length] != b"\n":
+                    raise ValueError
+                pos, records = end + 2 + length, records + 1
+            if records == 0:
+                raise ValueError
+            seen.append(header[len("UPSTREAM "):])
+    except (ValueError, UnicodeDecodeError) as error:
+        raise ExportError("retained reviewer input has malformed external license declarations") from error
+    return seen
 
 
 def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source: str) -> str:
@@ -479,7 +529,7 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
     if base != unique_merge_base(head, first_parent):  # check: receipt_base
         raise ExportError("receipt base differs from the pull request merge base")
     names = changed_paths(base, head)
-    if any(not name.startswith(DEC_DIR) or name.startswith(RECEIPT_DIR) for name in names) or sorted(receipt["files"]) != sorted(names):  # check: reviewed_diff_scope
+    if any(not name.startswith(DEC_DIR) or name.startswith(RECEIPT_DIR) for name in names):  # check: reviewed_diff_scope
         raise ExportError("reviewed diff is not limited to decision files")
     diff = command("git", "-c", "diff.algorithm=myers", "-c", "core.autocrlf=false", "diff", "--no-renames", "--no-ext-diff",
                    "--binary", "--full-index", "-U3", base, head).stdout
@@ -496,9 +546,12 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         if blob.returncode or hashlib.sha256(blob.stdout).hexdigest() != o["sha256"]:  # check: blob_at_base
             raise ExportError("embedded source blob at the base differs from the decision digest")
         blobs += f"BLOB {o['path']} {o['sha256']} {o['upstream']} {len(blob.stdout)}\n".encode() + blob.stdout + b"\n"
-    needs_declarations = any(own_repo_upstream(json.loads(x)["upstream"]) for x in added)
-    declared = declarations(source) if needs_declarations else b""
-    expected_input = diff + b"--sources--\n" + blobs + b"--declarations--\n" + declared + b"--checklist--\n" + CHECKLIST_TEXT.encode()
+    upstreams = sorted({json.loads(x)["upstream"] for x in added})
+    own = [u for u in upstreams if upstream_commit(u, source) is not None]
+    external = [u for u in upstreams if upstream_commit(u, source) is None]
+    declared = b"".join(f"UPSTREAM {u}\n".encode() + declarations(upstream_commit(u, source)) for u in own)
+    head_part = diff + b"--sources--\n" + blobs + b"--declarations--\n" + declared
+    tail_part = b"--checklist--\n" + CHECKLIST_TEXT.encode()
     reviewers = receipt["reviewers"]
     if not isinstance(reviewers, list) or len(reviewers) < MIN_REVIEWERS:  # check: min_reviewers
         raise ExportError("receipt needs at least two blind reviewers")
@@ -528,8 +581,10 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         retained = retained_record(main_sha, intro, head, final_head, f"{RECEIPT_DIR}{stem}/reviewer-{number}.input.txt")
         if hashlib.sha256(retained).hexdigest() != reviewer["input_digest"]:  # check: input_digest
             raise ExportError("receipt input digest does not match the retained reviewer input")
-        if retained != expected_input:  # check: input_content
+        if not retained.startswith(head_part) or not retained.endswith(tail_part) or len(retained) < len(head_part) + len(tail_part):  # check: input_content
             raise ExportError("retained reviewer input is not the reviewed diff, the embedded source blobs, the license declarations and the pinned checklist")
+        if external_sections(retained[len(head_part):len(retained) - len(tail_part)]) != external:  # check: declarations_external
+            raise ExportError("retained reviewer input lacks the recorded license declarations of the other upstream repositories")
         scan_public_text(retained)
     if len(sessions) != len(reviewers):  # check: distinct_sessions
         raise ExportError("receipt reviewer sessions are not distinct")
@@ -576,8 +631,11 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
         raise ExportError("allowlist row commit changes more than table rows")
     if source in (row_commit, chain[0]["intro"]) or not is_ancestor(source, bases[0]):  # check: source_relation
         raise ExportError("source commit must be an ancestor of the receipt base and differ from the row commit")
-    if reuse_license(source, row["path"]) != row["license"]:  # check: reuse_license
+    reuse_license, reuse_holders = reuse_terms(source, row["path"])
+    if reuse_license != row["license"]:  # check: reuse_license
         raise ExportError("license differs from the one REUSE.toml assigns at the source commit")
+    if not reuse_holders or any(holder not in chain[0]["obj"]["rights_basis"] for holder in reuse_holders):  # check: rights_basis_quotes_holder
+        raise ExportError("rights_basis does not quote the holder string REUSE.toml assigns at the source commit")
     return refs
 
 
