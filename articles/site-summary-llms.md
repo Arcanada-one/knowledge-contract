@@ -3,7 +3,7 @@ mirror_of: https://github.com/Arcanada-one/contract-place-site/blob/74f620b958fd
 mirror_source_commit: 74f620b958fd8769ca652caf82b4cb8b4fc85485
 author: Pavel Valentov and Knowledge Contract Arcana contributors
 license: CC-BY-4.0
-mirror_note: "Verbatim mirror of `public/llms.txt (Arcanada-one/contract-place-site)` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this note is unchanged; relative links in it point into the source repository and are not valid here. Credit: Knowledge Contract Arcana, https://contract.place."
+mirror_note: "Mirror of `public/llms.txt (Arcanada-one/contract-place-site)` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (0 rewritten). Credit: Knowledge Contract Arcana, https://contract.place."
 ---
 
 <!-- markdownlint-disable MD034 -->

@@ -3,12 +3,12 @@ mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea
 mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
 author: Pavel Valentov and Knowledge Contract Arcana contributors
 license: CC-BY-4.0
-mirror_note: "Verbatim mirror of `ATTRIBUTION.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this note is unchanged; relative links in it point into the source repository and are not valid here. Credit: Knowledge Contract Arcana, https://contract.place."
+mirror_note: "Mirror of `ATTRIBUTION.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (5 rewritten). Credit: Knowledge Contract Arcana, https://contract.place."
 ---
 
 # How to credit Knowledge Contract Arcana
 
-Knowledge Contract Arcana is open: you may use, adapt and build on it, including commercially and in your own projects, on the condition that you credit the author and link to the source. This page gives ready-to-paste credit lines. The licenses are the official texts in [LICENSE](LICENSE) (CC BY 4.0, text) and [LICENSE-CODE](LICENSE-CODE) (Apache-2.0, code); this page explains how to meet them and adds no terms.
+Knowledge Contract Arcana is open: you may use, adapt and build on it, including commercially and in your own projects, on the condition that you credit the author and link to the source. This page gives ready-to-paste credit lines. The licenses are the official texts in [LICENSE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE) (CC BY 4.0, text) and [LICENSE-CODE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE-CODE) (Apache-2.0, code); this page explains how to meet them and adds no terms.
 
 ## Credit for text, papers, specifications and site content
 
@@ -28,17 +28,17 @@ Say what you changed. Link to the exact page or file you used when you can.
 
 ## Credit for code, schemas and tools
 
-- Keep the [NOTICE](NOTICE) file with your redistribution or derivative work (Apache-2.0 section 4(d)).
+- Keep the [NOTICE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/NOTICE) file with your redistribution or derivative work (Apache-2.0 section 4(d)).
 - Keep SPDX headers and license files.
 - Link the repository: <https://github.com/Arcanada-one/knowledge-contract>.
 
 ## Academic citation
 
-Cite through [CITATION.cff](CITATION.cff) (GitHub shows "Cite this repository"). When a paper has a DOI, cite the paper DOI.
+Cite through [CITATION.cff](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CITATION.cff) (GitHub shows "Cite this repository"). When a paper has a DOI, cite the paper DOI.
 
 ## Upstream sources stay credited
 
-Our documents cite third-party works, which keep their own licenses and authors (see [SOURCES.md](SOURCES.md)). If a document you reuse credits an upstream source, your derivative must keep that credit. Do not remove or hide source credits.
+Our documents cite third-party works, which keep their own licenses and authors (see [SOURCES.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md)). If a document you reuse credits an upstream source, your derivative must keep that credit. Do not remove or hide source credits.
 
 ## What not to do
 
