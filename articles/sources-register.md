@@ -3,7 +3,7 @@ mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea
 mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
 author: Pavel Valentov and Knowledge Contract Arcana contributors
 license: CC-BY-4.0
-mirror_note: "Mirror of `SOURCES.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (2 rewritten). Credit: Knowledge Contract Arcana, https://contract.place."
+mirror_note: "Mirror of `SOURCES.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (2 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
 ---
 
 # Third-party source register
