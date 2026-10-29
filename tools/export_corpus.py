@@ -314,11 +314,11 @@ def load_decisions(main_sha: str) -> list[dict]:
             raise ExportError("decision file is not a regular blob")
         if not DECISION_FILE_RE.fullmatch(name):
             if name.startswith(RECEIPT_DIR):  # check: scan_all_receipts
-                scan_public_text(command("git", "show", f"{main_sha}:{name}").stdout)
+                scan_public_text(command("git", "show", f"{main_sha}:{name}").stdout, "retained receipts file")
             continue
         decision_bytes = command("git", "show", f"{main_sha}:{name}").stdout
         if decision_bytes:  # check: scan_decision_files
-            scan_public_text(decision_bytes)
+            scan_public_text(decision_bytes, "decision file")
         for number, line in enumerate((show(main_sha, name) or "").splitlines()):
             try:
                 obj = json.loads(line)
@@ -419,9 +419,9 @@ def find_decision(decisions: list[dict], order: dict[str, int], cell: str, row: 
     return last
 
 
-def scan_public_text(content: bytes) -> None:
+def scan_public_text(content: bytes, kind: str = "retained record") -> None:
     if DENY_SHAPE.search(content):  # check: deny_scan
-        raise ExportError("receipt or transcript carries a host path, host name or address")
+        raise ExportError(f"{kind} carries a host path, host name or address")
     secret_scan(content)
 
 
@@ -523,7 +523,7 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
     at_intro = command("git", "show", f"{intro}:{receipt_path}", check=False)
     if at_intro.returncode:  # check: receipt_present
         raise ExportError("receipt does not bind tuple: receipt missing")
-    scan_public_text(at_intro.stdout)
+    scan_public_text(at_intro.stdout, "receipt")
     try:
         receipt = json.loads(at_intro.stdout.decode())
     except ValueError as error:
@@ -581,7 +581,7 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         transcript = retained_record(main_sha, intro, head, final_head, f"{RECEIPT_DIR}{stem}/reviewer-{number}.md")
         if hashlib.sha256(transcript).hexdigest() != reviewer["transcript_sha256"]:  # check: transcript_digest
             raise ExportError("receipt transcript digest does not match the retained transcript")
-        scan_public_text(transcript)
+        scan_public_text(transcript, "transcript")
         text = transcript.decode("utf-8", "replace")
         lines_ = [line for line in text.splitlines() if line.strip()]
         if lines_ and lines_[0].startswith("SCRUBBED:") and not re.fullmatch(r"SCRUBBED: \d+ replacements", lines_[0]):  # check: scrub_header
@@ -597,7 +597,7 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
             raise ExportError("retained reviewer input is not the reviewed diff, the embedded source blobs, the license declarations and the pinned checklist")
         if external_sections(retained[len(head_part):len(retained) - len(tail_part)]) != external:  # check: declarations_external
             raise ExportError("retained reviewer input lacks the recorded license declarations of the other upstream repositories")
-        scan_public_text(retained)
+        scan_public_text(retained, "reviewer input")
     if len(sessions) != len(reviewers):  # check: distinct_sessions
         raise ExportError("receipt reviewer sessions are not distinct")
     if len(transcripts) != len(reviewers):  # check: distinct_transcripts
@@ -651,7 +651,7 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
         raise ExportError("license differs from the one REUSE.toml assigns at the source commit")
     if not reuse_holders or any(holder not in chain[0]["obj"]["rights_basis"] for holder in reuse_holders):  # check: rights_basis_quotes_holder
         raise ExportError("rights_basis does not quote the holder string REUSE.toml assigns at the source commit")
-    if "DCO" not in chain[0]["obj"]["rights_basis"]:  # check: rights_basis_mentions_dco
+    if not re.search(r"\bDCO\b", chain[0]["obj"]["rights_basis"]):  # check: rights_basis_mentions_dco
         raise ExportError("rights_basis does not say that contributor parts rest on DCO sign-offs")
     authors = [line.split(",", 1)[0].strip() for line in re.findall(r"^Author:[ \t]*(.+)$", show(source, "NOTICE") or "", flags=re.M)]
     if row["rights_holder"] not in authors:  # check: notice_author
