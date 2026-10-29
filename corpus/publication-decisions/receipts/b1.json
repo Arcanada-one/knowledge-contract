@@ -1,0 +1,29 @@
+{
+ "base": "e0f6c41f45421ead31af40b1d3c4348071eea3d5",
+ "decision_lines_sha256": [
+  "b8260a9811465f94da5c4fd1d654d8f8183985a93d8e5a8e6ffa9a1ead7594ed",
+  "6ff495bc774d427a3e6472d2d34abfba55e49a3b5fbe8243bdcd0ba35084e7ab",
+  "2611526cf4434802489904fa0cb3fd4fa93e71bf91f65433c7aef8867c4655fb",
+  "4b4d44ca4271eccba5cb37fcd47a32e93da28e9b1cf36afde9e295bbad97ea47",
+  "8fd2be1b1dac315ae5198001a8951454db6b0a48b1e8e971a6d87ec60a3e8d9a",
+  "3924800d8e42710ae0cbb9e7aa8597c90aa0cd167c8a54b833aef3b57502f494"
+ ],
+ "diff_sha256": "b7c8b63a360473b2d06bf1ba0ad8351008d330f98c21630aef3c1d3288271783",
+ "reviewed_head": "05ffe073778bba85a020118f14122f39f691be99",
+ "reviewers": [
+  {
+   "input_digest": "a20169dc4d1fef10d143f6d7b567f25c58a53d4546ccc69bf2998d0f210e7028",
+   "model": "claude-opus",
+   "session_id": "blind-opus-20261029-1",
+   "transcript_sha256": "2da64732c601fc09b272934f652a3c4ac62e0b2644c73a26f4c0c68355e3b6cb",
+   "verdict": "APPROVE"
+  },
+  {
+   "input_digest": "a20169dc4d1fef10d143f6d7b567f25c58a53d4546ccc69bf2998d0f210e7028",
+   "model": "claude-sonnet",
+   "session_id": "blind-sonnet-20261029-2",
+   "transcript_sha256": "ff6b67cac18c41c1e7025a0e7f334e3ab7e8830aaf3e69e921c4e564c3fde2be",
+   "verdict": "APPROVE"
+  }
+ ]
+}

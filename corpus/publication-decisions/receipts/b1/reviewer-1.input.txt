@@ -1,0 +1,2843 @@
+diff --git a/corpus/publication-decisions/b1.jsonl b/corpus/publication-decisions/b1.jsonl
+new file mode 100644
+index 0000000000000000000000000000000000000000..38459a4e58ec58f91a61f09c0b6455ca2f86e2c5
+--- /dev/null
++++ b/corpus/publication-decisions/b1.jsonl
+@@ -0,0 +1,6 @@
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/project-overview.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"90bc42fb1af77df103117cf566314a5854c719a3290aa07eaab79ed2c0fb6675","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:README.md"}
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/openness-and-attribution-policy.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"2b2a0b38e231676e3e01dba92cbe22d51531a26cc3d84587135e36da0b013e06","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:OPENNESS.md"}
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/attribution-policy.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"121f3d7f177c3cf0229dd98d2a7023bff5bd7d12e02ec628081fdcfba62dc78a","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:ATTRIBUTION.md"}
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/contribution-guide.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"522ee9995607202a11eb2d8b3548935819b7ec85cdda86be9345883bbefa18e6","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:CONTRIBUTING.md"}
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/sources-register.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"b90ad7c31e0e6da2e3b0e9ad9d5f8bdfc421c80116054ff71175f28b4159c885","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:SOURCES.md"}
++{"attribution":"front matter carries author, license and mirror_of; the credit line of ATTRIBUTION.md applies","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, that a review took place, or that a mirror body equals its upstream file apart from the declared changes (the upstream bytes were not given to the reviewers); the record is written by the same account that reviewed","path":"articles/site-summary-llms.md","receipt":"corpus/publication-decisions/receipts/b1.json","rights_basis":"author declaration at the upstream commit: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the text; the text is already public; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"0d781a65e39dc877e10012cb0656745fee71a4f274e752be4020f0a4e5cbc27e","status":"current","third_party":"none found by the reviewers in the diff and the embedded sources; the SOURCES.md of knowledge-contract registers no third-party source; the repository of the site llms.txt has no register of its own and its recorded declarations name none","upstream":"Arcanada-one/contract-place-site@74f620b958fd8769ca652caf82b4cb8b4fc85485:public/llms.txt"}
+--sources--
+BLOB articles/attribution-policy.md 121f3d7f177c3cf0229dd98d2a7023bff5bd7d12e02ec628081fdcfba62dc78a Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:ATTRIBUTION.md 3316
+---
+mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md
+mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `ATTRIBUTION.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (5 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+# How to credit Knowledge Contract Arcana
+
+Knowledge Contract Arcana is open: you may use, adapt and build on it, including commercially and in your own projects, on the condition that you credit the author and link to the source. This page gives ready-to-paste credit lines. The licenses are the official texts in [LICENSE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE) (CC BY 4.0, text) and [LICENSE-CODE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE-CODE) (Apache-2.0, code); this page explains how to meet them and adds no terms.
+
+## Credit for text, papers, specifications and site content
+
+Full credit line (title, author, source, license):
+
+```text
+"<Title>" by Pavel Valentov, Knowledge Contract Arcana (https://contract.place), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Changes: <describe or "none">.
+```
+
+Short credit line (user interface, slides):
+
+```text
+Based on Knowledge Contract Arcana, https://contract.place (CC BY 4.0)
+```
+
+Say what you changed. Link to the exact page or file you used when you can.
+
+## Credit for code, schemas and tools
+
+- Keep the [NOTICE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/NOTICE) file with your redistribution or derivative work (Apache-2.0 section 4(d)).
+- Keep SPDX headers and license files.
+- Link the repository: <https://github.com/Arcanada-one/knowledge-contract>.
+
+## Academic citation
+
+Cite through [CITATION.cff](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CITATION.cff) (GitHub shows "Cite this repository"). When a paper has a DOI, cite the paper DOI.
+
+## Upstream sources stay credited
+
+Our documents cite third-party works, which keep their own licenses and authors (see [SOURCES.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md)). If a document you reuse credits an upstream source, your derivative must keep that credit. Do not remove or hide source credits.
+
+## What not to do
+
+- Do not imply that the author, Knowledge Contract Arcana or Arcanada endorses you or your use. "Based on Knowledge Contract Arcana" is fine; "endorsed by" is not.
+- Do not use the names "Knowledge Contract Arcana", "Arcanada" or any logo as your own brand or product name. Neither license grants trademark rights.
+- Do not remove copyright notices, the license link or the source link.
+
+BLOB articles/contribution-guide.md 522ee9995607202a11eb2d8b3548935819b7ec85cdda86be9345883bbefa18e6 Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:CONTRIBUTING.md 4942
+---
+mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CONTRIBUTING.md
+mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `CONTRIBUTING.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (8 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+# Contributing
+
+Knowledge Contract research is in progress. Open an issue to discuss a proposed change before preparing a pull request. A proposal should state its scope, evidence, and the affected specification or document. Publication of a draft requires separate review; a submitted proposal does not imply adoption.
+
+Keep contributions in English, provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE); code and schemas are offered under [Apache-2.0](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE-CODE). Raise any licensing exception before submitting material. The project policy is in [OPENNESS.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/OPENNESS.md).
+
+Report security concerns through the private channel in [SECURITY.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SECURITY.md).
+
+## Propose public content
+
+Use the [pull request template](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/.github/pull_request_template.md) for each proposed paper, specification, guide, example, or correction. Identify the author or authorized rights holder, every source used for factual claims, the license of original and third-party material, the requested publication status, and the reviewer sought. Link to third-party text when reproduction rights are unclear; do not paste it into the repository.
+
+A pull request is a proposal. Review must confirm both public publication rights and the intended status before a path can be added to the [corpus allowlist](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/corpus/README.md). Only a merged commit and an explicitly allowlisted path can become an indexing input. Publication does not establish scientific validity, current applicability, or agent authority to act.
+
+For a correction, identify the earlier path and immutable revision, explain the changed claim, and request a `supersedes` relation. Keep the earlier revision traceable in Git history. For a withdrawal, state the affected path and revision privately if disclosure would cause harm; reviewers must remove it from the public allowlist and record the decision before another index generation is promoted.
+
+## Sign off every commit (DCO)
+
+Contributions are accepted under the [Developer Certificate of Origin 1.1](https://developercertificate.org/): add a `Signed-off-by:` line to every commit with `git commit -s`. There is no CLA. Inbound equals outbound: you license your contribution under the license of the file you change (CC BY 4.0 for text, Apache-2.0 for code and schemas), and you keep your copyright. Substantial contributors are credited in the git history and in `CONTRIBUTORS` and `CITATION.cff`. The sign-off must be in the last paragraph of the commit message and its name and email must match the commit's author or committer. CI fails a pull request that has a non-merge commit without such a sign-off (merge commits are not checked; the commits they bring are); automation commits from the allow-listed bot authors in `tools/check_dco.py` are exempt. Fix a missing sign-off with `git rebase --signoff` and a force-push of your own branch.
+
+## Credit sources
+
+Reuse of this project must credit the author and link to the source ([ATTRIBUTION.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md)); contributions follow the same rule for what they build on. Register every third-party source of a paper or specification in [SOURCES.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md), or declare `sources: none` in the file's front matter. CI fails a new file under `papers/` or `spec/` that has neither.
+
+BLOB articles/openness-and-attribution-policy.md 2b2a0b38e231676e3e01dba92cbe22d51531a26cc3d84587135e36da0b013e06 Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:OPENNESS.md 3476
+---
+mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/OPENNESS.md
+mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `OPENNESS.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (4 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+# Openness and attribution policy
+
+Status: adopted 2026-10-28 by operator order. This is the project's normative intent; the legal terms are the license files, not this page.
+
+1. **Open project.** Knowledge Contract Arcana is public and open to community contribution and to free use, including commercial use and use as the base of your own project.
+2. **Attribution is mandatory.** Reuse must credit the author and link to the source it was taken from ([ATTRIBUTION.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md)). The project aims to collect a large share of what is known about meaning management, so the link back is the point of the exchange.
+3. **Licenses.** Text, papers, specifications, site text, corpus and documentation: [CC BY 4.0](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE). Code, schemas and tools: [Apache-2.0](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE-CODE). No custom license: bespoke terms are not recognised by tooling and deter reuse. Derivative projects keep their own license (no share-alike).
+4. **Sources stay credited.** Third-party works keep their own license. They are registered in [SOURCES.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md) and must stay credited in any derivative.
+5. **Contribution.** Inbound equals outbound under the [Developer Certificate of Origin 1.1](https://developercertificate.org/): sign off every commit (`git commit -s`). There is no CLA. Contributors keep their copyright and are credited in the git history and, when substantial, in `CONTRIBUTORS` and `CITATION.cff`.
+6. **Review before publication.** A paper or specification is published only after review; drafts and unpublished research packages are not published, and this policy applies to a paper when it is published. Publication does not establish scientific validity or authority to act.
+7. **Names.** "Knowledge Contract Arcana", "Arcanada" and logos are not licensed. Saying "Based on Knowledge Contract Arcana" is fine; implying endorsement is not.
+8. **Open knowledge, closed backend (decided).** The backend, `contract-place-api`, is the engine that processes, admits and evolves contracts. It stays closed and proprietary and its repository stays private; this is a decided boundary, not an open question. The knowledge, specifications, papers, schemas, site and reference code, as they are published, are open (CC BY 4.0 for text, Apache-2.0 for code, attribution required) and open to extension by the community and contributors.
+
+BLOB articles/project-overview.md 90bc42fb1af77df103117cf566314a5854c719a3290aa07eaab79ed2c0fb6675 Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:README.md 7151
+---
+mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/README.md
+mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `README.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (19 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+# Knowledge Contract Arcana
+
+Knowledge Contract Arcana is part of the [Arcanada ecosystem](https://arcanada.ai/en/). It studies how people and agents can reuse knowledge while preserving source, scope, evidence, and conditions of use. This repository is a public scaffold for future rules, specifications, papers, and articles targeting Knowledge Contract `3.0.0-draft.1`; the research remains in progress, and no draft package is published here. Runtime adoption and empirical effectiveness are not claimed.
+
+## Purpose
+
+Knowledge Contract Arcana is about managing knowledge and its reuse by people and agents: contracts for managing the heritage of human knowledge. The contract is designed so that each piece of knowledge will travel with its source, author, scope and evidence.
+
+It is designed to replace the hand-written skills, rules and prompt files that are kept separately in each agent harness with one unified knowledge contract. The contract is meant to evolve itself (changes admitted only on evidence, versioned, with rollback) and to improve through the community and contributors, so that it stays ahead of any single harness or skill set.
+
+- **Working today:** the public hub at [contract.place](https://contract.place); the licensing and attribution mechanics (CC BY 4.0 for text, Apache-2.0 for code, [NOTICE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/NOTICE), [ATTRIBUTION.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md), [CITATION.cff](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CITATION.cff), REUSE compliance, DCO sign-off, and a [source register](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md) with a CI check); this repository as a public scaffold with rules, governance and tools; and two published articles on arcanada.ai (the architecture article and version 2).
+- **Planned, not built:** published specifications and papers in this repository; a sourced corpus of human knowledge on meaning management (the [corpus allowlist](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/corpus/README.md) has no approved entries yet); the unified contract that replaces per-harness skills, rules and prompt files; the self-evolution loop; community intake and review; knowledge selection with a provenance receipt for every answer; search and access for people and agents (graph and vector search, an API and an MCP server).
+- **Open and closed:** whatever knowledge, specifications, papers, schemas and reference code are published here and on the site is open (see Licensing). The backend engine that processes, admits and evolves contracts stays closed and proprietary.
+
+## Repository status
+
+The repository currently contains project information, governance files, and empty directories for [specifications](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/spec/), [papers](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/papers/), [articles](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/articles/), and [schemas](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/schemas/). Research content will be added after its publication review.
+
+The [public corpus allowlist](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/corpus/README.md) currently has no approved entries. A public file or merged proposal is not automatically an indexed or admitted knowledge source.
+
+The public home is [contract.place](https://contract.place), with [site source](https://github.com/Arcanada-one/contract-place-site). The [Arcanada project page](https://arcanada.ai/en/ecosystem/contract-place) and existing [architecture](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-architecture) and [version 2](https://arcanada.ai/en/blog/meaning-management-knowledge-contract-v2) articles provide context. This scaffold does not contain those published articles or the unpublished research package.
+
+## Licensing
+
+This is an open project: anyone may use, adapt and build on it, including commercially and in their own projects, provided the author and source are credited. Text and documentation are licensed under [Creative Commons Attribution 4.0 International](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE); code, schemas and tools are licensed under [Apache License 2.0](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/LICENSE-CODE). Credit Pavel Valentov and Knowledge Contract Arcana, link to <https://contract.place>, keep the [NOTICE](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/NOTICE) and say what you changed; ready-to-paste credit lines are in [ATTRIBUTION.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md), and the policy is in [OPENNESS.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/OPENNESS.md). Third-party works cited here keep their own licenses and are listed in [SOURCES.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md). The names "Knowledge Contract Arcana" and "Arcanada" and logos are not licensed; do not imply endorsement. Contributions need a DCO sign-off and must identify any material that needs a different license before it is submitted.
+
+## Security
+
+Report vulnerabilities privately as described in [SECURITY.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SECURITY.md).
+
+## Participation
+
+See [CONTRIBUTING.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CONTRIBUTING.md) for contribution guidance and [CODE_OF_CONDUCT.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/CODE_OF_CONDUCT.md) for community expectations.
+
+BLOB articles/site-summary-llms.md 0d781a65e39dc877e10012cb0656745fee71a4f274e752be4020f0a4e5cbc27e Arcanada-one/contract-place-site@74f620b958fd8769ca652caf82b4cb8b4fc85485:public/llms.txt 2976
+---
+mirror_of: https://github.com/Arcanada-one/contract-place-site/blob/74f620b958fd8769ca652caf82b4cb8b4fc85485/public/llms.txt
+mirror_source_commit: 74f620b958fd8769ca652caf82b4cb8b4fc85485
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `public/llms.txt (Arcanada-one/contract-place-site)` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except for one leading `markdownlint-disable MD034` HTML comment line added because the source uses bare URLs (no relative links to rewrite). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+<!-- markdownlint-disable MD034 -->
+
+# Knowledge Contract Arcana
+
+> Public home for Knowledge Contract research. The specification and experiments are in progress; 3.0.0-draft.1 is a target, not a released protocol.
+
+- Home: https://contract.place/
+- Knowledge Contract repository: https://github.com/Arcanada-one/knowledge-contract
+- Site source: https://github.com/Arcanada-one/contract-place-site
+- Ecosystem: https://arcanada.ai/
+- Architecture article: https://arcanada.ai/en/blog/meaning-management-knowledge-contract-architecture
+- Version 2 article: https://arcanada.ai/en/blog/meaning-management-knowledge-contract-v2
+
+## Purpose
+
+Knowledge Contract Arcana is about managing knowledge and its reuse by people and agents: contracts for managing the heritage of human knowledge. It is designed to replace hand-written skills, rules and prompt files kept separately in each agent harness with one unified knowledge contract that evolves itself (evidence-gated, versioned, with rollback) and improves through the community and contributors.
+
+- Working today: public hub, licensing and attribution mechanics (CC BY 4.0, Apache-2.0, NOTICE, ATTRIBUTION.md, CITATION.cff, REUSE, DCO, source register), the knowledge-contract repository as a public scaffold, and two published articles on arcanada.ai.
+- Planned, not built: published specifications and papers in the repository, a sourced corpus (no approved entries yet), the unified contract for harnesses, the self-evolution loop, community intake and review, knowledge selection with provenance receipts, search and access (graph and vector search, an API and an MCP server).
+- The backend engine that processes, admits and evolves contracts stays closed and proprietary; whatever knowledge is published is open.
+
+No API, graph, vector, or MCP service is offered on this site yet.
+
+## License and attribution
+
+Reuse allowed under CC BY 4.0; credit Knowledge Contract Arcana, https://contract.place; keep upstream source credits. Code is Apache-2.0. Credit lines: https://contract.place/#use-and-cite and https://github.com/Arcanada-one/knowledge-contract/blob/main/ATTRIBUTION.md
+
+BLOB articles/sources-register.md b90ad7c31e0e6da2e3b0e9ad9d5f8bdfc421c80116054ff71175f28b4159c885 Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:SOURCES.md 2199
+---
+mirror_of: https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/SOURCES.md
+mirror_source_commit: 39e05969728ea7a51f162cdbefac32fd8f54dbb6
+author: Pavel Valentov and Knowledge Contract Arcana contributors
+license: CC-BY-4.0
+mirror_note: "Mirror of `SOURCES.md` at the source commit above, filed under `articles/` so the corpus exporter can index it. The text after this front matter is unchanged except that relative link targets are rewritten to absolute URLs at the source commit (2 rewritten). Credit: Knowledge Contract Arcana, https://contract.place. Statements in the text about the present state of the project (for example that the corpus has no approved entries) are as of the source commit."
+---
+
+# Third-party source register
+
+Knowledge Contract Arcana credits everything it builds on. Our synthesis is ours and is licensed as described in [README.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/README.md); third-party works keep their own license and authors and are credited here. We cannot relicense others' work. Quote or reproduce third-party text only where its license allows, otherwise link to it.
+
+## Rule
+
+Every file added under `papers/` or `spec/` must be covered in one of two ways:
+
+1. A row in the table below whose **Where** column contains the file path in backticks, or
+2. A `sources:` key in the file's front matter (Markdown only): either a non-empty list in which every entry equals the **Source** cell of a row below, or the literal `sources: none` when the file uses no external source. `sources: []`, `sources: ""` and an empty key do not count.
+
+CI (`tools/check_sources.py`) fails a `papers/**` or `spec/**` file with neither. A file that credits sources in its text must still keep them credited in every derivative (see [ATTRIBUTION.md](https://github.com/Arcanada-one/knowledge-contract/blob/39e05969728ea7a51f162cdbefac32fd8f54dbb6/ATTRIBUTION.md)).
+
+## Table schema
+
+| Source | Author | URI | License | What was used | Where |
+| --- | --- | --- | --- | --- | --- |
+
+No third-party source is registered yet: `papers/` and `spec/` contain no published file.
+
+--declarations--
+UPSTREAM Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:ATTRIBUTION.md
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+UPSTREAM Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:CONTRIBUTING.md
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+UPSTREAM Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:OPENNESS.md
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+UPSTREAM Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:README.md
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+UPSTREAM Arcanada-one/knowledge-contract@39e05969728ea7a51f162cdbefac32fd8f54dbb6:SOURCES.md
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+UPSTREAM Arcanada-one/contract-place-site@74f620b958fd8769ca652caf82b4cb8b4fc85485:public/llms.txt
+DECL REUSE.toml 701
+version = 1
+SPDX-PackageName = "contract-place-site"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/contract-place-site"
+
+[[annotations]]
+path = ["public/index.html", "public/llms.txt", "README.md", "SECURITY.md", "NOTICE"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = ["public/styles.css", "public/favicon.svg", "public/robots.txt", "public/sitemap.xml", ".github/**", "scripts/**", "REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+DECL NOTICE 605
+Knowledge Contract Arcana — contract.place site
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Project: Knowledge Contract Arcana, part of the Arcanada ecosystem
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Site text and content: CC BY 4.0 (see LICENSE). Site code (HTML, CSS, JS): Apache-2.0 (see LICENSE-CODE).
+Derivative works and redistributions must retain this notice (Apache-2.0 section 4(d))
+and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+--checklist--
+Fixed checklist for a blind publication review (DEC-AUP-0171):
+1. The sha256 of each listed blob equals the digest in its decision line.
+2. The upstream pointer and the license declarations (LICENSE, NOTICE, REUSE.toml, front matter) agree.
+3. The rights holder is a named person, rights_basis quotes the REUSE.toml holder string and says that contributor parts rest on DCO sign-offs that are declared, not verified.
+4. No third-party text, marks, secrets, host paths, host names or addresses.
+5. The credit line is present.
+6. limits states what this review does not establish.
+Verdict: APPROVE only if every item holds.
