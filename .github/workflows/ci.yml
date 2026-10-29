@@ -15,9 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: 0
           persist-credentials: false
       - name: Check fail-closed export boundaries without network or index writes
         run: python3 -B -m unittest tools.test_export_corpus -v
+      - name: Every exporter guard is load-bearing (mutation pass)
+        run: python3 -B -m unittest tools.test_export_check_mutations -v
       - name: Exercise exact-main candidate export without index writes
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
@@ -30,7 +33,7 @@ jobs:
           import json, sys
           from pathlib import Path
           manifest = json.loads(Path(sys.argv[1]).read_text())
-          assert manifest['schema'] == 'KnowledgeContractCandidateExport/v1'
+          assert manifest['schema'] == 'KnowledgeContractCandidateExport/v2'
           assert manifest['scrutator_projection'] == 'not_applied'
           assert manifest['kc2_runtime_admission'] == 'not_measured'
           print('CANDIDATE_EXPORT_READBACK_PASS rows=' + str(manifest['row_count']))
@@ -72,7 +75,7 @@ jobs:
           persist-credentials: false
       # No fork filter and no secrets on this job or on `dco`: fork PRs must run both, because a skipped required check counts as passed.
       - name: Source register, DCO and workflow tests
-        run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco tools.test_ci_workflow -v
+        run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco tools.test_ci_workflow tools.test_check_separation -v
       - name: Every papers/ and spec/ file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint
@@ -96,6 +99,21 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: python3 -B tools/check_dco.py "$BASE_SHA" "$HEAD_SHA"
+
+  decision-separation:
+    name: decision-separation
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Decision or table files and content paths never share a pull request
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: python3 -B tools/check_separation.py "$BASE_SHA" "$HEAD_SHA"
 
   markdown-lint:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
