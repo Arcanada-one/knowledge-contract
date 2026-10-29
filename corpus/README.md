@@ -6,6 +6,12 @@ An indexer may read only a path listed in the table with a merged source commit,
 
 | Source commit | Path | Content SHA-256 | Author/rights holder | License | Publication decision | Status | Supersedes | Status decision |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/project-overview.md | 90bc42fb1af77df103117cf566314a5854c719a3290aa07eaab79ed2c0fb6675 | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#b8260a9811465f94da5c4fd1d654d8f8183985a93d8e5a8e6ffa9a1ead7594ed | current | none | none |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/openness-and-attribution-policy.md | 2b2a0b38e231676e3e01dba92cbe22d51531a26cc3d84587135e36da0b013e06 | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#6ff495bc774d427a3e6472d2d34abfba55e49a3b5fbe8243bdcd0ba35084e7ab | current | none | none |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/attribution-policy.md | 121f3d7f177c3cf0229dd98d2a7023bff5bd7d12e02ec628081fdcfba62dc78a | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#2611526cf4434802489904fa0cb3fd4fa93e71bf91f65433c7aef8867c4655fb | current | none | none |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/contribution-guide.md | 522ee9995607202a11eb2d8b3548935819b7ec85cdda86be9345883bbefa18e6 | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#4b4d44ca4271eccba5cb37fcd47a32e93da28e9b1cf36afde9e295bbad97ea47 | current | none | none |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/sources-register.md | b90ad7c31e0e6da2e3b0e9ad9d5f8bdfc421c80116054ff71175f28b4159c885 | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#8fd2be1b1dac315ae5198001a8951454db6b0a48b1e8e971a6d87ec60a3e8d9a | current | none | none |
+| faf9a1ddeff774167d365371a1b87ae2ed8bd6a9 | articles/site-summary-llms.md | 0d781a65e39dc877e10012cb0656745fee71a4f274e752be4020f0a4e5cbc27e | Pavel Valentov | CC-BY-4.0 | corpus/publication-decisions/b1.jsonl@e943f449d3a0dd9844db46cc038ef026908dcfb9#3924800d8e42710ae0cbb9e7aa8597c90aa0cd167c8a54b833aef3b57502f494 | current | none | none |
 
 ## How a row becomes eligible (DEC-AUP-0171)
 
