@@ -1,0 +1,5 @@
+{
+  // Retained review records (DEC-AUP-0171) are machine-filed verbatim transcripts and reviewer inputs;
+  // they are kept byte-for-byte and are not edited to satisfy the style rules.
+  "ignores": ["corpus/publication-decisions/receipts/**"]
+}
