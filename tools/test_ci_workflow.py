@@ -52,6 +52,19 @@ class CiWorkflowTests(unittest.TestCase):
         # the mutation pass is an author-side tool (run before pushing), not a pull request check
         self.assertNotIn("test_export_check_mutations", self.text)
 
+    def test_candidate_export_installs_a_pinned_gitleaks_with_a_verified_digest_before_the_exporter_runs(self):
+        # the exporter refuses without gitleaks, so the job must install it; an unpinned or unverified download would not do
+        job = self.jobs["candidate-export"]
+        install = job.index("gitleaks")
+        self.assertLess(install, job.index("test_export_corpus"))
+        self.assertLess(install, job.index("export_corpus.py"))
+        self.assertRegex(job, r"GITLEAKS_VERSION: \d+\.\d+\.\d+\n")
+        self.assertRegex(job, r"GITLEAKS_SHA256: [0-9a-f]{64}\n")
+        self.assertIn("sha256sum -c", job)
+        self.assertIn("releases/download/v${GITLEAKS_VERSION}/", job)
+        self.assertNotIn("releases/latest", job)
+        self.assertIn("/gitleaks\" version", job)
+
     def test_every_job_that_runs_the_exporter_checks_out_full_history(self):
         # the exporter refuses a shallow clone
         runners = [name for name, block in self.jobs.items() if "export_corpus" in block or "test_export" in block]

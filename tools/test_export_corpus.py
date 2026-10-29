@@ -88,7 +88,7 @@ def review_digest(repo: Path, base: str, head: str) -> tuple[str, list[str], byt
 
 def decision_obj(path: str, sha: str, status: str = "current", batch: str = "b1", **over) -> dict:
     obj = {"schema": export.DECISION_SCHEMA, "path": path, "sha256": sha, "rights_holder": HOLDER, "license": "CC-BY-4.0",
-           "status": status, "upstream": "original", "rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}",
+           "status": status, "upstream": "original", "rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}; contributor parts rest on DCO sign-offs, declared and not verified",
            "third_party": "none found", "attribution": "credit line present",
            "limits": "does not establish identity or agent-text copyright", "receipt": f"{RECEIPT}{batch}.json"}
     obj.update(over)
@@ -109,10 +109,15 @@ class World:
         for d, c in self.contents.items():
             write(self.repo, d, c)
         write(self.repo, "REUSE.toml", REUSE_TWO_OVERRIDES if o.get("two_overrides") else REUSE_DEFAULT)
-        write(self.repo, "NOTICE", "Notice text of the example project\n")
+        write(self.repo, "NOTICE", "Notice text of the example project\nAuthor: Pavel Valentov, Independent Researcher\nAuthor: Corrected Holder, Independent Researcher\n")
         write(self.repo, "LICENSE", "Official license text placeholder\n")
         self.S = commit(self.repo, "content")
         self.E = commit(self.repo, "gap commit on main") if o.get("main_gap") else None
+        if o.get("changed_after_source"):
+            self.contents = {d: c + b"A later edit.\n" for d, c in self.contents.items()}
+            for d, c in self.contents.items():
+                write(self.repo, d, c)
+            self.E = commit(self.repo, "content edited after the source commit")
         self.X = None
         if o.get("source_side_merged"):
             git(self.repo, "checkout", "-q", "-b", "content-side", self.S)
@@ -136,7 +141,7 @@ class World:
             for obj in objs:
                 if obj["path"] in ups:
                     obj["upstream"] = ups[obj["path"]]
-            self.decision_pr("b1", objs, parent=self.M if o.get("source_side_merged") else None)
+            self.decision_pr("b1", objs, parent=self.M if o.get("source_side_merged") else (self.E if o.get("changed_after_source") else None))
         if o.get("source_on_side"):
             self.source = self.batches["b1"]["C"]
         elif o.get("source_is_decision"):
@@ -248,8 +253,12 @@ class World:
             if o.get("bad_transcript"):
                 reviewers[0]["transcript_sha256"] = "1" * 64
             listed = lsha[:-1] if o.get("receipt_lines") == "SUBSET" else (lsha + ["9" * 64] if o.get("receipt_lines") == "SUPERSET" else o.get("receipt_lines", lsha))
-            receipt = {"reviewed_head": head, "base": o.get("receipt_base", base), "diff_sha256": o.get("receipt_diff", digest),
-                       "decision_lines_sha256": listed, "reviewers": reviewers}
+            if o.get("reviewer_extra_key"):
+                reviewers[0]["note"] = "an extra key"
+            receipt = {"reviewed_head": "HEAD" if o.get("receipt_head_text") else head, "base": o.get("receipt_base", base),
+                       "diff_sha256": o.get("receipt_diff", digest), "decision_lines_sha256": listed, "reviewers": reviewers}
+            if o.get("receipt_extra_key"):
+                receipt["files"] = []
             if not o.get("no_receipt") and not o.get("late_receipt"):
                 write(repo, f"{RECEIPT}{bname}.json", json.dumps(receipt, sort_keys=True))
         if o.get("receipt_commit_extra"):
@@ -307,7 +316,8 @@ class World:
         merged, heads = self.merged, self.heads
 
         def pulls(sha):
-            return [{"number": merged[sha], "merged_at": "2026-10-29T00:00:00Z", "merge_commit_sha": sha}] if sha in merged else []
+            return [{"number": merged[sha], "merged_at": "2026-10-29T00:00:00Z", "merge_commit_sha": sha,
+                     "base": {"ref": self.o.get("pull_base", "main")}}] if sha in merged else []
 
         stack.enter_context(patch.object(export, "REPO", self.repo))
         stack.enter_context(patch.object(export, "pulls_for_commit", pulls))
@@ -559,9 +569,10 @@ class DecisionRouteTests(unittest.TestCase):
         self.refuses("host path, host name or address", deny_in_doc=True)
 
     def test_public_addresses_and_domains_are_not_denied_but_private_ones_are(self) -> None:
-        for text in (b"see https://github.com/Arcanada-one and 8.8.8.8", b"contract.place and arcanada.ai"):
-            self.assertIsNone(export.DENY_SHAPE.search(text))
-        for text in (b"10.1.2.3", b"172.20.0.1", b"192.168.1.5", b"100.100.1.1", b"arcana-example", b"x.example.ts.net", b"/run/user/1000/a"):
+        for text in (b"see https://github.com/Arcanada-one and 8.8.8.8", b"contract.place and arcanada.ai", b"2001:db8::1 and fe80ab", b"1.127.0.0.1x"):
+            self.assertIsNone(export.DENY_SHAPE.search(text), text)
+        for text in (b"10.1.2.3", b"172.20.0.1", b"192.168.1.5", b"100.100.1.1", b"arcana-example", b"x.example.ts.net", b"/run/user/1000/a",
+                     b"127.0.0.1", b"127.12.0.9", b"169.254.10.1", b"fd12:3456:789a::1", b"FC00::1", b"fdab::", b"Arcana-DEVS", b"/HOME/x", b"X.Example.TS.NET", b"/Users/a", b"/RUN/USER/1"):
             self.assertIsNotNone(export.DENY_SHAPE.search(text), text)
 
     def test_license_outside_the_two_and_unmerged_row_change_are_refused(self) -> None:
@@ -766,6 +777,94 @@ class DecisionRouteTests(unittest.TestCase):
         with patch.object(export, "CHECKLIST_TEXT", export.CHECKLIST_TEXT + "weaker item\n"):
             with self.assertRaisesRegex(export.ExportError, "checklist differs from the pinned digest"):
                 w.run()
+
+    # ---- hardening follow-up (DEC-AUP-0171 amendment 1 item 6): checks that no earlier test isolated ----
+    def _add_merged_commit(self, w: World, message: str, number: int) -> str:
+        sha = commit(w.repo, f"{message} (#{number})")
+        w.merged[sha] = number
+        w.main = sha
+        return sha
+
+    def _craft_decision_line(self, **changes) -> str:
+        w = self.world(no_rows=True)
+        obj = decision_obj(DOCS[0], w.sha[DOCS[0]], batch="b9")
+        obj.update(changes)
+        write(w.repo, f"{DEC}b9.jsonl", export.canonical(obj) + "\n")
+        write(w.repo, f"{RECEIPT}b9.json", "{}")
+        main = commit(w.repo, "crafted decision line (#77)")
+        with patch.object(export, "REPO", w.repo):
+            export.load_decisions(main)
+        return main
+
+    def test_decision_line_formats_and_vocabularies_are_enforced_on_their_own(self) -> None:
+        self.assertTrue(self._craft_decision_line())
+        for field, value in (("path", "articles/x.txt"), ("path", "../articles/x.md"), ("sha256", "abc"), ("sha256", "Z" * 64),
+                             ("receipt", "corpus/x.json"), ("receipt", RECEIPT + "b9.JSON")):
+            with self.subTest(field=field, value=value):
+                with self.assertRaisesRegex(export.ExportError, "decision line malformed$"):
+                    self._craft_decision_line(**{field: value})
+        for field, value in (("status", "maybe"), ("license", "MIT"), ("license", "cc-by-4.0")):
+            with self.subTest(field=field, value=value):
+                with self.assertRaisesRegex(export.ExportError, "decision line malformed$"):
+                    self._craft_decision_line(**{field: value})
+
+    def test_a_symlink_in_the_decision_tree_is_refused_as_not_a_regular_blob(self) -> None:
+        w = self.world()
+        os.symlink("b1.jsonl", w.repo / DEC / "b9.jsonl")
+        main = commit(w.repo, "symlinked batch file (#78)")
+        with patch.object(export, "REPO", w.repo):
+            with self.assertRaisesRegex(export.ExportError, "not a regular blob"):
+                export.load_decisions(main)
+
+    def test_receipt_and_reviewer_key_sets_and_value_formats_are_strict(self) -> None:
+        self.refuses("receipt does not bind tuple: malformed", receipt_extra_key=True)
+        self.refuses("receipt does not bind tuple: malformed", receipt_head_text=True)
+        self.refuses("receipt reviewer entry is malformed", reviewer_extra_key=True)
+
+    def test_row_cells_decision_references_are_checked_by_message(self) -> None:
+        row = {"source_commit": "a" * 40, "path": DOCS[0], "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
+               "decision": f"{DEC}b1.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
+        export.validate_row(row)
+        with self.assertRaisesRegex(export.ExportError, "must reference a decision file line digest"):
+            export.validate_row({**row, "decision": "https://example.invalid/review"})
+        with self.assertRaisesRegex(export.ExportError, "must not have a later status decision"):
+            export.validate_row({**row, "status_decision": f"{DEC}b2.jsonl@{'c' * 40}#{'e' * 64}"})
+        for bad in ("none", "", "https://example.invalid/x", f"{DEC}b2.jsonl@{'c' * 40}#short"):
+            with self.subTest(status_decision=bad):
+                with self.assertRaisesRegex(export.ExportError, "needs a precise later status decision"):
+                    export.validate_row({**row, "status": "withdrawn", "status_decision": bad})
+
+    def test_the_same_source_commit_and_path_twice_is_refused_before_anything_else(self) -> None:
+        row = {"source_commit": "a" * 40, "path": DOCS[0], "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
+               "decision": f"{DEC}b1.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
+        with self.assertRaisesRegex(export.ExportError, "duplicate source commit/path row"):
+            export.build("b" * 40, [row, dict(row)])
+
+    def test_content_edited_between_the_source_commit_and_the_base_does_not_export_under_the_old_source(self) -> None:
+        # the decision digest is the blob at the receipt base (the edited text); the row points at the older source commit
+        self.refuses("source blob digest differs from allowlist", changed_after_source=True)
+
+    def test_a_pull_request_that_does_not_target_main_is_not_a_merged_pull_request_commit(self) -> None:
+        self.refuses("does not target main", pull_base="release")
+
+    def test_every_receipts_file_is_scanned_even_when_no_receipt_names_it(self) -> None:
+        w = self.world()
+        write(w.repo, f"{RECEIPT}b1/reviewer-9.md", "stray note that mentions /home/someone/file\n")
+        self._add_merged_commit(w, "unreferenced receipts file", 92)
+        with self.assertRaisesRegex(export.ExportError, "host path, host name or address"):
+            w.run()
+
+    def test_decision_files_are_scanned_for_host_strings(self) -> None:
+        self.refuses("host path, host name or address", decision_over={"third_party": "seen at 10.1.2.3 on the build host"})
+        self.refuses("host path, host name or address", decision_over={"limits": "FD12:3456::1 is not a public address"})
+
+    def test_rights_basis_must_say_that_contributor_parts_rest_on_dco_sign_offs(self) -> None:
+        self.refuses("DCO sign-offs", decision_over={"rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}"})
+
+    def test_rights_holder_must_be_the_author_named_in_notice_at_the_source_commit(self) -> None:
+        self.refuses("not the author named in NOTICE", decision_over={"rights_holder": "Another Person"}, row_holder="Another Person")
+        manifest, _ = self.world(decision_over={"rights_holder": "Corrected Holder"}, row_holder="Corrected Holder").run()
+        self.assertEqual(manifest["entries"][0]["rights_holder"], "Corrected Holder")
 
     def test_squash_merged_decision_pull_request_is_refused(self) -> None:
         self.refuses("head not recoverable: a decision pull request must be merged", squash_decision=True)

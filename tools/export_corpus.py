@@ -66,25 +66,29 @@ CHECKLIST_TEXT = (
     "Fixed checklist for a blind publication review (DEC-AUP-0171):\n"
     "1. The sha256 of each listed blob equals the digest in its decision line.\n"
     "2. The upstream pointer and the license declarations (LICENSE, NOTICE, REUSE.toml, front matter) agree.\n"
-    "3. The rights holder is a named person and rights_basis quotes the REUSE.toml holder string.\n"
+    "3. The rights holder is a named person, rights_basis quotes the REUSE.toml holder string and says that contributor parts rest on DCO sign-offs that are declared, not verified.\n"
     "4. No third-party text, marks, secrets, host paths, host names or addresses.\n"
     "5. The credit line is present.\n"
     "6. limits states what this review does not establish.\n"
     "Verdict: APPROVE only if every item holds.\n"
 )
-CHECKLIST_SHA256 = "c853f2c581ff831c5a2a4c141154e9c4f76594b55d0181403e068d992c01f3fe"
+CHECKLIST_SHA256 = "fb8471f75174af3a6a15422d841cf514e2e377141cebb2e2940a1460336d44c2"
 IDENTITY_CLASS = "same_account_blind_agent"
 READBACK = "decision_file_matched"
 ALLOWED_LICENSES = {"CC-BY-4.0", "Apache-2.0"}
-# Transcripts, inputs and receipts are public: no host paths, private or carrier-grade addresses, or internal host names.
-# Public domains and public addresses are not denied.
+# Transcripts, inputs, receipts and decision files are public: no host paths, internal host names, or addresses that are
+# private (10/8, 172.16/12, 192.168/16), carrier-grade (100.64/10), loopback (127/8), link-local (169.254/16) or IPv6
+# unique-local (fc00::/7). Matching is case-insensitive. Public domains and public addresses are not denied.
 DENY_SHAPE = re.compile(
     rb"/home/|/Users/|/run/user/"
     rb"|\b10\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
     rb"|\b172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}\b"
     rb"|\b192\.168\.\d{1,3}\.\d{1,3}\b"
     rb"|\b100\.(?:6[4-9]|[7-9]\d|1[01]\d|12[0-7])\.\d{1,3}\.\d{1,3}\b"
-    rb"|\barcana-[A-Za-z0-9-]+|\b[A-Za-z0-9-]+\.ts\.net\b")
+    rb"|\b127\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+    rb"|\b169\.254\.\d{1,3}\.\d{1,3}\b"
+    rb"|(?<![0-9a-f:])f[cd][0-9a-f]{2}(?::[0-9a-f]{0,4}){2,7}(?![0-9a-f:])"
+    rb"|\barcana-[a-z0-9-]+|\b[a-z0-9-]+\.ts\.net\b", re.IGNORECASE)
 SECRET_SHAPE = re.compile(rb"(?:-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|mun_sk_[A-Za-z0-9_-]{12,}|ghp_[A-Za-z0-9]{20,}|vault_[A-Za-z0-9_-]{20,})")
 MAX_BYTES = 1024 * 1024
 NONE_CELLS = {"", "\u2014", "none"}
@@ -198,15 +202,15 @@ def validate_row(row: dict[str, str]) -> None:
         raise ExportError("rights holder is not established")
     if row["license"] not in ALLOWED_LICENSES:  # check: license_allowed
         raise ExportError("license is absent or outside reviewed project licenses")
-    if not DECISION_REF_RE.fullmatch(row["decision"]):
+    if not DECISION_REF_RE.fullmatch(row["decision"]):  # check: row_decision_ref
         raise ExportError("publication decision must reference a decision file line digest")
     if row["status"] not in {"current", "superseded", "withdrawn"}:
         raise ExportError("publication status is unknown")
     if row["supersedes"] not in NONE_CELLS and not DIGEST_RE.fullmatch(row["supersedes"]):
         raise ExportError("superseded digest must be absent or a SHA-256")
-    if row["status"] == "current" and row["status_decision"] not in NONE_CELLS:
+    if row["status"] == "current" and row["status_decision"] not in NONE_CELLS:  # check: current_without_status_decision
         raise ExportError("current row must not have a later status decision")
-    if row["status"] != "current" and not DECISION_REF_RE.fullmatch(row["status_decision"]):
+    if row["status"] != "current" and not DECISION_REF_RE.fullmatch(row["status_decision"]):  # check: status_decision_ref
         raise ExportError("non-current row needs a precise later status decision")
 
 
@@ -306,10 +310,15 @@ def load_decisions(main_sha: str) -> list[dict]:
         mode, kind = meta.split()[:2]
         if not any(layout.fullmatch(name) for layout in TREE_LAYOUT):  # check: tree_layout
             raise ExportError("decision tree holds a file outside the allowed layout")
-        if mode not in {"100644", "100755"} or kind != "blob":
+        if mode not in {"100644", "100755"} or kind != "blob":  # check: tree_regular_blob
             raise ExportError("decision file is not a regular blob")
         if not DECISION_FILE_RE.fullmatch(name):
+            if name.startswith(RECEIPT_DIR):  # check: scan_all_receipts
+                scan_public_text(command("git", "show", f"{main_sha}:{name}").stdout)
             continue
+        decision_bytes = command("git", "show", f"{main_sha}:{name}").stdout
+        if decision_bytes:  # check: scan_decision_files
+            scan_public_text(decision_bytes)
         for number, line in enumerate((show(main_sha, name) or "").splitlines()):
             try:
                 obj = json.loads(line)
@@ -319,9 +328,9 @@ def load_decisions(main_sha: str) -> list[dict]:
                 raise ExportError("decision line malformed")
             if obj["schema"] != DECISION_SCHEMA or any(not isinstance(obj[k], str) or not obj[k].strip() for k in DECISION_TEXT_KEYS):  # check: mandatory_fields
                 raise ExportError("decision line malformed: mandatory fields missing")
-            if not PATH_RE.fullmatch(obj["path"]) or not DIGEST_RE.fullmatch(obj["sha256"]) or not RECEIPT_RE.fullmatch(obj["receipt"]):
+            if not PATH_RE.fullmatch(obj["path"]) or not DIGEST_RE.fullmatch(obj["sha256"]) or not RECEIPT_RE.fullmatch(obj["receipt"]):  # check: line_formats
                 raise ExportError("decision line malformed")
-            if obj["status"] not in {"current", "superseded", "withdrawn"} or obj["license"] not in ALLOWED_LICENSES:
+            if obj["status"] not in {"current", "superseded", "withdrawn"} or obj["license"] not in ALLOWED_LICENSES:  # check: line_status_license
                 raise ExportError("decision line malformed")
             if obj["receipt"] != f"{RECEIPT_DIR}{Path(name).stem}.json":  # check: receipt_own_batch
                 raise ExportError("decision line malformed: receipt names another batch")
@@ -378,6 +387,8 @@ def merged_pull(rev: str) -> int:
     prs = [pr for pr in pulls_for_commit(rev) if pr.get("merged_at") and pr.get("merge_commit_sha") == rev]
     if len(prs) != 1 or not isinstance(prs[0].get("number"), int):  # check: merged_pull_commit
         raise ExportError("commit is not a merged pull request commit")
+    if (prs[0].get("base") or {}).get("ref") != "main":  # check: pull_targets_main
+        raise ExportError("pull request does not target main")
     return prs[0]["number"]
 
 
@@ -517,10 +528,10 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         receipt = json.loads(at_intro.stdout.decode())
     except ValueError as error:
         raise ExportError("receipt does not bind tuple: malformed") from error
-    if not isinstance(receipt, dict) or set(receipt) != RECEIPT_KEYS:
+    if not isinstance(receipt, dict) or set(receipt) != RECEIPT_KEYS:  # check: receipt_keys
         raise ExportError("receipt does not bind tuple: malformed")
     head, base = receipt["reviewed_head"], receipt["base"]
-    if not SHA_RE.fullmatch(str(head)) or not SHA_RE.fullmatch(str(base)) or not DIGEST_RE.fullmatch(str(receipt["diff_sha256"])):
+    if not SHA_RE.fullmatch(str(head)) or not SHA_RE.fullmatch(str(base)) or not DIGEST_RE.fullmatch(str(receipt["diff_sha256"])):  # check: receipt_formats
         raise ExportError("receipt does not bind tuple: malformed")
     if not is_ancestor(head, final_head):  # check: head_ancestor
         raise ExportError("receipt reviewed head is not an ancestor of the pull request head")
@@ -558,7 +569,7 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         raise ExportError("receipt needs at least two blind reviewers")
     sessions, transcripts = set(), set()
     for number, reviewer in enumerate(reviewers, 1):
-        if not isinstance(reviewer, dict) or set(reviewer) != REVIEWER_KEYS:
+        if not isinstance(reviewer, dict) or set(reviewer) != REVIEWER_KEYS:  # check: reviewer_keys
             raise ExportError("receipt reviewer entry is malformed")
         if reviewer["verdict"] != "APPROVE":  # check: unanimous_approve
             raise ExportError("receipt reviewer verdict is not APPROVE")
@@ -640,6 +651,11 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
         raise ExportError("license differs from the one REUSE.toml assigns at the source commit")
     if not reuse_holders or any(holder not in chain[0]["obj"]["rights_basis"] for holder in reuse_holders):  # check: rights_basis_quotes_holder
         raise ExportError("rights_basis does not quote the holder string REUSE.toml assigns at the source commit")
+    if "DCO" not in chain[0]["obj"]["rights_basis"]:  # check: rights_basis_mentions_dco
+        raise ExportError("rights_basis does not say that contributor parts rest on DCO sign-offs")
+    authors = re.findall(r"^Author:[ \t]*(.+)$", show(source, "NOTICE") or "", flags=re.M)
+    if not any(author.startswith(row["rights_holder"]) for author in authors):  # check: notice_author
+        raise ExportError("rights holder is not the author named in NOTICE at the source commit")
     return refs
 
 
@@ -661,7 +677,7 @@ def _parses(text: str) -> bool:
 
 
 def build(main_sha: str, rows: list[dict[str, str]]) -> tuple[dict[str, object], dict[str, bytes]]:
-    if len({(row["source_commit"], row["path"]) for row in rows}) != len(rows):
+    if len({(row["source_commit"], row["path"]) for row in rows}) != len(rows):  # check: duplicate_row
         raise ExportError("duplicate source commit/path row")
     candidates: list[dict[str, str]] = []
     files: dict[str, bytes] = {}
@@ -687,7 +703,7 @@ def build(main_sha: str, rows: list[dict[str, str]]) -> tuple[dict[str, object],
     for row in rows:
         refs = verify_row(main_sha, decisions, row, order, infos)
         content = git_blob(row["source_commit"], row["path"], main_sha)
-        if hashlib.sha256(content).hexdigest() != row["sha256"]:
+        if hashlib.sha256(content).hexdigest() != row["sha256"]:  # check: source_blob_digest
             raise ExportError("source blob digest differs from allowlist")
         secret_scan(content)
         candidate = dict(row)
