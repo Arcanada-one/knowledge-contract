@@ -858,6 +858,14 @@ class DecisionRouteTests(unittest.TestCase):
         self.refuses("host path, host name or address", decision_over={"third_party": "seen at 10.1.2.3 on the build host"})
         self.refuses("host path, host name or address", decision_over={"limits": "FD12:3456::1 is not a public address"})
 
+    def test_the_loader_scans_decision_files_itself_for_host_strings(self) -> None:
+        # load_decisions alone (no receipt check, so the reviewer input cannot catch it first)
+        for field, value in (("third_party", "seen at 10.1.2.3 on the build host"), ("limits", "see /home/someone/notes"),
+                             ("attribution", "FD12:3456::1 is private")):
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(export.ExportError, "host path, host name or address"):
+                    self._craft_decision_line(**{field: value})
+
     def test_rights_basis_must_say_that_contributor_parts_rest_on_dco_sign_offs(self) -> None:
         self.refuses("DCO sign-offs", decision_over={"rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}"})
 
