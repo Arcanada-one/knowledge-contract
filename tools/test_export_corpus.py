@@ -109,7 +109,7 @@ class World:
         for d, c in self.contents.items():
             write(self.repo, d, c)
         write(self.repo, "REUSE.toml", REUSE_TWO_OVERRIDES if o.get("two_overrides") else REUSE_DEFAULT)
-        write(self.repo, "NOTICE", "Notice text of the example project\nAuthor: Pavel Valentov, Independent Researcher\nAuthor: Corrected Holder, Independent Researcher\n")
+        write(self.repo, "NOTICE", o.get("notice", "Notice text of the example project\nAuthor: Pavel Valentov, Independent Researcher\nAuthor: Corrected Holder, Independent Researcher\n"))
         write(self.repo, "LICENSE", "Official license text placeholder\n")
         self.S = commit(self.repo, "content")
         self.E = commit(self.repo, "gap commit on main") if o.get("main_gap") else None
@@ -868,6 +868,29 @@ class DecisionRouteTests(unittest.TestCase):
 
     def test_rights_basis_must_say_that_contributor_parts_rest_on_dco_sign_offs(self) -> None:
         self.refuses("DCO sign-offs", decision_over={"rights_basis": f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}"})
+
+    def test_dco_must_appear_as_a_whole_word(self) -> None:
+        base = f"author declaration in NOTICE; REUSE.toml holder string: {REUSE_HOLDER}; "
+        for text in ("DCOM sign-offs are declared", "noDCO sign-offs", "dco sign-offs", "the DCOs"):
+            with self.subTest(text=text):
+                self.refuses("DCO sign-offs", decision_over={"rights_basis": base + text})
+        manifest, _ = self.world(decision_over={"rights_basis": base + "contributor parts rest on DCO sign-offs, declared and not verified"}).run()
+        self.assertEqual(manifest["row_count"], 1)
+
+    def test_a_decision_file_with_a_host_string_is_named_as_a_decision_file(self) -> None:
+        with self.assertRaisesRegex(export.ExportError, "^decision file carries a host path, host name or address"):
+            self._craft_decision_line(third_party="seen at 10.1.2.3 on the build host")
+
+    def test_notice_author_line_shapes_are_pinned(self) -> None:
+        # accepted: no comma (the whole text after `Author:` is the name); refused: indent, lower case, Co-Author
+        manifest, _ = self.world(notice="Notice\nAuthor: Pavel Valentov\n").run()
+        self.assertEqual(manifest["entries"][0]["rights_holder"], "Pavel Valentov")
+        for notice in ("Notice\n  Author: Pavel Valentov, Independent Researcher\n",
+                       "Notice\nauthor: Pavel Valentov, Independent Researcher\n",
+                       "Notice\nCo-Author: Pavel Valentov, Independent Researcher\n",
+                       "Notice\nContact: Pavel Valentov\n"):
+            with self.subTest(notice=notice):
+                self.refuses("not the author named in NOTICE", notice=notice)
 
     def test_rights_holder_must_be_the_author_named_in_notice_at_the_source_commit(self) -> None:
         self.refuses("not the author named in NOTICE", decision_over={"rights_holder": "Another Person"}, row_holder="Another Person")
