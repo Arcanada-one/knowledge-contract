@@ -3,7 +3,7 @@
 Each guard is disabled in turn (its condition replaced by False) in a scratch copy of the
 tree and the exporter tests are run against that copy; a guard whose removal leaves the tests
 green is a gap. This is an author-side tool: run it locally before pushing a change to the
-exporter (python3 -B -m unittest tools.test_export_check_mutations, about three minutes); it is
+exporter (python3 -B -m unittest tools.test_export_check_mutations, about five minutes); it is
 deliberately not part of the pull request CI. Set EXPORT_MUTATION_TABLE=1 to print the table.
 """
 

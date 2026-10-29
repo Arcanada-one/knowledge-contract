@@ -329,7 +329,8 @@ def load_decisions(main_sha: str) -> list[dict]:
                 raise ExportError("decision line malformed: its receipt file is missing")
             if not PERSON_RE.fullmatch(obj["rights_holder"]) or "contributors" in obj["rights_holder"].lower():  # check: rights_holder_person
                 raise ExportError("decision line malformed: rights holder is not a named person")
-            if obj["upstream"] != "original" and not UPSTREAM_RE.fullmatch(obj["upstream"]):  # check: upstream_format
+            parsed = UPSTREAM_RE.fullmatch(obj["upstream"])
+            if obj["upstream"] != "original" and (parsed is None or parsed.group(1).lower().endswith(".git")):  # check: upstream_format
                 raise ExportError("decision line malformed: upstream is neither original nor repo@commit:path")
             if line in seen_lines:  # check: repeat_line
                 raise ExportError("decision line malformed: repeated line")
@@ -461,7 +462,7 @@ def upstream_commit(upstream: str, source: str) -> str | None:
     if upstream == "original":
         return source
     repo, commit_, _ = UPSTREAM_RE.fullmatch(upstream).groups()
-    return commit_ if repo == SOURCE else None
+    return commit_ if repo.lower() == SOURCE.lower() else None
 
 
 def declarations(commit_: str) -> bytes:
@@ -621,6 +622,9 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
         raise ExportError("source commit must be a first-parent commit of main")
     bases = [receipt_check(main_sha, decision, decision["intro"], infos[decision["intro"]], source) for decision in chain]
     last_intro = chain[-1]["intro"]
+    for rev in command("git", "log", "--first-parent", "--reverse", "--format=%H", main_sha, "--", "corpus/README.md").stdout.decode().split():
+        if rev != last_intro and is_ancestor(last_intro, rev) and not _parses(show(rev, "corpus/README.md") or ""):  # check: table_always_parses
+            raise ExportError("an allowlist table version after the decision does not parse")
     row_commit = latest_introducing_commit(main_sha, "corpus/README.md", lambda text: _has_row(text, row))
     merged_pull(row_commit)
     if row_commit == last_intro or not is_ancestor(last_intro, row_commit):  # check: decision_precedes_row
@@ -639,9 +643,19 @@ def verify_row(main_sha: str, decisions: list[dict], row: dict[str, str], order:
     return refs
 
 
+ROW_KEYS = ("source_commit", "path", "sha256", "rights_holder", "license", "decision", "status", "supersedes", "status_decision")
+
+
 def _has_row(text: str, row: dict[str, str]) -> bool:
+    """True when a line of `text` carries the row's cells, whether or not the table around it parses."""
+    cells = [row[k] for k in ROW_KEYS]
+    return any(line.startswith("|") and [c.strip() for c in line.strip().strip("|").split("|")] == cells for line in text.splitlines())
+
+
+def _parses(text: str) -> bool:
     try:
-        return row in parse_allowlist(text)
+        parse_allowlist(text)
+        return True
     except ExportError:
         return False
 

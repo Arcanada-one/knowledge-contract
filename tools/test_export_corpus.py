@@ -25,7 +25,8 @@ HOLDER = "Pavel Valentov"
 DOCS = ("articles/project-overview.md", "articles/openness-and-attribution-policy.md", "articles/attribution-policy.md",
         "articles/contribution-guide.md", "articles/sources-register.md", "articles/site-summary-llms.md")
 ENV = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@example.invalid",
-       "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.invalid", "GIT_CONFIG_GLOBAL": os.devnull}
+       "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@example.invalid", "GIT_CONFIG_GLOBAL": os.devnull,
+       "GIT_AUTHOR_DATE": "2026-10-29T12:00:00+00:00", "GIT_COMMITTER_DATE": "2026-10-29T12:00:00+00:00"}
 REUSE_DEFAULT = """version = 1
 
 [[annotations]]
@@ -153,14 +154,18 @@ class World:
         self.main = git(self.repo, "rev-parse", "HEAD")
 
     # --- builders ---------------------------------------------------------------------------
-    def decision_pr(self, batch: str, objs: list[dict], parent: str | None = None, **k) -> dict:
+    def decision_pr(self, batch: str, objs: list[dict], parent: str | None = None, extra: dict | None = None, **k) -> dict:
         repo, o = self.repo, {**self.o, **k}
+        extra = extra or {}
+        every = objs + [x for v in extra.values() for x in v]
         number = self.pr_count = self.pr_count + 1
         git(repo, "checkout", "-q", "-b", f"pr-{batch}", parent or self.S)
         lines = [export.canonical(x) for x in objs]
         if o.get("repeat_line"):
             lines.append(lines[0])
         write(repo, f"{DEC}{batch}.jsonl", "\n".join(lines) + "\n" if lines else "")
+        for other, other_objs in extra.items():
+            write(repo, f"{DEC}{other}.jsonl", "\n".join(export.canonical(x) for x in other_objs) + "\n")
         info = {}
         if o.get("source_on_side"):
             git(repo, "commit", "-q", "--allow-empty", "-m", "side-branch content step")
@@ -175,13 +180,13 @@ class World:
         info["D1"] = d1
         base = git(repo, "merge-base", d1, git(repo, "rev-parse", "main"))
         digest, names, diff = review_digest(repo, base, d1)
-        added = [export.canonical(x) for x in objs]
+        added = [export.canonical(x) for x in every]
         blobs = b""
-        for x in sorted(objs, key=lambda x: (x["path"], x["sha256"], x["upstream"])):
+        for x in sorted(every, key=lambda x: (x["path"], x["sha256"], x["upstream"])):
             blob = subprocess.run(("git", "show", f"{base}:{x['path']}"), cwd=repo, env=ENV, check=True, stdout=subprocess.PIPE).stdout
             blobs += f"BLOB {x['path']} {x['sha256']} {x['upstream']} {len(blob)}\n".encode() + blob + b"\n"
         decl = b""
-        ups = sorted({x["upstream"] for x in objs})
+        ups = sorted({x["upstream"] for x in every})
         parsed = {u: export.UPSTREAM_RE.fullmatch(u) for u in ups}
         for u in ups:
             if u != "original" and parsed[u] is None:
@@ -210,30 +215,6 @@ class World:
         if o.get("input_without_diff"):
             retained = b"checklist only\n"
         input_digest = hashlib.sha256(retained).hexdigest()
-        sessions = o.get("session_ids", [f"{batch}-s1", f"{batch}-s2", f"{batch}-s3"])
-        verdict_digest = o.get("verdict_digest", o.get("receipt_diff", digest))
-        reviewers = []
-        for n in range(1, o.get("reviewers", 2) + 1):
-            if o.get("same_transcript"):
-                text = f"sessions {sessions[0]} {sessions[1]}\ninput {input_digest}\nidentical transcript\nVERDICT: APPROVE {verdict_digest}\n"
-            else:
-                body = o.get("transcript_text", f"blind review {n} of {batch}: digests match, license consistent")
-                text = f"session {sessions[n - 1]}\ninput digest {'5' * 64 if o.get('bad_input_digest') else input_digest}\n{body}\n"
-                if o.get("no_embed"):
-                    text = f"{body}\n"
-                text += f"VERDICT: APPROVE {verdict_digest}\n"
-                if o.get("scrub_header") == "ok":
-                    text = "SCRUBBED: 3 replacements\n" + text
-                if o.get("scrub_header") == "bad":
-                    text = "SCRUBBED: many things\n" + text
-            write(repo, f"{RECEIPT}{batch}/reviewer-{n}.md", text)
-            if not o.get("no_input_file"):
-                write(repo, f"{RECEIPT}{batch}/reviewer-{n}.input.txt", retained)
-            reviewers.append({"session_id": sessions[n - 1], "model": "model-/home/x" if o.get("deny_in_receipt") else f"model-{n}",
-                              "input_digest": "5" * 64 if o.get("bad_input_digest") else input_digest,
-                              "transcript_sha256": hashlib.sha256(text.encode()).hexdigest(), "verdict": o.get("verdict", "APPROVE")})
-        if o.get("bad_transcript"):
-            reviewers[0]["transcript_sha256"] = "1" * 64
         head = d1
         if o.get("receipt_head_other"):
             git(repo, "checkout", "-q", "-b", f"side-{batch}", self.S)
@@ -241,11 +222,36 @@ class World:
             head = commit(repo, "side")
             git(repo, "checkout", "-q", f"pr-{batch}")
         lsha = [hashlib.sha256(x.encode()).hexdigest() for x in added]
-        listed = lsha[:-1] if o.get("receipt_lines") == "SUBSET" else (lsha + ["9" * 64] if o.get("receipt_lines") == "SUPERSET" else o.get("receipt_lines", lsha))
-        receipt = {"reviewed_head": head, "base": o.get("receipt_base", base), "diff_sha256": o.get("receipt_diff", digest),
-                   "decision_lines_sha256": listed, "reviewers": reviewers}
-        if not o.get("no_receipt") and not o.get("late_receipt"):
-            write(repo, f"{RECEIPT}{batch}.json", json.dumps(receipt, sort_keys=True))
+        for bname in [batch, *extra]:
+            sessions = o.get("session_ids", [f"{bname}-s1", f"{bname}-s2", f"{bname}-s3"])
+            verdict_digest = o.get("verdict_digest", o.get("receipt_diff", digest))
+            reviewers = []
+            for n in range(1, o.get("reviewers", 2) + 1):
+                if o.get("same_transcript"):
+                    text = f"sessions {sessions[0]} {sessions[1]}\ninput {input_digest}\nidentical transcript\nVERDICT: APPROVE {verdict_digest}\n"
+                else:
+                    body = o.get("transcript_text", f"blind review {n} of {bname}: digests match, license consistent")
+                    text = f"session {sessions[n - 1]}\ninput digest {'5' * 64 if o.get('bad_input_digest') else input_digest}\n{body}\n"
+                    if o.get("no_embed"):
+                        text = f"{body}\n"
+                    text += f"VERDICT: APPROVE {verdict_digest}\n"
+                    if o.get("scrub_header") == "ok":
+                        text = "SCRUBBED: 3 replacements\n" + text
+                    if o.get("scrub_header") == "bad":
+                        text = "SCRUBBED: many things\n" + text
+                write(repo, f"{RECEIPT}{bname}/reviewer-{n}.md", text)
+                if not o.get("no_input_file"):
+                    write(repo, f"{RECEIPT}{bname}/reviewer-{n}.input.txt", retained)
+                reviewers.append({"session_id": sessions[n - 1], "model": "model-/home/x" if o.get("deny_in_receipt") else f"model-{n}",
+                                  "input_digest": "5" * 64 if o.get("bad_input_digest") else input_digest,
+                                  "transcript_sha256": hashlib.sha256(text.encode()).hexdigest(), "verdict": o.get("verdict", "APPROVE")})
+            if o.get("bad_transcript"):
+                reviewers[0]["transcript_sha256"] = "1" * 64
+            listed = lsha[:-1] if o.get("receipt_lines") == "SUBSET" else (lsha + ["9" * 64] if o.get("receipt_lines") == "SUPERSET" else o.get("receipt_lines", lsha))
+            receipt = {"reviewed_head": head, "base": o.get("receipt_base", base), "diff_sha256": o.get("receipt_diff", digest),
+                       "decision_lines_sha256": listed, "reviewers": reviewers}
+            if not o.get("no_receipt") and not o.get("late_receipt"):
+                write(repo, f"{RECEIPT}{bname}.json", json.dumps(receipt, sort_keys=True))
         if o.get("receipt_commit_extra"):
             write(repo, DEC + "zz.jsonl", "")
         d2 = commit(repo, "receipt")
@@ -265,7 +271,8 @@ class World:
         if o.get("late_receipt"):
             write(repo, f"{RECEIPT}{batch}.json", json.dumps(receipt, sort_keys=True))
             commit(repo, "late receipt")
-        info.update(I=i, D2=d2, lsha=lsha, lines=added, number=number)
+        info.update(I=i, D2=d2, lsha=lsha[:len(objs)], lines=added, number=number,
+                    extra={other: [hashlib.sha256(export.canonical(x).encode()).hexdigest() for x in v] for other, v in extra.items()})
         if not o.get("unmerged_decision"):
             self.merged[i] = number
         self.heads[number] = o.get("api_head", d2)
@@ -698,6 +705,61 @@ class DecisionRouteTests(unittest.TestCase):
         with self.assertRaisesRegex(export.ExportError, "quarantined"):
             export.secret_scan(("token = " + token + "\n").encode())
         export.secret_scan(b"plain public text about a bounded statement\n")
+
+    def test_a_row_cannot_be_swapped_in_through_an_unparsable_table_and_a_later_clean_change(self) -> None:
+        w = self.world(no_rows=True)
+        row = w.row(DOCS[0], "b1", 0)
+        write(w.repo, "corpus/README.md", table([row]) + "| junk |\n")
+        dirty = commit(w.repo, "row plus a junk table line (#31)")
+        w.merged[dirty] = 31
+        clean = w.add_rows([row])
+        with self.assertRaisesRegex(export.ExportError, "does not parse"):
+            w.run(clean)
+        # without that guard the clean change would be taken for the row's change and the export would go through
+        with patch.object(export, "_parses", lambda text: True):
+            self.assertEqual(w.run(clean)[0]["row_count"], 1)
+
+    def test_a_directly_pushed_row_with_smuggled_files_is_refused_even_when_the_table_is_later_cleaned(self) -> None:
+        w = self.world(no_rows=True)
+        row = w.row(DOCS[0], "b1", 0)
+        write(w.repo, "tools/smuggled.py", "x = 1\n")
+        write(w.repo, "corpus/README.md", table([row]) + "| junk |\n")
+        commit(w.repo, "direct push: row, smuggled file, junk line")
+        clean = w.add_rows([row])
+        with self.assertRaisesRegex(export.ExportError, "does not parse"):
+            w.run(clean)
+        with patch.object(export, "_parses", lambda text: True):
+            with self.assertRaisesRegex(export.ExportError, "not a merged pull request commit"):
+                w.run(clean)
+
+    def test_upstream_repository_names_are_compared_case_insensitively_and_aliases_are_refused(self) -> None:
+        self.refuses("upstream commit does not exist", decision_over={"upstream": f"arcanada-one/Knowledge-Contract@{'a' * 40}:README.md"})
+        self.refuses("upstream is neither original nor repo@commit:path", decision_over={"upstream": f"Arcanada-one/knowledge-contract.git@{'a' * 40}:README.md"})
+        self.refuses("upstream is neither original nor repo@commit:path", decision_over={"upstream": f"Arcanada-one/knowledge-contract.GIT@{'a' * 40}:README.md"})
+
+    def test_a_lowercase_or_uppercase_contributors_holder_is_refused(self) -> None:
+        for holder in ("Pavel Valentov Contributors", "PAVEL VALENTOV CONTRIBUTORS", "Pavel Valentov contributors"):
+            with self.subTest(holder=holder):
+                self.refuses("rights holder is not a named person", decision_over={"rights_holder": holder})
+
+    def test_file_name_order_within_one_decision_change_is_bytewise(self) -> None:
+        # in one change, "B1.jsonl" sorts before "a1.jsonl" bytewise (uppercase first), so a1 holds the last line
+        for last_status, expect_ok in (("current", True), ("withdrawn", False)):
+            with self.subTest(last=last_status):
+                w = self.world(no_rows=True)
+                doc = DOCS[0]
+                first_status = "withdrawn" if last_status == "current" else "current"
+                w.decision_pr("a1", [decision_obj(doc, w.sha[doc], last_status, "a1", attribution="in a1")], parent=w.main,
+                              extra={"B1": [decision_obj(doc, w.sha[doc], first_status, "B1", attribution="in B1")]})
+                cur = "a1" if last_status == "current" else "B1"
+                index_cell = f"{DEC}{cur}.jsonl@{w.batches['a1']['I']}#" + (w.batches["a1"]["lsha"][0] if cur == "a1" else w.batches["a1"]["extra"]["B1"][0])
+                # the earlier b1 batch is also current for this key: reference the last current line (a1 or B1) explicitly
+                r = w.add_rows([w.row(doc, "b1", 0, cell=index_cell)])
+                if expect_ok:
+                    self.assertEqual(w.run(r)[0]["row_count"], 1)
+                else:
+                    with self.assertRaisesRegex(export.ExportError, "later decision changes the effective status|does not point at the last matching line"):
+                        w.run(r)
 
     def test_checklist_is_pinned_by_digest(self) -> None:
         w = self.world()
