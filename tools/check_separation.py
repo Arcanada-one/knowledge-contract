@@ -23,12 +23,18 @@ def violates(paths: list[str]) -> bool:
     return sum(any(area.match(p) for p in paths) for area in AREAS) >= 2
 
 
+def changed_paths(base: str, head: str) -> list[str]:
+    """Paths changed between the merge base and the head: NUL-separated (names with tabs, newlines or quotes stay whole) and
+    without rename detection (a rename shows both its old and its new path, so a move out of a content directory is seen)."""
+    result = subprocess.run(["git", "diff", "--no-renames", "-z", "--name-only", f"{base}...{head}"], stdout=subprocess.PIPE, check=True)
+    return [name.decode("utf-8", "surrogateescape") for name in result.stdout.split(b"\0") if name]
+
+
 def main(argv: list[str]) -> int:
     if len(argv) != 3:
         print("usage: check_separation.py BASE_SHA HEAD_SHA", file=sys.stderr)
         return 2
-    result = subprocess.run(["git", "-c", "core.quotePath=false", "diff", "--name-only", f"{argv[1]}...{argv[2]}"], stdout=subprocess.PIPE, check=True)
-    paths = result.stdout.decode().splitlines()
+    paths = changed_paths(argv[1], argv[2])
     if violates(paths):
         print("SEPARATION_FAIL: decision or allowlist-table files and content paths changed in one pull request", file=sys.stderr)
         return 1
