@@ -38,7 +38,7 @@ The paper sets rules for changing knowledge, its grounds, norms and chosen repre
 - Authentication and atomic external storage are assumptions, not results.
 - Real acceptance, deployment and rollback of a contract registry were not run; mass revision of a whole base and an external server current head were not tested.
 - Results of the 36 planned setups are absent, as are 9 sequential reviews. Four hypotheses (separated states, typed dependencies, partial-publication reconciliation, versioned canon) are untested.
-- Two numbers from different instruments (786/12 and 772/0) are not comparable.
+- Two numbers from different instruments (786/12 and 772/0) are not comparable; the qualification report MM_A10474 was not read.
 
 ## Status and what is open
 
@@ -50,7 +50,7 @@ The paper sets rules for changing knowledge, its grounds, norms and chosen repre
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph, serving as abstract, omits executed results and first failures; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph omits executed results and first failures; this page follows the corrected wording. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

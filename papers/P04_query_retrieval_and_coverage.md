@@ -22,7 +22,7 @@ full_text: ru/P04_query_retrieval_and_coverage.md
 
 ## Abstract
 
-The paper proposes a profile for moving from a human or agent query to a bounded answer set with checkable grounds. It separates relevance, support, search completeness and applicability. It links a query plan (`QueryPlan`), a candidate set, three independent coverage reports (`CoverageReport`), pinned sources and stop rules. It allows a useful partial answer and does not treat "nothing found" as "nothing known". Its properties hold only under explicit premises: a finite domain, a query parsed in advance, and author-marked metadata. Only an authored finite model was executed; no real-book search has been run.
+The paper proposes a profile for moving from a human or agent query to a bounded answer set with checkable grounds. It separates relevance, support, search completeness and applicability. It links a query plan (`QueryPlan`), a candidate set, three separately addressed coverage reports (`CoverageReport`), pinned sources and stop rules. It allows a useful partial answer and does not treat "nothing found" as "nothing known". Its properties hold only under explicit premises: a finite domain, a query parsed in advance, and author-marked metadata. Only an authored finite model was executed; no real-book search has been run.
 
 ## Claims and their basis
 
