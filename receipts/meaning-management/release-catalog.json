@@ -29,7 +29,7 @@
  ],
  "release_digest": {
   "algorithm": "sha256 over lines \"<sha256>  <path>\\n\" of all files under papers/ and spec/ (except .gitkeep), sorted by path",
-  "value": "8104e48b16753a5385d17aba4d45a8781c5efa03fd736dcba3251ad3346b71fb",
+  "value": "c55e4c6d49fe8a7b3c8cb65884763cfde565aba57460f769754064eb73d1594b",
   "files": 50
  },
  "not_in_this_release": "tier 2 supporting records, tools, schemas, the glossary, and every allowlist item marked needs-decision or exclude, except the 14 edited papers (decision above)",
@@ -376,7 +376,7 @@
    "entry_page": {
     "path": "papers/P09_work_roles_skills_and_kc.md",
     "revision_id": "MM_A0206-entry-en-r1",
-    "sha256": "183c0c7fa50349322d7473c80007c9a2de9a97c2a7c675de001b7767c515fb43",
+    "sha256": "1907861fb674ff0e99057707b81165ad98f568cda3a8e1e6c3fc5cac5044048a",
     "language": "en",
     "derived_from_card": "834fa95aac243cbe270555921b2834dd47a0f5eaeb8cdfa5266b83b211de502e"
    },
@@ -411,7 +411,7 @@
    "entry_page": {
     "path": "papers/P10_revision_and_canon.md",
     "revision_id": "MM_A0207-entry-en-r1",
-    "sha256": "fd8661a1a7354b469fc8d77e00c0ad8a5aa664a4e31469d931e0965e231f7eb8",
+    "sha256": "02bde45b44618d2bfc9b2e7dcf93ad697458f3091c8882ed68875d2ffd8be1f7",
     "language": "en",
     "derived_from_card": "b7b67c03da0659ca4c35babe114177dfc8c32029f1a339ac37a0bd58d1639c66"
    },
@@ -884,11 +884,11 @@
   },
   {
    "path": "papers/P09_work_roles_skills_and_kc.md",
-   "sha256": "183c0c7fa50349322d7473c80007c9a2de9a97c2a7c675de001b7767c515fb43"
+   "sha256": "1907861fb674ff0e99057707b81165ad98f568cda3a8e1e6c3fc5cac5044048a"
   },
   {
    "path": "papers/P10_revision_and_canon.md",
-   "sha256": "fd8661a1a7354b469fc8d77e00c0ad8a5aa664a4e31469d931e0965e231f7eb8"
+   "sha256": "02bde45b44618d2bfc9b2e7dcf93ad697458f3091c8882ed68875d2ffd8be1f7"
   },
   {
    "path": "papers/P11_evaluation_and_falsification.md",
