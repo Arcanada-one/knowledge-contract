@@ -22,7 +22,7 @@ full_text: ru/P10_revision_and_canon.md
 
 ## Abstract
 
-The paper sets rules for changing knowledge, its grounds, norms and chosen representations, connecting them with history, publication and current admission. A finite revision model passed 73 checks with fixed inputs (73 passed, 0 failed); three model defects were found and fixed during preparation. In one observation of a file operation, a separate copy failed finalisation in a previous update (301 of 302 save operations succeeded) and the service gave no cause; the full archive still matched the canonical sources (348 of 348 hashes). No real distributed backend, authentication, books or classifier were used, and 36 subject and load setups remain planned and not executed. Superiority over simply replacing the last record is not shown.
+The paper sets rules for changing knowledge, its grounds, norms and chosen representations, connecting them with history, publication and current admission. A finite revision model passed 73 checks with fixed inputs (0 failed); three model defects were found and fixed during preparation. In one observation of a file operation, a separate copy failed finalisation in a previous update (301 of 302 save operations succeeded) and the service gave no cause; the full archive still matched the canonical sources (348 of 348 hashes). No real distributed backend, authentication, books or classifier were used, and 36 subject and load setups remain planned and not executed. Superiority over simply replacing the last record is not shown.
 
 ## Claims and their basis
 
@@ -50,7 +50,7 @@ The paper sets rules for changing knowledge, its grounds, norms and chosen repre
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph omits executed results and first failures; this page follows the corrected wording. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph omits executed results and first failures; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 
