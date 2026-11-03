@@ -29,7 +29,7 @@
  ],
  "release_digest": {
   "algorithm": "sha256 over lines \"<sha256>  <path>\\n\" of all files under papers/ and spec/ (except .gitkeep), sorted by path",
-  "value": "0c65b384e6ee0746c9ee2945668d6f08f7a19c285d41a2728f4637c86b851f32",
+  "value": "d09194224f1fe649794fa960d00115045242340ee908276b5a8ad3ac2abcbb73",
   "files": 50
  },
  "not_in_this_release": "tier 2 supporting records, tools, schemas, the glossary, and every allowlist item marked needs-decision or exclude, except the 14 edited papers (decision above)",
@@ -201,7 +201,7 @@
    "entry_page": {
     "path": "papers/P04_query_retrieval_and_coverage.md",
     "revision_id": "MM_A0201-entry-en-r1",
-    "sha256": "bf9eeef1d735651578c3c81f53f543ad47bcb68a9081fff7b7af555b391caf31",
+    "sha256": "6e2187b079b488b247498b85de6ab1e2176d3ef235ea3e4943acdf36094b3941",
     "language": "en",
     "derived_from_card": "a6b39660a0cfedd5ac07e416ad34995446f32cdb3c6f20378421a12d743c186c"
    },
@@ -864,7 +864,7 @@
   },
   {
    "path": "papers/P04_query_retrieval_and_coverage.md",
-   "sha256": "bf9eeef1d735651578c3c81f53f543ad47bcb68a9081fff7b7af555b391caf31"
+   "sha256": "6e2187b079b488b247498b85de6ab1e2176d3ef235ea3e4943acdf36094b3941"
   },
   {
    "path": "papers/P05_budgeted_context_composition.md",

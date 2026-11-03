@@ -36,7 +36,7 @@ The paper proposes a profile for moving from a human or agent query to a bounded
 ## Limits
 
 - No real corpus search, no comparison with BM25, dense or hybrid retrieval on independent labels, and no cost measurement.
-- 36 system scenarios and 9 sequential walkthroughs were planned and not executed. 
+- 36 system scenarios and 9 sequential walkthroughs were planned and not executed.
 - Query recognition, server-side vector search, OCR/VLM and products were not run; automatic semantic search and recall over the whole book are not assessed.
 - A structural SQL-like query over normalised data may solve a task more simply; then no advantage is claimed.
 
