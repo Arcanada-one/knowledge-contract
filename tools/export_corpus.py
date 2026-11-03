@@ -54,10 +54,26 @@ TREE_LAYOUT = (
 UPSTREAM_RE = re.compile(r"^([A-Za-z0-9._-]+/[A-Za-z0-9._-]+)@([0-9a-f]{40}):([A-Za-z0-9][A-Za-z0-9_./-]*)$")
 PERSON_RE = re.compile(r"^[A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+)+$")
 REVIEWER_KEYS = frozenset(("session_id", "model", "input_digest", "transcript_sha256", "verdict"))
-# Scope fixed by DEC-AUP-0171 item 7: only these six already-public documents may be listed until a later DEC changes it.
+# Scope: DEC-AUP-0171 item 7 fixed the six already-public documents mirrored under articles/; DEC-AUP-0172 adds exactly the
+# fourteen English entry pages of the Meaning Management papers. An explicit list, not a prefix: a prefix would pre-authorise
+# the Russian full texts, the specifications and any future paper. A later DEC must change this constant to widen it again.
 SCOPE_PATHS = frozenset((
     "articles/project-overview.md", "articles/openness-and-attribution-policy.md", "articles/attribution-policy.md",
     "articles/contribution-guide.md", "articles/sources-register.md", "articles/site-summary-llms.md",
+    "papers/P00_introduction.md",
+    "papers/P01_semantic_objects_and_extraction.md",
+    "papers/P02_context_and_applicability.md",
+    "papers/P03_transformations_and_transfer.md",
+    "papers/P04_query_retrieval_and_coverage.md",
+    "papers/P05_budgeted_context_composition.md",
+    "papers/P06_dialogue_and_learning.md",
+    "papers/P07_reasoning_and_evidence.md",
+    "papers/P08_documents_and_memory.md",
+    "papers/P09_work_roles_skills_and_kc.md",
+    "papers/P10_revision_and_canon.md",
+    "papers/P11_evaluation_and_falsification.md",
+    "papers/P12_compilation_caching_and_reuse.md",
+    "papers/P13_knowledge_utility_and_resource_economics.md",
 ))
 DECLARATION_FILES = ("REUSE.toml", "NOTICE", "LICENSE")
 MIN_REVIEWERS = 2
@@ -195,7 +211,7 @@ def validate_row(row: dict[str, str]) -> None:
     if not PATH_RE.fullmatch(path) or ".." in Path(path).parts or "//" in path:
         raise ExportError("source path is outside the public corpus allowlist")
     if path not in SCOPE_PATHS:  # check: scope_paths
-        raise ExportError("source path is outside the scope fixed by DEC-AUP-0171")
+        raise ExportError("source path is outside the scope fixed by DEC-AUP-0171 and DEC-AUP-0172")
     if not DIGEST_RE.fullmatch(row["sha256"]):
         raise ExportError("content SHA-256 is missing or malformed")
     if not row["rights_holder"] or row["rights_holder"] in {"?", "unknown", "TBD"}:

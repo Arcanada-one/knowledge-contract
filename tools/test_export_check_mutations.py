@@ -48,5 +48,41 @@ class GuardMutationTests(unittest.TestCase):
         self.assertEqual(survivors, [], "guards whose removal no test notices")
 
 
+class ScopeListMutationTests(unittest.TestCase):
+    """DEC-AUP-0172: each edit of the explicit SCOPE_PATHS list that widens, narrows or turns it into a prefix must be noticed by a test."""
+
+    P00 = '    "papers/P00_introduction.md",\n'
+    MUTANTS = {
+        "drop_P07": lambda s: s.replace('    "papers/P07_reasoning_and_evidence.md",\n', ""),
+        "misspell_P13": lambda s: s.replace('economics.md",\n))', 'economic.md",\n))'),
+        "add_russian_text": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/ru/P00_introduction.md",\n'),
+        "add_papers_readme": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/README.md",\n'),
+        "add_fifteenth_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/P14_future_paper.md",\n'),
+        "add_spec_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "spec/STATUS_MODEL.md",\n'),
+        "prefix_rule": lambda s: s.replace("if path not in SCOPE_PATHS:  # check: scope_paths",
+                                           "if not (path in SCOPE_PATHS or path.startswith('papers/')):  # check: scope_paths"),
+    }
+
+    def test_every_scope_list_mutant_is_killed(self) -> None:
+        source = (ROOT / "tools/export_corpus.py").read_text()
+        survivors = []
+        for name, mutate in self.MUTANTS.items():
+            mutated = mutate(source)
+            self.assertNotEqual(mutated, source, f"mutant {name} no longer applies; update the mutant")
+            with tempfile.TemporaryDirectory() as temp:
+                scratch = Path(temp)
+                shutil.copytree(ROOT / "tools", scratch / "tools", ignore=shutil.ignore_patterns("__pycache__", "test_export_check_mutations.py"))
+                shutil.copytree(ROOT / "corpus", scratch / "corpus")
+                shutil.copytree(ROOT / "papers", scratch / "papers")
+                for declared in ("REUSE.toml", "NOTICE", "LICENSE"):
+                    shutil.copy(ROOT / declared, scratch / declared)
+                (scratch / "tools/export_corpus.py").write_text(mutated)
+                result = subprocess.run([sys.executable, "-B", "-m", "unittest", "-f", "tools.test_export_corpus"], cwd=scratch,
+                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"})
+            if result.returncode == 0:
+                survivors.append(name)
+        self.assertEqual(survivors, [], "scope-list mutants no test notices")
+
+
 if __name__ == "__main__":
     unittest.main()
