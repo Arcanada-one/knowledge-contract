@@ -1,0 +1,1050 @@
+{
+ "schema": "kcp-release-catalog/1",
+ "release": "meaning-management-first-release-r1",
+ "scope": "first release, tier 1: 14 papers, 10 specifications, 24 English entry pages, two index pages, this catalog and the link map",
+ "status": "scientific draft; see gates",
+ "gates": {
+  "late_research_synthesis": "open",
+  "independent_semantic_review": "not_performed",
+  "exporter_scope": "not in SCOPE_PATHS; not an indexing input",
+  "corpus_allowlist_rows": "none"
+ },
+ "decisions": [
+  {
+   "id": "edition-of-record",
+   "decided": "2026-11-03",
+   "decided_by": "agent",
+   "status": "DECIDED-BY-AGENT, reversible",
+   "what": "For each of the 14 papers the terminology edition of 2026-11-03 is the primary text published under papers/ru/; the G1 reading projection is not published.",
+   "basis": "The 14 editorial notes (cards) behind the English entry pages are written against this edition, and it is the edition checked by the editor checks.",
+   "reverse_if": "Control or the authors choose the G1 projection, or the late research synthesis changes the text."
+  }
+ ],
+ "deviations": [
+  {
+   "id": "spec-front-matter",
+   "what": "The 10 specifications carry artifact_id, revision_id and license in front matter but no title and no sources key (the allowlist asks for both).",
+   "why": "Adding sources: none would assert an unverified fact (named third-party works were not enumerated); a sources list would need a complete register. Source coverage is declared in SOURCES.md rows instead, which tools/check_sources.py accepts. A title key adds no information over the first heading and would enlarge the declared transform."
+  }
+ ],
+ "release_digest": {
+  "algorithm": "sha256 over lines \"<sha256>  <path>\\n\" of all files under papers/ and spec/ (except .gitkeep), sorted by path",
+  "value": "1dea07d466d29f5b88e38b9894aa4f629dc6e2ff3eaeb3318f3771be61bd3067",
+  "files": 50
+ },
+ "not_in_this_release": "tier 2 supporting records, tools, schemas, the glossary, and every allowlist item marked needs-decision or exclude, except the 14 edited papers (decision above)",
+ "items": [
+  {
+   "kind": "paper",
+   "paper_id": "P00",
+   "artifact_id": "MM_A0197",
+   "title_en": "Foundations of Meaning and Knowledge Management",
+   "title_ru": "Основы управления смыслами и знаниями",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "fa68354ddaa07befeeb43f3f1c9b9f5f0a6ecb0f4d8d8b712d1f9e29e5ff6c57",
+    "edition_bytes": 137805,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "d9c11d35d4244e103dda8e1fbb124655e07dacba40c98f29419862a2e434a3ff",
+    "reader_projection_sha256": "6d91e7e1de3d060ca0e9d9023013f6e573d55368bf9467e82d9b8210b1d04aaa"
+   },
+   "revised_article": {
+    "path": "papers/ru/P00_introduction.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "ac5ec9d1fd3e47177d17a69181d8f086e551e8884671cb83064c17cbc68079a2",
+    "bytes": 136006,
+    "language": "ru",
+    "links_rewritten": 11,
+    "links_marked": 102
+   },
+   "entry_page": {
+    "path": "papers/P00_introduction.md",
+    "revision_id": "MM_A0197-entry-en-r1",
+    "sha256": "a246c5d4a96156d3a7f9ea9446b70a3c117ae61f69e1d89974b9119205ef02d6",
+    "language": "en",
+    "derived_from_card": "739b58d7091808321cbccb3d1702529a5725df00a20fa04c36f574ab744064d7"
+   },
+   "route": "papers/ru/P00_introduction.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P01",
+   "artifact_id": "MM_A0198",
+   "title_en": "Semantic Objects, Sources and Verifiable Extraction",
+   "title_ru": "Смысловые объекты, источники и проверяемое извлечение",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "0c37322b52235b810c8b16aa8d7e5df1784d443331dc55945a74bd1fbda4d7ce",
+    "edition_bytes": 127821,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "7e2f09b4574479da704dc68207a4e55e763dd5d2ef9293aab0ecdca972685f02",
+    "reader_projection_sha256": "2ba22d7641a39be8f9528e8fbd1bfa0429c5c25b62fc3bc1b1fb451f61fa6cf0"
+   },
+   "revised_article": {
+    "path": "papers/ru/P01_semantic_objects_and_extraction.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "c4b4c11c88049b084a0f06c1a94f998f10de916a39f3d12934744a7ab8d5e636",
+    "bytes": 124521,
+    "language": "ru",
+    "links_rewritten": 14,
+    "links_marked": 166
+   },
+   "entry_page": {
+    "path": "papers/P01_semantic_objects_and_extraction.md",
+    "revision_id": "MM_A0198-entry-en-r1",
+    "sha256": "68e141a03e45bdf4c9dd83bb019d4e2d5eebeda278c1ef4fad4ab8afde19893c",
+    "language": "en",
+    "derived_from_card": "1c80e53a763bd1ea834cad0d7e6d7bed413d5ccaec14cbcd7147c16ea1d445e0"
+   },
+   "route": "papers/ru/P01_semantic_objects_and_extraction.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P02",
+   "artifact_id": "MM_A0199",
+   "title_en": "Context, Depth and Conditions of Applicability",
+   "title_ru": "Контекст, глубина и условия применимости",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "31ca0ecaf75588b7df8a15b1fd56f2c08fb32bd1618c4ef3fef7f2a573c3c79a",
+    "edition_bytes": 108981,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "32939094d5633f4c87787eb9c0d54fdf69382d3e80472c6a951532e45d32fa94",
+    "reader_projection_sha256": "40606785cc0b24a171b01ed1ef2f1b70d14519f71d84ed8ae5e73495264f4a78"
+   },
+   "revised_article": {
+    "path": "papers/ru/P02_context_and_applicability.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "b02a510f00def3b24420336d64213fc9f50a238c9dada6e760cb92587b9904d7",
+    "bytes": 107524,
+    "language": "ru",
+    "links_rewritten": 8,
+    "links_marked": 92
+   },
+   "entry_page": {
+    "path": "papers/P02_context_and_applicability.md",
+    "revision_id": "MM_A0199-entry-en-r1",
+    "sha256": "303250dd8bee6f73ae3cd3cc03587d8a7e09be781d605767c6a65d4306cb9f8a",
+    "language": "en",
+    "derived_from_card": "386795d8dd9d88efd35a331ed5dfb700e57ffcdbfbd45afd09475b788bea2e93"
+   },
+   "route": "papers/ru/P02_context_and_applicability.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P03",
+   "artifact_id": "MM_A0200",
+   "title_en": "Transformations, Composition and Bounded Transfer",
+   "title_ru": "Преобразования, композиция и ограниченный перенос",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "f0a6459543f3a29937c936c6f426b23b6fc525a52fcfb89d349ebe0943390b41",
+    "edition_bytes": 116988,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "66fae01aaede523e5f764ce617df614e8a11832a217e35a493f5081c82479d41",
+    "reader_projection_sha256": "7d9b681b400907934d01d4eea67b21d7d7929fb5288a45fcd2844d7cb0930862"
+   },
+   "revised_article": {
+    "path": "papers/ru/P03_transformations_and_transfer.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "c9408ddb7197f6641e9f26f9caa6c9675e8c5bbc9cb5b53e478a5c4cf3411b85",
+    "bytes": 115041,
+    "language": "ru",
+    "links_rewritten": 6,
+    "links_marked": 114
+   },
+   "entry_page": {
+    "path": "papers/P03_transformations_and_transfer.md",
+    "revision_id": "MM_A0200-entry-en-r1",
+    "sha256": "52de2e373f5f6325393519118b86e3d3383bf84a2b8f5c3071d1a6e2e23117a7",
+    "language": "en",
+    "derived_from_card": "f6f7c161291a6327f518b3a20e4441197f444b52867bcf932804c116ae9704b8"
+   },
+   "route": "papers/ru/P03_transformations_and_transfer.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P04",
+   "artifact_id": "MM_A0201",
+   "title_en": "Query, Retrieval and Verifiable Coverage",
+   "title_ru": "Запрос, извлечение и проверяемое покрытие",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "b1eac366c439ecd7df675137a99f457816788f9ba844c70d5591932b97209071",
+    "edition_bytes": 96001,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "35bfa7b113c83c75fe1dc8e6035e04edc0343e9f7931c86fe2e5f49f8ec5570c",
+    "reader_projection_sha256": "a14066d7fa7f3c3dabe619782f2b8a5019a6c7f695e1284d9fd3967851dcf850"
+   },
+   "revised_article": {
+    "path": "papers/ru/P04_query_retrieval_and_coverage.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "c3ec7322ee3004fb25aa8df3cdad751ac6c535d901804a636aae4e8b1653aa9e",
+    "bytes": 93842,
+    "language": "ru",
+    "links_rewritten": 7,
+    "links_marked": 129
+   },
+   "entry_page": {
+    "path": "papers/P04_query_retrieval_and_coverage.md",
+    "revision_id": "MM_A0201-entry-en-r1",
+    "sha256": "6342a8d4f0b8c59f295a2e9a60c1c03a82026eea0ac22a1e746732d4426b1d04",
+    "language": "en",
+    "derived_from_card": "6778f3a9b2464ebb720651599868f8b896dd0979a111f826acde8f474d08d2e4"
+   },
+   "route": "papers/ru/P04_query_retrieval_and_coverage.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P05",
+   "artifact_id": "MM_A0202",
+   "title_en": "Context Composition under a Limited Budget",
+   "title_ru": "Составление контекста при ограниченном бюджете",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "71e65912b34ec141eaa693240daaba8b2f168c102a1a9d2824402d9420ee3deb",
+    "edition_bytes": 93174,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "3bac1eeee9df178cd8805a097b8c5a10b8b37d01f930a475f708f1450c74dd97",
+    "reader_projection_sha256": "c2d0db8db2e3cea7f917fed6147a403f112a5026d564ff334ce848dd5397c4fa"
+   },
+   "revised_article": {
+    "path": "papers/ru/P05_budgeted_context_composition.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "525f68af7dc4f48341cf304369b6129587d2e0936cc185c2741787598126075d",
+    "bytes": 91214,
+    "language": "ru",
+    "links_rewritten": 7,
+    "links_marked": 115
+   },
+   "entry_page": {
+    "path": "papers/P05_budgeted_context_composition.md",
+    "revision_id": "MM_A0202-entry-en-r1",
+    "sha256": "472789068320ab70cefa3cdcae786e3cb1792ae431a83a62e023f25320e9fc1f",
+    "language": "en",
+    "derived_from_card": "2d4f74515571654964754dee6c4d63d71e7ac12a1dc88705248c538adf2c7d74"
+   },
+   "route": "papers/ru/P05_budgeted_context_composition.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P06",
+   "artifact_id": "MM_A0203",
+   "title_en": "Dialogue, Learning and Alignment of Understanding",
+   "title_ru": "Диалог, обучение и согласование понимания",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "e64e7a8030e168d6684bb8c0938296a22a91d876b451e07b97acbab99e59329c",
+    "edition_bytes": 98356,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "75ffabd5b1c5ff83de8662b3d765527e9f321b22b28a0c88f18db18b1b9cc60f",
+    "reader_projection_sha256": "61e2ff2b161003fa844a61e3f5e01fb53dc2a0e2409e7b959ce6bcebc45d0331"
+   },
+   "revised_article": {
+    "path": "papers/ru/P06_dialogue_and_learning.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "7fc51a67b753214a2e7a9b5b119d416927a5de0c095ca65224c50fe0e70bff8a",
+    "bytes": 96549,
+    "language": "ru",
+    "links_rewritten": 7,
+    "links_marked": 98
+   },
+   "entry_page": {
+    "path": "papers/P06_dialogue_and_learning.md",
+    "revision_id": "MM_A0203-entry-en-r1",
+    "sha256": "25997609085113e734a2f08b885bdc339750fd9b5d783426a7112ddb59e15037",
+    "language": "en",
+    "derived_from_card": "16c4d9e3ad912bffc895ce717ca1eb347b5c08093a7ccf36983136301b872028"
+   },
+   "route": "papers/ru/P06_dialogue_and_learning.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P07",
+   "artifact_id": "MM_A0204",
+   "title_en": "Reasoning, Justification and Revision of Conclusions",
+   "title_ru": "Рассуждение, обоснование и пересмотр выводов",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "e276abd27031f3c1603c00e162bac178e13e60d3ad1e8013142a711583025857",
+    "edition_bytes": 98242,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "f6bb8c0ae26e8b4860191fea2f0aa2d263361f60eadc8c2d65c3fff9f0183b94",
+    "reader_projection_sha256": "3c5081189ea96608d7a7d0da9197ebb68ecb98573c525dc60c2f734c25ed33fc"
+   },
+   "revised_article": {
+    "path": "papers/ru/P07_reasoning_and_evidence.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "0cf305958ca35b9295b9b716965fde64f1b91316a63251767370c09770a594bd",
+    "bytes": 96265,
+    "language": "ru",
+    "links_rewritten": 8,
+    "links_marked": 109
+   },
+   "entry_page": {
+    "path": "papers/P07_reasoning_and_evidence.md",
+    "revision_id": "MM_A0204-entry-en-r1",
+    "sha256": "bafe7e0892480927c39c2a43565ca34339edfc708749a82778958378e4a324a4",
+    "language": "en",
+    "derived_from_card": "fc812f7fbd0bf503a97342d2e4da8971bdf23dd073e0ecf69b3d0cf3b6467f5a"
+   },
+   "route": "papers/ru/P07_reasoning_and_evidence.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P08",
+   "artifact_id": "MM_A0205",
+   "title_en": "Documents, Representations and Long-Term Memory",
+   "title_ru": "Документы, представления и долговременная память",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "e6069ab5e38804c900d766af540490d8031f6b37572b8021fc170dec956cfcc7",
+    "edition_bytes": 105816,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "751d9d1e4018759ec573c2c1a5b1a5f2100454a1920f94cddd80a3e9e33cf885",
+    "reader_projection_sha256": "d60853f59ddbd493ce0da95be44e661eec12e8905d1ce5496aa2dc7f6fb22b13"
+   },
+   "revised_article": {
+    "path": "papers/ru/P08_documents_and_memory.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "ce0cab70eb14cced7144d7069d339c081da3e1177c1d8739aa7a30cf6917905d",
+    "bytes": 103619,
+    "language": "ru",
+    "links_rewritten": 12,
+    "links_marked": 116
+   },
+   "entry_page": {
+    "path": "papers/P08_documents_and_memory.md",
+    "revision_id": "MM_A0205-entry-en-r1",
+    "sha256": "1acb9f6914bd967c58d4e18f66a8fcadf8e5cef332646279362eafaa105fbbf2",
+    "language": "en",
+    "derived_from_card": "e8bcb2ade5844a34fb7609155af60651f05169df57bdce16eb6e4e4bee0d385c"
+   },
+   "route": "papers/ru/P08_documents_and_memory.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P09",
+   "artifact_id": "MM_A0206",
+   "title_en": "Knowledge Contract v3: Synthesis of the General Model and a Professional Profile",
+   "title_ru": "Контракт знаний v3: синтез общей модели и профессиональный профиль",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "1e936cd0495ece88a42f64d1ac568aa61cdb2417e629a03c37deb6ada1ab6dca",
+    "edition_bytes": 133653,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "013d2c3c18ccedb3a4aef9e89628778ce3bcd777fe677df311475f1dcb59ff27",
+    "reader_projection_sha256": "b4565f96b4e7019cd4f8d73c8fbf6356a5b6d2457c42b86261a5225016388852"
+   },
+   "revised_article": {
+    "path": "papers/ru/P09_work_roles_skills_and_kc.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "e2354b5a9b196760562056d3a9618091f6e523f80aab5fb5583a66ad3f796880",
+    "bytes": 131343,
+    "language": "ru",
+    "links_rewritten": 8,
+    "links_marked": 126
+   },
+   "entry_page": {
+    "path": "papers/P09_work_roles_skills_and_kc.md",
+    "revision_id": "MM_A0206-entry-en-r1",
+    "sha256": "d1285db7732b102661da56088571ec9901774934f4624034912138d4f4a776ff",
+    "language": "en",
+    "derived_from_card": "eb03fa6ce2ab7affdd1c2396fe89a0ff3804797b099a06690897b0a0176c2ffd"
+   },
+   "route": "papers/ru/P09_work_roles_skills_and_kc.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P10",
+   "artifact_id": "MM_A0207",
+   "title_en": "Revision of Knowledge, Versions and Acceptance of Norms",
+   "title_ru": "Пересмотр знания, версии и принятие норм",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "268932ac2646984ff93ca8723d1e36a8e21ad3324f64d38b2f55612c5634080f",
+    "edition_bytes": 93268,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "f90e5c8e84f808cb0f2735c09a377f6658fa30338f5b54be79847d50428fdbfd",
+    "reader_projection_sha256": "d55995b1352c6448fca2a4a6ca07dbb2c583e4f3cd24d7b03f30e28db31897ff"
+   },
+   "revised_article": {
+    "path": "papers/ru/P10_revision_and_canon.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "8dc82bd01662c6322d6923521196086e4c643893b59479110024ca12fce2d33f",
+    "bytes": 91509,
+    "language": "ru",
+    "links_rewritten": 6,
+    "links_marked": 106
+   },
+   "entry_page": {
+    "path": "papers/P10_revision_and_canon.md",
+    "revision_id": "MM_A0207-entry-en-r1",
+    "sha256": "3b40daef335f1c96f847bf0b05a053f72d19a8d2bb33ab9ce158fb57578c3457",
+    "language": "en",
+    "derived_from_card": "b45cb61aedc610c0f71b088b2586be41584e8684e7f6e64bffc73d96db4a8137"
+   },
+   "route": "papers/ru/P10_revision_and_canon.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P11",
+   "artifact_id": "MM_A0208",
+   "title_en": "Evaluation, Counterexamples and the Limits of Claims",
+   "title_ru": "Проверка, контрпримеры и границы утверждений",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "1effc1d454f5de17d0092b37375c074956fbb5946ac3dba833827c4aaa1e0022",
+    "edition_bytes": 125500,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "51919af1ef87bf92848a65e0220297e19a9b99f8ec0168060aa171e5ea34d309",
+    "reader_projection_sha256": "0fd27a5445223c8ed85ddc65842e70ddcdf81287ab86dafe4aacbe5f5c703945"
+   },
+   "revised_article": {
+    "path": "papers/ru/P11_evaluation_and_falsification.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "eeef434eb2d856ec22443c063a94dd9d12bc6a53bc66cdb976abb9496923b58f",
+    "bytes": 123429,
+    "language": "ru",
+    "links_rewritten": 12,
+    "links_marked": 128
+   },
+   "entry_page": {
+    "path": "papers/P11_evaluation_and_falsification.md",
+    "revision_id": "MM_A0208-entry-en-r1",
+    "sha256": "6963856fc3351eda71ba1576260515a7381451665830e683a366c27c1ce2b55d",
+    "language": "en",
+    "derived_from_card": "47df134e034b1a023a73e3821131ba712188850f61c2419cc43c2fde6e42c3bd"
+   },
+   "route": "papers/ru/P11_evaluation_and_falsification.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P12",
+   "artifact_id": "MM_A0209",
+   "title_en": "Knowledge Compilation: Preparing Results and the Admissibility of Reuse",
+   "title_ru": "Компиляция знания: подготовка результатов и допустимость повторного использования",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "859af6faad2b09976abd5bfa0ba5ef344a364d8a6442e48985b0dd976f32010e",
+    "edition_bytes": 122824,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "9880ba02568d880af4008cdc1100fe8d9bf207212196e353f2969938bd36b535",
+    "reader_projection_sha256": "6c5080cc591f83a3092af2ea54c9bfcbe62d37592898beda2e90eae245c23c52"
+   },
+   "revised_article": {
+    "path": "papers/ru/P12_compilation_caching_and_reuse.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "27387f1c958796b9d742f35791d31aabf285f48ab7871182c9133c3c9df4091e",
+    "bytes": 120564,
+    "language": "ru",
+    "links_rewritten": 12,
+    "links_marked": 127
+   },
+   "entry_page": {
+    "path": "papers/P12_compilation_caching_and_reuse.md",
+    "revision_id": "MM_A0209-entry-en-r1",
+    "sha256": "d94ce4cbf749cfe66f5492fe74a008844d1032af699dcfa0034dcc0896768086",
+    "language": "en",
+    "derived_from_card": "fbc3f0003368c5fa70760a07ac81e4e7b5cb353c38ed5db5b513c4ae8530e99b"
+   },
+   "route": "papers/ru/P12_compilation_caching_and_reuse.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "paper",
+   "paper_id": "P13",
+   "artifact_id": "MM_A0446",
+   "title_en": "Knowledge Utility, the Cost of Meaning Artifacts and Resource Management",
+   "title_ru": "Полезность знаний, стоимость смысловых артефактов и управление ресурсами",
+   "source": {
+    "description": "terminology edition 2026-11-03 of the paper (editorial copy of the G1 reading projection)",
+    "edition_sha256": "ffd1cbd73fe830f842d160fb9983c650a35d45ae2fcf0f19cf359bfa40f0447e",
+    "edition_bytes": 84628,
+    "baseline_revision": "v034",
+    "content_revision": "MM_G1_20261028_v1",
+    "content_sha256": "18eb484d3a2cbdc969df28fcec1f46919da32dd49354b9b0f939250c5e2f6ade",
+    "reader_projection_sha256": "0744e21cb2d7f272fff6a9a943597336acb89cd145303e93c74a1bee8a5eb429"
+   },
+   "revised_article": {
+    "path": "papers/ru/P13_knowledge_utility_and_resource_economics.md",
+    "revision_id": "MM_G1_20261028_v1+terminology-2026-11-03+pub1",
+    "sha256": "c7af5ed39d900454264e1b2c366ce808bb2f8d12275b317a534445a09ca24b7b",
+    "bytes": 83779,
+    "language": "ru",
+    "links_rewritten": 3,
+    "links_marked": 58
+   },
+   "entry_page": {
+    "path": "papers/P13_knowledge_utility_and_resource_economics.md",
+    "revision_id": "MM_A0446-entry-en-r1",
+    "sha256": "47ad3f72d0c5d31fcd79188f0fe0c2de6a162c5071fe7f83f285497c1947f25a",
+    "language": "en",
+    "derived_from_card": "1fffe41b82c82bdee4b23195466be77560c54ff38b6da04cd4d168c3ad2ca604"
+   },
+   "route": "papers/ru/P13_knowledge_utility_and_resource_economics.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0220",
+   "title_en": "Registry of Shared Artifacts: Identity, Fields and Obligations",
+   "title_ru": "Реестр общих артефактов: идентичность, поля и обязанности",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "620a1ef11cfec0bdfd466752f32009c60f30703b6210d426027909df98db83b2",
+    "edition_bytes": 72050,
+    "content_revision": "v034",
+    "logical_path": "specifications/ARTIFACT_REGISTRY.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/ARTIFACT_REGISTRY.md",
+    "revision_id": "MM_A0220-v034+pub1",
+    "sha256": "cd97c35f6fa3faaa82559521e0c96ba296f2b189bb1d558c03965e1cf1294214",
+    "bytes": 70239,
+    "language": "ru",
+    "links_rewritten": 2,
+    "links_marked": 67
+   },
+   "entry_page": {
+    "path": "spec/ARTIFACT_REGISTRY.md",
+    "revision_id": "MM_A0220-entry-en-r1",
+    "sha256": "32bcb0397ffedc1b5f3800a8e51c430dcf7536b66e6de5baaa98d8a74848bee8",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/ARTIFACT_REGISTRY.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0221",
+   "title_en": "Identity, Dependencies and Invalidation",
+   "title_ru": "Идентичность, зависимости и инвалидирование",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "71808dee9360009e26ee899d7a8a28d73b2d26c34f29e2ad621e926f82e5f2ef",
+    "edition_bytes": 60051,
+    "content_revision": "v034",
+    "logical_path": "specifications/CACHE_IDENTITY_AND_INVALIDATION.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/CACHE_IDENTITY_AND_INVALIDATION.md",
+    "revision_id": "MM_A0221-v034+pub1",
+    "sha256": "c38ef035dd8c394ecf0563d1c328748d65d4c74280cb25381ee5ff423b2315d8",
+    "bytes": 58277,
+    "language": "ru",
+    "links_rewritten": 5,
+    "links_marked": 69
+   },
+   "entry_page": {
+    "path": "spec/CACHE_IDENTITY_AND_INVALIDATION.md",
+    "revision_id": "MM_A0221-entry-en-r1",
+    "sha256": "41a1c33f9655af3f8713bf2cab2c0e4073bfe30d3437c2e8eaa7e505a93c420a",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/CACHE_IDENTITY_AND_INVALIDATION.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0222",
+   "title_en": "Compiled Artifact Contract",
+   "title_ru": "Контракт скомпилированного артефакта",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "6e395eca37b134d7ba99926fd98bc68c9338a904164477e63f57b064c862c493",
+    "edition_bytes": 75444,
+    "content_revision": "v034",
+    "logical_path": "specifications/COMPILED_ARTIFACT_CONTRACT.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/COMPILED_ARTIFACT_CONTRACT.md",
+    "revision_id": "MM_A0222-v034+pub1",
+    "sha256": "37205863ef8e5f9e4019b1139bed7010a5278f2f4daf4c2e019670e42ac5bca7",
+    "bytes": 73211,
+    "language": "ru",
+    "links_rewritten": 6,
+    "links_marked": 79
+   },
+   "entry_page": {
+    "path": "spec/COMPILED_ARTIFACT_CONTRACT.md",
+    "revision_id": "MM_A0222-entry-en-r1",
+    "sha256": "84ab77c5274bf700551d508fec233596ff06a926dfeb4f292e17945003b1f981",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/COMPILED_ARTIFACT_CONTRACT.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0223",
+   "title_en": "ContextPackage: Specification and Bounded Executable Profile",
+   "title_ru": "ContextPackage: спецификация и ограниченный исполнимый профиль",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "aff54c6079055087ce29162da437a8c9f66c885381523fce38ba89ca7aa95ef1",
+    "edition_bytes": 56285,
+    "content_revision": "v034",
+    "logical_path": "specifications/CONTEXT_PACKAGE.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/CONTEXT_PACKAGE.md",
+    "revision_id": "MM_A0223-v034+pub1",
+    "sha256": "658c850c7f57bf35837ca13c9f18d711f8e730ef806986ccf30431bc894cdd4d",
+    "bytes": 54768,
+    "language": "ru",
+    "links_rewritten": 4,
+    "links_marked": 59
+   },
+   "entry_page": {
+    "path": "spec/CONTEXT_PACKAGE.md",
+    "revision_id": "MM_A0223-entry-en-r1",
+    "sha256": "4d9d2d904466a6283535e5b83fb46cf5300629b9b2641de29fcb9e9a63704624",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/CONTEXT_PACKAGE.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0224",
+   "title_en": "Family of Contracts for Operations on Meanings and Knowledge",
+   "title_ru": "Семейство контрактов операций над смыслами и знаниями",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "18c01563cd5e80d07623af0e325e2dae2b7c16e9804a424d7acd03d748000dce",
+    "edition_bytes": 45122,
+    "content_revision": "v034",
+    "logical_path": "specifications/CONTRACT_FAMILY.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/CONTRACT_FAMILY.md",
+    "revision_id": "MM_A0224-v034+pub1",
+    "sha256": "3c165ae090b2be48e273f509715fb67c89ee538747320120b556b8b1c4d6b9dd",
+    "bytes": 44009,
+    "language": "ru",
+    "links_rewritten": 4,
+    "links_marked": 45
+   },
+   "entry_page": {
+    "path": "spec/CONTRACT_FAMILY.md",
+    "revision_id": "MM_A0224-entry-en-r1",
+    "sha256": "10ce79c47865edf50c06fde36a5e3c49c50b98bb9d547b91a8c1d67a70849b81",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/CONTRACT_FAMILY.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0225",
+   "title_en": "Knowledge Contract v3: Synthesis Specification",
+   "title_ru": "Knowledge Contract v3 — синтез I26",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "dc1cbfd02bfdf32577777fce2f1100926b21582d50516c3448a665d8ddad3f64",
+    "edition_bytes": 79018,
+    "content_revision": "v034",
+    "logical_path": "specifications/KNOWLEDGE_CONTRACT_V3.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/KNOWLEDGE_CONTRACT_V3.md",
+    "revision_id": "MM_A0225-v034+pub1",
+    "sha256": "085e42e980024e26e65cb904610f0c4fe8e52ff873291802d336e24a925d9412",
+    "bytes": 77457,
+    "language": "ru",
+    "links_rewritten": 15,
+    "links_marked": 63
+   },
+   "entry_page": {
+    "path": "spec/KNOWLEDGE_CONTRACT_V3.md",
+    "revision_id": "MM_A0225-entry-en-r1",
+    "sha256": "1053856f569e5cc765f7bc65c2bc9c6ec9029e97606f367767fe9a74c8877e2d",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/KNOWLEDGE_CONTRACT_V3.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0960",
+   "title_en": "Knowledge Bases and Contract Evolution",
+   "title_ru": "Версии оснований знания и эволюция контрактов",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "0808792a2783e34deb2aeb2f96291f9ae9f7fe6ac869be6ae1153c0c4df52820",
+    "edition_bytes": 46885,
+    "content_revision": "v010",
+    "logical_path": "specifications/KNOWLEDGE_EVOLUTION_CONTRACT.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/KNOWLEDGE_EVOLUTION_CONTRACT.md",
+    "revision_id": "MM_A0960-v010+pub1",
+    "sha256": "af55efed9e3be069ec27bcca1f3ce1e05f64404976c0fb7b8ee9f78f26bb6657",
+    "bytes": 46319,
+    "language": "ru",
+    "links_rewritten": 1,
+    "links_marked": 24
+   },
+   "entry_page": {
+    "path": "spec/KNOWLEDGE_EVOLUTION_CONTRACT.md",
+    "revision_id": "MM_A0960-entry-en-r1",
+    "sha256": "6f3be11fc914711cef32f32515d1e774f8a916542903c09b542e975e05f53598",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/KNOWLEDGE_EVOLUTION_CONTRACT.md",
+   "release_digest_member": true,
+   "scientific_status": "normative_architecture_requirement_with_proposed_metadata_profile"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0226",
+   "title_en": "Policy for Permissible Reuse",
+   "title_ru": "Политика допустимого повторного использования",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "9f1de6772844c94d60c4a8908d9096edd8a42e65607b197bed5b864107674980",
+    "edition_bytes": 76676,
+    "content_revision": "v034",
+    "logical_path": "specifications/REUSE_POLICY.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/REUSE_POLICY.md",
+    "revision_id": "MM_A0226-v034+pub1",
+    "sha256": "5e6b2f29785f7f9dbf099dd7579e36bb76fc472986b0499b24b083f30778ee32",
+    "bytes": 74503,
+    "language": "ru",
+    "links_rewritten": 5,
+    "links_marked": 73
+   },
+   "entry_page": {
+    "path": "spec/REUSE_POLICY.md",
+    "revision_id": "MM_A0226-entry-en-r1",
+    "sha256": "62ddd1c6b9332de7b06e78a7a071093835b3b303551a0b0cd63d80b61fb2cf5c",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/REUSE_POLICY.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0227",
+   "title_en": "Content Types and Independent Classification Axes",
+   "title_ru": "Типы содержания и независимые оси классификации",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "25071a21919993beac8fff413015215bb7436941bb199eb52ee4f3379b7423ef",
+    "edition_bytes": 50142,
+    "content_revision": "v034",
+    "logical_path": "specifications/SEMANTIC_TYPES.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/SEMANTIC_TYPES.md",
+    "revision_id": "MM_A0227-v034+pub1",
+    "sha256": "b61e89ddc0f995ff5188f717fe23ef0dcd932db6692b5710e15927ef81442526",
+    "bytes": 49106,
+    "language": "ru",
+    "links_rewritten": 1,
+    "links_marked": 41
+   },
+   "entry_page": {
+    "path": "spec/SEMANTIC_TYPES.md",
+    "revision_id": "MM_A0227-entry-en-r1",
+    "sha256": "a378559d1847ec9343d4725773da40a817634413b35edcdc56b6f3b756c82279",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/SEMANTIC_TYPES.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  },
+  {
+   "kind": "specification",
+   "artifact_id": "MM_A0228",
+   "title_en": "Independent Statuses, Assessment Scopes and Transitions",
+   "title_ru": "Независимые статусы, области оценки и переходы",
+   "source": {
+    "description": "exact text of the specification embedded in the reading source container",
+    "edition_sha256": "7acab3502b4508c8c32f62f41875fd6fc048d635f9ea63e492802f2eb549fdd1",
+    "edition_bytes": 43543,
+    "content_revision": "v034",
+    "logical_path": "specifications/STATUS_MODEL.md"
+   },
+   "revised_article": {
+    "path": "spec/ru/STATUS_MODEL.md",
+    "revision_id": "MM_A0228-v034+pub1",
+    "sha256": "40444409285d6a833cb18f10970d63fe226f9d80fc3f66c626e8924f4432913b",
+    "bytes": 42200,
+    "language": "ru",
+    "links_rewritten": 1,
+    "links_marked": 57
+   },
+   "entry_page": {
+    "path": "spec/STATUS_MODEL.md",
+    "revision_id": "MM_A0228-entry-en-r1",
+    "sha256": "90077c0e2542debe9bac7a3729de6205a17c1a8e6901cdc84e3178430f352bd9",
+    "language": "en",
+    "derived_from_card": null
+   },
+   "route": "spec/ru/STATUS_MODEL.md",
+   "release_digest_member": true,
+   "scientific_status": "concept_draft"
+  }
+ ],
+ "files": [
+  {
+   "path": "papers/P00_introduction.md",
+   "sha256": "a246c5d4a96156d3a7f9ea9446b70a3c117ae61f69e1d89974b9119205ef02d6"
+  },
+  {
+   "path": "papers/P01_semantic_objects_and_extraction.md",
+   "sha256": "68e141a03e45bdf4c9dd83bb019d4e2d5eebeda278c1ef4fad4ab8afde19893c"
+  },
+  {
+   "path": "papers/P02_context_and_applicability.md",
+   "sha256": "303250dd8bee6f73ae3cd3cc03587d8a7e09be781d605767c6a65d4306cb9f8a"
+  },
+  {
+   "path": "papers/P03_transformations_and_transfer.md",
+   "sha256": "52de2e373f5f6325393519118b86e3d3383bf84a2b8f5c3071d1a6e2e23117a7"
+  },
+  {
+   "path": "papers/P04_query_retrieval_and_coverage.md",
+   "sha256": "6342a8d4f0b8c59f295a2e9a60c1c03a82026eea0ac22a1e746732d4426b1d04"
+  },
+  {
+   "path": "papers/P05_budgeted_context_composition.md",
+   "sha256": "472789068320ab70cefa3cdcae786e3cb1792ae431a83a62e023f25320e9fc1f"
+  },
+  {
+   "path": "papers/P06_dialogue_and_learning.md",
+   "sha256": "25997609085113e734a2f08b885bdc339750fd9b5d783426a7112ddb59e15037"
+  },
+  {
+   "path": "papers/P07_reasoning_and_evidence.md",
+   "sha256": "bafe7e0892480927c39c2a43565ca34339edfc708749a82778958378e4a324a4"
+  },
+  {
+   "path": "papers/P08_documents_and_memory.md",
+   "sha256": "1acb9f6914bd967c58d4e18f66a8fcadf8e5cef332646279362eafaa105fbbf2"
+  },
+  {
+   "path": "papers/P09_work_roles_skills_and_kc.md",
+   "sha256": "d1285db7732b102661da56088571ec9901774934f4624034912138d4f4a776ff"
+  },
+  {
+   "path": "papers/P10_revision_and_canon.md",
+   "sha256": "3b40daef335f1c96f847bf0b05a053f72d19a8d2bb33ab9ce158fb57578c3457"
+  },
+  {
+   "path": "papers/P11_evaluation_and_falsification.md",
+   "sha256": "6963856fc3351eda71ba1576260515a7381451665830e683a366c27c1ce2b55d"
+  },
+  {
+   "path": "papers/P12_compilation_caching_and_reuse.md",
+   "sha256": "d94ce4cbf749cfe66f5492fe74a008844d1032af699dcfa0034dcc0896768086"
+  },
+  {
+   "path": "papers/P13_knowledge_utility_and_resource_economics.md",
+   "sha256": "47ad3f72d0c5d31fcd79188f0fe0c2de6a162c5071fe7f83f285497c1947f25a"
+  },
+  {
+   "path": "papers/README.md",
+   "sha256": "55ec62a2f7b42353a157f515356a002fe8e86ccad71a8af15c73315b8fe88c27"
+  },
+  {
+   "path": "papers/ru/P00_introduction.md",
+   "sha256": "ac5ec9d1fd3e47177d17a69181d8f086e551e8884671cb83064c17cbc68079a2"
+  },
+  {
+   "path": "papers/ru/P01_semantic_objects_and_extraction.md",
+   "sha256": "c4b4c11c88049b084a0f06c1a94f998f10de916a39f3d12934744a7ab8d5e636"
+  },
+  {
+   "path": "papers/ru/P02_context_and_applicability.md",
+   "sha256": "b02a510f00def3b24420336d64213fc9f50a238c9dada6e760cb92587b9904d7"
+  },
+  {
+   "path": "papers/ru/P03_transformations_and_transfer.md",
+   "sha256": "c9408ddb7197f6641e9f26f9caa6c9675e8c5bbc9cb5b53e478a5c4cf3411b85"
+  },
+  {
+   "path": "papers/ru/P04_query_retrieval_and_coverage.md",
+   "sha256": "c3ec7322ee3004fb25aa8df3cdad751ac6c535d901804a636aae4e8b1653aa9e"
+  },
+  {
+   "path": "papers/ru/P05_budgeted_context_composition.md",
+   "sha256": "525f68af7dc4f48341cf304369b6129587d2e0936cc185c2741787598126075d"
+  },
+  {
+   "path": "papers/ru/P06_dialogue_and_learning.md",
+   "sha256": "7fc51a67b753214a2e7a9b5b119d416927a5de0c095ca65224c50fe0e70bff8a"
+  },
+  {
+   "path": "papers/ru/P07_reasoning_and_evidence.md",
+   "sha256": "0cf305958ca35b9295b9b716965fde64f1b91316a63251767370c09770a594bd"
+  },
+  {
+   "path": "papers/ru/P08_documents_and_memory.md",
+   "sha256": "ce0cab70eb14cced7144d7069d339c081da3e1177c1d8739aa7a30cf6917905d"
+  },
+  {
+   "path": "papers/ru/P09_work_roles_skills_and_kc.md",
+   "sha256": "e2354b5a9b196760562056d3a9618091f6e523f80aab5fb5583a66ad3f796880"
+  },
+  {
+   "path": "papers/ru/P10_revision_and_canon.md",
+   "sha256": "8dc82bd01662c6322d6923521196086e4c643893b59479110024ca12fce2d33f"
+  },
+  {
+   "path": "papers/ru/P11_evaluation_and_falsification.md",
+   "sha256": "eeef434eb2d856ec22443c063a94dd9d12bc6a53bc66cdb976abb9496923b58f"
+  },
+  {
+   "path": "papers/ru/P12_compilation_caching_and_reuse.md",
+   "sha256": "27387f1c958796b9d742f35791d31aabf285f48ab7871182c9133c3c9df4091e"
+  },
+  {
+   "path": "papers/ru/P13_knowledge_utility_and_resource_economics.md",
+   "sha256": "c7af5ed39d900454264e1b2c366ce808bb2f8d12275b317a534445a09ca24b7b"
+  },
+  {
+   "path": "spec/ARTIFACT_REGISTRY.md",
+   "sha256": "32bcb0397ffedc1b5f3800a8e51c430dcf7536b66e6de5baaa98d8a74848bee8"
+  },
+  {
+   "path": "spec/CACHE_IDENTITY_AND_INVALIDATION.md",
+   "sha256": "41a1c33f9655af3f8713bf2cab2c0e4073bfe30d3437c2e8eaa7e505a93c420a"
+  },
+  {
+   "path": "spec/COMPILED_ARTIFACT_CONTRACT.md",
+   "sha256": "84ab77c5274bf700551d508fec233596ff06a926dfeb4f292e17945003b1f981"
+  },
+  {
+   "path": "spec/CONTEXT_PACKAGE.md",
+   "sha256": "4d9d2d904466a6283535e5b83fb46cf5300629b9b2641de29fcb9e9a63704624"
+  },
+  {
+   "path": "spec/CONTRACT_FAMILY.md",
+   "sha256": "10ce79c47865edf50c06fde36a5e3c49c50b98bb9d547b91a8c1d67a70849b81"
+  },
+  {
+   "path": "spec/KNOWLEDGE_CONTRACT_V3.md",
+   "sha256": "1053856f569e5cc765f7bc65c2bc9c6ec9029e97606f367767fe9a74c8877e2d"
+  },
+  {
+   "path": "spec/KNOWLEDGE_EVOLUTION_CONTRACT.md",
+   "sha256": "6f3be11fc914711cef32f32515d1e774f8a916542903c09b542e975e05f53598"
+  },
+  {
+   "path": "spec/README.md",
+   "sha256": "f13abb1175dc0ad40f0e540258bfaf24634bb0203d7eb8ab8d2884d95eeb1023"
+  },
+  {
+   "path": "spec/REUSE_POLICY.md",
+   "sha256": "62ddd1c6b9332de7b06e78a7a071093835b3b303551a0b0cd63d80b61fb2cf5c"
+  },
+  {
+   "path": "spec/SEMANTIC_TYPES.md",
+   "sha256": "a378559d1847ec9343d4725773da40a817634413b35edcdc56b6f3b756c82279"
+  },
+  {
+   "path": "spec/STATUS_MODEL.md",
+   "sha256": "90077c0e2542debe9bac7a3729de6205a17c1a8e6901cdc84e3178430f352bd9"
+  },
+  {
+   "path": "spec/ru/ARTIFACT_REGISTRY.md",
+   "sha256": "cd97c35f6fa3faaa82559521e0c96ba296f2b189bb1d558c03965e1cf1294214"
+  },
+  {
+   "path": "spec/ru/CACHE_IDENTITY_AND_INVALIDATION.md",
+   "sha256": "c38ef035dd8c394ecf0563d1c328748d65d4c74280cb25381ee5ff423b2315d8"
+  },
+  {
+   "path": "spec/ru/COMPILED_ARTIFACT_CONTRACT.md",
+   "sha256": "37205863ef8e5f9e4019b1139bed7010a5278f2f4daf4c2e019670e42ac5bca7"
+  },
+  {
+   "path": "spec/ru/CONTEXT_PACKAGE.md",
+   "sha256": "658c850c7f57bf35837ca13c9f18d711f8e730ef806986ccf30431bc894cdd4d"
+  },
+  {
+   "path": "spec/ru/CONTRACT_FAMILY.md",
+   "sha256": "3c165ae090b2be48e273f509715fb67c89ee538747320120b556b8b1c4d6b9dd"
+  },
+  {
+   "path": "spec/ru/KNOWLEDGE_CONTRACT_V3.md",
+   "sha256": "085e42e980024e26e65cb904610f0c4fe8e52ff873291802d336e24a925d9412"
+  },
+  {
+   "path": "spec/ru/KNOWLEDGE_EVOLUTION_CONTRACT.md",
+   "sha256": "af55efed9e3be069ec27bcca1f3ce1e05f64404976c0fb7b8ee9f78f26bb6657"
+  },
+  {
+   "path": "spec/ru/REUSE_POLICY.md",
+   "sha256": "5e6b2f29785f7f9dbf099dd7579e36bb76fc472986b0499b24b083f30778ee32"
+  },
+  {
+   "path": "spec/ru/SEMANTIC_TYPES.md",
+   "sha256": "b61e89ddc0f995ff5188f717fe23ef0dcd932db6692b5710e15927ef81442526"
+  },
+  {
+   "path": "spec/ru/STATUS_MODEL.md",
+   "sha256": "40444409285d6a833cb18f10970d63fe226f9d80fc3f66c626e8924f4432913b"
+  }
+ ]
+}
