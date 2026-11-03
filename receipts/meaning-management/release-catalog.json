@@ -29,7 +29,7 @@
  ],
  "release_digest": {
   "algorithm": "sha256 over lines \"<sha256>  <path>\\n\" of all files under papers/ and spec/ (except .gitkeep), sorted by path",
-  "value": "1dea07d466d29f5b88e38b9894aa4f629dc6e2ff3eaeb3318f3771be61bd3067",
+  "value": "0c65b384e6ee0746c9ee2945668d6f08f7a19c285d41a2728f4637c86b851f32",
   "files": 50
  },
  "not_in_this_release": "tier 2 supporting records, tools, schemas, the glossary, and every allowlist item marked needs-decision or exclude, except the 14 edited papers (decision above)",
@@ -61,9 +61,9 @@
    "entry_page": {
     "path": "papers/P00_introduction.md",
     "revision_id": "MM_A0197-entry-en-r1",
-    "sha256": "a246c5d4a96156d3a7f9ea9446b70a3c117ae61f69e1d89974b9119205ef02d6",
+    "sha256": "865c0a36bd71e235574c7212e3b9a651373ec15ec7b190418f5bbfde6e3d6cbb",
     "language": "en",
-    "derived_from_card": "739b58d7091808321cbccb3d1702529a5725df00a20fa04c36f574ab744064d7"
+    "derived_from_card": "fa7befd9e1de1ee0ab6cace61e4ed20b1bdb89bb7d7dace4552061707c2b8d65"
    },
    "route": "papers/ru/P00_introduction.md",
    "release_digest_member": true,
@@ -96,9 +96,9 @@
    "entry_page": {
     "path": "papers/P01_semantic_objects_and_extraction.md",
     "revision_id": "MM_A0198-entry-en-r1",
-    "sha256": "68e141a03e45bdf4c9dd83bb019d4e2d5eebeda278c1ef4fad4ab8afde19893c",
+    "sha256": "1134aa13efab8d3b97a5ec848bb6ab7cfd4d088e7504aa89c11b8dea13a3829c",
     "language": "en",
-    "derived_from_card": "1c80e53a763bd1ea834cad0d7e6d7bed413d5ccaec14cbcd7147c16ea1d445e0"
+    "derived_from_card": "34fdfe31c3feaaba586b30cd75d4f409ac731c467f2598775abfe4e15c8c784c"
    },
    "route": "papers/ru/P01_semantic_objects_and_extraction.md",
    "release_digest_member": true,
@@ -131,9 +131,9 @@
    "entry_page": {
     "path": "papers/P02_context_and_applicability.md",
     "revision_id": "MM_A0199-entry-en-r1",
-    "sha256": "303250dd8bee6f73ae3cd3cc03587d8a7e09be781d605767c6a65d4306cb9f8a",
+    "sha256": "597c2d596c4509281979dd64b6838cbbf4d224ece9d8fa6acf79733968ec8fc2",
     "language": "en",
-    "derived_from_card": "386795d8dd9d88efd35a331ed5dfb700e57ffcdbfbd45afd09475b788bea2e93"
+    "derived_from_card": "efe152c4c20612fc2037c7759cdcb3f7a4c0c40ab5b5cd83d229777f7a8ff0a5"
    },
    "route": "papers/ru/P02_context_and_applicability.md",
    "release_digest_member": true,
@@ -166,9 +166,9 @@
    "entry_page": {
     "path": "papers/P03_transformations_and_transfer.md",
     "revision_id": "MM_A0200-entry-en-r1",
-    "sha256": "52de2e373f5f6325393519118b86e3d3383bf84a2b8f5c3071d1a6e2e23117a7",
+    "sha256": "8d9990f515613a267039191ed4654ebc7d2231a011d20c02f44334dd6dca1ef1",
     "language": "en",
-    "derived_from_card": "f6f7c161291a6327f518b3a20e4441197f444b52867bcf932804c116ae9704b8"
+    "derived_from_card": "6430d1444209a81623fece611303bfa7dfa8964670720370712ea09a6af55ee5"
    },
    "route": "papers/ru/P03_transformations_and_transfer.md",
    "release_digest_member": true,
@@ -201,9 +201,9 @@
    "entry_page": {
     "path": "papers/P04_query_retrieval_and_coverage.md",
     "revision_id": "MM_A0201-entry-en-r1",
-    "sha256": "6342a8d4f0b8c59f295a2e9a60c1c03a82026eea0ac22a1e746732d4426b1d04",
+    "sha256": "bf9eeef1d735651578c3c81f53f543ad47bcb68a9081fff7b7af555b391caf31",
     "language": "en",
-    "derived_from_card": "6778f3a9b2464ebb720651599868f8b896dd0979a111f826acde8f474d08d2e4"
+    "derived_from_card": "a6b39660a0cfedd5ac07e416ad34995446f32cdb3c6f20378421a12d743c186c"
    },
    "route": "papers/ru/P04_query_retrieval_and_coverage.md",
    "release_digest_member": true,
@@ -236,9 +236,9 @@
    "entry_page": {
     "path": "papers/P05_budgeted_context_composition.md",
     "revision_id": "MM_A0202-entry-en-r1",
-    "sha256": "472789068320ab70cefa3cdcae786e3cb1792ae431a83a62e023f25320e9fc1f",
+    "sha256": "65920ab0d9647a2e2dd0f577808ed7094ca6ccefef3f7210a8259cc4d1af1a8f",
     "language": "en",
-    "derived_from_card": "2d4f74515571654964754dee6c4d63d71e7ac12a1dc88705248c538adf2c7d74"
+    "derived_from_card": "208cf23bc45a36e7120a118768480a9a6a75c7f3b6ea26e1ef438c54134cd604"
    },
    "route": "papers/ru/P05_budgeted_context_composition.md",
    "release_digest_member": true,
@@ -271,9 +271,9 @@
    "entry_page": {
     "path": "papers/P06_dialogue_and_learning.md",
     "revision_id": "MM_A0203-entry-en-r1",
-    "sha256": "25997609085113e734a2f08b885bdc339750fd9b5d783426a7112ddb59e15037",
+    "sha256": "6c7eb61c1b6ddd2e4160c9a625f938d3a76b6b890cdaf9a9ff3acb326cc4cb75",
     "language": "en",
-    "derived_from_card": "16c4d9e3ad912bffc895ce717ca1eb347b5c08093a7ccf36983136301b872028"
+    "derived_from_card": "2dbc41e58352a0381a639a7fe44612703daecb026fd64d147c74d6746491d526"
    },
    "route": "papers/ru/P06_dialogue_and_learning.md",
    "release_digest_member": true,
@@ -306,9 +306,9 @@
    "entry_page": {
     "path": "papers/P07_reasoning_and_evidence.md",
     "revision_id": "MM_A0204-entry-en-r1",
-    "sha256": "bafe7e0892480927c39c2a43565ca34339edfc708749a82778958378e4a324a4",
+    "sha256": "1e8bdb49dc2ca64452ca0c70bb5c74aab9d5c17ed196489cbffd8c0dfd7a54cc",
     "language": "en",
-    "derived_from_card": "fc812f7fbd0bf503a97342d2e4da8971bdf23dd073e0ecf69b3d0cf3b6467f5a"
+    "derived_from_card": "18c6ebdb0dc65cb85fa8051c02a7b0511b67dab1579e87a7299f478707d2311a"
    },
    "route": "papers/ru/P07_reasoning_and_evidence.md",
    "release_digest_member": true,
@@ -341,9 +341,9 @@
    "entry_page": {
     "path": "papers/P08_documents_and_memory.md",
     "revision_id": "MM_A0205-entry-en-r1",
-    "sha256": "1acb9f6914bd967c58d4e18f66a8fcadf8e5cef332646279362eafaa105fbbf2",
+    "sha256": "050a2c66e4f96ceedcc2cec733ec8988f2d9d43528b0f0b681ae7e85fee1756f",
     "language": "en",
-    "derived_from_card": "e8bcb2ade5844a34fb7609155af60651f05169df57bdce16eb6e4e4bee0d385c"
+    "derived_from_card": "f81e967c686579980b6d3b33dbbe66b6a3d4e170d1872c81c3265e1bc137e4d2"
    },
    "route": "papers/ru/P08_documents_and_memory.md",
    "release_digest_member": true,
@@ -376,9 +376,9 @@
    "entry_page": {
     "path": "papers/P09_work_roles_skills_and_kc.md",
     "revision_id": "MM_A0206-entry-en-r1",
-    "sha256": "d1285db7732b102661da56088571ec9901774934f4624034912138d4f4a776ff",
+    "sha256": "ffeb0eaeb8a8f988bfc2bb6a7b9d435605f11abad660dff29847934a6d31677f",
     "language": "en",
-    "derived_from_card": "eb03fa6ce2ab7affdd1c2396fe89a0ff3804797b099a06690897b0a0176c2ffd"
+    "derived_from_card": "834fa95aac243cbe270555921b2834dd47a0f5eaeb8cdfa5266b83b211de502e"
    },
    "route": "papers/ru/P09_work_roles_skills_and_kc.md",
    "release_digest_member": true,
@@ -411,9 +411,9 @@
    "entry_page": {
     "path": "papers/P10_revision_and_canon.md",
     "revision_id": "MM_A0207-entry-en-r1",
-    "sha256": "3b40daef335f1c96f847bf0b05a053f72d19a8d2bb33ab9ce158fb57578c3457",
+    "sha256": "29051de93e18041363ff74ce8ae3419cdf2a7326ceed055a3c3a90d391fd403b",
     "language": "en",
-    "derived_from_card": "b45cb61aedc610c0f71b088b2586be41584e8684e7f6e64bffc73d96db4a8137"
+    "derived_from_card": "b7b67c03da0659ca4c35babe114177dfc8c32029f1a339ac37a0bd58d1639c66"
    },
    "route": "papers/ru/P10_revision_and_canon.md",
    "release_digest_member": true,
@@ -446,9 +446,9 @@
    "entry_page": {
     "path": "papers/P11_evaluation_and_falsification.md",
     "revision_id": "MM_A0208-entry-en-r1",
-    "sha256": "6963856fc3351eda71ba1576260515a7381451665830e683a366c27c1ce2b55d",
+    "sha256": "c6790db3823ebd12585d29c44e08c89ef3d093dc6cdfa70d6163300042dd95c5",
     "language": "en",
-    "derived_from_card": "47df134e034b1a023a73e3821131ba712188850f61c2419cc43c2fde6e42c3bd"
+    "derived_from_card": "16111a9c996701611feb479a9ae3e3267d47b5e6b28700f2d727b67f0d495efd"
    },
    "route": "papers/ru/P11_evaluation_and_falsification.md",
    "release_digest_member": true,
@@ -481,9 +481,9 @@
    "entry_page": {
     "path": "papers/P12_compilation_caching_and_reuse.md",
     "revision_id": "MM_A0209-entry-en-r1",
-    "sha256": "d94ce4cbf749cfe66f5492fe74a008844d1032af699dcfa0034dcc0896768086",
+    "sha256": "6e9914dcd1e623d93c5faec00deb3ef1ceefd1ee10017e88bbfc058dd4ced519",
     "language": "en",
-    "derived_from_card": "fbc3f0003368c5fa70760a07ac81e4e7b5cb353c38ed5db5b513c4ae8530e99b"
+    "derived_from_card": "d13d4eef876c5193e858cf0f80f5e9563b558b429f21ddc8c1326eb8ddddebce"
    },
    "route": "papers/ru/P12_compilation_caching_and_reuse.md",
    "release_digest_member": true,
@@ -516,9 +516,9 @@
    "entry_page": {
     "path": "papers/P13_knowledge_utility_and_resource_economics.md",
     "revision_id": "MM_A0446-entry-en-r1",
-    "sha256": "47ad3f72d0c5d31fcd79188f0fe0c2de6a162c5071fe7f83f285497c1947f25a",
+    "sha256": "cfc34aa90a215333f4e2d2d5e9120083631ed180a852f3fd0d22228a650956dc",
     "language": "en",
-    "derived_from_card": "1fffe41b82c82bdee4b23195466be77560c54ff38b6da04cd4d168c3ad2ca604"
+    "derived_from_card": "ccd6b66414bda409cd3fe1c0cb3effc1ba1cd1e98d116c6a6cd88fe3e4869541"
    },
    "route": "papers/ru/P13_knowledge_utility_and_resource_economics.md",
    "release_digest_member": true,
@@ -848,59 +848,59 @@
  "files": [
   {
    "path": "papers/P00_introduction.md",
-   "sha256": "a246c5d4a96156d3a7f9ea9446b70a3c117ae61f69e1d89974b9119205ef02d6"
+   "sha256": "865c0a36bd71e235574c7212e3b9a651373ec15ec7b190418f5bbfde6e3d6cbb"
   },
   {
    "path": "papers/P01_semantic_objects_and_extraction.md",
-   "sha256": "68e141a03e45bdf4c9dd83bb019d4e2d5eebeda278c1ef4fad4ab8afde19893c"
+   "sha256": "1134aa13efab8d3b97a5ec848bb6ab7cfd4d088e7504aa89c11b8dea13a3829c"
   },
   {
    "path": "papers/P02_context_and_applicability.md",
-   "sha256": "303250dd8bee6f73ae3cd3cc03587d8a7e09be781d605767c6a65d4306cb9f8a"
+   "sha256": "597c2d596c4509281979dd64b6838cbbf4d224ece9d8fa6acf79733968ec8fc2"
   },
   {
    "path": "papers/P03_transformations_and_transfer.md",
-   "sha256": "52de2e373f5f6325393519118b86e3d3383bf84a2b8f5c3071d1a6e2e23117a7"
+   "sha256": "8d9990f515613a267039191ed4654ebc7d2231a011d20c02f44334dd6dca1ef1"
   },
   {
    "path": "papers/P04_query_retrieval_and_coverage.md",
-   "sha256": "6342a8d4f0b8c59f295a2e9a60c1c03a82026eea0ac22a1e746732d4426b1d04"
+   "sha256": "bf9eeef1d735651578c3c81f53f543ad47bcb68a9081fff7b7af555b391caf31"
   },
   {
    "path": "papers/P05_budgeted_context_composition.md",
-   "sha256": "472789068320ab70cefa3cdcae786e3cb1792ae431a83a62e023f25320e9fc1f"
+   "sha256": "65920ab0d9647a2e2dd0f577808ed7094ca6ccefef3f7210a8259cc4d1af1a8f"
   },
   {
    "path": "papers/P06_dialogue_and_learning.md",
-   "sha256": "25997609085113e734a2f08b885bdc339750fd9b5d783426a7112ddb59e15037"
+   "sha256": "6c7eb61c1b6ddd2e4160c9a625f938d3a76b6b890cdaf9a9ff3acb326cc4cb75"
   },
   {
    "path": "papers/P07_reasoning_and_evidence.md",
-   "sha256": "bafe7e0892480927c39c2a43565ca34339edfc708749a82778958378e4a324a4"
+   "sha256": "1e8bdb49dc2ca64452ca0c70bb5c74aab9d5c17ed196489cbffd8c0dfd7a54cc"
   },
   {
    "path": "papers/P08_documents_and_memory.md",
-   "sha256": "1acb9f6914bd967c58d4e18f66a8fcadf8e5cef332646279362eafaa105fbbf2"
+   "sha256": "050a2c66e4f96ceedcc2cec733ec8988f2d9d43528b0f0b681ae7e85fee1756f"
   },
   {
    "path": "papers/P09_work_roles_skills_and_kc.md",
-   "sha256": "d1285db7732b102661da56088571ec9901774934f4624034912138d4f4a776ff"
+   "sha256": "ffeb0eaeb8a8f988bfc2bb6a7b9d435605f11abad660dff29847934a6d31677f"
   },
   {
    "path": "papers/P10_revision_and_canon.md",
-   "sha256": "3b40daef335f1c96f847bf0b05a053f72d19a8d2bb33ab9ce158fb57578c3457"
+   "sha256": "29051de93e18041363ff74ce8ae3419cdf2a7326ceed055a3c3a90d391fd403b"
   },
   {
    "path": "papers/P11_evaluation_and_falsification.md",
-   "sha256": "6963856fc3351eda71ba1576260515a7381451665830e683a366c27c1ce2b55d"
+   "sha256": "c6790db3823ebd12585d29c44e08c89ef3d093dc6cdfa70d6163300042dd95c5"
   },
   {
    "path": "papers/P12_compilation_caching_and_reuse.md",
-   "sha256": "d94ce4cbf749cfe66f5492fe74a008844d1032af699dcfa0034dcc0896768086"
+   "sha256": "6e9914dcd1e623d93c5faec00deb3ef1ceefd1ee10017e88bbfc058dd4ced519"
   },
   {
    "path": "papers/P13_knowledge_utility_and_resource_economics.md",
-   "sha256": "47ad3f72d0c5d31fcd79188f0fe0c2de6a162c5071fe7f83f285497c1947f25a"
+   "sha256": "cfc34aa90a215333f4e2d2d5e9120083631ed180a852f3fd0d22228a650956dc"
   },
   {
    "path": "papers/README.md",
