@@ -1,0 +1,37 @@
+{
+ "base": "b5e3a1ac80f7a45e41c95fc683c6a20e666cd1d7",
+ "decision_lines_sha256": [
+  "99e436c2726317c6f86a6ad663048525b04f6390cdfb5dbae7f3f6eb4d1e47d7",
+  "ada7975ff86c230793f6199f2559f46f9eb91b99bd35f7cdec68f538d95ab074",
+  "69d243b05ef213f1880ea5ece9c0a3c53f3098c11da2d7e34ddeba6d2b177a7f",
+  "8da0647777cb772bbe448c663bc1c38136106974abe9fe81434e112acb9c61e3",
+  "2436c0ec9512d0d7badb7eea3dc2d6a1156d099387ad75da3e0015f9d8d90a96",
+  "91942e72f4a7fbe9cd03f997c167f68e429796652eb59abf9f896aa437f15186",
+  "0e8ea45d8a57b808ffb292f8ed395f11e306c50dbf63c84811b3c6869b9fbff6",
+  "c878838d2e16fef72078b261c785ac7db5ad926f166432abb6bfb957897840ad",
+  "e9e3bb4beac9bac61a2547eedbf819f2f185494ce5fe0ff9684f3f7eb5cb68af",
+  "8e94a6b60627fd1e8de6d1dd9c8ed95ca1fabce8dc75bd4bbbc50e7f2fde3d4b",
+  "de2b98ed0ad49f96854e68a33cf6d40bb36fa26b740feb426c9271b78958874c",
+  "89011e51e12552fb7ef9511deb5e001950b307d03655836e246dbef58f04d4ca",
+  "59e2e2558314ac04de44caba7d9c9076a9e05997f7839e1da31bbaa4376ec049",
+  "b55a32ccf511eb34a43de86a2200561752c49b6456038675cea9073b59acf25d"
+ ],
+ "diff_sha256": "ae7ea884fa79b0cf510a6f4fc2b7d3d9d57c70ded2697fcdc63575bbcf1063d8",
+ "reviewed_head": "ed879521d39ffb34124de01fdafb619da25dd48a",
+ "reviewers": [
+  {
+   "input_digest": "75cb87d567483af5a62b1d9b047ab5d8a3618923c8dff914e3fd7de725b9803e",
+   "model": "claude-sonnet-5-5",
+   "session_id": "kcp-b2-blind-reviewer-1-20261103",
+   "transcript_sha256": "56c62c60a908998508481a36d389fbd973f4060fe67cb739798dd6ead43a9715",
+   "verdict": "APPROVE"
+  },
+  {
+   "input_digest": "75cb87d567483af5a62b1d9b047ab5d8a3618923c8dff914e3fd7de725b9803e",
+   "model": "claude-opus-5-5",
+   "session_id": "kcp-b2-blind-reviewer-2-20261103",
+   "transcript_sha256": "25bbe8551ed519411ea45844298ad6b4cf8ee1807266a70f4bb3bc84f6be1bbb",
+   "verdict": "APPROVE"
+  }
+ ]
+}

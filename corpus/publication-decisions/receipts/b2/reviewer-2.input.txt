@@ -1,0 +1,1299 @@
+diff --git a/corpus/publication-decisions/b2.jsonl b/corpus/publication-decisions/b2.jsonl
+new file mode 100644
+index 0000000000000000000000000000000000000000..b2933a15eb0afdc7d8b85e39fc99b086ca18c8f8
+--- /dev/null
++++ b/corpus/publication-decisions/b2.jsonl
+@@ -0,0 +1,14 @@
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P00_introduction.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"33aed0c8bbe8c805944272fc33c58344537591694fc50e4ee42912ff4eb3fdd2","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"Cooking, navigation and circuit design serve synthetic analyses and limited three-book observations\"; line 33 (pkg): \"The source MM_A5295 was NOT read by the card writer\"; line 39 (books): \"the 917 derived descriptions behind the three-book observations\"; line 39 (ext): \"OCR, formulas, tables, diagrams and the 917 derived descriptions behind the three-book observations were not independently verified\"; line 39 (nr): \"OCR, formulas, tables, diagrams and the 917 derived descriptions behind the three-book observations were not independently verified\"; line 48 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P01_semantic_objects_and_extraction.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"9573308454e240cddc36f59890e72258f6de782bb0422dcaf4e6d297bf772223","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"ran no automatic extraction on full books\"; line 34 (nr): \"The crosswalk phrase about 40 author semantic checks is NOT VERIFIED and is not used\"; line 38 (books): \"No production quality, throughput, universal text/image equivalence or accuracy on real books is claimed\"; line 40 (books): \"No real pairs of OCR and verified transcription exist for the three books; OCR accuracy against the original PDF was not measured\"; line 40 (ext): \"OCR accuracy against the original PDF was not measured\"; line 47 (pkg): \"The sources MM_A0275, MM_A0263 and MM_A0274 (behind the registry counts) and the gap map MM_A5300 (behind the appendix slices) were NOT read by the card writer\"; line 49 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P02_context_and_applicability.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"7568ab3eca9b34985afbaeae8528a66437e860a41295e18759e2df1401cbe2c7","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"ran no three-book tests\"; line 29 (books): \"two books copying one source are not two independent witnesses\"; line 30 (pkg): \"the per-property proofs in MM_A0301 were NOT read by the card writer\"; line 33 (books): \"30 cases from three books\"; line 33 (nr): \"the revision results link was NOT read by the card writer\"; line 35 (nr): \"The per-task results of T08, T13 and T14 beyond the one-line examples are NOT VERIFIED\"; line 39 (books): \"three-book page processing remain not executed\"; line 47 (pkg): \"The executed protocol MM_A5295 was NOT read by the card writer\"; line 49 (pkg): \"the report behind it was not checked in this edition\"; line 50 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P03_transformations_and_transfer.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"85d3ae0d0b6fb8e7818e6650e637c2a6a635defe4ca136b6f0b468a58987b7ad","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 32 (books): \"Appendix logs for the three books hold 100 culinary, 41 automatic and 28 navigation operations\"; line 38 (books): \"The navigation readable file did not reproduce whole\"; line 39 (nr): \"No execution report of it was read.\"; line 40 (books): \"Practical confirmation needs permitted pages of three books, fixed OCR/VLM versions and independent labelling\"; line 40 (ext): \"fixed OCR/VLM versions\"; line 46 (pkg): \"The sources MM_A5295, MM_A10271 (mapping history) and MM_A5300 (gap plan) were NOT read by the card writer\"; line 48 (pkg): \"the report behind it was not checked\"; line 49 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P04_query_retrieval_and_coverage.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"bedfb67e1938c0f64e6348deb04b861d6948b2ec57a227b9c8e54d35a6b272a6","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"no real-book search has been run\"; line 30 (ext): \"It does not extend to missed pages, hidden data, OCR errors or subject interpretation\"; line 30 (pkg): \"Linked MM_A0372 was NOT read\"; line 31 (ext): \"an 8-byte PNG signature accepted as a sufficient image\"; line 32 (books): \"maps all 427 recognised pages; the selected rule supports are 123 blocks on 69 pages out of 2746 blocks, which is not a share of the book's meanings\"; line 32 (nr): \"That agents select ready rules and skills is NOT VERIFIED: a design statement, no run record\"; line 33 (pkg): \"the operational profile MM_A0383 was linked, NOT read\"; line 38 (ext): \"no comparison with BM25, dense or hybrid retrieval on independent labels\"; line 40 (ext): \"Query recognition, server-side vector search, OCR/VLM and products were not run\"; line 41 (ext): \"A structural SQL-like query over normalised data may solve a task more simply\"; line 49 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P05_budgeted_context_composition.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"57095f269a94b793f46cc0159613dba2ebaa474fd4ee1f6daf31c1cc4d65e54a","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 31 (ext): \"contains SET COVER and is NP-hard\"; line 33 (nr): \"the meaning of the crosswalk's \"R01 exposes the whole core\" is NOT VERIFIED\"; line 38 (ext): \"The unit is UTF-8 bytes of deterministic JSON\"; line 40 (ext): \"Cited external submodular-optimisation theorems are quoted with premises, not proved here and not verified by the writer\"; line 49 (pkg): \"NOT read by the card writer: MM_A0401, MM_A0402 (proofs), MM_A0406 (S05), the closure-lemma test side (CLOSURE_LAWS.json)\"; line 50 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\"); the page states that cited external submodular-optimisation theorems are quoted with premises, not proved here and not verified by the writer (line 40), while the SOURCES.md catch-all row says 'no excerpts intended': the register and the page disagree, and the register is not corrected by this line; the page does not identify the externally cited theorems","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P06_dialogue_and_learning.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"d8ac6d6ed38ca15ac7a2ef3095e418dfb48e3f75ab71e780380701d2ee76a6ae","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (ext): \"Interpretation, the subject registry and subject-verification data come from outside the profile\"; line 31 (ext): \"owner and roles taken from an external trusted registry\"; line 31 (nr): \"the episode list was NOT read by the card writer\"; line 32 (pkg): \"the motivating literature (MM_A0714) was NOT read and is NOT VERIFIED\"; line 33 (nr): \"The crosswalk phrase about explaining edits is NOT VERIFIED\"; line 41 (ext): \"Concurrent updates and external storage transactions are outside the model.\"; line 49 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P07_reasoning_and_evidence.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"1e8bdb49dc2ca64452ca0c70bb5c74aab9d5c17ed196489cbffd8c0dfd7a54cc","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (ext): \"does not measure OCR quality, language understanding or industrial agents\"; line 29 (ext): \"On three public documents (NIST, NOAA, and one recipe fragment of a USDA collection)\"; line 39 (ext): \"All six OCR quality reports of a later pilot carry CER/WER `null`: no benchmark ran, not zero error\"; line 49 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P08_documents_and_memory.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"f259a9659e6000205d11b2090d15b987d3e423d90b223c500c33f18869103cfe","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (ext): \"the actual Markdown/JSON projection\"; line 32 (books): \"The last verification layer processed 917 records in three books\"; line 32 (nr): \"its meaning is NOT VERIFIED beyond the edition text\"; line 33 (books): \"A local replay of 28 ledger operations on a navigation book did not reproduce the full readable file\"; line 33 (ext): \"A late failure after the CURRENT pointer replacement, before fsync completed, was also found\"; line 33 (ext): \"consistency of the later SQLite readback was not confirmed\"; line 40 (ext): \"external studies were not replicated\"; line 41 (ext): \"locator transfer after OCR\"; line 49 (nr): \"its receipt-overwrite ban is NOT VERIFIED\"; line 50 (pkg): \"NOT read by the card writer: the I25 run reports (MM_A0754), source review (MM_A0762), property register (MM_A0755) and R44 reports (MM_A13315)\"; line 48 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P09_work_roles_skills_and_kc.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"1907861fb674ff0e99057707b81165ad98f568cda3a8e1e6c3fc5cac5044048a","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (ext): \"It is finite and works on trusted, interpreted JSON input\"; line 25 (ext): \"the authors implemented a JSON Schema, consistency checks, consumer compatibility, current-use evaluation and a v2 subset migration\"; line 29 (nr): \"the gap list after that count was NOT read by the card writer\"; line 31 (pkg): \"its evidence file (MM_A0790) was NOT read\"; line 32 (nr): \"the underlying report was not read\"; line 34 (ext): \"107 entries of the r1 delivery use valid AKP forms\"; line 43 (pkg): \"the migration report MM_A0804 not read; the claim rests on the read MM_A0810\"; line 52 (nr): \"the edition says another team member composed the control set, the review says an agent of the same session\"; line 50 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P10_revision_and_canon.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"02bde45b44618d2bfc9b2e7dcf93ad697458f3091c8882ed68875d2ffd8be1f7","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"No real distributed backend, authentication, books or classifier were used\"; line 25 (ext): \"In one observation of a file operation, a separate copy failed finalisation in a previous update (301 of 302 save operations succeeded) and the service gave no cause\"; line 32 (nr): \"the cause was not disclosed\"; line 32 (pkg): \"the revision model (MM_A0364) was NOT read\"; line 34 (nr): \"Retention of R0 history is not verified from the open reports\"; line 38 (ext): \"Authentication and atomic external storage are assumptions, not results.\"; line 41 (nr): \"Two numbers from different instruments (786/12 and 772/0) are not comparable\"; line 41 (pkg): \"the qualification report MM_A10474 was not read\"; line 48 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P11_evaluation_and_falsification.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"c390c8e278e254cffda1237483cb66caadcf1156a7c72dbe2742986f544a5cc7","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 33 (nr): \"The justification is not reproduced in this paper\"; line 33 (nr): \"the mapping of the row to a specific I15 property is NOT VERIFIED\"; line 33 (pkg): \"the source MM_A0457 was not read by the card writer (the reuse model is MM_A0459)\"; line 38 (nr): \"The catalogue of 320 synthetic plans and 18 prepared illustrations (the 18 not re-derived, source not read)\"; line 39 (ext): \"Results on well-known books cannot exclude prior model exposure; the cited contamination work was not read (NOT VERIFIED)\"; line 40 (nr): \"The related reuse pilot (median latency ratio 0.9982, no stable gain) did not compare a compilation level with an exact-match cache\"; line 44 (pkg): \"it still needs the formal-properties document (MM_A0457) behind the reuse row\"; line 48 (nr): \"one corpus audit appears as 5 594 flags and 169 ledger rows, and elsewhere as 5 538 flags and 174 ledger edits; unexplained\"; line 49 (nr): \"Editorial notes read the R44 task comparison as 5 task pairs and 24 projections\"; line 47 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P12_compilation_caching_and_reuse.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"4bfa556d7cd63a3b89d6aedf98939b8e761dfcd0cdfa9aae1532a8b286bb95b9","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 25 (books): \"Effectiveness on real books\"; line 30 (nr): \"the justification was not read (NOT VERIFIED)\"; line 31 (nr): \"Local exact-versus-off pilot: three pairs, 144 measured requests each, 432 exact-mode reads\"; line 32 (nr): \"10849 could not be reproduced from the paper's parameters\"; line 32 (pkg): \"the executable example (MM_A0453) was not read\"; line 39 (ext): \"did not compare a compilation level with an exact-match cache\"; line 48 (nr): \"Late synthesis still needs the formal properties document behind the conditional property\"; line 49 (pkg): \"Also not read by the card writer: MM_A0461, MM_A2712 and MM_A10830 (the R42 measured-result report)\"; line 47 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
++{"attribution":"credit line of ATTRIBUTION.md applies; front matter carries artifact_id, revision_id and license","license":"CC-BY-4.0","limits":"does not establish authorship identity, agent-text copyright, absence of unrecognised third-party material, scientific validity (independent semantic review not performed; late research synthesis gate open), that a review took place, or that the English entry page summarises the Russian full text correctly; the record is written by the same account that reviewed","path":"papers/P13_knowledge_utility_and_resource_economics.md","receipt":"corpus/publication-decisions/receipts/b2.json","rights_basis":"repository rights statement at the source commit 817a8d8d42d452b9daeb68df55f9c9029366cc82: NOTICE names Pavel Valentov as author; REUSE.toml states the holder '2026 Pavel Valentov and Knowledge Contract Arcana contributors' with CC-BY-4.0 for the default path pattern '**' (OPENNESS.md item 3); this is a statement of the repository, not a verified fact; contributors' own parts rest on DCO sign-offs that are declared and not verified","rights_holder":"Pavel Valentov","schema":"KnowledgeContractPublicationDecision/v2","sha256":"e94b106209f3822f7e68685f4a653da731d7078e1826f3a37d58d80e7fefb4d8","status":"current","third_party":"not established: SOURCES.md registers works linked from the Russian full texts and carries one catch-all row for works named without a link whose entries are not enumerated and whose licences are not checked, and that row says 'descriptions only, no excerpts intended'; this line claims neither that the page reproduces third-party text nor that it does not; as of this line no review of reproduced third-party text has been performed beyond the reading, by the b2 decision reviewers, of the page mentions listed in this line; the line is write-once and is not edited after merge, a later finding is recorded as a new line in a new batch; the author's two reads of the page noted these mentions of outside, unidentified or unread material, in the page's own words; this list is an aid and is not complete, and the page itself is the record of what it says was not read, not verified or taken from outside (kinds ext, books, pkg, nr as defined in DEC-AUP-0172): line 29 (pkg): \"NOT VERIFIED against MM_A0428 or the causal literature, not read\"; line 31 (nr): \"In R39 the raw `met` sums (193 and 197) count criteria, not fully correct results, and were an unusable denominator\"; line 39 (ext): \"this is a routing policy, not a proven saving of 146 OCR calls\"; line 48 (nr): \"Late synthesis still needs completion evidence for later cost and quality obligations\"; line 49 (pkg): \"Not read by the card writer: MM_A5295, MM_A10830 and MM_A11093 (the R39, R42 and R43 records)\"; line 50 (nr): \"The evaluation paper's editorial notes read its fifty-one equivalent A/B pairs as qualification control inputs\"; line 47 lists own-package material as missing (\"the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08\")","upstream":"original"}
+--sources--
+BLOB papers/P00_introduction.md 33aed0c8bbe8c805944272fc33c58344537591694fc50e4ee42912ff4eb3fdd2 original 4721
+---
+artifact_id: MM_A0197
+revision_id: MM_A0197-entry-en-r1
+title_en: "Foundations of Meaning and Knowledge Management"
+title_ru: "Основы управления смыслами и знаниями"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P00_introduction.md
+---
+
+# Foundations of Meaning and Knowledge Management
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0197 (permanent) |
+| Entry page revision | MM_A0197-entry-en-r1 |
+| Full text | [Russian original](ru/P00_introduction.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes an operational research programme for managing transitions between a source, a representation of its content, a bounded context and the result of applying it. Its main question is when a person or an agent can reuse previously expressed content while keeping essential differences, grounds and limits under a finite budget of attention, memory and computation. The main text offers context-sufficiency boundaries, conditional properties of composition and a refutation programme. Cooking, navigation and circuit design serve synthetic analyses and limited three-book observations, not transfer to other texts. Executed appendix runs are limited and do not establish extraction quality.
+
+## Claims and their basis
+
+- Conditional results (the F-series) hold only under their stated premises; a previously checked artifact keeps its protected properties only if the dependency manifest is complete. Basis type: proof-under-premises. No measured reuse result is claimed.
+- A synthetic example with three necessary parts costing 2, 2 and 3 against a budget of 5 totals 7, so the obligation cannot be met in one package. Basis type: proof-under-premises; an arithmetic example, not a measurement.
+- "Minimal context" may be claimed only with a declared option space, cost function and optimality proof. Basis type: authors-domain-assessment.
+- Six programme hypotheses each name a strong comparison and a refuting outcome. Basis type: hypothesis; none is tested, and no row-level status is asserted.
+- Appendix experiment on pre-structured material, 80 calls. Rubric A met 193 and left 7 unknown of 200 criteria; rubric B met 197 and left 3 unknown of 200. Vectors matched in 13 of 20 canonical pairs and differed in 7. Basis type: finite-test; five of five calibration controls apply to one profile only. The source MM_A5295 was NOT read by the card writer; claims resting on it keep the limited wording above.
+- Release cross-check by the kit authors: 13 of 14 first answers passed the narrow conditions, and in one task (T09) the first output was rejected because the register of a protected phrase changed. Basis type: authors-domain-assessment; a self-check by one assistant, not independent, and the 14 editing tasks do not test this model.
+
+## Limits
+
+- The 12 refuting probes were editorial constructions and were not run at the initial stage; their later status is not claimed.
+- OCR, formulas, tables, diagrams and the 917 derived descriptions behind the three-book observations were not independently verified.
+- Three domains yield different defect types; they do not show transfer to other texts or professions.
+- Universality of the general model is not proved.
+
+## Status and what is open
+
+- The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects the status wording of its abstract (executed appendix results that the abstract understates), this page follows the corrected, evidence-bound wording and says so here. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P01_semantic_objects_and_extraction.md 9573308454e240cddc36f59890e72258f6de782bb0422dcaf4e6d297bf772223 original 4875
+---
+artifact_id: MM_A0198
+revision_id: MM_A0198-entry-en-r1
+title_en: "Semantic Objects, Sources and Verifiable Extraction"
+title_ru: "Смысловые объекты, источники и проверяемое извлечение"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P01_semantic_objects_and_extraction.md
+---
+
+# Semantic Objects, Sources and Verifiable Extraction
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0198 (permanent) |
+| Entry page revision | MM_A0198-entry-en-r1 |
+| Full text | [Russian original](ru/P01_semantic_objects_and_extraction.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a profile of the semantic object (`MeaningObject`) and a protocol for verifiable extraction. The profile ties content to specific source editions, operator scopes, composite grounds, alternative readings and separate assessments. The central hypothesis is that such binding can reduce reuse errors in declared task classes; it admits a negative result, since for plain retrieval detailed markup may cost more than it helps. The main edition prepared a model, a protocol, limited example records and a test design, and ran no automatic extraction on full books. The appendix keeps limited executed slices over structured material, which do not establish extraction from free text.
+
+## Claims and their basis
+
+- The example registry holds 24 semantic objects in 101 local records. Basis type: not-a-claim; these are counts of development artefacts, not extraction quality, and no extraction pipeline was run on them.
+- The closure of a finite pinned graph reaches a fixed point and is the least closure. Basis type: proof-under-premises (finite graph, given roots and required edges). A missed legend stays missed.
+- The other local formal properties are structural consequences of the chosen discipline. Basis type: authors-domain-assessment, not proved novelty.
+- The central hypothesis and the plan H01-H08 each have refuting observations. Basis type: hypothesis; none confirmed.
+- Appendix slices on structured input exposed first failures that stay visible: seven assessment records of variant B had incompatible `target.scope` and top-level `scope`; four initial `unknown` values for variant A were attributed to the assessor and were not rewritten to `met`; in one earlier round a required `source_conditions` field was missing. Basis type: finite-test; structured inputs only.
+- The release cross-check bound rules to 124 exact byte selectors, which include one block reuse (123 distinct blocks). Basis type: authors-domain-assessment; this is naming and byte binding, not extraction quality. The crosswalk phrase about 40 author semantic checks is NOT VERIFIED and is not used.
+
+## Limits
+
+- No production quality, throughput, universal text/image equivalence or accuracy on real books is claimed.
+- A structural validator checks pinned references and declared fields, not whether an image was read correctly.
+- No real pairs of OCR and verified transcription exist for the three books; OCR accuracy against the original PDF was not measured.
+- No cost measurement compares annotation with reading the source.
+
+## Status and what is open
+
+- The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- The sources MM_A0275, MM_A0263 and MM_A0274 (behind the registry counts) and the gap map MM_A5300 (behind the appendix slices) were NOT read by the card writer; claims resting on them keep the limited wording above.
+- The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects the status wording of its abstract (executed appendix slices that a "not run" statement would understate), this page follows the corrected, evidence-bound wording and says so here. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P02_context_and_applicability.md 7568ab3eca9b34985afbaeae8528a66437e860a41295e18759e2df1401cbe2c7 original 4928
+---
+artifact_id: MM_A0199
+revision_id: MM_A0199-entry-en-r1
+title_en: "Context, Depth and Conditions of Applicability"
+title_ru: "Контекст, глубина и условия применимости"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P02_context_and_applicability.md
+---
+
+# Context, Depth and Conditions of Applicability
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0199 (permanent) |
+| Entry page revision | MM_A0199-entry-en-r1 |
+| Full text | [Russian original](ru/P02_context_and_applicability.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a model in which extracted content, the conditions for understanding it and the conditions of a new application are addressed separately. For each task a finite set of requirements is formed, and applicability is judged against knowledge editions, contexts, the addressee, the method and available grounds. The main edition gives definitions, conditional properties and a test plan and ran no three-book tests; the appendix keeps later limited runs, including a negative result.
+
+## Claims and their basis
+
+- Naive deduplication fails in illustrated cases: a record for 4 servings and one for 6 should not merge, and two books copying one source are not two independent witnesses. Basis type: authors-domain-assessment; examples are illustrative, not measured.
+- Conditional properties CP01-CP08 separate logical consequences of definitions from empirical hypotheses; an unknown value does not pass a mandatory barrier. Basis type: authors-domain-assessment; the per-property proofs in MM_A0301 were NOT read by the card writer.
+- Applicability improves for concrete tasks at a justified cost of explicit structure. Basis type: hypothesis; nothing beyond illustrated is claimed.
+- The bounded executable profile reports 103 checks passed with no errors. Basis type: finite-test; declared operations and author examples only, groups not independent experiments.
+- Appendix protocol for addressed revision: 30 cases from three books, two implementations per case, 60 executions matching expected outcomes. Basis type: finite-test over a finite area; 36 assessments with unresolved mapping and 12 with an unknown contract condition are intended results; the revision results link was NOT read by the card writer.
+- Negative result: a simple alternative with the same data and conditions gave the same answers in all 30 pairs. Basis type: finite-test.
+- A release cross-check by the kit authors shows separate rule conditions on tasks T02, T05, T08 and T12-T14. Basis type: authors-domain-assessment; a self-check by one assistant, with genres and hidden contexts not exhausted. The per-task results of T08, T13 and T14 beyond the one-line examples are NOT VERIFIED.
+
+## Limits
+
+- Hidden premises of arbitrary text are not detected; subject cases and three-book page processing remain not executed.
+- A positive structural validation is not proof of correct understanding.
+- Seven assessment records had `target.scope` inconsistent with the top-level `scope`, so no single verified applicability area was defined.
+
+## Status and what is open
+
+- The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- The executed protocol MM_A5295 was NOT read by the card writer; claims resting on it keep the limited wording above.
+- The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
+- A later engineering amendment (passports that always show conditions and bounds) is an interface change that does not alter the truth of knowledge; the report behind it was not checked in this edition.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects the status wording of its abstract (an unscoped "not tested on three books" replaced by a scoped statement), this page follows the corrected, evidence-bound wording and says so here. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P03_transformations_and_transfer.md 85d3ae0d0b6fb8e7818e6650e637c2a6a635defe4ca136b6f0b468a58987b7ad original 4971
+---
+artifact_id: MM_A0200
+revision_id: MM_A0200-entry-en-r1
+title_en: "Transformations, Composition and Bounded Transfer"
+title_ru: "Преобразования, композиция и ограниченный перенос"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P03_transformations_and_transfer.md
+---
+
+# Transformations, Composition and Bounded Transfer
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0200 (permanent) |
+| Entry page revision | MM_A0200-entry-en-r1 |
+| Full text | [Russian original](ru/P03_transformations_and_transfer.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+Reusing knowledge requires transformations: normalisation, reduction, joining sources, inference, parametrisation and transfer to a new situation. The paper proposes a transition contract linking input editions, the permitted effect, preconditions, postconditions, protected properties, assumptions, losses and the actual output. Geometric similarity only selects candidates. Conditional properties are arguments under explicit premises, and hypotheses about the benefit of the profile are untested; the appendix keeps limited executed experiments that do not confirm them. It does not claim a universal computable algebra of human meaning.
+
+## Claims and their basis
+
+- The architecture has three levels (content, operation, execution); substituting one for another produces false promises, since a correct schema does not guarantee correct inference. Basis type: authors-domain-assessment; a design stance, not a theorem.
+- Ten conditional properties CP01-CP10 are arguments under explicit premises, not proofs and not empirical results. A worked three-step chain shows that a dropped condition is not restored by an old report. Basis type: authors-domain-assessment.
+- Four hypotheses need empirical evaluation. Basis type: hypothesis; the appendix does not establish them.
+- Appendix logs for the three books hold 100 culinary, 41 automatic and 28 navigation operations, all marked `auto_applied_unreviewed`. The first literal mapping linked 100 of 100, 41 of 41 and only 21 of 28; a later mapping reproduced and reversed all 28, and the failed first attempt is kept. Basis type: finite-test.
+- Vectors matched in 13 of 20 canonical pairs, which is not evidence that the carriers are equivalent; 7 of 20 differed. Basis type: finite-test.
+- A release cross-check by the kit authors tested idempotence and join for skill-dependency closure on all 4096 subsets of 12 skills. Basis type: authors-domain-assessment; a self-check by one assistant, covering finite-traversal laws, not an algebra of meaning, with geometry not implemented.
+
+## Limits
+
+- The navigation readable file did not reproduce whole, and three captions fell into alt-text; reversing an operation over one block is not restoring the full artifact.
+- The finite profile does not test recognition of arbitrary phrases, implicit domain models or visual understanding. No execution report of it was read.
+- Practical confirmation needs permitted pages of three books, fixed OCR/VLM versions and independent labelling; counts of documents are not a measure of truth.
+
+## Status and what is open
+
+- The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- The sources MM_A5295, MM_A10271 (mapping history) and MM_A5300 (gap plan) were NOT read by the card writer; claims resting on them keep the limited wording above.
+- The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
+- A later engineering amendment separates migration of representation paths from semantic transformation; it is a layout change, and the report behind it was not checked.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects the status wording of its abstract (appendix experiments that an unscoped "not tested" would understate), this page follows the corrected, evidence-bound wording and says so here. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P04_query_retrieval_and_coverage.md bedfb67e1938c0f64e6348deb04b861d6948b2ec57a227b9c8e54d35a6b272a6 original 4905
+---
+artifact_id: MM_A0201
+revision_id: MM_A0201-entry-en-r1
+title_en: "Query, Retrieval and Verifiable Coverage"
+title_ru: "Запрос, извлечение и проверяемое покрытие"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P04_query_retrieval_and_coverage.md
+---
+
+# Query, Retrieval and Verifiable Coverage
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0201 (permanent) |
+| Entry page revision | MM_A0201-entry-en-r1 |
+| Full text | [Russian original](ru/P04_query_retrieval_and_coverage.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a profile for moving from a human or agent query to a bounded answer set with checkable grounds. It separates relevance, support, search completeness and applicability. It links a query plan (`QueryPlan`), a candidate set, three separately addressed coverage reports (`CoverageReport`), pinned sources and stop rules. It allows a useful partial answer and does not treat "nothing found" as "nothing known". Its properties hold only under explicit premises: a finite domain, a query parsed in advance, and author-marked metadata. Only an authored finite model was executed; no real-book search has been run.
+
+## Claims and their basis
+
+- The three coverage reports are addressed independently. Basis type: finite-test. Scope: the authored finite model, 97 checks, 97 passed. Five finite enumerations cover 352 configurations, which is not 352 independent experiments.
+- A negative conclusion is allowed only for an explicitly finite domain with current pins, a complete survey and all evaluations negative. Basis type: proof-under-premises. It does not extend to missed pages, hidden data, OCR errors or subject interpretation. Linked MM_A0372 was NOT read.
+- A second agent wrote 12 minimal API probes and first found 2 defects: an 8-byte PNG signature accepted as a sufficient image, and an irrelevant fact's origin entering the evidence groups. After fixes, 11 probes passed and 1 passed with a limitation. Basis type: finite-test. Not a human review, not an independent implementation.
+- An engineering cross-check of the RU10 release maps all 427 recognised pages; the selected rule supports are 123 blocks on 69 pages out of 2746 blocks, which is not a share of the book's meanings. Basis type: authors-domain-assessment. It is a one-assistant self-check by the kit authors, not independent confirmation. That agents select ready rules and skills is NOT VERIFIED: a design statement, no run record.
+- A budget stop issues no completeness certificate (the operational profile MM_A0383 was linked, NOT read), and deduplicated copies are not independent evidence (uniqueness is declared, not statistically shown). Basis type for both: authors-domain-assessment; design rules, not measured on real retrieval.
+- Hypotheses H12-01 to H12-08 each have a strong alternative and a revision condition. Basis type: hypothesis; no results.
+
+## Limits
+
+- No real corpus search, no comparison with BM25, dense or hybrid retrieval on independent labels, and no cost measurement.
+- 36 system scenarios and 9 sequential walkthroughs were planned and not executed.
+- Query recognition, server-side vector search, OCR/VLM and products were not run; automatic semantic search and recall over the whole book are not assessed.
+- A structural SQL-like query over normalised data may solve a task more simply; then no advantage is claimed.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- The research synthesis crosswalk is integrated only as authors-domain-assessment. A proposed addendum on separating file, source, meaning and index coverage has no executed result.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Its abstract states the status but not the executed basis; this page follows the corrected, evidence-bound wording of the round-two editorial card. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P05_budgeted_context_composition.md 57095f269a94b793f46cc0159613dba2ebaa474fd4ee1f6daf31c1cc4d65e54a original 4966
+---
+artifact_id: MM_A0202
+revision_id: MM_A0202-entry-en-r1
+title_en: "Context Composition under a Limited Budget"
+title_ru: "Составление контекста при ограниченном бюджете"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P05_budgeted_context_composition.md
+---
+
+# Context Composition under a Limited Budget
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0202 (permanent) |
+| Entry page revision | MM_A0202-entry-en-r1 |
+| Full text | [Russian original](ru/P05_budgeted_context_composition.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper studies how to compose a context from a fixed set of candidates under limited resources. It proposes a conditional model in which requirements, joint grounds, mandatory dependencies, permitted transformations and the actual representation form one object of verification. The main result is a specification, conditional properties, counter-models, a finite executable model and a comparison plan. Executed: 101 finite checks and 17 API probes. Empirical advantage on real books, people, models or products is not established.
+
+## Claims and their basis
+
+- Ranking does not settle sufficiency: two ingredients from different dishes do not meet a one-dish condition. Basis type: finite-test, authored vectors; real-query failure rates are not measured.
+- The finite check had 101 checks: 24 authored vectors, 68 negative controls, 5 enumerations over 576 configurations (not independent experiments), 2 constructed counter-models and 2 boundary checks. Basis type: finite-test. Separately, 17 API probes were written without the authored vectors or expected answers; the first run gave 13 pass and 4 findings, the repeat on the same inputs 17 passes. Authorship separation within one session is not an independent replication.
+- A special case (cover requirements with at most k independent unit-cost packages) contains SET COVER and is NP-hard. A scheme and a legend may each be insufficient yet together close a requirement. Basis type for both: proof-under-premises; hardness of real queries and effect frequency are not established.
+- A closure lemma (an addendum, not in the Russian text): the smallest mandatory closure in a finite graph is the fixed point of adding needed vertices. Basis type: proof-under-premises (fixed vertices, ALL-type edges, complete edges). A machine check enumerated all 512 graphs on three vertices; beyond that the lemma rests on the written proof.
+- An engineering cross-check of the RU10 release: a structural validator rejects a control omission of a critical condition (selftest, K08-condition-1). Basis type: authors-domain-assessment (one-assistant self-check by the kit authors, not independent). Minimality, optimality and token reduction are not established; the meaning of the crosswalk's "R01 exposes the whole core" is NOT VERIFIED.
+- Eight hypotheses H13 have status `empirical_result_absent`. Basis type: hypothesis; no results.
+
+## Limits
+
+- The unit is UTF-8 bytes of deterministic JSON, not model tokens, human reading or time under load.
+- Exact selection covers at most 16 given representations, canonical order only.
+- Cited external submodular-optimisation theorems are quoted with premises, not proved here and not verified by the writer.
+- 36 system scenarios and 9 sequential walkthroughs were not executed; sample size, effects and thresholds are unjustified, and causal usefulness is not established.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- An ALL/ANY alternatives proposal is an unexecuted hypothesis.
+- NOT read by the card writer: MM_A0401, MM_A0402 (proofs), MM_A0406 (S05), the closure-lemma test side (CLOSURE_LAWS.json); claims resting on them keep the card's limited wording.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). This page follows the card's evidence-bound wording and drops "independent" for the probe separation. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P06_dialogue_and_learning.md d8ac6d6ed38ca15ac7a2ef3095e418dfb48e3f75ab71e780380701d2ee76a6ae original 4944
+---
+artifact_id: MM_A0203
+revision_id: MM_A0203-entry-en-r1
+title_en: "Dialogue, Learning and Alignment of Understanding"
+title_ru: "Диалог, обучение и согласование понимания"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P06_dialogue_and_learning.md
+---
+
+# Dialogue, Learning and Alignment of Understanding
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0203 (permanent) |
+| Entry page revision | MM_A0203-entry-en-r1 |
+| Full text | [Russian original](ru/P06_dialogue_and_learning.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper offers a specification and a limited transition profile over structured dialogue events. It assesses separately how an utterance is interpreted, whether a state transition is admissible, and whether the reply was useful. Interpretation, the subject registry and subject-verification data come from outside the profile. Free-language understanding, real external effects and training of model weights are not claimed. The executed result is a local pilot on fictional, deliberately constructed episodes, without human participants. It matched declared expectations in 31 of 32 episodes on the first run, and a simple baseline reached the same counts on the shared subset, so no advantage was observed.
+
+## Claims and their basis
+
+- Pilot: 31 of 32 episodes (171 of 172 assertions) matched expectations; the single mismatch concerned the diagnostic status of applying not-yet-accepted memory. After one minimal fix, a repeat gave 32/32 and 172/172, which is a known-set regression, not new independent confirmation. A simple baseline gave the same 6/6 useful results and 0/4 forbidden admissions on the shared subset. Basis type: finite-test. The 172 assertions are not 172 dialogues, and the agent that built the control set also prepared the interpretation.
+- The reducer accepted 2 of 2 semantically false "trusted" annotations, in both runs. Basis type: finite-test. Structural guarantees do not confirm meaning.
+- The state key is user, task and branch inside one tenant, with owner and roles taken from an external trusted registry. Basis type: finite-test, on the 32 pilot episodes; the registry does not authenticate a user; the episode list was NOT read by the card writer.
+- Understanding, acceptance, intent, support, authority and learning are assessment roles, not a trust scale, and fourteen conditional properties give a checkable argument about the transition design. Basis type for both: authors-domain-assessment; not a proof, not machine verification; the motivating literature (MM_A0714) was NOT read and is NOT VERIFIED.
+- Engineering cross-check of the RU10 release: two single-step examples (T13 and T14) ask targeted questions when inputs are missing, without invented content. Basis type: authors-domain-assessment. They are self-assessed fixtures, not dialogue sessions, with no blind reviewer or matched baseline; a one-assistant self-check by the kit authors, not independent. The crosswalk phrase about explaining edits is NOT VERIFIED.
+- Showing known, observed and verified states separately may reduce misreading of `unknown` as a negative judgement of a person. Basis type: hypothesis; no human study.
+
+## Limits
+
+- No human participants: understanding, learning effect, skill transfer and interface convenience were not measured.
+- Model weights are not trained, and `competence=not_established` is kept.
+- Zero forbidden admissions on the main set does not mean no semantic errors on arbitrary replies.
+- Concurrent updates and external storage transactions are outside the model.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- A proposal that remarks become addressable fix tasks is an unexecuted hypothesis.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). It has no abstract section; the card proposes one, and the Abstract above rests on that proposal. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P07_reasoning_and_evidence.md 1e8bdb49dc2ca64452ca0c70bb5c74aab9d5c17ed196489cbffd8c0dfd7a54cc original 4837
+---
+artifact_id: MM_A0204
+revision_id: MM_A0204-entry-en-r1
+title_en: "Reasoning, Justification and Revision of Conclusions"
+title_ru: "Рассуждение, обоснование и пересмотр выводов"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P07_reasoning_and_evidence.md
+---
+
+# Reasoning, Justification and Revision of Conclusions
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0204 (permanent) |
+| Entry page revision | MM_A0204-entry-en-r1 |
+| Full text | [Russian original](ru/P07_reasoning_and_evidence.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper concerns revising a stored conclusion when one of its premises changes. Its central counterexample: a mark "source changed" does not show that a claim is false, since the old justification may be outdated, other support may remain, an opposite premise may be confirmed, or data may be insufficient. The executable profile covers structured claims and declared rules only. A check on real acquired sources has its own scope and does not measure OCR quality, language understanding or industrial agents. The executed basis is an authored finite check on three public documents.
+
+## Claims and their basis
+
+- On three public documents (NIST, NOAA, and one recipe fragment of a USDA collection), development ran 73/73. The first separately written set (R0) gave 22/24 (positive decisions 7/8). After two fixes the repeat (R1) gave 24/24 and 8/8, then 75/75 after later changes. Basis type: finite-test. R1 is a known-set regression, not new independent confirmation; 24 variants are not 24 independent sources.
+- The bare engine admitted 2 of 2 wrongly trusted markup cases; the source-admission guard rejected 2 of 2. On 12 shared cases a simple direct baseline admitted 7/7 positive candidates (first model 6/7, corrected 7/7); superiority is not established. Basis type: finite-test.
+- Reuse bound to the source head worked in 2 of 2 cases; consequences of a changed premise are not proven. Absence of known proof yields `unknown` or a limited negative, not negation; first failure: `current` for a receipt without read target evidence became `unknown`. Alternative grounds are kept separately; completeness of automatically found ones is unproven. Basis type: finite-test.
+- Acyclicity is a representation property, not truth of data; finite-graph checkability is a conditional argument with examples, not a machine proof. Basis type: authors-domain-assessment.
+- Engineering cross-check of the RU10 release: change grounds are recorded in self-assessments of 14 cases; checking single cases found three distinct defects in the saved producer-side graph (lost polarity and scope, a wrong negation flag, example columns read as a definition). Basis type: authors-domain-assessment. A one-assistant self-check by the kit authors, not independent; the three findings are not an error rate and none became working rules.
+- Correct choice of dependency type is the next object of refutation: a flawless closure over misclassified relations is possible. Basis type: hypothesis.
+
+## Limits
+
+- No control case has reference outcome `refuted`, so sensitivity to genuine refutation is not measured.
+- All six OCR quality reports of a later pilot carry CER/WER `null`: no benchmark ran, not zero error.
+- Origin groups are declared attribution, not statistical independence; one-team test order is not external replication.
+- Evaluation covers given candidates, not generation of answers.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- A proposed addendum (a technical pass creates no support) is a hypothesis awaiting executed results.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). It has no abstract section; this Abstract rests on the opening section plus the card's proposal. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P08_documents_and_memory.md f259a9659e6000205d11b2090d15b987d3e423d90b223c500c33f18869103cfe original 4987
+---
+artifact_id: MM_A0205
+revision_id: MM_A0205-entry-en-r1
+title_en: "Documents, Representations and Long-Term Memory"
+title_ru: "Документы, представления и долговременная память"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P08_documents_and_memory.md
+---
+
+# Documents, Representations and Long-Term Memory
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0205 (permanent) |
+| Entry page revision | MM_A0205-entry-en-r1 |
+| Full text | [Russian original](ru/P08_documents_and_memory.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper treats a document as a defined representation of knowledge for a purpose, audience and genre, and asks what editing and memory must preserve: conditions of applicability, dependent paragraphs, source locators and current permission to use. It separates three levels of result: a specification of obligations, a finite local execution over trusted, already interpreted units, and future empirical work. The execution checks declared dependencies, current admission and the actual Markdown/JSON projection. It does not check whether a quotation matches its primary source or whether the markup is true.
+
+## Claims and their basis
+
+- Quotation fidelity, factual truth, completeness and current validity are independent coordinates, not in the statistical sense. Basis type: authors-domain-assessment.
+- Checking only an edited paragraph gives false acceptance when a stale conclusion remains elsewhere. The whole selected set, conflicts and delivered projection must be checked. Basis type: authors-domain-assessment.
+- Restoring a snapshot returns data but does not restore permissions, if current state is not overwritten. Basis type: authors-domain-assessment (conditional, not a proof).
+- The last verification layer processed 917 records in three books, with two passes of 19,305 field checks and no field violations. Basis type: finite-test, local and deterministic. The repeated materialisation does not create 1,834 independent semantic observations. A control outcome of 15/16 is kept together with a separate correction; its meaning is NOT VERIFIED beyond the edition text.
+- First failures stay visible. In an early load attempt, consistency of the later SQLite readback was not confirmed. A local replay of 28 ledger operations on a navigation book did not reproduce the full readable file, and three alt-text copies also changed. A late failure after the CURRENT pointer replacement, before fsync completed, was also found. Basis type: finite-test, one book each.
+- The RU10 release cross-check: 13 of 14 first answers passed the narrow conditions, and the T09 rejection is kept with a separate corrected attempt. Basis type: authors-domain-assessment, a one-assistant self-check.
+
+## Limits
+
+- Nothing is established about real books, reader comprehension, or a production permission mechanism.
+- Restoration is logical only, not physical erasure or recovery of external copies.
+- Four hypotheses (fewer contradictions, fewer misapplied caveats, cheaper partial updates, fewer outdated decisions) are planned, not tested; external studies were not replicated.
+- Open: automatic dependency discovery, free paraphrase, locator transfer after OCR, long-term service operation.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- The crosswalk content is a one-assistant self-check, not independent confirmation; its receipt-overwrite ban is NOT VERIFIED.
+- NOT read by the card writer: the I25 run reports (MM_A0754), source review (MM_A0762), property register (MM_A0755) and R44 reports (MM_A13315). Figures come from the appendix text; claims resting on these keep the limited wording above. A later artifact-layout amendment is not merged.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). It has no abstract section, so this page uses the abstract proposed in the editorial review and follows its evidence-bound wording. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P09_work_roles_skills_and_kc.md 1907861fb674ff0e99057707b81165ad98f568cda3a8e1e6c3fc5cac5044048a original 4937
+---
+artifact_id: MM_A0206
+revision_id: MM_A0206-entry-en-r1
+title_en: "Knowledge Contract v3: Synthesis of the General Model and a Professional Profile"
+title_ru: "Контракт знаний v3: синтез общей модели и профессиональный профиль"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P09_work_roles_skills_and_kc.md
+---
+
+# Knowledge Contract v3: Synthesis of the General Model and a Professional Profile
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0206 (permanent) |
+| Entry page revision | MM_A0206-entry-en-r1 |
+| Full text | [Russian original](ru/P09_work_roles_skills_and_kc.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a general Knowledge Contract (KC) v3 interface linking addressable content to purpose, conditions, grounds, dependencies and rules of use. Nine core groups are extended by six selective profiles. The professional profile separates a unit of work (`WorkItem`), role (`Role`), skill description (`Skill`), solution scheme (`Blueprint`), executor capability, current authority, attempt and evidence. For a bounded interchange format the authors implemented a JSON Schema, consistency checks, consumer compatibility, current-use evaluation and a v2 subset migration. It is finite and works on trusted, interpreted JSON input.
+
+## Claims and their basis
+
+- The authors' first run passed 35/35 contract scenarios. A control set passed 26/26. Basis type: finite-test. The control set was composed by a separate agent of the same session from the public interface; it is not external verification. One control intent is unmapped and five are partly mapped; the gap list after that count was NOT read by the card writer.
+- Two authors' cases and four control cases with false trusted inputs were accepted. They show the model boundary, outside the main figure. Basis type: finite-test.
+- A diagnostic ablation without part of the checks scored 3/9 against 9/9; it is not a strong baseline. An exploratory comparison with a strong plain form, prepared after first results were disclosed, scored 9/9 on both sides; its evidence file (MM_A0790) was NOT read. Basis type: finite-test.
+- A strong plain alternative gave the same result in 30 targeted-revision pairs (negative). Basis type: finite-test; the underlying report was not read.
+- The distinctions among role, skill description, solution scheme, capability and authority are definitions. Basis type: authors-domain-assessment.
+- RU10 cross-check, by the kit authors and one assistant: 107 entries of the r1 delivery use valid AKP forms. The r2 set has 110 entries, after three competence descriptions were added. In r1, 14 of 14 retained results were re-mapped to the contract. An empty `Blueprint` list in the first adapter was fixed. Basis type: authors-domain-assessment.
+- The central proposal is a hypothesis; H01-H04 are planned, not executed. Basis type: hypothesis.
+
+## Limits
+
+- Source markup correctness and external authority are not established by the validator.
+- Speed, cost and minimality of groups and profiles are not measured.
+- The check records no revision or hash of the contract.
+- Authors, composer and assessors share one session.
+- Migration covers one historical shape; semantic equivalence stays `not_established` (the migration report MM_A0804 not read; the claim rests on the read MM_A0810).
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- The crosswalk content is a one-assistant self-check, not independent confirmation.
+- Held: the edition says another team member composed the control set, the review says an agent of the same session (this page follows the review); the amendment speaks of seven profiles, the edition lists six.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its abstract understates executed results; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P10_revision_and_canon.md 02bde45b44618d2bfc9b2e7dcf93ad697458f3091c8882ed68875d2ffd8be1f7 original 4966
+---
+artifact_id: MM_A0207
+revision_id: MM_A0207-entry-en-r1
+title_en: "Revision of Knowledge, Versions and Acceptance of Norms"
+title_ru: "Пересмотр знания, версии и принятие норм"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P10_revision_and_canon.md
+---
+
+# Revision of Knowledge, Versions and Acceptance of Norms
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0207 (permanent) |
+| Entry page revision | MM_A0207-entry-en-r1 |
+| Full text | [Russian original](ru/P10_revision_and_canon.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper sets rules for changing knowledge, its grounds, norms and chosen representations, connecting them with history, publication and current admission. A finite revision model passed 73 checks with fixed inputs (0 failed); three model defects were found and fixed during preparation. In one observation of a file operation, a separate copy failed finalisation in a previous update (301 of 302 save operations succeeded) and the service gave no cause; the full archive still matched the canonical sources (348 of 348 hashes). No real distributed backend, authentication, books or classifier were used, and 36 subject and load setups remain planned and not executed. Superiority over simply replacing the last record is not shown.
+
+## Claims and their basis
+
+- Seven coordinates are distinguished: existence of content, assessment of its grounds, applicability, normative acceptance, package publication, choice of current state and completion of delivery. Success on one does not change another. Basis type: authors-domain-assessment; seven is not claimed necessary.
+- The finite machine passed 73 checks: 24 authored vectors, 39 negative controls, 5 finite enumerations and 5 positive checks. Basis type: finite-test. The count 73 and the 66 configurations use different units.
+- Three defects of the first model version were found by the authors and fixed: a boolean accepted as an integer receipt generation, a receipt confirmed without an observed publication effect, and the path `.` accepted as a manifest member. A second agent reviewed 12 boundary observations and found no new blocking defects; this is not expert review. Basis type: finite-test.
+- In the single R0015 observation, one separate copy stayed at an old version while the archive was intact; the cause was not disclosed. The audit shows 301 of 302 saves and 348 of 348 hashes. Basis type: finite-test; one operation, not repeated; the revision model (MM_A0364) was NOT read.
+- Dependency analysis distinguishes AND/OR structures of sufficient grounds. Basis type: authors-domain-assessment; completeness of dependency discovery was not measured.
+- The RU10 cross-check (kit authors, one assistant) is partly verified: the r1 report confirms two rejected packaging attempts, a first-adapter defect (empty `Blueprint` list) and an unrebuilt knowledge package. Retention of R0 history is not verified from the open reports. Basis type: authors-domain-assessment.
+
+## Limits
+
+- Authentication and atomic external storage are assumptions, not results.
+- Real acceptance, deployment and rollback of a contract registry were not run; mass revision of a whole base and an external server current head were not tested.
+- Results of the 36 planned setups are absent, as are 9 sequential reviews. Four hypotheses (separated states, typed dependencies, partial-publication reconciliation, versioned canon) are untested.
+- Two numbers from different instruments (786/12 and 772/0) are not comparable; the qualification report MM_A10474 was not read.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- The English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- The crosswalk content is a one-assistant self-check, not independent confirmation.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph omits executed results and first failures; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P11_evaluation_and_falsification.md c390c8e278e254cffda1237483cb66caadcf1156a7c72dbe2742986f544a5cc7 original 4811
+---
+artifact_id: MM_A0208
+revision_id: MM_A0208-entry-en-r1
+title_en: "Evaluation, Counterexamples and the Limits of Claims"
+title_ru: "Проверка, контрпримеры и границы утверждений"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P11_evaluation_and_falsification.md
+---
+
+# Evaluation, Counterexamples and the Limits of Claims
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0208 (permanent) |
+| Entry page revision | MM_A0208-entry-en-r1 |
+| Full text | [Russian original](ru/P11_evaluation_and_falsification.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a programme for testing meaning management as a whole process, from request to observable result and back-tracing. The scientific question is whether explicit meaning objects, conditions, dependencies and provenance help a person or a model reach a better-grounded result under limited source access and budget. The question is not answered on a representative or independent load: local targeted comparisons against a strong flat implementation gave equal statuses and no established superiority. An appendix keeps runs R37-R44, including first failures.
+
+## Claims and their basis
+
+- The six hypotheses in the paper's table remain hypotheses, with no comparison on a representative or independent load. Basis type: hypothesis.
+- R42: equal statuses in 30 of 30 pairs with a shared validator, so not independent. The first R44 integration checks gave 15 of 16 expected outcomes; not replaced by 16 of 16. Basis type: finite-test.
+- R43 (8 pairs) and R44 (5 task pairs and 24 projections) also gave equal statuses; none is representative or independent. Basis type: authors-domain-assessment.
+- Eight verification subjects and three separate coverage reports are design decisions. No observations on real users exist; for agents only limited local model answers (R43: 16, R44: 10; not blind). Basis type: authors-domain-assessment.
+- Preservation of obligations under exact reuse holds only for immutable content, matching requirements and passed admission checks. The justification is not reproduced in this paper; the mapping of the row to a specific I15 property is NOT VERIFIED; the source MM_A0457 was not read by the card writer (the reuse model is MM_A0459). Basis type: proof-under-premises.
+- A cross-check by the kit authors, self-checked by one assistant and not independent, links separate conformance, source-fidelity, outcome and limit checks to 40 of 40 expected outcomes; the first harness run gave 31 of 32. It is not held-out and has no blind review. Basis type: authors-domain-assessment.
+
+## Limits
+
+- The catalogue of 320 synthetic plans and 18 prepared illustrations (the 18 not re-derived, source not read) is not a sample of solved tasks.
+- Results on well-known books cannot exclude prior model exposure; the cited contamination work was not read (NOT VERIFIED).
+- The related reuse pilot (median latency ratio 0.9982, no stable gain) did not compare a compilation level with an exact-match cache, so that falsification criterion is not yet applied.
+
+## Status and what is open
+
+- The late research synthesis gate is open; it still needs the formal-properties document (MM_A0457) behind the reuse row.
+- Independent semantic review of this text has not been performed.
+- This English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- Held inconsistency: one corpus audit appears as 5 594 flags and 169 ledger rows, and elsewhere as 5 538 flags and 174 ledger edits; unexplained.
+- Editorial notes read the R44 task comparison as 5 task pairs and 24 projections, and the 51 equivalent A/B pairs of the same section as qualification control inputs, not a task comparison. The Russian text as published still lists 51 A/B pairs next to the comparison and is unchanged.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03. The late synthesis row is integrated only as the authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P12_compilation_caching_and_reuse.md 4bfa556d7cd63a3b89d6aedf98939b8e761dfcd0cdfa9aae1532a8b286bb95b9 original 4984
+---
+artifact_id: MM_A0209
+revision_id: MM_A0209-entry-en-r1
+title_en: "Knowledge Compilation: Preparing Results and the Admissibility of Reuse"
+title_ru: "Компиляция знания: подготовка результатов и допустимость повторного использования"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P12_compilation_caching_and_reuse.md
+---
+
+# Knowledge Compilation: Preparing Results and the Admissibility of Reuse
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0209 (permanent) |
+| Entry page revision | MM_A0209-entry-en-r1 |
+| Full text | [Russian original](ru/P12_compilation_caching_and_reuse.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper treats reuse of prepared results of extraction, retrieval, composition and professional preparation as a separate admission operation. Reusing a prepared result requires a match with the new request, current constraints, required grounds and the recipient's profile. The paper formalises this boundary and states conditional properties, an economic formulation, strong alternatives and grounds for refutation. The outcome is a research model and a finite executable profile. Effectiveness on real books, causal usefulness and industrial correctness remain hypotheses. The one measured efficiency result, a local paired pilot, found no stable gain.
+
+## Claims and their basis
+
+- The central question has two halves: admissibility of carrying a result between requests, which admits conditional proofs, and efficiency at full cost, which stays a hypothesis. Basis type: hypothesis.
+- Main conditional property: if the checked properties are finite, the dependency set contains every input affecting them, and the transformation preserves them, they hold after reuse. It is a conditional lemma with a justification and a finite model check, not a mechanised proof; the justification was not read (NOT VERIFIED), and completeness for real content is not claimed. Basis type: proof-under-premises.
+- Local exact-versus-off pilot: three pairs, 144 measured requests each, 432 exact-mode reads; latency ratios 1.0185, 0.9982, 0.8017; median 0.9982. No stable gain; no semantic compiler or model, so no token or compilation saving. Basis type: finite-test.
+- In R42 all 60 executions matched expected outcomes and no listed violation occurred, yet 36 assessments kept an unresolved mapping and 12 an unknown new condition. The simple branch equalled the graph branch in all 30 cases, with a shared validator. A synthetic cost example gives 10000 versus 1740 units with break-even at N=18; a second example gives a loss of 10849; the executable example (MM_A0453) was not read and 10849 could not be reproduced from the paper's parameters. Basis type: finite-test.
+- The contribution is a problem formulation; novelty of the integration is not established. Basis type: authors-domain-assessment.
+- A later cross-check by the kit authors, self-checked by one assistant and not independent, reports 13 of 14 first text results passing all conditions and 14 of 14 technical replays against knowledge contracts. Context economy is not measured. Basis type: authors-domain-assessment.
+
+## Limits
+
+- Not established: completeness of dependency manifests for natural language, real error rates, causal usefulness.
+- The pilot is one local runtime and did not compare a compilation level with an exact-match cache.
+- Untested: harm to rare cases, utility-assessment cost above the gain, false completeness after insertion on real content.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- This English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- Late synthesis still needs the formal properties document behind the conditional property.
+- Also not read by the card writer: MM_A0461, MM_A2712 and MM_A10830 (the R42 measured-result report); claims resting on them keep the card's limited wording.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03. The late synthesis row is only an authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+BLOB papers/P13_knowledge_utility_and_resource_economics.md e94b106209f3822f7e68685f4a653da731d7078e1826f3a37d58d80e7fefb4d8 original 4751
+---
+artifact_id: MM_A0446
+revision_id: MM_A0446-entry-en-r1
+title_en: "Knowledge Utility, the Cost of Meaning Artifacts and Resource Management"
+title_ru: "Полезность знаний, стоимость смысловых артефактов и управление ресурсами"
+language: en
+status: scientific draft
+scientific_status: concept_draft
+license: CC-BY-4.0
+full_text: ru/P13_knowledge_utility_and_resource_economics.md
+---
+
+# Knowledge Utility, the Cost of Meaning Artifacts and Resource Management
+
+| Field | Value |
+| --- | --- |
+| Artifact id | MM_A0446 (permanent) |
+| Entry page revision | MM_A0446-entry-en-r1 |
+| Full text | [Russian original](ru/P13_knowledge_utility_and_resource_economics.md), language: Russian |
+| Status | scientific draft (`concept_draft`); not a finished result |
+| Licence | CC BY 4.0 |
+
+## Abstract
+
+The paper proposes a way to link the life cycle of meaning artifacts to observed resource use, conditions of application and results for specific recipients. The object of evaluation is not a universal "value of a text" but the contribution of an artifact version to a goal fixed in advance, relative to an explicit alternative. Costs, including those of the evaluation itself, are counted. The paper offers a synthesis and a contract profile, not a value theory. No retention or ranking policy based on conditional utility has been tested on a real load; the appendix holds only local resource observations from runs R38-R44.
+
+## Claims and their basis
+
+- Four levels are separated, from cost incurred to estimated added contribution. A scalar utility is admissible only for a concrete decision with a published conversion policy; no comparison with a vector was run. Causal usefulness was not estimated (NOT VERIFIED against MM_A0428 or the causal literature, not read). Complaint scenarios A to E are constructed and none was executed. Basis type: authors-domain-assessment.
+- Central claim: a utility-managed policy improves the cost of a correct result against strong simple alternatives in a given load. No load was studied and no comparison was made. Basis type: hypothesis.
+- Graph and simple implementations agreed in 30 of 30 targeted pairs (R42), with no economic advantage. In R39 the raw `met` sums (193 and 197) count criteria, not fully correct results, and were an unusable denominator. Basis type: finite-test.
+- R43 had 8 pairs and 16 answers, and R44 had 5 pairs and 24 projections, with equal results and no economic advantage; neither tests the utility policy. Basis type: hypothesis.
+- A later cross-check by the kit authors, self-checked by one assistant and not independent, separates a subject self-check on 14 cases from efficiency. The 14 cases are 15 text versions, not 15 trials. No measured gain, cost, tokens or latency and no matched baseline or blind reviewer are recorded. Basis type: authors-domain-assessment.
+
+## Limits
+
+- No price of knowledge, causal usefulness or right to payment is established.
+- R42 timing includes a shared validator and is not product latency.
+- In R43, 7 of 153 non-empty remarks went to limited checking and 146 did not; this is a routing policy, not a proven saving of 146 OCR calls.
+- A cheaper flat implementation may exist; this is open.
+
+## Status and what is open
+
+- The late research synthesis gate is open.
+- Independent semantic review of this text has not been performed.
+- This English page is a summary, not a translation, and does not replace the Russian original.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- Late synthesis still needs completion evidence for later cost and quality obligations.
+- Not read by the card writer: MM_A5295, MM_A10830 and MM_A11093 (the R39, R42 and R43 records); claims resting on them keep the card's limited wording.
+- The R44 task comparison here is 5 pairs and 24 projections. The evaluation paper's editorial notes read its fifty-one equivalent A/B pairs as qualification control inputs, not a task comparison.
+
+## Relation to the full text
+
+The Russian full text is the terminology edition of 2026-11-03. The late synthesis row is only an authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
+
+## Credit and licence
+
+Based on Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). Licence: [CC BY 4.0](../LICENSE). Credit lines and how to cite: [ATTRIBUTION.md](../ATTRIBUTION.md); rights holder statement for the repository: [NOTICE](../NOTICE); third-party sources: [SOURCES.md](../SOURCES.md).
+
+--declarations--
+UPSTREAM original
+DECL REUSE.toml 862
+version = 1
+SPDX-PackageName = "Knowledge Contract Arcana"
+SPDX-PackageSupplier = "Pavel Valentov"
+SPDX-PackageDownloadLocation = "https://github.com/Arcanada-one/knowledge-contract"
+
+# Default: text, documentation, papers, specifications, corpus data.
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "CC-BY-4.0"
+
+# Code, schemas, tools, CI and configuration.
+[[annotations]]
+path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+DECL NOTICE 642
+Knowledge Contract Arcana
+Copyright 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+
+Author: Pavel Valentov, Independent Researcher (ORCID 0009-0001-2567-4584)
+Part of the Arcanada ecosystem.
+Source: https://contract.place and https://github.com/Arcanada-one/knowledge-contract
+
+Text and documentation are licensed under CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Code, schemas and tools are
+licensed under Apache-2.0 (https://www.apache.org/licenses/LICENSE-2.0).
+
+Derivative works and redistributions must retain this notice (Apache-2.0
+section 4(d)) and credit the author and source (CC BY 4.0 section 3(a)).
+
+DECL LICENSE 18657
+Attribution 4.0 International
+
+=======================================================================
+
+Creative Commons Corporation ("Creative Commons") is not a law firm and
+does not provide legal services or legal advice. Distribution of
+Creative Commons public licenses does not create a lawyer-client or
+other relationship. Creative Commons makes its licenses and related
+information available on an "as-is" basis. Creative Commons gives no
+warranties regarding its licenses, any material licensed under their
+terms and conditions, or any related information. Creative Commons
+disclaims all liability for damages resulting from their use to the
+fullest extent possible.
+
+Using Creative Commons Public Licenses
+
+Creative Commons public licenses provide a standard set of terms and
+conditions that creators and other rights holders may use to share
+original works of authorship and other material subject to copyright
+and certain other rights specified in the public license below. The
+following considerations are for informational purposes only, are not
+exhaustive, and do not form part of our licenses.
+
+     Considerations for licensors: Our public licenses are
+     intended for use by those authorized to give the public
+     permission to use material in ways otherwise restricted by
+     copyright and certain other rights. Our licenses are
+     irrevocable. Licensors should read and understand the terms
+     and conditions of the license they choose before applying it.
+     Licensors should also secure all rights necessary before
+     applying our licenses so that the public can reuse the
+     material as expected. Licensors should clearly mark any
+     material not subject to the license. This includes other CC-
+     licensed material, or material used under an exception or
+     limitation to copyright. More considerations for licensors:
+    wiki.creativecommons.org/Considerations_for_licensors
+
+     Considerations for the public: By using one of our public
+     licenses, a licensor grants the public permission to use the
+     licensed material under specified terms and conditions. If
+     the licensor's permission is not necessary for any reason--for
+     example, because of any applicable exception or limitation to
+     copyright--then that use is not regulated by the license. Our
+     licenses grant only permissions under copyright and certain
+     other rights that a licensor has authority to grant. Use of
+     the licensed material may still be restricted for other
+     reasons, including because others have copyright or other
+     rights in the material. A licensor may make special requests,
+     such as asking that all changes be marked or described.
+     Although not required by our licenses, you are encouraged to
+     respect those requests where reasonable. More considerations
+     for the public:
+    wiki.creativecommons.org/Considerations_for_licensees
+
+=======================================================================
+
+Creative Commons Attribution 4.0 International Public License
+
+By exercising the Licensed Rights (defined below), You accept and agree
+to be bound by the terms and conditions of this Creative Commons
+Attribution 4.0 International Public License ("Public License"). To the
+extent this Public License may be interpreted as a contract, You are
+granted the Licensed Rights in consideration of Your acceptance of
+these terms and conditions, and the Licensor grants You such rights in
+consideration of benefits the Licensor receives from making the
+Licensed Material available under these terms and conditions.
+
+
+Section 1 -- Definitions.
+
+  a. Adapted Material means material subject to Copyright and Similar
+     Rights that is derived from or based upon the Licensed Material
+     and in which the Licensed Material is translated, altered,
+     arranged, transformed, or otherwise modified in a manner requiring
+     permission under the Copyright and Similar Rights held by the
+     Licensor. For purposes of this Public License, where the Licensed
+     Material is a musical work, performance, or sound recording,
+     Adapted Material is always produced where the Licensed Material is
+     synched in timed relation with a moving image.
+
+  b. Adapter's License means the license You apply to Your Copyright
+     and Similar Rights in Your contributions to Adapted Material in
+     accordance with the terms and conditions of this Public License.
+
+  c. Copyright and Similar Rights means copyright and/or similar rights
+     closely related to copyright including, without limitation,
+     performance, broadcast, sound recording, and Sui Generis Database
+     Rights, without regard to how the rights are labeled or
+     categorized. For purposes of this Public License, the rights
+     specified in Section 2(b)(1)-(2) are not Copyright and Similar
+     Rights.
+
+  d. Effective Technological Measures means those measures that, in the
+     absence of proper authority, may not be circumvented under laws
+     fulfilling obligations under Article 11 of the WIPO Copyright
+     Treaty adopted on December 20, 1996, and/or similar international
+     agreements.
+
+  e. Exceptions and Limitations means fair use, fair dealing, and/or
+     any other exception or limitation to Copyright and Similar Rights
+     that applies to Your use of the Licensed Material.
+
+  f. Licensed Material means the artistic or literary work, database,
+     or other material to which the Licensor applied this Public
+     License.
+
+  g. Licensed Rights means the rights granted to You subject to the
+     terms and conditions of this Public License, which are limited to
+     all Copyright and Similar Rights that apply to Your use of the
+     Licensed Material and that the Licensor has authority to license.
+
+  h. Licensor means the individual(s) or entity(ies) granting rights
+     under this Public License.
+
+  i. Share means to provide material to the public by any means or
+     process that requires permission under the Licensed Rights, such
+     as reproduction, public display, public performance, distribution,
+     dissemination, communication, or importation, and to make material
+     available to the public including in ways that members of the
+     public may access the material from a place and at a time
+     individually chosen by them.
+
+  j. Sui Generis Database Rights means rights other than copyright
+     resulting from Directive 96/9/EC of the European Parliament and of
+     the Council of 11 March 1996 on the legal protection of databases,
+     as amended and/or succeeded, as well as other essentially
+     equivalent rights anywhere in the world.
+
+  k. You means the individual or entity exercising the Licensed Rights
+     under this Public License. Your has a corresponding meaning.
+
+
+Section 2 -- Scope.
+
+  a. License grant.
+
+       1. Subject to the terms and conditions of this Public License,
+          the Licensor hereby grants You a worldwide, royalty-free,
+          non-sublicensable, non-exclusive, irrevocable license to
+          exercise the Licensed Rights in the Licensed Material to:
+
+            a. reproduce and Share the Licensed Material, in whole or
+               in part; and
+
+            b. produce, reproduce, and Share Adapted Material.
+
+       2. Exceptions and Limitations. For the avoidance of doubt, where
+          Exceptions and Limitations apply to Your use, this Public
+          License does not apply, and You do not need to comply with
+          its terms and conditions.
+
+       3. Term. The term of this Public License is specified in Section
+          6(a).
+
+       4. Media and formats; technical modifications allowed. The
+          Licensor authorizes You to exercise the Licensed Rights in
+          all media and formats whether now known or hereafter created,
+          and to make technical modifications necessary to do so. The
+          Licensor waives and/or agrees not to assert any right or
+          authority to forbid You from making technical modifications
+          necessary to exercise the Licensed Rights, including
+          technical modifications necessary to circumvent Effective
+          Technological Measures. For purposes of this Public License,
+          simply making modifications authorized by this Section 2(a)
+          (4) never produces Adapted Material.
+
+       5. Downstream recipients.
+
+            a. Offer from the Licensor -- Licensed Material. Every
+               recipient of the Licensed Material automatically
+               receives an offer from the Licensor to exercise the
+               Licensed Rights under the terms and conditions of this
+               Public License.
+
+            b. No downstream restrictions. You may not offer or impose
+               any additional or different terms or conditions on, or
+               apply any Effective Technological Measures to, the
+               Licensed Material if doing so restricts exercise of the
+               Licensed Rights by any recipient of the Licensed
+               Material.
+
+       6. No endorsement. Nothing in this Public License constitutes or
+          may be construed as permission to assert or imply that You
+          are, or that Your use of the Licensed Material is, connected
+          with, or sponsored, endorsed, or granted official status by,
+          the Licensor or others designated to receive attribution as
+          provided in Section 3(a)(1)(A)(i).
+
+  b. Other rights.
+
+       1. Moral rights, such as the right of integrity, are not
+          licensed under this Public License, nor are publicity,
+          privacy, and/or other similar personality rights; however, to
+          the extent possible, the Licensor waives and/or agrees not to
+          assert any such rights held by the Licensor to the limited
+          extent necessary to allow You to exercise the Licensed
+          Rights, but not otherwise.
+
+       2. Patent and trademark rights are not licensed under this
+          Public License.
+
+       3. To the extent possible, the Licensor waives any right to
+          collect royalties from You for the exercise of the Licensed
+          Rights, whether directly or through a collecting society
+          under any voluntary or waivable statutory or compulsory
+          licensing scheme. In all other cases the Licensor expressly
+          reserves any right to collect such royalties.
+
+
+Section 3 -- License Conditions.
+
+Your exercise of the Licensed Rights is expressly made subject to the
+following conditions.
+
+  a. Attribution.
+
+       1. If You Share the Licensed Material (including in modified
+          form), You must:
+
+            a. retain the following if it is supplied by the Licensor
+               with the Licensed Material:
+
+                 i. identification of the creator(s) of the Licensed
+                    Material and any others designated to receive
+                    attribution, in any reasonable manner requested by
+                    the Licensor (including by pseudonym if
+                    designated);
+
+                ii. a copyright notice;
+
+               iii. a notice that refers to this Public License;
+
+                iv. a notice that refers to the disclaimer of
+                    warranties;
+
+                 v. a URI or hyperlink to the Licensed Material to the
+                    extent reasonably practicable;
+
+            b. indicate if You modified the Licensed Material and
+               retain an indication of any previous modifications; and
+
+            c. indicate the Licensed Material is licensed under this
+               Public License, and include the text of, or the URI or
+               hyperlink to, this Public License.
+
+       2. You may satisfy the conditions in Section 3(a)(1) in any
+          reasonable manner based on the medium, means, and context in
+          which You Share the Licensed Material. For example, it may be
+          reasonable to satisfy the conditions by providing a URI or
+          hyperlink to a resource that includes the required
+          information.
+
+       3. If requested by the Licensor, You must remove any of the
+          information required by Section 3(a)(1)(A) to the extent
+          reasonably practicable.
+
+       4. If You Share Adapted Material You produce, the Adapter's
+          License You apply must not prevent recipients of the Adapted
+          Material from complying with this Public License.
+
+
+Section 4 -- Sui Generis Database Rights.
+
+Where the Licensed Rights include Sui Generis Database Rights that
+apply to Your use of the Licensed Material:
+
+  a. for the avoidance of doubt, Section 2(a)(1) grants You the right
+     to extract, reuse, reproduce, and Share all or a substantial
+     portion of the contents of the database;
+
+  b. if You include all or a substantial portion of the database
+     contents in a database in which You have Sui Generis Database
+     Rights, then the database in which You have Sui Generis Database
+     Rights (but not its individual contents) is Adapted Material; and
+
+  c. You must comply with the conditions in Section 3(a) if You Share
+     all or a substantial portion of the contents of the database.
+
+For the avoidance of doubt, this Section 4 supplements and does not
+replace Your obligations under this Public License where the Licensed
+Rights include other Copyright and Similar Rights.
+
+
+Section 5 -- Disclaimer of Warranties and Limitation of Liability.
+
+  a. UNLESS OTHERWISE SEPARATELY UNDERTAKEN BY THE LICENSOR, TO THE
+     EXTENT POSSIBLE, THE LICENSOR OFFERS THE LICENSED MATERIAL AS-IS
+     AND AS-AVAILABLE, AND MAKES NO REPRESENTATIONS OR WARRANTIES OF
+     ANY KIND CONCERNING THE LICENSED MATERIAL, WHETHER EXPRESS,
+     IMPLIED, STATUTORY, OR OTHER. THIS INCLUDES, WITHOUT LIMITATION,
+     WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR
+     PURPOSE, NON-INFRINGEMENT, ABSENCE OF LATENT OR OTHER DEFECTS,
+     ACCURACY, OR THE PRESENCE OR ABSENCE OF ERRORS, WHETHER OR NOT
+     KNOWN OR DISCOVERABLE. WHERE DISCLAIMERS OF WARRANTIES ARE NOT
+     ALLOWED IN FULL OR IN PART, THIS DISCLAIMER MAY NOT APPLY TO YOU.
+
+  b. TO THE EXTENT POSSIBLE, IN NO EVENT WILL THE LICENSOR BE LIABLE
+     TO YOU ON ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION,
+     NEGLIGENCE) OR OTHERWISE FOR ANY DIRECT, SPECIAL, INDIRECT,
+     INCIDENTAL, CONSEQUENTIAL, PUNITIVE, EXEMPLARY, OR OTHER LOSSES,
+     COSTS, EXPENSES, OR DAMAGES ARISING OUT OF THIS PUBLIC LICENSE OR
+     USE OF THE LICENSED MATERIAL, EVEN IF THE LICENSOR HAS BEEN
+     ADVISED OF THE POSSIBILITY OF SUCH LOSSES, COSTS, EXPENSES, OR
+     DAMAGES. WHERE A LIMITATION OF LIABILITY IS NOT ALLOWED IN FULL OR
+     IN PART, THIS LIMITATION MAY NOT APPLY TO YOU.
+
+  c. The disclaimer of warranties and limitation of liability provided
+     above shall be interpreted in a manner that, to the extent
+     possible, most closely approximates an absolute disclaimer and
+     waiver of all liability.
+
+
+Section 6 -- Term and Termination.
+
+  a. This Public License applies for the term of the Copyright and
+     Similar Rights licensed here. However, if You fail to comply with
+     this Public License, then Your rights under this Public License
+     terminate automatically.
+
+  b. Where Your right to use the Licensed Material has terminated under
+     Section 6(a), it reinstates:
+
+       1. automatically as of the date the violation is cured, provided
+          it is cured within 30 days of Your discovery of the
+          violation; or
+
+       2. upon express reinstatement by the Licensor.
+
+     For the avoidance of doubt, this Section 6(b) does not affect any
+     right the Licensor may have to seek remedies for Your violations
+     of this Public License.
+
+  c. For the avoidance of doubt, the Licensor may also offer the
+     Licensed Material under separate terms or conditions or stop
+     distributing the Licensed Material at any time; however, doing so
+     will not terminate this Public License.
+
+  d. Sections 1, 5, 6, 7, and 8 survive termination of this Public
+     License.
+
+
+Section 7 -- Other Terms and Conditions.
+
+  a. The Licensor shall not be bound by any additional or different
+     terms or conditions communicated by You unless expressly agreed.
+
+  b. Any arrangements, understandings, or agreements regarding the
+     Licensed Material not stated herein are separate from and
+     independent of the terms and conditions of this Public License.
+
+
+Section 8 -- Interpretation.
+
+  a. For the avoidance of doubt, this Public License does not, and
+     shall not be interpreted to, reduce, limit, restrict, or impose
+     conditions on any use of the Licensed Material that could lawfully
+     be made without permission under this Public License.
+
+  b. To the extent possible, if any provision of this Public License is
+     deemed unenforceable, it shall be automatically reformed to the
+     minimum extent necessary to make it enforceable. If the provision
+     cannot be reformed, it shall be severed from this Public License
+     without affecting the enforceability of the remaining terms and
+     conditions.
+
+  c. No term or condition of this Public License will be waived and no
+     failure to comply consented to unless expressly agreed to by the
+     Licensor.
+
+  d. Nothing in this Public License constitutes or may be interpreted
+     as a limitation upon, or waiver of, any privileges and immunities
+     that apply to the Licensor or You, including from the legal
+     processes of any jurisdiction or authority.
+
+
+=======================================================================
+
+Creative Commons is not a party to its public
+licenses. Notwithstanding, Creative Commons may elect to apply one of
+its public licenses to material it publishes and in those instances
+will be considered the “Licensor.” The text of the Creative Commons
+public licenses is dedicated to the public domain under the CC0 Public
+Domain Dedication. Except for the limited purpose of indicating that
+material is shared under a Creative Commons public license or as
+otherwise permitted by the Creative Commons policies published at
+creativecommons.org/policies, Creative Commons does not authorize the
+use of the trademark "Creative Commons" or any other trademark or logo
+of Creative Commons without its prior written consent including,
+without limitation, in connection with any unauthorized modifications
+to any of its public licenses or any other arrangements,
+understandings, or agreements concerning use of licensed material. For
+the avoidance of doubt, this paragraph does not form part of the
+public licenses.
+
+Creative Commons may be contacted at creativecommons.org.
+
+
+--checklist--
+Fixed checklist for a blind publication review (DEC-AUP-0171):
+1. The sha256 of each listed blob equals the digest in its decision line.
+2. The upstream pointer and the license declarations (LICENSE, NOTICE, REUSE.toml, front matter) agree.
+3. The rights holder is a named person, rights_basis quotes the REUSE.toml holder string and says that contributor parts rest on DCO sign-offs that are declared, not verified.
+4. No third-party text, marks, secrets, host paths, host names or addresses.
+5. The credit line is present.
+6. limits states what this review does not establish.
+Verdict: APPROVE only if every item holds.
