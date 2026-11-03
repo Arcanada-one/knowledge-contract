@@ -29,7 +29,7 @@
  ],
  "release_digest": {
   "algorithm": "sha256 over lines \"<sha256>  <path>\\n\" of all files under papers/ and spec/ (except .gitkeep), sorted by path",
-  "value": "0a39a81b124d6307d8f3a0be741112057c75f390c75b57b5b54990daea56e0dc",
+  "value": "8104e48b16753a5385d17aba4d45a8781c5efa03fd736dcba3251ad3346b71fb",
   "files": 50
  },
  "not_in_this_release": "tier 2 supporting records, tools, schemas, the glossary, and every allowlist item marked needs-decision or exclude, except the 14 edited papers (decision above)",
@@ -201,7 +201,7 @@
    "entry_page": {
     "path": "papers/P04_query_retrieval_and_coverage.md",
     "revision_id": "MM_A0201-entry-en-r1",
-    "sha256": "788740dda431a4ad627caec05134f788dd1a253936df6bdc084c3485f3f0551f",
+    "sha256": "bedfb67e1938c0f64e6348deb04b861d6948b2ec57a227b9c8e54d35a6b272a6",
     "language": "en",
     "derived_from_card": "a6b39660a0cfedd5ac07e416ad34995446f32cdb3c6f20378421a12d743c186c"
    },
@@ -376,7 +376,7 @@
    "entry_page": {
     "path": "papers/P09_work_roles_skills_and_kc.md",
     "revision_id": "MM_A0206-entry-en-r1",
-    "sha256": "4034f94526f0704fad43c4885677851b2e87877dcb6f3721f3b7b1b133e33515",
+    "sha256": "183c0c7fa50349322d7473c80007c9a2de9a97c2a7c675de001b7767c515fb43",
     "language": "en",
     "derived_from_card": "834fa95aac243cbe270555921b2834dd47a0f5eaeb8cdfa5266b83b211de502e"
    },
@@ -411,7 +411,7 @@
    "entry_page": {
     "path": "papers/P10_revision_and_canon.md",
     "revision_id": "MM_A0207-entry-en-r1",
-    "sha256": "3ee814c87d90f4d00e5458ea710619ac948092c77610b3586ea3936e946d47da",
+    "sha256": "fd8661a1a7354b469fc8d77e00c0ad8a5aa664a4e31469d931e0965e231f7eb8",
     "language": "en",
     "derived_from_card": "b7b67c03da0659ca4c35babe114177dfc8c32029f1a339ac37a0bd58d1639c66"
    },
@@ -864,7 +864,7 @@
   },
   {
    "path": "papers/P04_query_retrieval_and_coverage.md",
-   "sha256": "788740dda431a4ad627caec05134f788dd1a253936df6bdc084c3485f3f0551f"
+   "sha256": "bedfb67e1938c0f64e6348deb04b861d6948b2ec57a227b9c8e54d35a6b272a6"
   },
   {
    "path": "papers/P05_budgeted_context_composition.md",
@@ -884,11 +884,11 @@
   },
   {
    "path": "papers/P09_work_roles_skills_and_kc.md",
-   "sha256": "4034f94526f0704fad43c4885677851b2e87877dcb6f3721f3b7b1b133e33515"
+   "sha256": "183c0c7fa50349322d7473c80007c9a2de9a97c2a7c675de001b7767c515fb43"
   },
   {
    "path": "papers/P10_revision_and_canon.md",
-   "sha256": "3ee814c87d90f4d00e5458ea710619ac948092c77610b3586ea3936e946d47da"
+   "sha256": "fd8661a1a7354b469fc8d77e00c0ad8a5aa664a4e31469d931e0965e231f7eb8"
   },
   {
    "path": "papers/P11_evaluation_and_falsification.md",
