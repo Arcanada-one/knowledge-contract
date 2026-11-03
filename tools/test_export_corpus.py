@@ -636,6 +636,35 @@ class DecisionRouteTests(unittest.TestCase):
             with self.assertRaises(export.ExportError):
                 export.validate_row({**row, "path": path})
 
+    def test_the_fourteen_english_paper_entry_pages_are_in_scope_and_nothing_near_them_is(self) -> None:
+        # DEC-AUP-0172: an explicit list of exactly fourteen papers/P00..P13 pages, not a prefix.
+        base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
+                "decision": f"{DEC}b2.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
+        papers = sorted(p for p in export.SCOPE_PATHS if p.startswith("papers/"))
+        self.assertEqual(len(papers), 14)
+        self.assertEqual(sorted(export.SCOPE_PATHS - set(papers)), sorted(DOCS))
+        for number, path in enumerate(papers):
+            with self.subTest(path=path):
+                self.assertRegex(path, rf"^papers/P{number:02d}_[a-z_]+\.md$")
+                self.assertTrue((export.REPO / path).is_file(), "the scope names a file that exists in the repository")
+                export.validate_row({**base, "path": path})
+        refused = (
+            "papers/ru/P00_introduction.md", "papers/ru/P13_knowledge_utility_and_resource_economics.md", "papers/README.md",
+            "papers/P14_future_paper.md", "papers/P00_introduction.md.md", "papers/p00_introduction.md", "papers/P00_Introduction.md",
+            "spec/STATUS_MODEL.md", "spec/README.md", "spec/ru/STATUS_MODEL.md", "schemas/x.md",
+            "papers/../articles/another.md", "papers/../papers/P00_introduction.md", "papers/./P00_introduction.md",
+            "papers//P00_introduction.md", "../papers/P00_introduction.md", "/papers/P00_introduction.md",
+            "papers/P00_introduction.md/", "papers/sub/../P00_introduction.md", "papers/P00_introduction.md\n",
+        )
+        for path in refused:
+            with self.subTest(refused=path):
+                with self.assertRaises(export.ExportError):
+                    export.validate_row({**base, "path": path})
+        for path in ("papers/ru/P00_introduction.md", "papers/README.md", "spec/STATUS_MODEL.md", "papers/P14_future_paper.md"):
+            with self.subTest(message=path):
+                with self.assertRaisesRegex(export.ExportError, "outside the scope fixed by DEC-AUP-0171 and DEC-AUP-0172"):
+                    export.validate_row({**base, "path": path})
+
     def test_row_commit_is_the_most_recent_addition_of_the_row(self) -> None:
         w = self.world(no_rows=True)
         row = w.row(DOCS[0], "b1", 0)
