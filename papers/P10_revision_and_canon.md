@@ -29,7 +29,7 @@ The paper sets rules for changing knowledge, its grounds, norms and chosen repre
 - Seven coordinates are distinguished: existence of content, assessment of its grounds, applicability, normative acceptance, package publication, choice of current state and completion of delivery. Success on one does not change another. Basis type: authors-domain-assessment; seven is not claimed necessary.
 - The finite machine passed 73 checks: 24 authored vectors, 39 negative controls, 5 finite enumerations and 5 positive checks. Basis type: finite-test. The count 73 and the 66 configurations use different units.
 - Three defects of the first model version were found by the authors and fixed: a boolean accepted as an integer receipt generation, a receipt confirmed without an observed publication effect, and the path `.` accepted as a manifest member. A second agent reviewed 12 boundary observations and found no new blocking defects; this is not expert review. Basis type: finite-test.
-- In the single R0015 observation, one separate copy stayed at an old version while the archive was intact; the cause was not disclosed. The audit shows 301 of 302 saves and 348 of 348 hashes. Basis type: finite-test; one operation, not repeated.
+- In the single R0015 observation, one separate copy stayed at an old version while the archive was intact; the cause was not disclosed. The audit shows 301 of 302 saves and 348 of 348 hashes. Basis type: finite-test; one operation, not repeated; the revision model (MM_A0364) was NOT read.
 - Dependency analysis distinguishes AND/OR structures of sufficient grounds. Basis type: authors-domain-assessment; completeness of dependency discovery was not measured.
 - The RU10 cross-check (kit authors, one assistant) is partly verified: the r1 report confirms two rejected packaging attempts, a first-adapter defect (empty `Blueprint` list) and an unrebuilt knowledge package. Retention of R0 history is not verified from the open reports. Basis type: authors-domain-assessment.
 
@@ -50,7 +50,7 @@ The paper sets rules for changing knowledge, its grounds, norms and chosen repre
 
 ## Relation to the full text
 
-The Russian full text is the unchanged terminology edition of 2026-11-03. Its opening paragraph, serving as abstract, omits executed results and first failures; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its opening paragraph, serving as abstract, omits executed results and first failures; this page follows the corrected wording of the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

@@ -38,12 +38,13 @@ The paper proposes a profile of the semantic object (`MeaningObject`) and a prot
 - No production quality, throughput, universal text/image equivalence or accuracy on real books is claimed.
 - A structural validator checks pinned references and declared fields, not whether an image was read correctly.
 - No real pairs of OCR and verified transcription exist for the three books; OCR accuracy against the original PDF was not measured.
-- No cost measurement compares annotation with reading the source. Novelty is not claimed for attribution, conditions or graphs alone.
+- No cost measurement compares annotation with reading the source.
 
 ## Status and what is open
 
 - The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
 - The English page is a summary, not a translation, and does not replace the Russian original.
+- The sources MM_A0275, MM_A0263 and MM_A0274 (behind the registry counts) and the gap map MM_A5300 (behind the appendix slices) were NOT read by the card writer; claims resting on them keep the limited wording above.
 - The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
 - Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
 

@@ -22,7 +22,7 @@ full_text: ru/P03_transformations_and_transfer.md
 
 ## Abstract
 
-Reusing knowledge requires transformations: normalisation, reduction, joining sources, inference, parametrisation and transfer to a new situation. Such operations can give outwardly identical results while preserving different properties and resting on different grounds. The paper proposes a transition contract linking input editions, the permitted effect, preconditions, postconditions, protected properties, assumptions, losses and the actual output. Geometric similarity only selects candidates. Conditional properties are arguments under explicit premises, and hypotheses about the benefit of the profile are untested; the appendix keeps limited executed experiments that do not confirm them. It does not claim a universal computable algebra of human meaning.
+Reusing knowledge requires transformations: normalisation, reduction, joining sources, inference, parametrisation and transfer to a new situation. The paper proposes a transition contract linking input editions, the permitted effect, preconditions, postconditions, protected properties, assumptions, losses and the actual output. Geometric similarity only selects candidates. Conditional properties are arguments under explicit premises, and hypotheses about the benefit of the profile are untested; the appendix keeps limited executed experiments that do not confirm them. It does not claim a universal computable algebra of human meaning.
 
 ## Claims and their basis
 
@@ -38,12 +38,12 @@ Reusing knowledge requires transformations: normalisation, reduction, joining so
 - The navigation readable file did not reproduce whole, and three captions fell into alt-text; reversing an operation over one block is not restoring the full artifact.
 - The finite profile does not test recognition of arbitrary phrases, implicit domain models or visual understanding. No execution report of it was read.
 - Practical confirmation needs permitted pages of three books, fixed OCR/VLM versions and independent labelling; counts of documents are not a measure of truth.
-- The separation draws on prior work and is not presented as a new mathematical result.
 
 ## Status and what is open
 
 - The late research synthesis gate is OPEN. Independent semantic review of this text has NOT been performed.
 - The English page is a summary, not a translation, and does not replace the Russian original.
+- The sources MM_A5295, MM_A10271 (mapping history) and MM_A5300 (gap plan) were NOT read by the card writer; claims resting on them keep the limited wording above.
 - The research crosswalk is integrated but is a one-assistant self-check by the kit authors, not independent confirmation.
 - A later engineering amendment separates migration of representation paths from semantic transformation; it is a layout change, and the report behind it was not checked.
 - Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.

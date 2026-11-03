@@ -30,7 +30,7 @@ The paper proposes an operational research programme for managing transitions be
 - A synthetic example with three necessary parts costing 2, 2 and 3 against a budget of 5 totals 7, so the obligation cannot be met in one package. Basis type: proof-under-premises; an arithmetic example, not a measurement.
 - "Minimal context" may be claimed only with a declared option space, cost function and optimality proof. Basis type: authors-domain-assessment.
 - Six programme hypotheses each name a strong comparison and a refuting outcome. Basis type: hypothesis; none is tested, and no row-level status is asserted.
-- Appendix experiment on pre-structured material, 80 calls. Rubric A met 193 and left 7 unknown of 200 criteria; rubric B met 197 and left 3 unknown of 200. Vectors matched in 13 of 20 canonical pairs and differed in 7. Basis type: finite-test; five of five calibration controls apply to one profile only.
+- Appendix experiment on pre-structured material, 80 calls. Rubric A met 193 and left 7 unknown of 200 criteria; rubric B met 197 and left 3 unknown of 200. Vectors matched in 13 of 20 canonical pairs and differed in 7. Basis type: finite-test; five of five calibration controls apply to one profile only. The source MM_A5295 was NOT read by the card writer; claims resting on it keep the limited wording above.
 - Release cross-check by the kit authors: 13 of 14 first answers passed the narrow conditions, and in one task (T09) the first output was rejected because the register of a protected phrase changed. Basis type: authors-domain-assessment; a self-check by one assistant, not independent, and the 14 editing tasks do not test this model.
 
 ## Limits
@@ -38,7 +38,7 @@ The paper proposes an operational research programme for managing transitions be
 - The 12 refuting probes were editorial constructions and were not run at the initial stage; their later status is not claimed.
 - OCR, formulas, tables, diagrams and the 917 derived descriptions behind the three-book observations were not independently verified.
 - Three domains yield different defect types; they do not show transfer to other texts or professions.
-- Novelty is not claimed for any single entity, graph, contract or cache; universality of the general model is not proved.
+- Universality of the general model is not proved.
 
 ## Status and what is open
 

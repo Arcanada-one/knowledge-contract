@@ -28,8 +28,8 @@ The paper offers a specification and a limited transition profile over structure
 
 - Pilot: 31 of 32 episodes (171 of 172 assertions) matched expectations; the single mismatch concerned the diagnostic status of applying not-yet-accepted memory. After one minimal fix, a repeat gave 32/32 and 172/172, which is a known-set regression, not new independent confirmation. A simple baseline gave the same 6/6 useful results and 0/4 forbidden admissions on the shared subset. Basis type: finite-test. The 172 assertions are not 172 dialogues, and the agent that built the control set also prepared the interpretation.
 - The reducer accepted 2 of 2 semantically false "trusted" annotations, in both runs. Basis type: finite-test. Structural guarantees do not confirm meaning.
-- The state key is user, task and branch inside one tenant, with owner and roles taken from an external trusted registry. Basis type: finite-test, on the 32 pilot episodes; the registry does not authenticate a user.
-- Understanding, acceptance, intent, support, authority and learning are assessment roles, not a trust scale, and fourteen conditional properties give a checkable argument about the transition design. Basis type for both: authors-domain-assessment; not a proof, not machine verification.
+- The state key is user, task and branch inside one tenant, with owner and roles taken from an external trusted registry. Basis type: finite-test, on the 32 pilot episodes; the registry does not authenticate a user; the episode list was NOT read by the card writer.
+- Understanding, acceptance, intent, support, authority and learning are assessment roles, not a trust scale, and fourteen conditional properties give a checkable argument about the transition design. Basis type for both: authors-domain-assessment; not a proof, not machine verification; the motivating literature (MM_A0714) was NOT read and is NOT VERIFIED.
 - Engineering cross-check of the RU10 release: two single-step examples (T13 and T14) ask targeted questions when inputs are missing, without invented content. Basis type: authors-domain-assessment. They are self-assessed fixtures, not dialogue sessions, with no blind reviewer or matched baseline; a one-assistant self-check by the kit authors, not independent. The crosswalk phrase about explaining edits is NOT VERIFIED.
 - Showing known, observed and verified states separately may reduce misreading of `unknown` as a negative judgement of a person. Basis type: hypothesis; no human study.
 
@@ -45,12 +45,12 @@ The paper offers a specification and a limited transition profile over structure
 - The late research synthesis gate is open.
 - Independent semantic review of this text has not been performed.
 - The English page is a summary, not a translation, and does not replace the Russian original.
-- A proposal that remarks become addressable fix tasks is a hypothesis awaiting executed results; the advantage of integrating the six primary sources is open.
+- A proposal that remarks become addressable fix tasks is an unexecuted hypothesis.
 - Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). It has no abstract section; the card proposes one, and the Abstract above rests on that proposal. This page follows the card's evidence-bound wording. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). It has no abstract section; the card proposes one, and the Abstract above rests on that proposal. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

@@ -22,25 +22,25 @@ full_text: ru/P09_work_roles_skills_and_kc.md
 
 ## Abstract
 
-The paper proposes a general Knowledge Contract (KC) v3 interface linking addressable content to purpose, conditions, grounds, dependencies and rules of use. Nine core groups are extended by six selective profiles. The professional profile separates a unit of work (`WorkItem`), role (`Role`), skill description (`Skill`), solution scheme (`Blueprint`), executor capability, current authority, attempt and evidence. For a bounded interchange format the authors implemented a JSON Schema, consistency checks, consumer compatibility, evaluation of current use and migration of a subset of v2. The implementation is finite and works on trusted, already interpreted JSON inputs.
+The paper proposes a general Knowledge Contract (KC) v3 interface linking addressable content to purpose, conditions, grounds, dependencies and rules of use. Nine core groups are extended by six selective profiles. The professional profile separates a unit of work (`WorkItem`), role (`Role`), skill description (`Skill`), solution scheme (`Blueprint`), executor capability, current authority, attempt and evidence. For a bounded interchange format the authors implemented a JSON Schema, consistency checks, consumer compatibility, current-use evaluation and a v2 subset migration. The implementation is finite and works on trusted, already interpreted JSON inputs.
 
 ## Claims and their basis
 
-- The authors' first run passed 35/35 contract scenarios. A control set passed 26/26. Basis type: finite-test. The control set was composed by a separate agent of the same research session from the public interface; it is not external verification. One control intent is unmapped and five are partly mapped.
+- The authors' first run passed 35/35 contract scenarios. A control set passed 26/26. Basis type: finite-test. The control set was composed by a separate agent of the same research session from the public interface; it is not external verification. One control intent is unmapped and five are partly mapped; the gap list after that count was NOT read by the card writer.
 - Two authors' cases and four control cases with false trusted inputs were accepted. They show the model boundary and stay outside the main figure. Basis type: finite-test.
-- A diagnostic ablation without part of the checks scored 3/9 against 9/9; it is not a strong baseline. An exploratory comparison with a strong plain form, prepared after the first results were disclosed, scored 9/9 on both sides. Basis type: finite-test.
+- A diagnostic ablation without part of the checks scored 3/9 against 9/9; it is not a strong baseline. An exploratory comparison with a strong plain form, prepared after the first results were disclosed, scored 9/9 on both sides; its evidence file (MM_A0790) was NOT read. Basis type: finite-test.
 - A strong plain alternative for targeted revision gave the same result in 30 pairs, a negative result. Basis type: finite-test; the underlying report was not read.
 - The distinctions among role, skill description, solution scheme, capability and authority are definitions. Basis type: authors-domain-assessment.
 - RU10 cross-check, by the kit authors and one assistant: 107 entries of the r1 delivery use valid AKP forms. The r2 set has 110 entries, after three competence descriptions were added. In r1, 14 of 14 retained results were re-mapped to the contract. An empty `Blueprint` list in the first adapter was fixed. Basis type: authors-domain-assessment.
-- The central proposal (more controllable acceptance of work) is a hypothesis; H01-H04 are planned, not executed. Basis type: hypothesis.
+- The central proposal is a hypothesis; H01-H04 are planned, not executed. Basis type: hypothesis.
 
 ## Limits
 
 - Source markup correctness and external authority are not established by the validator.
-- Speed and cost were not measured; nine groups and six profiles are not shown minimal.
-- The check records no revision or hash of the contract itself.
-- Authors, composer and assessors share one session; no organisational independence is established.
-- Migration covers one historical shape; semantic equivalence stays `not_established`. A native test was not run.
+- Speed and cost were not measured; groups and profiles are not shown minimal.
+- The check records no revision or hash of the contract.
+- Authors, composer and assessors share one session.
+- Migration covers one historical shape; semantic equivalence stays `not_established`.
 
 ## Status and what is open
 
@@ -53,7 +53,7 @@ The paper proposes a general Knowledge Contract (KC) v3 interface linking addres
 
 ## Relation to the full text
 
-The Russian full text is the unchanged terminology edition of 2026-11-03. Its abstract understates executed results; this page follows the corrected wording from the editorial review. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter, links aside). Its abstract understates executed results; this page follows the editorial review's corrected wording. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

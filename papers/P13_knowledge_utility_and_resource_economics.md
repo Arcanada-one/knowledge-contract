@@ -26,10 +26,10 @@ The paper proposes a way to link the life cycle of meaning artifacts to observed
 
 ## Claims and their basis
 
-- Four levels are separated, from cost incurred to estimated added contribution. A scalar utility is admissible only for a concrete decision with a published conversion policy; no comparison with a vector was run. Causal usefulness was not estimated. Complaint scenarios A to E are constructed and none was executed. Basis type: authors-domain-assessment.
+- Four levels are separated, from cost incurred to estimated added contribution. A scalar utility is admissible only for a concrete decision with a published conversion policy; no comparison with a vector was run. Causal usefulness was not estimated (NOT VERIFIED against MM_A0428 or the causal literature, not read). Complaint scenarios A to E are constructed and none was executed. Basis type: authors-domain-assessment.
 - Central claim: a utility-managed policy improves the cost of a correct result against strong simple alternatives in a given load. No load was studied and no comparison was made. Basis type: hypothesis.
 - Graph and simple implementations agreed in 30 of 30 targeted pairs (R42), with no economic advantage. In R39 the raw `met` sums (193 and 197) count criteria, not fully correct results, and were an unusable denominator. Basis type: finite-test.
-- R43 had 8 pairs and 16 answers, and R44 had 5 pairs and 24 projections, with equal results and no economic advantage; neither tests the utility policy. Basis type: hypothesis (the card's type for the item recording these figures).
+- R43 had 8 pairs and 16 answers, and R44 had 5 pairs and 24 projections, with equal results and no economic advantage; neither tests the utility policy. Basis type: hypothesis.
 - A later cross-check by the kit authors, self-checked by one assistant and not independent, separates a subject self-check on 14 cases from efficiency. The 14 cases are 15 text versions, not 15 trials. No measured gain, cost, tokens or latency and no matched baseline or blind reviewer are recorded. Basis type: authors-domain-assessment.
 
 ## Limits
@@ -46,11 +46,12 @@ The paper proposes a way to link the life cycle of meaning artifacts to observed
 - This English page is a summary, not a translation, and does not replace the Russian original.
 - Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
 - Late synthesis still needs completion evidence for later cost and quality obligations.
-- The R44 task comparison here is 5 pairs and 24 projections. The evaluation paper's editorial notes read its fifty-one equivalent A/B pairs as qualification control inputs, not a task comparison; this paper's card does not mention them. Read both papers' figures through this reading.
+- Not read by the card writer: MM_A5295, MM_A10830 and MM_A11093 (the R39, R42 and R43 records); claims resting on them keep the card's limited wording.
+- The R44 task comparison here is 5 pairs and 24 projections. The evaluation paper's editorial notes read its fifty-one equivalent A/B pairs as qualification control inputs, not a task comparison.
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03. Where the editorial card corrects the abstract's status wording (it does not say no policy was measured), this page follows it. The late synthesis row is only an authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03. The late synthesis row is only an authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 
