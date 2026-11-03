@@ -22,34 +22,35 @@ full_text: ru/P13_knowledge_utility_and_resource_economics.md
 
 ## Abstract
 
-The paper proposes a way to link the life cycle of meaning artifacts to observed resource use, conditions of application and results for specific recipients. The object of evaluation is not a universal "value of a text" but the contribution of an artifact version, or a set of them, to a goal fixed in advance, relative to an explicit alternative. Costs of extraction, checking, transformation, indexing, storage, delivery, reuse, revision and of the evaluation itself are counted. The paper offers a synthesis and a contract profile, not a new value theory. No retention or ranking policy based on conditional utility has been tested on a real load; the appendix holds only local observations from runs R38-R44.
+The paper proposes a way to link the life cycle of meaning artifacts to observed resource use, conditions of application and results for specific recipients. The object of evaluation is not a universal "value of a text" but the contribution of an artifact version to a goal fixed in advance, relative to an explicit alternative. Costs, including those of the evaluation itself, are counted. The paper offers a synthesis and a contract profile, not a value theory. No retention or ranking policy based on conditional utility has been tested on a real load; the appendix holds only local resource observations from runs R38-R44.
 
 ## Claims and their basis
 
-- Four levels are separated: cost incurred, knowledge participation, observable result, estimate of added contribution. A scalar utility is admissible only for a concrete decision with a published conversion policy. These are design rules; no vector-versus-scalar comparison was run. Basis type: authors-domain-assessment.
-- Causal usefulness of a policy was not estimated; the paper only states that causal estimates need their own premises. Basis type: authors-domain-assessment.
-- Complaint scenarios A to E are constructed to distinguish outcomes; none was executed. Basis type: authors-domain-assessment.
+- Four levels are separated, from cost incurred to estimated added contribution. A scalar utility is admissible only for a concrete decision with a published conversion policy; no comparison with a vector was run. Causal usefulness was not estimated. Complaint scenarios A to E are constructed and none was executed. Basis type: authors-domain-assessment.
 - Central claim: a utility-managed policy improves the cost of a correct result against strong simple alternatives in a given load. No load was studied and no comparison was made. Basis type: hypothesis.
-- Graph and simple implementations agreed in 30 of 30 targeted pairs (R42); R43 had 8 paired tasks and 16 answers, R44 had 5 pairs and 24 projections, all with equal results and no economic advantage. In R39 the raw `met` sums (193 and 197) count criteria, not fully correct results, and were an unusable denominator. Basis type: finite-test.
+- Graph and simple implementations agreed in 30 of 30 targeted pairs (R42), with no economic advantage. In R39 the raw `met` sums (193 and 197) count criteria, not fully correct results, and were an unusable denominator. Basis type: finite-test.
+- R43 had 8 pairs and 16 answers, and R44 had 5 pairs and 24 projections, with equal results and no economic advantage; neither tests the utility policy. Basis type: hypothesis (the card's type for the item recording these figures).
+- A later cross-check by the kit authors, self-checked by one assistant and not independent, separates a subject self-check on 14 cases from efficiency. The 14 cases are 15 text versions, not 15 trials. No measured gain, cost, tokens or latency and no matched baseline or blind reviewer are recorded. Basis type: authors-domain-assessment.
 
 ## Limits
 
 - No price of knowledge, causal usefulness or right to payment is established.
-- R42 timing includes a shared validator; it is not product latency or inference cost.
-- In R43, 7 of 153 non-empty remarks went to limited checking and 146 did not; this is one routing policy, not a proven saving of 146 OCR calls.
-- Whether a cheaper flat implementation exists remains open.
+- R42 timing includes a shared validator and is not product latency.
+- In R43, 7 of 153 non-empty remarks went to limited checking and 146 did not; this is a routing policy, not a proven saving of 146 OCR calls.
+- A cheaper flat implementation may exist; this is open.
 
 ## Status and what is open
 
 - The late research synthesis gate is open.
 - Independent semantic review of this text has not been performed.
 - This English page is a summary, not a translation, and does not replace the Russian original.
-- Late synthesis still needs completion evidence for later cost and quality obligations; the later supplement adds cost events, not an experiment.
-- Held contradiction, not reconciled: this paper reports 5 pairs and 24 projections in R44, whereas the P11 paper reports 51 A/B pairs for R44.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- Late synthesis still needs completion evidence for later cost and quality obligations.
+- The R44 task comparison here is 5 pairs and 24 projections. The evaluation paper's editorial notes read its fifty-one equivalent A/B pairs as qualification control inputs, not a task comparison; this paper's card does not mention them. Read both papers' figures through this reading.
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects status wording of its abstract (which does not say no policy was measured), this page follows the corrected, evidence-bound wording. Later material does not raise its status. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03. Where the editorial card corrects the abstract's status wording (it does not say no policy was measured), this page follows it. The late synthesis row is only an authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

@@ -22,23 +22,23 @@ full_text: ru/P11_evaluation_and_falsification.md
 
 ## Abstract
 
-The paper proposes a programme for testing meaning management as a whole process: request, retrieval, coverage assessment, bounded package, application, observable result, and back-tracing with revision. The scientific question is whether explicit meaning objects, conditions, dependencies and provenance help a person or a model reach a better-grounded result under limited source access and budget. The paper states what is to be checked and what would refute each hypothesis. It does not answer the question: local targeted comparisons against a strong flat implementation gave equal statuses and no superiority. An appendix keeps runs R37-R44, including first failures.
+The paper proposes a programme for testing meaning management as a whole process, from request and retrieval to the observable result and back-tracing with revision. The scientific question is whether explicit meaning objects, conditions, dependencies and provenance help a person or a model reach a better-grounded result under limited source access and budget. The question is not answered on a representative or independent load: local targeted comparisons against a strong flat implementation gave equal statuses and no established superiority. An appendix keeps runs R37-R44, including first failures.
 
 ## Claims and their basis
 
-- The question is open; the six hypotheses in the paper's table remain hypotheses, with no comparison on a representative or independent load. Basis type: hypothesis.
-- Local graph-versus-flat comparisons gave equal results and no superiority: 30 of 30 pairs (R42), 8 pairs (R43), 51 pairs (R44). None is representative, independent or blind; in R42 both branches share one validator. Basis type: finite-test.
-- The first integration checks in R44 gave 15 of 16 expected outcomes (one expectation was wrong); the result was not replaced by 16 of 16. Basis type: finite-test.
-- The split into eight verification subjects and three separate coverage reports are design decisions backed by constructed counterexamples, not measured on real queries. Basis type: authors-domain-assessment.
-- Preservation of obligations under exact reuse holds only for immutable content, matching requirements and passed admission checks; the justification is in another document. Basis type: proof-under-premises.
-- No observations on real users exist; for agents only limited local model answers (R43: 16, R44: 10; not blind). Basis type: authors-domain-assessment.
+- The six hypotheses in the paper's table remain hypotheses, with no comparison on a representative or independent load. Basis type: hypothesis.
+- R42: equal statuses in 30 of 30 pairs with a shared validator, so not independent. The first R44 integration checks gave 15 of 16 expected outcomes; not replaced by 16 of 16. Basis type: finite-test.
+- R43 (8 pairs) and R44 (5 task pairs and 24 projections) also gave equal statuses; none is representative or independent. Basis type: authors-domain-assessment.
+- Eight verification subjects and three separate coverage reports are design decisions. No observations on real users exist; for agents only limited local model answers (R43: 16, R44: 10; not blind). Basis type: authors-domain-assessment.
+- Preservation of obligations under exact reuse holds only for immutable content, matching requirements and passed admission checks. Basis type: proof-under-premises.
+- A cross-check by the kit authors, self-checked by one assistant and not independent, links separate conformance, source-fidelity, outcome and limit checks to 40 of 40 expected outcomes; the first harness run gave 31 of 32. It is not held-out and has no blind review. Basis type: authors-domain-assessment.
 
 ## Limits
 
-- Conclusions concern observable behaviour for given inputs and versions, not understanding.
+- Conclusions concern observable behaviour, not understanding.
 - The catalogue of 320 synthetic plans and 18 prepared illustrations is not a sample of solved tasks.
-- Results on well-known books cannot exclude prior model exposure to the text.
-- A pilot in the related reuse paper compared exact reuse with a no-cache mode (median latency ratio 0.9982, no stable gain); it did not compare a compilation level with an exact-match cache, so that falsification criterion has not been applied.
+- Results on well-known books cannot exclude prior model exposure; the cited contamination work was not read (NOT VERIFIED).
+- The related reuse pilot (median latency ratio 0.9982, no stable gain) did not compare a compilation level with an exact-match cache, so that falsification criterion is not yet applied.
 - Passed technical checks are not evidence of superiority.
 
 ## Status and what is open
@@ -46,13 +46,13 @@ The paper proposes a programme for testing meaning management as a whole process
 - The late research synthesis gate is open.
 - Independent semantic review of this text has not been performed.
 - This English page is a summary, not a translation, and does not replace the Russian original.
-- Late synthesis still needs the formal properties behind the reuse row.
-- Held inconsistency: the appendix gives one corpus audit as 5 594 flags and 169 ledger rows and elsewhere as 5 538 flags and 174 ledger edits; unexplained.
-- Held contradiction, not reconciled: this paper reports 51 A/B pairs in R44, whereas the P13 paper reports 5 pairs and 24 projections for R44.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
+- Held inconsistency: one corpus audit appears as 5 594 flags and 169 ledger rows, and elsewhere as 5 538 flags and 174 ledger edits; unexplained.
+- Editorial notes read the R44 task comparison as 5 task pairs and 24 projections, and the 51 equivalent A/B pairs of the same section as qualification control inputs, not a task comparison. The Russian text as published still lists 51 A/B pairs next to the comparison and is unchanged; read both papers' figures through this reading.
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where the editorial card corrects status wording of its abstract (which does not say the question is unanswered or report the equal A/B results), this page follows the corrected, evidence-bound wording. Later material does not raise status. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03. Where the editorial card corrects the abstract's status wording, this page follows the corrected wording. The late synthesis row is integrated only as the authors' self-check. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 

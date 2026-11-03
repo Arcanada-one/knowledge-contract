@@ -22,34 +22,35 @@ full_text: ru/P05_budgeted_context_composition.md
 
 ## Abstract
 
-The paper studies how to compose a context from a fixed set of candidates under limited resources. It proposes a conditional model in which query requirements, joint grounds, mandatory dependencies, permitted transformations and the actual representation form one object of verification. Ranking single fragments does not establish that their union is sufficient. The main result is a specification, conditional properties, counter-models, an executable finite model and a plan for a comparative study. Empirical advantage on real books, people, models or products is not established. The measured basis is an authored finite check plus API probes; real model tokens, OCR/VLM and human trials were not measured.
+The paper studies how to compose a context from a fixed set of candidates under limited resources. It proposes a conditional model in which requirements, joint grounds, mandatory dependencies, permitted transformations and the actual representation form one object of verification. Ranking single fragments does not establish that their union is sufficient. The main result is a specification, conditional properties, counter-models, a finite executable model and a comparison plan. Executed: 101 finite checks and 17 API probes. Empirical advantage on real books, people, models or products is not established.
 
 ## Claims and their basis
 
-- Ranking does not settle sufficiency: two ingredients from different dishes do not meet a one-dish condition. Basis type: finite-test, on authored vectors.
-- The finite check had 101 checks: 24 authored vectors, 68 negative controls, 5 enumerations over 576 configurations (not independent experiments), 2 constructed counter-models, 2 algorithm-boundary checks. Basis type: finite-test.
-- Seventeen API probes were written by an author who did not use the authored vectors or expected answers. First run: 13 pass, 4 findings; repeat on the same inputs: 17/17. Basis type: finite-test. Separation of authorship within one session is not an independent replication.
-- A special case (cover requirements with at most k independent unit-cost packages) contains SET COVER and is NP-hard. Basis type: proof-under-premises. It says nothing about every real query.
-- Diminishing returns cannot be assumed: a scheme and a legend may each have zero sufficiency yet together close a requirement. Basis type: proof-under-premises, as a constructed counter-model; frequency not measured.
-- Eight hypotheses H13 have status `empirical_result_absent`. Basis type: hypothesis.
+- Ranking does not settle sufficiency: two ingredients from different dishes do not meet a one-dish condition. Basis type: finite-test, authored vectors; real-query failure rates are not measured.
+- The finite check had 101 checks: 24 authored vectors, 68 negative controls, 5 enumerations over 576 configurations (not independent experiments), 2 constructed counter-models and 2 boundary checks. Basis type: finite-test. Separately, 17 API probes were written without the authored vectors or expected answers; the first run gave 13 pass and 4 findings, the repeat on the same inputs 17 passes. Authorship separation within one session is not an independent replication.
+- A special case (cover requirements with at most k independent unit-cost packages) contains SET COVER and is NP-hard. A scheme and a legend may each be insufficient yet together close a requirement, so diminishing returns cannot be assumed. Basis type for both: proof-under-premises; hardness of real queries and effect frequency are not established.
+- A closure lemma (an addendum, not in the Russian text): the smallest mandatory closure in a finite graph is the fixed point of adding needed vertices. Basis type: proof-under-premises (fixed vertices, ALL-type edges, complete edges). A machine check enumerated all 512 graphs on three vertices; beyond that the lemma rests on the written proof.
+- An engineering cross-check of the RU10 release: a structural validator rejects a control omission of a critical condition (selftest, K08-condition-1). Basis type: authors-domain-assessment (one-assistant self-check by the kit authors, not independent). Minimality, optimality and token reduction are not established; the meaning of the crosswalk's "R01 exposes the whole core" is NOT VERIFIED.
+- Eight hypotheses H13 have status `empirical_result_absent`. Basis type: hypothesis; no results.
 
 ## Limits
 
-- The unit is UTF-8 bytes of deterministic JSON, not real model tokens, human reading or time under load.
-- Exact selection covers subsets of at most 16 given representations in canonical order only.
-- Cited external theorems are quoted with their premises, not proved here, and not verified for this page.
-- 36 system scenarios and 9 sequential walkthroughs were not executed; sample size, effects and thresholds are unjustified. A simpler method may be preferable.
+- The unit is UTF-8 bytes of deterministic JSON, not model tokens, human reading or time under load.
+- Exact selection covers subsets of at most 16 given representations, canonical order only.
+- Cited external submodular-optimisation theorems are quoted with premises, not proved here and not verified by the writer.
+- 36 system scenarios and 9 sequential walkthroughs were not executed; sample size, effects and thresholds are unjustified, and causal usefulness is not established.
 
 ## Status and what is open
 
 - The late research synthesis gate is open.
 - Independent semantic review of this text has not been performed.
 - The English page is a summary, not a translation, and does not replace the Russian original.
-- A proposed closure lemma and a proposal on ALL/ANY alternatives await placement after executed results.
+- A proposal on ALL/ANY alternatives (hypothesis) awaits executed results.
+- Not integrated and still missing: the NAV reports, the TIM reports, MM_OBLIGATIONS_20261030 together with the previous-stage report, the runs behind section 7 of the knowledge-admission amendment (MM_KA0004), and the items ING-01 to ING-08.
 
 ## Relation to the full text
 
-The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). Where its abstract understates what was run, this page follows the corrected, evidence-bound wording of the editorial card and says so: it adds the 101 checks and the 17 probes with first-run findings, and drops the word "independent" for the probe separation. The Russian text is published without the card corrections, so its abstract may differ from this page.
+The Russian full text is the terminology edition of 2026-11-03 (front matter and links aside). This page follows the corrected, evidence-bound wording of the round-two editorial card; it adds the executed counts and drops "independent" for the probe separation. The Russian text is published without the card corrections, so its abstract may differ from this page.
 
 ## Credit and licence
 
