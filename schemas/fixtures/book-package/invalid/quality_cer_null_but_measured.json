@@ -1,0 +1,31 @@
+{
+ "extraction": {
+  "cer": {
+   "metric_status": "measured",
+   "value": null
+  },
+  "checks": [
+   {
+    "check_id": "chk.order",
+    "method": "section order compared with source headings",
+    "result": "pass"
+   }
+  ],
+  "status": "pass",
+  "units_expected": 3,
+  "units_seen": 3
+ },
+ "kc2_admission": "not_measured",
+ "package_id": "synthetic-rle-primer.r1",
+ "schema": "KCBookQuality/v1",
+ "semantics": {
+  "objects_count": 4,
+  "relations_count": 2,
+  "review": {
+   "result": "supported",
+   "reviewer_type": "human",
+   "sample_size": 4
+  },
+  "status": "reviewed"
+ }
+}

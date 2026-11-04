@@ -49,6 +49,33 @@ jobs:
           assert manifest['kc2_runtime_admission'] == 'not_measured'
           print('CANDIDATE_EXPORT_READBACK_PASS rows=' + str(manifest['row_count']))
           PY
+  book-package:
+    name: book-package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned schema validator
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/bp-venv"
+          "$RUNNER_TEMP/bp-venv/bin/pip" install --quiet jsonschema==4.23.0
+      - name: Schema, positive and negative fixtures, cross-file mutations
+        run: |
+          set -euo pipefail
+          cd tools
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package -v
+      - name: Valid fixture package passes the validator
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_book_package.py schemas/fixtures/book-package/valid/synthetic-rle-primer
+      - name: Committed fixtures equal regenerated fixtures
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/book_package_fixture.py write
+          git diff --exit-code -- schemas/fixtures
+
   scaffold:
     name: scaffold
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
