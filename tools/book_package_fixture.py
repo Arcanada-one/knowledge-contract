@@ -167,6 +167,7 @@ RECORD_MUTATIONS: dict[str, tuple[str, object]] = {
     "relation_contradicts_one_sided": ("relation_contra", lambda r: r.__setitem__("evidence", r["evidence"][:1])),
     "edit_irreversible": ("edit", _set(["reversible"], False)),
     "edit_without_reason": ("edit", _set(["reason"], "")),
+    "edit_blank_reason": ("edit", _set(["reason"], "     ")),
     "edit_unknown_basis": ("edit", _set(["basis"], "felt like it")),
     "quality_overall_score": ("quality", _set(["overall_score"], 0.97)),
     "quality_cer_null_but_measured": ("quality", _set(["extraction", "cer"], {"metric_status": "measured", "value": None})),

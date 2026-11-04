@@ -52,6 +52,7 @@ Three identifiers are kept apart: `work_id` (the work), `edition_id` (edition an
 - `bibliography_only` forces `package_status: bibliography_only` and forbids `document_md`; such a record is never queued as a full text.
 - `knowledge_ready` requires `verified` integrity and `full` completeness.
 - `document_md.input_sha256` equals the source representation hash, and names the converting tool and version.
+- `adapter_required`, `blocked_integrity` and `bibliography_only` packages have no `document_md` and no `readable_md`; the schema forbids them. A format without converter output yields an `adapter_required` package, never an empty or invented document. `structure_only`, `partial_pilot` and `knowledge_ready` packages must have both. `tools/build_book_package.py` builds such packages around a source file and the Markdown a converter produced: it copies that Markdown unchanged, starts `readable.md` as a copy with an empty edit ledger, and leaves objects and relations empty with the semantic block `not_built`.
 
 ## 4. Semantic objects
 
@@ -113,7 +114,7 @@ The candidate exporter (`tools/export_corpus.py`, schema `KnowledgeContractCandi
 | layer not in `publishable_layers` | no allowlist row; an absent row means deny |
 | `kc2_admission: not_measured` | `kc2_admission: not_measured` (the exporter sets it; a producer cannot) |
 
-`candidate_projection` proposes such rows, with the repository path `articles/book-packages/<package_id>/<file>`. That path fits the exporter's path pattern but is not in its scope list. The function does not widen the exporter's scope: `SCOPE_PATHS` is an explicit list and widening it, or adding a path pattern for packages, needs a new decision in the programme record. Until then this specification is itself not an indexing input, and the mapping has not been tried against a real exporter run. Admission under [the core contract specification](../knowledge-contract-core/SPECIFICATION.md) is a separate step performed by the runtime resolver; a package supplies identity, sources, scope and conditions, and is a candidate until that step records otherwise. No consumer of the v2 manifest was available to the author of this revision, so acceptance by the downstream indexer is **not measured**.
+`candidate_projection` proposes such rows, with the repository path `articles/book-packages/<package_id>/<file>`. That path fits the exporter's path pattern but is not in its scope list. The function does not widen the exporter's scope: `SCOPE_PATHS` is an explicit list and widening it, or adding a path pattern for packages, needs a new decision in the programme record. Until then this specification is itself not an indexing input, and the mapping has not been tried against a real exporter run. Admission under [the core contract specification](../knowledge-contract-core/SPECIFICATION.md) is a separate step performed by the runtime resolver; a package supplies identity, sources, scope and conditions, and is a candidate until that step records otherwise. The consumer in the workspace (`kb_feeder/knowledge_contract.py`) re-checks the same path shape, with the same four directories, and refuses everything else, so a file outside them is refused on both sides; it has staged a bundle of the 20 documents of the earlier decisions successfully. Its acceptance of a rendered knowledge layer or of any file of this specification is **not measured**: no such file is in a bundle yet. An earlier revision of this section said that no consumer existed; that was wrong and came from reading an outdated checkout.
 
 ## 12. Validation
 
@@ -131,7 +132,7 @@ These checks establish that the validator distinguishes the listed violations. T
 - A fixture marked `reviewed` records a review that the fixture does not prove took place.
 - Extraction quality and semantic quality are defined as separate blocks; no threshold for either is fixed here.
 - Right-to-left scripts, vertical Japanese and ruby are not covered by any anchor refinement; coverage of them is `not_measured`.
-- Whether the downstream indexer accepts the Markdown rendering is not measured.
+- Whether the consumer accepts the Markdown rendering of a knowledge layer is not measured.
 
 ## 14. Provenance and relation to the publication
 

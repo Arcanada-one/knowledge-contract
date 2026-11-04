@@ -140,6 +140,11 @@ def check_package(root: Path) -> list[str]:
     rel_ids = [r["relation_id"] for r in relations]
     if len(set(rel_ids)) != len(rel_ids):
         problems.append("relations: duplicate relation_id")
+    if len({e["edit_id"] for e in edits}) != len(edits):
+        problems.append("edits: duplicate edit_id")
+    asset_ids = [a["asset_id"] for a in comps.get("assets", [])]
+    if len(set(asset_ids)) != len(asset_ids):
+        problems.append("assets: duplicate asset_id")
     known = set(ids)
     for rel in relations:
         for end in ("from", "to"):
