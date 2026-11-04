@@ -17,8 +17,8 @@ Start from [`_TEMPLATE.md`](_TEMPLATE.md).
 
 | Case | Work | Status |
 | --- | --- | --- |
-| `paper-publication-pipeline` | Publication of the papers and specifications (KCP-0040 to KCP-0042) | written |
-| `candidate-export-gate` | The fail-closed candidate exporter (KCP-0018) | written |
+| `paper-publication-pipeline` | Publication of the papers and specifications (tracker items held outside this repository) | written |
+| `candidate-export-gate` | The fail-closed candidate exporter (tracker item held outside this repository) | written |
 | `ru10-stand-and-repin` | The RU10 stand and its re-pin (KCP-0039) | planned |
 | `ocr-stand-doclab` | The OCR stand doclab | planned |
 | `conversion-adapter-and-deploy` | The conversion adapter and its production deployment | planned |

@@ -15,7 +15,7 @@ Publish the papers P00 to P13 and their specifications in the public repository 
 
 ## Setup
 
-The first release catalogue lists 24 [R1] items and a release digest taken over 50 [R2] files; the work items are KCP-0040 to KCP-0042; the project's own labels for these stages (PUB-02 to PUB-04) are not recorded in this repository and cannot be checked from it. The files are the full texts, the entry pages and the index pages of the release. The papers and specifications were published with link targets rewritten to repository routes or marked as not in the release, as the link map records; it holds 24 [R3] per-file entries. Publication decisions are append-only files in batches. Batch b1 holds 6 [R4] decision lines and batch b2 holds 14 [R5] decision lines. Each batch has a receipt that binds the reviewed head, the base, the diff digest and the digests of the decision lines to the reviewers' transcripts. The allowlist table that the exporter reads now has 20 [R6] rows.
+The first release catalogue lists 24 [R1] items and a release digest taken over 50 [R2] files. The files are the full texts, the entry pages and the index pages of the release. The papers and specifications were published with link targets rewritten to repository routes or marked as not in the release, as the link map records; it holds 24 [R3] per-file entries. Publication decisions are append-only files in batches. Batch b1 holds 6 [R4] decision lines and batch b2 holds 14 [R5] decision lines. Each batch has a receipt that binds the reviewed head, the base, the diff digest and the digests of the decision lines to the reviewers' transcripts. The allowlist table that the exporter reads now has 20 [R6] rows.
 
 ## What was checked and how
 
@@ -45,7 +45,7 @@ Each decision line carries the path, the SHA-256 of the file, the rights holder,
 
 ## Result
 
-Both batches were approved by their reviewers (2 [R7] for batch b1 and 2 [R8] for batch b2); the verdicts of the reviewers of batch b2 are APPROVE [R9] and APPROVE [R15]. The 6 [R4] mirrored documents of batch b1 and the 14 [R5] English entry pages of batch b2 are the 20 [R6] rows of the allowlist. The specification entry pages and the Russian full texts have no decision line and no allowlist row; the release catalogue says its exporter scope was [R14] at the time it was written, and the scope was widened afterwards only for the paper entry pages. The release catalogue binds its 24 [R1] items to a digest over 50 [R2] files, so a later change to any of those files shows as a different digest if someone recomputes it; no check in this repository recomputes it.
+The batches were approved by their reviewers (2 [R7] for batch b1 and 2 [R8] for batch b2); the verdicts of the reviewers of batch b2 are APPROVE [R9] and APPROVE [R15]. The 6 [R4] mirrored documents of batch b1 and the 14 [R5] English entry pages of batch b2 are the 20 [R6] rows of the allowlist. The specification entry pages and the Russian full texts have no decision line and no allowlist row; the release catalogue says its exporter scope was [R14] at the time it was written, and the scope was widened afterwards only for the paper entry pages. The release catalogue binds its 24 [R1] items to a digest over 50 [R2] files, so a later change to any of those files shows as a different digest if someone recomputes it; no check in this repository recomputes it.
 
 ## Limits
 

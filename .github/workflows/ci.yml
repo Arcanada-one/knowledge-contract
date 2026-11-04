@@ -77,19 +77,6 @@ jobs:
           print('scaffold files and status: OK')
           PY
 
-  cases:
-    name: cases
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - name: Every number in a case resolves to a receipt in this repository
-        run: |
-          set -euo pipefail
-          (cd tools && python3 -B -m unittest test_cases -v)
-          python3 -B tools/check_cases.py
-
   licensing:
     name: licensing
     runs-on: ubuntu-latest
@@ -172,3 +159,16 @@ jobs:
       stack: framework
       datarim_ref: 5a204199acd5b708ea63d99f6d642848f532bead
       runner_labels: '["ubuntu-latest"]'
+
+  cases:
+    name: cases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Every number in a case resolves to a receipt in this repository
+        run: |
+          set -euo pipefail
+          (cd tools && python3 -B -m unittest test_cases -v)
+          python3 -B tools/check_cases.py

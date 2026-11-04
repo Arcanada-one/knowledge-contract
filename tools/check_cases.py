@@ -20,11 +20,12 @@ REPO = Path(__file__).resolve().parents[1]
 CASES = REPO / "cases"
 SECTIONS = ["Goal", "Setup", "What was checked and how", "Receipts", "Result", "Limits", "What failed on the way"]
 STATUSES = {"written", "planned"}
-NUMBER = re.compile(r"(?<![\w.:])(?<![A-Za-z]-)\d+(?:\.\d+)?(?:[A-Za-z%]{1,4}\b)?(?![\w])(?!-[A-Za-z])")
+NUMBER = re.compile(r"(?<![\w.:])\d+(?:\.\d+)?(?:[A-Za-z%]{1,12}\b)?(?![\w])")
+IDENT = re.compile(r"\b[A-Z][A-Za-z0-9]{1,7}-\d{2,5}\b|\b[A-Z]\d{2,3}\b|\b(?:v|b|r|R)-?\d+\b")
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?\b")
 TAG_ANY = re.compile(r"\[R(\d+)\]")
 TAG = re.compile(r"^[ \t]*\[R(\d+)\]")
-WORDS = re.compile(r"\b(one|zero|single|pair|couple|once|twice|thrice|half|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|dozen|dozens|hundreds|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b(?!-party)", re.I)
+WORDS = re.compile(r"\b(one|zero|single|pair|couple|once|twice|thrice|double|both|half|eleventh|twelfth|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|dozen|dozens|hundreds|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b(?!-party)", re.I)
 ROMAN = re.compile(r"\b(?=[IVXLCDM]{2,}\b)M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b")
 ROMAN_OK = {"CC", "CD", "DC", "MD", "LI", "DI", "MM", "MI", "CI"}
 PERSONAL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+|\+\d[\d\s().-]{8,}\d|(?<!\d)\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}(?!\d)|(?<![\w`])@[A-Za-z][\w-]{2,}")
@@ -130,6 +131,14 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
     if PERSONAL.search(body):
         problems.append(f"{name}: personal identifier shape (email, phone or handle)")
     table = receipts_table(secs["Receipts"])
+    titles = re.findall(r"^## (.+)$", body, flags=re.M)
+    if len(set(titles)) != len(titles):
+        problems.append(f"{name}: a section heading appears twice")
+    for t in titles:
+        if t not in SECTIONS:
+            problems.append(f"{name}: unknown section heading '{t}'")
+    if PERSONAL.search(fm["title"]):
+        problems.append(f"{name}: personal identifier shape in the title")
     preamble = re.split(r"^## ", body, maxsplit=1, flags=re.M)[0]
     secs = {**secs, "Title": fm["title"], "Preamble": preamble}
     if fm["status"] == "planned":
@@ -142,6 +151,11 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
         return problems
     if not table:
         problems.append(f"{name}: a written case needs at least one receipt row")
+    for line in secs["Receipts"].splitlines():
+        if line.startswith("|") and not line.startswith("| Tag |") and not set(line.replace("|", "").strip()) <= set("-: "):
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if not (len(cells) == 6 and re.fullmatch(r"R\d+", cells[0])):
+                problems.append(f"{name}: malformed Receipts row (needs 6 cells and a tag): {line[:40]}")
     for rid, (rel, kind, locator, expected, near) in sorted(table.items()):
         if kind not in KINDS:
             problems.append(f"{name}: R{rid} has unknown kind {kind}")
@@ -167,6 +181,7 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
         if WORDS.search(prose):
             problems.append(f"{name}: a number word in '{sec_name}' ({WORDS.search(prose).group(0)}); write the digit with its receipt tag")
         masked = TAG_ANY.sub(lambda t: "[R" + "x" * len(t.group(1)) + "]", prose)
+        masked = IDENT.sub(lambda m: "_" * len(m.group(0)), masked)
         for m in ROMAN.finditer(prose):
             if m.group(0) not in ROMAN_OK:
                 problems.append(f"{name}: a Roman numeral {m.group(0)} in '{sec_name}'")
@@ -182,7 +197,9 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
                 continue
             rel, kind, locator, expected, near = table[rid]
             after = prose[m.end() + tag.end(): m.end() + tag.end() + NEAR_WINDOW].lower()
-            if near and not any(re.search(r"\b" + re.escape(k.strip().lower()), after) for k in near.split(",")):
+            if not near.replace(",", "").strip():
+                problems.append(f"{name}: numeric tag R{rid} needs a Near noun")
+            elif not any(re.search(r"\b" + re.escape(k.strip().lower()), after) for k in near.split(",") if k.strip()):
                 problems.append(f"{name}: number {m.group(0)} is tagged R{rid} but none of '{near}' follows it")
             if kind == "text_contains":
                 if m.group(0) not in re.findall(r"\d+(?:\.\d+)?", expected):

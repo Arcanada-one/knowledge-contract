@@ -47,9 +47,9 @@ The parser and decision-gate entity was verified [R4]. The other entities were r
 
 - The receipt describes an earlier exporter in which a publication decision was an approving review on the hosting platform; its unit cases covered an exact review body and an independent identity. That route was replaced by decision files with receipts, so the receipt does not verify the current exporter. The receipt's own admission reads [R12].
 - The receipt was produced by a manual fallback, not by an installed graph verifier [R9]; it is not a native change-admission record.
-- The expiries [R8] [R13] of both not-measured entries are in the past at the time of writing, and this repository holds no later receipt that measured them. They remain not measured.
+- The expiries [R8] [R13] of the not-measured entries are in the past at the time of writing, and this repository holds no later receipt that measured them. They remain not measured.
 - The statement in the receipt that the public allowlist was empty described the repository at that time; the allowlist has since received rows (see the case on the publication pipeline).
-- The 14 [R3] unit cases tested the parser and the decision gate of that earlier version on constructed inputs. They do not show that the current exporter, or that version, is free of other defects.
+- The 14 [R3] unit cases tested the parser and the decision gate of that earlier version on boundary cases. They do not show that the current exporter, or that version, is free of other defects.
 
 ## What failed on the way
 
