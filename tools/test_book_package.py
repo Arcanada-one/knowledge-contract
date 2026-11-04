@@ -275,6 +275,47 @@ class LedgerReversibilityTests(unittest.TestCase):
         self.assertTrue(problems)
 
 
+def without_edits(document: str, readable: str) -> dict[str, bytes]:
+    """The valid fixture with the given document and readable texts and an empty ledger (zero bytes, count 0)."""
+    files = ledger_package(document, readable, [])
+    manifest = json.loads(files["manifest.json"])
+    files["edits.jsonl"] = b""
+    manifest["components"]["edits"].update({"sha256": fx.sha(b""), "count": 0})
+    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+    return files
+
+
+class NewlineAndOverlapTests(unittest.TestCase):
+    def test_crlf_document_with_lf_readable_is_refused(self):
+        # zero edits: readable.md must be byte-equal to document.md, not equal after newline translation
+        files = without_edits("line one\r\nline two\r\n", "line one\nline two\n")
+        self.assertTrue(any("not the replay" in p for p in check_files(files)), check_files(files))
+        self.assertEqual(check_files(without_edits("line one\r\nline two\r\n", "line one\r\nline two\r\n")), [])
+
+    def test_lone_cr_is_not_a_newline_for_comparison(self):
+        files = without_edits("a\rb\n", "a\nb\n")
+        self.assertTrue(any("not the replay" in p for p in check_files(files)))
+
+    def test_crlf_document_with_honest_edit_passes_with_byte_digests(self):
+        files = ledger_package("line one\r\nline two\r\n", "line one\r\nline 2\r\n", [("two", "2")])
+        self.assertEqual(check_files(files), [])
+
+    def test_original_text_containing_crlf_can_be_edited(self):
+        files = ledger_package("a\r\nb\r\nc\n", "a\r\nB\nc\n", [("b\r\n", "B\n")])
+        self.assertEqual(check_files(files), [])
+
+    def test_overlapping_original_occurrences_count_as_repeats(self):
+        problems = check_files(ledger_package("xaaay\n", "xBy\n", [("aa", "B")]))
+        self.assertTrue(any("overlapping counted" in p and "2 times" in p for p in problems), problems)
+
+    def test_overlapping_replacement_occurrences_count_as_repeats(self):
+        problems = check_files(ledger_package("xaBy\n", "xaaay\n", [("B", "aa")]))
+        self.assertTrue(any("cannot be reversed" in p for p in problems), problems)
+
+    def test_count_overlapping(self):
+        self.assertEqual((cbp.count_overlapping("xaaay", "aa"), cbp.count_overlapping("abc", "d"), cbp.count_overlapping("aaa", "aaa")), (2, 0, 1))
+
+
 class FileHandlingTests(unittest.TestCase):
     def write(self, root: Path, files: dict[str, bytes]) -> None:
         for rel, data in files.items():

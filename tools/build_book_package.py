@@ -46,6 +46,15 @@ def safe_component(value: str, what: str) -> str:
     return value
 
 
+def remove_created(created: list[Path]) -> None:
+    """Remove only the directories this call created, deepest first, and only while they are empty."""
+    for directory in created:
+        try:
+            directory.rmdir()
+        except OSError:
+            break
+
+
 def regular_file_inside(path: Path, root: Path, what: str) -> Path:
     try:
         mode = os.lstat(path).st_mode
@@ -163,9 +172,15 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
                 "tooling": [{"tool": "build_book_package", "tool_version": VERSION}] + ([{"tool": tool, "tool_version": tool_version}] if tool != "none" else []),
                 "package_status": status, "kc2_admission": "not_measured"}
     files["manifest.json"] = dumps(manifest)
+    created: list[Path] = []
+    missing = out.parent
+    while not missing.exists():
+        created.append(missing)
+        missing = missing.parent
     out.parent.mkdir(parents=True, exist_ok=True)
     work = out.parent / f".{out.name}.building-{os.getpid()}"
     if work.exists():
+        remove_created(created)
         raise BuildError("a stale build directory is in the way; refusing to continue")
     work.mkdir()
     try:
@@ -179,13 +194,14 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
         os.rename(work, out)
     except BaseException:
         shutil.rmtree(work, ignore_errors=True)
+        remove_created(created)
         raise
     return manifest
 
 
 def parse_sums(path: Path) -> dict[str, str]:
     out = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in path.read_bytes().decode("utf-8").splitlines():
         parts = line.split(None, 1)
         if len(parts) == 2:
             out[parts[1].strip()] = parts[0]
@@ -195,7 +211,7 @@ def parse_sums(path: Path) -> dict[str, str]:
 def parse_matrix(path: Path) -> dict[str, tuple[str, str]]:
     """File name -> (catalog ids, manifest check result) from a tab-separated check list."""
     out = {}
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in path.read_bytes().decode("utf-8").splitlines():
         cells = line.split("\t")
         if len(cells) >= 5:
             out[cells[4]] = (cells[2], cells[0])

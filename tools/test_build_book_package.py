@@ -180,7 +180,33 @@ class PathSafetyTests(unittest.TestCase):
         finally:
             bb.cbp.check_package = original
         self.assertFalse(self.out.exists())
-        self.assertEqual([p.name for p in self.out.parent.iterdir()], [])
+        self.assertFalse(self.out.parent.exists())  # created by this call, so removed again
+
+    def test_failed_build_removes_only_the_directories_it_created(self):
+        src = self.e.src("a.md", b"# T\n")
+        deep = self.e.root / "work" / "one" / "deep"
+        keep = self.e.root / "work" / "keep.txt"
+        keep.parent.mkdir(exist_ok=True)
+        keep.write_text("x")
+        original = bb.cbp.check_package
+        bb.cbp.check_package = lambda root: ["forced failure"]
+        try:
+            with self.assertRaises(bb.BuildError):
+                bb.build(src, deep, catalog_id="T9", created_at="2026-11-04T00:00:00Z")
+        finally:
+            bb.cbp.check_package = original
+        self.assertFalse((self.e.root / "work" / "one").exists())
+        self.assertTrue(keep.exists() and keep.parent.exists())
+        # a pre-existing parent is left alone
+        (self.e.root / "work" / "one").mkdir()
+        bb.cbp.check_package = lambda root: ["forced failure"]
+        try:
+            with self.assertRaises(bb.BuildError):
+                bb.build(src, deep, catalog_id="T9", created_at="2026-11-04T00:00:00Z")
+        finally:
+            bb.cbp.check_package = original
+        self.assertTrue((self.e.root / "work" / "one").is_dir())
+        self.assertFalse(deep.exists())
 
     def test_successful_build_leaves_only_the_package(self):
         src = self.e.src("a.md", b"# T\n")

@@ -71,9 +71,18 @@ def safe_file(root: Path, rel: str) -> Path | None:
     return path if stat.S_ISREG(mode) and inside else None
 
 
+def count_overlapping(text: str, part: str) -> int:
+    """Occurrences of `part` in `text`, overlapping ones included ("aa" occurs twice in "xaaay")."""
+    count, start = 0, text.find(part)
+    while start != -1:
+        count += 1
+        start = text.find(part, start + 1)
+    return count
+
+
 def read_text_strict(path: Path) -> str:
     try:
-        return path.read_text(encoding="utf-8")
+        return path.read_bytes().decode("utf-8")  # strict and byte-exact: no universal-newline translation
     except UnicodeDecodeError as exc:
         raise PackageError(f"{path.name}: not valid UTF-8 (byte {exc.start})") from exc
     except OSError as exc:
@@ -218,11 +227,11 @@ def check_package(root: Path) -> list[str]:
             if before not in current:
                 problems.append(f"edit {edit['edit_id']}: original_text does not occur in the text it edits")
                 continue
-            if current.count(before) != 1:
-                problems.append(f"edit {edit['edit_id']}: original_text occurs {current.count(before)} times in the text it edits; it must be unique so the edit is positional")
+            if count_overlapping(current, before) != 1:
+                problems.append(f"edit {edit['edit_id']}: original_text occurs {count_overlapping(current, before)} times (overlapping counted) in the text it edits; it must be unique so the edit is positional")
                 continue
             current = current.replace(before, after, 1)
-            if current.count(after) != 1:
+            if count_overlapping(current, after) != 1:
                 problems.append(f"edit {edit['edit_id']}: replacement_text must occur exactly once in the text it produced, or the edit cannot be reversed")
                 continue
             applied.append(edit)
