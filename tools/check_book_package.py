@@ -12,6 +12,8 @@ from __future__ import annotations
 import functools
 import hashlib
 import json
+import os
+import stat
 import sys
 from pathlib import Path
 
@@ -58,13 +60,33 @@ def schema_errors(record: object) -> list[str]:
     return out
 
 
+def safe_file(root: Path, rel: str) -> Path | None:
+    """The file `rel` under `root` if it is a regular file that is not a symlink and does not leave `root`; otherwise None."""
+    path = root / rel
+    try:
+        mode = os.lstat(path).st_mode
+        inside = path.resolve().is_relative_to(root.resolve())
+    except OSError:
+        return None
+    return path if stat.S_ISREG(mode) and inside else None
+
+
+def read_text_strict(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as exc:
+        raise PackageError(f"{path.name}: not valid UTF-8 (byte {exc.start})") from exc
+    except OSError as exc:
+        raise PackageError(f"{path.name}: unreadable ({type(exc).__name__})") from exc
+
+
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def read_jsonl(path: Path) -> list[object]:
     records = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    for number, line in enumerate(read_text_strict(path).splitlines(), 1):
         if not line.strip():
             raise PackageError(f"{path.name}:{number}: blank line")
         try:
@@ -85,10 +107,12 @@ def _anchors_of(obj: dict) -> list[dict]:
 def check_package(root: Path) -> list[str]:
     """Return every problem found; an empty list means the package passed all of this tool's checks (not KC2 admission)."""
     problems: list[str] = []
+    if safe_file(root, "manifest.json") is None:
+        return ["manifest.json: missing, not a regular file, or a symlink"]
     try:
-        manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        return [f"manifest.json: unreadable ({type(exc).__name__})"]
+        manifest = json.loads(read_text_strict(root / "manifest.json"))
+    except (PackageError, json.JSONDecodeError) as exc:
+        return [f"manifest.json: unreadable ({type(exc).__name__}: {exc})" if isinstance(exc, PackageError) else f"manifest.json: unreadable ({type(exc).__name__})"]
     problems += [f"manifest.json: {m}" for m in schema_errors(manifest)]
     if problems:
         return problems
@@ -96,15 +120,15 @@ def check_package(root: Path) -> list[str]:
 
     files = {k: v for k, v in comps.items() if k in ("document_md", "readable_md", "edits", "objects", "relations", "quality")}
     for name, meta in files.items():
-        path = root / meta["path"]
-        if not path.is_file():
-            problems.append(f"{name}: file {meta['path']} is missing")
+        path = safe_file(root, meta["path"])
+        if path is None:
+            problems.append(f"{name}: file {meta['path']} is missing, not a regular file, or a symlink")
         elif sha256_file(path) != meta["sha256"]:
             problems.append(f"{name}: sha256 of {meta['path']} differs from the manifest")
     for asset in comps.get("assets", []):
         if asset["state"] == "present":
-            path = root / asset["path"]
-            if not path.is_file() or sha256_file(path) != asset["sha256"]:
+            path = safe_file(root, asset["path"])
+            if path is None or sha256_file(path) != asset["sha256"]:
                 problems.append(f"asset {asset['asset_id']}: missing or digest differs")
     if problems:
         return problems
@@ -121,7 +145,10 @@ def check_package(root: Path) -> list[str]:
     objects = read_jsonl(root / comps["objects"]["path"])
     relations = read_jsonl(root / comps["relations"]["path"])
     edits = read_jsonl(root / comps["edits"]["path"])
-    quality = json.loads((root / comps["quality"]["path"]).read_text(encoding="utf-8"))
+    try:
+        quality = json.loads(read_text_strict(root / comps["quality"]["path"]))
+    except json.JSONDecodeError as exc:
+        return [f"quality: invalid JSON ({exc.msg})"]
 
     for label, records, expected in (("objects", objects, comps["objects"]["count"]),
                                      ("relations", relations, comps["relations"]["count"]),
@@ -178,19 +205,37 @@ def check_package(root: Path) -> list[str]:
 
     # Ledger: the readable edition is exactly the replay of the accepted edits over document.md, and digests chain.
     if "document_md" in comps:
-        current = (root / comps["document_md"]["path"]).read_text(encoding="utf-8")
+        original = current = read_text_strict(root / comps["document_md"]["path"])
+        applied: list[dict] = []
         chain = comps["document_md"]["sha256"]
         for edit in [e for e in edits if e["status"] == "accepted" and e["target"] == "readable_md"]:
             if edit["input_sha256"] != chain:
                 problems.append(f"edit {edit['edit_id']}: input_sha256 is not the digest of the text it was applied to")
-            if edit["original_text"] not in current:
+            before, after = edit["original_text"], edit["replacement_text"]
+            if not before or not after:
+                problems.append(f"edit {edit['edit_id']}: original_text and replacement_text must not be empty (an insertion or deletion has no search-reversible form)")
+                continue
+            if before not in current:
                 problems.append(f"edit {edit['edit_id']}: original_text does not occur in the text it edits")
                 continue
-            current = current.replace(edit["original_text"], edit["replacement_text"], 1)
+            if current.count(before) != 1:
+                problems.append(f"edit {edit['edit_id']}: original_text occurs {current.count(before)} times in the text it edits; it must be unique so the edit is positional")
+                continue
+            current = current.replace(before, after, 1)
+            if current.count(after) != 1:
+                problems.append(f"edit {edit['edit_id']}: replacement_text must occur exactly once in the text it produced, or the edit cannot be reversed")
+                continue
+            applied.append(edit)
             chain = hashlib.sha256(current.encode("utf-8")).hexdigest()
             if edit["output_sha256"] != chain:
                 problems.append(f"edit {edit['edit_id']}: output_sha256 is not the digest of the text it produced")
-        readable = (root / comps["readable_md"]["path"]).read_text(encoding="utf-8")
+        # Reversibility is checked, not assumed: undoing the applied edits in reverse order must give document.md exactly.
+        undone = current
+        for edit in reversed(applied):
+            undone = undone.replace(edit["replacement_text"], edit["original_text"], 1)
+        if undone != original:
+            problems.append("the accepted edits do not reverse to document_md exactly")
+        readable = read_text_strict(root / comps["readable_md"]["path"])
         if readable != current:
             problems.append("readable_md is not the replay of the accepted edits over document_md")
 

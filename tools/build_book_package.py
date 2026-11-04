@@ -15,6 +15,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import re
+import shutil
+import stat
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -30,6 +34,27 @@ TEXT_NATIVE = {"md", "txt"}
 
 class BuildError(Exception):
     pass
+
+
+SAFE_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$")
+
+
+def safe_component(value: str, what: str) -> str:
+    """A single path component made of safe characters; never a separator, '.', '..' or an absolute path."""
+    if not SAFE_NAME.fullmatch(value) or ".." in value:
+        raise BuildError(f"unsafe {what}: {value[:60]!r}")
+    return value
+
+
+def regular_file_inside(path: Path, root: Path, what: str) -> Path:
+    try:
+        mode = os.lstat(path).st_mode
+        inside = path.resolve().is_relative_to(root.resolve())
+    except OSError as exc:
+        raise BuildError(f"{what} is not readable ({type(exc).__name__})") from exc
+    if not stat.S_ISREG(mode) or not inside:
+        raise BuildError(f"{what} is not a regular file inside {root.name}")
+    return path
 
 
 def detect_format(name: str) -> str:
@@ -138,12 +163,23 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
                 "tooling": [{"tool": "build_book_package", "tool_version": VERSION}] + ([{"tool": tool, "tool_version": tool_version}] if tool != "none" else []),
                 "package_status": status, "kc2_admission": "not_measured"}
     files["manifest.json"] = dumps(manifest)
-    out.mkdir(parents=True)
-    for rel, content in files.items():
-        (out / rel).write_bytes(content)
-    problems = cbp.check_package(out)
-    if problems:
-        raise BuildError("the package built here does not pass its own validator: " + "; ".join(problems[:3]))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    work = out.parent / f".{out.name}.building-{os.getpid()}"
+    if work.exists():
+        raise BuildError("a stale build directory is in the way; refusing to continue")
+    work.mkdir()
+    try:
+        for rel, content in files.items():
+            (work / rel).write_bytes(content)
+        problems = cbp.check_package(work)
+        if problems:
+            raise BuildError("the package built here does not pass its own validator: " + "; ".join(problems[:3]))
+        if out.exists():
+            raise BuildError("output directory already exists; refusing to overwrite")
+        os.rename(work, out)
+    except BaseException:
+        shutil.rmtree(work, ignore_errors=True)
+        raise
     return manifest
 
 
@@ -170,10 +206,16 @@ def build_samples(samples: Path, out_root: Path, created_at: str) -> list[dict]:
     sums = parse_sums(samples / "SHA256SUMS.samples")
     matrix = parse_matrix(samples / "MANIFEST_SHA_CHECK.tsv")
     results = []
+    out_root.mkdir(parents=True, exist_ok=True)
     for name in sorted(sums):
         catalog = matrix.get(name, (name.split("_")[0], ""))[0].replace("+", "-")
-        target = out_root / catalog
         try:
+            safe_component(name, "source file name")
+            safe_component(catalog, "catalog id")
+            regular_file_inside(samples / name, samples, "source file")
+            target = out_root / catalog
+            if not target.resolve().is_relative_to(out_root.resolve()):
+                raise BuildError("output directory leaves --out")
             manifest = build(samples / name, target, catalog_id=catalog, expected_sha256=sums[name], created_at=created_at)
             results.append({"file": name, "catalog": catalog, "format": manifest["representation"]["format"], "integrity": manifest["representation"]["integrity"],
                             "package_status": manifest["package_status"]})

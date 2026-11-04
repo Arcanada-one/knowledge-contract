@@ -232,6 +232,95 @@ class PackageMutationTests(unittest.TestCase):
         self.assertGreaterEqual(len(fx.RECORD_MUTATIONS), 35)
 
 
+def ledger_package(document: str, readable: str, edits: list[tuple[str, str]]) -> dict[str, bytes]:
+    """The valid fixture with document.md replaced and an accepted-edit ledger built over it, digests chained and rehashed."""
+    parts = load_parts(fx.build())
+    base = parts["edits"][0]
+    parts["files"]["document.md"] = document.encode()
+    parts["files"]["readable.md"] = readable.encode()
+    rows, current = [], document
+    for number, (before, after) in enumerate(edits, 1):
+        text_before = current
+        current = current.replace(before, after, 1) if before else after + current
+        rows.append({**base, "edit_id": f"edit.{number}", "original_text": before, "replacement_text": after,
+                     "input_sha256": fx.sha(text_before.encode()), "output_sha256": fx.sha(current.encode())})
+    parts["edits"] = rows
+    parts["manifest"]["components"]["document_md"]["input_sha256"] = parts["manifest"]["representation"]["source_sha256"]
+    return materialise(parts)
+
+
+class LedgerReversibilityTests(unittest.TestCase):
+    def test_unique_edit_replays_forward_and_backward(self):
+        files = ledger_package("alpha beta gamma\n", "alpha BETA gamma\n", [("beta", "BETA")])
+        self.assertEqual(check_files(files), [])
+
+    def test_edit_of_a_second_occurrence_is_refused(self):
+        problems = check_files(ledger_package("beta beta\n", "beta BETA\n", [("beta", "BETA")]))
+        self.assertTrue(any("occurs 2 times" in p for p in problems), problems)
+
+    def test_empty_original_text_is_refused(self):
+        problems = check_files(ledger_package("alpha\n", "xalpha\n", [("", "x")]))
+        self.assertTrue(any("must not be empty" in p for p in problems), problems)
+
+    def test_empty_replacement_is_refused(self):
+        problems = check_files(ledger_package("alpha beta\n", "alpha \n", [("beta", "")]))
+        self.assertTrue(any("must not be empty" in p for p in problems), problems)
+
+    def test_replacement_that_duplicates_existing_text_is_refused(self):
+        problems = check_files(ledger_package("alpha beta\n", "alpha alpha\n", [("beta", "alpha")]))
+        self.assertTrue(any("cannot be reversed" in p for p in problems), problems)
+
+    def test_overlapping_edit_chain_is_refused(self):
+        problems = check_files(ledger_package("abcd\n", "xd\n", [("abc", "xyz"), ("yz", "")]))
+        self.assertTrue(problems)
+
+
+class FileHandlingTests(unittest.TestCase):
+    def write(self, root: Path, files: dict[str, bytes]) -> None:
+        for rel, data in files.items():
+            (root / rel).parent.mkdir(parents=True, exist_ok=True)
+            (root / rel).write_bytes(data)
+
+    def test_symlinked_component_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root, outside = Path(tmp) / "pkg", Path(tmp) / "outside.md"
+            files = fx.build()
+            self.write(root, files)
+            outside.write_bytes(files["document.md"])  # same bytes and digest, but outside the package
+            (root / "document.md").unlink()
+            (root / "document.md").symlink_to(outside)
+            self.assertTrue(any("symlink" in p for p in cbp.check_package(root)))
+
+    def test_symlinked_manifest_and_directory_component_are_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "pkg"
+            files = fx.build()
+            self.write(root, files)
+            (root / "manifest.json").rename(Path(tmp) / "m.json")
+            (root / "manifest.json").symlink_to(Path(tmp) / "m.json")
+            self.assertTrue(any("manifest.json" in p and "symlink" in p for p in cbp.check_package(root)))
+
+    def test_non_utf8_files_fail_cleanly_with_the_file_name(self):
+        for rel in ("document.md", "objects.jsonl", "quality.json", "readable.md", "manifest.json"):
+            with tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp) / "pkg"
+                files = fx.build()
+                files[rel] = b"\xff\xfe\xfa" + files[rel]
+                if rel != "manifest.json":  # keep the digest right so the decode error is what is reached
+                    manifest = json.loads(files["manifest.json"])
+                    for comp in manifest["components"].values():
+                        if isinstance(comp, dict) and comp.get("path") == rel:
+                            comp["sha256"] = fx.sha(files[rel])
+                    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+                self.write(root, files)
+                try:
+                    problems = cbp.check_package(root)
+                except cbp.PackageError as exc:
+                    problems = [str(exc)]
+                self.assertTrue(problems and any(rel in p or "UTF-8" in p or "unreadable" in p for p in problems), (rel, problems))
+                self.assertEqual(cbp.main(["x", str(root)]), 1)
+
+
 class MappingTests(unittest.TestCase):
     def test_knowledge_rendering_labels_generated_content(self):
         parts = load_parts(fx.build())

@@ -120,5 +120,74 @@ class BuilderTests(unittest.TestCase):
         self.assertTrue(cbp.check_package(self.e.out(1)))
 
 
+class PathSafetyTests(unittest.TestCase):
+    def setUp(self):
+        self.e = Env()
+        self.addCleanup(self.e.tmp.cleanup)
+        self.samples = self.e.root / "samples"
+        self.samples.mkdir()
+        self.out = self.e.root / "work" / "out"
+
+    def sample_set(self, name, catalog, data=b"# T\n"):
+        (self.samples / "a.md").write_bytes(data)
+        digest = bb.sha(data)
+        (self.samples / "SHA256SUMS.samples").write_text(f"{digest}  {name}\n")
+        (self.samples / "MANIFEST_SHA_CHECK.tsv").write_text(f"ok\tx\t{catalog}\ty\t{name}\n")
+
+    def tree(self):
+        return sorted(str(p.relative_to(self.e.root)) for p in self.e.root.rglob("*"))
+
+    def test_catalog_traversal_from_the_tsv_writes_nothing_outside_out(self):
+        (self.e.root / "outside.md").write_bytes(b"# T\n")
+        self.sample_set("a.md", "../../escaped")
+        before = self.tree()
+        res = bb.build_samples(self.samples, self.out, "2026-11-04T00:00:00Z")
+        self.assertTrue(all("error" in r for r in res), res)
+        self.assertFalse((self.e.root.parent / "escaped").exists())
+        self.assertEqual([t for t in self.tree() if t not in before and not t.startswith("work")], [])
+        self.assertEqual(list(self.out.iterdir()), [])
+
+    def test_file_name_traversal_from_sha256sums_is_refused(self):
+        (self.e.root / "outside.md").write_bytes(b"# T\n")
+        self.sample_set("../outside.md", "../../escaped")
+        res = bb.build_samples(self.samples, self.out, "2026-11-04T00:00:00Z")
+        self.assertTrue(all("error" in r and "unsafe" in r["error"] for r in res), res)
+        self.assertFalse((self.e.root.parent / "escaped").exists())
+
+    def test_absolute_and_dotted_names_are_refused(self):
+        for bad in ("/tmp/x", ".", "..", ".hidden", "a/b", "a\\b", "a b", ""):
+            with self.subTest(bad=bad):
+                with self.assertRaises(bb.BuildError):
+                    bb.safe_component(bad, "x")
+
+    def test_symlinked_source_is_refused(self):
+        outside = self.e.root / "outside.md"
+        outside.write_bytes(b"# T\n")
+        self.sample_set("a.md", "T1")
+        (self.samples / "a.md").unlink()
+        (self.samples / "a.md").symlink_to(outside)
+        res = bb.build_samples(self.samples, self.out, "2026-11-04T00:00:00Z")
+        self.assertTrue(all("error" in r for r in res), res)
+        self.assertEqual(list(self.out.iterdir()), [])
+
+    def test_failed_validation_leaves_no_output_and_no_work_directory(self):
+        src = self.e.src("a.md", b"# T\n")
+        original = bb.cbp.check_package
+        bb.cbp.check_package = lambda root: ["forced failure"]
+        try:
+            with self.assertRaises(bb.BuildError):
+                bb.build(src, self.out, catalog_id="T9", created_at="2026-11-04T00:00:00Z")
+        finally:
+            bb.cbp.check_package = original
+        self.assertFalse(self.out.exists())
+        self.assertEqual([p.name for p in self.out.parent.iterdir()], [])
+
+    def test_successful_build_leaves_only_the_package(self):
+        src = self.e.src("a.md", b"# T\n")
+        bb.build(src, self.out, catalog_id="T9", created_at="2026-11-04T00:00:00Z")
+        self.assertEqual([p.name for p in self.out.parent.iterdir()], ["out"])
+        self.assertEqual(cbp.check_package(self.out), [])
+
+
 if __name__ == "__main__":
     unittest.main()
