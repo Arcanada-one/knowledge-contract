@@ -1,0 +1,92 @@
+{
+ "components": {
+  "assets": [
+   {
+    "asset_id": "asset.fig1",
+    "kind": "image",
+    "path": "assets/fig1.svg",
+    "sha256": "ade38c8ba07ffcc0c23ae204abdb1ee3d6aecc2211e7bdeb1c95754eb8795961",
+    "state": "present"
+   },
+   {
+    "asset_id": "asset.fig2",
+    "kind": "image",
+    "state": "missing_asset"
+   }
+  ],
+  "document_md": {
+   "contains_generated_text": true,
+   "input_sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb",
+   "path": "document.md",
+   "sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb",
+   "tool": "fixture-generator",
+   "tool_version": "0.0.0"
+  },
+  "edits": {
+   "count": 1,
+   "path": "edits.jsonl",
+   "sha256": "eebad96c0df6df81c2cf1315e273c65fb4ac12fad6681b29479cd0401ddc846b"
+  },
+  "objects": {
+   "count": 4,
+   "path": "objects.jsonl",
+   "sha256": "09f8fbfa0a3238f39724636ea195a250e228f1b39c018122398e570e4f925ed0"
+  },
+  "quality": {
+   "path": "quality.json",
+   "sha256": "d848db8456389b4a7f2acc3155b2d8ee06393d3f285c8e37ae2555874ca5ce84"
+  },
+  "readable_md": {
+   "contains_generated_text": false,
+   "path": "readable.md",
+   "sha256": "5d0cca989f9e1d18e14d214134b7825f0b1e84617f0860011d0edd42a3484d52"
+  },
+  "relations": {
+   "count": 2,
+   "path": "relations.jsonl",
+   "sha256": "9874f091fd5d93ff093b26c2ba03e0a9d98375e2f389202814b44c8b18326092"
+  }
+ },
+ "created_at": "2026-11-04T00:00:00Z",
+ "edition": {
+  "edition_id": "ed.synthetic-rle-primer.en",
+  "kind": "original",
+  "language": "en"
+ },
+ "kc2_admission": "not_measured",
+ "package_id": "synthetic-rle-primer.r1",
+ "package_status": "knowledge_ready",
+ "related_works": [],
+ "release_id": "r1",
+ "representation": {
+  "completeness": "full",
+  "format": "md",
+  "integrity": "verified",
+  "representation_id": "rep.synthetic-rle-primer.md",
+  "size_bytes": 245,
+  "source_sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb"
+ },
+ "rights": {
+  "holder": "Knowledge Contract Arcana contributors",
+  "license": "CC-BY-4.0",
+  "license_class": "author_open",
+  "publishable_layers": [
+   "document_md",
+   "readable_md",
+   "assets",
+   "knowledge",
+   "quality"
+  ]
+ },
+ "schema": "KCBookPackageManifest/v1",
+ "tooling": [
+  {
+   "tool": "fixture-generator",
+   "tool_version": "0.0.0"
+  }
+ ],
+ "work": {
+  "title": "Synthetic primer on run-length encoding",
+  "work_id": "work.synthetic-rle-primer"
+ }
+}
