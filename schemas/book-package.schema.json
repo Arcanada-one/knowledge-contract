@@ -212,7 +212,7 @@
           "holder": {"type": "string", "minLength": 1, "maxLength": 200},
           "license": {"enum": ["CC-BY-4.0", "Apache-2.0"]},
           "publishable_layers": {"type": "array", "uniqueItems": true, "items": {"enum": ["document_md", "readable_md", "assets", "knowledge", "quality"]}}}},
-        "components": {"type": "object", "additionalProperties": false, "required": ["readable_md", "edits", "objects", "relations", "quality"], "properties": {
+        "components": {"type": "object", "additionalProperties": false, "required": ["edits", "objects", "relations", "quality"], "properties": {
           "document_md": {"type": "object", "additionalProperties": false,
             "required": ["path", "sha256", "input_sha256", "tool", "tool_version", "contains_generated_text"], "properties": {
               "path": {"$ref": "#/$defs/relpath"}, "sha256": {"$ref": "#/$defs/sha256"},
@@ -248,8 +248,10 @@
          "then": {"properties": {"package_status": {"const": "blocked_integrity"}}}},
         {"if": {"properties": {"package_status": {"const": "knowledge_ready"}}},
          "then": {"properties": {"representation": {"properties": {"integrity": {"const": "verified"}, "completeness": {"const": "full"}}}}}},
-        {"if": {"not": {"properties": {"representation": {"properties": {"completeness": {"const": "bibliography_only"}}}}}},
-         "then": {"properties": {"components": {"required": ["document_md"]}}}}
+        {"if": {"properties": {"package_status": {"enum": ["structure_only", "partial_pilot", "knowledge_ready"]}}},
+         "then": {"properties": {"components": {"required": ["document_md", "readable_md"]}}}},
+        {"if": {"properties": {"package_status": {"enum": ["adapter_required", "blocked_integrity", "bibliography_only"]}}},
+         "then": {"properties": {"components": {"not": {"anyOf": [{"required": ["document_md"]}, {"required": ["readable_md"]}]}}}}}
       ]
     },
 
