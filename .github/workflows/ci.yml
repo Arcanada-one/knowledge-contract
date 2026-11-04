@@ -65,7 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           cd tools
-          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package -v
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail

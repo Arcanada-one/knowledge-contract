@@ -77,6 +77,8 @@ def unrelated_readable(p):
 
 
 PACKAGE_MUTATIONS = {
+    "duplicate_edit_id": (lambda p: p["edits"].append(copy.deepcopy(p["edits"][0])), "duplicate edit_id"),
+    "duplicate_asset_id": (lambda p: p["manifest"]["components"]["assets"].append(copy.deepcopy(p["manifest"]["components"]["assets"][0])), "duplicate asset_id"),
     "edit_input_digest_wrong": (edit_field("input_sha256", "0" * 64), "input_sha256 is not the digest"),
     "edit_output_digest_wrong": (edit_field("output_sha256", "0" * 64), "output_sha256 is not the digest"),
     "edit_original_not_in_text": (edit_field("original_text", "text that is not there"), "does not occur"),
@@ -107,7 +109,7 @@ PACKAGE_MUTATIONS = {
 
 # name -> fragment that the first schema error must contain (the reason the fixture is rejected, not merely that it is)
 EXPECTED_REASON = {
-    "edit_irreversible": "reversible: True was expected", "edit_unknown_basis": "basis: 'felt like it' is not one of", "edit_without_reason": "reason: '' is too short",
+    "edit_irreversible": "reversible: True was expected", "edit_blank_reason": "reason:", "edit_unknown_basis": "basis: 'felt like it' is not one of", "edit_without_reason": "reason: '' is too short",
     "manifest_absolute_path": "components/objects/path", "manifest_admitted_by_itself": "kc2_admission: 'not_measured' was expected",
     "manifest_bibliography_only_with_document": "components:", "manifest_document_md_marks_generated_text": "contains_generated_text: False was expected",
     "manifest_mismatch_but_ready": "package_status: 'blocked_integrity' was expected", "manifest_missing_asset_with_path": "components/assets/1",
