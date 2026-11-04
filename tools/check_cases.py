@@ -20,9 +20,10 @@ REPO = Path(__file__).resolve().parents[1]
 CASES = REPO / "cases"
 SECTIONS = ["Goal", "Setup", "What was checked and how", "Receipts", "Result", "Limits", "What failed on the way"]
 STATUSES = {"written", "planned"}
-NUMBER = re.compile(r"(?<![\w#./:\[-])\d+(?:\.\d+)?(?![\w\]-])")
+NUMBER = re.compile(r"(?<![\w#./:\[])(?<![A-Za-z]-)\d+(?:\.\d+)?(?:[A-Za-z%]{1,4}\b)?(?![\w\]])(?!-[A-Za-z])")
+DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?\b")
 TAG = re.compile(r"^\s*\[R(\d+)\]")
-WORDS = re.compile(r"\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|twenty|thirty|forty|fifty|hundred|thousand|dozen|dozens|hundreds)\b", re.I)
+WORDS = re.compile(r"\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|dozen|dozens|hundreds|half|twice|thrice|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b(?!-)", re.I)
 PERSONAL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+|\+\d[\d\s().-]{8,}\d|(?<!\d)\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}(?!\d)|(?<![\w`])@[A-Za-z][\w-]{2,}")
 KINDS = {"count", "value", "lines", "table_rows", "text_contains"}
 FRONT = re.compile(r"\A---\n(.*?)\n---\n", re.S)
@@ -95,8 +96,10 @@ def receipts_table(section: str) -> dict[int, tuple[str, str, str, str]]:
 def prose_of(section: str) -> str:
     text = re.sub(r"```.*?```", " ", section, flags=re.S)
     text = re.sub(r"`[^`]*`", " ", text)
-    text = re.sub(r"\]\([^)]*\)", "]", text)
-    return "\n".join(l for l in text.splitlines() if not l.startswith("|") and not l.startswith("#"))
+    text = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
+    text = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"[\1]", text)
+    text = DATE.sub(" ", text)
+    return text
 
 
 def check_case_text(text: str, name: str = "case") -> list[str]:

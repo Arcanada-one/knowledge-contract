@@ -8,7 +8,8 @@ One case per engineering work of the Knowledge Contract project: what the goal w
 2. **A planned case has no numbers.** It names the receipts it awaits and keeps every section so that the gap is visible. A case becomes `written` only when its receipts are in the repository.
 3. **Failures stay.** The section "What failed on the way" is required. A case with nothing to say there says why it believes so.
 4. **No secret, personal identifier or private host detail.** The checker applies the same deny shapes as the corpus exporter, plus email, phone and handle shapes.
-5. **A case reports what a receipt shows, not more.** A check that was not run is written as not measured.
+5. **A tag proves a match, not a meaning.** The checker shows that a number equals a receipt value, not that the receipt is the right one for the sentence (24 could be tagged to either of two receipts that both hold 24). The reviewer of a case checks the pairing.
+6. **A case reports what a receipt shows, not more.** A check that was not run is written as not measured.
 
 Start from [`_TEMPLATE.md`](_TEMPLATE.md).
 
