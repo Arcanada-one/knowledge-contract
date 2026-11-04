@@ -20,12 +20,16 @@ REPO = Path(__file__).resolve().parents[1]
 CASES = REPO / "cases"
 SECTIONS = ["Goal", "Setup", "What was checked and how", "Receipts", "Result", "Limits", "What failed on the way"]
 STATUSES = {"written", "planned"}
-NUMBER = re.compile(r"(?<![\w#./:\[])(?<![A-Za-z]-)\d+(?:\.\d+)?(?:[A-Za-z%]{1,4}\b)?(?![\w\]])(?!-[A-Za-z])")
+NUMBER = re.compile(r"(?<![\w.:])(?<![A-Za-z]-)\d+(?:\.\d+)?(?:[A-Za-z%]{1,4}\b)?(?![\w])(?!-[A-Za-z])")
 DATE = re.compile(r"\b\d{4}-\d{2}-\d{2}(?:T[\d:.]+Z?)?\b")
-TAG = re.compile(r"^\s*\[R(\d+)\]")
-WORDS = re.compile(r"\b(two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|dozen|dozens|hundreds|half|twice|thrice|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b(?!-)", re.I)
+TAG_ANY = re.compile(r"\[R(\d+)\]")
+TAG = re.compile(r"^[ \t]*\[R(\d+)\]")
+WORDS = re.compile(r"\b(one|zero|single|pair|couple|once|twice|thrice|half|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred|thousand|million|dozen|dozens|hundreds|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b(?!-party)", re.I)
+ROMAN = re.compile(r"\b(?=[IVXLCDM]{2,}\b)M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})\b")
+ROMAN_OK = {"CC", "CD", "DC", "MD", "LI", "DI", "MM", "MI", "CI"}
 PERSONAL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+|\+\d[\d\s().-]{8,}\d|(?<!\d)\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}(?!\d)|(?<![\w`])@[A-Za-z][\w-]{2,}")
 KINDS = {"count", "value", "lines", "table_rows", "text_contains"}
+NEAR_WINDOW = 48
 FRONT = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 
@@ -84,19 +88,17 @@ def measured(kind: str, rel: str, locator: str) -> object:
     return node
 
 
-def receipts_table(section: str) -> dict[int, tuple[str, str, str, str]]:
+def receipts_table(section: str) -> dict[int, tuple[str, str, str, str, str]]:
     rows = {}
     for line in section.splitlines():
         cells = [c.strip().strip("`") for c in line.strip().strip("|").split("|")]
-        if len(cells) == 5 and re.fullmatch(r"R\d+", cells[0]):
-            rows[int(cells[0][1:])] = (cells[1], cells[2], cells[3], cells[4])
+        if len(cells) == 6 and re.fullmatch(r"R\d+", cells[0]):
+            rows[int(cells[0][1:])] = (cells[1], cells[2], cells[3], cells[4], cells[5])
     return rows
 
 
 def prose_of(section: str) -> str:
-    text = re.sub(r"```.*?```", " ", section, flags=re.S)
-    text = re.sub(r"`[^`]*`", " ", text)
-    text = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"[\1]", text)
+    text = section
     text = DATE.sub(" ", text)
     return text
 
@@ -120,12 +122,15 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
             problems.append(f"{name}: section '{needed}' is missing or empty")
     if problems:
         return problems
+    if "```" in body or "~~~" in body:
+        problems.append(f"{name}: fenced code blocks are not allowed in a case")
     raw = text.encode("utf-8")
     if ec.DENY_SHAPE.search(raw) or ec.SECRET_SHAPE.search(raw):
         problems.append(f"{name}: host detail, private address or secret shape")
     if PERSONAL.search(body):
         problems.append(f"{name}: personal identifier shape (email, phone or handle)")
     table = receipts_table(secs["Receipts"])
+    secs = {**secs, "Title": fm["title"]}
     if fm["status"] == "planned":
         if table or "awaiting" not in fm:
             problems.append(f"{name}: a planned case lists no receipts and names what it awaits")
@@ -136,7 +141,7 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
         return problems
     if not table:
         problems.append(f"{name}: a written case needs at least one receipt row")
-    for rid, (rel, kind, locator, expected) in sorted(table.items()):
+    for rid, (rel, kind, locator, expected, near) in sorted(table.items()):
         if kind not in KINDS:
             problems.append(f"{name}: R{rid} has unknown kind {kind}")
             continue
@@ -155,10 +160,16 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
         if sec_name == "Receipts":
             continue
         prose = prose_of(sec)
+        if sec_name == "Title":
+            prose = prose + " "
         used |= {int(n) for n in re.findall(r"\[R(\d+)\]", prose)}
         if WORDS.search(prose):
             problems.append(f"{name}: a number word in '{sec_name}' ({WORDS.search(prose).group(0)}); write the digit with its receipt tag")
-        for m in NUMBER.finditer(prose):
+        masked = TAG_ANY.sub(lambda t: "[R" + "x" * len(t.group(1)) + "]", prose)
+        for m in ROMAN.finditer(prose):
+            if m.group(0) not in ROMAN_OK:
+                problems.append(f"{name}: a Roman numeral {m.group(0)} in '{sec_name}'")
+        for m in NUMBER.finditer(masked):
             tag = TAG.match(prose[m.end():])
             if not tag:
                 problems.append(f"{name}: number {m.group(0)} in '{sec_name}' has no receipt tag")
@@ -168,7 +179,10 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
             if rid not in table:
                 problems.append(f"{name}: tag R{rid} has no row in Receipts")
                 continue
-            rel, kind, locator, expected = table[rid]
+            rel, kind, locator, expected, near = table[rid]
+            after = prose[m.end() + tag.end(): m.end() + tag.end() + NEAR_WINDOW].lower()
+            if near and not any(k.strip().lower() in after for k in near.split(",")):
+                problems.append(f"{name}: number {m.group(0)} is tagged R{rid} but none of '{near}' follows it")
             if kind == "text_contains":
                 if m.group(0) not in re.findall(r"\d+(?:\.\d+)?", expected):
                     problems.append(f"{name}: number {m.group(0)} is not in the text of R{rid}")

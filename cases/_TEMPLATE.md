@@ -26,12 +26,12 @@ Each check, the method, and the control that shows the method can fail.
 
 A planned case lists none. A written case lists one row per tagged number or value:
 
-| Tag | File | Kind | Locator | Value |
-| --- | --- | --- | --- | --- |
+| Tag | File | Kind | Locator | Value | Near |
+| --- | --- | --- | --- | --- | --- |
 
 ## Result
 
-What came out, with each number followed by its tag, for example `3 files [R1]`.
+What came out, with each number followed by its tag, for example `3 [R1] files`: the number, then its tag, then a noun that the Near column names.
 
 ## Limits
 

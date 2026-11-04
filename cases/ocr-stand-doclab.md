@@ -2,7 +2,7 @@
 case_id: ocr-stand-doclab
 title: "The OCR stand doclab"
 status: planned
-work_items: [KC-5]
+work_items: [unassigned]
 awaiting: [the stand definition, the run receipts and the recorded failures of the OCR stand]
 license: CC-BY-4.0
 language: en
