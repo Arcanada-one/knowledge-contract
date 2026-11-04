@@ -272,7 +272,8 @@
         "evidence_kind": {
           "enum": [
             "tests_the_claim",
-            "regression_of_our_implementation"
+            "regression_of_our_implementation",
+            "exploratory"
           ]
         },
         "advantage_sign": {

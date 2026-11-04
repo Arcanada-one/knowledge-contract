@@ -209,8 +209,31 @@ def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref
         problems.append("spend exceeds the recorded cap")
     if receipt["run"]["finished_at"] < receipt["run"]["started_at"]:
         problems.append("run finishes before it starts")
-    if outcome == "refuted" and not receipt.get("revision_proposal_ref"):
-        problems.append("a refuted outcome needs a revision proposal")
+    kind = check["evidence_kind"]
+    if kind == "tests_the_claim":
+        if outcome == "refuted" and not receipt.get("revision_proposal_ref"):
+            problems.append("a refuted outcome needs a revision proposal")
+        if receipt.get("claim_weakened") and not receipt.get("revision_proposal_ref"):
+            problems.append("a weakened claim needs a revision proposal")
+        if receipt.get("defect_ref") or receipt.get("exploratory_note"):
+            problems.append("a check that tests the claim routes through a revision proposal, not a defect record or an exploratory note")
+    else:
+        if receipt.get("revision_proposal_ref"):
+            problems.append(f"a {kind} check cannot propose a revision of a paper")
+        if receipt.get("claim_weakened"):
+            problems.append(f"a {kind} check cannot weaken a claim of a paper")
+        if kind == "regression_of_our_implementation":
+            if outcome == "refuted" and not receipt.get("defect_ref"):
+                problems.append("a refuted regression check needs a defect record")
+            if receipt.get("defect_ref") and read_ref(receipt["defect_ref"]) is None:
+                problems.append("defect_ref does not resolve to a record")
+            if receipt.get("exploratory_note"):
+                problems.append("a regression check has no exploratory note")
+        else:
+            if outcome == "refuted" and not receipt.get("exploratory_note"):
+                problems.append("a refuted exploratory check needs an exploratory note")
+            if receipt.get("defect_ref"):
+                problems.append("an exploratory check has no defect record")
     if receipt["gates_met"].get("G-CAP") and not spend["paid_calls"]:
         problems.append("gate G-CAP is reported met but no paid calls or cap are recorded")
     if spend["paid_calls"] and spend.get("cap_recorded_at", "9") > receipt["run"]["started_at"]:

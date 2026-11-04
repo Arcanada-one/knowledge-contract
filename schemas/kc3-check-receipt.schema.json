@@ -100,7 +100,8 @@
               "$ref": "#/$defs/timestamp"
             },
             "harness_commit": {
-              "$ref": "#/$defs/commit"
+              "type": "string",
+              "pattern": "^(?!0{40}$)[0-9a-f]{40}$"
             },
             "seed": {
               "type": "integer"
@@ -223,6 +224,13 @@
             "type": "string",
             "minLength": 10
           }
+        },
+        "defect_ref": {
+          "$ref": "#/$defs/relpath"
+        },
+        "exploratory_note": {
+          "type": "string",
+          "minLength": 20
         }
       },
       "allOf": [
@@ -249,8 +257,22 @@
             }
           },
           "then": {
-            "required": [
-              "revision_proposal_ref"
+            "anyOf": [
+              {
+                "required": [
+                  "revision_proposal_ref"
+                ]
+              },
+              {
+                "required": [
+                  "defect_ref"
+                ]
+              },
+              {
+                "required": [
+                  "exploratory_note"
+                ]
+              }
             ]
           }
         },
@@ -299,8 +321,7 @@
           },
           "then": {
             "required": [
-              "weakening_reason",
-              "revision_proposal_ref"
+              "weakening_reason"
             ]
           }
         }

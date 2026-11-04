@@ -83,15 +83,19 @@ RECEIPT_MUTATIONS = {
     "negative_control_passed": (dict(controls={"positive_passed": True, "negative_failed": False}), "both controls"),
     "gate_unmet": (None, "gate"),
     "n_below_minimum": (dict(n=3), "below the registered n_min"),
-    "refuted_without_proposal": (dict(outcome="refuted"), "'revision_proposal_ref' is a required property"),
+    "refuted_without_proposal": (dict(check_id="KC3-P05-C1", outcome="refuted"), "not valid under any"),
     "not_measured_without_reason": (dict(outcome="not_measured"), "'reason' is a required property"),
     "finish_before_start": (dict(run={"started_at": "2026-11-05T02:00:00Z", "finished_at": "2026-11-05T01:00:00Z", "harness_commit": "c" * 40, "seed": 7}), "before it starts"),
     "paid_calls_in_unpaid_check": (dict(spend=PAID(cap_usd=1.0, used_usd=0.2, cap_recorded_at="2026-11-04T00:00:00Z")), "registered as unpaid"),
     "extra_field": (dict(confidence=0.99), "Additional properties"),
     "cap_recorded_after_start": (dict(spend=PAID(cap_recorded_at="2026-11-05T00:30:00Z"), check_id="KC3-P11-C2"), "after the run started"),
-    "proposal_file_missing": (dict(outcome="refuted", revision_proposal_ref="receipts/theory-checks/nope.json"), "does not resolve"),
-    "weakened_without_proposal": (dict(claim_weakened=True, weakening_reason="supported only on a subset of formats"), "revision_proposal_ref"),
+    "proposal_file_missing": (dict(check_id="KC3-P05-C1", outcome="refuted", revision_proposal_ref="receipts/theory-checks/nope.json"), "does not resolve"),
+    "weakened_without_proposal": (dict(check_id="KC3-P05-C1", claim_weakened=True, weakening_reason="supported only on a subset of formats"), "needs a revision proposal"),
     "cap_gate_without_paid_calls": (None, "G-CAP is reported met"),
+    "regression_refuted_proposes_paper_revision": (dict(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json"), "cannot propose a revision of a paper"),
+    "regression_refuted_without_defect": (dict(outcome="refuted", exploratory_note="a note that the schema accepts"), "needs a defect record"),
+    "regression_weakened": (dict(outcome="supported", claim_weakened=True, weakening_reason="x" * 12, qualifications=["a failed secondary control"]), "cannot weaken a claim"),
+    "zero_harness_commit": (dict(run={"started_at": "2026-11-05T00:00:00Z", "finished_at": "2026-11-05T01:00:00Z", "harness_commit": "0" * 40, "seed": 7}), "does not match"),
     "weakened_on_not_measured": (dict(outcome="not_measured", reason="control_failed", claim_weakened=True, weakening_reason="x" * 12, qualifications=["a failed control"], revision_proposal_ref="receipts/theory-checks/p.json"), "only meaningful on a supported outcome"),
     "qualifications_without_weakened_flag": (dict(qualifications=["a sub-control failed on one format"]), "must set claim_weakened"),
     "zero_registry_commit": (dict(prereg={"sha256": SHA, "commit": "0" * 40}), "does not match"),
@@ -186,7 +190,7 @@ class ReceiptTests(unittest.TestCase):
 
 class ProposalLinkTests(unittest.TestCase):
     def reader(self, **over):
-        prop = {"schema": "KC3RevisionProposal/v1", "proposal_id": "prop-0001", "paper": "P12", "check_id": "KC3-P12-C1", "receipt_ref": "receipts/theory-checks/r.json",
+        prop = {"schema": "KC3RevisionProposal/v1", "proposal_id": "prop-0001", "paper": "P05", "check_id": "KC3-P05-C1", "receipt_ref": "receipts/theory-checks/r.json",
                 "finding": "refuted", "claim_affected": "If the dependency set contains every input, reuse preserves checked properties.",
                 "proposed_change": "State the measured counterexample as a limit of the conditional lemma.", "paper_sha256_at_proposal": "d" * 64,
                 "status": "proposed", "route": "P10 revision and canon"}
@@ -197,11 +201,11 @@ class ProposalLinkTests(unittest.TestCase):
         return k.check_receipt(rec, REG, RAW, read_ref=reader, paper_sha=lambda paper: "d" * 64, **kw)
 
     def test_proposal_linked_and_consistent(self):
-        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        rec = receipt("KC3-P05-C1", outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
         self.assertEqual(self.call(rec, self.reader(), receipt_path="receipts/theory-checks/r.json"), [])
 
     def test_proposal_must_name_this_receipt_and_the_real_paper_digest(self):
-        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        rec = receipt("KC3-P05-C1", outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
         out = self.call(rec, self.reader(receipt_ref="receipts/theory-checks/other.json"), receipt_path="receipts/theory-checks/r.json")
         self.assertTrue(any("does not name this receipt" in p for p in out), out)
         out = self.call(rec, self.reader(paper_sha256_at_proposal="e" * 64))
@@ -212,14 +216,14 @@ class ProposalLinkTests(unittest.TestCase):
         self.assertIsNone(k.paper_digest("P99"))
 
     def test_proposal_for_another_check_or_paper_is_refused(self):
-        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
-        for over in ({"check_id": "KC3-P12-C2"}, {"paper": "P01"}):
+        rec = receipt("KC3-P05-C1", outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        for over in ({"check_id": "KC3-P05-C2"}, {"paper": "P01"}):
             self.assertTrue(any("another check or paper" in p for p in self.call(rec, self.reader(**over))), over)
 
     def test_finding_must_match_receipt(self):
-        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        rec = receipt("KC3-P05-C1", outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
         self.assertTrue(any("claim_weakened" in p for p in self.call(rec, self.reader(finding="weakened"))))
-        rec = receipt(outcome="supported", claim_weakened=True, weakening_reason="supported only on text formats", qualifications=["holds only on text-native formats"], revision_proposal_ref="receipts/theory-checks/p.json")
+        rec = receipt("KC3-P05-C1", outcome="supported", claim_weakened=True, weakening_reason="supported only on text formats", qualifications=["holds only on text-native formats"], revision_proposal_ref="receipts/theory-checks/p.json")
         self.assertEqual(self.call(rec, self.reader(finding="weakened")), [])
         self.assertTrue(any("finding refuted" in p for p in self.call(rec, self.reader(finding="refuted"))))
 
