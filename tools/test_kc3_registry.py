@@ -59,7 +59,7 @@ def receipt(check_id="KC3-P12-C1", **over):
            "data_digests": {"D-PKG": "b" * 64}, "run": {"started_at": "2026-11-05T00:00:00Z", "finished_at": "2026-11-05T01:00:00Z", "harness_commit": "c" * 40, "seed": 7},
            "controls": {"positive_passed": True, "negative_failed": True}, "gates_met": {g: True for g in check["gates"]}, "n": check.get("n_min", 1),
            "result": {"violations": 0}, "outcome": "supported", "limits": ["fixture receipt used only by the unit tests"],
-           "reviewer_independence_class": "not_applicable", "spend": {"paid_calls": False}}
+           "reviewer_independence_class": "not_applicable", "spend": {"paid_calls": False}, "qualifications": []}
     rec.update(over)
     return rec
 
@@ -89,6 +89,10 @@ RECEIPT_MUTATIONS = {
     "proposal_file_missing": (dict(outcome="refuted", revision_proposal_ref="receipts/theory-checks/nope.json"), "does not resolve"),
     "weakened_without_proposal": (dict(claim_weakened=True, weakening_reason="supported only on a subset of formats"), "revision_proposal_ref"),
     "cap_gate_without_paid_calls": (None, "G-CAP is reported met"),
+    "weakened_on_not_measured": (dict(outcome="not_measured", reason="control_failed", claim_weakened=True, weakening_reason="x" * 12, qualifications=["a failed control"], revision_proposal_ref="receipts/theory-checks/p.json"), "only meaningful on a supported outcome"),
+    "qualifications_without_weakened_flag": (dict(qualifications=["a sub-control failed on one format"]), "must set claim_weakened"),
+    "zero_registry_commit": (dict(prereg={"sha256": SHA, "commit": "0" * 40}), "does not match"),
+    "foreign_decision_id": (dict(spend=PAID(decision_id="DEC-AUP-0001"), check_id="KC3-P11-C2"), "DEC-AUP-0174"),
 }
 
 
@@ -160,6 +164,10 @@ class ReceiptTests(unittest.TestCase):
         rec = receipt("KC3-P11-C2", spend=PAID(cap_usd=1.0, used_usd=3.0))
         self.assertTrue(any("exceeds the recorded cap" in p for p in k.check_receipt(rec, REG, RAW)))
 
+    def test_registry_commit_must_be_an_ancestor_when_ancestry_is_known(self):
+        self.assertEqual(k.check_receipt(receipt(), REG, RAW, ancestry=lambda c: True), [])
+        self.assertTrue(any("not an ancestor" in p for p in k.check_receipt(receipt(), REG, RAW, ancestry=lambda c: False)))
+
     def test_digest_changes_when_the_registry_changes(self):
         altered = RAW.replace(b"unrun", b"unrun ", 1)
         self.assertNotEqual(k.sha256_bytes(altered), SHA)
@@ -175,21 +183,35 @@ class ProposalLinkTests(unittest.TestCase):
         prop.update(over)
         return lambda ref: prop
 
+    def call(self, rec, reader, **kw):
+        return k.check_receipt(rec, REG, RAW, read_ref=reader, paper_sha=lambda paper: "d" * 64, **kw)
+
     def test_proposal_linked_and_consistent(self):
         rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
-        self.assertEqual(k.check_receipt(rec, REG, RAW, read_ref=self.reader()), [])
+        self.assertEqual(self.call(rec, self.reader(), receipt_path="receipts/theory-checks/r.json"), [])
+
+    def test_proposal_must_name_this_receipt_and_the_real_paper_digest(self):
+        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        out = self.call(rec, self.reader(receipt_ref="receipts/theory-checks/other.json"), receipt_path="receipts/theory-checks/r.json")
+        self.assertTrue(any("does not name this receipt" in p for p in out), out)
+        out = self.call(rec, self.reader(paper_sha256_at_proposal="e" * 64))
+        self.assertTrue(any("paper digest" in p for p in out), out)
+
+    def test_real_paper_digest_function_reads_the_entry_page(self):
+        self.assertEqual(k.paper_digest("P12"), k.sha256_bytes(next((k.REPO / "papers").glob("P12_*.md")).read_bytes()))
+        self.assertIsNone(k.paper_digest("P99"))
 
     def test_proposal_for_another_check_or_paper_is_refused(self):
         rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
         for over in ({"check_id": "KC3-P12-C2"}, {"paper": "P01"}):
-            self.assertTrue(any("another check or paper" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(**over))), over)
+            self.assertTrue(any("another check or paper" in p for p in self.call(rec, self.reader(**over))), over)
 
     def test_finding_must_match_receipt(self):
         rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
-        self.assertTrue(any("claim_weakened" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="weakened"))))
-        rec = receipt(outcome="supported", claim_weakened=True, weakening_reason="supported only on text formats", revision_proposal_ref="receipts/theory-checks/p.json")
-        self.assertEqual(k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="weakened")), [])
-        self.assertTrue(any("finding refuted" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="refuted"))))
+        self.assertTrue(any("claim_weakened" in p for p in self.call(rec, self.reader(finding="weakened"))))
+        rec = receipt(outcome="supported", claim_weakened=True, weakening_reason="supported only on text formats", qualifications=["holds only on text-native formats"], revision_proposal_ref="receipts/theory-checks/p.json")
+        self.assertEqual(self.call(rec, self.reader(finding="weakened")), [])
+        self.assertTrue(any("finding refuted" in p for p in self.call(rec, self.reader(finding="refuted"))))
 
 
 class ProposalTests(unittest.TestCase):

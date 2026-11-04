@@ -153,7 +153,14 @@ def load_ref(ref: str) -> dict | None:
         return None
 
 
-def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref=load_ref) -> list[str]:
+def paper_digest(paper: str) -> str | None:
+    """SHA-256 of the English entry page of a paper, the text the checks were registered against."""
+    matches = sorted((REPO / "papers").glob(f"{paper}_*.md"))
+    return sha256_bytes(matches[0].read_bytes()) if matches else None
+
+
+def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref=load_ref, receipt_path: str | None = None,
+                  ancestry=None, paper_sha=paper_digest) -> list[str]:
     """Validate a receipt against the registry it cites. Returns problems; empty means the receipt is internally consistent.
 
     It does not recompute the outcome from `result`: that needs the data and the harness, which this tool does not have.
@@ -198,6 +205,13 @@ def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref
         problems.append("gate G-CAP is reported met but no paid calls or cap are recorded")
     if spend["paid_calls"] and spend.get("cap_recorded_at", "9") > receipt["run"]["started_at"]:
         problems.append("the spend cap was recorded after the run started")
+    quals = receipt["qualifications"]
+    if receipt.get("claim_weakened") and outcome != "supported":
+        problems.append("claim_weakened is only meaningful on a supported outcome; refuted needs a proposal and not_measured weakens nothing")
+    if outcome == "supported" and bool(quals) != bool(receipt.get("claim_weakened")):
+        problems.append("a supported outcome with qualifications must set claim_weakened, and claim_weakened needs qualifications")
+    if ancestry is not None and not ancestry(receipt["prereg"]["commit"]):
+        problems.append("the registry commit is not an ancestor of the commit that holds this receipt")
     ref = receipt.get("revision_proposal_ref")
     if ref:
         proposal = read_ref(ref)
@@ -208,6 +222,10 @@ def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref
             if not problems:
                 if proposal["check_id"] != receipt["check_id"] or proposal["paper"] != check["paper"]:
                     problems.append("proposal names another check or paper")
+                if receipt_path is not None and proposal["receipt_ref"] != receipt_path:
+                    problems.append("proposal receipt_ref does not name this receipt")
+                if proposal["paper_sha256_at_proposal"] != paper_sha(check["paper"]):
+                    problems.append("proposal paper digest is not the digest of the paper file")
                 if proposal["finding"] == "refuted" and outcome != "refuted":
                     problems.append("proposal finding refuted but the receipt outcome is not refuted")
                 if proposal["finding"] == "weakened" and not receipt.get("claim_weakened"):
@@ -226,7 +244,17 @@ def check_pin(registry_bytes: bytes) -> list[str]:
 
 def main(argv: list[str]) -> int:
     registry_bytes = REGISTRY.read_bytes()
-    problems = check_registry(json.loads(registry_bytes)) + check_pin(registry_bytes)
+    registry = json.loads(registry_bytes)
+    problems = check_registry(registry) + check_pin(registry_bytes)
+    import subprocess
+
+    def ancestor(commit: str) -> bool:
+        return subprocess.run(["git", "merge-base", "--is-ancestor", commit, "HEAD"], cwd=REPO, capture_output=True).returncode == 0
+
+    for path in sorted((REPO / "receipts" / "theory-checks").glob("*.json")):
+        rec = json.loads(path.read_text(encoding="utf-8"))
+        if rec.get("schema") == "KC3CheckReceipt/v1":
+            problems += [f"{path.name}: {m}" for m in check_receipt(rec, registry, registry_bytes, receipt_path=path.relative_to(REPO).as_posix(), ancestry=ancestor)]
     for problem in problems:
         print(f"KC3_REGISTRY_FAIL {problem}")
     if problems:

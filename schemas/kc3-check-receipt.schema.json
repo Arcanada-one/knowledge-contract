@@ -44,7 +44,8 @@
         "outcome",
         "limits",
         "reviewer_independence_class",
-        "spend"
+        "spend",
+        "qualifications"
       ],
       "properties": {
         "schema": {
@@ -70,7 +71,8 @@
               "$ref": "#/$defs/sha256"
             },
             "commit": {
-              "$ref": "#/$defs/commit"
+              "type": "string",
+              "pattern": "^(?!0{40}$)[0-9a-f]{40}$"
             }
           }
         },
@@ -201,8 +203,7 @@
               "minimum": 0
             },
             "decision_id": {
-              "type": "string",
-              "pattern": "^DEC-AUP-[0-9]{4}$"
+              "const": "DEC-AUP-0174"
             }
           }
         },
@@ -215,6 +216,13 @@
         "weakening_reason": {
           "type": "string",
           "minLength": 10
+        },
+        "qualifications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 10
+          }
         }
       },
       "allOf": [
