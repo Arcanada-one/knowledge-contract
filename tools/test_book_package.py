@@ -68,7 +68,20 @@ def spine_anchor(p):
 
 
 # name -> (mutation on parsed parts, expected fragment of a reported problem)
+def edit_field(name, value):
+    return lambda p: p["edits"][0].__setitem__(name, value)
+
+
+def unrelated_readable(p):
+    p["files"]["readable.md"] = b"# Unrelated text\n"
+
+
 PACKAGE_MUTATIONS = {
+    "edit_input_digest_wrong": (edit_field("input_sha256", "0" * 64), "input_sha256 is not the digest"),
+    "edit_output_digest_wrong": (edit_field("output_sha256", "0" * 64), "output_sha256 is not the digest"),
+    "edit_original_not_in_text": (edit_field("original_text", "text that is not there"), "does not occur"),
+    "readable_is_not_the_replay": (unrelated_readable, "not the replay"),
+    "anchor_kind_does_not_fit_format": (lambda p: p["objects"][0].__setitem__("evidence", [{"kind": "page_bbox", "page": 1, "bbox": [1, 1, 5, 5], "bbox_origin": "top_left", "bbox_unit": "pt", "representation_id": fx.REP, "source_sha256": fx.SRC_SHA}]), "does not fit source format"),
     "relation_endpoint_unknown": (lambda p: p["relations"][0].__setitem__("to", "obj.nowhere"), "is not an object of this package"),
     "relation_self_loop": (lambda p: p["relations"][0].__setitem__("to", p["relations"][0]["from"]), "to itself"),
     "duplicate_object_id": (lambda p: p["objects"].append(copy.deepcopy(p["objects"][0])), "duplicate object_id"),
@@ -231,7 +244,13 @@ class MappingTests(unittest.TestCase):
         md = cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
         rows = cbp.candidate_projection(parts["manifest"], md)
         self.assertEqual({r["layer"] for r in rows}, {"document_md", "readable_md", "knowledge"})  # assets and quality are not Markdown
-        self.assertTrue(all(r["kc2_admission"] == "not_measured" and r["status"] == "current" for r in rows))
+        self.assertTrue(all(r["kc2_admission"] == "not_measured" and r["status"] == "proposed" and r["limits"] for r in rows))
+        self.assertTrue(all(r["proposed_repo_path"].startswith("articles/book-packages/") for r in rows))
+        import export_corpus as ec
+        self.assertTrue(all(ec.PATH_RE.fullmatch(r["proposed_repo_path"]) for r in rows))
+        no_licence = copy.deepcopy(parts["manifest"])
+        no_licence["rights"].pop("license")
+        self.assertEqual(cbp.candidate_projection(no_licence, md), [])
         parts["manifest"]["rights"]["publishable_layers"] = []
         self.assertEqual(cbp.candidate_projection(parts["manifest"], md), [])
 

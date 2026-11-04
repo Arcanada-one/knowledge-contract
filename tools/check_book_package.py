@@ -21,6 +21,9 @@ REPO = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = REPO / "schemas" / "book-package.schema.json"
 RESTRICTED_LAYERS = frozenset(("document_md", "readable_md", "assets"))
 ADMISSIBLE_OFFSET_KINDS = frozenset(("spine_offset",))
+FORMAT_ANCHORS = {"pdf": {"page_bbox"}, "djvu": {"page_bbox"}, "ps": {"page_bbox"}, "epub": {"spine_offset"}, "html": {"section_block"},
+                  "md": {"section_block"}, "txt": {"section_block"}, "tex": {"section_block"}, "xlsx": {"sheet_range"}, "json": {"json_pointer"},
+                  "ppt": {"slide_block"}, "zip": {"section_block"}, "tar_gz": {"section_block"}, "sevenz": {"section_block"}}
 
 
 class PackageError(Exception):
@@ -153,6 +156,8 @@ def check_package(root: Path) -> list[str]:
         for anchor in _anchors_of(record):
             if (anchor["representation_id"], anchor["source_sha256"]) != (rep["representation_id"], rep["source_sha256"]):
                 problems.append(f"{record['schema']}: an evidence anchor names another representation or source hash")
+            if anchor["kind"] not in FORMAT_ANCHORS[rep["format"]]:
+                problems.append(f"{record['schema']}: anchor kind {anchor['kind']} does not fit source format {rep['format']}")
             if anchor["kind"] in ADMISSIBLE_OFFSET_KINDS and anchor["end"] < anchor["start"]:
                 problems.append(f"{record['schema']}: anchor end precedes start")
             if anchor["kind"] == "page_bbox":
@@ -165,6 +170,24 @@ def check_package(root: Path) -> list[str]:
         for dep in edit["depends_on_objects"]:
             if dep not in known:
                 problems.append(f"edit {edit['edit_id']}: depends on unknown object {dep}")
+
+    # Ledger: the readable edition is exactly the replay of the accepted edits over document.md, and digests chain.
+    if "document_md" in comps:
+        current = (root / comps["document_md"]["path"]).read_text(encoding="utf-8")
+        chain = comps["document_md"]["sha256"]
+        for edit in [e for e in edits if e["status"] == "accepted" and e["target"] == "readable_md"]:
+            if edit["input_sha256"] != chain:
+                problems.append(f"edit {edit['edit_id']}: input_sha256 is not the digest of the text it was applied to")
+            if edit["original_text"] not in current:
+                problems.append(f"edit {edit['edit_id']}: original_text does not occur in the text it edits")
+                continue
+            current = current.replace(edit["original_text"], edit["replacement_text"], 1)
+            chain = hashlib.sha256(current.encode("utf-8")).hexdigest()
+            if edit["output_sha256"] != chain:
+                problems.append(f"edit {edit['edit_id']}: output_sha256 is not the digest of the text it produced")
+        readable = (root / comps["readable_md"]["path"]).read_text(encoding="utf-8")
+        if readable != current:
+            problems.append("readable_md is not the replay of the accepted edits over document_md")
 
     # Staleness: a stale edit invalidates every object that depends on it, and every relation that touches such an object.
     stale_edit_objs = {dep for e in edits if e["status"] == "stale" for dep in e["depends_on_objects"]}
@@ -229,24 +252,35 @@ def render_knowledge_markdown(manifest: dict, objects: list[dict], relations: li
 LAYER_FILE = {"document_md": "document_md", "readable_md": "readable_md"}
 
 
-def candidate_projection(manifest: dict, knowledge_md: str | None) -> list[dict]:
-    """Rows a publication step may propose for the candidate export. Only Markdown layers can be carried; an absent row means deny.
+REPO_PREFIX = "articles/book-packages"
 
-    The exporter (tools/export_corpus.py) still decides: it accepts only paths under papers/, spec/, articles/ or schemas/ that
-    are in its explicit scope list, with a merged source commit and a reviewed publication decision. This function proposes; it
-    does not widen that scope.
+
+def candidate_projection(manifest: dict, knowledge_md: str | None) -> list[dict]:
+    """Rows a publication step may PROPOSE for the candidate export. Only Markdown layers can be carried; an absent row means deny.
+
+    Proposal only: the exporter (tools/export_corpus.py) decides. It accepts only paths matching its PATH_RE that are in its explicit
+    scope list, a rights holder that is a personal name, a licence of CC-BY-4.0 or Apache-2.0, a merged source commit and a reviewed
+    decision. A layer without `rights.license` (an SPDX id from that set) gets no row. The proposed repository path is
+    articles/book-packages/<package_id>/<file>; whether the exporter scope admits it is a separate decision.
     """
     rights, rows = manifest["rights"], []
+    licence = rights.get("license")
+    if licence not in ("CC-BY-4.0", "Apache-2.0"):
+        return rows
+    pid, q = manifest["package_id"], manifest["package_status"]
+    limits = (f"package_status {q}; quality blocks and semantic review are in quality.json of the package; does not establish extraction "
+              f"fidelity, semantic correctness or KC2 admission")
     for layer in rights["publishable_layers"]:
-        if layer in LAYER_FILE:
-            meta = manifest["components"].get(layer)
-            if meta:
-                rows.append({"layer": layer, "path_in_package": meta["path"], "sha256": meta["sha256"]})
+        if layer in LAYER_FILE and manifest["components"].get(layer):
+            meta = manifest["components"][layer]
+            name, digest = meta["path"], meta["sha256"]
         elif layer == "knowledge" and knowledge_md is not None:
-            rows.append({"layer": layer, "path_in_package": "knowledge.md", "sha256": hashlib.sha256(knowledge_md.encode("utf-8")).hexdigest()})
-    for row in rows:
-        row.update(license_class=rights["license_class"], rights_holder=rights.get("holder", "unknown"), status="current",
-                   kc2_admission="not_measured", package_id=manifest["package_id"])
+            name, digest = "knowledge.md", hashlib.sha256(knowledge_md.encode("utf-8")).hexdigest()
+        else:
+            continue
+        rows.append({"layer": layer, "path_in_package": name, "proposed_repo_path": f"{REPO_PREFIX}/{pid}/{name}", "sha256": digest,
+                     "rights_holder": rights.get("holder", "unknown"), "license": licence, "status": "proposed", "limits": limits,
+                     "kc2_admission": "not_measured", "package_id": pid})
     return rows
 
 

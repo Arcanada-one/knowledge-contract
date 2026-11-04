@@ -40,7 +40,7 @@ Passing the validator proves structure: shapes, digests, counts, endpoints, anch
   quality.json       quality report
 ```
 
-`document.md` is never edited. A correction goes into `readable.md` through a ledger record that holds the source fragment, the replacement, the anchor, the basis, the reason and the input and output digests. Every accepted edit is reversible (`reversible` is the constant `true`). Paths are relative, contain no `..`, and never start with `/`.
+`document.md` is never edited. A correction goes into `readable.md` through a ledger record that holds the source fragment, the replacement, the anchor, the basis, the reason and the input and output digests. Every accepted edit is reversible (`reversible` is the constant `true`). The ledger is tied to the files: the digests chain from `document.md` through each accepted edit, each `original_text` must occur in the text it edits, and `readable.md` must equal the replay of the accepted edits over `document.md`. Paths are relative, contain no `..`, and never start with `/`.
 
 ## 3. Identity and source binding
 
@@ -77,7 +77,7 @@ Every anchor repeats the `representation_id` and the source `sha256` it points i
 | `json_pointer` | JSON, DocC | `pointer` (RFC 6901) |
 | `slide_block` | presentations | `slide`, `block_id` |
 
-A new source format needs a new anchor kind in a new schema revision, not a loose string.
+A new source format needs a new anchor kind in a new schema revision, not a loose string. The validator requires the anchor kind to fit the source format of the manifest (for example `page_bbox` for PDF, `section_block` for Markdown). It does not resolve an anchor against the source: that a section, page or range exists, and that it says what an object claims, is not checked here.
 
 ## 7. Generated content is marked, always
 
@@ -99,24 +99,24 @@ A source span corrected after objects were derived from it makes those objects s
 
 ## 11. Mapping to candidate export v2 and Knowledge Contract V3 admission
 
-The candidate exporter (`tools/export_corpus.py`, schema `KnowledgeContractCandidateExport/v2`, DEC-AUP-0171) carries only Markdown files under `papers/`, `spec/`, `articles/` or `schemas/` that are listed in its explicit scope, have a merged source commit and a reviewed publication decision. A package therefore maps as follows.
+The candidate exporter (`tools/export_corpus.py`, schema `KnowledgeContractCandidateExport/v2`, DEC-AUP-0171) carries only Markdown files whose path matches its path pattern under `papers/`, `spec/`, `articles/` or `schemas/`, that are listed in its explicit scope, have a merged source commit and a reviewed publication decision with a personal-name rights holder and a licence of CC-BY-4.0 or Apache-2.0. A package therefore maps as follows, as a **proposal** that the exporter's own rules still decide.
 
 | Package element | Candidate export v2 element |
 | --- | --- |
 | `document.md`, `readable.md` (only if listed in `publishable_layers`) | one entry each: `path`, `content sha256`, rights holder, licence, `status: current` |
 | objects and relations | not carried as JSON; rendered to one Markdown file (`render_knowledge_markdown`) which becomes one entry |
 | `manifest.json`, `objects.jsonl`, `relations.jsonl`, `edits.jsonl`, `quality.json`, assets | not carried (not Markdown); stay in the package and are referenced by digest |
-| `rights.holder`, `license_class` | publication decision `rights_holder`, `rights_basis`, `third_party`, `license` |
-| `package_status`, quality blocks | `limits` text of the decision; never a `current` upgrade |
+| `rights.holder`, `rights.license` | publication decision `rights_holder` and `license`; the exporter requires a personal name as holder and CC-BY-4.0 or Apache-2.0 as licence, so a layer without `rights.license` gets no row; `rights_basis`, `third_party` and `attribution` are written by the publication step |
+| `package_status`, quality blocks | `limits` text of the decision (built by `candidate_projection`); a proposed row has status `proposed`, and only the exporter's allowlist makes it `current` |
 | layer not in `publishable_layers` | no allowlist row; an absent row means deny |
 | `kc2_admission: not_measured` | `kc2_admission: not_measured` (the exporter sets it; a producer cannot) |
 
-`candidate_projection` proposes such rows. It does not widen the exporter's scope: `SCOPE_PATHS` is an explicit list and widening it, or adding a path pattern for packages, needs a new decision in the programme record. Until then this specification is itself not an indexing input. Admission under [KNOWLEDGE_CONTRACT_V3](KNOWLEDGE_CONTRACT_V3.md) is a separate step performed by the runtime resolver; a package supplies identity, sources, scope and conditions, and is a candidate until that step records otherwise. No consumer of the v2 manifest was available to the author of this revision, so acceptance by the downstream indexer is **not measured**.
+`candidate_projection` proposes such rows, with the repository path `articles/book-packages/<package_id>/<file>`. That path fits the exporter's path pattern but is not in its scope list. The function does not widen the exporter's scope: `SCOPE_PATHS` is an explicit list and widening it, or adding a path pattern for packages, needs a new decision in the programme record. Until then this specification is itself not an indexing input, and the mapping has not been tried against a real exporter run. Admission under [KNOWLEDGE_CONTRACT_V3](KNOWLEDGE_CONTRACT_V3.md) is a separate step performed by the runtime resolver; a package supplies identity, sources, scope and conditions, and is a candidate until that step records otherwise. No consumer of the v2 manifest was available to the author of this revision, so acceptance by the downstream indexer is **not measured**.
 
 ## 12. Validation
 
 1. The JSON Schema checks the shape of each record and the conditional rules above (origin and generation, contradicts sides, CER null, not-built counts, status coherence, benchmark context, paths, admission constants).
-2. `tools/check_book_package.py <dir>` adds the cross-file rules: file digests, counts, unique identifiers, endpoint existence, package, work and edition identity, anchor identity and geometry, edit and staleness coupling, quality counts, status derivation, rights versus layers.
+2. `tools/check_book_package.py <dir>` adds the cross-file rules: file digests, counts, unique identifiers, endpoint existence, package, work and edition identity, anchor identity, geometry and fit to the source format, ledger chain and replay, staleness coupling, quality counts, status derivation, rights versus layers.
 3. Positive fixtures: one synthetic package and one object per anchor kind. Negative fixtures: one file per violated rule, regenerated byte for byte by `tools/book_package_fixture.py`.
 4. Mutation tests: every negative fixture is rejected for its own named reason, and every cross-file mutation of the valid package is reported with its expected message. A mutation that is accepted, or rejected for another reason, fails the build.
 
@@ -125,6 +125,8 @@ These checks establish that the validator distinguishes the listed violations. T
 ## 13. Limits and open points
 
 - The format is exercised only on a synthetic fixture. No real book has been converted by this specification yet.
+- `generation.input_sha256`, `size_bytes` of the source and the existence of an anchored section are recorded but cannot be verified from the package alone.
+- A fixture marked `reviewed` records a review that the fixture does not prove took place.
 - Extraction quality and semantic quality are defined as separate blocks; no threshold for either is fixed here.
 - Right-to-left scripts, vertical Japanese and ruby are not covered by any anchor refinement; coverage of them is `not_measured`.
 - Whether the downstream indexer accepts the Markdown rendering is not measured.

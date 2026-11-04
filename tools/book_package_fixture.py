@@ -84,7 +84,7 @@ def build() -> dict[str, bytes]:
     manifest = {"schema": "KCBookPackageManifest/v1", "package_id": PKG, "release_id": "r1", "created_at": "2026-11-04T00:00:00Z",
                 "work": {"work_id": WORK, "title": "Synthetic primer on run-length encoding"}, "edition": {"edition_id": EDN, "language": "en", "kind": "original"},
                 "representation": {"representation_id": REP, "format": "md", "source_sha256": SRC_SHA, "size_bytes": len(SRC_BYTES), "integrity": "verified", "completeness": "full"},
-                "related_works": [], "rights": {"license_class": "author_open", "holder": "Knowledge Contract Arcana contributors", "publishable_layers": ["document_md", "readable_md", "assets", "knowledge", "quality"]},
+                "related_works": [], "rights": {"license_class": "author_open", "holder": "Knowledge Contract Arcana contributors", "license": "CC-BY-4.0", "publishable_layers": ["document_md", "readable_md", "assets", "knowledge", "quality"]},
                 "components": {"document_md": {"path": "document.md", "sha256": sha(document), "input_sha256": SRC_SHA, "tool": "fixture-generator", "tool_version": "0.0.0", "contains_generated_text": False},
                                "readable_md": {"path": "readable.md", "sha256": sha(readable), "contains_generated_text": False},
                                "assets": [{"asset_id": "asset.fig1", "kind": "image", "state": "present", "path": "assets/fig1.svg", "sha256": sha(svg)},

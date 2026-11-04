@@ -210,6 +210,7 @@
         "rights": {"type": "object", "additionalProperties": false, "required": ["license_class", "publishable_layers"], "properties": {
           "license_class": {"enum": ["author_open", "third_party_restricted", "unknown"]},
           "holder": {"type": "string", "minLength": 1, "maxLength": 200},
+          "license": {"enum": ["CC-BY-4.0", "Apache-2.0"]},
           "publishable_layers": {"type": "array", "uniqueItems": true, "items": {"enum": ["document_md", "readable_md", "assets", "knowledge", "quality"]}}}},
         "components": {"type": "object", "additionalProperties": false, "required": ["readable_md", "edits", "objects", "relations", "quality"], "properties": {
           "document_md": {"type": "object", "additionalProperties": false,
