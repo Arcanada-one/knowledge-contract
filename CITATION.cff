@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this work, please cite it as below and keep the attribution described in ATTRIBUTION.md."
 title: "Knowledge Contract Arcana"
 type: dataset
+version: "1.0"
 authors:
   - family-names: Valentov
     given-names: Pavel
@@ -10,7 +11,7 @@ authors:
 url: "https://contract.place"
 repository-code: "https://github.com/Arcanada-one/knowledge-contract"
 license: CC-BY-4.0
-abstract: "Open knowledge about meaning management for people and agents: rules, specifications, papers and articles that preserve source, scope, evidence and conditions of use. Text is CC BY 4.0; code and schemas are Apache-2.0."
+abstract: "A coherent publication of eight scientific papers, eleven engineering specifications and six studies, with a glossary, primary bibliography and traceable evidence about the conditions for interpreting, applying and reusing knowledge. Text is CC BY 4.0; code and schemas are Apache-2.0."
 keywords:
   - knowledge contract
   - meaning management

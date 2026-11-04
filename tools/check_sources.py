@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail when a file under papers/ or spec/ has no source declaration.
+"""Fail when a publication or evidence file has no source declaration.
 
 A file is covered when either:
 - SOURCES.md has a table row whose last cell (Where) contains the file path in
@@ -15,7 +15,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOTS = ("papers", "spec")
+ROOTS = ("papers", "spec", "engineering", "reference", "appendices", "reviews")
 FRONT_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n", re.S)
 SOURCES_KEY_RE = re.compile(r"^sources:[ \t]*(.*)$", re.M)
 

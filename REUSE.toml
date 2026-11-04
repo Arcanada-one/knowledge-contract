@@ -12,7 +12,7 @@ SPDX-License-Identifier = "CC-BY-4.0"
 
 # Code, schemas, tools, CI and configuration.
 [[annotations]]
-path = ["tools/**", "schemas/**", ".github/**", ".gitignore", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+path = ["tools/**", "schemas/**", "engineering/studies/**/*.py", ".github/**", ".gitignore", ".gitattributes", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
 SPDX-License-Identifier = "Apache-2.0"

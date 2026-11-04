@@ -1,6 +1,6 @@
 # Contributing
 
-Knowledge Contract research is in progress. Open an issue to discuss a proposed change before preparing a pull request. A proposal should state its scope, evidence, and the affected specification or document. Publication of a draft requires separate review (a blind agent review under DEC-AUP-0010, with the limits stated in [OPENNESS.md](OPENNESS.md)); a submitted proposal does not imply adoption.
+This repository maintains a coherent publication of scientific papers, engineering specifications and studies. A proposed change should identify its scope, evidence, affected canonical document and intended revision. Follow the [artifact format](engineering/specifications/artifact-registry/SPECIFICATION.md) and [AGENTS.md](AGENTS.md). Publication review and corpus admission follow the existing decision-and-receipt process in [OPENNESS.md](OPENNESS.md); a submitted change does not itself imply adoption or indexing.
 
 Keep contributions in English, provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](LICENSE); code and schemas are offered under [Apache-2.0](LICENSE-CODE). Raise any licensing exception before submitting material. The project policy is in [OPENNESS.md](OPENNESS.md).
 
@@ -20,4 +20,10 @@ Contributions are accepted under the [Developer Certificate of Origin 1.1](https
 
 ## Credit sources
 
-Reuse of this project must credit the author and link to the source ([ATTRIBUTION.md](ATTRIBUTION.md)); contributions follow the same rule for what they build on. Register every third-party source of a paper or specification in [SOURCES.md](SOURCES.md), or declare `sources: none` in the file's front matter. CI fails a new file under `papers/` or `spec/` that has neither.
+Reuse of this project must credit the author and link to the source ([ATTRIBUTION.md](ATTRIBUTION.md)); contributions follow the same rule for what they build on. Register each external source in [SOURCES.md](SOURCES.md) and name the files that use it. A document with no external sources may declare `sources: none` in its front matter. CI covers canonical publications and their evidence as well as compatibility documents. Source registration is separate from publication or indexing admission.
+
+## Verify the publication
+
+Run `python3 -B tools/check_publication.py .` with Pandoc 3.1.3 and `python3 -B tools/check_sources.py .`. The gate checks the catalogue, canonical metadata, local links and anchors, and claim–evidence references. Run relevant public replay programs when changing the evidence or its interpretation. Keep the existing export, licensing, DCO and decision-separation checks.
+
+Scientific changes require review of assumptions, derivations and inferential scope. Engineering studies must retain failed cases and comparator outcomes, identify units of observation, and distinguish exact retained evidence from a new reproduction. A formatting pass is not a substantive scientific review.

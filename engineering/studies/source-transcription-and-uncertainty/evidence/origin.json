@@ -1,0 +1,80 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "source-transcription-and-uncertainty",
+  "reader_source_sha256": "5035f1040977869a74a4d6ddbccaf237e2ef416077507f0803f12c05943e22f6",
+  "scope": "Project-authored reports and metadata. No source books, PDFs, source illustrations, OCR transcriptions, or extracted book passages are distributed here.",
+  "files": [
+    {
+      "file": "corpus-audit-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A10332",
+      "source_revision": "v001",
+      "original_logical_path": "evidence/i30/addressability/corpus_audit/CORPUS_AUDIT_REPORT.md",
+      "original_source_sha256": "a49257cd3114cdcc8ded80b27f3e9f07d5294dc73d751cb63f9b8cef27e73b42",
+      "published_sha256": "afb3b5440efb09b21d1e40164a2b5ab6a07803b965203b6ed1596dcd4a2aadd4",
+      "size_bytes": 23708,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    },
+    {
+      "file": "historical-ocr-reader-report.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A9523",
+      "source_revision": "v001",
+      "original_logical_path": "evidence/i30/independent_reader/runs/OCR_READER_R0/RESULTS.json",
+      "original_source_sha256": "f10c1a50a4567c60432ef5085d4572fef0b84bd7b6f76d4e183e6c8cc8a2fa7c",
+      "published_sha256": "f10c1a50a4567c60432ef5085d4572fef0b84bd7b6f76d4e183e6c8cc8a2fa7c",
+      "size_bytes": 7073,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "local-export-integration-report.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A12530",
+      "source_revision": "v001",
+      "original_logical_path": "evidence/i30/executable_projection/producer_integration/RESULTS_SUMMARY.json",
+      "original_source_sha256": "0d9e343992ce939516900c96cf0fe91cffbb9a2e0dfa2780fc0c1a56386e0b3a",
+      "published_sha256": "0d9e343992ce939516900c96cf0fe91cffbb9a2e0dfa2780fc0c1a56386e0b3a",
+      "size_bytes": 3713,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "public-projection-demonstration.json",
+      "published_sha256": "be88b60373eb6f4552fa3d35e661bfee000f2f87f912d45f44cb369a060a3def",
+      "size_bytes": 1226,
+      "representation": "new_public_reproduction_result",
+      "scope": "New execution of the accompanying public program; distinct from retained historical experiment results."
+    },
+    {
+      "file": "replay_uncertainty_projection.py",
+      "published_sha256": "9a94ce3d7898b0d00d966136051c926405a02d393f26c3d9d5bffb10f7837295",
+      "size_bytes": 3833,
+      "representation": "new_public_reproduction_code",
+      "license": "Apache-2.0",
+      "scope": "New code supplied for this publication; historical full execution is not implied."
+    },
+    {
+      "file": "structural-corpus-report.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A11069",
+      "source_revision": "v001",
+      "original_logical_path": "evidence/i30/semantic_transfer/book_graphs/runs/R43_BOOK_GRAPHS_R0/RESULTS.json",
+      "original_source_sha256": "cb457e364d5b8e0f5e09051d6699fbf684a87a880fa4acbbdebbffa637affe2c",
+      "published_sha256": "cb457e364d5b8e0f5e09051d6699fbf684a87a880fa4acbbdebbffa637affe2c",
+      "size_bytes": 7687,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "uncertainty-projection-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A10363",
+      "source_revision": "v001",
+      "original_logical_path": "evidence/i30/addressability/corpus_audit/UNCERTAINTY_DERIVATIVE_REPORT.md",
+      "original_source_sha256": "88fdb07542a5562b97e1ba2545b73e0dea9a81c4fe1ba7e9162ca442a42327a1",
+      "published_sha256": "afb8212297b7b03eca21fe904536c41d3d2c71fadccd7e38f3d311c0469dcb15",
+      "size_bytes": 8797,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    }
+  ]
+}

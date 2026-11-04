@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "test_count": 9,
+  "passed_count": 9,
+  "tests": [
+    {
+      "name": "current_layout",
+      "passed": true,
+      "counts": {
+        "documents_checked": 110,
+        "records_checked": 110,
+        "operational_closures_checked": 20,
+        "constraints_checked": 4,
+        "markdown_files_checked": 163,
+        "local_links_checked": 1294,
+        "adapters_checked": 24
+      }
+    },
+    {
+      "name": "slug_urn_legacy_same_context",
+      "passed": true
+    },
+    {
+      "name": "compiled_source_locators_exist",
+      "passed": true,
+      "locators_checked": 40
+    },
+    {
+      "name": "constraints_delivered_as_critical",
+      "passed": true
+    },
+    {
+      "name": "missing_constraint_passport_rejected",
+      "passed": true,
+      "observed_error_codes": [
+        "broken_link",
+        "missing_document"
+      ],
+      "required_error_code": "missing_document"
+    },
+    {
+      "name": "missing_constraint_delivery_rejected",
+      "passed": true,
+      "observed_error_codes": [
+        "constraint_closure"
+      ],
+      "required_error_code": "constraint_closure"
+    },
+    {
+      "name": "invalid_slug_rejected",
+      "passed": true,
+      "observed_error_codes": [
+        "dependency_graph",
+        "invalid_slug",
+        "name_binding",
+        "record_path",
+        "type_path"
+      ],
+      "required_error_code": "invalid_slug"
+    },
+    {
+      "name": "broken_link_with_updated_hash_rejected",
+      "passed": true,
+      "observed_error_codes": [
+        "broken_link"
+      ],
+      "required_error_code": "broken_link"
+    },
+    {
+      "name": "index_registry_disagreement_rejected",
+      "passed": true,
+      "observed_error_codes": [
+        "dependency_graph",
+        "index_binding"
+      ],
+      "required_error_code": "index_binding"
+    }
+  ],
+  "scope": "Migration conformance and negative controls in temporary copies. No fresh model outcome, semantic truth or competence certification."
+}

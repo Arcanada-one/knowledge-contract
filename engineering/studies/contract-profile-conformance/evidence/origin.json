@@ -1,0 +1,77 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "contract-profile-conformance",
+  "reader_source_sha256": "5035f1040977869a74a4d6ddbccaf237e2ef416077507f0803f12c05943e22f6",
+  "scope": "Project-authored reports and metadata. No source books, PDFs, source illustrations, OCR transcriptions, or extracted book passages are distributed here.",
+  "files": [
+    {
+      "file": "author-conformance-report.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A0784",
+      "source_revision": "v004",
+      "original_logical_path": "evaluation/i26_author_R0.json",
+      "original_source_sha256": "4018e278789fb265d148f6c0aa1e08096e1d71221a1b17508198e54e0a081b82",
+      "published_sha256": "4018e278789fb265d148f6c0aa1e08096e1d71221a1b17508198e54e0a081b82",
+      "size_bytes": 32239,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "conditional-properties-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A0801",
+      "source_revision": "v013",
+      "original_logical_path": "iterations/I26/FORMAL_PROPERTIES_AND_COUNTEREXAMPLES.md",
+      "original_source_sha256": "fc4ef2c00725d981833c5ba25bd41672d878c4ddd4561593497bfede155e5133",
+      "published_sha256": "d30863add85d0e2233cffa552578f98afa03b9b1d96914427e9cd7df7743ba89",
+      "size_bytes": 8136,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    },
+    {
+      "file": "control-review-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A0810",
+      "source_revision": "v013",
+      "original_logical_path": "iterations/I26/SEPARATE_REVIEW.md",
+      "original_source_sha256": "eda2ac957189d4c5df9531af355858995ea0386047b03a11432147e01e678683",
+      "published_sha256": "c30317cb838ee81227681add5e8a8602b173715a357091486b4af8a997dc0ac0",
+      "size_bytes": 13979,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    },
+    {
+      "file": "evaluation-protocol-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A0799",
+      "source_revision": "v013",
+      "original_logical_path": "iterations/I26/EVALUATION_PROTOCOL.md",
+      "original_source_sha256": "b569d510284612dffafffeb733cc813bd9df81221760c0453a5b12701cd81116",
+      "published_sha256": "888d26ec89243314d078f92c6aa96f841b12c4893fe23156941c7ae09b1bafdf",
+      "size_bytes": 8250,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    },
+    {
+      "file": "separate-control-report.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A0785",
+      "source_revision": "v002",
+      "original_logical_path": "evaluation/i26_challenge_R0.json",
+      "original_source_sha256": "4be5e9392972f205f7956f429dc75e76be167d13083b924dd825573cb0cb5801",
+      "published_sha256": "4be5e9392972f205f7956f429dc75e76be167d13083b924dd825573cb0cb5801",
+      "size_bytes": 57915,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "strong-plain-form-comparison.json",
+      "representation": "exact_source_json",
+      "artifact_id": "MM_A0790",
+      "source_revision": "v002",
+      "original_logical_path": "evaluation/i26_strong_plain_form_exploratory.json",
+      "original_source_sha256": "5e17016750f9f6a5a638371c821d60217ab6b8459cd5cd01b358687d2f648a75",
+      "published_sha256": "5e17016750f9f6a5a638371c821d60217ab6b8459cd5cd01b358687d2f648a75",
+      "size_bytes": 5786,
+      "byte_identity_verified": true
+    }
+  ]
+}

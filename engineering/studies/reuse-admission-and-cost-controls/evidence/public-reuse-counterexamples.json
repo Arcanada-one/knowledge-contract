@@ -1,0 +1,44 @@
+{
+  "schema": "knowledge-contract.synthetic-reuse-analysis/1",
+  "scenarios": [
+    {
+      "name": "high_hit_rate_loses",
+      "cold_cost": "1000",
+      "reuse_cost": "1090",
+      "saving": "-90",
+      "per_request_margin": "-9/10",
+      "identity_holds": true
+    },
+    {
+      "name": "positive_margin_with_fixed_cost",
+      "cold_cost": "1000",
+      "reuse_cost": "390",
+      "saving": "610",
+      "per_request_margin": "71/10",
+      "identity_holds": true
+    },
+    {
+      "name": "zero_margin_never_repays_fixed_cost",
+      "cold_cost": "1000",
+      "reuse_cost": "1100",
+      "saving": "-100",
+      "per_request_margin": "0",
+      "identity_holds": true
+    }
+  ],
+  "first_profitable_expected_n": 15,
+  "checks": {
+    "all_cost_identities_hold": true,
+    "ninety_percent_hits_can_lose": true,
+    "positive_synthetic_margin_saves_610": true,
+    "zero_margin_leaves_fixed_loss": true,
+    "expected_break_even_is_strict": true,
+    "equal_incomplete_dependencies_do_not_preserve_result": true,
+    "unchanged_positive_readset_does_not_preserve_absence": true,
+    "all_required_gates_pass_positive_control": true,
+    "all_six_fail_unknown_mutations_rejected": true,
+    "independent_cache_savings_double_count": true
+  },
+  "passed": true,
+  "scope": "New deterministic illustrations of logical and algebraic counterexamples. All costs are unitless synthetic inputs; no measured savings, runtime performance, real authorization, or semantic truth is claimed."
+}

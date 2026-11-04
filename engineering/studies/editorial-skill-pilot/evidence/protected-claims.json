@@ -1,0 +1,1484 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "publication-editor-pilot-p00-section-2-protected-claims",
+  "purpose": "Заранее объявленный реестр сохранения смысла для редакторского пилота; самостоятельный рабочий артефакт, не изменение научного канона.",
+  "declaration_status": "predeclared_for_editorial_pilot",
+  "claim_count": 19,
+  "source": {
+    "ref": "publication-reader-p00-r1",
+    "path": "/workspace/scratch/4a4b36d07b29/publication-editing-input/p00-reader.md",
+    "publication_projection_id": "MM_PUB_READ_P00",
+    "publication_projection_revision": "r1",
+    "content_source_ids": [
+      "MM_A0197",
+      "MM_G1_20261028_v1"
+    ],
+    "encoding": "UTF-8",
+    "bytes": 133029,
+    "sha256": "6d91e7e1de3d060ca0e9d9023013f6e573d55368bf9467e82d9b8210b1d04aaa",
+    "scientific_status": "concept_draft",
+    "identity_note": "Хеш закрепляет точные байты текущей reader-копии. Физические и исторические версии не подменяют научный статус."
+  },
+  "section": {
+    "heading": "## 2. Рабочие определения и независимые различия",
+    "source_locator": {
+      "source_ref": "publication-reader-p00-r1",
+      "anchor": "section-002",
+      "char_start": 7511,
+      "char_end_exclusive": 14123,
+      "byte_start_utf8": 13029,
+      "byte_end_exclusive_utf8": 24709,
+      "line_start": 66,
+      "line_end_inclusive": 113
+    },
+    "start_marker_included": "<a id=\"section-002\"></a>",
+    "end_marker_excluded": "<a id=\"section-003\"></a>",
+    "characters": 6612,
+    "bytes_utf8": 11680,
+    "words_whitespace": 804,
+    "sha256": "eec7712c2819e844ff6fcc6f2b6afedec2b584d5bd90d496824261e6e2f0024b",
+    "locator_convention": "Символьные offsets — индексы Python Unicode, нумерация с нуля, end исключён; byte offsets относятся к UTF-8; строки нумеруются с единицы."
+  },
+  "claims": [
+    {
+      "id": "P00-S2-01",
+      "title": "Выражение, смысловое содержание и представление",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 7653,
+        "char_end_exclusive": 7982,
+        "byte_start_utf8": 13227,
+        "byte_end_exclusive_utf8": 13830,
+        "line_start": 72,
+        "line_end_inclusive": 72
+      },
+      "source_key_formulations": [
+        {
+          "text": "**Выражение** — доступный восприятию материал: текст, формула, таблица, рисунок, схема или реплика.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 7653,
+            "char_end_exclusive": 7752,
+            "byte_start_utf8": 13227,
+            "byte_end_exclusive_utf8": 13405,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        },
+        {
+          "text": "**Смысловое содержание** — интерпретируемое содержание выражения с учётом его контекста, голоса и функции.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 7753,
+            "char_end_exclusive": 7859,
+            "byte_start_utf8": 13406,
+            "byte_end_exclusive_utf8": 13601,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        },
+        {
+          "text": "**Представление** — выбранная запись этого содержания;",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 7928,
+            "char_end_exclusive": 7982,
+            "byte_start_utf8": 13731,
+            "byte_end_exclusive_utf8": 13830,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Сохранены три разных понятия: воспринимаемый материал; интерпретируемое содержание; выбранная запись содержания.",
+        "У смыслового содержания сохранена зависимость от контекста, голоса и функции.",
+        "Примеры выражения сохраняют текст, формулу, таблицу, рисунок, схему и реплику; определение не сужено до текста."
+      ]
+    },
+    {
+      "id": "P00-S2-02",
+      "title": "Множественность интерпретаций и операционный статус определений",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 7860,
+        "char_end_exclusive": 8202,
+        "byte_start_utf8": 13602,
+        "byte_end_exclusive_utf8": 14227,
+        "line_start": 72,
+        "line_end_inclusive": 72
+      },
+      "source_key_formulations": [
+        {
+          "text": "Неоднозначное выражение может поддерживать несколько интерпретаций.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 7860,
+            "char_end_exclusive": 7927,
+            "byte_start_utf8": 13602,
+            "byte_end_exclusive_utf8": 13730,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        },
+        {
+          "text": "Эти определения операционны: они позволяют разметить и проверить конкретную задачу, не постулируя единственный универсальный смысл выражения.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8061,
+            "char_end_exclusive": 8202,
+            "byte_start_utf8": 13963,
+            "byte_end_exclusive_utf8": 14227,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Сохранена возможность нескольких интерпретаций неоднозначного выражения.",
+        "Определения сохраняют операционное назначение для конкретной задачи.",
+        "Не появляется утверждение о единственном универсальном смысле выражения."
+      ]
+    },
+    {
+      "id": "P00-S2-03",
+      "title": "Три свойства представления MeaningObject",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 7983,
+        "char_end_exclusive": 8060,
+        "byte_start_utf8": 13831,
+        "byte_end_exclusive_utf8": 13962,
+        "line_start": 72,
+        "line_end_inclusive": 72
+      },
+      "source_key_formulations": [
+        {
+          "text": "MeaningObject делает её адресуемой, версионируемой и связанной с основаниями.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 7983,
+            "char_end_exclusive": 8060,
+            "byte_start_utf8": 13831,
+            "byte_end_exclusive_utf8": 13962,
+            "line_start": 72,
+            "line_end_inclusive": 72
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "MeaningObject относится к представлению содержания.",
+        "Сохранены все три свойства: адресуемость, версионирование и связь с основаниями.",
+        "Эти свойства не объявлены доказательством истинности содержания."
+      ]
+    },
+    {
+      "id": "P00-S2-04",
+      "title": "Утверждение и представление знания",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 8204,
+        "char_end_exclusive": 8385,
+        "byte_start_utf8": 14229,
+        "byte_end_exclusive_utf8": 14562,
+        "line_start": 74,
+        "line_end_inclusive": 74
+      },
+      "source_key_formulations": [
+        {
+          "text": "**Утверждение** приписывает чему-либо свойство или отношение.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8204,
+            "char_end_exclusive": 8265,
+            "byte_start_utf8": 14229,
+            "byte_end_exclusive_utf8": 14340,
+            "line_start": 74,
+            "line_end_inclusive": 74
+          }
+        },
+        {
+          "text": "**Представление знания** связывает содержание с доступными основаниями, условиями применимости и результатами проверки.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8266,
+            "char_end_exclusive": 8385,
+            "byte_start_utf8": 14341,
+            "byte_end_exclusive_utf8": 14562,
+            "line_start": 74,
+            "line_end_inclusive": 74
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Утверждение сохраняет определение через приписывание свойства или отношения.",
+        "Представление знания связывает содержание со всеми тремя элементами: доступными основаниями, условиями применимости и результатами проверки.",
+        "Утверждение и представление знания не сведены к одному понятию."
+      ]
+    },
+    {
+      "id": "P00-S2-05",
+      "title": "Обоснованность, пересмотр и разные статусы содержимого базы",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 8386,
+        "char_end_exclusive": 8652,
+        "byte_start_utf8": 14563,
+        "byte_end_exclusive_utf8": 15055,
+        "line_start": 74,
+        "line_end_inclusive": 74
+      },
+      "source_key_formulations": [
+        {
+          "text": "Положительное признание обоснованности всегда соотнесено с методом и областью, допускает пересмотр и не равно отсутствию любых возможных ошибок.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8386,
+            "char_end_exclusive": 8530,
+            "byte_start_utf8": 14563,
+            "byte_end_exclusive_utf8": 14832,
+            "line_start": 74,
+            "line_end_inclusive": 74
+          }
+        },
+        {
+          "text": "В базе также хранятся гипотезы, опровержения, нормы и открытые вопросы; их статус не скрывается общим названием «знания».",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8531,
+            "char_end_exclusive": 8652,
+            "byte_start_utf8": 14833,
+            "byte_end_exclusive_utf8": 15055,
+            "line_start": 74,
+            "line_end_inclusive": 74
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Признание обоснованности ограничено методом и областью и допускает пересмотр.",
+        "Обоснованность не превращена в гарантию отсутствия ошибок.",
+        "Гипотезы, опровержения, нормы и открытые вопросы сохраняют самостоятельные статусы внутри базы знаний."
+      ]
+    },
+    {
+      "id": "P00-S2-06",
+      "title": "Контекст относительно цели и три вида контекста",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 8654,
+        "char_end_exclusive": 9044,
+        "byte_start_utf8": 15057,
+        "byte_end_exclusive_utf8": 15781,
+        "line_start": 76,
+        "line_end_inclusive": 76
+      },
+      "source_key_formulations": [
+        {
+          "text": "**Контекст** — адресуемое представление обстоятельств, выделенных для интерпретации и применения; их необходимость и достаточность проверяются относительно цели.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8654,
+            "char_end_exclusive": 8815,
+            "byte_start_utf8": 15057,
+            "byte_end_exclusive_utf8": 15357,
+            "line_start": 76,
+            "line_end_inclusive": 76
+          }
+        },
+        {
+          "text": "Различаются контекст источника, взаимодействия и применения.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8816,
+            "char_end_exclusive": 8876,
+            "byte_start_utf8": 15358,
+            "byte_end_exclusive_utf8": 15471,
+            "line_start": 76,
+            "line_end_inclusive": 76
+          }
+        },
+        {
+          "text": "Авторская эпоха относится к первому, уточнение пользователя — ко второму, доступное оборудование — к третьему.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8877,
+            "char_end_exclusive": 8987,
+            "byte_start_utf8": 15472,
+            "byte_end_exclusive_utf8": 15677,
+            "line_start": 76,
+            "line_end_inclusive": 76
+          }
+        },
+        {
+          "text": "Они могут взаимодействовать, но не подменяют друг друга.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 8988,
+            "char_end_exclusive": 9044,
+            "byte_start_utf8": 15678,
+            "byte_end_exclusive_utf8": 15781,
+            "line_start": 76,
+            "line_end_inclusive": 76
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Контекст сохраняет адресуемость и назначение для интерпретации и применения.",
+        "Необходимость и достаточность обстоятельств оцениваются относительно цели.",
+        "Различены контексты источника, взаимодействия и применения.",
+        "Сохранены соответствия примеров: эпоха — источник; уточнение пользователя — взаимодействие; оборудование — применение.",
+        "Взаимодействие видов контекста не объявлено их взаимозаменяемостью."
+      ]
+    },
+    {
+      "id": "P00-S2-07",
+      "title": "ContextFrame и контекст KC",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-meaning-knowledge",
+        "char_start": 9045,
+        "char_end_exclusive": 9185,
+        "byte_start_utf8": 15782,
+        "byte_end_exclusive_utf8": 16030,
+        "line_start": 76,
+        "line_end_inclusive": 76
+      },
+      "source_key_formulations": [
+        {
+          "text": "Контекстная рамка ContextFrame и контекст как носитель типизированных утверждений в KC не отождествляются; их отображение задаётся отдельно.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-meaning-knowledge",
+            "char_start": 9045,
+            "char_end_exclusive": 9185,
+            "byte_start_utf8": 15782,
+            "byte_end_exclusive_utf8": 16030,
+            "line_start": 76,
+            "line_end_inclusive": 76
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "ContextFrame не отождествлён с контекстом как носителем типизированных утверждений в KC.",
+        "Отображение между ними сохраняется как отдельно задаваемое."
+      ]
+    },
+    {
+      "id": "P00-S2-08",
+      "title": "Многомерная классификация и самостоятельные оси",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-taxonomy",
+        "char_start": 9262,
+        "char_end_exclusive": 9689,
+        "byte_start_utf8": 16142,
+        "byte_end_exclusive_utf8": 16934,
+        "line_start": 81,
+        "line_end_inclusive": 81
+      },
+      "source_key_formulations": [
+        {
+          "text": "«Профессиональное», «историческое», «процедурное» и «достоверное» отвечают на разные вопросы.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9262,
+            "char_end_exclusive": 9355,
+            "byte_start_utf8": 16142,
+            "byte_end_exclusive_utf8": 16317,
+            "line_start": 81,
+            "line_end_inclusive": 81
+          }
+        },
+        {
+          "text": "Первое описывает применение, второе — временную позицию, третье — форму содержания, четвёртое требует названных оснований оценки.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9356,
+            "char_end_exclusive": 9485,
+            "byte_start_utf8": 16318,
+            "byte_end_exclusive_utf8": 16559,
+            "line_start": 81,
+            "line_end_inclusive": 81
+          }
+        },
+        {
+          "text": "Одно дерево с взаимоисключающими ветвями потеряет такие сочетания.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9486,
+            "char_end_exclusive": 9552,
+            "byte_start_utf8": 16560,
+            "byte_end_exclusive_utf8": 16684,
+            "line_start": 81,
+            "line_end_inclusive": 81
+          }
+        },
+        {
+          "text": "Предлагается тип содержания плюс независимые оси: происхождение, голос, модальность, область, время, роль в задаче и состояние проверки.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9553,
+            "char_end_exclusive": 9689,
+            "byte_start_utf8": 16685,
+            "byte_end_exclusive_utf8": 16934,
+            "line_start": 81,
+            "line_end_inclusive": 81
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Сохранены четыре соответствия: профессиональное — применение; историческое — временная позиция; процедурное — форма содержания; достоверное — названные основания оценки.",
+        "Признаки не представлены как взаимоисключающие ветви одного дерева.",
+        "Предложение содержит тип содержания и все семь названных осей: происхождение, голос, модальность, область, время, роль в задаче, состояние проверки."
+      ]
+    },
+    {
+      "id": "P00-S2-09",
+      "title": "Рабочие 18 типов и незаявленная полнота типологии",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-taxonomy",
+        "char_start": 9740,
+        "char_end_exclusive": 10100,
+        "byte_start_utf8": 16995,
+        "byte_end_exclusive_utf8": 17653,
+        "line_start": 83,
+        "line_end_inclusive": 83
+      },
+      "source_key_formulations": [
+        {
+          "text": "выделено начальное множество из 18 типов, включая понятия, описания, наблюдения, закономерности, модели, процедуры, структуры, нормы, цели, предпочтения, аргументы, примеры, вопросы, повествования, аналогии, гипотезы и обязательства.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9740,
+            "char_end_exclusive": 9973,
+            "byte_start_utf8": 16995,
+            "byte_end_exclusive_utf8": 17418,
+            "line_start": 83,
+            "line_end_inclusive": 83
+          }
+        },
+        {
+          "text": "Это проверяемая рабочая типология.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 9974,
+            "char_end_exclusive": 10008,
+            "byte_start_utf8": 17419,
+            "byte_end_exclusive_utf8": 17483,
+            "line_start": 83,
+            "line_end_inclusive": 83
+          }
+        },
+        {
+          "text": "Её полнота не установлена, а один фрагмент может поддерживать несколько связанных объектов.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 10009,
+            "char_end_exclusive": 10100,
+            "byte_start_utf8": 17484,
+            "byte_end_exclusive_utf8": 17653,
+            "line_start": 83,
+            "line_end_inclusive": 83
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Сохранено число 18 и статус начального множества типов.",
+        "Список после «включая» не объявлен исчерпывающим перечнем.",
+        "Рабочая типология остаётся проверяемой; её полнота не объявлена установленной.",
+        "Сохранена возможность нескольких связанных объектов из одного фрагмента."
+      ]
+    },
+    {
+      "id": "P00-S2-10",
+      "title": "Правило X, исключение Z, предпочтение и обратная сборка",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-taxonomy",
+        "char_start": 10102,
+        "char_end_exclusive": 10501,
+        "byte_start_utf8": 17655,
+        "byte_end_exclusive_utf8": 18394,
+        "line_start": 85,
+        "line_end_inclusive": 85
+      },
+      "source_key_formulations": [
+        {
+          "text": "Например, условная реплика «для учебного расчёта используем правило X, кроме условия Z; мне этот способ удобнее» содержит правило, область, исключение и личную оценку.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 10102,
+            "char_end_exclusive": 10269,
+            "byte_start_utf8": 17655,
+            "byte_end_exclusive_utf8": 17959,
+            "line_start": 85,
+            "line_end_inclusive": 85
+          }
+        },
+        {
+          "text": "Разделение позволяет повторно использовать правило, сохранив исключение, и не превращать предпочтение в доказательство.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 10270,
+            "char_end_exclusive": 10389,
+            "byte_start_utf8": 17960,
+            "byte_end_exclusive_utf8": 18183,
+            "line_start": 85,
+            "line_end_inclusive": 85
+          }
+        },
+        {
+          "text": "Обратная сборка восстанавливает необходимые связи: декомпозиция без композиции разрушает практическую ценность.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-taxonomy",
+            "char_start": 10390,
+            "char_end_exclusive": 10501,
+            "byte_start_utf8": 18184,
+            "byte_end_exclusive_utf8": 18394,
+            "line_start": 85,
+            "line_end_inclusive": 85
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Пример сохраняет условный характер и учебную область, правило X, исключение Z и личную оценку.",
+        "Повторное использование правила сохраняет исключение.",
+        "Предпочтение не превращено в доказательство.",
+        "Сохранено требование обратной сборки необходимых связей после декомпозиции."
+      ]
+    },
+    {
+      "id": "P00-S2-11",
+      "title": "Восемь разных вопросов оценки и запрещённые подмены",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-independent-dimensions",
+        "char_start": 10679,
+        "char_end_exclusive": 11619,
+        "byte_start_utf8": 18659,
+        "byte_end_exclusive_utf8": 20350,
+        "line_start": 92,
+        "line_end_inclusive": 99
+      },
+      "source_key_formulations": [
+        {
+          "text": "| Верность представления | Передано ли то, что заявлено источником? | «Передано верно, значит истинно» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10679,
+            "char_end_exclusive": 10783,
+            "byte_start_utf8": 18659,
+            "byte_end_exclusive_utf8": 18845,
+            "line_start": 92,
+            "line_end_inclusive": 92
+          }
+        },
+        {
+          "text": "| Интерпретация | Обосновано ли выбранное чтение выражения в контексте? | «Символы сохранены, значит смысл определён» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10784,
+            "char_end_exclusive": 10903,
+            "byte_start_utf8": 18846,
+            "byte_end_exclusive_utf8": 19062,
+            "line_start": 93,
+            "line_end_inclusive": 93
+          }
+        },
+        {
+          "text": "| Обоснованность | Какие свидетельства поддерживают утверждение или вывод? | «Есть ссылка, значит доказано» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10904,
+            "char_end_exclusive": 11013,
+            "byte_start_utf8": 19063,
+            "byte_end_exclusive_utf8": 19261,
+            "line_start": 94,
+            "line_end_inclusive": 94
+          }
+        },
+        {
+          "text": "| Принятие | Кто и для какой области принял норму либо допущение? | «Принято, значит универсально» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11014,
+            "char_end_exclusive": 11114,
+            "byte_start_utf8": 19262,
+            "byte_end_exclusive_utf8": 19440,
+            "line_start": 95,
+            "line_end_inclusive": 95
+          }
+        },
+        {
+          "text": "| Применимость | Выполнены ли условия данного использования? | «Подходит по теме, значит подходит по условиям» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11115,
+            "char_end_exclusive": 11227,
+            "byte_start_utf8": 19441,
+            "byte_end_exclusive_utf8": 19643,
+            "line_start": 96,
+            "line_end_inclusive": 96
+          }
+        },
+        {
+          "text": "| Полномочие | Разрешены ли раскрытие и действие данному субъекту сейчас? | «Знает как, значит вправе сделать» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11228,
+            "char_end_exclusive": 11340,
+            "byte_start_utf8": 19644,
+            "byte_end_exclusive_utf8": 19845,
+            "line_start": 97,
+            "line_end_inclusive": 97
+          }
+        },
+        {
+          "text": "| Результат | Что фактически получено и проверено? | «Составлен план, значит работа выполнена» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11341,
+            "char_end_exclusive": 11437,
+            "byte_start_utf8": 19846,
+            "byte_end_exclusive_utf8": 20018,
+            "line_start": 98,
+            "line_end_inclusive": 98
+          }
+        },
+        {
+          "text": "| Условная полезность | Как изменился результат для объявленной цели относительно альтернативы и при каких расходах? | «Часто цитируется или порождает много задач, значит полезно» |",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11438,
+            "char_end_exclusive": 11619,
+            "byte_start_utf8": 20019,
+            "byte_end_exclusive_utf8": 20350,
+            "line_start": 99,
+            "line_end_inclusive": 99
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "В таблице сохранены все восемь измерений, соответствующие вопросы и запрет каждой указанной подмены.",
+        "Недопустимые подмены остаются явно обозначенными ошибками; они не превращены в положительные утверждения текста.",
+        "Ни одно измерение не объединено с другим так, что отдельная проверка исчезает."
+      ],
+      "distinctions": [
+        {
+          "id": "P00-S2-11-D01",
+          "dimension": "Верность представления",
+          "source_question": "Передано ли то, что заявлено источником?",
+          "source_forbidden_substitution": "«Передано верно, значит истинно»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10679,
+            "char_end_exclusive": 10783,
+            "byte_start_utf8": 18659,
+            "byte_end_exclusive_utf8": 18845,
+            "line_start": 92,
+            "line_end_inclusive": 92
+          },
+          "verifiable_obligation": "Верная передача источника не устанавливает истинность сказанного."
+        },
+        {
+          "id": "P00-S2-11-D02",
+          "dimension": "Интерпретация",
+          "source_question": "Обосновано ли выбранное чтение выражения в контексте?",
+          "source_forbidden_substitution": "«Символы сохранены, значит смысл определён»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10784,
+            "char_end_exclusive": 10903,
+            "byte_start_utf8": 18846,
+            "byte_end_exclusive_utf8": 19062,
+            "line_start": 93,
+            "line_end_inclusive": 93
+          },
+          "verifiable_obligation": "Сохранение символов не устанавливает выбранный смысл; обоснованность чтения зависит от контекста."
+        },
+        {
+          "id": "P00-S2-11-D03",
+          "dimension": "Обоснованность",
+          "source_question": "Какие свидетельства поддерживают утверждение или вывод?",
+          "source_forbidden_substitution": "«Есть ссылка, значит доказано»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 10904,
+            "char_end_exclusive": 11013,
+            "byte_start_utf8": 19063,
+            "byte_end_exclusive_utf8": 19261,
+            "line_start": 94,
+            "line_end_inclusive": 94
+          },
+          "verifiable_obligation": "Наличие ссылки не заменяет свидетельства, поддерживающие утверждение или вывод."
+        },
+        {
+          "id": "P00-S2-11-D04",
+          "dimension": "Принятие",
+          "source_question": "Кто и для какой области принял норму либо допущение?",
+          "source_forbidden_substitution": "«Принято, значит универсально»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11014,
+            "char_end_exclusive": 11114,
+            "byte_start_utf8": 19262,
+            "byte_end_exclusive_utf8": 19440,
+            "line_start": 95,
+            "line_end_inclusive": 95
+          },
+          "verifiable_obligation": "Сохранены субъект и область принятия; принятие не объявлено универсальностью."
+        },
+        {
+          "id": "P00-S2-11-D05",
+          "dimension": "Применимость",
+          "source_question": "Выполнены ли условия данного использования?",
+          "source_forbidden_substitution": "«Подходит по теме, значит подходит по условиям»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11115,
+            "char_end_exclusive": 11227,
+            "byte_start_utf8": 19441,
+            "byte_end_exclusive_utf8": 19643,
+            "line_start": 96,
+            "line_end_inclusive": 96
+          },
+          "verifiable_obligation": "Тематическое сходство не заменяет выполнения условий конкретного использования."
+        },
+        {
+          "id": "P00-S2-11-D06",
+          "dimension": "Полномочие",
+          "source_question": "Разрешены ли раскрытие и действие данному субъекту сейчас?",
+          "source_forbidden_substitution": "«Знает как, значит вправе сделать»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11228,
+            "char_end_exclusive": 11340,
+            "byte_start_utf8": 19644,
+            "byte_end_exclusive_utf8": 19845,
+            "line_start": 97,
+            "line_end_inclusive": 97
+          },
+          "verifiable_obligation": "Сохранены раскрытие, действие, субъект и текущая разрешённость; знание способа не даёт полномочия."
+        },
+        {
+          "id": "P00-S2-11-D07",
+          "dimension": "Результат",
+          "source_question": "Что фактически получено и проверено?",
+          "source_forbidden_substitution": "«Составлен план, значит работа выполнена»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11341,
+            "char_end_exclusive": 11437,
+            "byte_start_utf8": 19846,
+            "byte_end_exclusive_utf8": 20018,
+            "line_start": 98,
+            "line_end_inclusive": 98
+          },
+          "verifiable_obligation": "Составленный план не объявлен выполненной работой; требуется фактически полученный и проверенный результат."
+        },
+        {
+          "id": "P00-S2-11-D08",
+          "dimension": "Условная полезность",
+          "source_question": "Как изменился результат для объявленной цели относительно альтернативы и при каких расходах?",
+          "source_forbidden_substitution": "«Часто цитируется или порождает много задач, значит полезно»",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11438,
+            "char_end_exclusive": 11619,
+            "byte_start_utf8": 20019,
+            "byte_end_exclusive_utf8": 20350,
+            "line_start": 99,
+            "line_end_inclusive": 99
+          },
+          "verifiable_obligation": "Сохранены цель, изменение результата, альтернатива и расходы; частота цитирования и число задач не доказывают полезность."
+        }
+      ]
+    },
+    {
+      "id": "P00-S2-12",
+      "title": "Несводимость проверок и граница FORMAL_MODEL",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-independent-dimensions",
+        "char_start": 11621,
+        "char_end_exclusive": 11884,
+        "byte_start_utf8": 20352,
+        "byte_end_exclusive_utf8": 20832,
+        "line_start": 101,
+        "line_end_inclusive": 101
+      },
+      "source_key_formulations": [
+        {
+          "text": "Независимость здесь означает несводимость одной проверки к другой, а не установленную статистическую независимость.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11621,
+            "char_end_exclusive": 11736,
+            "byte_start_utf8": 20352,
+            "byte_end_exclusive_utf8": 20568,
+            "line_start": 101,
+            "line_end_inclusive": 101
+          }
+        },
+        {
+          "text": "Таблица включает координаты содержания и отдельный вопрос о результате его применения; FORMAL_MODEL описывает первые как основания оценки перехода.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11737,
+            "char_end_exclusive": 11884,
+            "byte_start_utf8": 20569,
+            "byte_end_exclusive_utf8": 20832,
+            "line_start": 101,
+            "line_end_inclusive": 101
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Независимость проверок выражает несводимость, а не установленную статистическую независимость.",
+        "Координаты содержания отличены от вопроса о результате применения.",
+        "Утверждение о FORMAL_MODEL ограничено описанием координат содержания как оснований оценки перехода."
+      ]
+    },
+    {
+      "id": "P00-S2-13",
+      "title": "Разные основания проверки нормы, предпочтения и обещания",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-independent-dimensions",
+        "char_start": 11886,
+        "char_end_exclusive": 12096,
+        "byte_start_utf8": 20834,
+        "byte_end_exclusive_utf8": 21228,
+        "line_start": 103,
+        "line_end_inclusive": 103
+      },
+      "source_key_formulations": [
+        {
+          "text": "Норма требует проверки действующего основания и области; предпочтение — принадлежности и актуальности; обещание — участников и условий обязательства.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 11886,
+            "char_end_exclusive": 12035,
+            "byte_start_utf8": 20834,
+            "byte_end_exclusive_utf8": 21114,
+            "line_start": 103,
+            "line_end_inclusive": 103
+          }
+        },
+        {
+          "text": "Их нельзя оценивать одной процедурой фактической истинности.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 12036,
+            "char_end_exclusive": 12096,
+            "byte_start_utf8": 21115,
+            "byte_end_exclusive_utf8": 21228,
+            "line_start": 103,
+            "line_end_inclusive": 103
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Для нормы сохранены действующее основание и область.",
+        "Для предпочтения сохранены принадлежность и актуальность.",
+        "Для обещания сохранены участники и условия обязательства.",
+        "Эти проверки не сведены к одной процедуре фактической истинности."
+      ]
+    },
+    {
+      "id": "P00-S2-14",
+      "title": "Сказанное, понятое и согласованное",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-independent-dimensions",
+        "char_start": 12097,
+        "char_end_exclusive": 12222,
+        "byte_start_utf8": 21229,
+        "byte_end_exclusive_utf8": 21455,
+        "line_start": 103,
+        "line_end_inclusive": 103
+      },
+      "source_key_formulations": [
+        {
+          "text": "Для общения сохраняется различие между тем, что участник сказал, тем, что собеседник понял, и тем, с чем стороны согласились.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-independent-dimensions",
+            "char_start": 12097,
+            "char_end_exclusive": 12222,
+            "byte_start_utf8": 21229,
+            "byte_end_exclusive_utf8": 21455,
+            "line_start": 103,
+            "line_end_inclusive": 103
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Сказанное участником, понятое собеседником и согласованное сторонами остаются тремя разными состояниями общения.",
+        "Не добавлен автоматический вывод от произнесённого к пониманию или от понимания к согласию."
+      ]
+    },
+    {
+      "id": "P00-S2-15",
+      "title": "Обязательства контракта перехода",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 12312,
+        "char_end_exclusive": 12564,
+        "byte_start_utf8": 21582,
+        "byte_end_exclusive_utf8": 22047,
+        "line_start": 108,
+        "line_end_inclusive": 108
+      },
+      "source_key_formulations": [
+        {
+          "text": "В общей модели этой программы **контракт перехода** задаёт обязательства производителя и потребителя для определённого перехода или применения: входы, выходы, предусловия, защищённые свойства, критерии проверки, допустимые остановки и область действия.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12312,
+            "char_end_exclusive": 12564,
+            "byte_start_utf8": 21582,
+            "byte_end_exclusive_utf8": 22047,
+            "line_start": 108,
+            "line_end_inclusive": 108
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Определение ограничено общей моделью данной программы.",
+        "Контракт охватывает обязательства и производителя, и потребителя для определённого перехода или применения.",
+        "Сохранены все семь элементов: входы, выходы, предусловия, защищённые свойства, критерии проверки, допустимые остановки, область действия."
+      ]
+    },
+    {
+      "id": "P00-S2-16",
+      "title": "Контракт знаний, проекция, работа, попытка и оценка",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 12565,
+        "char_end_exclusive": 12921,
+        "byte_start_utf8": 22048,
+        "byte_end_exclusive_utf8": 22681,
+        "line_start": 108,
+        "line_end_inclusive": 108
+      },
+      "source_key_formulations": [
+        {
+          "text": "**Контракт знаний v3** связывает ограниченное содержание с целью, требованиями, областью, основаниями, зависимостями и допустимыми проекциями.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12565,
+            "char_end_exclusive": 12707,
+            "byte_start_utf8": 22048,
+            "byte_end_exclusive_utf8": 22307,
+            "line_start": 108,
+            "line_end_inclusive": 108
+          }
+        },
+        {
+          "text": "Эти определения дополняют друг друга.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12708,
+            "char_end_exclusive": 12745,
+            "byte_start_utf8": 22308,
+            "byte_end_exclusive_utf8": 22377,
+            "line_start": 108,
+            "line_end_inclusive": 108
+          }
+        },
+        {
+          "text": "ContextPackage — конкретная проекция для получателя; WorkItem — работа, а попытка и её оценка — отдельные объекты.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12746,
+            "char_end_exclusive": 12860,
+            "byte_start_utf8": 22378,
+            "byte_end_exclusive_utf8": 22568,
+            "line_start": 108,
+            "line_end_inclusive": 108
+          }
+        },
+        {
+          "text": "Простая схема данных не устанавливает все эти обязательства.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12861,
+            "char_end_exclusive": 12921,
+            "byte_start_utf8": 22569,
+            "byte_end_exclusive_utf8": 22681,
+            "line_start": 108,
+            "line_end_inclusive": 108
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "KC v3 связывает ограниченное содержание со всеми шестью элементами: целью, требованиями, областью, основаниями, зависимостями, допустимыми проекциями.",
+        "Определение KC v3 дополняет определение контракта перехода.",
+        "ContextPackage остаётся конкретной проекцией для получателя.",
+        "WorkItem, попытка и оценка попытки не отождествлены.",
+        "Наличие схемы данных не объявлено достаточным для установления всех контрактных обязательств."
+      ]
+    },
+    {
+      "id": "P00-S2-17",
+      "title": "История KC v2, самостоятельный KC v3, P09 и статус черновика",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 12923,
+        "char_end_exclusive": 13506,
+        "byte_start_utf8": 22683,
+        "byte_end_exclusive_utf8": 23670,
+        "line_start": 110,
+        "line_end_inclusive": 110
+      },
+      "source_key_formulations": [
+        {
+          "text": "Опубликованный [KC v2](https://arcanada.ai/ru/blog/meaning-management-knowledge-contract-v2) служит историческим основанием и предметом явной миграции.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 12923,
+            "char_end_exclusive": 13074,
+            "byte_start_utf8": 22683,
+            "byte_end_exclusive_utf8": 22899,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        },
+        {
+          "text": "Его содержание шире перечня профессий; результаты исходной работы не переносятся автоматически на новый носитель.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13075,
+            "char_end_exclusive": 13188,
+            "byte_start_utf8": 22900,
+            "byte_end_exclusive_utf8": 23111,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        },
+        {
+          "text": "По решению пользователя программа разрабатывает самостоятельный KC v3.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13189,
+            "char_end_exclusive": 13259,
+            "byte_start_utf8": 23112,
+            "byte_end_exclusive_utf8": 23240,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        },
+        {
+          "text": "P09 становится **синтезом общего ядра v3 и его профилей с углублением профессионального применения**.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13260,
+            "char_end_exclusive": 13361,
+            "byte_start_utf8": 23241,
+            "byte_end_exclusive_utf8": 23421,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        },
+        {
+          "text": "Соответствие v2 исследуется там, где нужен обмен; оно не ограничивает новые сущности или правила v3.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13362,
+            "char_end_exclusive": 13462,
+            "byte_start_utf8": 23422,
+            "byte_end_exclusive_utf8": 23601,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        },
+        {
+          "text": "Статус новой модели остаётся concept_draft.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13463,
+            "char_end_exclusive": 13506,
+            "byte_start_utf8": 23602,
+            "byte_end_exclusive_utf8": 23670,
+            "line_start": 110,
+            "line_end_inclusive": 110
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "KC v2 сохраняет роль опубликованного исторического основания и предмета явной миграции, более широкого, чем перечень профессий.",
+        "Результаты v2 не переносятся автоматически на новый носитель.",
+        "KC v3 сохраняет самостоятельность и связь разработки с решением пользователя.",
+        "P09 синтезирует общее ядро и профили с углублением профессионального применения; общий KC не сужен до профессионального профиля.",
+        "Соответствие v2 нужно для обмена и не объявлено пределом новых сущностей или правил v3.",
+        "Научный статус concept_draft не повышен."
+      ]
+    },
+    {
+      "id": "P00-S2-18",
+      "title": "Work Item, Role, Skill и Blueprint; описание не подтверждает способность",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 13508,
+        "char_end_exclusive": 13837,
+        "byte_start_utf8": 23672,
+        "byte_end_exclusive_utf8": 24258,
+        "line_start": 112,
+        "line_end_inclusive": 112
+      },
+      "source_key_formulations": [
+        {
+          "text": "Work Item обозначает управляемую единицу работы с целью и приёмкой.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13508,
+            "char_end_exclusive": 13575,
+            "byte_start_utf8": 23672,
+            "byte_end_exclusive_utf8": 23788,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        },
+        {
+          "text": "Role, Skill и Blueprint выражают соответственно ответственность, описание требуемого умения и структуру выполнения в рабочем профиле.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13576,
+            "char_end_exclusive": 13709,
+            "byte_start_utf8": 23789,
+            "byte_end_exclusive_utf8": 24019,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        },
+        {
+          "text": "Описание умения не подтверждает способность конкретного исполнителя.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13710,
+            "char_end_exclusive": 13778,
+            "byte_start_utf8": 24020,
+            "byte_end_exclusive_utf8": 24149,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        },
+        {
+          "text": "Не каждый информационный запрос нуждается в этих объектах.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13779,
+            "char_end_exclusive": 13837,
+            "byte_start_utf8": 24150,
+            "byte_end_exclusive_utf8": 24258,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "Work Item сохраняет управляемость, цель и приёмку.",
+        "Сохранено соответствие Role — ответственность; Skill — описание требуемого умения; Blueprint — структура выполнения в рабочем профиле.",
+        "Описание умения не объявлено подтверждением способности конкретного исполнителя.",
+        "Не введена обязательность этих объектов для каждого информационного запроса."
+      ]
+    },
+    {
+      "id": "P00-S2-19",
+      "title": "I05, ограниченная область I26 и исторический носитель I02–I04",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 13838,
+        "char_end_exclusive": 14121,
+        "byte_start_utf8": 24259,
+        "byte_end_exclusive_utf8": 24707,
+        "line_start": 112,
+        "line_end_inclusive": 112
+      },
+      "source_key_formulations": [
+        {
+          "text": "I05 задаёт [начальную архитектуру v3](../READING_ROOM.html#doc-MM_A0225--kc-v3-profiles), I26 уточняет грамматику и межпрофильные правила в своей объявленной области.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 13838,
+            "char_end_exclusive": 14004,
+            "byte_start_utf8": 24259,
+            "byte_end_exclusive_utf8": 24514,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        },
+        {
+          "text": "Исторические 34 типа и `mm-envelope/0.1` остаются носителем примеров I02–I04, а не пределом расширения новой версии.",
+          "source_locator": {
+            "source_ref": "publication-reader-p00-r1",
+            "anchor": "p00-contract-boundary",
+            "char_start": 14005,
+            "char_end_exclusive": 14121,
+            "byte_start_utf8": 24515,
+            "byte_end_exclusive_utf8": 24707,
+            "line_start": 112,
+            "line_end_inclusive": 112
+          }
+        }
+      ],
+      "verifiable_obligations": [
+        "I05 сохраняет роль начальной архитектуры v3.",
+        "Для I26 сохранено настоящее время «уточняет» и ограничение «в своей объявленной области».",
+        "Сохранены число 34, носитель mm-envelope/0.1 и историческая привязка к примерам I02–I04.",
+        "Историческое число типов и носитель не объявлены пределом расширения новой версии."
+      ]
+    }
+  ],
+  "protected_links": [
+    {
+      "label": "типологии",
+      "destination": "../READING_ROOM.html#doc-MM_A0227",
+      "kind": "reading_room_route",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-taxonomy",
+        "char_start": 9693,
+        "char_end_exclusive": 9739,
+        "byte_start_utf8": 16939,
+        "byte_end_exclusive_utf8": 16994,
+        "line_start": 83,
+        "line_end_inclusive": 83
+      }
+    },
+    {
+      "label": "KC v2",
+      "destination": "https://arcanada.ai/ru/blog/meaning-management-knowledge-contract-v2",
+      "kind": "external_url",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 12938,
+        "char_end_exclusive": 13015,
+        "byte_start_utf8": 22712,
+        "byte_end_exclusive_utf8": 22789,
+        "line_start": 110,
+        "line_end_inclusive": 110
+      }
+    },
+    {
+      "label": "начальную архитектуру v3",
+      "destination": "../READING_ROOM.html#doc-MM_A0225--kc-v3-profiles",
+      "kind": "reading_room_route",
+      "source_locator": {
+        "source_ref": "publication-reader-p00-r1",
+        "anchor": "p00-contract-boundary",
+        "char_start": 13849,
+        "char_end_exclusive": 13926,
+        "byte_start_utf8": 24276,
+        "byte_end_exclusive_utf8": 24373,
+        "line_start": 112,
+        "line_end_inclusive": 112
+      }
+    }
+  ],
+  "protected_anchors": [
+    "section-002",
+    "p00-meaning-knowledge",
+    "p00-taxonomy",
+    "p00-independent-dimensions",
+    "p00-contract-boundary"
+  ],
+  "protected_headings": [
+    "## 2. Рабочие определения и независимые различия",
+    "### 2.1. От выражения к знанию",
+    "### 2.2. Почему нужна многомерная классификация",
+    "### 2.3. Раздельные вопросы оценки и проверка результата",
+    "### 2.4. Контракт, пакет и профессиональный профиль"
+  ],
+  "protected_terms": [
+    "Выражение",
+    "Смысловое содержание",
+    "Представление",
+    "MeaningObject",
+    "Утверждение",
+    "Представление знания",
+    "Контекст",
+    "ContextFrame",
+    "контракт перехода",
+    "Контракт знаний v3",
+    "ContextPackage",
+    "WorkItem",
+    "Work Item",
+    "Role",
+    "Skill",
+    "Blueprint",
+    "FORMAL_MODEL"
+  ],
+  "protected_numbers_and_versions": [
+    {
+      "literal": "18 типов",
+      "meaning": "Начальное множество рабочей типологии; полнота не установлена."
+    },
+    {
+      "literal": "34 типа",
+      "meaning": "Исторические типы носителя примеров; не предел расширения."
+    },
+    {
+      "literal": "KC v2",
+      "meaning": "Опубликованное историческое основание и предмет миграции."
+    },
+    {
+      "literal": "KC v3",
+      "meaning": "Самостоятельно разрабатываемая новая модель."
+    },
+    {
+      "literal": "mm-envelope/0.1",
+      "meaning": "Исторический носитель примеров I02–I04."
+    },
+    {
+      "literal": "I02–I04",
+      "meaning": "Исторические итерации, к которым относятся примеры носителя."
+    },
+    {
+      "literal": "I05",
+      "meaning": "Начальная архитектура v3."
+    },
+    {
+      "literal": "I26",
+      "meaning": "Уточнение грамматики и межпрофильных правил в объявленной области."
+    },
+    {
+      "literal": "P09",
+      "meaning": "Синтез общего ядра v3 и профилей с углублением профессионального применения."
+    }
+  ],
+  "protected_example_symbols": [
+    "X",
+    "Z"
+  ],
+  "protected_status_literals": [
+    "concept_draft"
+  ],
+  "protected_literals": [
+    "<a id=\"section-002\"></a>",
+    "<a id=\"p00-meaning-knowledge\"></a>",
+    "<a id=\"p00-taxonomy\"></a>",
+    "<a id=\"p00-independent-dimensions\"></a>",
+    "<a id=\"p00-contract-boundary\"></a>",
+    "../READING_ROOM.html#doc-MM_A0227",
+    "https://arcanada.ai/ru/blog/meaning-management-knowledge-contract-v2",
+    "../READING_ROOM.html#doc-MM_A0225--kc-v3-profiles",
+    "Выражение",
+    "Смысловое содержание",
+    "Представление",
+    "MeaningObject",
+    "Утверждение",
+    "Представление знания",
+    "Контекст",
+    "ContextFrame",
+    "контракт перехода",
+    "Контракт знаний v3",
+    "ContextPackage",
+    "WorkItem",
+    "Work Item",
+    "Role",
+    "Skill",
+    "Blueprint",
+    "FORMAL_MODEL",
+    "18 типов",
+    "34 типа",
+    "KC v2",
+    "KC v3",
+    "mm-envelope/0.1",
+    "I02–I04",
+    "I05",
+    "I26",
+    "P09",
+    "concept_draft",
+    "X",
+    "Z"
+  ],
+  "protected_literals_policy": {
+    "match": "case_sensitive_exact_substring",
+    "scope": "Только выбранный раздел §2.",
+    "interpretation": "Наличие буквальной подстроки является необходимой механической проверкой, но не доказывает сохранение её смысла, связи, отрицания или области действия.",
+    "source_check": "Каждый элемент protected_literals взят из реально присутствующей подстроки закреплённого раздела."
+  },
+  "editorial_review_policy": {
+    "allowed_changes": "Синтаксис, связность, порядок объяснения внутри выбранного раздела и стилистика при сохранении всех перечисленных смысловых обязательств, якорей, адресов и защищённых литералов.",
+    "per_claim_review": "Для каждого из 19 утверждений и каждой из 8 строк таблицы указать сохранено / нарушено / неясно, локатор в отредактированном тексте и основание оценки.",
+    "required_semantic_review": "Отдельно проверить отрицания, условность, множественность интерпретаций, область, временную отнесённость, различие описания и способности, статус concept_draft и отсутствие новых научных утверждений.",
+    "scope_boundary": "Редакторская приёмка относится только к выбранному разделу. Она не является новым предметным опытом, доказательством научного преимущества или общей квалификацией writing-editor.",
+    "formulas": "Математических формул в выбранном разделе нет; X и Z — обозначения условного примера.",
+    "links_boundary": "Адреса закреплены как исходные маршруты reader. Этот реестр не утверждает, что содержимое внешних ссылок заново проверено."
+  }
+}

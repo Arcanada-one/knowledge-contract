@@ -1,0 +1,784 @@
+{
+  "schema": "arcanada.layout-preservation/1",
+  "checked_at": "2026-11-02T11:13:50.098360+00:00",
+  "baseline": "RU10_EDITOR_KC_r2",
+  "record_count": 110,
+  "records_unchanged": true,
+  "source_bytes_unchanged": true,
+  "source_sha256": "009fc31612a8c9d3d41da1cb57a825ac8e87466e9ae391d02fa4469bef626eb3",
+  "source_size_bytes": 1093534,
+  "items": [
+    {
+      "artifact_id": "urn:arcanada:ru10:A01",
+      "old_path": "knowledge/artifacts/records/A01.json",
+      "path": "knowledge/artifacts/records/russian-text-assistant.json",
+      "sha256": "0a052f540712866419756227df15344b429610af7b3f98e3a1ba73138cdd3f41",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:B01",
+      "old_path": "knowledge/artifacts/records/B01.json",
+      "path": "knowledge/artifacts/records/edit-existing-text.json",
+      "sha256": "61b03afd872cb927f9caf02aead4759f443998bb3883b9d16453cf8f3f2e6eb6",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:B02",
+      "old_path": "knowledge/artifacts/records/B02.json",
+      "path": "knowledge/artifacts/records/draft-from-provided-facts.json",
+      "sha256": "7e825b84c31df73afa40443a6fd5c8f5d2355a39f8ff3a2bb2a3699498859548",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C01",
+      "old_path": "knowledge/artifacts/records/C01.json",
+      "path": "knowledge/artifacts/records/preserve-facts-and-meaning.json",
+      "sha256": "1cc986f155b32f19a166243d307c9072f6e6b355518f6df57cd955c436ee1d5f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C02",
+      "old_path": "knowledge/artifacts/records/C02.json",
+      "path": "knowledge/artifacts/records/do-not-invent-missing-facts.json",
+      "sha256": "0321c5d532fd32bd105c6599ea96e315fdd6d28bc0118c6b012f26f1e9f77d27",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C03",
+      "old_path": "knowledge/artifacts/records/C03.json",
+      "path": "knowledge/artifacts/records/respect-authority-and-data-boundaries.json",
+      "sha256": "dda32b1d682b7ce792a8dcd0c86af93465beaaebc3171e4e6328c6942fdce14b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C04",
+      "old_path": "knowledge/artifacts/records/C04.json",
+      "path": "knowledge/artifacts/records/respect-source-coverage.json",
+      "sha256": "9dbbfe60fb569696a6c3b321f143db9a95e3b7614f36474adc2e27e26d0e129c",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP01",
+      "old_path": "knowledge/artifacts/records/CP01.json",
+      "path": "knowledge/artifacts/records/meaning-preserving-editing.json",
+      "sha256": "a88e883f6bae98933e5766b338da4a51b264f321a539cdb15957a33e7813c659",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP02",
+      "old_path": "knowledge/artifacts/records/CP02.json",
+      "path": "knowledge/artifacts/records/fact-grounded-drafting.json",
+      "sha256": "1d620cb992379dce7f146fe836f8fe7661ae193d4c47efb74db7fe3cf09fa7f9",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP03",
+      "old_path": "knowledge/artifacts/records/CP03.json",
+      "path": "knowledge/artifacts/records/editorial-quality-and-trace-review.json",
+      "sha256": "f7242898fbe88d89d50d92f52cbbf2e3165e6c9e2017eff0060212b1e02c0c2d",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F01",
+      "old_path": "knowledge/artifacts/records/F01.json",
+      "path": "knowledge/artifacts/records/grounds-for-reader-purpose.json",
+      "sha256": "6a9d2e8f0f6b8398fc1c48163572545593ade94045be8156acc443e9e7be39b9",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F02",
+      "old_path": "knowledge/artifacts/records/F02.json",
+      "path": "knowledge/artifacts/records/grounds-for-specific-audience.json",
+      "sha256": "19356610cff4e2e18c4045b5b559428bab849e938c8c66bb0bf5ebd0b036c843",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F03",
+      "old_path": "knowledge/artifacts/records/F03.json",
+      "path": "knowledge/artifacts/records/grounds-for-informational-style-scope.json",
+      "sha256": "f062811ef2a54dd890563f40ec16fcfc63af840e621215819341383692fc4537",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F04",
+      "old_path": "knowledge/artifacts/records/F04.json",
+      "path": "knowledge/artifacts/records/grounds-for-context-sensitive-stop-words.json",
+      "sha256": "4d87f79174c2061c5eda5d99562d6bf2870de4bb791dd662e4aaa3f5ca4d6c77",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F05",
+      "old_path": "knowledge/artifacts/records/F05.json",
+      "path": "knowledge/artifacts/records/grounds-for-clarity-is-not-substance.json",
+      "sha256": "11a522bed2b65ee74784a07026270f8b550b7b643dac63c5e7eac28a5cac7a6b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F06",
+      "old_path": "knowledge/artifacts/records/F06.json",
+      "path": "knowledge/artifacts/records/grounds-for-opinion-attribution.json",
+      "sha256": "387bda49e2f2c51675fb7cd7642fa8853ef3bec4b831f7c9a9d23b83ae925801",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F07",
+      "old_path": "knowledge/artifacts/records/F07.json",
+      "path": "knowledge/artifacts/records/grounds-for-preserve-important-qualifications.json",
+      "sha256": "602cc1e4e00cc2e874fbc8fdaecffb02c8d2d153bd87d87035340e31fa6101af",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F08",
+      "old_path": "knowledge/artifacts/records/F08.json",
+      "path": "knowledge/artifacts/records/grounds-for-task-dependent-numeric-precision.json",
+      "sha256": "14793a7f2cef81e1ab13f0b0adb5f0d639d0cf50de9e38794d3e920d0a5574da",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F09",
+      "old_path": "knowledge/artifacts/records/F09.json",
+      "path": "knowledge/artifacts/records/grounds-for-unknown-actor-remains-unknown.json",
+      "sha256": "b5d7cf41796338d229e1d8f661aff1904c0e0e04eb97010b5d4696858a1fa213",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F10",
+      "old_path": "knowledge/artifacts/records/F10.json",
+      "path": "knowledge/artifacts/records/grounds-for-plain-language-with-precise-terms.json",
+      "sha256": "6fd293dc94ab7a5b048f4e0d8ba57ef70cd8ea1b4675bf1820684d93200b439b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F11",
+      "old_path": "knowledge/artifacts/records/F11.json",
+      "path": "knowledge/artifacts/records/grounds-for-ground-evaluation-in-facts.json",
+      "sha256": "6d2e4cf5bda6a55cd8884145358bc65a78c07b24a2a184fff0f9947d5560cc3f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F12",
+      "old_path": "knowledge/artifacts/records/F12.json",
+      "path": "knowledge/artifacts/records/grounds-for-intensifiers-need-evidence.json",
+      "sha256": "320349c120df4b89cce5f53864e333784d8b29b737e6e856e95266a718cb6409",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F13",
+      "old_path": "knowledge/artifacts/records/F13.json",
+      "path": "knowledge/artifacts/records/grounds-for-unpack-cliches.json",
+      "sha256": "2a13e6422a2272dc29ff83bb2d15281a1ad37b7d31ad888ca7896acd3fd3ca5e",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F14",
+      "old_path": "knowledge/artifacts/records/F14.json",
+      "path": "knowledge/artifacts/records/grounds-for-action-and-known-actor.json",
+      "sha256": "4605e944429dcb7050a86442582560189df474456d8ea51f44eb3c78c1cf8207",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F15",
+      "old_path": "knowledge/artifacts/records/F15.json",
+      "path": "knowledge/artifacts/records/grounds-for-relevant-examples.json",
+      "sha256": "2bcfab160f6cb926047ae1bfc47289930cf7e75b8f62498075c07f4ca499ad5f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F16",
+      "old_path": "knowledge/artifacts/records/F16.json",
+      "path": "knowledge/artifacts/records/grounds-for-manageable-sentences.json",
+      "sha256": "915493b447ad86d7ab1536bf01c0a809cb58d30ae771390af603795881ba4b7d",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F17",
+      "old_path": "knowledge/artifacts/records/F17.json",
+      "path": "knowledge/artifacts/records/grounds-for-preserve-restrictive-clauses.json",
+      "sha256": "7f744747643ed731979877f0ae8db8ebd476980b62a2cadcc8454f5b7661027b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F18",
+      "old_path": "knowledge/artifacts/records/F18.json",
+      "path": "knowledge/artifacts/records/grounds-for-coherent-paragraphs.json",
+      "sha256": "98c36d306c90addb8f9d08862649aaad0ff1bc88f79d35cefb1872f76621f417",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F19",
+      "old_path": "knowledge/artifacts/records/F19.json",
+      "path": "knowledge/artifacts/records/grounds-for-shared-list-conditions.json",
+      "sha256": "b2e87409f9866f12c32e39bad63626df1d3aebedd3329353ea9632ef1104f426",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F20",
+      "old_path": "knowledge/artifacts/records/F20.json",
+      "path": "knowledge/artifacts/records/grounds-for-answer-before-explanation.json",
+      "sha256": "549f40c522b981fea4d7bd63ea590b79be3e3681815be76a339be7f7d9d2a6d2",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F21",
+      "old_path": "knowledge/artifacts/records/F21.json",
+      "path": "knowledge/artifacts/records/grounds-for-research-before-filling-gaps.json",
+      "sha256": "a2e4b610cf67d0fa1fe82eb09a7cea7b35f9c35f8cdbd84434ee7433d235399c",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F22",
+      "old_path": "knowledge/artifacts/records/F22.json",
+      "path": "knowledge/artifacts/records/grounds-for-honest-useful-headlines.json",
+      "sha256": "f03ee1d3e29c12c6d93fefbf8b5dc52c88959f18f3925f3984b08e92ca8c4bf6",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F23",
+      "old_path": "knowledge/artifacts/records/F23.json",
+      "path": "knowledge/artifacts/records/grounds-for-task-specific-structure.json",
+      "sha256": "3d4eac1f912782213cd398521bd66c0b54af478533eb92eaf4a66af93b5d785b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F24",
+      "old_path": "knowledge/artifacts/records/F24.json",
+      "path": "knowledge/artifacts/records/grounds-for-introduction-sets-expectations.json",
+      "sha256": "aced8314bc287cdaeb0272d93f1bcef95d3deec1716d64f586c677573f756ae3",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F25",
+      "old_path": "knowledge/artifacts/records/F25.json",
+      "path": "knowledge/artifacts/records/grounds-for-stories-require-actions.json",
+      "sha256": "3f0602817136f46124f1f0b0395bf40a75d605705ca8b58fb72b4b8661fab14a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F26",
+      "old_path": "knowledge/artifacts/records/F26.json",
+      "path": "knowledge/artifacts/records/grounds-for-instructions-in-execution-order.json",
+      "sha256": "4d755b563df3be92bbf48661441915178938df2028e8db571a86308f44168afe",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F27",
+      "old_path": "knowledge/artifacts/records/F27.json",
+      "path": "knowledge/artifacts/records/grounds-for-standalone-negation.json",
+      "sha256": "64ac8d81239c25313fc252746050ae13b0681c631aa315f3418943ccd8dd009e",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F28",
+      "old_path": "knowledge/artifacts/records/F28.json",
+      "path": "knowledge/artifacts/records/grounds-for-reasoning-order-and-grounds.json",
+      "sha256": "45ad21cac6b7eab5b09a2eabf9709ca4dd26cea810e87bd096e6f3ad8a14f010",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F29",
+      "old_path": "knowledge/artifacts/records/F29.json",
+      "path": "knowledge/artifacts/records/grounds-for-respectful-task-specific-tone.json",
+      "sha256": "9de7a3a87c46681507eba8e0371ac64642f16941d09c8afe19f423d91f1df452",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F30",
+      "old_path": "knowledge/artifacts/records/F30.json",
+      "path": "knowledge/artifacts/records/grounds-for-reader-depth-and-obstacles.json",
+      "sha256": "87746cede6f5261cd245fbe1591fafe4d74b195d67ac0fde2df042ffa3bf6141",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F31",
+      "old_path": "knowledge/artifacts/records/F31.json",
+      "path": "knowledge/artifacts/records/grounds-for-fact-grounded-personal-profile.json",
+      "sha256": "eabcea7cc3a1d8651a1f3160ac7d46c4dce9244dec3611b34b469dd81fb45694",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F32",
+      "old_path": "knowledge/artifacts/records/F32.json",
+      "path": "knowledge/artifacts/records/grounds-for-reader-centered-company-profile.json",
+      "sha256": "f9276ab1e3576bb0511246177780cad077baa4a06609e111ab49b504ed6f05a8",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F33",
+      "old_path": "knowledge/artifacts/records/F33.json",
+      "path": "knowledge/artifacts/records/grounds-for-complete-work-documents.json",
+      "sha256": "46682af549d0c94bb92789863f244d2d90c90bf0d43a1117485f5a3706b3c8e5",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F34",
+      "old_path": "knowledge/artifacts/records/F34.json",
+      "path": "knowledge/artifacts/records/grounds-for-newsworthy-press-release.json",
+      "sha256": "0180fcd2f570259e568e255b59bdd5e0192fbf03904fbc23bc22238fc9a2ae86",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F35",
+      "old_path": "knowledge/artifacts/records/F35.json",
+      "path": "knowledge/artifacts/records/grounds-for-relevant-cold-email.json",
+      "sha256": "3520af6c0c4097573bc3156df566c1a0ee52cb9dce53ab8199366b5fa360f57f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F36",
+      "old_path": "knowledge/artifacts/records/F36.json",
+      "path": "knowledge/artifacts/records/grounds-for-presentation-reading-context.json",
+      "sha256": "b37d105d572748e84813e792ae690d167391e3794cd14f00a94b4a3b2f8ec362",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F37",
+      "old_path": "knowledge/artifacts/records/F37.json",
+      "path": "knowledge/artifacts/records/grounds-for-audience-dependent-slide-order.json",
+      "sha256": "dc8347800ca9c672281ee237778bdbddb80554df58ab0145a18a6d3b8d1a92c5",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F38",
+      "old_path": "knowledge/artifacts/records/F38.json",
+      "path": "knowledge/artifacts/records/grounds-for-captions-explain-images.json",
+      "sha256": "335fc565b41efaa8d0b10ae3206668c0362c407dc3528a0bdf9feb79a423856f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F39",
+      "old_path": "knowledge/artifacts/records/F39.json",
+      "path": "knowledge/artifacts/records/grounds-for-buyer-centered-product-pages.json",
+      "sha256": "81a58158ebc12a87a96fe0a662bfeb7636aab071577a6efb2fde27215b91ccc7",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F40",
+      "old_path": "knowledge/artifacts/records/F40.json",
+      "path": "knowledge/artifacts/records/grounds-for-verify-editorial-effect.json",
+      "sha256": "ad59536c85bb71c40d159aed67f763169d56592e5f3ac9cd339a05badfccf440",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K01",
+      "old_path": "knowledge/artifacts/records/K01.json",
+      "path": "knowledge/artifacts/records/reader-purpose.json",
+      "sha256": "76451f80d6c3cdfe101c5d1264f5e851450eec9fa81fae326295ac9bbaf264fe",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K02",
+      "old_path": "knowledge/artifacts/records/K02.json",
+      "path": "knowledge/artifacts/records/specific-audience.json",
+      "sha256": "50472e68e533292a8233c074d5352f58395b822c822d51c79bf4471c4a975985",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K03",
+      "old_path": "knowledge/artifacts/records/K03.json",
+      "path": "knowledge/artifacts/records/informational-style-scope.json",
+      "sha256": "1740e849ffa9a578ff98e6cccf776d8f17a0dc2dcc1c22cb4f5c470421dd493c",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K04",
+      "old_path": "knowledge/artifacts/records/K04.json",
+      "path": "knowledge/artifacts/records/context-sensitive-stop-words.json",
+      "sha256": "d603794bad93c18050c8e5dae454544669b2c684a9f49d0c6856ea7faa2e539b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K05",
+      "old_path": "knowledge/artifacts/records/K05.json",
+      "path": "knowledge/artifacts/records/clarity-is-not-substance.json",
+      "sha256": "e7ed8ddddffdf11916ee51502d3938142be08c04c70574dff8af4473a873a362",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K06",
+      "old_path": "knowledge/artifacts/records/K06.json",
+      "path": "knowledge/artifacts/records/opinion-attribution.json",
+      "sha256": "9c4ef8b49c9c1e316f433372a3c86337f7b988117c0afaf0157a0f21d1a7bd08",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K07",
+      "old_path": "knowledge/artifacts/records/K07.json",
+      "path": "knowledge/artifacts/records/preserve-important-qualifications.json",
+      "sha256": "252199f889434221d5934f2991320870f6818d1c63f87d052119631f7ead8361",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K08",
+      "old_path": "knowledge/artifacts/records/K08.json",
+      "path": "knowledge/artifacts/records/task-dependent-numeric-precision.json",
+      "sha256": "5227ceb18c4b5a858093dae86a3e9d477f8c80145222ec787f28878f4df1a5e0",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K09",
+      "old_path": "knowledge/artifacts/records/K09.json",
+      "path": "knowledge/artifacts/records/unknown-actor-remains-unknown.json",
+      "sha256": "f8939d70a60f54b56dcef851f58f66f2efa45d33c648b137440026b8c5e5de07",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K10",
+      "old_path": "knowledge/artifacts/records/K10.json",
+      "path": "knowledge/artifacts/records/plain-language-with-precise-terms.json",
+      "sha256": "7329a49b062b777766e142b6f2ddb98756d6979dcb62f632c0cb92dc7f16b41e",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K11",
+      "old_path": "knowledge/artifacts/records/K11.json",
+      "path": "knowledge/artifacts/records/ground-evaluation-in-facts.json",
+      "sha256": "c454a437c6dc442e7797a56d0794cb8b59f53b7402263b30aa8dcb0c53720d86",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K12",
+      "old_path": "knowledge/artifacts/records/K12.json",
+      "path": "knowledge/artifacts/records/intensifiers-need-evidence.json",
+      "sha256": "b87df30170bf8f67295ef3c84e9993eccdb8d4bd32a561a207e313ecf6cbf017",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K13",
+      "old_path": "knowledge/artifacts/records/K13.json",
+      "path": "knowledge/artifacts/records/unpack-cliches.json",
+      "sha256": "02319eaa8ee8237c6054b27a60f3941a347a1c713789708c1cf28512faf354de",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K14",
+      "old_path": "knowledge/artifacts/records/K14.json",
+      "path": "knowledge/artifacts/records/action-and-known-actor.json",
+      "sha256": "5a9cd7b13a83334a7ee0f034dd51ecbdb9b5fa351203ff14b6e944d421411983",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K15",
+      "old_path": "knowledge/artifacts/records/K15.json",
+      "path": "knowledge/artifacts/records/relevant-examples.json",
+      "sha256": "e26e514cc607f1b94951354aeb4ccc58d499d2f3891a5c4aac03844c8d928a12",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K16",
+      "old_path": "knowledge/artifacts/records/K16.json",
+      "path": "knowledge/artifacts/records/manageable-sentences.json",
+      "sha256": "ce2bc55673aa7945bdefba5a4e7d7ef0d2c926ed2a8be402b4bed51af4889ec5",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K17",
+      "old_path": "knowledge/artifacts/records/K17.json",
+      "path": "knowledge/artifacts/records/preserve-restrictive-clauses.json",
+      "sha256": "37df27dbac594fe8e286c534a4ee33c9388b18a2069872da5c79efdcd881f262",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K18",
+      "old_path": "knowledge/artifacts/records/K18.json",
+      "path": "knowledge/artifacts/records/coherent-paragraphs.json",
+      "sha256": "a78b515306dd6176106499a36dd5214706cd0533b88a7c959e478d4b25a7d6cd",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K19",
+      "old_path": "knowledge/artifacts/records/K19.json",
+      "path": "knowledge/artifacts/records/shared-list-conditions.json",
+      "sha256": "e7c54842ace98105c4e88471e8807df4aea2bf43f5e7924c4f8cd961d537049a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K20",
+      "old_path": "knowledge/artifacts/records/K20.json",
+      "path": "knowledge/artifacts/records/answer-before-explanation.json",
+      "sha256": "9183ce9cc27b061f308104bfa5ad85dee3285e7545d8f69d7abd18e21639b50a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K21",
+      "old_path": "knowledge/artifacts/records/K21.json",
+      "path": "knowledge/artifacts/records/research-before-filling-gaps.json",
+      "sha256": "823cae41986b30794c886561c3e6be055f79678c55ca313e0f71779b61eaa1d8",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K22",
+      "old_path": "knowledge/artifacts/records/K22.json",
+      "path": "knowledge/artifacts/records/honest-useful-headlines.json",
+      "sha256": "94ae56fe1b6867866e71be53367756323c6eaaeae42d0d4d520fe67cdb1ed703",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K23",
+      "old_path": "knowledge/artifacts/records/K23.json",
+      "path": "knowledge/artifacts/records/task-specific-structure.json",
+      "sha256": "cf26e3909611d1fda6b38e5d2cded8e9701f2402048c1e67af02c95746be70d6",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K24",
+      "old_path": "knowledge/artifacts/records/K24.json",
+      "path": "knowledge/artifacts/records/introduction-sets-expectations.json",
+      "sha256": "285ac133959bd2ae7c7f52c8aa9ab6d1f62885dd7e1ed2c9a71352cc1f4a3198",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K25",
+      "old_path": "knowledge/artifacts/records/K25.json",
+      "path": "knowledge/artifacts/records/stories-require-actions.json",
+      "sha256": "0c4af5d70b91585a5633af47de054d9f3fd3b3b1ee6a4f5f99d7b9ba5c57dfad",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K26",
+      "old_path": "knowledge/artifacts/records/K26.json",
+      "path": "knowledge/artifacts/records/instructions-in-execution-order.json",
+      "sha256": "d9a2f43ed640dc0c59223c73dbbe09d9a5d80f9eb02b4eeca0bb36332cf9af27",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K27",
+      "old_path": "knowledge/artifacts/records/K27.json",
+      "path": "knowledge/artifacts/records/standalone-negation.json",
+      "sha256": "c30eacd1628f6641f5d576127b21cbcff596d23c48d52c55d508854c27919709",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K28",
+      "old_path": "knowledge/artifacts/records/K28.json",
+      "path": "knowledge/artifacts/records/reasoning-order-and-grounds.json",
+      "sha256": "411161ae95f6e1ebe164b67547e1aae974c6bdec78c2f54826c2f5658c507be0",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K29",
+      "old_path": "knowledge/artifacts/records/K29.json",
+      "path": "knowledge/artifacts/records/respectful-task-specific-tone.json",
+      "sha256": "866d91f86e5dd03187ffe5aab8e98a3d730c7f3da0bb10a6913ec3acd4305f8b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K30",
+      "old_path": "knowledge/artifacts/records/K30.json",
+      "path": "knowledge/artifacts/records/reader-depth-and-obstacles.json",
+      "sha256": "8b527fe30a8687a00bd74577d5318f868433a9d88fc1b450671a99933c728d2e",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K31",
+      "old_path": "knowledge/artifacts/records/K31.json",
+      "path": "knowledge/artifacts/records/fact-grounded-personal-profile.json",
+      "sha256": "b8ab91fe0865c575a5cf4c95556dee4e84aba360949bb3efe7cb33dbc1cebab4",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K32",
+      "old_path": "knowledge/artifacts/records/K32.json",
+      "path": "knowledge/artifacts/records/reader-centered-company-profile.json",
+      "sha256": "7cee471c6fa0fb35b2e291f608958fe3caad87835ed0210fcb8e126759d4e415",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K33",
+      "old_path": "knowledge/artifacts/records/K33.json",
+      "path": "knowledge/artifacts/records/complete-work-documents.json",
+      "sha256": "ef324d3ea84f3e55ca6053fcfd45273f1afb59834b3bcea9a5c65fb81ded79dd",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K34",
+      "old_path": "knowledge/artifacts/records/K34.json",
+      "path": "knowledge/artifacts/records/newsworthy-press-release.json",
+      "sha256": "558796a275ba5990e7e193dbd8409b360e0b106014a49ec5cfa9700414a82ed0",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K35",
+      "old_path": "knowledge/artifacts/records/K35.json",
+      "path": "knowledge/artifacts/records/relevant-cold-email.json",
+      "sha256": "bf25df0a99a439c091000046d2e5ccad93657fc2bbaf0726969f77795b2421c7",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K36",
+      "old_path": "knowledge/artifacts/records/K36.json",
+      "path": "knowledge/artifacts/records/presentation-reading-context.json",
+      "sha256": "0a48624da9d0487ffd96eccc6798517cc37cf598404a5a07d9b95e8e0788e9e6",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K37",
+      "old_path": "knowledge/artifacts/records/K37.json",
+      "path": "knowledge/artifacts/records/audience-dependent-slide-order.json",
+      "sha256": "583c005e59b3147045d5322bf34a13d3afaed5bb09b41e3e56f79db488cdd5dc",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K38",
+      "old_path": "knowledge/artifacts/records/K38.json",
+      "path": "knowledge/artifacts/records/captions-explain-images.json",
+      "sha256": "ac527ab18cba856ddd775e0d70ad774f1e979a45639855bf8badb227067e25c5",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K39",
+      "old_path": "knowledge/artifacts/records/K39.json",
+      "path": "knowledge/artifacts/records/buyer-centered-product-pages.json",
+      "sha256": "8bff93a265715ff428c1720a78fa47d6a65ae39a234aa5ac7fbaadbb577ebc3c",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K40",
+      "old_path": "knowledge/artifacts/records/K40.json",
+      "path": "knowledge/artifacts/records/verify-editorial-effect.json",
+      "sha256": "05f40c905fed5c5c784d2d7a85fe99c2ccb921820be7fea567632f11b44af219",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q01",
+      "old_path": "knowledge/artifacts/records/Q01.json",
+      "path": "knowledge/artifacts/records/meaning-and-fact-preservation.json",
+      "sha256": "e8ed1646fb228f7da78819420e08467a01c2f7023bc769d702bc5b0122fc8376",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q02",
+      "old_path": "knowledge/artifacts/records/Q02.json",
+      "path": "knowledge/artifacts/records/task-and-audience-fit.json",
+      "sha256": "02349ad691dfc855a7279f82ae868279ac471d5f4870a80d108f4f856fe6312a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q03",
+      "old_path": "knowledge/artifacts/records/Q03.json",
+      "path": "knowledge/artifacts/records/change-grounding-and-traceability.json",
+      "sha256": "e8e358202e8c650d2fe8202b45ec0c54ef0f85416e7149a87245bd442c041e21",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q04",
+      "old_path": "knowledge/artifacts/records/Q04.json",
+      "path": "knowledge/artifacts/records/honest-evaluation-status.json",
+      "sha256": "bc8fca034a69a663b61dfe33c4fdf3ca57c9415a6bfc2d547fa02151831c846f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:R01",
+      "old_path": "knowledge/artifacts/records/R01.json",
+      "path": "knowledge/artifacts/records/russian-text-editor.json",
+      "sha256": "bd75af7010a5e708f5564f2f32824d6f89907a297123f532bd3effc0558a597b",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:R02",
+      "old_path": "knowledge/artifacts/records/R02.json",
+      "path": "knowledge/artifacts/records/editorial-reviewer.json",
+      "sha256": "15abeca8b9452f6847be2fba6f4221c5c909d48f39450c7add5c76c1d9d3310a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S01",
+      "old_path": "knowledge/artifacts/records/S01.json",
+      "path": "knowledge/artifacts/records/ru10-define-editing-task.json",
+      "sha256": "6058d41ccebadaaf7251bb35edbcfb6f32a14ec0e1404af69b02b2e1a06fcab8",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S02",
+      "old_path": "knowledge/artifacts/records/S02.json",
+      "path": "knowledge/artifacts/records/ru10-edit-wording-without-meaning-loss.json",
+      "sha256": "4392fc8188ab5a6ade41f36d36a7c0cc1633bfba09c949d83658ec2cd40cbbb5",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S03",
+      "old_path": "knowledge/artifacts/records/S03.json",
+      "path": "knowledge/artifacts/records/ru10-preserve-numbers-and-conditions.json",
+      "sha256": "b0dec6935328b4aa05b6d5eaf4b98fdeb2f1e3bffdf64c8346f4310f7d6f988a",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S04",
+      "old_path": "knowledge/artifacts/records/S04.json",
+      "path": "knowledge/artifacts/records/ru10-ground-evaluations-in-facts.json",
+      "sha256": "f61ab3a36fa338da3991845b2d952e732cea1953f8c9862fa79863869123a85f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S05",
+      "old_path": "knowledge/artifacts/records/S05.json",
+      "path": "knowledge/artifacts/records/ru10-structure-sentences-and-paragraphs.json",
+      "sha256": "6f61af2d43747e2f10778e95adc911b647ba8be399d01f49b252a60bd3a23268",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S06",
+      "old_path": "knowledge/artifacts/records/S06.json",
+      "path": "knowledge/artifacts/records/ru10-write-actionable-instructions.json",
+      "sha256": "7a585884bb616b2fd52990dc1308703fbbd9b6040ea672b03986f6247cf2391e",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S07",
+      "old_path": "knowledge/artifacts/records/S07.json",
+      "path": "knowledge/artifacts/records/ru10-edit-complex-work-documents.json",
+      "sha256": "30ebd1f0f07210fde211c5349d6cfdea51bdbdd7b93d61c778eeb80c8cea093c",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S08",
+      "old_path": "knowledge/artifacts/records/S08.json",
+      "path": "knowledge/artifacts/records/ru10-write-about-people-and-companies.json",
+      "sha256": "ad2e85f7f00c11b75ee1d444023607c7c83c2dd7f5130ad016af05a9fafa91b3",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S09",
+      "old_path": "knowledge/artifacts/records/S09.json",
+      "path": "knowledge/artifacts/records/ru10-write-targeted-letters-and-releases.json",
+      "sha256": "bdc460d90f3fc835ec826926a853f374f64af797c8f9e2ccf08f7cb50809c575",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S10",
+      "old_path": "knowledge/artifacts/records/S10.json",
+      "path": "knowledge/artifacts/records/ru10-plan-slides-and-product-pages.json",
+      "sha256": "53a4ebb6702cb785a1d0bb797e064f58d3d8a318a8befef216e61b02684bc5da",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S11",
+      "old_path": "knowledge/artifacts/records/S11.json",
+      "path": "knowledge/artifacts/records/ru10-adjust-depth-to-reader.json",
+      "sha256": "fbe27c15b96ac99ef7394ec6e0e4a5b054c4aff69025e60f3978c6c9e1c1b315",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S12",
+      "old_path": "knowledge/artifacts/records/S12.json",
+      "path": "knowledge/artifacts/records/ru10-review-edits-and-source-trace.json",
+      "sha256": "acdcf6156d9a71fbf9479c06c478f130b60bbeddf91fa291113c6e5a0ad9216f",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:SOURCE",
+      "old_path": "knowledge/artifacts/records/SOURCE.json",
+      "path": "knowledge/artifacts/records/pishi-sokrashchay-source.json",
+      "sha256": "3e8a5eaded8d960814072a11609a2946cfa03183cde62eab51a8ffeae0b0aa41",
+      "bytes_equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:TEXT",
+      "old_path": "knowledge/artifacts/records/TEXT.json",
+      "path": "knowledge/artifacts/records/pishi-sokrashchay-ocr-text.json",
+      "sha256": "d4500c3c718c1e51215dfb4fe9c8bca43574a4bfcf5c37a1af2d6bd5a475ae2d",
+      "bytes_equal": true
+    }
+  ],
+  "scientific_claims_retested": false,
+  "native_clients_executed": false
+}

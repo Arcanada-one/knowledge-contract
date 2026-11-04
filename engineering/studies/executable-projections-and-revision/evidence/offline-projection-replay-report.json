@@ -1,0 +1,69 @@
+{
+  "profile": "r44-demo-build-results/1",
+  "accepted": true,
+  "archive_path": "/workspace/scratch/02da500fc3c8/deliverables/MM_R0044__EXECUTABLE_DEMO.zip",
+  "archive": {
+    "filename": "MM_R0044__EXECUTABLE_DEMO.zip",
+    "sha256": "53b9936ace5a90616b8fccd919e4038d1bb2b527bf7458322e26e42c3276fb0c",
+    "size_bytes": 1337257
+  },
+  "closed_zip_verification": {
+    "member_count": 58,
+    "all_payload_pins_match": true,
+    "exact_unique_safe_membership": true,
+    "crc_pass": true,
+    "demo_manifest_pin": {
+      "sha256": "ed8ddc64bcb4c9f6477273252dbf04c2f6d8e648344e12e80c842e1c96d639fd",
+      "size_bytes": 9919
+    },
+    "archive_pin": {
+      "sha256": "53b9936ace5a90616b8fccd919e4038d1bb2b527bf7458322e26e42c3276fb0c",
+      "size_bytes": 1337257
+    }
+  },
+  "actual_extracted_replay_count": 1,
+  "isolated_python_flag": true,
+  "offline_python_guard_enabled": true,
+  "original_workspace_data_access_required": false,
+  "extracted_bundle_unchanged": true,
+  "original_sources_unchanged": true,
+  "expected_projection_count_frozen_before_replay": 24,
+  "all_24_canonical_projection_equal": true,
+  "all_24_independent_verifier_accepted": true,
+  "replay_summary": {
+    "profile": "r44-demo-offline-replay-results/1",
+    "accepted": true,
+    "case_count": 5,
+    "candidate_bundles": 10,
+    "queries": 24,
+    "canonical_projections_equal": 24,
+    "projection_files_byte_equal": 24,
+    "independent_verifier_accepted": 24,
+    "available_queries": 24,
+    "blocked_queries": 0,
+    "input_manifest_unchanged": true,
+    "new_subject_model_calls": 0,
+    "new_OCR_calls": 0,
+    "new_native_trials": 0,
+    "new_semantic_assessments": 0,
+    "current_use_authority": false,
+    "network_calls_attempted": 0,
+    "outside_data_access_attempted": 0,
+    "historical_absolute_paths_opened": false,
+    "scope": "structural deterministic replay of saved outputs; not an independent model trial, semantic review or OCR-quality measurement",
+    "demo_manifest_pin": {
+      "sha256": "ed8ddc64bcb4c9f6477273252dbf04c2f6d8e648344e12e80c842e1c96d639fd",
+      "size_bytes": 9919
+    }
+  },
+  "new_subject_model_calls": 0,
+  "new_OCR_calls": 0,
+  "new_semantic_assessments": 0,
+  "atomic_no_clobber_final_publication": true,
+  "power_loss_durability_tested": false,
+  "freeze_pin": {
+    "sha256": "0850eff0982a5a7537d03355a5901eb05f37799591b3f9db76c1b5afc4d08697",
+    "size_bytes": 20512
+  },
+  "scope": "packaging and deterministic structural replay only"
+}

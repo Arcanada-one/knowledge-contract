@@ -1,15 +1,9 @@
 {
-  // Retained review records (DEC-AUP-0171) are machine-filed verbatim transcripts and reviewer inputs;
-  // they are kept byte-for-byte and are not edited to satisfy the style rules.
-  //
-  // Russian full texts of the Meaning Management papers and specifications (papers/ru/, spec/ru/) are the exact
-  // bytes of a reviewed edition apart from the declared release transform (front-matter keys, link routes, one
-  // comment; see receipts/meaning-management/). Reflowing 24 documents to satisfy heading, blank-line and
-  // inline-HTML rules would change reviewed text, so they are excluded from style linting only. Every other
-  // Markdown file, including the English entry pages, is still linted with the same rules.
+  // Historical corpus receipts and study evidence are retained records. Editing
+  // their text to satisfy style rules would invalidate provenance hashes.
+  // Canonical publication documents, navigation and compatibility links are linted.
   "ignores": [
     "corpus/publication-decisions/receipts/**",
-    "papers/ru/**",
-    "spec/ru/**"
+    "engineering/studies/*/evidence/**"
   ]
 }

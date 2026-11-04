@@ -1,0 +1,149 @@
+{
+  "run_id": "TARGETED_R0",
+  "executions": 60,
+  "cases": 30,
+  "passed": 60,
+  "failure_categories": {
+    "missed_dependencies": 0,
+    "extra_reassessments": 0,
+    "history_loss": 0,
+    "wrong_status": 0,
+    "wrong_target_revision": 0,
+    "false_authority_grants": 0,
+    "provenance_failures": 0,
+    "candidate_failures": 0,
+    "assessment_set_failures": 0,
+    "protected_set_failures": 0
+  },
+  "equal_pairs": 30,
+  "pairs": [
+    {
+      "case_id": "molchanova__NO_CHANGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__REP_MAP_OK",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__REP_MAP_WRONG",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__REP_MAP_MISSING",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__REP_MAP_EMPTY",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__SOURCE_TEXT",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__SOURCE_IMAGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__CONTRACT_PRESERVED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__CONTRACT_OMITTED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "molchanova__CONTRACT_UNKNOWN",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__NO_CHANGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__REP_MAP_OK",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__REP_MAP_WRONG",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__REP_MAP_MISSING",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__REP_MAP_EMPTY",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__SOURCE_TEXT",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__SOURCE_IMAGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__CONTRACT_PRESERVED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__CONTRACT_OMITTED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "fain__CONTRACT_UNKNOWN",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__NO_CHANGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__REP_MAP_OK",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__REP_MAP_WRONG",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__REP_MAP_MISSING",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__REP_MAP_EMPTY",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__SOURCE_TEXT",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__SOURCE_IMAGE",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__CONTRACT_PRESERVED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__CONTRACT_OMITTED",
+      "all_non_arm_output_equal": true
+    },
+    {
+      "case_id": "timofeev__CONTRACT_UNKNOWN",
+      "all_non_arm_output_equal": true
+    }
+  ],
+  "unresolved_mapping_assessments": 36,
+  "unknown_contract_assessments": 12,
+  "qualification_checks": 40,
+  "native_model_calls": 0,
+  "human_subject_calls": 0,
+  "scope": "predeclared finite development dependency and history preservation",
+  "superiority_established": false,
+  "timing_scope": "single local invocation incl shared evidence decode; not inference or product latency"
+}

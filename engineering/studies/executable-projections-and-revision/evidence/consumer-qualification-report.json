@@ -1,0 +1,55 @@
+{
+  "profile": "r44-independent-consumer-review/1",
+  "conclusion": "qualified_on_frozen_finite_suite",
+  "pre_freeze_findings": [
+    {
+      "finding": "Unexpected exceptions from invalid JSON types",
+      "status": "explicit guards and CLI error receipt implemented before qualification",
+      "unfixed_candidate_executed": false
+    },
+    {
+      "finding": "Python bool/number equality permitted loss of preserved JSON type",
+      "status": "canonical JSON preservation specified and implemented before qualification",
+      "unfixed_candidate_executed": false
+    },
+    {
+      "finding": "B dependencies normalization needed explicit lossless relation output",
+      "status": "PROFILE relations/typed_links clarified before qualification",
+      "unfixed_candidate_executed": false
+    }
+  ],
+  "qualification": {
+    "run_id": "QUALIFICATION_R0",
+    "control_executions": 102,
+    "control_expected_outcomes": 102,
+    "control_unexpected_outcomes": 0,
+    "ab_equal_pairs": 51,
+    "mutants_rejected": 12,
+    "candidate_unchanged_during_run": true,
+    "consumer_model_calls": 0,
+    "subject_calls": 0
+  },
+  "frozen_controls": {
+    "sha256": "5e50e71c8122684fe89c6455537c9b85c8f390ea1fddaf6eec35b1411f56861f",
+    "size_bytes": 34344
+  },
+  "bound_implementation": {
+    "sha256": "29f7391ade4d461ff5aa315303cbde6f0a1c3ca7054a9d86bd0995b26a135acd",
+    "size_bytes": 21426
+  },
+  "bound_profile": {
+    "sha256": "cc8966fef81468f917569fc9079a4c2ab46ea79194cda8a52fee859cf8335767",
+    "size_bytes": 14451
+  },
+  "independent_verifier": {
+    "sha256": "79b9300b2248ae70ef57741134c4146c98e69afd2f42fd76a4de6bb272573115",
+    "size_bytes": 12585
+  },
+  "remaining_limits": [
+    "finite authored controls are not proof for all inputs",
+    "CLI boundary qualified; no blanket assertion about arbitrary nonJSON Python objects",
+    "source semantic completeness separately reviewed",
+    "same agent family; no independent human expert or external certification"
+  ],
+  "subject_calls": 0
+}

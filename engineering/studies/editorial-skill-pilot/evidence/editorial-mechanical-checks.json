@@ -1,0 +1,80 @@
+{
+  "schema": "arcanada.publication-editor-mechanical-check/1",
+  "scope": "Exact bytes, literal presence, counts and Markdown structure only; not preservation of meaning.",
+  "frozen_inputs": [
+    {
+      "path": "input/section.md",
+      "sha256": "eec7712c2819e844ff6fcc6f2b6afedec2b584d5bd90d496824261e6e2f0024b",
+      "matches": true
+    },
+    {
+      "path": "input/context.md",
+      "sha256": "52b3be4b99de31e3a83e54bde1309d922df7864eec07d945295c623d46cb6d04",
+      "matches": true
+    },
+    {
+      "path": "input/common-brief.md",
+      "sha256": "d5e9d2a5af99b699f6e1e4700450e88ac33de7ea867f0333bb0fd4849c412539",
+      "matches": true
+    },
+    {
+      "path": "PROTECTED_CLAIMS.json",
+      "sha256": "81c45bbbb5e852b701f7404cbb58a155c919786d531d3341734b4ba03e2a0c07",
+      "matches": true
+    },
+    {
+      "path": "PILOT_PROTOCOL.md",
+      "sha256": "0fe13410a1459157de83ca9fad087970a69d20ff37f2fbbfafa68b3da5f6167f",
+      "matches": true
+    }
+  ],
+  "source_words_whitespace": 804,
+  "source_bytes_utf8": 11680,
+  "variants": {
+    "baseline": {
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "size_bytes": 12127,
+      "words_whitespace": 830,
+      "characters": 6854,
+      "missing_literals": [],
+      "protected_literals_count": 37,
+      "anchors_count": 5,
+      "links_count": 3,
+      "headings_count": 5,
+      "table_dimension_count": 8,
+      "checks": {
+        "first_attempt_hash_matches": true,
+        "all_protected_literals_present": true,
+        "headings_equal": true,
+        "anchors_equal_order": true,
+        "anchors_unique": true,
+        "link_destinations_equal_counts": true,
+        "table_dimensions_equal_order": true
+      },
+      "passed": true
+    },
+    "with-skills": {
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "size_bytes": 12029,
+      "words_whitespace": 820,
+      "characters": 6795,
+      "missing_literals": [],
+      "protected_literals_count": 37,
+      "anchors_count": 5,
+      "links_count": 3,
+      "headings_count": 5,
+      "table_dimension_count": 8,
+      "checks": {
+        "first_attempt_hash_matches": true,
+        "all_protected_literals_present": true,
+        "headings_equal": true,
+        "anchors_equal_order": true,
+        "anchors_unique": true,
+        "link_destinations_equal_counts": true,
+        "table_dimensions_equal_order": true
+      },
+      "passed": true
+    }
+  },
+  "passed": true
+}

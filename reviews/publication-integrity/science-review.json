@@ -1,0 +1,514 @@
+{
+  "review_type": "internal-agent scientific and specification review",
+  "reviewer": "publication_science_review (separate internal agent in the same collaborative session)",
+  "reviewed_at_utc": "2026-11-04T01:25:59.561885+00:00",
+  "input_basis": {
+    "repository": "knowledge-contract",
+    "base_git_commit": "570f76b6d9a189295c3229254821c30748383965",
+    "state": "integrated working tree before source commit; exact inputs identified by per-file SHA-256",
+    "paths": "repository-relative"
+  },
+  "verdict": {
+    "decision": "accept",
+    "scope": "The pinned eight scientific papers and eleven engineering specifications as bounded formal and normative texts. Selected study passages support the stated inferential boundaries.",
+    "not_established": [
+      "external scientific validation",
+      "independent external peer review",
+      "novelty or priority certification",
+      "empirical superiority",
+      "implementation or production certification",
+      "complete CI status",
+      "publication or corpus-admission authorization"
+    ]
+  },
+  "actual_review_scope": {
+    "papers_fully_reviewed": 8,
+    "specifications_fully_reviewed": 11,
+    "numbered_formal_results_checked": 24,
+    "studies_reviewed_selectively": 6,
+    "additional_inputs_fully_read": [
+      "AGENTS.md",
+      "README.md",
+      "publication-catalog.json",
+      "reference/glossary/GLOSSARY.md"
+    ],
+    "method": "All eight staging papers were read in full, and all complete changes to their integrated versions were read and reconciled. Three previously fully read specifications were reconciled against their complete integrated diffs; the remaining eight integrated specifications were read in full. The final integrated hashes were rechecked before this report. Study review was limited to the sections listed per input."
+  },
+  "formal_result_review": [
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "result_count": 5,
+      "heading": "§4, Propositions 1–5",
+      "checked_argument": "Indistinguishable-world argument; least finite dependency closure; narrowing under mandatory strengthening; intersection of consequences under additional readings; complete backward slicing of a finite deterministic DAG.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "result_count": 3,
+      "heading": "§3, Propositions 1–2; §4, Proposition 3",
+      "checked_argument": "Partial-correctness composition, finite preservation by transitivity, and impossibility of a left inverse for a noninjective map. Also checked the common consequence F∨G and residual reconstruction C∧(¬C∨F)≡F under F⇒C.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "result_count": 1,
+      "heading": "§4, Conditional preservation theorem",
+      "checked_argument": "Complete material dependencies, unchanged relevant observations, property-preserving transformation, and independent current admission imply only preservation of the already verified finite property set.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "result_count": 2,
+      "heading": "§3, Propositions 1–2",
+      "checked_argument": "Topological induction over a finite acyclic derivation with true premises and sound rules; an in-domain countermodel refutes its universal claim.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "result_count": 4,
+      "heading": "§5, Propositions 1–4",
+      "checked_argument": "Generation-bound admission; duplicate handling within the specified atomic internal state boundary; reverse reachability in a complete dependency graph; preservation of observations outside an unchanged product-state component set.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/knowledge-utility/PAPER.md",
+      "result_count": 2,
+      "heading": "§3, Proposition 1; §6, Proposition 2",
+      "checked_argument": "Conservation under explicitly nonduplicated cost allocations; B+nh<nm iff n(m−h)>B. Also checked the joint-value counterexample against additive leave-one-out attribution and the distinction between total policy effects and attribution to one artifact.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "result_count": 3,
+      "heading": "§4, Propositions 1–3",
+      "checked_argument": "Scoped finite enumeration, polynomial set-cover construction, and the stated cardinality-greedy recurrence under normalized monotone submodularity. Joint-ground complementarity and mandatory-closure counterexamples correctly delimit the greedy result.",
+      "finding": "No invalid inference found under the stated assumptions."
+    },
+    {
+      "path": "papers/revision-and-governance/PAPER.md",
+      "result_count": 4,
+      "heading": "§4, Propositions 1–4",
+      "checked_argument": "Immutable pinned selection, deterministic equal-input transfer, complete reverse dependency reachability, and the absence of a truth inference from normative adoption alone.",
+      "finding": "No invalid inference found under the stated assumptions."
+    }
+  ],
+  "blocking_findings": [],
+  "nonblocking_defects": [],
+  "resolved_findings": [
+    {
+      "id": "R-01",
+      "classification": "resolved nonblocking format conformance issue",
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "heading": "3. Publication formats",
+      "finding": "The earlier staging manuscript set omitted description metadata required by the registry. Every integrated paper and specification reviewed here now includes a nonempty description. The earlier issue is closed for the hashed integrated inputs.",
+      "required_correction": "Completed before this final review inventory; no remaining correction."
+    }
+  ],
+  "nonblocking_boundary_observations": [
+    {
+      "id": "B-01",
+      "classification": "nonblocking boundary observation",
+      "locations": [
+        {
+          "path": "papers/controlled-knowledge-reuse/PAPER.md",
+          "heading": "4. Conditional preservation theorem"
+        },
+        {
+          "path": "papers/semantic-objects-and-context/PAPER.md",
+          "heading": "4. Conditional results"
+        },
+        {
+          "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+          "heading": "3. Dependency tracking"
+        }
+      ],
+      "finding": "Material-dependency completeness and correct semantic interpretation are assumptions, not consequences of a manifest, hash, or graph traversal. The texts explicitly retain this limitation.",
+      "required_correction": "None in the reviewed text. Retain the stated premises when summarizing or applying these results."
+    },
+    {
+      "id": "B-02",
+      "classification": "nonblocking boundary observation",
+      "locations": [
+        {
+          "path": "papers/retrieval-and-context-composition/PAPER.md",
+          "heading": "4. Exactness and special-case guarantees"
+        },
+        {
+          "path": "papers/constrained-transformations/PAPER.md",
+          "heading": "3. Composition and preservation"
+        }
+      ],
+      "finding": "The formal contribution is an integrated model with elementary conditional arguments and acknowledged classical special cases. This review does not establish priority or novel mathematics; the texts do not require those stronger claims.",
+      "required_correction": "None in the reviewed text. Do not convert this internal acceptance into a novelty or priority certification."
+    },
+    {
+      "id": "B-03",
+      "classification": "nonblocking boundary observation",
+      "locations": [
+        {
+          "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+          "heading": "5. Admission and execution"
+        },
+        {
+          "path": "engineering/specifications/book-package/SPECIFICATION.md",
+          "heading": "1. Purpose and validation boundary"
+        },
+        {
+          "path": "engineering/specifications/status-model/SPECIFICATION.md",
+          "heading": "5. Scientific and editorial status"
+        }
+      ],
+      "finding": "Specified obligations exceed what structural or synthetic conformance checks alone establish. The core identifies its trusted-input limitation, the book profile disclaims conversion fidelity and runtime admission, and the status model separates internal review from external peer review.",
+      "required_correction": "None in the reviewed text. Keep implementation, semantic fidelity, authorization, and review observations separately scoped."
+    },
+    {
+      "id": "B-04",
+      "classification": "nonblocking boundary observation",
+      "locations": [
+        {
+          "path": "papers/knowledge-utility/PAPER.md",
+          "heading": "7. Evaluation and falsification"
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+          "heading": "Counterarguments and boundaries"
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+          "heading": "Reproduction and claim limits"
+        }
+      ],
+      "finding": "The paper-to-study connection supports bounded counterexamples and local process observations. It does not establish a population effectiveness advantage, measured operational cost savings, or a causal benefit attributable to an individual skill.",
+      "required_correction": "None in the reviewed text. Preserve the comparator ties, missing measurements, and analytical-versus-observed distinction."
+    }
+  ],
+  "negative_findings": [
+    "No invalid numbered proposition, theorem, reduction, or displayed argument was found under its stated assumptions in the eight reviewed papers.",
+    "No paper/specification contradiction was found on dependency closure, cycles, semantic versus byte preservation, historical versus current use, or the separation of revision from assessment.",
+    "No conflation of constraints, available capability, competency assessment, current authority, and result acceptance was found in the integrated definitions and normative requirements.",
+    "No claim that the cited finite studies establish general semantic completeness, graph superiority, causal effectiveness, production readiness, or universal economic benefit was found in the reviewed bridge passages.",
+    "No active blocking or nonblocking manuscript defect remained in the completed scope. Boundary observations below are limitations already stated in the text, not unexecuted tasks."
+  ],
+  "limits": [
+    "This is a separate internal agent assessment within the same collaborative authoring session. It is neither blind nor independent external peer review, and no human reviewer approval is asserted.",
+    "The reviewer performed manual content reasoning, not machine-checked formal verification. A missed error remains possible.",
+    "The six engineering studies were read selectively for their abstracts, stated claim boundaries, counterarguments, and conclusions. Their full narratives and raw evidence were not audited by this reviewer. Another agent was assigned that audit; its work is not represented here as this reviewer's own verification.",
+    "No historical model experiment, public replay program, schema test, CI job, benchmark, deployment, API readback, or corpus-admission procedure was executed as part of this scientific review.",
+    "No original private source corpus, author identity, source rights, factual domain conclusion, or real-world authorization was independently authenticated.",
+    "This review does not certify scholarly novelty, literature completeness, external standards conformance, universal language interpretation, security, scalability, or production suitability. External references were not independently re-retrieved during this review.",
+    "The findings apply only to the exact input bytes listed in the inventory. They do not automatically transfer to future revisions or to a service implementation."
+  ],
+  "input_inventory": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "dfbd2ae7d4aa82203ac860e65873b9078e308bb4069d6110267eb1922b8c7121",
+      "bytes": 3921,
+      "lines": 39,
+      "kind": "context/reference",
+      "review_scope": "full content"
+    },
+    {
+      "path": "README.md",
+      "sha256": "572457fdf06928294aede5c566b3e1ae53025a78eb771febbc316b62a55fb2e9",
+      "bytes": 5176,
+      "lines": 45,
+      "kind": "context/reference",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "sha256": "8783552e775b1d4a3e0c0ca16c832dce552de753214a4c27041903d0095e5d34",
+      "bytes": 7556,
+      "lines": 72,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "sha256": "9def8270ca1520a33ead519b00f8da0777c7ab62f04ee2413c578ffd8b25be70",
+      "bytes": 16457,
+      "lines": 142,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "sha256": "6ce6cdf9ae537dc61dea788e12eca4b38c009d0f8111d516f696fbb58e8c9155",
+      "bytes": 6125,
+      "lines": 65,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "sha256": "102676d61dad36cc3cf4961b8ad68b342885272d065ee7506825f3b1a0609bd3",
+      "bytes": 6703,
+      "lines": 71,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "sha256": "5f379fdad9b76b384a0b3abcc53ca42aaa8030ff5272ac28bf91bcc2f230aaa5",
+      "bytes": 7050,
+      "lines": 74,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "sha256": "3eb380947abb58ab73dcd3f97adc65f2b4805569728806f7802982bae4b8c635",
+      "bytes": 7368,
+      "lines": 82,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "sha256": "3c6db41d46b0914441af90fb8984aae8f8da8b2a056e1904daf16f4f230d037b",
+      "bytes": 8458,
+      "lines": 85,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "sha256": "421987294714317959697d9b2ea4c338a952585c19294a836567d4d701c07e96",
+      "bytes": 6612,
+      "lines": 66,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "sha256": "919525f3e70ea3abe2b10de6d154f3693e8d213ca6dba7b37fa2c4ddec4593b2",
+      "bytes": 6418,
+      "lines": 73,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "sha256": "2c1323d7845fe1b18281b91880d0db4791048c9f22d888f0fed26e0188290c50",
+      "bytes": 6755,
+      "lines": 71,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "sha256": "fa7c443248cca872e0ba77fc55e07ec69cb0ef52357c9fa2dbb88119bfae8d38",
+      "bytes": 6520,
+      "lines": 72,
+      "kind": "specification",
+      "review_scope": "full content"
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+      "bytes": 11242,
+      "lines": 85,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Claim, test, counterexample, and limit",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+      "bytes": 10851,
+      "lines": 94,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Claim, evidence, and boundary",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+      "bytes": 11913,
+      "lines": 93,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Counterarguments and boundaries",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+      "bytes": 13327,
+      "lines": 92,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Counterexample to claim-level minimality",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+      "bytes": 11664,
+      "lines": 113,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Reproduction and claim limits",
+        "Conclusion"
+      ]
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+      "bytes": 11438,
+      "lines": 94,
+      "kind": "study",
+      "review_scope": "selected sections only",
+      "sections_reviewed": [
+        "Abstract",
+        "Limits and conclusion"
+      ]
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "sha256": "9cd74f05b1612e136060f2190a13099a35e6e4dfafe6c0a1fc1b543719ea0db0",
+      "bytes": 13973,
+      "lines": 143,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "sha256": "9c799b25dbc7c7336e173f31a4877034fd05713151da8c380519f5884fa1370c",
+      "bytes": 13371,
+      "lines": 118,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "sha256": "60bd9216daddf0dc69396acfe2da2e29cc046bdb807717847f13926e8ba398b4",
+      "bytes": 13983,
+      "lines": 121,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "sha256": "1460a5f983dd83ee08e01023b37597f50bfbd7e37f371d0b3530f55c530f583a",
+      "bytes": 13258,
+      "lines": 122,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/knowledge-utility/PAPER.md",
+      "sha256": "01f037b2266a8bbd85d0f69ed8e16a00fd4ebdd7e7f663b35949e006343ea383",
+      "bytes": 13304,
+      "lines": 140,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "sha256": "618d3af8d7f41823246627efe3c497069a374250fdf318d1c4089d890c1543cc",
+      "bytes": 13010,
+      "lines": 123,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/revision-and-governance/PAPER.md",
+      "sha256": "0e348ea0c656509cc24de82d444175fa7366e9edacb70e2a4a706672b5e61154",
+      "bytes": 13579,
+      "lines": 126,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "sha256": "a52ed66427fb840cfa6b2e06ad8f856c94bbfdbff01e9be19b70d7a2862b251f",
+      "bytes": 14831,
+      "lines": 151,
+      "kind": "paper",
+      "review_scope": "full content"
+    },
+    {
+      "path": "publication-catalog.json",
+      "sha256": "505ba15e8552a4bb5636e636ec0f1d0fa7e128ea37a79d480ec86167ac57c3d1",
+      "bytes": 11570,
+      "lines": 267,
+      "kind": "context/reference",
+      "review_scope": "full content"
+    },
+    {
+      "path": "reference/glossary/GLOSSARY.md",
+      "sha256": "1c6be362e0d83b5f85f0c8b39b082780096beb0c8e3220728cf2832e36795814",
+      "bytes": 12113,
+      "lines": 101,
+      "kind": "context/reference",
+      "review_scope": "full content"
+    }
+  ],
+  "metadata_readback": {
+    "verified_at_utc": "2026-11-04T01:30:16.444179+00:00",
+    "result": "A final readback verified that the six study files changed only the front-matter value review_state from pending-publication-review to internally-reviewed. Their bodies are byte-identical to the reviewed integrated snapshots, and all 23 other inventoried inputs are unchanged. The six study hashes and byte counts below were refreshed; the substantive review scope and verdict are unchanged. This metadata records an internal review and does not imply external peer review.",
+    "unchanged_other_input_count": 23,
+    "changed_inputs": [
+      {
+        "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+        "previous_sha256": "4ccf4bd49378c08a9e97bf33229280a4465fd3e53870824da309892683e6f3e8",
+        "final_sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      },
+      {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "previous_sha256": "2404bc038f5fe57beb1f14967356d2d63164032f64b3f5b5b3c9e4776a9d50d2",
+        "final_sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      },
+      {
+        "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "previous_sha256": "bc966b95d7e313981fe5cbc4a7d3b443af17da5a7d26b27396697ece73192140",
+        "final_sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      },
+      {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "previous_sha256": "0feb0ff8fb321707d162e44381218b286b8a2a7905b8320c12d9a904fec9cba2",
+        "final_sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      },
+      {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "previous_sha256": "28d1711af2bece4e3f10a9cb40ea98158ed1ab5adee00016708e5c94cbd21ad0",
+        "final_sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      },
+      {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "previous_sha256": "88f7164dd18fba5b0b6f1fc348f6b8c5d3affd6098a363d7716d344fb15606dc",
+        "final_sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+        "only_change": "review_state: pending-publication-review -> internally-reviewed",
+        "body_identical_to_reviewed_snapshot": true
+      }
+    ],
+    "substantive_verdict_unchanged": true
+  }
+}

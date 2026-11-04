@@ -1,0 +1,110 @@
+{
+  "schema": "mm.integration-qualification/1",
+  "target_release": "RU10_EDITOR_KC_r2",
+  "target_manifest_sha256": "d23f927703887d4f928a8ca4aea42a9831086ca69c79daed04ef8849025b7d50",
+  "replay_conforms": true,
+  "exact_environment_reproduced": true,
+  "expected_preflight_decision": {
+    "expected_behavior": true,
+    "technical_status": "needs_resolution",
+    "resolution_codes": [
+      "R_EXPECTED_HEAD"
+    ],
+    "server_accepted": false,
+    "semantic_certified": false,
+    "authority_granted": false
+  },
+  "selftests_reproduced": true,
+  "expected_inventory_counts": true,
+  "snapshot_after": {
+    "passed": true,
+    "files_checked": 239,
+    "problems": []
+  },
+  "original_unchanged": {
+    "passed": true,
+    "files_checked": 239,
+    "problems": []
+  },
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "tools/verify_release.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "matched_exit": true,
+      "timed_out": false,
+      "wall_seconds": 0.07070101800127304,
+      "stdout": "01.stdout.txt",
+      "stderr": "01.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/kit.py",
+        "validate"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "matched_exit": true,
+      "timed_out": false,
+      "wall_seconds": 0.27999320900198654,
+      "stdout": "02.stdout.txt",
+      "stderr": "02.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/selftest.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "matched_exit": true,
+      "timed_out": false,
+      "wall_seconds": 6.393558124000265,
+      "stdout": "03.stdout.txt",
+      "stderr": "03.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/kit.py",
+        "preflight"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "matched_exit": true,
+      "timed_out": false,
+      "wall_seconds": 1.6068671890025144,
+      "stdout": "04.stdout.txt",
+      "stderr": "04.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tools/verify_release.py"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "matched_exit": true,
+      "timed_out": false,
+      "wall_seconds": 0.049030710997612914,
+      "stdout": "05.stdout.txt",
+      "stderr": "05.stderr.txt"
+    }
+  ],
+  "scientific_conclusion": "Technical replay of the pinned finite implementation only.",
+  "new_model_runs": 0,
+  "new_text_outcomes": 0,
+  "external_semantic_review": false,
+  "server_admission": "not_evaluated",
+  "production_ready": false,
+  "known_scope_limits": [
+    "No OS/network isolation claimed",
+    "Timing includes local subprocess overhead, not model latency",
+    "Hash pin provides identity, not author authentication",
+    "Publication completeness is audited separately"
+  ]
+}

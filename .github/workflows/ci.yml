@@ -76,33 +76,28 @@ jobs:
           "$RUNNER_TEMP/bp-venv/bin/python" -B tools/book_package_fixture.py write
           git diff --exit-code -- schemas/fixtures
 
-  scaffold:
-    name: scaffold
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: ubuntu-latest
+  publication-integrity:
+    name: publication-integrity
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Check public scaffold
-        shell: bash
+      - name: Install the publication parser
         run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          required = ('README.md', 'LICENSE', 'LICENSE-CODE', 'SECURITY.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md')
-          for name in required:
-              content = Path(name).read_text(encoding='utf-8')
-              if not content.strip():
-                  raise SystemExit(f'{name} is empty')
-          readme = Path('README.md').read_text(encoding='utf-8')
-          if 'Knowledge Contract Arcana' not in readme or '3.0.0-draft.1' not in readme or 'research remains in progress' not in readme:
-              raise SystemExit('README must identify the project, target, and research status')
-          for name in ('spec', 'papers', 'articles', 'schemas'):
-              if not (Path(name) / '.gitkeep').is_file():
-                  raise SystemExit(f'{name}/ scaffold is missing')
-          print('scaffold files and status: OK')
-          PY
+          sudo apt-get update
+          sudo apt-get install --yes pandoc
+          test "$(pandoc --version | head -1)" = "pandoc 3.1.3"
+      - name: Publication metadata, navigation and evidence checks
+        run: |
+          python3 -B -m unittest tools.test_check_publication -v
+          python3 -B tools/check_publication.py .
+      - name: Reproduce public finite studies
+        run: |
+          python3 -B engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py
+          python3 -B engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py
+          python3 -B engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py
+          python3 -B engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py
 
   licensing:
     name: licensing
@@ -114,7 +109,7 @@ jobs:
       # No fork filter and no secrets on this job or on `dco`: fork PRs must run both, because a skipped required check counts as passed.
       - name: Source register, DCO and workflow tests
         run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco tools.test_ci_workflow tools.test_check_separation -v
-      - name: Every papers/ and spec/ file declares its sources
+      - name: Every publication and evidence file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint
         run: |

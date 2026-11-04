@@ -1,0 +1,51 @@
+{
+  "schema": "arcanada.publication-editor-pilot-result/1",
+  "status": "completed",
+  "sample": "P00 section 2",
+  "scope": "local language editing with preservation of declared claims",
+  "source_words_whitespace": 804,
+  "variants": {
+    "baseline": {
+      "anonymous_label": "alpha",
+      "claims_preserved": 19,
+      "table_distinctions_preserved": 8,
+      "scores": {
+        "sentence_clarity": 2,
+        "references_and_terms": 2,
+        "coherence": 2,
+        "economy_without_loss": 1,
+        "scientific_genre_and_reader": 1
+      },
+      "total_score": 8,
+      "editorial_gate": "accept_for_editorial_scope",
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "words_whitespace": 830
+    },
+    "with-skills": {
+      "anonymous_label": "beta",
+      "claims_preserved": 19,
+      "table_distinctions_preserved": 8,
+      "scores": {
+        "sentence_clarity": 2,
+        "references_and_terms": 2,
+        "coherence": 2,
+        "economy_without_loss": 1,
+        "scientific_genre_and_reader": 1
+      },
+      "total_score": 8,
+      "editorial_gate": "accept_for_editorial_scope",
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "words_whitespace": 820
+    }
+  },
+  "preference": "tie",
+  "toolkit_operational_gate": "passed_in_declared_pilot_scope",
+  "causal_superiority_established": false,
+  "whole_corpus_edited": false,
+  "scientific_acceptance": false,
+  "native_agent_cli_tested": false,
+  "technical_audit_agent": "baseline_audit",
+  "blind_reviewer_agent": "pilot_blind_reviewer",
+  "source_scientific_status": "concept_draft",
+  "next_work": "Continue the prepared TASK on P00 section map, then P09, with per-section review; not executed in this pilot."
+}

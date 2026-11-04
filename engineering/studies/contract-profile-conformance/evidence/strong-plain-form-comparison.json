@@ -1,0 +1,168 @@
+{
+  "protocol": "i26-strong-plain-form-exploratory/0.1",
+  "design_timing": "post_R0_exploratory_not_preregistered",
+  "run_at_utc": "2026-10-26T16:02:12.098286+00:00",
+  "implementation_visibility": "Based on frozen public interface and known R0 results; KC implementation/author tests not inspected",
+  "code_sha256": "cf0f54101e688baf531fd0dbaa0e59066092f6a9516a7fa38658c3e5509d22a3",
+  "cases_sha256": "5804a07b1e33240344907c91408c51adb0133b4bc8bb1717aa00f93e5b6f76d4",
+  "oracles_sha256": "85caffcec5cc155724668e1f924ba9c39bf8d2202fe7fc0e850c1e32a150cb1d",
+  "recorded_KC_R0_ref": "evaluation/i26_challenge_R0.json",
+  "recorded_KC_R0_sha256": "4be5e9392972f205f7956f429dc75e76be167d13083b924dd825573cb0cb5801",
+  "scope": "Same nine preselected core/professional application cases; direct fixed-field checks with the same current data",
+  "method": "Fixed syntactic form adapter, direct source/work/actor/conditions/grant/capability bindings; no ontology or extensible profile registry",
+  "summary": {
+    "scenarios": 9,
+    "positive_controls": 3,
+    "forbidden_admissions": 6,
+    "plain_form_matches": 9,
+    "recorded_KC_R0_matches": 9
+  },
+  "rows": [
+    {
+      "id": "C01",
+      "input_digest": "0578cebc7987edcc3268ff482ccd1dc9d1e6a7b73328011b239933a449855a27",
+      "inputs_unchanged": true,
+      "expected_eligibility": true,
+      "plain_form": {
+        "supported": true,
+        "eligible": true,
+        "errors": []
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": true,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C02",
+      "input_digest": "da05d22b198f951ff5aaff9bfe3cedcff187c44b96a83cf3afc0ee6d7acccd50",
+      "inputs_unchanged": true,
+      "expected_eligibility": true,
+      "plain_form": {
+        "supported": true,
+        "eligible": true,
+        "errors": []
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": true,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C03",
+      "input_digest": "240aaa8fe3e56193d85c998c11141bc7a08cd873ac468a77e261034594171592",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "no_current_exact_capability:skill-transform"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C04",
+      "input_digest": "924dd8d5f4318f8c13002bde622bb516f201445d03bc296c5f3a83575dcbdee3",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "no_current_exact_capability:skill-transform"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C05",
+      "input_digest": "1faf1b915db0518aee210cd33ea29a1e9f7e725090932c10aac5ed325fbd838b",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "no_current_exact_execute_grant"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C06",
+      "input_digest": "c2a93300d396c4e681ad2865dce962e496c36a7acdd34bf02155dd61c4f5a87a",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "no_current_exact_execute_grant"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C06B",
+      "input_digest": "b27986b054fef90eadad0d562699be7c034c566278f698a68af7256a9db66463",
+      "inputs_unchanged": true,
+      "expected_eligibility": true,
+      "plain_form": {
+        "supported": true,
+        "eligible": true,
+        "errors": []
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": true,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C07",
+      "input_digest": "ad8411f19f0e1ed5bba7a23fd92959fff6cc736b27945124a68948072245ac9f",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "no_current_exact_execute_grant",
+          "no_current_exact_capability:skill-transform"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    },
+    {
+      "id": "C23",
+      "input_digest": "4e25bb727aef085163d57f5b896348716ff09ea2e1c6bd9109a2e7b06177c5fa",
+      "inputs_unchanged": true,
+      "expected_eligibility": false,
+      "plain_form": {
+        "supported": true,
+        "eligible": false,
+        "errors": [
+          "source_current_availability_not_established"
+        ]
+      },
+      "plain_form_matches": true,
+      "recorded_KC_R0_eligibility": false,
+      "recorded_KC_R0_matches": true
+    }
+  ],
+  "interpretation": "Equal outcomes would show that these nine obligations can be enforced by an ordinary direct checker. This provides no evidence that an ontology/profile registry is necessary.",
+  "limits": [
+    "Post-R0 exploratory comparison on known inputs",
+    "No latency or cost measurement",
+    "No all-profile conformance, source truth, production authorization or full professional workflow claim",
+    "Original 3/9 plain-form ablation remains a diagnostic comparator, not a strong alternative"
+  ]
+}

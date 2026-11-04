@@ -1,0 +1,237 @@
+{
+  "profile": "r41-reader-results/1",
+  "attempt": "OCR_READER_R0",
+  "stratum": "ocr",
+  "before_sha256": "42ec61d6dffa9309d297cb8f040316d73d49acf076b11d41241a8bf970661396",
+  "started_at_utc": "2026-10-27T19:55:41.876278+00:00",
+  "completed_at_utc": "2026-10-27T19:55:43.204460+00:00",
+  "scheduled_calls": 18,
+  "executed_calls": 18,
+  "all_scheduled_calls_present": true,
+  "technical_gates_passed": 18,
+  "technical_gates_failed": 0,
+  "parsed_object_outputs": 18,
+  "evaluated_calls": 18,
+  "technically_admitted_evaluations": 18,
+  "evaluation_exceptions": [],
+  "met": 252,
+  "violated": 0,
+  "per_criterion": {
+    "output_schema": {
+      "met": 18,
+      "violated": 0
+    },
+    "packet_provenance": {
+      "met": 18,
+      "violated": 0
+    },
+    "packet_preservation": {
+      "met": 18,
+      "violated": 0
+    },
+    "creation_history": {
+      "met": 18,
+      "violated": 0
+    },
+    "expected_status": {
+      "met": 18,
+      "violated": 0
+    },
+    "exact_records": {
+      "met": 18,
+      "violated": 0
+    },
+    "record_address_honesty": {
+      "met": 18,
+      "violated": 0
+    },
+    "required_relations": {
+      "met": 18,
+      "violated": 0
+    },
+    "relation_address_honesty": {
+      "met": 18,
+      "violated": 0
+    },
+    "required_losses": {
+      "met": 18,
+      "violated": 0
+    },
+    "no_false_conflicts": {
+      "met": 18,
+      "violated": 0
+    },
+    "loss_partitions": {
+      "met": 18,
+      "violated": 0
+    },
+    "authority_boundary": {
+      "met": 18,
+      "violated": 0
+    },
+    "import_assessment_binding": {
+      "met": 18,
+      "violated": 0
+    }
+  },
+  "parse_status_counts": {
+    "valid": 18
+  },
+  "reconstruction_status_counts": {
+    "complete": 6,
+    "partial": 12
+  },
+  "records": 63,
+  "relations": 51,
+  "current_use_allowed_true": 0,
+  "current_use_allowed_false": 18,
+  "frozen_pins_unchanged": true,
+  "frozen_pin_error": null,
+  "resource_observations": {
+    "whole_runner_wall_ns": 1325527605,
+    "sum_parent_subprocess_wall_ns": 1098959304,
+    "worker_metadata_count": 18,
+    "sum_worker_wall_ns": 184701772,
+    "sum_worker_cpu_ns": 164914383,
+    "maximum_worker_process_maxrss_kib_linux": 45156,
+    "concurrent_workload": {
+      "reported_by": "root orchestration before freeze",
+      "description": "Read-only R40 publication-equivalence replay runs concurrently outside the subject workers.",
+      "performance_benchmark_claimed": false
+    },
+    "scope": "Fresh deterministic Python workers; worker maxRSS includes runtime preload, CPU/wall metrics only where worker metadata exists. Concurrent technical publishing workload is recorded; these are local observations, not controlled throughput or product performance measurements. Authoring/model token and monetary costs are not measured here."
+  },
+  "native_model_calls": 0,
+  "human_subject_calls": 0,
+  "winner": null,
+  "I30_status": "in_progress_editorial",
+  "scope": "Known development schedule only. Criterion records are not independent observations or accuracy estimates. Technical failures remain visible; evaluations from failed technical calls are diagnostic, not admitted. Domain truth/OCR accuracy/current authority are not qualified.",
+  "cases": [
+    {
+      "call_id": "C0001",
+      "case_id": "OCR-CUL-TEXT",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0001/TERMINAL.json"
+    },
+    {
+      "call_id": "C0002",
+      "case_id": "OCR-CUL-FIGURE",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0002/TERMINAL.json"
+    },
+    {
+      "call_id": "C0003",
+      "case_id": "OCR-CUL-FIGURE__BAD_HASH",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0003/TERMINAL.json"
+    },
+    {
+      "call_id": "C0004",
+      "case_id": "OCR-CUL-FIGURE__STALE_REVISION",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0004/TERMINAL.json"
+    },
+    {
+      "call_id": "C0005",
+      "case_id": "OCR-CUL-FIGURE__MISSING_QUALITY",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0005/TERMINAL.json"
+    },
+    {
+      "call_id": "C0006",
+      "case_id": "OCR-CUL-FIGURE__MISSING_ASSET",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0006/TERMINAL.json"
+    },
+    {
+      "call_id": "C0007",
+      "case_id": "OCR-AUT-TEXT",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0007/TERMINAL.json"
+    },
+    {
+      "call_id": "C0008",
+      "case_id": "OCR-AUT-FIGURE",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0008/TERMINAL.json"
+    },
+    {
+      "call_id": "C0009",
+      "case_id": "OCR-AUT-FIGURE__BAD_HASH",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0009/TERMINAL.json"
+    },
+    {
+      "call_id": "C0010",
+      "case_id": "OCR-AUT-FIGURE__STALE_REVISION",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0010/TERMINAL.json"
+    },
+    {
+      "call_id": "C0011",
+      "case_id": "OCR-AUT-FIGURE__MISSING_QUALITY",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0011/TERMINAL.json"
+    },
+    {
+      "call_id": "C0012",
+      "case_id": "OCR-AUT-FIGURE__MISSING_ASSET",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0012/TERMINAL.json"
+    },
+    {
+      "call_id": "C0013",
+      "case_id": "OCR-NAV-TEXT",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0013/TERMINAL.json"
+    },
+    {
+      "call_id": "C0014",
+      "case_id": "OCR-NAV-FIGURE",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0014/TERMINAL.json"
+    },
+    {
+      "call_id": "C0015",
+      "case_id": "OCR-NAV-FIGURE__BAD_HASH",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0015/TERMINAL.json"
+    },
+    {
+      "call_id": "C0016",
+      "case_id": "OCR-NAV-FIGURE__STALE_REVISION",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0016/TERMINAL.json"
+    },
+    {
+      "call_id": "C0017",
+      "case_id": "OCR-NAV-FIGURE__MISSING_QUALITY",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0017/TERMINAL.json"
+    },
+    {
+      "call_id": "C0018",
+      "case_id": "OCR-NAV-FIGURE__MISSING_ASSET",
+      "technical_passed": true,
+      "evaluation_status": "evaluated",
+      "terminal_path": "observations/C0018/TERMINAL.json"
+    }
+  ]
+}
