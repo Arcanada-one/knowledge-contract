@@ -20,6 +20,9 @@ def first(reg, cid):
 
 
 REGISTRY_MUTATIONS = {
+    "invariant_check_marked_as_testing_the_claim": (lambda r: first(r, "KC3-P04-C2").update(evidence_kind="tests_the_claim", claim_origin="registrant_hypothesis", claim_basis_in_paper="authors-domain-assessment"), "cannot cite the paper's own assessment"),
+    "registrant_hypothesis_citing_the_paper": (lambda r: first(r, "KC3-P11-C1").update(claim_basis_in_paper="finite-test"), "must say that the paper does not state it"),
+    "composite_part_without_n_min": (lambda r: first(r, "KC3-P04-C1")["parts"]["definition"].pop("n_min"), "own n_min"),
     "paper_without_check_or_reason": (lambda r: r["no_testable_claim"].pop(0), "neither a check nor"),
     "paper_with_check_and_reason": (lambda r: r["no_testable_claim"].append({"paper": "P01", "reason": "x" * 50}), "has a check and also"),
     "duplicate_id": (lambda r: r["checks"].append(copy.deepcopy(r["checks"][0])), "duplicate check id"),
@@ -128,6 +131,13 @@ class RegistryTests(unittest.TestCase):
     def test_wilson_reachability_numbers(self):
         self.assertAlmostEqual(k.wilson(100, 100)[0], 0.963, places=3)
         self.assertGreaterEqual(k.wilson(200, 200)[0], 0.98)
+
+    def test_known_regression_checks_are_marked_as_such(self):
+        reg = {c["id"]: c for c in REG["checks"]}
+        for cid in ("KC3-P04-C2", "KC3-P07-C1", "KC3-P07-C2", "KC3-P10-C1", "KC3-P11-C1", "KC3-P10-C2"):
+            self.assertEqual(reg[cid]["evidence_kind"], "regression_of_our_implementation", cid)
+        for cid in ("KC3-P11-C1", "KC3-P10-C2", "KC3-P13-C1", "KC3-P04-C1"):
+            self.assertEqual(reg[cid]["claim_origin"], "registrant_hypothesis", cid)
 
     def test_registry_is_pinned(self):
         self.assertEqual(k.check_pin(RAW), [])

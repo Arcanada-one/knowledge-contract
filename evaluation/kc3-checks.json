@@ -4,6 +4,13 @@
  "status": "registered_before_any_run",
  "registered_for": "knowledge-contract papers P00 to P13 on the ARCH-MULTI-1.0 corpus",
  "note": "Written before any run. Checks marked regression_of_our_implementation test whether our pipeline conforms to a rule the papers state; they cannot refute a paper. Checks marked registrant_hypothesis or derived_from_limit test a claim the paper does not make in that form. Thresholds marked as the registrant's choice are not derived from earlier results. A receipt must cite this file's sha256 and the commit that introduced it.",
+ "weakening_triggers": [
+  "a gate was met only in part (for example the sample did not cover every format group)",
+  "a control behaved as required but a secondary control failed",
+  "the result holds only on a named subset of formats, languages or question kinds",
+  "the contamination check KC3-P11-C2 reports that memory answers at least half of the questions, for any check that uses the 21 questions",
+  "the reviewer independence class is weaker than registered"
+ ],
  "decision_rules": {
   "proportion_wilson": "Uses the 95% Wilson interval of the observed proportion and the check's direction and threshold. Direction at_least: supported when the lower bound is at or above the threshold, refuted when the upper bound is below it. Direction below: supported when the upper bound is below the threshold, refuted when the lower bound is at or above it. Any other interval gives not_measured with reason interval_straddles_threshold.",
   "exact_all": "Supported when at least n_min cases ran and every case behaved as predicted; refuted when any case violates the prediction (the violating cases are listed); not_measured when fewer than n_min cases ran.",
@@ -100,7 +107,7 @@
    "paper": "P01",
    "nature": "test",
    "paper_claim": "A structural validator checks pinned references and declared fields, not whether an image was read correctly.",
-   "claim_basis_in_paper": "authors-domain-assessment",
+   "claim_basis_in_paper": "limit",
    "data": [
     "D-PKG"
    ],
@@ -124,7 +131,7 @@
    "n_min": 200,
    "threshold": 0.98,
    "direction": "below",
-   "claim_origin": "stated_in_paper",
+   "claim_origin": "derived_from_limit",
    "evidence_kind": "tests_the_claim"
   },
   {
@@ -280,14 +287,16 @@
    "parts": {
     "relation_with_conditions": {
      "decision_rule": "paired_difference",
-     "direction": "positive"
+     "direction": "positive",
+     "n_min": 5
     },
     "definition": {
      "decision_rule": "paired_difference_no_advantage",
-     "advantage_sign": "positive"
+     "advantage_sign": "positive",
+     "n_min": 5
     }
    },
-   "composite_rule": "Supported only when both parts are supported; refuted when either part is refuted; otherwise not_measured.",
+   "composite_rule": "Supported only when both parts are supported; refuted when either part is refuted; otherwise not_measured. A part with fewer questions of its kind than its n_min is not_measured with reason insufficient_questions.",
    "claim_origin": "registrant_hypothesis",
    "evidence_kind": "tests_the_claim"
   },
@@ -320,7 +329,7 @@
    "status": "unrun",
    "n_min": 3,
    "claim_origin": "stated_in_paper",
-   "evidence_kind": "tests_the_claim"
+   "evidence_kind": "regression_of_our_implementation"
   },
   {
    "id": "KC3-P05-C1",
@@ -383,7 +392,7 @@
    "status": "unrun",
    "n_min": 5,
    "claim_origin": "stated_in_paper",
-   "evidence_kind": "tests_the_claim"
+   "evidence_kind": "regression_of_our_implementation"
   },
   {
    "id": "KC3-P07-C2",
@@ -414,7 +423,7 @@
    "status": "unrun",
    "n_min": 1,
    "claim_origin": "stated_in_paper",
-   "evidence_kind": "tests_the_claim"
+   "evidence_kind": "regression_of_our_implementation"
   },
   {
    "id": "KC3-P07-C3",
@@ -536,14 +545,14 @@
     "depends on the converter and publication path run by the Conversion work item"
    ],
    "claim_origin": "stated_in_paper",
-   "evidence_kind": "tests_the_claim"
+   "evidence_kind": "regression_of_our_implementation"
   },
   {
    "id": "KC3-P10-C2",
    "paper": "P10",
    "nature": "test",
    "paper_claim": "A weakened or refuted claim goes through revision and canon, not a silent edit.",
-   "claim_basis_in_paper": "authors-domain-assessment",
+   "claim_basis_in_paper": "not-in-paper",
    "data": [
     "D-PKG"
    ],
@@ -564,7 +573,7 @@
    "spend_cap": "not_applicable",
    "status": "unrun",
    "n_min": 1,
-   "claim_origin": "stated_in_paper",
+   "claim_origin": "registrant_hypothesis",
    "evidence_kind": "regression_of_our_implementation"
   },
   {
@@ -572,7 +581,7 @@
    "paper": "P11",
    "nature": "test",
    "paper_claim": "Checks and their refuting conditions are fixed before the run.",
-   "claim_basis_in_paper": "authors-domain-assessment",
+   "claim_basis_in_paper": "not-in-paper",
    "data": [
     "D-PKG"
    ],
@@ -593,7 +602,7 @@
    "spend_cap": "not_applicable",
    "status": "unrun",
    "n_min": 1,
-   "claim_origin": "stated_in_paper",
+   "claim_origin": "registrant_hypothesis",
    "evidence_kind": "regression_of_our_implementation"
   },
   {
@@ -601,14 +610,14 @@
    "paper": "P11",
    "nature": "test",
    "paper_claim": "Results on well-known books cannot exclude prior model exposure.",
-   "claim_basis_in_paper": "authors-domain-assessment",
+   "claim_basis_in_paper": "limit",
    "data": [
     "D-Q21"
    ],
    "procedure": "Ask a model with no corpus access each of the 21 questions (closed book). A blind reviewer marks whether the answer is correct and cites the expected source.",
    "metric": "Proportion of questions answered correctly closed-book.",
    "decision_rule": "proportion_wilson",
-   "prediction": "Less than half of the questions are answered correctly closed-book (upper Wilson bound below 0.50), so the retrieval results are not explained by memory.",
+   "prediction": "Fewer than half of the questions are answered correctly closed-book (upper Wilson bound below 0.50). This shows that memory does not account for most retrieval results; it does not exclude prior exposure.",
    "refutation": "The lower bound is 0.50 or higher: contamination cannot be excluded and every retrieval result is flagged.",
    "controls": {
     "positive": "A question answerable from common knowledge must be answered.",
@@ -664,7 +673,7 @@
    "paper": "P13",
    "nature": "test",
    "paper_claim": "A cheaper flat implementation may exist; no comparison of cost per correct result against strong simple alternatives was run.",
-   "claim_basis_in_paper": "authors-domain-assessment",
+   "claim_basis_in_paper": "not-in-paper",
    "data": [
     "D-Q21",
     "D-PKG"

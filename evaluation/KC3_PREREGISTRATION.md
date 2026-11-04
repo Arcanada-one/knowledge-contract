@@ -24,6 +24,18 @@ This document and [`kc3-checks.json`](kc3-checks.json) fix, **before any run**, 
 
 Each check ends in exactly one of `supported` (the prediction held under the registered rule), `refuted` (the refutation condition was met) or `not_measured` (a gate, a control or the sample size failed, or the interval was inconclusive). `not_measured` is a third verdict; it is never read as a pass or as a failure of the paper. A claim is **weakened** when a result is `supported` but carries qualifications (a subset of formats, a failed sub-control, a contaminated question set): the receipt lists them under `qualifications` and must then set `claim_weakened`, and `claim_weakened` is accepted only on a supported outcome with a non-empty list. A refuted or weakened receipt must come with a revision proposal for the paper (route: P10 revision and canon), and the checker verifies that the proposal exists, names this receipt, the same check and paper, and carries the digest of the paper file. When the history is available, it also verifies that the registry commit named by the receipt is an ancestor of the commit that holds the receipt. The run never edits a paper.
 
+## When a claim counts as weakened
+
+A receipt must list a qualification for each of these that applies, and then set `claim_weakened`:
+
+- a gate was met only in part (for example the sample did not cover every format group)
+- a control behaved as required but a secondary control failed
+- the result holds only on a named subset of formats, languages or question kinds
+- the contamination check KC3-P11-C2 reports that memory answers at least half of the questions, for any check that uses the 21 questions
+- the reviewer independence class is weaker than registered
+
+Whether a trigger applies is the receipt author's recorded judgement; the checker verifies that the lists and flags agree, not that the author listed everything.
+
 ## Decision rules
 
 - **proportion_wilson**: Uses the 95% Wilson interval of the observed proportion and the check's direction and threshold. Direction at_least: supported when the lower bound is at or above the threshold, refuted when the upper bound is below it. Direction below: supported when the upper bound is below the threshold, refuted when the lower bound is at or above it. Any other interval gives not_measured with reason interval_straddles_threshold.
@@ -56,22 +68,22 @@ Each check ends in exactly one of `supported` (the prediction held under the reg
 | --- | --- | --- | --- | --- | --- | --- |
 | KC3-P00-C1 | P00 | derived_from_limit | tests_the_claim | permutation_test | no | 30 |
 | KC3-P00-C2 | P00 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
-| KC3-P01-C1 | P01 | stated_in_paper | tests_the_claim | proportion_wilson | no | 200 |
+| KC3-P01-C1 | P01 | derived_from_limit | tests_the_claim | proportion_wilson | no | 200 |
 | KC3-P01-C2 | P01 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
 | KC3-P02-C1 | P02 | derived_from_limit | tests_the_claim | proportion_wilson | no | 100 |
 | KC3-P02-C2 | P02 | stated_in_paper | regression_of_our_implementation | exact_all | no | 5 |
 | KC3-P03-C1 | P03 | stated_in_paper | regression_of_our_implementation | exact_all | no | 20 |
 | KC3-P04-C1 | P04 | registrant_hypothesis | tests_the_claim | composite | no | 8 |
-| KC3-P04-C2 | P04 | stated_in_paper | tests_the_claim | exact_all | no | 3 |
+| KC3-P04-C2 | P04 | stated_in_paper | regression_of_our_implementation | exact_all | no | 3 |
 | KC3-P05-C1 | P05 | derived_from_limit | tests_the_claim | paired_difference | no | 8 |
-| KC3-P07-C1 | P07 | stated_in_paper | tests_the_claim | exact_all | no | 5 |
-| KC3-P07-C2 | P07 | stated_in_paper | tests_the_claim | exact_all | no | 1 |
+| KC3-P07-C1 | P07 | stated_in_paper | regression_of_our_implementation | exact_all | no | 5 |
+| KC3-P07-C2 | P07 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
 | KC3-P07-C3 | P07 | derived_from_limit | tests_the_claim | proportion_wilson | no | 40 |
 | KC3-P08-C1 | P08 | stated_in_paper | regression_of_our_implementation | exact_all | no | 20 |
 | KC3-P08-C2 | P08 | stated_in_paper | regression_of_our_implementation | exact_all | no | 15 |
-| KC3-P10-C1 | P10 | stated_in_paper | tests_the_claim | exact_all | no | 3 |
-| KC3-P10-C2 | P10 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
-| KC3-P11-C1 | P11 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P10-C1 | P10 | stated_in_paper | regression_of_our_implementation | exact_all | no | 3 |
+| KC3-P10-C2 | P10 | registrant_hypothesis | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P11-C1 | P11 | registrant_hypothesis | regression_of_our_implementation | exact_all | no | 1 |
 | KC3-P11-C2 | P11 | derived_from_limit | tests_the_claim | proportion_wilson | yes | 21 |
 | KC3-P12-C1 | P12 | stated_in_paper | regression_of_our_implementation | exact_all | no | 30 |
 | KC3-P13-C1 | P13 | registrant_hypothesis | tests_the_claim | paired_difference_no_advantage | yes | 15 |

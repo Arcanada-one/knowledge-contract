@@ -64,6 +64,13 @@ def check_registry(registry: dict) -> list[str]:
     if problems:
         return problems
     ids = [c["id"] for c in registry["checks"]]
+    if registry["status"] != "registered_before_any_run":
+        problems.append("registry status must stay registered_before_any_run")
+    for c in registry["checks"]:
+        if c["claim_origin"] != "stated_in_paper" and c["evidence_kind"] == "tests_the_claim" and c["claim_basis_in_paper"] == "authors-domain-assessment":
+            problems.append(f"{c['id']}: a claim not stated in the paper cannot cite the paper's own assessment as its basis")
+        if c["claim_origin"] == "registrant_hypothesis" and c["claim_basis_in_paper"] not in ("not-in-paper", "hypothesis", "limit"):
+            problems.append(f"{c['id']}: a registrant hypothesis must say that the paper does not state it")
     if len(set(ids)) != len(ids):
         problems.append("duplicate check id")
     rules, gates, data = set(registry["decision_rules"]), set(registry["gates"]), set(registry["data"])
@@ -111,6 +118,9 @@ def check_registry(registry: dict) -> list[str]:
                 problems.append(f"{cid}: {key} is too short or states a tautology")
         if c["decision_rule"] == "composite":
             parts = c.get("parts", {})
+            for name, part in parts.items():
+                if part.get("n_min", 0) < 5:
+                    problems.append(f"{cid}: part {name} needs its own n_min of at least 5")
             if len(parts) < 2 or "composite_rule" not in c:
                 problems.append(f"{cid}: composite check needs at least two parts and a composite rule")
             for name, part in parts.items():

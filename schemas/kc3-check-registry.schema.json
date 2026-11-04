@@ -15,7 +15,8 @@
     "data",
     "outcome_values",
     "checks",
-    "no_testable_claim"
+    "no_testable_claim",
+    "weakening_triggers"
   ],
   "properties": {
     "schema": {
@@ -93,6 +94,14 @@
           }
         }
       }
+    },
+    "weakening_triggers": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 20
+      }
     }
   },
   "$defs": {
@@ -152,7 +161,8 @@
             "proof-under-premises",
             "authors-domain-assessment",
             "limit",
-            "not-a-claim"
+            "not-a-claim",
+            "not-in-paper"
           ]
         },
         "data": {
