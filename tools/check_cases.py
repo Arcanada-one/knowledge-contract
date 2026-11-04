@@ -130,7 +130,8 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
     if PERSONAL.search(body):
         problems.append(f"{name}: personal identifier shape (email, phone or handle)")
     table = receipts_table(secs["Receipts"])
-    secs = {**secs, "Title": fm["title"]}
+    preamble = re.split(r"^## ", body, maxsplit=1, flags=re.M)[0]
+    secs = {**secs, "Title": fm["title"], "Preamble": preamble}
     if fm["status"] == "planned":
         if table or "awaiting" not in fm:
             problems.append(f"{name}: a planned case lists no receipts and names what it awaits")
@@ -158,7 +159,7 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
     used: set[int] = set()
     for sec_name, sec in secs.items():
         if sec_name == "Receipts":
-            continue
+            sec = "\n".join(l for l in sec.splitlines() if not l.lstrip().startswith("|"))
         prose = prose_of(sec)
         if sec_name == "Title":
             prose = prose + " "
@@ -181,7 +182,7 @@ def check_case_text(text: str, name: str = "case") -> list[str]:
                 continue
             rel, kind, locator, expected, near = table[rid]
             after = prose[m.end() + tag.end(): m.end() + tag.end() + NEAR_WINDOW].lower()
-            if near and not any(k.strip().lower() in after for k in near.split(",")):
+            if near and not any(re.search(r"\b" + re.escape(k.strip().lower()), after) for k in near.split(",")):
                 problems.append(f"{name}: number {m.group(0)} is tagged R{rid} but none of '{near}' follows it")
             if kind == "text_contains":
                 if m.group(0) not in re.findall(r"\d+(?:\.\d+)?", expected):

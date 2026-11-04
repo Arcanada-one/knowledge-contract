@@ -17,7 +17,7 @@ Start from [`_TEMPLATE.md`](_TEMPLATE.md).
 
 | Case | Work | Status |
 | --- | --- | --- |
-| `paper-publication-pipeline` | Publication of the papers and specifications (KCP-0040 to KCP-0042, plan stages PUB-02 to PUB-04) | written |
+| `paper-publication-pipeline` | Publication of the papers and specifications (KCP-0040 to KCP-0042) | written |
 | `candidate-export-gate` | The fail-closed candidate exporter (KCP-0018) | written |
 | `ru10-stand-and-repin` | The RU10 stand and its re-pin (KCP-0039) | planned |
 | `ocr-stand-doclab` | The OCR stand doclab | planned |
