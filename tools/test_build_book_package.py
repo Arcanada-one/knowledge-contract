@@ -208,6 +208,22 @@ class PathSafetyTests(unittest.TestCase):
         self.assertTrue((self.e.root / "work" / "one").is_dir())
         self.assertFalse(deep.exists())
 
+    def test_sha256sums_and_tsv_split_on_newline_only(self):
+        data = b"# T\n"
+        (self.samples / "a.md").write_bytes(data)
+        (self.samples / "b.md").write_bytes(data)
+        digest = bb.sha(data)
+        # two entries joined by U+2028 on one physical line: one entry with a garbage name, never two entries
+        (self.samples / "SHA256SUMS.samples").write_bytes(f"{digest}  a.md\u2028{digest}  b.md\n".encode())
+        (self.samples / "MANIFEST_SHA_CHECK.tsv").write_text("")
+        res = bb.build_samples(self.samples, self.out, "2026-11-04T00:00:00Z")
+        self.assertEqual(len(res), 1)
+        self.assertIn("error", res[0])
+        # CRLF is refused rather than absorbed
+        (self.samples / "SHA256SUMS.samples").write_bytes(f"{digest}  a.md\r\n".encode())
+        with self.assertRaises(bb.BuildError):
+            bb.build_samples(self.samples, self.out, "2026-11-04T00:00:00Z")
+
     def test_successful_build_leaves_only_the_package(self):
         src = self.e.src("a.md", b"# T\n")
         bb.build(src, self.out, catalog_id="T9", created_at="2026-11-04T00:00:00Z")

@@ -187,8 +187,8 @@ RECORD_MUTATIONS: dict[str, tuple[str, object]] = {
 
 
 def record_bases(files: dict[str, bytes]) -> dict[str, dict]:
-    objects = [json.loads(line) for line in files["objects.jsonl"].decode().splitlines()]
-    relations = [json.loads(line) for line in files["relations.jsonl"].decode().splitlines()]
+    objects = [json.loads(line) for line in files["objects.jsonl"].decode().split("\n")[:-1]]
+    relations = [json.loads(line) for line in files["relations.jsonl"].decode().split("\n")[:-1]]
     anchors = anchor_examples()
     contra = copy.deepcopy(relations[1])
     contra["relation_type"] = "contradicts"
@@ -196,7 +196,7 @@ def record_bases(files: dict[str, bytes]) -> dict[str, dict]:
     contra["presented_as_author"] = True
     return {"object_author": objects[0], "object_gen": objects[2], "object_page": anchors["page_bbox"], "object_pointer": anchors["json_pointer"],
             "object_sheet": anchors["sheet_range"], "relation_gen": relations[0], "relation_contra": contra,
-            "edit": json.loads(files["edits.jsonl"].decode().splitlines()[0]), "quality": json.loads(files["quality.json"]),
+            "edit": json.loads(files["edits.jsonl"].decode().split("\n")[:-1][0]), "quality": json.loads(files["quality.json"]),
             "manifest": json.loads(files["manifest.json"])}
 
 

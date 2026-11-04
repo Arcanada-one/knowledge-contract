@@ -199,9 +199,17 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
     return manifest
 
 
+def read_lines(path: Path) -> list[str]:
+    """Strict UTF-8 bytes split on "\\n" only (same rule as the validator); a refusal becomes a BuildError."""
+    try:
+        return cbp.split_lines(path.read_bytes().decode("utf-8"), path.name)
+    except (cbp.PackageError, UnicodeDecodeError, OSError) as exc:
+        raise BuildError(f"{path.name}: {exc}") from exc
+
+
 def parse_sums(path: Path) -> dict[str, str]:
     out = {}
-    for line in path.read_bytes().decode("utf-8").splitlines():
+    for line in read_lines(path):
         parts = line.split(None, 1)
         if len(parts) == 2:
             out[parts[1].strip()] = parts[0]
@@ -211,7 +219,7 @@ def parse_sums(path: Path) -> dict[str, str]:
 def parse_matrix(path: Path) -> dict[str, tuple[str, str]]:
     """File name -> (catalog ids, manifest check result) from a tab-separated check list."""
     out = {}
-    for line in path.read_bytes().decode("utf-8").splitlines():
+    for line in read_lines(path):
         cells = line.split("\t")
         if len(cells) >= 5:
             out[cells[4]] = (cells[2], cells[0])

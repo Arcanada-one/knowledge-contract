@@ -316,6 +316,62 @@ class NewlineAndOverlapTests(unittest.TestCase):
         self.assertEqual((cbp.count_overlapping("xaaay", "aa"), cbp.count_overlapping("abc", "d"), cbp.count_overlapping("aaa", "aaa")), (2, 0, 1))
 
 
+def with_jsonl(files: dict[str, bytes], name: str, data: bytes, count: int) -> dict[str, bytes]:
+    key = name.split(".")[0]
+    files = dict(files)
+    files[name] = data
+    manifest = json.loads(files["manifest.json"])
+    manifest["components"][key].update({"sha256": fx.sha(data), "count": count})
+    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+    return files
+
+
+class JsonlSplitTests(unittest.TestCase):
+    SEPARATORS = {"U+2028": "\u2028", "U+0085": "\u0085", "x1e": "\x1e", "x0c": "\x0c", "x0b": "\x0b", "x1c": "\x1c", "CR": "\r"}
+
+    def edits_two(self):
+        files = ledger_package("alpha beta gamma\n", "alpha BETA GAMMA\n", [("beta", "BETA"), ("gamma", "GAMMA")])
+        return files, files["edits.jsonl"].decode().split("\n")[:-1]
+
+    def test_two_records_joined_by_a_non_newline_separator_are_refused(self):
+        files, (first, second) = self.edits_two()
+        self.assertEqual(check_files(files), [])
+        for label, sep in self.SEPARATORS.items():
+            with self.subTest(sep=label):
+                joined = (first + sep + second + "\n").encode()
+                problems = check_files(with_jsonl(files, "edits.jsonl", joined, 2))
+                self.assertTrue(any("invalid JSON" in p for p in problems), problems)
+
+    def test_raw_separator_inside_a_string_is_not_a_line_break(self):
+        for label, sep in self.SEPARATORS.items():
+            if sep == "\r":
+                continue  # a raw CR is not valid inside a JSON string
+            with self.subTest(sep=label):
+                parts = load_parts(fx.build())
+                parts["objects"][0]["text"] = parts["objects"][0]["text"] + sep
+                files = materialise(parts)
+                files["objects.jsonl"] = ("\n".join(json.dumps(r, sort_keys=True, separators=(",", ":"), ensure_ascii=False) for r in parts["objects"]) + "\n").encode()
+                files = with_jsonl(files, "objects.jsonl", files["objects.jsonl"], len(parts["objects"]))
+                self.assertNotIn("invalid JSON", " ".join(check_files(files)))
+                self.assertNotIn("blank line", " ".join(check_files(files)))
+
+    def test_crlf_line_endings_and_missing_final_newline(self):
+        files, (first, second) = self.edits_two()
+        crlf = (first + "\r\n" + second + "\r\n").encode()
+        self.assertTrue(any("carriage return" in p for p in check_files(with_jsonl(files, "edits.jsonl", crlf, 2))))
+        no_final = (first + "\n" + second).encode()
+        self.assertEqual(check_files(with_jsonl(files, "edits.jsonl", no_final, 2)), [])
+        two_empty = (first + "\n" + second + "\n\n").encode()
+        self.assertTrue(any("blank line" in p for p in check_files(with_jsonl(files, "edits.jsonl", two_empty, 2))))
+
+    def test_split_lines_unit(self):
+        self.assertEqual(cbp.split_lines(""), [])
+        self.assertEqual(cbp.split_lines("a\nb\n"), ["a", "b"])
+        self.assertEqual(cbp.split_lines("a\u2028b\x85c\n"), ["a\u2028b\x85c"])
+        with self.assertRaises(cbp.PackageError):
+            cbp.split_lines("a\r\nb\n")
+
+
 class FileHandlingTests(unittest.TestCase):
     def write(self, root: Path, files: dict[str, bytes]) -> None:
         for rel, data in files.items():

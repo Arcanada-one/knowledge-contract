@@ -93,9 +93,22 @@ def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def split_lines(text: str, name: str = "input") -> list[str]:
+    """Lines separated by "\\n" only, as a "\\n"-reader (the consumer) sees them. One empty trailing element is allowed
+    (the final newline); a line ending in "\\r" is refused. U+2028, U+0085, \\x0b, \\x0c, \\x1c-\\x1e and a lone "\\r" are ordinary
+    characters here, never separators, so the validator and a "\\n"-splitting reader see the same records."""
+    parts = text.split("\n")
+    if parts and parts[-1] == "":
+        parts.pop()
+    for number, line in enumerate(parts, 1):
+        if line.endswith("\r"):
+            raise PackageError(f"{name}:{number}: line ends with a carriage return")
+    return parts
+
+
 def read_jsonl(path: Path) -> list[object]:
     records = []
-    for number, line in enumerate(read_text_strict(path).splitlines(), 1):
+    for number, line in enumerate(split_lines(read_text_strict(path), path.name), 1):
         if not line.strip():
             raise PackageError(f"{path.name}:{number}: blank line")
         try:
