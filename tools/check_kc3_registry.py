@@ -11,6 +11,7 @@ from __future__ import annotations
 import functools
 import hashlib
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -20,6 +21,9 @@ REPO = Path(__file__).resolve().parents[1]
 REGISTRY = REPO / "evaluation" / "kc3-checks.json"
 REGISTRY_SCHEMA = REPO / "schemas" / "kc3-check-registry.schema.json"
 RECEIPT_SCHEMA = REPO / "schemas" / "kc3-check-receipt.schema.json"
+PIN = REPO / "evaluation" / "kc3-checks.sha256"
+TAUTOLOGIES = ("nothing can refute", "cannot be refuted", "always true", "cannot fail")
+KC3_RUN_CAP_USD = 1.00  # DEC-AUP-0174: USD 1.00 per run for KC-3 paid checks; reverse with the decision
 PAPERS = [f"P{i:02d}" for i in range(14)]
 NEEDS_DIRECTION = {"proportion_wilson", "paired_difference"}
 NEEDS_THRESHOLD = {"proportion_wilson"}
@@ -44,6 +48,15 @@ def _errors(validator: jsonschema.Draft202012Validator, record: object) -> list[
 
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
+
+
+def wilson(k: int, n: int) -> tuple[float, float]:
+    z = 1.959964
+    p = k / n
+    d = 1 + z * z / n
+    c = p + z * z / (2 * n)
+    a = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
+    return (c - a) / d, (c + a) / d
 
 
 def check_registry(registry: dict) -> list[str]:
@@ -73,8 +86,29 @@ def check_registry(registry: dict) -> list[str]:
             problems.append(f"{cid}: rule {c['decision_rule']} needs a direction")
         if c["decision_rule"] in NEEDS_THRESHOLD and "threshold" not in c:
             problems.append(f"{cid}: rule {c['decision_rule']} needs a threshold")
-        if c["decision_rule"] == "paired_difference_no_advantage" and "equivalence_margin_relative" not in c:
-            problems.append(f"{cid}: no-advantage rule needs an equivalence margin")
+        if c["decision_rule"] == "paired_difference_no_advantage" and "advantage_sign" not in c:
+            problems.append(f"{cid}: no-advantage rule needs advantage_sign")
+        if c["decision_rule"] == "proportion_wilson" and "n_min" in c and "threshold" in c and "direction" in c:
+            if c["n_min"] < 20:
+                problems.append(f"{cid}: a proportion check needs n_min of at least 20")
+            n, thr = c["n_min"], c["threshold"]
+            best_low, worst_high = wilson(n, n)[0], wilson(0, n)[1]
+            if c["direction"] == "at_least":
+                reach_pred, reach_ref = best_low >= thr, worst_high < thr
+            else:
+                reach_pred, reach_ref = worst_high < thr, best_low >= thr
+            if not reach_pred:
+                problems.append(f"{cid}: the prediction cannot be met at n_min {n} and threshold {thr}")
+            if not reach_ref:
+                problems.append(f"{cid}: the refutation cannot be reached at n_min {n} and threshold {thr}")
+        if c["decision_rule"] in ("proportion_wilson", "permutation_test") and "G-SAMPLE" not in c["gates"]:
+            problems.append(f"{cid}: a sampled check needs the sample gate G-SAMPLE")
+        if "G-CAP" in c["gates"] and not c["paid_model_run"]:
+            problems.append(f"{cid}: gate G-CAP on a check registered as unpaid")
+        for key in ("prediction", "refutation"):
+            text = c[key].lower()
+            if len(text) < 40 or any(t in text for t in TAUTOLOGIES):
+                problems.append(f"{cid}: {key} is too short or states a tautology")
         if c["decision_rule"] == "composite":
             parts = c.get("parts", {})
             if len(parts) < 2 or "composite_rule" not in c:
@@ -109,8 +143,21 @@ def check_registry(registry: dict) -> list[str]:
     return problems
 
 
-def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes) -> list[str]:
-    """Validate a receipt against the registry it cites. Returns problems; empty means the receipt is internally honest."""
+def load_ref(ref: str) -> dict | None:
+    path = (REPO / ref).resolve()
+    if REPO.resolve() not in path.parents or not path.is_file():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
+def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes, read_ref=load_ref) -> list[str]:
+    """Validate a receipt against the registry it cites. Returns problems; empty means the receipt is internally consistent.
+
+    It does not recompute the outcome from `result`: that needs the data and the harness, which this tool does not have.
+    """
     problems = _errors(_validator(RECEIPT_SCHEMA, "Receipt"), receipt)
     if problems:
         return problems
@@ -139,18 +186,47 @@ def check_receipt(receipt: dict, registry: dict, registry_bytes: bytes) -> list[
     spend = receipt["spend"]
     if spend["paid_calls"] and not check["paid_model_run"]:
         problems.append("paid calls were made by a check registered as unpaid")
+    if spend["paid_calls"] and spend.get("cap_usd", 0) > KC3_RUN_CAP_USD:
+        problems.append("the recorded cap is above the per-run cap of the spend decision")
     if spend["paid_calls"] and spend.get("used_usd", 0) > spend.get("cap_usd", 0):
         problems.append("spend exceeds the recorded cap")
     if receipt["run"]["finished_at"] < receipt["run"]["started_at"]:
         problems.append("run finishes before it starts")
     if outcome == "refuted" and not receipt.get("revision_proposal_ref"):
         problems.append("a refuted outcome needs a revision proposal")
+    if receipt["gates_met"].get("G-CAP") and not spend["paid_calls"]:
+        problems.append("gate G-CAP is reported met but no paid calls or cap are recorded")
+    if spend["paid_calls"] and spend.get("cap_recorded_at", "9") > receipt["run"]["started_at"]:
+        problems.append("the spend cap was recorded after the run started")
+    ref = receipt.get("revision_proposal_ref")
+    if ref:
+        proposal = read_ref(ref)
+        if proposal is None:
+            problems.append("revision_proposal_ref does not resolve to a proposal file")
+        else:
+            problems += ["proposal: " + m for m in _errors(_validator(RECEIPT_SCHEMA, "Proposal"), proposal)]
+            if not problems:
+                if proposal["check_id"] != receipt["check_id"] or proposal["paper"] != check["paper"]:
+                    problems.append("proposal names another check or paper")
+                if proposal["finding"] == "refuted" and outcome != "refuted":
+                    problems.append("proposal finding refuted but the receipt outcome is not refuted")
+                if proposal["finding"] == "weakened" and not receipt.get("claim_weakened"):
+                    problems.append("proposal finding weakened but the receipt does not say claim_weakened")
     return problems
+
+
+def check_pin(registry_bytes: bytes) -> list[str]:
+    """The registry digest is pinned in a file of its own, so a change to the registry shows up as a second changed file in review."""
+    try:
+        pinned = PIN.read_text(encoding="utf-8").split()[0]
+    except (OSError, IndexError):
+        return ["evaluation/kc3-checks.sha256 is missing or empty"]
+    return [] if pinned == sha256_bytes(registry_bytes) else ["the registry changed but its pin file was not updated"]
 
 
 def main(argv: list[str]) -> int:
     registry_bytes = REGISTRY.read_bytes()
-    problems = check_registry(json.loads(registry_bytes))
+    problems = check_registry(json.loads(registry_bytes)) + check_pin(registry_bytes)
     for problem in problems:
         print(f"KC3_REGISTRY_FAIL {problem}")
     if problems:

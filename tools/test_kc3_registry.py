@@ -28,7 +28,15 @@ REGISTRY_MUTATIONS = {
     "unknown_rule": (lambda r: first(r, "KC3-P01-C1").__setitem__("decision_rule", "vibes"), "unknown decision rule"),
     "missing_direction": (lambda r: first(r, "KC3-P01-C1").pop("direction"), "needs a direction"),
     "missing_threshold": (lambda r: first(r, "KC3-P01-C1").pop("threshold"), "needs a threshold"),
-    "missing_margin": (lambda r: first(r, "KC3-P13-C1").pop("equivalence_margin_relative"), "equivalence margin"),
+    "missing_advantage_sign": (lambda r: first(r, "KC3-P13-C1").pop("advantage_sign"), "advantage_sign"),
+    "wilson_n_min_one": (lambda r: first(r, "KC3-P01-C1").__setitem__("n_min", 1), "at least 20"),
+    "wilson_prediction_unreachable": (lambda r: first(r, "KC3-P02-C1").__setitem__("threshold", 0.9999), "prediction cannot be met"),
+    "wilson_refutation_unreachable": (lambda r: first(r, "KC3-P01-C1").__setitem__("n_min", 100), "refutation cannot be reached"),
+    "sampled_without_sample_gate": (lambda r: first(r, "KC3-P01-C1")["gates"].remove("G-SAMPLE"), "G-SAMPLE"),
+    "cap_gate_on_unpaid": (lambda r: first(r, "KC3-P01-C1")["gates"].append("G-CAP"), "unpaid"),
+    "tautological_refutation": (lambda r: first(r, "KC3-P01-C1").__setitem__("refutation", "Nothing can refute this claim whatever the data show."), "tautology"),
+    "short_prediction": (lambda r: first(r, "KC3-P01-C1").__setitem__("prediction", "It holds."), "too short"),
+    "missing_origin": (lambda r: first(r, "KC3-P01-C1").pop("claim_origin"), "claim_origin"),
     "descriptive_test": (lambda r: first(r, "KC3-P01-C1").__setitem__("decision_rule", "descriptive"), "may not be a test"),
     "no_validity_gate": (lambda r: first(r, "KC3-P01-C1")["gates"].remove("G-VALID"), "G-VALID"),
     "paid_without_cap_gate": (lambda r: first(r, "KC3-P11-C2")["gates"].remove("G-CAP"), "G-CAP"),
@@ -56,7 +64,16 @@ def receipt(check_id="KC3-P12-C1", **over):
     return rec
 
 
+def PAID(**over):
+    spend = {"paid_calls": True, "cap_usd": 1.0, "used_usd": 0.5, "cap_recorded_at": "2026-11-04T00:00:00Z", "provider": "deepseek", "model": "deepseek-chat",
+             "tokens_in": 1000, "tokens_out": 200, "decision_id": "DEC-AUP-0174"}
+    spend.update(over)
+    return spend
+
+
 RECEIPT_MUTATIONS = {
+    "cap_above_per_run": (dict(spend=PAID(cap_usd=2.0, used_usd=0.5), check_id="KC3-P11-C2"), "above the per-run cap"),
+    "paid_without_decision_id": (dict(spend={k: v for k, v in PAID().items() if k != "decision_id"}, check_id="KC3-P11-C2"), "'decision_id' is a required property"),
     "wrong_digest": (dict(prereg={"sha256": "0" * 64, "commit": "a" * 40}), "not the registered file"),
     "unknown_check": (dict(check_id="KC3-P12-C9"), "unknown check"),
     "control_failed_but_supported": (dict(controls={"positive_passed": False, "negative_failed": True}), "both controls"),
@@ -66,8 +83,12 @@ RECEIPT_MUTATIONS = {
     "refuted_without_proposal": (dict(outcome="refuted"), "'revision_proposal_ref' is a required property"),
     "not_measured_without_reason": (dict(outcome="not_measured"), "'reason' is a required property"),
     "finish_before_start": (dict(run={"started_at": "2026-11-05T02:00:00Z", "finished_at": "2026-11-05T01:00:00Z", "harness_commit": "c" * 40, "seed": 7}), "before it starts"),
-    "paid_calls_in_unpaid_check": (dict(spend={"paid_calls": True, "cap_usd": 5, "used_usd": 1, "cap_recorded_at": "2026-11-05T00:00:00Z"}), "registered as unpaid"),
+    "paid_calls_in_unpaid_check": (dict(spend=PAID(cap_usd=1.0, used_usd=0.2, cap_recorded_at="2026-11-04T00:00:00Z")), "registered as unpaid"),
     "extra_field": (dict(confidence=0.99), "Additional properties"),
+    "cap_recorded_after_start": (dict(spend=PAID(cap_recorded_at="2026-11-05T00:30:00Z"), check_id="KC3-P11-C2"), "after the run started"),
+    "proposal_file_missing": (dict(outcome="refuted", revision_proposal_ref="receipts/theory-checks/nope.json"), "does not resolve"),
+    "weakened_without_proposal": (dict(claim_weakened=True, weakening_reason="supported only on a subset of formats"), "revision_proposal_ref"),
+    "cap_gate_without_paid_calls": (None, "G-CAP is reported met"),
 }
 
 
@@ -100,6 +121,14 @@ class RegistryTests(unittest.TestCase):
     def test_checks_that_call_a_paid_model_say_so(self):
         self.assertEqual({c["id"] for c in REG["checks"] if c["paid_model_run"]}, {"KC3-P11-C2", "KC3-P13-C1"})
 
+    def test_wilson_reachability_numbers(self):
+        self.assertAlmostEqual(k.wilson(100, 100)[0], 0.963, places=3)
+        self.assertGreaterEqual(k.wilson(200, 200)[0], 0.98)
+
+    def test_registry_is_pinned(self):
+        self.assertEqual(k.check_pin(RAW), [])
+        self.assertTrue(k.check_pin(RAW + b" "))
+
 
 class ReceiptTests(unittest.TestCase):
     def test_honest_receipt_passes(self):
@@ -110,6 +139,9 @@ class ReceiptTests(unittest.TestCase):
             if name == "gate_unmet":
                 rec = receipt()
                 rec["gates_met"]["G-PKG"] = False
+            elif name == "cap_gate_without_paid_calls":
+                rec = receipt()
+                rec["gates_met"]["G-CAP"] = True
             else:
                 rec = receipt(**over)
             problems = k.check_receipt(rec, REG, RAW)
@@ -119,16 +151,45 @@ class ReceiptTests(unittest.TestCase):
         rec = receipt(outcome="not_measured", reason="control_failed", controls={"positive_passed": False, "negative_failed": True})
         self.assertEqual(k.check_receipt(rec, REG, RAW), [])
 
+    def test_paid_receipt_within_cap_passes(self):
+        self.assertEqual(k.check_receipt(receipt("KC3-P11-C2", spend=PAID()), REG, RAW), [])
+
     def test_paid_check_needs_cap_before_calls(self):
         rec = receipt("KC3-P11-C2", spend={"paid_calls": True, "used_usd": 1.0})
         self.assertTrue(k.check_receipt(rec, REG, RAW))
-        rec = receipt("KC3-P11-C2", spend={"paid_calls": True, "cap_usd": 2.0, "used_usd": 3.0, "cap_recorded_at": "2026-11-05T00:00:00Z"})
+        rec = receipt("KC3-P11-C2", spend=PAID(cap_usd=1.0, used_usd=3.0))
         self.assertTrue(any("exceeds the recorded cap" in p for p in k.check_receipt(rec, REG, RAW)))
 
     def test_digest_changes_when_the_registry_changes(self):
         altered = RAW.replace(b"unrun", b"unrun ", 1)
         self.assertNotEqual(k.sha256_bytes(altered), SHA)
         self.assertTrue(any("not the registered file" in p for p in k.check_receipt(receipt(), REG, altered)))
+
+
+class ProposalLinkTests(unittest.TestCase):
+    def reader(self, **over):
+        prop = {"schema": "KC3RevisionProposal/v1", "proposal_id": "prop-0001", "paper": "P12", "check_id": "KC3-P12-C1", "receipt_ref": "receipts/theory-checks/r.json",
+                "finding": "refuted", "claim_affected": "If the dependency set contains every input, reuse preserves checked properties.",
+                "proposed_change": "State the measured counterexample as a limit of the conditional lemma.", "paper_sha256_at_proposal": "d" * 64,
+                "status": "proposed", "route": "P10 revision and canon"}
+        prop.update(over)
+        return lambda ref: prop
+
+    def test_proposal_linked_and_consistent(self):
+        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        self.assertEqual(k.check_receipt(rec, REG, RAW, read_ref=self.reader()), [])
+
+    def test_proposal_for_another_check_or_paper_is_refused(self):
+        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        for over in ({"check_id": "KC3-P12-C2"}, {"paper": "P01"}):
+            self.assertTrue(any("another check or paper" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(**over))), over)
+
+    def test_finding_must_match_receipt(self):
+        rec = receipt(outcome="refuted", revision_proposal_ref="receipts/theory-checks/p.json")
+        self.assertTrue(any("claim_weakened" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="weakened"))))
+        rec = receipt(outcome="supported", claim_weakened=True, weakening_reason="supported only on text formats", revision_proposal_ref="receipts/theory-checks/p.json")
+        self.assertEqual(k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="weakened")), [])
+        self.assertTrue(any("finding refuted" in p for p in k.check_receipt(rec, REG, RAW, read_ref=self.reader(finding="refuted"))))
 
 
 class ProposalTests(unittest.TestCase):

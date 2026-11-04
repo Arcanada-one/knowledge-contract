@@ -1,6 +1,6 @@
 ---
 artifact_id: KC3_PREREGISTRATION
-revision_id: KC3_PREREGISTRATION-r1
+revision_id: KC3_PREREGISTRATION-r2
 title_en: "Pre-registration of falsifiable checks for papers P00 to P13"
 language: en
 status: pre-registration; no check has been run
@@ -10,25 +10,26 @@ sources: none
 
 # Pre-registration of falsifiable checks for papers P00 to P13
 
-This document and [`kc3-checks.json`](kc3-checks.json) fix, **before any run**, which claims of the Meaning Management papers are tested on the ARCH-MULTI-1.0 book corpus, how, what is predicted and what would refute it. The machine-readable file is the authority; this page explains it. Its SHA-256 and the commit that introduced it are what every later receipt must cite (check KC3-P11-C1).
+This document and [`kc3-checks.json`](kc3-checks.json) fix, **before any run**, which claims of the Meaning Management papers are tested on the ARCH-MULTI-1.0 book corpus, how, what is predicted and what would refute it. The machine-readable file is the authority; this page explains it. Its SHA-256 is pinned in [`kc3-checks.sha256`](kc3-checks.sha256) and every later receipt must cite it together with the commit that introduced it (check KC3-P11-C1). A change to the registry without a change to the pin fails the build, so a silent edit shows up as a second changed file in review. The pin is self-attested: it makes a change visible, it does not prevent one.
 
 ## What this is, and what it is not
 
-- It registers 21 checks for 12 papers. 2 papers say they have no testable claim on this corpus (below).
-- No check has been run. Every entry has `status: unrun`, and at the time of this revision the repository holds no receipt. A test requires every stored receipt to cite the digest of this exact file; a receipt that cites another digest fails the build.
-- Thresholds marked as the registrant's choice are **not derived from earlier results**. They were set before any run so that the outcome cannot move them. They can be criticised; they cannot be changed after a run without a new registry revision and a note in every affected receipt.
-- The data does not exist yet. The packages come from the conversion work (KC-2); the 21 questions need adjudicated reference answers; the 70 anchored lines need a recorded reference class. Gates make a check `not_measured` until those exist.
+- It registers 23 checks for 13 papers. 1 paper says it has no testable claim on this corpus (below).
+- No check has been run. Every entry has `status: unrun`, and at the time of this revision the repository holds no receipt. A test requires every stored receipt to cite the digest of this exact file.
+- Each check states where its claim comes from (`claim_origin`): `stated_in_paper`, `derived_from_limit` (the paper states a limit and the check turns it into a prediction) or `registrant_hypothesis` (the paper makes no such claim; the registrant proposes it). Each also states what kind of evidence it gives (`evidence_kind`): `tests_the_claim`, or `regression_of_our_implementation`, which checks that our pipeline conforms to a rule the papers state and **cannot refute a paper**.
+- Thresholds marked as the registrant's choice are **not derived from earlier results**. A proportion check is accepted by the checker only if both its prediction and its refutation are reachable at the registered sample size (the Wilson interval of a perfect result at that size must clear the threshold).
+- The data does not exist yet: packages come from the conversion work (KC-2); the 21 questions need adjudicated references; the 70 anchored lines need a recorded reference class. Gates make a check `not_measured` until they exist.
 
 ## Outcomes
 
-Each check ends in exactly one of `supported` (the prediction held under the registered rule), `refuted` (the refutation condition was met) or `not_measured` (a gate, a control or the sample size failed, or the interval was inconclusive). `not_measured` is a third verdict. It is never read as a pass or as a failure of the paper. A receipt that says `refuted` must come with a revision proposal for the paper (route: P10 revision and canon); the run never edits a paper.
+Each check ends in exactly one of `supported` (the prediction held under the registered rule), `refuted` (the refutation condition was met) or `not_measured` (a gate, a control or the sample size failed, or the interval was inconclusive). `not_measured` is a third verdict; it is never read as a pass or as a failure of the paper. A claim is **weakened** when a result is supported only under a qualification (a subset of formats, a failed sub-control, a contaminated question set): the receipt sets `claim_weakened` with a reason. A refuted or weakened receipt must come with a revision proposal for the paper (route: P10 revision and canon), and the checker verifies that the proposal exists and names the same check and paper. The run never edits a paper.
 
 ## Decision rules
 
 - **proportion_wilson**: Uses the 95% Wilson interval of the observed proportion and the check's direction and threshold. Direction at_least: supported when the lower bound is at or above the threshold, refuted when the upper bound is below it. Direction below: supported when the upper bound is below the threshold, refuted when the lower bound is at or above it. Any other interval gives not_measured with reason interval_straddles_threshold.
 - **exact_all**: Supported when at least n_min cases ran and every case behaved as predicted; refuted when any case violates the prediction (the violating cases are listed); not_measured when fewer than n_min cases ran.
-- **paired_difference**: Computed per question on identical inputs with a 95% percentile bootstrap interval (10000 resamples, seed recorded in the receipt) of the mean paired difference. Direction positive: supported when the interval lies wholly above zero (with zero_inclusive true, when its lower bound is at or above zero), refuted when it lies wholly below zero. Direction negative mirrors this. Any other interval gives not_measured with reason interval_includes_zero.
-- **paired_difference_no_advantage**: For a prediction that an approach gives no advantage. Refuted when the interval lies wholly on the side of the advantage. Supported only when the whole interval lies within the equivalence margin (a share of the baseline mean given in the check). Any other interval gives not_measured with reason no_advantage_not_excluded.
+- **paired_difference**: A superiority claim. Computed per question on identical inputs with a 95% percentile bootstrap interval (10000 resamples of the questions, seed recorded in the receipt) of the mean paired difference; for ratios the ratio is recomputed on each resample. Direction positive: supported when the lower bound is above zero (at or above zero when zero_inclusive is true); refuted when the upper bound is at or below zero (below zero when zero_inclusive is true). Direction negative mirrors this. Any other interval gives not_measured with reason interval_includes_zero.
+- **paired_difference_no_advantage**: For a prediction that an approach gives no advantage. The check names the sign of an advantage (advantage_sign: positive means a larger difference is an advantage, negative means a smaller one). Supported when the whole interval lies on the no-advantage side or at zero (for advantage_sign negative, lower bound at or above zero; for positive, upper bound at or below zero). Refuted when the whole interval lies strictly on the advantage side. Any other interval gives not_measured with reason advantage_not_excluded.
 - **permutation_test**: Supported when the permutation p-value is below 0.05 and every compared group has at least n_min defects; refuted when the p-value is 0.05 or above under the same group sizes; not_measured with reason insufficient_defects otherwise.
 - **descriptive**: No outcome of supported or refuted is possible. The receipt reports the measured values and the outcome is not_measured with reason descriptive_only.
 
@@ -51,46 +52,55 @@ Each check ends in exactly one of `supported` (the prediction held under the reg
 
 ## Checks
 
-| Check | Paper | Basis of the claim in the paper | Rule | Paid model run | n min |
-| --- | --- | --- | --- | --- | --- |
-| KC3-P00-C1 | P00 | limit | permutation_test | no | 30 |
-| KC3-P00-C2 | P00 | authors-domain-assessment | exact_all | no | 1 |
-| KC3-P01-C1 | P01 | authors-domain-assessment | proportion_wilson | no | 100 |
-| KC3-P01-C2 | P01 | authors-domain-assessment | exact_all | no | 1 |
-| KC3-P02-C1 | P02 | hypothesis | proportion_wilson | no | 100 |
-| KC3-P02-C2 | P02 | authors-domain-assessment | exact_all | no | 5 |
-| KC3-P03-C1 | P03 | finite-test | exact_all | no | 20 |
-| KC3-P04-C1 | P04 | hypothesis | composite | no | 8 |
-| KC3-P04-C2 | P04 | proof-under-premises | exact_all | no | 3 |
-| KC3-P05-C1 | P05 | finite-test | paired_difference | no | 8 |
-| KC3-P07-C1 | P07 | finite-test | exact_all | no | 5 |
-| KC3-P07-C2 | P07 | finite-test | exact_all | no | 1 |
-| KC3-P07-C3 | P07 | finite-test | proportion_wilson | no | 40 |
-| KC3-P08-C1 | P08 | authors-domain-assessment | exact_all | no | 20 |
-| KC3-P08-C2 | P08 | authors-domain-assessment | exact_all | no | 15 |
-| KC3-P10-C1 | P10 | authors-domain-assessment | exact_all | no | 3 |
-| KC3-P10-C2 | P10 | authors-domain-assessment | exact_all | no | 1 |
-| KC3-P11-C1 | P11 | authors-domain-assessment | exact_all | no | 1 |
-| KC3-P11-C2 | P11 | authors-domain-assessment | proportion_wilson | yes | 21 |
-| KC3-P12-C1 | P12 | proof-under-premises | exact_all | no | 30 |
-| KC3-P13-C1 | P13 | authors-domain-assessment | paired_difference_no_advantage | yes | 15 |
+| Check | Paper | Claim origin | Evidence kind | Rule | Paid model run | n min |
+| --- | --- | --- | --- | --- | --- | --- |
+| KC3-P00-C1 | P00 | derived_from_limit | tests_the_claim | permutation_test | no | 30 |
+| KC3-P00-C2 | P00 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P01-C1 | P01 | stated_in_paper | tests_the_claim | proportion_wilson | no | 200 |
+| KC3-P01-C2 | P01 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P02-C1 | P02 | stated_in_paper | tests_the_claim | proportion_wilson | no | 100 |
+| KC3-P02-C2 | P02 | stated_in_paper | regression_of_our_implementation | exact_all | no | 5 |
+| KC3-P03-C1 | P03 | stated_in_paper | regression_of_our_implementation | exact_all | no | 20 |
+| KC3-P04-C1 | P04 | registrant_hypothesis | tests_the_claim | composite | no | 8 |
+| KC3-P04-C2 | P04 | stated_in_paper | tests_the_claim | exact_all | no | 3 |
+| KC3-P05-C1 | P05 | stated_in_paper | tests_the_claim | paired_difference | no | 8 |
+| KC3-P07-C1 | P07 | stated_in_paper | tests_the_claim | exact_all | no | 5 |
+| KC3-P07-C2 | P07 | stated_in_paper | tests_the_claim | exact_all | no | 1 |
+| KC3-P07-C3 | P07 | stated_in_paper | tests_the_claim | proportion_wilson | no | 40 |
+| KC3-P08-C1 | P08 | stated_in_paper | regression_of_our_implementation | exact_all | no | 20 |
+| KC3-P08-C2 | P08 | stated_in_paper | regression_of_our_implementation | exact_all | no | 15 |
+| KC3-P10-C1 | P10 | stated_in_paper | tests_the_claim | exact_all | no | 3 |
+| KC3-P10-C2 | P10 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P11-C1 | P11 | stated_in_paper | regression_of_our_implementation | exact_all | no | 1 |
+| KC3-P11-C2 | P11 | derived_from_limit | tests_the_claim | proportion_wilson | yes | 21 |
+| KC3-P12-C1 | P12 | stated_in_paper | regression_of_our_implementation | exact_all | no | 30 |
+| KC3-P13-C1 | P13 | registrant_hypothesis | tests_the_claim | paired_difference_no_advantage | yes | 15 |
+| KC3-P05-C2 | P05 | stated_in_paper | regression_of_our_implementation | exact_all | no | 20 |
+| KC3-P06-C1 | P06 | stated_in_paper | tests_the_claim | exact_all | no | 20 |
 
 For the full claim, procedure, prediction, refutation and the positive and negative controls of each check, read [`kc3-checks.json`](kc3-checks.json).
 
 ## Papers with no testable claim on this corpus
 
-- **P06**: Dialogue and learning claims need human participants or dialogue sessions with a user state. The book corpus has none, and the paper's own limits say understanding, learning effect and interface convenience were not measured.
-- **P09**: Claims about roles, skills, authority and the KC contract family concern work execution and the contract registry. A corpus of books does not exercise them; the paper's own limits name the registry and migration as not run.
+- **P09**: Claims about roles, skills, authority and the KC contract family concern work execution and the contract registry, which a corpus of books does not exercise; the paper's own limits name the registry and migration as not run. Two of its results are touched indirectly: acceptance of false trusted input is registered under KC3-P06-C1, and the comparison with a strong plain alternative under KC3-P04-C1 and KC3-P13-C1.
+
+## Not registered in this round
+
+- A corpus-scale repeat of the exact-reuse latency pilot of P12 (needs a serving path that does not exist yet).
+- Checks of P02 and P03 beyond structure and ledger replay.
+- The claims of P09 about roles, skills and authority.
 
 ## Spend
 
-Two checks (KC3-P11-C2 and KC3-P13-C1) need paid model calls. No spend cap is recorded. Until one is recorded in the task and in the receipt, those checks cannot produce `supported` or `refuted`; the validator rejects a receipt that does otherwise.
+Two checks (KC3-P11-C2 and KC3-P13-C1) make paid model calls. Decision DEC-AUP-0174 fixes the route (an open-weight model through the project's model connector) and the caps for KC-3 paid checks: USD 1.00 per run and USD 3.00 in total. A receipt with paid calls must record the provider, model, tokens in and out, cost, the cap, the time the cap was recorded and the decision id. The checker rejects a receipt that reports paid calls without these, with a cap above the per-run cap, with a cap recorded after the run started, or with spending above the cap. The total is not checked by the tool: it needs the sum over receipts. If spending reaches a cap, the work stops and is reported; no top-up without a new decision.
 
 ## Limits of this registration
 
-- A check that can be passed by a weak harness is not a test; that is why every check names a positive and a negative control and the gate G-VALID makes a failed control end in `not_measured`.
-- Twenty-one questions give little statistical power. A conclusive interval is possible only for large effects; otherwise the honest result is `not_measured`.
-- The reviewers are agents. Their independence class is recorded in every receipt (`same_account_blind_agent` unless another account is used), and nothing here proves independence.
-- Testing the papers on books about compression, with books the authors chose, says little about other domains.
+- A check that can be passed by a weak harness is not a test; every check names a positive and a negative control and the gate G-VALID makes a failed control end in `not_measured`.
+- Twenty-one questions give little statistical power; a conclusive interval is possible only for large effects.
+- The reviewers are agents. Their independence class is recorded in every receipt, and nothing here proves independence.
+- Testing the papers on books about compression, chosen by the authors, says little about other domains.
+- The adjudication of reference answers follows [ADJUDICATION_PROTOCOL.md](ADJUDICATION_PROTOCOL.md).
+- The receipt checker validates consistency, not truth: it does not recompute an outcome from the `result` field.
 
 Credit and licence: Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). See [ATTRIBUTION.md](../ATTRIBUTION.md).
