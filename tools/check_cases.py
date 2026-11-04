@@ -96,7 +96,6 @@ def receipts_table(section: str) -> dict[int, tuple[str, str, str, str]]:
 def prose_of(section: str) -> str:
     text = re.sub(r"```.*?```", " ", section, flags=re.S)
     text = re.sub(r"`[^`]*`", " ", text)
-    text = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
     text = re.sub(r"!?\[([^\]]*)\]\([^)]*\)", r"[\1]", text)
     text = DATE.sub(" ", text)
     return text
