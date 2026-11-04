@@ -1,0 +1,663 @@
+{
+ "schema": "KC3CheckRegistry/v1",
+ "registry_id": "kc3-theory-checks-r1",
+ "status": "registered_before_any_run",
+ "registered_for": "knowledge-contract papers P00 to P13 on the ARCH-MULTI-1.0 corpus",
+ "note": "Written before any run. Thresholds marked as the registrant's choice are not derived from earlier results. A receipt must cite this file's sha256 and the commit that introduced it.",
+ "decision_rules": {
+  "proportion_wilson": "Uses the 95% Wilson interval of the observed proportion and the check's direction and threshold. Direction at_least: supported when the lower bound is at or above the threshold, refuted when the upper bound is below it. Direction below: supported when the upper bound is below the threshold, refuted when the lower bound is at or above it. Any other interval gives not_measured with reason interval_straddles_threshold.",
+  "exact_all": "Supported when at least n_min cases ran and every case behaved as predicted; refuted when any case violates the prediction (the violating cases are listed); not_measured when fewer than n_min cases ran.",
+  "paired_difference": "Computed per question on identical inputs with a 95% percentile bootstrap interval (10000 resamples, seed recorded in the receipt) of the mean paired difference. Direction positive: supported when the interval lies wholly above zero (with zero_inclusive true, when its lower bound is at or above zero), refuted when it lies wholly below zero. Direction negative mirrors this. Any other interval gives not_measured with reason interval_includes_zero.",
+  "paired_difference_no_advantage": "For a prediction that an approach gives no advantage. Refuted when the interval lies wholly on the side of the advantage. Supported only when the whole interval lies within the equivalence margin (a share of the baseline mean given in the check). Any other interval gives not_measured with reason no_advantage_not_excluded.",
+  "permutation_test": "Supported when the permutation p-value is below 0.05 and every compared group has at least n_min defects; refuted when the p-value is 0.05 or above under the same group sizes; not_measured with reason insufficient_defects otherwise.",
+  "descriptive": "No outcome of supported or refuted is possible. The receipt reports the measured values and the outcome is not_measured with reason descriptive_only."
+ },
+ "gates": {
+  "G-VALID": "Harness validity: before the check counts, its positive control must pass and its negative control must fail on the same harness build. Otherwise the outcome is not_measured with reason control_failed.",
+  "G-REF": "Reference answers for the 21 knowledge questions are adjudicated against the sources and frozen in a commit before any retrieval run.",
+  "G-L70": "The 70 short source-anchored lines have a recorded reference class (gold or silver), reviewer type and locator before any CER is computed.",
+  "G-CAP": "Any check that makes a paid model call needs a spend cap recorded in the task comment and in the receipt before the first call.",
+  "G-SAMPLE": "The review sample is drawn with a recorded seed from the packages that reached package_status other than blocked_integrity, before reviewers see any object.",
+  "G-PKG": "The packages come from the converter run recorded by KC-2; a package outside that run is not part of the data."
+ },
+ "data": {
+  "D-PKG": "Book packages (spec/BOOK_PACKAGE.md) for the non-bibliography-only representations of ARCH-MULTI-1.0 produced by KC-2.",
+  "D-Q21": "The 21 knowledge questions of the collection plan, with frozen reference answers (gate G-REF).",
+  "D-L70": "70 short source-anchored lines with gold or silver references (gate G-L70).",
+  "D-ADV": "Small adversarial and planted-defect fixtures of the acceptance matrix (cases T01 to T32) plus planted defects created for these checks.",
+  "D-DUP": "Duplicate and related-edition groups: the archive with six loose PDFs, the two language editions of one work, multi-format editions."
+ },
+ "outcome_values": [
+  "supported",
+  "refuted",
+  "not_measured"
+ ],
+ "checks": [
+  {
+   "id": "KC3-P00-C1",
+   "paper": "P00",
+   "nature": "test",
+   "paper_claim": "Three domains yield different defect types; this does not show transfer to other texts.",
+   "claim_basis_in_paper": "limit",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "Review a stratified sample of objects and extraction units by format group (native text, structured, scanned or converted). Classify each defect found with the fixed taxonomy: omission, order, number or unit, table structure, formula, caption, language, link. Compare the type distributions between format groups with a permutation test (10000 permutations, seed recorded).",
+   "metric": "Permutation p-value of the difference in defect-type distribution between format groups; defects per group.",
+   "decision_rule": "permutation_test",
+   "prediction": "The defect-type distribution differs between at least two format groups (p below 0.05, at least 30 defects per compared group).",
+   "refutation": "No difference at p of 0.05 or above with at least 30 defects per group, which would mean the three-domain observation did not generalise to this corpus.",
+   "controls": {
+    "positive": "A group pair built from a planted-defect fixture with known different types must show a difference.",
+    "negative": "Two groups drawn from the same format must show none."
+   },
+   "gates": [
+    "G-VALID",
+    "G-SAMPLE",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 30,
+   "blockers": [
+    "needs the reviewed sample"
+   ]
+  },
+  {
+   "id": "KC3-P00-C2",
+   "paper": "P00",
+   "nature": "test",
+   "paper_claim": "Minimal context may be claimed only with a declared option space, cost function and optimality proof.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "Scan every published case, receipt and package quality report for the words minimal, minimum, smallest and optimal used about context. For each hit check that a declared option space, a cost function and an optimality argument are linked.",
+   "metric": "Count of unqualified minimality claims.",
+   "decision_rule": "exact_all",
+   "prediction": "No unqualified minimality claim is found.",
+   "refutation": "At least one hit has no option space, cost function and argument.",
+   "controls": {
+    "positive": "A planted file with an unqualified claim must be found.",
+    "negative": "A planted file with a fully qualified claim must pass."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 1
+  },
+  {
+   "id": "KC3-P01-C1",
+   "paper": "P01",
+   "nature": "test",
+   "paper_claim": "A structural validator checks pinned references and declared fields, not whether an image was read correctly.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "Take objects that pass the package validator. Draw 200 with a recorded seed, half generated and half author statements where available. A blind reviewer reads the anchored source span and marks the object text supported, partly supported or unsupported. A blind reviewer who has not seen the producer's reasoning and records its model family and session; independence class is recorded as same_account_blind_agent unless a different account is used.",
+   "metric": "Proportion of objects marked supported, by origin.",
+   "decision_rule": "proportion_wilson",
+   "prediction": "The proportion supported is below 0.98 for generated objects, so structural validity is not sufficient evidence of fidelity.",
+   "refutation": "The lower bound of the proportion supported for generated objects is 0.98 or higher: structural validity would then be effectively sufficient on this corpus.",
+   "controls": {
+    "positive": "Planted objects with a correct text must be marked supported.",
+    "negative": "Planted objects whose text contradicts the anchor must be marked unsupported."
+   },
+   "gates": [
+    "G-VALID",
+    "G-SAMPLE",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 100,
+   "threshold": 0.98,
+   "direction": "below"
+  },
+  {
+   "id": "KC3-P01-C2",
+   "paper": "P01",
+   "nature": "test",
+   "paper_claim": "Generated meanings are not the author's statement and must stay distinguishable.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "For every package: confirm every object and relation has an origin; confirm no text of a generated description or generated meaning occurs verbatim inside document.md; confirm every object with origin other than author_statement carries a generation record and presented_as_author false.",
+   "metric": "Violations found across all packages.",
+   "decision_rule": "exact_all",
+   "prediction": "Zero violations in every package.",
+   "refutation": "Any package with a generated text inside document.md or an unmarked generated object.",
+   "controls": {
+    "positive": "A planted generated sentence inserted into document.md must be found.",
+    "negative": "The unmodified fixture package must pass."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 1
+  },
+  {
+   "id": "KC3-P02-C1",
+   "paper": "P02",
+   "nature": "test",
+   "paper_claim": "Applicability needs explicit conditions; a result without its source conditions is not reusable.",
+   "claim_basis_in_paper": "hypothesis",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "From packages that contain benchmark or numeric claims, draw 100 claims whose source states conditions (corpus, device, version, settings, units, mode). A blind reviewer marks whether the object records each stated condition. A blind reviewer who has not seen the producer's reasoning and records its model family and session; independence class is recorded as same_account_blind_agent unless a different account is used.",
+   "metric": "Proportion of source-stated conditions recorded in the object.",
+   "decision_rule": "proportion_wilson",
+   "prediction": "At least 0.70 of source-stated conditions are recorded (lower Wilson bound at or above 0.70). The threshold is the registrant's choice made before the run.",
+   "refutation": "The upper bound is below 0.70.",
+   "controls": {
+    "positive": "A planted claim with all conditions recorded must score complete.",
+    "negative": "A planted claim with every condition removed must score zero."
+   },
+   "gates": [
+    "G-VALID",
+    "G-SAMPLE",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 100,
+   "threshold": 0.7,
+   "direction": "at_least"
+  },
+  {
+   "id": "KC3-P02-C2",
+   "paper": "P02",
+   "nature": "test",
+   "paper_claim": "Two books copying one source are not two independent witnesses; deduplicated copies are not independent evidence.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-DUP"
+   ],
+   "procedure": "Process every duplicate and related-edition group. Check that identical bytes in two packagings give one document content with provenance of both, that two language editions share one work with separate editions and evidence, and that multi-format editions keep separate representations. Count independent origins per answer evidence set.",
+   "metric": "Groups resolved as expected.",
+   "decision_rule": "exact_all",
+   "prediction": "Every group resolves as specified in the acceptance matrix (cases T02, T04, T05).",
+   "refutation": "Any group yields two document contents for identical bytes, merges two editions, or counts a copy as an independent witness.",
+   "controls": {
+    "positive": "A planted pair of identical files must collapse to one content.",
+    "negative": "A planted pair of different files with the same name must stay two."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 5
+  },
+  {
+   "id": "KC3-P03-C1",
+   "paper": "P03",
+   "nature": "test",
+   "paper_claim": "Reversing an operation over one block is not restoring the full artifact; the first literal mapping reproduced only 21 of 28 navigation operations.",
+   "claim_basis_in_paper": "finite-test",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "For every package with at least one accepted edit, replay the ledger on document.md and compare the result with readable.md byte for byte; then reverse the ledger and compare with document.md byte for byte.",
+   "metric": "Packages whose replay or reversal differs.",
+   "decision_rule": "exact_all",
+   "prediction": "Replay and reversal reproduce the files byte for byte in every package.",
+   "refutation": "At least one package does not reproduce; the package and the first differing edit are listed.",
+   "controls": {
+    "positive": "A package whose ledger is intact must reproduce.",
+    "negative": "A package with one ledger record altered must fail."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 20
+  },
+  {
+   "id": "KC3-P04-C1",
+   "paper": "P04",
+   "nature": "test",
+   "paper_claim": "A structural query over normalised data may solve a task more simply; then no advantage is claimed. No comparison with BM25 on independent labels exists.",
+   "claim_basis_in_paper": "hypothesis",
+   "data": [
+    "D-Q21",
+    "D-PKG"
+   ],
+   "procedure": "Run each question through (a) BM25 over document.md with top-10 passages and (b) retrieval that uses objects and relations and returns anchored evidence. Score evidence recall against the frozen reference evidence for each question. Report separately for question kinds: definition and relation_with_conditions.",
+   "metric": "Paired difference in evidence recall at 10 (graph-assisted minus BM25), per question kind.",
+   "decision_rule": "composite",
+   "prediction": "On relation_with_conditions questions graph-assisted retrieval has higher evidence recall than BM25; on definition questions it does not beat BM25.",
+   "refutation": "On relation_with_conditions questions the interval lies wholly at or below zero (no advantage), or on definition questions it lies wholly above zero.",
+   "controls": {
+    "positive": "A question whose answer is one verbatim passage must be found by BM25.",
+    "negative": "A question with an unrelated reference evidence must score zero for both."
+   },
+   "gates": [
+    "G-VALID",
+    "G-REF",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 8,
+   "blockers": [
+    "21 questions give low power; an interval that includes zero is reported as not_measured, not as no difference"
+   ],
+   "parts": {
+    "relation_with_conditions": {
+     "decision_rule": "paired_difference",
+     "direction": "positive"
+    },
+    "definition": {
+     "decision_rule": "paired_difference_no_advantage",
+     "equivalence_margin_relative": 0.1
+    }
+   },
+   "composite_rule": "Supported only when both parts are supported; refuted when either part is refuted; otherwise not_measured."
+  },
+  {
+   "id": "KC3-P04-C2",
+   "paper": "P04",
+   "nature": "test",
+   "paper_claim": "A negative conclusion is allowed only for an explicitly finite domain with current pins, a complete survey and all evaluations negative.",
+   "claim_basis_in_paper": "proof-under-premises",
+   "data": [
+    "D-Q21",
+    "D-PKG"
+   ],
+   "procedure": "For every question whose frozen reference is absence of support, record the system answer. An answer that says there is no support must name the searched scope, the pins and that the survey was complete; otherwise it must say unknown or limited.",
+   "metric": "Negative answers without scope, pins and a complete-survey statement.",
+   "decision_rule": "exact_all",
+   "prediction": "Every negative-case answer carries its scope or says unknown.",
+   "refutation": "Any unscoped negation.",
+   "controls": {
+    "positive": "A planted scoped negative must pass.",
+    "negative": "A planted bare no must fail."
+   },
+   "gates": [
+    "G-VALID",
+    "G-REF",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 3
+  },
+  {
+   "id": "KC3-P05-C1",
+   "paper": "P05",
+   "nature": "test",
+   "paper_claim": "Ranking does not settle sufficiency; a package is sufficient only if it covers the required slots under the budget.",
+   "claim_basis_in_paper": "finite-test",
+   "data": [
+    "D-Q21",
+    "D-PKG"
+   ],
+   "procedure": "For each question compose a context package under a fixed byte budget by (a) the budgeted composition (closure of required objects first) and (b) top-k ranked passages filled to the same byte budget. Count the reference evidence slots covered.",
+   "metric": "Paired difference in required slots covered (composition minus top-k).",
+   "decision_rule": "paired_difference",
+   "prediction": "Composition covers at least as many required slots as top-k; the interval is wholly at or above zero, and strictly above zero on questions that need two or more separate sources.",
+   "refutation": "The interval lies wholly below zero.",
+   "controls": {
+    "positive": "A question with one required slot must be covered by both.",
+    "negative": "A question whose required slot lies outside both candidate sets must be covered by neither."
+   },
+   "gates": [
+    "G-VALID",
+    "G-REF",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 8,
+   "direction": "positive",
+   "zero_inclusive": true
+  },
+  {
+   "id": "KC3-P07-C1",
+   "paper": "P07",
+   "nature": "test",
+   "paper_claim": "Absence of known proof yields unknown or a limited negative, not negation.",
+   "claim_basis_in_paper": "finite-test",
+   "data": [
+    "D-ADV",
+    "D-PKG"
+   ],
+   "procedure": "For every package whose semantics status is not_built or not_measured, ask each of the 21 questions and record the answer class.",
+   "metric": "Answers of the class no support from a package without a semantic layer.",
+   "decision_rule": "exact_all",
+   "prediction": "None: such a package answers semantics_not_built or unknown.",
+   "refutation": "Any such package answers no support.",
+   "controls": {
+    "positive": "A package with a built layer and no matching object may answer no support within scope.",
+    "negative": "A package without a layer must not."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 5
+  },
+  {
+   "id": "KC3-P07-C2",
+   "paper": "P07",
+   "nature": "test",
+   "paper_claim": "A CER of null means no benchmark ran, not zero error.",
+   "claim_basis_in_paper": "finite-test",
+   "data": [
+    "D-PKG",
+    "D-L70"
+   ],
+   "procedure": "Across all quality reports compare CER fields with the existence of a measurement record on D-L70 or an equivalent reference; a CER value without a reference class and sample size is a violation.",
+   "metric": "Reports with a numeric CER and no reference or sample.",
+   "decision_rule": "exact_all",
+   "prediction": "No quality report has a numeric CER without a reference class and a sample size, and none shows null as zero.",
+   "refutation": "Any report with a numeric CER lacking reference class or sample size, or null shown as zero.",
+   "controls": {
+    "positive": "A planted report with measured CER, reference and sample must pass.",
+    "negative": "A planted report with value 0 and no reference must fail."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG",
+    "G-L70"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 1
+  },
+  {
+   "id": "KC3-P07-C3",
+   "paper": "P07",
+   "nature": "test",
+   "paper_claim": "No control case has the reference outcome refuted, so sensitivity to genuine refutation is not measured.",
+   "claim_basis_in_paper": "finite-test",
+   "data": [
+    "D-ADV",
+    "D-PKG"
+   ],
+   "procedure": "Create 40 planted-defect objects (wrong number, flipped negation, wrong unit, wrong page, swapped relation direction) with known defect and run them through validator plus blind review, mixed into a review sample with undisclosed positions.",
+   "metric": "Detection rate of planted defects.",
+   "decision_rule": "proportion_wilson",
+   "prediction": "Detection rate is at least 0.70 (lower Wilson bound at or above 0.70, registrant's threshold).",
+   "refutation": "Upper bound is below 0.70: the evaluation could not detect genuine defects, and every supported outcome elsewhere carries that limit.",
+   "controls": {
+    "positive": "Defect-free copies of the same objects must be accepted.",
+    "negative": "Defects of the easiest kind (a plainly wrong number) must be detected by the validator plus reviewer."
+   },
+   "gates": [
+    "G-VALID",
+    "G-SAMPLE",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 40,
+   "threshold": 0.7,
+   "direction": "at_least"
+  },
+  {
+   "id": "KC3-P08-C1",
+   "paper": "P08",
+   "nature": "test",
+   "paper_claim": "A corrected source span makes dependent claims and captions stale; a new context must not reuse the old quotation.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-ADV",
+    "D-PKG"
+   ],
+   "procedure": "Select 20 spans that support objects or relations, correct each through the ledger and rerun the validator and the context composer. Record every dependent object or relation that is not stale and every composed package that still contains the old quotation.",
+   "metric": "Dependents left non-stale; stale quotations reused.",
+   "decision_rule": "exact_all",
+   "prediction": "Zero dependents left non-stale and zero reused stale quotations.",
+   "refutation": "Any dependent left non-stale or any reuse.",
+   "controls": {
+    "positive": "A span with no dependents must change nothing else.",
+    "negative": "A span with two dependents must make both stale."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 20
+  },
+  {
+   "id": "KC3-P08-C2",
+   "paper": "P08",
+   "nature": "test",
+   "paper_claim": "Checking only an edited paragraph gives false acceptance when a stale conclusion remains elsewhere.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-ADV"
+   ],
+   "procedure": "Plant 15 cases where an edit makes a conclusion in another place stale. Run an edit-local check and the whole-set check on each.",
+   "metric": "Cases accepted by the local check and rejected by the whole-set check.",
+   "decision_rule": "exact_all",
+   "prediction": "At least one case is accepted by the local check and rejected by the whole-set check, and the whole-set check rejects all 15.",
+   "refutation": "The local check rejects all planted cases, or the whole-set check misses one.",
+   "controls": {
+    "positive": "A case with no stale conclusion must pass both.",
+    "negative": "A case with the stale conclusion in the edited paragraph must fail both."
+   },
+   "gates": [
+    "G-VALID"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 15
+  },
+  {
+   "id": "KC3-P10-C1",
+   "paper": "P10",
+   "nature": "test",
+   "paper_claim": "Success on one coordinate of a change does not change another; publication, current state and delivery are separate.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-ADV"
+   ],
+   "procedure": "Inject a fault at three points of a package publication (before the staging write completes, between staging and the pointer replacement, after the pointer replacement before the durability sync). After each, read the current pointer.",
+   "metric": "Cases where a partial package or a lost old current is visible.",
+   "decision_rule": "exact_all",
+   "prediction": "The old current stays readable and no staging package is presented as final in every injected case.",
+   "refutation": "Any injected case exposes a partial package or loses the old current.",
+   "controls": {
+    "positive": "A fault-free publication must advance the pointer.",
+    "negative": "A fault with the staging marker removed by hand must be refused."
+   },
+   "gates": [
+    "G-VALID"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 3,
+   "blockers": [
+    "depends on the converter and publication path run by the Conversion work item"
+   ]
+  },
+  {
+   "id": "KC3-P10-C2",
+   "paper": "P10",
+   "nature": "test",
+   "paper_claim": "A weakened or refuted claim goes through revision and canon, not a silent edit.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "For every check whose receipt says refuted or weakened, confirm a revision proposal exists in the same merged change, and that the paper file named by the check has the same sha256 before and after that change.",
+   "metric": "Refuted or weakened outcomes without a proposal or with an altered paper file.",
+   "decision_rule": "exact_all",
+   "prediction": "Every refuted or weakened receipt has a revision proposal in the same merged change, and the cited paper file keeps its digest in that change.",
+   "refutation": "Any refuted outcome without a proposal, or a paper file altered in the same change.",
+   "controls": {
+    "positive": "A planted refuted receipt with a proposal must pass.",
+    "negative": "A planted refuted receipt without a proposal must fail."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 1
+  },
+  {
+   "id": "KC3-P11-C1",
+   "paper": "P11",
+   "nature": "test",
+   "paper_claim": "Checks and their refuting conditions are fixed before the run.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-PKG"
+   ],
+   "procedure": "For every receipt in receipts/theory-checks/ confirm it cites the sha256 and commit of evaluation/kc3-checks.json, that this commit is an ancestor of the receipt's commit, and that the check entry the receipt cites is unchanged since.",
+   "metric": "Receipts that do not meet the three conditions.",
+   "decision_rule": "exact_all",
+   "prediction": "Every receipt cites the exact digest and commit of the registry, that commit precedes the receipt, and the cited check is unchanged.",
+   "refutation": "Any receipt that cites a different digest, an unrelated commit, or a check changed after the run began.",
+   "controls": {
+    "positive": "A planted receipt with the right digest must pass.",
+    "negative": "A planted receipt with a changed prediction must fail."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 1
+  },
+  {
+   "id": "KC3-P11-C2",
+   "paper": "P11",
+   "nature": "test",
+   "paper_claim": "Results on well-known books cannot exclude prior model exposure.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-Q21"
+   ],
+   "procedure": "Ask a model with no corpus access each of the 21 questions (closed book). A blind reviewer marks whether the answer is correct and cites the expected source.",
+   "metric": "Proportion of questions answered correctly closed-book.",
+   "decision_rule": "proportion_wilson",
+   "prediction": "Less than half of the questions are answered correctly closed-book (upper Wilson bound below 0.50), so the retrieval results are not explained by memory.",
+   "refutation": "The lower bound is 0.50 or higher: contamination cannot be excluded and every retrieval result is flagged.",
+   "controls": {
+    "positive": "A question answerable from common knowledge must be answered.",
+    "negative": "A question about a planted fictitious fact must not be."
+   },
+   "gates": [
+    "G-VALID",
+    "G-REF",
+    "G-CAP"
+   ],
+   "paid_model_run": true,
+   "spend_cap": "required_not_recorded",
+   "status": "unrun",
+   "n_min": 21,
+   "threshold": 0.5,
+   "direction": "below"
+  },
+  {
+   "id": "KC3-P12-C1",
+   "paper": "P12",
+   "nature": "test",
+   "paper_claim": "If the dependency set contains every input affecting the checked properties, reuse preserves them.",
+   "claim_basis_in_paper": "proof-under-premises",
+   "data": [
+    "D-ADV",
+    "D-PKG"
+   ],
+   "procedure": "Deliver identical source bytes 30 times under different names and times; compare package digests; count physical parses. Change the tool version of one stage and rerun.",
+   "metric": "Deliveries with a different digest; reuse hits after a tool version change.",
+   "decision_rule": "exact_all",
+   "prediction": "All identical deliveries give the same package digest with one physical parse; after a tool version change no reuse occurs.",
+   "refutation": "Any identical delivery yields a different digest, or any reuse after the version change.",
+   "controls": {
+    "positive": "Identical bytes must reuse.",
+    "negative": "Bytes differing in one byte must not."
+   },
+   "gates": [
+    "G-VALID",
+    "G-PKG"
+   ],
+   "paid_model_run": false,
+   "spend_cap": "not_applicable",
+   "status": "unrun",
+   "n_min": 30
+  },
+  {
+   "id": "KC3-P13-C1",
+   "paper": "P13",
+   "nature": "test",
+   "paper_claim": "A cheaper flat implementation may exist; no comparison of cost per correct result against strong simple alternatives was run.",
+   "claim_basis_in_paper": "authors-domain-assessment",
+   "data": [
+    "D-Q21",
+    "D-PKG"
+   ],
+   "procedure": "Record tokens, wall time and money for building the semantic layer and for answering each question with graph-assisted retrieval and with a flat baseline (BM25 plus plain context). Divide by the number of questions answered correctly by the frozen reference.",
+   "metric": "Paired difference in cost per correct answer (graph-assisted minus flat), build cost reported separately.",
+   "decision_rule": "paired_difference_no_advantage",
+   "prediction": "Graph-assisted retrieval does not have a lower cost per correct answer than the flat baseline (interval does not lie wholly below zero).",
+   "refutation": "The interval lies wholly below zero: the flat alternative is more expensive on this load.",
+   "controls": {
+    "positive": "A flat baseline with a deliberately wasteful context must cost more.",
+    "negative": "Two identical runs must give a zero difference."
+   },
+   "gates": [
+    "G-VALID",
+    "G-REF",
+    "G-CAP",
+    "G-PKG"
+   ],
+   "paid_model_run": true,
+   "spend_cap": "required_not_recorded",
+   "status": "unrun",
+   "n_min": 15,
+   "equivalence_margin_relative": 0.1
+  }
+ ],
+ "no_testable_claim": [
+  {
+   "paper": "P06",
+   "reason": "Dialogue and learning claims need human participants or dialogue sessions with a user state. The book corpus has none, and the paper's own limits say understanding, learning effect and interface convenience were not measured."
+  },
+  {
+   "paper": "P09",
+   "reason": "Claims about roles, skills, authority and the KC contract family concern work execution and the contract registry. A corpus of books does not exercise them; the paper's own limits name the registry and migration as not run."
+  }
+ ]
+}

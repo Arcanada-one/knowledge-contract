@@ -77,6 +77,26 @@ jobs:
           print('scaffold files and status: OK')
           PY
 
+  kc3-registry:
+    name: kc3-registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install the pinned schema validator
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/kc3-venv"
+          "$RUNNER_TEMP/kc3-venv/bin/pip" install --quiet jsonschema==4.23.0
+      - name: Registry, receipts and revision proposals
+        run: |
+          set -euo pipefail
+          cd tools
+          "$RUNNER_TEMP/kc3-venv/bin/python" -B -m unittest test_kc3_registry -v
+          cd ..
+          "$RUNNER_TEMP/kc3-venv/bin/python" -B tools/check_kc3_registry.py
+
   licensing:
     name: licensing
     runs-on: ubuntu-latest

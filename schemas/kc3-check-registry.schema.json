@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.place/schemas/kc3-check-registry.schema.json",
+  "title": "Pre-registered theory checks (KC3CheckRegistry/v1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "registry_id", "status", "registered_for", "note", "decision_rules", "gates", "data", "outcome_values", "checks", "no_testable_claim"],
+  "properties": {
+    "schema": {"const": "KC3CheckRegistry/v1"},
+    "registry_id": {"type": "string", "minLength": 3},
+    "status": {"const": "registered_before_any_run"},
+    "registered_for": {"type": "string", "minLength": 3},
+    "note": {"type": "string", "minLength": 3},
+    "decision_rules": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 20}},
+    "gates": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 20}},
+    "data": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "minLength": 20}},
+    "outcome_values": {"const": ["supported", "refuted", "not_measured"]},
+    "checks": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/Check"}},
+    "no_testable_claim": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["paper", "reason"],
+      "properties": {"paper": {"$ref": "#/$defs/paper"}, "reason": {"type": "string", "minLength": 40}}}}
+  },
+  "$defs": {
+    "paper": {"type": "string", "pattern": "^P(0[0-9]|1[0-3])$"},
+    "text": {"type": "string", "minLength": 20, "maxLength": 3000},
+    "Check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "paper", "nature", "paper_claim", "claim_basis_in_paper", "data", "procedure", "metric", "decision_rule", "prediction", "refutation", "controls", "gates", "paid_model_run", "spend_cap", "status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^KC3-P(0[0-9]|1[0-3])-C[1-9]$"},
+        "paper": {"$ref": "#/$defs/paper"},
+        "nature": {"enum": ["test", "measurement"]},
+        "paper_claim": {"$ref": "#/$defs/text"},
+        "claim_basis_in_paper": {"enum": ["hypothesis", "finite-test", "proof-under-premises", "authors-domain-assessment", "limit", "not-a-claim"]},
+        "data": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^D-[A-Z0-9]+$"}},
+        "procedure": {"$ref": "#/$defs/text"},
+        "metric": {"type": "string", "minLength": 8},
+        "decision_rule": {"type": "string", "pattern": "^[a-z_]+$"},
+        "direction": {"enum": ["at_least", "below", "positive", "negative"]},
+        "threshold": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "zero_inclusive": {"type": "boolean"},
+        "equivalence_margin_relative": {"type": "number", "exclusiveMinimum": 0, "maximum": 0.5},
+        "n_min": {"type": "integer", "minimum": 1},
+        "parts": {"type": "object"},
+        "composite_rule": {"type": "string"},
+        "prediction": {"$ref": "#/$defs/text"},
+        "refutation": {"$ref": "#/$defs/text"},
+        "controls": {"type": "object", "additionalProperties": false, "required": ["positive", "negative"],
+          "properties": {"positive": {"type": "string", "minLength": 10}, "negative": {"type": "string", "minLength": 10}}},
+        "gates": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^G-[A-Z0-9]+$"}},
+        "paid_model_run": {"type": "boolean"},
+        "spend_cap": {"enum": ["required_not_recorded", "not_applicable"]},
+        "blockers": {"type": "array", "items": {"type": "string", "minLength": 8}},
+        "status": {"const": "unrun"}
+      }
+    }
+  }
+}
