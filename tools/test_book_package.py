@@ -77,6 +77,8 @@ def unrelated_readable(p):
 
 
 PACKAGE_MUTATIONS = {
+    "duplicate_edit_id": (lambda p: p["edits"].append(copy.deepcopy(p["edits"][0])), "duplicate edit_id"),
+    "duplicate_asset_id": (lambda p: p["manifest"]["components"]["assets"].append(copy.deepcopy(p["manifest"]["components"]["assets"][0])), "duplicate asset_id"),
     "edit_input_digest_wrong": (edit_field("input_sha256", "0" * 64), "input_sha256 is not the digest"),
     "edit_output_digest_wrong": (edit_field("output_sha256", "0" * 64), "output_sha256 is not the digest"),
     "edit_original_not_in_text": (edit_field("original_text", "text that is not there"), "does not occur"),
@@ -107,7 +109,7 @@ PACKAGE_MUTATIONS = {
 
 # name -> fragment that the first schema error must contain (the reason the fixture is rejected, not merely that it is)
 EXPECTED_REASON = {
-    "edit_irreversible": "reversible: True was expected", "edit_unknown_basis": "basis: 'felt like it' is not one of", "edit_without_reason": "reason: '' is too short",
+    "edit_irreversible": "reversible: True was expected", "edit_blank_reason": "reason:", "edit_unknown_basis": "basis: 'felt like it' is not one of", "edit_without_reason": "reason: '' is too short",
     "manifest_absolute_path": "components/objects/path", "manifest_admitted_by_itself": "kc2_admission: 'not_measured' was expected",
     "manifest_bibliography_only_with_document": "components:", "manifest_document_md_marks_generated_text": "contains_generated_text: False was expected",
     "manifest_mismatch_but_ready": "package_status: 'blocked_integrity' was expected", "manifest_missing_asset_with_path": "components/assets/1",
@@ -228,6 +230,192 @@ class PackageMutationTests(unittest.TestCase):
     def test_mutation_registries_are_not_empty(self):
         self.assertGreaterEqual(len(PACKAGE_MUTATIONS), 18)
         self.assertGreaterEqual(len(fx.RECORD_MUTATIONS), 35)
+
+
+def ledger_package(document: str, readable: str, edits: list[tuple[str, str]]) -> dict[str, bytes]:
+    """The valid fixture with document.md replaced and an accepted-edit ledger built over it, digests chained and rehashed."""
+    parts = load_parts(fx.build())
+    base = parts["edits"][0]
+    parts["files"]["document.md"] = document.encode()
+    parts["files"]["readable.md"] = readable.encode()
+    rows, current = [], document
+    for number, (before, after) in enumerate(edits, 1):
+        text_before = current
+        current = current.replace(before, after, 1) if before else after + current
+        rows.append({**base, "edit_id": f"edit.{number}", "original_text": before, "replacement_text": after,
+                     "input_sha256": fx.sha(text_before.encode()), "output_sha256": fx.sha(current.encode())})
+    parts["edits"] = rows
+    parts["manifest"]["components"]["document_md"]["input_sha256"] = parts["manifest"]["representation"]["source_sha256"]
+    return materialise(parts)
+
+
+class LedgerReversibilityTests(unittest.TestCase):
+    def test_unique_edit_replays_forward_and_backward(self):
+        files = ledger_package("alpha beta gamma\n", "alpha BETA gamma\n", [("beta", "BETA")])
+        self.assertEqual(check_files(files), [])
+
+    def test_edit_of_a_second_occurrence_is_refused(self):
+        problems = check_files(ledger_package("beta beta\n", "beta BETA\n", [("beta", "BETA")]))
+        self.assertTrue(any("occurs 2 times" in p for p in problems), problems)
+
+    def test_empty_original_text_is_refused(self):
+        problems = check_files(ledger_package("alpha\n", "xalpha\n", [("", "x")]))
+        self.assertTrue(any("must not be empty" in p for p in problems), problems)
+
+    def test_empty_replacement_is_refused(self):
+        problems = check_files(ledger_package("alpha beta\n", "alpha \n", [("beta", "")]))
+        self.assertTrue(any("must not be empty" in p for p in problems), problems)
+
+    def test_replacement_that_duplicates_existing_text_is_refused(self):
+        problems = check_files(ledger_package("alpha beta\n", "alpha alpha\n", [("beta", "alpha")]))
+        self.assertTrue(any("cannot be reversed" in p for p in problems), problems)
+
+    def test_overlapping_edit_chain_is_refused(self):
+        problems = check_files(ledger_package("abcd\n", "xd\n", [("abc", "xyz"), ("yz", "")]))
+        self.assertTrue(problems)
+
+
+def without_edits(document: str, readable: str) -> dict[str, bytes]:
+    """The valid fixture with the given document and readable texts and an empty ledger (zero bytes, count 0)."""
+    files = ledger_package(document, readable, [])
+    manifest = json.loads(files["manifest.json"])
+    files["edits.jsonl"] = b""
+    manifest["components"]["edits"].update({"sha256": fx.sha(b""), "count": 0})
+    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+    return files
+
+
+class NewlineAndOverlapTests(unittest.TestCase):
+    def test_crlf_document_with_lf_readable_is_refused(self):
+        # zero edits: readable.md must be byte-equal to document.md, not equal after newline translation
+        files = without_edits("line one\r\nline two\r\n", "line one\nline two\n")
+        self.assertTrue(any("not the replay" in p for p in check_files(files)), check_files(files))
+        self.assertEqual(check_files(without_edits("line one\r\nline two\r\n", "line one\r\nline two\r\n")), [])
+
+    def test_lone_cr_is_not_a_newline_for_comparison(self):
+        files = without_edits("a\rb\n", "a\nb\n")
+        self.assertTrue(any("not the replay" in p for p in check_files(files)))
+
+    def test_crlf_document_with_honest_edit_passes_with_byte_digests(self):
+        files = ledger_package("line one\r\nline two\r\n", "line one\r\nline 2\r\n", [("two", "2")])
+        self.assertEqual(check_files(files), [])
+
+    def test_original_text_containing_crlf_can_be_edited(self):
+        files = ledger_package("a\r\nb\r\nc\n", "a\r\nB\nc\n", [("b\r\n", "B\n")])
+        self.assertEqual(check_files(files), [])
+
+    def test_overlapping_original_occurrences_count_as_repeats(self):
+        problems = check_files(ledger_package("xaaay\n", "xBy\n", [("aa", "B")]))
+        self.assertTrue(any("overlapping counted" in p and "2 times" in p for p in problems), problems)
+
+    def test_overlapping_replacement_occurrences_count_as_repeats(self):
+        problems = check_files(ledger_package("xaBy\n", "xaaay\n", [("B", "aa")]))
+        self.assertTrue(any("cannot be reversed" in p for p in problems), problems)
+
+    def test_count_overlapping(self):
+        self.assertEqual((cbp.count_overlapping("xaaay", "aa"), cbp.count_overlapping("abc", "d"), cbp.count_overlapping("aaa", "aaa")), (2, 0, 1))
+
+
+def with_jsonl(files: dict[str, bytes], name: str, data: bytes, count: int) -> dict[str, bytes]:
+    key = name.split(".")[0]
+    files = dict(files)
+    files[name] = data
+    manifest = json.loads(files["manifest.json"])
+    manifest["components"][key].update({"sha256": fx.sha(data), "count": count})
+    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+    return files
+
+
+class JsonlSplitTests(unittest.TestCase):
+    SEPARATORS = {"U+2028": "\u2028", "U+0085": "\u0085", "x1e": "\x1e", "x0c": "\x0c", "x0b": "\x0b", "x1c": "\x1c", "CR": "\r"}
+
+    def edits_two(self):
+        files = ledger_package("alpha beta gamma\n", "alpha BETA GAMMA\n", [("beta", "BETA"), ("gamma", "GAMMA")])
+        return files, files["edits.jsonl"].decode().split("\n")[:-1]
+
+    def test_two_records_joined_by_a_non_newline_separator_are_refused(self):
+        files, (first, second) = self.edits_two()
+        self.assertEqual(check_files(files), [])
+        for label, sep in self.SEPARATORS.items():
+            with self.subTest(sep=label):
+                joined = (first + sep + second + "\n").encode()
+                problems = check_files(with_jsonl(files, "edits.jsonl", joined, 2))
+                self.assertTrue(any("invalid JSON" in p for p in problems), problems)
+
+    def test_raw_separator_inside_a_string_is_not_a_line_break(self):
+        for label, sep in self.SEPARATORS.items():
+            if sep == "\r":
+                continue  # a raw CR is not valid inside a JSON string
+            with self.subTest(sep=label):
+                parts = load_parts(fx.build())
+                parts["objects"][0]["text"] = parts["objects"][0]["text"] + sep
+                files = materialise(parts)
+                files["objects.jsonl"] = ("\n".join(json.dumps(r, sort_keys=True, separators=(",", ":"), ensure_ascii=False) for r in parts["objects"]) + "\n").encode()
+                files = with_jsonl(files, "objects.jsonl", files["objects.jsonl"], len(parts["objects"]))
+                self.assertNotIn("invalid JSON", " ".join(check_files(files)))
+                self.assertNotIn("blank line", " ".join(check_files(files)))
+
+    def test_crlf_line_endings_and_missing_final_newline(self):
+        files, (first, second) = self.edits_two()
+        crlf = (first + "\r\n" + second + "\r\n").encode()
+        self.assertTrue(any("carriage return" in p for p in check_files(with_jsonl(files, "edits.jsonl", crlf, 2))))
+        no_final = (first + "\n" + second).encode()
+        self.assertEqual(check_files(with_jsonl(files, "edits.jsonl", no_final, 2)), [])
+        two_empty = (first + "\n" + second + "\n\n").encode()
+        self.assertTrue(any("blank line" in p for p in check_files(with_jsonl(files, "edits.jsonl", two_empty, 2))))
+
+    def test_split_lines_unit(self):
+        self.assertEqual(cbp.split_lines(""), [])
+        self.assertEqual(cbp.split_lines("a\nb\n"), ["a", "b"])
+        self.assertEqual(cbp.split_lines("a\u2028b\x85c\n"), ["a\u2028b\x85c"])
+        with self.assertRaises(cbp.PackageError):
+            cbp.split_lines("a\r\nb\n")
+
+
+class FileHandlingTests(unittest.TestCase):
+    def write(self, root: Path, files: dict[str, bytes]) -> None:
+        for rel, data in files.items():
+            (root / rel).parent.mkdir(parents=True, exist_ok=True)
+            (root / rel).write_bytes(data)
+
+    def test_symlinked_component_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root, outside = Path(tmp) / "pkg", Path(tmp) / "outside.md"
+            files = fx.build()
+            self.write(root, files)
+            outside.write_bytes(files["document.md"])  # same bytes and digest, but outside the package
+            (root / "document.md").unlink()
+            (root / "document.md").symlink_to(outside)
+            self.assertTrue(any("symlink" in p for p in cbp.check_package(root)))
+
+    def test_symlinked_manifest_and_directory_component_are_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "pkg"
+            files = fx.build()
+            self.write(root, files)
+            (root / "manifest.json").rename(Path(tmp) / "m.json")
+            (root / "manifest.json").symlink_to(Path(tmp) / "m.json")
+            self.assertTrue(any("manifest.json" in p and "symlink" in p for p in cbp.check_package(root)))
+
+    def test_non_utf8_files_fail_cleanly_with_the_file_name(self):
+        for rel in ("document.md", "objects.jsonl", "quality.json", "readable.md", "manifest.json"):
+            with tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp) / "pkg"
+                files = fx.build()
+                files[rel] = b"\xff\xfe\xfa" + files[rel]
+                if rel != "manifest.json":  # keep the digest right so the decode error is what is reached
+                    manifest = json.loads(files["manifest.json"])
+                    for comp in manifest["components"].values():
+                        if isinstance(comp, dict) and comp.get("path") == rel:
+                            comp["sha256"] = fx.sha(files[rel])
+                    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+                self.write(root, files)
+                try:
+                    problems = cbp.check_package(root)
+                except cbp.PackageError as exc:
+                    problems = [str(exc)]
+                self.assertTrue(problems and any(rel in p or "UTF-8" in p or "unreadable" in p for p in problems), (rel, problems))
+                self.assertEqual(cbp.main(["x", str(root)]), 1)
 
 
 class MappingTests(unittest.TestCase):
