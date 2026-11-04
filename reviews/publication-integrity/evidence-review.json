@@ -1,0 +1,3620 @@
+{
+  "schema": "knowledge-contract.internal-evidence-review/1",
+  "review_id": "publication-edition-1.0-evidence-review",
+  "reviewer": "publication_evidence_review (internal agent)",
+  "completed_at_utc": "2026-11-04T01:30:06.280139+00:00",
+  "verdict": "accept",
+  "verdict_scope": "Accept the six studies and 24 indexed claims as bounded reports, conditional arguments and explicitly separated public replays; no broader empirical or production acceptance.",
+  "external_review": false,
+  "blocking_findings": [],
+  "nonblocking_findings": [],
+  "required_content_corrections": [],
+  "scope": {
+    "study_narratives_read_in_full": 6,
+    "indexed_claims_reviewed": 24,
+    "json_pointer_bindings_resolved_and_inspected": 58,
+    "distributed_evidence_files": 47,
+    "origin_manifests": 6,
+    "public_scripts_read_and_executed": 4,
+    "primary_input_files_including_studies_readme": 61,
+    "original_migrated_record_pairs_compared": 110,
+    "masked_review_claim_decisions_counted": 38,
+    "masked_review_table_decisions_counted": 16,
+    "semantic_editorial_ratings_recomputed": false
+  },
+  "path_convention": "Input paths are relative to the repository root. Paths beginning ../ identify local supporting inputs outside the publication; their contents are not copied by this review.",
+  "inputs": [
+    {
+      "path": "engineering/studies/README.md",
+      "sha256": "e6236eecd7b12c783327af0947603c60dfefbb0f6581e1e3328a4f376eea6c44",
+      "size_bytes": 1929
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+      "size_bytes": 11242
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/author-conformance-report.json",
+      "sha256": "4018e278789fb265d148f6c0aa1e08096e1d71221a1b17508198e54e0a081b82",
+      "size_bytes": 32239
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/conditional-properties-source.json",
+      "sha256": "d30863add85d0e2233cffa552578f98afa03b9b1d96914427e9cd7df7743ba89",
+      "size_bytes": 8136
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/control-review-source.json",
+      "sha256": "c30317cb838ee81227681add5e8a8602b173715a357091486b4af8a997dc0ac0",
+      "size_bytes": 13979
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/evaluation-protocol-source.json",
+      "sha256": "888d26ec89243314d078f92c6aa96f841b12c4893fe23156941c7ae09b1bafdf",
+      "size_bytes": 8250
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/origin.json",
+      "sha256": "149e6793e86beb35458e0bab81da44b3d69641bb271f8b2b64806548c0c1ef0c",
+      "size_bytes": 3775
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/separate-control-report.json",
+      "sha256": "4be5e9392972f205f7956f429dc75e76be167d13083b924dd825573cb0cb5801",
+      "size_bytes": 57915
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "sha256": "5e17016750f9f6a5a638371c821d60217ab6b8459cd5cd01b358687d2f648a75",
+      "size_bytes": 5786
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+      "size_bytes": 10851
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json",
+      "sha256": "70f946604f6d725e4085e915927aee0d69cf38c62e199ada818e3b602a49c3f3",
+      "size_bytes": 8205
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+      "sha256": "7ce1792d6962a59b37c4435808eef1bd5d54ad122f3c6c8c55bcac257f6a009d",
+      "size_bytes": 10844
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+      "sha256": "cdae9c9781700b2154fc97b5fbe4eef48ba2c64725d63c44bbcd93af8defd666",
+      "size_bytes": 2818
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json",
+      "sha256": "cbf1c104f8493e5819880bb2be3051a8bbc83d6482f0896d676945506bc2d2c3",
+      "size_bytes": 765
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json",
+      "sha256": "2df43ed048f7f4d2d11fc6e3cf24e80114e7bf849d1afc73bb30fe68967d5b73",
+      "size_bytes": 1985
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+      "sha256": "e2481128169deb5acdfba5053678cc8775468814574277dda96130af6283ff54",
+      "size_bytes": 34350
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json",
+      "sha256": "c5c3eb1ae45b25f75ca6ad8d7de04fc8b13eee22615973ce812c6af14339ded0",
+      "size_bytes": 3854
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json",
+      "sha256": "3dfa7b8f2d6fe43ba8641321d44ea9791ece85e845c2d2af6dc313f774a5a8a9",
+      "size_bytes": 623
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py",
+      "sha256": "67ca4acf776ea49233e41cf05076dd71d452ddaefb85f9a654e59fb7618f920c",
+      "size_bytes": 3319
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+      "size_bytes": 11913
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/baseline-edit.txt",
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "size_bytes": 12127
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/common-editorial-brief.txt",
+      "sha256": "d5e9d2a5af99b699f6e1e4700450e88ac33de7ea867f0333bb0fd4849c412539",
+      "size_bytes": 5986
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/condition-label-reveal.json",
+      "sha256": "aa5731fe568e10859064a7d6c26b992474563875a44de24d080fbe5bedaab0d7",
+      "size_bytes": 811
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json",
+      "sha256": "13dbcabc2bead4d7675ec4b344cb58307a322ef47ea83a664a9fed6c8f3d304a",
+      "size_bytes": 1777
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-mechanical-checks.json",
+      "sha256": "b22c667192951ce4dbb8b6bbf10aebf5d6437cc42d50a9ef5c6ea4568c238ac4",
+      "size_bytes": 2493
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-preregistration.json",
+      "sha256": "cea1186beab3ee67fe37f1089df18d12ddee4b912a12c212181cd1d66accd726",
+      "size_bytes": 1220
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-trace-audit.json",
+      "sha256": "4848e0b716f9186bdf447b850a4847a3b913eba3d0bce6d51bfa7ff01ff0e984",
+      "size_bytes": 6960
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/masked-editorial-review.json",
+      "sha256": "6dec95c55e507d6cce3c9830af52ecd3f058afb5227b0f6a2afbc011a554874c",
+      "size_bytes": 211267
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/origin.json",
+      "sha256": "27900647bea647fd37bcab797411cf206024039cfc7358799469039734c1e82b",
+      "size_bytes": 6906
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/original-pilot-protocol.txt",
+      "sha256": "0fe13410a1459157de83ca9fad087970a69d20ff37f2fbbfafa68b3da5f6167f",
+      "size_bytes": 6363
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/protected-claims.json",
+      "sha256": "81c45bbbb5e852b701f7404cbb58a155c919786d531d3341734b4ba03e2a0c07",
+      "size_bytes": 72557
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json",
+      "sha256": "49c620b336bbd47fc43bf0d8e15be096dcdf8127c32ed294bf8cd52db42a7caa",
+      "size_bytes": 1314
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py",
+      "sha256": "5d3db04209203c9392341ab02588c88cb55fd25e2ef3f0c9cbd8ee90c3fae4e7",
+      "size_bytes": 2467
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/skill-assisted-edit.txt",
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "size_bytes": 12029
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/source-context.txt",
+      "sha256": "52b3be4b99de31e3a83e54bde1309d922df7864eec07d945295c623d46cb6d04",
+      "size_bytes": 2234
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/source-section.txt",
+      "sha256": "eec7712c2819e844ff6fcc6f2b6afedec2b584d5bd90d496824261e6e2f0024b",
+      "size_bytes": 11680
+    },
+    {
+      "path": "engineering/studies/evidence-index.json",
+      "sha256": "d057c3290c89eeb5823386d8f335d3fd75b311e51c500e38438a7f30c572e104",
+      "size_bytes": 42322
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+      "size_bytes": 13327
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json",
+      "sha256": "b1da5650a264a0af70390c9dff3e06e403f0139062d0b9b6b5705ca9b81b0518",
+      "size_bytes": 18892
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json",
+      "sha256": "6916fb4e4bf93ea87e668694f2fa8ed44a237e808fe7bcfa86232a8bd818d4b9",
+      "size_bytes": 2451
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "sha256": "05ce65237311b3e2b339a40d0613c42e60d4e938fdf4c3dedbdde88d65642dd2",
+      "size_bytes": 2008
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json",
+      "sha256": "7f33fee0871822bca85323e4e4aa07923bcae6a1a7ce7a3ecd7a9eb273549ee5",
+      "size_bytes": 31466
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json",
+      "sha256": "9fd5336e34632fe67bba453234b537d09ec6adeaedeaf8cab4e65d690c21d207",
+      "size_bytes": 2478
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/origin.json",
+      "sha256": "45900a41f79ded1bac3db494952b338995120de36e771baccdc8d3c7d3418d7c",
+      "size_bytes": 5000
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json",
+      "sha256": "2f8a1474710dc665ae72d68dc824c3c5fbbe23a106a9b54709cc9ad964d1e940",
+      "size_bytes": 19151
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json",
+      "sha256": "af71971555be49ca22f93d5eb70d9be04a2ea7917f3e4afa610940f24349d732",
+      "size_bytes": 12042
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json",
+      "sha256": "bec9ae68599d6f133ebb94c7809b4c96b58d8e18f0d2655e6abce59cba75da2c",
+      "size_bytes": 3702
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+      "size_bytes": 11664
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json",
+      "sha256": "bc63b12169efbcd76448ebe548bb5edde80f497d62e7745068cfdb32116d4ed2",
+      "size_bytes": 1772
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+      "sha256": "edbec332710196e37ff7c5cf88bfd2b4979a86793557c3cebc2a57df1eb01df2",
+      "size_bytes": 1491
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py",
+      "sha256": "f15da63f8d130c0c558ae5bb6236c12205295a9c37978f85af390780bddb4a9e",
+      "size_bytes": 4354
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+      "sha256": "06dd9789f8e923a320171b53c98a06945bd4159282d03909cf59886df2d49a0b",
+      "size_bytes": 41755
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+      "size_bytes": 11438
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
+      "sha256": "afb3b5440efb09b21d1e40164a2b5ab6a07803b965203b6ed1596dcd4a2aadd4",
+      "size_bytes": 23708
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json",
+      "sha256": "f10c1a50a4567c60432ef5085d4572fef0b84bd7b6f76d4e183e6c8cc8a2fa7c",
+      "size_bytes": 7073
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+      "sha256": "0d9e343992ce939516900c96cf0fe91cffbb9a2e0dfa2780fc0c1a56386e0b3a",
+      "size_bytes": 3713
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/origin.json",
+      "sha256": "6104522b4790fbd9c31dc69d3ee4632f42677d45d079bde5f95e2140ad418a38",
+      "size_bytes": 4056
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+      "sha256": "be88b60373eb6f4552fa3d35e661bfee000f2f87f912d45f44cb369a060a3def",
+      "size_bytes": 1226
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py",
+      "sha256": "9a94ce3d7898b0d00d966136051c926405a02d393f26c3d9d5bffb10f7837295",
+      "size_bytes": 3833
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json",
+      "sha256": "cb457e364d5b8e0f5e09051d6699fbf684a87a880fa4acbbdebbffa637affe2c",
+      "size_bytes": 7687
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json",
+      "sha256": "afb8212297b7b03eca21fe904536c41d3d2c71fadccd7e38f3d311c0469dcb15",
+      "size_bytes": 8797
+    }
+  ],
+  "supporting_inputs": [
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/index.json",
+      "sha256": "4ce4ea829c3fb194ed939ae85001ed7c9fb8796e52bdbcb1c98ed380e1e05e72",
+      "size_bytes": 43674,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/A01.json",
+      "sha256": "0a052f540712866419756227df15344b429610af7b3f98e3a1ba73138cdd3f41",
+      "size_bytes": 9369,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/B01.json",
+      "sha256": "61b03afd872cb927f9caf02aead4759f443998bb3883b9d16453cf8f3f2e6eb6",
+      "size_bytes": 6530,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/B02.json",
+      "sha256": "7e825b84c31df73afa40443a6fd5c8f5d2355a39f8ff3a2bb2a3699498859548",
+      "size_bytes": 7500,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C01.json",
+      "sha256": "1cc986f155b32f19a166243d307c9072f6e6b355518f6df57cd955c436ee1d5f",
+      "size_bytes": 3837,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C02.json",
+      "sha256": "0321c5d532fd32bd105c6599ea96e315fdd6d28bc0118c6b012f26f1e9f77d27",
+      "size_bytes": 3830,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C03.json",
+      "sha256": "dda32b1d682b7ce792a8dcd0c86af93465beaaebc3171e4e6328c6942fdce14b",
+      "size_bytes": 3240,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C04.json",
+      "sha256": "9dbbfe60fb569696a6c3b321f143db9a95e3b7614f36474adc2e27e26d0e129c",
+      "size_bytes": 3251,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP01.json",
+      "sha256": "a88e883f6bae98933e5766b338da4a51b264f321a539cdb15957a33e7813c659",
+      "size_bytes": 7373,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP02.json",
+      "sha256": "1d620cb992379dce7f146fe836f8fe7661ae193d4c47efb74db7fe3cf09fa7f9",
+      "size_bytes": 7910,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP03.json",
+      "sha256": "f7242898fbe88d89d50d92f52cbbf2e3165e6c9e2017eff0060212b1e02c0c2d",
+      "size_bytes": 7102,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F01.json",
+      "sha256": "6a9d2e8f0f6b8398fc1c48163572545593ade94045be8156acc443e9e7be39b9",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F02.json",
+      "sha256": "19356610cff4e2e18c4045b5b559428bab849e938c8c66bb0bf5ebd0b036c843",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F03.json",
+      "sha256": "f062811ef2a54dd890563f40ec16fcfc63af840e621215819341383692fc4537",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F04.json",
+      "sha256": "4d87f79174c2061c5eda5d99562d6bf2870de4bb791dd662e4aaa3f5ca4d6c77",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F05.json",
+      "sha256": "11a522bed2b65ee74784a07026270f8b550b7b643dac63c5e7eac28a5cac7a6b",
+      "size_bytes": 4596,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F06.json",
+      "sha256": "387bda49e2f2c51675fb7cd7642fa8853ef3bec4b831f7c9a9d23b83ae925801",
+      "size_bytes": 5421,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F07.json",
+      "sha256": "602cc1e4e00cc2e874fbc8fdaecffb02c8d2d153bd87d87035340e31fa6101af",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F08.json",
+      "sha256": "14793a7f2cef81e1ab13f0b0adb5f0d639d0cf50de9e38794d3e920d0a5574da",
+      "size_bytes": 4596,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F09.json",
+      "sha256": "b5d7cf41796338d229e1d8f661aff1904c0e0e04eb97010b5d4696858a1fa213",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F10.json",
+      "sha256": "6fd293dc94ab7a5b048f4e0d8ba57ef70cd8ea1b4675bf1820684d93200b439b",
+      "size_bytes": 2940,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F11.json",
+      "sha256": "6d2e4cf5bda6a55cd8884145358bc65a78c07b24a2a184fff0f9947d5560cc3f",
+      "size_bytes": 4602,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F12.json",
+      "sha256": "320349c120df4b89cce5f53864e333784d8b29b737e6e856e95266a718cb6409",
+      "size_bytes": 3775,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F13.json",
+      "sha256": "2a13e6422a2272dc29ff83bb2d15281a1ad37b7d31ad888ca7896acd3fd3ca5e",
+      "size_bytes": 5429,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F14.json",
+      "sha256": "4605e944429dcb7050a86442582560189df474456d8ea51f44eb3c78c1cf8207",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F15.json",
+      "sha256": "2bcfab160f6cb926047ae1bfc47289930cf7e75b8f62498075c07f4ca499ad5f",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F16.json",
+      "sha256": "915493b447ad86d7ab1536bf01c0a809cb58d30ae771390af603795881ba4b7d",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F17.json",
+      "sha256": "7f744747643ed731979877f0ae8db8ebd476980b62a2cadcc8454f5b7661027b",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F18.json",
+      "sha256": "98c36d306c90addb8f9d08862649aaad0ff1bc88f79d35cefb1872f76621f417",
+      "size_bytes": 6261,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F19.json",
+      "sha256": "b2e87409f9866f12c32e39bad63626df1d3aebedd3329353ea9632ef1104f426",
+      "size_bytes": 2941,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F20.json",
+      "sha256": "549f40c522b981fea4d7bd63ea590b79be3e3681815be76a339be7f7d9d2a6d2",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F21.json",
+      "sha256": "a2e4b610cf67d0fa1fe82eb09a7cea7b35f9c35f8cdbd84434ee7433d235399c",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F22.json",
+      "sha256": "f03ee1d3e29c12c6d93fefbf8b5dc52c88959f18f3925f3984b08e92ca8c4bf6",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F23.json",
+      "sha256": "3d4eac1f912782213cd398521bd66c0b54af478533eb92eaf4a66af93b5d785b",
+      "size_bytes": 7089,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F24.json",
+      "sha256": "aced8314bc287cdaeb0272d93f1bcef95d3deec1716d64f586c677573f756ae3",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F25.json",
+      "sha256": "3f0602817136f46124f1f0b0395bf40a75d605705ca8b58fb72b4b8661fab14a",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F26.json",
+      "sha256": "4d755b563df3be92bbf48661441915178938df2028e8db571a86308f44168afe",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F27.json",
+      "sha256": "64ac8d81239c25313fc252746050ae13b0681c631aa315f3418943ccd8dd009e",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F28.json",
+      "sha256": "45ad21cac6b7eab5b09a2eabf9709ca4dd26cea810e87bd096e6f3ad8a14f010",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F29.json",
+      "sha256": "9de7a3a87c46681507eba8e0371ac64642f16941d09c8afe19f423d91f1df452",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F30.json",
+      "sha256": "87746cede6f5261cd245fbe1591fafe4d74b195d67ac0fde2df042ffa3bf6141",
+      "size_bytes": 7089,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F31.json",
+      "sha256": "eabcea7cc3a1d8651a1f3160ac7d46c4dce9244dec3611b34b469dd81fb45694",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F32.json",
+      "sha256": "f9276ab1e3576bb0511246177780cad077baa4a06609e111ab49b504ed6f05a8",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F33.json",
+      "sha256": "46682af549d0c94bb92789863f244d2d90c90bf0d43a1117485f5a3706b3c8e5",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F34.json",
+      "sha256": "0180fcd2f570259e568e255b59bdd5e0192fbf03904fbc23bc22238fc9a2ae86",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F35.json",
+      "sha256": "3520af6c0c4097573bc3156df566c1a0ee52cb9dce53ab8199366b5fa360f57f",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F36.json",
+      "sha256": "b37d105d572748e84813e792ae690d167391e3794cd14f00a94b4a3b2f8ec362",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F37.json",
+      "sha256": "dc8347800ca9c672281ee237778bdbddb80554df58ab0145a18a6d3b8d1a92c5",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F38.json",
+      "sha256": "335fc565b41efaa8d0b10ae3206668c0362c407dc3528a0bdf9feb79a423856f",
+      "size_bytes": 2941,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F39.json",
+      "sha256": "81a58158ebc12a87a96fe0a662bfeb7636aab071577a6efb2fde27215b91ccc7",
+      "size_bytes": 7096,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F40.json",
+      "sha256": "ad59536c85bb71c40d159aed67f763169d56592e5f3ac9cd339a05badfccf440",
+      "size_bytes": 2943,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K01.json",
+      "sha256": "76451f80d6c3cdfe101c5d1264f5e851450eec9fa81fae326295ac9bbaf264fe",
+      "size_bytes": 3791,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K02.json",
+      "sha256": "50472e68e533292a8233c074d5352f58395b822c822d51c79bf4471c4a975985",
+      "size_bytes": 3711,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K03.json",
+      "sha256": "1740e849ffa9a578ff98e6cccf776d8f17a0dc2dcc1c22cb4f5c470421dd493c",
+      "size_bytes": 3643,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K04.json",
+      "sha256": "d603794bad93c18050c8e5dae454544669b2c684a9f49d0c6856ea7faa2e539b",
+      "size_bytes": 3648,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K05.json",
+      "sha256": "e7ed8ddddffdf11916ee51502d3938142be08c04c70574dff8af4473a873a362",
+      "size_bytes": 3644,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K06.json",
+      "sha256": "9c4ef8b49c9c1e316f433372a3c86337f7b988117c0afaf0157a0f21d1a7bd08",
+      "size_bytes": 3636,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K07.json",
+      "sha256": "252199f889434221d5934f2991320870f6818d1c63f87d052119631f7ead8361",
+      "size_bytes": 3575,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K08.json",
+      "sha256": "5227ceb18c4b5a858093dae86a3e9d477f8c80145222ec787f28878f4df1a5e0",
+      "size_bytes": 3751,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K09.json",
+      "sha256": "f8939d70a60f54b56dcef851f58f66f2efa45d33c648b137440026b8c5e5de07",
+      "size_bytes": 3616,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K10.json",
+      "sha256": "7329a49b062b777766e142b6f2ddb98756d6979dcb62f632c0cb92dc7f16b41e",
+      "size_bytes": 3684,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K11.json",
+      "sha256": "c454a437c6dc442e7797a56d0794cb8b59f53b7402263b30aa8dcb0c53720d86",
+      "size_bytes": 3659,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K12.json",
+      "sha256": "b87df30170bf8f67295ef3c84e9993eccdb8d4bd32a561a207e313ecf6cbf017",
+      "size_bytes": 3589,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K13.json",
+      "sha256": "02319eaa8ee8237c6054b27a60f3941a347a1c713789708c1cf28512faf354de",
+      "size_bytes": 3584,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K14.json",
+      "sha256": "5a9cd7b13a83334a7ee0f034dd51ecbdb9b5fa351203ff14b6e944d421411983",
+      "size_bytes": 3785,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K15.json",
+      "sha256": "e26e514cc607f1b94951354aeb4ccc58d499d2f3891a5c4aac03844c8d928a12",
+      "size_bytes": 3700,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K16.json",
+      "sha256": "ce2bc55673aa7945bdefba5a4e7d7ef0d2c926ed2a8be402b4bed51af4889ec5",
+      "size_bytes": 3575,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K17.json",
+      "sha256": "37df27dbac594fe8e286c534a4ee33c9388b18a2069872da5c79efdcd881f262",
+      "size_bytes": 3676,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K18.json",
+      "sha256": "a78b515306dd6176106499a36dd5214706cd0533b88a7c959e478d4b25a7d6cd",
+      "size_bytes": 3623,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K19.json",
+      "sha256": "e7c54842ace98105c4e88471e8807df4aea2bf43f5e7924c4f8cd961d537049a",
+      "size_bytes": 3603,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K20.json",
+      "sha256": "9183ce9cc27b061f308104bfa5ad85dee3285e7545d8f69d7abd18e21639b50a",
+      "size_bytes": 3638,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K21.json",
+      "sha256": "823cae41986b30794c886561c3e6be055f79678c55ca313e0f71779b61eaa1d8",
+      "size_bytes": 3645,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K22.json",
+      "sha256": "94ae56fe1b6867866e71be53367756323c6eaaeae42d0d4d520fe67cdb1ed703",
+      "size_bytes": 3640,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K23.json",
+      "sha256": "cf26e3909611d1fda6b38e5d2cded8e9701f2402048c1e67af02c95746be70d6",
+      "size_bytes": 3613,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K24.json",
+      "sha256": "285ac133959bd2ae7c7f52c8aa9ab6d1f62885dd7e1ed2c9a71352cc1f4a3198",
+      "size_bytes": 3581,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K25.json",
+      "sha256": "0c4af5d70b91585a5633af47de054d9f3fd3b3b1ee6a4f5f99d7b9ba5c57dfad",
+      "size_bytes": 3651,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K26.json",
+      "sha256": "d9a2f43ed640dc0c59223c73dbbe09d9a5d80f9eb02b4eeca0bb36332cf9af27",
+      "size_bytes": 3628,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K27.json",
+      "sha256": "c30eacd1628f6641f5d576127b21cbcff596d23c48d52c55d508854c27919709",
+      "size_bytes": 3547,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K28.json",
+      "sha256": "411161ae95f6e1ebe164b67547e1aae974c6bdec78c2f54826c2f5658c507be0",
+      "size_bytes": 3505,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K29.json",
+      "sha256": "866d91f86e5dd03187ffe5aab8e98a3d730c7f3da0bb10a6913ec3acd4305f8b",
+      "size_bytes": 3642,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K30.json",
+      "sha256": "8b527fe30a8687a00bd74577d5318f868433a9d88fc1b450671a99933c728d2e",
+      "size_bytes": 3577,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K31.json",
+      "sha256": "b8ab91fe0865c575a5cf4c95556dee4e84aba360949bb3efe7cb33dbc1cebab4",
+      "size_bytes": 3619,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K32.json",
+      "sha256": "7cee471c6fa0fb35b2e291f608958fe3caad87835ed0210fcb8e126759d4e415",
+      "size_bytes": 3615,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K33.json",
+      "sha256": "ef324d3ea84f3e55ca6053fcfd45273f1afb59834b3bcea9a5c65fb81ded79dd",
+      "size_bytes": 3582,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K34.json",
+      "sha256": "558796a275ba5990e7e193dbd8409b360e0b106014a49ec5cfa9700414a82ed0",
+      "size_bytes": 3641,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K35.json",
+      "sha256": "bf25df0a99a439c091000046d2e5ccad93657fc2bbaf0726969f77795b2421c7",
+      "size_bytes": 3641,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K36.json",
+      "sha256": "0a48624da9d0487ffd96eccc6798517cc37cf598404a5a07d9b95e8e0788e9e6",
+      "size_bytes": 3580,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K37.json",
+      "sha256": "583c005e59b3147045d5322bf34a13d3afaed5bb09b41e3e56f79db488cdd5dc",
+      "size_bytes": 3514,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K38.json",
+      "sha256": "ac527ab18cba856ddd775e0d70ad774f1e979a45639855bf8badb227067e25c5",
+      "size_bytes": 3638,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K39.json",
+      "sha256": "8bff93a265715ff428c1720a78fa47d6a65ae39a234aa5ac7fbaadbb577ebc3c",
+      "size_bytes": 3647,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K40.json",
+      "sha256": "05f40c905fed5c5c784d2d7a85fe99c2ccb921820be7fea567632f11b44af219",
+      "size_bytes": 3697,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q01.json",
+      "sha256": "e8ed1646fb228f7da78819420e08467a01c2f7023bc769d702bc5b0122fc8376",
+      "size_bytes": 3254,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q02.json",
+      "sha256": "02349ad691dfc855a7279f82ae868279ac471d5f4870a80d108f4f856fe6312a",
+      "size_bytes": 3610,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q03.json",
+      "sha256": "e8e358202e8c650d2fe8202b45ec0c54ef0f85416e7149a87245bd442c041e21",
+      "size_bytes": 3197,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q04.json",
+      "sha256": "bc8fca034a69a663b61dfe33c4fdf3ca57c9415a6bfc2d547fa02151831c846f",
+      "size_bytes": 3333,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/R01.json",
+      "sha256": "bd75af7010a5e708f5564f2f32824d6f89907a297123f532bd3effc0558a597b",
+      "size_bytes": 6734,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/R02.json",
+      "sha256": "15abeca8b9452f6847be2fba6f4221c5c909d48f39450c7add5c76c1d9d3310a",
+      "size_bytes": 4159,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S01.json",
+      "sha256": "6058d41ccebadaaf7251bb35edbcfb6f32a14ec0e1404af69b02b2e1a06fcab8",
+      "size_bytes": 5906,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S02.json",
+      "sha256": "4392fc8188ab5a6ade41f36d36a7c0cc1633bfba09c949d83658ec2cd40cbbb5",
+      "size_bytes": 7034,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S03.json",
+      "sha256": "b0dec6935328b4aa05b6d5eaf4b98fdeb2f1e3bffdf64c8346f4310f7d6f988a",
+      "size_bytes": 6175,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S04.json",
+      "sha256": "f61ab3a36fa338da3991845b2d952e732cea1953f8c9862fa79863869123a85f",
+      "size_bytes": 5794,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S05.json",
+      "sha256": "6f61af2d43747e2f10778e95adc911b647ba8be399d01f49b252a60bd3a23268",
+      "size_bytes": 6175,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S06.json",
+      "sha256": "7a585884bb616b2fd52990dc1308703fbbd9b6040ea672b03986f6247cf2391e",
+      "size_bytes": 5842,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S07.json",
+      "sha256": "30ebd1f0f07210fde211c5349d6cfdea51bdbdd7b93d61c778eeb80c8cea093c",
+      "size_bytes": 5797,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S08.json",
+      "sha256": "ad2e85f7f00c11b75ee1d444023607c7c83c2dd7f5130ad016af05a9fafa91b3",
+      "size_bytes": 5787,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S09.json",
+      "sha256": "bdc460d90f3fc835ec826926a853f374f64af797c8f9e2ccf08f7cb50809c575",
+      "size_bytes": 5896,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S10.json",
+      "sha256": "53a4ebb6702cb785a1d0bb797e064f58d3d8a318a8befef216e61b02684bc5da",
+      "size_bytes": 6422,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S11.json",
+      "sha256": "fbe27c15b96ac99ef7394ec6e0e4a5b054c4aff69025e60f3978c6c9e1c1b315",
+      "size_bytes": 6320,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S12.json",
+      "sha256": "acdcf6156d9a71fbf9479c06c478f130b60bbeddf91fa291113c6e5a0ad9216f",
+      "size_bytes": 6705,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/SOURCE.json",
+      "sha256": "3e8a5eaded8d960814072a11609a2946cfa03183cde62eab51a8ffeae0b0aa41",
+      "size_bytes": 2396,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/TEXT.json",
+      "sha256": "d4500c3c718c1e51215dfb4fe9c8bca43574a4bfcf5c37a1af2d6bd5a475ae2d",
+      "size_bytes": 2245,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/data/document.md",
+      "sha256": "009fc31612a8c9d3d41da1cb57a825ac8e87466e9ae391d02fa4469bef626eb3",
+      "size_bytes": 1093534,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/dependencies.json",
+      "sha256": "7e8f4cdcbf923c5c3f3e9115a371d709e951b71ad246a08af16aecf411a55876",
+      "size_bytes": 163088,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kc-input/r2/RU10_EDITOR_KC_r2/tools/kit.py",
+      "sha256": "432bb4a7309ddf0953b7211ca2479c0e9b392ed0ac6f21952890446afb2a1b24",
+      "size_bytes": 22114,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kcp-followup-input/historical-gate-r2-replay/ENVIRONMENT.json",
+      "sha256": "cbf1c104f8493e5819880bb2be3051a8bbc83d6482f0896d676945506bc2d2c3",
+      "size_bytes": 765,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kcp-followup-input/historical-gate-r2-replay/RESULT.json",
+      "sha256": "cdae9c9781700b2154fc97b5fbe4eef48ba2c64725d63c44bbcd93af8defd666",
+      "size_bytes": 2818,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../kcp-followup-input/historical-gate-r2-replay/SELFTEST.json",
+      "sha256": "7ce1792d6962a59b37c4435808eef1bd5d54ad122f3c6c8c55bcac257f6a009d",
+      "size_bytes": 10844,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/PILOT_PROTOCOL.md",
+      "sha256": "0fe13410a1459157de83ca9fad087970a69d20ff37f2fbbfafa68b3da5f6167f",
+      "size_bytes": 6363,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/PREREGISTRATION.json",
+      "sha256": "cea1186beab3ee67fe37f1089df18d12ddee4b912a12c212181cd1d66accd726",
+      "size_bytes": 1220,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/PROTECTED_CLAIMS.json",
+      "sha256": "81c45bbbb5e852b701f7404cbb58a155c919786d531d3341734b4ba03e2a0c07",
+      "size_bytes": 72557,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/checks/TECHNICAL_REVIEW.md",
+      "sha256": "5ee9ab23ae79d2cd99fd301807678cab557e2c7dd1ab278153e539e6d67a4f51",
+      "size_bytes": 6601,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/checks/mechanical-checks.json",
+      "sha256": "b22c667192951ce4dbb8b6bbf10aebf5d6437cc42d50a9ef5c6ea4568c238ac4",
+      "size_bytes": 2493,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/input/common-brief.md",
+      "sha256": "d5e9d2a5af99b699f6e1e4700450e88ac33de7ea867f0333bb0fd4849c412539",
+      "size_bytes": 5986,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/input/context.md",
+      "sha256": "52b3be4b99de31e3a83e54bde1309d922df7864eec07d945295c623d46cb6d04",
+      "size_bytes": 2234,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/input/section.md",
+      "sha256": "eec7712c2819e844ff6fcc6f2b6afedec2b584d5bd90d496824261e6e2f0024b",
+      "size_bytes": 11680,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/pilot/RESULTS.json",
+      "sha256": "13dbcabc2bead4d7675ec4b344cb58307a322ef47ea83a664a9fed6c8f3d304a",
+      "size_bytes": 1777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/pilot/baseline/edited.md",
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "size_bytes": 12127,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/pilot/blind-review/REVEAL.json",
+      "sha256": "aa5731fe568e10859064a7d6c26b992474563875a44de24d080fbe5bedaab0d7",
+      "size_bytes": 811,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/pilot/blind-review/review.json",
+      "sha256": "6dec95c55e507d6cce3c9830af52ecd3f058afb5227b0f6a2afbc011a554874c",
+      "size_bytes": 211267,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../publication-editing-task/pilot/with-skills/edited.md",
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "size_bytes": 12029,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../terminology-input/READING_ROOM.html",
+      "sha256": "5035f1040977869a74a4d6ddbccaf237e2ef416077507f0803f12c05943e22f6",
+      "size_bytes": 21785995,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../terminology-input/source-index.json",
+      "sha256": "7b9bc9c76c14146927ab9c39c8cdbeb7af1f8a17ee82ae9838a15690060d6fac",
+      "size_bytes": 241588,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/evaluation/MIGRATION_TESTS.json",
+      "sha256": "2df43ed048f7f4d2d11fc6e3cf24e80114e7bf849d1afc73bb30fe68967d5b73",
+      "size_bytes": 1985,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/evaluation/PRESERVATION.json",
+      "sha256": "e2481128169deb5acdfba5053678cc8775468814574277dda96130af6283ff54",
+      "size_bytes": 34350,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/action-and-known-actor.json",
+      "sha256": "5a9cd7b13a83334a7ee0f034dd51ecbdb9b5fa351203ff14b6e944d421411983",
+      "size_bytes": 3785,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/answer-before-explanation.json",
+      "sha256": "9183ce9cc27b061f308104bfa5ad85dee3285e7545d8f69d7abd18e21639b50a",
+      "size_bytes": 3638,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/audience-dependent-slide-order.json",
+      "sha256": "583c005e59b3147045d5322bf34a13d3afaed5bb09b41e3e56f79db488cdd5dc",
+      "size_bytes": 3514,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/buyer-centered-product-pages.json",
+      "sha256": "8bff93a265715ff428c1720a78fa47d6a65ae39a234aa5ac7fbaadbb577ebc3c",
+      "size_bytes": 3647,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/captions-explain-images.json",
+      "sha256": "ac527ab18cba856ddd775e0d70ad774f1e979a45639855bf8badb227067e25c5",
+      "size_bytes": 3638,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/change-grounding-and-traceability.json",
+      "sha256": "e8e358202e8c650d2fe8202b45ec0c54ef0f85416e7149a87245bd442c041e21",
+      "size_bytes": 3197,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/clarity-is-not-substance.json",
+      "sha256": "e7ed8ddddffdf11916ee51502d3938142be08c04c70574dff8af4473a873a362",
+      "size_bytes": 3644,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/coherent-paragraphs.json",
+      "sha256": "a78b515306dd6176106499a36dd5214706cd0533b88a7c959e478d4b25a7d6cd",
+      "size_bytes": 3623,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/complete-work-documents.json",
+      "sha256": "ef324d3ea84f3e55ca6053fcfd45273f1afb59834b3bcea9a5c65fb81ded79dd",
+      "size_bytes": 3582,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/context-sensitive-stop-words.json",
+      "sha256": "d603794bad93c18050c8e5dae454544669b2c684a9f49d0c6856ea7faa2e539b",
+      "size_bytes": 3648,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/do-not-invent-missing-facts.json",
+      "sha256": "0321c5d532fd32bd105c6599ea96e315fdd6d28bc0118c6b012f26f1e9f77d27",
+      "size_bytes": 3830,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/draft-from-provided-facts.json",
+      "sha256": "7e825b84c31df73afa40443a6fd5c8f5d2355a39f8ff3a2bb2a3699498859548",
+      "size_bytes": 7500,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/edit-existing-text.json",
+      "sha256": "61b03afd872cb927f9caf02aead4759f443998bb3883b9d16453cf8f3f2e6eb6",
+      "size_bytes": 6530,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/editorial-quality-and-trace-review.json",
+      "sha256": "f7242898fbe88d89d50d92f52cbbf2e3165e6c9e2017eff0060212b1e02c0c2d",
+      "size_bytes": 7102,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/editorial-reviewer.json",
+      "sha256": "15abeca8b9452f6847be2fba6f4221c5c909d48f39450c7add5c76c1d9d3310a",
+      "size_bytes": 4159,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/fact-grounded-drafting.json",
+      "sha256": "1d620cb992379dce7f146fe836f8fe7661ae193d4c47efb74db7fe3cf09fa7f9",
+      "size_bytes": 7910,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/fact-grounded-personal-profile.json",
+      "sha256": "b8ab91fe0865c575a5cf4c95556dee4e84aba360949bb3efe7cb33dbc1cebab4",
+      "size_bytes": 3619,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ground-evaluation-in-facts.json",
+      "sha256": "c454a437c6dc442e7797a56d0794cb8b59f53b7402263b30aa8dcb0c53720d86",
+      "size_bytes": 3659,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-action-and-known-actor.json",
+      "sha256": "4605e944429dcb7050a86442582560189df474456d8ea51f44eb3c78c1cf8207",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-answer-before-explanation.json",
+      "sha256": "549f40c522b981fea4d7bd63ea590b79be3e3681815be76a339be7f7d9d2a6d2",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-audience-dependent-slide-order.json",
+      "sha256": "dc8347800ca9c672281ee237778bdbddb80554df58ab0145a18a6d3b8d1a92c5",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-buyer-centered-product-pages.json",
+      "sha256": "81a58158ebc12a87a96fe0a662bfeb7636aab071577a6efb2fde27215b91ccc7",
+      "size_bytes": 7096,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-captions-explain-images.json",
+      "sha256": "335fc565b41efaa8d0b10ae3206668c0362c407dc3528a0bdf9feb79a423856f",
+      "size_bytes": 2941,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-clarity-is-not-substance.json",
+      "sha256": "11a522bed2b65ee74784a07026270f8b550b7b643dac63c5e7eac28a5cac7a6b",
+      "size_bytes": 4596,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-coherent-paragraphs.json",
+      "sha256": "98c36d306c90addb8f9d08862649aaad0ff1bc88f79d35cefb1872f76621f417",
+      "size_bytes": 6261,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-complete-work-documents.json",
+      "sha256": "46682af549d0c94bb92789863f244d2d90c90bf0d43a1117485f5a3706b3c8e5",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-context-sensitive-stop-words.json",
+      "sha256": "4d87f79174c2061c5eda5d99562d6bf2870de4bb791dd662e4aaa3f5ca4d6c77",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-fact-grounded-personal-profile.json",
+      "sha256": "eabcea7cc3a1d8651a1f3160ac7d46c4dce9244dec3611b34b469dd81fb45694",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-ground-evaluation-in-facts.json",
+      "sha256": "6d2e4cf5bda6a55cd8884145358bc65a78c07b24a2a184fff0f9947d5560cc3f",
+      "size_bytes": 4602,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-honest-useful-headlines.json",
+      "sha256": "f03ee1d3e29c12c6d93fefbf8b5dc52c88959f18f3925f3984b08e92ca8c4bf6",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-informational-style-scope.json",
+      "sha256": "f062811ef2a54dd890563f40ec16fcfc63af840e621215819341383692fc4537",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-instructions-in-execution-order.json",
+      "sha256": "4d755b563df3be92bbf48661441915178938df2028e8db571a86308f44168afe",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-intensifiers-need-evidence.json",
+      "sha256": "320349c120df4b89cce5f53864e333784d8b29b737e6e856e95266a718cb6409",
+      "size_bytes": 3775,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-introduction-sets-expectations.json",
+      "sha256": "aced8314bc287cdaeb0272d93f1bcef95d3deec1716d64f586c677573f756ae3",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-manageable-sentences.json",
+      "sha256": "915493b447ad86d7ab1536bf01c0a809cb58d30ae771390af603795881ba4b7d",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-newsworthy-press-release.json",
+      "sha256": "0180fcd2f570259e568e255b59bdd5e0192fbf03904fbc23bc22238fc9a2ae86",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-opinion-attribution.json",
+      "sha256": "387bda49e2f2c51675fb7cd7642fa8853ef3bec4b831f7c9a9d23b83ae925801",
+      "size_bytes": 5421,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-plain-language-with-precise-terms.json",
+      "sha256": "6fd293dc94ab7a5b048f4e0d8ba57ef70cd8ea1b4675bf1820684d93200b439b",
+      "size_bytes": 2940,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-presentation-reading-context.json",
+      "sha256": "b37d105d572748e84813e792ae690d167391e3794cd14f00a94b4a3b2f8ec362",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-preserve-important-qualifications.json",
+      "sha256": "602cc1e4e00cc2e874fbc8fdaecffb02c8d2d153bd87d87035340e31fa6101af",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-preserve-restrictive-clauses.json",
+      "sha256": "7f744747643ed731979877f0ae8db8ebd476980b62a2cadcc8454f5b7661027b",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-centered-company-profile.json",
+      "sha256": "f9276ab1e3576bb0511246177780cad077baa4a06609e111ab49b504ed6f05a8",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-depth-and-obstacles.json",
+      "sha256": "87746cede6f5261cd245fbe1591fafe4d74b195d67ac0fde2df042ffa3bf6141",
+      "size_bytes": 7089,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-purpose.json",
+      "sha256": "6a9d2e8f0f6b8398fc1c48163572545593ade94045be8156acc443e9e7be39b9",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-reasoning-order-and-grounds.json",
+      "sha256": "45ad21cac6b7eab5b09a2eabf9709ca4dd26cea810e87bd096e6f3ad8a14f010",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-relevant-cold-email.json",
+      "sha256": "3520af6c0c4097573bc3156df566c1a0ee52cb9dce53ab8199366b5fa360f57f",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-relevant-examples.json",
+      "sha256": "2bcfab160f6cb926047ae1bfc47289930cf7e75b8f62498075c07f4ca499ad5f",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-research-before-filling-gaps.json",
+      "sha256": "a2e4b610cf67d0fa1fe82eb09a7cea7b35f9c35f8cdbd84434ee7433d235399c",
+      "size_bytes": 5433,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-respectful-task-specific-tone.json",
+      "sha256": "9de7a3a87c46681507eba8e0371ac64642f16941d09c8afe19f423d91f1df452",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-shared-list-conditions.json",
+      "sha256": "b2e87409f9866f12c32e39bad63626df1d3aebedd3329353ea9632ef1104f426",
+      "size_bytes": 2941,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-specific-audience.json",
+      "sha256": "19356610cff4e2e18c4045b5b559428bab849e938c8c66bb0bf5ebd0b036c843",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-standalone-negation.json",
+      "sha256": "64ac8d81239c25313fc252746050ae13b0681c631aa315f3418943ccd8dd009e",
+      "size_bytes": 3777,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-stories-require-actions.json",
+      "sha256": "3f0602817136f46124f1f0b0395bf40a75d605705ca8b58fb72b4b8661fab14a",
+      "size_bytes": 4605,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-task-dependent-numeric-precision.json",
+      "sha256": "14793a7f2cef81e1ab13f0b0adb5f0d639d0cf50de9e38794d3e920d0a5574da",
+      "size_bytes": 4596,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-task-specific-structure.json",
+      "sha256": "3d4eac1f912782213cd398521bd66c0b54af478533eb92eaf4a66af93b5d785b",
+      "size_bytes": 7089,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-unknown-actor-remains-unknown.json",
+      "sha256": "b5d7cf41796338d229e1d8f661aff1904c0e0e04eb97010b5d4696858a1fa213",
+      "size_bytes": 3771,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-unpack-cliches.json",
+      "sha256": "2a13e6422a2272dc29ff83bb2d15281a1ad37b7d31ad888ca7896acd3fd3ca5e",
+      "size_bytes": 5429,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/grounds-for-verify-editorial-effect.json",
+      "sha256": "ad59536c85bb71c40d159aed67f763169d56592e5f3ac9cd339a05badfccf440",
+      "size_bytes": 2943,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/honest-evaluation-status.json",
+      "sha256": "bc8fca034a69a663b61dfe33c4fdf3ca57c9415a6bfc2d547fa02151831c846f",
+      "size_bytes": 3333,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/honest-useful-headlines.json",
+      "sha256": "94ae56fe1b6867866e71be53367756323c6eaaeae42d0d4d520fe67cdb1ed703",
+      "size_bytes": 3640,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/informational-style-scope.json",
+      "sha256": "1740e849ffa9a578ff98e6cccf776d8f17a0dc2dcc1c22cb4f5c470421dd493c",
+      "size_bytes": 3643,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/instructions-in-execution-order.json",
+      "sha256": "d9a2f43ed640dc0c59223c73dbbe09d9a5d80f9eb02b4eeca0bb36332cf9af27",
+      "size_bytes": 3628,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/intensifiers-need-evidence.json",
+      "sha256": "b87df30170bf8f67295ef3c84e9993eccdb8d4bd32a561a207e313ecf6cbf017",
+      "size_bytes": 3589,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/introduction-sets-expectations.json",
+      "sha256": "285ac133959bd2ae7c7f52c8aa9ab6d1f62885dd7e1ed2c9a71352cc1f4a3198",
+      "size_bytes": 3581,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/manageable-sentences.json",
+      "sha256": "ce2bc55673aa7945bdefba5a4e7d7ef0d2c926ed2a8be402b4bed51af4889ec5",
+      "size_bytes": 3575,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/meaning-and-fact-preservation.json",
+      "sha256": "e8ed1646fb228f7da78819420e08467a01c2f7023bc769d702bc5b0122fc8376",
+      "size_bytes": 3254,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/meaning-preserving-editing.json",
+      "sha256": "a88e883f6bae98933e5766b338da4a51b264f321a539cdb15957a33e7813c659",
+      "size_bytes": 7373,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/newsworthy-press-release.json",
+      "sha256": "558796a275ba5990e7e193dbd8409b360e0b106014a49ec5cfa9700414a82ed0",
+      "size_bytes": 3641,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/opinion-attribution.json",
+      "sha256": "9c4ef8b49c9c1e316f433372a3c86337f7b988117c0afaf0157a0f21d1a7bd08",
+      "size_bytes": 3636,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/pishi-sokrashchay-ocr-text.json",
+      "sha256": "d4500c3c718c1e51215dfb4fe9c8bca43574a4bfcf5c37a1af2d6bd5a475ae2d",
+      "size_bytes": 2245,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/pishi-sokrashchay-source.json",
+      "sha256": "3e8a5eaded8d960814072a11609a2946cfa03183cde62eab51a8ffeae0b0aa41",
+      "size_bytes": 2396,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/plain-language-with-precise-terms.json",
+      "sha256": "7329a49b062b777766e142b6f2ddb98756d6979dcb62f632c0cb92dc7f16b41e",
+      "size_bytes": 3684,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/presentation-reading-context.json",
+      "sha256": "0a48624da9d0487ffd96eccc6798517cc37cf598404a5a07d9b95e8e0788e9e6",
+      "size_bytes": 3580,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/preserve-facts-and-meaning.json",
+      "sha256": "1cc986f155b32f19a166243d307c9072f6e6b355518f6df57cd955c436ee1d5f",
+      "size_bytes": 3837,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/preserve-important-qualifications.json",
+      "sha256": "252199f889434221d5934f2991320870f6818d1c63f87d052119631f7ead8361",
+      "size_bytes": 3575,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/preserve-restrictive-clauses.json",
+      "sha256": "37df27dbac594fe8e286c534a4ee33c9388b18a2069872da5c79efdcd881f262",
+      "size_bytes": 3676,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/reader-centered-company-profile.json",
+      "sha256": "7cee471c6fa0fb35b2e291f608958fe3caad87835ed0210fcb8e126759d4e415",
+      "size_bytes": 3615,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/reader-depth-and-obstacles.json",
+      "sha256": "8b527fe30a8687a00bd74577d5318f868433a9d88fc1b450671a99933c728d2e",
+      "size_bytes": 3577,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/reader-purpose.json",
+      "sha256": "76451f80d6c3cdfe101c5d1264f5e851450eec9fa81fae326295ac9bbaf264fe",
+      "size_bytes": 3791,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/reasoning-order-and-grounds.json",
+      "sha256": "411161ae95f6e1ebe164b67547e1aae974c6bdec78c2f54826c2f5658c507be0",
+      "size_bytes": 3505,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/relevant-cold-email.json",
+      "sha256": "bf25df0a99a439c091000046d2e5ccad93657fc2bbaf0726969f77795b2421c7",
+      "size_bytes": 3641,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/relevant-examples.json",
+      "sha256": "e26e514cc607f1b94951354aeb4ccc58d499d2f3891a5c4aac03844c8d928a12",
+      "size_bytes": 3700,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/research-before-filling-gaps.json",
+      "sha256": "823cae41986b30794c886561c3e6be055f79678c55ca313e0f71779b61eaa1d8",
+      "size_bytes": 3645,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/respect-authority-and-data-boundaries.json",
+      "sha256": "dda32b1d682b7ce792a8dcd0c86af93465beaaebc3171e4e6328c6942fdce14b",
+      "size_bytes": 3240,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/respect-source-coverage.json",
+      "sha256": "9dbbfe60fb569696a6c3b321f143db9a95e3b7614f36474adc2e27e26d0e129c",
+      "size_bytes": 3251,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/respectful-task-specific-tone.json",
+      "sha256": "866d91f86e5dd03187ffe5aab8e98a3d730c7f3da0bb10a6913ec3acd4305f8b",
+      "size_bytes": 3642,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-adjust-depth-to-reader.json",
+      "sha256": "fbe27c15b96ac99ef7394ec6e0e4a5b054c4aff69025e60f3978c6c9e1c1b315",
+      "size_bytes": 6320,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-define-editing-task.json",
+      "sha256": "6058d41ccebadaaf7251bb35edbcfb6f32a14ec0e1404af69b02b2e1a06fcab8",
+      "size_bytes": 5906,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-edit-complex-work-documents.json",
+      "sha256": "30ebd1f0f07210fde211c5349d6cfdea51bdbdd7b93d61c778eeb80c8cea093c",
+      "size_bytes": 5797,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-edit-wording-without-meaning-loss.json",
+      "sha256": "4392fc8188ab5a6ade41f36d36a7c0cc1633bfba09c949d83658ec2cd40cbbb5",
+      "size_bytes": 7034,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-ground-evaluations-in-facts.json",
+      "sha256": "f61ab3a36fa338da3991845b2d952e732cea1953f8c9862fa79863869123a85f",
+      "size_bytes": 5794,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-plan-slides-and-product-pages.json",
+      "sha256": "53a4ebb6702cb785a1d0bb797e064f58d3d8a318a8befef216e61b02684bc5da",
+      "size_bytes": 6422,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-preserve-numbers-and-conditions.json",
+      "sha256": "b0dec6935328b4aa05b6d5eaf4b98fdeb2f1e3bffdf64c8346f4310f7d6f988a",
+      "size_bytes": 6175,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-review-edits-and-source-trace.json",
+      "sha256": "acdcf6156d9a71fbf9479c06c478f130b60bbeddf91fa291113c6e5a0ad9216f",
+      "size_bytes": 6705,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-structure-sentences-and-paragraphs.json",
+      "sha256": "6f61af2d43747e2f10778e95adc911b647ba8be399d01f49b252a60bd3a23268",
+      "size_bytes": 6175,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-write-about-people-and-companies.json",
+      "sha256": "ad2e85f7f00c11b75ee1d444023607c7c83c2dd7f5130ad016af05a9fafa91b3",
+      "size_bytes": 5787,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-write-actionable-instructions.json",
+      "sha256": "7a585884bb616b2fd52990dc1308703fbbd9b6040ea672b03986f6247cf2391e",
+      "size_bytes": 5842,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/ru10-write-targeted-letters-and-releases.json",
+      "sha256": "bdc460d90f3fc835ec826926a853f374f64af797c8f9e2ccf08f7cb50809c575",
+      "size_bytes": 5896,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/russian-text-assistant.json",
+      "sha256": "0a052f540712866419756227df15344b429610af7b3f98e3a1ba73138cdd3f41",
+      "size_bytes": 9369,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/russian-text-editor.json",
+      "sha256": "bd75af7010a5e708f5564f2f32824d6f89907a297123f532bd3effc0558a597b",
+      "size_bytes": 6734,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/shared-list-conditions.json",
+      "sha256": "e7c54842ace98105c4e88471e8807df4aea2bf43f5e7924c4f8cd961d537049a",
+      "size_bytes": 3603,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/specific-audience.json",
+      "sha256": "50472e68e533292a8233c074d5352f58395b822c822d51c79bf4471c4a975985",
+      "size_bytes": 3711,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/standalone-negation.json",
+      "sha256": "c30eacd1628f6641f5d576127b21cbcff596d23c48d52c55d508854c27919709",
+      "size_bytes": 3547,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/stories-require-actions.json",
+      "sha256": "0c4af5d70b91585a5633af47de054d9f3fd3b3b1ee6a4f5f99d7b9ba5c57dfad",
+      "size_bytes": 3651,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/task-and-audience-fit.json",
+      "sha256": "02349ad691dfc855a7279f82ae868279ac471d5f4870a80d108f4f856fe6312a",
+      "size_bytes": 3610,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/task-dependent-numeric-precision.json",
+      "sha256": "5227ceb18c4b5a858093dae86a3e9d477f8c80145222ec787f28878f4df1a5e0",
+      "size_bytes": 3751,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/task-specific-structure.json",
+      "sha256": "cf26e3909611d1fda6b38e5d2cded8e9701f2402048c1e67af02c95746be70d6",
+      "size_bytes": 3613,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/unknown-actor-remains-unknown.json",
+      "sha256": "f8939d70a60f54b56dcef851f58f66f2efa45d33c648b137440026b8c5e5de07",
+      "size_bytes": 3616,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/unpack-cliches.json",
+      "sha256": "02319eaa8ee8237c6054b27a60f3941a347a1c713789708c1cf28512faf354de",
+      "size_bytes": 3584,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/artifacts/records/verify-editorial-effect.json",
+      "sha256": "05f40c905fed5c5c784d2d7a85fe99c2ccb921820be7fea567632f11b44af219",
+      "size_bytes": 3697,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    },
+    {
+      "path": "../writing-editor/knowledge/data/document.md",
+      "sha256": "009fc31612a8c9d3d41da1cb57a825ac8e87466e9ae391d02fa4469bef626eb3",
+      "size_bytes": 1093534,
+      "availability": "local_supporting_input_not_added_to_publication_by_this_review"
+    }
+  ],
+  "origin_checks": [
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/author-conformance-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/conditional-properties-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/control-review-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/evaluation-protocol-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/separate-control-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json",
+      "representation": "metadata_only_graph_extracted_for_edition",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json",
+      "representation": "new_public_reproduction_result",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py",
+      "representation": "new_public_reproduction_code",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/baseline-edit.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/common-editorial-brief.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/condition-label-reveal.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-mechanical-checks.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-preregistration.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-trace-audit.json",
+      "representation": "exact_utf8_source_embedded_in_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "embedded_source_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/masked-editorial-review.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/original-pilot-protocol.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/protected-claims.json",
+      "representation": "exact_local_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json",
+      "representation": "new_public_reproduction_result",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py",
+      "representation": "new_public_reproduction_code",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/skill-assisted-edit.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/source-context.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/evidence/source-section.txt",
+      "representation": "exact_source_text",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "original_local_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+      "representation": "new_public_reproduction_result",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py",
+      "representation": "new_public_reproduction_code",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+      "representation": "new_public_reproduction_result",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py",
+      "representation": "new_public_reproduction_code",
+      "published_hash_verified": true,
+      "size_verified": true
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json",
+      "representation": "exact_source_json",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "decoded_reader_bytes_equal": true
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json",
+      "representation": "rendered_source_text_view",
+      "published_hash_verified": true,
+      "size_verified": true,
+      "source_index_hash_verified": true,
+      "source_index_revision_verified": true,
+      "source_index_logical_path_verified": true,
+      "rendered_article_hash_verified": true,
+      "normalized_rendered_wording_equal": true,
+      "original_markdown_byte_identity_claimed": false
+    }
+  ],
+  "representation_counts": {
+    "exact_source_json": 11,
+    "rendered_source_text_view": 9,
+    "metadata_only_graph_extracted_for_edition": 1,
+    "exact_local_source_json": 11,
+    "new_public_reproduction_result": 4,
+    "new_public_reproduction_code": 4,
+    "exact_source_text": 6,
+    "exact_utf8_source_embedded_in_json": 1
+  },
+  "claim_reviews": [
+    {
+      "claim_id": "finite-contract-conformance",
+      "study_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The 37 author rows separate into 35 ordinary matches and two stress acceptances. The 30 control rows separate into 26 ordinary matches and four stress acceptances; ordinary rows contain six allowed outcomes, seventeen forbidden outcomes and three migrations.",
+      "bindings": [
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/author-conformance-report.json",
+          "json_pointer": "/summary",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/separate-control-report.json",
+          "json_pointer": "/ordinary_summary",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "structural-conformance-does-not-establish-truth",
+      "study_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "All six intentionally false trusted inputs are accepted in their recorded boundary tests and excluded from ordinary denominators. The manuscript does not recast this as truth or authorization validation.",
+      "bindings": [
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/author-conformance-report.json",
+          "json_pointer": "/summary",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/separate-control-report.json",
+          "json_pointer": "/trusted_input_stress",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/control-review-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "strong-plain-form-tie",
+      "study_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The nine paired rows have three allowed and six forbidden cases; both checkers match all nine. The comparator is explicitly post-R0 and uses the retained KC outcomes.",
+      "bindings": [
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+          "json_pointer": "/summary",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+          "json_pointer": "/design_timing",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+          "json_pointer": "/scope",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "profile-composition-preserves-core-conditionally",
+      "study_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Conjunction elimination supports the stated conditional implication. Correct applicability classification and conjunctive implementation remain assumptions, not inferred facts.",
+      "bindings": [
+        {
+          "path": "engineering/studies/contract-profile-conformance/evidence/conditional-properties-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "finite-required-closure-laws",
+      "study_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Independently reproduced 4096 subset checks and 24576 one-step inclusion checks with no discrepancies; adjacency agrees with original required/all groups, and all three source pins match.",
+      "bindings": [
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+          "json_pointer": "/finite_graph",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json",
+          "json_pointer": "/dependencies",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "literal-preservation-is-not-meaning-preservation",
+      "study_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The two named boundary rows in the retained 46-check report record accepted false-rule and opposite-meaning cases. Their outcome is correctly presented as a limitation.",
+      "bindings": [
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+          "json_pointer": "/results",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+          "json_pointer": "/notes",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "readable-layout-preserves-artifact-content",
+      "study_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Independently compared all 110 original/migrated record pairs and hashes. All match. The nine-test layout report is retained evidence; its separate inventory units are not pooled.",
+      "bindings": [
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+          "json_pointer": "/record_count",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+          "json_pointer": "/records_unchanged",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+          "json_pointer": "/source_bytes_unchanged",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json",
+          "json_pointer": "/tests",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "expected-resolution-is-not-server-acceptance",
+      "study_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Five recorded command exits are 0,0,0,3,0. The report explicitly records needs_resolution/R_EXPECTED_HEAD, server_accepted=false and production_ready=false; environment pins are historical observations.",
+      "bindings": [
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+          "json_pointer": "/expected_preflight_decision",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+          "json_pointer": "/runs",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+          "json_pointer": "/production_ready",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "byte-reconstruction-can-omit-uncertainty",
+      "study_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Corpus report records three exact reconstructions and omission of all 153 nonempty uncertain fields. Structural book summaries total 899 page anchors, 917 generated records and 153 nonempty fields; these are distinct units.",
+      "bindings": [
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json",
+          "json_pointer": "/books",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "explicit-uncertainty-projection-is-reversible",
+      "study_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The retained derivative report records 917 labels, 153 exact fields and three inverse byte matches. The independently executed public demonstration is explicitly only four invented records and two uncertainties.",
+      "bindings": [
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "addressability-gaps-are-not-ocr-error-counts",
+      "study_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Retained audit reports 5538 flags, 5518 mapped, sixteen offset gaps plus four orphan flags; navigation correction rows are 53/58 in two unresolved blocks. Neither count is converted to CER/WER or OCR-error frequency.",
+      "bindings": [
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "local-export-is-not-upstream-deployment",
+      "study_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Integration summary records two runs over the same 917 records, 19305 field checks each, initial 15/16 controls, separate corrections, and upstream_installation=false. No new model/OCR or power-loss test is claimed.",
+      "bindings": [
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+          "json_pointer": "/controls",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+          "json_pointer": "/corpus_runs",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+          "json_pointer": "/upstream_installation",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+          "json_pointer": "/unresolved",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "reader-boundaries-have-distinct-meanings",
+      "study_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The 38 call-detail rows sum to 772 met and zero violated criteria, with 26 prospective development and 12 known-regression calls. The earlier 786/12 record and four cause groups remain disclosed.",
+      "bindings": [
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json",
+          "json_pointer": "/criterion_counts",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json",
+          "json_pointer": "/calls",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "targeted-revision-graph-plain-tie",
+      "study_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The thirty case-pair rows all record equality, and the retained summary reports sixty expected outcomes, thirty-six unresolved mappings and twelve unknown contract assessments. These are not hidden failures or evidence of superiority.",
+      "bindings": [
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "finite-projection-consumer-qualification",
+      "study_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Retained qualification records 102 expected outcomes, 51 equal pairs and twelve rejected mutants; the report preserves three pre-freeze corrections. The 24 accept/78 block split is supported by the pinned rendered study report, not by reproduced consumer execution.",
+      "bindings": [
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json",
+          "json_pointer": "/qualification",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json",
+          "json_pointer": "/pre_freeze_findings",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "five-agent-projection-pairs-tie",
+      "study_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The exact result records ten responses, five correlated pairs from four source families, 24 projections, five successes per arm and an unmasked internal reviewer. It explicitly lists unknown runtime fields and native_trials=0.",
+      "bindings": [
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "entity-minimality-does-not-imply-claim-minimality",
+      "study_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The result records two post hoc shared-qualifier redundancy instances. The supporting report explains why correct extra numbers passed the frozen rubric; no scores were retroactively changed.",
+      "bindings": [
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json",
+          "json_pointer": "/posthoc_shared_qualifier_redundancy_instances",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "reuse-preservation-needs-complete-material-dependencies",
+      "study_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The conditional argument states completeness and interpretation assumptions explicitly. The new omitted-sign example independently reproduces the failure when those assumptions are not met.",
+      "bindings": [
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+          "json_pointer": "/checks",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "absence-and-completeness-depend-on-domain",
+      "study_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The new empty-domain/matching-item example independently reproduces unchanged previous positive membership with a changed absence answer. It does not certify a real search implementation.",
+      "bindings": [
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+          "json_pointer": "/checks/unchanged_positive_readset_does_not_preserve_absence",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "reuse-break-even-is-not-hit-rate",
+      "study_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Independent algebra agrees with C0-C1=N[h(G-R)-V]-F. Three exact-rational cases reproduce savings -90,610,-100; strict expected first profitable N is 15 for the positive-margin example. Observed integer hit counts are separately identified.",
+      "bindings": [
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+          "json_pointer": "/scenarios",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+          "json_pointer": "/first_profitable_expected_n",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "cache-benefits-require-common-baseline",
+      "study_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The stated 10/6/1 costs imply separate savings 4 and 9, while the prepared-artifact policy saves 9 against the common cold baseline. The demonstration is synthetic and does not assert measured billing savings.",
+      "bindings": [
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+          "json_pointer": "/checks/independent_cache_savings_double_count",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "editorial-single-section-tie",
+      "study_path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The masked review contains nineteen preserved-claim decisions and eight preserved table distinctions for each variant, with rubric scores 2+2+2+1+1=8 and tie. Reveal maps alpha/beta to the retained exact outputs; chronology remains recorded evidence.",
+      "bindings": [
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json",
+          "json_pointer": "/variants",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json",
+          "json_pointer": "/preference",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/masked-editorial-review.json",
+          "json_pointer": "/preference",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/condition-label-reveal.json",
+          "json_pointer": "/review_completed_before_reveal",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "editorial-mechanical-invariants-are-replayable",
+      "study_path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "Independently reproduced saved mechanical output and verified all five preregistered input pins. Source/output whitespace counts are 804/830/820; 37 literals, five headings, five anchors and three link destinations are preserved. The checker does not calculate semantic ratings.",
+      "bindings": [
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-mechanical-checks.json",
+          "json_pointer": "",
+          "pointer_resolved": true
+        },
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/protected-claims.json",
+          "json_pointer": "/protected_literals",
+          "pointer_resolved": true
+        }
+      ]
+    },
+    {
+      "claim_id": "editorial-trace-operational-scope",
+      "study_path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "verdict": "supported_within_declared_scope",
+      "review_note": "The embedded audit text matches its original local UTF-8 bytes and records 12 loaded/5 applied skills, 108 records, 12 change groups, 20 change and seven process grounds, 49 text locators and 24 source ranges. Underlying private trace/grounds were not independently re-audited in this review.",
+      "bindings": [
+        {
+          "path": "engineering/studies/editorial-skill-pilot/evidence/editorial-trace-audit.json",
+          "json_pointer": "/text",
+          "pointer_resolved": true
+        }
+      ]
+    }
+  ],
+  "public_replay": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "executed_at_utc": "2026-11-04T01:23:28.176711+00:00",
+    "runs": [
+      {
+        "script": "engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py",
+        "saved_report": "engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json",
+        "command": [
+          "python3",
+          "-I",
+          "-B",
+          "engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py"
+        ],
+        "exit_code": 0,
+        "stderr_empty": true,
+        "parsed_json_equal": true,
+        "stdout_bytes_equal": true,
+        "stdout_sha256": "3dfa7b8f2d6fe43ba8641321d44ea9791ece85e845c2d2af6dc313f774a5a8a9",
+        "passed": true
+      },
+      {
+        "script": "engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py",
+        "saved_report": "engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+        "command": [
+          "python3",
+          "-I",
+          "-B",
+          "engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py"
+        ],
+        "exit_code": 0,
+        "stderr_empty": true,
+        "parsed_json_equal": true,
+        "stdout_bytes_equal": true,
+        "stdout_sha256": "be88b60373eb6f4552fa3d35e661bfee000f2f87f912d45f44cb369a060a3def",
+        "passed": true
+      },
+      {
+        "script": "engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py",
+        "saved_report": "engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+        "command": [
+          "python3",
+          "-I",
+          "-B",
+          "engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+        ],
+        "exit_code": 0,
+        "stderr_empty": true,
+        "parsed_json_equal": true,
+        "stdout_bytes_equal": true,
+        "stdout_sha256": "edbec332710196e37ff7c5cf88bfd2b4979a86793557c3cebc2a57df1eb01df2",
+        "passed": true
+      },
+      {
+        "script": "engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py",
+        "saved_report": "engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json",
+        "command": [
+          "python3",
+          "-I",
+          "-B",
+          "engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py"
+        ],
+        "exit_code": 0,
+        "stderr_empty": true,
+        "parsed_json_equal": true,
+        "stdout_bytes_equal": true,
+        "stdout_sha256": "49c620b336bbd47fc43bf0d8e15be096dcdf8127c32ed294bf8cd52db42a7caa",
+        "passed": true
+      }
+    ]
+  },
+  "migration_pairs": [
+    {
+      "artifact_id": "urn:arcanada:ru10:A01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/A01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/russian-text-assistant.json",
+      "sha256": "0a052f540712866419756227df15344b429610af7b3f98e3a1ba73138cdd3f41",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:B01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/B01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/edit-existing-text.json",
+      "sha256": "61b03afd872cb927f9caf02aead4759f443998bb3883b9d16453cf8f3f2e6eb6",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:B02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/B02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/draft-from-provided-facts.json",
+      "sha256": "7e825b84c31df73afa40443a6fd5c8f5d2355a39f8ff3a2bb2a3699498859548",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/preserve-facts-and-meaning.json",
+      "sha256": "1cc986f155b32f19a166243d307c9072f6e6b355518f6df57cd955c436ee1d5f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/do-not-invent-missing-facts.json",
+      "sha256": "0321c5d532fd32bd105c6599ea96e315fdd6d28bc0118c6b012f26f1e9f77d27",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/respect-authority-and-data-boundaries.json",
+      "sha256": "dda32b1d682b7ce792a8dcd0c86af93465beaaebc3171e4e6328c6942fdce14b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:C04",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/C04.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/respect-source-coverage.json",
+      "sha256": "9dbbfe60fb569696a6c3b321f143db9a95e3b7614f36474adc2e27e26d0e129c",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/meaning-preserving-editing.json",
+      "sha256": "a88e883f6bae98933e5766b338da4a51b264f321a539cdb15957a33e7813c659",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/fact-grounded-drafting.json",
+      "sha256": "1d620cb992379dce7f146fe836f8fe7661ae193d4c47efb74db7fe3cf09fa7f9",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:CP03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/CP03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/editorial-quality-and-trace-review.json",
+      "sha256": "f7242898fbe88d89d50d92f52cbbf2e3165e6c9e2017eff0060212b1e02c0c2d",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-purpose.json",
+      "sha256": "6a9d2e8f0f6b8398fc1c48163572545593ade94045be8156acc443e9e7be39b9",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-specific-audience.json",
+      "sha256": "19356610cff4e2e18c4045b5b559428bab849e938c8c66bb0bf5ebd0b036c843",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-informational-style-scope.json",
+      "sha256": "f062811ef2a54dd890563f40ec16fcfc63af840e621215819341383692fc4537",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F04",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F04.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-context-sensitive-stop-words.json",
+      "sha256": "4d87f79174c2061c5eda5d99562d6bf2870de4bb791dd662e4aaa3f5ca4d6c77",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F05",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F05.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-clarity-is-not-substance.json",
+      "sha256": "11a522bed2b65ee74784a07026270f8b550b7b643dac63c5e7eac28a5cac7a6b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F06",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F06.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-opinion-attribution.json",
+      "sha256": "387bda49e2f2c51675fb7cd7642fa8853ef3bec4b831f7c9a9d23b83ae925801",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F07",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F07.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-preserve-important-qualifications.json",
+      "sha256": "602cc1e4e00cc2e874fbc8fdaecffb02c8d2d153bd87d87035340e31fa6101af",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F08",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F08.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-task-dependent-numeric-precision.json",
+      "sha256": "14793a7f2cef81e1ab13f0b0adb5f0d639d0cf50de9e38794d3e920d0a5574da",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F09",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F09.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-unknown-actor-remains-unknown.json",
+      "sha256": "b5d7cf41796338d229e1d8f661aff1904c0e0e04eb97010b5d4696858a1fa213",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F10",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F10.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-plain-language-with-precise-terms.json",
+      "sha256": "6fd293dc94ab7a5b048f4e0d8ba57ef70cd8ea1b4675bf1820684d93200b439b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F11",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F11.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-ground-evaluation-in-facts.json",
+      "sha256": "6d2e4cf5bda6a55cd8884145358bc65a78c07b24a2a184fff0f9947d5560cc3f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F12",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F12.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-intensifiers-need-evidence.json",
+      "sha256": "320349c120df4b89cce5f53864e333784d8b29b737e6e856e95266a718cb6409",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F13",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F13.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-unpack-cliches.json",
+      "sha256": "2a13e6422a2272dc29ff83bb2d15281a1ad37b7d31ad888ca7896acd3fd3ca5e",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F14",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F14.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-action-and-known-actor.json",
+      "sha256": "4605e944429dcb7050a86442582560189df474456d8ea51f44eb3c78c1cf8207",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F15",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F15.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-relevant-examples.json",
+      "sha256": "2bcfab160f6cb926047ae1bfc47289930cf7e75b8f62498075c07f4ca499ad5f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F16",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F16.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-manageable-sentences.json",
+      "sha256": "915493b447ad86d7ab1536bf01c0a809cb58d30ae771390af603795881ba4b7d",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F17",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F17.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-preserve-restrictive-clauses.json",
+      "sha256": "7f744747643ed731979877f0ae8db8ebd476980b62a2cadcc8454f5b7661027b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F18",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F18.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-coherent-paragraphs.json",
+      "sha256": "98c36d306c90addb8f9d08862649aaad0ff1bc88f79d35cefb1872f76621f417",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F19",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F19.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-shared-list-conditions.json",
+      "sha256": "b2e87409f9866f12c32e39bad63626df1d3aebedd3329353ea9632ef1104f426",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F20",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F20.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-answer-before-explanation.json",
+      "sha256": "549f40c522b981fea4d7bd63ea590b79be3e3681815be76a339be7f7d9d2a6d2",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F21",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F21.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-research-before-filling-gaps.json",
+      "sha256": "a2e4b610cf67d0fa1fe82eb09a7cea7b35f9c35f8cdbd84434ee7433d235399c",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F22",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F22.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-honest-useful-headlines.json",
+      "sha256": "f03ee1d3e29c12c6d93fefbf8b5dc52c88959f18f3925f3984b08e92ca8c4bf6",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F23",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F23.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-task-specific-structure.json",
+      "sha256": "3d4eac1f912782213cd398521bd66c0b54af478533eb92eaf4a66af93b5d785b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F24",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F24.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-introduction-sets-expectations.json",
+      "sha256": "aced8314bc287cdaeb0272d93f1bcef95d3deec1716d64f586c677573f756ae3",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F25",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F25.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-stories-require-actions.json",
+      "sha256": "3f0602817136f46124f1f0b0395bf40a75d605705ca8b58fb72b4b8661fab14a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F26",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F26.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-instructions-in-execution-order.json",
+      "sha256": "4d755b563df3be92bbf48661441915178938df2028e8db571a86308f44168afe",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F27",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F27.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-standalone-negation.json",
+      "sha256": "64ac8d81239c25313fc252746050ae13b0681c631aa315f3418943ccd8dd009e",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F28",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F28.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-reasoning-order-and-grounds.json",
+      "sha256": "45ad21cac6b7eab5b09a2eabf9709ca4dd26cea810e87bd096e6f3ad8a14f010",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F29",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F29.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-respectful-task-specific-tone.json",
+      "sha256": "9de7a3a87c46681507eba8e0371ac64642f16941d09c8afe19f423d91f1df452",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F30",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F30.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-depth-and-obstacles.json",
+      "sha256": "87746cede6f5261cd245fbe1591fafe4d74b195d67ac0fde2df042ffa3bf6141",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F31",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F31.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-fact-grounded-personal-profile.json",
+      "sha256": "eabcea7cc3a1d8651a1f3160ac7d46c4dce9244dec3611b34b469dd81fb45694",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F32",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F32.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-reader-centered-company-profile.json",
+      "sha256": "f9276ab1e3576bb0511246177780cad077baa4a06609e111ab49b504ed6f05a8",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F33",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F33.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-complete-work-documents.json",
+      "sha256": "46682af549d0c94bb92789863f244d2d90c90bf0d43a1117485f5a3706b3c8e5",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F34",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F34.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-newsworthy-press-release.json",
+      "sha256": "0180fcd2f570259e568e255b59bdd5e0192fbf03904fbc23bc22238fc9a2ae86",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F35",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F35.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-relevant-cold-email.json",
+      "sha256": "3520af6c0c4097573bc3156df566c1a0ee52cb9dce53ab8199366b5fa360f57f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F36",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F36.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-presentation-reading-context.json",
+      "sha256": "b37d105d572748e84813e792ae690d167391e3794cd14f00a94b4a3b2f8ec362",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F37",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F37.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-audience-dependent-slide-order.json",
+      "sha256": "dc8347800ca9c672281ee237778bdbddb80554df58ab0145a18a6d3b8d1a92c5",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F38",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F38.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-captions-explain-images.json",
+      "sha256": "335fc565b41efaa8d0b10ae3206668c0362c407dc3528a0bdf9feb79a423856f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F39",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F39.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-buyer-centered-product-pages.json",
+      "sha256": "81a58158ebc12a87a96fe0a662bfeb7636aab071577a6efb2fde27215b91ccc7",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:F40",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/F40.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/grounds-for-verify-editorial-effect.json",
+      "sha256": "ad59536c85bb71c40d159aed67f763169d56592e5f3ac9cd339a05badfccf440",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/reader-purpose.json",
+      "sha256": "76451f80d6c3cdfe101c5d1264f5e851450eec9fa81fae326295ac9bbaf264fe",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/specific-audience.json",
+      "sha256": "50472e68e533292a8233c074d5352f58395b822c822d51c79bf4471c4a975985",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/informational-style-scope.json",
+      "sha256": "1740e849ffa9a578ff98e6cccf776d8f17a0dc2dcc1c22cb4f5c470421dd493c",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K04",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K04.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/context-sensitive-stop-words.json",
+      "sha256": "d603794bad93c18050c8e5dae454544669b2c684a9f49d0c6856ea7faa2e539b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K05",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K05.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/clarity-is-not-substance.json",
+      "sha256": "e7ed8ddddffdf11916ee51502d3938142be08c04c70574dff8af4473a873a362",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K06",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K06.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/opinion-attribution.json",
+      "sha256": "9c4ef8b49c9c1e316f433372a3c86337f7b988117c0afaf0157a0f21d1a7bd08",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K07",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K07.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/preserve-important-qualifications.json",
+      "sha256": "252199f889434221d5934f2991320870f6818d1c63f87d052119631f7ead8361",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K08",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K08.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/task-dependent-numeric-precision.json",
+      "sha256": "5227ceb18c4b5a858093dae86a3e9d477f8c80145222ec787f28878f4df1a5e0",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K09",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K09.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/unknown-actor-remains-unknown.json",
+      "sha256": "f8939d70a60f54b56dcef851f58f66f2efa45d33c648b137440026b8c5e5de07",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K10",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K10.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/plain-language-with-precise-terms.json",
+      "sha256": "7329a49b062b777766e142b6f2ddb98756d6979dcb62f632c0cb92dc7f16b41e",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K11",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K11.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ground-evaluation-in-facts.json",
+      "sha256": "c454a437c6dc442e7797a56d0794cb8b59f53b7402263b30aa8dcb0c53720d86",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K12",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K12.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/intensifiers-need-evidence.json",
+      "sha256": "b87df30170bf8f67295ef3c84e9993eccdb8d4bd32a561a207e313ecf6cbf017",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K13",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K13.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/unpack-cliches.json",
+      "sha256": "02319eaa8ee8237c6054b27a60f3941a347a1c713789708c1cf28512faf354de",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K14",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K14.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/action-and-known-actor.json",
+      "sha256": "5a9cd7b13a83334a7ee0f034dd51ecbdb9b5fa351203ff14b6e944d421411983",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K15",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K15.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/relevant-examples.json",
+      "sha256": "e26e514cc607f1b94951354aeb4ccc58d499d2f3891a5c4aac03844c8d928a12",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K16",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K16.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/manageable-sentences.json",
+      "sha256": "ce2bc55673aa7945bdefba5a4e7d7ef0d2c926ed2a8be402b4bed51af4889ec5",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K17",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K17.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/preserve-restrictive-clauses.json",
+      "sha256": "37df27dbac594fe8e286c534a4ee33c9388b18a2069872da5c79efdcd881f262",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K18",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K18.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/coherent-paragraphs.json",
+      "sha256": "a78b515306dd6176106499a36dd5214706cd0533b88a7c959e478d4b25a7d6cd",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K19",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K19.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/shared-list-conditions.json",
+      "sha256": "e7c54842ace98105c4e88471e8807df4aea2bf43f5e7924c4f8cd961d537049a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K20",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K20.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/answer-before-explanation.json",
+      "sha256": "9183ce9cc27b061f308104bfa5ad85dee3285e7545d8f69d7abd18e21639b50a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K21",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K21.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/research-before-filling-gaps.json",
+      "sha256": "823cae41986b30794c886561c3e6be055f79678c55ca313e0f71779b61eaa1d8",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K22",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K22.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/honest-useful-headlines.json",
+      "sha256": "94ae56fe1b6867866e71be53367756323c6eaaeae42d0d4d520fe67cdb1ed703",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K23",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K23.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/task-specific-structure.json",
+      "sha256": "cf26e3909611d1fda6b38e5d2cded8e9701f2402048c1e67af02c95746be70d6",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K24",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K24.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/introduction-sets-expectations.json",
+      "sha256": "285ac133959bd2ae7c7f52c8aa9ab6d1f62885dd7e1ed2c9a71352cc1f4a3198",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K25",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K25.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/stories-require-actions.json",
+      "sha256": "0c4af5d70b91585a5633af47de054d9f3fd3b3b1ee6a4f5f99d7b9ba5c57dfad",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K26",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K26.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/instructions-in-execution-order.json",
+      "sha256": "d9a2f43ed640dc0c59223c73dbbe09d9a5d80f9eb02b4eeca0bb36332cf9af27",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K27",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K27.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/standalone-negation.json",
+      "sha256": "c30eacd1628f6641f5d576127b21cbcff596d23c48d52c55d508854c27919709",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K28",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K28.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/reasoning-order-and-grounds.json",
+      "sha256": "411161ae95f6e1ebe164b67547e1aae974c6bdec78c2f54826c2f5658c507be0",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K29",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K29.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/respectful-task-specific-tone.json",
+      "sha256": "866d91f86e5dd03187ffe5aab8e98a3d730c7f3da0bb10a6913ec3acd4305f8b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K30",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K30.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/reader-depth-and-obstacles.json",
+      "sha256": "8b527fe30a8687a00bd74577d5318f868433a9d88fc1b450671a99933c728d2e",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K31",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K31.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/fact-grounded-personal-profile.json",
+      "sha256": "b8ab91fe0865c575a5cf4c95556dee4e84aba360949bb3efe7cb33dbc1cebab4",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K32",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K32.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/reader-centered-company-profile.json",
+      "sha256": "7cee471c6fa0fb35b2e291f608958fe3caad87835ed0210fcb8e126759d4e415",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K33",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K33.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/complete-work-documents.json",
+      "sha256": "ef324d3ea84f3e55ca6053fcfd45273f1afb59834b3bcea9a5c65fb81ded79dd",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K34",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K34.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/newsworthy-press-release.json",
+      "sha256": "558796a275ba5990e7e193dbd8409b360e0b106014a49ec5cfa9700414a82ed0",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K35",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K35.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/relevant-cold-email.json",
+      "sha256": "bf25df0a99a439c091000046d2e5ccad93657fc2bbaf0726969f77795b2421c7",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K36",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K36.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/presentation-reading-context.json",
+      "sha256": "0a48624da9d0487ffd96eccc6798517cc37cf598404a5a07d9b95e8e0788e9e6",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K37",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K37.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/audience-dependent-slide-order.json",
+      "sha256": "583c005e59b3147045d5322bf34a13d3afaed5bb09b41e3e56f79db488cdd5dc",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K38",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K38.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/captions-explain-images.json",
+      "sha256": "ac527ab18cba856ddd775e0d70ad774f1e979a45639855bf8badb227067e25c5",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K39",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K39.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/buyer-centered-product-pages.json",
+      "sha256": "8bff93a265715ff428c1720a78fa47d6a65ae39a234aa5ac7fbaadbb577ebc3c",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:K40",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/K40.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/verify-editorial-effect.json",
+      "sha256": "05f40c905fed5c5c784d2d7a85fe99c2ccb921820be7fea567632f11b44af219",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/meaning-and-fact-preservation.json",
+      "sha256": "e8ed1646fb228f7da78819420e08467a01c2f7023bc769d702bc5b0122fc8376",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/task-and-audience-fit.json",
+      "sha256": "02349ad691dfc855a7279f82ae868279ac471d5f4870a80d108f4f856fe6312a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/change-grounding-and-traceability.json",
+      "sha256": "e8e358202e8c650d2fe8202b45ec0c54ef0f85416e7149a87245bd442c041e21",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:Q04",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/Q04.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/honest-evaluation-status.json",
+      "sha256": "bc8fca034a69a663b61dfe33c4fdf3ca57c9415a6bfc2d547fa02151831c846f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:R01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/R01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/russian-text-editor.json",
+      "sha256": "bd75af7010a5e708f5564f2f32824d6f89907a297123f532bd3effc0558a597b",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:R02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/R02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/editorial-reviewer.json",
+      "sha256": "15abeca8b9452f6847be2fba6f4221c5c909d48f39450c7add5c76c1d9d3310a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S01",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S01.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-define-editing-task.json",
+      "sha256": "6058d41ccebadaaf7251bb35edbcfb6f32a14ec0e1404af69b02b2e1a06fcab8",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S02",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S02.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-edit-wording-without-meaning-loss.json",
+      "sha256": "4392fc8188ab5a6ade41f36d36a7c0cc1633bfba09c949d83658ec2cd40cbbb5",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S03",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S03.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-preserve-numbers-and-conditions.json",
+      "sha256": "b0dec6935328b4aa05b6d5eaf4b98fdeb2f1e3bffdf64c8346f4310f7d6f988a",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S04",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S04.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-ground-evaluations-in-facts.json",
+      "sha256": "f61ab3a36fa338da3991845b2d952e732cea1953f8c9862fa79863869123a85f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S05",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S05.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-structure-sentences-and-paragraphs.json",
+      "sha256": "6f61af2d43747e2f10778e95adc911b647ba8be399d01f49b252a60bd3a23268",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S06",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S06.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-write-actionable-instructions.json",
+      "sha256": "7a585884bb616b2fd52990dc1308703fbbd9b6040ea672b03986f6247cf2391e",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S07",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S07.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-edit-complex-work-documents.json",
+      "sha256": "30ebd1f0f07210fde211c5349d6cfdea51bdbdd7b93d61c778eeb80c8cea093c",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S08",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S08.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-write-about-people-and-companies.json",
+      "sha256": "ad2e85f7f00c11b75ee1d444023607c7c83c2dd7f5130ad016af05a9fafa91b3",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S09",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S09.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-write-targeted-letters-and-releases.json",
+      "sha256": "bdc460d90f3fc835ec826926a853f374f64af797c8f9e2ccf08f7cb50809c575",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S10",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S10.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-plan-slides-and-product-pages.json",
+      "sha256": "53a4ebb6702cb785a1d0bb797e064f58d3d8a318a8befef216e61b02684bc5da",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S11",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S11.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-adjust-depth-to-reader.json",
+      "sha256": "fbe27c15b96ac99ef7394ec6e0e4a5b054c4aff69025e60f3978c6c9e1c1b315",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:S12",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/S12.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/ru10-review-edits-and-source-trace.json",
+      "sha256": "acdcf6156d9a71fbf9479c06c478f130b60bbeddf91fa291113c6e5a0ad9216f",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:SOURCE",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/SOURCE.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/pishi-sokrashchay-source.json",
+      "sha256": "3e8a5eaded8d960814072a11609a2946cfa03183cde62eab51a8ffeae0b0aa41",
+      "equal": true
+    },
+    {
+      "artifact_id": "urn:arcanada:ru10:TEXT",
+      "original_path": "../kc-input/r2/RU10_EDITOR_KC_r2/knowledge/artifacts/records/TEXT.json",
+      "migrated_path": "../writing-editor/knowledge/artifacts/records/pishi-sokrashchay-ocr-text.json",
+      "sha256": "d4500c3c718c1e51215dfb4fe9c8bca43574a4bfcf5c37a1af2d6bd5a475ae2d",
+      "equal": true
+    }
+  ],
+  "redistribution_screen": {
+    "editorial_book_source_path": "../writing-editor/knowledge/data/document.md",
+    "editorial_book_sha256": "009fc31612a8c9d3d41da1cb57a825ac8e87466e9ae391d02fa4469bef626eb3",
+    "normalized_word_window": 12,
+    "matching_windows": 0,
+    "files_screened": "study Markdown, JSON string values and TXT records",
+    "source_books_republished": false,
+    "limitation": "No comprehensive exact-text comparison to all three historical books or legal clearance."
+  },
+  "limitations": [
+    "This is an internal agent review within the same project environment. It is not external peer review, independent human domain review, scientific certification, or a new model experiment.",
+    "Historical execution facts are assessed against retained records and available source identities. No operating-system event chronology, authentic first-attempt history, remote authenticity, or original model runtime has been independently established.",
+    "The four new public programs were executed. The complete historical contract/reader/consumer suites, three-book reconstruction, local upstream integration, private editorial trace and native-model experiments were not rerun.",
+    "For aggregated reports without every underlying observation, this review confirms consistency of the retained report and manuscript, not all original observations. The 19305 field checks, 102 consumer executions, and semantic agent ratings remain retained observations.",
+    "The three source-book PDFs, all image bytes, complete OCR corpus and full human ground truth were not available or re-examined in this review. OCR accuracy, description truth, uncertainty calibration, and current domain applicability were not evaluated.",
+    "The redistribution screen combines prose inspection, evidence-file inventory, and a normalized twelve-word overlap scan against the locally available editorial book OCR. It found no such copied passage; it is not a comprehensive legal clearance or an exact-text comparison with all three historical source books.",
+    "Hash equality establishes byte identity under the stated digest assumption; it does not authenticate authors, establish source truth, grant authority, or prove historical chronology.",
+    "The review does not approve publication policy admission, deployment, backend indexing, or production readiness. validation-report.json is excluded as assembly metadata being regenerated by the integrator."
+  ],
+  "input_changes_during_review": [],
+  "metadata_followup": {
+    "permitted_change": "pending-publication-review -> internally-reviewed in six STUDY.md front matters and evidence-index.json only",
+    "performed_by_reviewer": false,
+    "final_metadata_readback_pending": false,
+    "verified_at_utc": "2026-11-04T01:30:06.280139+00:00",
+    "changes": [
+      {
+        "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+        "before_sha256": "4ccf4bd49378c08a9e97bf33229280a4465fd3e53870824da309892683e6f3e8",
+        "after_sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "before_sha256": "2404bc038f5fe57beb1f14967356d2d63164032f64b3f5b5b3c9e4776a9d50d2",
+        "after_sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "before_sha256": "bc966b95d7e313981fe5cbc4a7d3b443af17da5a7d26b27396697ece73192140",
+        "after_sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/evidence-index.json",
+        "before_sha256": "8803cf44b6cfce28c84a567be5b3c6009dc40bb0cbd16d7b33df0995ae78e6ac",
+        "after_sha256": "d057c3290c89eeb5823386d8f335d3fd75b311e51c500e38438a7f30c572e104",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "before_sha256": "0feb0ff8fb321707d162e44381218b286b8a2a7905b8320c12d9a904fec9cba2",
+        "after_sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "before_sha256": "28d1711af2bece4e3f10a9cb40ea98158ed1ab5adee00016708e5c94cbd21ad0",
+        "after_sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+        "only_expected_review_state_replacement": true
+      },
+      {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "before_sha256": "88f7164dd18fba5b0b6f1fc348f6b8c5d3affd6098a363d7716d344fb15606dc",
+        "after_sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+        "only_expected_review_state_replacement": true
+      }
+    ],
+    "changed_files": 7,
+    "unchanged_other_publication_inputs": 54,
+    "distributed_evidence_files_unchanged": 47,
+    "origin_manifests_unchanged": 6,
+    "substantive_content_changed": false,
+    "validation_report_excluded": true,
+    "public_replays_rerun_after_metadata_change": false,
+    "replay_repetition_reason": "No source, program or replay input bytes changed."
+  },
+  "initial_content_review_completed_at_utc": "2026-11-04T01:28:10.654914+00:00"
+}

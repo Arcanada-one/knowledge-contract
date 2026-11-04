@@ -1,0 +1,391 @@
+{
+  "schema": "ru10.r2-development-checks/1",
+  "created_at": "2026-11-03T14:21:07.088440+00:00",
+  "tests": 46,
+  "expected_outcomes": 46,
+  "results": [
+    {
+      "id": "package_110_artifacts_124_selectors",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "canonical_contract_valid",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "canonical_application_eligible",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "competencies_existing_type_and_profile",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "competencies_delivered_in_contract",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "role_competency_refs_exact",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "workflow_present",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "role_responsibilities_exact",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "package_revision_dynamic",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "skills_have_sources",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "skills_io_acceptance_present",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "historical_requests_new_compilation_valid",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "14 recompilations; not fresh edited outputs"
+    },
+    {
+      "id": "historical_requests_new_application_eligible",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "14 recompilations; not fresh edited outputs"
+    },
+    {
+      "id": "positive_exact_invariants",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "protected_number_change_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "positive_bound_review",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_stale_request_sha256",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Review binding mismatch request_sha256",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_stale_input_sha256",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Review binding mismatch input_sha256",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_stale_output_sha256",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Review binding mismatch output_sha256",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_stale_kc_sha256",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Review binding mismatch kc_sha256",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_string_boolean",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Separate scoped review requires reviewer text and boolean semantic_pass",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_missing_criteria",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Addressed criteria required",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_pass_with_unknown_criterion",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Positive review contradicts criterion decisions",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_changed_output_without_grounds",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Positive changed output requires declared change grounds",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_existing_but_wrong_source_relation",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Fragment does not support the cited rule",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_wrong_rule_revision",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Stale ground revision rule_revision",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_duplicate_criterion",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Duplicate criterion assessment",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_omitted_critical_qualifier",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_wrong_work",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_stale_competency_dependency",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "reject_execute_without_capability_authority",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "unknown_skill_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Choose existing Skill IDs, e.g. S02 S03",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "cycle_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Dependency cycle S03",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "false_rule_passes_structure_boundary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "counterexample to structure-implies-truth"
+    },
+    {
+      "id": "opposite_meaning_passes_exact_string_boundary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "counterexample to exact-strings-imply-semantic-fidelity"
+    },
+    {
+      "id": "all_4096_subsets_match_separate_reference",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "exhaustive fixed finite graph, not general semantic algebra"
+    },
+    {
+      "id": "all_4096_closures_idempotent",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "exhaustive fixed finite graph"
+    },
+    {
+      "id": "all_4096_union_equations",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "exhaustive fixed finite graph"
+    },
+    {
+      "id": "all_24576_inclusion_pairs_monotone",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "finite graph lattice, not meaning geometry"
+    },
+    {
+      "id": "record_tamper_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "source_tamper_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "new_run_record_positive_fixture",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "receipt_matches_actual_output",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "diagnostic": null,
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "immutable_receipt_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Immutable run: receipt already exists; create a new attempt",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "changed_context_binding_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Application or selection binding changed",
+      "scope": "local implementation conformance"
+    },
+    {
+      "id": "changed_selection_binding_rejected",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "diagnostic": "Application or selection binding changed",
+      "scope": "local implementation conformance"
+    }
+  ],
+  "finite_graph": {
+    "skill_subsets": 4096,
+    "inclusion_pairs": 24576,
+    "reference_mismatches": [],
+    "idempotence_failures": [],
+    "union_failures": [],
+    "monotonicity_failures": []
+  },
+  "new_independent_model_runs": 0,
+  "semantic_truth_certified": false,
+  "notes": [
+    "Two expected structural/string passes intentionally expose false-positive boundaries.",
+    "Finite-graph laws are not general semantic algebra or geometry.",
+    "Positive record fixture is authored synthetic data, not a real qualification claim."
+  ]
+}

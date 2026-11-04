@@ -1,0 +1,40 @@
+{
+  "schema": "knowledge-contract.synthetic-uncertainty-projection/1",
+  "records": 4,
+  "nonempty_uncertainties": 2,
+  "checks": {
+    "base_reconstruction_exact": true,
+    "base_omits_both_recorded_uncertainties": true,
+    "projection_preserves_both_exact_uncertainties": true,
+    "all_four_generated_unreviewed_markers_present": true,
+    "inverse_removal_restores_base_bytes": true,
+    "inputs_unchanged": true,
+    "missing_uncertainty_field_rejected": true
+  },
+  "passed": true,
+  "base_sha256": "a032c4ed3290f43761547261e703f3559cf9cf9c0091c2aff22618391b9c7522",
+  "projection_sha256": "9d72136cf17baac2652593803786485debad63f09e2fbde110b959e8c0e01c0c",
+  "insertions": [
+    {
+      "id": "invented-component",
+      "start_byte": 58,
+      "end_byte": 156
+    },
+    {
+      "id": "invented-arrow",
+      "start_byte": 201,
+      "end_byte": 244
+    },
+    {
+      "id": "invented-scale",
+      "start_byte": 293,
+      "end_byte": 392
+    },
+    {
+      "id": "invented-caption",
+      "start_byte": 447,
+      "end_byte": 490
+    }
+  ],
+  "scope": "New public synthetic illustration of a projection invariant; not a rerun of the historical three-book corpus and not an OCR or semantic-accuracy measurement."
+}

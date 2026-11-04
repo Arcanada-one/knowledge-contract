@@ -1,0 +1,1175 @@
+{
+  "schema_version": "i26-author-report/0.1",
+  "scope": "finite_authored_structured_fixtures_not_empirical_reliability",
+  "summary": {
+    "cases": 35,
+    "passed": 35,
+    "failed": 0,
+    "stress_cases": 2,
+    "stress_observed_as_expected": 2
+  },
+  "input_sha256": {
+    "evaluation/i26_kc_model.py": "81997c2898e2e4a2717bf6a7bba06af06f944bfa935d851e1253a90af6270d96",
+    "schemas/kc_v3_0_1.schema.json": "b5078b9228b1bca85ebea689afc17c2aca16107e4d2549033805349ed6077ac2",
+    "corpus/i26_development/examples.json": "305e5d6718a4aeeac3318a738f56274965707456e64629cd216e43ebdc3dfe94",
+    "iterations/I26/INTERFACE.md": "7cbf0739f37d08060059fbebe3818f606adab55d9d3af233fe8551e8b868bb20",
+    "evaluation/verify_i26_kc.py": "43f85dd1f22b770a2395d67866823e3c929bbc1db832d1d7407258cb4c7d69c3"
+  },
+  "cases": [
+    {
+      "id": "I26-A001",
+      "description": "valid explicit core application",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A002",
+      "description": "valid explicit professional application",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A003",
+      "description": "valid explicit plan application",
+      "kind": "plan",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A004",
+      "description": "valid explicit dialogue application",
+      "kind": "dialogue",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A005",
+      "description": "valid explicit document application",
+      "kind": "document",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A006",
+      "description": "valid explicit reasoning application",
+      "kind": "reasoning",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A007",
+      "description": "valid explicit visual application",
+      "kind": "visual",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A008",
+      "description": "valid explicit reuse application",
+      "kind": "reuse",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A009",
+      "description": "new execution with exact trusted result",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "accepted": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A010",
+      "description": "critical unit omitted",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "critical_omitted",
+            "path": "/content/u1",
+            "message": "critical unit not delivered"
+          },
+          {
+            "code": "preservation_failed",
+            "path": "/obligations/o1",
+            "message": "target not included"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A011",
+      "description": "declared condition omitted",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "condition_omitted",
+            "path": "/content/u1",
+            "message": "declared condition not delivered"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A012",
+      "description": "current source revision changed",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "source_revision_mismatch",
+            "path": "/grounds/sources/s1",
+            "message": "current source head differs or is unknown"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A013",
+      "description": "scope unknown is not unrestricted",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "scope_unknown",
+            "path": "/scope",
+            "message": "application scope is unknown or withheld"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A014",
+      "description": "source unavailable",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "source_unavailable",
+            "path": "/grounds/sources/s1",
+            "message": "required source unavailable or not known"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A015",
+      "description": "extra unsupported core property",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "structural_valid": false,
+        "valid": false,
+        "errors": [
+          {
+            "code": "schema",
+            "path": "/",
+            "message": "Additional properties are not allowed ('invented' was unexpected)"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A016",
+      "description": "unknown required extension blocks application",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "required_profile_unsupported",
+            "path": "/profiles/future",
+            "message": "model/reader cannot interpret required profile"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "opaque_profile",
+            "path": "/profiles/future",
+            "message": "payload preserved but not interpreted"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I26-A017",
+      "description": "unknown optional extension remains preserved",
+      "kind": "core",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "opaque_profile",
+            "path": "/profiles/future",
+            "message": "payload preserved but not interpreted"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I26-A018",
+      "description": "unrequested professional profile rejected",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "structural_valid": true,
+        "valid": false,
+        "errors": [
+          {
+            "code": "profile_not_requested",
+            "path": "/profiles/professional",
+            "message": "known profile has no declared requirement"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A019",
+      "description": "current role text does not supply capability",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "capability_missing",
+            "path": "/context/capabilities/sk1",
+            "message": "no current exact capability evidence"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A020",
+      "description": "old authority snapshot does not override revocation",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "current_grant_missing",
+            "path": "/context/grants",
+            "message": "no exact unrevoked unexpired execution grant"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A021",
+      "description": "grant expires at boundary",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "current_grant_missing",
+            "path": "/context/grants",
+            "message": "no exact unrevoked unexpired execution grant"
+          },
+          {
+            "code": "capability_missing",
+            "path": "/context/capabilities/sk1",
+            "message": "no current exact capability evidence"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A022",
+      "description": "changed requirements invalidate current work binding",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "work_binding_mismatch",
+            "path": "/context/requirements_revision",
+            "message": "context and work exact binding differ"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A023",
+      "description": "plan does not demand an execution grant",
+      "kind": "plan",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A024",
+      "description": "historical receipt not new evidence",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_not_supported",
+            "path": "/criteria/c1",
+            "message": "no exact trusted pass for criterion"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "unrelated_evidence",
+            "path": "/evidence/0",
+            "message": "historical/unrelated evidence does not support this attempt"
+          }
+        ]
+      }
+    },
+    {
+      "id": "I26-A025",
+      "description": "old snapshot observation cannot fill missing evidence",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_not_supported",
+            "path": "/criteria/c1",
+            "message": "no exact trusted pass for criterion"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A026",
+      "description": "changed actual output detected",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "output_digest_mismatch",
+            "path": "/attempt/output_digest",
+            "message": "digest does not bind actual output"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A027",
+      "description": "unknown action effect is not success",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "effect_not_succeeded",
+            "path": "/attempt/outcome",
+            "message": "failed or unknown effect is not successful execution"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A028",
+      "description": "conflicting exact evidence is not suppressed",
+      "kind": "professional",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_conflict_or_failure",
+            "path": "/criteria/c1",
+            "message": "exact fail/unknown cannot be suppressed by pass"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A029",
+      "description": "dialogue branch change blocks reuse",
+      "kind": "dialogue",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "dialogue_binding_mismatch",
+            "path": "/profiles/dialogue/branch_id",
+            "message": "current dialogue binding differs"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A030",
+      "description": "document purpose mismatch",
+      "kind": "document",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "document_purpose_mismatch",
+            "path": "/profiles/document/purpose",
+            "message": "document purpose differs from declared task"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A031",
+      "description": "missing required image",
+      "kind": "visual",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "required_image_missing",
+            "path": "/profiles/visual/required_ids",
+            "message": "required image not delivered"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A032",
+      "description": "reader direction cannot deliver image to text-only",
+      "kind": "visual",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "modality_unsupported",
+            "path": "/projection/modalities",
+            "message": "reader lacks a delivered modality"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A033",
+      "description": "changed cache dependency",
+      "kind": "reuse",
+      "domain": "ordinary",
+      "expected": false,
+      "observed": false,
+      "passed": true,
+      "details": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "dependency_revision_mismatch",
+            "path": "/profiles/reuse/dependency_pins",
+            "message": "current dependency head differs or unknown"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A034",
+      "description": "legacy original and conditions preserved with explicit losses",
+      "kind": "legacy",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "contract": {
+          "identity": {
+            "id": "migrated",
+            "revision": "r1",
+            "contract_version": "3.0.0-draft.1",
+            "wire_version": "kc-synthesis/0.1"
+          },
+          "purpose": {
+            "intent": "plan",
+            "task": {
+              "state": "known",
+              "value": "Prepare a fictional symbol report",
+              "reason": "preserved legacy Task"
+            },
+            "requirements": [
+              "task"
+            ],
+            "requirements_revision": "q1",
+            "profile_requirements": [
+              "professional"
+            ]
+          },
+          "content": [
+            {
+              "id": "task",
+              "kind": "requirement",
+              "text": "Prepare a fictional symbol report",
+              "critical": true,
+              "condition_ids": [
+                "constraint-1",
+                "constraint-2"
+              ],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-1",
+              "kind": "constraint",
+              "text": "room=A",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-2",
+              "kind": "constraint",
+              "text": "preserve units and conditions",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "criterion-1",
+              "kind": "criterion",
+              "text": "symbol equals A",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "blueprint-description-1",
+              "kind": "description",
+              "text": "compose one-row report",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            }
+          ],
+          "scope": {
+            "state": "known",
+            "conditions": [
+              "room=A",
+              "preserve units and conditions"
+            ],
+            "reason": "preserved legacy Constraints"
+          },
+          "grounds": {
+            "sources": [
+              {
+                "id": "legacy-source",
+                "revision": "9172d2e35251dc7b272604e4ea86d1cb45d8f4150a637385ae33f5071fe788f8",
+                "locator": "migration:source_original",
+                "state": "known"
+              }
+            ],
+            "provenance": [
+              "legacy source digest:9172d2e35251dc7b272604e4ea86d1cb45d8f4150a637385ae33f5071fe788f8"
+            ]
+          },
+          "dependencies": [],
+          "obligations": [
+            {
+              "id": "preserve-task",
+              "kind": "preserve",
+              "target": "task"
+            },
+            {
+              "id": "preserve-constraint-1",
+              "kind": "preserve",
+              "target": "constraint-1"
+            },
+            {
+              "id": "preserve-constraint-2",
+              "kind": "preserve",
+              "target": "constraint-2"
+            },
+            {
+              "id": "preserve-criterion-1",
+              "kind": "preserve",
+              "target": "criterion-1"
+            },
+            {
+              "id": "preserve-blueprint-description-1",
+              "kind": "preserve",
+              "target": "blueprint-description-1"
+            }
+          ],
+          "projection": {
+            "included_ids": [
+              "task",
+              "constraint-1",
+              "constraint-2",
+              "criterion-1",
+              "blueprint-description-1"
+            ],
+            "omitted_ids": [],
+            "losses": [],
+            "modalities": [
+              "text"
+            ]
+          },
+          "observations": [],
+          "profiles": [
+            {
+              "name": "professional",
+              "version": "0.1",
+              "required": true,
+              "selection_reason": "explicit mapping of legacy work fields; plan only",
+              "payload": {
+                "work": {
+                  "id": "legacy-work",
+                  "revision": "r1",
+                  "requirements_revision": "q1"
+                },
+                "roles": [
+                  {
+                    "id": "role-1",
+                    "responsibilities": [
+                      "Report preparer"
+                    ]
+                  }
+                ],
+                "skills": [
+                  {
+                    "id": "skill-1",
+                    "description": "copy declared symbol",
+                    "required": true
+                  }
+                ],
+                "blueprints": [],
+                "criteria": [
+                  {
+                    "id": "criterion-1",
+                    "description": "symbol equals A"
+                  }
+                ],
+                "capability": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "authority": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "assignments": []
+              }
+            }
+          ]
+        },
+        "migration": {
+          "source_original": {
+            "Task": "Prepare a fictional symbol report",
+            "Role": "Report preparer",
+            "Skills": [
+              "copy declared symbol"
+            ],
+            "Blueprints": [
+              "compose one-row report"
+            ],
+            "Constraints": [
+              "room=A",
+              "preserve units and conditions"
+            ],
+            "SuccessCriteria": [
+              "symbol equals A"
+            ],
+            "custom_annotation": {
+              "state": "uninterpreted",
+              "value": 7
+            }
+          },
+          "source_digest": "9172d2e35251dc7b272604e4ea86d1cb45d8f4150a637385ae33f5071fe788f8",
+          "mappings": [
+            {
+              "source_field": "Task",
+              "target_path": "/purpose/task"
+            },
+            {
+              "source_field": "Role",
+              "target_path": "/profiles/0/payload/roles"
+            },
+            {
+              "source_field": "Skills",
+              "target_path": "/profiles/0/payload/skills"
+            },
+            {
+              "source_field": "Blueprints",
+              "target_path": "/content"
+            },
+            {
+              "source_field": "Constraints",
+              "target_path": "/scope/conditions"
+            },
+            {
+              "source_field": "SuccessCriteria",
+              "target_path": "/profiles/0/payload/criteria"
+            }
+          ],
+          "unmapped": [
+            "custom_annotation"
+          ],
+          "losses": [
+            {
+              "source_field": "custom_annotation",
+              "reason": "no mapping in declared legacy subset; original preserved"
+            },
+            {
+              "source_field": "Blueprints",
+              "reason": "description preserved; executable blueprint kind/dependencies unknown"
+            }
+          ],
+          "gaps": [
+            "Blueprints:process_or_structural_kind_unknown",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "semantic_equivalence": "not_established"
+        }
+      }
+    },
+    {
+      "id": "I26-A035",
+      "description": "legacy invalid type not coerced",
+      "kind": "legacy",
+      "domain": "ordinary",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "contract": {
+          "identity": {
+            "id": "migrated",
+            "revision": "r1",
+            "contract_version": "3.0.0-draft.1",
+            "wire_version": "kc-synthesis/0.1"
+          },
+          "purpose": {
+            "intent": "plan",
+            "task": {
+              "state": "known",
+              "value": "Prepare a fictional symbol report",
+              "reason": "preserved legacy Task"
+            },
+            "requirements": [
+              "task"
+            ],
+            "requirements_revision": "q1",
+            "profile_requirements": [
+              "professional"
+            ]
+          },
+          "content": [
+            {
+              "id": "task",
+              "kind": "requirement",
+              "text": "Prepare a fictional symbol report",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "criterion-1",
+              "kind": "criterion",
+              "text": "symbol equals A",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "blueprint-description-1",
+              "kind": "description",
+              "text": "compose one-row report",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            }
+          ],
+          "scope": {
+            "state": "unknown",
+            "conditions": [],
+            "reason": "legacy Constraints missing or unsupported"
+          },
+          "grounds": {
+            "sources": [
+              {
+                "id": "legacy-source",
+                "revision": "c86ef4912071f6754c92ad6d18aa5921410101c7709c40cb5809e3d8681ad9b1",
+                "locator": "migration:source_original",
+                "state": "known"
+              }
+            ],
+            "provenance": [
+              "legacy source digest:c86ef4912071f6754c92ad6d18aa5921410101c7709c40cb5809e3d8681ad9b1"
+            ]
+          },
+          "dependencies": [],
+          "obligations": [
+            {
+              "id": "preserve-task",
+              "kind": "preserve",
+              "target": "task"
+            },
+            {
+              "id": "preserve-criterion-1",
+              "kind": "preserve",
+              "target": "criterion-1"
+            },
+            {
+              "id": "preserve-blueprint-description-1",
+              "kind": "preserve",
+              "target": "blueprint-description-1"
+            }
+          ],
+          "projection": {
+            "included_ids": [
+              "task",
+              "criterion-1",
+              "blueprint-description-1"
+            ],
+            "omitted_ids": [],
+            "losses": [],
+            "modalities": [
+              "text"
+            ]
+          },
+          "observations": [],
+          "profiles": [
+            {
+              "name": "professional",
+              "version": "0.1",
+              "required": true,
+              "selection_reason": "explicit mapping of legacy work fields; plan only",
+              "payload": {
+                "work": {
+                  "id": "legacy-work",
+                  "revision": "r1",
+                  "requirements_revision": "q1"
+                },
+                "roles": [
+                  {
+                    "id": "role-1",
+                    "responsibilities": [
+                      "Report preparer"
+                    ]
+                  }
+                ],
+                "skills": [
+                  {
+                    "id": "skill-1",
+                    "description": "copy declared symbol",
+                    "required": true
+                  }
+                ],
+                "blueprints": [],
+                "criteria": [
+                  {
+                    "id": "criterion-1",
+                    "description": "symbol equals A"
+                  }
+                ],
+                "capability": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "authority": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "assignments": []
+              }
+            }
+          ]
+        },
+        "migration": {
+          "source_original": {
+            "Task": "Prepare a fictional symbol report",
+            "Role": "Report preparer",
+            "Skills": [
+              "copy declared symbol"
+            ],
+            "Blueprints": [
+              "compose one-row report"
+            ],
+            "Constraints": {
+              "ambiguous": "scope"
+            },
+            "SuccessCriteria": [
+              "symbol equals A"
+            ],
+            "custom_annotation": {
+              "state": "uninterpreted",
+              "value": 7
+            }
+          },
+          "source_digest": "c86ef4912071f6754c92ad6d18aa5921410101c7709c40cb5809e3d8681ad9b1",
+          "mappings": [
+            {
+              "source_field": "Task",
+              "target_path": "/purpose/task"
+            },
+            {
+              "source_field": "Role",
+              "target_path": "/profiles/0/payload/roles"
+            },
+            {
+              "source_field": "Skills",
+              "target_path": "/profiles/0/payload/skills"
+            },
+            {
+              "source_field": "Blueprints",
+              "target_path": "/content"
+            },
+            {
+              "source_field": "SuccessCriteria",
+              "target_path": "/profiles/0/payload/criteria"
+            }
+          ],
+          "unmapped": [
+            "Constraints",
+            "custom_annotation"
+          ],
+          "losses": [
+            {
+              "source_field": "Constraints",
+              "reason": "unsupported_type_or_empty_string; original preserved"
+            },
+            {
+              "source_field": "custom_annotation",
+              "reason": "no mapping in declared legacy subset; original preserved"
+            },
+            {
+              "source_field": "Blueprints",
+              "reason": "description preserved; executable blueprint kind/dependencies unknown"
+            }
+          ],
+          "gaps": [
+            "unusable:Constraints",
+            "Blueprints:process_or_structural_kind_unknown",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "semantic_equivalence": "not_established"
+        }
+      }
+    },
+    {
+      "id": "I26-A036",
+      "description": "false source assertion with trusted source label is accepted",
+      "kind": "core",
+      "domain": "trusted_input_stress",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "I26-A037",
+      "description": "forged current authority metadata is trusted at boundary",
+      "kind": "professional",
+      "domain": "trusted_input_stress",
+      "expected": true,
+      "observed": true,
+      "passed": true,
+      "details": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "profile": "r44-producer-integration-summary/1",
+  "local_post_export_integration_completed": true,
+  "upstream_installation": false,
+  "controls": {
+    "R0_expected_met": 15,
+    "R0_cases": 16,
+    "R0_unexpected": [
+      "C04"
+    ],
+    "corrected_C04_R1_expected_met": true,
+    "post_replace_R1_expected_met": true,
+    "all_attempts_preserved": true
+  },
+  "corpus_runs": {
+    "R0_accepted": true,
+    "R1_accepted": true,
+    "books_per_run": 3,
+    "unique_source_records": 917,
+    "total_record_processings": 1834,
+    "field_checks_per_run": {
+      "met": 19305,
+      "violated": 0
+    },
+    "nonempty_uncertainty": 153,
+    "truncated_queue": 7
+  },
+  "calls": {
+    "control_serializer": 15,
+    "control_validator": 11,
+    "corpus_serializer": 6,
+    "corpus_validator": 6,
+    "new_model": 0,
+    "new_OCR": 0,
+    "human_review": 0
+  },
+  "current_snapshot_manifest_pin": {
+    "sha256": "d51dd6bf0c077f762615c2ba0f17625db6fd96dc3af8d5b88850ed742493697e",
+    "size_bytes": 24360
+  },
+  "R1_payload_equal_to_R43_files": 12,
+  "R1_payload_equal_to_R44_R0_files": 12,
+  "prior_history_unchanged": {
+    "R43": {
+      "exact": true,
+      "files": 509
+    },
+    "R44_R0": {
+      "exact": true,
+      "files": 49
+    }
+  },
+  "unresolved": [
+    "upstream producer installation",
+    "real image bytes and 7 targeted rechecks",
+    "25 coordinate traces",
+    "native model availability",
+    "physical power-loss/crash durability"
+  ],
+  "source_closure_files": 39,
+  "content_consumed_files": 9,
+  "hash_only_files": 30,
+  "qa_pages": [
+    "p0058",
+    "p0073",
+    "p0113",
+    "p0116",
+    "p0135",
+    "p0137",
+    "p0141"
+  ],
+  "native_status": "NOT_RUN",
+  "key_files": {
+    "snapshot_runner.py": {
+      "sha256": "064d3cfd500fa684dd083e8e21d1ba4d0f170dfd79dce11e8f449c1315f0dadf",
+      "size_bytes": 16873
+    },
+    "snapshot_runner_r1.py": {
+      "sha256": "c8c2c1cec263c8a577be673dcb38fb5f6c6e7721da523afa4179f81907512d55",
+      "size_bytes": 18239
+    },
+    "README.md": {
+      "sha256": "d71e6c95da73c5b4591073ecd4ee8082fa45d4ed7f5bbf72b420db7090db6c0e",
+      "size_bytes": 6716
+    },
+    "INTEGRATION_REPORT.md": {
+      "sha256": "77fcffcbe7fecb806660c01d136085ce07d35565f066db47119cea528614deed",
+      "size_bytes": 14299
+    },
+    "SELF_REVIEW.md": {
+      "sha256": "29dbe7d8ffcf7f773f74e6ee32471ddd9628fb893aa5c3ac1faac4342a1d64af",
+      "size_bytes": 10901
+    },
+    "DEPENDENCY_MANIFEST.json": {
+      "sha256": "9fa5c5eb6a343cffc4e9bb19f06f35952efc396f4c4cb3a4b373c12d4838500c",
+      "size_bytes": 1390
+    },
+    "ACCESS_OBSERVATIONS.json": {
+      "sha256": "9821ab1c77e6646033c40d883ac09364a8a306c4a13f29d92192c4d14a1ecc8c",
+      "size_bytes": 21351
+    },
+    "NATIVE_BACKEND_STATUS.json": {
+      "sha256": "dee47f280e0a4218e62405c2f53b819a244f6851767a1f552cc0cae4b4ac91ff",
+      "size_bytes": 1227
+    },
+    "runs/R44_INTEGRATION_CONTROLS_R0/RESULTS.json": {
+      "sha256": "cd086e3791e948b98f62f51e0629cb18e77982297af856f111cd1aa6a9b7b8e4",
+      "size_bytes": 10510
+    },
+    "runs/R44_C04_CORRECTION_R1/RESULTS.json": {
+      "sha256": "605d16c4938610b5afdd63c3b3e861e5a5834a0afa82a62c9fb1833445e0acbe",
+      "size_bytes": 545
+    },
+    "runs/R44_POST_REPLACE_CONTROL_R1/RESULTS.json": {
+      "sha256": "e8f8fbb7dafd020fa480e67fe11520df17e7e86ece1c6e0a165176129880aa23",
+      "size_bytes": 955
+    },
+    "runs/R44_BOOK_EXPORT_R0/RESULTS.json": {
+      "sha256": "8a18ad7407bfa97b84486e5c2f5a131d3ad08c9dbc8ee0c15fa0fb2b51f75c1f",
+      "size_bytes": 2658
+    },
+    "runs/R44_BOOK_EXPORT_R1/RESULTS.json": {
+      "sha256": "3216fd3a8cfb077ed8d8d73a0f45d629282cd5976d6447f2e2669b9a34005718",
+      "size_bytes": 2057
+    }
+  }
+}

@@ -31,6 +31,12 @@ class CheckSourcesTests(unittest.TestCase):
         self.assertEqual(len(problems), 1)
         self.assertIn("papers/p.md", problems[0])
 
+    def test_new_publication_roots_require_attribution(self):
+        for name in ("engineering/studies/example/STUDY.md", "reference/glossary/GLOSSARY.md",
+                     "appendices/source-map/APPENDIX.md", "reviews/publication/REVIEW.md"):
+            with self.subTest(name=name):
+                self.assertEqual(len(check_sources.check(make({name: "# Document\n"}))), 1)
+
     def test_uncovered_spec_json_fails(self):
         self.assertEqual(len(check_sources.check(make({"spec/s.json": "{}"}))), 1)
 

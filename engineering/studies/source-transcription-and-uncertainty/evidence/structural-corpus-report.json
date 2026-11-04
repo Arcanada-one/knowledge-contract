@@ -1,0 +1,228 @@
+{
+  "run_id": "R43_BOOK_GRAPHS_R0",
+  "accepted": true,
+  "books": {
+    "molchanova": {
+      "accepted": true,
+      "node_count": 8526,
+      "edge_count": 9646,
+      "node_kind_counts": {
+        "source_representation": 3,
+        "exported_page_anchor": 456,
+        "exported_block_anchor": 6931,
+        "exported_asset_anchor": 374,
+        "table_representation": 14,
+        "asset_declaration": 374,
+        "imported_illustration_record": 374
+      },
+      "edge_relation_counts": {
+        "contains_page_occurrence": 456,
+        "contains_fragment_occurrence": 7305,
+        "contains_table_representation": 14,
+        "declares_asset": 374,
+        "contains_imported_record": 374,
+        "declared_page_candidate": 374,
+        "declared_asset_candidate": 374,
+        "declared_manifest_asset_candidate": 374,
+        "declared_caption_candidate": 1
+      },
+      "anchor_count": 7761,
+      "duplicate_exported_anchor_id_groups": 0,
+      "table_representation_counts": {
+        "markdown_pipe_table": 7,
+        "html_table": 7
+      },
+      "table_representation_count": 14,
+      "table_diagnostics": [],
+      "imported_record_count": 374,
+      "nonempty_uncertainty_count": 111,
+      "empty_uncertainty_count": 263,
+      "truncated_reply_count": 0,
+      "generated_true_count": 374,
+      "review_state_counts": {
+        "unreviewed": 374
+      },
+      "binding_state_counts": {
+        "declared_page": {
+          "unique_observational_candidate": 374
+        },
+        "declared_asset_anchor": {
+          "unique_observational_candidate": 374
+        },
+        "declared_caption_anchor": {
+          "not_declared": 373,
+          "unique_observational_candidate": 1
+        },
+        "manifest_asset": {
+          "unique_declared_pin_agreement": 374
+        }
+      },
+      "validated_span_references": 51122,
+      "node_and_edge_ids_referentially_valid": true,
+      "source_pins_exact": true,
+      "image_bytes_verified_count": 0,
+      "semantic_concept_or_claim_count": 0,
+      "subject_model_calls": 0,
+      "OCR_calls": 0,
+      "validation_scope": "deterministic structural conformance; builder and validator share lexical table detector; not independent model/OCR quality verification"
+    },
+    "fain": {
+      "accepted": true,
+      "node_count": 4513,
+      "edge_count": 5612,
+      "node_kind_counts": {
+        "source_representation": 3,
+        "exported_page_anchor": 289,
+        "exported_block_anchor": 3226,
+        "exported_asset_anchor": 319,
+        "table_representation": 38,
+        "asset_declaration": 319,
+        "imported_illustration_record": 319
+      },
+      "edge_relation_counts": {
+        "contains_page_occurrence": 289,
+        "contains_fragment_occurrence": 3545,
+        "contains_table_representation": 38,
+        "declares_asset": 319,
+        "contains_imported_record": 319,
+        "declared_page_candidate": 319,
+        "declared_asset_candidate": 319,
+        "declared_manifest_asset_candidate": 319,
+        "declared_caption_candidate": 145
+      },
+      "anchor_count": 3834,
+      "duplicate_exported_anchor_id_groups": 0,
+      "table_representation_counts": {
+        "html_table": 16,
+        "markdown_pipe_table": 22
+      },
+      "table_representation_count": 38,
+      "table_diagnostics": [],
+      "imported_record_count": 319,
+      "nonempty_uncertainty_count": 16,
+      "empty_uncertainty_count": 303,
+      "truncated_reply_count": 0,
+      "generated_true_count": 319,
+      "review_state_counts": {
+        "unreviewed": 319
+      },
+      "binding_state_counts": {
+        "declared_page": {
+          "unique_observational_candidate": 319
+        },
+        "declared_asset_anchor": {
+          "unique_observational_candidate": 319
+        },
+        "declared_caption_anchor": {
+          "not_declared": 174,
+          "unique_observational_candidate": 145
+        },
+        "manifest_asset": {
+          "unique_declared_pin_agreement": 319
+        }
+      },
+      "validated_span_references": 27299,
+      "node_and_edge_ids_referentially_valid": true,
+      "source_pins_exact": true,
+      "image_bytes_verified_count": 0,
+      "semantic_concept_or_claim_count": 0,
+      "subject_model_calls": 0,
+      "OCR_calls": 0,
+      "validation_scope": "deterministic structural conformance; builder and validator share lexical table detector; not independent model/OCR quality verification"
+    },
+    "timofeev": {
+      "accepted": true,
+      "node_count": 2813,
+      "edge_count": 3608,
+      "node_kind_counts": {
+        "source_representation": 3,
+        "exported_page_anchor": 154,
+        "exported_asset_anchor": 224,
+        "exported_block_anchor": 1973,
+        "table_representation": 11,
+        "asset_declaration": 224,
+        "imported_illustration_record": 224
+      },
+      "edge_relation_counts": {
+        "contains_page_occurrence": 154,
+        "contains_fragment_occurrence": 2197,
+        "contains_table_representation": 11,
+        "declares_asset": 224,
+        "contains_imported_record": 224,
+        "declared_page_candidate": 224,
+        "declared_asset_candidate": 224,
+        "declared_manifest_asset_candidate": 224,
+        "declared_caption_candidate": 126
+      },
+      "anchor_count": 2351,
+      "duplicate_exported_anchor_id_groups": 0,
+      "table_representation_counts": {
+        "html_table": 7,
+        "markdown_pipe_table": 4
+      },
+      "table_representation_count": 11,
+      "table_diagnostics": [],
+      "imported_record_count": 224,
+      "nonempty_uncertainty_count": 26,
+      "empty_uncertainty_count": 198,
+      "truncated_reply_count": 7,
+      "generated_true_count": 224,
+      "review_state_counts": {
+        "unreviewed": 224
+      },
+      "binding_state_counts": {
+        "declared_page": {
+          "unique_observational_candidate": 224
+        },
+        "declared_asset_anchor": {
+          "unique_observational_candidate": 224
+        },
+        "declared_caption_anchor": {
+          "not_declared": 98,
+          "unique_observational_candidate": 126
+        },
+        "manifest_asset": {
+          "unique_declared_pin_agreement": 224
+        }
+      },
+      "validated_span_references": 17097,
+      "node_and_edge_ids_referentially_valid": true,
+      "source_pins_exact": true,
+      "image_bytes_verified_count": 0,
+      "semantic_concept_or_claim_count": 0,
+      "subject_model_calls": 0,
+      "OCR_calls": 0,
+      "validation_scope": "deterministic structural conformance; builder and validator share lexical table detector; not independent model/OCR quality verification"
+    }
+  },
+  "graph_file_pins": {
+    "molchanova": {
+      "sha256": "687f9d2fd9e623ed5284081bfdabe7bee364c991c1af866e13da6928f5f9104e",
+      "size_bytes": 22166718
+    },
+    "fain": {
+      "sha256": "88beb110b3961154441dcfae504f5efa94b4ef0ca3f41d73b658bec8d58815d9",
+      "size_bytes": 12126416
+    },
+    "timofeev": {
+      "sha256": "baaade7267dddcc4ac17d0cf5ac3626188df891dea09649b47c7941f39164295",
+      "size_bytes": 7826975
+    }
+  },
+  "design_freeze_pin": {
+    "sha256": "4c128f64ef1671cdb16a9c047292c153f562d036fcb6cf480e19b407686f91ec",
+    "size_bytes": 719
+  },
+  "total_anchors": 13946,
+  "total_imported_illustrations": 917,
+  "total_table_representations": 63,
+  "total_nodes": 15852,
+  "total_edges": 18866,
+  "original39files_before_after_exact": true,
+  "consumed_files": 9,
+  "context_pins_checked": 39,
+  "subject_model_calls": 0,
+  "OCR_calls": 0,
+  "semantic_concepts_or_claims_created": 0,
+  "scope": "Observed exported structure and imported model provenance; not producer certification, physical table counts or semantic KG completeness"
+}

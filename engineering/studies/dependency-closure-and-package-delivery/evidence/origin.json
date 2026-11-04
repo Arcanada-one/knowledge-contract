@@ -1,0 +1,76 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "dependency-closure-and-package-delivery",
+  "reader_source_sha256": "5035f1040977869a74a4d6ddbccaf237e2ef416077507f0803f12c05943e22f6",
+  "scope": "Project-authored reports and metadata. No source books, PDFs, source illustrations, OCR transcriptions, or extracted book passages are distributed here.",
+  "files": [
+    {
+      "file": "dependency-graph.json",
+      "published_sha256": "70f946604f6d725e4085e915927aee0d69cf38c62e199ada818e3b602a49c3f3",
+      "size_bytes": 8205,
+      "representation": "metadata_only_graph_extracted_for_edition",
+      "original_logical_path": "kc-input/r2/RU10_EDITOR_KC_r2/knowledge/dependencies.json",
+      "scope": "Required all-dependency adjacency extracted by the original loader after record pin checks; no artifact contents."
+    },
+    {
+      "file": "finite-package-selftest.json",
+      "representation": "exact_local_source_json",
+      "original_logical_path": "kcp-followup-input/historical-gate-r2-replay/SELFTEST.json",
+      "original_source_sha256": "7ce1792d6962a59b37c4435808eef1bd5d54ad122f3c6c8c55bcac257f6a009d",
+      "published_sha256": "7ce1792d6962a59b37c4435808eef1bd5d54ad122f3c6c8c55bcac257f6a009d",
+      "size_bytes": 10844,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "historical-package-replay.json",
+      "representation": "exact_local_source_json",
+      "original_logical_path": "kcp-followup-input/historical-gate-r2-replay/RESULT.json",
+      "original_source_sha256": "cdae9c9781700b2154fc97b5fbe4eef48ba2c64725d63c44bbcd93af8defd666",
+      "published_sha256": "cdae9c9781700b2154fc97b5fbe4eef48ba2c64725d63c44bbcd93af8defd666",
+      "size_bytes": 2818,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "historical-replay-environment.json",
+      "representation": "exact_local_source_json",
+      "original_logical_path": "kcp-followup-input/historical-gate-r2-replay/ENVIRONMENT.json",
+      "original_source_sha256": "cbf1c104f8493e5819880bb2be3051a8bbc83d6482f0896d676945506bc2d2c3",
+      "published_sha256": "cbf1c104f8493e5819880bb2be3051a8bbc83d6482f0896d676945506bc2d2c3",
+      "size_bytes": 765,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "layout-conformance-report.json",
+      "representation": "exact_local_source_json",
+      "original_logical_path": "writing-editor/evaluation/MIGRATION_TESTS.json",
+      "original_source_sha256": "2df43ed048f7f4d2d11fc6e3cf24e80114e7bf849d1afc73bb30fe68967d5b73",
+      "published_sha256": "2df43ed048f7f4d2d11fc6e3cf24e80114e7bf849d1afc73bb30fe68967d5b73",
+      "size_bytes": 1985,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "layout-preservation-report.json",
+      "representation": "exact_local_source_json",
+      "original_logical_path": "writing-editor/evaluation/PRESERVATION.json",
+      "original_source_sha256": "e2481128169deb5acdfba5053678cc8775468814574277dda96130af6283ff54",
+      "published_sha256": "e2481128169deb5acdfba5053678cc8775468814574277dda96130af6283ff54",
+      "size_bytes": 34350,
+      "byte_identity_verified": true
+    },
+    {
+      "file": "public-closure-replay.json",
+      "published_sha256": "3dfa7b8f2d6fe43ba8641321d44ea9791ece85e845c2d2af6dc313f774a5a8a9",
+      "size_bytes": 623,
+      "representation": "new_public_reproduction_result",
+      "scope": "New execution of the accompanying public program; distinct from retained historical experiment results."
+    },
+    {
+      "file": "replay_closure.py",
+      "published_sha256": "67ca4acf776ea49233e41cf05076dd71d452ddaefb85f9a654e59fb7618f920c",
+      "size_bytes": 3319,
+      "representation": "new_public_reproduction_code",
+      "license": "Apache-2.0",
+      "scope": "New code supplied for this publication; historical full execution is not implied."
+    }
+  ]
+}

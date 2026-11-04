@@ -1,0 +1,276 @@
+{
+  "schema": "knowledge-contract.integrated-publication-verification/1",
+  "checked_at_utc": "2026-11-04T08:01:32.881996+00:00",
+  "base_commit": "570f76b6d9a189295c3229254821c30748383965",
+  "publication_documents": 29,
+  "current_markdown_files_checked": 110,
+  "historical_receipt_trees_excluded_from_link_check": true,
+  "current_link_errors": [],
+  "publication_and_policy_tests": {
+    "tests": 58,
+    "result": "pass"
+  },
+  "book_package_tests": {
+    "tests": 17,
+    "result": "pass",
+    "actual_jsonschema_version": "4.23.0",
+    "ci_jsonschema_pin": "4.23.0",
+    "pinned_schema_validator_run": true,
+    "whole_github_actions_environment_run": false,
+    "fixture_regeneration_files": 53,
+    "fixture_regeneration_byte_identical": true
+  },
+  "export_tests": {
+    "test_methods": 81,
+    "passed_methods": 81,
+    "failed_methods": 0,
+    "failure_reports_including_subtests": 0,
+    "errors": 0,
+    "skipped": 0,
+    "result": "pass",
+    "gitleaks_version": "8.30.1",
+    "scanner_archive_sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+    "real_main_candidate_export_performed": false
+  },
+  "public_replays": {
+    "programs": 4,
+    "result": "pass",
+    "independently_replayed_by_evidence_reviewer": true,
+    "historical_model_trials_repeated": false
+  },
+  "reviews": {
+    "science-review": {
+      "record": "reviews/publication-integrity/science-review.json",
+      "sha256": "9f404be7f05a03f40321e333f9a8899028eec43e88b06c73377db28403ed7c84",
+      "verified_input_hashes": 29
+    },
+    "evidence-review": {
+      "record": "reviews/publication-integrity/evidence-review.json",
+      "sha256": "744debab3af4be38c5d611f1ae90d197536b01835ff4b0661aabf88db2966ab4",
+      "verified_input_hashes": 61
+    }
+  },
+  "documents": [
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "sha256": "a52ed66427fb840cfa6b2e06ad8f856c94bbfdbff01e9be19b70d7a2862b251f",
+      "bytes": 14831
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "sha256": "9cd74f05b1612e136060f2190a13099a35e6e4dfafe6c0a1fc1b543719ea0db0",
+      "bytes": 13973
+    },
+    {
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "sha256": "618d3af8d7f41823246627efe3c497069a374250fdf318d1c4089d890c1543cc",
+      "bytes": 13010
+    },
+    {
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "sha256": "1460a5f983dd83ee08e01023b37597f50bfbd7e37f371d0b3530f55c530f583a",
+      "bytes": 13258
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "sha256": "60bd9216daddf0dc69396acfe2da2e29cc046bdb807717847f13926e8ba398b4",
+      "bytes": 13983
+    },
+    {
+      "path": "papers/revision-and-governance/PAPER.md",
+      "sha256": "0e348ea0c656509cc24de82d444175fa7366e9edacb70e2a4a706672b5e61154",
+      "bytes": 13579
+    },
+    {
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "sha256": "9c799b25dbc7c7336e173f31a4877034fd05713151da8c380519f5884fa1370c",
+      "bytes": 13371
+    },
+    {
+      "path": "papers/knowledge-utility/PAPER.md",
+      "sha256": "01f037b2266a8bbd85d0f69ed8e16a00fd4ebdd7e7f663b35949e006343ea383",
+      "bytes": 13304
+    },
+    {
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "sha256": "3c6db41d46b0914441af90fb8984aae8f8da8b2a056e1904daf16f4f230d037b",
+      "bytes": 8458
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "sha256": "3eb380947abb58ab73dcd3f97adc65f2b4805569728806f7802982bae4b8c635",
+      "bytes": 7368
+    },
+    {
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "sha256": "2c1323d7845fe1b18281b91880d0db4791048c9f22d888f0fed26e0188290c50",
+      "bytes": 6755
+    },
+    {
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "sha256": "5f379fdad9b76b384a0b3abcc53ca42aaa8030ff5272ac28bf91bcc2f230aaa5",
+      "bytes": 7050
+    },
+    {
+      "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "sha256": "102676d61dad36cc3cf4961b8ad68b342885272d065ee7506825f3b1a0609bd3",
+      "bytes": 6703
+    },
+    {
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "sha256": "8783552e775b1d4a3e0c0ca16c832dce552de753214a4c27041903d0095e5d34",
+      "bytes": 7556
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "sha256": "fa7c443248cca872e0ba77fc55e07ec69cb0ef52357c9fa2dbb88119bfae8d38",
+      "bytes": 6520
+    },
+    {
+      "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "sha256": "6ce6cdf9ae537dc61dea788e12eca4b38c009d0f8111d516f696fbb58e8c9155",
+      "bytes": 6125
+    },
+    {
+      "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "sha256": "919525f3e70ea3abe2b10de6d154f3693e8d213ca6dba7b37fa2c4ddec4593b2",
+      "bytes": 6418
+    },
+    {
+      "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "sha256": "421987294714317959697d9b2ea4c338a952585c19294a836567d4d701c07e96",
+      "bytes": 6612
+    },
+    {
+      "path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "sha256": "9def8270ca1520a33ead519b00f8da0777c7ab62f04ee2413c578ffd8b25be70",
+      "bytes": 16457
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+      "bytes": 11242
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+      "bytes": 10851
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+      "bytes": 11438
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+      "bytes": 13327
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+      "bytes": 11664
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+      "bytes": 11913
+    },
+    {
+      "path": "reference/glossary/GLOSSARY.md",
+      "sha256": "1c6be362e0d83b5f85f0c8b39b082780096beb0c8e3220728cf2832e36795814",
+      "bytes": 12113
+    },
+    {
+      "path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "sha256": "ff0f152231f03bdda4cecce9395f0a2814fc570a559e15398f214b8d0f3f294f",
+      "bytes": 10378
+    },
+    {
+      "path": "appendices/source-map/APPENDIX.md",
+      "sha256": "440e3209c8be8d432b5865febdd9719429a6dbc447e8428db9c87af2b404962b",
+      "bytes": 10405
+    },
+    {
+      "path": "appendices/api-integration/APPENDIX.md",
+      "sha256": "74265dc826bf5a1d8abdb390e7e9f1ab11b814d1b7c61e002b7e877a52a7b705",
+      "bytes": 7894
+    }
+  ],
+  "not_performed": [
+    "actual GitHub Actions run on final contribution",
+    "real contributor DCO attestation",
+    "push-only exact-main candidate export",
+    "source merge",
+    "website deployment",
+    "corpus admission and API index promotion"
+  ],
+  "remote_write_access": {
+    "knowledge-contract": false,
+    "contract-place-site": false
+  },
+  "licensing_audit": {
+    "result": "pass",
+    "tool": "REUSE 6.2.0",
+    "files_covered": 258,
+    "missing_license": 0,
+    "missing_copyright": 0
+  },
+  "markdown_lint": {
+    "result": "pass",
+    "tool": "markdownlint-cli2 0.24.0",
+    "files": 110,
+    "issues": 0,
+    "metadata_title_is_not_a_visible_h1": true
+  },
+  "offline_link_check": {
+    "result": "pass",
+    "tool": "Lychee 0.24.2",
+    "occurrences": 598,
+    "passed": 463,
+    "excluded_offline": 135,
+    "errors": 0,
+    "external_links_checked": false
+  },
+  "framework_security_profile": {
+    "result": "PASS_WITH_ZERO_SHELL_INPUTS",
+    "security_policy_presence": true,
+    "accepted_risk_yaml": "absent; conditional schema validation not applicable",
+    "runtime_manifests": [],
+    "shellcheck_version": "0.10.0",
+    "shell_script_count": 0,
+    "scope_note": "Local equivalent of the pinned reusable workflow framework profile, not a GitHub Actions run or runtime/dependency vulnerability audit.",
+    "upstream_commit": "5a204199acd5b708ea63d99f6d642848f532bead",
+    "evidence": "finish-framework-security.json",
+    "log": "finish-framework-security.log"
+  },
+  "release_followup": {
+    "checked_at_utc": "2026-11-04T08:00:22.153084+00:00",
+    "record_in_delivery": "verification/finish-release-verification.json",
+    "record_sha256": "e77e09769ce54b8c12604d3e330528a8a32dac24def64957af44eb75d07fa8f4",
+    "content_and_review_inputs_unchanged": true
+  },
+  "website_verification": "Separate site delivery records; not inferred from source tests.",
+  "final_operational_checks": {
+    "source_register": {
+      "log_in_delivery": "verification/finish-check-sources-final.log",
+      "sha256": "3ed6ef2d986594efc2cc7400482e39cc4e9357586422b1d0ee7953fe2f4f734a",
+      "result": "pass"
+    },
+    "markdown_lint": {
+      "log_in_delivery": "verification/finish-markdownlint-integrated.log",
+      "sha256": "c49427e9bf9061625907bd73b11b0a986afae2e90e58340deb4364155681d079",
+      "result": "pass"
+    },
+    "licensing": {
+      "log_in_delivery": "verification/finish-reuse-integrated.log",
+      "sha256": "6800077418359fe814df1c783c430901a68498911b81fbd9b665daf12da70e6a",
+      "result": "pass"
+    },
+    "offline_links": {
+      "log_in_delivery": "verification/finish-lychee-integrated.log",
+      "sha256": "af4c3354b8964c3365eaf19e877754cd0ac531f17b44e76e11d8089719b69d18",
+      "result": "pass"
+    }
+  }
+}

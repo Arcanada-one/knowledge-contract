@@ -1,0 +1,37 @@
+{
+  "schema": "knowledge-contract.public-editorial-record-check/1",
+  "source_hash_matches": true,
+  "source_words_by_whitespace": 804,
+  "variants": {
+    "baseline": {
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "utf8_bytes": 12127,
+      "words_by_whitespace": 830,
+      "protected_literals": 37,
+      "checks": {
+        "first_response_hash_matches": true,
+        "all_protected_literals_present": true,
+        "all_protected_headings_preserved": true,
+        "anchor_order_preserved": true,
+        "link_destinations_preserved": true
+      },
+      "passed": true
+    },
+    "with-skills": {
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "utf8_bytes": 12029,
+      "words_by_whitespace": 820,
+      "protected_literals": 37,
+      "checks": {
+        "first_response_hash_matches": true,
+        "all_protected_literals_present": true,
+        "all_protected_headings_preserved": true,
+        "anchor_order_preserved": true,
+        "link_destinations_preserved": true
+      },
+      "passed": true
+    }
+  },
+  "passed": true,
+  "scope": "New check of retained source and first responses. Semantic judgments for 19 claims and stylistic scores remain the recorded agent review, not a result of this program."
+}

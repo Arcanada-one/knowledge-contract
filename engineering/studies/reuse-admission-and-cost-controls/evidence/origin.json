@@ -1,0 +1,35 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "reuse-admission-and-cost-controls",
+  "reader_source_sha256": "5035f1040977869a74a4d6ddbccaf237e2ef416077507f0803f12c05943e22f6",
+  "scope": "Project-authored reports and metadata. No source books, PDFs, source illustrations, OCR transcriptions, or extracted book passages are distributed here.",
+  "files": [
+    {
+      "file": "public-reuse-counterexamples.json",
+      "published_sha256": "edbec332710196e37ff7c5cf88bfd2b4979a86793557c3cebc2a57df1eb01df2",
+      "size_bytes": 1491,
+      "representation": "new_public_reproduction_result",
+      "scope": "New execution of the accompanying public program; distinct from retained historical experiment results."
+    },
+    {
+      "file": "replay_reuse_counterexamples.py",
+      "published_sha256": "f15da63f8d130c0c558ae5bb6236c12205295a9c37978f85af390780bddb4a9e",
+      "size_bytes": 4354,
+      "representation": "new_public_reproduction_code",
+      "license": "Apache-2.0",
+      "scope": "New code supplied for this publication; historical full execution is not implied."
+    },
+    {
+      "file": "reuse-properties-source.json",
+      "representation": "rendered_source_text_view",
+      "artifact_id": "MM_A0457",
+      "source_revision": "MM_G1_20261028_v1",
+      "original_logical_path": "iterations/I15/FORMAL_PROPERTIES_AND_COUNTEREXAMPLES.md",
+      "original_source_sha256": "c4717250110e9a15805d2044139bd925988ab9734154de62b4403b7ddac78527",
+      "published_sha256": "06dd9789f8e923a320171b53c98a06945bd4159282d03909cf59886df2d49a0b",
+      "size_bytes": 41755,
+      "byte_identity_verified": false,
+      "limitation": "The original Markdown hash identifies the source; this derived text view has its own hash."
+    }
+  ]
+}

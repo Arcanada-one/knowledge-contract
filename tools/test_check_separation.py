@@ -9,6 +9,13 @@ class SeparationTests(unittest.TestCase):
         self.assertTrue(violates(["corpus/README.md", "papers/p.md"]))
         self.assertTrue(violates(["corpus/publication-decisions/receipts/b1.json", "schemas/s.md"]))
 
+    def test_new_publication_roots_preserve_decision_separation(self):
+        for content in ("engineering/studies/example/STUDY.md", "reference/glossary/GLOSSARY.md",
+                        "appendices/source-map/APPENDIX.md", "reviews/publication/REVIEW.md", "publication-catalog.json"):
+            with self.subTest(content=content):
+                self.assertTrue(violates(["corpus/publication-decisions/new.jsonl", content]))
+                self.assertTrue(violates(["corpus/README.md", content]))
+
     def test_decision_files_and_the_table_in_one_change_fail(self):
         self.assertTrue(violates(["corpus/publication-decisions/b1.jsonl", "corpus/README.md"]))
         self.assertTrue(violates(["corpus/publication-decisions/receipts/b1.json", "corpus/README.md", "tools/x.py"]))

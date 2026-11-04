@@ -1,0 +1,19 @@
+{
+  "schema": "knowledge-contract.public-closure-replay/1",
+  "graph_sha256": "70f946604f6d725e4085e915927aee0d69cf38c62e199ada818e3b602a49c3f3",
+  "vertex_count": 110,
+  "skill_subsets": 4096,
+  "inclusion_pairs": 24576,
+  "failures": {
+    "reference": [],
+    "idempotence": [],
+    "union": [],
+    "monotonicity": []
+  },
+  "negative_controls_rejected": {
+    "unknown_root": true,
+    "cycle": true
+  },
+  "passed": true,
+  "scope": "New replay of the extracted historical required-dependency graph; not the complete historical package selftest, semantic validation, source-quality verification, or a model trial."
+}

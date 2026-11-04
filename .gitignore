@@ -4,3 +4,5 @@
 *.key
 *.token
 **/Credentials/**
+__pycache__/
+*.py[cod]

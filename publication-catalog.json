@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "edition": "1.0",
+  "documents": [
+    {
+      "type": "paper",
+      "slug": "semantic-objects-and-context",
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "title": "Semantic Objects, Context, and Conditions of Applicability",
+      "summary": "A formal account of source interpretations, context, mandatory dependencies and conditions of applicability.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "constrained-transformations",
+      "path": "papers/constrained-transformations/PAPER.md",
+      "title": "Constrained Transformations and the Limits of Knowledge Transfer",
+      "summary": "Conditional preservation, composition and reconstruction of knowledge under explicit observations and losses.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "retrieval-and-context-composition",
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "title": "Retrieval, Coverage, and Context Composition under Resource Limits",
+      "summary": "Search coverage, finite context selection, dependency closure and the limits of greedy composition.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "interaction-and-memory",
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "title": "Interaction, Documents, and Memory with Explicit Revision Boundaries",
+      "summary": "Versioned requirements, dialogue branches, memory and evidence of learning in agent interaction.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "evidence-and-falsification",
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "title": "Evidence, Reasoning, and Falsification in Knowledge Systems",
+      "summary": "How claims, proofs, finite tests, counterexamples and comparative evaluations support different conclusions.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "revision-and-governance",
+      "path": "papers/revision-and-governance/PAPER.md",
+      "title": "Knowledge Revision, Version Identity, and the Adoption of Norms",
+      "summary": "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "controlled-knowledge-reuse",
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "title": "Knowledge Contracts and the Admission of Prepared Knowledge",
+      "summary": "The conditions under which saved knowledge may support a new task, recipient or execution.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "paper",
+      "slug": "knowledge-utility",
+      "path": "papers/knowledge-utility/PAPER.md",
+      "title": "Knowledge Utility, Resource Accounting, and Retention Decisions",
+      "summary": "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "knowledge-contract-core",
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "title": "Knowledge Contract: Core Model and Admission Requirements",
+      "summary": "The nine core groups, first-class constraints, profiles, admission and execution requirements.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "contract-family",
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "title": "Contracts for Knowledge Operations",
+      "summary": "Common preconditions, invariants, postconditions, effects and evidence for knowledge operations.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "semantic-types",
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "title": "Semantic Types, Attribution, and Representations",
+      "summary": "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "context-package",
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "title": "Context Packages: Coverage, Dependencies, and Delivery",
+      "summary": "Requirements for selected context, coverage, mandatory dependencies, budgets and observed delivery.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "compiled-artifact-contract",
+      "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "title": "Compiled Knowledge Artifacts and Reproducible Derivation",
+      "summary": "Saved derivatives with exact inputs, recipes, dependency manifests, templates and output evidence.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "artifact-registry",
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "title": "Artifact Registry, Readable Names, and Document Formats",
+      "summary": "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "status-model",
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "title": "Assessment, Execution, and Publication States",
+      "summary": "Independent assessment, execution, effect, freshness, publication and review states.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "cache-identity-and-invalidation",
+      "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "title": "Cache Identity, Dependency Tracking, and Invalidation",
+      "summary": "Content, build and lookup identity, dependency changes and guarded publication and serving.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "reuse-policy",
+      "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "title": "Reuse Policy: Time, Authorization, and Decision Outcomes",
+      "summary": "Temporal modes, conservative deadlines, authorization, decision outcomes and retention boundaries.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "knowledge-evolution",
+      "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "title": "Knowledge Evolution and Versioned Rules",
+      "summary": "Versioned creation rules, adoption, impact analysis, reassessment, migration and coherent publication.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "specification",
+      "slug": "book-package",
+      "path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "title": "Book Packages: Source Identity, Semantic Layers, and Validation",
+      "summary": "A concrete book-package schema, reversible conversion ledger, semantic layers, rights boundaries and synthetic conformance checks.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "contract-profile-conformance",
+      "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "title": "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator",
+      "summary": "Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "dependency-closure-and-package-delivery",
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "title": "Dependency closure, readable artifact layouts, and a pinned package replay",
+      "summary": "Historical package evidence and a public exhaustive replay of a finite dependency graph.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "source-transcription-and-uncertainty",
+      "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "title": "Reproducible transcription is not preservation of uncertainty",
+      "summary": "Retained generated descriptions, lost uncertainty and a reproducible synthetic projection counterexample.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "executable-projections-and-revision",
+      "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "title": "Executable projections, addressable revisions, and the limits of graph minimality",
+      "summary": "Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "reuse-admission-and-cost-controls",
+      "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "title": "Controlled reuse: admission counterexamples and the cost of a cache hit",
+      "summary": "Executable admission counterexamples and an analytical break-even calculation with explicit costs.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "study",
+      "slug": "editorial-skill-pilot",
+      "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "title": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison",
+      "summary": "One preregistered editorial comparison, exact initial outputs, masked review and an observed tie.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "glossary",
+      "slug": "glossary",
+      "path": "reference/glossary/GLOSSARY.md",
+      "title": "Knowledge Contract Glossary",
+      "summary": "Shared English definitions, Russian equivalents, technical spellings and distinctions between related concepts.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "bibliography",
+      "slug": "bibliography",
+      "path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "title": "Primary Sources and Research Foundations",
+      "summary": "Named primary sources and the exact conceptual or technical role each plays in the current edition.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "appendix",
+      "slug": "source-map",
+      "path": "appendices/source-map/APPENDIX.md",
+      "title": "Source Map, Earlier Editions, and Protocol Compatibility",
+      "summary": "The migration from the earlier corpus, immutable history, evidence provenance and unchanged protocol versions.",
+      "language": "en",
+      "edition": "1.0"
+    },
+    {
+      "type": "appendix",
+      "slug": "api-integration",
+      "path": "appendices/api-integration/APPENDIX.md",
+      "title": "API Integration and Publication Consistency",
+      "summary": "Published read interfaces, task-contract delivery requirements and consistency between repository, reader and index.",
+      "language": "en",
+      "edition": "1.0"
+    }
+  ]
+}

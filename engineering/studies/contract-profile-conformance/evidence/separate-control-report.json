@@ -1,0 +1,2029 @@
+{
+  "protocol": "i26-challenge-result/0.1",
+  "phase": "R0",
+  "run_at_utc": "2026-10-26T16:00:19.650101+00:00",
+  "python_version": "3.12.14",
+  "authorship": "separate agent in same assistant session; not external independent review",
+  "first_run_claim": true,
+  "freeze_ref": "corpus/i26_challenge/CONCRETE_FREEZE.json",
+  "freeze_sha256": "11810b1388e82579a425537efe5a4f4c4735d99ee4750e4d299b24744456ea5b",
+  "model_sha256": "81997c2898e2e4a2717bf6a7bba06af06f944bfa935d851e1253a90af6270d96",
+  "schema_sha256": "b5078b9228b1bca85ebea689afc17c2aca16107e4d2549033805349ed6077ac2",
+  "ordinary_summary": {
+    "scenarios": 26,
+    "matched": 26,
+    "mismatched_ids": []
+  },
+  "trusted_input_stress": {
+    "scenarios": 4,
+    "admitted_ids": [
+      "T01",
+      "T02",
+      "T03",
+      "T04"
+    ],
+    "included_in_ordinary_pass_count": false
+  },
+  "baseline": {
+    "common_scope": "Nine preselected informational/professional application cases; exact same inputs",
+    "interpretation": "Local ablation of relational/current-context checks, not a strong empirical baseline",
+    "cases": 9,
+    "model_matches": 9,
+    "plain_form_matches": 3,
+    "calibration": {
+      "valid_form_accepts": true,
+      "empty_task_rejects": true,
+      "counted_as_model_scenarios": false
+    },
+    "rows": [
+      {
+        "id": "C01",
+        "expected_eligibility": true,
+        "model_eligibility": true,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": true
+      },
+      {
+        "id": "C02",
+        "expected_eligibility": true,
+        "model_eligibility": true,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": true
+      },
+      {
+        "id": "C03",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      },
+      {
+        "id": "C04",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      },
+      {
+        "id": "C05",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      },
+      {
+        "id": "C06",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      },
+      {
+        "id": "C06B",
+        "expected_eligibility": true,
+        "model_eligibility": true,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": true
+      },
+      {
+        "id": "C07",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      },
+      {
+        "id": "C23",
+        "expected_eligibility": false,
+        "model_eligibility": false,
+        "model_matches": true,
+        "plain_form_eligibility": true,
+        "plain_form_matches": false
+      }
+    ]
+  },
+  "unmapped_intents": [
+    {
+      "id": "C09",
+      "reason": "Interface has no document author/editor/publisher authority operation. Do not substitute purpose mismatch for publisher control."
+    }
+  ],
+  "partially_mapped_intents": {
+    "C13": "document purpose/task conflict only; no general profile-satisfiability solver",
+    "C16": "unknown legacy Selector loss only; no coordinate semantics",
+    "C18": "current reuse eligibility only; no new receipt creation",
+    "C22": "withheld source gate only; no private-dataset grant implementation",
+    "C24": "unknown outcome rejection only; no retry dispatcher/idempotency"
+  },
+  "rows": [
+    {
+      "id": "C01",
+      "intent_id": "C01",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Compact informational core; no professional profile needed.",
+      "input_digest": "0578cebc7987edcc3268ff482ccd1dc9d1e6a7b73328011b239933a449855a27",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C02",
+      "intent_id": "C02",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Exact current work/actor/grant/capability positive.",
+      "input_digest": "da05d22b198f951ff5aaff9bfe3cedcff187c44b96a83cf3afc0ee6d7acccd50",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C02B",
+      "intent_id": "C02",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "Positive execution evidence control; proves only synthetic record acceptance.",
+      "input_digest": "e39b47ea50260bb3f3eeec7732825f075d858a609db2055dc21b30e0e09af6cb",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C03",
+      "intent_id": "C03",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Required skill lacks current capability evidence.",
+      "input_digest": "240aaa8fe3e56193d85c998c11141bc7a08cd873ac468a77e261034594171592",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "capability_missing",
+            "path": "/context/capabilities/skill-transform",
+            "message": "no current exact capability evidence"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C04",
+      "intent_id": "C04",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Capability belongs to another actor.",
+      "input_digest": "924dd8d5f4318f8c13002bde622bb516f201445d03bc296c5f3a83575dcbdee3",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "capability_missing",
+            "path": "/context/capabilities/skill-transform",
+            "message": "no current exact capability evidence"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C05",
+      "intent_id": "C05",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Role assignment does not create an execute grant.",
+      "input_digest": "1faf1b915db0518aee210cd33ea29a1e9f7e725090932c10aac5ed325fbd838b",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "current_grant_missing",
+            "path": "/context/grants",
+            "message": "no exact unrevoked unexpired execution grant"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C06",
+      "intent_id": "C06",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Current execute grant is for another work item.",
+      "input_digest": "c2a93300d396c4e681ad2865dce962e496c36a7acdd34bf02155dd61c4f5a87a",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "current_grant_missing",
+            "path": "/context/grants",
+            "message": "no exact unrevoked unexpired execution grant"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C06B",
+      "intent_id": "C02",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "One revoked additional grant must not suppress another exact valid grant.",
+      "input_digest": "b27986b054fef90eadad0d562699be7c034c566278f698a68af7256a9db66463",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C07",
+      "intent_id": "C07",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Strict deadline: now equals valid_until.",
+      "input_digest": "ad8411f19f0e1ed5bba7a23fd92959fff6cc736b27945124a68948072245ac9f",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "current_grant_missing",
+            "path": "/context/grants",
+            "message": "no exact unrevoked unexpired execution grant"
+          },
+          {
+            "code": "capability_missing",
+            "path": "/context/capabilities/skill-transform",
+            "message": "no current exact capability evidence"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C08",
+      "intent_id": "C08",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Dialogue goal revision changed; identity fields otherwise equal.",
+      "input_digest": "a2f8cc70e4d8d89c95d6ebe9edb5a7806422bf932ff59ddb823c1fbcccedfef1",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "dialogue_binding_mismatch",
+            "path": "/profiles/dialogue/goal_revision",
+            "message": "current dialogue binding differs"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C10",
+      "intent_id": "C10",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Declared required visual representation not delivered; image meaning is outside scope.",
+      "input_digest": "c6188c8b2ec31b3cd48b8040eb79e99e8744df0a4076644e25881ce237555ccc",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "required_image_missing",
+            "path": "/profiles/visual/required_ids",
+            "message": "required image not delivered"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C11",
+      "intent_id": "C11",
+      "kind": "ordinary",
+      "operation": "compatibility",
+      "declared_scope": "Unknown required profile.",
+      "input_digest": "bd81ce5dda41865bf55d6e12ec5c65b91f810820d43495e3d4a26859908156db",
+      "inputs_unchanged": true,
+      "observation": {
+        "compatible": false,
+        "errors": [
+          {
+            "code": "required_profile_unsupported",
+            "path": "/profiles/future-critical",
+            "message": "model/reader cannot interpret required profile"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "opaque_profile",
+            "path": "/profiles/future-critical",
+            "message": "payload preserved but not interpreted"
+          }
+        ],
+        "opaque_profiles": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "compatible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C12",
+      "intent_id": "C12",
+      "kind": "ordinary",
+      "operation": "compatibility",
+      "declared_scope": "Unknown optional profile is explicitly opaque and input bytes/values remain preserved.",
+      "input_digest": "ac3a3523b5543209d5c0b571656ab2da3843dd73a15edf12d824097e0da08bdf",
+      "inputs_unchanged": true,
+      "observation": {
+        "compatible": true,
+        "errors": [],
+        "warnings": [
+          {
+            "code": "opaque_profile",
+            "path": "/profiles/future-note",
+            "message": "payload preserved but not interpreted"
+          }
+        ],
+        "opaque_profiles": [
+          {
+            "name": "future-note",
+            "version": "0.1",
+            "required": false,
+            "selection_reason": "explicit challenge requirement",
+            "payload": {
+              "keep_this": {
+                "synthetic": true
+              }
+            }
+          }
+        ]
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "compatible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        },
+        {
+          "path": [
+            "opaque_profiles"
+          ],
+          "operation": "nonempty",
+          "matched": true,
+          "actual": [
+            {
+              "name": "future-note",
+              "version": "0.1",
+              "required": false,
+              "selection_reason": "explicit challenge requirement",
+              "payload": {
+                "keep_this": {
+                  "synthetic": true
+                }
+              }
+            }
+          ],
+          "expected": null
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C13",
+      "intent_id": "C13",
+      "kind": "ordinary",
+      "operation": "validate_contract",
+      "declared_scope": "Supported narrow incompatibility: document purpose conflicts with task.value.",
+      "input_digest": "2806ba9f2729c9d43ab248c80b4a37bcea4d227269ba7b311a0624e24e7e469c",
+      "inputs_unchanged": true,
+      "observation": {
+        "structural_valid": true,
+        "valid": false,
+        "errors": [
+          {
+            "code": "document_purpose_mismatch",
+            "path": "/profiles/document/purpose",
+            "message": "document purpose differs from declared task"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "valid"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C14",
+      "intent_id": "C14",
+      "kind": "ordinary",
+      "operation": "migrate_v2",
+      "declared_scope": "Six-field legacy subset; byte-value preservation and honest semantic status.",
+      "input_digest": "9d45d39f3612fbe27cf96125375972ea0c80e8b93592895d12c37f66e2a59b95",
+      "inputs_unchanged": true,
+      "observation": {
+        "contract": {
+          "identity": {
+            "id": "migrated-A",
+            "revision": "r1",
+            "contract_version": "3.0.0-draft.1",
+            "wire_version": "kc-synthesis/0.1"
+          },
+          "purpose": {
+            "intent": "plan",
+            "task": {
+              "state": "known",
+              "value": "Prepare synthetic plan.",
+              "reason": "preserved legacy Task"
+            },
+            "requirements": [
+              "task"
+            ],
+            "requirements_revision": "q1",
+            "profile_requirements": [
+              "professional"
+            ]
+          },
+          "content": [
+            {
+              "id": "task",
+              "kind": "requirement",
+              "text": "Prepare synthetic plan.",
+              "critical": true,
+              "condition_ids": [
+                "constraint-1",
+                "constraint-2"
+              ],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-1",
+              "kind": "constraint",
+              "text": "No external effect.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-2",
+              "kind": "constraint",
+              "text": "Keep unit A.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "criterion-1",
+              "kind": "criterion",
+              "text": "A preserved.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "blueprint-description-1",
+              "kind": "description",
+              "text": "sequence-A",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            }
+          ],
+          "scope": {
+            "state": "known",
+            "conditions": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "reason": "preserved legacy Constraints"
+          },
+          "grounds": {
+            "sources": [
+              {
+                "id": "legacy-source",
+                "revision": "5aabd1e35900c5275de1183a7bbdedf49a5ad9173c0fb65df9cede5c759d2746",
+                "locator": "migration:source_original",
+                "state": "known"
+              }
+            ],
+            "provenance": [
+              "legacy source digest:5aabd1e35900c5275de1183a7bbdedf49a5ad9173c0fb65df9cede5c759d2746"
+            ]
+          },
+          "dependencies": [],
+          "obligations": [
+            {
+              "id": "preserve-task",
+              "kind": "preserve",
+              "target": "task"
+            },
+            {
+              "id": "preserve-constraint-1",
+              "kind": "preserve",
+              "target": "constraint-1"
+            },
+            {
+              "id": "preserve-constraint-2",
+              "kind": "preserve",
+              "target": "constraint-2"
+            },
+            {
+              "id": "preserve-criterion-1",
+              "kind": "preserve",
+              "target": "criterion-1"
+            },
+            {
+              "id": "preserve-blueprint-description-1",
+              "kind": "preserve",
+              "target": "blueprint-description-1"
+            }
+          ],
+          "projection": {
+            "included_ids": [
+              "task",
+              "constraint-1",
+              "constraint-2",
+              "criterion-1",
+              "blueprint-description-1"
+            ],
+            "omitted_ids": [],
+            "losses": [],
+            "modalities": [
+              "text"
+            ]
+          },
+          "observations": [],
+          "profiles": [
+            {
+              "name": "professional",
+              "version": "0.1",
+              "required": true,
+              "selection_reason": "explicit mapping of legacy work fields; plan only",
+              "payload": {
+                "work": {
+                  "id": "migrated-work-A",
+                  "revision": "r1",
+                  "requirements_revision": "q1"
+                },
+                "roles": [
+                  {
+                    "id": "role-1",
+                    "responsibilities": [
+                      "synthetic-planner"
+                    ]
+                  }
+                ],
+                "skills": [
+                  {
+                    "id": "skill-1",
+                    "description": "select",
+                    "required": true
+                  },
+                  {
+                    "id": "skill-2",
+                    "description": "transform",
+                    "required": true
+                  }
+                ],
+                "blueprints": [],
+                "criteria": [
+                  {
+                    "id": "criterion-1",
+                    "description": "A preserved."
+                  }
+                ],
+                "capability": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "authority": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "assignments": []
+              }
+            }
+          ]
+        },
+        "migration": {
+          "source_original": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ]
+          },
+          "source_digest": "5aabd1e35900c5275de1183a7bbdedf49a5ad9173c0fb65df9cede5c759d2746",
+          "mappings": [
+            {
+              "source_field": "Task",
+              "target_path": "/purpose/task"
+            },
+            {
+              "source_field": "Role",
+              "target_path": "/profiles/0/payload/roles"
+            },
+            {
+              "source_field": "Skills",
+              "target_path": "/profiles/0/payload/skills"
+            },
+            {
+              "source_field": "Blueprints",
+              "target_path": "/content"
+            },
+            {
+              "source_field": "Constraints",
+              "target_path": "/scope/conditions"
+            },
+            {
+              "source_field": "SuccessCriteria",
+              "target_path": "/profiles/0/payload/criteria"
+            }
+          ],
+          "unmapped": [],
+          "losses": [
+            {
+              "source_field": "Blueprints",
+              "reason": "description preserved; executable blueprint kind/dependencies unknown"
+            }
+          ],
+          "gaps": [
+            "Blueprints:process_or_structural_kind_unknown",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "semantic_equivalence": "not_established"
+        }
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "migration",
+            "source_original"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ]
+          },
+          "expected": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ]
+          }
+        },
+        {
+          "path": [
+            "migration",
+            "source_digest"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "5aabd1e35900c5275de1183a7bbdedf49a5ad9173c0fb65df9cede5c759d2746",
+          "expected": "5aabd1e35900c5275de1183a7bbdedf49a5ad9173c0fb65df9cede5c759d2746"
+        },
+        {
+          "path": [
+            "contract",
+            "scope",
+            "conditions"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": [
+            "No external effect.",
+            "Keep unit A."
+          ],
+          "expected": [
+            "No external effect.",
+            "Keep unit A."
+          ]
+        },
+        {
+          "path": [
+            "contract",
+            "purpose",
+            "intent"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "plan",
+          "expected": "plan"
+        },
+        {
+          "path": [
+            "contract",
+            "profiles",
+            "@professional",
+            "payload",
+            "capability",
+            "state"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "unknown",
+          "expected": "unknown"
+        },
+        {
+          "path": [
+            "contract",
+            "profiles",
+            "@professional",
+            "payload",
+            "authority",
+            "state"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "unknown",
+          "expected": "unknown"
+        },
+        {
+          "path": [
+            "migration",
+            "semantic_equivalence"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "not_established",
+          "expected": "not_established"
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C15",
+      "intent_id": "C15",
+      "kind": "ordinary",
+      "operation": "migrate_v2",
+      "declared_scope": "Missing Role/Constraints remain gaps; no source or authority fabrication.",
+      "input_digest": "af20daf1d8bc7861e39c67f4b6474f150a6532019051397ecec7159ddf13c185",
+      "inputs_unchanged": true,
+      "observation": {
+        "contract": {
+          "identity": {
+            "id": "migrated",
+            "revision": "r1",
+            "contract_version": "3.0.0-draft.1",
+            "wire_version": "kc-synthesis/0.1"
+          },
+          "purpose": {
+            "intent": "plan",
+            "task": {
+              "state": "known",
+              "value": "Prepare incomplete synthetic plan.",
+              "reason": "preserved legacy Task"
+            },
+            "requirements": [
+              "task"
+            ],
+            "requirements_revision": "q1",
+            "profile_requirements": [
+              "professional"
+            ]
+          },
+          "content": [
+            {
+              "id": "task",
+              "kind": "requirement",
+              "text": "Prepare incomplete synthetic plan.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            }
+          ],
+          "scope": {
+            "state": "unknown",
+            "conditions": [],
+            "reason": "legacy Constraints missing or unsupported"
+          },
+          "grounds": {
+            "sources": [
+              {
+                "id": "legacy-source",
+                "revision": "83956b21ac00e9a5850422357bfea827bb902f031f2eb4b93093d14401cbafc5",
+                "locator": "migration:source_original",
+                "state": "known"
+              }
+            ],
+            "provenance": [
+              "legacy source digest:83956b21ac00e9a5850422357bfea827bb902f031f2eb4b93093d14401cbafc5"
+            ]
+          },
+          "dependencies": [],
+          "obligations": [
+            {
+              "id": "preserve-task",
+              "kind": "preserve",
+              "target": "task"
+            }
+          ],
+          "projection": {
+            "included_ids": [
+              "task"
+            ],
+            "omitted_ids": [],
+            "losses": [],
+            "modalities": [
+              "text"
+            ]
+          },
+          "observations": [],
+          "profiles": [
+            {
+              "name": "professional",
+              "version": "0.1",
+              "required": true,
+              "selection_reason": "explicit mapping of legacy work fields; plan only",
+              "payload": {
+                "work": {
+                  "id": "legacy-work",
+                  "revision": "r1",
+                  "requirements_revision": "q1"
+                },
+                "roles": [],
+                "skills": [
+                  {
+                    "id": "skill-1",
+                    "description": "select",
+                    "required": true
+                  }
+                ],
+                "blueprints": [],
+                "criteria": [],
+                "capability": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "authority": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "assignments": []
+              }
+            }
+          ]
+        },
+        "migration": {
+          "source_original": {
+            "Task": "Prepare incomplete synthetic plan.",
+            "Skills": [
+              "select"
+            ],
+            "Blueprints": [],
+            "SuccessCriteria": []
+          },
+          "source_digest": "83956b21ac00e9a5850422357bfea827bb902f031f2eb4b93093d14401cbafc5",
+          "mappings": [
+            {
+              "source_field": "Task",
+              "target_path": "/purpose/task"
+            },
+            {
+              "source_field": "Skills",
+              "target_path": "/profiles/0/payload/skills"
+            },
+            {
+              "source_field": "Blueprints",
+              "target_path": "/content"
+            },
+            {
+              "source_field": "SuccessCriteria",
+              "target_path": "/profiles/0/payload/criteria"
+            }
+          ],
+          "unmapped": [],
+          "losses": [],
+          "gaps": [
+            "missing:Role",
+            "missing:Constraints",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "semantic_equivalence": "not_established"
+        }
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "migration",
+            "source_original"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": {
+            "Task": "Prepare incomplete synthetic plan.",
+            "Skills": [
+              "select"
+            ],
+            "Blueprints": [],
+            "SuccessCriteria": []
+          },
+          "expected": {
+            "Task": "Prepare incomplete synthetic plan.",
+            "Skills": [
+              "select"
+            ],
+            "Blueprints": [],
+            "SuccessCriteria": []
+          }
+        },
+        {
+          "path": [
+            "migration",
+            "gaps"
+          ],
+          "operation": "nonempty",
+          "matched": true,
+          "actual": [
+            "missing:Role",
+            "missing:Constraints",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "expected": null
+        },
+        {
+          "path": [
+            "contract",
+            "scope",
+            "state"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "unknown",
+          "expected": "unknown"
+        },
+        {
+          "path": [
+            "contract",
+            "profiles",
+            "@professional",
+            "payload",
+            "authority",
+            "state"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": "unknown",
+          "expected": "unknown"
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C16",
+      "intent_id": "C16",
+      "kind": "ordinary",
+      "operation": "migrate_v2",
+      "declared_scope": "Unsupported selector is unknown legacy field; exact source_original retained and loss identified.",
+      "input_digest": "18ed4f626ea937a117ea6650542971f686914829bdb1736ec023134996154019",
+      "inputs_unchanged": true,
+      "observation": {
+        "contract": {
+          "identity": {
+            "id": "migrated",
+            "revision": "r1",
+            "contract_version": "3.0.0-draft.1",
+            "wire_version": "kc-synthesis/0.1"
+          },
+          "purpose": {
+            "intent": "plan",
+            "task": {
+              "state": "known",
+              "value": "Prepare synthetic plan.",
+              "reason": "preserved legacy Task"
+            },
+            "requirements": [
+              "task"
+            ],
+            "requirements_revision": "q1",
+            "profile_requirements": [
+              "professional"
+            ]
+          },
+          "content": [
+            {
+              "id": "task",
+              "kind": "requirement",
+              "text": "Prepare synthetic plan.",
+              "critical": true,
+              "condition_ids": [
+                "constraint-1",
+                "constraint-2"
+              ],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-1",
+              "kind": "constraint",
+              "text": "No external effect.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "constraint-2",
+              "kind": "constraint",
+              "text": "Keep unit A.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "criterion-1",
+              "kind": "criterion",
+              "text": "A preserved.",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            },
+            {
+              "id": "blueprint-description-1",
+              "kind": "description",
+              "text": "sequence-A",
+              "critical": true,
+              "condition_ids": [],
+              "source_ids": [
+                "legacy-source"
+              ]
+            }
+          ],
+          "scope": {
+            "state": "known",
+            "conditions": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "reason": "preserved legacy Constraints"
+          },
+          "grounds": {
+            "sources": [
+              {
+                "id": "legacy-source",
+                "revision": "1fdfe1618b6e94e4f92820768aa455963fe8e1e2ef2f536a7717bfc6b3412414",
+                "locator": "migration:source_original",
+                "state": "known"
+              }
+            ],
+            "provenance": [
+              "legacy source digest:1fdfe1618b6e94e4f92820768aa455963fe8e1e2ef2f536a7717bfc6b3412414"
+            ]
+          },
+          "dependencies": [],
+          "obligations": [
+            {
+              "id": "preserve-task",
+              "kind": "preserve",
+              "target": "task"
+            },
+            {
+              "id": "preserve-constraint-1",
+              "kind": "preserve",
+              "target": "constraint-1"
+            },
+            {
+              "id": "preserve-constraint-2",
+              "kind": "preserve",
+              "target": "constraint-2"
+            },
+            {
+              "id": "preserve-criterion-1",
+              "kind": "preserve",
+              "target": "criterion-1"
+            },
+            {
+              "id": "preserve-blueprint-description-1",
+              "kind": "preserve",
+              "target": "blueprint-description-1"
+            }
+          ],
+          "projection": {
+            "included_ids": [
+              "task",
+              "constraint-1",
+              "constraint-2",
+              "criterion-1",
+              "blueprint-description-1"
+            ],
+            "omitted_ids": [],
+            "losses": [],
+            "modalities": [
+              "text"
+            ]
+          },
+          "observations": [],
+          "profiles": [
+            {
+              "name": "professional",
+              "version": "0.1",
+              "required": true,
+              "selection_reason": "explicit mapping of legacy work fields; plan only",
+              "payload": {
+                "work": {
+                  "id": "legacy-work",
+                  "revision": "r1",
+                  "requirements_revision": "q1"
+                },
+                "roles": [
+                  {
+                    "id": "role-1",
+                    "responsibilities": [
+                      "synthetic-planner"
+                    ]
+                  }
+                ],
+                "skills": [
+                  {
+                    "id": "skill-1",
+                    "description": "select",
+                    "required": true
+                  },
+                  {
+                    "id": "skill-2",
+                    "description": "transform",
+                    "required": true
+                  }
+                ],
+                "blueprints": [],
+                "criteria": [
+                  {
+                    "id": "criterion-1",
+                    "description": "A preserved."
+                  }
+                ],
+                "capability": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "authority": {
+                  "state": "unknown",
+                  "evidence_ids": []
+                },
+                "assignments": []
+              }
+            }
+          ]
+        },
+        "migration": {
+          "source_original": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ],
+            "Selector": {
+              "type": "arbitrary-coordinate-system",
+              "value": [
+                7,
+                8
+              ]
+            }
+          },
+          "source_digest": "1fdfe1618b6e94e4f92820768aa455963fe8e1e2ef2f536a7717bfc6b3412414",
+          "mappings": [
+            {
+              "source_field": "Task",
+              "target_path": "/purpose/task"
+            },
+            {
+              "source_field": "Role",
+              "target_path": "/profiles/0/payload/roles"
+            },
+            {
+              "source_field": "Skills",
+              "target_path": "/profiles/0/payload/skills"
+            },
+            {
+              "source_field": "Blueprints",
+              "target_path": "/content"
+            },
+            {
+              "source_field": "Constraints",
+              "target_path": "/scope/conditions"
+            },
+            {
+              "source_field": "SuccessCriteria",
+              "target_path": "/profiles/0/payload/criteria"
+            }
+          ],
+          "unmapped": [
+            "Selector"
+          ],
+          "losses": [
+            {
+              "source_field": "Selector",
+              "reason": "no mapping in declared legacy subset; original preserved"
+            },
+            {
+              "source_field": "Blueprints",
+              "reason": "description preserved; executable blueprint kind/dependencies unknown"
+            }
+          ],
+          "gaps": [
+            "Blueprints:process_or_structural_kind_unknown",
+            "executor_assignment_unknown",
+            "capability_unknown",
+            "current_authority_unknown",
+            "execution_evidence_absent"
+          ],
+          "semantic_equivalence": "not_established"
+        }
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "migration",
+            "source_original"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ],
+            "Selector": {
+              "type": "arbitrary-coordinate-system",
+              "value": [
+                7,
+                8
+              ]
+            }
+          },
+          "expected": {
+            "Task": "Prepare synthetic plan.",
+            "Role": "synthetic-planner",
+            "Skills": [
+              "select",
+              "transform"
+            ],
+            "Blueprints": [
+              "sequence-A"
+            ],
+            "Constraints": [
+              "No external effect.",
+              "Keep unit A."
+            ],
+            "SuccessCriteria": [
+              "A preserved."
+            ],
+            "Selector": {
+              "type": "arbitrary-coordinate-system",
+              "value": [
+                7,
+                8
+              ]
+            }
+          }
+        },
+        {
+          "path": [
+            "migration",
+            "unmapped"
+          ],
+          "operation": "contains",
+          "matched": true,
+          "actual": [
+            "Selector"
+          ],
+          "expected": "Selector"
+        },
+        {
+          "path": [
+            "migration",
+            "losses"
+          ],
+          "operation": "any_field_eq",
+          "matched": true,
+          "actual": [
+            {
+              "source_field": "Selector",
+              "reason": "no mapping in declared legacy subset; original preserved"
+            },
+            {
+              "source_field": "Blueprints",
+              "reason": "description preserved; executable blueprint kind/dependencies unknown"
+            }
+          ],
+          "expected": "Selector"
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C17",
+      "intent_id": "C17",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "Trusted evidence belongs to another attempt; digest trust remains internally consistent.",
+      "input_digest": "a3d26bd7c59640a18f3bc971e613cd807701b12425dab6dd417bc67c0639778d",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_not_supported",
+            "path": "/criteria/criterion-A",
+            "message": "no exact trusted pass for criterion"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "unrelated_evidence",
+            "path": "/evidence/0",
+            "message": "historical/unrelated evidence does not support this attempt"
+          }
+        ]
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C18",
+      "intent_id": "C18",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Only current reuse eligibility is exercised; new receipt generation and external effect are unimplemented.",
+      "input_digest": "ca2ec9480008396895c1edcafee927e7418892de3f2c9440ca330973799b38d3",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C19",
+      "intent_id": "C19",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "Trusted evidence supports a different output digest.",
+      "input_digest": "a9db9145e26cf0f200a0ba71837bd8c290de4c531a2e0e56d705f982ddb97630",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_not_supported",
+            "path": "/criteria/criterion-A",
+            "message": "no exact trusted pass for criterion"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "unrelated_evidence",
+            "path": "/evidence/0",
+            "message": "historical/unrelated evidence does not support this attempt"
+          }
+        ]
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C20",
+      "intent_id": "C20",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "No new evidence; historical supported observation cannot satisfy criterion.",
+      "input_digest": "7e79617d19dc0831503c7a4c79ab290b10b800479b88cec3006aded739cf7bf8",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_not_supported",
+            "path": "/criteria/criterion-A",
+            "message": "no exact trusted pass for criterion"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C20B",
+      "intent_id": "C20",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "Exact unknown evidence conflicts with a pass for the same criterion; pass must not hide it.",
+      "input_digest": "f74dd62661b2426bf8badda036df40ad3762faaa6b23ac71fc5d43eaed859a7a",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "criterion_conflict_or_failure",
+            "path": "/criteria/criterion-A",
+            "message": "exact fail/unknown cannot be suppressed by pass"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C21",
+      "intent_id": "C21",
+      "kind": "ordinary",
+      "operation": "validate_contract",
+      "declared_scope": "Protected condition omitted with declared loss; declaration does not make the omission eligible.",
+      "input_digest": "96046a5a3d23acaa4d12c47cddd9c595dcd0b018c5304e7fbb0968fdc2470a76",
+      "inputs_unchanged": true,
+      "observation": {
+        "structural_valid": true,
+        "valid": false,
+        "errors": [
+          {
+            "code": "condition_omitted",
+            "path": "/content/unit-A",
+            "message": "declared condition not delivered"
+          },
+          {
+            "code": "critical_omitted",
+            "path": "/content/constraint-A",
+            "message": "critical unit not delivered"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "valid"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C22",
+      "intent_id": "C22",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Only source admission boundary tested: used source is withheld. Private-dataset grant enforcement is outside interface.",
+      "input_digest": "6fe9311d7641b895cd8cadc733de8516636f5dc1073c9b22e6a0038279412f51",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "source_unavailable",
+            "path": "/grounds/sources/source-A",
+            "message": "required source unavailable or not known"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C23",
+      "intent_id": "C23",
+      "kind": "ordinary",
+      "operation": "assess_application",
+      "declared_scope": "Syntactically populated source reference is unavailable in trusted availability context.",
+      "input_digest": "4e25bb727aef085163d57f5b896348716ff09ea2e1c6bd9109a2e7b06177c5fa",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": false,
+        "errors": [
+          {
+            "code": "source_unavailable",
+            "path": "/grounds/sources/source-A",
+            "message": "required source unavailable or not known"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "C24",
+      "intent_id": "C24",
+      "kind": "ordinary",
+      "operation": "verify_execution",
+      "declared_scope": "Only unknown outcome rejection tested; retry/idempotency effect prevention belongs to I27.",
+      "input_digest": "812ddd9457fefab2a365054fc4d7eb961aa57379c07f181ba99aea5f3152c195",
+      "inputs_unchanged": true,
+      "observation": {
+        "accepted": false,
+        "errors": [
+          {
+            "code": "effect_not_succeeded",
+            "path": "/attempt/outcome",
+            "message": "failed or unknown effect is not successful execution"
+          }
+        ],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "accepted"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": false,
+          "expected": false
+        }
+      ],
+      "conformance_matched": true
+    },
+    {
+      "id": "T01",
+      "intent_id": "T01",
+      "kind": "trusted_input_stress",
+      "operation": "assess_application",
+      "declared_scope": "External oracle says capability annotation is false; model receives self-consistent trusted positive capability.",
+      "input_digest": "da05d22b198f951ff5aaff9bfe3cedcff187c44b96a83cf3afc0ee6d7acccd50",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "boundary_expectation_matched": true,
+      "interpretation": "Self-consistent false trusted input is admitted. This is a trust-boundary observation, not a correctness success."
+    },
+    {
+      "id": "T02",
+      "intent_id": "T02",
+      "kind": "trusted_input_stress",
+      "operation": "assess_application",
+      "declared_scope": "External oracle says grant was fabricated; model receives self-consistent trusted positive grant.",
+      "input_digest": "da05d22b198f951ff5aaff9bfe3cedcff187c44b96a83cf3afc0ee6d7acccd50",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "boundary_expectation_matched": true,
+      "interpretation": "Self-consistent false trusted input is admitted. This is a trust-boundary observation, not a correctness success."
+    },
+    {
+      "id": "T03",
+      "intent_id": "T03",
+      "kind": "trusted_input_stress",
+      "operation": "assess_application",
+      "declared_scope": "False assertion with internally consistent source availability and declared conditions.",
+      "input_digest": "46bd852ffb1db2a26c3c3871a27f6da8716a6c1b6f1221250bb048cbfb86f5e1",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "boundary_expectation_matched": true,
+      "interpretation": "Self-consistent false trusted input is admitted. This is a trust-boundary observation, not a correctness success."
+    },
+    {
+      "id": "T04",
+      "intent_id": "T04",
+      "kind": "trusted_input_stress",
+      "operation": "assess_application",
+      "declared_scope": "External oracle classifies synthetic input as private; trusted context mislabels source available. No real private data used.",
+      "input_digest": "7af4ba2974a52e0594d0d82501e6ddc33654d2b80d3ce5eafde674fa8b4aaded",
+      "inputs_unchanged": true,
+      "observation": {
+        "eligible": true,
+        "errors": [],
+        "warnings": []
+      },
+      "exception": null,
+      "checks": [
+        {
+          "path": [
+            "eligible"
+          ],
+          "operation": "eq",
+          "matched": true,
+          "actual": true,
+          "expected": true
+        }
+      ],
+      "boundary_expectation_matched": true,
+      "interpretation": "Self-consistent false trusted input is admitted. This is a trust-boundary observation, not a correctness success."
+    }
+  ],
+  "limits": [
+    "Purposeful finite synthetic cases, not an IID or representative sample",
+    "Trusted annotations do not establish facts, competence, authorization or privacy",
+    "R1/R2 reuse known inputs and do not create held-out evidence",
+    "No cost, load, real-book, real-agent or production measurement"
+  ]
+}

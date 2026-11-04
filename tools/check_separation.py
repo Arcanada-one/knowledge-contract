@@ -14,7 +14,7 @@ import sys
 AREAS = (
     re.compile(r"^corpus/publication-decisions/"),
     re.compile(r"^corpus/README\.md$"),
-    re.compile(r"^(articles|papers|spec|schemas)/"),
+    re.compile(r"^(articles|papers|spec|schemas|engineering|reference|appendices|reviews)/|^publication-catalog\.json$"),
 )
 
 

@@ -1,0 +1,474 @@
+{
+  "run_id": "R42_BOUNDARY_R1",
+  "started_at_utc": "2026-10-28T06:04:43.660485+00:00",
+  "finished_at_utc": "2026-10-28T06:04:46.117344+00:00",
+  "calls": 38,
+  "technical_passes": 38,
+  "calls_with_all_declared_checks_met": 38,
+  "criterion_counts": {
+    "met": 772,
+    "violated": 0
+  },
+  "pair_checks": [
+    {
+      "id": "conflicting_candidate_permutation",
+      "status": "met",
+      "left": {
+        "resolution": "ambiguous",
+        "content_state": "unknown",
+        "revision": null,
+        "candidate_value_hashes": [
+          "7f34f8ed3c6441331f14a884d9293b04e1315524795ed1a84916c15c6f8092a7",
+          "a9e87f85bd55ae218e0b5f77850bf145b63078df86218056db0c8929eb336d6a"
+        ],
+        "bound": null,
+        "resolved": false
+      },
+      "right": {
+        "resolution": "ambiguous",
+        "content_state": "unknown",
+        "revision": null,
+        "candidate_value_hashes": [
+          "7f34f8ed3c6441331f14a884d9293b04e1315524795ed1a84916c15c6f8092a7",
+          "a9e87f85bd55ae218e0b5f77850bf145b63078df86218056db0c8929eb336d6a"
+        ],
+        "bound": null,
+        "resolved": false
+      }
+    }
+  ],
+  "calls_detail": [
+    {
+      "case_id": "NEW-C01-present",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C02-placeholder",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C03-component-absent",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C04-target-missing",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 19,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C05-null-content",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C06-empty-content",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C07-content-absent",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C08-claimed-present-without-bytes",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-C09-document-descriptor",
+      "stratum": "prospective_development_counterexample",
+      "family": "address_content",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R01-literal-at",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 23,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R02-explicit-revision-on-at-id",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 23,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R03-qualified-ref",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 22,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R04-qualified-id-declaration",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R05-null-declared-ref",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 23,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R06-internal-revision-conflict",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 23,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R07-no-revision",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R08-legacy-qualified-group",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R09-legacy-group-literal-at",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-R10-stale-typed-revision",
+      "stratum": "prospective_development_counterexample",
+      "family": "revision",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 16,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-X01-outer-integrity",
+      "stratum": "prospective_development_counterexample",
+      "family": "coordinates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 17,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-X02-packet-namespace",
+      "stratum": "prospective_development_counterexample",
+      "family": "coordinates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 16,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-D01-conflict-order-ab",
+      "stratum": "prospective_development_counterexample",
+      "family": "duplicates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 19,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-D02-conflict-order-ba",
+      "stratum": "prospective_development_counterexample",
+      "family": "duplicates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 19,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-D03-identical-copies",
+      "stratum": "prospective_development_counterexample",
+      "family": "duplicates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 18,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-D04-unqualified-multiple-revisions",
+      "stratum": "prospective_development_counterexample",
+      "family": "duplicates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 19,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "NEW-D05-protected-independent-branch",
+      "stratum": "prospective_development_counterexample",
+      "family": "duplicates",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 25,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0003",
+      "stratum": "known_R41_regression",
+      "family": "R41_S01",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0005",
+      "stratum": "known_R41_regression",
+      "family": "R41_S01",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0029",
+      "stratum": "known_R41_regression",
+      "family": "R41_S01",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0030",
+      "stratum": "known_R41_regression",
+      "family": "R41_S01",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0033",
+      "stratum": "known_R41_regression",
+      "family": "R41_S01",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 20,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0004",
+      "stratum": "known_R41_regression",
+      "family": "R41_S02",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 24,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0053",
+      "stratum": "known_R41_regression",
+      "family": "R41_S02",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 24,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0054",
+      "stratum": "known_R41_regression",
+      "family": "R41_S02",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 24,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0016",
+      "stratum": "known_R41_regression",
+      "family": "R41_S03",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 17,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0040",
+      "stratum": "known_R41_regression",
+      "family": "R41_S03",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 17,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0031",
+      "stratum": "known_R41_regression",
+      "family": "R41_S04",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 36,
+        "violated": 0
+      }
+    },
+    {
+      "case_id": "REG-C0055",
+      "stratum": "known_R41_regression",
+      "family": "R41_S04",
+      "technical_pass": true,
+      "all_declared_checks_met": true,
+      "counts": {
+        "met": 24,
+        "violated": 0
+      }
+    }
+  ],
+  "strata": {
+    "known_R41_regression": {
+      "calls": 12,
+      "calls_with_all_declared_checks_met": 12
+    },
+    "prospective_development_counterexample": {
+      "calls": 26,
+      "calls_with_all_declared_checks_met": 26
+    }
+  },
+  "old_R41_scores_recomputed": false,
+  "native_model_calls": 0,
+  "human_experiments": 0,
+  "scope": "Finite development boundary qualification. Old R41 results remain unchanged; no general accuracy or A/B superiority claim."
+}

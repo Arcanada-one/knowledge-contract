@@ -1,0 +1,26 @@
+{
+  "mapping": {
+    "alpha": "baseline",
+    "beta": "with-skills"
+  },
+  "variants": {
+    "alpha": {
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "size_bytes": 12127,
+      "words_whitespace": 830
+    },
+    "beta": {
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "size_bytes": 12029,
+      "words_whitespace": 820
+    }
+  },
+  "created_at_utc": "2026-11-02T17:48:50.454542+00:00",
+  "reveal": "only_after_written_review",
+  "revealed_at_utc": "2026-11-02T17:56:54.578742+00:00",
+  "review_completed_before_reveal": true,
+  "review_files": {
+    "REVIEW.md": "b1b45fb4634880df98fbe510b47e359d74084d1f1bcf10d33c34168b729f1b54",
+    "review.json": "6dec95c55e507d6cce3c9830af52ecd3f058afb5227b0f6a2afbc011a554874c"
+  }
+}
