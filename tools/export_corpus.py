@@ -32,7 +32,7 @@ REPO = Path(__file__).resolve().parents[1]
 SOURCE = "Arcanada-one/knowledge-contract"
 HEADER = "| Source commit | Path | Content SHA-256 | Author/rights holder | License | Publication decision | Status | Supersedes | Status decision |"
 SCHEMA = "KnowledgeContractCandidateExport/v2"
-PATH_RE = re.compile(r"^(papers|spec|articles|schemas)/[A-Za-z0-9][A-Za-z0-9_./-]*\.md$")
+PATH_RE = re.compile(r"^(papers|spec|articles|schemas|engineering|reference|appendices)/[A-Za-z0-9][A-Za-z0-9_./-]*\.md$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 DIGEST_RE = re.compile(r"^[0-9a-f]{64}$")
 DEC_DIR = "corpus/publication-decisions/"
@@ -56,7 +56,8 @@ PERSON_RE = re.compile(r"^[A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+)+$")
 REVIEWER_KEYS = frozenset(("session_id", "model", "input_digest", "transcript_sha256", "verdict"))
 # Scope: DEC-AUP-0171 item 7 fixed the six already-public documents mirrored under articles/; DEC-AUP-0172 adds exactly the
 # fourteen English entry pages of the Meaning Management papers. An explicit list, not a prefix: a prefix would pre-authorise
-# the Russian full texts, the specifications and any future paper. A later DEC must change this constant to widen it again.
+# the Russian full texts, the specifications and any future paper. DEC-AUP-0175 adds exactly the 29 canonical documents of publication edition 1.0.
+# A later DEC must change this constant to widen it again.
 SCOPE_PATHS = frozenset((
     "articles/project-overview.md", "articles/openness-and-attribution-policy.md", "articles/attribution-policy.md",
     "articles/contribution-guide.md", "articles/sources-register.md", "articles/site-summary-llms.md",
@@ -74,6 +75,36 @@ SCOPE_PATHS = frozenset((
     "papers/P11_evaluation_and_falsification.md",
     "papers/P12_compilation_caching_and_reuse.md",
     "papers/P13_knowledge_utility_and_resource_economics.md",
+    # DEC-AUP-0175: the 29 canonical documents of publication edition 1.0 (publication-catalog.json at 08a10931).
+    "papers/semantic-objects-and-context/PAPER.md",
+    "papers/constrained-transformations/PAPER.md",
+    "papers/retrieval-and-context-composition/PAPER.md",
+    "papers/interaction-and-memory/PAPER.md",
+    "papers/evidence-and-falsification/PAPER.md",
+    "papers/revision-and-governance/PAPER.md",
+    "papers/controlled-knowledge-reuse/PAPER.md",
+    "papers/knowledge-utility/PAPER.md",
+    "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+    "engineering/specifications/contract-family/SPECIFICATION.md",
+    "engineering/specifications/semantic-types/SPECIFICATION.md",
+    "engineering/specifications/context-package/SPECIFICATION.md",
+    "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+    "engineering/specifications/artifact-registry/SPECIFICATION.md",
+    "engineering/specifications/status-model/SPECIFICATION.md",
+    "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+    "engineering/specifications/reuse-policy/SPECIFICATION.md",
+    "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+    "engineering/specifications/book-package/SPECIFICATION.md",
+    "engineering/studies/contract-profile-conformance/STUDY.md",
+    "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+    "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+    "engineering/studies/executable-projections-and-revision/STUDY.md",
+    "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+    "engineering/studies/editorial-skill-pilot/STUDY.md",
+    "reference/glossary/GLOSSARY.md",
+    "reference/bibliography/BIBLIOGRAPHY.md",
+    "appendices/source-map/APPENDIX.md",
+    "appendices/api-integration/APPENDIX.md",
 ))
 DECLARATION_FILES = ("REUSE.toml", "NOTICE", "LICENSE")
 MIN_REVIEWERS = 2

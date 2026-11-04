@@ -54,11 +54,16 @@ class ScopeListMutationTests(unittest.TestCase):
     P00 = '    "papers/P00_introduction.md",\n'
     MUTANTS = {
         "drop_P07": lambda s: s.replace('    "papers/P07_reasoning_and_evidence.md",\n', ""),
-        "misspell_P13": lambda s: s.replace('economics.md",\n))', 'economic.md",\n))'),
+        "misspell_P13": lambda s: s.replace('economics.md",\n    # DEC-AUP-0175', 'economic.md",\n    # DEC-AUP-0175'),
         "add_russian_text": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/ru/P00_introduction.md",\n'),
         "add_papers_readme": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/README.md",\n'),
         "add_fifteenth_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "papers/P14_future_paper.md",\n'),
         "add_spec_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "spec/STATUS_MODEL.md",\n'),
+        "drop_edition_paper": lambda s: s.replace('    "papers/semantic-objects-and-context/PAPER.md",\n', ""),
+        "add_unlisted_engineering_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "engineering/specifications/book-package/README.md",\n'),
+        "add_review_page": lambda s: s.replace(ScopeListMutationTests.P00, ScopeListMutationTests.P00 + '    "reviews/publication-integrity/REVIEW.md",\n'),
+        "prefix_rule_engineering": lambda s: s.replace("if path not in SCOPE_PATHS:  # check: scope_paths",
+                                                      "if not (path in SCOPE_PATHS or path.startswith('engineering/')):  # check: scope_paths"),
         "prefix_rule": lambda s: s.replace("if path not in SCOPE_PATHS:  # check: scope_paths",
                                            "if not (path in SCOPE_PATHS or path.startswith('papers/')):  # check: scope_paths"),
     }
@@ -73,6 +78,9 @@ class ScopeListMutationTests(unittest.TestCase):
             shutil.copytree(ROOT / "tools", scratch / "tools", ignore=shutil.ignore_patterns("__pycache__", "test_export_check_mutations.py"))
             shutil.copytree(ROOT / "corpus", scratch / "corpus")
             shutil.copytree(ROOT / "papers", scratch / "papers")
+            for edition_dir in ("engineering", "reference", "appendices"):  # DEC-AUP-0175: the 29-document scope reads these
+                shutil.copytree(ROOT / edition_dir, scratch / edition_dir)
+            shutil.copy(ROOT / "publication-catalog.json", scratch / "publication-catalog.json")
             for declared in ("REUSE.toml", "NOTICE", "LICENSE"):
                 shutil.copy(ROOT / declared, scratch / declared)
             (scratch / "tools/export_corpus.py").write_text(source_text)

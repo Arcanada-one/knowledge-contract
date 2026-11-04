@@ -9,6 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -636,13 +637,42 @@ class DecisionRouteTests(unittest.TestCase):
             with self.assertRaises(export.ExportError):
                 export.validate_row({**row, "path": path})
 
+    def test_the_29_edition_documents_are_in_scope_and_nothing_near_them_is(self) -> None:
+        # DEC-AUP-0175: an explicit list of exactly the 29 catalogue paths, not a directory.
+        base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
+                "decision": f"{DEC}b3.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
+        edition = sorted(d["path"] for d in json.loads((export.REPO / "publication-catalog.json").read_text())["documents"])
+        self.assertEqual(len(edition), 29)
+        self.assertEqual(len(export.SCOPE_PATHS), 6 + 14 + 29)
+        for path in edition:
+            with self.subTest(path=path):
+                self.assertIn(path, export.SCOPE_PATHS)
+                self.assertTrue((export.REPO / path).is_file())
+                export.validate_row({**base, "path": path})
+        refused = (
+            "engineering/specifications/book-package/README.md", "engineering/specifications/x/SPECIFICATION.md",
+            "engineering/studies/editorial-skill-pilot/evidence/source-section.txt", "engineering/studies/evidence-index.json",
+            "engineering/studies/validation-report.json", "reviews/publication-integrity/REVIEW.md",
+            "reviews/publication-integrity/science-review.md", "receipts/meaning-management/link-rewrites.json",
+            "corpus/README.md", "reference/glossary/README.md", "reference/glossary/glossary.md", "appendices/x/APPENDIX.md",
+            "appendices/source-map/APPENDIX.md.md", "papers/ru/P00_introduction.md", "papers/README.md", "README.md",
+            "evaluation/KC3_PREREGISTRATION.md", "cases/README.md", "spec/BOOK_PACKAGE.md", "AGENTS.md",
+            "engineering/../papers/P00_introduction.md", "appendices//source-map/APPENDIX.md", "/reference/glossary/GLOSSARY.md",
+            "reference/glossary/GLOSSARY.md/", "Reference/glossary/GLOSSARY.md", "reference/glossary/GLOSSARY.md\n",
+        )
+        for path in refused:
+            with self.subTest(refused=path):
+                with self.assertRaises(export.ExportError):
+                    export.validate_row({**base, "path": path})
+
     def test_the_fourteen_english_paper_entry_pages_are_in_scope_and_nothing_near_them_is(self) -> None:
         # DEC-AUP-0172: an explicit list of exactly fourteen papers/P00..P13 pages, not a prefix.
         base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                 "decision": f"{DEC}b2.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
-        papers = sorted(p for p in export.SCOPE_PATHS if p.startswith("papers/"))
+        papers = sorted(p for p in export.SCOPE_PATHS if re.fullmatch(r"papers/P[0-9]{2}_[a-z_]+\.md", p))
         self.assertEqual(len(papers), 14)
-        self.assertEqual(sorted(export.SCOPE_PATHS - set(papers)), sorted(DOCS))
+        edition = {d["path"] for d in json.loads((export.REPO / "publication-catalog.json").read_text())["documents"]}
+        self.assertEqual(sorted(export.SCOPE_PATHS - set(papers) - edition), sorted(DOCS))
         for number, path in enumerate(papers):
             with self.subTest(path=path):
                 self.assertRegex(path, rf"^papers/P{number:02d}_[a-z_]+\.md$")
