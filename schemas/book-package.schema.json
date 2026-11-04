@@ -16,7 +16,7 @@
     "relpath": {"type": "string", "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[A-Za-z0-9._/-]{1,200}$"},
     "timestamp": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
     "text": {"type": "string", "minLength": 1, "maxLength": 20000},
-    "reason": {"type": "string", "minLength": 3, "maxLength": 1000},
+    "reason": {"type": "string", "minLength": 3, "maxLength": 1000, "pattern": "\\S{3}"},
 
     "unavailable": {
       "type": "object",
