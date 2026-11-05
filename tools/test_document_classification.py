@@ -131,7 +131,7 @@ class SpecificationTests(unittest.TestCase):
         invalid = [k for k in fx.variants() if k.startswith("invalid/")]
         self.assertEqual(len(valid), 12)
         self.assertIn("The twelve boundary cases are committed", SPEC)
-        words = {31: "Thirty-one"}
+        words = {36: "Thirty-six"}
         self.assertIn(words.get(len(invalid), "?"), SPEC, f"the specification names {len(invalid)} mutants as another number")
 
     def test_the_requirements_are_numbered_and_cite_a_test_or_say_that_they_need_other_evidence(self):
@@ -247,6 +247,12 @@ class CheckerTests(unittest.TestCase):
 
     def test_an_oversized_or_deeply_nested_file_is_a_refusal_not_a_traceback(self):
         self.assertEqual(codes(cdc.check_classification(b" " * ((1 << 20) + 1))), {"DCL-READ"})
+        valid = fx.dump(fx.CASES[0][1])
+        self.assertEqual(cdc.check_classification(valid), [])
+        padded = valid + b" " * (cdc.MAX_BYTES + 1 - len(valid))  # valid JSON, one byte over the cap: only the size cap can refuse it
+        self.assertEqual(len(padded), cdc.MAX_BYTES + 1)
+        self.assertEqual(codes(cdc.check_classification(padded)), {"DCL-READ"})
+        self.assertEqual(cdc.check_classification(valid + b" " * (cdc.MAX_BYTES - len(valid))), [])  # exactly at the cap is accepted
         self.assertEqual(codes(cdc.check_classification(b"[" * 100000)), {"DCL-READ"})
         self.assertEqual(codes(cdc.check_classification(b"\xff")), {"DCL-READ"})
         self.assertEqual(codes(cdc.check_classification(b"[]")), {"DCL-SCHEMA"})
