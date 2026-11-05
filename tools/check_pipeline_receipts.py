@@ -29,6 +29,8 @@ STAGES = ("intake", "classify", "convert", "recognise", "bundle", "kc-package", 
 RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "author_open": 2}
 # Only these stages may end `skipped` (with a reason): the format needs no conversion, or no classification is wanted. Every other stage is essential.
 SKIPPABLE = frozenset(("classify", "convert"))
+# The stages that may take the ORIGINAL SOURCE as an input; every later stage works from what an earlier stage produced.
+SOURCE_STAGES = frozenset(("intake", "classify", "convert", "recognise"))
 MAX_RECEIPT_BYTES = 1 << 20
 FORMAT_CHECKER = jsonschema.FormatChecker()
 
@@ -123,9 +125,12 @@ def check_chain(root: Path) -> list[str]:
         if i and record["outcome"] == "done":
             # what a finished stage may consume: the outputs of the nearest earlier stage that finished (a skipped stage passes nothing on), or the original source
             nearest = next((chain[j] for j in range(i - 1, -1, -1) if chain[j]["outcome"] == "done"), None)
-            allowed = {a["sha256"] for a in (nearest["outputs"] if nearest else [])} | {document_id[2:]}
+            allowed = {a["sha256"] for a in (nearest["outputs"] if nearest else [])} | ({document_id[2:]} if record["stage"] in SOURCE_STAGES else set())
             if not allowed & {a["sha256"] for a in record["inputs"]}:
-                problems.append(f"PIPE-INPUT: {where}: none of its inputs is an output of the nearest earlier finished stage or the original source; a stage consumes what was produced")
+                problems.append(f"PIPE-INPUT: {where}: none of its inputs is an output of the nearest earlier finished stage (or, for {', '.join(sorted(SOURCE_STAGES))}, the original source); "
+                                "a stage consumes what was produced")
+        if record["stage"] not in SOURCE_STAGES and document_id[2:] in {a["sha256"] for a in record["inputs"]}:
+            problems.append(f"PIPE-SOURCE: {where}: stage {record['stage']} lists the original source as an input; only {', '.join(sorted(SOURCE_STAGES))} work from the source")
     sources = [a["sha256"] for a in chain[0]["inputs"] if a["role"] == "source"]
     if len(sources) > 1 or (chain[0]["outcome"] == "done" and not sources) or (sources and sources[0] != document_id[2:]):
         problems.append(f"PIPE-IDENTITY: {names[0]}: document_id is the content address of the original bytes; intake must list exactly one `source` input, that digest "

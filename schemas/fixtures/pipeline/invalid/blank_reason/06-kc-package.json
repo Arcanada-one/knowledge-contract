@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:05:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "8dcb093caa0295e2f985cdad564d42575dd0ac487cf5aace651d4cb72f562560"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "book_package",
+      "sha256": "94b9aab6e5d1be361aaf4f4efacd0bfae1f303eae2bad5bac382d725b6176bcb"
+    }
+  ],
+  "previous_receipt_sha256": "a161aec8e4e6314fdee569f6175d15e22e9aab7ec7f83ef5f90c53ba1fdbfcfd",
+  "rights_class": "unknown",
+  "run_id": "run.kc-package.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "kc-package",
+  "started_at": "2026-11-05T10:05:00Z",
+  "tool": {
+    "name": "doclab-kc-export",
+    "version": "0.0.0"
+  }
+}

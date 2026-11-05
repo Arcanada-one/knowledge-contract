@@ -1,12 +1,7 @@
 {
   "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
   "finished_at": "2026-11-05T10:02:30Z",
-  "inputs": [
-    {
-      "role": "previous_output",
-      "sha256": "28eb127d79a84b5f5ca5f2948c02e003ce24aed1a75a29a6806e276b62a94308"
-    }
-  ],
+  "inputs": [],
   "kc2_admission": "not_measured",
   "measurements": [
     {

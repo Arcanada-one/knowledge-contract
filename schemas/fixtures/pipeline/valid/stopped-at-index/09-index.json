@@ -1,0 +1,36 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:08:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "6be1820071d520b8f4fd9ecc0f5ef394a03aa6d7ae52d3c5eb444f05fb7aea45"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "refused",
+  "outputs": [],
+  "previous_receipt_sha256": "c7affda47a29a280570b26bac411fe9e12e23b0ab8c960ebd3cf9e89b310f1e7",
+  "reason": "index refused this document",
+  "rights_class": "unknown",
+  "run_id": "run.index.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "index",
+  "started_at": "2026-11-05T10:08:00Z",
+  "tool": {
+    "name": "kb-feeder-kc-lane",
+    "version": "0.0.0"
+  }
+}

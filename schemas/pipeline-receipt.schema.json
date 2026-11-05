@@ -24,7 +24,7 @@
     "started_at": {"type": "string", "format": "date-time"},
     "finished_at": {"type": "string", "format": "date-time"},
     "outcome": {"enum": ["done", "skipped", "paused_safe", "refused", "failed"]},
-    "reason": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "reason": {"type": "string", "pattern": "\\S", "maxLength": 1000},
     "rights_class": {"enum": ["author_open", "third_party_restricted", "unknown"]},
     "inputs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/artefact"}},
     "outputs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/artefact"}},
@@ -50,7 +50,8 @@
   },
   "allOf": [
     {"if": {"properties": {"outcome": {"const": "done"}}}, "then": {"properties": {"inputs": {"minItems": 1}, "outputs": {"minItems": 1}}, "not": {"required": ["reason"]}}},
-    {"if": {"properties": {"outcome": {"enum": ["skipped", "paused_safe", "refused", "failed"]}}}, "then": {"required": ["reason"], "properties": {"outputs": {"maxItems": 0}}}}
+    {"if": {"properties": {"outcome": {"enum": ["paused_safe", "refused", "failed"]}}}, "then": {"required": ["reason"], "properties": {"outputs": {"maxItems": 0}}}},
+    {"if": {"properties": {"outcome": {"const": "skipped"}}}, "then": {"required": ["reason"], "properties": {"inputs": {"maxItems": 0}, "outputs": {"maxItems": 0}}}}
   ],
   "$defs": {
     "artefact": {
