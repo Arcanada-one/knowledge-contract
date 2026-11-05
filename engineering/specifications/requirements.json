@@ -2154,7 +2154,7 @@
       "id": "PIP-R028",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "In a chain whose `recognise` is an import, the `bundle` stage MAY verify an existing bundle instead of assembling it, and when it does it MUST record that with the measurements `bundle_assembled` measured `false` and `bundle_verified` measured `true`, and lists the verified bundle manifest by the SHA-256 of its exact bytes as its output; its tool does not name an import (PIP-R025 allows that name on `recognise` only). The two measurements are carried together on the `bundle` stage and nowhere else, each measured `true` or `false`, and `bundle_assembled` `false` is valid only after an imported `recognise`; an ordinary bundle stage needs neither.",
+      "text": "In a chain whose `recognise` is an import, the `bundle` stage MAY verify an existing bundle instead of assembling it, and when it does it MUST record that with the measurements `bundle_assembled` measured `false` and `bundle_verified` measured `true`, and lists the verified bundle manifest by the SHA-256 of its exact bytes as its output; its tool does not name an import (PIP-R025 allows that name on `recognise` only). The two measurements are carried together on the `bundle` stage and nowhere else, each measured `true` or `false`, and `bundle_assembled` `false` is valid only after an imported `recognise`; an ordinary bundle stage needs neither. The checker reads the two measurements, that they are booleans, that they are carried on the `bundle` stage and that `bundle_assembled` `false` follows an imported `recognise`; it does not check that the output is the hash of the verified manifest (only that the next stage consumes it) and it does not look at the outcome of the bundle receipt, so that the verification really took place is the producer's statement.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2170,7 +2170,7 @@
       "id": "PIP-R027",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "6. Rights and publication boundary",
-      "text": "The rights class a receipt carries MUST be the rights state known at that stage, and a determination of the rights of a work (for example `public_domain` with its evidence) MUST be made only in the package's rights record, never in a receipt; a chain that starts at `unknown` does not end at `public_domain`, and the receipt classes and the package's rights record are read separately.",
+      "text": "The rights class a receipt carries MUST be the rights state known at that stage, and a determination of the rights of a work (for example `public_domain` with its evidence) MUST be made only in the package's rights record, never in a receipt; a chain that starts at `unknown` does not end at `public_domain`, and the receipt classes and the package's rights record are read separately. The checker refuses only a widening of the class along a chain (PIP-R012); that a receipt carries the state known at its stage, and that a determination is made in the package's rights record and not in a receipt, are rules of the producer that it does not check: a chain whose receipts all carry `public_domain` is not refused by it, and a reader MUST take the rights of a work from the package's rights record.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

@@ -179,6 +179,13 @@ class ImportAdapterTests(unittest.TestCase):
         self.assertEqual(cpr.check_chain(materialise(fx.link(with_import_only))), [])  # the verify-only record is allowed, not required
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         self.assertIn("MAY verify an existing bundle instead of assembling it", spec)
+        self.assertIn("it does not check that the output is the hash of the verified manifest", spec)
+        self.assertIn("The checker refuses only a widening of the class along a chain", spec)
+        self.assertIn("a chain whose receipts all carry `public_domain` is not refused by it", spec)
+        every = self.chain("valid/synthetic-chain")
+        for record in every:
+            record["rights_class"] = "public_domain"
+        self.assertEqual(cpr.check_chain(materialise(fx.link(every))), [])  # the limit stated in the text: only widening is refused
 
     def test_a_non_boolean_bundle_measurement_and_a_repeated_one_are_refused(self):
         for label, edit in {"string": lambda m: m.update(value="false"), "number": lambda m: m.update(value=0)}.items():
@@ -186,6 +193,18 @@ class ImportAdapterTests(unittest.TestCase):
                 chain = self.chain("valid/imported-recognition-chain")
                 edit(chain[4]["measurements"][0])
                 self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
+        for name in ("bundle_assembled", "bundle_verified"):  # the first value is the checker's reading only if there is no other
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"].append({"name": name, "status": "measured", "value": name == "bundle_verified"})  # agrees with the first
+            self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"}, name)
+        chain = self.chain("valid/imported-recognition-chain")
+        chain[4]["measurements"] = [chain[4]["measurements"][0], chain[4]["measurements"][1], {"name": "bundle_assembled", "status": "measured", "value": True}]
+        self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})  # last-wins would read assembled true here
+        for stage_index in (3, 5):  # the bundle measurements on recognise and on kc-package
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[stage_index]["measurements"] = chain[stage_index].get("measurements", []) + [{"name": "bundle_verified", "status": "measured", "value": True},
+                                                                                             {"name": "bundle_assembled", "status": "measured", "value": False}]
+            self.assertIn("PIPE-IMPORT", codes(cpr.check_chain(materialise(fx.link(chain)))), stage_index)
         for repeated in (False, True):  # a second value is refused even when it agrees with the first: one reading only
             chain = self.chain("valid/imported-recognition-chain")
             chain[4]["measurements"].append({"name": "bundle_verified", "status": "measured", "value": repeated})
