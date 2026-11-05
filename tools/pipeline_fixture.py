@@ -142,7 +142,7 @@ def variants() -> dict[str, dict[str, bytes]]:
     mutant("invalid/skipped_stage_with_an_input", skipped_with_input)
 
     def blank_reason(rs):
-        rs[2].update(outcome="skipped", reason="   ", outputs=[])
+        rs[2].update(outcome="skipped", reason="   ", inputs=[], outputs=[])
     mutant("invalid/blank_reason", blank_reason)
 
     def essential_skipped(rs):
@@ -212,8 +212,9 @@ def write() -> None:
         for fname, data in files.items():
             (target / fname).write_bytes(data)
     (FIXTURE_ROOT / "README.md").write_text(
-        "# Synthetic pipeline receipt chains\n\nEvery receipt here is invented for this repository. `valid/` holds one chain of nine stages; each directory under `invalid/` is a\n"
-        "mutant of it with one defect and one expected refusal code (see `EXPECTED` in `tools/pipeline_fixture.py`). Regenerate with\n"
+        "# Synthetic pipeline receipt chains\n\nEvery receipt here is invented for this repository. `valid/` holds twelve chains: all nine stages, `convert` skipped, `classify` and `convert`\n"
+        "skipped, and one that ends in a refusal at each of the nine stages. Each directory under `invalid/` is a mutant of the first valid chain with one defect and one expected refusal code\n"
+        "(see `EXPECTED` in `tools/pipeline_fixture.py`). Regenerate with\n"
         "`python3 tools/pipeline_fixture.py write`; the unit tests fail if the committed files drift.\n", encoding="utf-8")
 
 

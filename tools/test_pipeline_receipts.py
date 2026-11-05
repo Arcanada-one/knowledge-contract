@@ -79,6 +79,17 @@ class FixtureTests(unittest.TestCase):
         self.assertEqual(listed - {"PIPE-EMPTY"}, {c for c in set(fx.EXPECTED.values()) if c})
         self.assertIn("PIPE-EMPTY", listed)  # refused by test_an_empty_or_missing_directory_is_refused: a directory cannot be committed empty
 
+    def test_the_counts_the_specification_states_are_the_counts_of_the_fixtures(self):
+        spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
+        words = {12: "Twelve", 27: "twenty-seven"}
+        valid = len([n for n in fx.EXPECTED if n.startswith("valid/")])
+        invalid = len([n for n in fx.EXPECTED if n.startswith("invalid/")])
+        self.assertIn(f"{words[valid]} valid", spec)
+        self.assertIn(f"{words[invalid]} one-defect mutants", spec)
+        self.assertIn(f"{words[invalid]} mutants of the first", spec)
+        readme = (fx.FIXTURE_ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(f"`valid/` holds {words[valid].lower()} chains", readme)
+
     def test_fixtures_are_deterministic(self):
         self.assertEqual(fx.variants(), fx.variants())
 

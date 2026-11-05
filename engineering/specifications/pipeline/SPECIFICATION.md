@@ -18,7 +18,7 @@ description: "Repository-only engineering contract for the nine stages that carr
 | --- | --- |
 | [Receipt schema](../../../schemas/pipeline-receipt.schema.json) | `PipelineStageReceipt/v1`, one record per stage |
 | [Chain validator](../../../tools/check_pipeline_receipts.py) | Order, links, identity, rights, consumption and honesty of one chain |
-| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Twelve valid chains and twenty-five one-defect mutants |
+| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Twelve valid chains and twenty-seven one-defect mutants |
 | [Tests](../../../tools/test_pipeline_receipts.py) | The validator against every fixture, drift of the committed files, mutants of the validator |
 
 ## 1. Purpose, boundary and status
@@ -124,7 +124,7 @@ The validator reads a directory of receipts and nothing else: a chain occupies a
 | `PIPE-STAGE-ORDER`, `PIPE-SKIP`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-SOURCE`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; an essential stage skipped; a receipt after a paused, refused or failed one; no input from the nearest earlier finished stage (or, where allowed, the source); the original source listed as an input by a stage that may not read it; time running backwards |
 | `PIPE-RIGHTS` | the rights class widened |
 
-Twelve valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; one ending in a refusal at each of the nine stages) and twenty-five mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
+Twelve valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; one ending in a refusal at each of the nine stages) and twenty-seven mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
 
 ## 9. What is and is not established
 
