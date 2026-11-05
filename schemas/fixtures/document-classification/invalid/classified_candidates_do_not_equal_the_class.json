@@ -2,7 +2,7 @@
   "candidates": [
     "paper"
   ],
-  "canon_sha256": "15a756e07e9994f192b75e1cc5e2fbd8f72148cd3878f6bf5f05f55f5ae3a66d",
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
   "class": "book",
   "classifier": {
     "method": "rule-based reading of the representation named in the evidence",

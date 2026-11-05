@@ -178,7 +178,7 @@ A `classify` stage that is skipped still produces nothing and no class. A result
 
 **PIP-R021.** A classification MUST NOT change the rights class, the declared damage, the `knowledge_ready` status, publication, indexing or `kc2_admission` of the document; it is provenance for later stages and never an admission.
 
-**Migration from `kc-doc-class/0`.** The label `kc-doc-class/0` existed only as a proposal, in correspondence between project agents and in a task description. No classification result, receipt or other data was ever written with it, so there is nothing to convert. The five class identifiers of `/1` are the identifiers of that proposal, with their meanings made explicit above.
+**Migration from `kc-doc-class/0`.** The temporary set existed only as text in a task title and in one letter to the implementer. Its identifiers were `book`, `paper`, `edition`, `export`, `dataset` and `other`; the letter dropped `edition`, and the set was labelled `kc-doc-class/0`. There was never an `article` identifier. No code and no stored data carry any class value, because no classifier has been written yet, so there is nothing to convert. `/1` keeps the five identifiers `book`, `paper`, `export`, `dataset` and `other`; `edition` is an attribute, not a class.
 
 **PIP-R022.** A classification under a later taxonomy MUST be a new result for the same document key with its own receipt chain, the earlier results MUST be kept, and a change of storage location MUST change neither the key nor the class.
 

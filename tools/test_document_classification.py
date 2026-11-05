@@ -88,7 +88,11 @@ class CanonTests(unittest.TestCase):
         canon = json.loads(cdc.CANON_PATH.read_text())
         self.assertEqual([c["id"] for c in canon["classes"]], CLASSES)
         self.assertEqual(canon["taxonomy_id"], "kc-doc-class/1")
-        self.assertIn("No classification result, receipt or other data was ever written", canon["migration"]["history"])
+        history = canon["migration"]["history"]
+        self.assertIn("existed only as text in a task title and in one letter", history)
+        self.assertIn("book, paper, edition, export, dataset and other", history)
+        self.assertIn("There was never an article identifier", history)
+        self.assertIn("No code and no stored data carry any class value", history)
 
     def test_every_fixture_carries_the_digest_of_the_current_canon(self):
         digest = hashlib.sha256(cdc.CANON_PATH.read_bytes()).hexdigest()
@@ -137,8 +141,14 @@ class SpecificationTests(unittest.TestCase):
             self.assertIn(f"PIP-R{n:03d}", ids)
 
     def test_the_migration_wording_claims_no_history(self):
-        self.assertIn("existed only as a proposal", SPEC)
-        self.assertIn("No classification result, receipt or other data was ever written with it", SPEC)
+        migration = SPEC[SPEC.index("**Migration from `kc-doc-class/0`.**"):SPEC.index("**PIP-R022.**")]
+        for claim in ("existed only as text in a task title and in one letter to the implementer", "`book`, `paper`, `edition`, `export`, `dataset` and `other`",
+                      "the letter dropped `edition`", "never an `article` identifier", "No code and no stored data carry any class value",
+                      "`edition` is an attribute, not a class"):
+            self.assertIn(claim, migration)
+        for invented in ("correspondence between project agents", "was ever written with it", "receipt"):
+            self.assertNotIn(invented, migration)
+        self.assertNotIn("edition", [c["id"] for c in json.loads(cdc.CANON_PATH.read_text())["classes"]])
 
     def test_section_six_no_longer_says_that_only_author_open_publishes(self):
         six = SPEC[SPEC.index("## 6. Rights and publication boundary"):SPEC.index("## 7.")]

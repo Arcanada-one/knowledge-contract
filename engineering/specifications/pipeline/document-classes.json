@@ -39,7 +39,7 @@
   "migration": {
     "from": "kc-doc-class/0",
     "to": "kc-doc-class/1",
-    "history": "kc-doc-class/0 existed only as a proposal in correspondence between project agents and in a task description. No classification result, receipt or other data was ever written with it.",
+    "history": "The temporary set existed only as text in a task title and in one letter to the implementer. Its identifiers were book, paper, edition, export, dataset and other; the letter dropped edition, and the set was labelled kc-doc-class/0. There was never an article identifier. No code and no stored data carry any class value, because no classifier has been written yet. Edition is an attribute in /1, not a class.",
     "rule": "A /1 classification is a new artefact for the same source key. A changed version label does not re-evaluate a source, earlier records are kept, and an unknown taxonomy identifier or a canon digest that does not match is refused instead of being read as the latest canon."
   }
 }
