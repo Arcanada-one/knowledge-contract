@@ -409,6 +409,17 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertEqual(set(files), {DOCS[0]})
         self.assertEqual(manifest["row_count"], 1)
 
+    def test_receipt_check_runs_only_for_decisions_a_row_points_at(self) -> None:
+        # DEC-AUP-0175 item 2 relies on this. An old row leaves the table, its decision line stays. A decision line whose blob at its base does
+        # NOT hash to its digest (the guard blob_at_base of receipt_check) is refused when a row points at it (test_receipt_embeds_the_blob_at_the_base)
+        # but must neither export nor refuse while it is an orphan: receipt_check is run by verify_row, i.e. for rows only; build() still checks
+        # every decision line for a clean merged change, rows or not.
+        w = self.world(docs=DOCS[:2], no_rows=True)
+        w.decision_pr("b9", [decision_obj(DOCS[1], "e" * 64, "current", "b9")], parent=w.main)
+        manifest, files = w.run(w.add_rows([w.row(DOCS[0], "b1", 0)]))
+        self.assertEqual(set(files), {DOCS[0]})
+        self.assertEqual((manifest["row_count"], manifest["export_count"]), (1, 1))
+
     # ---- negative controls: each asserts the message of the check under test -------------
     def test_self_approving_change_is_refused(self) -> None:
         self.refuses("edits more than decisions", same_commit=True)
