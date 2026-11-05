@@ -26,7 +26,7 @@ REPO = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = REPO / "schemas" / "pipeline-receipt.schema.json"
 STAGES = ("intake", "classify", "convert", "recognise", "bundle", "kc-package", "library", "publish", "index")
 # Permissiveness of a rights class; a stage may keep the class of its predecessor or narrow it, never widen it.
-RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "author_open": 2}
+RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "public_domain": 2, "author_open": 2}
 # Only these stages may end `skipped` (with a reason): the format needs no conversion, or no classification is wanted. Every other stage is essential.
 SKIPPABLE = frozenset(("classify", "convert"))
 # The stages that may take the ORIGINAL SOURCE as an input; every later stage works from what an earlier stage produced.

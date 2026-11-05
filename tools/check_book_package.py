@@ -236,6 +236,7 @@ def derive_package_status(manifest: dict, quality: dict, objects: list[dict], re
     if sem["status"] in ("not_built", "not_measured") and not objects and not relations:
         return "structure_only"
     if (rep["integrity"] == "verified" and rep["completeness"] == "full" and ext["status"] == "pass"
+            and quality.get("damage", {"status": "none"})["status"] == "none"
             and ext["checks"] and all(c["result"] in ("pass", "not_applicable") for c in ext["checks"])
             and any(c["result"] == "pass" for c in ext["checks"])
             and complete_supported_review(quality, objects, relations)):
@@ -278,10 +279,15 @@ def check_package(root: Path) -> list[str]:
         problems.append("document_md and readable_md must be different files")
 
     rights = manifest["rights"]
-    if rights["license_class"] != "author_open" and RESTRICTED_LAYERS & set(rights["publishable_layers"]):
-        problems.append("a work that is not author_open may not publish any package layer")
-    if rights["license_class"] != "author_open" and "license" in rights:
-        problems.append("a work that is not author_open may not declare a publication license")
+    open_class = rights["license_class"] in ("author_open", "public_domain")
+    if not open_class and RESTRICTED_LAYERS & set(rights["publishable_layers"]):
+        problems.append("a work that is neither author_open nor public_domain may not publish any package layer")
+    if not open_class and "license" in rights:
+        problems.append("a work that is neither author_open nor public_domain may not declare a publication license")
+    # A public_domain work carries its evidence and NO top-level `license` (schema): the public-domain text is covered by the evidence record alone. The layers
+    # Arcanada writes (knowledge, quality) are published only under `public_domain.own_layers_license`, which covers exactly those two layers.
+    if rights["license_class"] == "public_domain" and {"knowledge", "quality"} & set(rights["publishable_layers"]) and "own_layers_license" not in rights["public_domain"]:
+        problems.append("a public_domain package publishes the knowledge or quality layer only under public_domain.own_layers_license")
     integrity_check = rep.get("integrity_check")
     if integrity_check:
         if integrity_check["observed_sha256"] != rep["source_sha256"]:
@@ -426,6 +432,9 @@ def check_package(root: Path) -> list[str]:
 
     # Quality: counts agree with the files; extraction and semantic quality stay apart.
     sem = quality["semantics"]
+    damage = quality.get("damage")
+    if damage is not None and damage["places"] != sum(d["count"] for d in damage["declarations"]):
+        problems.append("quality.damage.places differs from the sum of the declaration counts; a declared place is counted once")
     if (sem["objects_count"], sem["relations_count"]) != (len(objects), len(relations)):
         problems.append("quality.semantics counts differ from the object and relation files")
     if quality["package_id"] != manifest["package_id"]:
@@ -556,6 +565,8 @@ def candidate_projection(root: Path) -> list[dict]:
         return []
     rights, rows = manifest["rights"], []
     licence = rights.get("license")
+    # public_domain gets no rows here: the corpus exporter's scope and rights check (a personal-name holder and an author's licence) do not describe
+    # a public-domain work, and a book library is not the corpus. Deny until a decision widens it.
     if rights["license_class"] != "author_open" or licence not in ("CC-BY-4.0", "Apache-2.0"):
         return rows
     pid, q = manifest["package_id"], manifest["package_status"]

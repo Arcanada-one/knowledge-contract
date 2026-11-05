@@ -124,6 +124,33 @@ def anchor_examples() -> dict[str, dict]:
     return out
 
 
+PD_EVIDENCE = {
+    "basis": "Synthetic determination for schema testing: invented work, invented digitiser; no real rights are asserted.",
+    "own_layers_license": "CC-BY-4.0", "jurisdictions": ["worldwide"], "worldwide_reason": "the synthetic work is stated to be out of term in every jurisdiction, for testing only",
+    "evidence_urls": ["https://example.org/synthetic-primer/rights"], "determined_at": "2026-11-05T00:00:00Z", "determined_by": "fixture.determiner",
+    "work": {"status": "term_expired", "basis": "the synthetic author is stated to have died more than seventy years ago"},
+    "digital_copy": {"status": "open", "terms": "CC0-1.0", "basis": "the synthetic digitiser's page states CC0 1.0"}}
+PD_DAMAGE = {"status": "declared", "places": 2, "declarations": [
+    {"code": "FILED_DEFECT", "count": 1, "items": [{"page_id": "p0002", "what": "D-synthetic-0001", "quote": "a filed ligature defect"}]},
+    {"code": "KNOWN_TEXT_DAMAGE", "count": 1, "items": [{"page_id": "p0003", "block_id": "b0001", "what": "unreadable word"}]}]}
+
+
+def build_public_domain() -> dict[str, bytes]:
+    """The valid package re-cast as a public-domain work with declared damage: rights class public_domain with its evidence, the layers
+    Arcanada writes under an author licence, a damage declaration (so the status cannot be knowledge_ready)."""
+    files = build()
+    quality = json.loads(files["quality.json"])
+    quality["damage"] = copy.deepcopy(PD_DAMAGE)
+    files["quality.json"] = json.dumps(quality, indent=1, sort_keys=True).encode() + b"\n"
+    manifest = json.loads(files["manifest.json"])
+    manifest["rights"] = {"license_class": "public_domain", "holder": "Knowledge Contract Arcana contributors",
+                          "publishable_layers": ["document_md", "readable_md", "knowledge", "quality"], "public_domain": copy.deepcopy(PD_EVIDENCE)}
+    manifest["components"]["quality"]["sha256"] = sha(files["quality.json"])
+    manifest["package_status"] = "partial_pilot"
+    files["manifest.json"] = json.dumps(manifest, indent=1, sort_keys=True).encode() + b"\n"
+    return files
+
+
 def _del(path):
     def run(r):
         node = r
@@ -199,6 +226,24 @@ RECORD_MUTATIONS: dict[str, tuple[str, object]] = {
     "manifest_absolute_path": ("manifest", _set(["components", "objects", "path"], "/etc/objects.jsonl")),
     "manifest_admitted_by_itself": ("manifest", _set(["kc2_admission"], "admitted")),
     "manifest_non_https_locator": ("manifest", _set(["representation", "locator"], "file:///book.pdf")),
+    "manifest_public_domain_without_evidence": ("manifest_pd", _del(["rights", "public_domain"])),
+    "manifest_public_domain_work_not_expired": ("manifest_pd", _set(["rights", "public_domain", "work", "status"], "in_copyright")),
+    "manifest_public_domain_digital_copy_restricted": ("manifest_pd", _set(["rights", "public_domain", "digital_copy", "status"], "restricted")),
+    "manifest_public_domain_without_digital_copy_fact": ("manifest_pd", _del(["rights", "public_domain", "digital_copy"])),
+    "manifest_public_domain_without_work_fact": ("manifest_pd", _del(["rights", "public_domain", "work"])),
+    "manifest_public_domain_no_evidence_url": ("manifest_pd", _set(["rights", "public_domain", "evidence_urls"], [])),
+    "manifest_public_domain_plain_http_evidence": ("manifest_pd", _set(["rights", "public_domain", "evidence_urls"], ["http://example.org/rights"])),
+    "manifest_public_domain_worldwide_without_reason": ("manifest_pd", _del(["rights", "public_domain", "worldwide_reason"])),
+    "manifest_public_domain_unknown_terms": ("manifest_pd", _set(["rights", "public_domain", "digital_copy", "terms"], "all rights reserved")),
+    "manifest_author_open_with_public_domain_block": ("manifest", lambda r: r["rights"].__setitem__("public_domain", copy.deepcopy(PD_EVIDENCE))),
+    "manifest_restricted_with_public_domain_block": ("manifest", lambda r: r.__setitem__("rights", {"license_class": "third_party_restricted", "publishable_layers": [],
+                                                                                                      "public_domain": copy.deepcopy(PD_EVIDENCE)})),
+    "manifest_public_domain_with_top_level_license": ("manifest_pd", _set(["rights", "license"], "CC-BY-4.0")),
+    "quality_damage_declared_without_declarations": ("quality_pd", _set(["damage", "declarations"], [])),
+    "quality_damage_none_with_places": ("quality_pd", _set(["damage", "status"], "none")),
+    "quality_damage_declared_zero_places": ("quality_pd", _set(["damage", "places"], 0)),
+    "quality_damage_lowercase_code": ("quality_pd", _set(["damage", "declarations", 0, "code"], "filed_defect")),
+    "quality_damage_item_without_what": ("quality_pd", _del(["damage", "declarations", 0, "items", 0, "what"])),
 }
 
 
@@ -213,7 +258,8 @@ def record_bases(files: dict[str, bytes]) -> dict[str, dict]:
     return {"object_author": objects[0], "object_gen": objects[2], "object_page": anchors["page_bbox"], "object_pointer": anchors["json_pointer"],
             "object_sheet": anchors["sheet_range"], "relation_gen": relations[0], "relation_contra": contra,
             "edit": json.loads(files["edits.jsonl"].decode().split("\n")[:-1][0]), "quality": json.loads(files["quality.json"]),
-            "manifest": json.loads(files["manifest.json"])}
+            "manifest": json.loads(files["manifest.json"]),
+            "manifest_pd": json.loads(build_public_domain()["manifest.json"]), "quality_pd": json.loads(build_public_domain()["quality.json"])}
 
 
 def write() -> None:
@@ -222,6 +268,12 @@ def write() -> None:
     pkg.mkdir(parents=True, exist_ok=True)
     for rel, data in files.items():
         target = pkg / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+    pd = FIXTURE_ROOT / "valid" / "synthetic-public-domain-primer"
+    pd.mkdir(parents=True, exist_ok=True)
+    for rel, data in build_public_domain().items():
+        target = pd / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
     anchors_dir = FIXTURE_ROOT / "valid" / "anchors"

@@ -104,7 +104,7 @@ The tables name the usual input of each edge; the rules of section 4 are the aut
 
 ## 6. Rights and publication boundary
 
-**PIP-R012.** A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown` and `author_open`.
+**PIP-R012.** A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown`, and then `public_domain` and `author_open`, which are equally open.
 
 The rights class decides what leaves the machine. Text of a work that is not `author_open` stays out of public repositories; a package of such a work publishes no layer, as `book-package/2` already requires. Publication of any document in the Knowledge Contract corpus still passes the decision route (a decision pull request with independent reviews, then a row pull request, then the export). Nothing here authorizes a publication or a payment.
 
@@ -126,7 +126,19 @@ The validator reads a directory of receipts and nothing else: a chain occupies a
 
 Twelve valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; one ending in a refusal at each of the nine stages) and twenty-seven mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
 
-## 9. What is and is not established
+## 9. Public-domain works and declared damage in `book-package/2`
+
+This section is the repository-only note of an amendment of the `book-package/2` rules that is pending a later edition decision batch; the published [book package specification](../book-package/SPECIFICATION.md) is unchanged until that batch. Until a package exists in a library, the amendment changes no migration: it is made in place, and the profile string stays `book-package/2`.
+
+A fourth rights class, `public_domain`, lets a work whose term has expired be carried and published. It is not `author_open` and it is not a licence: the manifest carries a `public_domain` record with a basis, the jurisdictions (or `worldwide` with its reason), at least one `https` evidence address, the time of the determination and who made it, and two facts kept apart, each with its own basis: the **work** (`term_expired`) and the **digital copy** (`open`, with the digitiser's terms: CC0 1.0, a public-domain mark, a public-domain statement, or no restriction stated). A `public_domain` package has no top-level `license` (it cannot be expressed); the layers that Arcanada writes (the knowledge layer, the quality report) are published only under `public_domain.own_layers_license`, which covers exactly those two layers, and the public-domain text is covered by the evidence record alone. The restricted and unknown classes publish nothing, as before.
+
+A package may carry a declared damage list in its quality report: a status (`none` or `declared`), the number of places, and one declaration per kind with its count and its places (page, block, what, a short quote). The places are the sum of the declaration counts. A package with declared damage cannot derive `knowledge_ready`.
+
+**PIP-R013.** The damage list travels with the package and is shown wherever the package is shown; a library that publishes a package with declared damage MUST publish the list with it and MUST NOT present the package as clean.
+
+If a different rights model is adopted by the edition batch before any package is merged into a library, the one package written under this amendment is migrated by a new release; the amendment and its fixtures are then replaced, not extended.
+
+## 10. What is and is not established
 
 Of the nine stages, `kc-package` is built and merged, `recognise` and `bundle` are built for PDF and images on one host, `publish` and `index` are built for corpus documents only, and `classify`, `convert` as a Doclab call and `library` are not built. No runtime verdict is claimed for any of the three projects, and `kc2_admission` stays `not_measured`.
 

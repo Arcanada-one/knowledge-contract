@@ -70,6 +70,7 @@ jobs:
         run: |
           set -euo pipefail
           "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_book_package.py schemas/fixtures/book-package/valid/synthetic-rle-primer
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_book_package.py schemas/fixtures/book-package/valid/synthetic-public-domain-primer
           "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_pipeline_receipts.py schemas/fixtures/pipeline/valid/synthetic-chain
       - name: Committed fixtures equal regenerated fixtures
         run: |

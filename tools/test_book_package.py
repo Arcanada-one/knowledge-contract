@@ -138,6 +138,20 @@ EXPECTED_REASON = {
     "quality_reviewed_without_review": "'review' is a required property", "relation_contradicts_one_sided": "evidence:",
     "relation_generated_without_generation": "'generation' is a required property", "relation_no_evidence": "evidence: [] should be non-empty",
     "relation_unknown_type": "relation_type: 'is_like' is not one of",
+    "manifest_public_domain_without_evidence": "rights: 'public_domain' is a required property",
+    "manifest_public_domain_work_not_expired": "rights/public_domain/work/status: 'term_expired' was expected",
+    "manifest_public_domain_digital_copy_restricted": "rights/public_domain/digital_copy/status: 'open' was expected",
+    "manifest_public_domain_without_digital_copy_fact": "rights/public_domain: 'digital_copy' is a required property",
+    "manifest_public_domain_without_work_fact": "rights/public_domain: 'work' is a required property",
+    "manifest_public_domain_no_evidence_url": "rights/public_domain/evidence_urls: [] should be non-empty",
+    "manifest_public_domain_plain_http_evidence": "rights/public_domain/evidence_urls/0",
+    "manifest_public_domain_worldwide_without_reason": "rights/public_domain: 'worldwide_reason' is a required property",
+    "manifest_public_domain_unknown_terms": "rights/public_domain/digital_copy/terms",
+    "manifest_author_open_with_public_domain_block": "rights:", "manifest_restricted_with_public_domain_block": "rights:",
+    "manifest_public_domain_with_top_level_license": "rights:",
+    "quality_damage_declared_without_declarations": "damage/declarations: [] should be non-empty",
+    "quality_damage_none_with_places": "damage/declarations", "quality_damage_declared_zero_places": "damage/places: 0 is less than the minimum of 1",
+    "quality_damage_lowercase_code": "damage/declarations/0/code", "quality_damage_item_without_what": "'what' is a required property",
 }
 # anchor fixtures: the field of the anchor that must be the cause, checked against the branch of the anchor's own kind
 ANCHOR_CAUSE = {"object_anchor_bad_sheet_range": "range", "object_anchor_bbox_three_numbers": "bbox", "object_anchor_page_zero": "page",
@@ -204,6 +218,94 @@ class FixtureTests(unittest.TestCase):
     def test_contradicts_with_both_sides_is_accepted(self):
         base = fx.record_bases(fx.build())["relation_contra"]
         self.assertEqual(cbp.schema_errors(base), [])
+
+
+PD = fx.FIXTURE_ROOT / "valid" / "synthetic-public-domain-primer"
+
+
+class PublicDomainTests(unittest.TestCase):
+    """Class public_domain (S1 of X5, KCP-ROOT-REPLY-113): both facts open and evidenced, a declared damage list kept in the package."""
+
+    def test_the_public_domain_package_passes_and_equals_the_generator(self):
+        self.assertEqual(cbp.check_package(PD), [])
+        for rel, data in fx.build_public_domain().items():
+            self.assertEqual((PD / rel).read_bytes(), data, rel)
+
+    def test_it_carries_the_evidence_and_the_damage_and_is_not_ready(self):
+        manifest = json.loads((PD / "manifest.json").read_text())
+        rights = manifest["rights"]
+        self.assertEqual(rights["license_class"], "public_domain")
+        self.assertEqual((rights["public_domain"]["work"]["status"], rights["public_domain"]["digital_copy"]["status"]), ("term_expired", "open"))
+        damage = json.loads((PD / "quality.json").read_text())["damage"]
+        self.assertEqual((damage["status"], damage["places"]), ("declared", sum(d["count"] for d in damage["declarations"])))
+        self.assertEqual(manifest["package_status"], "partial_pilot")
+
+    def test_the_two_facts_are_separate_and_both_required(self):
+        base = fx.build_public_domain()
+        for fact in ("work", "digital_copy"):
+            parts = load_parts(base)
+            del parts["manifest"]["rights"]["public_domain"][fact]
+            problems = check_files(materialise(parts))
+            self.assertTrue(any(fact in p for p in problems), (fact, problems))
+
+    def test_a_declared_damage_is_not_knowledge_ready(self):
+        parts = load_parts(fx.build_public_domain())
+        parts["manifest"]["package_status"] = "knowledge_ready"
+        problems = check_files(materialise(parts))
+        self.assertTrue(any("package_status knowledge_ready differs from derived partial_pilot" in p for p in problems), problems)
+
+    def test_a_damage_count_that_does_not_add_up_is_reported(self):
+        parts = load_parts(fx.build_public_domain())
+        parts["quality"]["damage"]["places"] = 3
+        problems = check_files(materialise(parts))
+        self.assertTrue(any("quality.damage.places differs from the sum of the declaration counts" in p for p in problems), problems)
+
+    def test_removing_the_damage_declaration_makes_it_derive_ready_only_if_everything_else_is(self):
+        # the original (author_open) package without damage still derives knowledge_ready: the damage guard is not a general downgrade
+        self.assertEqual(json.loads((VALID / "manifest.json").read_text())["package_status"], "knowledge_ready")
+        self.assertEqual(cbp.check_package(VALID), [])
+
+    def test_projection_gives_no_row_for_public_domain_and_rendering_refuses_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for rel, data in fx.build_public_domain().items():
+                (root / rel).parent.mkdir(parents=True, exist_ok=True)
+                (root / rel).write_bytes(data)
+            self.assertEqual(cbp.candidate_projection(root), [])
+        parts = load_parts(fx.build_public_domain())
+        with self.assertRaises(cbp.PackageError):
+            cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
+
+    def test_no_top_level_licence_can_sit_over_the_public_domain_text(self):
+        parts = load_parts(fx.build_public_domain())
+        self.assertNotIn("license", parts["manifest"]["rights"])
+        parts["manifest"]["rights"]["license"] = "CC-BY-4.0"
+        self.assertTrue(check_files(materialise(parts)), "a licence over the public-domain text must be inexpressible")
+
+    def test_arcanada_layers_are_published_only_under_their_own_licence(self):
+        parts = load_parts(fx.build_public_domain())
+        self.assertEqual(parts["manifest"]["rights"]["public_domain"]["own_layers_license"], "CC-BY-4.0")
+        del parts["manifest"]["rights"]["public_domain"]["own_layers_license"]
+        problems = check_files(materialise(parts))
+        self.assertTrue(any("only under public_domain.own_layers_license" in p for p in problems), problems)
+        parts["manifest"]["rights"]["publishable_layers"] = ["document_md", "readable_md"]
+        self.assertEqual(check_files(materialise(parts)), [])  # the public-domain text alone needs no licence
+
+    def test_the_builder_refuses_to_write_a_public_domain_rights_record(self):
+        import build_book_package as bbp
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "s.md"
+            source.write_text("# x\n")
+            with self.assertRaises(bbp.BuildError):
+                bbp.build(source, Path(tmp) / "out", catalog_id="c", license_class="public_domain")
+
+    def test_the_public_domain_class_does_not_widen_the_restricted_classes(self):
+        parts = load_parts(fx.build_public_domain())
+        parts["manifest"]["rights"]["license_class"] = "unknown"
+        self.assertTrue(check_files(materialise(parts)))
+        parts = load_parts(fx.build_public_domain())
+        parts["manifest"]["rights"]["license_class"] = "third_party_restricted"
+        self.assertTrue(check_files(materialise(parts)))
 
 
 class PackageMutationTests(unittest.TestCase):
