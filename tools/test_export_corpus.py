@@ -13,12 +13,26 @@ import re
 import shutil
 import subprocess
 import tempfile
-from contextlib import ExitStack
+from contextlib import ExitStack, contextmanager
 from pathlib import Path
 import unittest
 from unittest.mock import patch
 
 from tools import export_corpus as export
+
+
+@contextmanager
+def expect_refusal(test: unittest.TestCase, pattern: str):
+    """Expect an ExportError matching `pattern`. Any other exception is an assertion FAILURE, not an error: removing a guard turns
+    a refusal into an IndexError or AttributeError, and the mutation harness (test_export_check_mutations) kills a mutant only by a
+    failed assertion, so the refusal tests must say "expected a refusal, got X" instead of crashing."""
+    try:
+        with test.assertRaisesRegex(export.ExportError, pattern):
+            yield
+    except test.failureException:
+        raise
+    except Exception as exc:  # noqa: BLE001 - deliberately broad: anything but the refusal is a failed expectation
+        test.fail(f"expected ExportError matching {pattern!r}, got {type(exc).__name__}: {exc}")
 
 DEC = "corpus/publication-decisions/"
 RECEIPT = DEC + "receipts/"
@@ -339,7 +353,7 @@ class DecisionRouteTests(unittest.TestCase):
         return World(Path(temp.name), **o)
 
     def refuses(self, pattern: str, **o) -> None:
-        with self.assertRaisesRegex(export.ExportError, pattern):
+        with expect_refusal(self, pattern):
             self.world(**o).run()
 
     # ---- positive controls ---------------------------------------------------------------
@@ -372,7 +386,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertEqual(manifest["entries"][0]["status_review_readback"], "decision_file_matched")
         self.assertRegex(manifest["entries"][0]["status_decision"], r"^corpus/publication-decisions/b2\.jsonl@[0-9a-f]{40}#[0-9a-f]{64}$")
         r3 = w.add_rows([w.row(doc, "b1", 0)])
-        with self.assertRaisesRegex(export.ExportError, "later decision changes the effective status"):
+        with expect_refusal(self, "later decision changes the effective status"):
             w.run(r3)
 
     def test_a_key_can_return_to_current_through_a_new_line_with_its_own_receipt(self) -> None:
@@ -385,7 +399,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertEqual(set(files), {doc})
         self.assertIn("b3.jsonl@", manifest["entries"][0]["decision"])
         stale = w.add_rows([w.row(doc, "b1", 0)])
-        with self.assertRaisesRegex(export.ExportError, "does not point at the last matching line"):
+        with expect_refusal(self, "does not point at the last matching line"):
             w.run(stale)
 
     def test_orphan_decision_exports_nothing_and_is_not_an_error(self) -> None:
@@ -404,7 +418,7 @@ class DecisionRouteTests(unittest.TestCase):
         w = self.world()
         bad = w.row(DOCS[0], "b1", 0, cell=f"{DEC}b1.jsonl@{w.batches['b1']['I']}#{'0' * 64}")
         r = w.add_rows([bad])
-        with self.assertRaisesRegex(export.ExportError, "does not point at the last matching line"):
+        with expect_refusal(self, "does not point at the last matching line"):
             w.run(r)
 
     def test_one_character_license_or_holder_change_is_refused(self) -> None:
@@ -427,21 +441,21 @@ class DecisionRouteTests(unittest.TestCase):
     def test_row_commit_must_only_add_table_rows(self) -> None:
         w = self.world(no_rows=True)
         r = w.add_rows([w.row(DOCS[0], "b1", 0)], extra={"tools/other.py": "x = 1\n"})
-        with self.assertRaisesRegex(export.ExportError, "changes more than corpus/README.md"):
+        with expect_refusal(self, "changes more than corpus/README.md"):
             w.run(r)
         w2 = self.world(no_rows=True)
         r2 = w2.add_rows([w2.row(DOCS[0], "b1", 0)], prose="\nA prose sentence added together with the row.\n")
-        with self.assertRaisesRegex(export.ExportError, "changes more than table rows"):
+        with expect_refusal(self, "changes more than table rows"):
             w2.run(r2)
         w3 = self.world(no_rows=True)
         r3 = w3.add_rows([w3.row(DOCS[0], "b1", 0)], extra={DEC + "other.jsonl": ""})
-        with self.assertRaisesRegex(export.ExportError, "changes more than corpus/README.md"):
+        with expect_refusal(self, "changes more than corpus/README.md"):
             w3.run(r3)
 
     def test_decision_must_precede_the_row(self) -> None:
         w = self.world()
         with patch.object(export, "latest_introducing_commit", lambda m, f, p: w.batches["b1"]["I"]):
-            with self.assertRaisesRegex(export.ExportError, "decision must precede allowlist row"):
+            with expect_refusal(self, "decision must precede allowlist row"):
                 w.run()
 
     def test_source_commit_rules(self) -> None:
@@ -456,13 +470,13 @@ class DecisionRouteTests(unittest.TestCase):
         w = self.world(docs=DOCS[:2], no_rows=True)
         w.decision_pr("b9", [decision_obj(DOCS[1], w.sha[DOCS[1]], "withdrawn", "b9")], parent=w.main, unmerged_decision=True)
         r = w.add_rows([w.row(DOCS[0], "b1", 0)])
-        with self.assertRaisesRegex(export.ExportError, "not a merged pull request commit"):
+        with expect_refusal(self, "not a merged pull request commit"):
             w.run(r)
 
     def test_decision_read_from_worktree_is_ignored(self) -> None:
         w = self.world(no_decision_commit=True)
         write(w.repo, DEC + "b1.jsonl", export.canonical(decision_obj(DOCS[0], w.sha[DOCS[0]])) + "\n")
-        with self.assertRaisesRegex(export.ExportError, "no merged decision matches row"):
+        with expect_refusal(self, "no merged decision matches row"):
             w.run()
 
     def test_shallow_clone_is_refused(self) -> None:
@@ -471,7 +485,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.addCleanup(lambda: subprocess.run(("rm", "-r", str(shallow))))
         subprocess.run(("git", "clone", "-q", "--depth", "1", "file://" + str(w.repo), str(shallow / "c")), env=ENV, check=True)
         with patch.object(export, "REPO", shallow / "c"):
-            with self.assertRaisesRegex(export.ExportError, "history incomplete"):
+            with expect_refusal(self, "history incomplete"):
                 export.load_decisions("HEAD")
 
     def test_decision_tree_is_write_once(self) -> None:
@@ -488,7 +502,7 @@ class DecisionRouteTests(unittest.TestCase):
                 tamper(w.repo)
                 w.main = commit(w.repo, f"tamper: {name} (#99)")
                 w.merged[w.main] = 99
-                with self.assertRaisesRegex(export.ExportError, "write-once"):
+                with expect_refusal(self, "write-once"):
                     w.run()
 
     def test_new_decisions_go_in_new_batch_files_and_a_modified_batch_file_is_refused(self) -> None:
@@ -497,7 +511,7 @@ class DecisionRouteTests(unittest.TestCase):
             handle.write(export.canonical(decision_obj(DOCS[1], w.sha[DOCS[1]], "withdrawn", "b1")) + "\n")
         main = commit(w.repo, "append a line (#98)")
         with patch.object(export, "REPO", w.repo):
-            with self.assertRaisesRegex(export.ExportError, "write-once"):
+            with expect_refusal(self, "write-once"):
                 export.check_write_once(main)
 
     def test_ambiguous_merge_base_is_refused(self) -> None:
@@ -518,7 +532,7 @@ class DecisionRouteTests(unittest.TestCase):
         git(repo, "checkout", "-q", "-b", "mb", b1)
         git(repo, "merge", "--no-ff", "-q", "-m", "merge a into b", a1)
         with patch.object(export, "REPO", repo):
-            with self.assertRaisesRegex(export.ExportError, "more than one merge base"):
+            with expect_refusal(self, "more than one merge base"):
                 export.unique_merge_base("ma", "mb")
             self.assertEqual(export.unique_merge_base("a", "b"), base)
 
@@ -528,7 +542,7 @@ class DecisionRouteTests(unittest.TestCase):
         w.decision_pr("b2", [decision_obj(doc, w.sha[doc], "current", "b2", attribution="again"),
                              decision_obj(doc, w.sha[doc], "withdrawn", "b2")], parent=w.main)
         r = w.add_rows([w.row(doc, "b2", 1, "withdrawn", w.cell("b2", 1), cell=w.cell("b2", 0))])
-        with self.assertRaisesRegex(export.ExportError, "status decision must come after"):
+        with expect_refusal(self, "status decision must come after"):
             w.run(r)
 
     def test_receipt_failures_are_refused(self) -> None:
@@ -580,11 +594,11 @@ class DecisionRouteTests(unittest.TestCase):
         w = self.world(no_rows=True)
         bad = w.row(DOCS[0], "b1", 0)
         bad["license"] = "MIT"
-        with self.assertRaisesRegex(export.ExportError, "outside reviewed project licenses"):
+        with expect_refusal(self, "outside reviewed project licenses"):
             export.validate_row(bad)
         r = w.add_rows([w.row(DOCS[0], "b1", 0)])
         del w.merged[r]
-        with self.assertRaisesRegex(export.ExportError, "not a merged pull request commit"):
+        with expect_refusal(self, "not a merged pull request commit"):
             w.run(r)
 
     def test_row_with_the_old_holder_after_a_correction_is_refused(self) -> None:
@@ -592,7 +606,7 @@ class DecisionRouteTests(unittest.TestCase):
         doc = DOCS[0]
         w.decision_pr("b2", [decision_obj(doc, w.sha[doc], "current", "b2", rights_holder="Corrected Holder")], parent=w.main)
         r = w.add_rows([w.row(doc, "b1", 0)])
-        with self.assertRaisesRegex(export.ExportError, "later decision changes the effective status"):
+        with expect_refusal(self, "later decision changes the effective status"):
             w.run(r)
         fixed = w.add_rows([{**w.row(doc, "b2", 0), "rights_holder": "Corrected Holder"}])
         self.assertEqual(w.run(fixed)[0]["entries"][0]["rights_holder"], "Corrected Holder")
@@ -614,7 +628,7 @@ class DecisionRouteTests(unittest.TestCase):
         for bad in (f"{file_}@{w.S}#{digest}", f"{file_}@{commit_}#{'0' * 64}", f"{DEC}other.jsonl@{commit_}#{digest}"):
             with self.subTest(bad=bad):
                 r = w.add_rows([w.row(DOCS[0], "b1", 0, cell=bad)])
-                with self.assertRaisesRegex(export.ExportError, "does not point at the last matching line"):
+                with expect_refusal(self, "does not point at the last matching line"):
                     w.run(r)
 
     def test_status_that_the_decision_file_does_not_hold_is_refused(self) -> None:
@@ -625,13 +639,13 @@ class DecisionRouteTests(unittest.TestCase):
                 if status == "superseded":
                     rows.append({**w.row(DOCS[0], "b1", 0), "source_commit": w.E or w.S, "sha256": "c" * 64, "supersedes": w.sha[DOCS[0]]})
                 r = w.add_rows(rows)
-                with self.assertRaisesRegex(export.ExportError, "no merged decision matches row"):
+                with expect_refusal(self, "no merged decision matches row"):
                     w.run(r)
 
     def test_a_path_outside_the_six_documents_is_refused(self) -> None:
         row = {"source_commit": "a" * 40, "path": "articles/another.md", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                "decision": f"{DEC}b1.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
-        with self.assertRaisesRegex(export.ExportError, "outside the scope fixed by DEC-AUP-0171"):
+        with expect_refusal(self, "outside the scope fixed by DEC-AUP-0171"):
             export.validate_row(row)
         for path in ("articles/a.txt", "schemas/x.json", "papers/p.yml"):
             with self.assertRaises(export.ExportError):
@@ -692,7 +706,7 @@ class DecisionRouteTests(unittest.TestCase):
                     export.validate_row({**base, "path": path})
         for path in ("papers/ru/P00_introduction.md", "papers/README.md", "spec/STATUS_MODEL.md", "papers/P14_future_paper.md"):
             with self.subTest(message=path):
-                with self.assertRaisesRegex(export.ExportError, "outside the scope fixed by DEC-AUP-0171 and DEC-AUP-0172"):
+                with expect_refusal(self, "outside the scope fixed by DEC-AUP-0171 and DEC-AUP-0172"):
                     export.validate_row({**base, "path": path})
 
     def test_row_commit_is_the_most_recent_addition_of_the_row(self) -> None:
@@ -706,7 +720,7 @@ class DecisionRouteTests(unittest.TestCase):
     def test_pinned_checklist_digest_constant_is_enforced(self) -> None:
         w = self.world()
         with patch.object(export, "CHECKLIST_SHA256", "0" * 64):
-            with self.assertRaisesRegex(export.ExportError, "checklist differs from the pinned digest"):
+            with expect_refusal(self, "checklist differs from the pinned digest"):
                 w.run()
 
     def test_transcript_lacking_only_one_of_session_or_digest_is_refused(self) -> None:
@@ -720,7 +734,7 @@ class DecisionRouteTests(unittest.TestCase):
                 write(w.repo, DEC + name, export.canonical(decision_obj(DOCS[0], w.sha[DOCS[0]], "withdrawn", "b2")) + "\n")
                 w.main = commit(w.repo, f"stray file {name} (#90)")
                 w.merged[w.main] = 90
-                with self.assertRaisesRegex(export.ExportError, "outside the allowed layout"):
+                with expect_refusal(self, "outside the allowed layout"):
                     w.run()
 
     def test_upstream_field_is_parsed_and_its_commit_must_exist(self) -> None:
@@ -741,7 +755,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertEqual(manifest["row_count"], 2)
         for knob in ("external_decl_absent", "external_decl_missing", "external_decl_empty"):
             with self.subTest(knob=knob):
-                with self.assertRaisesRegex(export.ExportError, "external license declarations|other upstream repositories"):
+                with expect_refusal(self, "external license declarations|other upstream repositories"):
                     self.world(docs=DOCS[:2], upstreams={DOCS[1]: ext}, **{knob: True}).run()
 
     def test_rights_holder_must_be_a_named_person_and_basis_must_quote_the_reuse_holder(self) -> None:
@@ -756,14 +770,14 @@ class DecisionRouteTests(unittest.TestCase):
         (w.repo / DEC / "b7.jsonl").rename(w.repo / DEC / "b8.jsonl")
         w.main = commit(w.repo, "rename an empty batch file (#91)")
         w.merged[w.main] = 91
-        with self.assertRaisesRegex(export.ExportError, "write-once"):
+        with expect_refusal(self, "write-once"):
             w.run()
         with patch.object(export, "check_write_once", lambda m: None):
             self.assertEqual(w.run()[0]["row_count"], 1)
 
     def test_source_first_parent_fires_alone_for_a_side_branch_commit_that_is_an_ancestor_of_the_base(self) -> None:
         w = self.world(source_side_merged=True)
-        with self.assertRaisesRegex(export.ExportError, "first-parent commit of main"):
+        with expect_refusal(self, "first-parent commit of main"):
             w.run()
         with patch.object(export, "first_parent_order", lambda m: {**{r: i for i, r in enumerate(git(w.repo, "rev-list", "--first-parent", "--reverse", m).split())}, w.X: 10 ** 6}):
             self.assertEqual(w.run()[0]["row_count"], 1)
@@ -772,7 +786,7 @@ class DecisionRouteTests(unittest.TestCase):
     def test_real_gitleaks_scan_quarantines_a_secret_shape_that_the_builtin_pattern_misses(self) -> None:
         token = "xoxb-" + "123456789012-1234567890123-" + "AbCdEfGhIjKlMnOpQrStUvWx"
         self.assertIsNone(export.SECRET_SHAPE.search(token.encode()))
-        with self.assertRaisesRegex(export.ExportError, "quarantined"):
+        with expect_refusal(self, "quarantined"):
             export.secret_scan(("token = " + token + "\n").encode())
         export.secret_scan(b"plain public text about a bounded statement\n")
 
@@ -783,7 +797,7 @@ class DecisionRouteTests(unittest.TestCase):
         dirty = commit(w.repo, "row plus a junk table line (#31)")
         w.merged[dirty] = 31
         clean = w.add_rows([row])
-        with self.assertRaisesRegex(export.ExportError, "does not parse"):
+        with expect_refusal(self, "does not parse"):
             w.run(clean)
         # without that guard the clean change would be taken for the row's change and the export would go through
         with patch.object(export, "_parses", lambda text: True):
@@ -796,10 +810,10 @@ class DecisionRouteTests(unittest.TestCase):
         write(w.repo, "corpus/README.md", table([row]) + "| junk |\n")
         commit(w.repo, "direct push: row, smuggled file, junk line")
         clean = w.add_rows([row])
-        with self.assertRaisesRegex(export.ExportError, "does not parse"):
+        with expect_refusal(self, "does not parse"):
             w.run(clean)
         with patch.object(export, "_parses", lambda text: True):
-            with self.assertRaisesRegex(export.ExportError, "not a merged pull request commit"):
+            with expect_refusal(self, "not a merged pull request commit"):
                 w.run(clean)
 
     def test_upstream_repository_names_are_compared_case_insensitively_and_aliases_are_refused(self) -> None:
@@ -828,13 +842,13 @@ class DecisionRouteTests(unittest.TestCase):
                 if expect_ok:
                     self.assertEqual(w.run(r)[0]["row_count"], 1)
                 else:
-                    with self.assertRaisesRegex(export.ExportError, "later decision changes the effective status|does not point at the last matching line"):
+                    with expect_refusal(self, "later decision changes the effective status|does not point at the last matching line"):
                         w.run(r)
 
     def test_checklist_is_pinned_by_digest(self) -> None:
         w = self.world()
         with patch.object(export, "CHECKLIST_TEXT", export.CHECKLIST_TEXT + "weaker item\n"):
-            with self.assertRaisesRegex(export.ExportError, "checklist differs from the pinned digest"):
+            with expect_refusal(self, "checklist differs from the pinned digest"):
                 w.run()
 
     # ---- hardening follow-up (DEC-AUP-0171 amendment 1 item 6): checks that no earlier test isolated ----
@@ -860,11 +874,11 @@ class DecisionRouteTests(unittest.TestCase):
         for field, value in (("path", "articles/x.txt"), ("path", "../articles/x.md"), ("sha256", "abc"), ("sha256", "Z" * 64),
                              ("receipt", "corpus/x.json"), ("receipt", RECEIPT + "b9.JSON")):
             with self.subTest(field=field, value=value):
-                with self.assertRaisesRegex(export.ExportError, "decision line malformed$"):
+                with expect_refusal(self, "decision line malformed$"):
                     self._craft_decision_line(**{field: value})
         for field, value in (("status", "maybe"), ("license", "MIT"), ("license", "cc-by-4.0")):
             with self.subTest(field=field, value=value):
-                with self.assertRaisesRegex(export.ExportError, "decision line malformed$"):
+                with expect_refusal(self, "decision line malformed$"):
                     self._craft_decision_line(**{field: value})
 
     def test_a_symlink_in_the_decision_tree_is_refused_as_not_a_regular_blob(self) -> None:
@@ -872,7 +886,7 @@ class DecisionRouteTests(unittest.TestCase):
         os.symlink("b1.jsonl", w.repo / DEC / "b9.jsonl")
         main = commit(w.repo, "symlinked batch file (#78)")
         with patch.object(export, "REPO", w.repo):
-            with self.assertRaisesRegex(export.ExportError, "not a regular blob"):
+            with expect_refusal(self, "not a regular blob"):
                 export.load_decisions(main)
 
     def test_receipt_and_reviewer_key_sets_and_value_formats_are_strict(self) -> None:
@@ -884,19 +898,19 @@ class DecisionRouteTests(unittest.TestCase):
         row = {"source_commit": "a" * 40, "path": DOCS[0], "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                "decision": f"{DEC}b1.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
         export.validate_row(row)
-        with self.assertRaisesRegex(export.ExportError, "must reference a decision file line digest"):
+        with expect_refusal(self, "must reference a decision file line digest"):
             export.validate_row({**row, "decision": "https://example.invalid/review"})
-        with self.assertRaisesRegex(export.ExportError, "must not have a later status decision"):
+        with expect_refusal(self, "must not have a later status decision"):
             export.validate_row({**row, "status_decision": f"{DEC}b2.jsonl@{'c' * 40}#{'e' * 64}"})
         for bad in ("none", "", "https://example.invalid/x", f"{DEC}b2.jsonl@{'c' * 40}#short"):
             with self.subTest(status_decision=bad):
-                with self.assertRaisesRegex(export.ExportError, "needs a precise later status decision"):
+                with expect_refusal(self, "needs a precise later status decision"):
                     export.validate_row({**row, "status": "withdrawn", "status_decision": bad})
 
     def test_the_same_source_commit_and_path_twice_is_refused_before_anything_else(self) -> None:
         row = {"source_commit": "a" * 40, "path": DOCS[0], "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                "decision": f"{DEC}b1.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
-        with self.assertRaisesRegex(export.ExportError, "duplicate source commit/path row"):
+        with expect_refusal(self, "duplicate source commit/path row"):
             export.build("b" * 40, [row, dict(row)])
 
     def test_content_edited_between_the_source_commit_and_the_base_does_not_export_under_the_old_source(self) -> None:
@@ -910,7 +924,7 @@ class DecisionRouteTests(unittest.TestCase):
         w = self.world()
         write(w.repo, f"{RECEIPT}b1/reviewer-9.md", "stray note that mentions /home/someone/file\n")
         self._add_merged_commit(w, "unreferenced receipts file", 92)
-        with self.assertRaisesRegex(export.ExportError, "host path, host name or address"):
+        with expect_refusal(self, "host path, host name or address"):
             w.run()
 
     def test_decision_files_are_scanned_for_host_strings(self) -> None:
@@ -922,7 +936,7 @@ class DecisionRouteTests(unittest.TestCase):
         for field, value in (("third_party", "seen at 10.1.2.3 on the build host"), ("limits", "see /home/someone/notes"),
                              ("attribution", "FD12:3456::1 is private")):
             with self.subTest(field=field):
-                with self.assertRaisesRegex(export.ExportError, "host path, host name or address"):
+                with expect_refusal(self, "host path, host name or address"):
                     self._craft_decision_line(**{field: value})
 
     def test_rights_basis_must_say_that_contributor_parts_rest_on_dco_sign_offs(self) -> None:
@@ -937,7 +951,7 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertEqual(manifest["row_count"], 1)
 
     def test_a_decision_file_with_a_host_string_is_named_as_a_decision_file(self) -> None:
-        with self.assertRaisesRegex(export.ExportError, "^decision file carries a host path, host name or address"):
+        with expect_refusal(self, "^decision file carries a host path, host name or address"):
             self._craft_decision_line(third_party="seen at 10.1.2.3 on the build host")
 
     def test_notice_author_line_shapes_are_pinned(self) -> None:
@@ -978,13 +992,13 @@ class DecisionRouteTests(unittest.TestCase):
         path = f"{RECEIPT}b1.json"
         with patch.object(export, "REPO", w.repo):
             self.assertTrue(export.retained_record(w.main, b["I"], b["D1"], b["D2"], path))
-            with self.assertRaisesRegex(export.ExportError, "not introduced in the receipt commit range"):
+            with expect_refusal(self, "not introduced in the receipt commit range"):
                 export.retained_record(w.main, b["I"], b["D1"], b["D2"], DEC + "b1.jsonl")
-            with self.assertRaisesRegex(export.ExportError, "already existed at the reviewed head"):
+            with expect_refusal(self, "already existed at the reviewed head"):
                 self._existed(w, b, path)
             (w.repo / path).write_text("{}")
             changed = commit(w.repo, "receipt altered later")
-            with self.assertRaisesRegex(export.ExportError, "changed after its decision change"):
+            with expect_refusal(self, "changed after its decision change"):
                 export.retained_record(changed, b["I"], b["D1"], b["D2"], path)
 
     def _existed(self, w: World, b: dict, path: str) -> None:
@@ -1031,7 +1045,7 @@ class ExportBoundaryTests(unittest.TestCase):
                     export.parse_allowlist(base + body)
 
     def test_secret_shaped_candidate_is_quarantined(self) -> None:
-        with self.assertRaisesRegex(export.ExportError, "secret-shaped"):
+        with expect_refusal(self, "secret-shaped"):
             export.secret_scan(b"-----BEGIN PRIVATE KEY-----\nsynthetic\n")
 
     def test_unmerged_source_commit_refuses(self) -> None:
@@ -1039,7 +1053,7 @@ class ExportBoundaryTests(unittest.TestCase):
             returncode = 1
 
         with patch.object(export, "command", return_value=Result()):
-            with self.assertRaisesRegex(export.ExportError, "not merged"):
+            with expect_refusal(self, "not merged"):
                 export.git_blob("a" * 40, "papers/example.md", "b" * 40)
 
     def test_bundle_is_not_published_before_manifest(self) -> None:
@@ -1059,12 +1073,12 @@ class ExportBoundaryTests(unittest.TestCase):
 
     def test_superseded_revision_requires_linked_new_row(self) -> None:
         old = {**self.row, "status": "superseded", "status_decision": "corpus/publication-decisions/b2.jsonl@" + "c" * 40 + "#" + "e" * 64}
-        with self.assertRaisesRegex(export.ExportError, "no linked replacement"):
+        with expect_refusal(self, "no linked replacement"):
             export.build("b" * 40, [old])
 
     def test_two_current_revisions_of_same_path_refuse(self) -> None:
         second = {**self.row, "source_commit": "b" * 40}
-        with self.assertRaisesRegex(export.ExportError, "multiple current"):
+        with expect_refusal(self, "multiple current"):
             export.build("b" * 40, [self.row, second])
 
 
