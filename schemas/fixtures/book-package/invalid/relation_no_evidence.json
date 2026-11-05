@@ -10,11 +10,11 @@
  },
  "kc2_admission": "not_measured",
  "origin": "generated_meaning",
- "package_id": "synthetic-rle-primer.r1",
+ "package_id": "synthetic-rle-primer",
  "presented_as_author": false,
  "relation_id": "rel.def",
  "relation_type": "defines",
- "schema": "KCBookRelation/v1",
+ "schema": "KCBookRelation/v2",
  "status": "reviewed",
  "to": "obj.rle.meaning"
 }

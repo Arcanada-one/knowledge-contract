@@ -1,0 +1,215 @@
+{
+  "schema": "independent-science-supplement/1",
+  "created_at": "2026-11-04T20:07:57.695209+00:00",
+  "reviewer": "independent_corrections_review subagent",
+  "repository": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+  "branch": "edition-review-corrections",
+  "head_at_supplement": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "edition": "1.1",
+  "verdict": "NO_BLOCKING_FINDING_IN_COMPLETED_TWO_PAPER_SUPPLEMENT",
+  "blocking_findings": [],
+  "findings": [],
+  "full_paper_reading_boundary_after_supplement": 8,
+  "propositions_reviewed": 7,
+  "all_current_source_bytes_read_without_truncation": true,
+  "sources": [
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/retrieval-and-context-composition/PAPER.md",
+      "relative_path": "papers/retrieval-and-context-composition/PAPER.md",
+      "sha256": "6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773",
+      "body_sha256": "4225c405071dc6d683ba1f7be4d526e3a4b897bee287029b259e39f73dd116ac",
+      "body_hash_definition": "All bytes after the first literal ## Abstract delimiter, excluding that delimiter.",
+      "bytes": 14439,
+      "lines": 127,
+      "review_status": "complete independent reading; all bytes covered by untruncated chunks",
+      "chunk_reconstruction_matches_current_bytes": true,
+      "matches_first_report_final_file_sha256": true,
+      "matches_first_report_body_sha256": true,
+      "proposition_locations": [
+        {
+          "line": 68,
+          "heading": "### Proposition 1. Complete finite selection gives a scoped optimum"
+        },
+        {
+          "line": 76,
+          "heading": "### Proposition 2. A restricted composition problem contains set cover"
+        },
+        {
+          "line": 82,
+          "heading": "### Proposition 3. The cardinality-greedy bound requires submodularity"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/revision-and-governance/PAPER.md",
+      "relative_path": "papers/revision-and-governance/PAPER.md",
+      "sha256": "e221151a7c6778ef4c6843074a881efead94bad2f0b95e21c697f122c67f58dc",
+      "body_sha256": "0bdda439ba1f01fa9feb7039aea98d3be86656bb066a7472669f54fe32f6988c",
+      "body_hash_definition": "All bytes after the first literal ## Abstract delimiter, excluding that delimiter.",
+      "bytes": 15169,
+      "lines": 130,
+      "review_status": "complete independent reading; all bytes covered by untruncated chunks",
+      "chunk_reconstruction_matches_current_bytes": true,
+      "matches_first_report_final_file_sha256": true,
+      "matches_first_report_body_sha256": true,
+      "proposition_locations": [
+        {
+          "line": 58,
+          "heading": "### Proposition 1. Pinned references preserve historical selection"
+        },
+        {
+          "line": 66,
+          "heading": "### Proposition 2. Checks transfer through preserved complete inputs"
+        },
+        {
+          "line": 74,
+          "heading": "### Proposition 3. Complete dependencies identify candidates for reassessment"
+        },
+        {
+          "line": 82,
+          "heading": "### Proposition 4. Adoption is not a truth-preserving inference rule"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "id": "R1",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "proposition": 1,
+      "conclusion": "valid_as_stated",
+      "rationale": "The finite decision space is explicitly declared; correct feasibility/objective evaluation and completed exhaustive enumeration exclude an omitted better feasible candidate. Exhaustion with no feasible candidate establishes infeasibility only in that space. The text correctly withholds completeness over all possible summaries, semantic-evaluator correctness, and optimality after early stopping."
+    },
+    {
+      "id": "R2",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "proposition": 2,
+      "conclusion": "valid_as_stated",
+      "rationale": "The reduction maps each universe element to a requirement and each set to a unit-cost independent package supporting exactly its elements. Selecting at most k packages covers every requirement if and only if the original set-cover instance has a cover of size at most k. The mapping has polynomial representation size. This validates the reduction, not empirical hardness of every query or an approximation guarantee for a separate heuristic."
+    },
+    {
+      "id": "R3",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "proposition": 3,
+      "conclusion": "valid_as_stated",
+      "rationale": "For an optimum O of size at most k, monotonicity gives OPT <= f(A_i union O). Submodularity upper-bounds the residual union gain by at most k current single-element gains, so greedy gains at least (OPT-f(A_i))/k. Starting with f(empty)=0 gives gap <= (1-1/k)^k OPT and the stated 1-1/e bound. This requires the declared normalized monotone submodular function and cardinality-only constraint. If the finite ground set is exhausted before k selections, all elements have been selected and monotonicity already makes the solution optimal."
+    },
+    {
+      "id": "G1",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "proposition": 1,
+      "conclusion": "valid_as_stated",
+      "rationale": "Exact resolution selects an immutable named revision independently of the current pointer. Changing that pointer therefore cannot change selected content. Retrieval may fail, and the text does not infer perpetual availability, current applicability, disclosure permission, or storage integrity from a label."
+    },
+    {
+      "id": "G2",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "proposition": 2,
+      "conclusion": "valid_as_stated",
+      "rationale": "A fixed deterministic function returns equal outputs on equal complete input tuples. Completeness must include relevant policy, authorization, source interpretation and evaluation context; changing the evaluator invalidates the same-function assumption. The result is conditional equality, not an independent method for discovering complete inputs."
+    },
+    {
+      "id": "G3",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "proposition": 3,
+      "conclusion": "valid_as_stated",
+      "rationale": "With all relevant dependencies represented and paths directed from assessment toward dependencies, every potentially affected assessment has a path to the changed dependency. Reversing edges makes it reachable from that change; complete finite traversal finds it. Alternative sufficient grounds can leave validity intact, so candidates are not automatically failures. Missing edges violate the completeness premise."
+    },
+    {
+      "id": "G4",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "proposition": 4,
+      "conclusion": "valid_as_stated",
+      "rationale": "A model satisfying A and not F is a countermodel to entailment A entails F. A model satisfying A and F also rules out entailment of not F and establishes that the factual content remains undecided by A. The two satisfiability premises prevent an overbroad claim about logical validities or facts already entailed by the adoption record. The first satisfiability premise is stronger than needed for non-entailment of F alone, but supports the stated undecided-content conclusion."
+    }
+  ],
+  "specific_checks": [
+    {
+      "topic": "Changed downward-closure counterexample",
+      "location": "papers/retrieval-and-context-composition/PAPER.md §5",
+      "conclusion": "valid",
+      "rationale": "With no dependencies, closure is identity. The only supporting group for a mandatory requirement is {a}. A={a} fits the budget and covers the requirement, while its subset empty does not. Thus feasible root selections are not necessarily downward-closed under the same support definition used in §3. The separate explanation correctly distinguishes removing a root from removing an object from the delivered closure."
+    },
+    {
+      "topic": "Joint-grounds counterexample",
+      "location": "papers/retrieval-and-context-composition/PAPER.md §5",
+      "conclusion": "valid",
+      "rationale": "For f(empty)=f({a})=f({b})=0 and f({a,b})=1, adding b to empty gains zero but adding it to {a} gains one, violating diminishing returns. This justifies withholding the submodular-greedy guarantee for arbitrary joint grounds."
+    },
+    {
+      "topic": "Engineering evidence scope",
+      "location": "papers/retrieval-and-context-composition/PAPER.md §§3,7; papers/revision-and-governance/PAPER.md §8",
+      "conclusion": "appropriately_bounded_in_paper_text",
+      "rationale": "Retrieval describes fixed-graph closure checks, historical layout and preliminary delivery checks, a distinct claim-minimality counterexample, and structural conformance. It explicitly says root-subset enumeration is not a budgeted optimizer and that alternative-group/resource-selection counterexamples have no executable selection study. Governance describes linked evidence only as pinned-revision/bounded-update behavior and current eligibility checks. Neither paper promotes these descriptions into universal correctness, complete dependency discovery, authenticated authority, or empirical superiority. Linked study bodies and execution were not revalidated in this supplement."
+    }
+  ],
+  "limits": [
+    "Only these two paper sources were read in this supplement; the six previously completed reviews were not reopened.",
+    "No literature lookup, bibliographic verification, linked-study re-execution, implementation review, or new executable test was performed.",
+    "All seven arguments were assessed by independent mathematical reasoning; no proof assistant or unbounded model checker was used.",
+    "The combined first report and this supplement now cover full reading of all eight papers, but they still do not certify item-by-item closure of the original 26 findings or production implementation conformance.",
+    "Engineering evidence conclusions concern the scope claimed by these paper links; they do not independently authenticate or reproduce the linked studies."
+  ],
+  "first_reports_preserved": {
+    "sha256_before": {
+      "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review.json": "a997a22b62be3fe4cf557e4cba729de5920ad746977f8943a495b88cfc745781",
+      "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review.md": "fd7af09a7ecba63dd6b7e72ee9c15f1e9c9b770228ae756b637af4a0a9cbf827"
+    },
+    "unchanged_after": true
+  },
+  "commands_and_results": [
+    {
+      "command": "sed -n '1,42p' papers/retrieval-and-context-composition/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "ca078c",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "sed -n '1,42p' papers/revision-and-governance/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "7fb85c",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "sed -n '43,84p' papers/retrieval-and-context-composition/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "c5d8f2",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "sed -n '43,86p' papers/revision-and-governance/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "efbada",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "sed -n '85,140p' papers/retrieval-and-context-composition/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "9f885b",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "sed -n '87,140p' papers/revision-and-governance/PAPER.md",
+      "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "exit_code": 0,
+      "chunk_id": "e8e804",
+      "truncation": "none; concatenated chunks reproduce exact source bytes"
+    },
+    {
+      "command": "python3 edition-review-input/independent-science-review-evidence/write_supplement.py",
+      "result": "source chunk reconstruction, SHA256 comparison, first-report preservation and JSON round-trip assertions passed"
+    }
+  ],
+  "read_evidence": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/supplement-read-results.json"
+}

@@ -1,0 +1,150 @@
+{
+  "schema": "knowledge-contract.edition-review-inputs/1",
+  "base_commit": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "provided_review_files": [
+    {
+      "name": "00_SUMMARY.md",
+      "size": 12006,
+      "sha256": "37299f58e86d5e03b19b84c0f68fb43fdfd65266c952d1b0dd38b54e31814eca"
+    },
+    {
+      "name": "README.md",
+      "size": 2717,
+      "sha256": "768a14b369f541ae1cc0a124e83d30473b00ed853578d9bb153c7ef06f96697d"
+    },
+    {
+      "name": "03_studies_and_reference_review.md",
+      "size": 35746,
+      "sha256": "9ddf228cf9e64bb7ef4d7c424c4903cea8265582f86e69d7a7e0d888f6c4ee90"
+    },
+    {
+      "name": "02_specifications_review.md",
+      "size": 30446,
+      "sha256": "359c7ce3bceddc5d990c8b65ca4bfb2d33164c15922fdaf13ea3e7bf270dc4c6"
+    },
+    {
+      "name": "01_papers_review.md",
+      "size": 26419,
+      "sha256": "ca01d54efd1e0e5393357be8de4901fd4b2af64aca817a12c083286e9d7565b0"
+    }
+  ],
+  "current_documents": [
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "sha256": "c3a3473e57ea472aef01613781e412f14d11321e4f05d05e6adf9f4535f697f8"
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "sha256": "b9ec18c1ee93c869bd31a0e097014338605ba2937979db827bf8cde5f63d4050"
+    },
+    {
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "sha256": "6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773"
+    },
+    {
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "sha256": "8dacee80ed050c3013c7de092da2c17fbfaafd5fb3b45939dc8fdae3611df656"
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "sha256": "95acb937c5aa68572eb60ec723d17c628bcd28a778490c09ef6b434ef0f63494"
+    },
+    {
+      "path": "papers/revision-and-governance/PAPER.md",
+      "sha256": "e221151a7c6778ef4c6843074a881efead94bad2f0b95e21c697f122c67f58dc"
+    },
+    {
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "sha256": "87908092cf64bb2cdb0fa81e1295ad6788f45f9e3b9fe25946cdbb77d7564e0c"
+    },
+    {
+      "path": "papers/knowledge-utility/PAPER.md",
+      "sha256": "e807eacfe0c69620457232e00a1f09edb1e9753493e5f5478f8bdfa7e05c73e1"
+    },
+    {
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "sha256": "81cb01a8326eaeb0c14e929609c52cc85e5a344c61f3744d2e0def228cdc60d5"
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "sha256": "310cd3f151275739a2391d2c8d8b7c23ad64b46f4c1a56717f7f0975866f60c8"
+    },
+    {
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "sha256": "4428c3cdacfe5e8bcf00b8d9100a79f5ce9691edecd914063698bfb3f97e8f6f"
+    },
+    {
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "sha256": "5bba82777b44dc0cf6b1b0c218292c1476c0271806acef195db6c3b8a9448e41"
+    },
+    {
+      "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "sha256": "2cc5e781565136b5ad9fdbb2facae47d58564b1e300173d0a91a2c6cf16d5a82"
+    },
+    {
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "sha256": "ec6584f97c5160fd3c8b17a5036aaeb8d302bf86dd61e567f2c5d858e9159470"
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "sha256": "2f66342472fc4198eba573d7d1eda5d58d5bae9de904f901f5094037dd628d0a"
+    },
+    {
+      "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "sha256": "742982eabd0d797ccc5bba4c8472d25a4236c84baed21281f13a7601a4ce2f39"
+    },
+    {
+      "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "sha256": "be75f0191414c07a113dafb0c983cd1d1e73834be0b670e0d610b4354f37ecd2"
+    },
+    {
+      "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "sha256": "4662bdd76c5716cb7d9b55c1b99e00dda626b34c3565e2f03ceecb61fe15685a"
+    },
+    {
+      "path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "sha256": "1ce2ce4fa9e0e2647b3472f1da0a250fa3abae00c78b7518d3497f106c09722c"
+    },
+    {
+      "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "sha256": "788c09269946b294420024f28656ef616e2df056e4d8246bfdf67c69ca4434a9"
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "sha256": "0012f1506d1c9e95b29e7f8916952d2278e791bc2a7f7153e8c3c5980928f66a"
+    },
+    {
+      "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "sha256": "6119790ada666b76782c0952e12e47799c51893a85f71a7e36f72d9ac44f3fe0"
+    },
+    {
+      "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "sha256": "6242027572df695e1907e77d55588ea3b3a64741407b6922b87f0612de956ed8"
+    },
+    {
+      "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "sha256": "fa5494d6609d15a61ce071eb39c3a87fa0b982c61f756f3308276c127ae8484a"
+    },
+    {
+      "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "sha256": "59066d54a219c13214a113037b0f3257378d77c83105b755bc80251db51ae0d5"
+    },
+    {
+      "path": "reference/glossary/GLOSSARY.md",
+      "sha256": "5147262a4739b194cd1712d04f3b205ad701c77f7c214ba7cfb68094d12ddabb"
+    },
+    {
+      "path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "sha256": "bbfc162fcb52b74abefad92d0cda0f72cacc77ff1a697dfc685d5380b8cf457d"
+    },
+    {
+      "path": "appendices/source-map/APPENDIX.md",
+      "sha256": "eca6631650eb303aa5451eb3f173ce82cd06d73c2184ed460abe65188c61f25c"
+    },
+    {
+      "path": "appendices/api-integration/APPENDIX.md",
+      "sha256": "2e1c800cf2bb1c61696e34d516b23db1f3f65fa7c58f983bf3124c17854cefe3"
+    }
+  ],
+  "scope": "Review-file hashes pin the supplied downloads; no comparison to unobserved private local copies is asserted. Document hashes bind the current correction text."
+}

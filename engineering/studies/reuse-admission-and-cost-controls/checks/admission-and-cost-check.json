@@ -1,0 +1,208 @@
+{
+  "schema": "knowledge-contract.synthetic-reuse-analysis/2",
+  "required_gates": [
+    "integrity",
+    "result_class",
+    "task_requirements",
+    "dependency_equivalence",
+    "current_access",
+    "temporal_policy",
+    "permitted_transformations",
+    "modality_delivery",
+    "budget"
+  ],
+  "mutation_count": 27,
+  "gate_mutations": [
+    {
+      "gate": "integrity",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "integrity",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "integrity",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "result_class",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "result_class",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "result_class",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "task_requirements",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "task_requirements",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "task_requirements",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "dependency_equivalence",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "dependency_equivalence",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "dependency_equivalence",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "current_access",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "current_access",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "current_access",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "temporal_policy",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "temporal_policy",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "temporal_policy",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "permitted_transformations",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "permitted_transformations",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "permitted_transformations",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "modality_delivery",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "modality_delivery",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "modality_delivery",
+      "mutation": "unknown",
+      "rejected": true
+    },
+    {
+      "gate": "budget",
+      "mutation": "missing",
+      "rejected": true
+    },
+    {
+      "gate": "budget",
+      "mutation": "fail",
+      "rejected": true
+    },
+    {
+      "gate": "budget",
+      "mutation": "unknown",
+      "rejected": true
+    }
+  ],
+  "malformed_cases": [
+    "empty",
+    "one_gate_only",
+    "unknown_extra_gate",
+    "unjustified_not_applicable",
+    "boolean_is_not_pass",
+    "not_an_object"
+  ],
+  "worked_cost_examples": [
+    {
+      "name": "high_hit_rate_loses",
+      "cold_cost": "1000",
+      "reuse_cost": "1090",
+      "saving": "-90",
+      "margin_before_overhead": "-9/10",
+      "identity_holds": true
+    },
+    {
+      "name": "positive_margin_with_fixed_cost",
+      "cold_cost": "1000",
+      "reuse_cost": "390",
+      "saving": "610",
+      "margin_before_overhead": "71/10",
+      "identity_holds": true
+    },
+    {
+      "name": "zero_margin_leaves_fixed_loss",
+      "cold_cost": "1000",
+      "reuse_cost": "1100",
+      "saving": "-100",
+      "margin_before_overhead": "0",
+      "identity_holds": true
+    },
+    {
+      "name": "storage_grows_per_request",
+      "cold_cost": "1000",
+      "reuse_cost": "1190",
+      "saving": "-190",
+      "margin_before_overhead": "71/10",
+      "identity_holds": true
+    }
+  ],
+  "first_profitable_expected_n_fixed_overhead": 15,
+  "checks": {
+    "positive_control_admitted": true,
+    "all_27_required_gate_mutations_rejected": true,
+    "all_malformed_inputs_rejected": true,
+    "arithmetic_examples_agree_with_identity": true,
+    "strict_fixed_overhead_threshold": true,
+    "growing_storage_reverses_savings": true,
+    "omitted_dependency_changes_meaning": true,
+    "new_domain_member_changes_absence": true,
+    "adding_two_savings_against_one_baseline_double_counts": true
+  },
+  "passed": true,
+  "scope": "New finite synthetic gate checks and exact arithmetic examples. All nine named gates are required and applicable here; not_applicable has no witness in this profile and is rejected. No authenticated authority, real cost measurement, general semantic proof or historical rerun is claimed."
+}

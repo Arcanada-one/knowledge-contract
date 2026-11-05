@@ -2,7 +2,7 @@
 name: "interaction-and-memory"
 title: "Interaction, Documents, and Memory with Explicit Revision Boundaries"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,11 +11,11 @@ description: "Versioned requirements, dialogue branches, memory and evidence of 
 
 # Interaction, Documents, and Memory with Explicit Revision Boundaries
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
-An assistant's conversation, work state, documents, and durable memory evolve at different rates and under different rules. Treating them as one expanding transcript makes corrections, delayed results, and changes of purpose difficult to interpret. This paper defines a state model that separates messages from communicative acts, Work Items from execution attempts, and current task context from admitted memory. Documents are versioned outputs whose correctness must be checked after rendering or revision. We establish conditional properties for generation boundaries, idempotent event handling, dependency-triggered reassessment, and narrow update scope. Counterexamples identify where correct state handling still permits semantic error. The model also distinguishes observed task success from learning and user acceptance from evidence. Its contribution is a coherent set of transition obligations for dialogue and memory, with falsifiable implementation consequences. It does not establish that any current interpreter reliably recognizes every intention, referent, or learning outcome.
+An assistant's conversation, work state, documents, and durable memory evolve at different rates and under different rules. Treating them as one expanding transcript makes corrections, delayed results, and changes of purpose difficult to interpret. This paper defines a state model that separates messages from communicative acts, Work Items from execution attempts, and current task context from admitted memory. Documents are versioned outputs whose correctness must be checked after rendering or revision. We establish conditional properties for generation boundaries, idempotent event handling, and narrow update scope, and apply the corpus's general dependency-directed reassessment result. Counterexamples identify where correct state handling still permits semantic error. The model also distinguishes observed task success from learning and user acceptance from evidence. Its contribution is a coherent set of transition obligations for dialogue and memory, with falsifiable implementation consequences. It does not establish that any current interpreter reliably recognizes every intention, referent, or learning outcome.
 
 **Keywords:** dialogue; Work Item; document revision; memory; requirements; learning assessment.
 
@@ -41,7 +41,7 @@ Let the active work state be
 W=(i,g,R,C,O,A),
 \]
 
-where \(i\) is identity, \(g\) is a requirement generation, \(R\) requirements, \(C\) constraints, \(O\) output expectations, and \(A\) acceptance conditions. A material change creates a new generation. This does not require abandoning all previous work: an earlier output can be re-evaluated for the new generation, with its original provenance preserved.
+where \(i\) is identity, \(g\) is a requirement generation, \(R\) requirements, \(C\) constraints, \(O\) output expectations, and \(A\) acceptance conditions. A material change creates a new generation whose identifier is never reissued within that Work Item, including after rollback or restoration of earlier requirements. A strictly increasing counter is one implementation. A requirements-content hash alone does not distinguish a later return to earlier content. This discipline does not require abandoning all previous work: an earlier output can be re-evaluated for the new generation, with its original provenance preserved.
 
 Understanding, agreement, evidence, and authority remain separate. A user can understand an answer and reject its conclusion. An authorized owner can accept a document despite an acknowledged evidential limitation. Neither act changes the truth of its factual propositions by definition.
 
@@ -69,29 +69,25 @@ Document summaries become a separate memory object when reused. A summary may om
 
 ### Proposition 1. Generation admission prevents a specified stale update
 
-Suppose a result carries the Work Item identity and generation for which it was produced. Suppose the state transition accepts it as current only when those identifiers match the active state, or after a separate successful re-evaluation against the active requirements. Then a result from an earlier generation cannot be accepted as current solely through its original completion event.
+Suppose a result carries the Work Item identity and generation for which it was produced, and generation identifiers are unique and never reissued within that Work Item. Suppose the acceptance transition checks those identifiers against the active state at the same serialization point at which it makes the result current. Direct acceptance requires an exact match; otherwise a separate successful re-evaluation bound to the active generation is required. Then a result from an earlier generation cannot be accepted as current solely through its original completion event.
 
-**Proof.** A mismatching event fails the direct-admission condition. The only remaining path requires a new evaluation, so original completion alone is insufficient. ∎
+**Proof.** Non-reuse of generation identifiers makes an earlier generation different from the active one, even if the requirements later return to earlier content. Its completion event therefore fails the direct-admission comparison at acceptance. The only remaining path requires a new evaluation, so original completion alone is insufficient. ∎
 
 This property depends on correct identifiers and enforcement at the transition boundary. It does not guarantee that the interpreter recognized a material requirement change or that the re-evaluation is semantically correct.
 
 ### Proposition 2. Recorded duplicate events need not duplicate effects
 
-Let an event handler record stable event identifiers and their payload fingerprints in the same atomic state change as the internal effect. Repeating an already committed event with the same payload returns the recorded result without applying the effect again. An identifier with a different payload is rejected as a conflict.
+Let an event handler serialize the check and creation of a stable event identifier so that at most one first commit for that identifier can succeed. The identifier, payload fingerprint, result or stable result reference, and internal effect commit in one atomic state change. A concurrent contender that loses the first-commit race performs no committed effect and reads the winning record. Subsequent handling of the same identifier and payload returns the stored result without applying the effect again; a different payload is rejected as a conflict.
 
-**Proof.** After the first commit, the event identifier is present. The duplicate branch performs no new effect. Atomicity excludes a committed effect without the corresponding recorded identifier. ∎
+**Proof.** Serialization permits at most one successful first commit. Atomicity binds that commit's effect to its identifier, fingerprint, and result, and prevents an aborted contender from retaining an internal effect. Every later successful lookup takes the duplicate or conflict branch, neither of which applies a new effect. The duplicate branch can return the result because that result or its stable reference was committed with the identifier. ∎
 
-This establishes idempotent handling within the stated state boundary. It does not establish exactly-once execution of an external action whose system is outside that atomic boundary.
+A unique identifier constraint can enforce the first-commit rule only when a conflicting transaction rolls back its whole internal effect and then reads the committed record. Independent atomic transactions without that uniqueness or serialization condition are insufficient: two first deliveries can both observe absence. The result establishes idempotent handling within the stated state boundary, not exactly-once execution of an external action whose system lies outside it. Fingerprint equality also presupposes the declared canonical payload comparison and collision assumptions.
 
-### Proposition 3. Complete dependency tracking exposes affected outputs
+### Dependency-directed reassessment
 
-For a fixed finite dependency graph, if every material dependency of an output is represented, reverse reachability from a changed record identifies every output whose declared basis depends on that record.
+The general reachability result is stated once in [Revision and governance, Proposition 3](../revision-and-governance/PAPER.md#proposition-3-complete-dependencies-identify-candidates-for-reassessment). Applied to memory and documents, it identifies output assessments that may need reconsideration after a represented dependency changes. The premise is a complete finite dependency graph; the conclusion is candidate identification, not a verdict that the affected output is now false. An omitted dependency defeats that premise even if traversal is correct.
 
-**Proof.** Each such dependency is a finite path from the output to the changed record. Reversing the path makes the output reachable from the changed record. Complete traversal therefore includes it. ∎
-
-Reachability marks a need for reassessment; it does not prove that the output has become false. An omitted dependency defeats the completeness premise, even if traversal is implemented perfectly.
-
-### Proposition 4. A narrow update preserves independent state components
+### Proposition 3. A narrow update preserves independent state components
 
 Let a transition write only a declared component set \(J\) of a product state and leave all other components unchanged. Then every observation depending solely on components outside \(J\) is preserved.
 
@@ -115,7 +111,7 @@ The model supports finite transition tests and independently annotated dialogue 
 
 This paper establishes only its conditional state properties. It reports no measured improvement in learning, long-term recall, or agent reliability. Structural validation cannot authenticate a speaker by itself, and a requirements map cannot prove that the final document satisfies its intended meaning. Those dependencies require their own evidence and must remain visible in a claim of end-to-end performance.
 
-The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) covers bounded revisions and transition controls. The [editorial skill pilot](../../engineering/studies/editorial-skill-pilot/STUDY.md) is the place for comparing produced documents with actual editorial requirements. The shared [glossary](../../reference/glossary/GLOSSARY.md), [revision and governance](../revision-and-governance/PAPER.md), and [evidence and falsification](../evidence-and-falsification/PAPER.md) supply related definitions and assessment boundaries.
+The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) evaluates reader boundaries, selection of records for addressed revision, and finite partial projections. It does not test Work Item generation admission or concurrent event idempotence; no engineering study in this corpus supplies implementation evidence for Propositions 1–2. The [editorial skill pilot](../../engineering/studies/editorial-skill-pilot/STUDY.md) compares two produced versions of one text under disclosed editorial requirements. The shared [glossary](../../reference/glossary/GLOSSARY.md), [revision and governance](../revision-and-governance/PAPER.md), and [evidence and falsification](../evidence-and-falsification/PAPER.md) supply related definitions and assessment boundaries.
 
 ## References
 

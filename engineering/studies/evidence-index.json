@@ -1,6 +1,6 @@
 {
   "schema": "knowledge-contract.claim-evidence-index/1",
-  "edition": "1.0",
+  "edition": "1.1",
   "review_state": "internally-reviewed",
   "interpretation": {
     "paths": "Relative to this file. JSON pointers use RFC6901; an empty pointer denotes the complete JSON document.",
@@ -8,7 +8,11 @@
     "source_identity": "Each study evidence/origin.json distinguishes exact original JSON, rendered prose views, metadata extractions and new public demonstration outputs.",
     "scientific_force": "A recorded pass concerns its stated finite predicate. Neither hash equality, an expected unresolved decision nor a strong-comparator tie establishes semantic truth or superiority.",
     "new_code": "New public reproduction programs are explicitly separated from retained historical experiments.",
-    "review": "This index does not itself confer independent review, production readiness or current authority."
+    "review": "This index does not itself confer independent review, production readiness or current authority.",
+    "counting": "Ordinary, boundary/stress, development and regression denominators remain separate. Nested criteria and algebraically related subsets are not independent samples.",
+    "review_corrections": "review-corrections.json identifies new programs without mutating the 47 retained evidence files or six origins.",
+    "language": "evidence-language-index.json records representation languages and English summary locations.",
+    "historical_recovery": "historical-recovery-gaps.json records exact missing identities, a recovered matching schema, and a rejected nonmatching implementation candidate."
   },
   "claim_count": 24,
   "studies": [
@@ -50,7 +54,7 @@
       "statement": "The retained finite implementation matched the expected ordinary outcomes in its author and separate-control suites.",
       "claim_kind": "recorded_observation",
       "model": "Interpreted JSON instances; conjunctive core and profile obligations; supplied context.",
-      "test_or_argument": "35 author scenarios and 26 separately composed ordinary control scenarios; stress cases excluded.",
+      "test_or_argument": "35 author development/regression scenarios (13 expected positive outcomes, 22 expected rejections) and 26 separately composed ordinary controls (6 expected positive outcomes, 17 expected rejections, 3 migration/preservation); stress cases excluded.",
       "evidence": [
         {
           "path": "contract-profile-conformance/evidence/author-conformance-report.json",
@@ -69,7 +73,8 @@
       "limits": [
         "Purposefully selected finite inputs, not a population error rate.",
         "Separate agent within the same session, not external replication.",
-        "Complete historical runners and fixture closure are not distributed here."
+        "Complete historical runners and fixture closure are not distributed here.",
+        "Author inputs informed development; separate controls are same-session authored scenarios, not a random held-out population. Four of six admission-positive controls are application operations, one execution and one compatibility."
       ],
       "scientific_context": [
         "../../papers/evidence-and-falsification/PAPER.md",
@@ -119,7 +124,7 @@
       "statement": "No correctness advantage was established over the strong direct checker on the nine shared cases.",
       "claim_kind": "recorded_comparison",
       "model": "Same essential bindings and supplied data; fixed fields versus extensible profile representation.",
-      "test_or_argument": "Post-first-run exploratory comparison; three allowed and six forbidden cases.",
+      "test_or_argument": "Post-first-run exploratory comparison on nine known inputs and known expected outcomes: three allowed and six forbidden.",
       "evidence": [
         {
           "path": "contract-profile-conformance/evidence/strong-plain-form-comparison.json",
@@ -134,12 +139,13 @@
           "json_pointer": "/scope"
         }
       ],
-      "counterexample_or_rival": "A strong simple checker reached the same decisions; the weaker 3/9 ablation is not this comparator.",
+      "counterexample_or_rival": "A direct checker made the same decisions. The ablation admitted all nine inputs, including six forbidden ones, and its separate empty-task calibration is outside this denominator.",
       "result": {
         "plain_form": "9/9",
         "stored_contract_run": "9/9"
       },
       "limits": [
+        "The comparator author knew these inputs and oracles; equality is an existence demonstration, not held-out generalization.",
         "Exploratory after results disclosure.",
         "Contract side uses retained first-run outputs.",
         "No latency, cost, maintainability or professional outcomes measured."
@@ -180,7 +186,7 @@
       "statement": "The extracted historical dependency graph satisfies the tested closure laws for all selectable skill subsets.",
       "claim_kind": "publicly_replayed_finite_observation",
       "model": "Required all-dependencies on a fixed 110-vertex graph with twelve skill roots.",
-      "test_or_argument": "DFS versus separate least fixed point, idempotence, singleton-union equation, and one-step inclusion monotonicity.",
+      "test_or_argument": "DFS versus a separately written same-workflow least fixed point; idempotence, singleton-union equation, and one-step inclusion monotonicity. New review checks count record closures and distinguish three declared traversal mutants.",
       "evidence": [
         {
           "path": "dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
@@ -193,24 +199,47 @@
         {
           "path": "dependency-closure-and-package-delivery/evidence/dependency-graph.json",
           "json_pointer": "/dependencies"
+        },
+        {
+          "path": "dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json",
+          "json_pointer": ""
         }
       ],
       "counterexample_or_rival": "Unknown roots and cycles are rejected; an omitted semantic dependency is not discoverable from this adjacency relation.",
       "result": {
         "skill_subsets": 4096,
         "inclusion_pairs": 24576,
-        "failures": 0
+        "failures": 0,
+        "single_skill_closure_records": [
+          45,
+          57,
+          45,
+          49,
+          53,
+          51,
+          51,
+          47,
+          49,
+          55,
+          53,
+          45
+        ],
+        "all_skill_roots_records": 102,
+        "pilot_roots_records": 108,
+        "declared_mutants_detected": 3
       },
       "limits": [
         "Only the fixed declared graph is exhaustive.",
         "The public replay does not rerun the complete historical 46-check package suite.",
-        "No semantic completeness or agent competence follows."
+        "No semantic completeness or agent competence follows.",
+        "4096 subsets and 24576 related inclusion pairs are finite exhaustive algebraic checks, not independent empirical observations.",
+        "The new 3-mutant result is bounded by its declared fault model. Record counts do not measure bytes, tokens, economic efficiency or semantic dependency completeness."
       ],
       "scientific_context": [
         "../../papers/retrieval-and-context-composition/PAPER.md",
         "../../papers/constrained-transformations/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py"
+      "public_reproduction": "python3 engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py; python3 engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py"
     },
     {
       "claim_id": "literal-preservation-is-not-meaning-preservation",
@@ -218,7 +247,7 @@
       "statement": "A protected literal can survive while the sentence changes meaning.",
       "claim_kind": "observed_counterexample",
       "model": "Literal-presence and structural validators operate on declared strings and shapes.",
-      "test_or_argument": "Historical selftest includes an opposite-meaning output with the original numeric literal and a false structurally valid rule.",
+      "test_or_argument": "The historical 46 rows comprise 44 ordinary checks (21 acceptance, 23 rejection) and two accepted misleading-input boundary cases.",
       "evidence": [
         {
           "path": "dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
@@ -232,7 +261,8 @@
       "counterexample_or_rival": "Negation changes the proposition while retaining the exact number; a false rule can satisfy the schema.",
       "result": "Both limited checks accepted their deliberately misleading inputs, exposing their boundaries.",
       "limits": [
-        "The expected acceptance is a boundary observation, not successful semantic validation."
+        "The expected acceptance is a boundary observation, not successful semantic validation.",
+        "The two accepted false/misleading inputs are excluded from the ordinary denominator, consistently with the contract-profile study."
       ],
       "scientific_context": [
         "../../papers/constrained-transformations/PAPER.md",
@@ -243,10 +273,10 @@
     {
       "claim_id": "readable-layout-preserves-artifact-content",
       "study": "dependency-closure-and-package-delivery/STUDY.md",
-      "statement": "The recorded readable-path migration preserved all 110 artifact payloads and source bytes.",
+      "statement": "The migration tool reported unchanged payloads and source bytes for all 110 artifacts; the published report does not itself contain two independently comparable byte inventories.",
       "claim_kind": "recorded_observation",
       "model": "Stable artifact and revision identities are distinct from filesystem paths.",
-      "test_or_argument": "Exact preservation comparisons and nine layout tests with negative controls.",
+      "test_or_argument": "One recorded hash and bytes_equal assertion per artifact, aggregate records_unchanged/source_bytes_unchanged, and nine layout checks with negative controls.",
       "evidence": [
         {
           "path": "dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
@@ -272,6 +302,7 @@
         "declared_constraints": 4
       },
       "limits": [
+        "Old and new bytes or separate old/new hashes are not both published; byte equality is the tool’s assertion, not a newly independent re-comparison.",
         "Inventory and path correctness do not establish source truth.",
         "No new model outcomes or native clients were evaluated by the migration."
       ],
@@ -351,7 +382,9 @@
       "limits": [
         "Mapping was developed after inspecting known examples.",
         "Source JSON retained the fields; the defect is in the readable projection.",
-        "Not a claim that every description lacks all cautious wording."
+        "Not a claim that every description lacks all cautious wording.",
+        "Structural table counts reused a shared lexical detector, not an independent semantic table verifier.",
+        "The later 917-description structural audit inspected zero image byte files; the earlier reader’s 3 PNG/918 observation and separate addressability study’s 3 JPEG checks are different stages."
       ],
       "scientific_context": [
         "../../papers/semantic-objects-and-context/PAPER.md",
@@ -372,7 +405,7 @@
           "json_pointer": "/text"
         },
         {
-          "path": "source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+          "path": "source-transcription-and-uncertainty/checks/uncertainty-projection-check.json",
           "json_pointer": ""
         }
       ],
@@ -385,12 +418,13 @@
       "limits": [
         "No new OCR or subject model inference in this transformation.",
         "Unreviewed uncertainty statements are not calibrated error probabilities.",
-        "Four public synthetic records are distinct from the historical corpus."
+        "Four public synthetic records are distinct from the historical corpus.",
+        "The corrected four-record illustration checks a separately stored literal target and a damaged trace; it does not reproduce the historical source-plus-ledger reconstruction or prove its 917/153 counts."
       ],
       "scientific_context": [
         "../../papers/constrained-transformations/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py"
+      "public_reproduction": "Historical result is retained-report evidence; new illustration: python3 engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py"
     },
     {
       "claim_id": "addressability-gaps-are-not-ocr-error-counts",
@@ -398,7 +432,7 @@
       "statement": "Unresolved source coordinates and correction traces identify provenance gaps, not measured OCR errors.",
       "claim_kind": "recorded_limitation",
       "model": "Flags and raw/document/readable representations use explicitly mapped coordinate spaces.",
-      "test_or_argument": "Audit of 5538 flags and navigation raw-correction rows.",
+      "test_or_argument": "Audit of 5538 flags and navigation correction rows: 16 table/formula flags + 4 orphan flags + 5 correction rows = 25 unresolved coordinate traces.",
       "evidence": [
         {
           "path": "source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
@@ -471,7 +505,7 @@
       "statement": "Address resolution, content availability, revision inference and diagnostic coordinate space require distinct representations.",
       "claim_kind": "recorded_development_result",
       "model": "Revised finite packet reader and interpretation mapping.",
-      "test_or_argument": "38 calls: 26 prospective development counterexamples and 12 known earlier cases.",
+      "test_or_argument": "38 calls: 26 counterexamples authored alongside the changes and 12 earlier regression cases; not held-out qualification.",
       "evidence": [
         {
           "path": "executable-projections-and-revision/evidence/reader-boundary-report.json",
@@ -496,7 +530,9 @@
       "limits": [
         "Reader, mapping and rubric changed.",
         "This is not instrument-only causal comparison or general accuracy.",
-        "Nested criteria are not independent cases."
+        "Nested criteria are not independent cases.",
+        "The initial 57 calls had statuses 10 complete, 38 partial, 3 rejected, 6 unsupported; retained aggregate status counts do not bind every partial status to a predeclared expectation.",
+        "Four failure groups changed both implementation and sometimes rubric/contract; the material does not causally allocate improvement to either change."
       ],
       "scientific_context": [
         "../../papers/semantic-objects-and-context/PAPER.md",
@@ -510,7 +546,7 @@
       "statement": "The graph and equally informed flat-row representation produced equal results in all thirty targeted revision pairs.",
       "claim_kind": "recorded_comparison",
       "model": "Shared evidence validator and serializer; different affected-record selection representation.",
-      "test_or_argument": "Thirty development cases, sixty executions, including missing/invalid maps and changed source bytes or requirements.",
+      "test_or_argument": "Ten operation templates crossed with three books: 30 pairs, 60 executions, with a shared validator and serializer.",
       "evidence": [
         {
           "path": "executable-projections-and-revision/evidence/targeted-revision-comparison.json",
@@ -528,7 +564,9 @@
       "limits": [
         "Unresolved and unknown records are intended visible outcomes, not empirical truth.",
         "No native model or human subject calls.",
-        "Single local timing is not product or model latency."
+        "Single local timing is not product or model latency.",
+        "Repeated instantiations across books are not 30 independent operation designs.",
+        "The shared validator/serializer narrows independence; no unseen-operation generalization or representation advantage was established."
       ],
       "scientific_context": [
         "../../papers/revision-and-governance/PAPER.md",
@@ -542,7 +580,7 @@
       "statement": "The consumer matched its finite structural controls and a separate verifier rejected declared output mutations.",
       "claim_kind": "recorded_observation",
       "model": "Two equivalent serializations normalized to typed required closure and separately retained history.",
-      "test_or_argument": "51 families in two forms; 102 executions; 12 verifier mutations.",
+      "test_or_argument": "51 authored control families in two forms; 102 executions; 12 verifier mutations; verifier code written separately within the same agent family.",
       "evidence": [
         {
           "path": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
@@ -561,7 +599,8 @@
       },
       "limits": [
         "Finite authored controls, not proof for all JSON inputs.",
-        "Same agent family, not external certification."
+        "Same agent family, not external certification.",
+        "Original frozen controls, implementation, profile, verifier and concrete mutants are not fully recovered; exact missing hashes are in historical-recovery-gaps.json."
       ],
       "scientific_context": [
         "../../papers/retrieval-and-context-composition/PAPER.md",
@@ -575,7 +614,7 @@
       "statement": "Both representations satisfied the frozen primary rubric on all five related agent task pairs.",
       "claim_kind": "recorded_agent_case_series",
       "model": "Ten fresh-context responses; one per case and representation; 24 prescribed projections.",
-      "test_or_argument": "Independent structural verification followed by unmasked source-based semantic review.",
+      "test_or_argument": "Structural verification by a separately written same-family verifier, then unmasked source-based semantic review.",
       "evidence": [
         {
           "path": "executable-projections-and-revision/evidence/agent-projection-results.json",
@@ -599,7 +638,8 @@
         "Reviewer unmasked and within same agent family.",
         "No human expert review; one response per arm.",
         "Unknown exact model revision, decoding, tokens, latency and cost.",
-        "84 nested judgments are not an independent sample of size 84."
+        "84 nested judgments are not an independent sample of size 84.",
+        "Both arms scored the rubric maximum on the 24 atomized answered cases; sub-step differences cannot be resolved by that ceiling-bound instrument."
       ],
       "scientific_context": [
         "../../papers/evidence-and-falsification/PAPER.md",
@@ -642,31 +682,32 @@
     {
       "claim_id": "reuse-preservation-needs-complete-material-dependencies",
       "study": "reuse-admission-and-cost-controls/STUDY.md",
-      "statement": "Preservation under reuse is conditional on complete relevant dependencies, unchanged interpretation and a property-preserving transformation.",
+      "statement": "Reuse preservation requires a sound prior assessment, complete relevant dependencies and request components, preserved interpretation under every allowed transformation output, and discharge of every mandatory new-request condition.",
       "claim_kind": "conditional_argument",
       "model": "Finite property set P, sufficient dependency interface D, equivalent relevant inputs and transformation T.",
-      "test_or_argument": "Logical argument plus a new omitted-legend synthetic counterexample.",
+      "test_or_argument": "Strengthened conditional argument plus invented omitted-legend and missing-gate counterexamples. The new synthetic admission profile checks all nine required gates.",
       "evidence": [
         {
           "path": "reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
           "json_pointer": "/text"
         },
         {
-          "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
-          "json_pointer": "/checks"
+          "path": "reuse-admission-and-cost-controls/checks/admission-and-cost-check.json",
+          "json_pointer": ""
         }
       ],
       "counterexample_or_rival": "The listed numeric value stays equal while an omitted sign convention changes the result.",
       "result": "Equal incomplete dependency lists cannot establish the premise needed for preservation.",
       "limits": [
         "Natural-language dependency completeness is not established by a Boolean annotation.",
-        "Synthetic arithmetic does not validate a production semantic extractor."
+        "Synthetic arithmetic does not validate a production semantic extractor.",
+        "Dependency equality alone does not entail relevance to a new query or new mandatory requirements. The corrected theorem states those premises explicitly; the program does not discover them semantically."
       ],
       "scientific_context": [
         "../../papers/controlled-knowledge-reuse/PAPER.md",
         "../../papers/constrained-transformations/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py"
     },
     {
       "claim_id": "absence-and-completeness-depend-on-domain",
@@ -677,12 +718,12 @@
       "test_or_argument": "New empty-domain-to-matching-item finite example.",
       "evidence": [
         {
-          "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
-          "json_pointer": "/checks/unchanged_positive_readset_does_not_preserve_absence"
-        },
-        {
           "path": "reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
           "json_pointer": "/text"
+        },
+        {
+          "path": "reuse-admission-and-cost-controls/checks/admission-and-cost-check.json",
+          "json_pointer": ""
         }
       ],
       "counterexample_or_rival": "An empty positive read-set is unchanged after insertion of a matching candidate, but the absence claim becomes false.",
@@ -695,27 +736,23 @@
         "../../papers/retrieval-and-context-composition/PAPER.md",
         "../../papers/controlled-knowledge-reuse/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py"
     },
     {
       "claim_id": "reuse-break-even-is-not-hit-rate",
       "study": "reuse-admission-and-cost-controls/STUDY.md",
-      "statement": "Strict savings in the homogeneous declared model occur exactly when N[h(G-R)-V] exceeds non-overlapping fixed costs.",
+      "statement": "Strict savings under the homogeneous declared model require N[rho(G-c_r)-c_v] > F(N), with every cost counted once over the same horizon.",
       "claim_kind": "algebraic_identity",
       "model": "C0=NG; C1=F+NV+NhR+N(1-h)G, F=B+MG+I+S.",
-      "test_or_argument": "Subtraction and exact rational arithmetic on three invented scenarios.",
+      "test_or_argument": "Algebra and exact rational arithmetic for four invented scenarios, including storage overhead that grows with request count.",
       "evidence": [
-        {
-          "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
-          "json_pointer": "/scenarios"
-        },
-        {
-          "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
-          "json_pointer": "/first_profitable_expected_n"
-        },
         {
           "path": "reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
           "json_pointer": "/text"
+        },
+        {
+          "path": "reuse-admission-and-cost-controls/checks/admission-and-cost-check.json",
+          "json_pointer": ""
         }
       ],
       "counterexample_or_rival": "At h=0.9,G=10,R=1,V=9,F=0,N=100, reuse loses 90 invented units.",
@@ -724,15 +761,17 @@
         "strict_threshold_when_d_positive": "floor(F/d)+1"
       },
       "limits": [
-        "All example costs are synthetic, not measured prices or model costs.",
-        "Actual hit counts are integers; expected h and observed H_N must not be mixed.",
-        "Equal admissible quality and non-overlapping accounting are premises."
+        "Costs are synthetic, not measured prices, resource traces or model costs.",
+        "The closed threshold floor(F/d)+1 requires d>0 and overhead, hit fraction and unit costs independent of N over the declared horizon.",
+        "Observed hit counts are integers; expected rho and observed H_N are distinct.",
+        "Equal admissible quality and non-overlapping cost categories are premises.",
+        "Historical keys V,R,h remain unchanged in the old program and map to current c_v,c_r,rho."
       ],
       "scientific_context": [
         "../../papers/knowledge-utility/PAPER.md",
         "../../papers/controlled-knowledge-reuse/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py"
     },
     {
       "claim_id": "cache-benefits-require-common-baseline",
@@ -743,12 +782,12 @@
       "test_or_argument": "Exact new arithmetic illustration and retained analytical source.",
       "evidence": [
         {
-          "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
-          "json_pointer": "/checks/independent_cache_savings_double_count"
-        },
-        {
           "path": "reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
           "json_pointer": "/text"
+        },
+        {
+          "path": "reuse-admission-and-cost-controls/checks/admission-and-cost-check.json",
+          "json_pointer": ""
         }
       ],
       "counterexample_or_rival": "Adding 4 and 9 claims 13 units saved from a 10-unit operation.",
@@ -760,15 +799,15 @@
       "scientific_context": [
         "../../papers/knowledge-utility/PAPER.md"
       ],
-      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+      "public_reproduction": "python3 engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py"
     },
     {
       "claim_id": "editorial-single-section-tie",
       "study": "editorial-skill-pilot/STUDY.md",
-      "statement": "Both first edits passed the declared preservation review and received 8/10; reviewer preference was a tie.",
+      "statement": "Both retained edits passed the supplied-claim preservation review and scored 8/10; reviewer preference was a tie.",
       "claim_kind": "recorded_masked_agent_comparison",
       "model": "One 804-word Russian scientific section, common brief, baseline and toolkit-assisted conditions.",
-      "test_or_argument": "19 predeclared claims, 8 distinctions, five rubric axes; labels revealed after written review.",
+      "test_or_argument": "Both editors received the section, common context, protected-claim registry and rubric. The 19 supplied claims include eight distinctions nested in claim 11; condition labels were revealed after written review.",
       "evidence": [
         {
           "path": "editorial-skill-pilot/evidence/editorial-comparison-results.json",
@@ -795,9 +834,12 @@
         "preference": "tie"
       },
       "limits": [
-        "One section, one first response per condition, one agent reviewer.",
-        "Same environment, not external human review.",
-        "No cost, token or latency measurements; no scientific-truth validation."
+        "One section, one retained response per condition, one same-environment agent reviewer.",
+        "First-completed status is the editors’ declaration; no complete generation event log establishes that each text was the first produced response.",
+        "The first three rubric axes scored 2/2 in both arms, and sub-step differences were unresolvable; equal scores do not establish equal quality.",
+        "The baseline could have prior general writing knowledge and had the same claim checklist; the experiment does not isolate toolkit knowledge acquisition.",
+        "Gate reasoning was templated; the six examined issues, including the accepted BETA-SCOPE-01 change, are reported in the study.",
+        "No cost, token or latency measurement, external human review or scientific-truth validation."
       ],
       "scientific_context": [
         "../../papers/constrained-transformations/PAPER.md",
@@ -809,7 +851,7 @@
     {
       "claim_id": "editorial-mechanical-invariants-are-replayable",
       "study": "editorial-skill-pilot/STUDY.md",
-      "statement": "Exact first-response identities and declared literal and structure invariants can be rechecked from the public records.",
+      "statement": "Identities of the two retained texts and their declared literal/structure invariants can be rechecked from the public records.",
       "claim_kind": "publicly_replayed_finite_observation",
       "model": "Frozen source, protected-literal registry, first responses and original result hashes.",
       "test_or_argument": "New public checker verifies hashes, 37 literals, headings, anchor order and link destinations.",
@@ -835,7 +877,8 @@
         "assisted_words": 820
       },
       "limits": [
-        "This is record verification, not a new model run or an automated semantic judgment."
+        "This is record verification, not a new model run or an automated semantic judgment.",
+        "A matching output hash does not establish response order, absence of discarded attempts or semantic preservation."
       ],
       "scientific_context": [
         "../../papers/constrained-transformations/PAPER.md",
@@ -865,7 +908,9 @@
       },
       "limits": [
         "Third-party source ranges are not redistributed.",
-        "Auditability does not establish superiority over baseline or causal contribution of each skill."
+        "Auditability does not establish superiority over baseline or causal contribution of each skill.",
+        "The source audit supported 15 fragments and nine rules; K10 is a general precision principle applied by the editor, not an independently established book-specific pronoun rule.",
+        "K02/F02 and K03/F03 had local OCR locator issues, and the audit did not inspect the PDF; source-locator consistency is not authenticated page fidelity."
       ],
       "scientific_context": [
         "../../papers/interaction-and-memory/PAPER.md",

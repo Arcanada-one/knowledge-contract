@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "edition": "1.0",
+  "edition": "1.1",
   "documents": [
     {
       "type": "paper",
@@ -9,7 +9,7 @@
       "title": "Semantic Objects, Context, and Conditions of Applicability",
       "summary": "A formal account of source interpretations, context, mandatory dependencies and conditions of applicability.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -18,7 +18,7 @@
       "title": "Constrained Transformations and the Limits of Knowledge Transfer",
       "summary": "Conditional preservation, composition and reconstruction of knowledge under explicit observations and losses.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -27,7 +27,7 @@
       "title": "Retrieval, Coverage, and Context Composition under Resource Limits",
       "summary": "Search coverage, finite context selection, dependency closure and the limits of greedy composition.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -36,7 +36,7 @@
       "title": "Interaction, Documents, and Memory with Explicit Revision Boundaries",
       "summary": "Versioned requirements, dialogue branches, memory and evidence of learning in agent interaction.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -45,7 +45,7 @@
       "title": "Evidence, Reasoning, and Falsification in Knowledge Systems",
       "summary": "How claims, proofs, finite tests, counterexamples and comparative evaluations support different conclusions.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -54,7 +54,7 @@
       "title": "Knowledge Revision, Version Identity, and the Adoption of Norms",
       "summary": "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
@@ -63,16 +63,16 @@
       "title": "Knowledge Contracts and the Admission of Prepared Knowledge",
       "summary": "The conditions under which saved knowledge may support a new task, recipient or execution.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "paper",
       "slug": "knowledge-utility",
       "path": "papers/knowledge-utility/PAPER.md",
-      "title": "Knowledge Utility, Resource Accounting, and Retention Decisions",
+      "title": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions",
       "summary": "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -81,7 +81,7 @@
       "title": "Knowledge Contract: Core Model and Admission Requirements",
       "summary": "The nine core groups, first-class constraints, profiles, admission and execution requirements.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -90,7 +90,7 @@
       "title": "Contracts for Knowledge Operations",
       "summary": "Common preconditions, invariants, postconditions, effects and evidence for knowledge operations.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -99,7 +99,7 @@
       "title": "Semantic Types, Attribution, and Representations",
       "summary": "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -108,7 +108,7 @@
       "title": "Context Packages: Coverage, Dependencies, and Delivery",
       "summary": "Requirements for selected context, coverage, mandatory dependencies, budgets and observed delivery.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -117,7 +117,7 @@
       "title": "Compiled Knowledge Artifacts and Reproducible Derivation",
       "summary": "Saved derivatives with exact inputs, recipes, dependency manifests, templates and output evidence.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -126,7 +126,7 @@
       "title": "Artifact Registry, Readable Names, and Document Formats",
       "summary": "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -135,7 +135,7 @@
       "title": "Assessment, Execution, and Publication States",
       "summary": "Independent assessment, execution, effect, freshness, publication and review states.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -144,7 +144,7 @@
       "title": "Cache Identity, Dependency Tracking, and Invalidation",
       "summary": "Content, build and lookup identity, dependency changes and guarded publication and serving.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -153,7 +153,7 @@
       "title": "Reuse Policy: Time, Authorization, and Decision Outcomes",
       "summary": "Temporal modes, conservative deadlines, authorization, decision outcomes and retention boundaries.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -162,7 +162,7 @@
       "title": "Knowledge Evolution and Versioned Rules",
       "summary": "Versioned creation rules, adoption, impact analysis, reassessment, migration and coherent publication.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "specification",
@@ -171,7 +171,7 @@
       "title": "Book Packages: Source Identity, Semantic Layers, and Validation",
       "summary": "A concrete book-package schema, reversible conversion ledger, semantic layers, rights boundaries and synthetic conformance checks.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -180,7 +180,7 @@
       "title": "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator",
       "summary": "Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -189,7 +189,7 @@
       "title": "Dependency closure, readable artifact layouts, and a pinned package replay",
       "summary": "Historical package evidence and a public exhaustive replay of a finite dependency graph.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -198,7 +198,7 @@
       "title": "Reproducible transcription is not preservation of uncertainty",
       "summary": "Retained generated descriptions, lost uncertainty and a reproducible synthetic projection counterexample.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -207,7 +207,7 @@
       "title": "Executable projections, addressable revisions, and the limits of graph minimality",
       "summary": "Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -216,7 +216,7 @@
       "title": "Controlled reuse: admission counterexamples and the cost of a cache hit",
       "summary": "Executable admission counterexamples and an analytical break-even calculation with explicit costs.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "study",
@@ -225,7 +225,7 @@
       "title": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison",
       "summary": "One preregistered editorial comparison, exact initial outputs, masked review and an observed tie.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "glossary",
@@ -234,7 +234,7 @@
       "title": "Knowledge Contract Glossary",
       "summary": "Shared English definitions, Russian equivalents, technical spellings and distinctions between related concepts.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "bibliography",
@@ -243,7 +243,7 @@
       "title": "Primary Sources and Research Foundations",
       "summary": "Named primary sources and the exact conceptual or technical role each plays in the current edition.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "appendix",
@@ -252,7 +252,7 @@
       "title": "Source Map, Earlier Editions, and Protocol Compatibility",
       "summary": "The migration from the earlier corpus, immutable history, evidence provenance and unchanged protocol versions.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     },
     {
       "type": "appendix",
@@ -261,7 +261,7 @@
       "title": "API Integration and Publication Consistency",
       "summary": "Published read interfaces, task-contract delivery requirements and consistency between repository, reader and index.",
       "language": "en",
-      "edition": "1.0"
+      "edition": "1.1"
     }
   ]
 }

@@ -1,0 +1,150 @@
+{
+  "source_commit": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "jsonschema_version": "4.23.0",
+  "scope": "Synthetic local reproductions of reviewer findings; not source-book or runtime tests.",
+  "results": [
+    {
+      "probe": "ES-01-third_party_restricted",
+      "accepted": true,
+      "problems": [],
+      "projected_rows": [
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-01-unknown",
+      "accepted": true,
+      "problems": [],
+      "projected_rows": [
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-02-unsupported-same-session-review",
+      "accepted": true,
+      "problems": [],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-11-unknown-extraction-check",
+      "accepted": true,
+      "problems": [],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-11-no-extraction-checks",
+      "accepted": true,
+      "problems": [],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-06-unverified-reviewed-knowledge_ready",
+      "accepted": false,
+      "problems": [
+        "manifest.json: representation/integrity: 'verified' was expected"
+      ],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-06-unverified-reviewed-partial_pilot",
+      "accepted": false,
+      "problems": [
+        "extraction pass and semantics reviewed, but package_status does not say knowledge_ready"
+      ],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    },
+    {
+      "probe": "ES-06-unverified-reviewed-structure_only",
+      "accepted": false,
+      "problems": [
+        "package_status structure_only requires semantics not_built",
+        "extraction pass and semantics reviewed, but package_status does not say knowledge_ready"
+      ],
+      "projected_rows": [
+        {
+          "layer": "document_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "readable_md",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "layer": "knowledge",
+          "license": "CC-BY-4.0"
+        }
+      ]
+    }
+  ]
+}

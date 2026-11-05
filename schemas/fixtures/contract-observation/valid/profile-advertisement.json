@@ -1,0 +1,13 @@
+{
+  "schema": "KCProfileAdvertisement/v1",
+  "reader_id": "example.reader",
+  "read_profiles": [
+    "kc-observation/1",
+    "kc-dependency-change/1"
+  ],
+  "write_profiles": [],
+  "hash_domains": [
+    "sha256/raw-utf8-json-v1",
+    "sha256/raw-bytes-v1"
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.place/schemas/contract-observation.schema.json",
+  "title": "Knowledge Contract observation and change-event exchange profile, version 1",
+  "description": "A bounded exchange subset. It does not serialize a complete Knowledge Contract, authenticate evidence or implement a distributed admission runtime.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Observation"
+    },
+    {
+      "$ref": "#/$defs/ChangeEvent"
+    },
+    {
+      "$ref": "#/$defs/Advertisement"
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9:/._-]*$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "epoch": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "hash_domain": {
+      "enum": [
+        "sha256/raw-bytes-v1",
+        "sha256/raw-utf8-json-v1"
+      ]
+    },
+    "Subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact_id",
+        "revision",
+        "hash_domain",
+        "sha256"
+      ],
+      "properties": {
+        "artifact_id": {
+          "$ref": "#/$defs/id"
+        },
+        "revision": {
+          "$ref": "#/$defs/id"
+        },
+        "hash_domain": {
+          "$ref": "#/$defs/hash_domain"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "Observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "observation_id",
+        "subject",
+        "property",
+        "criterion",
+        "method",
+        "observer",
+        "observed_at",
+        "result",
+        "scope",
+        "evidence_refs",
+        "trust_assumptions",
+        "limitations"
+      ],
+      "properties": {
+        "schema": {
+          "const": "KCObservation/v1"
+        },
+        "observation_id": {
+          "$ref": "#/$defs/id"
+        },
+        "subject": {
+          "$ref": "#/$defs/Subject"
+        },
+        "property": {
+          "$ref": "#/$defs/id"
+        },
+        "criterion": {
+          "$ref": "#/$defs/Subject"
+        },
+        "method": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "version"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/$defs/id"
+            },
+            "version": {
+              "$ref": "#/$defs/id"
+            }
+          }
+        },
+        "observer": {
+          "$ref": "#/$defs/id"
+        },
+        "observed_at": {
+          "$ref": "#/$defs/time"
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown",
+            "not_applicable"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/Subject"
+          }
+        },
+        "trust_assumptions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "inapplicability_rule": {
+          "$ref": "#/$defs/Subject"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": {
+                "const": "not_applicable"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "inapplicability_rule"
+            ]
+          }
+        }
+      ]
+    },
+    "ChangeEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "event_id",
+        "namespace",
+        "sequence",
+        "dependency_id",
+        "old_epoch",
+        "new_epoch",
+        "old_revision",
+        "new_revision",
+        "kind",
+        "impact",
+        "observer",
+        "observed_at"
+      ],
+      "properties": {
+        "schema": {
+          "const": "KCDependencyChange/v1"
+        },
+        "event_id": {
+          "$ref": "#/$defs/id"
+        },
+        "namespace": {
+          "$ref": "#/$defs/id"
+        },
+        "sequence": {
+          "$ref": "#/$defs/epoch"
+        },
+        "dependency_id": {
+          "$ref": "#/$defs/id"
+        },
+        "old_epoch": {
+          "$ref": "#/$defs/epoch"
+        },
+        "new_epoch": {
+          "$ref": "#/$defs/epoch"
+        },
+        "old_revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Subject"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "new_revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Subject"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "enum": [
+            "revision_changed",
+            "revoked",
+            "availability_changed",
+            "unknown_change"
+          ]
+        },
+        "impact": {
+          "enum": [
+            "compatible",
+            "restricted",
+            "requires_review",
+            "blocked",
+            "unknown_impact"
+          ]
+        },
+        "observer": {
+          "$ref": "#/$defs/id"
+        },
+        "observed_at": {
+          "$ref": "#/$defs/time"
+        }
+      }
+    },
+    "Advertisement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "reader_id",
+        "read_profiles",
+        "write_profiles",
+        "hash_domains"
+      ],
+      "properties": {
+        "schema": {
+          "const": "KCProfileAdvertisement/v1"
+        },
+        "reader_id": {
+          "$ref": "#/$defs/id"
+        },
+        "read_profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "kc-observation/1",
+              "kc-dependency-change/1",
+              "kc-profile-advertisement/1",
+              "book-package/2"
+            ]
+          }
+        },
+        "write_profiles": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "kc-observation/1",
+              "kc-dependency-change/1",
+              "kc-profile-advertisement/1",
+              "book-package/2"
+            ]
+          }
+        },
+        "hash_domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/hash_domain"
+          }
+        }
+      }
+    }
+  }
+}

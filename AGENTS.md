@@ -25,12 +25,25 @@ Use Python 3 and Pandoc 3.1.3. Run relevant existing checks and the publication 
 ```sh
 python3 -B tools/check_publication.py .
 python3 -B tools/check_sources.py .
+python3 -B tools/check_requirement_register.py
 python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow -v
 ```
 
-When changing the book-package schema or validator, also run `cd tools && python3 -B -m unittest test_book_package -v` using the CI dependency `jsonschema==4.23.0`, validate the synthetic package, and check regenerated fixtures against their committed bytes.
+When changing the book-package schema, validator or exchange subset, run `cd tools && python3 -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt -v` using the CI dependency `jsonschema==4.23.0`, validate the synthetic package, and check regenerated fixtures against their committed bytes. The `book-package/2` profile uses explicit version-2 record tags; a version-1 package needs a declared migration and new observations, not a metadata-only upgrade.
 
-The public replay scripts are listed in the engineering studies and use Python's standard library. Run them when their inputs or claims change. Do not pretend that replaying a new synthetic example reruns a historical model experiment.
+Run the formal regression controls with `python3 -B -m unittest tools.test_reviewed_formal_results -v`. They check finite counterexamples and models; they do not replace the papers' proofs or historical model experiments.
+
+Preserve existing requirement identifiers when editing a specification or the API appendix. `tools/check_requirement_register.py --assign --update` assigns identifiers only to new normative clauses and regenerates the register; review that change before committing. A listed regression test is a bounded check, not proof that a complete implementation conforms. The default command detects stale or missing register entries without editing files.
+
+The four edition-1.0 public replay scripts remain unchanged under the studies' `evidence/` directories. Their historical limitations remain explicit. The corrected checks are:
+
+```sh
+python3 -B engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py
+python3 -B engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py
+python3 -B engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py
+```
+
+These programs use Python's standard library. Run relevant old and corrected programs when their inputs or claims change. Retained evidence and origin manifests must not be rewritten to improve a result; a corrected check gets its own identified file and scope. Do not pretend that a new synthetic example reruns a historical model experiment. See [the current review record](reviews/edition-corrections/REVIEW.md) for exact correction dispositions and any missing historical inputs.
 
 ## Publication boundaries
 

@@ -2,7 +2,7 @@
 name: "semantic-objects-and-context"
 title: "Semantic Objects, Context, and Conditions of Applicability"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,7 +11,7 @@ description: "A formal account of source interpretations, context, mandatory dep
 
 # Semantic Objects, Context, and Conditions of Applicability
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
@@ -55,20 +55,30 @@ Extraction must preserve logical structure when it matters. For a domain with tw
 
 We distinguish six context roles: source context, including terminology, referents, and local legends; extraction context, including the inspected representation and unresolved details; request context, including intent, completeness requirements, and budget; recipient context, including usable forms and modalities; situation context, including the target object, time, and reference frame; and intended-action context, specifying what is to be explained, compared, computed, or executed. These are functional roles, not a requirement to duplicate a value in six places. A single linked value can serve several roles, while source conditions and target conditions remain distinguishable.
 
-Let a use request be \(q\), a relevant state be \(s\), and the finite mandatory conditions be \(R(q)\). Each condition has an assessment
+Let a use request be \(q\), a relevant state be \(s\), and the finite declared mandatory conditions be \(R(q)\). Each condition has an assessment
 
 \[
-e_r(o,q,s)\in\{\mathsf{pass},\mathsf{fail},\mathsf{unknown}\}.
+e_r(o,q,s)\in\{\mathsf{pass},\mathsf{fail},\mathsf{unknown},\mathsf{not\_applicable}\}.
 \]
 
-Certified applicability is defined by
+A condition is **discharged** when it passes, or when a justified applicability rule establishes that it imposes no obligation in the exact assessed scope. Write \(w_r(o,q,s)\) for the validity of that rule application and its supporting witness. Then
+
+\[
+\operatorname{Discharged}_r(o,q,s)
+\iff e_r(o,q,s)=\mathsf{pass}
+\ \lor\ \bigl(e_r(o,q,s)=\mathsf{not\_applicable}\land w_r(o,q,s)\bigr).
+\]
+
+The witness identifies the rule, its grounds, and the subject and scope to which it applies. A bare `not_applicable` label is insufficient. Certified applicability is
 
 \[
 \operatorname{Applicable}(o,q,s)
-\iff \forall r\in R(q),\ e_r(o,q,s)=\mathsf{pass}.
+\iff \forall r\in R(q),\ \operatorname{Discharged}_r(o,q,s).
 \]
 
-This definition deliberately does not treat unknown as pass. It also does not equate failure to certify with proof that the content is false. An unanswered question about a relevant date may block a current recommendation while leaving the underlying statement unresolved.
+This definition uses the same four assessment values as the [status model](../../engineering/specifications/status-model/SPECIFICATION.md). It does not treat unknown as pass or allow an unsupported exemption. It also does not equate failure to certify with proof that the content is false. An unanswered question about a relevant date may block a current recommendation while leaving the underlying statement unresolved.
+
+Certification is only as strong as the completeness and correctness of the declared conditions, assessments, and exemption rules. If \(R(q)=\varnothing\), the displayed quantification is vacuously true; it does not establish that the request had no material obligations. Using certification to justify a consequential use therefore requires a separate justification that the requirement set covers that use.
 
 Conditions can be inherited only through a declared rule. A section-level exception may apply to its paragraphs, but arbitrary proximity does not establish inheritance. Conflicting conditions require an explicit conflict decision or a restricted answer. A system must not select whichever condition produces a convenient result.
 
@@ -86,24 +96,26 @@ This result does not make sources useless. It identifies the extra premise neede
 
 ### Proposition 2. Least required closure exists on a finite graph
 
-Let \(V\) be a finite set of pinned object revisions, \(R\subseteq V\) selected roots, and \(D_q\subseteq V\times V\) the active mandatory dependencies for a fixed request. Define
+Let \(V\) be a finite set of pinned object revisions, \(\mathit{Roots}\subseteq V\) selected roots, and \(D_q\subseteq V\times V\) the active mandatory dependencies for a fixed request. Define
 
 \[
-C_0=R,\qquad
+C_0=\mathit{Roots},\qquad
 C_{n+1}=C_n\cup\{v:\exists u\in C_n,(u,v)\in D_q\}.
 \]
 
-Then the sequence reaches a fixed point \(C^*\), which is the least \(D_q\)-closed set containing \(R\).
+Then the sequence reaches a fixed point \(C^*\), which is the least \(D_q\)-closed set containing \(\mathit{Roots}\).
 
-**Proof.** The sequence is increasing and contained in finite \(V\), so only finitely many strict additions are possible. Its fixed point is closed by construction. For any closed set \(S\) containing \(R\), induction gives \(C_n\subseteq S\) for every \(n\). Thus \(C^*\subseteq S\). ∎
+**Proof.** The sequence is increasing and contained in finite \(V\), so only finitely many strict additions are possible. Its fixed point is closed by construction. For any closed set \(S\) containing \(\mathit{Roots}\), induction gives \(C_n\subseteq S\) for every \(n\). Thus \(C^*\subseteq S\). ∎
 
-Cycles do not invalidate this set-theoretic result. Missing edges do invalidate an interpretation of the result as semantic completeness: a perfectly computed closure can still omit an unrecorded exception.
+Cycles do not invalidate this set-theoretic result. The [tested engineering profile](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) rejects cycles; its executable evidence therefore covers the acyclic profile, while the cyclic case here is supported by the proof. Missing edges invalidate an interpretation of computed closure as semantic completeness: a perfectly computed closure can still omit an unrecorded exception.
+
+“Least” is relative to the declared vertices and edges. The [projection study's counterexample](../../engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality) shows that a least entity closure can still carry unnecessary claims inside a shared qualification. The proposition establishes neither claim-level minimality nor a smallest token budget.
 
 ### Proposition 3. Mandatory strengthening narrows certified applicability
 
-Let \(R\subseteq R'\), and keep the assessments of shared conditions unchanged. Every object certified under \(R'\) is certified under \(R\).
+Let \(R\subseteq R'\), and keep the assessments, exemption witnesses, and discharge semantics of shared conditions unchanged. Every object certified under \(R'\) is certified under \(R\).
 
-**Proof.** Passing every condition in \(R'\) entails passing every condition in its subset \(R\). ∎
+**Proof.** Discharging every condition in \(R'\) entails discharging every condition in its subset \(R\). ∎
 
 The fixed-semantics condition matters. If adding a requirement also changes the meaning of an earlier one, the comparison is no longer a simple strengthening.
 
@@ -121,7 +133,7 @@ Let a finite acyclic computation graph have fixed deterministic node functions a
 
 **Proof.** Order the retained graph topologically. Retained input nodes have unchanged values. Every later retained node has all its predecessors retained and, by induction, receives their unchanged values. Its fixed function therefore returns the same value. This includes the selected outputs. ∎
 
-The result concerns complete computational dependencies. Hidden inputs, changing functions, omitted edges, or an inadequate model of the original task defeat its premises. It is not a proof that an arbitrary textual summary preserves meaning.
+The result concerns complete computational dependencies. Hidden inputs, changing functions, omitted edges, or an inadequate model of the original task defeat its premises. It is a restricted acyclic instance of the behavior-preservation obligation studied in program slicing [3], not a new slicing algorithm. Applying that obligation to knowledge additionally requires a justified interpretation and task scope; the result does not prove that an arbitrary textual summary preserves meaning.
 
 ## 5. Granularity, identity, and delivery
 
@@ -141,7 +153,7 @@ This article establishes the stated conditional properties and a falsifiable spe
 
 ## 7. Connections to the published engineering work
 
-The [source transcription and uncertainty study](../../engineering/studies/source-transcription-and-uncertainty/STUDY.md) addresses source regions, alternative readings, and inspection. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) separates graph closure from delivery checks. These studies provide the appropriate location for domain cases and executable controls.
+The [source transcription and uncertainty study](../../engineering/studies/source-transcription-and-uncertainty/STUDY.md) demonstrates that a reproducible projection can omit recorded uncertainty, and reports a correction that preserves that field. It does not evaluate plural interpretations or the correctness of source locators. Those extraction obligations remain untested by the published studies. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) separates fixed-graph closure from historical delivery checks; it does not establish that the graph contains every semantic dependency.
 
 Definitions shared across the project are indexed in the [glossary](../../reference/glossary/GLOSSARY.md). The next scientific steps are [constrained transformations](../constrained-transformations/PAPER.md) and [retrieval and context composition](../retrieval-and-context-composition/PAPER.md), which use the applicability and dependency obligations defined here.
 
@@ -149,3 +161,4 @@ Definitions shared across the project are indexed in the [glossary](../../refere
 
 1. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
 2. W3C. *SKOS Simple Knowledge Organization System Reference*. W3C Recommendation, 2009. <https://www.w3.org/TR/skos-reference/>
+3. Weiser, M. “Program Slicing.” *IEEE Transactions on Software Engineering* SE-10(4), 1984, 352–357. [Original article](https://faculty.cc.gatech.edu/~harrold/6340/cs6340_fall2009/Readings/Weiser.Slicing.TSE.pdf).

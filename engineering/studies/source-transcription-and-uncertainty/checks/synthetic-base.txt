@@ -1,0 +1,12 @@
+## invented-component
+One component has a visible label.
+
+## invented-arrow
+An arrow joins two boxes.
+
+## invented-scale
+A scale contains three marks.
+
+## invented-caption
+The caption identifies one panel.
+

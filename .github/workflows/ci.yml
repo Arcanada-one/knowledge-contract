@@ -65,7 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           cd tools
-          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt -v
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail
@@ -92,12 +92,20 @@ jobs:
         run: |
           python3 -B -m unittest tools.test_check_publication -v
           python3 -B tools/check_publication.py .
+          python3 -B tools/check_requirement_register.py
+      - name: Recheck formal counterexamples and corrected finite models
+        run: python3 -B -m unittest tools.test_reviewed_formal_results -v
       - name: Reproduce public finite studies
         run: |
           python3 -B engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py
           python3 -B engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py
           python3 -B engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py
           python3 -B engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py
+      - name: Check corrected study boundaries without rewriting historical evidence
+        run: |
+          python3 -B engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py
+          python3 -B engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py
+          python3 -B engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py
 
   licensing:
     name: licensing

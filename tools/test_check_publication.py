@@ -8,7 +8,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
-from tools.check_publication import check, EXPECTED_COUNTS, KINDS
+from tools.check_publication import check, PublicationCheck, EXPECTED_COUNTS, KINDS
 
 
 class PublicationMutations(unittest.TestCase):
@@ -22,7 +22,7 @@ class PublicationMutations(unittest.TestCase):
                 slug = f"{kind}-{i}"
                 title = f"{kind.title()} {i}"
                 path = f"{directory}/{slug}/{filename}"
-                self.documents.append({"type": kind, "slug": slug, "path": path, "title": title, "language": "en"})
+                self.documents.append({"type": kind, "slug": slug, "path": path, "title": title, "language": "en", "edition": "1.0"})
                 target = self.root / path
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(f'---\nname: {slug}\ntitle: "{title}"\nartifact: {artifact}\nedition: "1.0"\nauthor: Test author\nlanguage: en\nlicense: CC-BY-4.0\ndescription: A test document.\n---\n\n# {title}\n\n## Scope\n\nFinite fixture content with $x^2$.\n', encoding="utf-8")
@@ -79,6 +79,48 @@ class PublicationMutations(unittest.TestCase):
         self.catalog["documents"].append(dict(self.catalog["documents"][0]))
         self.write_catalog()
         self.assert_rejected("duplicate catalog path or slug")
+
+    def test_opaque_numbered_names_cannot_enter_the_current_catalog(self):
+        for slug in ("r1", "r10", "p09", "123"):
+            with self.subTest(slug=slug):
+                self.documents[0]["slug"] = slug
+                self.write_catalog()
+                checker = PublicationCheck(self.root)
+                checker.check_catalog()
+                self.assertTrue(any("opaque numbered canonical slug" in e for e in checker.errors), checker.errors)
+
+    def test_opaque_numbered_title_is_rejected(self):
+        self.documents[0]["title"] = "R10"
+        self.write_catalog()
+        self.assert_rejected("opaque numbered canonical title")
+
+    def test_new_edition_requires_consistent_document_and_evidence_versions(self):
+        self.catalog["edition"] = "1.1"
+        self.write_catalog()
+        self.assert_rejected("frontmatter edition differs")
+        for doc in self.documents:
+            path = self.root / doc["path"]
+            path.write_text(path.read_text().replace('edition: "1.0"', 'edition: "1.1"'))
+            doc["edition"] = "1.1"
+        self.write_catalog()
+        self.assert_rejected("unsupported evidence-index schema or edition")
+        self.index["edition"] = "1.1"
+        self.write_index()
+        self.assertEqual(check(self.root), [])
+
+    def test_per_document_catalog_edition_cannot_lag_the_publication(self):
+        self.documents[0]["edition"] = "0.9"
+        self.write_catalog()
+        self.assert_rejected("document edition differs from catalogue")
+
+    def test_malformed_or_unfinished_edition_is_rejected(self):
+        for edition in ("1.1-draft.1", "01.1", "1", 1.1, None):
+            with self.subTest(edition=edition):
+                self.catalog["edition"] = edition
+                self.write_catalog()
+                checker = PublicationCheck(self.root)
+                self.assertIsNone(checker.check_catalog())
+                self.assertTrue(any("numeric publication edition" in e for e in checker.errors), checker.errors)
 
     def test_wrong_main_filename(self):
         self.documents[0]["path"] = "papers/paper-0/SKILL.md"

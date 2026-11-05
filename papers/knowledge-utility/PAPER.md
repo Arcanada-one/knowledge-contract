@@ -1,21 +1,21 @@
 ---
 name: "knowledge-utility"
-title: "Knowledge Utility, Resource Accounting, and Retention Decisions"
+title: "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
 description: "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference."
 ---
 
-# Knowledge Utility, Resource Accounting, and Retention Decisions
+# Knowledge Utility, Resource Accounting, and Lifecycle Decisions
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
-Knowledge is useful relative to a task, recipient, policy, time horizon, and alternative. Truth, evidence quality, popularity, and utility therefore cannot be represented as one interchangeable score. This paper defines conditional utility and separates measured outcomes, predicted benefit, resource costs, and causal attribution. It gives conservation conditions for shared-cost allocation, shows why complementary contributions are generally nonadditive, and derives a restricted break-even condition for prepared knowledge. Retention decisions are framed in terms of future marginal value subject to mandatory constraints, rather than historical acquisition cost or raw use frequency. The contribution is an accounting and evaluation model that prevents common forms of double counting and unsupported attribution. It does not supply universal weights, prices, retention thresholds, or empirical claims that structured knowledge is always beneficial. Those quantities require explicit measurement under a stated intervention and comparison policy.
+Knowledge is useful relative to a task, recipient, policy, time horizon, and alternative. Truth, evidence quality, popularity, and utility therefore cannot be represented as one interchangeable score. This paper defines conditional utility and separates measured outcomes, predicted benefit, resource costs, and causal attribution. It gives conservation conditions for shared-cost allocation, shows why complementary contributions are generally nonadditive, and derives a restricted break-even condition for prepared knowledge. Lifecycle decisions are framed in terms of future marginal value subject to mandatory constraints, while storage retention remains distinct from residency and current eligibility. The contribution is an accounting and evaluation model that prevents common forms of double counting and unsupported attribution. It does not supply universal weights, prices, retention thresholds, or empirical claims that structured knowledge is always beneficial. Those quantities require explicit measurement under a stated intervention and comparison policy.
 
 **Keywords:** knowledge utility; causal attribution; resource accounting; marginal value; retention; reuse economics.
 
@@ -39,7 +39,7 @@ where \(q\) is the task or task distribution, \(c\) the consumer and context, \(
 
 An outcome can be a vector: task quality, consumer effort, latency, uncertainty reduction, prevented harm, introduced harm, and future usefulness. Each component needs a definition, unit, observation method, and treatment of missing data. Predicted benefit, measured outcome, and unresolved assessment must remain distinct. Unknown is not zero.
 
-A scalar score is legitimate only with an explicit mapping from the vector. That mapping includes weights, trade-offs, and any monetary conversions. Different stakeholders can legitimately choose different mappings. Where no justified common scale exists, a partial comparison such as Pareto dominance is more informative than an unexplained total ranking.
+A scalar score is legitimate only with an explicit mapping \(U\) from the outcome vector to a declared scalar scale. That mapping includes weights, trade-offs, and any monetary conversions. Different stakeholders can legitimately choose different mappings. Where no justified common scale exists, a partial comparison such as Pareto dominance is more informative than an unexplained total ranking. Subsequent comparisons keep \(U\) and the conditioning arguments fixed unless a policy change is explicitly being assessed.
 
 Costs must be included once. One can define a net utility that already contains resource penalties, or subtract a separate cost measure from a gross benefit measure. Subtracting the same cost again produces an accounting error. A new weight or tariff policy creates a new assessment, rather than silently rewriting the meaning of an earlier score.
 
@@ -55,15 +55,20 @@ A retry can incur real additional cost; a duplicated telemetry event does not. S
 
 ### Proposition 1. Conservative shared-cost allocation prevents creation of cost
 
-For one measured operation with cost \(c\), let allocations \(a_1,\ldots,a_n\) and an unallocated residual \(u\) satisfy
+Let \(\mathcal E\) be a finite set of measured operations in one accounting scope and unit. For each operation \(e\), let its nonnegative cost \(c_e\), nonnegative consumer allocations \(a_{e,1},\ldots,a_{e,n_e}\), and nonnegative unallocated residual \(u_e\) satisfy
 
 \[
-\sum_{i=1}^{n}a_i+u=c.
+\sum_{i=1}^{n_e}a_{e,i}+u_e=c_e.
 \]
 
-If every underlying operation is included exactly once and all allocated and residual parts are included exactly once, summing the parts reproduces the total measured cost.
+If every underlying operation and each of its allocated and residual parts are included exactly once, then
 
-**Proof.** Summing the stated equality over operations gives equality between the total allocations plus residuals and the total operation costs. ∎
+\[
+\sum_{e\in\mathcal E}\left(\sum_{i=1}^{n_e}a_{e,i}+u_e\right)
+=\sum_{e\in\mathcal E}c_e.
+\]
+
+**Proof.** Sum the per-operation equalities over \(\mathcal E\). Nonnegativity also gives \(a_{e,i}\leq c_e\) and \(u_e\leq c_e\) for every component, so an allocation cannot hide an excessive charge behind a negative share. ∎
 
 The result is an accounting identity, not a uniquely fair allocation rule. It requires a closed accounting scope. Omitting shared infrastructure or counting the same event in two ledgers defeats the premises.
 
@@ -71,14 +76,14 @@ The result is an accounting identity, not a uniquely fair allocation rule. It re
 
 Events such as found, selected, delivered, consumed, cited, and accepted describe different stages. A citation does not show that the cited artifact caused the outcome. Acceptance of a Work Item does not establish the separate usefulness of every attached source.
 
-Let \(Y_w(\pi+k)\) denote the outcome for task \(w\) under a policy that offers artifact \(k\), and \(Y_w(\pi_b)\) the outcome under a declared baseline. A contribution target can be written
+Let \(Y_w(\pi+k)\) denote the outcome for task \(w\) under a policy that offers artifact \(k\), and \(Y_w(\pi)\) the outcome under the same policy without that intervention. With the scalar mapping \(U\) from §2 and a fixed task distribution \(\mathcal D\), the artifact-specific contribution target is
 
 \[
-\Delta V(k)=\mathbb E_{w\sim D}
-\left[U(Y_w(\pi+k))-U(Y_w(\pi_b))\right].
+\Delta V(k)=\mathbb E_{w\sim\mathcal D}
+\left[U(Y_w(\pi+k))-U(Y_w(\pi))\right].
 \]
 
-To attribute this difference specifically to access to \(k\), the policies must differ only in that intervention and its predeclared consequences. If the new condition also changes the model, review budget, interface, or task selection, the contrast concerns the whole policy change unless additional identification is justified.
+The policies differ only in access to \(k\) and its predeclared consequences. A comparison against a different baseline policy \(\pi_b\) is also meaningful, but estimates the whole policy contrast. If the new condition changes the model, review budget, interface, or task selection as well, attributing that contrast specifically to \(k\) requires additional identification. The conditioning arguments of §2 remain fixed in the displayed shorthand.
 
 The expression defines a target; it does not identify it from arbitrary logs. Randomized assignment, paired task designs, or observational adjustment each require their own assumptions about assignment, interference, support, measurement, and the relevant population. Unrecorded selection effects can make a frequently used artifact appear beneficial because it is offered on easier tasks.
 
@@ -86,11 +91,11 @@ Observation, association, prediction, and causal estimate must therefore be labe
 
 ## 5. Complementarity, duplication, and exposure
 
-Utility of a set \(S\) need not equal the sum of its members' utility. Consider a rule and its necessary condition. Neither alone is useful for the permitted task, but the pair is. If
+Write \(V_{\mathrm{set}}(S)\) for the utility assessment of offering an artifact set \(S\), with all conditions from §2 fixed. This set function is distinct from the single-artifact notation \(V(k\mid q,c,\pi,h,b,r)\); its singleton values refer to the same assessed single-artifact interventions. Set utility need not equal the sum of its members' utility. Consider a rule and its necessary condition. Neither alone is useful for the permitted task, but the pair is. If
 
 \[
-V(\varnothing)=V(\{a\})=V(\{b\})=0,
-\qquad V(\{a,b\})=1,
+V_{\mathrm{set}}(\varnothing)=V_{\mathrm{set}}(\{a\})=V_{\mathrm{set}}(\{b\})=0,
+\qquad V_{\mathrm{set}}(\{a,b\})=1,
 \]
 
 then each leave-one-out contribution within the pair is one. Summing those contributions yields two, although the total gain is one. Marginal contribution therefore depends on the reference set, and summing several margins can double-count complementary value.
@@ -101,25 +106,25 @@ Use frequency needs exposure and opportunity denominators. Low use can reflect n
 
 Evaluation can address the problem through a declared exploration budget, independent task samples, and separate reporting for new and mature artifacts. Such choices are policy decisions with costs and assumptions, not universal constants.
 
-## 6. Reuse economics and retention
+## 6. Reuse economics and lifecycle decisions
 
 ### Proposition 2. A simple reuse policy has a conditional break-even point
 
-Suppose a valid cold execution costs \(m\) per request. Preparing an equally acceptable reusable artifact costs \(B\) once, and each admitted reuse costs \(h\), including its required checks. With \(n\) requests, no intervening invalidation, and no other costs, reuse is cheaper exactly when
+Suppose a valid cold execution costs \(G\) per request. Preparing an equally acceptable reusable artifact costs \(B\) once, and each admitted reuse costs \(c_{\mathrm{hit}}\), including its required checks. These costs are nonnegative and measured in the same unit over a fixed horizon \(h\). With \(N\geq1\) requests, no intervening invalidation, and no other costs, reuse is cheaper exactly when
 
 \[
-B+nh<nm,
+B+Nc_{\mathrm{hit}}<NG,
 \quad\text{equivalently}\quad
-n(m-h)>B.
+N(G-c_{\mathrm{hit}})>B.
 \]
 
-**Proof.** Compare the total costs and rearrange the inequality. If \(m\leq h\), a positive preparation cost cannot be recovered under these assumptions. ∎
+**Proof.** Compare the total costs and rearrange the inequality. If \(G\leq c_{\mathrm{hit}}\), a positive preparation cost cannot be recovered under these assumptions. ∎
 
-This result is deliberately narrow. Storage, invalidation, rebuilding, coordination, failed attempts, and changing demand can alter the calculation. The two routes must satisfy the same relevant acceptance conditions; omitting required checks is not an economic improvement under that contract.
+This result is deliberately narrow. In the [companion study's accounting model](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md), it is the special case with hit fraction \(\rho=1\), no rebuilds or additional invalidation and storage costs (\(M=I=S=0\)), and \(c_{\mathrm{hit}}=c_v+c_r\), where \(c_v\) is per-request validation and \(c_r\) is additional hit-path cost. Both formulas use the same horizon and cost scope. Storage, invalidation, rebuilding, coordination, failed attempts, and changing demand can alter the calculation. The two routes must satisfy the same relevant acceptance conditions; omitting required checks is not an economic improvement under that contract.
 
-Retention concerns future choices. Past acquisition cost belongs in the historical ledger, but the next decision should compare future marginal benefits, future costs, switching costs, and mandatory constraints. A large historical expenditure does not by itself justify continued expensive residency.
+Lifecycle choices concern future marginal benefits, future costs, switching costs, and mandatory constraints. Past acquisition cost belongs in the historical ledger; a large historical expenditure does not by itself justify continued expensive residency.
 
-Retention is also not one binary action. Archiving, removing from search, stopping background preparation, withdrawing current eligibility, and physically deleting content have different consequences. A rarely used artifact may be necessary for reproducibility or a critical deadline. A negative utility estimate does not alone authorize destroying the only retained original.
+**Retention** is the storage policy governing preservation or deletion of bytes. **Residency** concerns where those retained bytes are available, including whether reconstruction is needed. Search visibility, background preparation, and current-use eligibility are separate lifecycle decisions. Archiving a retained original, removing it from search, and withdrawing permission to use it therefore have different effects. A rarely used artifact may be necessary for reproducibility or a critical deadline. A negative utility estimate does not alone authorize destroying the only retained original.
 
 Residency policies can use measured demand and rehydration cost, with hysteresis to avoid repeated switching. Thresholds must be calibrated to the workload and constraints. Popularity cannot override revocation, known corruption, or a mandatory scope restriction. The [controlled reuse paper](../controlled-knowledge-reuse/PAPER.md) defines admission before economic ranking.
 
@@ -129,9 +134,9 @@ A utility study should predeclare the task distribution, baseline, intervention,
 
 Useful negative controls include repeated telemetry with one real operation, complementary artifacts whose summed margins overstate total gain, identical knowledge under multiple identifiers, and a policy change bundled with artifact access. Each reveals a specific attribution or accounting error.
 
-For retention, evaluation should include rare mandatory tasks, bursts of demand, changes of source state, and reconstruction after eviction. Results should state whether costs are observed or modeled and whether the policy was tuned on the same workload. A successful finite control does not establish optimal retention for every future demand pattern.
+For lifecycle policies, evaluation should include rare mandatory tasks, bursts of demand, changes of source state, and reconstruction after eviction, while measuring storage retention, residency, and eligibility separately. Results should state whether costs are observed or modeled and whether the policy was tuned on the same workload. A successful finite control does not establish optimal retention or residency for every future demand pattern.
 
-The results of this paper are a conditional evaluation model, conservation and break-even properties, and counterexamples to additive or popularity-based shortcuts. No universal utility score or measured economic superiority is asserted. The [reuse admission and cost controls study](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) is the place for executable accounting and measured workloads; the [editorial skill pilot](../../engineering/studies/editorial-skill-pilot/STUDY.md) supplies a separate document-production setting.
+The results of this paper are a conditional evaluation model, conservation and break-even properties, and counterexamples to additive or popularity-based shortcuts. No universal utility score or measured economic superiority is asserted. The [reuse admission and cost controls study](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) contains finite admission counterexamples and exact cost arithmetic on synthetic inputs; it reports no measured model savings or production workload. The [editorial skill pilot](../../engineering/studies/editorial-skill-pilot/STUDY.md) supplies a separate exploratory comparison of document outputs, without a cost estimate.
 
 The shared [glossary](../../reference/glossary/GLOSSARY.md) and [evidence and falsification paper](../evidence-and-falsification/PAPER.md) define the corresponding claim and measurement boundaries.
 

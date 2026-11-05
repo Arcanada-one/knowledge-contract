@@ -1,0 +1,136 @@
+{
+  "schema": "knowledge-contract.closure-size-and-mutation-check/1",
+  "graph_sha256": "70f946604f6d725e4085e915927aee0d69cf38c62e199ada818e3b602a49c3f3",
+  "vertices": 110,
+  "required_edges": 405,
+  "single_root_closures": [
+    {
+      "root": "S01",
+      "readable_name": "ru10-define-editing-task",
+      "records": 45
+    },
+    {
+      "root": "S02",
+      "readable_name": "ru10-edit-wording-without-meaning-loss",
+      "records": 57
+    },
+    {
+      "root": "S03",
+      "readable_name": "ru10-preserve-numbers-and-conditions",
+      "records": 45
+    },
+    {
+      "root": "S04",
+      "readable_name": "ru10-ground-evaluations-in-facts",
+      "records": 49
+    },
+    {
+      "root": "S05",
+      "readable_name": "ru10-structure-sentences-and-paragraphs",
+      "records": 53
+    },
+    {
+      "root": "S06",
+      "readable_name": "ru10-write-actionable-instructions",
+      "records": 51
+    },
+    {
+      "root": "S07",
+      "readable_name": "ru10-edit-complex-work-documents",
+      "records": 51
+    },
+    {
+      "root": "S08",
+      "readable_name": "ru10-write-about-people-and-companies",
+      "records": 47
+    },
+    {
+      "root": "S09",
+      "readable_name": "ru10-write-targeted-letters-and-releases",
+      "records": 49
+    },
+    {
+      "root": "S10",
+      "readable_name": "ru10-plan-slides-and-product-pages",
+      "records": 55
+    },
+    {
+      "root": "S11",
+      "readable_name": "ru10-adjust-depth-to-reader",
+      "records": 53
+    },
+    {
+      "root": "S12",
+      "readable_name": "ru10-review-edits-and-source-trace",
+      "records": 45
+    },
+    {
+      "root": "R01",
+      "readable_name": "russian-text-editor",
+      "records": 105
+    },
+    {
+      "root": "R02",
+      "readable_name": "editorial-reviewer",
+      "records": 57
+    },
+    {
+      "root": "B01",
+      "readable_name": "edit-existing-text",
+      "records": 73
+    },
+    {
+      "root": "B02",
+      "readable_name": "draft-from-provided-facts",
+      "records": 84
+    },
+    {
+      "root": "A01",
+      "readable_name": "russian-text-assistant",
+      "records": 110
+    }
+  ],
+  "all_skill_roots_records": 102,
+  "pilot_roots": [
+    "B01",
+    "R01",
+    "R02"
+  ],
+  "pilot_root_closure_records": 108,
+  "positive_and_negative_oracles": {
+    "cycle_must_reject": true,
+    "all_children_required": true,
+    "unknown_root_must_reject": true
+  },
+  "mutations": [
+    {
+      "mutation": "omit_cycle_guard",
+      "detected_by": [
+        "cycle_must_reject"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "skip_required_child",
+      "detected_by": [
+        "cycle_must_reject",
+        "all_children_required"
+      ],
+      "detected": true
+    },
+    {
+      "mutation": "unknown_root_as_leaf",
+      "detected_by": [
+        "unknown_root_must_reject"
+      ],
+      "detected": true
+    }
+  ],
+  "checks": {
+    "unchanged_implementation_matches_three_oracles": true,
+    "all_three_declared_mutants_detected": true,
+    "pilot_roots_deliver_108": true
+  },
+  "passed": true,
+  "scope": "New post-review metadata measurement and three hand-selected implementation mutants. Counts are records, not bytes or tokens. No semantic dependency completeness, historical rerun of the full package, or general mutation adequacy is claimed."
+}

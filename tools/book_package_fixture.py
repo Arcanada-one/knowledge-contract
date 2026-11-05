@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import check_book_package as cbp  # noqa: E402
 
 FIXTURE_ROOT = cbp.REPO / "schemas" / "fixtures" / "book-package"
-PKG = "synthetic-rle-primer.r1"
+PKG = "synthetic-rle-primer"
 REP, WORK, EDN = "rep.synthetic-rle-primer.md", "work.synthetic-rle-primer", "ed.synthetic-rle-primer.en"
 SRC_BYTES = b"# Synthetic primer on run-length encoding\n\n## Definition\n\nRun-length encoding replaces a run of equal symbols by the symbol and the run length.\n\n## Limits\n\nThe method can enlarge data that has no runs.\n\n## Figure 1\n\n![Figure 1](assets/fig1.svg)\n"
 SRC_SHA = hashlib.sha256(SRC_BYTES).hexdigest()
@@ -37,11 +37,11 @@ def facets(kind: str, position: str = "asserts") -> dict:
     return {"representation_modes": {"state": "known", "value": ["text"]}, "content_kinds": {"state": "known", "value": [kind]},
             "discourse_functions": unk(), "aboutness": {"state": "known", "value": ["run-length encoding"]},
             "source_position": {"state": "known", "value": position}, "semantic_operators": {"state": "not_applicable", "reason": "no operators in this statement"},
-            "assessment_refs": {"state": "known", "value": []}, "governance_refs": {"state": "known", "value": []}}
+            "assessment_refs": {"state": "known", "value": ["review.fixture.semantic"]}, "governance_refs": {"state": "known", "value": []}}
 
 
 def obj(oid: str, kind: str, text: str, origin: str, section: str, block: str, content_kind: str, **extra) -> dict:
-    rec = {"schema": "KCBookObject/v1", "object_id": oid, "package_id": PKG, "work_id": WORK, "edition_id": EDN, "object_kind": kind, "text": text,
+    rec = {"schema": "KCBookObject/v2", "object_id": oid, "package_id": PKG, "work_id": WORK, "edition_id": EDN, "object_kind": kind, "text": text,
            "text_language": "en", "origin": origin, "presented_as_author": False, "evidence": [anchor(section, block)],
            "semantic_facets": facets(content_kind), "status": "reviewed", "kc2_admission": "not_measured"}
     if origin != "author_statement":
@@ -63,27 +63,32 @@ def build() -> dict[str, bytes]:
         obj("obj.fig1.description", "figure", "Black square of ten by ten units.", "generated_description", "sec.figure1", "blk.1", "state_description"),
     ]
     relations = [
-        {"schema": "KCBookRelation/v1", "relation_id": "rel.def", "package_id": PKG, "relation_type": "defines", "from": "obj.rle.definition", "to": "obj.rle.meaning",
+        {"schema": "KCBookRelation/v2", "relation_id": "rel.def", "package_id": PKG, "relation_type": "defines", "from": "obj.rle.definition", "to": "obj.rle.meaning",
          "origin": "generated_meaning", "presented_as_author": False, "generation": copy.deepcopy(GEN), "evidence": [{"side": "both", "anchor": anchor("sec.definition", "blk.1")}],
          "status": "reviewed", "kc2_admission": "not_measured"},
-        {"schema": "KCBookRelation/v1", "relation_id": "rel.limit", "package_id": PKG, "relation_type": "requires", "from": "obj.rle.limit", "to": "obj.rle.definition",
+        {"schema": "KCBookRelation/v2", "relation_id": "rel.limit", "package_id": PKG, "relation_type": "requires", "from": "obj.rle.limit", "to": "obj.rle.definition",
          "origin": "author_statement", "presented_as_author": True, "conditions": ["only when the input has long runs"],
          "evidence": [{"side": "from", "anchor": anchor("sec.limits", "blk.1")}, {"side": "to", "anchor": anchor("sec.definition", "blk.1")}], "status": "reviewed", "kc2_admission": "not_measured"},
     ]
-    edits = [{"schema": "KCBookEdit/v1", "edit_id": "edit.1", "package_id": PKG, "target": "readable_md", "anchor": anchor("sec.title", "blk.1"),
+    edits = [{"schema": "KCBookEdit/v2", "edit_id": "edit.1", "package_id": PKG, "target": "readable_md", "anchor": anchor("sec.title", "blk.1"),
               "original_text": "Synthetic primer", "replacement_text": "Synthetic primer (readable edition)", "basis": "other", "reason": "label the readable edition",
               "actor_type": "tool", "input_sha256": sha(document), "output_sha256": sha(readable), "reversible": True, "status": "accepted", "depends_on_objects": []}]
-    quality = {"schema": "KCBookQuality/v1", "package_id": PKG,
+    jl = lambda rows: ("\n".join(json.dumps(r, sort_keys=True, separators=(",", ":")) for r in rows) + "\n").encode()  # noqa: E731
+    quality = {"schema": "KCBookQuality/v2", "package_id": PKG,
                "extraction": {"status": "pass", "units_expected": 3, "units_seen": 3, "checks": [{"check_id": "chk.order", "result": "pass", "method": "section order compared with source headings"}],
                               "cer": {"metric_status": "not_measured", "value": None}},
                "semantics": {"status": "reviewed", "objects_count": len(objects), "relations_count": len(relations),
-                             "review": {"reviewer_type": "human", "sample_size": 4, "result": "supported"}}, "kc2_admission": "not_measured"}
-    jl = lambda rows: ("\n".join(json.dumps(r, sort_keys=True, separators=(",", ":")) for r in rows) + "\n").encode()  # noqa: E731
+                             "review": {"review_id": "review.fixture.semantic", "reviewer_type": "blind_agent", "reviewer_id": "fixture.reviewer",
+                                        "producer_id": "fixture.generator", "independence_basis": "synthetic identity separation for schema testing; no real review is asserted",
+                                        "reviewed_at": "2026-11-04T00:00:00Z", "sample_size": 4, "result": "supported",
+                                        "object_ids": [o["object_id"] for o in objects], "relation_ids": [r["relation_id"] for r in relations],
+                                        "objects_sha256": sha(jl(objects)), "relations_sha256": sha(jl(relations)), "readable_sha256": sha(readable)}}, "kc2_admission": "not_measured"}
     files = {"document.md": document, "readable.md": readable, "assets/fig1.svg": svg, "edits.jsonl": jl(edits), "objects.jsonl": jl(objects),
              "relations.jsonl": jl(relations), "quality.json": json.dumps(quality, indent=1, sort_keys=True).encode() + b"\n"}
-    manifest = {"schema": "KCBookPackageManifest/v1", "package_id": PKG, "release_id": "r1", "created_at": "2026-11-04T00:00:00Z",
+    manifest = {"schema": "KCBookPackageManifest/v2", "validation_profile": "book-package/2", "package_id": PKG, "release_id": "r1", "created_at": "2026-11-04T00:00:00Z",
                 "work": {"work_id": WORK, "title": "Synthetic primer on run-length encoding"}, "edition": {"edition_id": EDN, "language": "en", "kind": "original"},
-                "representation": {"representation_id": REP, "format": "md", "source_sha256": SRC_SHA, "size_bytes": len(SRC_BYTES), "integrity": "verified", "completeness": "full"},
+                "representation": {"representation_id": REP, "format": "md", "source_sha256": SRC_SHA, "size_bytes": len(SRC_BYTES), "integrity": "verified", "completeness": "full",
+                                   "integrity_check": {"method": "synthetic source-byte digest comparison", "observer": "fixture.generator", "checked_at": "2026-11-04T00:00:00Z", "expected_sha256": SRC_SHA, "observed_sha256": SRC_SHA}},
                 "related_works": [], "rights": {"license_class": "author_open", "holder": "Knowledge Contract Arcana contributors", "license": "CC-BY-4.0", "publishable_layers": ["document_md", "readable_md", "assets", "knowledge", "quality"]},
                 "components": {"document_md": {"path": "document.md", "sha256": sha(document), "input_sha256": SRC_SHA, "tool": "fixture-generator", "tool_version": "0.0.0", "contains_generated_text": False},
                                "readable_md": {"path": "readable.md", "sha256": sha(readable), "contains_generated_text": False},
@@ -143,6 +148,17 @@ def _first_evidence(r):
 
 # name -> (record kind to mutate, mutation). Each must make the schema reject the record.
 RECORD_MUTATIONS: dict[str, tuple[str, object]] = {
+    "manifest_restricted_open_license": ("manifest", lambda r: r["rights"].update(license_class="third_party_restricted", publishable_layers=[])),
+    "manifest_unknown_open_license": ("manifest", lambda r: r["rights"].update(license_class="unknown", publishable_layers=[])),
+    "manifest_restricted_knowledge_layer": ("manifest", lambda r: r.__setitem__("rights", {"license_class": "third_party_restricted", "publishable_layers": ["knowledge"]})),
+    "manifest_integrity_without_observer": ("manifest", _del(["representation", "integrity_check", "observer"])),
+    "manifest_missing_profile": ("manifest", _del(["validation_profile"])),
+    "manifest_legacy_profile": ("manifest", _set(["schema"], "KCBookPackageManifest/v1")),
+    "manifest_package_id_colon": ("manifest", _set(["package_id"], "pkg:one")),
+    "edit_unsupported_asset_text": ("edit", _set(["target"], "asset_text")),
+    "quality_review_without_scope": ("quality", _del(["semantics", "review", "object_ids"])),
+    "quality_review_without_binding": ("quality", _del(["semantics", "review", "objects_sha256"])),
+    "quality_na_without_basis": ("quality", _set(["extraction", "checks"], [{"check_id": "check.na", "result": "not_applicable", "method": "omitted basis"}])),
     "object_generated_without_generation": ("object_gen", _del(["generation"])),
     "object_generated_presented_as_author": ("object_gen", _set(["presented_as_author"], True)),
     "object_author_with_generation": ("object_author", lambda r: r.__setitem__("generation", copy.deepcopy(GEN))),

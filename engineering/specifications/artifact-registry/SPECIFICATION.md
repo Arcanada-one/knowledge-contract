@@ -2,7 +2,7 @@
 name: "artifact-registry"
 title: "Artifact Registry, Readable Names, and Document Formats"
 artifact: "engineering-specification"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,9 +11,11 @@ description: "Readable artifact names, canonical Markdown formats, identity rule
 
 # Artifact Registry, Readable Names, and Document Formats
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## 1. Purpose and conformance
+
+This is an architectural requirement set. Interoperability requires a named representation profile; the implemented exchange subset is limited to [observations, change events and profile advertisements](../status-model/SPECIFICATION.md#8-bounded-exchange-profile), and the [book-package profile](../book-package/SPECIFICATION.md) has its own schema. No full-contract wire format or deployed runtime is implied.
 
 The registry gives humans and agents a predictable way to find, interpret and revise artifacts. It separates the identity of an object from its title, revision, file representation and current assessment. A new technical term does not automatically require a new database table or service.
 
@@ -21,7 +23,13 @@ Capitalized requirements use [BCP 14](../../../reference/bibliography/BIBLIOGRAP
 
 ## 2. Names, identity and revisions
 
-Every current artifact MUST live in a uniquely named directory within its type collection. Directory names use meaningful lowercase words separated by single hyphens; a reader must be able to infer the topic without looking up an internal number. Names such as `r1`, `r10` or `p09` are not valid titles or current canonical slugs. Historical identifiers MAY remain in provenance and migration maps.
+**REG-R001.** Every current artifact MUST live in a uniquely named directory within its type collection.
+
+**REG-R002.** Directory names use meaningful lowercase words separated by single hyphens; a reader MUST be able to infer the topic without looking up an internal number.
+
+Names such as `r1`, `r10` or `p09` are not valid titles or current canonical slugs.
+
+**REG-R003.** Historical identifiers MAY remain in provenance and migration maps.
 
 The main file has a predictable name determined by type. A rename preserves provenance and provides a compatibility map when an old path was published. An immutable revision identifies a particular content state. A mutable “current” pointer is a selection governed by a separate decision, not a new identity for every request.
 
@@ -36,9 +44,19 @@ The main file has a predictable name determined by type. A rename preserves prov
 | `reference/bibliography/` | `BIBLIOGRAPHY.md` | Identified works, primary URLs or DOIs, and the role of each source |
 | `appendices/<topic>/` | `APPENDIX.md` | A named supporting subject, its scope, references and relationship to the main documents |
 
-Current publications MUST appear in `publication-catalog.json`. The catalogue records type, slug, path, title, summary, language and edition. It is a reading manifest, not an authorization to index or execute the content.
+**REG-R004.** Current publications MUST appear in `publication-catalog.json`.
 
-Each main Markdown file MUST have YAML front matter with `name`, `title`, `artifact`, `edition`, `author`, `language`, `license`, and a nonempty `description`. Sources are registered through the repository source register. It MUST contain one descriptive H1. Version and machine identifiers belong in metadata, compatibility notes or provenance; they MUST NOT dominate the reading title. Relative links connect the current edition. Historical claims link to pinned revisions.
+The catalogue records type, slug, path, title, summary, language and edition. It is a reading manifest, not an authorization to index or execute the content.
+
+**REG-R005.** Each main Markdown file MUST have YAML front matter with `name`, `title`, `artifact`, `edition`, `author`, `language`, `license`, and a nonempty `description`.
+
+Sources are registered through the repository source register.
+
+**REG-R006.** It MUST contain one descriptive H1.
+
+**REG-R007.** Version and machine identifiers belong in metadata, compatibility notes or provenance; they MUST NOT dominate the reading title.
+
+Relative links connect the current edition. Historical claims link to pinned revisions.
 
 ## 4. Constraints and professional artifacts
 
@@ -57,16 +75,30 @@ A competency definition says what ability would count. A competency assessment b
 
 For skills, the external [Agent Skills specification](https://agentskills.io/specification) governs the `SKILL.md` filename and required `name` and `description` front matter. This project uses its supported `metadata` map for extra project fields rather than inventing incompatible required top-level keys. The skill name matches its directory. Supporting code, references and assets remain inside that skill's directory. The document-body headings above are a project convention, not mandatory headings imposed by Agent Skills.
 
-Repository instructions use [AGENTS.md](https://agents.md/), a plain Markdown instruction file. It is not a universal serialization format for a role or an agent identity. Provider-specific executable agent configurations MUST have an explicit adapter and remain distinct from the human-readable role definition.
+Repository instructions use [AGENTS.md](https://agents.md/), a plain Markdown instruction file. It is not a universal serialization format for a role or an agent identity.
+
+**REG-R008.** Provider-specific executable agent configurations MUST have an explicit adapter and remain distinct from the human-readable role definition.
 
 ## 5. Registry obligations
 
-Each registered revision MUST identify its kind, representation profile, identity, revision, license or disclosure restriction, provenance, required dependencies and applicable observations. A reader MUST distinguish known, unknown, not applicable and withheld information. Required references MUST resolve to the intended revision or report an unresolved dependency.
+**REG-R009.** Each registered revision MUST identify its kind, representation profile, identity, revision, license or disclosure restriction, provenance, required dependencies and applicable observations.
+
+**REG-R010.** A reader MUST distinguish known, unknown, not applicable and withheld information.
+
+**REG-R011.** Required references MUST resolve to the intended revision or report an unresolved dependency.
 
 Historical registration of 34 artifact types describes one example registry; it does not establish 34 exhaustive kinds of knowledge. Its common envelope is a carrier for those examples, not a restriction on all future contracts. The [source map](../../../appendices/source-map/APPENDIX.md) preserves that compatibility context outside the scientific argument.
 
 ## 6. Acceptance and migration
 
-Registry checks MUST reject duplicate canonical names, missing required main files, incompatible front matter, broken current links and silent identity reuse. A rename test MUST show where the previous path leads and how a cited immutable revision remains recoverable. Unknown required extensions block use; preserving unknown optional data does not establish that it was interpreted.
+**REG-R012.** Registry checks MUST reject duplicate canonical names, missing required main files, incompatible front matter, broken current links and silent identity reuse.
 
-Migration MUST preserve source identity and original revisions, record the mapping, and disclose fields that could not be translated. It MUST NOT infer a capability, grant or successful execution from the presence of an artifact. The [revision paper](../../../papers/revision-and-governance/PAPER.md) explains these distinctions; the [editorial study](../../studies/editorial-skill-pilot/STUDY.md) records an actual bounded use of skills and a blueprint without claiming superiority from their existence.
+**REG-R013.** A rename test MUST show where the previous path leads and how a cited immutable revision remains recoverable.
+
+Unknown required extensions block use; preserving unknown optional data does not establish that it was interpreted.
+
+**REG-R014.** Migration MUST preserve source identity and original revisions, record the mapping, and disclose fields that could not be translated.
+
+**REG-R015.** It MUST NOT infer a capability, grant or successful execution from the presence of an artifact.
+
+The [revision paper](../../../papers/revision-and-governance/PAPER.md) explains these distinctions; the [editorial study](../../studies/editorial-skill-pilot/STUDY.md) records an actual bounded use of skills and a blueprint without claiming superiority from their existence.

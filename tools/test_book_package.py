@@ -16,13 +16,19 @@ def load_parts(files: dict[str, bytes]) -> dict:
             "edits": jl("edits.jsonl"), "quality": json.loads(files["quality.json"]), "files": dict(files)}
 
 
-def materialise(parts: dict, rehash: bool = True) -> dict[str, bytes]:
+def materialise(parts: dict, rehash: bool = True, rebind_review: bool = True) -> dict[str, bytes]:
     """Re-serialise parsed parts; with rehash the manifest digests and counts follow, so only the intended rule can fail."""
     jl = lambda rows: ("\n".join(json.dumps(r, sort_keys=True, separators=(",", ":")) for r in rows) + "\n").encode()  # noqa: E731
     files = dict(parts["files"])
     files["objects.jsonl"], files["relations.jsonl"], files["edits.jsonl"] = jl(parts["objects"]), jl(parts["relations"]), jl(parts["edits"])
-    files["quality.json"] = json.dumps(parts["quality"], indent=1, sort_keys=True).encode() + b"\n"
     m = parts["manifest"]
+    review = parts["quality"]["semantics"].get("review")
+    if rehash and rebind_review and review:
+        review["objects_sha256"] = fx.sha(files["objects.jsonl"])
+        review["relations_sha256"] = fx.sha(files["relations.jsonl"])
+        if "readable_md" in m["components"]:
+            review["readable_sha256"] = fx.sha(files[m["components"]["readable_md"]["path"]])
+    files["quality.json"] = json.dumps(parts["quality"], indent=1, sort_keys=True).encode() + b"\n"
     if rehash:
         c = m["components"]
         for key, name, rows in (("objects", "objects.jsonl", parts["objects"]), ("relations", "relations.jsonl", parts["relations"]), ("edits", "edits.jsonl", parts["edits"])):
@@ -30,7 +36,8 @@ def materialise(parts: dict, rehash: bool = True) -> dict[str, bytes]:
         c["quality"]["sha256"] = fx.sha(files["quality.json"])
         if "document_md" in c:
             c["document_md"]["sha256"] = fx.sha(files[c["document_md"]["path"]])
-        c["readable_md"]["sha256"] = fx.sha(files[c["readable_md"]["path"]])
+        if "readable_md" in c:
+            c["readable_md"]["sha256"] = fx.sha(files[c["readable_md"]["path"]])
     files["manifest.json"] = json.dumps(m, indent=1, sort_keys=True).encode() + b"\n"
     return files
 
@@ -92,7 +99,7 @@ PACKAGE_MUTATIONS = {
     "anchor_bbox_without_area": (page_anchor(True), "bbox has no area"),
     "anchor_spine_end_before_start": (spine_anchor, "end precedes start"),
     "stale_edit_leaves_object_reviewed": (stale_edit, "depends on a stale edit"),
-    "object_other_package": (lambda p: p["objects"][0].__setitem__("package_id", "other.r1"), "package_id differs"),
+    "object_other_package": (lambda p: p["objects"][0].__setitem__("package_id", "other-package"), "package_id differs"),
     "object_other_edition": (lambda p: p["objects"][0].__setitem__("edition_id", "ed.other"), "differ from the manifest"),
     "edit_depends_on_unknown_object": (lambda p: p["edits"][0].__setitem__("depends_on_objects", ["obj.ghost"]), "unknown object"),
     "edit_changes_nothing": (lambda p: p["edits"][0].__setitem__("replacement_text", p["edits"][0]["original_text"]), "changes nothing"),
@@ -101,7 +108,7 @@ PACKAGE_MUTATIONS = {
     "quality_pass_units_differ": (lambda p: p["quality"]["extraction"].__setitem__("units_seen", 2), "units_seen"),
     "ready_but_semantics_unreviewed": (lambda p: (p["quality"]["semantics"].__setitem__("status", "built_unreviewed"), p["quality"]["semantics"].pop("review")), "knowledge_ready requires"),
     "structure_only_with_built_semantics": (lambda p: p["manifest"].__setitem__("package_status", "structure_only"), "structure_only requires"),
-    "restricted_work_publishes_text": (lambda p: p["manifest"]["rights"].__setitem__("license_class", "third_party_restricted"), "may not publish"),
+    "restricted_work_publishes_text": (lambda p: p["manifest"]["rights"].__setitem__("license_class", "third_party_restricted"), "rights"),
     "document_input_hash_differs": (lambda p: p["manifest"]["components"]["document_md"].__setitem__("input_sha256", "1" * 64), "input_sha256"),
     "document_and_readable_same_file": (lambda p: p["manifest"]["components"]["readable_md"].update(path="document.md", sha256=fx.sha(p["files"]["document.md"])), "different files"),
 }
@@ -109,6 +116,12 @@ PACKAGE_MUTATIONS = {
 
 # name -> fragment that the first schema error must contain (the reason the fixture is rejected, not merely that it is)
 EXPECTED_REASON = {
+    "manifest_restricted_open_license": "rights:", "manifest_unknown_open_license": "rights:",
+    "manifest_restricted_knowledge_layer": "rights/publishable_layers", "manifest_integrity_without_observer": "representation/integrity_check",
+    "manifest_missing_profile": "'validation_profile' is a required property", "manifest_legacy_profile": "unknown or missing schema",
+    "manifest_package_id_colon": "package_id", "edit_unsupported_asset_text": "target: 'readable_md' was expected",
+    "quality_review_without_scope": "'object_ids' is a required property", "quality_review_without_binding": "'objects_sha256' is a required property",
+    "quality_na_without_basis": "'detail' is a required property",
     "edit_irreversible": "reversible: True was expected", "edit_blank_reason": "reason:", "edit_unknown_basis": "basis: 'felt like it' is not one of", "edit_without_reason": "reason: '' is too short",
     "manifest_absolute_path": "components/objects/path", "manifest_admitted_by_itself": "kc2_admission: 'not_measured' was expected",
     "manifest_bibliography_only_with_document": "components:", "manifest_document_md_marks_generated_text": "contains_generated_text: False was expected",
@@ -419,6 +432,14 @@ class FileHandlingTests(unittest.TestCase):
 
 
 class MappingTests(unittest.TestCase):
+    def project(self, parts):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for rel, data in materialise(parts).items():
+                (root / rel).parent.mkdir(parents=True, exist_ok=True)
+                (root / rel).write_bytes(data)
+            return cbp.candidate_projection(root)
+
     def test_knowledge_rendering_labels_generated_content(self):
         parts = load_parts(fx.build())
         md = cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
@@ -430,23 +451,23 @@ class MappingTests(unittest.TestCase):
     def test_projection_only_proposes_publishable_markdown_layers(self):
         parts = load_parts(fx.build())
         md = cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
-        rows = cbp.candidate_projection(parts["manifest"], md)
+        rows = self.project(parts)
         self.assertEqual({r["layer"] for r in rows}, {"document_md", "readable_md", "knowledge"})  # assets and quality are not Markdown
         self.assertTrue(all(r["kc2_admission"] == "not_measured" and r["status"] == "proposed" and r["limits"] for r in rows))
         self.assertTrue(all(r["proposed_repo_path"].startswith("articles/book-packages/") for r in rows))
         import export_corpus as ec
         self.assertTrue(all(ec.PATH_RE.fullmatch(r["proposed_repo_path"]) for r in rows))
-        no_licence = copy.deepcopy(parts["manifest"])
-        no_licence["rights"].pop("license")
-        self.assertEqual(cbp.candidate_projection(no_licence, md), [])
+        no_licence = copy.deepcopy(parts)
+        no_licence["manifest"]["rights"].pop("license")
+        self.assertEqual(self.project(no_licence), [])
         parts["manifest"]["rights"]["publishable_layers"] = []
-        self.assertEqual(cbp.candidate_projection(parts["manifest"], md), [])
+        self.assertEqual(self.project(parts), [])
 
     def test_projection_does_not_widen_the_exporter_scope(self):
         import export_corpus as ec
         parts = load_parts(fx.build())
         md = cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
-        for row in cbp.candidate_projection(parts["manifest"], md):
+        for row in self.project(parts):
             self.assertNotIn(f"schemas/fixtures/{row['path_in_package']}", ec.SCOPE_PATHS)
         self.assertNotIn("spec/BOOK_PACKAGE.md", ec.SCOPE_PATHS)  # until a decision widens it, the spec is not an indexing input
 

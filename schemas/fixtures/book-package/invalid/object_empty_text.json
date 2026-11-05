@@ -13,9 +13,9 @@
  "object_id": "obj.rle.definition",
  "object_kind": "concept",
  "origin": "author_statement",
- "package_id": "synthetic-rle-primer.r1",
+ "package_id": "synthetic-rle-primer",
  "presented_as_author": false,
- "schema": "KCBookObject/v1",
+ "schema": "KCBookObject/v2",
  "semantic_facets": {
   "aboutness": {
    "state": "known",
@@ -25,7 +25,9 @@
   },
   "assessment_refs": {
    "state": "known",
-   "value": []
+   "value": [
+    "review.fixture.semantic"
+   ]
   },
   "content_kinds": {
    "state": "known",

@@ -1,0 +1,2318 @@
+{
+  "schema": "KCRequirementRegister/v1",
+  "edition": "1.1",
+  "requirements": [
+    {
+      "id": "KCC-R001",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "Conformance MUST identify the implemented profile, its version, the reader, and the assessed scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R002",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "2. Core model",
+      "text": "A serializer MAY organize them differently if its mapping preserves their obligations.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R003",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "2. Core model",
+      "text": "An empty list MUST mean an established empty set within a declared scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R004",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "2. Core model",
+      "text": "It MUST NOT stand for an unknown set.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R005",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "2. Core model",
+      "text": "A profile MAY represent a genuinely irrelevant group as not applicable with a reason.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R006",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "2. Core model",
+      "text": "It MUST NOT silently omit a required obligation because no evidence is available.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R007",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "3. Constraints are first-class obligations",
+      "text": "Each constraint MUST have an identity, subject, scope, predicate or human-readable rule, source of authority when relevant, severity, and a checking method or an explicit unresolved status.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R008",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "3. Constraints are first-class obligations",
+      "text": "An implementation MUST retain its applicability conditions and dependencies.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R009",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "3. Constraints are first-class obligations",
+      "text": "A constraint can also be an acceptance obligation, but the relationship MUST be explicit.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R010",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "3. Constraints are first-class obligations",
+      "text": "When profiles compose, all applicable mandatory constraints MUST remain in force unless an identified authority, authenticated at the same declared trust boundary as evidence, has explicitly resolved a conflict within its verified authority.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R011",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "3. Constraints are first-class obligations",
+      "text": "Load order, a later paragraph, or a more convenient result MUST NOT implicitly override a restriction.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R012",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "4. Profiles and compatibility",
+      "text": "A reader MUST advertise supported representations and required extensions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R013",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "4. Profiles and compatibility",
+      "text": "A reader MUST derive requiredness from the trusted request/policy and known constraint references as well as profile declarations, and MUST block an unknown constraint-bearing profile.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R014",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "4. Profiles and compatibility",
+      "text": "Only an extension established as irrelevant to every mandatory obligation MAY be retained as optional opaque data, with the limitation reported.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R015",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "5. Admission and execution",
+      "text": "Admission MUST evaluate the exact contract revision, requirements, recipient, environment, applicable constraints, mandatory dependencies, and current authority.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R016",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "5. Admission and execution",
+      "text": "Unknown MUST NOT be promoted to pass.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R017",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "5. Admission and execution",
+      "text": "A conforming execution adapter MUST validate evidence provenance at its declared trust boundary.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R018",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "6. Migration and failure handling",
+      "text": "Unmapped fields and semantic losses MUST be reported.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R019",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "6. Migration and failure handling",
+      "text": "Refusal reports SHOULD identify the failed obligation and an actionable reason without exposing protected grounds to an unauthorized recipient.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R020",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "6. Migration and failure handling",
+      "text": "An implementation MUST NOT create a success-shaped output when assembly, authorization, or evidence checking fails.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R021",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "7. Acceptance cases and evidence",
+      "text": "A conformance suite MUST include: a supported positive request; a missing required dependency; an unknown required profile; a conflicting constraint; an outdated requirement revision; an unauthorized executor; mismatched output evidence; a migration with unknown values; and a false claim of trusted evidence.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KCC-R022",
+      "document": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "section": "7. Acceptance cases and evidence",
+      "text": "Schema, internal consistency, applicability, and execution acceptance MUST be reported separately.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R001",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "This document specifies operation semantics; a conforming adapter MUST also identify its representation profile and executable checks.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R002",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "2. Common contract record",
+      "text": "Every operation definition MUST identify the following:",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R003",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "2. Common contract record",
+      "text": "Preconditions, invariants and postconditions MUST remain separate.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R004",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "3. Operation families",
+      "text": "An implementation MAY expose narrower operations within these families.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R005",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "3. Operation families",
+      "text": "Every exposed operation MUST state which of these responsibilities it owns and which it delegates.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R006",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "3. Operation families",
+      "text": "It MUST NOT hide a necessary responsibility between adapters.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R007",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "4. Composition",
+      "text": "For operations A then B, every allowed successful output of A used by B MUST satisfy B's preconditions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R008",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "4. Composition",
+      "text": "A shared invariant MUST survive both transitions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R009",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "4. Composition",
+      "text": "A semantic transformation MUST declare its protected observations: for example the truth conditions of a proposition, the order of procedural steps, or the labels and connections of a diagram.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R010",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "4. Composition",
+      "text": "Lossy transformations MUST retain a loss account.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R011",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "4. Composition",
+      "text": "A timeout after dispatch MUST preserve an unknown-effect state until a domain-specific reconciliation establishes what occurred.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R012",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "5. Outcomes and evidence",
+      "text": "These dimensions MUST NOT be collapsed into a single completion flag.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R013",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "5. Outcomes and evidence",
+      "text": "Evidence MUST identify the definition version, input and output revisions, attempt, relevant requirements, checker and check result.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R014",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "5. Outcomes and evidence",
+      "text": "An inherited observation MUST name the premise that permits inheritance.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R015",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "5. Outcomes and evidence",
+      "text": "Checks of supplied claims and checks of independently observed conditions MUST be distinguishable.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R016",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "6. Acceptance cases",
+      "text": "A conforming adapter MUST exercise valid input; invalid input; unknown mandatory preconditions; a protected-property violation; partial output; an exhausted budget; a stale requirement revision; and, for effectful operations, a timeout with uncertain effect.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R017",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "6. Acceptance cases",
+      "text": "A composition test MUST include a valid A output that violates B's precondition.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "KOP-R018",
+      "document": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "section": "7. Representation and evolution",
+      "text": "Legacy example envelopes remain interpretable under their original profiles; an adapter MUST disclose any loss when mapping them to this family.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R001",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "This specification defines the distinctions an implementation MUST preserve when interpreting and representing knowledge.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R002",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A conforming profile MUST state its vocabulary, cardinalities and representation mapping.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R003",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "2. Independent semantic dimensions",
+      "text": "A profile MAY store several dimensions in one structured record, but MUST NOT conflate their meanings.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R004",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "2. Independent semantic dimensions",
+      "text": "For each required facet, the profile MUST distinguish known value, unknown value, justified not applicable, and withheld value.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R005",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "2. Independent semantic dimensions",
+      "text": "Withheld indicates a disclosure boundary and MUST NOT be represented as evidence that no value exists.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R006",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "3. Identity, granularity and relations",
+      "text": "Extraction boundaries MUST follow the obligations of the intended interpretation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R007",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "3. Identity, granularity and relations",
+      "text": "Source identity, semantic object identity, representation identity and retrieval chunk identity MUST remain distinguishable.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R008",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "3. Identity, granularity and relations",
+      "text": "Relations MUST identify their endpoints and kind.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R009",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "3. Identity, granularity and relations",
+      "text": "A vague association MUST NOT be silently upgraded to a proof premise, causal link or authority relation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R010",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "4. Scope and ambiguity",
+      "text": "Operators MUST bind to their actual scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R011",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "4. Scope and ambiguity",
+      "text": "When several interpretations remain possible, an implementation MUST retain the alternatives or mark the interpretation unresolved.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R012",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "5. Multimodal content and delivery",
+      "text": "A media reference MUST identify the representation revision and selector semantics.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R013",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "5. Multimodal content and delivery",
+      "text": "Required legends, ordering, coordinate conventions, units and joint components MUST be retained.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R014",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "5. Multimodal content and delivery",
+      "text": "A profile MUST record which was inspected.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R015",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "6. Validation obligations",
+      "text": "The conformance suite MUST include an attributed false assertion, a scoped negation, a quotation inside another quotation, a counterexample with tempting instructional wording, an unresolved alternative reading, and a required media dependency omitted from delivery.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SEM-R016",
+      "document": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "section": "7. Evidence and interoperability",
+      "text": "Vocabulary mappings MUST state whether they are exact, broader, narrower or merely related.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R001",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "2. Required package description",
+      "text": "A conforming package MUST contain or reference its identity and revision; task and requirements revision; purpose and recipient; source and corpus snapshots; selected unit revisions; mandatory dependency closure; slot-level coverage; declared search scope and assurance; applicable constraints; representation and delivery requirements; resource account; and the observations supporting its status.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R002",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "2. Required package description",
+      "text": "Each requirement slot MUST identify the subject, quantifier, required conditions and supporting units.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R003",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "2. Required package description",
+      "text": "Joint requirements MUST be supported for the same subject and revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R004",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "2. Required package description",
+      "text": "The package MUST identify omitted requirements and unresolved dependencies.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R005",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "3. Selection and closure",
+      "text": "The finite set-theoretic closure exists even with cycles, but a particular executable profile MAY require an acyclic dependency graph.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R006",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "3. Selection and closure",
+      "text": "That restriction MUST be stated and checked.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R007",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "3. Selection and closure",
+      "text": "A composer MUST recalculate closure and budget after a change.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R008",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "3. Selection and closure",
+      "text": "It MUST NOT infer that a larger text is always safer or more useful: additional content may conflict, distract, disclose protected information or exceed the recipient's usable capacity.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R009",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "4. Coverage and assurance",
+      "text": "Each report MUST bind to its own stage and subject revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R010",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "4. Coverage and assurance",
+      "text": "An empty top-k result MUST NOT be reported as proof of global absence.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R011",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "The budget MUST account for the actual delivery context: system and task instructions, relevant history, selected material, tool descriptions, anticipated tool results, output allowance and margin where applicable.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R012",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "Estimated and measured quantities MUST be distinguishable and identify the tokenizer or measurement method.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R013",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "A projection MUST retain protected units, their relations and task-relevant uncertainty.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R014",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "It MUST identify excluded units and losses.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R015",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "When the mandatory closure cannot fit, the composer MUST return a partial result, negotiate an allowed narrower scope, change representation with justified preservation, or refuse.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R016",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "5. Budget and projection",
+      "text": "It MUST NOT silently discard a mandatory condition to meet the limit.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R017",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "6. Delivery and receipt",
+      "text": "The delivery check MUST match the task's representation requirements and the declared reader capabilities.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R018",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "6. Delivery and receipt",
+      "text": "Any output assessment MUST name the exact delivered package and requirements revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R019",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "7. Acceptance and evidence",
+      "text": "Acceptance cases MUST include an unresolved dependency, cross-object conjunction, missing quantifier coverage, a budget overflow caused by closure, omitted mandatory media, an outdated requirement revision, and a final output that drops a supported condition.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CTX-R020",
+      "document": "engineering/specifications/context-package/SPECIFICATION.md",
+      "section": "7. Acceptance and evidence",
+      "text": "For each, the check MUST distinguish package construction from downstream use.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R001",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A conformance claim MUST identify the artifact kind, representation profile and checks performed. [Controlled knowledge reuse](../../../papers/controlled-knowledge-reuse/PAPER.md) provides the model; [cache identity](../cache-identity-and-invalidation/SPECIFICATION.md) and [reuse policy](../reuse-policy/SPECIFICATION.md) govern later applications.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R002",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "2. Result kinds and minimum information",
+      "text": "An extension MUST state its additional obligations and compatibility rules.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R003",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "3. Artifact and build records",
+      "text": "The artifact MUST identify immutable output bytes or a precisely canonicalized structured value, its hash domain, representation profile, content identity, source and rule-set revisions, recipe identity, and the producing attempt.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R004",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "3. Artifact and build records",
+      "text": "The build recipe MUST include exact input references, transformation definition versions, relevant parameters, and environment dependencies that can change the claimed result.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R005",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "3. Artifact and build records",
+      "text": "An attempt record MUST distinguish the `planned`, `ready`, `running`, `paused` and `finished` execution phases from the [status model](../status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies); outcome; stop reason; output references if any; and observed effects.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R006",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "3. Artifact and build records",
+      "text": "A failed attempt MUST NOT create a fictional successful artifact.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R007",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "4. Dependency manifest",
+      "text": "The manifest MUST include each declared dependency's identity, revision, role, requirement status, relevant validity conditions and change sensitivity.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R008",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "4. Dependency manifest",
+      "text": "A result based on absence or exhaustive enumeration MUST bind the universe or index snapshot and completeness procedure.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R009",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "4. Dependency manifest",
+      "text": "The manifest MUST distinguish a navigational citation from an operational dependency.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R010",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "4. Dependency manifest",
+      "text": "It SHOULD explain why each operational dependency is material, so a reviewer can identify both missing dependencies and unjustified over-invalidation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R011",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "5. Templates and instances",
+      "text": "Parameter substitution MUST NOT remove scope, change a protected quantifier or carry authority from one recipient to another without an explicit rule.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R012",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "6. Evidence and publication boundary",
+      "text": "Evidence MUST bind to the exact artifact and check.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R013",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "6. Evidence and publication boundary",
+      "text": "Publishing a mutable current pointer MUST follow the complete atomic predicate in [cache identity §5](../cache-identity-and-invalidation/SPECIFICATION.md#5-guarded-publication-and-serving), including dependency and authority epochs in the same decision as the head update.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R014",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "6. Evidence and publication boundary",
+      "text": "A build that finished successfully under an old generation MUST NOT overwrite a newer or revoked head.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R015",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "6. Evidence and publication boundary",
+      "text": "The final admission decision MUST be valid at the actual serve boundary, not only when the build began.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R016",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "7. Acceptance cases and limits",
+      "text": "A conformance suite MUST cover an altered input with an unchanged lookup key, a recipe change, an unsuccessful build, a template parameter outside its domain, a stale publication generation, a negative result invalidated by corpus growth, and evidence for the wrong output.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R017",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "7. Acceptance cases and limits",
+      "text": "The expected result MUST be an explicit new build, refusal, unresolved state or valid guarded reuse under a named policy.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CKA-R018",
+      "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "section": "8. Compatibility and migration",
+      "text": "A migration MUST retain the old artifact and hash domain, identify the mapping and its losses, and create a new representation record.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R001",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "2. Names, identity and revisions",
+      "text": "Every current artifact MUST live in a uniquely named directory within its type collection.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R002",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "2. Names, identity and revisions",
+      "text": "Directory names use meaningful lowercase words separated by single hyphens; a reader MUST be able to infer the topic without looking up an internal number.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R003",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "2. Names, identity and revisions",
+      "text": "Historical identifiers MAY remain in provenance and migration maps.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R004",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "3. Publication formats",
+      "text": "Current publications MUST appear in `publication-catalog.json`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R005",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "3. Publication formats",
+      "text": "Each main Markdown file MUST have YAML front matter with `name`, `title`, `artifact`, `edition`, `author`, `language`, `license`, and a nonempty `description`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R006",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "3. Publication formats",
+      "text": "It MUST contain one descriptive H1.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R007",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "3. Publication formats",
+      "text": "Version and machine identifiers belong in metadata, compatibility notes or provenance; they MUST NOT dominate the reading title.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R008",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "4. Constraints and professional artifacts",
+      "text": "Provider-specific executable agent configurations MUST have an explicit adapter and remain distinct from the human-readable role definition.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R009",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "5. Registry obligations",
+      "text": "Each registered revision MUST identify its kind, representation profile, identity, revision, license or disclosure restriction, provenance, required dependencies and applicable observations.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R010",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "5. Registry obligations",
+      "text": "A reader MUST distinguish known, unknown, not applicable and withheld information.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R011",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "5. Registry obligations",
+      "text": "Required references MUST resolve to the intended revision or report an unresolved dependency.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R012",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "6. Acceptance and migration",
+      "text": "Registry checks MUST reject duplicate canonical names, missing required main files, incompatible front matter, broken current links and silent identity reuse.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R013",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "6. Acceptance and migration",
+      "text": "A rename test MUST show where the previous path leads and how a cited immutable revision remains recoverable.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R014",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "6. Acceptance and migration",
+      "text": "Migration MUST preserve source identity and original revisions, record the mapping, and disclose fields that could not be translated.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "REG-R015",
+      "document": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "section": "6. Acceptance and migration",
+      "text": "It MUST NOT infer a capability, grant or successful execution from the presence of an artifact.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R001",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A profile MUST select the dimensions needed for its purpose and declare any aggregation rule.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R002",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "2. Observation record",
+      "text": "Each observation MUST identify its subject and immutable revision, assessed property, requirements or criterion revision, method, observer, relevant time, result, grounds and limits.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R003",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "2. Observation record",
+      "text": "If the method trusts supplied input rather than independently authenticating it, that assumption MUST be stated.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R004",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "2. Observation record",
+      "text": "A positive result MUST NOT overwrite a negative or unresolved result on another mandatory property.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R005",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "3. Canonical dimension vocabularies",
+      "text": "A profile using the current tokens MUST use the snake_case values below without overloading one dimension with another.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R006",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "3. Canonical dimension vocabularies",
+      "text": "An older profile MAY retain its original lexical values only through an explicit, loss-reporting adapter.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R007",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "3. Canonical dimension vocabularies",
+      "text": "Legacy labels MUST map explicitly: `terminated` → run phase `finished`; `unsupported in scope` → coverage `unsupported`; “incomplete execution of planned search” → `incomplete_procedure`; `not_measured` → assessment `unknown` with reason “no observation.” Profile-specific quality states such as book-package `reviewed` retain their own declared scope; they are not aliases for `pass`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R008",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "4. Transition rules",
+      "text": "Implementations MUST follow the tables; transitions not listed are rejected.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R009",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "4. Transition rules",
+      "text": "Every transition MUST record the triggering observation, actor, prior state and guard result.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R010",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "Execution phase",
+      "text": "A finished attempt MUST NOT return to running; retry uses a new attempt with a repeat policy.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R011",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "Freshness and eligibility projections",
+      "text": "New projection records MAY replace the current display only while preserving the observations on which earlier displays were based.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R012",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "Freshness and eligibility projections",
+      "text": "An expired or ineligible observation MUST NOT be overwritten merely because another record has a later timestamp.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R013",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "Freshness and eligibility projections",
+      "text": "These transitions MUST NOT change truth, review, freshness or eligibility by themselves.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R014",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "5. Scientific and editorial status",
+      "text": "The vocabulary MUST NOT equate “published,” “reviewed,” “implemented,” and “effective.”",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R015",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "5. Scientific and editorial status",
+      "text": "An internal agent review MUST identify the reviewer, input revision, method and conclusions, and MUST be labelled as such.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R016",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "5. Scientific and editorial status",
+      "text": "An executed failed trial remains useful evidence and MUST retain its negative result.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R017",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "6. User-facing projections",
+      "text": "Interfaces MAY summarize these dimensions, but the summary MUST preserve the distinctions relevant to the user's decision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R018",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "6. User-facing projections",
+      "text": "“Indexed revision X” is more precise than an unqualified “current.” “Checks passed for the supplied record” MUST NOT become “the action is authorized” when current authorization was outside the checked boundary.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R019",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "6. User-facing projections",
+      "text": "An unknown effect after a timeout MUST remain visible when a user decides whether to retry.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R020",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "7. Acceptance and evidence",
+      "text": "Tests MUST cover a passed schema with false supplied grounds, successful execution with a failed result criterion, a finished run with unknown effect, a resident but revoked artifact, a correct historical result ineligible for a current task, and an internal review that does not establish empirical validity.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R021",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "An exchange record MUST be a single strict UTF-8 JSON object without a BOM, duplicate member names at any depth, non-finite number tokens or isolated Unicode surrogates.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::ExchangeTests.test_duplicate_members_nonfinite_bom_and_isolated_surrogates_are_rejected"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "STA-R022",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "Integers used as epochs or sequence numbers MUST be in 0 through 9,007,199,254,740,991.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R023",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "Implementations MUST compare schema/profile support before exchanging records.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R024",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "They MUST NOT infer support for an entire contract family from support for this subset.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "STA-R025",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "Identity comparisons MUST include both domain and digest.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::ExchangeTests.test_record_hash_is_exact_bytes_not_implicit_canonical_value"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "STA-R026",
+      "document": "engineering/specifications/status-model/SPECIFICATION.md",
+      "section": "8. Bounded exchange profile",
+      "text": "This profile deliberately does not define value-level canonical JSON hashing; a profile that needs it MUST name a separate procedure and domain.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R001",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "Every implementation MUST state its consistency assumptions and failure behavior.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R002",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "2. Identity layers",
+      "text": "A lookup MUST be followed by request/artifact descriptor comparison and the required admission checks.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R003",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "2. Identity layers",
+      "text": "A digest collision assumption and the selected byte or canonical-value domain MUST be stated when digest equality is used as identity evidence.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R004",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "2. Identity layers",
+      "text": "The descriptor comparison MUST return an itemized `pass`, `fail`, `unknown` or justified `not_applicable` for the relevant components.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R005",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "2. Identity layers",
+      "text": "The algorithm MUST NOT equate two requests merely because their lookup key, text embedding or source bytes agree.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R006",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "3. Dependency tracking",
+      "text": "The read set MUST contain every declared dependency material to the claimed reuse guarantee, including source revisions, required selectors, profiles, rules, request requirements, compiler behavior and authorization state.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R007",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "3. Dependency tracking",
+      "text": "Negative results and exhaustive claims MUST also track their universe or index generation and completeness assumptions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R008",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "3. Dependency tracking",
+      "text": "Unknown impact MUST produce re-evaluation or a conservative unresolved result under the policy.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R009",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "3. Dependency tracking",
+      "text": "It MUST NOT be inferred harmless simply because the old key still matches.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R010",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "4. Change events and ordering",
+      "text": "Epochs are nonnegative integers and a relevant change MUST strictly advance the affected dependency epoch even when its content bytes are unchanged.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R011",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "4. Change events and ordering",
+      "text": "`new_epoch` MUST exceed `old_epoch`; `revoked` events MUST carry `impact: blocked`.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::ExchangeTests.test_change_event_monotonicity_and_revocation"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "CCH-R012",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "4. Change events and ordering",
+      "text": "A receiver MUST deduplicate an identical event identifier only when the complete event bytes agree, detect conflicting reuse of that identifier, and treat a missing or reordered sequence in its declared ordering namespace as a reconciliation requirement.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R013",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "4. Change events and ordering",
+      "text": "If event loss is possible, reconciliation MUST compare observed dependency state with authoritative state before renewing affected admission claims.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R014",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "4. Change events and ordering",
+      "text": "A disconnected system MAY serve under an explicitly bounded policy, but MUST NOT claim immediate global revocation when its consistency protocol cannot establish it.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R015",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "Generation values MUST NOT be reused after rollback, restart, restore or counter exhaustion.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::PublicationRaceTests.test_rollback_uses_new_generation_and_cannot_create_aba"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "CCH-R016",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "A runtime unable to recover the counter safely MUST establish a fresh namespace and invalidate old read sets.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R017",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "A worker's read set MUST contain the namespace and generation, every material dependency's exact revision and epoch, and relevant authority/policy epochs.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R018",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "Publication MUST make one linearizable decision over the following predicate: the current namespace and head generation equal the worker's expected values; every declared material dependency still has the observed epoch/revision; current authority and policy permit this exact output/use; and all required build checks remain satisfied.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::PublicationRaceTests.test_revocation_between_read_and_publish_blocks_old_and_new_worker"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "CCH-R019",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "The head update and increment of generation MUST occur atomically with that decision.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::PublicationRaceTests.test_revocation_between_read_and_publish_blocks_old_and_new_worker"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "CCH-R020",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "Every relevant revocation MUST advance its authority/dependency epoch and the affected head generation within the declared decision boundary.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R021",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "A late worker MUST NOT restore an older head, undo a revocation or publish against an unchanged-looking dependency after an intervening change.",
+      "automated_test_references": [
+        "tools/test_contract_profile.py::PublicationRaceTests.test_revocation_between_read_and_publish_blocks_old_and_new_worker"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "CCH-R022",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "A deployment lacking an atomic boundary over these conditions MUST fail closed or explicitly offer a weaker named consistency profile; it cannot claim this strict guarantee.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R023",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "The serve guard MUST validate the exact output, relevant current dependency epochs and current authority at the actual serve consistency point.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R024",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "5. Guarded publication and serving",
+      "text": "A lease MUST define scope, expiry, revocation behavior, clock assumptions and partition behavior.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R025",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "6. Storage, recovery and observability",
+      "text": "Recovery MUST verify content identity and rebuild the current eligibility decision rather than restoring a historical positive verdict as current fact.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R026",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "6. Storage, recovery and observability",
+      "text": "Logs SHOULD record lookup candidate, compared descriptors, dependency observations, admission decision, publication generation and actual serve result.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R027",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "6. Storage, recovery and observability",
+      "text": "Logging MUST respect the recipient's disclosure rights.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "CCH-R028",
+      "document": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "section": "7. Acceptance cases",
+      "text": "Each test MUST identify the simulated or real consistency boundary.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R014",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A reuse policy determines whether a saved result may satisfy a new request, what MUST be rechecked, and which time and authority constraints apply.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R001",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "2. Admission before timing",
+      "text": "Before deciding freshness, the policy MUST establish semantic compatibility with the request, required dependency availability, applicable constraints, current disclosure authorization and any action-specific grant.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R002",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "3. Temporal modes",
+      "text": "Service availability MUST NOT silently choose a weaker temporal mode.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R003",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "The policy MUST distinguish source-event time, source-observation time, artifact-build time, check time, authorization interval and storage time.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R004",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "Times MUST use one declared clock and unit.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R005",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "Bounds and durations MUST be finite; intervals require lower ≤ upper, and TTL and permitted maximum age require nonnegative values.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R006",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "A policy MUST identify each deadline's class and basis.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R007",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "A failed refresh MUST NOT reset either deadline.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R008",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "Invalid intervals (lower > upper), a definitely future check (`checked.lower > now.upper`), negative durations, incompatible clocks or unknown mandatory bounds MUST yield `unresolved` without an admitted serve.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R009",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "4. Time model and deadlines",
+      "text": "Where order itself is mandatory, overlapping intervals that cannot establish `checked.upper <= now.lower` also remain unresolved; an implementation MUST NOT invent a chronology from point estimates.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R010",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "5. Decision outcomes",
+      "text": "A stale fallback MUST NOT conceal known semantic invalidity, a hard expiry or revocation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R011",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "6. Cost, retention and measurement",
+      "text": "A utility estimate MUST state its task, baseline, horizon, units and included costs.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R012",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "6. Cost, retention and measurement",
+      "text": "Build, retrieval, validation, maintenance and integration costs MUST NOT be counted twice.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RUS-R013",
+      "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "section": "8. Compatibility",
+      "text": "A deployment MUST choose and justify its policy for the task and risk.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R001",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "Every new knowledge or decision artifact MUST record the exact contracts, profiles and rules that materially governed its creation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R002",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "2. Creation basis",
+      "text": "A creation-basis record MUST identify the artifact revision, material source revisions, contract and profile definitions, relevant rule-set versions, transformation recipe, responsible actor, creation time or interval, and known gaps.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R003",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "2. Creation basis",
+      "text": "References MUST resolve to immutable revisions or record the inability to resolve them.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R004",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "2. Creation basis",
+      "text": "A later adopted rule MUST NOT be inserted into the old basis as though it governed the original work.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R005",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "2. Creation basis",
+      "text": "The implementation MUST distinguish content change from representation change, assessment change and governance change.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R006",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "3. Change proposal and adoption",
+      "text": "Each proposal MUST identify the previous and proposed rule revisions, motivation, affected scope, expected compatibility, migration implications, evidence, objections and known unresolved questions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R007",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "3. Change proposal and adoption",
+      "text": "Conflicting adoption decisions MUST block the affected use until a decision maker with authenticated authority resolves the conflict or explicitly adopts a permissible narrower scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R008",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "3. Change proposal and adoption",
+      "text": "The decision MUST retain links to the assessed proposal and any restrictions or effective date.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R009",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "4. Impact analysis and reassessment",
+      "text": "Affected artifacts MUST be classified with the relevant new rule set and use scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R010",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "4. Impact analysis and reassessment",
+      "text": "A compatibility result MUST state the preservation argument or tests.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R011",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "5. Migration",
+      "text": "It MUST preserve negation, conditions, attribution and applicable constraints or declare their loss.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R012",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "5. Migration",
+      "text": "Missing capability or authority MUST remain unknown.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R013",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "5. Migration",
+      "text": "If semantic equivalence has not been established, the migration MUST state that limit even when the new structure is valid.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R014",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "6. Visibility and rollback",
+      "text": "Publication MUST select a coherent set of artifact revisions, catalogue entries and rendered representations.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R015",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "6. Visibility and rollback",
+      "text": "A pointer update MUST have an identified adoption decision and the complete atomic [publication guard](../cache-identity-and-invalidation/SPECIFICATION.md#5-guarded-publication-and-serving), including current authority and dependency epochs.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R016",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "6. Visibility and rollback",
+      "text": "The website, downloadable corpus and API index MUST expose their actual source revisions so a consumer can detect differences.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R017",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "6. Visibility and rollback",
+      "text": "If a rule was withdrawn because of a known defect or disclosure restriction, a rollback MUST preserve that knowledge and MUST NOT silently reauthorize a previously blocked use.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R018",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "7. Acceptance cases",
+      "text": "Each case MUST retain the historical creation basis and the separate current decision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "EVO-R019",
+      "document": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "section": "8. Publication and implementation versions",
+      "text": "The document edition, serialized profile, validator implementation, evidence protocol, service build and index snapshot MUST have separately identified versions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R001",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "1. Purpose and validation boundary",
+      "text": "The manifest MUST declare `validation_profile: book-package/2`, and every record MUST use its `KCBookPackageManifest/v2`, `KCBookObject/v2`, `KCBookRelation/v2`, `KCBookEdit/v2` or `KCBookQuality/v2` tag.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R002",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "1. Purpose and validation boundary",
+      "text": "A consumer MUST NOT silently reinterpret a version 1 record as version 2.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R003",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "1. Purpose and validation boundary",
+      "text": "Its value in producer records MUST remain `not_measured`; the producer cannot grant admission.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R004",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "The package identifier MUST be a readable lowercase hyphenated slug, 3–96 characters; a single letter followed by digits is forbidden.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R005",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "Component paths MUST remain relative and inside the package, with no parent traversal or symlinks.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::RightsAndProjectionTests.test_component_directory_symlink_is_rejected_but_regular_nesting_is_valid"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R006",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "Accepted edits MUST target `readable_md`; `asset_text` has no supported digest-chain semantics and is rejected.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R007",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "A package without `document_md` and `readable_md` MUST NOT contain accepted edits or a built semantic layer.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R008",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "Each accepted edit MUST have a nonempty original and replacement, an anchor, basis, reason, actor, input digest and output digest.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R009",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "At its step, the original MUST occur exactly once, and the replacement MUST occur exactly once in the resulting text.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R010",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "Applying the accepted edits in ledger order MUST produce `readable.md`; undoing them in reverse order MUST reproduce `document.md` exactly.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R011",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "JSON readers MUST reject duplicate object member names at every depth, non-finite number tokens and a UTF-8 BOM, so independent readers cannot choose different rights or status values from the same record.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::LedgerAndRenderingTests.test_duplicate_json_keys_and_nonfinite_values_are_refused"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R012",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "2. Layout and reversible edits",
+      "text": "All comparison and hashing MUST use exact bytes with strict UTF-8 decoding and no newline translation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R013",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "3. Identity and integrity observations",
+      "text": "A `verified` or `mismatch` integrity declaration MUST include `integrity_check` with `method`, `observer`, `checked_at`, `expected_sha256` and `observed_sha256`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R014",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "3. Identity and integrity observations",
+      "text": "The observed digest MUST equal the representation digest.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R015",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "3. Identity and integrity observations",
+      "text": "The expected digest MUST NOT be replaced to conceal a mismatch.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R016",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "3. Identity and integrity observations",
+      "text": "A production consumer MUST authenticate the relevant observation at its declared trust boundary before treating it as evidence of source integrity.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R017",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "3. Identity and integrity observations",
+      "text": "`document_md.input_sha256` MUST equal the representation digest and its component record MUST name the converter and version.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R018",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "4. Semantic objects and facets",
+      "text": "Every object MUST retain its text, language, origin, at least one source anchor, status and all eight facet fields: `representation_modes`, `content_kinds`, `discourse_functions`, `aboutness`, `source_position`, `semantic_operators`, `assessment_refs`, and `governance_refs`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R019",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "4. Semantic objects and facets",
+      "text": "Operators include epistemic and deontic modality, quantifier, negation, condition, exception and order; each operator MUST name its scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R020",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "4. Semantic objects and facets",
+      "text": "Each facet MUST be `known` with a value, or `unknown`, `not_applicable` or `withheld` with an explicit reason and no value.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R021",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "4. Semantic objects and facets",
+      "text": "An object named by a package review MUST include that review's identifier in known `assessment_refs`; known-empty cannot deny the very review that cites it.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R022",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "4. Semantic objects and facets",
+      "text": "A `benchmark` claim MUST additionally record corpus, device, tool version, settings, units and mode.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R023",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "5. Relations",
+      "text": "Every relation MUST retain its conditions, origin, evidence, endpoints and status.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R024",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "5. Relations",
+      "text": "A `contradicts` relation MUST include separate `from` and `to` evidence, so one-sided attribution cannot masquerade as a two-sided finding.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R025",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "5. Relations",
+      "text": "A relation touching a stale or rejected endpoint MUST itself be stale or rejected.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::LedgerAndRenderingTests.test_relation_to_rejected_endpoint_cannot_stay_reviewed"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R026",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "6. Evidence anchors and source formats",
+      "text": "Every anchor MUST bind the same representation identifier and source digest as its manifest.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R027",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "6. Evidence anchors and source formats",
+      "text": "Archives MAY be retained as an unavailable source requiring an adapter, but MUST NOT carry converter output, edits or semantic records under this profile.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R028",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "7. Attribution and safe rendering",
+      "text": "A non-author origin MUST have a generation record and `presented_as_author: false`.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::RightsAndProjectionTests.test_license_cannot_override_restricted_or_unknown_class"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R029",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "7. Attribution and safe rendering",
+      "text": "An author statement MUST NOT carry a generation record.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R030",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "7. Attribution and safe rendering",
+      "text": "The public Markdown renderer MUST preserve every object and relation field, including qualifiers, operator scopes, source position, conditions, anchors, generation and assessment references.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::LedgerAndRenderingTests.test_full_records_survive_rendering_and_cannot_inject_heading"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R031",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "7. Attribution and safe rendering",
+      "text": "Payload headings, HTML or apparent origin labels MUST NOT create new rendered record structure.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::LedgerAndRenderingTests.test_full_records_survive_rendering_and_cannot_inject_heading"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R032",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "A `not_applicable` check MUST state the inapplicability reason in `detail`.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::ReviewReadinessTests.test_not_applicable_requires_explicit_reason"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R033",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "Extraction `pass` MUST contain at least one applicable passing check, no failed or unknown check, and matching seen/expected unit counts when those counts are supplied.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::ReviewReadinessTests.test_empty_unknown_or_failed_checks_cannot_establish_extraction_pass"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R034",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "Every semantic review MUST identify `review_id`, `reviewer_id`, `producer_id`, reviewer type, independence basis, time, result, the exact object and relation identifiers examined, and the current object-file, relation-file and readable-file digests.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R035",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "`sample_size` counts distinct reviewed objects, not relations or checklist items, and MUST equal the object-ID list length.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R036",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "The `knowledge_ready` profile uses **complete coverage**, not a statistical sample: every object and relation MUST be included, every included record MUST be `reviewed`, the result MUST be `supported`, and the declared reviewer MUST be a human or blind agent distinct from the producer.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::ReviewReadinessTests.test_negative_partial_same_session_or_same_identity_review_cannot_be_ready"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R052",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "8. Quality observations and readiness",
+      "text": "There MUST be at least one object.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R037",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "Total package-status decision table",
+      "text": "The validator MUST compute the first matching row below and require equality with the submitted `package_status`.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::ReviewReadinessTests.test_total_decision_table_over_all_status_dimensions"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R038",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "Total package-status decision table",
+      "text": "`blocked_integrity`, `bibliography_only` and `adapter_required` MUST omit both document and readable components.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R039",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "Total package-status decision table",
+      "text": "`structure_only`, `partial_pilot` and `knowledge_ready` MUST contain both.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R040",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "9. Correction impact and reassessment",
+      "text": "An accepted correction MUST invalidate every object explicitly named in `depends_on_objects` **or** whose source anchor overlaps the edit.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::LedgerAndRenderingTests.test_accepted_edit_detects_overlap_without_producer_dependency_list"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R041",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "9. Correction impact and reassessment",
+      "text": "An affected object MUST be stale or rejected until its `reviewed_edit_ids` explicitly names the accepted corrections and a supported, independent declared review covers that object and the current readable and semantic file digests.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R042",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "10. Rights and publication layers",
+      "text": "Only `author_open` MAY declare the package publication `license` (`CC-BY-4.0` or `Apache-2.0`) and nonempty `publishable_layers`.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::RightsAndProjectionTests.test_license_cannot_override_restricted_or_unknown_class"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R043",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "10. Rights and publication layers",
+      "text": "Restricted or unknown works MUST omit that licence field and leave the publication layer list empty.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::RightsAndProjectionTests.test_license_cannot_override_restricted_or_unknown_class"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R044",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "10. Rights and publication layers",
+      "text": "The projection function MUST return no rows for such a package.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R045",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "11. Candidate export and admission runtime",
+      "text": "`candidate_projection(package_directory)` MUST validate a private immutable byte snapshot and compute the rendering from that snapshot itself.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::RightsAndProjectionTests.test_projection_binds_its_own_rendering_and_rejects_raw_inputs"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R046",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "11. Candidate export and admission runtime",
+      "text": "It MUST return no rows on validation failure or for `blocked_integrity`, `bibliography_only` or `adapter_required`, or without an allowed open publication licence.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R047",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "11. Candidate export and admission runtime",
+      "text": "The producer MUST NOT widen that scope or treat a candidate row as publication or runtime admission.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R048",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "12. Validation and evidence limits",
+      "text": "The conformance suite MUST retain each regression's expected cause, including negative review, unknown extraction, restricted licence bypass, arbitrary rendering, Markdown structure injection, stale correction, rejected endpoint and obsolete profile.",
+      "automated_test_references": [
+        "tools/test_book_package_review.py::ReviewReadinessTests.test_negative_partial_same_session_or_same_identity_review_cannot_be_ready"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "BPK-R049",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "13. Compatibility and migration",
+      "text": "Existing record tags MUST NOT simply be rewritten: missing observations remain missing, unsupported edits remain unsupported, and review of old bytes does not establish review of migrated bytes.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R050",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "13. Compatibility and migration",
+      "text": "A migration MUST create a new package release, retain the original revision, identify every mapping or dropped unsupported field, revalidate digests and edits, and obtain any newly required review.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "BPK-R051",
+      "document": "engineering/specifications/book-package/SPECIFICATION.md",
+      "section": "13. Compatibility and migration",
+      "text": "It MUST NOT invent integrity observations, reviewer identities or author attribution.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R001",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "1. Purpose",
+      "text": "Conformance MUST name the implemented profile, exact implementation revision and assessed requirements; publication of these requirements does not establish that conformance.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R002",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "**Request binding.** A service offering a ready Knowledge Contract MUST bind the request to the task and requirements revision, intended recipient and use, applicable constraints, required profiles, temporal mode, and resource limits.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R003",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "Where any required value is unknown, it MUST report the gap or obtain the missing information before asserting admission for that use.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R004",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "**Response and outcome.** The response MUST identify the exact contract and representation versions, selected knowledge revisions, sources and grounds, mandatory dependency closure, coverage, omitted or unresolved obligations, applicable constraints, assessments and the decision's trust boundary.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R005",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "Its operation outcome MUST be one of **`success`, `partial`, `refused`, `failed`, `unresolved`**, with the [status model's meanings](../../engineering/specifications/status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies).",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R006",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "`ready` is an availability or lifecycle state; it MUST NOT replace an outcome token.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R007",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "**Admission scope.** A ready-for-use assertion MUST be backed by the mandatory checks for the declared use.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R008",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "The **Knowledge Contract admission runtime** is the service boundary responsible for such a decision; its actual implementation and profile versions MUST be identified rather than inferred from the publication edition or the legacy field `kc2_admission`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R009",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "3. Contract delivery requirements",
+      "text": "**Execution binding.** If the contract is issued for execution, the system MUST subsequently bind the actual attempt, actor, environment, contract revision, outputs, effects and acceptance evidence.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R010",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "A deployment MUST build those pages from the declared commit and reject an uncommitted or mismatched source tree.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R011",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "A client MUST establish repository identity before comparing a result's source revision with the reader's publication commit.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R012",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "It MUST NOT be applied to an unrelated source.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R013",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "Unknown and different revisions MUST be distinguished from a match.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R014",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "A client MUST NOT substitute an untrusted title, branch label or bare hash for that identity.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R015",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "4. Three manifests",
+      "text": "If URL revision and `source_revision` conflict, it MUST report a mismatch.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R016",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "5. Observed mismatch and release gate",
+      "text": "Refreshing or promoting the backend index is a separate operation. **Admission governance.** An indexing operation MUST use the repository's existing publication-decision and allowlist process; a catalogue entry is not a substitute for that approval.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R017",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "5. Observed mismatch and release gate",
+      "text": "**Release gate.** Before a release is described as consistently indexed, the operator MUST record all six checks below against the exact source revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R018",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "**Receipt.** A gate record conforming to **`KCIndexReleaseReceipt/v1`** MUST satisfy the [receipt JSON Schema](index-release-receipt.schema.json) and the semantic checks here.",
+      "automated_test_references": [
+        "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_all_2187_check_state_and_decision_combinations"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "API-R019",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "Query IDs, admitted paths, and record IDs within each results or fetch list MUST be unique.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R020",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "The same record MAY be found by several different queries.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R021",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "Each query's expected paths MUST be drawn from `admitted_paths`; every expected path MUST have a matching result before `query_coverage` can pass.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R022",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "Each retained result MUST identify the declared repository and `source_revision`, and its source path and `source_sha256` MUST match the admitted snapshot.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R023",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "A service returning passages MUST provide both bindings or leave the relevant check unknown.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R024",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "Every result MUST have a matching fetch identity and representation hash before `fetch_identity` can pass.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R025",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "Release receipt profile",
+      "text": "Every superseded record's observed status MUST equal its required status before `supersession` can pass.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R026",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "6. Client presentation",
+      "text": "**Presentation.** The default result view SHOULD show the passage, human title, source link and indexed revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R027",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "6. Client presentation",
+      "text": "Technical evidence about admission, uncertainty and score semantics MAY be placed in an accessible details section.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R028",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "6. Client presentation",
+      "text": "Material limits MUST remain visible where they change a user's decision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R029",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "6. Client presentation",
+      "text": "A retrieval score MUST NOT be presented as a probability that a claim is true without an independently established calibration and its scope.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R030",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "6. Client presentation",
+      "text": "Scientific reading SHOULD remain possible without making API calls: full pages, equations, references and evidence links are served as the static selected edition.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R031",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "7. Acceptance cases",
+      "text": "**Acceptance cases.** The integration MUST reject a site build from the wrong source commit, a dirty publication tree, a missing referenced document and a local link escaping the publication.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R032",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "7. Acceptance cases",
+      "text": "Search presentation MUST distinguish a matching Knowledge Contract revision, an older revision, an unknown revision and a record from another repository.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R033",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "7. Acceptance cases",
+      "text": "Rendering MUST preserve equations, tables, footnotes and document anchors.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "API-R034",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "7. Acceptance cases",
+      "text": "Receipt validation MUST reject omitted checks, a passing decision with a nonpassing check, an ambiguous repository/revision identity, duplicate identities, missing expected paths, and a mismatched fetch readback.",
+      "automated_test_references": [
+        "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_each_required_check_cannot_be_omitted"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "API-R035",
+      "document": "appendices/api-integration/APPENDIX.md",
+      "section": "7. Acceptance cases",
+      "text": "A contract-delivery acceptance suite MUST additionally exercise missing constraints, a mandatory unknown profile, incomplete closure, insufficient budget, revoked disclosure authority, stale source evidence, and a correct informational response that does not authorize execution.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 name: "source-transcription-and-uncertainty"
 title: "Reproducible transcription is not preservation of uncertainty"
 artifact: "engineering-study"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -15,7 +15,7 @@ review_state: "internally-reviewed"
 
 ## Abstract
 
-An audit of three book-export packages found that their readable Markdown could be reconstructed byte for byte while omitting every one of 153 explicitly recorded uncertainty fields attached to generated illustration descriptions. The underlying structured records remained intact. A separate derivative projection preserved all 153 fields and labeled all 917 descriptions as generated and unreviewed; removing only the recorded insertions restored the original readable bytes. This is a completed finite demonstration of a representation defect and its local correction. It does not measure OCR accuracy, validate the descriptions, or establish a benefit of graph storage over a serializer implementing the same rule. This report separates the corpus observations, later export integration, unresolved trace defects, and a small public synthetic reproduction of the preservation mechanism.
+An audit of three book-export packages found that their readable Markdown could be reconstructed byte for byte while omitting every one of 153 explicitly recorded uncertainty fields attached to generated illustration descriptions. The underlying structured records remained intact. A separate derivative projection preserved all 153 fields and labeled all 917 descriptions as generated and unreviewed; removing only the recorded insertions restored the original readable bytes. This is a completed finite demonstration of a representation defect and its local correction. It does not measure OCR accuracy, validate the descriptions, or establish a benefit of graph storage over a serializer implementing the same rule. This report separates the corpus observations, later export integration, unresolved trace defects, and a small public synthetic illustration of the projection rule.
 
 ## Question and source scope
 
@@ -31,6 +31,8 @@ The studied corpus covered cooking, marine navigation, and electrical automation
 | Total | 899 | 917 | 153 |
 
 The [structural corpus report](evidence/structural-corpus-report.json) supports the counts. Pages, descriptions, and uncertainty fields are different units. They are not 1,969 independently verified observations, and a page anchor is not an expert judgment on a page.
+
+The structural builder and its validator shared a lexical table detector. Agreement on its table counts is therefore not independent validation of table recognition. The report also records zero image-byte checks in this structural pass; consistency of declared image hashes is a metadata observation.
 
 ## Audit and transformation method
 
@@ -71,24 +73,30 @@ The audit also found unresolved addressability. Of 5,538 quality flags, the obse
 
 A separate raw-to-document analysis reproduced all recorded correction rows in the cooking and automation exports. For navigation, 53 of 58 rows were reproduced, leaving five rows in two blocks without a unique raw-serialization binding. Those rows were not labeled five OCR errors. The evidence was insufficient to reconstruct the producer's transformation, which is a different finding.
 
+The twenty unresolved quality flags plus these five correction rows are the 25 unresolved coordinate traces named in the later integration summary. This reconciles its inventory; it does not turn two different kinds of trace defect into a single OCR error rate.
+
 Later local integration processed the same 917 description records in two runs. Each recorded 19,305 satisfied field checks and no violated field checks, preserving 153 nonempty and 764 empty uncertainty values. The [integration summary](evidence/local-export-integration-report.json) also preserves the initial control result of fifteen expected outcomes out of sixteen. One authored control supplied pretty JSON where JSONL was required, causing an earlier-than-intended rejection. Its separately retained correction exercised the intended missing-uncertainty case. A post-replacement control distinguished visibility of a validated new snapshot from unconfirmed durability.
 
 This integration occurred after export. It was not installed in the upstream OCR producer. Physical power-loss durability was not tested. Seven truncated descriptions formed a targeted review queue; the other nonempty uncertainty fields were not automatically equated with defective or truncated outputs.
 
-## Public reproduction and retained evidence
+## Public illustration and retained evidence
 
 The source books, OCR transcriptions, extracted illustrations, and full generated book descriptions are not redistributed here. Project-authored reports and aggregate metadata are provided under readable filenames, with exact JSON identities and separate rendered-prose provenance in [origin.json](evidence/origin.json). Full replay of the original corpus audit requires the specified source packages and original runner closure; the reports alone do not supply them.
 
-A [self-contained public program](evidence/replay_uncertainty_projection.py) uses four newly invented records, two with nonempty uncertainty. It reproduces the logical counterexample: base bytes can be reconstructed exactly while both uncertainty fields are absent. The corrective projection preserves both fields, marks all four records, records insertion ranges, rejects an absent uncertainty field, and reversibly restores the base. Run:
+A [corrected public illustration](checks/demonstrate_uncertainty_projection.py) uses the four invented records from the preserved edition-1.0 program, two with nonempty uncertainty. It compares the base serializer against a [separately stored literal target](checks/synthetic-base.txt), rather than comparing an expression with itself. A changed-description mutation fails that comparison. The projection preserves both fields, marks all four records, records insertion ranges and rejects an absent uncertainty field; removing exactly those insertions restores the stored target, while damaging an insertion range breaks restoration. These are finite checks of the invented projection rule, not a reconstruction of the historical source-plus-editing-ledger pipeline. Run:
 
 ```bash
-python3 evidence/replay_uncertainty_projection.py
+python3 checks/demonstrate_uncertainty_projection.py
 ```
 
-The [saved demonstration](evidence/public-projection-demonstration.json) is a new synthetic illustration. Its four records are not substituted for the 917 historical descriptions, and its checks are not added to the historical corpus totals.
+The [saved corrected demonstration](checks/uncertainty-projection-check.json) is a new synthetic illustration. The [earlier program](evidence/replay_uncertainty_projection.py) and [earlier result](evidence/public-projection-demonstration.json) are retained unchanged; their `base_reconstruction_exact` predicate compared the same construction with itself and supplied no independent reconstruction evidence. The corrected harness removes that inference. Its four records are not substituted for the 917 historical descriptions, and its checks are not added to historical corpus totals. The [correction record](../review-corrections.json) binds the new fixture, code and result separately.
+
+The corpus audit and derivative report are Russian prose views. The methods, missing-field finding, coordinate counts and qualification limits above are English summaries of their relevant passages; the raw sources have not been translated or rewritten in place. The [evidence language index](../evidence-language-index.json) records the language of every file.
 
 ## Limits and conclusion
 
-The corpus's CER and WER values remained unmeasured. `null` does not mean zero error. The audit did not independently inspect all image bytes, verify every OCR passage, or calibrate model uncertainty. Structural graph construction created addressable source structure; it did not thereby extract a verified semantic knowledge graph.
+The corpus's character error rate (CER) and word error rate (WER) remained unmeasured. With a declared alignment and reference unitization, each counts substitutions, deletions and insertions divided by reference characters or words; the historical audit supplied neither a complete ground-truth transcript nor that measurement protocol. `null` therefore does not mean zero error. The [evaluation-method note](../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods) identifies the scoring background.
+
+Image checks belong to different stages and denominators. The earlier reader source reports three selected PNGs checked out of 918 described images. The later 917-description corpus/structural audit checked no image bytes. A separate addressability experiment checked three selected JPEGs, as its [retained source](../executable-projections-and-revision/evidence/addressability-study-source.json) states. None is a byte audit of the whole image collection, and the earlier three-of-918 observation cannot be reassigned to the later 917-record pass. Neither every OCR passage nor the calibration of model uncertainty was assessed. Structural graph construction created addressable source structure; it did not thereby extract a verified semantic knowledge graph.
 
 The established engineering result is precise: the chosen readable template lost an explicitly represented qualification field; a declared and reversible projection preserved it on the inspected finite corpus. A simple serializer can implement that rule. The evidence supports an explicit preservation obligation and supplies a concrete counterexample to equating hashes with meaning preservation. It does not establish superiority of the larger architecture. Related terms are defined in the [glossary](../../../reference/glossary/GLOSSARY.md).

@@ -1,0 +1,21 @@
+{
+  "schema": "knowledge-contract.synthetic-uncertainty-projection/2",
+  "records": 4,
+  "nonempty_uncertainties": 2,
+  "legacy_code_sha256": "9a94ce3d7898b0d00d966136051c926405a02d393f26c3d9d5bffb10f7837295",
+  "expected_base_sha256": "a032c4ed3290f43761547261e703f3559cf9cf9c0091c2aff22618391b9c7522",
+  "projection_sha256": "9d72136cf17baac2652593803786485debad63f09e2fbde110b959e8c0e01c0c",
+  "checks": {
+    "base_matches_separate_literal_fixture": true,
+    "changed_description_fails_fixture_comparison": true,
+    "base_omits_two_recorded_uncertainties": true,
+    "corrected_projection_contains_two_exact_uncertainties": true,
+    "four_generated_unreviewed_labels": true,
+    "declared_insertion_removal_restores_fixture": true,
+    "damaged_insertion_trace_fails_restoration": true,
+    "missing_uncertainty_field_rejected": true,
+    "input_records_unchanged": true
+  },
+  "passed": true,
+  "scope": "Illustration and finite checks of the projection rule using four invented records and a separate literal target. Not a reconstruction of the historical source-plus-ledger pipeline and not an OCR or semantic-accuracy measurement."
+}
