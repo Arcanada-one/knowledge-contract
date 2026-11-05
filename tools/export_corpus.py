@@ -56,7 +56,7 @@ PERSON_RE = re.compile(r"^[A-Z][A-Za-z.'-]+(?: [A-Z][A-Za-z.'-]+)+$")
 REVIEWER_KEYS = frozenset(("session_id", "model", "input_digest", "transcript_sha256", "verdict"))
 # Scope: DEC-AUP-0171 item 7 fixed the six already-public documents mirrored under articles/; DEC-AUP-0172 adds exactly the
 # fourteen English entry pages of the Meaning Management papers. An explicit list, not a prefix: a prefix would pre-authorise
-# the Russian full texts, the specifications and any future paper. DEC-AUP-0175 adds exactly the 29 canonical documents of publication edition 1.0.
+# the Russian full texts, the specifications and any future paper. DEC-AUP-0175 adds exactly the 29 canonical documents of publication edition 1.1 (the same 29 paths as edition 1.0).
 # A later DEC must change this constant to widen it again.
 SCOPE_PATHS = frozenset((
     "articles/project-overview.md", "articles/openness-and-attribution-policy.md", "articles/attribution-policy.md",
@@ -75,7 +75,7 @@ SCOPE_PATHS = frozenset((
     "papers/P11_evaluation_and_falsification.md",
     "papers/P12_compilation_caching_and_reuse.md",
     "papers/P13_knowledge_utility_and_resource_economics.md",
-    # DEC-AUP-0175: the 29 canonical documents of publication edition 1.0 (publication-catalog.json at 08a10931).
+    # DEC-AUP-0175: the 29 canonical documents of publication edition 1.1 (publication-catalog.json at cf215dd8; the paths equal edition 1.0).
     "papers/semantic-objects-and-context/PAPER.md",
     "papers/constrained-transformations/PAPER.md",
     "papers/retrieval-and-context-composition/PAPER.md",
