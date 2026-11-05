@@ -2,7 +2,7 @@
 name: "constrained-transformations"
 title: "Constrained Transformations and the Limits of Knowledge Transfer"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,7 +11,7 @@ description: "Conditional preservation, composition and reconstruction of knowle
 
 # Constrained Transformations and the Limits of Knowledge Transfer
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
@@ -65,9 +65,24 @@ This proposition does not prove total correctness. A second operation may have n
 
 ### Proposition 2. A shared protected observation survives a finite chain
 
-Let a finite chain of admitted transitions use observation functions into the same space \(O\). If every transition preserves the observation across its own interface, then the initial and final observations coincide.
+Let \(n\geq1\) and \(T_i\subseteq X_{i-1}\times X_i\) for \(1\leq i\leq n\). Each step satisfies \(\{P_i\}T_i\{Q_i\}\) and preserves observations \(p_i^-:X_{i-1}\to O\), \(p_i^+:X_i\to O\) whenever \(P_i\) holds. At every junction require
 
-**Proof.** Adjacent observations are equal by assumption. Equality is transitive, so repeated substitution gives equality between the first and last observations. ∎
+\[
+Q_i(x)\Rightarrow P_{i+1}(x),
+\qquad
+Q_i(x)\Rightarrow p_i^+(x)=p_{i+1}^-(x),
+\quad 1\leq i<n.
+\]
+
+For any successful chain \(T_i(x_{i-1},x_i)\) beginning with \(P_1(x_0)\), these conditions imply
+
+\[
+p_1^-(x_0)=p_n^+(x_n).
+\]
+
+**Proof.** Partial correctness of the first step yields \(Q_1(x_1)\). The first junction implication supplies \(P_2(x_1)\); induction gives every subsequent precondition and postcondition. Each step therefore preserves its observation on the actual transition. The second junction implication equates the preceding output observation with the following input observation on each intermediate state. Substituting those within-step and between-step equalities gives the displayed endpoint equality. ∎
+
+Both junction requirements are necessary to this argument. On \(\{0,1\}\), take two identity transitions, with identity observations at both interfaces of the first step and Boolean negation at both interfaces of the second. Each step preserves its own observations, but the chain starts with \(x\) and ends with \(1-x\); its observation junction fails. Separately, let the first transition be identity with an unrestricted precondition and the second map both inputs to \(1\), with precondition \(x=1\). With identity observations throughout, both local contracts preserve observations on their admitted inputs. Nevertheless the composed path \(0\to0\to1\) changes the observation because the second precondition is not met.
 
 The common-observation requirement is substantive. If one operation preserves a numerical value but drops its interpretation, and another preserves only the remaining text, the chain has not preserved a quantity with units. Local declarations about different properties do not combine into a stronger end-to-end claim.
 
@@ -95,6 +110,8 @@ Let \(f:X\to Y\) map two distinct inputs \(x_1\ne x_2\) to the same output. Ther
 
 Reconstruction becomes possible if a retained residual \(\rho(x)\) makes the pair \((f(x),\rho(x))\) sufficiently informative and a reconstruction function is defined on that pair. For example, a projection of a two-component record can be reversed when the omitted component is stored as residual information. That restoration uses additional retained information. It is not evidence that compression creates information or that every summary is reversible.
 
+Bancilhon and Spyratos use a view together with a complement to determine the database state and constrain view-update translation [3]. That established construction motivates the distinction between a projection and the information needed to reconstruct its source. The present model states a reconstruction obligation for knowledge artifacts; it does not establish the view-update laws or a general bidirectional transformation for natural-language summaries.
+
 Loss records must therefore distinguish intentionally omitted content, unresolved interpretation, and information retained elsewhere. A link to a residual helps only when the recipient can retrieve and interpret it within the permitted scope and resource budget.
 
 A finite Boolean model gives an exact special case of shared content and residual information. Write \(M(F)\) for the models of formula \(F\). Entailment is inclusion of model sets. The formula \(C=F\lor G\) is a strongest common consequence of \(F\) and \(G\): both entail \(C\), and any consequence of both is true throughout \(M(F)\cup M(G)=M(C)\). Define \(R_F=\neg C\lor F\). Then
@@ -103,7 +120,7 @@ A finite Boolean model gives an exact special case of shared content and residua
 C\land R_F=C\land(\neg C\lor F)\equiv C\land F\equiv F,
 \]
 
-because \(F\) entails \(C\). This proves reconstruction with that residual in the declared logic. It does not identify a useful common theme between arbitrary documents. The residual convention is also not unique outside \(C\). An inconsistent premise set has no models and classically entails every formula; operational admission must therefore separately require an appropriate consistent, nonempty interpretation rather than turn vacuous entailment into a recommendation.
+because \(F\) entails \(C\). This proves reconstruction with that residual in the declared logic. It does not establish economy: \(R_F=F\) also reconstructs \(F\), and a claim that another residual is smaller requires a separate size measure and comparison. Nor does the construction identify a useful common theme between arbitrary documents. The residual convention is not unique outside \(C\). An inconsistent premise set has no models and classically entails every formula; operational admission must therefore separately require an appropriate consistent, nonempty interpretation rather than turn vacuous entailment into a recommendation.
 
 ## 5. Transfer between tasks and domains
 
@@ -129,11 +146,11 @@ An implementation claiming compliance must connect its actual outputs to the rel
 
 Tests should include incompatible intermediate types, a dropped exception, changed recipients, a noninjective projection offered as reversible, an omitted residual, and a transfer with matching labels but incompatible relations. Positive tests should vary irrelevant features while keeping protected observations fixed. Negative tests should change one material assumption at a time and require refusal, qualified output, or a failed check.
 
-The propositions in this paper are complete within their stated mathematical assumptions. No empirical claim is made that a particular extractor or generator reliably supplies those assumptions. The corresponding measurement question is the frequency and consequence of violations on independently constructed transformations, with separate reporting for interpretation, execution, and verification errors.
+The propositions establish the selected composition, preservation, and reconstruction properties under their explicit assumptions. They are not a completeness claim about all knowledge transformations. No empirical claim is made that a particular extractor or generator reliably supplies those assumptions. The corresponding measurement question is the frequency and consequence of violations on independently constructed transformations, with separate reporting for interpretation, execution, and verification errors.
 
 ## 7. Connections to the published engineering work
 
-The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) is the location for finite transition implementations and their controls. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) examines whether protected conditions survive actual delivery. Domain-specific conversions and transfers belong in those studies.
+The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) reports finite consumer checks for partial extraction and addressed revision. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) reports a fixed dependency graph, preserved artifact payloads, and a historical preliminary delivery decision. These controls concern the stated packages and projections; neither study evaluates every transformation relation or cross-domain transfer proposed here.
 
 The shared [glossary](../../reference/glossary/GLOSSARY.md) defines project terminology. [Semantic objects and context](../semantic-objects-and-context/PAPER.md) supplies the interpretation boundary; [controlled knowledge reuse](../controlled-knowledge-reuse/PAPER.md) applies the preservation argument to previously prepared artifacts.
 
@@ -141,3 +158,4 @@ The shared [glossary](../../reference/glossary/GLOSSARY.md) defines project term
 
 1. Hoare, C. A. R. “An Axiomatic Basis for Computer Programming.” *Communications of the ACM* 12(10), 1969, 576–580, 583. <https://doi.org/10.1145/363235.363259>
 2. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
+3. Bancilhon, F., and Spyratos, N. “Update Semantics of Relational Views.” *ACM Transactions on Database Systems* 6(4), 1981, 557–575. [Original article](https://cs.uwaterloo.ca/~david/cs848s18/constant-complement.pdf).

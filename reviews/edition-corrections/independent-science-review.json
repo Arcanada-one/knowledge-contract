@@ -1,0 +1,450 @@
+{
+  "schema": "independent-science-review/1",
+  "created_at": "2026-11-04T20:03:48.162186+00:00",
+  "reviewer": "independent_corrections_review subagent",
+  "parent_task": "Independent review of Knowledge Contract corrections",
+  "repository": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+  "branch_at_capture": "edition-review-corrections",
+  "published_starting_commit": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "publication_edition": "1.1",
+  "reviewed_content_snapshot_at": "2026-11-04T19:41:57.768578+00:00",
+  "final_hash_check_at": "2026-11-04T20:01:44.842364+00:00",
+  "verdict": "NO_BLOCKING_FINDING_IN_REVIEWED_SCOPE",
+  "all_eight_papers_certified": false,
+  "summary": "The corrected chain-preservation and request-indexed reuse arguments are valid under their stated assumptions. No blocking mathematical or evidence-scope defect was found in the six fully reviewed papers. Two papers and the original finding-by-finding closure remain incompletely reviewed.",
+  "blocking_findings": [],
+  "findings": [],
+  "scope": {
+    "fully_reviewed_papers": [
+      "constrained-transformations",
+      "controlled-knowledge-reuse",
+      "semantic-objects-and-context",
+      "evidence-and-falsification",
+      "interaction-and-memory",
+      "knowledge-utility"
+    ],
+    "partially_reviewed_papers": [
+      "retrieval-and-context-composition",
+      "revision-and-governance"
+    ],
+    "formal_test_source_fully_reviewed": true,
+    "original_26_findings_itemwise_reviewed": false,
+    "publication_sources_modified_by_reviewer": false,
+    "external_contacts_or_uploads": false
+  },
+  "assessments": [
+    {
+      "id": "A01",
+      "file": "papers/constrained-transformations/PAPER.md",
+      "location": "Section 3, Proposition 2, lines 66–89",
+      "status": "valid_as_stated",
+      "subject": "Finite-chain observation preservation",
+      "reasoning": "Start from P1. Each partial-correctness contract yields its postcondition; each Q_i implies P_(i+1), so every local preservation premise applies on the actual successful path. Each Q_i also aligns the preceding output observation with the following input observation. Substituting local and junction equalities yields the endpoint equality. Both junction conditions are needed. The conclusion is for successful relational chains, not existence, termination, or a production implementation.",
+      "countermodels": [
+        "C01",
+        "C02"
+      ]
+    },
+    {
+      "id": "A02",
+      "file": "papers/controlled-knowledge-reuse/PAPER.md",
+      "location": "Section 4, lines 64–103",
+      "status": "valid_as_stated",
+      "subject": "Request-indexed reuse admission",
+      "reasoning": "Actual prior truth plus factorization through the declared request and state projections, whose values are unchanged, transfers each P_j to the current request/state on the original artifact. The all-output preservation condition then transfers every P_j to every permitted relational output. The explicit implication from all P_j to artifact requirement discharge supplies the coverage bridge. Current per-output discharge of use requirements completes the declared requirement set. The proof does not turn a stored pass label into truth or establish projection completeness, checker soundness, requirement completeness, or applicability without those premises.",
+      "countermodels": [
+        "C03",
+        "C04",
+        "C05",
+        "C06"
+      ]
+    },
+    {
+      "id": "A03",
+      "file": "papers/constrained-transformations/PAPER.md",
+      "location": "Sections 2–5; Propositions 1 and 3",
+      "status": "valid_as_stated",
+      "subject": "Relational partial correctness, information loss, and residuals",
+      "reasoning": "Composition follows from an existential intermediate state and the postcondition-to-precondition implication. Noninjectivity rules out a left inverse by the shared-image contradiction. The common-consequence/residual identity is a Boolean identity under the given implication; it does not establish economical compression. Quotient descent correctly requires congruence and appropriate domain conditions. Successful output, uniqueness, and termination are not silently inferred."
+    },
+    {
+      "id": "A04",
+      "file": "papers/semantic-objects-and-context/PAPER.md",
+      "location": "Section 4, Propositions 1–5, lines 87–136",
+      "status": "valid_as_stated",
+      "subject": "Semantic indeterminacy, closure, applicability, and deterministic slices",
+      "reasoning": "Indistinguishable inputs cannot discriminate worlds with opposite correct definite answers. Increasing finite dependency closure reaches a least closed set by induction. Adding mandatory requirements narrows applicability only with shared assessments fixed. Adding readings narrows intersections of consequences. A complete ancestor slice of a finite deterministic DAG preserves selected values by topological induction. The text explicitly limits closure to the declared graph and does not infer complete real-world dependencies or minimal token cost."
+    },
+    {
+      "id": "A05",
+      "file": "papers/evidence-and-falsification/PAPER.md",
+      "location": "Sections 3–7",
+      "status": "valid_as_stated",
+      "subject": "Deductive soundness and evidence scope",
+      "reasoning": "True leaves, sound rules, satisfied side conditions, and a finite DAG support topological truth preservation. An in-domain countermodel refutes a scoped universal. Tests, historical examples, engineering checks, empirical comparisons, and causal conclusions are distinguished. An impact oracle based only on the same possibly incomplete graph cannot establish missing-edge completeness. No universal effectiveness or runtime implementation guarantee was found in the reviewed scope."
+    },
+    {
+      "id": "A06",
+      "file": "papers/interaction-and-memory/PAPER.md",
+      "location": "Section 5, Propositions 1–3, lines 68–96",
+      "status": "valid_as_stated",
+      "subject": "Generation fence, event serialization, and state locality",
+      "reasoning": "Nonreissued generations plus a comparison serialized with acceptance prevent direct acceptance of an old completion; a new evaluation is a distinct admission route. At most one serialized first commit, with event identity, payload fingerprint, result, and internal effect committed atomically, makes duplicate handling at most once internally; losing contenders must roll back. This is stronger than independent transaction atomicity and does not promise exactly-once external effects. Updates confined to coordinates J preserve observations depending only on other coordinates. Hidden coupling is excluded by the model premises."
+    },
+    {
+      "id": "A07",
+      "file": "papers/knowledge-utility/PAPER.md",
+      "location": "Sections 3–7",
+      "status": "valid_as_stated",
+      "subject": "Conservative accounting, causal attribution, and break-even",
+      "reasoning": "Summing finite per-operation nonnegative allocation equalities conserves total cost; it does not establish fair attribution or completeness of the operation ledger. Complementary artifacts can each have leave-one-out marginal contribution one although their joint value is one, so those margins are not additive allocation shares. The reuse condition N(G−c_hit)>B follows exactly from B+N*c_hit<N*G within the fixed common-unit horizon and assumptions. Scalar utility requires declared weights/units; policy contrasts and causal effects require the stated identification conditions. Synthetic arithmetic is not measured production superiority."
+    },
+    {
+      "id": "A08",
+      "file": "papers/retrieval-and-context-composition/PAPER.md",
+      "location": "Requested/read lines 1–66 only",
+      "status": "partial_review_no_conclusion_on_remaining_results",
+      "subject": "Retrieval and composition definitions",
+      "reasoning": "The reviewed opening distinguishes exhaustive search from rank-limited retrieval, declared-graph closure from claim/token minimality, and listed grounding groups from valid grounding. Its cost model permits shared dependencies and nonadditive delivery costs. Sections and proofs after line 66 were not reviewed."
+    },
+    {
+      "id": "A09",
+      "file": "papers/revision-and-governance/PAPER.md",
+      "location": "Requested lines 1–60; tool output partially truncated",
+      "status": "partial_review_no_conclusion_on_formal_results",
+      "subject": "Version, assessment, and normative adoption distinctions",
+      "reasoning": "The visible opening distinguishes immutable content revision, assessment, current pointers, and authorized norm adoption. It does not identify latest version with truth or normative adoption with factual truth. Because the opening read was truncated and lines 61–130 were not reviewed, this is not a proof review of the paper or its norm-acceptance results."
+    }
+  ],
+  "countermodels_to_weakened_premises": [
+    {
+      "id": "C01",
+      "target": "Chain without observation-interface agreement",
+      "repro": "On {0,1}, both transformations are identity. Step 1 uses observation x before and after; step 2 uses 1−x before and after. All pre/postconditions are true. Both steps preserve locally, but the path 0→0→0 has initial observation 0 and final observation 1.",
+      "rationale": "Local preservation does not align the meaning of observations across a junction.",
+      "corrected_status": "Excluded by the explicit observation-junction premise."
+    },
+    {
+      "id": "C02",
+      "target": "Chain without precondition handoff",
+      "repro": "Step 1 is identity on {0,1}. Step 2 maps every input to 1, with precondition input=1. All observations are identity. Step 2 preserves its observation on its admitted precondition; the successful underlying path 0→0→1 changes the endpoint observation.",
+      "rationale": "Observation alignment does not make the next precondition true.",
+      "corrected_status": "Excluded by Q_i implying P_(i+1)."
+    },
+    {
+      "id": "C03",
+      "target": "Reuse without request dependence",
+      "repro": "P(a,q,s) means a=q, state is irrelevant, a=0, old q=0, new q=1, identity transformation. Old P holds and state is unchanged; current P is false.",
+      "rationale": "Unchanged state alone cannot transfer a request-indexed property.",
+      "corrected_status": "Excluded by the request-projection equality and complete factorization premise."
+    },
+    {
+      "id": "C04",
+      "target": "Reuse without requirement coverage",
+      "repro": "Artifact (true,false), old property is its first bit, a newly mandatory requirement is its second bit, and transformation is identity. Old property is preserved while the new requirement fails.",
+      "rationale": "Preservation of old properties does not discharge arbitrary new requirements.",
+      "corrected_status": "Excluded by the explicit coverage implication for artifact requirements."
+    },
+    {
+      "id": "C05",
+      "target": "Reuse with only an existentially good relational output",
+      "repro": "T={(0,0),(0,1)} and P(x) means x=0. P holds initially and for one output but not the other.",
+      "rationale": "A good selected output is insufficient for a theorem quantified over all permitted outputs.",
+      "corrected_status": "Excluded by universal output preservation."
+    },
+    {
+      "id": "C06",
+      "target": "Recorded pass treated as sound prior verification",
+      "repro": "The record says pass while the underlying required property is false.",
+      "rationale": "A record is not a semantic proof of the property. This is an assumption distinction rather than a substantive model of a checker.",
+      "corrected_status": "Excluded by the actual-prior-truth premise."
+    },
+    {
+      "id": "C07",
+      "target": "At-most-once inferred from transaction atomicity alone",
+      "repro": "Two transactions both observe an event absent, both apply an effect, then both commit without a uniqueness/serialization constraint. Each transaction can be atomic while the aggregate effect occurs twice.",
+      "rationale": "Atomicity alone is not first-commit serialization.",
+      "corrected_status": "Excluded by the explicit serialized/unique first-commit premise; reasoned schedule, not an executed concurrency test."
+    },
+    {
+      "id": "C08",
+      "target": "Stale completion guarded by reusable content hash alone",
+      "repro": "Requirements go A→B→A; the generation identifier is reused for A. An old completion for the first A can match the active identifier for the second A.",
+      "rationale": "A content-derived ABA identifier cannot distinguish distinct generations.",
+      "corrected_status": "Excluded by nonreissued generation identifiers and serialized acceptance; reasoned scenario, not an executed implementation test."
+    }
+  ],
+  "test_assessment": {
+    "command": "python3 -B tools/test_reviewed_formal_results.py -v",
+    "cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+    "exit_code": 0,
+    "tests_run": 8,
+    "result": "PASS",
+    "reported_runtime_seconds": 0.194,
+    "structure": "Six explicit negative controls and two bounded positive enumerations. The negative controls instantiate actual failures of weakened premises; they are not assertions that particular prose strings exist.",
+    "chain_enumeration": "All binary relations/predicates/Boolean observations in the declared two-element construction, restricted to nonempty admitted steps and the exact image postcondition; two-step compatible paths yield 15,840 checked witness outputs. This does not enumerate arbitrary domains, chain lengths, or implementations.",
+    "reuse_enumeration": "All 256 Boolean truth tables over artifact, relevant request bit, and relevant state bit; declared irrelevant bits vary. Relations and requirement subsets are enumerated, then filtered by true prior support, coverage, all-output preservation, and current-use requirements. The run checks 20,480 output witnesses, not independent empirical trials.",
+    "circularity_boundary": "The positive reuse control directly filters outputs by property truth, which is equivalent to the preservation consequent in this model because prior truth is established. It is a finite logical-implication check, not an independently implemented admission service or a test that discovers incomplete projections/checkers. The pass-record negative control is intentionally a minimal distinction, not a checker-soundness test.",
+    "missing_tests": "No runtime tests of serialized event admission, ABA-resistant generations, graph extraction completeness, normative authorization, or the partially reviewed papers were performed in this review.",
+    "raw_output_artifact": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/final-check-results.json"
+  },
+  "limitations_and_unchecked_items": [
+    "This is a bounded independent review, not approval of all eight papers: six papers were fully read, retrieval was read through line 66, and governance was only partially read through a truncated line-1–60 response.",
+    "The original 26-finding review was snapshotted and hashed but was not read item by item; this report does not certify closure of all 26 findings.",
+    "No editorial response/report was used as proof. Published studies, specifications, book-package/schema/export code, and the final website were not independently reviewed in this stage.",
+    "No external literature search or bibliography/source-authenticity verification was performed. No claims here rely on fresh external factual assertions.",
+    "Proofs were assessed by mathematical reasoning; no proof assistant or unbounded model checker was used. Finite enumeration cannot establish a theorem over arbitrary domains or arbitrary chain lengths.",
+    "No production admission, generation-fence, concurrency, access-control, dependency-extraction, or persistence implementation was validated. Completeness, checker soundness, policy authority, and atomicity remain theorem premises where stated.",
+    "No newly written executable countermodel was added. The existing eight controls were fully read and executed; additional ABA/concurrency scenarios in this report were reasoned examples.",
+    "Original prose-read command output was sometimes truncated. Full readings of the six papers were completed through subsequent bounded reads; the governance truncation remains an explicit gap.",
+    "Current paper bodies match the reviewed snapshot exactly. All eight paper diffs are limited to frontmatter edition and displayed publication edition 1.0→1.1. AGENTS.md changed and its delta was read; the current catalogue was hashed but not reviewed again."
+  ],
+  "source_hashes": [
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/AGENTS.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/AGENTS.md",
+      "sha256": "6d2789e62b60e85e4a68cce1a648de636d72e06d4107f7b12872f2418e1552ca",
+      "bytes": 5676,
+      "lines": 52,
+      "snapshot_sha256": "6d2789e62b60e85e4a68cce1a648de636d72e06d4107f7b12872f2418e1552ca",
+      "current_sha256": "2e64614a966402ca765f5cff872a71151b29cdfb590a54bfaa8c8a96b47c2726",
+      "unchanged": false,
+      "review_status": "snapshot_read_in_full_and_current_delta_read_in_full"
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/README.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/README.md",
+      "sha256": "1f2e12577b7e28476af1f2f0de49abf20bda0e4a9c895cd262f1f3f1a8ca07a0",
+      "bytes": 5705,
+      "lines": 45,
+      "snapshot_sha256": "1f2e12577b7e28476af1f2f0de49abf20bda0e4a9c895cd262f1f3f1a8ca07a0",
+      "current_sha256": "1f2e12577b7e28476af1f2f0de49abf20bda0e4a9c895cd262f1f3f1a8ca07a0",
+      "unchanged": true,
+      "review_status": "partially_read_for_orientation"
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/publication-catalog.json",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/publication-catalog.json",
+      "sha256": "505ba15e8552a4bb5636e636ec0f1d0fa7e128ea37a79d480ec86167ac57c3d1",
+      "bytes": 11570,
+      "lines": 267,
+      "snapshot_sha256": "505ba15e8552a4bb5636e636ec0f1d0fa7e128ea37a79d480ec86167ac57c3d1",
+      "current_sha256": "34179ba5bf760b0f82688c44de286d0d3b5ae652026a4ef7fa4452b1f573307a",
+      "unchanged": false,
+      "review_status": "reviewed_snapshot_for_inventory; current_revision_hashed_only"
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/constrained-transformations/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/constrained-transformations/PAPER.md",
+      "sha256": "91bee89715451ce66960da5d8e36236aa97f47be0dc940a7b87ebc5e381e5d80",
+      "bytes": 16395,
+      "lines": 161,
+      "snapshot_sha256": "91bee89715451ce66960da5d8e36236aa97f47be0dc940a7b87ebc5e381e5d80",
+      "current_sha256": "b9ec18c1ee93c869bd31a0e097014338605ba2937979db827bf8cde5f63d4050",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "b9ec18c1ee93c869bd31a0e097014338605ba2937979db827bf8cde5f63d4050",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "1cd56f4135bebaf60b415fa28dd81887274d32e0d9b3ddc999476ff6ece3f7e2",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/controlled-knowledge-reuse/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/controlled-knowledge-reuse/PAPER.md",
+      "sha256": "acb9673e79f8ff717a0633d6c34b699b3ecb5b2bdb7ca6bb9dc2bc76a74dccdb",
+      "bytes": 17168,
+      "lines": 145,
+      "snapshot_sha256": "acb9673e79f8ff717a0633d6c34b699b3ecb5b2bdb7ca6bb9dc2bc76a74dccdb",
+      "current_sha256": "87908092cf64bb2cdb0fa81e1295ad6788f45f9e3b9fe25946cdbb77d7564e0c",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "87908092cf64bb2cdb0fa81e1295ad6788f45f9e3b9fe25946cdbb77d7564e0c",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "f545f9e9c45096702867183f685e8bcee2645cec33a73a61c489c1ad2da9698e",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/evidence-and-falsification/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/evidence-and-falsification/PAPER.md",
+      "sha256": "2e64469bee7eb6dfb7027e691a6c3bcf417492fe6e6846f9cc68399c75b445ac",
+      "bytes": 14848,
+      "lines": 128,
+      "snapshot_sha256": "2e64469bee7eb6dfb7027e691a6c3bcf417492fe6e6846f9cc68399c75b445ac",
+      "current_sha256": "95acb937c5aa68572eb60ec723d17c628bcd28a778490c09ef6b434ef0f63494",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "95acb937c5aa68572eb60ec723d17c628bcd28a778490c09ef6b434ef0f63494",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "4399dddf8a83747ef48e7fead458d2b6e8f328c803022b03c4aa4f9b7b0fc7d4",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/interaction-and-memory/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/interaction-and-memory/PAPER.md",
+      "sha256": "26f6618d6a68f12ab7af8c15a550ef9cb4ada4ac8ae6be9d36d433c95f84db21",
+      "bytes": 14961,
+      "lines": 118,
+      "snapshot_sha256": "26f6618d6a68f12ab7af8c15a550ef9cb4ada4ac8ae6be9d36d433c95f84db21",
+      "current_sha256": "8dacee80ed050c3013c7de092da2c17fbfaafd5fb3b45939dc8fdae3611df656",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "8dacee80ed050c3013c7de092da2c17fbfaafd5fb3b45939dc8fdae3611df656",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "20523b65705520b9fcdaf1f4a5efaaaca765c2d9dfddad35e7ef7d920939b3e4",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/knowledge-utility/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/knowledge-utility/PAPER.md",
+      "sha256": "461e71432d4e64861c847a1c4691aeeb19b300555236e5af1b39d2194cdcb28d",
+      "bytes": 15306,
+      "lines": 145,
+      "snapshot_sha256": "461e71432d4e64861c847a1c4691aeeb19b300555236e5af1b39d2194cdcb28d",
+      "current_sha256": "e807eacfe0c69620457232e00a1f09edb1e9753493e5f5478f8bdfa7e05c73e1",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "e807eacfe0c69620457232e00a1f09edb1e9753493e5f5478f8bdfa7e05c73e1",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "df60d73499c59dfb41b5a473e9ab8e9d79990f13ab15a2e08da257a430a0abfd",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/retrieval-and-context-composition/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/retrieval-and-context-composition/PAPER.md",
+      "sha256": "abbf3fe21f4d7ceb4653857a3d7a1fe85a1dbabeca1377865808838b0e2742ff",
+      "bytes": 14439,
+      "lines": 127,
+      "snapshot_sha256": "abbf3fe21f4d7ceb4653857a3d7a1fe85a1dbabeca1377865808838b0e2742ff",
+      "current_sha256": "6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773",
+      "review_status": "partial_text_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "4225c405071dc6d683ba1f7be4d526e3a4b897bee287029b259e39f73dd116ac",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/revision-and-governance/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/revision-and-governance/PAPER.md",
+      "sha256": "f2fdc8926f7c037c9376a6adc593f91f81c37bf5f5f64c46b191bea098e1fe1c",
+      "bytes": 15169,
+      "lines": 130,
+      "snapshot_sha256": "f2fdc8926f7c037c9376a6adc593f91f81c37bf5f5f64c46b191bea098e1fe1c",
+      "current_sha256": "e221151a7c6778ef4c6843074a881efead94bad2f0b95e21c697f122c67f58dc",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "e221151a7c6778ef4c6843074a881efead94bad2f0b95e21c697f122c67f58dc",
+      "review_status": "partial_text_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "0bdda439ba1f01fa9feb7039aea98d3be86656bb066a7472669f54fe32f6988c",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/papers/semantic-objects-and-context/PAPER.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/papers/semantic-objects-and-context/PAPER.md",
+      "sha256": "310fd5499a3d9c82011d7ca15f9ec96e3a84cbad69ef6d54da3a24b12ca27ee0",
+      "bytes": 17398,
+      "lines": 164,
+      "snapshot_sha256": "310fd5499a3d9c82011d7ca15f9ec96e3a84cbad69ef6d54da3a24b12ca27ee0",
+      "current_sha256": "c3a3473e57ea472aef01613781e412f14d11321e4f05d05e6adf9f4535f697f8",
+      "unchanged": false,
+      "only_global_edition_1_0_to_1_1_change": true,
+      "edition_normalized_sha256": "c3a3473e57ea472aef01613781e412f14d11321e4f05d05e6adf9f4535f697f8",
+      "review_status": "full_text_independent_review",
+      "body_hash_definition": "Bytes after the first literal ## Abstract, excluding that delimiter; includes the remainder of the paper unchanged.",
+      "body_sha256": "97cfb201127662924a7ffcd3bacbde20fabda21f5b1435c73281091675d21e55",
+      "body_unchanged_from_reviewed_snapshot": true
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/knowledge-contract/tools/test_reviewed_formal_results.py",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/tools/test_reviewed_formal_results.py",
+      "sha256": "e65b502ca433381b83b67ca810c864af642ed9a698696c07461b50df12f2a9e4",
+      "bytes": 7043,
+      "lines": 153,
+      "snapshot_sha256": "e65b502ca433381b83b67ca810c864af642ed9a698696c07461b50df12f2a9e4",
+      "current_sha256": "e65b502ca433381b83b67ca810c864af642ed9a698696c07461b50df12f2a9e4",
+      "unchanged": true,
+      "review_status": "full_source_review_and_executed"
+    },
+    {
+      "path": "/workspace/scratch/4a4b36d07b29/edition-review-input/01_papers_review.md",
+      "snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot/original-papers-review.md",
+      "sha256": "ca01d54efd1e0e5393357be8de4901fd4b2af64aca817a12c083286e9d7565b0",
+      "bytes": 26419,
+      "lines": 195,
+      "snapshot_sha256": "ca01d54efd1e0e5393357be8de4901fd4b2af64aca817a12c083286e9d7565b0",
+      "current_sha256": "ca01d54efd1e0e5393357be8de4901fd4b2af64aca817a12c083286e9d7565b0",
+      "unchanged": true,
+      "review_status": "captured_and_hashed_only; contents_not_independently_reviewed"
+    }
+  ],
+  "commands_and_results": [
+    {
+      "command": "pwd; rg --files discovery (separate invocations, not one shell chain)",
+      "result": "exit 0; located workspace/repo/publication and review inputs",
+      "evidence": "review transcript; raw output not separately retained"
+    },
+    {
+      "command": "cat AGENTS.md; git status --short; git rev-parse --abbrev-ref HEAD; git rev-parse HEAD (separate invocations)",
+      "result": "exit 0; branch edition-review-corrections, head ed2e188c89a1a50a187f3d55bf32baab54c87f7e at capture; dirty working tree",
+      "evidence": "review transcript and source-manifest.json"
+    },
+    {
+      "command": "Python byte-copy/hash snapshot of listed sources",
+      "result": "exit 0; 13 files captured with SHA256, byte and line counts",
+      "evidence": "source-manifest.json and source-snapshot/"
+    },
+    {
+      "command": "Bounded sed/nl reads of source-snapshot papers; README/catalogue orientation",
+      "result": "exit 0; six full paper readings, retrieval lines 1–66, governance requested lines 1–60 with truncation",
+      "evidence": "review transcript; exact scope above"
+    },
+    {
+      "command": "sed -n '1,80p' tools/test_reviewed_formal_results.py; sed -n '81,160p' tools/test_reviewed_formal_results.py (separate invocations)",
+      "result": "exit 0; all 153 lines reviewed",
+      "evidence": "review transcript and byte-preserved source snapshot"
+    },
+    {
+      "command": "Python SHA256/current-vs-snapshot unified diffs across captured files",
+      "result": "exit 0; all eight paper differences are edition-only",
+      "evidence": "final-source-hashes.json"
+    },
+    {
+      "command": "python3 -B tools/test_reviewed_formal_results.py -v",
+      "result": "exit 0; eight tests passed",
+      "evidence": "final-check-results.json"
+    },
+    {
+      "command": "Python unified diff of current AGENTS.md against snapshot",
+      "result": "exit 0; full current instruction delta read",
+      "evidence": "final-check-results.json"
+    },
+    {
+      "command": "rg -n '^##|^\\*\\*(Proposition|Theorem|Proof)' on the six fully reviewed papers",
+      "result": "exit 0; locations verified",
+      "evidence": "final-check-results.json"
+    },
+    {
+      "command": "Python report creation plus final body SHA256 comparison",
+      "result": "exit 0 if this report exists; no publication source mutation",
+      "evidence": "write_report.py; report JSON validation is recorded separately below"
+    }
+  ],
+  "evidence_files": {
+    "initial_manifest": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-manifest.json",
+    "final_hashes": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/final-source-hashes.json",
+    "final_check_results": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/final-check-results.json",
+    "source_snapshot": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/source-snapshot",
+    "report_writer": "/workspace/scratch/4a4b36d07b29/edition-review-input/independent-science-review-evidence/write_report.py"
+  },
+  "validation": {
+    "json_serialization": "created with Python json.dumps; parsed again below",
+    "all_paper_bodies_unchanged": true
+  }
+}

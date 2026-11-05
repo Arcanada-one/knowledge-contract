@@ -4,7 +4,7 @@ sources: none
 
 # Engineering Specifications
 
-Eleven specifications define the implementable obligations of Knowledge Contract. They separate normative requirements from measured implementation coverage and preserve historical wire versions in the compatibility appendix.
+Eleven specifications define architectural obligations and bounded implemented profiles. The book-package/2 schema and the observation/change-event exchange subset are executable formats. The remaining architecture requires an explicit implementation profile before two systems can claim wire interoperability. Normative requirements, actual test coverage and historical wire versions remain separate.
 
 | Document | Subject |
 | --- | --- |
@@ -21,3 +21,5 @@ Eleven specifications define the implementable obligations of Knowledge Contract
 | [Book Packages: Source Identity, Semantic Layers, and Validation](book-package/SPECIFICATION.md) | Source binding, reversible conversion, semantic layers, rights and implemented synthetic conformance checks. |
 
 [Publication home](../../README.md) · [Shared glossary](../../reference/glossary/GLOSSARY.md)
+
+The [requirement register](requirements.json) identifies each capitalized requirement with a stable ID, document location and available verification reference. An empty automated-test list means the requirement still needs implementation-specific evidence; it is not a passed check.

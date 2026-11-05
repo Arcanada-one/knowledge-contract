@@ -1,0 +1,423 @@
+{
+  "schema": "knowledge-contract.edition-correction-verification/1",
+  "edition": "1.1",
+  "recorded_at": "2026-11-04T20:18:33.572957+00:00",
+  "base_commit": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "scope": "Executed local source gates and bounded regression models. Remote GitHub Actions, actual deployment, API runtime, historical model replay and human DCO attestation are separate.",
+  "passed": true,
+  "distinct_unit_tests": 263,
+  "unit_test_groups": {
+    "publication-policy-tests": 63,
+    "formal-controls": 8,
+    "book-and-exchange-tests": 105,
+    "case-tests": 6,
+    "candidate-export-tests": 81
+  },
+  "tool_versions": {
+    "python": "3.12.14",
+    "jsonschema": "4.23.0",
+    "reuse": "6.2.0",
+    "node": "v24.22.1",
+    "pandoc": "pandoc 3.1.3",
+    "gitleaks": "8.30.1"
+  },
+  "study_programs": {
+    "retained": 4,
+    "corrected": 3,
+    "counts_not_added_to_historical_model_trials": true
+  },
+  "structural_models": {
+    "book_status_dimension_combinations": 3240,
+    "receipt_check_state_and_decision_combinations": 2187
+  },
+  "invariants": {
+    "retained_study_evidence_and_origins": 53,
+    "retained_study_mismatches": [],
+    "historical_internal_review_files": 5,
+    "historical_internal_review_mismatches": [],
+    "regenerated_fixture_files": 65,
+    "fixture_generator_exit_code": 0,
+    "fixture_differences": [],
+    "requirement_count": 283,
+    "distinct_test_references": 18,
+    "missing_test_references": [],
+    "correction_manifest_hash_bindings": 18,
+    "correction_manifest_mismatches": [],
+    "recovered_schema_sha256": "b5078b9228b1bca85ebea689afc17c2aca16107e4d2549033805349ed6077ac2",
+    "scope": "Byte preservation, deterministic fixture generation and reference resolution; not semantic validity or historical model replication.",
+    "passed": true
+  },
+  "checks": [
+    {
+      "check": "book-and-exchange-tests",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "test_book_package",
+        "test_build_book_package",
+        "test_book_package_review",
+        "test_contract_profile",
+        "test_index_release_receipt",
+        "-v"
+      ],
+      "cwd": "knowledge-contract/tools",
+      "exit_code": 0,
+      "seconds": 31.451,
+      "log": "source/book-and-exchange-tests.log",
+      "log_sha256": "166ffdce01197584b58b8c36c2a2ae62b9045c707e9675fcf5014f9da3f7c7e8",
+      "test_count": 105
+    },
+    {
+      "check": "candidate-export-tests",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tools.test_export_corpus",
+        "-v"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 102.393,
+      "log": "source/candidate-export-tests.log",
+      "log_sha256": "e4cc2c41ac675c7fb220556d67ad56219565f87cba94c8337875a644cd85ce96",
+      "test_count": 81
+    },
+    {
+      "check": "case-receipts",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "tools/check_cases.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.584,
+      "log": "source/case-receipts.log",
+      "log_sha256": "af67028d6511529320113eb0406bc53de0ede313d1ef2326c6432e5e057bf5a4"
+    },
+    {
+      "check": "case-tests",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "test_cases",
+        "-v"
+      ],
+      "cwd": "knowledge-contract/tools",
+      "exit_code": 0,
+      "seconds": 1.059,
+      "log": "source/case-tests.log",
+      "log_sha256": "159c09f06f57eea1ba25ddf357bfb86dfcbe76430955dd6d227050cc98fd6b87",
+      "test_count": 6
+    },
+    {
+      "check": "corrected-admission-cost-control",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.038,
+      "log": "source/corrected-admission-cost-control.log",
+      "log_sha256": "5324590c59500f5fd21aadee3d1ac845dddc06568e7497d73de9fed3a933e34c"
+    },
+    {
+      "check": "corrected-dependency-control",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.215,
+      "log": "source/corrected-dependency-control.log",
+      "log_sha256": "57a3110763753ead90f1c19f7e5420a062152e40915653454057e70697335fd8"
+    },
+    {
+      "check": "corrected-uncertainty-control",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.229,
+      "log": "source/corrected-uncertainty-control.log",
+      "log_sha256": "e17a148feb7a3a1d2c65f97c88b6fc4515dbd38101deff55f66008ec9aa93d10"
+    },
+    {
+      "check": "formal-controls",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tools.test_reviewed_formal_results",
+        "-v"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.379,
+      "log": "source/formal-controls.log",
+      "log_sha256": "df971dbc99ef09fdfa41f97dedaa1c5ea41f2d8ddaa91ec51e8477bbe78a8115",
+      "test_count": 8
+    },
+    {
+      "check": "historical-dependency-replay",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 2.298,
+      "log": "source/historical-dependency-replay.log",
+      "log_sha256": "3dfa7b8f2d6fe43ba8641321d44ea9791ece85e845c2d2af6dc313f774a5a8a9"
+    },
+    {
+      "check": "historical-editorial-replay",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "log": "source/historical-editorial-replay.log",
+      "log_sha256": "49c620b336bbd47fc43bf0d8e15be096dcdf8127c32ed294bf8cd52db42a7caa"
+    },
+    {
+      "check": "historical-reuse-replay",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.182,
+      "log": "source/historical-reuse-replay.log",
+      "log_sha256": "edbec332710196e37ff7c5cf88bfd2b4979a86793557c3cebc2a57df1eb01df2"
+    },
+    {
+      "check": "historical-uncertainty-replay",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.034,
+      "log": "source/historical-uncertainty-replay.log",
+      "log_sha256": "be88b60373eb6f4552fa3d35e661bfee000f2f87f912d45f44cb369a060a3def"
+    },
+    {
+      "check": "markdown-lint",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-node-env/node_modules/.bin/markdownlint-cli2",
+        "**/*.md"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 2.711,
+      "log": "source/markdown-lint.log",
+      "log_sha256": "57a9a356fbf82a4d5eed8128b767556aed2cae7123f936dcfb5c1dcb59c34458"
+    },
+    {
+      "check": "offline-markdown-links",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-bin/lychee",
+        "--offline",
+        "--no-progress",
+        "./**/*.md"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.044,
+      "log": "source/offline-markdown-links.log",
+      "log_sha256": "aeb6864512562204a2a4df87384354f7a4def15480df3d5e3306f9fd7139edc3"
+    },
+    {
+      "check": "publication-integrity",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "tools/check_publication.py",
+        "."
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 5.691,
+      "log": "source/publication-integrity.log",
+      "log_sha256": "15b409a781947d6b8f82267121450a5cd78cce669329405ce99d5f1433f2ec4e"
+    },
+    {
+      "check": "publication-policy-tests",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tools.test_check_publication",
+        "tools.test_check_sources",
+        "tools.test_check_separation",
+        "tools.test_check_dco",
+        "tools.test_ci_workflow",
+        "-v"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 21.407,
+      "log": "source/publication-policy-tests.log",
+      "log_sha256": "1fbd2d590289f6cda5b35be3e9c400033c6e857d9c036b6dc113653c8d9320f4",
+      "test_count": 63
+    },
+    {
+      "check": "requirement-register",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "tools/check_requirement_register.py"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.282,
+      "log": "source/requirement-register.log",
+      "log_sha256": "7831f87fa690f993663b689ed070115cf639d81de9f89f60518591cb85e9b162"
+    },
+    {
+      "check": "reuse-licensing",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/reuse",
+        "lint"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 6.747,
+      "log": "source/reuse-licensing.log",
+      "log_sha256": "2f9d02c156ee22b5cd7f1d63a3e2fb083540a887c6b85ee8ddde500612dc7891"
+    },
+    {
+      "check": "source-attribution",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "tools/check_sources.py",
+        "."
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "log": "source/source-attribution.log",
+      "log_sha256": "3ed6ef2d986594efc2cc7400482e39cc4e9357586422b1d0ee7953fe2f4f734a"
+    },
+    {
+      "check": "valid-book-fixture",
+      "command": [
+        "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+        "-B",
+        "tools/check_book_package.py",
+        "schemas/fixtures/book-package/valid/synthetic-rle-primer"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 2.287,
+      "log": "source/valid-book-fixture.log",
+      "log_sha256": "afe1350c1986924283cc4513ba8fbcc786b296442e728e6a0b763c36aef900fe"
+    },
+    {
+      "check": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "HEAD",
+        "--check"
+      ],
+      "cwd": "knowledge-contract",
+      "exit_code": 0,
+      "seconds": 0.03,
+      "log": "source/whitespace.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "input_sha256": {
+    "papers/semantic-objects-and-context/PAPER.md": "c3a3473e57ea472aef01613781e412f14d11321e4f05d05e6adf9f4535f697f8",
+    "papers/constrained-transformations/PAPER.md": "b9ec18c1ee93c869bd31a0e097014338605ba2937979db827bf8cde5f63d4050",
+    "papers/retrieval-and-context-composition/PAPER.md": "6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773",
+    "papers/interaction-and-memory/PAPER.md": "8dacee80ed050c3013c7de092da2c17fbfaafd5fb3b45939dc8fdae3611df656",
+    "papers/evidence-and-falsification/PAPER.md": "95acb937c5aa68572eb60ec723d17c628bcd28a778490c09ef6b434ef0f63494",
+    "papers/revision-and-governance/PAPER.md": "e221151a7c6778ef4c6843074a881efead94bad2f0b95e21c697f122c67f58dc",
+    "papers/controlled-knowledge-reuse/PAPER.md": "87908092cf64bb2cdb0fa81e1295ad6788f45f9e3b9fe25946cdbb77d7564e0c",
+    "papers/knowledge-utility/PAPER.md": "e807eacfe0c69620457232e00a1f09edb1e9753493e5f5478f8bdfa7e05c73e1",
+    "engineering/specifications/knowledge-contract-core/SPECIFICATION.md": "81cb01a8326eaeb0c14e929609c52cc85e5a344c61f3744d2e0def228cdc60d5",
+    "engineering/specifications/contract-family/SPECIFICATION.md": "310cd3f151275739a2391d2c8d8b7c23ad64b46f4c1a56717f7f0975866f60c8",
+    "engineering/specifications/semantic-types/SPECIFICATION.md": "4428c3cdacfe5e8bcf00b8d9100a79f5ce9691edecd914063698bfb3f97e8f6f",
+    "engineering/specifications/context-package/SPECIFICATION.md": "5bba82777b44dc0cf6b1b0c218292c1476c0271806acef195db6c3b8a9448e41",
+    "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md": "2cc5e781565136b5ad9fdbb2facae47d58564b1e300173d0a91a2c6cf16d5a82",
+    "engineering/specifications/artifact-registry/SPECIFICATION.md": "ec6584f97c5160fd3c8b17a5036aaeb8d302bf86dd61e567f2c5d858e9159470",
+    "engineering/specifications/status-model/SPECIFICATION.md": "2f66342472fc4198eba573d7d1eda5d58d5bae9de904f901f5094037dd628d0a",
+    "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md": "742982eabd0d797ccc5bba4c8472d25a4236c84baed21281f13a7601a4ce2f39",
+    "engineering/specifications/reuse-policy/SPECIFICATION.md": "be75f0191414c07a113dafb0c983cd1d1e73834be0b670e0d610b4354f37ecd2",
+    "engineering/specifications/knowledge-evolution/SPECIFICATION.md": "4662bdd76c5716cb7d9b55c1b99e00dda626b34c3565e2f03ceecb61fe15685a",
+    "engineering/specifications/book-package/SPECIFICATION.md": "1ce2ce4fa9e0e2647b3472f1da0a250fa3abae00c78b7518d3497f106c09722c",
+    "engineering/studies/contract-profile-conformance/STUDY.md": "788c09269946b294420024f28656ef616e2df056e4d8246bfdf67c69ca4434a9",
+    "engineering/studies/dependency-closure-and-package-delivery/STUDY.md": "0012f1506d1c9e95b29e7f8916952d2278e791bc2a7f7153e8c3c5980928f66a",
+    "engineering/studies/source-transcription-and-uncertainty/STUDY.md": "6119790ada666b76782c0952e12e47799c51893a85f71a7e36f72d9ac44f3fe0",
+    "engineering/studies/executable-projections-and-revision/STUDY.md": "6242027572df695e1907e77d55588ea3b3a64741407b6922b87f0612de956ed8",
+    "engineering/studies/reuse-admission-and-cost-controls/STUDY.md": "fa5494d6609d15a61ce071eb39c3a87fa0b982c61f756f3308276c127ae8484a",
+    "engineering/studies/editorial-skill-pilot/STUDY.md": "59066d54a219c13214a113037b0f3257378d77c83105b755bc80251db51ae0d5",
+    "reference/glossary/GLOSSARY.md": "5147262a4739b194cd1712d04f3b205ad701c77f7c214ba7cfb68094d12ddabb",
+    "reference/bibliography/BIBLIOGRAPHY.md": "bbfc162fcb52b74abefad92d0cda0f72cacc77ff1a697dfc685d5380b8cf457d",
+    "appendices/source-map/APPENDIX.md": "eca6631650eb303aa5451eb3f173ce82cd06d73c2184ed460abe65188c61f25c",
+    "appendices/api-integration/APPENDIX.md": "2e1c800cf2bb1c61696e34d516b23db1f3f65fa7c58f983bf3124c17854cefe3",
+    "tools/check_book_package.py": "290ed9251ff923aeb21dc42e6e67297d054e5a3ddf5957beea1cb8221f5b813f",
+    "tools/build_book_package.py": "f172a2c3de6c84f539350d69cfff6aa3ddf843fbb8dde65c4ce70c317e0c2b44",
+    "tools/book_package_fixture.py": "e15ecf8ec799f17b2fcc1f2a5d04669adc91f5e1c5d7a3f62de598a134490227",
+    "tools/test_book_package.py": "e832d225fe15f39abb68e29ee1ff789b27ea1cee4a5321756f78b19101af4322",
+    "tools/test_build_book_package.py": "c5c52ca5ecac4714fa3ad42d05d6b4beb85c1f22a98d93718884e752ae158790",
+    "tools/test_book_package_review.py": "9c8c9f5f952136dfd10e5f30b3f20583336cc7f9ac3851f45548840f699f43ec",
+    "tools/check_contract_profile.py": "33ed0d1e0d0b8cae9db87ba6329a1c2c1b96114af918bc2de19ebeb99e7e71ea",
+    "tools/test_contract_profile.py": "943f8e57b3bfe248f13425fcf3cd3ef93b52d940eecf3d6014f8b57846c256d6",
+    "tools/test_index_release_receipt.py": "51bb27d11ff1aa9b6cde1e99a99514e579d4a6e49a5617cb36f2bdc3220b7f49",
+    "tools/check_requirement_register.py": "620dd7d42d19f05d1a9dab841f91a4e3df408b8fd033d38637667e043735db48",
+    "engineering/specifications/requirements.json": "cd10119f474d290054236ab949c6583ed9d931fd5dffe47a75ad68d718feb0fd",
+    "tools/check_publication.py": "9492af403c54ba3c806ddb0b4331423aa20cc128b81745743e94eb02917848eb",
+    "tools/test_check_publication.py": "12a9ff9454b893a08ec140fe5a1c42c7dc05c169d1e02a1fe6d591208df1e1ff",
+    "tools/test_reviewed_formal_results.py": "e65b502ca433381b83b67ca810c864af642ed9a698696c07461b50df12f2a9e4",
+    "schemas/book-package.schema.json": "51fd39c38c4f7cedd19b8bf1b05186ec581450ecc76e0f8f610024a094ed9ca9",
+    "schemas/contract-observation.schema.json": "11bd4770448a2bab5214d8d984b4645390d3b14c84760447079afc98b7505cf6",
+    "appendices/api-integration/index-release-receipt.schema.json": "ea2b221bde19cce079c5aa23482a216e10d2a0880138056d00808cf80a691b22",
+    "engineering/studies/evidence-index.json": "810fc80ac5be1b7d78f2b0259ba9550f789933c8ed6f971c38142b10980693d1"
+  },
+  "review_record_sha256": {
+    "independent-science-review.json": "a997a22b62be3fe4cf557e4cba729de5920ad746977f8943a495b88cfc745781",
+    "independent-science-review.md": "e0e515643913327296ea876d0f15b37b4833f6d727f8fafb85b1f058e8b9e0bf",
+    "independent-science-supplement.json": "ca07a2b607d6ad0b05ca20091623f859e03917be70aa296994c37485777b180f",
+    "independent-science-supplement.md": "ffa5b2825fe4a52b4f46ba2658ec1e93783dec240b3e6746967e1b27c82170d6",
+    "independent-engineering-review.json": "31ed2820b8149d2997b38532853472365b408fe737087c5005c750673b5e3f5b",
+    "independent-engineering-review.md": "260358a7a9844cadb0b0283a1e2f8c7fa423ef653a81e4cb91d4c12dd118dda5"
+  },
+  "scientific_review_scope": "Six complete readings in the original independent-agent report plus two complete readings in its supplement; all eight papers covered. No independent itemwise certificate for all 26 original findings or external peer-review claim.",
+  "engineering_review_scope": "Independent inspection and adversarial controls for the bounded local book, exchange, publication-counter and receipt profile; no confirmed unresolved blocker. IER-01 and INT-01 independently retested. Does not certify every specification, production services, authentication or distributed conformance.",
+  "publication_boundary": {
+    "github_source_push_permission": false,
+    "github_site_push_permission": false,
+    "remote_merge_performed": false,
+    "deployment_performed": false,
+    "index_admission_changed": false
+  },
+  "remaining_historical_gap": "EST-05; see engineering/studies/historical-recovery-gaps.json."
+}

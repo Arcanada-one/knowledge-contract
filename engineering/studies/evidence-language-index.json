@@ -1,0 +1,590 @@
+{
+  "schema": "knowledge-contract.evidence-language-index/1",
+  "source_publication_revision": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "file_count": 47,
+  "method": "Representation and language were inspected during review; Cyrillic presence was mechanically checked to verify the inventory. Language tags describe the published representation, not source authenticity or translation quality. No evidence or origin bytes were modified.",
+  "files": [
+    {
+      "path": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "sha256": "4018e278789fb265d148f6c0aa1e08096e1d71221a1b17508198e54e0a081b82",
+      "size_bytes": 32239,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "contract-profile-conformance/evidence/conditional-properties-source.json",
+      "sha256": "d30863add85d0e2233cffa552578f98afa03b9b1d96914427e9cd7df7743ba89",
+      "size_bytes": 8136,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "contract-profile-conformance/evidence/control-review-source.json",
+      "sha256": "c30317cb838ee81227681add5e8a8602b173715a357091486b4af8a997dc0ac0",
+      "size_bytes": 13979,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "contract-profile-conformance/evidence/evaluation-protocol-source.json",
+      "sha256": "888d26ec89243314d078f92c6aa96f841b12c4893fe23156941c7ae09b1bafdf",
+      "size_bytes": 8250,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "contract-profile-conformance/evidence/separate-control-report.json",
+      "sha256": "4be5e9392972f205f7956f429dc75e76be167d13083b924dd825573cb0cb5801",
+      "size_bytes": 57915,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "sha256": "5e17016750f9f6a5a638371c821d60217ab6b8459cd5cd01b358687d2f648a75",
+      "size_bytes": 5786,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "contract-profile-conformance/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/dependency-graph.json",
+      "sha256": "70f946604f6d725e4085e915927aee0d69cf38c62e199ada818e3b602a49c3f3",
+      "size_bytes": 8205,
+      "representation": "metadata_only_graph_extracted_for_edition",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/finite-package-selftest.json",
+      "sha256": "7ce1792d6962a59b37c4435808eef1bd5d54ad122f3c6c8c55bcac257f6a009d",
+      "size_bytes": 10844,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/historical-package-replay.json",
+      "sha256": "cdae9c9781700b2154fc97b5fbe4eef48ba2c64725d63c44bbcd93af8defd666",
+      "size_bytes": 2818,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/historical-replay-environment.json",
+      "sha256": "cbf1c104f8493e5819880bb2be3051a8bbc83d6482f0896d676945506bc2d2c3",
+      "size_bytes": 765,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/layout-conformance-report.json",
+      "sha256": "2df43ed048f7f4d2d11fc6e3cf24e80114e7bf849d1afc73bb30fe68967d5b73",
+      "size_bytes": 1985,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/layout-preservation-report.json",
+      "sha256": "e2481128169deb5acdfba5053678cc8775468814574277dda96130af6283ff54",
+      "size_bytes": 34350,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/public-closure-replay.json",
+      "sha256": "3dfa7b8f2d6fe43ba8641321d44ea9791ece85e845c2d2af6dc313f774a5a8a9",
+      "size_bytes": 623,
+      "representation": "new_public_reproduction_result",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "dependency-closure-and-package-delivery/evidence/replay_closure.py",
+      "sha256": "67ca4acf776ea49233e41cf05076dd71d452ddaefb85f9a654e59fb7618f920c",
+      "size_bytes": 3319,
+      "representation": "new_public_reproduction_code",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "dependency-closure-and-package-delivery/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/baseline-edit.txt",
+      "sha256": "325d3d61bd5207d017de4f75bfe2963b4e23d75be559cdedc22657a3e403fc60",
+      "size_bytes": 12127,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/common-editorial-brief.txt",
+      "sha256": "d5e9d2a5af99b699f6e1e4700450e88ac33de7ea867f0333bb0fd4849c412539",
+      "size_bytes": 5986,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/condition-label-reveal.json",
+      "sha256": "aa5731fe568e10859064a7d6c26b992474563875a44de24d080fbe5bedaab0d7",
+      "size_bytes": 811,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/editorial-comparison-results.json",
+      "sha256": "13dbcabc2bead4d7675ec4b344cb58307a322ef47ea83a664a9fed6c8f3d304a",
+      "size_bytes": 1777,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/editorial-mechanical-checks.json",
+      "sha256": "b22c667192951ce4dbb8b6bbf10aebf5d6437cc42d50a9ef5c6ea4568c238ac4",
+      "size_bytes": 2493,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/editorial-preregistration.json",
+      "sha256": "cea1186beab3ee67fe37f1089df18d12ddee4b912a12c212181cd1d66accd726",
+      "size_bytes": 1220,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/editorial-trace-audit.json",
+      "sha256": "4848e0b716f9186bdf447b850a4847a3b913eba3d0bce6d51bfa7ff01ff0e984",
+      "size_bytes": 6960,
+      "representation": "exact_utf8_source_embedded_in_json",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/masked-editorial-review.json",
+      "sha256": "6dec95c55e507d6cce3c9830af52ecd3f058afb5227b0f6a2afbc011a554874c",
+      "size_bytes": 211267,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/original-pilot-protocol.txt",
+      "sha256": "0fe13410a1459157de83ca9fad087970a69d20ff37f2fbbfafa68b3da5f6167f",
+      "size_bytes": 6363,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/protected-claims.json",
+      "sha256": "81c45bbbb5e852b701f7404cbb58a155c919786d531d3341734b4ba03e2a0c07",
+      "size_bytes": 72557,
+      "representation": "exact_local_source_json",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/public-editorial-record-check.json",
+      "sha256": "49c620b336bbd47fc43bf0d8e15be096dcdf8127c32ed294bf8cd52db42a7caa",
+      "size_bytes": 1314,
+      "representation": "new_public_reproduction_result",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/replay_editorial_checks.py",
+      "sha256": "5d3db04209203c9392341ab02588c88cb55fd25e2ef3f0c9cbd8ee90c3fae4e7",
+      "size_bytes": 2467,
+      "representation": "new_public_reproduction_code",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/skill-assisted-edit.txt",
+      "sha256": "9bff5645f8a1612c4367ec18e0289fb9d7957d6186ceb49b925460186f82eef1",
+      "size_bytes": 12029,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/source-context.txt",
+      "sha256": "52b3be4b99de31e3a83e54bde1309d922df7864eec07d945295c623d46cb6d04",
+      "size_bytes": 2234,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "editorial-skill-pilot/evidence/source-section.txt",
+      "sha256": "eec7712c2819e844ff6fcc6f2b6afedec2b584d5bd90d496824261e6e2f0024b",
+      "size_bytes": 11680,
+      "representation": "exact_source_text",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "editorial-skill-pilot/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/addressability-study-source.json",
+      "sha256": "b1da5650a264a0af70390c9dff3e06e403f0139062d0b9b6b5705ca9b81b0518",
+      "size_bytes": 18892,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/agent-projection-results.json",
+      "sha256": "6916fb4e4bf93ea87e668694f2fa8ed44a237e808fe7bcfa86232a8bd818d4b9",
+      "size_bytes": 2451,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "sha256": "05ce65237311b3e2b339a40d0613c42e60d4e938fdf4c3dedbdde88d65642dd2",
+      "size_bytes": 2008,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/historical-reader-study-source.json",
+      "sha256": "7f33fee0871822bca85323e4e4aa07923bcae6a1a7ce7a3ecd7a9eb273549ee5",
+      "size_bytes": 31466,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/offline-projection-replay-report.json",
+      "sha256": "9fd5336e34632fe67bba453234b537d09ec6adeaedeaf8cab4e65d690c21d207",
+      "size_bytes": 2478,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/projection-study-source.json",
+      "sha256": "2f8a1474710dc665ae72d68dc824c3c5fbbe23a106a9b54709cc9ad964d1e940",
+      "size_bytes": 19151,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/reader-boundary-report.json",
+      "sha256": "af71971555be49ca22f93d5eb70d9be04a2ea7917f3e4afa610940f24349d732",
+      "size_bytes": 12042,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "executable-projections-and-revision/evidence/targeted-revision-comparison.json",
+      "sha256": "bec9ae68599d6f133ebb94c7809b4c96b58d8e18f0d2655e6abce59cba75da2c",
+      "size_bytes": 3702,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "executable-projections-and-revision/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json",
+      "sha256": "edbec332710196e37ff7c5cf88bfd2b4979a86793557c3cebc2a57df1eb01df2",
+      "size_bytes": 1491,
+      "representation": "new_public_reproduction_result",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "reuse-admission-and-cost-controls/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py",
+      "sha256": "f15da63f8d130c0c558ae5bb6236c12205295a9c37978f85af390780bddb4a9e",
+      "size_bytes": 4354,
+      "representation": "new_public_reproduction_code",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "reuse-admission-and-cost-controls/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "reuse-admission-and-cost-controls/evidence/reuse-properties-source.json",
+      "sha256": "06dd9789f8e923a320171b53c98a06945bd4159282d03909cf59886df2d49a0b",
+      "size_bytes": 41755,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "reuse-admission-and-cost-controls/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/corpus-audit-source.json",
+      "sha256": "afb3b5440efb09b21d1e40164a2b5ab6a07803b965203b6ed1596dcd4a2aadd4",
+      "size_bytes": 23708,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json",
+      "sha256": "f10c1a50a4567c60432ef5085d4572fef0b84bd7b6f76d4e183e6c8cc8a2fa7c",
+      "size_bytes": 7073,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/local-export-integration-report.json",
+      "sha256": "0d9e343992ce939516900c96cf0fe91cffbb9a2e0dfa2780fc0c1a56386e0b3a",
+      "size_bytes": 3713,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/public-projection-demonstration.json",
+      "sha256": "be88b60373eb6f4552fa3d35e661bfee000f2f87f912d45f44cb369a060a3def",
+      "size_bytes": 1226,
+      "representation": "new_public_reproduction_result",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py",
+      "sha256": "9a94ce3d7898b0d00d966136051c926405a02d393f26c3d9d5bffb10f7837295",
+      "size_bytes": 3833,
+      "representation": "new_public_reproduction_code",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/structural-corpus-report.json",
+      "sha256": "cb457e364d5b8e0f5e09051d6699fbf684a87a880fa4acbbdebbffa637affe2c",
+      "size_bytes": 7687,
+      "representation": "exact_source_json",
+      "content_languages": [
+        "en"
+      ],
+      "language_note": "English explanatory values, field names or program text; no Russian prose detected.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "English source representation; not a translated version"
+    },
+    {
+      "path": "source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json",
+      "sha256": "afb8212297b7b03eca21fe904536c41d3d2c71fadccd7e38f3d311c0469dcb15",
+      "size_bytes": 8797,
+      "representation": "rendered_source_text_view",
+      "content_languages": [
+        "ru",
+        "en"
+      ],
+      "language_note": "Russian source prose or quoted/editorial content; English field names and technical identifiers are retained.",
+      "english_summary": "source-transcription-and-uncertainty/STUDY.md",
+      "translation_status": "study_summary_only; no full independently reviewed translation"
+    }
+  ]
+}

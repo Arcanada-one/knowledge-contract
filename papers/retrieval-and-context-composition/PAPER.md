@@ -2,7 +2,7 @@
 name: "retrieval-and-context-composition"
 title: "Retrieval, Coverage, and Context Composition under Resource Limits"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,7 +11,7 @@ description: "Search coverage, finite context selection, dependency closure and 
 
 # Retrieval, Coverage, and Context Composition under Resource Limits
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
@@ -61,6 +61,8 @@ The budget may be a vector: tokens, bytes, recipient time, or another measured r
 
 Costs need not be additive over fragments. Two selected objects can share a dependency, so summing their separately closed sizes double-counts it. Conversely, a delivery format can introduce headings, repeated legends, or fixed overhead. The delivered representation, rather than the unformatted fragments, is the relevant accounting object.
 
+Least graph closure is also relative to the chosen granularity. The [projection study](../../engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality) found extra claims inside a shared qualification even when their dedicated nodes were absent from the selected closure. A least entity set therefore need not be claim-minimal or cheapest to deliver.
+
 ## 4. Exactness and special-case guarantees
 
 ### Proposition 1. Complete finite selection gives a scoped optimum
@@ -86,7 +88,7 @@ Let \(f\) be a nonnegative, monotone, submodular set function with \(f(\varnothi
 \geq (1-1/e)\operatorname{OPT}.
 \]
 
-**Argument.** At step \(i\), submodularity bounds the remaining gain of an optimal set by the sum of at most \(k\) current marginal gains. The best next gain is therefore at least \((\operatorname{OPT}-f(A_i))/k\). Each step reduces the remaining gap by a factor no greater than \(1-1/k\). Iterating from the empty set gives the bound. This is the classical result of Nemhauser, Wolsey, and Fisher [3], not a new theorem of the present model. ∎
+**Argument.** Let \(O\) be an optimal set. At step \(i\), monotonicity gives \(\operatorname{OPT}=f(O)\leq f(A_i\cup O)\). Submodularity bounds the gain from \(A_i\) to \(A_i\cup O\) by the sum of at most \(k\) current single-element marginal gains. The best next gain is therefore at least \((\operatorname{OPT}-f(A_i))/k\). Each step reduces the remaining gap by a factor no greater than \(1-1/k\). Iterating from the empty set gives the bound. This is the classical result of Nemhauser, Wolsey, and Fisher [3], not a new theorem of the present model. ∎
 
 The result does not cover arbitrary size-based greedy selection, nonadditive costs, or arbitrary mandatory closure. Those settings need their own justified algorithms and assumptions.
 
@@ -94,7 +96,9 @@ The result does not cover arbitrary size-based greedy selection, nonadditive cos
 
 Joint grounds need not be submodular. Suppose a requirement needs both a rule \(a\) and a condition \(b\). Let \(f(\varnothing)=f(\{a\})=f(\{b\})=0\), but \(f(\{a,b\})=1\). Adding \(b\) to the empty set yields no gain; adding it after \(a\) yields one. This violates diminishing returns. Individual ranking can therefore discard both members of the only useful pair.
 
-Mandatory dependency closure can also break downward closure of feasible selections. A package containing a conclusion and its required condition may be valid; removing the condition makes the remaining subset invalid. A method justified for systems where every subset of a feasible set remains feasible cannot be imported unchanged.
+Feasible root selections need not be downward-closed because coverage is mandatory. Consider one requirement whose only supporting group is \(\{a\}\), no dependencies, and a budget large enough for \(a\). The selection \(A=\{a\}\) is feasible, but its subset \(\varnothing\) does not cover the requirement. This counterexample uses the same closure-based support definition as §3.
+
+Selected roots and delivered objects must not be confused. Removing a required condition from a root set can leave its closure unchanged because another selected root still requires it. Removing that condition from the actual delivered set is different: the resulting delivery may fail the closure obligation. A method justified for downward-closed feasible selections cannot be imported without checking which of these objects its guarantee concerns.
 
 Budget pressure does not remove these obligations. If two mandatory grounds and an exception cost seven units in total and the budget is five, deleting the exception produces a smaller but inadmissible package. A feasible reformulation might exist, but it must be constructed and checked. Failure of one heuristic to find it is not proof of impossibility.
 
@@ -112,7 +116,7 @@ The mathematical results here hold for the declared finite model. They establish
 
 ## 7. Connections to the published engineering work
 
-The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) contains the appropriate finite controls for closure, selection, rendering, and delivery. The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md) concerns structural validation, which must remain distinct from semantic sufficiency.
+The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) supplies exhaustive fixed-graph closure checks for all-required dependencies, plus historical layout and preliminary delivery checks. Its root-subset enumeration is not a budgeted composition optimizer. Alternative supporting groups, resource-constrained selection, and the counterexamples in §5 have no executable selection study in this corpus. The [projection study](../../engineering/studies/executable-projections-and-revision/STUDY.md) supplies the distinct counterexample to claim-level minimality. The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md) concerns structural validation, which must remain distinct from semantic sufficiency.
 
 The [glossary](../../reference/glossary/GLOSSARY.md) gives common terminology. [Evidence and falsification](../evidence-and-falsification/PAPER.md) specifies evaluation obligations; [knowledge utility](../knowledge-utility/PAPER.md) explains why a composition objective must state its baseline, horizon, and resource accounting.
 

@@ -4,15 +4,15 @@ Publication has three independently observable outcomes: source documents are me
 
 ## 1. Source publication
 
-Review the changes to the eight scientific papers, eleven specifications, six studies and their reference material. Inspect the [recorded review findings and verification boundaries](reviews/publication-integrity/REVIEW.md), not only a pass label. Every scientific claim needs the scope stated in its argument; every reported number needs its exact evidence. Retained reports and new replays must remain distinct.
+Review the changes to the eight scientific papers, eleven specifications, six studies and their reference material. Inspect the [current review findings and verification boundaries](reviews/edition-corrections/REVIEW.md), not only a pass label. Every scientific claim needs the scope stated in its argument; every reported number needs its exact evidence. Retained reports and new replays must remain distinct.
 
-Run the publication, source, unit, licensing and link checks. Execute the four public replay programs listed in [AGENTS.md](AGENTS.md). Add the source changes as a content pull request under [CONTRIBUTING.md](CONTRIBUTING.md). The authorized contributor supplies the DCO sign-off using their own identity; an assistant must not manufacture that attestation.
+Run the publication, source, unit, licensing and link checks. Execute the historical public replays and the corrected finite checks listed in [AGENTS.md](AGENTS.md). The unchanged edition-1.0 programs preserve a historical reproduction boundary; a known limitation of an old demonstration is not repaired by reporting its successful exit status. Add the source changes as a content pull request under [CONTRIBUTING.md](CONTRIBUTING.md). The authorized contributor supplies the DCO sign-off using their own identity; an assistant must not manufacture that attestation.
 
 The existing decision-separation gate prohibits mixing content, publication-decision files and allowlist changes. Preserve that separation. This edition's internal content reviews are supporting records, not fabricated replacements for the exact decision and receipt format required by the corpus exporter.
 
 ## 2. Website build
 
-After the source revision is available to the site build, set `publication-manifest.json` in `Arcanada-one/contract-place-site` to that exact 40-character Knowledge Contract commit and edition `1.0`. Use a clean checkout of the pinned source.
+After the source revision is available to the site build, set `publication-manifest.json` in `Arcanada-one/contract-place-site` to that exact 40-character Knowledge Contract commit and the edition declared by `publication-catalog.json`. Use a clean checkout of the pinned source. A local review commit is not a published source pin: after merge, rebuild against the actual accepted commit.
 
 ```sh
 python3 scripts/build_publication.py --source-dir ../knowledge-contract

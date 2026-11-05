@@ -1,0 +1,20 @@
+{
+  "schema": "KCDependencyChange/v1",
+  "event_id": "event.synthetic-revocation",
+  "namespace": "example.head",
+  "sequence": 8,
+  "dependency_id": "example.authority",
+  "old_epoch": 7,
+  "new_epoch": 8,
+  "old_revision": {
+    "artifact_id": "example.artifact",
+    "revision": "example.immutable-1",
+    "hash_domain": "sha256/raw-bytes-v1",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "new_revision": null,
+  "kind": "revoked",
+  "impact": "blocked",
+  "observer": "fixture.observer",
+  "observed_at": "2026-11-04T00:00:00Z"
+}

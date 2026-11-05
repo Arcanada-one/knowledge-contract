@@ -4,7 +4,7 @@ sources: none
 
 # Scientific Papers
 
-Eight complete papers develop the formal and methodological argument. Each states its assumptions, conditional results, counterexamples, limits, and the engineering evidence relevant to its claims. These documents are publication edition 1.0; an edition is not a claim of external peer review or universal empirical effectiveness.
+Eight papers develop the formal and methodological argument. Each states its assumptions, conditional results, counterexamples, limits, and the engineering evidence relevant to its claims. These documents are publication edition 1.1; an edition is not a claim of external peer review or universal empirical effectiveness. The [correction record](../reviews/edition-corrections/REVIEW.md) identifies the review findings and their disposition.
 
 | Document | Subject |
 | --- | --- |
@@ -15,6 +15,6 @@ Eight complete papers develop the formal and methodological argument. Each state
 | [Evidence, Reasoning, and Falsification in Knowledge Systems](evidence-and-falsification/PAPER.md) | How claims, proofs, finite tests, counterexamples and comparative evaluations support different conclusions. |
 | [Knowledge Revision, Version Identity, and the Adoption of Norms](revision-and-governance/PAPER.md) | Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions. |
 | [Knowledge Contracts and the Admission of Prepared Knowledge](controlled-knowledge-reuse/PAPER.md) | The conditions under which saved knowledge may support a new task, recipient or execution. |
-| [Knowledge Utility, Resource Accounting, and Retention Decisions](knowledge-utility/PAPER.md) | Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference. |
+| [Knowledge Utility, Resource Accounting, and Lifecycle Decisions](knowledge-utility/PAPER.md) | Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference. |
 
 [Publication home](../README.md) · [Shared glossary](../reference/glossary/GLOSSARY.md)

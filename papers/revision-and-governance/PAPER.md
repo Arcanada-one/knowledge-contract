@@ -2,7 +2,7 @@
 name: "revision-and-governance"
 title: "Knowledge Revision, Version Identity, and the Adoption of Norms"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,11 +11,11 @@ description: "Separate identities for content, assessment and normative adoption
 
 # Knowledge Revision, Version Identity, and the Adoption of Norms
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
-Knowledge can change because its content is corrected, its evidence is reassessed, its use conditions change, or a community adopts a different rule. These changes should not be represented by one undifferentiated status. This paper separates object identity, content revision, representation, assessment, and normative adoption. It defines revision and admission operations, establishes conditional properties of pinned references and dependency-based reassessment, and explains why the adoption of a norm does not establish the truth of the claims it contains. A central distinction is between reproducing a historical state and authorizing a present use. The contribution is an explicit account of what changes, what remains attributable, and which previous checks can legitimately transfer. The account is suitable for finite implementation and counterexample testing, but does not establish complete dependency discovery, authenticated authority, or a universally correct governance policy.
+Knowledge can change because its content is corrected, its evidence is reassessed, its use conditions change, or a community adopts a different rule. These changes should not be represented by one undifferentiated status. This paper separates object identity, content revision, representation, assessment, and normative adoption. It defines revision and admission operations, establishes conditional properties of pinned references and dependency-based reassessment, and explains why the adoption of a norm does not generally establish the truth of the claims it contains. A central distinction is between reproducing a historical state and authorizing a present use. The contribution is an explicit account of what changes, what remains attributable, and which previous checks can legitimately transfer. The account is suitable for finite implementation and counterexample testing, but does not establish complete dependency discovery, authenticated authority, or a universally correct governance policy.
 
 **Keywords:** knowledge revision; provenance; versioning; governance; normative adoption; historical reproducibility.
 
@@ -26,6 +26,8 @@ A knowledge repository often uses “current,” “approved,” or “valid” 
 Our question is: **how can a system revise knowledge and adopt norms without confusing content, evidence, and authority?** We propose distinct objects and transition rules for each. The purpose is not to freeze knowledge, but to preserve a clear explanation of why a particular revision or assessment was used at a particular time.
 
 PROV-DM offers the general distinction between entities, activities, and responsible agents [1]. We use that structure to connect revisions and decisions. The additional contribution is a set of obligations for transferring checks, following current versions, retaining historical grounds, and admitting normative decisions.
+
+Dependency-directed revision has an established basis in Doyle's truth-maintenance work, which records reasons for beliefs and revises them when assumptions change [2]. The reachability result below isolates an elementary prerequisite for identifying affected assessments; it does not implement a truth-maintenance system. Alchourrón, Gärdenfors, and Makinson study contraction and revision of logical theories under explicit postulates [3]. Our use of “revision” concerns versioned records, assessments, and authority decisions, and claims neither an AGM revision operator nor satisfaction of those postulates.
 
 ## 2. Five different objects of change
 
@@ -69,7 +71,7 @@ Let a deterministic check \(f\) depend on a complete input tuple \(d\). If two r
 
 The word “complete” is decisive. A check that depends on a policy version, current authorization, or a source interpretation cannot be transferred using only equality of visible text. If the evaluator itself changes, the equality-of-function assumption must also be reconsidered.
 
-### Proposition 3. Material changes require reassessment along complete dependencies
+### Proposition 3. Complete dependencies identify candidates for reassessment
 
 If every dependency relevant to an assessment is represented in a finite graph, complete reverse reachability from a changed dependency identifies all assessments potentially affected by that change.
 
@@ -79,11 +81,11 @@ This result identifies candidates for reassessment, not automatic failures. An a
 
 ### Proposition 4. Adoption is not a truth-preserving inference rule
 
-Without an additional premise connecting an adoption procedure to truth, the fact that a rule is adopted does not logically entail the truth of its factual content.
+Let \(A\) be an adoption record and \(F\) a factual proposition in the adopted rule. Suppose \(A\land F\) and \(A\land\neg F\) are both satisfiable under the admitted interpretation. Then the adoption record alone does not entail \(F\).
 
-**Argument.** Consider two interpretations with the same recorded adoption event, one in which the factual content is true and another in which it is false. Both satisfy the adoption record. The content therefore is not a consequence of that record alone. ∎
+**Argument.** The satisfying interpretation of \(A\land\neg F\) is a countermodel to \(A\Rightarrow F\). The other interpretation shows that the same adoption record is also compatible with \(F\). Thus adoption alone leaves this contingent factual content undecided. ∎
 
-This does not deny the practical force of adopted rules. It locates that force in the declared governance policy rather than in an unsupported epistemic inference.
+The independence premise excludes logical validities and facts already entailed by the adoption record, such as a correctly represented fact about the adoption event itself. An additional reliable procedure could supply evidence for \(F\), but its reliability would be a separate premise. This does not deny the practical force of adopted rules; it locates that force in the declared governance policy.
 
 ## 5. Authority and normative admission
 
@@ -113,7 +115,7 @@ Counterexamples are particularly useful where identifiers conceal assumptions. R
 
 These controls can establish behavior on finite represented cases. They do not prove complete dependency discovery, correct interpretation of all governance rules, or trustworthy authentication in an unexamined deployment. The formal propositions remain conditional on those boundaries.
 
-The contribution is a complete account of the distinctions needed to reason about revision and adoption, together with checkable consequences and counterexamples. It makes no empirical claim that one governance procedure is universally superior or that the model resolves substantive disagreement automatically.
+The contribution is an explicit account of the stated distinctions between content, assessment, historical selection, and normative adoption, together with checkable consequences and counterexamples. It does not claim that this list exhausts every governance model. Nor does it make an empirical claim that one governance procedure is universally superior or that the model resolves substantive disagreement automatically.
 
 ## 8. Connections to the published engineering work
 
@@ -124,3 +126,5 @@ The shared [glossary](../../reference/glossary/GLOSSARY.md), [interaction and me
 ## References
 
 1. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
+2. Doyle, J. “A Truth Maintenance System.” *Artificial Intelligence* 12(3), 1979, 231–272. [Publisher record](https://www.sciencedirect.com/science/article/pii/0004370279900080). [MIT report version, AI Memo 521](https://dspace.mit.edu/entities/publication/5377b306-4ecc-4687-b1f5-78cbb4a0543a).
+3. Alchourrón, C. E., Gärdenfors, P., and Makinson, D. “On the Logic of Theory Change: Partial Meet Contraction and Revision Functions.” *The Journal of Symbolic Logic* 50(2), 1985, 510–530. <https://doi.org/10.2307/2274239>

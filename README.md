@@ -6,7 +6,7 @@ Knowledge Contract connects a body of knowledge to its intended use, sources, de
 
 ## Read the publication
 
-Publication edition **1.0** contains complete English scientific and engineering documents with a shared vocabulary and traceable supporting records.
+Publication edition **1.1** contains English scientific and engineering documents with a shared vocabulary and traceable supporting records. It incorporates the review of edition 1.0; the [correction record](reviews/edition-corrections/REVIEW.md) identifies the changes, verification and remaining limits.
 
 | Section | Contents | Start here |
 | --- | --- | --- |
@@ -22,7 +22,7 @@ The [website](https://contract.place/) is the reading surface. This repository p
 
 The scientific papers give explicit models and conditional arguments for preserving meaning, composing context, keeping assessments tied to their subjects, and controlling reuse. The engineering studies report what was actually observed on finite inputs. They preserve false trusted-input acceptances, baseline ties and unmeasured quantities rather than concealing them behind a global success claim.
 
-Four public Python procedures reproduce a finite dependency-closure calculation, a synthetic uncertainty-loss counterexample, reuse-admission and cost counterexamples, and structural checks on an editorial pilot. Retained historical reports remain distinguishable from those public replays. The [claim–evidence index](engineering/studies/evidence-index.json) links 24 specific claims to records, counterarguments and limitations.
+Four retained public Python procedures reproduce the edition-1.0 examples and checks within their recorded scope. Three separately identified corrected procedures test dependency-closure sizes and implementation mutations, projection against actual source bytes, and every mandatory admission gate with complete cost accounting. The [study correction register](engineering/studies/review-corrections.json) explains the difference. These procedures do not reconstruct missing historical model runs. The [claim–evidence index](engineering/studies/evidence-index.json) links 24 specific claims to records, counterarguments and limitations; the [historical recovery inventory](engineering/studies/historical-recovery-gaps.json) records the exact recovered input and the programs and fixtures still missing.
 
 This evidence does not establish universal extraction accuracy, general agent superiority, or production readiness of every specified operation. Internal agent review and external peer review are different forms of assessment; review records state which was performed. A complete publication can make a bounded result precise without claiming that every empirical question is settled.
 

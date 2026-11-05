@@ -11,6 +11,8 @@ description: "Actual internal content reviews, verification results and release 
 
 # Publication Review and Verification
 
+**Historical record — publication edition 1.0.** The findings and checks below record the original integration, before its later publication. A subsequent review identified two invalid scientific inferences and engineering defects that these internal reviews missed. Consult the [current correction record](../edition-corrections/REVIEW.md) for their disposition. The original review files and their input hashes remain unchanged; their acceptance does not cover edition 1.1.
+
 ## 1. Scope and disposition
 
 The edition contains eight complete scientific papers, eleven engineering specifications, six engineering studies, one glossary, one bibliography and two appendices. Its integration base is the exact public source revision `570f76b6d9a189295c3229254821c30748383965`. The earlier corpus remains traceable through the [source map](../../appendices/source-map/APPENDIX.md).

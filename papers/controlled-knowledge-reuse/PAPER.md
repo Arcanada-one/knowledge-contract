@@ -2,7 +2,7 @@
 name: "controlled-knowledge-reuse"
 title: "Knowledge Contracts and the Admission of Prepared Knowledge"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,11 +11,11 @@ description: "The conditions under which saved knowledge may support a new task,
 
 # Knowledge Contracts and the Admission of Prepared Knowledge
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
-Preparing knowledge in advance can reduce repeated work, but a previously acceptable artifact is not automatically acceptable for a new task. This paper defines a knowledge contract as an explicit account of requirements, constraints, grounds, permitted transformations, and verification obligations. It distinguishes that contract from its professional specializations and from a prepared artifact produced under it. Reuse is modeled as a directed admission relation, evaluated for a particular request and state. We prove a conditional preservation result requiring complete material dependencies, equivalent conditions, and a property-preserving transformation. Counterexamples cover changed permissions, incomplete dependencies, negative search results, and races between admission and delivery. The contribution is a precise boundary between reusable preparation and current authorization, including cases where rebuilding or rejection is required. The argument does not establish automatic discovery of every semantic dependency, industrial coordination guarantees, or a universal economic advantage from caching.
+Preparing knowledge in advance can reduce repeated work, but a previously acceptable artifact is not automatically acceptable for a new task. This paper defines a knowledge contract as an explicit account of requirements, constraints, grounds, permitted transformations, and verification obligations. It distinguishes that contract from its professional specializations and from a prepared artifact produced under it. Reuse is modeled as a directed admission relation, evaluated for a particular request and state. We prove a conditional preservation result requiring sound prior verification, complete material dependencies, agreement on relevant request components, coverage of the new requirements, and preservation by every permitted transformation output. Counterexamples cover changed requests, permissions, incomplete dependencies, negative search results, and races between admission and delivery. The contribution is a precise boundary between reusable preparation and current authorization, including cases where rebuilding or rejection is required. The argument does not establish automatic discovery of every semantic dependency, industrial coordination guarantees, or a universal economic advantage from caching.
 
 **Keywords:** knowledge contract; compilation; reuse admission; constraints; dependencies; current authorization.
 
@@ -25,7 +25,7 @@ A system may prepare a summary, context package, workflow, or professional instr
 
 We ask: **when does an earlier verification justify a new use of a prepared artifact?** The problem resembles caching, but the cached object carries semantic and normative obligations as well as bytes. HTTP caching provides explicit rules for freshness and reuse [1], and extensions describe limited stale-serving behavior [2]. Those protocols are relevant comparisons; their guarantees do not automatically apply to knowledge interpretation or authorization.
 
-The contribution is a contract model that makes the extra admission obligations explicit. It treats reuse as a decision under conditions rather than a consequence of similarity, popularity, or storage location.
+The contribution is a contract model that makes the extra admission obligations explicit. It treats reuse as a decision under conditions rather than a consequence of similarity, popularity, or storage location. Incremental build correctness already requires consistency between a result and its complete task dependencies [3]. The theorem below uses the same dependence discipline while separately requiring coverage of a new knowledge request and current authority; those obligations are not established by a successful build alone.
 
 ## 2. Contracts and their professional specialization
 
@@ -63,18 +63,44 @@ Build dependencies and admission dependencies differ. A generator version can ma
 
 ## 4. Conditional preservation theorem
 
-Let \(P_1,\ldots,P_m\) be the properties previously verified for artifact \(a\) in state \(s_0\). Assume:
+Fix an admission policy \(p\). Let \(P_1(x,q,s),\ldots,P_m(x,q,s)\) be properties of an artifact revision \(x\), request \(q\), and state \(s\), interpreted under fixed semantics. For each property, let \(\delta_j(s)\) be its relevant state observation and \(\kappa_j(q)\) its relevant request observation. Let the complete mandatory requirements of the new request be partitioned as
 
-1. \(D\) contains every state input material to these properties and their interpretation.
-2. The new state \(s_1\) agrees with \(s_0\) on the complete observations of \(D\) relevant to each property.
-3. A permitted transformation \(T\), including the identity transformation, preserves each \(P_j\) in \(s_1\).
-4. Independent current admission conditions, including authorization and delivery requirements, pass for the new use.
+\[
+R(q')=R_{\mathrm{artifact}}(q')\cup R_{\mathrm{use}}(q').
+\]
 
-Then the transformed artifact retains the verified properties for the declared new use, and the stated admission conditions hold.
+The first group concerns the artifact properties justified by preparation; the second contains independent conditions to be discharged at current use, including authorization and delivery. Requirement discharge has the [applicability paper's meaning](../semantic-objects-and-context/PAPER.md#3-context-and-applicability): a passing assessment or a justified exemption for the exact subject and scope, never an unsupported or unknown condition. Assume:
 
-**Proof.** For each \(j\), completeness of \(D\) and equality of its relevant observations imply that changing from \(s_0\) to \(s_1\) does not change \(P_j(a,\cdot)\). Thus \(P_j(a,s_1)\) holds. Property preservation gives \(P_j(T(a),s_1)\). The remaining admission conditions hold by the fourth assumption. This establishes the finite selected set, not additional unverified properties. ∎
+1. **Sound prior verification.** \(P_j(a,q,s_0)\) actually holds for every \(j\). The presence of a positive receipt is not itself this premise.
+2. **Complete and unchanged observations.** The manifest \(D\) contains every state input material to the selected properties and their interpretation. For every relevant \(x,q,s\), each property factors as \(P_j(x,q,s)=\widehat P_j(x,\kappa_j(q),\delta_j(s))\) for a fixed predicate \(\widehat P_j\). Moreover \(\delta_j(s_0)=\delta_j(s_1)\) and \(\kappa_j(q)=\kappa_j(q')\). This expresses completeness for request components as well as state components.
+3. **Preservation for every permitted transformation output.** The permitted transformation is a relation \(T\), possibly the identity. For every \(a'\) with \(T(a,a')\), and every \(j\), \(P_j(a,q',s_1)\Rightarrow P_j(a',q',s_1)\).
+4. **Coverage of the new artifact requirements.** Under the fixed assessment semantics, the selected properties suffice to discharge every requirement in \(R_{\mathrm{artifact}}(q')\). Explicitly, for every relevant output \(x\),
 
-The theorem is deliberately conditional. A manifest labeled “complete” does not prove its completeness. Natural-language interpretation, hidden dependencies, and current authority need their own justification. The theorem also does not make a false premise true: preservation can maintain a faithful record of a mistaken source.
+   \[
+   \bigwedge_{j=1}^{m} P_j(x,q',s_1)
+   \Rightarrow
+   \bigwedge_{r\in R_{\mathrm{artifact}}(q')}
+   \operatorname{Discharged}_r(x,q',s_1).
+   \]
+
+5. **Current independent admission.** For every proposed output \(a'\) with \(T(a,a')\), every requirement in \(R_{\mathrm{use}}(q')\) is discharged for that output at the declared current admission point. A check for another recipient, representation, or generation does not satisfy this premise.
+
+Then every such output \(a'\) retains all selected properties for \((q',s_1)\), and all requirements in \(R(q')\) are discharged. It is therefore admitted under the specified policy and scope.
+
+**Proof.** By assumptions 1–2, for each \(j\),
+
+\[
+P_j(a,q,s_0)
+=\widehat P_j(a,\kappa_j(q),\delta_j(s_0))
+=\widehat P_j(a,\kappa_j(q'),\delta_j(s_1))
+=P_j(a,q',s_1).
+\]
+
+Thus \(P_j(a,q',s_1)\) holds. Assumption 3 transfers it to every permitted transformation output \(a'\). Assumption 4 discharges the new artifact requirements, and assumption 5 discharges the independent current-use requirements. Their union is the complete declared requirement set, so no mandatory requirement remains outside the argument. ∎
+
+Two counterexamples explain why unchanged state alone is insufficient. An artifact can establish Boolean condition \(A\) while a new request also requires \(B\), which is false; preserving \(A\) does not cover \(B\). Separately, the property “the artifact's referent equals the requested referent” can hold for \(q\) and fail for \(q'\) without any source-state change. The first case violates requirement coverage; the second violates request-observation agreement.
+
+The theorem is deliberately conditional. A manifest labeled “complete” does not prove its completeness, a checker can be unsound, and an unjustified coverage implication cannot authorize a new task. The result quantifies over successful permitted outputs; it does not promise that \(T\) has any output or terminates. Natural-language interpretation, hidden dependencies, and current authority need their own justification. Preservation also cannot make a false premise true: it can maintain a faithful record of a mistaken source. For a genuinely narrower requirement set with unchanged interpretations and assessments, [mandatory strengthening](../semantic-objects-and-context/PAPER.md#proposition-3-mandatory-strengthening-narrows-certified-applicability) supplies the corresponding subset implication; a change of request is not automatically such a narrowing.
 
 ## 5. Dependencies and scope counterexamples
 
@@ -116,3 +142,4 @@ Machine interfaces and their compatibility versions belong in the [engineering c
 
 1. Fielding, R., Nottingham, M., and Reschke, J. *HTTP Caching*. RFC 9111, 2022. <https://www.rfc-editor.org/rfc/rfc9111>
 2. Nottingham, M. *HTTP Cache-Control Extensions for Stale Content*. RFC 5861, 2010. <https://www.rfc-editor.org/rfc/rfc5861>
+3. Mokhov, A., Mitchell, N., and Peyton Jones, S. “Build Systems à la Carte.” *Proceedings of the ACM on Programming Languages* 2(ICFP), article 79, 2018, 1–29. [Author's copy](https://simon.peytonjones.org/assets/pdfs/build-systems-original.pdf). <https://doi.org/10.1145/3236774>

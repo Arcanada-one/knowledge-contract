@@ -1,0 +1,177 @@
+{
+  "schema": "knowledge-contract.historical-recovery-inventory/1",
+  "review_finding": "EST-05",
+  "status": "partially_recovered; full historical replay remains unavailable",
+  "rights_boundary": "These missing runners and synthetic controls are project-authored technical inputs. Their absence is a recovery gap, not explained by the separate restriction on redistributing source books.",
+  "recovered": [
+    {
+      "path": "contract-profile-conformance/historical-recovery/contract-synthesis-0.1.schema.json",
+      "sha256": "b5078b9228b1bca85ebea689afc17c2aca16107e4d2549033805349ed6077ac2",
+      "size_bytes": 24584,
+      "historical_path": "schemas/kc_v3_0_1.schema.json",
+      "identity_source": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "identity_json_pointer": "/input_sha256/schemas~1kc_v3_0_1.schema.json",
+      "byte_identity_verified": true,
+      "source": "Exact local canonical schema copy, also present in the recovered RU10 r2 tree",
+      "scope": "Historical kc-synthesis/0.1 schema; not the current architecture or a current readiness validator"
+    }
+  ],
+  "missing": [
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": "evaluation/i26_kc_model.py",
+      "expected_sha256": "81997c2898e2e4a2717bf6a7bba06af06f944bfa935d851e1253a90af6270d96",
+      "identity_source": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "json_pointer": "/input_sha256/evaluation~1i26_kc_model.py",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": "corpus/i26_development/examples.json",
+      "expected_sha256": "305e5d6718a4aeeac3318a738f56274965707456e64629cd216e43ebdc3dfe94",
+      "identity_source": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "json_pointer": "/input_sha256/corpus~1i26_development~1examples.json",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": "iterations/I26/INTERFACE.md",
+      "expected_sha256": "7cbf0739f37d08060059fbebe3818f606adab55d9d3af233fe8551e8b868bb20",
+      "identity_source": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "json_pointer": "/input_sha256/iterations~1I26~1INTERFACE.md",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": "evaluation/verify_i26_kc.py",
+      "expected_sha256": "43f85dd1f22b770a2395d67866823e3c929bbc1db832d1d7407258cb4c7d69c3",
+      "identity_source": "contract-profile-conformance/evidence/author-conformance-report.json",
+      "json_pointer": "/input_sha256/evaluation~1verify_i26_kc.py",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": "corpus/i26_challenge/CONCRETE_FREEZE.json",
+      "expected_sha256": "11810b1388e82579a425537efe5a4f4c4735d99ee4750e4d299b24744456ea5b",
+      "identity_source": "contract-profile-conformance/evidence/separate-control-report.json",
+      "json_pointer": "/freeze_sha256",
+      "status": "exact_bytes_not_recovered",
+      "role": "Concrete challenge freeze and its complete 30-case input/oracle closure; ordinary and stress results are retained, full replay inputs are not."
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": null,
+      "role": "strong direct comparator implementation",
+      "expected_sha256": "cf0f54101e688baf531fd0dbaa0e59066092f6a9516a7fa38658c3e5509d22a3",
+      "identity_source": "contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "json_pointer": "/code_sha256",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": null,
+      "role": "nine shared comparator case inputs",
+      "expected_sha256": "5804a07b1e33240344907c91408c51adb0133b4bc8bb1717aa00f93e5b6f76d4",
+      "identity_source": "contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "json_pointer": "/cases_sha256",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": null,
+      "role": "comparator expected-outcome records",
+      "expected_sha256": "85caffcec5cc155724668e1f924ba9c39bf8d2202fe7fc0e850c1e32a150cb1d",
+      "identity_source": "contract-profile-conformance/evidence/strong-plain-form-comparison.json",
+      "json_pointer": "/oracles_sha256",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "frozen_controls",
+      "expected_sha256": "5e50e71c8122684fe89c6455537c9b85c8f390ea1fddaf6eec35b1411f56861f",
+      "expected_size_bytes": 34344,
+      "identity_source": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "json_pointer": "/frozen_controls",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "bound_implementation",
+      "expected_sha256": "29f7391ade4d461ff5aa315303cbde6f0a1c3ca7054a9d86bd0995b26a135acd",
+      "expected_size_bytes": 21426,
+      "identity_source": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "json_pointer": "/bound_implementation",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "bound_profile",
+      "expected_sha256": "cc8966fef81468f917569fc9079a4c2ab46ea79194cda8a52fee859cf8335767",
+      "expected_size_bytes": 14451,
+      "identity_source": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "json_pointer": "/bound_profile",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "independent_verifier",
+      "expected_sha256": "79b9300b2248ae70ef57741134c4146c98e69afd2f42fd76a4de6bb272573115",
+      "expected_size_bytes": 12585,
+      "identity_source": "executable-projections-and-revision/evidence/consumer-qualification-report.json",
+      "json_pointer": "/independent_verifier",
+      "status": "exact_bytes_not_recovered"
+    },
+    {
+      "study": "contract-profile-conformance",
+      "historical_path": null,
+      "role": "Separate challenge runner and any files referenced by the concrete freeze",
+      "expected_sha256": null,
+      "status": "complete_file_inventory_and_bytes_not_recovered",
+      "limit": "No absent hash is reconstructed or invented from a summary."
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "Twelve concrete consumer/verifier mutations and their full runners",
+      "expected_sha256": null,
+      "status": "complete_file_inventory_and_bytes_not_recovered",
+      "limit": "The retained report gives 12 rejected mutants but no individually recoverable program identities."
+    },
+    {
+      "study": "executable-projections-and-revision",
+      "historical_path": null,
+      "role": "Targeted revision implementations, ten template definitions and all thirty concrete case inputs",
+      "expected_sha256": null,
+      "status": "complete_file_inventory_and_bytes_not_recovered",
+      "limit": "The published paired outcomes can be recounted; executing the original comparison requires its missing program/input closure."
+    }
+  ],
+  "nonmatching_candidate": {
+    "historical_path": "evaluation/i26_kc_model.py",
+    "expected_sha256": "81997c2898e2e4a2717bf6a7bba06af06f944bfa935d851e1253a90af6270d96",
+    "candidate_sha256": "a5ec43e48e285db314db6f01e4c8026e3ad63da6f895590a2c35acd70d3bfe31",
+    "candidate_size_bytes": 24771,
+    "found_in": "Later canonical RU10 copies",
+    "used_as_historical_replacement": false,
+    "reason": "Different bytes cannot reproduce the frozen implementation identity."
+  },
+  "search_record": {
+    "review_date": "2026-11-04",
+    "examined_sources": [
+      "Published edition-1.0 evidence and immutable origin records",
+      "Local writing-editor canonical KC tree",
+      "Recovered RU10_EDITOR_KC_r2 tree and the two locally available r2 ZIP copies",
+      "Publication Reader source-index/retained HTML and the Drive canonical materials.jsonl export",
+      "Drive canonical integration copy inspected by the integrating editor"
+    ],
+    "reader_materials_sha256": "243b9e96d61cb629edb16c9b5d6988c69ae5c921577c4642897c3b60b900c8b2",
+    "reader_material_count": 342,
+    "reader_python_source_entries": 0,
+    "interpretation": "The searched reader contains reports, not the missing Python programs. Absence from these inspected sources is not a claim that no private or historical copy exists elsewhere."
+  },
+  "resolution_condition": "Recover the identified exact bytes and all referenced fixtures/runners, inspect their provenance and rights, then reproduce results in a separately recorded run. New programs or synthetic examples cannot close this historical identity gap."
+}

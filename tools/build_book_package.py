@@ -26,9 +26,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import check_book_package as cbp  # noqa: E402
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 FORMAT_BY_SUFFIX = {".pdf": "pdf", ".djvu": "djvu", ".ps": "ps", ".epub": "epub", ".html": "html", ".htm": "html", ".md": "md", ".txt": "txt",
-                    ".json": "json", ".xlsx": "xlsx", ".ppt": "ppt", ".zip": "zip", ".7z": "sevenz", ".tar.gz": "tar_gz", ".tgz": "tar_gz", ".tex": "tex"}
+                    ".json": "json", ".xlsx": "xlsx", ".ppt": "ppt", ".pptx": "pptx", ".zip": "zip", ".7z": "sevenz", ".tar.gz": "tar_gz", ".tgz": "tar_gz", ".tex": "tex"}
 TEXT_NATIVE = {"md", "txt"}
 
 
@@ -92,19 +92,25 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
     data = source.read_bytes()
     fmt = detect_format(source.name)
     digest = sha(data)
-    pid = f"{catalog_id}.{release}"
+    safe_component(catalog_id, "catalog id")
+    pid = re.sub(r"[._]+", "-", catalog_id.lower())
+    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", pid) or len(pid) < 3 or re.fullmatch(r"[a-z][0-9]+", pid):
+        raise BuildError("catalog id must provide a readable package slug of at least three characters")
+    moment = created_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     integrity = "unverified" if expected_sha256 is None else ("verified" if expected_sha256 == digest else "mismatch")
     completeness = "bibliography_only" if bibliography_only else "full"
 
     document: bytes | None = None
     tool, tool_version = converter
     checks: list[dict] = []
-    if bibliography_only:
-        status, extraction = "bibliography_only", "not_measured"
-    elif integrity == "mismatch":
+    if integrity == "mismatch":
         status, extraction = "blocked_integrity", "failed"
         checks.append({"check_id": "chk.source_digest", "result": "fail", "method": "sha256 of the source compared with the expected digest"})
+    elif bibliography_only:
+        status, extraction = "bibliography_only", "not_measured"
     else:
+        if converted_md is not None and not cbp.FORMAT_ANCHORS[fmt]:
+            raise BuildError("archive conversion needs a member-path anchor profile; not supported by book-package/2")
         if converted_md is not None:
             document = converted_md.read_bytes()
             tool_note = "converter output used unchanged"
@@ -148,8 +154,8 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
     for name, key in (("edits.jsonl", "edits"), ("objects.jsonl", "objects"), ("relations.jsonl", "relations")):
         files[name] = b""
         comps[key] = {"path": name, "sha256": sha(b""), "count": 0}
-    quality = {"schema": "KCBookQuality/v1", "package_id": pid,
-               "extraction": {"status": extraction, "checks": checks or [{"check_id": "chk.bibliography", "result": "not_applicable", "method": "bibliography-only record has no text to extract"}],
+    quality = {"schema": "KCBookQuality/v2", "package_id": pid,
+               "extraction": {"status": extraction, "checks": checks or [{"check_id": "chk.bibliography", "result": "not_applicable", "method": "bibliography-only record has no text to extract", "detail": "bibliography-only completeness explicitly excludes a text-extraction target"}],
                               "cer": {"metric_status": "not_measured", "value": None}},
                "semantics": {"status": "not_built", "objects_count": 0, "relations_count": 0}, "kc2_admission": "not_measured"}
     files["quality.json"] = dumps(quality)
@@ -162,10 +168,14 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
         rights["license"] = license_spdx
     representation = {"representation_id": f"rep.{catalog_id}.{digest[:12]}", "format": fmt, "source_sha256": digest, "size_bytes": len(data),
                       "integrity": integrity, "completeness": completeness}
+    if expected_sha256 is not None:
+        representation["integrity_check"] = {"method": "sha256 of source bytes compared with caller-supplied expected digest; expected-digest authority not authenticated",
+                                              "observer": "tool.build-book-package", "checked_at": moment,
+                                              "expected_sha256": expected_sha256, "observed_sha256": digest}
     if source_locator:
         representation["locator"] = source_locator
-    manifest = {"schema": "KCBookPackageManifest/v1", "package_id": pid, "release_id": release,
-                "created_at": created_at or datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    manifest = {"schema": "KCBookPackageManifest/v2", "validation_profile": "book-package/2", "package_id": pid, "release_id": release,
+                "created_at": moment,
                 "work": {"work_id": f"work.{catalog_id}", "title": title or catalog_id},
                 "edition": {"edition_id": f"ed.{catalog_id}.{language}", "language": language, "kind": "original"},
                 "representation": representation, "related_works": [], "rights": rights, "components": comps,

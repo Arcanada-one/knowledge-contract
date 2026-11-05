@@ -5,9 +5,9 @@
     {
       "name": "contract-profile-conformance",
       "report": "contract-profile-conformance/STUDY.md",
-      "report_sha256": "895d9d7f0603027a4b930ea336e3021b6b02f22ca78d989fb665869db642550b",
+      "report_sha256": "788c09269946b294420024f28656ef616e2df056e4d8246bfdf67c69ca4434a9",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1516,
+      "word_count": 1918,
       "evidence_files": 6,
       "origin_sha256": "149e6793e86beb35458e0bab81da44b3d69641bb271f8b2b64806548c0c1ef0c",
       "reader_visible_unreleased_markers": 0
@@ -15,9 +15,9 @@
     {
       "name": "dependency-closure-and-package-delivery",
       "report": "dependency-closure-and-package-delivery/STUDY.md",
-      "report_sha256": "55029310ea64f27f9ed3ef8470d56815c755820ce45ad43cbe078ca58a12f684",
+      "report_sha256": "0012f1506d1c9e95b29e7f8916952d2278e791bc2a7f7153e8c3c5980928f66a",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1442,
+      "word_count": 1963,
       "evidence_files": 8,
       "origin_sha256": "c5c3eb1ae45b25f75ca6ad8d7de04fc8b13eee22615973ce812c6af14339ded0",
       "reader_visible_unreleased_markers": 0
@@ -25,9 +25,9 @@
     {
       "name": "editorial-skill-pilot",
       "report": "editorial-skill-pilot/STUDY.md",
-      "report_sha256": "3e3a185a836fdc4c7bb6a0e13bafed7205e59e4687a70cddc7b648983146bbe4",
+      "report_sha256": "59066d54a219c13214a113037b0f3257378d77c83105b755bc80251db51ae0d5",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1597,
+      "word_count": 2195,
       "evidence_files": 15,
       "origin_sha256": "27900647bea647fd37bcab797411cf206024039cfc7358799469039734c1e82b",
       "reader_visible_unreleased_markers": 0
@@ -35,9 +35,9 @@
     {
       "name": "executable-projections-and-revision",
       "report": "executable-projections-and-revision/STUDY.md",
-      "report_sha256": "cfe6ab67c6ce6ed6295a5ec7b1b421c25f3b9f4e132daadb7f1ccfa8d7865bd3",
+      "report_sha256": "6242027572df695e1907e77d55588ea3b3a64741407b6922b87f0612de956ed8",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1758,
+      "word_count": 2335,
       "evidence_files": 8,
       "origin_sha256": "45900a41f79ded1bac3db494952b338995120de36e771baccdc8d3c7d3418d7c",
       "reader_visible_unreleased_markers": 0
@@ -45,9 +45,9 @@
     {
       "name": "reuse-admission-and-cost-controls",
       "report": "reuse-admission-and-cost-controls/STUDY.md",
-      "report_sha256": "87af4b10639cf33fe29c4e19d06cd99b5460a41db6bdd70863c08fa3d5f6c07d",
+      "report_sha256": "fa5494d6609d15a61ce071eb39c3a87fa0b982c61f756f3308276c127ae8484a",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1600,
+      "word_count": 2011,
       "evidence_files": 3,
       "origin_sha256": "bc63b12169efbcd76448ebe548bb5edde80f497d62e7745068cfdb32116d4ed2",
       "reader_visible_unreleased_markers": 0
@@ -55,9 +55,9 @@
     {
       "name": "source-transcription-and-uncertainty",
       "report": "source-transcription-and-uncertainty/STUDY.md",
-      "report_sha256": "721553450ac3bf61f1db252a7cc53a76f92478ab77eb56c67937a7077dc5b266",
+      "report_sha256": "6119790ada666b76782c0952e12e47799c51893a85f71a7e36f72d9ac44f3fe0",
       "word_count_method": "nonempty whitespace-separated tokens in complete Markdown, including metadata",
-      "word_count": 1534,
+      "word_count": 1855,
       "evidence_files": 7,
       "origin_sha256": "6104522b4790fbd9c31dc69d3ee4632f42677d45d079bde5f95e2140ad418a38",
       "reader_visible_unreleased_markers": 0
@@ -69,5 +69,7 @@
   "missing_internal_links": [],
   "cross_section_links_waiting_for_assembly": [],
   "passed_internal_checks": true,
-  "limits": "Mechanical package checks only. Substantive internal review is recorded separately and does not constitute external peer review, runtime admission or new historical experiments."
+  "limits": "Mechanical package checks after the integrated publication gate. Three new finite checks are versioned separately from four retained programs; none is a new historical model run. Substantive review, external peer review, service deployment, corpus admission and full historical replay remain distinct.",
+  "review_correction_manifest": "review-corrections.json",
+  "retained_files_and_origins_unchanged": 53
 }

@@ -16,8 +16,8 @@
   "units_seen": 3
  },
  "kc2_admission": "not_measured",
- "package_id": "synthetic-rle-primer.r1",
- "schema": "KCBookQuality/v1",
+ "package_id": "synthetic-rle-primer",
+ "schema": "KCBookQuality/v2",
  "semantics": {
   "objects_count": 4,
   "relations_count": 2,

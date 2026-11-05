@@ -1,0 +1,1925 @@
+{
+  "schema": "knowledge-contract.edition-review-response/1",
+  "edition": "1.1",
+  "reviewed_edition": "1.0",
+  "base_commit": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "review_kind": "project-provided review and independent agent recheck; not external peer review",
+  "finding_count": 90,
+  "severity_counts": {
+    "must-fix": 10,
+    "should-fix": 44,
+    "suggestion": 36
+  },
+  "decision_counts": {
+    "addressed": 82,
+    "clarified": 7,
+    "deferred": 1
+  },
+  "interpretation": "Addressed means the specified correction was made and its stated check performed. Clarified means the evidence or scope required a reasoned correction to the proposed change. Neither label asserts deployed implementation, authenticated historical runs or general validity.",
+  "findings": [
+    {
+      "id": "SP-01",
+      "severity": "must-fix",
+      "title": "Chain-preservation proposition is false as stated",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Replaced the false chain statement with explicit per-step partial-correctness contracts, next-step precondition compatibility, and equality of adjacent observation functions on intermediate postconditions. Added both Boolean countermodels and an induction proof.",
+      "changed_files": [
+        "papers/constrained-transformations/PAPER.md"
+      ],
+      "sections": [
+        "§3, Proposition 2",
+        "§6, scope"
+      ],
+      "verification": [
+        "Both omitted-junction counterexamples are executable in tools/test_reviewed_formal_results.py.",
+        "15,840 endpoint witnesses satisfy the corrected premises in the declared two-state relational enumeration."
+      ],
+      "remaining_limit": "The finite controls supplement the written proof; neither verifies a natural-language transformation implementation."
+    },
+    {
+      "id": "SP-02",
+      "severity": "must-fix",
+      "title": "The central reuse theorem never connects the verified properties to the new request",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Made every verified property request-indexed, required equal complete state and request observations, and explicitly partitioned the complete new requirement set into property-covered artifact conditions and separately checked current-use conditions. The conclusion now follows through both groups rather than from state equality alone.",
+      "changed_files": [
+        "papers/controlled-knowledge-reuse/PAPER.md"
+      ],
+      "sections": [
+        "Abstract",
+        "§4, assumptions 1–5 and proof"
+      ],
+      "verification": [
+        "Executable countermodels show preserved old properties missing an added requirement and stable state with a changed request referent.",
+        "20,480 output witnesses satisfy request coverage, preservation, and current-use conditions in the declared finite model.",
+        "Coordinated matching restatement with the studies editor."
+      ],
+      "remaining_limit": "Completeness of dependencies and new requirements, soundness of verification, and the coverage implication remain explicit assumptions; the theorem does not discover them."
+    },
+    {
+      "id": "SP-03",
+      "severity": "should-fix",
+      "title": "Idempotence proposition omits serialization of concurrent duplicates, and the stored result",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Required serialization or an equivalent unique first-commit constraint for each event identifier, and atomic persistence of the payload fingerprint, result or stable result reference, identifier, and internal effect. Explained loser rollback and why independent atomic commits are insufficient.",
+      "changed_files": [
+        "papers/interaction-and-memory/PAPER.md"
+      ],
+      "sections": [
+        "§5, Proposition 2"
+      ],
+      "verification": [
+        "Re-read the proof against the concurrent-first-delivery counterexample and the stored-result obligation."
+      ],
+      "remaining_limit": "No deployed concurrency implementation or external exactly-once execution is claimed."
+    },
+    {
+      "id": "SP-04",
+      "severity": "should-fix",
+      "title": "Generation-admission result assumes generation identifiers are never reused",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Generation identifiers are never reissued within a Work Item, including rollback and restoration of earlier requirement text. The direct-admission comparison occurs at the acceptance transition's serialization point.",
+      "changed_files": [
+        "papers/interaction-and-memory/PAPER.md"
+      ],
+      "sections": [
+        "§2, Work Item state",
+        "§5, Proposition 1"
+      ],
+      "verification": [
+        "Checked the proof against a return-to-earlier-content scenario; content hashes alone are explicitly insufficient."
+      ],
+      "remaining_limit": "The result assumes the interpreter identifies material requirement changes and the transition enforces the identifier rule."
+    },
+    {
+      "id": "SP-05",
+      "severity": "should-fix",
+      "title": "\"Retention\" is used against the glossary and the reuse-policy specification",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Renamed the paper to Knowledge Utility, Resource Accounting, and Lifecycle Decisions; reserved retention for byte preservation/deletion and separated residency, search visibility, background preparation, and current-use eligibility.",
+      "changed_files": [
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "Title and abstract",
+        "§6, lifecycle decisions",
+        "§7, evaluation"
+      ],
+      "verification": [
+        "Checked every retention occurrence against its storage-policy sense; coordinated glossary terminology."
+      ],
+      "remaining_limit": "The model specifies no universal retention threshold or utility-based authority to delete an original."
+    },
+    {
+      "id": "SP-06",
+      "severity": "should-fix",
+      "title": "Applicability uses three verdict values, but the status model has four",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Aligned the applicability model with pass/fail/unknown/not_applicable and defined discharge as pass or a justified scope-specific exemption witness. Added the empty-requirement-set vacuity and requirement-completeness limitation; updated the strengthening proof to keep witnesses and discharge semantics fixed.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md"
+      ],
+      "sections": [
+        "§3, applicability",
+        "§4, Proposition 3"
+      ],
+      "verification": [
+        "Compared the four values and guarded exemption meaning with the status-model editor; checked the monotonic subset proof under fixed witnesses."
+      ],
+      "remaining_limit": "A bare not_applicable label and an empty or incomplete requirement set supply no independent assurance."
+    },
+    {
+      "id": "SP-07",
+      "severity": "should-fix",
+      "title": "The cited study does not cover the transition properties it is linked to",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Narrowed the projection-study link to reader boundaries, addressed revision selection, and partial projections. Explicitly states that no engineering study in this corpus tests Work Item generations or concurrent idempotence.",
+      "changed_files": [
+        "papers/interaction-and-memory/PAPER.md"
+      ],
+      "sections": [
+        "§7, evidence and limits"
+      ],
+      "verification": [
+        "Read the linked projection-study methods and evidence boundary."
+      ],
+      "remaining_limit": "Generation and concurrency implementation studies remain unperformed; this is disclosed rather than replaced with invented evidence."
+    },
+    {
+      "id": "SP-08",
+      "severity": "should-fix",
+      "title": "The transcription study is described as addressing alternative readings and source regions",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Described the transcription study as a loss/restoration of recorded uncertainty in a reproducible projection. Explicitly excluded plural-interpretation and source-locator correctness claims from that study's evidence.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md"
+      ],
+      "sections": [
+        "§7, engineering connections"
+      ],
+      "verification": [
+        "Read the transcription-study audit, uncertainty projection, and reproduction limits."
+      ],
+      "remaining_limit": "The proposed plural-reading and locator obligations have not been evaluated by the published studies."
+    },
+    {
+      "id": "SP-09",
+      "severity": "should-fix",
+      "title": "The dependency-closure study is credited with selection controls it excludes",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Restricted the closure-study pointer to all-required fixed-graph closure, historical layout, and preliminary delivery. Distinguished root-subset enumeration from budgeted composition and identified the untested alternative-group and optimization claims.",
+      "changed_files": [
+        "papers/retrieval-and-context-composition/PAPER.md",
+        "papers/constrained-transformations/PAPER.md"
+      ],
+      "sections": [
+        "Retrieval §7",
+        "Transformations §7"
+      ],
+      "verification": [
+        "Read the closure profile's all operator and rejection of alternative-choice/cyclic inputs; audited the remaining scientific-to-study pointers."
+      ],
+      "remaining_limit": "No executable selection study for alternative grounds or resource-constrained optimization is asserted."
+    },
+    {
+      "id": "SP-10",
+      "severity": "should-fix",
+      "title": "The \"central falsifiable engineering prediction\" is true by definition",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Replaced the definitional enforcement conditional with a falsifiable claim about a named implementation revision, a well-formed input domain that includes violations, and a concrete mandatory condition. Added separate positive controls so all-refusal behavior is not mistaken for usefulness.",
+      "changed_files": [
+        "papers/evidence-and-falsification/PAPER.md"
+      ],
+      "sections": [
+        "§7, falsifiable implementation claim"
+      ],
+      "verification": [
+        "Checked that a violating input receiving success refutes the displayed formula without assuming enforcement."
+      ],
+      "remaining_limit": "The formula is a protocol for testing a specified implementation, not a claim that a particular live service already satisfies it."
+    },
+    {
+      "id": "SP-11",
+      "severity": "should-fix",
+      "title": "Notation clash in the break-even result and against the study it accompanies",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Kept h for the observation horizon; used G for cold cost, B preparation, N requests, and c_hit for total admitted-hit cost. Mapped the simple theorem to the study model at rho=1, M=I=S=0 and c_hit=c_v+c_r, with a common horizon and cost scope.",
+      "changed_files": [
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "§2, utility conditions",
+        "§6, Proposition 2 and study mapping"
+      ],
+      "verification": [
+        "Algebraically checked B+N*c_hit < N*G iff N*(G-c_hit)>B; coordinated the study's c_v/c_r/rho notation."
+      ],
+      "remaining_limit": "The arithmetic remains analytical and assumes the same acceptance conditions and accounting scope."
+    },
+    {
+      "id": "SP-12",
+      "severity": "should-fix",
+      "title": "Unscoped \"complete\" claims",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Removed unscoped completeness claims from the transformation and revision papers. Replaced them with the specific conditional properties and distinctions actually developed.",
+      "changed_files": [
+        "papers/constrained-transformations/PAPER.md",
+        "papers/revision-and-governance/PAPER.md"
+      ],
+      "sections": [
+        "Transformations §6",
+        "Revision §7"
+      ],
+      "verification": [
+        "Checked both flagged passages and nearby scope qualifications."
+      ],
+      "remaining_limit": "Neither paper claims to enumerate every transformation or governance model."
+    },
+    {
+      "id": "SP-13",
+      "severity": "should-fix",
+      "title": "Soundness proposition ignores the side conditions the paper itself records",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Added satisfaction of every inference application's side conditions to the finite-derivation theorem and its induction step, with the nonzero-divisor condition as a simple boundary example.",
+      "changed_files": [
+        "papers/evidence-and-falsification/PAPER.md"
+      ],
+      "sections": [
+        "§3, Proposition 1"
+      ],
+      "verification": [
+        "Checked that a conditionally sound rule cannot support the induction when a required side condition is false."
+      ],
+      "remaining_limit": "Extraction correctness, model adequacy, and implementation compliance remain separate assumptions."
+    },
+    {
+      "id": "SP-14",
+      "severity": "suggestion",
+      "title": "Adoption argument assumes a countermodel exists",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Made the adoption argument explicitly about a factual proposition for which the adoption record is consistent with both it and its negation. Excluded tautologies and facts entailed by the adoption record itself.",
+      "changed_files": [
+        "papers/revision-and-governance/PAPER.md"
+      ],
+      "sections": [
+        "Abstract",
+        "§4, Proposition 4"
+      ],
+      "verification": [
+        "Verified the countermodel argument from satisfiability of A and not-F; checked the stated exclusions."
+      ],
+      "remaining_limit": "A separate truth-linked review procedure may add evidence, but its reliability is not supplied by adoption alone."
+    },
+    {
+      "id": "SP-15",
+      "severity": "suggestion",
+      "title": "The same reverse-reachability proposition appears twice under different wording",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Kept the general reverse-reachability proposition in revision-and-governance, retitled it as identification of reassessment candidates, and replaced the duplicate interaction proof with a linked application. Renumbered the remaining narrow-update proposition in interaction from 4 to 3.",
+      "changed_files": [
+        "papers/revision-and-governance/PAPER.md",
+        "papers/interaction-and-memory/PAPER.md"
+      ],
+      "sections": [
+        "Revision §4, Proposition 3",
+        "Interaction §5, Dependency-directed reassessment"
+      ],
+      "verification": [
+        "Publication parser resolves the new cross-paper fragment.",
+        "The current corpus has 23 distinct numbered formal statements after removing the duplicate."
+      ],
+      "remaining_limit": "Candidate identification does not prove that an affected output is false or that every semantic dependency was recorded."
+    },
+    {
+      "id": "SP-16",
+      "severity": "suggestion",
+      "title": "The reuse theorem's transformation is a function, but the transformation paper uses relations; verification correctness is assumed silently",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Expressed reuse transformation as a relation and required preservation for every permitted transformation output. Prior verified properties must actually hold; a positive receipt is not assumed sound merely because it exists. Added an explicit no-existence/no-termination boundary.",
+      "changed_files": [
+        "papers/controlled-knowledge-reuse/PAPER.md"
+      ],
+      "sections": [
+        "§4, assumptions 1 and 3, proof and scope"
+      ],
+      "verification": [
+        "Executable controls distinguish one good relational output from universal output preservation and a recorded pass from actual prior truth."
+      ],
+      "remaining_limit": "The current-use admission is a derived conclusion; the transformation premise does not presuppose it."
+    },
+    {
+      "id": "SP-17",
+      "severity": "suggestion",
+      "title": "\"Conservative allocation prevents creation of cost\" allows negative shares",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Recast shared-cost allocation over a finite set of operations with nonnegative costs, consumer shares, and residuals. The proof now both conserves the aggregate and rules out an excessive positive share offset by a negative share.",
+      "changed_files": [
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "§3, Proposition 1"
+      ],
+      "verification": [
+        "Checked the finite sum identity and the per-share bound from nonnegativity."
+      ],
+      "remaining_limit": "This remains an accounting identity, not a uniquely fair allocation rule."
+    },
+    {
+      "id": "SP-18",
+      "severity": "suggestion",
+      "title": "Contribution target compares against \\(\\pi_b\\), while attribution requires \\(\\pi\\)",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Defined scalar outcome mapping U, made artifact-specific attribution compare pi+k with pi, and reserved comparison with pi_b for a whole-policy contrast. Introduced V_set for set-valued interventions under the same fixed conditioning arguments.",
+      "changed_files": [
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "§2, scalar mapping",
+        "§4, attribution target",
+        "§5, complementarity"
+      ],
+      "verification": [
+        "Checked that the displayed contrast isolates only the declared artifact-access intervention; no automatic identification from observational logs is claimed."
+      ],
+      "remaining_limit": "Assignment, interference, population support, and measurement assumptions are still needed for a causal estimate."
+    },
+    {
+      "id": "SP-19",
+      "severity": "suggestion",
+      "title": "The downward-closure counterexample conflicts with the paper's closure-based support definition",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Replaced the inconsistent root-removal example with a one-requirement/no-dependency coverage example: {a} is feasible and the empty subset is not. Explained separately that removing a root-level dependency may leave closure unchanged, whereas removing it from delivered content can violate delivery.",
+      "changed_files": [
+        "papers/retrieval-and-context-composition/PAPER.md"
+      ],
+      "sections": [
+        "§5, downward closure"
+      ],
+      "verification": [
+        "Evaluated the example under the paper's actual Supports(r,A) definition with closure equal to A."
+      ],
+      "remaining_limit": "The distinction concerns selected roots versus actual delivered objects; it does not establish a general optimization algorithm."
+    },
+    {
+      "id": "SP-20",
+      "severity": "suggestion",
+      "title": "Proof step attributed to submodularity also uses monotonicity",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Attributed OPT <= f(A_i union O) to monotonicity and the sum-of-marginals bound to submodularity, preserving the normalized monotone/cardinality hypotheses.",
+      "changed_files": [
+        "papers/retrieval-and-context-composition/PAPER.md"
+      ],
+      "sections": [
+        "§4, Proposition 3"
+      ],
+      "verification": [
+        "Re-read the recurrence argument with each inequality's premise explicit."
+      ],
+      "remaining_limit": "The bound is not extended to arbitrary budgets, dependency closure, or non-submodular semantic value."
+    },
+    {
+      "id": "SP-21",
+      "severity": "suggestion",
+      "title": "The Boolean residual example shows reconstruction, not economy",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Added that residual reconstruction proves correctness rather than economy, since R_F=F is also a valid residual. Any size or compression claim requires its own measure and comparison.",
+      "changed_files": [
+        "papers/constrained-transformations/PAPER.md"
+      ],
+      "sections": [
+        "§4, Boolean residual example"
+      ],
+      "verification": [
+        "Checked C and F equals F under F entails C, for the alternative residual."
+      ],
+      "remaining_limit": "No compression ratio or useful common-theme extraction is claimed."
+    },
+    {
+      "id": "SP-22",
+      "severity": "suggestion",
+      "title": "The papers do not cite the corpus's own counterexample to closure minimality",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Linked the corpus's actual claim-level minimality counterexample immediately after least entity closure and from the composition model. Distinguished least vertices/edges from least claims or token cost.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md",
+        "papers/retrieval-and-context-composition/PAPER.md"
+      ],
+      "sections": [
+        "Semantic objects §4, Proposition 2",
+        "Retrieval §3"
+      ],
+      "verification": [
+        "Read the projection-study counterexample and resolved its fragment using the publication parser."
+      ],
+      "remaining_limit": "The retained original experiment scores and entity-level theorem are unchanged; only the overbroad inference is excluded."
+    },
+    {
+      "id": "SP-23",
+      "severity": "suggestion",
+      "title": "The closure proposition permits cycles, but the cited implementation rejects them",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Explicitly states that cycles are allowed by the set-theoretic fixed-point proof but rejected by the published engineering profile. The executable evidence supports that acyclic profile only.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md"
+      ],
+      "sections": [
+        "§4, Proposition 2"
+      ],
+      "verification": [
+        "Compared the proof with the closure-study's cycle rejection rule."
+      ],
+      "remaining_limit": "The cyclic case is proof-supported, not empirically established by the cited consumer."
+    },
+    {
+      "id": "SP-24",
+      "severity": "suggestion",
+      "title": "Prior work that the papers' results restate without citation",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Verified the five proposed prior works against original articles, author/institutional copies, or publisher records before citation. Added scoped connections for program slicing, truth maintenance, incremental builds, view complements, and AGM revision, with explicit differences from task-relative knowledge admission.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md",
+        "papers/constrained-transformations/PAPER.md",
+        "papers/controlled-knowledge-reuse/PAPER.md",
+        "papers/revision-and-governance/PAPER.md"
+      ],
+      "sections": [
+        "Relevant prior-work paragraphs and References"
+      ],
+      "verification": [
+        "Primary-source URLs, verified metadata, inspected portions, and proposed source-register paths are recorded in papers-prior-work.json.",
+        "Five entries supplied to the reference editor; source-register integration supplied to root."
+      ],
+      "remaining_limit": "This is targeted verification of these additions, not a systematic related-work review or a new audit of every pre-existing bibliography item."
+    },
+    {
+      "id": "SP-25",
+      "severity": "suggestion",
+      "title": "Utility paper points to \"measured workloads\" in a study that reports none",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Replaced the measured-workloads pointer with an exact description of finite admission controls and synthetic arithmetic, explicitly stating that the study reports no measured model savings or production workload.",
+      "changed_files": [
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "§7, engineering evidence"
+      ],
+      "verification": [
+        "Compared the pointer against the companion study's analytical scope."
+      ],
+      "remaining_limit": "The editorial setting is separately described as exploratory and without a cost estimate."
+    },
+    {
+      "id": "SP-26",
+      "severity": "suggestion",
+      "title": "Notation reuse within and across papers",
+      "review_source": "01_papers_review.md",
+      "decision": "addressed",
+      "response": "Renamed the semantic-objects selected-root set to Roots so R remains requirements, removed the in-paper h clash, and coordinated a scoped mathematical-symbol registry with the glossary editor. Different locally defined symbols across papers are documented rather than silently equated.",
+      "changed_files": [
+        "papers/semantic-objects-and-context/PAPER.md",
+        "papers/knowledge-utility/PAPER.md"
+      ],
+      "sections": [
+        "Semantic objects §4, Proposition 2",
+        "Utility §§2–6"
+      ],
+      "verification": [
+        "Checked root-set replacements through the closure construction and proof; coordinated common cost notation and glossary scope table."
+      ],
+      "remaining_limit": "The corpus does not impose one universal meaning on every single-letter symbol; definitions and paper scope determine meaning."
+    },
+    {
+      "id": "ES-01",
+      "severity": "must-fix",
+      "title": "Rights guard bypassed through the knowledge layer; licence and licence class are not cross-checked *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "The v2 schema and projection enforce a conservative public-export boundary: only author_open with an allowed open licence can produce public rows. third_party_restricted and unknown cannot carry a licence or publishable layers, including knowledge. Private restricted packages remain valid. Separately authored derivatives need their own artifact and rights decision.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §10–11"
+      ],
+      "verification": [
+        "RightsAndProjectionTests cover forged licences, restricted knowledge, unknown class and valid private packages with no public rows."
+      ],
+      "remaining_limit": "Producer fail-closed rule implementing DEC-AUP-0173, not a legal claim that all original derivatives are prohibited. Rights ownership remains externally authenticated input."
+    },
+    {
+      "id": "ES-02",
+      "severity": "must-fix",
+      "title": "`knowledge_ready` accepts a review whose result is `unsupported` *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "knowledge_ready requires a supported review from a declared independent human or blind agent distinct from the producer, explicit independence basis, complete object/relation coverage, exact byte bindings and reviewed status for every record. Negative, partial, same-session, same-identity and stale reviews cannot establish readiness.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/check_book_package.py",
+        "tools/book_package_fixture.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §8–9"
+      ],
+      "verification": [
+        "ReviewReadinessTests cover negative/partial reviews, identity separation, scope, hashes and candidate/rejected records."
+      ],
+      "remaining_limit": "Declared identity separation and review binding are checked; actual authenticity, blinding and semantic quality remain trust inputs. Fixture reviews are explicitly synthetic."
+    },
+    {
+      "id": "ES-03",
+      "severity": "must-fix",
+      "title": "Status model promises transition rules but gives only one",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "The status model now defines separate vocabularies, actors and legal transitions for execution and artifacts, terminal states, quarantine/reassessment, append-only observations and conservative freshness/eligibility projections. Storage and scientific status are not inferred from a general positive status.",
+      "changed_files": [
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "engineering/specifications/contract-family/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Status model §3–6",
+        "Compiled artifact §3"
+      ],
+      "verification": [
+        "Cross-specification comparison of canonical dimensions and transition tables; profile fixtures reject noncanonical check values."
+      ],
+      "remaining_limit": "Architectural transition obligations are specified; no deployed distributed state machine is certified."
+    },
+    {
+      "id": "ES-04",
+      "severity": "must-fix",
+      "title": "Publication guard and \"generation\" are required in three specs but never defined",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Generation is monotone and never reissued within a head namespace, including rollback, restart and revocation. Publication must atomically compare head generation, every material dependency epoch and authority/policy before replacing the head and advancing generation. A separate dependency check followed by head-only CAS is explicitly insufficient.",
+      "changed_files": [
+        "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "tools/check_contract_profile.py",
+        "tools/test_contract_profile.py"
+      ],
+      "sections": [
+        "Cache identity §3–5",
+        "Compiled artifact §6",
+        "Knowledge evolution §6"
+      ],
+      "verification": [
+        "PublicationRaceTests cover stale workers, revocation, stale dependency with current head, omitted authority, namespace mismatch, ABA rollback, concurrent publishers and overflow.",
+        "Integration exposed dependency-counter exhaustion followed by a refused revocation and an incorrectly accepted publication. The guard now rejects exhausted dependency counters; a separate regression covers both old and fresh read sets and the last dependency increment."
+      ],
+      "remaining_limit": "The local model implements the epoch/revocation subset. Output-specific grants, semantic validity, build checks, persistence and distributed consistency require separate implementation evidence."
+    },
+    {
+      "id": "ES-05",
+      "severity": "must-fix",
+      "title": "Two admission vocabularies and three names for the admission authority",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Current documents consistently use Knowledge Contract admission runtime and the outcomes success/partial/refused/failed/unresolved. ready denotes lifecycle or availability. kc2_admission and other historical identifiers are explicitly legacy names, not current runtime/publication version claims.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "engineering/specifications/contract-family/SPECIFICATION.md",
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "appendices/api-integration/APPENDIX.md",
+        "appendices/source-map/APPENDIX.md",
+        "reference/glossary/GLOSSARY.md"
+      ],
+      "sections": [
+        "Status model §3",
+        "API §3 / API-R003–API-R007",
+        "Source map §4"
+      ],
+      "verification": [
+        "API editor cross-checked the status table and book-package/2 mapping; historical raw spellings retained."
+      ],
+      "remaining_limit": "Existing deployed/private API responses are not claimed to have changed."
+    },
+    {
+      "id": "ES-06",
+      "severity": "must-fix",
+      "title": "Package status is claimed to be \"derived\" but the derivation is partial and leaves reachable states with no legal status *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Package status now follows a total first-match decision table: mismatch, bibliographic-only, missing conversion, absent semantics, complete readiness, then partial_pilot. Reviewed but unverified or partially extracted packages have explicit non-ready outcomes. Structural contradictions still fail validation.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "schemas/book-package.schema.json",
+        "tools/build_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §8"
+      ],
+      "verification": [
+        "test_total_decision_table_over_all_status_dimensions checks 3,240 combinations and all six statuses; regressions cover reviewed/unverified, reviewed/partial and bibliographic mismatch."
+      ],
+      "remaining_limit": "Classification totality is not evidence of source fidelity or semantic correctness; knowledge_ready is not runtime admission."
+    },
+    {
+      "id": "ES-07",
+      "severity": "should-fix",
+      "title": "Requirements are not identifiable, so \"state which requirements it satisfies\" cannot be done",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Normative sentences in the eleven specifications and API appendix now have stable per-document IDs and a machine-readable requirement register. The checker detects missing/duplicate/wrong-prefix IDs and stale registry content, while distinguishing finite automated examples from implementation-specific obligations.",
+      "changed_files": [
+        "engineering/specifications/requirements.json",
+        "tools/check_requirement_register.py",
+        "engineering/specifications/README.md",
+        "appendices/api-integration/APPENDIX.md"
+      ],
+      "sections": [
+        "All normative specification sections",
+        "API §3–7"
+      ],
+      "verification": [
+        "python -B tools/check_requirement_register.py returned REQUIREMENT_REGISTER_PASS requirements=283."
+      ],
+      "remaining_limit": "An indexed requirement or linked regression is not a full conformance certificate. New normative text needs new IDs and register regeneration."
+    },
+    {
+      "id": "ES-08",
+      "severity": "should-fix",
+      "title": "No wire format: the README promises \"implementable obligations\" that two teams cannot interoperate on",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Added bounded observation, dependency-event and profile-advertisement wire profiles with JSON Schema 2020-12, exact examples, strict JSON, typed revisions, scoped checks, monotone epochs, byte hash domains and migration limits. All remaining full-contract models explicitly state architectural rather than universal wire interoperability.",
+      "changed_files": [
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "engineering/specifications/README.md",
+        "schemas/contract-observation.schema.json",
+        "schemas/fixtures/contract-observation/valid/",
+        "tools/check_contract_profile.py",
+        "tools/test_contract_profile.py",
+        "schemas/README.md"
+      ],
+      "sections": [
+        "Status model §8",
+        "Cache identity §4",
+        "Each specification §1"
+      ],
+      "verification": [
+        "ExchangeTests cover three families, exact-byte hashes, malformed JSON, pinned inapplicability rules, calendar dates, monotone events and profile advertisement; duplicate keys, NaN/Infinity and 1e999 overflow are rejected."
+      ],
+      "remaining_limit": "No universal full-contract schema, deployed endpoint or cross-vendor certification is claimed; interoperability is limited to the named profiles."
+    },
+    {
+      "id": "ES-09",
+      "severity": "should-fix",
+      "title": "Rendered knowledge layer drops conditions, operator scopes, source position and attribution without a loss account *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Knowledge rendering now preserves complete objects and relations as literal JSON, including conditions, scopes, operators, source positions, origins, anchors and assessment bindings. Headings are a convenience view rather than a lossy replacement.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §7"
+      ],
+      "verification": [
+        "test_full_records_survive_rendering_and_cannot_inject_heading round-trips complete records."
+      ],
+      "remaining_limit": "Preserving serialized fields does not prove that extraction captured all source meaning."
+    },
+    {
+      "id": "ES-10",
+      "severity": "should-fix",
+      "title": "Markdown injection lets generated text forge the \"Author's statement\" label *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Untrusted fields are serialized inside adaptive JSON code fences longer than any embedded backtick run. Trusted origin labels stay outside the literal payload, so generated headings and HTML cannot forge author attribution in the renderer output.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §7"
+      ],
+      "verification": [
+        "Full-record rendering regression includes backticks, fabricated headings and HTML payloads."
+      ],
+      "remaining_limit": "Downstream renderers must preserve code-block semantics rather than reinterpret JSON string values as Markdown."
+    },
+    {
+      "id": "ES-11",
+      "severity": "should-fix",
+      "title": "`pass` with `unknown` or zero checks contradicts the status model *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Extraction pass now requires at least one applicable passing check, unique IDs, no failed/unknown checks and consistent expected/seen values. not_applicable requires a stated basis and cannot make an empty or all-inapplicable set pass.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "schemas/book-package.schema.json",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §8"
+      ],
+      "verification": [
+        "Tests cover empty/unknown/failed checks and missing inapplicability basis."
+      ],
+      "remaining_limit": "The validator checks existence of a basis, not the semantic truth of an inapplicability conclusion."
+    },
+    {
+      "id": "ES-12",
+      "severity": "should-fix",
+      "title": "`asset_text` edits are accepted without any check, and the spec never defines them *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Removed undefined asset_text edits. Only readable_md edits use the reversible ledger; accepted edits without converted document/readable material fail. Exact-byte, UTF-8, newline, range, overlap and reversal controls are retained.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py",
+        "tools/test_book_package.py"
+      ],
+      "sections": [
+        "Book package §2 and §9"
+      ],
+      "verification": [
+        "test_asset_text_and_edits_without_document_are_rejected and existing byte-ledger regressions."
+      ],
+      "remaining_limit": "Asset-text correction needs a separately specified future profile; no automatic conversion of unsupported edits."
+    },
+    {
+      "id": "ES-13",
+      "severity": "should-fix",
+      "title": "Staleness rule is keyed to an undefined edit state and to producer-declared dependencies",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Explicit edit-state semantics and anchor-overlap detection invalidate affected objects independently of producer dependency declarations. Recovery requires an edit-specific supported bound reassessment. Relations cannot remain reviewed with stale/rejected endpoints.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "schemas/book-package.schema.json",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §9"
+      ],
+      "verification": [
+        "Accepted-edit overlap test omits producer dependencies then exercises explicit reassessment; rejected-endpoint relation test."
+      ],
+      "remaining_limit": "Overlap is conservative. Semantic effects outside recorded coordinate/dependency scope require review; arbitrary semantic closure is not inferred."
+    },
+    {
+      "id": "ES-14",
+      "severity": "should-fix",
+      "title": "Integrity `verified` is a producer assertion that gates `knowledge_ready`",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Verified/mismatch integrity requires method, observer, timestamp and expected/observed digests with cross-file consistency checks. Builder records disclose caller-supplied expected-digest authority limitations.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/check_book_package.py",
+        "tools/build_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §3 and §8"
+      ],
+      "verification": [
+        "Integrity observation/digest regression plus negative fixture missing observer."
+      ],
+      "remaining_limit": "Internal consistency does not authenticate expected digest origin or observer; consumers must verify the trust basis."
+    },
+    {
+      "id": "ES-15",
+      "severity": "should-fix",
+      "title": "Time model: soft deadline, TTL class, staleness bound and \"invalid chronology\" are undefined",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Defined soft/hard TTL and deadline classes, conservative interval bounds, expiry equality, maximum-age comparison and invalid chronology. Soft staleness requires revalidation unless explicit serve_stale permission exists; refresh failure cannot renew evidence.",
+      "changed_files": [
+        "engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "engineering/specifications/status-model/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Reuse policy §3–5",
+        "Status model §3"
+      ],
+      "verification": [
+        "Manual boundary review covers age, equality at expiry, failed refresh, invalid/overlapping intervals and seven reuse decisions."
+      ],
+      "remaining_limit": "No production clock/timing implementation is supplied; operational conformance requires its own uncertainty/policy tests."
+    },
+    {
+      "id": "ES-16",
+      "severity": "should-fix",
+      "title": "Parallel vocabularies for the same dimension across specs",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Canonical dimension tokens govern run phases, availability, eligibility, impact, search assurance, coverage, operation outcomes and reuse decisions. Legacy terms have mappings; unsupported records its scope rather than adding a parallel token; ready is not an outcome.",
+      "changed_files": [
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "engineering/specifications/context-package/SPECIFICATION.md",
+        "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "reference/glossary/GLOSSARY.md"
+      ],
+      "sections": [
+        "Status model §3–4",
+        "Context package §4",
+        "Knowledge evolution §4",
+        "Reuse policy §5"
+      ],
+      "verification": [
+        "Cross-document vocabulary comparison and schema enums for the bounded subset."
+      ],
+      "remaining_limit": "Historical evidence keeps original labels and measurements with explicit compatibility mappings."
+    },
+    {
+      "id": "ES-17",
+      "severity": "should-fix",
+      "title": "Book-package facets claim consistency with semantic types but diverge in vocabulary",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Book v2 facets distinguish hypothesizes/presumes, add condition/exception/order operator families, retain explicit scope and support structured_data representation. Cardinality and unknown/known-empty meanings are stated.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/book_package_fixture.py",
+        "tools/test_book_package_review.py",
+        "engineering/specifications/semantic-types/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Book package §4",
+        "Semantic types §2–4"
+      ],
+      "verification": [
+        "Facet regression and regenerated positive/negative fixtures."
+      ],
+      "remaining_limit": "Representational classification still needs semantic review; legacy v1 records are not automatically reclassified."
+    },
+    {
+      "id": "ES-18",
+      "severity": "should-fix",
+      "title": "Anchor/format table in the spec differs from the validator's mapping",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "The source-format/anchor table matches validation, including pptx. Archives are opaque source identities with no semantic member-coordinate or converted-document profile; unsupported archive interpretation fails rather than receiving invented anchors.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "schemas/book-package.schema.json",
+        "tools/build_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §6"
+      ],
+      "verification": [
+        "Archive/pptx mapping regression and existing anchor fixtures."
+      ],
+      "remaining_limit": "Archive extraction/member coordinates remain explicitly unsupported pending a separate profile."
+    },
+    {
+      "id": "ES-19",
+      "severity": "should-fix",
+      "title": "Profile \"required\" flag is producer-controlled; a constraint can be downgraded to optional",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Constraint mandatoriness derives from trusted request/policy independently of a producer required flag. Unknown constraint relevance blocks use. Only established irrelevant opaque extensions may be ignored, and conflict-resolution authority must be authenticated.",
+      "changed_files": [
+        "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "engineering/specifications/knowledge-evolution/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Core §3–5",
+        "Knowledge evolution §3–4"
+      ],
+      "verification": [
+        "Manual downgrade, unknown-extension and unauthenticated-resolver threat-case trace against the revised obligations."
+      ],
+      "remaining_limit": "The architecture does not supply a general policy engine or authentication service."
+    },
+    {
+      "id": "ES-20",
+      "severity": "should-fix",
+      "title": "Lowercase \"must\" carries central requirements; the appendix and book package have no BCP 14 keywords at all",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Central obligations use BCP 14 keywords with stable IDs. The book profile and API proposed-delivery/gate sections declare normative scope; the observed read-interface inventory remains informative.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "engineering/specifications/requirements.json",
+        "tools/check_requirement_register.py",
+        "appendices/api-integration/APPENDIX.md",
+        "engineering/specifications/README.md"
+      ],
+      "sections": [
+        "All normative specification sections",
+        "API §1 and §3–7 / API-R001–API-R035"
+      ],
+      "verification": [
+        "Requirement checker validates 283 requirements; API editor confirmed 35 numbered API clauses and intended BCP 14 scope."
+      ],
+      "remaining_limit": "Keywords identify obligations; they do not establish deployed service conformance."
+    },
+    {
+      "id": "ES-21",
+      "severity": "should-fix",
+      "title": "\"Descriptor\" is used normatively but defined only circularly",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Descriptor identity now has a concrete component table for operation, sources/revisions, semantic requirements, constraints, authority/policy, projections, parameters, toolchain and dependencies. Each comparison is exact or uses separately evidenced compatibility/entailment; a hash alone is insufficient.",
+      "changed_files": [
+        "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "engineering/specifications/reuse-policy/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Cache identity §2–3",
+        "Compiled artifact §4–5",
+        "Reuse policy §2"
+      ],
+      "verification": [
+        "Manual component-by-component reuse review and exact hash-domain controls in the bounded profile."
+      ],
+      "remaining_limit": "The full descriptor is architectural; universal serialization is not claimed outside the named wire subset."
+    },
+    {
+      "id": "ES-22",
+      "severity": "suggestion",
+      "title": "`package_id` allows characters the exporter path pattern rejects *(probed)*",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Active v2 identity uses a readable exporter-compatible package_slug and separate release_id. Colon-bearing and opaque numbered aliases fail. Builder and synthetic fixtures were migrated together.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/build_book_package.py",
+        "tools/book_package_fixture.py",
+        "tools/test_book_package_review.py",
+        "tools/test_build_book_package.py"
+      ],
+      "sections": [
+        "Book package §3 and §13"
+      ],
+      "verification": [
+        "Package-slug, builder opaque-slug and path-safety regressions."
+      ],
+      "remaining_limit": "Breaking v2 change: historical package_id fields stay in immutable v1 history, without silent rewriting."
+    },
+    {
+      "id": "ES-23",
+      "severity": "suggestion",
+      "title": "Registry naming ban is not enforced",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Root added publication checker rejection of opaque numbered canonical slugs/titles, including r1, r10, p09 and numeric-only names. Legacy artifact names remain explicitly outside the current catalogue.",
+      "changed_files": [
+        "engineering/specifications/artifact-registry/SPECIFICATION.md",
+        "tools/check_publication.py",
+        "tools/test_check_publication.py"
+      ],
+      "sections": [
+        "Artifact registry §2 and §6"
+      ],
+      "verification": [
+        "test_opaque_numbered_names_cannot_enter_the_current_catalog and test_opaque_numbered_title_is_rejected; root owns final rerun."
+      ],
+      "remaining_limit": "A lexical check cannot prove that a name communicates useful meaning; editorial review remains necessary."
+    },
+    {
+      "id": "ES-24",
+      "severity": "suggestion",
+      "title": "Empty known list allowed for some facets but not others",
+      "review_source": "02_specifications_review.md",
+      "decision": "clarified",
+      "response": "Known-empty semantics are specified per facet. Classification facets requiring a nonempty known set differ from a measured absence of operators, conditions or references. Every object covered by the package review must name that review in assessment_refs.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "schemas/book-package.schema.json",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §4 and §8"
+      ],
+      "verification": [
+        "Facet known-empty regression and test_known_empty_assessment_refs_cannot_deny_a_named_package_review."
+      ],
+      "remaining_limit": "The validator distinguishes declarations but cannot prove a claimed empty observation complete."
+    },
+    {
+      "id": "ES-25",
+      "severity": "suggestion",
+      "title": "`candidate_projection` does not require a validated package or a publishable status",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "candidate_projection takes a directory, creates an isolated exact-byte snapshot, validates it and renders from that same snapshot. Invalid, unavailable and non-open packages produce no public proposal. Caller-supplied manifest/rendering pairs are no longer accepted.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py",
+        "tools/test_book_package.py"
+      ],
+      "sections": [
+        "Book package §11"
+      ],
+      "verification": [
+        "Projection tests cover invalid package, raw-input injection and self-bound rendering."
+      ],
+      "remaining_limit": "The result is only an export proposal; it does not edit an allowlist, grant admission, publish an index or authenticate author_open."
+    },
+    {
+      "id": "ES-26",
+      "severity": "suggestion",
+      "title": "`presented_as_author` semantics for `author_statement` undefined",
+      "review_source": "02_specifications_review.md",
+      "decision": "clarified",
+      "response": "For author_statement, presented_as_author=true means asserted verbatim attribution and false means attributed paraphrase. Non-author/generated origins stay false with explicit generated labels. A redundant schema condition was removed.",
+      "changed_files": [
+        "engineering/specifications/book-package/SPECIFICATION.md",
+        "schemas/book-package.schema.json",
+        "tools/check_book_package.py",
+        "tools/test_book_package_review.py"
+      ],
+      "sections": [
+        "Book package §7"
+      ],
+      "verification": [
+        "Lossless-rendering regression and existing attribution/origin negative fixtures."
+      ],
+      "remaining_limit": "The flag records a producer claim; source fidelity requires independent evidence."
+    },
+    {
+      "id": "ES-27",
+      "severity": "suggestion",
+      "title": "API appendix: repository identity and release-gate receipt unspecified",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "API identity is now tied to observed source_revision plus citation.canonical_url. A separate KCIndexReleaseReceipt/v1 operator profile defines normalized repository_url, document hashes, build identity, query/fetch readbacks, supersession and six gate checks; no deployed repository_url field is invented.",
+      "changed_files": [
+        "appendices/api-integration/APPENDIX.md",
+        "appendices/api-integration/index-release-receipt.schema.json",
+        "appendices/source-map/APPENDIX.md"
+      ],
+      "sections": [
+        "API §4–5 / API-R009–API-R025"
+      ],
+      "verification": [
+        "Studies editor inspected site adapter cdca604245165bbec80ce3624fdc65e9cbde6a01; validated Draft 2020-12 schema with 2,187 state/decision combinations, six missing-check and five traversal cases.",
+        "Persistent tools/test_index_release_receipt.py controls cover all 2,187 declared check-state/decision combinations, each omitted check and malformed paths/identities. Explicit date assertion is exercised on UTC-seconds fixtures; full RFC 3339 support and semantic joins are not certified by these shape checks."
+      ],
+      "remaining_limit": "Shape/decision validation does not establish semantic joins, live API data, deployment, index state or corpus authority. No production receipt was fabricated."
+    },
+    {
+      "id": "ES-28",
+      "severity": "suggestion",
+      "title": "\"Conflicting adoption decisions\" is a required test without a defined expected result",
+      "review_source": "02_specifications_review.md",
+      "decision": "addressed",
+      "response": "Conflicting adoption decisions explicitly block affected use until authenticated resolution or justified narrower scope. Unknown impact yields unknown eligibility and unresolved outcome; established prohibition yields blocked impact and refusal.",
+      "changed_files": [
+        "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "engineering/specifications/status-model/SPECIFICATION.md"
+      ],
+      "sections": [
+        "Knowledge evolution §3–4 and §7",
+        "Core §4–5",
+        "Status model §3"
+      ],
+      "verification": [
+        "Manual acceptance-case review of conflicting authorities, unknown relevance, known prohibition and authorized resolution."
+      ],
+      "remaining_limit": "The operational authority/resolution service remains implementation-specific; unresolved conflict is not declared harmless."
+    },
+    {
+      "id": "EST-01",
+      "severity": "must-fix",
+      "title": "must-fix — editorial-skill-pilot/STUDY.md:18 (also :32)",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Both editors are now explicitly described as receiving the protected-claim registry and scoring rubric. The shared 19/19 outcome is compliance with a supplied checklist; only the assisted condition additionally received the toolkit/compiler.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Abstract",
+        "Design and preregistration",
+        "Results on the retained responses",
+        "Counterarguments and boundaries"
+      ],
+      "verification": [
+        "Read common-editorial-brief.txt, protected-claims.json, original-pilot-protocol.txt and retained review; no input bytes changed."
+      ],
+      "remaining_limit": "No causal advantage, unaided preservation or knowledge acquisition is inferred from this one paired result."
+    },
+    {
+      "id": "EST-02",
+      "severity": "must-fix",
+      "title": "must-fix — dependency-closure-and-package-delivery/STUDY.md:18 and :50 (contrast: contract-profile-conformance/STUDY.md:18)",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Applied a common counting rule: 44 ordinary package checks (21 expected acceptance, 23 rejection) plus two accepted misleading-input boundary cases. The historical 46 rows remain unchanged; contract-profile stress inputs likewise stay outside ordinary denominators.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/README.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Abstract",
+        "Exhaustive finite checks",
+        "Counting and interpretation"
+      ],
+      "verification": [
+        "Recounted finite-package-selftest.json rows; ordinary and boundary counts are recorded separately."
+      ],
+      "remaining_limit": "These different finite suites are not pooled into a common empirical success rate."
+    },
+    {
+      "id": "EST-03",
+      "severity": "should-fix",
+      "title": "should-fix — dependency-closure-and-package-delivery/STUDY.md:22 and :46–48; editorial-skill-pilot/STUDY.md:65",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Added actual delivered record counts: every skill root, two roles, two blueprints, assistant, all skills and pilot root combination. The pilot delivers108/110 records;12 loaded/5 used is not evidence of compactness.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py",
+        "engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json"
+      ],
+      "sections": [
+        "Delivered record counts and fault controls"
+      ],
+      "verification": [
+        "New deterministic program passed; single skills45–57, all skills102, editor105, reviewer57, edit blueprint73, assistant110, pilot108."
+      ],
+      "remaining_limit": "Counts measure graph records, not bytes/tokens or economic efficiency; semantic edge completeness remains an assumption."
+    },
+    {
+      "id": "EST-04",
+      "severity": "should-fix",
+      "title": "should-fix — contract-profile-conformance/STUDY.md:18, :47",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Author35 scenarios explicitly labeled development/regression inputs (13 positive, 22 rejection). Separate control timing and same-session authorship are stated.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Design and unit of observation",
+        "Results"
+      ],
+      "verification": [
+        "Checked author report rows and retained evaluation protocol."
+      ],
+      "remaining_limit": "No held-out population reliability estimate is made."
+    },
+    {
+      "id": "EST-05",
+      "severity": "should-fix",
+      "title": "should-fix — contract-profile-conformance/STUDY.md:79; executable-projections-and-revision/STUDY.md:88",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "deferred",
+      "response": "Partially recovered the exact historical kc-synthesis/0.1 schema, byte-identical at b5078b9228b1bca85ebea689afc17c2aca16107e4d2549033805349ed6077ac2. Other exact runners, synthetic fixtures, comparator, consumer and verifier are not recovered. A precise missing-identity inventory records hashes, sizes, inspected sources and the rejected a5ec43… later runtime. Text now calls this a recovery gap, not a book-rights restriction.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/historical-recovery-gaps.json",
+        "engineering/studies/contract-profile-conformance/historical-recovery/contract-synthesis-0.1.schema.json"
+      ],
+      "sections": [
+        "Reproduction and evidence boundaries",
+        "Evidence and reproduction boundaries"
+      ],
+      "verification": [
+        "Examined published reports, local canonical and RU10 trees, both available r2 ZIPs, 342-record Drive reader materials export and integration copies (root-assisted search). Reader export contains zero .py entries. Exact schema hash matched; available model did not match frozen 81997c… identity."
+      ],
+      "remaining_limit": "Full original historical replay remains unavailable. Closing this requires recovering exact programs, all input/oracle dependencies and concrete mutants, then recording a new replay; invented replacements cannot close it."
+    },
+    {
+      "id": "EST-06",
+      "severity": "should-fix",
+      "title": "should-fix — executable-projections-and-revision/STUDY.md:18, :28",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "clarified",
+      "response": "Added initial 57-call status distribution10 complete/38 partial/3 rejected/6 unsupported, and changed preserved violations to recorded violations. Separately states designed OCR-layer6 complete/12 partial. The retained main-layer summary does not bind every status to a predeclared expected status; no classification is guessed.",
+      "changed_files": [
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Abstract",
+        "Initial reader: four distinct failure mechanisms"
+      ],
+      "verification": [
+        "Recounted historical-reader-study-source.json and linked historical-ocr-reader-report.json."
+      ],
+      "remaining_limit": "The full expected-status mapping for the57 main calls is missing; planned versus unplanned partial/rejected counts cannot be reconstructed from aggregate summaries."
+    },
+    {
+      "id": "EST-07",
+      "severity": "should-fix",
+      "title": "should-fix — executable-projections-and-revision/STUDY.md:18, :38",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Renamed38 calls development/regression boundary checks;26authored alongside changes and12 old cases. Added a four-row5/3/2/2 failure table identifying changes to placeholder resolution, normalization, pointer coordinate space and ambiguity, including contract/rubric changes.",
+      "changed_files": [
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Abstract",
+        "Initial reader: four distinct failure mechanisms",
+        "Revised reader boundaries"
+      ],
+      "verification": [
+        "Read initial reader source and boundary report; compared four failure groups."
+      ],
+      "remaining_limit": "The record does not isolate causal contributions of code versus changed rubric; no held-out qualification claim remains."
+    },
+    {
+      "id": "EST-08",
+      "severity": "should-fix",
+      "title": "should-fix — executable-projections-and-revision/STUDY.md:44",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Shows10 operation templates×3 books and per-template3/3agreement. Shared validator and serializer restrict the comparison mainly to selection, and30 pairs are not30 independent designs.",
+      "changed_files": [
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Targeted revision and a strong alternative"
+      ],
+      "verification": [
+        "Recounted all targeted-revision-comparison.json pairs and ten template labels."
+      ],
+      "remaining_limit": "No generalization to unseen operations or representation superiority follows."
+    },
+    {
+      "id": "EST-09",
+      "severity": "should-fix",
+      "title": "should-fix — editorial-skill-pilot/STUDY.md:44–49; executable-projections-and-revision/STUDY.md:74",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Both studies explicitly identify rubric ceilings: editorial vector(2,2,2,1,1), first 3 axes saturated; projection24 views maximum on both axes. Differences below one scale step were not observable; later comparisons require a finer or preference-sensitive instrument.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Results on the retained responses",
+        "Five agent case pairs",
+        "Counterarguments and boundaries"
+      ],
+      "verification": [
+        "Checked masked review score vectors/scale and agent-projection-results.json totals."
+      ],
+      "remaining_limit": "Equal reported scores do not establish identical quality; no new judge calibration or model runs were performed."
+    },
+    {
+      "id": "EST-10",
+      "severity": "should-fix",
+      "title": "should-fix — editorial-skill-pilot/STUDY.md:30, :36",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "First-completed response, complete rereading and unchanged-after-self-review are explicitly editor declarations. Only retained output bytes are pinned; no independent complete event log exists.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/evidence-index.json",
+        "engineering/studies/README.md"
+      ],
+      "sections": [
+        "Design and preregistration",
+        "Results on the retained responses",
+        "Counterarguments and boundaries"
+      ],
+      "verification": [
+        "Checked editorial-trace-audit.json limits; unchanged output hashes reproduced by public editorial checker."
+      ],
+      "remaining_limit": "Output-order enforcement and discarded attempts cannot be independently verified."
+    },
+    {
+      "id": "EST-11",
+      "severity": "should-fix",
+      "title": "should-fix — editorial-skill-pilot/STUDY.md:67–69",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Reports15 source fragments/9 rules, K10general precision principle rather than a separately formulated pronoun method, no visual PDF review and openK02/F02, K03/F03 OCRitems near the trace claim.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "What the edits changed",
+        "Skill use and technical trace"
+      ],
+      "verification": [
+        "Read editorial-trace-audit.json trace and limits."
+      ],
+      "remaining_limit": "Mechanical trace consistency does not prove source-page fidelity or a book-specific method for every edit."
+    },
+    {
+      "id": "EST-12",
+      "severity": "should-fix",
+      "title": "should-fix — reuse-admission-and-cost-controls/STUDY.md:36, :103",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Preserved defective edition-1.0 code/output and published a separately versioned checker with an exact nine-gate set. It rejects every missing/fail/unknown gate, one-gate-only maps and malformed values. Arithmetic is described as worked examples.",
+      "changed_files": [
+        "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py",
+        "engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json",
+        "engineering/studies/review-corrections.json"
+      ],
+      "sections": [
+        "Admission before optimization",
+        "Public examples and claim limits"
+      ],
+      "verification": [
+        "New positive control and27 gate mutations passed; six malformed inputs rejected; four rational cost examples matched stored output. Old program rerun still matches its historical output, with defect disclosed."
+      ],
+      "remaining_limit": "All nine gates are applicable in this finite profile; justified not_applicable requires a richer witness profile. Inputs are supplied, not authenticated, and no production admission is tested."
+    },
+    {
+      "id": "EST-13",
+      "severity": "should-fix",
+      "title": "should-fix — source-transcription-and-uncertainty/STUDY.md:82",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Reclassified the four invented records as an illustration. New version compares against a separately stored literal target; a changed description and damaged insertion trace fail their respective checks. Old vacuous program/output remain frozen and explicitly identified.",
+      "changed_files": [
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py",
+        "engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt",
+        "engineering/studies/source-transcription-and-uncertainty/checks/uncertainty-projection-check.json"
+      ],
+      "sections": [
+        "Abstract",
+        "Public illustration and retained evidence"
+      ],
+      "verification": [
+        "Nine new checks pass; stored output matches rerun; target-content mutation and trace mutation are detected."
+      ],
+      "remaining_limit": "This does not implement or reproduce the historical source-plus-ledger pipeline; omission is a constructed counterexample, not a measured frequency."
+    },
+    {
+      "id": "EST-14",
+      "severity": "should-fix",
+      "title": "should-fix — all six STUDY.md \"evidence\" links (for example contract-profile-conformance/STUDY.md:37, executable-projections-and-revision/STUDY.md:28)",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Added English summaries of the supporting Russian design/result/limitation passages in every study and a language index keyed by every evidence path/hash. To preserve immutable origin bytes, language metadata is a sidecar joined to origins by exact path and hash, rather than rewriting origin records.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/README.md",
+        "engineering/studies/evidence-language-index.json"
+      ],
+      "sections": [
+        "Per-study evidence/language boundary paragraphs",
+        "Languages and source access"
+      ],
+      "verification": [
+        "Inventory covers all 47 retained evidence files with hashes, representation labels, languages and English-summary paths; all 53evidence+origin files stayed byte-identical."
+      ],
+      "remaining_limit": "Summaries are labeled as summaries, not a full independently reviewed translation of the entire Russian corpus."
+    },
+    {
+      "id": "EST-15",
+      "severity": "should-fix",
+      "title": "should-fix — dependency-closure-and-package-delivery/STUDY.md:56; executable-projections-and-revision/STUDY.md:58, :74",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Replaced ambiguous independently written/verified claims with separately written in the same workflow/family. Describes independent algorithm form without implying independent provenance; discloses shared lexical table detector and zero image-byte checks.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "reference/glossary/GLOSSARY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "A public reproduction of the graph result",
+        "Consumer qualification before the new responses",
+        "Five agent case pairs",
+        "Audit and transformation method",
+        "Editorial rules for terminology"
+      ],
+      "verification": [
+        "Compared implementation relationships and retained review scope; terminology pass over all six studies."
+      ],
+      "remaining_limit": "No external peer review, human expert verification or independent table detector is inferred."
+    },
+    {
+      "id": "EST-16",
+      "severity": "should-fix",
+      "title": "should-fix — editorial-skill-pilot/STUDY.md:73",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Names unmeasured baseline prior writing knowledge and the shared protected checklist as rival explanations. Future comparison needs project-specific/held-out rules or ablation with a discriminating instrument.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Counterarguments and boundaries"
+      ],
+      "verification": [
+        "Checked actual baseline input brief and masked results."
+      ],
+      "remaining_limit": "No causal acquisition or isolated skill contribution is established by the retained pilot."
+    },
+    {
+      "id": "EST-17",
+      "severity": "should-fix",
+      "title": "should-fix — contract-profile-conformance/STUDY.md:63",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "States comparator author knew the nine inputs and expected outcomes; exact tie is an existence demonstration of direct encoding, not generalization on withheld cases.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Counterexamples and the comparator"
+      ],
+      "verification": [
+        "Checked strong-plain-form-comparison.json implementation_visibility/design_timing and known outcome rows."
+      ],
+      "remaining_limit": "No new unseen challenge set or historical comparator rerun is claimed."
+    },
+    {
+      "id": "EST-18",
+      "severity": "suggestion",
+      "title": "suggestion — contract-profile-conformance/STUDY.md:39, :49",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "clarified",
+      "response": "Added the complete operation/outcome table. Corrected a reviewer counting error:4of 6 positive controls are application operations (C01,C02,C06B,C18), one is execution(C02B), one compatibility(C12); not3 application cases.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Results"
+      ],
+      "verification": [
+        "Recounted all 26 ordinary rows: application13=4accept/9reject; execution6=1/5; compatibility2=1/1; validation2=0/2; migration3 preservation."
+      ],
+      "remaining_limit": "Operation mix is intentionally skewed and finite; the table makes no broad coverage claim."
+    },
+    {
+      "id": "EST-19",
+      "severity": "suggestion",
+      "title": "suggestion — contract-profile-conformance/STUDY.md:61",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Makes explicit that ablation admits all 9 shared inputs including 6forbidden ones. Its separate empty-task rejection is calibration outside the shared denominator.",
+      "changed_files": [
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Counterexamples and the comparator"
+      ],
+      "verification": [
+        "Read baseline and shared-case rows in separate-control-report.json."
+      ],
+      "remaining_limit": "A weak ablation does not estimate advantage over the strong direct checker."
+    },
+    {
+      "id": "EST-20",
+      "severity": "suggestion",
+      "title": "suggestion — dependency-closure-and-package-delivery/STUDY.md:46–48",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Explains algebraic dependence among subset/inclusion closure checks and adds three declared faulty implementations: omit cycle guard, skip required child, unknown root as leaf. Reports which oracle detects each.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py",
+        "engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json"
+      ],
+      "sections": [
+        "Exhaustive finite checks",
+        "Delivered record counts and fault controls"
+      ],
+      "verification": [
+        "Existing4096-subset/24576-pair replay passes; all 3 declared mutants distinguished by positive/negative cycle, chain and unknown-root cases."
+      ],
+      "remaining_limit": "Three hand-selected mutants do not establish general mutation adequacy or semantic graph completeness."
+    },
+    {
+      "id": "EST-21",
+      "severity": "suggestion",
+      "title": "suggestion — dependency-closure-and-package-delivery/STUDY.md:68",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Describes bytes_equal as the migration tool assertion backed by one published hash, not independent old/new-byte comparison. No old/new hashes are invented.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Readable layout migration",
+        "Claim, evidence, and boundary"
+      ],
+      "verification": [
+        "Inspected all 110layout-preservation-report records and source-byte fields."
+      ],
+      "remaining_limit": "Both original path inventories/byte streams are not supplied; exact migration equality remains a recorded assertion."
+    },
+    {
+      "id": "EST-22",
+      "severity": "suggestion",
+      "title": "suggestion — dependency-closure-and-package-delivery/STUDY.md:18",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Identifies the Ilyakhov–Sarycheva source book and links the editorial bibliography at the beginning of the dependency study.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "reference/bibliography/BIBLIOGRAPHY.md"
+      ],
+      "sections": [
+        "The delivery problem",
+        "Editorial input"
+      ],
+      "verification": [
+        "Checked retained source record names in dependency graph/layout report."
+      ],
+      "remaining_limit": "The project publishes metadata and its own reports, not private source-derived book contents."
+    },
+    {
+      "id": "EST-23",
+      "severity": "suggestion",
+      "title": "suggestion — editorial-skill-pilot/STUDY.md:40–41",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "States8conceptual distinctions are nested within protected claim 11 of the19-claim checklist, not8additional independent obligations.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/README.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Results on the retained responses",
+        "Counting and interpretation"
+      ],
+      "verification": [
+        "Verified protected-claims.json P00-S2-11 and common-editorial-brief.txt."
+      ],
+      "remaining_limit": "No27-item denominator is claimed."
+    },
+    {
+      "id": "EST-24",
+      "severity": "suggestion",
+      "title": "suggestion — editorial-skill-pilot/STUDY.md:34–36",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Reports identical templated gate reasoning and summarizes all6examined issues, including accepted BETA-SCOPE-01 scope wording.",
+      "changed_files": [
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Results on the retained responses"
+      ],
+      "verification": [
+        "Inspected masked-editorial-review.json issue lists and identical gate_reasoning fields."
+      ],
+      "remaining_limit": "The accepted wording risk remains an agent judgment, not external semantic certification."
+    },
+    {
+      "id": "EST-25",
+      "severity": "suggestion",
+      "title": "suggestion — reuse-admission-and-cost-controls/STUDY.md:67–83",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "UsesF(N), states constant-overhead/unit-cost/hit-fraction premises for closed break-even and supplies linear storageS(N)=sN. Withs=8 above margin 7.1, the previously profitable example loses 190at N=100and never recovers under those rates.",
+      "changed_files": [
+        "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py",
+        "engineering/studies/evidence-index.json",
+        "reference/glossary/GLOSSARY.md"
+      ],
+      "sections": [
+        "An exact cost model",
+        "Scoped mathematical notation"
+      ],
+      "verification": [
+        "ExactFraction arithmetic verifies four examples, fixed threshold 15 and growing-storage loss."
+      ],
+      "remaining_limit": "The examples use invented units; real cost/horizon parameters require measurement."
+    },
+    {
+      "id": "EST-26",
+      "severity": "suggestion",
+      "title": "suggestion — source-transcription-and-uncertainty/STUDY.md:70–76",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Explicitly reconciles16 table/formula flags+4 orphan flags+5 correction rows=25 unresolved coordinate traces; units are identified.",
+      "changed_files": [
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Trace defects and later integration"
+      ],
+      "verification": [
+        "Compared corpus audit and local-export-integration-report.json."
+      ],
+      "remaining_limit": "These are provenance-coordinate issues, not25measured OCR errors."
+    },
+    {
+      "id": "EST-27",
+      "severity": "suggestion",
+      "title": "suggestion — source-transcription-and-uncertainty/STUDY.md:92",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "clarified",
+      "response": "Separates three distinct stages: earlier reader3PNGbyte-checks/918descriptions; later917-description structural audit0image-byte checks; separate addressability3JPEGcomparison. The proposed blanket3/918replacement would conflate populations.",
+      "changed_files": [
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Limits and conclusion",
+        "Question and design progression"
+      ],
+      "verification": [
+        "Read structural-corpus-report.json image_bytes_verified_count, historical-reader-study-source.json and addressability-study-source.json."
+      ],
+      "remaining_limit": "No claim of complete image-byte review is made; denominators are not combined."
+    },
+    {
+      "id": "EST-28",
+      "severity": "suggestion",
+      "title": "suggestion — Study evidence folders: citation coverage",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Linked addressability and projection source reports, the18-call OCR report at its actual claim and dependency origin manifest. Retained files were not moved.",
+      "changed_files": [
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md"
+      ],
+      "sections": [
+        "Targeted revision and a strong alternative",
+        "Executable projection contract",
+        "Initial reader: four distinct failure mechanisms",
+        "Claim, evidence, and boundary"
+      ],
+      "verification": [
+        "Local publication gate found no link errors; only expected integration edition mismatches remained before root metadata update."
+      ],
+      "remaining_limit": "Historical scope and language of those sources remain disclosed."
+    },
+    {
+      "id": "RF-01",
+      "severity": "should-fix",
+      "title": "should-fix — reference/glossary/GLOSSARY.md:16 and tables",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Extended glossary scope to studies and added all requested profile, trust, qualification, evaluation, package/passport/closure, uncertainty and generated/unreviewed terms, plus illustration versus reproduction.",
+      "changed_files": [
+        "reference/glossary/GLOSSARY.md"
+      ],
+      "sections": [
+        "Knowledge and its representation",
+        "Requirements, work and agency",
+        "Retrieval, composition and reuse",
+        "Evidence, versions and review"
+      ],
+      "verification": [
+        "Cross-checked terminology against all six corrected studies and current status specification."
+      ],
+      "remaining_limit": "Definitions state boundaries; their presence is not evidence of implementation conformance."
+    },
+    {
+      "id": "RF-02",
+      "severity": "should-fix",
+      "title": "should-fix — reference/glossary/GLOSSARY.md:86–87, :99 versus study usage",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Applied explicit subject/scope terminology across studies; preserved historical independent labels as quoted same-session/family labels, and added scoped mathematical notation with current/historical cost-key mappings.",
+      "changed_files": [
+        "reference/glossary/GLOSSARY.md",
+        "engineering/studies/contract-profile-conformance/STUDY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/evidence-index.json"
+      ],
+      "sections": [
+        "Editorial rules for terminology",
+        "Scoped mathematical notation",
+        "Per-study scope paragraphs"
+      ],
+      "verification": [
+        "Searched six studies for independent/reproduce/qualified/complete language and compared against source records."
+      ],
+      "remaining_limit": "Raw historical Russian labels and code keys remain unchanged for provenance."
+    },
+    {
+      "id": "RF-03",
+      "severity": "should-fix",
+      "title": "should-fix — appendices/source-map/APPENDIX.md:32–33 (also :28, :34)",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Every scientific-crosswalk engineering entry now links to a specific document/section. Removes unmeasured finite-search claim, locates actual record-size measurements, and distinguishes normative task bindings from absent dialogue/learning experiments.",
+      "changed_files": [
+        "appendices/source-map/APPENDIX.md",
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md"
+      ],
+      "sections": [
+        "2. Scientific crosswalk",
+        "Delivered record counts and fault controls"
+      ],
+      "verification": [
+        "Checked all third-column targets using the publication link gate and source headings."
+      ],
+      "remaining_limit": "Navigational crosswalks are not evidence of measurements that those target documents do not contain."
+    },
+    {
+      "id": "RF-04",
+      "severity": "suggestion",
+      "title": "suggestion — reference/bibliography/BIBLIOGRAPHY.md:100–102",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "clarified",
+      "response": "Citation now names4th edition,Moscow 2024, 400 printed pages explicitly as the supplied OCR bibliographic line. Keeps2025filename/427 physical-entry discrepancy separately and does not invent an ISBN or authenticate the private file from a current listing.",
+      "changed_files": [
+        "reference/bibliography/BIBLIOGRAPHY.md"
+      ],
+      "sections": [
+        "Editorial input"
+      ],
+      "verification": [
+        "Inspected supplied source card and official publisher listing; source uncertainty retained."
+      ],
+      "remaining_limit": "Exact private-file edition/ISBN remains independently unverified."
+    },
+    {
+      "id": "RF-05",
+      "severity": "suggestion",
+      "title": "suggestion — reference/bibliography/BIBLIOGRAPHY.md:102; SOURCES.md (editorial input row)",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Bibliography now attributes the same source to dependency study and links exact layout-preservation/dependency-graph files, as well as editorial pilot. Root received exact coverage request for SOURCES register.",
+      "changed_files": [
+        "reference/bibliography/BIBLIOGRAPHY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "SOURCES.md"
+      ],
+      "sections": [
+        "Editorial input",
+        "The delivery problem"
+      ],
+      "verification": [
+        "Matched retained book-record names; root integration owns final SOURCES rows."
+      ],
+      "remaining_limit": "No book text or private toolkit is included by this attribution change."
+    },
+    {
+      "id": "RF-06",
+      "severity": "suggestion",
+      "title": "suggestion — reference/bibliography/BIBLIOGRAPHY.md:94–96",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "clarified",
+      "response": "Explains molchanova as retained export identity rather than sole authorship. Official cooking catalogue names the Ministry. Timofeev descriptor is marked as historical input metadata with no independently verified stable exact-edition catalogue established in this review.",
+      "changed_files": [
+        "reference/bibliography/BIBLIOGRAPHY.md"
+      ],
+      "sections": [
+        "Experimental source books"
+      ],
+      "verification": [
+        "Checked official National Electronic Library cooking record and searched primary library sources for the Timofeev edition."
+      ],
+      "remaining_limit": "No unsupported Molchanova editor identity or external bibliographic authentication is inferred from file keys."
+    },
+    {
+      "id": "RF-07",
+      "severity": "suggestion",
+      "title": "suggestion — reference/bibliography/BIBLIOGRAPHY.md:16",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Added primary methodological references for preregistration, agent judging, mutation testing, fixed-point reasoning and error scoring; studies/README links them with exact scope. Reuse study directly cites RFC 9111/5861. Also integrated five primary prior works verified by paper agent and RFC 8259/JSON Schema verified by spec agent.",
+      "changed_files": [
+        "reference/bibliography/BIBLIOGRAPHY.md",
+        "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "engineering/studies/README.md"
+      ],
+      "sections": [
+        "Evaluation methods",
+        "JSON exchange and schemas",
+        "Program slicing",
+        "Truth maintenance",
+        "Build systems",
+        "Views and complements",
+        "Theory change"
+      ],
+      "verification": [
+        "Opened primary PMC paper,arXiv manuscript,Purdue author bibliography,MSP Tarski original,NIST official SCTK; used paper/spec agents’ inspected primary metadata for their subjects."
+      ],
+      "remaining_limit": "Method citations do not retroactively register a protocol, calibrate the local judge, supply missing fixtures or turn an illustrative check into historical reproduction."
+    },
+    {
+      "id": "RF-08",
+      "severity": "suggestion",
+      "title": "suggestion — appendices/source-map/APPENDIX.md:66",
+      "review_source": "03_studies_and_reference_review.md",
+      "decision": "addressed",
+      "response": "Numbered protocol compatibility as section4 and coordinated core link update to#4-protocol-compatibility.",
+      "changed_files": [
+        "appendices/source-map/APPENDIX.md"
+      ],
+      "sections": [
+        "4. Protocol compatibility"
+      ],
+      "verification": [
+        "Publication link gate reported no anchor error before integration metadata bump."
+      ],
+      "remaining_limit": "Protocol identities remain distinct from publication editions; legacy records are preserved."
+    }
+  ],
+  "additional_integration_findings": [
+    {
+      "id": "INT-01",
+      "related_review_finding": "ES-04",
+      "decision": "resolved",
+      "found_by": "integrating coordinator",
+      "problem": "A dependency at MAX_EPOCH caused revocation update to fail but did not prevent publication while head generation remained below MAX_EPOCH.",
+      "before_observation": {
+        "revocation_update": "ProfileError: counter exhausted",
+        "subsequent_publication_accepted": true
+      },
+      "correction": "Reject publication when any dependency counter is exhausted; retain the existing head-generation guard.",
+      "regression": "tools/test_contract_profile.py::PublicationRaceTests.test_exhausted_dependency_blocks_publication_after_failed_revocation",
+      "scope": "Finite in-memory epoch/revocation model; not a production service incident."
+    },
+    {
+      "id": "IER-01",
+      "requirement": "BPK-R005",
+      "decision": "resolved",
+      "found_by": "independent engineering review agent",
+      "problem": "The no-symlink path requirement was checked only for the final file; a symbolic link to an internal directory was accepted.",
+      "before_observation": {
+        "package_errors": [],
+        "candidate_projection_rows": 3
+      },
+      "correction": "Inspect every relative path component with lstat, requiring directories for intermediate components and a regular final file. Absolute and parent-traversal paths are rejected.",
+      "regression": "tools/test_book_package_review.py::RightsAndProjectionTests.test_component_directory_symlink_is_rejected_but_regular_nesting_is_valid",
+      "independent_recheck": "The original independent reproducer now rejects the directory-symlink case and returns zero proposals; its ordinary nested-directory control still validates and returns three proposals.",
+      "scope": "Path-component validation at check time. No demonstrated containment or digest bypass, and no claim of protection against hostile concurrent filesystem mutation."
+    }
+  ]
+}

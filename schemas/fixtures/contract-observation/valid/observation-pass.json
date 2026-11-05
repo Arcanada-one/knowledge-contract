@@ -1,0 +1,32 @@
+{
+  "schema": "KCObservation/v1",
+  "observation_id": "observation.synthetic",
+  "subject": {
+    "artifact_id": "example.artifact",
+    "revision": "example.immutable-1",
+    "hash_domain": "sha256/raw-bytes-v1",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "property": "representation.byte-equality",
+  "criterion": {
+    "artifact_id": "criterion.bytes",
+    "revision": "criterion.version-1",
+    "hash_domain": "sha256/raw-bytes-v1",
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "method": {
+    "id": "synthetic-comparator",
+    "version": "1"
+  },
+  "observer": "fixture.observer",
+  "observed_at": "2026-11-04T00:00:00Z",
+  "result": "pass",
+  "scope": "Invented bytes in the fixture; not a real source review.",
+  "evidence_refs": [],
+  "trust_assumptions": [
+    "All identifiers and hashes are synthetic test inputs."
+  ],
+  "limitations": [
+    "No factual or operational claim is established by this fixture."
+  ]
+}

@@ -1,4 +1,6 @@
 # Retained experimental input keeps its exact source bytes, including its final blank line.
 engineering/studies/editorial-skill-pilot/evidence/source-section.txt whitespace=-blank-at-eof
+# The separate literal projection fixture includes the final paragraph delimiter in its asserted bytes.
+engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt whitespace=-blank-at-eof
 # The unmodified reviewer transcript uses intentional Markdown hard line breaks.
 reviews/publication-integrity/science-review.md whitespace=-blank-at-eol

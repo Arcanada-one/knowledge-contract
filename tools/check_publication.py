@@ -32,6 +32,8 @@ REQUIRED_META = ("name", "title", "artifact", "edition", "author", "language", "
 FORMAT = "markdown+gfm_auto_identifiers+pipe_tables+tex_math_dollars+tex_math_single_backslash+autolink_bare_uris"
 EVIDENCE_INDEX = "engineering/studies/evidence-index.json"
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
+OPAQUE_NUMBERED_NAME = re.compile(r"(?:[a-z][0-9]+|[0-9]+)\Z", re.I)
+EDITION = re.compile(r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)(?:\.(?:0|[1-9][0-9]*))?\Z")
 
 
 def text_of(value: object) -> str:
@@ -202,8 +204,10 @@ class PublicationCheck:
     def check_catalog(self) -> dict | None:
         catalog_path = self.root / "publication-catalog.json"
         catalog = self.load_json(catalog_path)
-        if not isinstance(catalog, dict) or catalog.get("schema_version") != 1 or catalog.get("edition") != "1.0":
-            self.fail("publication-catalog.json", "expected schema_version 1 and edition 1.0")
+        if (not isinstance(catalog, dict) or catalog.get("schema_version") != 1
+                or not isinstance(catalog.get("edition"), str)
+                or not EDITION.fullmatch(catalog["edition"])):
+            self.fail("publication-catalog.json", "expected schema_version 1 and a numeric publication edition (major.minor[.patch])")
             return None
         docs = catalog.get("documents")
         if not isinstance(docs, list):
@@ -221,6 +225,11 @@ class PublicationCheck:
             if kind not in KINDS or not isinstance(slug, str) or not SLUG.fullmatch(slug):
                 self.fail("publication-catalog.json", f"unknown type or invalid readable slug: {doc}")
                 continue
+            if OPAQUE_NUMBERED_NAME.fullmatch(slug):
+                self.fail("publication-catalog.json", f"opaque numbered canonical slug is prohibited: {slug}")
+                continue
+            if doc.get("edition") != catalog["edition"]:
+                self.fail("publication-catalog.json", f"document edition differs from catalogue: {slug}")
             directory, filename, artifact = KINDS[kind]
             expected_path = f"{directory}/{slug}/{filename}"
             if path != expected_path:
@@ -231,6 +240,8 @@ class PublicationCheck:
                 self.fail(path, "duplicate catalog path or slug")
             if not isinstance(title, str) or not title.strip():
                 self.fail(path, "missing catalog title")
+            elif OPAQUE_NUMBERED_NAME.fullmatch(title.strip()):
+                self.fail(path, "opaque numbered canonical title is prohibited")
             elif title.casefold() in seen_titles:
                 self.fail(path, "duplicate catalog title")
             else:

@@ -2,7 +2,7 @@
 name: "evidence-and-falsification"
 title: "Evidence, Reasoning, and Falsification in Knowledge Systems"
 artifact: "scientific-paper"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,7 +11,7 @@ description: "How claims, proofs, finite tests, counterexamples and comparative 
 
 # Evidence, Reasoning, and Falsification in Knowledge Systems
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
 ## Abstract
 
@@ -53,11 +53,11 @@ For the following result, take a finite directed acyclic derivation graph. Each 
 
 ### Proposition 1. Sound rules preserve true premises in a finite derivation
 
-If every premise is true in the model and every used rule is sound for that model, every derived claim is true in that model.
+If every premise is true in the model, every used rule is sound for that model when its side conditions hold, and every side condition of every inference application is satisfied in the model, every derived claim is true in that model.
 
-**Proof.** Order the graph topologically. The initial premise nodes are true by assumption. At each subsequent node, all input claims are true by the induction hypothesis. Soundness of the applied rule makes the output true. Induction covers every node. ∎
+**Proof.** Order the graph topologically. The initial premise nodes are true by assumption. At each subsequent node, all input claims are true by the induction hypothesis and all side conditions hold by assumption. Soundness of that rule under those conditions makes the output true. Induction covers every node. ∎
 
-The result is conditional on both premises and rule semantics. It does not show that the premises were correctly extracted, that the domain model is adequate, or that the implementation actually followed the rule. A computation with correctly applied arithmetic and an incorrectly read input remains an incorrect domain result.
+The result is conditional on premises, rule semantics, and discharged side conditions. For example, a rule that cancels a divisor cannot be used when its nonzero-divisor condition is false. The proposition does not show that the premises were correctly extracted, that the domain model is adequate, or that the implementation actually followed the rule. A computation with correctly applied arithmetic and an incorrectly read input remains an incorrect domain result.
 
 Circular support is outside this proof. A cycle that repeats a conclusion as its own premise supplies no independent foundation. Some systems admit explicitly defined fixed-point reasoning, but they require a separate semantics and correctness argument. Finite serialization of a cycle is not that argument.
 
@@ -105,7 +105,14 @@ The scientific results presented here are definitions, explicit conditional argu
 
 This distinction allows a formal or methodological paper to have a complete argument while practical hypotheses remain open. Completion means that the paper states and supports its actual contribution, not that every imaginable deployment question has been settled. Conversely, removing a provisional label cannot substitute for missing evidence.
 
-The central falsifiable engineering prediction is conditional: if an implementation enforces a declared mandatory condition, cases that violate that condition should not receive the corresponding successful admission. Semantic and practical predictions require independently interpreted or measured outcomes in addition to structural controls.
+A falsifiable engineering claim must identify an implementation \(I\), its revision \(v\), a well-formed input domain \(D\), and a mandatory condition \(C\). The claim to test is
+
+\[
+\forall x\in D:\quad \neg C(x)
+\Rightarrow \operatorname{Admit}(I_v,x)\ne\mathsf{success}.
+\]
+
+Here \(D\) includes validly formed negative cases; it is not prefiltered to inputs already satisfying \(C\). A single input in \(D\) that violates \(C\) and nevertheless receives successful admission refutes the claim about that implementation revision. No premise assumes that the implementation already enforces the condition. Positive controls separately test whether permitted cases can succeed, because refusal of every case would satisfy this exclusion property without showing usefulness. Semantic and practical predictions require independently interpreted or measured outcomes in addition to structural controls.
 
 The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md), [source transcription and uncertainty study](../../engineering/studies/source-transcription-and-uncertainty/STUDY.md), and [reuse admission and cost controls study](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) address distinct subjects. The [editorial skill pilot](../../engineering/studies/editorial-skill-pilot/STUDY.md) addresses document production. Their results should remain separate until a justified analysis explains how they combine.
 

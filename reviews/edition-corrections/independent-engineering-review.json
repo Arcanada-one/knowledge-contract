@@ -1,0 +1,939 @@
+{
+  "schema": "IndependentEngineeringReview/v1",
+  "reviewer": "independent_engineering_review agent",
+  "created_at": "2026-11-04T20:13:34.575113+00:00",
+  "review_type": "Independent adversarial review of bounded local edition corrections",
+  "repository": "/workspace/scratch/4a4b36d07b29/knowledge-contract",
+  "branch": "edition-review-corrections",
+  "published_base": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "reviewed_head": "ed2e188c89a1a50a187f3d55bf32baab54c87f7e",
+  "edition": "1.1",
+  "source_state": "Working-tree corrections over published base; hashes identify the reviewed files rather than a new commit.",
+  "interpreter": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python",
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "jsonschema_version": "4.23.0",
+  "command_cwd": "/workspace/scratch/4a4b36d07b29/knowledge-contract/tools",
+  "recommendation": {
+    "decision": "no_confirmed_unresolved_blocker_in_bounded_reviewed_scope",
+    "reason": "IER-01 and root-discovered INT-01 are independently verified resolved. Critical rights/readiness/digest/status gates passed the exercised local controls. Proceed with the edition corrections within the explicitly limited profile; this is not full interoperability, deployment, evidence-authentication or runtime-admission certification."
+  },
+  "findings": [
+    {
+      "id": "IER-01",
+      "title": "Internal directory symlinks bypass the no-symlink component-path rule",
+      "severity": "medium",
+      "status": "resolved_independently_verified",
+      "discovered_by": "independent_engineering_review",
+      "requirement": "BPK-R005",
+      "location": "tools/check_book_package.py:safe_file",
+      "observed_before_fix": {
+        "check_package_errors": [],
+        "candidate_projection_rows": 3
+      },
+      "reproduction": "Start with the valid synthetic RLE package. Copy objects.jsonl to real/objects.jsonl, create alias -> real inside the package, change components.objects.path to alias/objects.jsonl while preserving its correct digest. check_package accepted the package and candidate_projection produced three candidates.",
+      "cause": "Only the final path entry was lstat-checked; ancestor directory symlinks inside the root passed resolution containment.",
+      "impact": "Mismatch with the specified no-symlink gate. The reproduction stays inside the package root and preserves hashes; it does not establish a rights bypass, an out-of-root read, or a digest bypass.",
+      "requested_fix": "Reject symlinks on every component below the supplied package root; preserve support for ordinary nested directories.",
+      "independent_regression": "independent-engineering-review-reproduce.py::IndependentCriticalRegression.test_ier01_internal_directory_symlink_and_regular_control",
+      "source_sha256_before_fix": "fbb101808055f79222ee866287c0d0fc042f25e06e1a7bb24689ba942ed7ee4c",
+      "fix": "Maintainer changed safe_file to reject absolute/parent traversal paths and lstat each component below the supplied package root: real directories for intermediate entries and a regular final file. Source inspection confirmed the change.",
+      "before_after": {
+        "before": {
+          "command_exit_code": 1,
+          "test_count": 3,
+          "elapsed_seconds": 0.687,
+          "result": "IER-01 assertion fails with empty validation errors; both INT-01 checks and regular nested-directory positive control pass."
+        },
+        "after": {
+          "command_exit_code": 0,
+          "test_count": 3,
+          "elapsed_seconds": 0.645,
+          "result": "All three focused independent regressions pass; regular nested path validates and yields three proposals, directory symlink is rejected and yields zero proposals."
+        }
+      },
+      "independent_verification": "The same independent script was executed before and after the fix; the original failing behavior is retained in C04/C07 and the raw probes, and the corrected behavior in C08.",
+      "source_sha256_after_fix": "290ed9251ff923aeb21dc42e6e67297d054e5a3ddf5957beea1cb8221f5b813f"
+    },
+    {
+      "id": "INT-01",
+      "title": "Exhausted dependency counter must block publication after an unrecordable revocation",
+      "severity": "high",
+      "status": "resolved_independently_verified",
+      "discovered_by": "root integration reviewer, not the independent reviewer",
+      "observed_before_fix": "Root reported that change(authority, revoked=True) raised at MAX_EPOCH but publish of the unchanged read set returned True. This review did not execute the pre-fix version.",
+      "fix": "publish now rejects if any current dependency epoch equals MAX_EPOCH.",
+      "independent_verification": "Constructed authority epoch MAX_EPOCH with generation zero, observed change(..., revoked=True) raise ProfileError, then verified old and fresh read sets both fail to publish and head stays None. Also advanced MAX_EPOCH-1 through the final normal change and verified fresh publication fails with head None.",
+      "scope": "In-memory epoch/revocation subset only; output grants, semantic validity, build checks and distributed persistence are not established."
+    }
+  ],
+  "commands": [
+    {
+      "id": "C01",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile -v",
+      "exit_code": 0,
+      "result": "Ran 98 tests in 8.350s; OK",
+      "timing": "Before the root INT-01 and IER-01 patches; retained as actual earlier execution evidence, not as a test run against the final hashes."
+    },
+    {
+      "id": "C02",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B -m unittest test_contract_profile test_index_release_receipt",
+      "exit_code": 0,
+      "result": "Ran 21 tests in 3.013s; OK",
+      "timing": "After INT-01 correction and before IER-01 correction."
+    },
+    {
+      "id": "C03",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B check_requirement_register.py",
+      "exit_code": 0,
+      "result": "REQUIREMENT_REGISTER_PASS requirements=283"
+    },
+    {
+      "id": "C04",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B - <<'PY' (inline independent mutation harness; tool transcript contains exact source)",
+      "exit_code": 0,
+      "result": "26 observations: 24 expected outcomes, one invalid reviewer-harness input, one confirmed product finding IER-01. Exit zero means the harness completed; it did not assert all observations passed.",
+      "evidence_file": "independent-engineering-probes.json"
+    },
+    {
+      "id": "C05",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B - <<'PY' (corrected unverified-state probe)",
+      "exit_code": 0,
+      "result": "unverified + partial_pilot accepted with zero errors",
+      "evidence_file": "independent-engineering-probe-correction.json"
+    },
+    {
+      "id": "C06",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B - <<'PY' (AST resolution of requirement-register method references)",
+      "exit_code": 0,
+      "result": "17 unique references, zero missing",
+      "evidence_file": "independent-engineering-requirement-refs.json"
+    },
+    {
+      "id": "C07",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B /workspace/scratch/4a4b36d07b29/edition-review-input/independent-engineering-review-reproduce.py",
+      "exit_code": 1,
+      "result": "Ran 3 tests in 0.687s; FAILED (failures=1). IER-01 failed; INT-01 checks passed.",
+      "timing": "Before the IER-01 correction; intentional failing control."
+    },
+    {
+      "id": "C08",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B /workspace/scratch/4a4b36d07b29/edition-review-input/independent-engineering-review-reproduce.py",
+      "exit_code": 0,
+      "result": "Ran 3 tests in 0.645s; OK.",
+      "timing": "After the IER-01 correction; unchanged independent reproduction and positive control."
+    },
+    {
+      "id": "C09",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B check_requirement_register.py",
+      "exit_code": 0,
+      "result": "REQUIREMENT_REGISTER_PASS requirements=283",
+      "timing": "Final rerun after the traceability-only BPK-R005 regression reference was added."
+    },
+    {
+      "id": "C10",
+      "command": "/workspace/scratch/4a4b36d07b29/kc-restructure-review/finish-python-env/bin/python -B - <<'PY' (final AST resolution of requirement-register method references)",
+      "exit_code": 0,
+      "result": "18 unique references, zero missing",
+      "timing": "Final rerun after the BPK-R005 regression reference was added. C06 retains the historical 17-reference result."
+    }
+  ],
+  "critical_gate_results": [
+    {
+      "gate": "Restricted and unknown rights",
+      "result": "pass_in_exercised_scope",
+      "evidence": "Both classes validate as private packages with no license and empty publishable_layers, and emit zero projection rows. Adding CC-BY-4.0 plus knowledge publication causes validation errors and zero rows. Existing regression suite additionally exercises license/layer combinations and render refusal."
+    },
+    {
+      "gate": "Supported independent complete ready review",
+      "result": "pass_in_exercised_scope",
+      "evidence": "Independent mutations of unsupported result, same_session_agent, same reviewer/producer identity, incomplete relation scope, candidate object, and failed/unknown/empty extraction checks cannot retain knowledge_ready and produce no export proposals. Existing suite also exercises partial reviews, all object/relation statuses, sample counts, missing object scope and assessment references."
+    },
+    {
+      "gate": "Digest-bound review and edit binding",
+      "result": "pass_in_exercised_scope",
+      "evidence": "An incorrect review objects hash and changed semantic text without review rebinding are rejected. Existing ledger/render tests exercised accepted-edit overlap even with an empty declared dependency list, stale relation propagation and exact replay. The separate independent stale-edit mutation failed at replay, so it is not counted as an isolated test of anchor-impact detection."
+    },
+    {
+      "gate": "Status derivation and legal unverified state",
+      "result": "pass_in_exercised_scope",
+      "evidence": "Existing test group executed the finite 3,240-combination derivation table. Independent unverified representation with partial_pilot accepted. The first independent probe used nonexistent knowledge_partial; that was a reviewer error, preserved and corrected, not a defect."
+    },
+    {
+      "gate": "Projection/render and attribution containment",
+      "result": "pass_in_exercised_scope_after_ier01_fix",
+      "evidence": "Read source for immutable snapshot validation, internal rendering and digest projection; existing tests executed arbitrary-input refusal, render hash binding, full-record retention and adversarial Markdown heading/fence cases. IER-01 was a separate explicit component-path mismatch, now fixed and independently retested with a normal nested-directory positive control."
+    },
+    {
+      "gate": "Strict exchange JSON and finite epochs",
+      "result": "pass_in_exercised_scope",
+      "evidence": "Independent decoder probes reject duplicate and nested duplicate members, overflow 1e999, NaN, UTF-8 BOM, and escaped surrogate keys/values. Existing tests additionally exercise exact-byte digest identity, event monotonicity and rollback/ABA. INT-01 retested independently."
+    },
+    {
+      "gate": "Requirement register",
+      "result": "pass_for_consistency_and_reference_resolution",
+      "evidence": "Final checker confirms 283 numbered requirements match the source register; final AST inspection resolves all 18 cited methods, including the added BPK-R005 path regression. These finite references are examples, not proof of complete clause implementation."
+    },
+    {
+      "gate": "API receipt shape and decision vocabulary",
+      "result": "pass_for_synthetic_schema_controls",
+      "evidence": "Five tests run as part of C02, including 2,187 combinations, required checks and path/identity/date controls. The harness explicitly supplies the existing UTC-seconds format checker; it does not establish all RFC3339 support or default-validator format assertions."
+    }
+  ],
+  "review_scope": {
+    "source_inspection": "AGENTS.md; original ES01–ES28 review; book schema, validator, fixture builder, builder and regression tests; book specification; contract-observation schema and full bounded validator/model; relevant cache/status/profile boundaries; API receipt schema and test harness; requirement-register generator and references. Some long file reads were partial or truncated: this is not a claim of line-by-line review of every specification and test.",
+    "hash_scope_note": "The hash inventory covers the implemented review surface and related registered specifications/fixtures. Hashing a file is not evidence that every line was reviewed.",
+    "not_established": [
+      "Full interoperability across every Knowledge Contract document or profile",
+      "Production API deployment, actual index observations, remote identity authentication or cross-record receipt correspondence",
+      "Authenticity of a declared human/blind-agent reviewer, source-rights claims, integrity observer or expected source digest",
+      "Truth of semantic records, extraction fidelity on arbitrary corpora, unseen formats or independent scientific validity",
+      "Distributed linearizability, persisted nonreused counters, namespace migration, output-specific authority grants or complete runtime admission",
+      "Hostile concurrent filesystem replacement resistance or an OS-level race-free path-open boundary",
+      "Exhaustive fuzzing, complete renderer/browser security, all Unicode or RFC3339 forms",
+      "Reproduction of the parent integration review, site build or external delivery"
+    ]
+  },
+  "original_review": {
+    "path": "../edition-review-input/02_specifications_review.md",
+    "sha256": "359c7ce3bceddc5d990c8b65ca4bfb2d33164c15922fdaf13ea3e7bf270dc4c6"
+  },
+  "initial_independent_probes": [
+    {
+      "name": "INT-01 failed revocation at exhausted authority",
+      "passed": true,
+      "detail": {
+        "raised": true,
+        "head": null
+      }
+    },
+    {
+      "name": "INT-01 last normal dependency increment",
+      "passed": true,
+      "detail": {
+        "dependency": 9007199254740991,
+        "head": null
+      }
+    },
+    {
+      "name": "third_party_restricted private package and export",
+      "passed": true,
+      "detail": {
+        "errors": [],
+        "proposals": []
+      }
+    },
+    {
+      "name": "third_party_restricted forged license and knowledge layer",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "manifest.json: rights: {'license': 'CC-BY-4.0', 'license_class': 'third_party_restricted', 'publishable_layers': ['knowledge']} should not be valid under {'required': ['license']}",
+          "manifest.json: rights/publishable_layers: ['knowledge'] is expected to be empty"
+        ],
+        "proposals": []
+      }
+    },
+    {
+      "name": "unknown private package and export",
+      "passed": true,
+      "detail": {
+        "errors": [],
+        "proposals": []
+      }
+    },
+    {
+      "name": "unknown forged license and knowledge layer",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "manifest.json: rights: {'license': 'CC-BY-4.0', 'license_class': 'unknown', 'publishable_layers': ['knowledge']} should not be valid under {'required': ['license']}",
+          "manifest.json: rights/publishable_layers: ['knowledge'] is expected to be empty"
+        ],
+        "proposals": []
+      }
+    },
+    {
+      "name": "unsupported review cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "same session reviewer cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "same identity reviewer cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "missing relation review scope cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "candidate object cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "failed extraction cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "quality.extraction: status pass requires at least one applicable passing check",
+          "quality.extraction: status pass with a failed check"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "unknown extraction cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "quality.extraction: status pass requires at least one applicable passing check",
+          "quality.extraction: status pass with an unknown check"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "empty extraction checks cannot retain ready",
+      "passed": true,
+      "detail": {
+        "errors": [
+          "quality.extraction: status pass requires at least one applicable passing check",
+          "package_status knowledge_ready differs from derived partial_pilot; knowledge_ready requires a complete independent supported review, full verified source and extraction pass; structure_only requires an unbuilt semantic layer"
+        ],
+        "proposal_count": 0
+      }
+    },
+    {
+      "name": "stale review binding rejected",
+      "passed": true,
+      "detail": [
+        "semantic review objects_sha256 is not bound to the current package bytes"
+      ]
+    },
+    {
+      "name": "legal unverified partial state accepted",
+      "passed": false,
+      "detail": [
+        "manifest.json: package_status: 'knowledge_partial' is not one of ['knowledge_ready', 'structure_only', 'partial_pilot', 'adapter_required', 'blocked_integrity', 'bibliography_only']"
+      ]
+    },
+    {
+      "name": "stale edit cannot evade anchor impact using empty dependencies",
+      "passed": true,
+      "detail": [
+        "readable_md is not the replay of the accepted edits over document_md"
+      ]
+    },
+    {
+      "name": "edited semantic bytes require new review binding",
+      "passed": true,
+      "detail": [
+        "semantic review objects_sha256 is not bound to the current package bytes"
+      ]
+    },
+    {
+      "name": "strict exchange JSON duplicate",
+      "passed": true,
+      "detail": "duplicate JSON member: x"
+    },
+    {
+      "name": "strict exchange JSON nested duplicate",
+      "passed": true,
+      "detail": "duplicate JSON member: x"
+    },
+    {
+      "name": "strict exchange JSON overflow",
+      "passed": true,
+      "detail": "numeric value overflows the finite parser range"
+    },
+    {
+      "name": "strict exchange JSON NaN",
+      "passed": true,
+      "detail": "non-finite JSON number: NaN"
+    },
+    {
+      "name": "strict exchange JSON BOM",
+      "passed": true,
+      "detail": "UTF-8 BOM is not permitted"
+    },
+    {
+      "name": "strict exchange JSON surrogate value",
+      "passed": true,
+      "detail": "isolated surrogate in JSON string"
+    },
+    {
+      "name": "strict exchange JSON surrogate key",
+      "passed": true,
+      "detail": "isolated surrogate in JSON string"
+    },
+    {
+      "name": "directory symlink rejected as BPK-R005 requires",
+      "passed": false,
+      "detail": {
+        "errors": [],
+        "proposal_count": 3
+      }
+    }
+  ],
+  "corrected_unverified_probe": {
+    "name": "legal unverified partial_pilot state accepted",
+    "passed": true,
+    "errors": [],
+    "correction": "Initial probe used nonexistent knowledge_partial status; that first failure was a reviewer harness error, not a product defect."
+  },
+  "requirement_reference_verification": {
+    "requirement_count": 283,
+    "unique_test_references": 18,
+    "missing_references": [],
+    "references": [
+      "tools/test_book_package_review.py::LedgerAndRenderingTests.test_accepted_edit_detects_overlap_without_producer_dependency_list",
+      "tools/test_book_package_review.py::LedgerAndRenderingTests.test_duplicate_json_keys_and_nonfinite_values_are_refused",
+      "tools/test_book_package_review.py::LedgerAndRenderingTests.test_full_records_survive_rendering_and_cannot_inject_heading",
+      "tools/test_book_package_review.py::LedgerAndRenderingTests.test_relation_to_rejected_endpoint_cannot_stay_reviewed",
+      "tools/test_book_package_review.py::ReviewReadinessTests.test_empty_unknown_or_failed_checks_cannot_establish_extraction_pass",
+      "tools/test_book_package_review.py::ReviewReadinessTests.test_negative_partial_same_session_or_same_identity_review_cannot_be_ready",
+      "tools/test_book_package_review.py::ReviewReadinessTests.test_not_applicable_requires_explicit_reason",
+      "tools/test_book_package_review.py::ReviewReadinessTests.test_total_decision_table_over_all_status_dimensions",
+      "tools/test_book_package_review.py::RightsAndProjectionTests.test_component_directory_symlink_is_rejected_but_regular_nesting_is_valid",
+      "tools/test_book_package_review.py::RightsAndProjectionTests.test_license_cannot_override_restricted_or_unknown_class",
+      "tools/test_book_package_review.py::RightsAndProjectionTests.test_projection_binds_its_own_rendering_and_rejects_raw_inputs",
+      "tools/test_contract_profile.py::ExchangeTests.test_change_event_monotonicity_and_revocation",
+      "tools/test_contract_profile.py::ExchangeTests.test_duplicate_members_nonfinite_bom_and_isolated_surrogates_are_rejected",
+      "tools/test_contract_profile.py::ExchangeTests.test_record_hash_is_exact_bytes_not_implicit_canonical_value",
+      "tools/test_contract_profile.py::PublicationRaceTests.test_revocation_between_read_and_publish_blocks_old_and_new_worker",
+      "tools/test_contract_profile.py::PublicationRaceTests.test_rollback_uses_new_generation_and_cannot_create_aba",
+      "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_all_2187_check_state_and_decision_combinations",
+      "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_each_required_check_cannot_be_omitted"
+    ],
+    "scope": "Static resolution of cited methods only; no claim that a finite test proves its entire clause."
+  },
+  "source_hashes": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2e64614a966402ca765f5cff872a71151b29cdfb590a54bfaa8c8a96b47c2726",
+      "bytes": 5676
+    },
+    {
+      "path": "appendices/api-integration/APPENDIX.md",
+      "sha256": "2e1c800cf2bb1c61696e34d516b23db1f3f65fa7c58f983bf3124c17854cefe3",
+      "bytes": 15062
+    },
+    {
+      "path": "appendices/api-integration/index-release-receipt.schema.json",
+      "sha256": "ea2b221bde19cce079c5aa23482a216e10d2a0880138056d00808cf80a691b22",
+      "bytes": 5255
+    },
+    {
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "sha256": "ec6584f97c5160fd3c8b17a5036aaeb8d302bf86dd61e567f2c5d858e9159470",
+      "bytes": 8193
+    },
+    {
+      "path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "sha256": "1ce2ce4fa9e0e2647b3472f1da0a250fa3abae00c78b7518d3497f106c09722c",
+      "bytes": 22469
+    },
+    {
+      "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "sha256": "742982eabd0d797ccc5bba4c8472d25a4236c84baed21281f13a7601a4ce2f39",
+      "bytes": 12247
+    },
+    {
+      "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "sha256": "2cc5e781565136b5ad9fdbb2facae47d58564b1e300173d0a91a2c6cf16d5a82",
+      "bytes": 7683
+    },
+    {
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "sha256": "5bba82777b44dc0cf6b1b0c218292c1476c0271806acef195db6c3b8a9448e41",
+      "bytes": 7834
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "sha256": "310cd3f151275739a2391d2c8d8b7c23ad64b46f4c1a56717f7f0975866f60c8",
+      "bytes": 8226
+    },
+    {
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "sha256": "81cb01a8326eaeb0c14e929609c52cc85e5a344c61f3744d2e0def228cdc60d5",
+      "bytes": 9729
+    },
+    {
+      "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "sha256": "4662bdd76c5716cb7d9b55c1b99e00dda626b34c3565e2f03ceecb61fe15685a",
+      "bytes": 7991
+    },
+    {
+      "path": "engineering/specifications/requirements.json",
+      "sha256": "cd10119f474d290054236ab949c6583ed9d931fd5dffe47a75ad68d718feb0fd",
+      "bytes": 123554
+    },
+    {
+      "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "sha256": "be75f0191414c07a113dafb0c983cd1d1e73834be0b670e0d610b4354f37ecd2",
+      "bytes": 8665
+    },
+    {
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "sha256": "4428c3cdacfe5e8bcf00b8d9100a79f5ce9691edecd914063698bfb3f97e8f6f",
+      "bytes": 7411
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "sha256": "2f66342472fc4198eba573d7d1eda5d58d5bae9de904f901f5094037dd628d0a",
+      "bytes": 15930
+    },
+    {
+      "path": "schemas/book-package.schema.json",
+      "sha256": "51fd39c38c4f7cedd19b8bf1b05186ec581450ecc76e0f8f610024a094ed9ca9",
+      "bytes": 30367
+    },
+    {
+      "path": "schemas/contract-observation.schema.json",
+      "sha256": "11bd4770448a2bab5214d8d984b4645390d3b14c84760447079afc98b7505cf6",
+      "bytes": 7147
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/edit_blank_reason.json",
+      "sha256": "a567fa465ec23e80c52c9628f0fdbeb3a328c6d4344d1b117bdcb2b25580eb9b",
+      "bytes": 756
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/edit_irreversible.json",
+      "sha256": "a7d9f5e171c9730e4e7c8d558eaf250ac4db3f5fc129e3265e2638afb11837d4",
+      "bytes": 778
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/edit_unknown_basis.json",
+      "sha256": "3e4e2d2b1b12adf1fe676d4d7988cefd24810ac67f14e2c76ea9f57a8f12f600",
+      "bytes": 784
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/edit_unsupported_asset_text.json",
+      "sha256": "c51e8a99b58a293a2d58df9b6a60d4446ee55bb7cea1421845616aff36097fe1",
+      "bytes": 776
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/edit_without_reason.json",
+      "sha256": "ea13c46f0c69105dfbf9f7b61bb645ff07a68d6d0e5438cd6b6467c2f05fa261",
+      "bytes": 751
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_absolute_path.json",
+      "sha256": "8eada38ab99bf21b63f05d87d33c1fb828e9180ca12c17d9156c4523ee703203",
+      "bytes": 2781
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_admitted_by_itself.json",
+      "sha256": "58fe10892cfd583c8c3e7007d2bf8509ef51f30b130ea7150e2688b008e06c67",
+      "bytes": 2772
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_bibliography_only_with_document.json",
+      "sha256": "920077c59dcc3895260d4bf228f853ed92cfdd0f06088fbc98c0296226cca398",
+      "bytes": 2789
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_document_md_marks_generated_text.json",
+      "sha256": "0fe518edc05205a0686dafc773e5c1401bf392ffe7f6592671ac1a0d98c3e020",
+      "bytes": 2775
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_integrity_without_observer.json",
+      "sha256": "a42f37d8dc0e5243a8863858087c10295ba0ba6e2463f5cb02ccb3efaaf269f6",
+      "bytes": 2740
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_legacy_profile.json",
+      "sha256": "6a05b50ed86da94b32dbc62f71588a0d0307603d88929d497a6d065519a1a191",
+      "bytes": 2776
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_mismatch_but_ready.json",
+      "sha256": "3045e4b93e27f7f97702e302db6d4b89a93f0652c9f7823701ad968be8fa3617",
+      "bytes": 2776
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_missing_asset_with_path.json",
+      "sha256": "bd4dad1f8ae1cd5407610008fc1b45fcdd456aa590fe1d3b9d272b05f4dc7b8b",
+      "bytes": 2807
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_missing_profile.json",
+      "sha256": "9b5ca05b6debb6395e80dbc1ceb0102160a03e95d885d6fbe06be242678a41d5",
+      "bytes": 2735
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_non_https_locator.json",
+      "sha256": "b690ac15b2edc923c3aa969776d77407fedd22628b1c7f63236fdb12812ea276",
+      "bytes": 2809
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_package_id_colon.json",
+      "sha256": "9470f08f94e3710b478d5c2bf03907c1e1e6690e1985c825ac48716b810a11ea",
+      "bytes": 2763
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_path_traversal.json",
+      "sha256": "fcbca7dfb39717a5a6d7e6a55634371616cc18010de860dae7f5ba1cbd77cd4f",
+      "bytes": 2779
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_ready_but_partial.json",
+      "sha256": "33bc910dee257e5e6b70a9add5af095f2afcb547a8b3aa8e4fcf1004d722a45f",
+      "bytes": 2779
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_restricted_knowledge_layer.json",
+      "sha256": "4170981bc846f5d4e0a87c44aa471968837c9880f53060dfc1adf38a8326c72e",
+      "bytes": 2644
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_restricted_open_license.json",
+      "sha256": "5ff754b99691f3614478faeda51bd2b86f4818a0440c2257c0d41f6c56f003a4",
+      "bytes": 2706
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/manifest_unknown_open_license.json",
+      "sha256": "fd2cc399bc1435a9ca5aa3141de3af6771d14a2eee766ccb427201dc24634f51",
+      "bytes": 2691
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_admitted_by_itself.json",
+      "sha256": "da0aa79d5fca40fedd4d46faf2292ee203d34fd08ac94de797825291a1846748",
+      "bytes": 1434
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_bad_sheet_range.json",
+      "sha256": "c72a9519c5277faf80351a38d9570d7fae8668631c06e2ea79df9e27e98376e4",
+      "bytes": 1624
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_bbox_three_numbers.json",
+      "sha256": "ac896d38b667e5b56b96b9aaed5753905a94814d9c0e39d9d3dd20629092952d",
+      "bytes": 1653
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_page_zero.json",
+      "sha256": "989c48c23f3d5c87536e909e872ee32d00ae1c59c4eb569bbf7e8a51e4098f04",
+      "bytes": 1665
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_pointer_without_slash.json",
+      "sha256": "3f85d2645a0990138e70bd894a959f27d2f00592f565e7b3d3edca9c252eb386",
+      "bytes": 1596
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_unknown_kind.json",
+      "sha256": "dabf9cecec635899258384b47a50f47c9d3fa1b4e477b5a18b443f642ae12b84",
+      "bytes": 1436
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_anchor_wrong_hash.json",
+      "sha256": "5ae226f58f50647e683a5b883e60a7ac41082d709fc752091037e0a029c2a2e4",
+      "bytes": 1377
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_author_with_generation.json",
+      "sha256": "61dda3fb00f5a007652c66180ef86042984d5260702fbd7a6169cbdfae840812",
+      "bytes": 1673
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_benchmark_without_context.json",
+      "sha256": "59859344d375564871cfb0889fde7dd7697e67d1bd2ea49998a7b595c2c9c5ea",
+      "bytes": 1467
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_empty_text.json",
+      "sha256": "4a5ea2b4b07d014283a0d7718901e4ec43a4839ece89800888ba318286787e8b",
+      "bytes": 1353
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_extra_field.json",
+      "sha256": "d62310695ce77cbdd7713bd0b030ced4bdfd9f30cd3162624de654f487d4ec3b",
+      "bytes": 1459
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_generated_presented_as_author.json",
+      "sha256": "5e24fc91748f5991b5eb8e3ca4caaed1606902e167161ea2e0007413a174df22",
+      "bytes": 1670
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_generated_without_generation.json",
+      "sha256": "95b46320de4498d827ff4ca60ab2feb588401337986269566b0f194fa0ea6cca",
+      "bytes": 1436
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_known_with_empty_kinds.json",
+      "sha256": "ac5fdd1a23ae766f205005d931b9555f2dd0c0dd661d3da8b3dc7b312bdee50f",
+      "bytes": 1417
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_missing_facet.json",
+      "sha256": "78b601b0a1bb8989309a01e4e8a644bf1855c0045efbb233c29e8da06677b7dd",
+      "bytes": 1374
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_no_evidence.json",
+      "sha256": "270505c5128beee2275138b6e511020b1a1944fb7dea514812d7cc72e2f45f7b",
+      "bytes": 1199
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_unknown_content_kind.json",
+      "sha256": "2729b4fc25baacd0e2d21a4ab6f95dc2a5694874379eb5a0625d343aabddb04a",
+      "bytes": 1433
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/object_unknown_without_reason.json",
+      "sha256": "23780f98b8cef4a37cc2a5e417e675ca4982364b70f528c47b2f9b8121d3958f",
+      "bytes": 1392
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_cer_null_but_measured.json",
+      "sha256": "f49fc871bb40e85481907bf71e0e5b4b12f6b693789b2bc7ce1128f09c320f7f",
+      "bytes": 1300
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_cer_zero_without_reference.json",
+      "sha256": "a1dfa146421475494840ec81c6e46da56317288adf2a1bcc1a31b7887d15314b",
+      "bytes": 1297
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_na_without_basis.json",
+      "sha256": "0dbd85a88be8210c18dac616830f297445bf0a542634caac365ac7a71ba2215a",
+      "bytes": 1283
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_not_built_with_objects.json",
+      "sha256": "5ecf131d5cb8af323e24fdc5192e07740a8e012b53dd4f9ad72e0a59208326b6",
+      "bytes": 1305
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_overall_score.json",
+      "sha256": "b59f6983c2b224953e8af82c5c582788f962f0b0ed5a19d59f14c73dc023d654",
+      "bytes": 1328
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_review_without_binding.json",
+      "sha256": "6c0d0a7ee97b606f6829fd2cf2873683dfcca20e34075a19e622717c8d1a11b5",
+      "bytes": 1215
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_review_without_scope.json",
+      "sha256": "bca3310d44dd3868ca49ad9311f9fc7dcc7a7081f6292cb9a9d5877ec82505c1",
+      "bytes": 1182
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/quality_reviewed_without_review.json",
+      "sha256": "4c84f3ee0e0191098dd975e3050d8e0ab7cdc6e560a8605ba20588691fc6d6c0",
+      "bytes": 487
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/relation_contradicts_one_sided.json",
+      "sha256": "0fd003483d12397c41b7b6542933734873ca448f5c3f240392d9250a1228d55b",
+      "bytes": 664
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/relation_generated_without_generation.json",
+      "sha256": "194f7d4f7dbf7850aadc835845e0399f4d008266e110d1eb9684b28ee7400d48",
+      "bytes": 607
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/relation_no_evidence.json",
+      "sha256": "00867cc650c38ed46e06a52116785fed4938bf40f0fc892318ace6cee3f615cb",
+      "bytes": 559
+    },
+    {
+      "path": "schemas/fixtures/book-package/invalid/relation_unknown_type.json",
+      "sha256": "11eded8510265bbd5d3da9908751b88374a062cc567e4dfa15464181f86e3723",
+      "bytes": 842
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/json_pointer.json",
+      "sha256": "ea43a06d8401007239f7ce6cf3b6c2bb62ecf04714accfe4af18860f92ef271c",
+      "bytes": 1607
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/page_bbox.json",
+      "sha256": "be3af798ea7d0b15b7f026b0118fc467862d848d4a7e3923769ddc5cc2488347",
+      "bytes": 1665
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/section_block.json",
+      "sha256": "30109684cfa107cec3af006f9e4734a01842cd1bdd7471c01c5e23ec8462b92d",
+      "bytes": 1606
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/sheet_range.json",
+      "sha256": "caf05f20f2f9d311b46fc104222cbda97b1e9a3a748e890fddbfb19ab6bf2d72",
+      "bytes": 1624
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/slide_block.json",
+      "sha256": "6c9d58e7c032673ad811dd74cf370b3812bf94160ed4abf3973835853fb84562",
+      "bytes": 1595
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/anchors/spine_offset.json",
+      "sha256": "2b9e959c91c03dbf6b660e6e6f77c476abd90bff7606c985266e4a8bd72aeded",
+      "bytes": 1657
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/assets/fig1.svg",
+      "sha256": "ade38c8ba07ffcc0c23ae204abdb1ee3d6aecc2211e7bdeb1c95754eb8795961",
+      "bytes": 100
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/document.md",
+      "sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb",
+      "bytes": 245
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/edits.jsonl",
+      "sha256": "14301732dbfb8d3ce6b69dcd4e928c9ef14dbf072b7881315d0f3d6f433c6849",
+      "bytes": 709
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/manifest.json",
+      "sha256": "0065ab80e706e3c469d9db786230512b5a90a3171f11bd89275d27aea630e038",
+      "bytes": 2776
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/objects.jsonl",
+      "sha256": "e0fc8c5b9f0c01a7e5f3368d656367223310cf753131046cbbf3e992c49517ca",
+      "bytes": 5157
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/quality.json",
+      "sha256": "8008384a4b66b12220652a87eef04786c4ebac05c16a5f312282a2046c5d0b97",
+      "bytes": 1304
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/readable.md",
+      "sha256": "5d0cca989f9e1d18e14d214134b7825f0b1e84617f0860011d0edd42a3484d52",
+      "bytes": 264
+    },
+    {
+      "path": "schemas/fixtures/book-package/valid/synthetic-rle-primer/relations.jsonl",
+      "sha256": "efec89289184741af9a5580ea865e1cb0866f8a1504539e1155f690932898186",
+      "bytes": 1528
+    },
+    {
+      "path": "schemas/fixtures/contract-observation/valid/change-revocation.json",
+      "sha256": "671b9b54c95672971b1b8b3397ad9565e16267aa21b94a3da6121fb292537ac6",
+      "bytes": 577
+    },
+    {
+      "path": "schemas/fixtures/contract-observation/valid/observation-pass.json",
+      "sha256": "75a3badbbba9cb31c367e66db11a673a734e7235c2756125c554de3a2e19e9ea",
+      "bytes": 1014
+    },
+    {
+      "path": "schemas/fixtures/contract-observation/valid/profile-advertisement.json",
+      "sha256": "eff71fdf82e156d03c6002fe424db52713038803e387c3133b8e89ca08897cb3",
+      "bytes": 262
+    },
+    {
+      "path": "tools/book_package_fixture.py",
+      "sha256": "e15ecf8ec799f17b2fcc1f2a5d04669adc91f5e1c5d7a3f62de598a134490227",
+      "bytes": 18486
+    },
+    {
+      "path": "tools/build_book_package.py",
+      "sha256": "f172a2c3de6c84f539350d69cfff6aa3ddf843fbb8dde65c4ce70c317e0c2b44",
+      "bytes": 14912
+    },
+    {
+      "path": "tools/check_book_package.py",
+      "sha256": "290ed9251ff923aeb21dc42e6e67297d054e5a3ddf5957beea1cb8221f5b813f",
+      "bytes": 33133
+    },
+    {
+      "path": "tools/check_contract_profile.py",
+      "sha256": "33ed0d1e0d0b8cae9db87ba6329a1c2c1b96114af918bc2de19ebeb99e7e71ea",
+      "bytes": 6739
+    },
+    {
+      "path": "tools/check_requirement_register.py",
+      "sha256": "620dd7d42d19f05d1a9dab841f91a4e3df408b8fd033d38637667e043735db48",
+      "bytes": 9506
+    },
+    {
+      "path": "tools/test_book_package.py",
+      "sha256": "e832d225fe15f39abb68e29ee1ff789b27ea1cee4a5321756f78b19101af4322",
+      "bytes": 28824
+    },
+    {
+      "path": "tools/test_book_package_review.py",
+      "sha256": "9c8c9f5f952136dfd10e5f30b3f20583336cc7f9ac3851f45548840f699f43ec",
+      "bytes": 17065
+    },
+    {
+      "path": "tools/test_build_book_package.py",
+      "sha256": "c5c52ca5ecac4714fa3ad42d05d6b4beb85c1f22a98d93718884e752ae158790",
+      "bytes": 11911
+    },
+    {
+      "path": "tools/test_contract_profile.py",
+      "sha256": "943f8e57b3bfe248f13425fcf3cd3ef93b52d940eecf3d6014f8b57846c256d6",
+      "bytes": 7135
+    },
+    {
+      "path": "tools/test_index_release_receipt.py",
+      "sha256": "51bb27d11ff1aa9b6cde1e99a99514e579d4a6e49a5617cb36f2bdc3220b7f49",
+      "bytes": 4096
+    }
+  ],
+  "reviewer_actions": "Read repository and tests; wrote only independent local review/probe artifacts outside repository. No source edits, commits, external messages or uploads.",
+  "finalized_at": "2026-11-04T20:15:26.851114+00:00",
+  "review_artifact_hashes": [
+    {
+      "path": "independent-engineering-review-reproduce.py",
+      "sha256": "b57e32e32e9863adea9cf0d22b3f255d8074fb0fe67cc0bfcb74477d40765a6e"
+    },
+    {
+      "path": "independent-engineering-probes.json",
+      "sha256": "aa80dc974606d330d4e16d041796248a28866fc3efb8b506431e709be7745ae1"
+    },
+    {
+      "path": "independent-engineering-probe-correction.json",
+      "sha256": "bf9c3952e0113ed89be1abac932dd596204b6a2ebbae46b7cb31284dfc6b117b"
+    },
+    {
+      "path": "independent-engineering-requirement-refs.json",
+      "sha256": "9ae49aa6c4a5cac01b8121a5bf42f9d7c5d4406dd2bcac4832d620c25cc60123"
+    }
+  ]
+}

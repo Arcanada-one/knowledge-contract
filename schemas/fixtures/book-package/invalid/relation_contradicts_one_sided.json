@@ -17,11 +17,11 @@
  "from": "obj.rle.limit",
  "kc2_admission": "not_measured",
  "origin": "author_statement",
- "package_id": "synthetic-rle-primer.r1",
+ "package_id": "synthetic-rle-primer",
  "presented_as_author": true,
  "relation_id": "rel.limit",
  "relation_type": "contradicts",
- "schema": "KCBookRelation/v1",
+ "schema": "KCBookRelation/v2",
  "status": "reviewed",
  "to": "obj.rle.definition"
 }

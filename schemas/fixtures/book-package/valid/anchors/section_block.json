@@ -20,9 +20,9 @@
  "object_id": "obj.anchor.section-block",
  "object_kind": "concept",
  "origin": "generated_meaning",
- "package_id": "synthetic-rle-primer.r1",
+ "package_id": "synthetic-rle-primer",
  "presented_as_author": false,
- "schema": "KCBookObject/v1",
+ "schema": "KCBookObject/v2",
  "semantic_facets": {
   "aboutness": {
    "state": "known",
@@ -32,7 +32,9 @@
   },
   "assessment_refs": {
    "state": "known",
-   "value": []
+   "value": [
+    "review.fixture.semantic"
+   ]
   },
   "content_kinds": {
    "state": "known",

@@ -25,16 +25,16 @@
   "edits": {
    "count": 1,
    "path": "edits.jsonl",
-   "sha256": "eebad96c0df6df81c2cf1315e273c65fb4ac12fad6681b29479cd0401ddc846b"
+   "sha256": "14301732dbfb8d3ce6b69dcd4e928c9ef14dbf072b7881315d0f3d6f433c6849"
   },
   "objects": {
    "count": 4,
    "path": "objects.jsonl",
-   "sha256": "09f8fbfa0a3238f39724636ea195a250e228f1b39c018122398e570e4f925ed0"
+   "sha256": "e0fc8c5b9f0c01a7e5f3368d656367223310cf753131046cbbf3e992c49517ca"
   },
   "quality": {
    "path": "quality.json",
-   "sha256": "d848db8456389b4a7f2acc3155b2d8ee06393d3f285c8e37ae2555874ca5ce84"
+   "sha256": "8008384a4b66b12220652a87eef04786c4ebac05c16a5f312282a2046c5d0b97"
   },
   "readable_md": {
    "contains_generated_text": false,
@@ -44,7 +44,7 @@
   "relations": {
    "count": 2,
    "path": "relations.jsonl",
-   "sha256": "9874f091fd5d93ff093b26c2ba03e0a9d98375e2f389202814b44c8b18326092"
+   "sha256": "efec89289184741af9a5580ea865e1cb0866f8a1504539e1155f690932898186"
   }
  },
  "created_at": "2026-11-04T00:00:00Z",
@@ -54,7 +54,7 @@
   "language": "en"
  },
  "kc2_admission": "not_measured",
- "package_id": "synthetic-rle-primer.r1",
+ "package_id": "synthetic-rle-primer",
  "package_status": "knowledge_ready",
  "related_works": [],
  "release_id": "r1",
@@ -62,6 +62,13 @@
   "completeness": "bibliography_only",
   "format": "md",
   "integrity": "verified",
+  "integrity_check": {
+   "checked_at": "2026-11-04T00:00:00Z",
+   "expected_sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb",
+   "method": "synthetic source-byte digest comparison",
+   "observed_sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb",
+   "observer": "fixture.generator"
+  },
   "representation_id": "rep.synthetic-rle-primer.md",
   "size_bytes": 245,
   "source_sha256": "a4e5a6653be6ec8083c0d7fe007af7a06f9a37e6a14faff6f6a09651fd3f6bdb"
@@ -78,13 +85,14 @@
    "quality"
   ]
  },
- "schema": "KCBookPackageManifest/v1",
+ "schema": "KCBookPackageManifest/v2",
  "tooling": [
   {
    "tool": "fixture-generator",
    "tool_version": "0.0.0"
   }
  ],
+ "validation_profile": "book-package/2",
  "work": {
   "title": "Synthetic primer on run-length encoding",
   "work_id": "work.synthetic-rle-primer"

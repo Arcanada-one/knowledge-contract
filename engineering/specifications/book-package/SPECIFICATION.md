@@ -2,7 +2,7 @@
 name: "book-package"
 title: "Book Packages: Source Identity, Semantic Layers, and Validation"
 artifact: "engineering-specification"
-edition: "1.0"
+edition: "1.1"
 author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
@@ -11,133 +11,297 @@ description: "A concrete book-package schema, reversible conversion ledger, sema
 
 # Book Packages: Source Identity, Semantic Layers, and Validation
 
-**Author:** Pavel Valentov · **Publication edition:** 1.0
+**Author:** Pavel Valentov · **Publication edition:** 1.1
 
-| Implementation component | Exact scope |
+| Implementation component | Scope |
 | --- | --- |
-| [Schema](../../../schemas/book-package.schema.json) | Book-package records, version 1; Apache-2.0 |
-| [Validator](../../../tools/check_book_package.py) | Structural and cross-file checks; Apache-2.0 |
-| [Fixtures](../../../schemas/fixtures/book-package/) | Original synthetic inputs and counterexamples |
-| [Conformance tests](../../../tools/test_book_package.py) | Positive, negative and cross-file mutation checks |
-
-This document specifies an implemented structural format. The implementation has a synthetic conformance suite; conversion fidelity on real books and downstream admission remain separate, unmeasured properties. Publication edition 1.0 does not change the schema's record identifiers or grant runtime admission.
+| [Schema](../../../schemas/book-package.schema.json) | `book-package/2`, five `KCBook*/v2` record families |
+| [Validator and projection](../../../tools/check_book_package.py) | Structural and cross-file checks, safe Markdown rendering, candidate rows |
+| [Builder](../../../tools/build_book_package.py) | Wraps source bytes and supplied conversion output; does not interpret a book |
+| [Synthetic fixtures](../../../schemas/fixtures/book-package/) | Invented source and negative records; no third-party book text |
+| [Conformance tests](../../../tools/test_book_package.py) · [review regressions](../../../tools/test_book_package_review.py) | Validation, reversible edits, rights, scoped review, rendering and status derivation |
 
 ## 1. Purpose and validation boundary
 
-A book package is the unit in which one source representation of a book (one file) is carried through conversion into Markdown, semantic description and a relation graph, so that the result can travel inside the Knowledge Contract as a candidate. This document fixes the **format**. It makes no claim that any conversion is faithful, that any extracted meaning is correct, or that any package is admitted by the Knowledge Contract runtime (KC2). The manifest, semantic objects, relations and quality report carry `kc2_admission: not_measured`; a value of `admitted` is rejected by the schema, because admission is decided elsewhere and never by the producer.
+A book package binds one source representation to its conversion, semantic records and review observations. This specification defines the implemented `book-package/2` profile. Capitalized requirements use [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language). Record validation does not establish conversion fidelity, semantic truth, actual reviewer independence, publication rights or task-specific admission.
 
-A successful validation establishes that the submitted package passes the implemented checks for shapes, digests, counts, endpoints, anchor identity and status coherence. It is not a proof that the implementation detects every structural defect. It does not prove that the text of an anchor says what an object claims. That is the job of review, recorded separately in the quality report.
+**BPK-R001.** The manifest MUST declare `validation_profile: book-package/2`, and every record MUST use its `KCBookPackageManifest/v2`, `KCBookObject/v2`, `KCBookRelation/v2`, `KCBookEdit/v2` or `KCBookQuality/v2` tag.
 
-## 2. Layout
+Unknown versions are unsupported.
+
+**BPK-R002.** A consumer MUST NOT silently reinterpret a version 1 record as version 2.
+
+The **Knowledge Contract admission runtime** decides use under the [core contract](../knowledge-contract-core/SPECIFICATION.md). The inherited literal field `kc2_admission` is not a protocol version.
+
+**BPK-R003.** Its value in producer records MUST remain `not_measured`; the producer cannot grant admission.
+
+`not_measured` maps to assessment `unknown` with reason “no observation,” never to `pass`.
+
+## 2. Layout and reversible edits
 
 ```text
 <package_id>/
-  manifest.json      identity, source binding, components with digests, rights, status
-  document.md        faithful conversion of the source; no generated text
-  readable.md        readable edition; the only file edits may change
-  assets/            images and other extracted resources
-  edits.jsonl        edit ledger: one record per change from document.md to readable.md
-  objects.jsonl      semantic objects
-  relations.jsonl    relations between objects
-  quality.json       quality report
+  manifest.json
+  document.md
+  readable.md
+  assets/
+  edits.jsonl
+  objects.jsonl
+  relations.jsonl
+  quality.json
 ```
 
-`document.md` is never edited. A correction goes into `readable.md` through a ledger record that holds the source fragment, the replacement, the anchor, the basis, the reason and the input and output digests. Every accepted edit is reversible (`reversible` is the constant `true`). The validator checks this rather than assuming it: at the step where an accepted edit is applied, `original_text` and `replacement_text` must both be non-empty, `original_text` must occur exactly once in the text being edited and `replacement_text` exactly once in the text produced, and undoing the accepted edits in reverse order must give `document.md` exactly. "Once" counts overlapping occurrences (`aa` occurs twice in `xaaay`). All comparison is byte-exact: files are read as bytes and decoded as strict UTF-8 with no newline translation, so `\r\n`, a lone `\r` and `\n` are different characters, `original_text` may contain any of them, and every digest in the chain is over the exact bytes of the text it names. JSON Lines files, `SHA256SUMS` and the check list are split on `\n` only, as a `\n`-splitting reader sees them: one empty trailing element (the final newline) is allowed, a line ending in `\r` is refused, and U+2028, U+0085, a lone `\r` and the control characters `\x0b`, `\x0c` and `\x1c` to `\x1e` are ordinary characters, never separators. An insertion, a deletion, an edit of a repeated fragment and a replacement that duplicates existing text therefore cannot be recorded in the ledger; the schema is unchanged. The ledger is tied to the files: the digests chain from `document.md` through each accepted edit, each `original_text` must occur in the text it edits, and `readable.md` must equal the replay of the accepted edits over `document.md`. Paths are relative, contain no `..`, and never start with `/`.
+**BPK-R004.** The package identifier MUST be a readable lowercase hyphenated slug, 3–96 characters; a single letter followed by digits is forbidden.
 
-## 3. Identity and source binding
+`release_id` identifies the particular release separately.
 
-Three identifiers are kept apart: `work_id` (the work), `edition_id` (edition and language) and `representation_id` (one file). Translations of one work share a `related_works` relation (`translation_of`, `edition_of`, `same_work_as`, `packaged_with`) and keep separate editions, languages and evidence. The manifest holds the SHA-256 and size of the source representation, its format, an `integrity` state (`verified`, `mismatch`, `unverified`) and a `completeness` state (`full`, `partial`, `bibliography_only`). Rules enforced:
+**BPK-R005.** Component paths MUST remain relative and inside the package, with no parent traversal or symlinks.
 
-- `mismatch` forces `package_status: blocked_integrity`; the expected hash is never replaced to make a package pass.
-- `bibliography_only` forces `package_status: bibliography_only` and forbids `document_md`; such a record is never queued as a full text.
-- `knowledge_ready` requires `verified` integrity and `full` completeness.
-- `document_md.input_sha256` equals the source representation hash, and names the converting tool and version.
-- `adapter_required`, `blocked_integrity` and `bibliography_only` packages have no `document_md` and no `readable_md`; the schema forbids them. A format without converter output yields an `adapter_required` package, never an empty or invented document. `structure_only`, `partial_pilot` and `knowledge_ready` packages must have both. `tools/build_book_package.py` builds such packages around a source file and the Markdown a converter produced: it copies that Markdown unchanged, starts `readable.md` as a copy with an empty edit ledger, and leaves objects and relations empty with the semantic block `not_built`.
+`document.md` is the unchanged converter output.
 
-## 4. Semantic objects
+**BPK-R006.** Accepted edits MUST target `readable_md`; `asset_text` has no supported digest-chain semantics and is rejected.
 
-An object (`KCBookObject/v1`) is a concept, claim, procedure, figure, table, formula, code block, example or other structure. It carries its text, language, origin, evidence anchors (at least one), qualifiers (conditions, numbers with units) and eight serialized semantic facets consistent with the dimensions in the [semantic-types specification](../semantic-types/SPECIFICATION.md): `representation_modes`, `content_kinds`, `discourse_functions`, `aboutness`, `source_position`, `semantic_operators`, `assessment_refs`, `governance_refs`. Each facet is present. A facet is either `known` with a value, or `unknown`, `not_applicable` or `withheld` with a reason and no value; absence of information is never an empty list. `content_kinds` uses the following declared profile vocabulary: `definition`, `state_description`, `observation_measurement`, `generalization`, `explanatory_model`, `formal_model`, `procedure`, `structure_configuration`, `constraint_norm`, `goal_intent`, `preference_evaluation`, `argument_evidence`, `example`, `counterexample`, `question_problem_gap`, `narrative_episode`, `analogy_metaphor`, `hypothesis_interpretation`, and `commitment_speech_act`. These nineteen values refine eighteen earlier content rubrics by separating example from counterexample. This profile vocabulary is not an exhaustive taxonomy of meaning. Attribution remains in the object origin and generation records; task applicability must be evaluated by the consuming contract and is not established by these eight facet fields. A claim of class `benchmark` must carry corpus, device, tool version, settings, units and mode (`encode`, `decode`, `encode_decode`).
+**BPK-R007.** A package without `document_md` and `readable_md` MUST NOT contain accepted edits or a built semantic layer.
+
+**BPK-R008.** Each accepted edit MUST have a nonempty original and replacement, an anchor, basis, reason, actor, input digest and output digest.
+
+**BPK-R009.** At its step, the original MUST occur exactly once, and the replacement MUST occur exactly once in the resulting text.
+
+Occurrences include overlaps: `aa` occurs twice in `xaaay`.
+
+**BPK-R010.** Applying the accepted edits in ledger order MUST produce `readable.md`; undoing them in reverse order MUST reproduce `document.md` exactly.
+
+Insertions, deletions and ambiguous repeated-fragment edits are unsupported by this search-reversible profile.
+
+**BPK-R011.** JSON readers MUST reject duplicate object member names at every depth, non-finite number tokens and a UTF-8 BOM, so independent readers cannot choose different rights or status values from the same record.
+
+**BPK-R012.** All comparison and hashing MUST use exact bytes with strict UTF-8 decoding and no newline translation.
+
+`\r\n`, `\r` and `\n` remain distinct. JSON Lines, `SHA256SUMS` and check lists split only on `\n`; one final newline is allowed, blank JSON Lines and lines ending in `\r` are rejected. U+2028, U+0085 and other control characters do not become additional record separators.
+
+The edit lifecycle is `pending` → `accepted` or `rejected`; `stale` means an obsolete proposal whose base no longer matches, and is never replayed. Accepted ledger entries are immutable: a later correction creates another entry or a new package release. A stale proposal's declared or overlapping dependents remain unresolved until reassessed in a new valid record.
+
+## 3. Identity and integrity observations
+
+`work_id` identifies the work, `edition_id` the edition and language, and `representation_id` one source file. Translations and editions retain separate identities and anchors, with explicit `related_works` relations. A representation records its source digest, size, format, integrity (`verified`, `mismatch`, `unverified`) and completeness (`full`, `partial`, `bibliography_only`).
+
+**BPK-R013.** A `verified` or `mismatch` integrity declaration MUST include `integrity_check` with `method`, `observer`, `checked_at`, `expected_sha256` and `observed_sha256`.
+
+**BPK-R014.** The observed digest MUST equal the representation digest.
+
+Verified integrity requires equal expected and observed digests; mismatch requires different digests.
+
+**BPK-R015.** The expected digest MUST NOT be replaced to conceal a mismatch.
+
+This is an attributed producer observation. The validator checks its shape and internal consistency; it cannot authenticate the expected digest's authority or reconstruct an unavailable source. The builder records whether its expected digest was supplied by the caller.
+
+**BPK-R016.** A production consumer MUST authenticate the relevant observation at its declared trust boundary before treating it as evidence of source integrity.
+
+**BPK-R017.** `document_md.input_sha256` MUST equal the representation digest and its component record MUST name the converter and version.
+
+With no supported converter output, the package remains `adapter_required`; no empty or invented document substitutes for conversion.
+
+## 4. Semantic objects and facets
+
+An object identifies a concept, claim, procedure, figure, table, formula, code block, example or other structure.
+
+**BPK-R018.** Every object MUST retain its text, language, origin, at least one source anchor, status and all eight facet fields: `representation_modes`, `content_kinds`, `discourse_functions`, `aboutness`, `source_position`, `semantic_operators`, `assessment_refs`, and `governance_refs`.
+
+Qualifiers carry conditions and numeric units when present.
+
+The facets implement a bounded profile of [semantic types](../semantic-types/SPECIFICATION.md). Representation modes include `text`, `image`, `audio`, `video`, `structured_data` and their explicit combinations. Source positions are `asserts`, `hypothesizes`, `presumes`, `denies`, `asks`, `reports_other_position`: `presumes` denotes a presupposition and is not a synonym of hypothesis.
+
+**BPK-R019.** Operators include epistemic and deontic modality, quantifier, negation, condition, exception and order; each operator MUST name its scope.
+
+A free-text qualifier condition applies to the whole object unless a scoped operator supplies the more precise binding.
+
+The nineteen content-kind tokens are `definition`, `state_description`, `observation_measurement`, `generalization`, `explanatory_model`, `formal_model`, `procedure`, `structure_configuration`, `constraint_norm`, `goal_intent`, `preference_evaluation`, `argument_evidence`, `example`, `counterexample`, `question_problem_gap`, `narrative_episode`, `analogy_metaphor`, `hypothesis_interpretation`, and `commitment_speech_act`. This vocabulary is not an exhaustive taxonomy.
+
+**BPK-R020.** Each facet MUST be `known` with a value, or `unknown`, `not_applicable` or `withheld` with an explicit reason and no value.
+
+Known representation modes, content kinds, discourse functions and aboutness are nonempty by this profile's cardinality rule. Known-empty operators, assessment references or governance references assert an established empty set and are allowed only with that meaning.
+
+**BPK-R021.** An object named by a package review MUST include that review's identifier in known `assessment_refs`; known-empty cannot deny the very review that cites it.
+
+Unknown references remain unknown rather than empty.
+
+**BPK-R022.** A `benchmark` claim MUST additionally record corpus, device, tool version, settings, units and mode.
+
+Structural presence does not verify those declarations or establish task applicability.
 
 ## 5. Relations
 
-A relation (`KCBookRelation/v1`) connects two objects of the package and has one of six types: `defines`, `uses`, `variant_of`, `requires`, `compared_with`, `contradicts`. It carries evidence anchors tagged with the side they support (`from`, `to`, `both`). Rules:
+A relation connects two existing, different objects of the same package with one of `defines`, `uses`, `variant_of`, `requires`, `compared_with`, `contradicts`.
 
-- at least one anchor is required for every type;
-- `contradicts` needs an anchor for the `from` side and an anchor for the `to` side, because a contradiction asserted from one side only is a reading, not a finding;
-- an object may not be related to itself; endpoints must exist in the same package;
-- a relation that touches a stale object is stale or rejected (section 9).
+**BPK-R023.** Every relation MUST retain its conditions, origin, evidence, endpoints and status.
 
-## 6. Evidence anchors
+Every relation has at least one evidence anchor tagged `from`, `to` or `both`.
 
-Every anchor repeats the `representation_id` and the source `sha256` it points into; the validator rejects an anchor that names another representation or source. Coordinates are never bare numbers.
+**BPK-R024.** A `contradicts` relation MUST include separate `from` and `to` evidence, so one-sided attribution cannot masquerade as a two-sided finding.
 
-| Kind | Source formats | Fields |
+**BPK-R025.** A relation touching a stale or rejected endpoint MUST itself be stale or rejected.
+
+Review of a relation does not silently rehabilitate its endpoint.
+
+## 6. Evidence anchors and source formats
+
+**BPK-R026.** Every anchor MUST bind the same representation identifier and source digest as its manifest.
+
+The implemented format-to-anchor mapping is exact:
+
+| Anchor kind | Exact format tokens | Coordinates |
 | --- | --- | --- |
-| `page_bbox` | PDF, DjVu, PS after conversion | `page` (from 1), `bbox` (4 numbers, positive area), `bbox_origin`, `bbox_unit` |
-| `spine_offset` | EPUB | `spine_item`, optional `element_path`, `start`, `end` (end not before start) |
-| `section_block` | HTML, MD, TXT | `section_id`, `block_id` |
-| `sheet_range` | XLSX | `sheet`, `range`, `layer` (`formula`, `cached_value`, `literal`) |
-| `json_pointer` | JSON, DocC | `pointer` (RFC 6901) |
-| `slide_block` | presentations | `slide`, `block_id` |
+| `page_bbox` | `pdf`, `djvu`, `ps` | page from 1; bounding box with positive area; origin and unit |
+| `spine_offset` | `epub` | member `spine_item`, optional element path, start/end offsets |
+| `section_block` | `html`, `md`, `txt`, `tex` | section and block identifiers |
+| `sheet_range` | `xlsx` | sheet, cell range, `formula` / `cached_value` / `literal` layer |
+| `json_pointer` | `json` | RFC 6901 pointer |
+| `slide_block` | `ppt`, `pptx` | slide number and block identifier |
+| none | `zip`, `tar_gz`, `sevenz` | opaque source identity only; archive member addressing is unsupported |
 
-A new source format needs a new anchor kind in a new schema revision, not a loose string. The validator requires the anchor kind to fit the source format of the manifest (for example `page_bbox` for PDF, `section_block` for Markdown). It does not resolve an anchor against the source: that a section, page or range exists, and that it says what an object claims, is not checked here.
+**BPK-R027.** Archives MAY be retained as an unavailable source requiring an adapter, but MUST NOT carry converter output, edits or semantic records under this profile.
 
-## 7. Generated content is marked, always
+A member-path anchor requires a separately versioned extension. DocC is not a format token; a DocC JSON file uses `json`.
 
-Every object and relation has an `origin`: `author_statement`, `editor_correction`, `generated_meaning`, `generated_description`, `our_experiment` or `model_inference`. Everything except `author_statement` must carry a `generation` record (tool, version, optional model id, run id, input digest, time) and must set `presented_as_author` to `false`. An `author_statement` must not carry a `generation` record. Machine descriptions of illustrations and generated meanings live only in the object file; `document_md.contains_generated_text` is the constant `false`, and `readable_md` declares whether it holds any. The rendering of the knowledge layer to Markdown labels every generated block "GENERATED, not the author's statement". A missing asset is `state: missing_asset` with no path and no digest; no image or description is invented for it.
+The validator checks geometry, ordering and the declared mapping, not whether a cited source location exists or supports the text. Extracting a different representation creates a new binding; it does not justify reusing coordinates from the previous one.
 
-## 8. Quality report: extraction and semantics apart
+## 7. Attribution and safe rendering
 
-`quality.json` has two blocks that never merge. `extraction` holds a status (`pass`, `partial`, `adapter_required`, `failed`, `not_measured`), expected and seen units, a list of checks (`pass`, `fail`, `unknown`, `not_applicable`, each with a method) and a CER block. CER is either `measured` with a value, a gold or silver reference class and a sample size, or `not_measured` with value `null`; a null is not a zero. `semantics` holds a status (`not_built`, `built_unreviewed`, `reviewed`, `not_measured`), object and relation counts and, when reviewed, the reviewer type, sample size and result. `not_built` and `not_measured` force both counts to zero: an empty graph means that the semantic layer was not built, never that the book has no support for a question. There is no combined score; the schema rejects one.
+Origins are `author_statement`, `editor_correction`, `generated_meaning`, `generated_description`, `our_experiment` and `model_inference`.
 
-`package_status` is derived, not chosen freely: `knowledge_ready` requires extraction `pass` and semantics `reviewed`; `structure_only` requires semantics `not_built`.
+**BPK-R028.** A non-author origin MUST have a generation record and `presented_as_author: false`.
 
-## 9. Staleness
+**BPK-R029.** An author statement MUST NOT carry a generation record.
 
-A source span corrected after objects were derived from it makes those objects stale. The validator requires: an object listed under `depends_on_objects` of a `stale` edit is `stale` or `rejected`, and so is every relation that touches a stale object. A new context package must not reuse a stale quotation.
+On an author statement, `presented_as_author: true` means an asserted verbatim quotation; `false` means an explicitly attributed paraphrase. This flag never establishes quotation fidelity by itself.
 
-## 10. Rights and layers
+**BPK-R030.** The public Markdown renderer MUST preserve every object and relation field, including qualifiers, operator scopes, source position, conditions, anchors, generation and assessment references.
 
-`rights.license_class` is `author_open`, `third_party_restricted` or `unknown`; `publishable_layers` lists what may leave the producer: `document_md`, `readable_md`, `assets`, `knowledge`, `quality`. A work that is not `author_open` may not publish `document_md`, `readable_md` or `assets`. This is a producer-side guard, not a legal opinion; whether the knowledge layer of a restricted work may quote it is a rights question for the publication decision.
+It emits each complete record in a JSON literal block, with a fence longer than any backtick run in the payload. Origin labels and record headings are emitted outside that container from controlled fields.
 
-## 11. Mapping to candidate export v2 and Knowledge Contract V3 admission
+**BPK-R031.** Payload headings, HTML or apparent origin labels MUST NOT create new rendered record structure.
 
-The candidate exporter (`tools/export_corpus.py`, schema `KnowledgeContractCandidateExport/v2`, DEC-AUP-0171) carries only Markdown files whose path matches its path pattern under `papers/`, `spec/`, `articles/` or `schemas/`, that are listed in its explicit scope, have a merged source commit and a reviewed publication decision with a personal-name rights holder and a licence of CC-BY-4.0 or Apache-2.0. A package therefore maps as follows, as a **proposal** that the exporter's own rules still decide.
+Every non-author block is visibly labelled “GENERATED, not the author's statement.”
 
-| Package element | Candidate export v2 element |
+`document_md.contains_generated_text` is always false; generated meanings and image descriptions remain separate derivatives. A missing asset records `missing_asset` without a fabricated path or digest. The public renderer refuses non-`author_open` packages.
+
+## 8. Quality observations and readiness
+
+Extraction and semantic observations remain separate; there is no combined score. Extraction statuses are `pass`, `partial`, `adapter_required`, `failed`, `not_measured`. Check results use the [status model](../status-model/SPECIFICATION.md): `pass`, `fail`, `unknown`, `not_applicable`. Each check has a unique identifier and method.
+
+**BPK-R032.** A `not_applicable` check MUST state the inapplicability reason in `detail`.
+
+**BPK-R033.** Extraction `pass` MUST contain at least one applicable passing check, no failed or unknown check, and matching seen/expected unit counts when those counts are supplied.
+
+An empty checklist or an all-inapplicable checklist cannot prove successful extraction. `adapter_required` contradicts available converter output; `pass` or `partial` contradicts absent converter output.
+
+CER is either measured with a value, reference class and sample size, or `not_measured` with null. A null is not a measured zero. Semantic status is `not_built`, `not_measured`, `built_unreviewed` or `reviewed`; the first two require empty object and relation files.
+
+**BPK-R034.** Every semantic review MUST identify `review_id`, `reviewer_id`, `producer_id`, reviewer type, independence basis, time, result, the exact object and relation identifiers examined, and the current object-file, relation-file and readable-file digests.
+
+**BPK-R035.** `sample_size` counts distinct reviewed objects, not relations or checklist items, and MUST equal the object-ID list length.
+
+Reviews cannot name nonexistent records. A review of earlier bytes cannot be transferred to new bytes by changing only the timestamp.
+
+**BPK-R036.** The `knowledge_ready` profile uses **complete coverage**, not a statistical sample: every object and relation MUST be included, every included record MUST be `reviewed`, the result MUST be `supported`, and the declared reviewer MUST be a human or blind agent distinct from the producer.
+
+Same-session review, partial support, unsupported results and omitted records cannot earn this status.
+
+**BPK-R052.** There MUST be at least one object.
+
+A narrower review is retained honestly under `partial_pilot`.
+
+These checks verify declared scope, separation and byte bindings. They do not prove that a human review occurred or that identities are independent. The synthetic fixture uses explicitly invented reviewer identities for testing. Authenticating observations belongs to the consuming trust boundary.
+
+### Total package-status decision table
+
+**BPK-R037.** The validator MUST compute the first matching row below and require equality with the submitted `package_status`.
+
+All well-formed combinations receive one result; contradictory component/check declarations are additionally rejected rather than assigned a success status.
+
+| Priority | Condition | Derived status |
+| --- | --- | --- |
+| 1 | Source integrity is `mismatch`, even if completeness is bibliographic | `blocked_integrity` |
+| 2 | Completeness is `bibliography_only` | `bibliography_only` |
+| 3 | Converter output is absent | `adapter_required` |
+| 4 | Semantic layer is `not_built` or `not_measured`, with zero objects and relations | `structure_only` |
+| 5 | Full, verified source; extraction passes; complete independent declared review supports all reviewed records | `knowledge_ready` |
+| 6 | Any remaining well-formed converted package | `partial_pilot` |
+
+**BPK-R038.** `blocked_integrity`, `bibliography_only` and `adapter_required` MUST omit both document and readable components.
+
+**BPK-R039.** `structure_only`, `partial_pilot` and `knowledge_ready` MUST contain both.
+
+A reviewed package with unverified integrity or partial source coverage is therefore representable as `partial_pilot`. Extraction failure remains visible even when files are structurally present.
+
+## 9. Correction impact and reassessment
+
+**BPK-R040.** An accepted correction MUST invalidate every object explicitly named in `depends_on_objects` **or** whose source anchor overlaps the edit.
+
+The producer's dependency list cannot suppress the overlap rule. Section/block and slide/block matches are exact; intervals and comparable page boxes use intersection; JSON pointers use equality or ancestor relationships. Sheet ranges conservatively invalidate the whole same-sheet scope; incomparable geometry is treated as potentially overlapping.
+
+**BPK-R041.** An affected object MUST be stale or rejected until its `reviewed_edit_ids` explicitly names the accepted corrections and a supported, independent declared review covers that object and the current readable and semantic file digests.
+
+References to unknown or unaccepted edit identifiers are rejected. A stale proposal cannot be cleared by this accepted-edit mechanism. Dependent relations follow section 5. This is a declared reassessment record, not evidence that a producer's semantic reasoning was correct.
+
+## 10. Rights and publication layers
+
+`rights.license_class` is `author_open`, `third_party_restricted` or `unknown`.
+
+**BPK-R042.** Only `author_open` MAY declare the package publication `license` (`CC-BY-4.0` or `Apache-2.0`) and nonempty `publishable_layers`.
+
+**BPK-R043.** Restricted or unknown works MUST omit that licence field and leave the publication layer list empty.
+
+This blocks book text carried through semantic chunks as well as through document files. No quotation budget or right to republish is inferred from extraction, review or a producer-supplied licence string.
+
+Private processing of an otherwise valid restricted package is outside public projection.
+
+**BPK-R044.** The projection function MUST return no rows for such a package.
+
+This conservative producer rule implements the established exclusion of third-party book text from the repository; it is not a legal finding about possible uses elsewhere. Any separately authored derivative requires its own source/rights assessment and publication decision.
+
+## 11. Candidate export and admission runtime
+
+**BPK-R045.** `candidate_projection(package_directory)` MUST validate a private immutable byte snapshot and compute the rendering from that snapshot itself.
+
+It does not accept a raw manifest plus caller-selected Markdown.
+
+**BPK-R046.** It MUST return no rows on validation failure or for `blocked_integrity`, `bibliography_only` or `adapter_required`, or without an allowed open publication licence.
+
+| Package element | Candidate projection |
 | --- | --- |
-| `document.md`, `readable.md` (only if listed in `publishable_layers`) | one entry each: `path`, `content sha256`, rights holder, licence, `status: current` |
-| objects and relations | not carried as JSON; rendered to one Markdown file (`render_knowledge_markdown`) which becomes one entry |
-| `manifest.json`, `objects.jsonl`, `relations.jsonl`, `edits.jsonl`, `quality.json`, assets | not carried (not Markdown); stay in the package and are referenced by digest |
-| `rights.holder`, `rights.license` | publication decision `rights_holder` and `license`; the exporter requires a personal name as holder and CC-BY-4.0 or Apache-2.0 as licence, so a layer without `rights.license` gets no row; `rights_basis`, `third_party` and `attribution` are written by the publication step |
-| `package_status`, quality blocks | `limits` text of the decision (built by `candidate_projection`); a proposed row has status `proposed`, and only the exporter's allowlist makes it `current` |
-| layer not in `publishable_layers` | no allowlist row; an absent row means deny |
-| `kc2_admission: not_measured` | `kc2_admission: not_measured` (the exporter sets it; a producer cannot) |
+| Allowed document/readable Markdown | One proposed row for its exact bytes |
+| Allowed knowledge layer | One proposed `knowledge.md` row for the full protected rendering |
+| JSON records, assets and quality file | Retained in the package; not separate Markdown export rows |
+| Unlisted layer or prohibited status/rights class | No row |
+| Runtime admission | Remains `not_measured` |
 
-`candidate_projection` proposes such rows, with the repository path `articles/book-packages/<package_id>/<file>`. That path fits the exporter's path pattern but is not in its scope list. The function does not widen the exporter's scope: `SCOPE_PATHS` is an explicit list and widening it, or adding a path pattern for packages, needs a new decision in the programme record. Until then this specification is itself not an indexing input, and the mapping has not been tried against a real exporter run. Admission under [the core contract specification](../knowledge-contract-core/SPECIFICATION.md) is a separate step performed by the runtime resolver; a package supplies identity, sources, scope and conditions, and is a candidate until that step records otherwise. The consumer in the workspace (`kb_feeder/knowledge_contract.py`) re-checks the path shape with its own pattern and refuses everything else, so a file outside the admitted shapes is refused on both sides. Whether it accepts a rendered knowledge layer, or any file of this specification, is **not measured**: no bundle containing such a file exists, and this repository holds no receipt of an earlier staging run, so none is claimed here.
+Rows identify `articles/book-packages/<package_id>/<file>`, digest, holder, licence, limits and `status: proposed`. These paths fit the exporter path syntax but are not automatically allowlisted. The existing `KnowledgeContractCandidateExport/v2` exporter still requires its own admitted scope, exact merged revision and reviewed publication decision.
 
-## 12. Validation
+**BPK-R047.** The producer MUST NOT widen that scope or treat a candidate row as publication or runtime admission.
 
-1. The JSON Schema checks the shape of each record and the conditional rules above (origin and generation, contradicts sides, CER null, not-built counts, status coherence, benchmark context, paths, admission constants).
-2. `tools/check_book_package.py <dir>` adds the cross-file rules: file digests, counts, unique identifiers, endpoint existence, package, work and edition identity, anchor identity, geometry and fit to the source format, ledger chain and replay, staleness coupling, quality counts, status derivation, rights versus layers.
-3. Positive fixtures: one synthetic package and one object per anchor kind. Negative fixtures: one file per violated rule, regenerated byte for byte by `tools/book_package_fixture.py`.
-4. Mutation tests: every negative fixture is rejected for its own named reason, and every cross-file mutation of the valid package is reported with its expected message. A mutation that is accepted, or rejected for another reason, fails the build.
+The [API integration appendix](../../../appendices/api-integration/APPENDIX.md) distinguishes repository publication, index admission and actual service results. No live consumer acceptance of this new profile is claimed by local conformance tests.
 
-These checks establish that the validator distinguishes the listed violations. They do not establish that the list is complete, that the fixtures resemble real books, or that a conversion is faithful.
+## 12. Validation and evidence limits
 
-## 13. Limits of the implemented format
+The JSON Schema checks record shape, fixed vocabularies and conditional fields. The package validator adds digest and count checks; identity and endpoint consistency; anchor mapping and geometry; byte-exact reversible replay; correction impact; extraction conjunction; review scope and file bindings; complete status derivation; and publication rights boundaries.
 
-- The format is exercised only on a synthetic fixture. No real book has been converted by this specification yet.
-- `generation.input_sha256`, `size_bytes` of the source and the existence of an anchored section are recorded but cannot be verified from the package alone.
-- A fixture marked `reviewed` records a review that the fixture does not prove took place.
-- Extraction quality and semantic quality are defined as separate blocks; no threshold for either is fixed here.
-- Right-to-left scripts, vertical Japanese and ruby are not covered by any anchor refinement; coverage of them is `not_measured`.
-- Whether the consumer accepts the Markdown rendering of a knowledge layer is not measured.
+**BPK-R048.** The conformance suite MUST retain each regression's expected cause, including negative review, unknown extraction, restricted licence bypass, arbitrary rendering, Markdown structure injection, stale correction, rejected endpoint and obsolete profile.
 
-## 14. Provenance and relation to the publication
+Its status-table test enumerates 3,240 input combinations; enumeration tests the decision table, not 3,240 historical book experiments. Structural incoherence is tested separately.
 
-The format, schema, fixtures and validator were introduced in the [upstream book-package change](https://github.com/Arcanada-one/knowledge-contract/tree/570f76b6d9a189295c3229254821c30748383965). This edition moves its full specification into the engineering collection, resolves its profile vocabulary and links, and makes the validation boundary explicit. The schema, validator, fixtures and original conformance tests retain their upstream bytes.
+The package does not establish source fidelity, truth, real reviewer independence, unseen source geometry, authentic licence ownership or downstream admission. Generated descriptions are separate from the media they describe. The linked [transcription study](../../studies/source-transcription-and-uncertainty/STUDY.md) reports historical evidence; it is not validation of the new wire profile.
 
-The [source-transcription study](../../studies/source-transcription-and-uncertainty/STUDY.md) supplies related historical evidence about provenance and uncertainty loss. Its historical book experiments are not validation of this newly introduced schema. The [scientific model of semantic objects](../../../papers/semantic-objects-and-context/PAPER.md) explains why structural provenance cannot establish the truth of an interpretation.
+## 13. Compatibility and migration
+
+Version 1 is preserved at immutable [source revision ed2e188c](https://github.com/Arcanada-one/knowledge-contract/tree/ed2e188c89a1a50a187f3d55bf32baab54c87f7e). Version 2 is intentionally stricter and adds observations, scoped review, the readable package identifier, explicit validation profile and semantic vocabularies.
+
+**BPK-R049.** Existing record tags MUST NOT simply be rewritten: missing observations remain missing, unsupported edits remain unsupported, and review of old bytes does not establish review of migrated bytes.
+
+**BPK-R050.** A migration MUST create a new package release, retain the original revision, identify every mapping or dropped unsupported field, revalidate digests and edits, and obtain any newly required review.
+
+**BPK-R051.** It MUST NOT invent integrity observations, reviewer identities or author attribution.
+
+V2 builders emit empty semantic layers until interpretation is actually performed. The publication edition, package profile, validator build and admission-runtime version remain distinct identities.
 
 Credit and licence: Knowledge Contract Arcana, <https://contract.place> (CC BY 4.0). See [attribution](../../../ATTRIBUTION.md).

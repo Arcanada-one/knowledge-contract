@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contract.place/schemas/index-release-receipt/v1",
+  "title": "Knowledge Contract Index Release Receipt v1",
+  "description": "Operator-record profile defined by API-R018 and the API appendix release-receipt section. The $id is a schema identity, not a claim that this URL is deployed. Schema validation does not verify observations or cross-record correspondences.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "repository_url", "source_revision", "observed_at", "observer", "evidence_refs", "publication_manifest_sha256", "index_build_id", "index_manifest_sha256", "admitted_paths", "queries", "fetches", "superseded_records", "checks", "decision", "scope", "limitations"],
+  "properties": {
+    "schema": {"const": "KCIndexReleaseReceipt/v1"},
+    "repository_url": {"type": "string", "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+    "source_revision": {"$ref": "#/$defs/commit"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "observer": {"$ref": "#/$defs/nonempty"},
+    "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/nonempty"}},
+    "publication_manifest_sha256": {"$ref": "#/$defs/hash"},
+    "index_build_id": {"$ref": "#/$defs/nonempty"},
+    "index_manifest_sha256": {"$ref": "#/$defs/hash"},
+    "admitted_paths": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "sha256", "decision_ref"],
+        "properties": {"path": {"$ref": "#/$defs/path"}, "sha256": {"$ref": "#/$defs/hash"}, "decision_ref": {"$ref": "#/$defs/nonempty"}}
+      }
+    },
+    "queries": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "query", "expected_paths", "results"],
+        "properties": {
+          "id": {"$ref": "#/$defs/nonempty"},
+          "query": {"$ref": "#/$defs/nonempty"},
+          "expected_paths": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/path"}},
+          "results": {"type": "array", "items": {"$ref": "#/$defs/result"}}
+        }
+      }
+    },
+    "fetches": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["record_id", "source_revision", "representation_sha256"],
+        "properties": {"record_id": {"$ref": "#/$defs/nonempty"}, "source_revision": {"$ref": "#/$defs/commit"}, "representation_sha256": {"$ref": "#/$defs/hash"}}
+      }
+    },
+    "superseded_records": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["record_id", "expected_status", "observed_status", "evidence_ref"],
+        "properties": {"record_id": {"$ref": "#/$defs/nonempty"}, "expected_status": {"$ref": "#/$defs/nonempty"}, "observed_status": {"$ref": "#/$defs/nonempty"}, "evidence_ref": {"$ref": "#/$defs/nonempty"}}
+      }
+    },
+    "checks": {
+      "type": "object", "additionalProperties": false,
+      "required": ["admitted_snapshot", "index_snapshot", "reported_revision", "query_coverage", "supersession", "fetch_identity"],
+      "properties": {
+        "admitted_snapshot": {"$ref": "#/$defs/check"},
+        "index_snapshot": {"$ref": "#/$defs/check"},
+        "reported_revision": {"$ref": "#/$defs/check"},
+        "query_coverage": {"$ref": "#/$defs/check"},
+        "supersession": {"$ref": "#/$defs/check"},
+        "fetch_identity": {"$ref": "#/$defs/check"}
+      }
+    },
+    "decision": {"$ref": "#/$defs/check"},
+    "scope": {"$ref": "#/$defs/nonempty"},
+    "limitations": {"type": "array", "items": {"$ref": "#/$defs/nonempty"}}
+  },
+  "oneOf": [
+    {"properties": {"decision": {"const": "pass"}, "checks": {"additionalProperties": {"const": "pass"}}}},
+    {"properties": {"decision": {"const": "fail"}, "checks": {"not": {"additionalProperties": {"enum": ["pass", "unknown"]}}}}},
+    {"properties": {"decision": {"const": "unknown"}, "checks": {"additionalProperties": {"enum": ["pass", "unknown"]}, "not": {"additionalProperties": {"const": "pass"}}}}}
+  ],
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))[^\\\\\\r\\n]+$"},
+    "check": {"enum": ["pass", "fail", "unknown"]},
+    "result": {
+      "type": "object", "additionalProperties": false,
+      "required": ["record_id", "path", "source_revision", "source_sha256", "representation_sha256", "canonical_url"],
+      "properties": {
+        "record_id": {"$ref": "#/$defs/nonempty"},
+        "path": {"$ref": "#/$defs/path"},
+        "source_revision": {"$ref": "#/$defs/commit"},
+        "source_sha256": {"$ref": "#/$defs/hash"},
+        "representation_sha256": {"$ref": "#/$defs/hash"},
+        "canonical_url": {"type": "string", "pattern": "^https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/blob/[0-9a-f]{40}/.+$"}
+      }
+    }
+  }
+}
