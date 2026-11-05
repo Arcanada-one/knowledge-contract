@@ -27,6 +27,9 @@ SCHEMA_PATH = REPO / "schemas" / "pipeline-receipt.schema.json"
 STAGES = ("intake", "classify", "convert", "recognise", "bundle", "kc-package", "library", "publish", "index")
 # Permissiveness of a rights class; a stage may keep the class of its predecessor or narrow it, never widen it.
 RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "author_open": 2}
+# Only these stages may end `skipped` (with a reason): the format needs no conversion, or no classification is wanted. Every other stage is essential.
+SKIPPABLE = frozenset(("classify", "convert"))
+MAX_RECEIPT_BYTES = 1 << 20
 FORMAT_CHECKER = jsonschema.FormatChecker()
 
 
@@ -46,12 +49,15 @@ def check_chain(root: Path) -> list[str]:
     """Problems of the chain in `root`, each as `CODE: text`; an empty list is a valid chain."""
     root = Path(root)
     problems: list[str] = []
-    files = sorted(p for p in root.iterdir() if p.is_file() and p.suffix == ".json") if root.is_dir() else []
+    files = sorted(p for p in root.iterdir() if p.suffix == ".json" and (p.is_file() or p.is_symlink())) if root.is_dir() else []
     if not files:
         return ["PIPE-EMPTY: the directory holds no receipt file"]
     loaded: dict[str, tuple[dict, str]] = {}  # file name -> (receipt, sha256 of its bytes)
     validator = _validator()
     for path in files:
+        if path.is_symlink() or path.stat().st_size > MAX_RECEIPT_BYTES:
+            problems.append(f"PIPE-READ: {path.name}: a receipt is a regular file of at most {MAX_RECEIPT_BYTES} bytes, not a symbolic link")
+            continue
         try:
             data = path.read_bytes()
             record = cbp.strict_json(cbp.read_text_strict(path), path.name)
@@ -95,10 +101,6 @@ def check_chain(root: Path) -> list[str]:
         order.append(current)
         nxt = children.get(current)
         current = nxt[0] if nxt else None
-    left = sorted(set(loaded) - set(order))
-    if left:  # defensive: with one head and no fork a receipt can only be unreachable through a cycle of digests, which cannot be built
-        return [f"PIPE-ORPHAN: not reachable from the head by the links: {', '.join(left)}"]
-
     chain = [loaded[name][0] for name in order]
     names = dict(zip(range(len(order)), order))
     if chain[0]["stage"] != "intake":
@@ -110,20 +112,24 @@ def check_chain(root: Path) -> list[str]:
             problems.append(f"PIPE-ID: {where}: document_id differs from the head's; a changed source is a new document, not an edit")
         if i and STAGES.index(record["stage"]) != STAGES.index(chain[i - 1]["stage"]) + 1:
             problems.append(f"PIPE-STAGE-ORDER: {where}: stage {record['stage']} follows {chain[i - 1]['stage']}; the stages run in order without a gap or a repeat")
-        if i and chain[i - 1]["outcome"] != "done":
+        if i and chain[i - 1]["outcome"] in ("paused_safe", "refused", "failed"):
             problems.append(f"PIPE-AFTER-STOP: {where}: follows {names[i - 1]}, whose outcome is {chain[i - 1]['outcome']}; nothing consumes a stage that did not finish")
+        if record["outcome"] == "skipped" and record["stage"] not in SKIPPABLE:
+            problems.append(f"PIPE-SKIP: {where}: stage {record['stage']} is essential and cannot end skipped; only {', '.join(sorted(SKIPPABLE))} can")
         if record["finished_at"] < record["started_at"] or (i and record["started_at"] < chain[i - 1]["finished_at"]):
             problems.append(f"PIPE-TIME: {where}: a stage starts after its predecessor finished and does not finish before it started")
         if i and RIGHTS_RANK[record["rights_class"]] > RIGHTS_RANK[chain[i - 1]["rights_class"]]:
             problems.append(f"PIPE-RIGHTS: {where}: rights class {chain[i - 1]['rights_class']} became {record['rights_class']}; no stage widens rights")
         if i and record["outcome"] == "done":
-            produced = {a["sha256"] for a in chain[i - 1]["outputs"]}
-            if not produced & {a["sha256"] for a in record["inputs"]}:
-                problems.append(f"PIPE-INPUT: {where}: none of its inputs is an output of {names[i - 1]}; a stage consumes what the previous one produced")
-    if chain[0]["outcome"] == "done":
-        sources = {a["sha256"] for a in chain[0]["inputs"] if a["role"] == "source"}
-        if document_id[2:] not in sources:
-            problems.append(f"PIPE-IDENTITY: {names[0]}: document_id is the content address of the original bytes; intake must list that digest as its `source` input")
+            # what a finished stage may consume: the outputs of the nearest earlier stage that finished (a skipped stage passes nothing on), or the original source
+            nearest = next((chain[j] for j in range(i - 1, -1, -1) if chain[j]["outcome"] == "done"), None)
+            allowed = {a["sha256"] for a in (nearest["outputs"] if nearest else [])} | {document_id[2:]}
+            if not allowed & {a["sha256"] for a in record["inputs"]}:
+                problems.append(f"PIPE-INPUT: {where}: none of its inputs is an output of the nearest earlier finished stage or the original source; a stage consumes what was produced")
+    sources = [a["sha256"] for a in chain[0]["inputs"] if a["role"] == "source"]
+    if len(sources) > 1 or (chain[0]["outcome"] == "done" and not sources) or (sources and sources[0] != document_id[2:]):
+        problems.append(f"PIPE-IDENTITY: {names[0]}: document_id is the content address of the original bytes; intake must list exactly one `source` input, that digest "
+                        "(a refused or failed intake that lists none is not judged)")
     return problems
 
 

@@ -18,7 +18,7 @@ description: "Repository-only engineering contract for the nine stages that carr
 | --- | --- |
 | [Receipt schema](../../../schemas/pipeline-receipt.schema.json) | `PipelineStageReceipt/v1`, one record per stage |
 | [Chain validator](../../../tools/check_pipeline_receipts.py) | Order, links, identity, rights, consumption and honesty of one chain |
-| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | One valid chain of nine stages and twenty one-defect mutants |
+| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Two valid chains and twenty-three one-defect mutants |
 | [Tests](../../../tools/test_pipeline_receipts.py) | The validator against every fixture, drift of the committed files, mutants of the validator |
 
 ## 1. Purpose, boundary and status
@@ -33,21 +33,21 @@ It does not claim runtime admission (`kc2_admission` is `not_measured` in every 
 
 ## 2. The nine stages
 
-Every document passes the stages in this order, each exactly once. A stage that cannot finish leaves a receipt that says so and the chain ends there.
+Every document passes the stages in this order, each exactly once and each leaving a receipt. A stage that cannot finish leaves a receipt that says so and the chain ends there. Two stages may also end `skipped`, with a reason: `convert` for a format Doclab reads as it is (PDF and images), and `classify` when no classification is wanted; a skipped stage produces nothing, and the next stage that finishes reads the output of the nearest earlier stage that finished, or the original source.
 
 | Stage | Owner | Consumes | Produces | Muneral | Built today |
 | --- | --- | --- | --- | --- | --- |
 | `intake` | Doclab Arcana | the original file | a source record | X2 (ee333ee6) | partly: Doclab intake records the source digest and size |
 | `classify` | Doclab Arcana | the source record | a classification with evidence and confidence | X2 (ee333ee6) | not built |
 | `convert` | Conversion Arcana | the source record | converted text and a conversion receipt | X3 (2c7133da), X4 (93ca3f5e) | not built as a Doclab call; the API is live |
-| `recognise` | Doclab Arcana | the source, or the converted text | a transcription with page anchors | X5 (f5c304bc) | built for PDF and images on the operator's Apple Silicon Mac |
+| `recognise` | Doclab Arcana | the source, or the converted text (the source when `convert` was skipped) | a transcription with page anchors | X5 (f5c304bc) | built for PDF and images on the operator's Apple Silicon Mac |
 | `bundle` | Doclab Arcana | the transcription | a checked result bundle with a damage list | X5 (f5c304bc) | built |
 | `kc-package` | Doclab Arcana | the result bundle | a `book-package/2` package | K5 (7c68d3d8, done), X5 (f5c304bc) | built (doclab-arcana#8) |
 | `library` | Knowledge Contract | the package | a library entry with a stable registry id | X5 (f5c304bc), E2a (8b70ed28) | not built |
 | `publish` | contract-place-api | the library entry | an allowlist row with digest and chunk count | X6 (7f4a6667) | built for corpus documents; no book class |
 | `index` | kb-feeder and Scrutator | the published document | chunks in the knowledge base with a reader | X6 (7f4a6667) | built for the corpus; not for books |
 
-**PIP-R001.** A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage.
+**PIP-R001.** A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage, and only `classify` and `convert` MAY end `skipped`.
 
 A retry of a stage is a new chain for the same document, never a second receipt in the old one: the old chain keeps its record of the attempt that did not finish.
 
@@ -57,7 +57,7 @@ A retry of a stage is a new chain for the same document, never a second receipt 
 
 A changed source is a new document with a new key; it is never an edit of the old one. Human-facing names (a book slug, a package identifier, work, edition and representation identifiers) are names that map to the key in the library registry; a location (a Drive identifier, a path, a server mirror) is never an identifier. The library of books moved from one Drive folder to another with every key intact, which is the case this rule exists for.
 
-**PIP-R003.** The `intake` receipt MUST list, as its input with role `source`, the digest that the key names; a chain whose key is not the digest of its own source is invalid.
+**PIP-R003.** The `intake` receipt MUST list exactly one input with role `source`, and it MUST be the digest that the key names; a chain whose key is not the digest of its own source is invalid. An `intake` that did not finish and lists no source is not judged.
 
 This rule is reversible.
 
@@ -71,7 +71,7 @@ Each stage writes one `PipelineStageReceipt/v1` next to the artefacts it produce
 
 A receipt records: the document key; the stage; a run identifier; the tool and its version; the host-clock start and finish; the outcome; for a refusal, a pause or a failure, a reason; the rights class at that stage; the SHA-256 of every input and every output; optional measurements; and the SHA-256 of the previous stage's receipt file. `kc2_admission` is always `not_measured`.
 
-**PIP-R006.** An outcome of `done` MUST list at least one input and one output; any other outcome (`paused_safe`, `refused`, `failed`) MUST give a reason and list no output.
+**PIP-R006.** An outcome of `done` MUST list at least one input and one output; any other outcome (`skipped`, `paused_safe`, `refused`, `failed`) MUST give a reason and list no output.
 
 A stage that did not finish therefore offers nothing that a later stage could consume.
 
@@ -79,9 +79,9 @@ A stage that did not finish therefore offers nothing that a later stage could co
 
 **PIP-R008.** A stage MUST verify the digest of its predecessor's receipt and of each of its own inputs before it writes, and an absent or unverifiable predecessor MUST end the stage as `paused_safe`, not be guessed around.
 
-**PIP-R009.** A stage that finished MUST list among its inputs at least one output of its predecessor.
+**PIP-R009.** A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished, or the original source.
 
-**PIP-R010.** No receipt MAY follow a receipt whose outcome is not `done`.
+**PIP-R010.** No receipt MAY follow a receipt whose outcome is `paused_safe`, `refused` or `failed`.
 
 **PIP-R011.** A stage MUST NOT finish before it started or start before its predecessor finished.
 
@@ -92,8 +92,8 @@ A measurement is either `measured` with a value or `not_measured` with a reason 
 | Edge | What is handed over | Digest and validator |
 | --- | --- | --- |
 | intake → classify | the source record | the source digest, the key |
-| classify → convert, recognise | the classification and the source | the record digest |
-| convert → recognise | converted text and the conversion receipt | the text digest |
+| classify → convert | the classification and the source | the record digest |
+| convert → recognise | converted text and the conversion receipt, or nothing when `convert` was skipped (then recognise reads the source) | the text digest, or the source digest |
 | recognise → bundle | the transcription with page anchors | the Doclab bundle manifest |
 | bundle → kc-package | the result bundle | the bundle manifest digest |
 | kc-package → library | a `book-package/2` package | [`check_book_package.py`](../../../tools/check_book_package.py) |
@@ -112,17 +112,17 @@ A stage that cannot proceed ends as `paused_safe` with a reason; it does not emi
 
 ## 8. Conformance
 
-The validator reads a directory of receipts and nothing else. It applies the schema to every file and then these rules, each with a stable refusal code:
+The validator reads a directory of receipts and nothing else. It applies the schema to every file and then these rules, each with a stable refusal code. The requirement that a different pipeline key amends this document, the rule that a derived index is rebuildable and the rule that a stage verifies its predecessor before it writes are process requirements: they bind the stages and the people who amend this document, and no validator can check them from a chain.
 
 | Code | Refusal |
 | --- | --- |
-| `PIPE-READ`, `PIPE-SCHEMA` | not strict JSON (duplicate member, BOM, invalid UTF-8) or not matching the schema (unknown field, an unmeasured value with a number, `kc2_admission` other than `not_measured`, outputs on a stage that did not finish) |
+| `PIPE-EMPTY`, `PIPE-READ`, `PIPE-SCHEMA` | no receipt in the directory; not strict JSON (duplicate member, BOM, invalid UTF-8), a symbolic link or a file over 1 MiB; or not matching the schema (unknown field, an unmeasured value with a number, `kc2_admission` other than `not_measured`, outputs on a stage that did not finish) |
 | `PIPE-HEAD`, `PIPE-LINK`, `PIPE-FORK` | not exactly one head (a stray second chain, or none); a link naming no receipt of the chain (a receipt altered, removed or missing); a receipt with two successors |
 | `PIPE-ID`, `PIPE-IDENTITY` | the key changes inside the chain; the key is not the digest of the original |
-| `PIPE-STAGE-ORDER`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; a receipt after one that did not finish; no input from the predecessor; time running backwards |
+| `PIPE-STAGE-ORDER`, `PIPE-SKIP`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; an essential stage skipped; a receipt after a paused, refused or failed one; no input from the nearest earlier finished stage or the source; time running backwards |
 | `PIPE-RIGHTS` | the rights class widened |
 
-Twenty mutants of one valid synthetic chain, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
+Two valid synthetic chains (all nine stages, and one with `convert` skipped) and twenty-three mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
 
 ## 9. What is and is not established
 

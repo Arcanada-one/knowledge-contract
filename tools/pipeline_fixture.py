@@ -82,6 +82,11 @@ def variants() -> dict[str, dict[str, bytes]]:
             chains[name] = link(rs)
 
     chains["valid/synthetic-chain"] = link(base)
+
+    native = copy.deepcopy(base)  # a format Doclab reads as it is: convert is skipped with its reason and recognise reads the source
+    native[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", outputs=[])
+    native[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
+    chains["valid/native-format-chain"] = link(native)
     mutant("invalid/id_changed", lambda rs: rs[4].update(document_id="d_" + "0" * 64))
     mutant("invalid/stage_missing", lambda rs: rs.pop(2))
     mutant("invalid/stage_repeated", lambda rs: rs.insert(3, copy.deepcopy(rs[2])))
@@ -112,6 +117,19 @@ def variants() -> dict[str, dict[str, bytes]]:
     def backwards(rs):
         rs[3].update(started_at="2026-11-05T09:00:00Z", finished_at="2026-11-05T09:00:10Z")
     mutant("invalid/time_runs_backwards", backwards)
+
+    def essential_skipped(rs):
+        rs[4].update(outcome="skipped", reason="not wanted", outputs=[])
+    mutant("invalid/essential_stage_skipped", essential_skipped)
+
+    def refused_wrong_id(rs):
+        rs[0].update(outcome="refused", reason="not a document", outputs=[], inputs=[{"role": "source", "sha256": sha("another file")}])
+        del rs[1:]
+    mutant("invalid/refused_intake_with_a_foreign_source", refused_wrong_id)
+
+    def two_sources(rs):
+        rs[0]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}, {"role": "source", "sha256": sha("a second file")}]
+    mutant("invalid/two_source_inputs", two_sources)
 
     def kc2(rs):
         rs[6]["kc2_admission"] = "admitted"
@@ -145,7 +163,8 @@ def variants() -> dict[str, dict[str, bytes]]:
 
 
 EXPECTED = {
-    "valid/synthetic-chain": None, "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
+    "valid/synthetic-chain": None, "valid/native-format-chain": None, "invalid/essential_stage_skipped": "PIPE-SKIP",
+    "invalid/refused_intake_with_a_foreign_source": "PIPE-IDENTITY", "invalid/two_source_inputs": "PIPE-IDENTITY", "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
     "invalid/out_of_order": "PIPE-STAGE-ORDER", "invalid/starts_at_classify": "PIPE-STAGE-ORDER", "invalid/rights_widened": "PIPE-RIGHTS",
     "invalid/consumed_after_refusal": "PIPE-AFTER-STOP", "invalid/partial_output_kept": "PIPE-SCHEMA", "invalid/input_not_from_predecessor": "PIPE-INPUT",
     "invalid/source_is_not_the_id": "PIPE-IDENTITY", "invalid/time_runs_backwards": "PIPE-TIME", "invalid/kc2_admission_claimed": "PIPE-SCHEMA",

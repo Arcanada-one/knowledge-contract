@@ -2034,7 +2034,7 @@
       "id": "PIP-R001",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "2. The nine stages",
-      "text": "A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage.",
+      "text": "A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage, and only `classify` and `convert` MAY end `skipped`.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2050,7 +2050,7 @@
       "id": "PIP-R003",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "3. Document identity",
-      "text": "The `intake` receipt MUST list, as its input with role `source`, the digest that the key names; a chain whose key is not the digest of its own source is invalid.",
+      "text": "The `intake` receipt MUST list exactly one input with role `source`, and it MUST be the digest that the key names; a chain whose key is not the digest of its own source is invalid. An `intake` that did not finish and lists no source is not judged.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2074,7 +2074,7 @@
       "id": "PIP-R006",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "4. Stage receipts",
-      "text": "An outcome of `done` MUST list at least one input and one output; any other outcome (`paused_safe`, `refused`, `failed`) MUST give a reason and list no output.",
+      "text": "An outcome of `done` MUST list at least one input and one output; any other outcome (`skipped`, `paused_safe`, `refused`, `failed`) MUST give a reason and list no output.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2098,7 +2098,7 @@
       "id": "PIP-R009",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "4. Stage receipts",
-      "text": "A stage that finished MUST list among its inputs at least one output of its predecessor.",
+      "text": "A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished, or the original source.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2106,7 +2106,7 @@
       "id": "PIP-R010",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "4. Stage receipts",
-      "text": "No receipt MAY follow a receipt whose outcome is not `done`.",
+      "text": "No receipt MAY follow a receipt whose outcome is `paused_safe`, `refused` or `failed`.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

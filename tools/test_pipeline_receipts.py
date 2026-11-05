@@ -72,16 +72,35 @@ class FixtureTests(unittest.TestCase):
 
     def test_there_are_twenty_mutants_and_every_code_of_the_specification_has_one(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 20)
+        self.assertEqual(len(invalid), 23)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))
-        self.assertEqual(listed, {c for c in set(fx.EXPECTED.values()) if c})
+        self.assertEqual(listed - {"PIPE-EMPTY"}, {c for c in set(fx.EXPECTED.values()) if c})
+        self.assertIn("PIPE-EMPTY", listed)  # refused by test_an_empty_or_missing_directory_is_refused: a directory cannot be committed empty
 
     def test_fixtures_are_deterministic(self):
         self.assertEqual(fx.variants(), fx.variants())
 
 
 class ValidatorBehaviourTests(unittest.TestCase):
+    def test_a_skipped_convert_is_a_valid_chain_and_recognise_reads_the_source(self):
+        files = fx.variants()["valid/native-format-chain"]
+        self.assertEqual(cpr.check_chain(materialise(files)), [])
+        skipped = json.loads(files["03-convert.json"])
+        self.assertEqual((skipped["outcome"], skipped["outputs"]), ("skipped", []))
+
+    def test_a_receipt_may_not_be_a_symbolic_link_or_oversized(self):
+        valid = fx.variants()["valid/synthetic-chain"]
+        directory = materialise(valid)
+        target = Path(tempfile.mkdtemp()) / "elsewhere.json"
+        target.write_bytes(valid["01-intake.json"])
+        (directory / "01-intake.json").unlink()
+        (directory / "01-intake.json").symlink_to(target)
+        self.assertIn("PIPE-READ", codes(cpr.check_chain(directory)))
+        big = materialise(valid)
+        (big / "99-big.json").write_bytes(b" " * (cpr.MAX_RECEIPT_BYTES + 1))
+        self.assertIn("PIPE-READ", codes(cpr.check_chain(big)))
+
     def test_an_empty_or_missing_directory_is_refused(self):
         self.assertEqual(codes(cpr.check_chain(Path(tempfile.mkdtemp()))), {"PIPE-EMPTY"})
         self.assertEqual(codes(cpr.check_chain(Path("/nonexistent-chain-directory"))), {"PIPE-EMPTY"})
@@ -134,6 +153,7 @@ class ValidatorMutationTests(unittest.TestCase):
         "PIPE-IDENTITY": "invalid/source_is_not_the_id", "PIPE-AFTER-STOP": "invalid/consumed_after_refusal",
         "PIPE-INPUT": "invalid/input_not_from_predecessor", "PIPE-TIME": "invalid/time_runs_backwards",
         "PIPE-RIGHTS": "invalid/rights_widened", "PIPE-STAGE-ORDER": "invalid/out_of_order", "PIPE-HEAD": "invalid/orphan_file",
+        "PIPE-SKIP": "invalid/essential_stage_skipped",
     }
 
     def test_each_rule_is_load_bearing(self):
