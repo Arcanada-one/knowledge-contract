@@ -160,7 +160,8 @@ class ImportAdapterTests(unittest.TestCase):
         self.assertIn("only in the package's rights record, never in a receipt", spec)
         self.assertIn("a chain that starts at `unknown` does not end at `public_domain`", spec)
         self.assertIn("A receipt never claims work that was not done", spec)
-        self.assertIn("the imported `recognise` is the one case of a stage that verified and did not run", spec)
+        self.assertIn("records work that was verified rather than performed, and says so by its measurements", spec)
+        self.assertNotIn("the one case of a stage that verified and did not run", spec)
         chain = self.chain("valid/imported-recognition-chain")
         self.assertEqual({r["rights_class"] for r in chain}, {"unknown"})  # the imported chain determines nothing
         widened = self.chain("valid/imported-recognition-chain")
