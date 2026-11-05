@@ -71,7 +71,7 @@ Each stage writes one `PipelineStageReceipt/v1` next to the artefacts it produce
 
 A receipt records: the document key; the stage; a run identifier; the tool and its version; the host-clock start and finish; the outcome; for a refusal, a pause or a failure, a reason; the rights class at that stage; the SHA-256 of every input and every output; optional measurements; and the SHA-256 of the previous stage's receipt file. `kc2_admission` is always `not_measured`.
 
-**PIP-R006.** An outcome of `done` MUST list at least one input and one output; any other outcome (`skipped`, `paused_safe`, `refused`, `failed`) MUST give a reason and list no output.
+**PIP-R006.** An outcome of `done` MUST list at least one input and one output; `skipped` MUST give a reason and list no input and no output; `paused_safe`, `refused` and `failed` MUST give a reason and list no output.
 
 A stage that did not finish therefore offers nothing that a later stage could consume.
 
@@ -79,7 +79,7 @@ A stage that did not finish therefore offers nothing that a later stage could co
 
 **PIP-R008.** A stage MUST verify the digest of its predecessor's receipt and of each of its own inputs before it writes, and an absent or unverifiable predecessor MUST end the stage as `paused_safe`, not be guessed around.
 
-**PIP-R009.** A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished; `intake`, `classify`, `convert` and `recognise` MAY also take the original source as an input, and no later stage MAY list it.
+**PIP-R009.** A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished or, for `intake`, `classify`, `convert` and `recognise` only, the original source; no later stage MAY list the original source as an input.
 
 **PIP-R010.** No receipt MAY follow a receipt whose outcome is `paused_safe`, `refused` or `failed`.
 

@@ -72,7 +72,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_every_code_of_the_specification_has_a_mutant(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 25)
+        self.assertEqual(len(invalid), 27)
         self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 12)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))

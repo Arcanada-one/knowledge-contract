@@ -84,14 +84,13 @@ def variants() -> dict[str, dict[str, bytes]]:
     chains["valid/synthetic-chain"] = link(base)
 
     native = copy.deepcopy(base)  # a format Doclab reads as it is: convert is skipped with its reason and recognise reads the source
-    native[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", outputs=[])
+    native[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", inputs=[], outputs=[])
     native[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
     chains["valid/native-format-chain"] = link(native)
 
     both = copy.deepcopy(base)  # neither classified nor converted: recognise reads the source
-    both[1].update(outcome="skipped", reason="no classification is wanted for this document", outputs=[])
-    both[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", outputs=[])
-    both[1]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
+    both[1].update(outcome="skipped", reason="no classification is wanted for this document", inputs=[], outputs=[])
+    both[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", inputs=[], outputs=[])
     both[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
     chains["valid/classify-and-convert-skipped"] = link(both)
 
@@ -134,12 +133,20 @@ def variants() -> dict[str, dict[str, bytes]]:
         rs[4]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
     mutant("invalid/source_as_input_of_a_later_stage", source_late)
 
+    def source_beside_a_proper_input(rs):
+        rs[4]["inputs"] = rs[4]["inputs"] + [{"role": "source", "sha256": SOURCE_SHA}]
+    mutant("invalid/source_beside_a_proper_input", source_beside_a_proper_input)
+
+    def skipped_with_input(rs):
+        rs[2].update(outcome="skipped", reason="no conversion is needed", outputs=[])
+    mutant("invalid/skipped_stage_with_an_input", skipped_with_input)
+
     def blank_reason(rs):
         rs[2].update(outcome="skipped", reason="   ", outputs=[])
     mutant("invalid/blank_reason", blank_reason)
 
     def essential_skipped(rs):
-        rs[4].update(outcome="skipped", reason="not wanted", outputs=[])
+        rs[4].update(outcome="skipped", reason="not wanted", inputs=[], outputs=[])
     mutant("invalid/essential_stage_skipped", essential_skipped)
 
     def refused_wrong_id(rs):
@@ -184,7 +191,8 @@ def variants() -> dict[str, dict[str, bytes]]:
 
 EXPECTED = {
     "valid/synthetic-chain": None, "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
-    **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",
+    **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA",
+    "invalid/source_beside_a_proper_input": "PIPE-SOURCE", "invalid/skipped_stage_with_an_input": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",
     "invalid/refused_intake_with_a_foreign_source": "PIPE-IDENTITY", "invalid/two_source_inputs": "PIPE-IDENTITY", "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
     "invalid/out_of_order": "PIPE-STAGE-ORDER", "invalid/starts_at_classify": "PIPE-STAGE-ORDER", "invalid/rights_widened": "PIPE-RIGHTS",
     "invalid/consumed_after_refusal": "PIPE-AFTER-STOP", "invalid/partial_output_kept": "PIPE-SCHEMA", "invalid/input_not_from_predecessor": "PIPE-INPUT",

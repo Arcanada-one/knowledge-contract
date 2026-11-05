@@ -50,7 +50,8 @@
   },
   "allOf": [
     {"if": {"properties": {"outcome": {"const": "done"}}}, "then": {"properties": {"inputs": {"minItems": 1}, "outputs": {"minItems": 1}}, "not": {"required": ["reason"]}}},
-    {"if": {"properties": {"outcome": {"enum": ["skipped", "paused_safe", "refused", "failed"]}}}, "then": {"required": ["reason"], "properties": {"outputs": {"maxItems": 0}}}}
+    {"if": {"properties": {"outcome": {"enum": ["paused_safe", "refused", "failed"]}}}, "then": {"required": ["reason"], "properties": {"outputs": {"maxItems": 0}}}},
+    {"if": {"properties": {"outcome": {"const": "skipped"}}}, "then": {"required": ["reason"], "properties": {"inputs": {"maxItems": 0}, "outputs": {"maxItems": 0}}}}
   ],
   "$defs": {
     "artefact": {
