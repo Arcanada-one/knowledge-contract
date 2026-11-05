@@ -2146,7 +2146,7 @@
       "id": "PIP-R026",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "A chain with an imported `recognise` is a new chain for the same document key: it starts at `intake` with the source hashed at the time of the import, `classify` MAY end `skipped`, the earlier recognition outputs and evidence are kept unchanged and referenced by digest only, and the rights rule of PIP-R012 applies to it as to any chain (the class is resolved before the chain when evidence exists, otherwise the chain carries `unknown` or `third_party_restricted`). A consumer that needs recognition to have been executed MUST read `recognition_executed`; a checker that accepts the chain does not say that it was. The absence of the measurement means that it is not established, never that recognition ran, and a `true` is the producer's statement; an import presented under the name of an ordinary recognition tool and without the measurement cannot be told from a run by its receipt. The checker reads receipts only: that the verified outputs match the source bytes is established by the importer at the time of the import and by nothing in the chain. The recorded-figure naming, the choice of the rights class and a non-empty `original_run_id` are rules of the producer that the checker does not enforce, and the match of `-import` is exact and case-sensitive.",
+      "text": "A chain with an imported `recognise` is a new chain for the same document key: it starts at `intake` with the source hashed at the time of the import, `classify` MAY end `skipped`, the earlier recognition outputs and evidence are kept unchanged and referenced by digest only, and the rights rules of PIP-R012 and PIP-R027 apply to it as to any chain (the receipts carry the rights state known at each stage, which for an imported book is `unknown`, or `third_party_restricted` when that is known; the determination of the work's rights is in the package's rights record). No receipt is written for a stage that did not run: a stage that may be skipped is recorded as skipped with its reason, and otherwise the chain stops. A consumer that needs recognition to have been executed MUST read `recognition_executed`; a checker that accepts the chain does not say that it was. The absence of the measurement means that it is not established, never that recognition ran, and a `true` is the producer's statement; an import presented under the name of an ordinary recognition tool and without the measurement cannot be told from a run by its receipt. The checker reads receipts only: that the verified outputs match the source bytes is established by the importer at the time of the import and by nothing in the chain. The recorded-figure naming, the choice of the rights class and a non-empty `original_run_id` are rules of the producer that the checker does not enforce, and the match of `-import` is exact and case-sensitive.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2155,6 +2155,14 @@
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "6. Rights and publication boundary",
       "text": "A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown`, and then `public_domain` and `author_open`, which are equally open.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R027",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "6. Rights and publication boundary",
+      "text": "The rights class a receipt carries MUST be the rights state known at that stage, and a determination of the rights of a work (for example `public_domain` with its evidence) MUST be made only in the package's rights record, never in a receipt; a chain that starts at `unknown` does not end at `public_domain`, and the receipt classes and the package's rights record are read separately.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

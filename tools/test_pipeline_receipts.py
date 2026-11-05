@@ -151,6 +151,18 @@ class ImportAdapterTests(unittest.TestCase):
         imported[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[])
         self.assertEqual(cpr.check_chain(materialise(fx.link(imported[:4]))), [])
 
+    def test_the_receipts_carry_the_rights_state_known_and_a_determination_lives_only_in_the_package(self):
+        spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
+        self.assertIn("the rights state known at that stage", spec)
+        self.assertIn("only in the package's rights record, never in a receipt", spec)
+        self.assertIn("a chain that starts at `unknown` does not end at `public_domain`", spec)
+        self.assertIn("No receipt is written for a stage that did not run", spec)
+        chain = self.chain("valid/imported-recognition-chain")
+        self.assertEqual({r["rights_class"] for r in chain}, {"unknown"})  # the imported chain determines nothing
+        widened = self.chain("valid/imported-recognition-chain")
+        widened[-1]["rights_class"] = "public_domain"  # a determination made in a receipt is a widening
+        self.assertIn("PIPE-RIGHTS", codes(cpr.check_chain(materialise(fx.link(widened)))))
+
     def test_the_receipt_schema_gained_no_field_for_imports(self):
         schema = json.loads((cpr.REPO / "schemas" / "pipeline-receipt.schema.json").read_text())
         self.assertNotIn("import", json.dumps(schema).lower())
