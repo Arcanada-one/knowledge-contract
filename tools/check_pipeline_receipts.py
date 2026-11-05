@@ -31,7 +31,8 @@ RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "public_domain": 2, "a
 SKIPPABLE = frozenset(("classify", "convert"))
 # The stages that may take the ORIGINAL SOURCE as an input; every later stage works from what an earlier stage produced.
 SOURCE_STAGES = frozenset(("intake", "classify", "convert", "recognise"))
-IMPORT_SUFFIX = "-import"  # a tool that verifies existing outputs instead of running a stage names the import
+IMPORT_SUFFIX = "-import"  # a tool that verifies existing outputs instead of running a stage names the import (the match is exact and case-sensitive)
+IMPORT_MEASUREMENTS = ("recognition_executed", "original_run_id", "original_finished_at")
 MAX_RECEIPT_BYTES = 1 << 20
 FORMAT_CHECKER = jsonschema.FormatChecker()
 
@@ -119,14 +120,21 @@ def check_chain(root: Path) -> list[str]:
             problems.append(f"PIPE-AFTER-STOP: {where}: follows {names[i - 1]}, whose outcome is {chain[i - 1]['outcome']}; nothing consumes a stage that did not finish")
         if record["outcome"] == "skipped" and record["stage"] not in SKIPPABLE:
             problems.append(f"PIPE-SKIP: {where}: stage {record['stage']} is essential and cannot end skipped; only {', '.join(sorted(SKIPPABLE))} can")
+        measurement_names = [m["name"] for m in record.get("measurements", [])]
+        for name in IMPORT_MEASUREMENTS:
+            if measurement_names.count(name) > 1:
+                problems.append(f"PIPE-IMPORT: {where}: the measurement {name} appears more than once; a consumer must not be able to read a different value than the checker did")
         measured = {m["name"]: m for m in record.get("measurements", [])}
         executed = measured.get("recognition_executed")
         if record["tool"]["name"].endswith(IMPORT_SUFFIX):
             if record["stage"] != "recognise":
                 problems.append(f"PIPE-IMPORT: {where}: the tool names an import but the stage is {record['stage']}; an import adapter exists for recognise only")
-            elif record["outcome"] == "done":
-                if not (executed and executed["status"] == "measured" and executed.get("value") is False):
+            else:
+                if executed and not (executed["status"] == "measured" and executed.get("value") is False):
+                    problems.append(f"PIPE-IMPORT: {where}: an import never claims recognition_executed other than measured false, whatever its outcome")
+                if record["outcome"] == "done" and not executed:
                     problems.append(f"PIPE-IMPORT: {where}: an import that finished must carry the measurement recognition_executed as measured false")
+            if record["stage"] == "recognise" and record["outcome"] == "done":
                 for name in ("original_run_id", "original_finished_at"):
                     if name not in measured:
                         problems.append(f"PIPE-IMPORT: {where}: an import that finished must carry the measurement {name} (measured, or not_measured with a reason)")

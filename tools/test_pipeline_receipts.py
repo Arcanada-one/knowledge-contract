@@ -72,7 +72,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_every_code_of_the_specification_has_a_mutant(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 35)
+        self.assertEqual(len(invalid), 37)
         self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 13)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))
@@ -81,7 +81,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_the_counts_the_specification_states_are_the_counts_of_the_fixtures(self):
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
-        words = {13: "Thirteen", 35: "thirty-five"}
+        words = {13: "Thirteen", 37: "thirty-seven"}
         valid = len([n for n in fx.EXPECTED if n.startswith("valid/")])
         invalid = len([n for n in fx.EXPECTED if n.startswith("invalid/")])
         self.assertIn(f"{words[valid]} valid", spec)
@@ -112,13 +112,37 @@ class ImportAdapterTests(unittest.TestCase):
 
     def test_the_import_rules_object_in_their_own_code_and_the_digest_mismatch_in_the_input_rule(self):
         imports = [n for n in fx.EXPECTED if n.startswith("invalid/") and ("import" in n or "recognition_not_executed" in n)]
-        self.assertEqual(len(imports), 8)
+        self.assertEqual(len(imports), 10)
         for name in imports:
             with self.subTest(name):
                 found = codes(cpr.check_chain(materialise(fx.variants()[name])))
                 self.assertEqual(found, {"PIPE-INPUT"} if name.endswith("output_not_consumed") else {"PIPE-IMPORT"}, name)
         elsewhere = cpr.check_chain(materialise(fx.variants()["invalid/import_named_on_another_stage"]))
         self.assertTrue(any("recognise only" in p for p in elsewhere), elsewhere)  # the stage rule itself, not the measurement rule that would also object
+
+    def test_other_spellings_of_false_are_not_false_and_the_match_of_the_import_name_is_exact(self):
+        def check(edit) -> set:
+            chain = self.chain("valid/imported-recognition-chain")
+            edit(chain)
+            return codes(cpr.check_chain(materialise(fx.link(chain))))
+        for value in ("false", 0, None):
+            with self.subTest(import_value=value):
+                found = check(lambda c, value=value: c[3]["measurements"][0].update(value=value))
+                self.assertTrue(found & {"PIPE-IMPORT", "PIPE-SCHEMA"}, found)
+            with self.subTest(ordinary_tool_value=value):
+                found = check(lambda c, value=value: (c[3].update(tool={"name": "doclab-ocr", "version": "0"}), c[3]["measurements"][0].update(value=value)))
+                self.assertNotIn("PIPE-IMPORT", found)  # "false" and 0 are not the boolean the rule is about; null is refused by the schema
+        # an ordinary tool with 0 does not claim the boolean false; with the real false it is refused
+        self.assertEqual(check(lambda c: (c[3].update(tool={"name": "doclab-ocr", "version": "0"}), c[3]["measurements"][0].update(value=0))), set())
+        self.assertIn("PIPE-IMPORT", check(lambda c: c[3].update(tool={"name": "doclab-Import", "version": "0"})))  # not an exact -import name, and false is claimed
+        self.assertEqual(check(lambda c: c[3].update(tool={"name": "doclab-import", "version": "0"})), set())
+
+    def test_a_repeated_original_run_id_or_finish_time_is_refused_too(self):
+        for name in ("original_run_id", "original_finished_at"):
+            with self.subTest(name):
+                chain = self.chain("valid/imported-recognition-chain")
+                chain[3]["measurements"].append({"name": name, "status": "not_measured", "reason": "listed twice"})
+                self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
 
     def test_an_ordinary_recognition_that_did_not_run_nothing_special_stays_valid_and_a_failed_import_needs_no_measurements(self):
         chain = self.chain("valid/synthetic-chain")

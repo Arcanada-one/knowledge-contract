@@ -2122,7 +2122,7 @@
       "id": "PIP-R023",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "The `recognise` stage MAY be performed by an import adapter that verifies existing recognition outputs against the source bytes now, instead of running recognition. The receipt of such an adapter MUST name the import in `tool.name` (a name ending in `-import`), MUST give the actual start and finish of the verification as `started_at` and `finished_at`, MUST list as `outputs` the existing recognition outputs that were verified, each by the SHA-256 of its exact bytes, and MUST list as `inputs` the source and MAY list the earlier evidence files by digest.",
+      "text": "The `recognise` stage MAY be performed by an import adapter that verifies existing recognition outputs against the source bytes now, instead of running recognition. The receipt of such an adapter MUST name the import in `tool.name` (a name ending in `-import`), MUST give the actual start and finish of the verification as `started_at` and `finished_at`, MUST list as `outputs` the existing recognition outputs that were verified, each by the SHA-256 of its exact bytes, and MUST list as `inputs` what PIP-R009 allows (the source, in a chain whose `classify` and `convert` were skipped) and MAY list the earlier evidence files by digest.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2138,7 +2138,7 @@
       "id": "PIP-R025",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "A receipt whose tool does not name an import MUST NOT claim `recognition_executed` as `false`, a receipt whose tool names an import MUST NOT claim it as `true`, and an import adapter exists for the `recognise` stage only.",
+      "text": "A receipt whose tool does not name an import MUST NOT claim `recognition_executed` as `false`; a receipt whose tool names an import, whatever its outcome, MUST NOT claim `recognition_executed` as anything but measured `false`; a receipt MUST NOT carry the measurements `recognition_executed`, `original_run_id` or `original_finished_at` twice; and an import adapter exists for the `recognise` stage only.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2146,7 +2146,7 @@
       "id": "PIP-R026",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "A chain with an imported `recognise` is a new chain for the same document key: it starts at `intake` with the source hashed at the time of the import, `classify` MAY end `skipped`, the earlier recognition outputs and evidence are kept unchanged and referenced by digest only, and the rights rule of PIP-R012 applies to it as to any chain (the class is resolved before the chain when evidence exists, otherwise the chain carries `unknown` or `third_party_restricted`). A consumer that needs recognition to have been executed MUST read `recognition_executed`; a checker that accepts the chain does not say that it was.",
+      "text": "A chain with an imported `recognise` is a new chain for the same document key: it starts at `intake` with the source hashed at the time of the import, `classify` MAY end `skipped`, the earlier recognition outputs and evidence are kept unchanged and referenced by digest only, and the rights rule of PIP-R012 applies to it as to any chain (the class is resolved before the chain when evidence exists, otherwise the chain carries `unknown` or `third_party_restricted`). A consumer that needs recognition to have been executed MUST read `recognition_executed`; a checker that accepts the chain does not say that it was. The absence of the measurement means that it is not established, never that recognition ran, and a `true` is the producer's statement; an import presented under the name of an ordinary recognition tool and without the measurement cannot be told from a run by its receipt. The checker reads receipts only: that the verified outputs match the source bytes is established by the importer at the time of the import and by nothing in the chain. The recorded-figure naming, the choice of the rights class and a non-empty `original_run_id` are rules of the producer that the checker does not enforce, and the match of `-import` is exact and case-sensitive.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

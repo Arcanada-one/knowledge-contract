@@ -195,6 +195,11 @@ def variants() -> dict[str, dict[str, bytes]]:
     import_mutant("invalid/import_without_original_finished_at", drop("original_finished_at"))
     import_mutant("invalid/recognition_not_executed_but_not_an_import", lambda rs: rs[3].update(tool={"name": "doclab-ocr", "version": "0.0.0"}))
     import_mutant("invalid/import_named_on_another_stage", lambda rs: rs[4].update(tool={"name": "doclab-import", "version": "0.0.0"}))
+    import_mutant("invalid/import_with_recognition_executed_twice",
+                  lambda rs: rs[3].update(measurements=[{"name": "recognition_executed", "status": "measured", "value": True}] + rs[3]["measurements"]))
+    import_mutant("invalid/refused_import_claiming_recognition_executed",
+                  lambda rs: (rs[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[{"name": "recognition_executed", "status": "measured", "value": True}]),
+                              rs.__delitem__(slice(4, None))))
     import_mutant("invalid/import_output_not_consumed", lambda rs: rs[3].update(outputs=[{"role": "transcription", "sha256": sha("another transcription")}]))
 
     valid = chains["valid/synthetic-chain"]
@@ -221,7 +226,8 @@ EXPECTED = {
     "invalid/import_without_recognition_executed": "PIPE-IMPORT", "invalid/import_claims_recognition_executed": "PIPE-IMPORT",
     "invalid/import_with_recognition_executed_not_measured": "PIPE-IMPORT", "invalid/import_without_original_run_id": "PIPE-IMPORT",
     "invalid/import_without_original_finished_at": "PIPE-IMPORT", "invalid/recognition_not_executed_but_not_an_import": "PIPE-IMPORT",
-    "invalid/import_named_on_another_stage": "PIPE-IMPORT", "invalid/import_output_not_consumed": "PIPE-INPUT", "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
+    "invalid/import_named_on_another_stage": "PIPE-IMPORT", "invalid/import_with_recognition_executed_twice": "PIPE-IMPORT",
+    "invalid/refused_import_claiming_recognition_executed": "PIPE-IMPORT", "invalid/import_output_not_consumed": "PIPE-INPUT", "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
     **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA",
     "invalid/source_beside_a_proper_input": "PIPE-SOURCE", "invalid/skipped_stage_with_an_input": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",
     "invalid/refused_intake_with_a_foreign_source": "PIPE-IDENTITY", "invalid/two_source_inputs": "PIPE-IDENTITY", "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
