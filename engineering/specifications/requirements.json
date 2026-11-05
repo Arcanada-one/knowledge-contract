@@ -2151,6 +2151,14 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "PIP-R028",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "Recognition by import",
+      "text": "In a chain whose `recognise` is an import, the `bundle` stage MAY verify an existing bundle instead of assembling it, and when it does it MUST record that with the measurements `bundle_assembled` measured `false` and `bundle_verified` measured `true`, and lists the verified bundle manifest by the SHA-256 of its exact bytes as its output; its tool does not name an import (PIP-R025 allows that name on `recognise` only). The two measurements are carried together on the `bundle` stage and nowhere else, each measured `true` or `false`, and `bundle_assembled` `false` is valid only after an imported `recognise`; an ordinary bundle stage needs neither.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "PIP-R012",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "6. Rights and publication boundary",

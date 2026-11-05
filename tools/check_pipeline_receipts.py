@@ -32,7 +32,8 @@ SKIPPABLE = frozenset(("classify", "convert"))
 # The stages that may take the ORIGINAL SOURCE as an input; every later stage works from what an earlier stage produced.
 SOURCE_STAGES = frozenset(("intake", "classify", "convert", "recognise"))
 IMPORT_SUFFIX = "-import"  # a tool that verifies existing outputs instead of running a stage names the import (the match is exact and case-sensitive)
-IMPORT_MEASUREMENTS = ("recognition_executed", "original_run_id", "original_finished_at")
+IMPORT_MEASUREMENTS = ("recognition_executed", "original_run_id", "original_finished_at", "bundle_assembled", "bundle_verified")
+BUNDLE_MEASUREMENTS = ("bundle_assembled", "bundle_verified")
 MAX_RECEIPT_BYTES = 1 << 20
 FORMAT_CHECKER = jsonschema.FormatChecker()
 
@@ -140,6 +141,19 @@ def check_chain(root: Path) -> list[str]:
                         problems.append(f"PIPE-IMPORT: {where}: an import that finished must carry the measurement {name} (measured, or not_measured with a reason)")
         elif executed and executed["status"] == "measured" and executed.get("value") is False:
             problems.append(f"PIPE-IMPORT: {where}: recognition_executed is false but the tool {record['tool']['name']} does not name an import")
+        carried = [n for n in BUNDLE_MEASUREMENTS if n in measured]
+        if carried and record["stage"] != "bundle":
+            problems.append(f"PIPE-IMPORT: {where}: the measurements {', '.join(carried)} belong to the bundle stage, this is {record['stage']}")
+        elif record["stage"] == "bundle" and carried:
+            assembled, verified = measured.get("bundle_assembled"), measured.get("bundle_verified")
+            if not (assembled and verified and all(m["status"] == "measured" and isinstance(m.get("value"), bool) for m in (assembled, verified))):
+                problems.append(f"PIPE-IMPORT: {where}: bundle_assembled and bundle_verified are carried together, each measured true or false")
+            elif assembled["value"] is False:
+                recognise = next((c for c in chain[:i] if c["stage"] == "recognise"), None)
+                if verified["value"] is not True:
+                    problems.append(f"PIPE-IMPORT: {where}: a bundle that was not assembled must have been verified (bundle_verified measured true)")
+                if not (recognise and recognise["tool"]["name"].endswith(IMPORT_SUFFIX)):
+                    problems.append(f"PIPE-IMPORT: {where}: a bundle is verified instead of assembled only in a chain whose recognise is an import")
         if record["finished_at"] < record["started_at"] or (i and record["started_at"] < chain[i - 1]["finished_at"]):
             problems.append(f"PIPE-TIME: {where}: a stage starts after its predecessor finished and does not finish before it started")
         if i and RIGHTS_RANK[record["rights_class"]] > RIGHTS_RANK[chain[i - 1]["rights_class"]]:

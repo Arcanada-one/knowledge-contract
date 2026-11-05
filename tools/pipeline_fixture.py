@@ -102,6 +102,7 @@ def variants() -> dict[str, dict[str, bytes]]:
                                      {"name": "original_run_id", "status": "measured", "value": "run.recognise.earlier"},
                                      {"name": "original_finished_at", "status": "not_measured", "reason": "the earlier evidence does not record a finish time"},
                                      {"name": "recorded_damage_places", "status": "measured", "value": 5}])
+    imported[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}, {"name": "bundle_verified", "status": "measured", "value": True}])  # the existing bundle is verified, not assembled
     chains["valid/imported-recognition-chain"] = link(imported)
 
     for n, stage in enumerate(cpr.STAGES):  # a chain may end at any stage with a refusal
@@ -200,6 +201,13 @@ def variants() -> dict[str, dict[str, bytes]]:
     import_mutant("invalid/refused_import_claiming_recognition_executed",
                   lambda rs: (rs[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[{"name": "recognition_executed", "status": "measured", "value": True}]),
                               rs.__delitem__(slice(4, None))))
+    import_mutant("invalid/bundle_verify_only_after_a_recognise_that_is_not_an_import", lambda rs: rs[3].update(tool={"name": "doclab-ocr", "version": "0.0.0"}, measurements=[]))
+    import_mutant("invalid/bundle_assembled_false_without_bundle_verified_in_an_import_chain",
+                  lambda rs: rs[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}]))
+    import_mutant("invalid/bundle_measurement_on_the_import_stage_instead_of_bundle",
+                  lambda rs: rs[3].update(measurements=rs[3]["measurements"] + [{"name": "bundle_verified", "status": "measured", "value": True}]))
+    import_mutant("invalid/bundle_neither_assembled_nor_verified_in_an_import_chain",
+                  lambda rs: rs[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}, {"name": "bundle_verified", "status": "measured", "value": False}]))
     import_mutant("invalid/import_output_not_consumed", lambda rs: rs[3].update(outputs=[{"role": "transcription", "sha256": sha("another transcription")}]))
 
     valid = chains["valid/synthetic-chain"]
@@ -226,7 +234,9 @@ EXPECTED = {
     "invalid/import_without_recognition_executed": "PIPE-IMPORT", "invalid/import_claims_recognition_executed": "PIPE-IMPORT",
     "invalid/import_with_recognition_executed_not_measured": "PIPE-IMPORT", "invalid/import_without_original_run_id": "PIPE-IMPORT",
     "invalid/import_without_original_finished_at": "PIPE-IMPORT", "invalid/recognition_not_executed_but_not_an_import": "PIPE-IMPORT",
-    "invalid/import_named_on_another_stage": "PIPE-IMPORT", "invalid/import_with_recognition_executed_twice": "PIPE-IMPORT",
+    "invalid/import_named_on_another_stage": "PIPE-IMPORT", "invalid/bundle_verify_only_after_a_recognise_that_is_not_an_import": "PIPE-IMPORT",
+    "invalid/bundle_assembled_false_without_bundle_verified_in_an_import_chain": "PIPE-IMPORT", "invalid/bundle_measurement_on_the_import_stage_instead_of_bundle": "PIPE-IMPORT",
+    "invalid/bundle_neither_assembled_nor_verified_in_an_import_chain": "PIPE-IMPORT", "invalid/import_with_recognition_executed_twice": "PIPE-IMPORT",
     "invalid/refused_import_claiming_recognition_executed": "PIPE-IMPORT", "invalid/import_output_not_consumed": "PIPE-INPUT", "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
     **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA",
     "invalid/source_beside_a_proper_input": "PIPE-SOURCE", "invalid/skipped_stage_with_an_input": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",

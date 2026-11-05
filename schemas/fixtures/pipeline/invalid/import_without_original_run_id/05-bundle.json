@@ -10,14 +10,14 @@
   "kc2_admission": "not_measured",
   "measurements": [
     {
-      "name": "units_seen",
+      "name": "bundle_assembled",
       "status": "measured",
-      "value": 1
+      "value": false
     },
     {
-      "name": "cer",
-      "reason": "no reference transcription",
-      "status": "not_measured"
+      "name": "bundle_verified",
+      "status": "measured",
+      "value": true
     }
   ],
   "outcome": "done",

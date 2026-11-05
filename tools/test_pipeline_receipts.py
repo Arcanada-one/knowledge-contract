@@ -72,7 +72,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_every_code_of_the_specification_has_a_mutant(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 37)
+        self.assertEqual(len(invalid), 41)
         self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 13)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))
@@ -81,7 +81,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_the_counts_the_specification_states_are_the_counts_of_the_fixtures(self):
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
-        words = {13: "Thirteen", 37: "thirty-seven"}
+        words = {13: "Thirteen", 41: "forty-one"}
         valid = len([n for n in fx.EXPECTED if n.startswith("valid/")])
         invalid = len([n for n in fx.EXPECTED if n.startswith("invalid/")])
         self.assertIn(f"{words[valid]} valid", spec)
@@ -112,7 +112,7 @@ class ImportAdapterTests(unittest.TestCase):
 
     def test_the_import_rules_object_in_their_own_code_and_the_digest_mismatch_in_the_input_rule(self):
         imports = [n for n in fx.EXPECTED if n.startswith("invalid/") and ("import" in n or "recognition_not_executed" in n)]
-        self.assertEqual(len(imports), 10)
+        self.assertEqual(len(imports), 14)
         for name in imports:
             with self.subTest(name):
                 found = codes(cpr.check_chain(materialise(fx.variants()[name])))
@@ -123,6 +123,7 @@ class ImportAdapterTests(unittest.TestCase):
     def test_other_spellings_of_false_are_not_false_and_the_match_of_the_import_name_is_exact(self):
         def check(edit) -> set:
             chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"] = []  # the verify-only bundle record is tested on its own; here only the recognise receipt is varied
             edit(chain)
             return codes(cpr.check_chain(materialise(fx.link(chain))))
         for value in ("false", 0, None):
@@ -162,6 +163,33 @@ class ImportAdapterTests(unittest.TestCase):
         widened = self.chain("valid/imported-recognition-chain")
         widened[-1]["rights_class"] = "public_domain"  # a determination made in a receipt is a widening
         self.assertIn("PIPE-RIGHTS", codes(cpr.check_chain(materialise(fx.link(widened)))))
+
+    def test_the_bundle_of_an_import_chain_records_that_it_verified_and_did_not_assemble(self):
+        chain = self.chain("valid/imported-recognition-chain")
+        measured = {m["name"]: (m["status"], m["value"]) for m in chain[4]["measurements"]}
+        self.assertEqual(measured, {"bundle_assembled": ("measured", False), "bundle_verified": ("measured", True)})
+        self.assertFalse(chain[4]["tool"]["name"].endswith(cpr.IMPORT_SUFFIX))  # the import name belongs to recognise only
+        self.assertEqual(cpr.check_chain(materialise(fx.link(chain))), [])
+        ordinary = self.chain("valid/synthetic-chain")
+        self.assertEqual(cpr.check_chain(materialise(fx.link(ordinary))), [])  # an ordinary bundle carries neither measurement
+        ordinary[4]["measurements"] = [{"name": "bundle_assembled", "status": "measured", "value": True}, {"name": "bundle_verified", "status": "measured", "value": True}]
+        self.assertEqual(cpr.check_chain(materialise(fx.link(ordinary))), [])  # assembled and then verified is allowed anywhere
+        with_import_only = self.chain("valid/imported-recognition-chain")
+        with_import_only[4]["measurements"] = []
+        self.assertEqual(cpr.check_chain(materialise(fx.link(with_import_only))), [])  # the verify-only record is allowed, not required
+        spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
+        self.assertIn("MAY verify an existing bundle instead of assembling it", spec)
+
+    def test_a_non_boolean_bundle_measurement_and_a_repeated_one_are_refused(self):
+        for label, edit in {"string": lambda m: m.update(value="false"), "number": lambda m: m.update(value=0)}.items():
+            with self.subTest(label):
+                chain = self.chain("valid/imported-recognition-chain")
+                edit(chain[4]["measurements"][0])
+                self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
+        for repeated in (False, True):  # a second value is refused even when it agrees with the first: one reading only
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"].append({"name": "bundle_verified", "status": "measured", "value": repeated})
+            self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
 
     def test_the_receipt_schema_gained_no_field_for_imports(self):
         schema = json.loads((cpr.REPO / "schemas" / "pipeline-receipt.schema.json").read_text())

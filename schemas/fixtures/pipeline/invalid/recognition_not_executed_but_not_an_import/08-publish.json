@@ -27,7 +27,7 @@
       "sha256": "6be1820071d520b8f4fd9ecc0f5ef394a03aa6d7ae52d3c5eb444f05fb7aea45"
     }
   ],
-  "previous_receipt_sha256": "0d3f431005f97ca7fffc3e3e059d404a09cc116c46fdfd25c8944057657a8ba1",
+  "previous_receipt_sha256": "ad14f278ad5c5b5fd7dfa806ff877688989537da9c2a51150d255255ff545f59",
   "rights_class": "unknown",
   "run_id": "run.publish.1",
   "schema": "PipelineStageReceipt/v1",
