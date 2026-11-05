@@ -2,4 +2,4 @@
 
 A withdrawal or supersession decision is recorded here before its allowlist row changes. Name the file with the original content digest and the intended status. State the source commit, path, digest, reason, affected revision and intended status. An independent reviewer records the exact structured status decision in the PR review. After this PR merges, a separate allowlist PR cites that review URL and changes the row.
 
-This directory currently contains no status decisions. A decision file does not itself export or ingest content.
+This directory holds 14 status decisions, all `withdrawn`: the numbered papers P00 to P13 of batch b2, replaced by the 29 canonical pages of publication edition 1.1 (decisions merged in PR 33; DEC-AUP-0175). Their allowlist rows were removed from the table in the row PR for batch b3 rather than marked `withdrawn`, because the paths are now compatibility links and the exporter cannot verify a withdrawal line for them; the batch b2 lines stay in `corpus/publication-decisions/` as history. A decision file does not itself export or ingest content.
