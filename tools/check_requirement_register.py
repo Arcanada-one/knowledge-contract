@@ -18,7 +18,7 @@ REGISTER = "engineering/specifications/requirements.json"
 PREFIXES = {
     "knowledge-contract-core": "KCC", "contract-family": "KOP", "semantic-types": "SEM", "context-package": "CTX",
     "compiled-artifact-contract": "CKA", "artifact-registry": "REG", "status-model": "STA",
-    "cache-identity-and-invalidation": "CCH", "reuse-policy": "RUS", "knowledge-evolution": "EVO", "book-package": "BPK",
+    "cache-identity-and-invalidation": "CCH", "reuse-policy": "RUS", "knowledge-evolution": "EVO", "book-package": "BPK", "pipeline": "PIP",
 }
 NORMATIVE = re.compile(r"\b(?:MUST|SHALL|SHOULD|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b")
 ID = re.compile(r"^\*\*([A-Z]+-R[0-9]{3,})\.\*\*\s+", re.S)

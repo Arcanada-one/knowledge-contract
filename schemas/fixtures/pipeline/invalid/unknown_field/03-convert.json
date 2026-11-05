@@ -1,0 +1,41 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:02:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "28eb127d79a84b5f5ca5f2948c02e003ce24aed1a75a29a6806e276b62a94308"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "converted_text",
+      "sha256": "efb24e18c7cc33713170a536dc89c092cc3bd153afc9195cd612ad2a38d1010f"
+    }
+  ],
+  "previous_receipt_sha256": "896d31a6a0bc45f47071ff8626e823e0fc86c8aa2d555f6bbd87d114c34815ae",
+  "publishable": true,
+  "rights_class": "unknown",
+  "run_id": "run.convert.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "convert",
+  "started_at": "2026-11-05T10:02:00Z",
+  "tool": {
+    "name": "conversion-arcana",
+    "version": "0.0.0"
+  }
+}

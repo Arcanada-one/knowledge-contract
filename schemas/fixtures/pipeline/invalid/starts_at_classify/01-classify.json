@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:01:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "ef18d8c742a55c48a26d888a8b853f07b3591ab987f196fe40dccb1ea949f98b"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "classification",
+      "sha256": "28eb127d79a84b5f5ca5f2948c02e003ce24aed1a75a29a6806e276b62a94308"
+    }
+  ],
+  "previous_receipt_sha256": null,
+  "rights_class": "unknown",
+  "run_id": "run.classify.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "classify",
+  "started_at": "2026-11-05T10:01:00Z",
+  "tool": {
+    "name": "doclab-classify",
+    "version": "0.0.0"
+  }
+}

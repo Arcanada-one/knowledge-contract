@@ -65,15 +65,17 @@ jobs:
         run: |
           set -euo pipefail
           cd tools
-          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts -v
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail
           "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_book_package.py schemas/fixtures/book-package/valid/synthetic-rle-primer
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/check_pipeline_receipts.py schemas/fixtures/pipeline/valid/synthetic-chain
       - name: Committed fixtures equal regenerated fixtures
         run: |
           set -euo pipefail
           "$RUNNER_TEMP/bp-venv/bin/python" -B tools/book_package_fixture.py write
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/pipeline_fixture.py write
           git diff --exit-code -- schemas/fixtures
 
   publication-integrity:

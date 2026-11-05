@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:07:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "c5a21e83097f00c73be9a2205b7fa3ac625b9730e0900321a129cb850c90df6a"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "allowlist_row",
+      "sha256": "6be1820071d520b8f4fd9ecc0f5ef394a03aa6d7ae52d3c5eb444f05fb7aea45"
+    }
+  ],
+  "previous_receipt_sha256": "000b77c4cd78c17ef9128e33312e40d06e5dc17e9e100446fcd271a5df497d33",
+  "rights_class": "unknown",
+  "run_id": "run.publish.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "publish",
+  "started_at": "2026-11-05T10:07:00Z",
+  "tool": {
+    "name": "contract-place-api",
+    "version": "0.0.0"
+  }
+}

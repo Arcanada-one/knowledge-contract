@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:04:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "fa9d32227054bcaa0eb4bf5ee3ddf2d9afdade4e8313d9ace497bbece4500c3b"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "result_bundle",
+      "sha256": "8dcb093caa0295e2f985cdad564d42575dd0ac487cf5aace651d4cb72f562560"
+    }
+  ],
+  "previous_receipt_sha256": "b621e4dfcf429d9f9d376e135935c2d2704ab44c3da388a7eb9a3f8ab0659cac",
+  "rights_class": "unknown",
+  "run_id": "run.bundle.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "bundle",
+  "started_at": "2026-11-05T10:04:00Z",
+  "tool": {
+    "name": "doclab-bundle",
+    "version": "0.0.0"
+  }
+}
