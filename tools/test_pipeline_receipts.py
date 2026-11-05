@@ -137,6 +137,8 @@ class ImportAdapterTests(unittest.TestCase):
         self.assertEqual(check(lambda c: (c[3].update(tool={"name": "doclab-ocr", "version": "0"}), c[3]["measurements"][0].update(value=0))), set())
         self.assertIn("PIPE-IMPORT", check(lambda c: c[3].update(tool={"name": "doclab-Import", "version": "0"})))  # not an exact -import name, and false is claimed
         self.assertEqual(check(lambda c: c[3].update(tool={"name": "doclab-import", "version": "0"})), set())
+        for lookalike in ("reimport", "x_import", "import", "doclab-import-2"):  # only a name that ends with "-import" names an import; the others are ordinary tools
+            self.assertIn("PIPE-IMPORT", check(lambda c, lookalike=lookalike: c[3].update(tool={"name": lookalike, "version": "0"})), lookalike)
 
     def test_a_repeated_original_run_id_or_finish_time_is_refused_too(self):
         for name in ("original_run_id", "original_finished_at"):
