@@ -129,6 +129,19 @@ class ValidatorBehaviourTests(unittest.TestCase):
         receipts[3].update(outcome="refused", reason="the file is not a book", outputs=[])
         self.assertEqual(cpr.check_chain(materialise(fx.link(receipts))), [])
 
+    def test_public_domain_is_a_rights_class_of_a_chain_and_is_as_open_as_author_open(self):
+        receipts = fx.valid_receipts()
+        for r in receipts:
+            r["rights_class"] = "public_domain"
+        self.assertEqual(cpr.check_chain(materialise(fx.link(receipts))), [])
+        receipts[5]["rights_class"] = "author_open"  # between the two open classes nothing widens
+        self.assertEqual(cpr.check_chain(materialise(fx.link(receipts))), [])
+        widened = fx.valid_receipts()
+        for r in widened:
+            r["rights_class"] = "unknown"
+        widened[6]["rights_class"] = "public_domain"
+        self.assertIn("PIPE-RIGHTS", codes(cpr.check_chain(materialise(fx.link(widened)))))
+
     def test_order_comes_from_the_links_not_from_file_names(self):
         valid = fx.variants()["valid/synthetic-chain"]
         renamed = {f"z{9 - n}.json": data for n, (name, data) in enumerate(sorted(valid.items()))}

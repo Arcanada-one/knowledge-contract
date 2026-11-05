@@ -75,7 +75,6 @@
  },
  "rights": {
   "holder": "Knowledge Contract Arcana contributors",
-  "license": "CC-BY-4.0",
   "license_class": "public_domain",
   "publishable_layers": [
    "document_md",

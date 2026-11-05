@@ -284,8 +284,10 @@ def check_package(root: Path) -> list[str]:
         problems.append("a work that is neither author_open nor public_domain may not publish any package layer")
     if not open_class and "license" in rights:
         problems.append("a work that is neither author_open nor public_domain may not declare a publication license")
-    # A public_domain work carries its evidence (schema); a `license` on such a package covers only the layers Arcanada writes (knowledge,
-    # quality), never the public-domain text.
+    # A public_domain work carries its evidence and NO top-level `license` (schema): the public-domain text is covered by the evidence record alone. The layers
+    # Arcanada writes (knowledge, quality) are published only under `public_domain.own_layers_license`, which covers exactly those two layers.
+    if rights["license_class"] == "public_domain" and {"knowledge", "quality"} & set(rights["publishable_layers"]) and "own_layers_license" not in rights["public_domain"]:
+        problems.append("a public_domain package publishes the knowledge or quality layer only under public_domain.own_layers_license")
     integrity_check = rep.get("integrity_check")
     if integrity_check:
         if integrity_check["observed_sha256"] != rep["source_sha256"]:

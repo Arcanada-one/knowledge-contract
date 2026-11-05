@@ -148,6 +148,7 @@ EXPECTED_REASON = {
     "manifest_public_domain_worldwide_without_reason": "rights/public_domain: 'worldwide_reason' is a required property",
     "manifest_public_domain_unknown_terms": "rights/public_domain/digital_copy/terms",
     "manifest_author_open_with_public_domain_block": "rights:", "manifest_restricted_with_public_domain_block": "rights:",
+    "manifest_public_domain_with_top_level_license": "rights:",
     "quality_damage_declared_without_declarations": "damage/declarations: [] should be non-empty",
     "quality_damage_none_with_places": "damage/declarations", "quality_damage_declared_zero_places": "damage/places: 0 is less than the minimum of 1",
     "quality_damage_lowercase_code": "damage/declarations/0/code", "quality_damage_item_without_what": "'what' is a required property",
@@ -274,6 +275,29 @@ class PublicDomainTests(unittest.TestCase):
         parts = load_parts(fx.build_public_domain())
         with self.assertRaises(cbp.PackageError):
             cbp.render_knowledge_markdown(parts["manifest"], parts["objects"], parts["relations"])
+
+    def test_no_top_level_licence_can_sit_over_the_public_domain_text(self):
+        parts = load_parts(fx.build_public_domain())
+        self.assertNotIn("license", parts["manifest"]["rights"])
+        parts["manifest"]["rights"]["license"] = "CC-BY-4.0"
+        self.assertTrue(check_files(materialise(parts)), "a licence over the public-domain text must be inexpressible")
+
+    def test_arcanada_layers_are_published_only_under_their_own_licence(self):
+        parts = load_parts(fx.build_public_domain())
+        self.assertEqual(parts["manifest"]["rights"]["public_domain"]["own_layers_license"], "CC-BY-4.0")
+        del parts["manifest"]["rights"]["public_domain"]["own_layers_license"]
+        problems = check_files(materialise(parts))
+        self.assertTrue(any("only under public_domain.own_layers_license" in p for p in problems), problems)
+        parts["manifest"]["rights"]["publishable_layers"] = ["document_md", "readable_md"]
+        self.assertEqual(check_files(materialise(parts)), [])  # the public-domain text alone needs no licence
+
+    def test_the_builder_refuses_to_write_a_public_domain_rights_record(self):
+        import build_book_package as bbp
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "s.md"
+            source.write_text("# x\n")
+            with self.assertRaises(bbp.BuildError):
+                bbp.build(source, Path(tmp) / "out", catalog_id="c", license_class="public_domain")
 
     def test_the_public_domain_class_does_not_widen_the_restricted_classes(self):
         parts = load_parts(fx.build_public_domain())

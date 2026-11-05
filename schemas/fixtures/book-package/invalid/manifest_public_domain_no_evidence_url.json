@@ -75,7 +75,6 @@
  },
  "rights": {
   "holder": "Knowledge Contract Arcana contributors",
-  "license": "CC-BY-4.0",
   "license_class": "public_domain",
   "public_domain": {
    "basis": "Synthetic determination for schema testing: invented work, invented digitiser; no real rights are asserted.",
@@ -90,6 +89,7 @@
    "jurisdictions": [
     "worldwide"
    ],
+   "own_layers_license": "CC-BY-4.0",
    "work": {
     "basis": "the synthetic author is stated to have died more than seventy years ago",
     "status": "term_expired"

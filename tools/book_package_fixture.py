@@ -126,7 +126,7 @@ def anchor_examples() -> dict[str, dict]:
 
 PD_EVIDENCE = {
     "basis": "Synthetic determination for schema testing: invented work, invented digitiser; no real rights are asserted.",
-    "jurisdictions": ["worldwide"], "worldwide_reason": "the synthetic work is stated to be out of term in every jurisdiction, for testing only",
+    "own_layers_license": "CC-BY-4.0", "jurisdictions": ["worldwide"], "worldwide_reason": "the synthetic work is stated to be out of term in every jurisdiction, for testing only",
     "evidence_urls": ["https://example.org/synthetic-primer/rights"], "determined_at": "2026-11-05T00:00:00Z", "determined_by": "fixture.determiner",
     "work": {"status": "term_expired", "basis": "the synthetic author is stated to have died more than seventy years ago"},
     "digital_copy": {"status": "open", "terms": "CC0-1.0", "basis": "the synthetic digitiser's page states CC0 1.0"}}
@@ -143,7 +143,7 @@ def build_public_domain() -> dict[str, bytes]:
     quality["damage"] = copy.deepcopy(PD_DAMAGE)
     files["quality.json"] = json.dumps(quality, indent=1, sort_keys=True).encode() + b"\n"
     manifest = json.loads(files["manifest.json"])
-    manifest["rights"] = {"license_class": "public_domain", "holder": "Knowledge Contract Arcana contributors", "license": "CC-BY-4.0",
+    manifest["rights"] = {"license_class": "public_domain", "holder": "Knowledge Contract Arcana contributors",
                           "publishable_layers": ["document_md", "readable_md", "knowledge", "quality"], "public_domain": copy.deepcopy(PD_EVIDENCE)}
     manifest["components"]["quality"]["sha256"] = sha(files["quality.json"])
     manifest["package_status"] = "partial_pilot"
@@ -238,6 +238,7 @@ RECORD_MUTATIONS: dict[str, tuple[str, object]] = {
     "manifest_author_open_with_public_domain_block": ("manifest", lambda r: r["rights"].__setitem__("public_domain", copy.deepcopy(PD_EVIDENCE))),
     "manifest_restricted_with_public_domain_block": ("manifest", lambda r: r.__setitem__("rights", {"license_class": "third_party_restricted", "publishable_layers": [],
                                                                                                       "public_domain": copy.deepcopy(PD_EVIDENCE)})),
+    "manifest_public_domain_with_top_level_license": ("manifest_pd", _set(["rights", "license"], "CC-BY-4.0")),
     "quality_damage_declared_without_declarations": ("quality_pd", _set(["damage", "declarations"], [])),
     "quality_damage_none_with_places": ("quality_pd", _set(["damage", "status"], "none")),
     "quality_damage_declared_zero_places": ("quality_pd", _set(["damage", "places"], 0)),

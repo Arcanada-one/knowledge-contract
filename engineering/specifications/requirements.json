@@ -2122,7 +2122,7 @@
       "id": "PIP-R012",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "6. Rights and publication boundary",
-      "text": "A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown` and `author_open`.",
+      "text": "A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown`, and then `public_domain` and `author_open`, which are equally open.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

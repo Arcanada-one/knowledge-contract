@@ -87,6 +87,8 @@ def build(source: Path, out: Path, *, catalog_id: str, release: str = "r1", lang
           bibliography_only: bool = False, license_class: str = "unknown", license_spdx: str | None = None, holder: str | None = None,
           publishable_layers: list[str] | None = None, created_at: str | None = None, source_locator: str | None = None) -> dict:
     """Write a package into `out` (must not exist) and return its manifest."""
+    if license_class == "public_domain":
+        raise BuildError("public_domain needs a rights record (evidence, two facts) that the builder does not write; the producer adds it")
     if out.exists():
         raise BuildError("output directory already exists; refusing to overwrite")
     data = source.read_bytes()

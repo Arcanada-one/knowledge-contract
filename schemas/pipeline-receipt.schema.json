@@ -25,7 +25,7 @@
     "finished_at": {"type": "string", "format": "date-time"},
     "outcome": {"enum": ["done", "skipped", "paused_safe", "refused", "failed"]},
     "reason": {"type": "string", "pattern": "\\S", "maxLength": 1000},
-    "rights_class": {"enum": ["author_open", "third_party_restricted", "unknown"]},
+    "rights_class": {"enum": ["author_open", "public_domain", "third_party_restricted", "unknown"]},
     "inputs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/artefact"}},
     "outputs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/artefact"}},
     "measurements": {
