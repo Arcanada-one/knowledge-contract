@@ -18,7 +18,7 @@ description: "Repository-only engineering contract for the nine stages that carr
 | --- | --- |
 | [Receipt schema](../../../schemas/pipeline-receipt.schema.json) | `PipelineStageReceipt/v1`, one record per stage |
 | [Chain validator](../../../tools/check_pipeline_receipts.py) | Order, links, identity, rights, consumption and honesty of one chain |
-| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Twelve valid chains and twenty-seven one-defect mutants |
+| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Thirteen valid chains and thirty-five one-defect mutants |
 | [Tests](../../../tools/test_pipeline_receipts.py) | The validator against every fixture, drift of the committed files, mutants of the validator |
 | [Document class canon](document-classes.json) · [result schema](../../../schemas/document-classification.schema.json) | `kc-doc-class/1` and `DocumentClassification/v1` (§10) |
 | [Classification checker](../../../tools/check_document_classification.py) · [fixtures](../../../schemas/fixtures/document-classification/) · [generator](../../../tools/document_classification_fixture.py) · [tests](../../../tools/test_document_classification.py) | Twelve boundary cases and the one-defect mutants (§10) |
@@ -89,6 +89,18 @@ A stage that did not finish therefore offers nothing that a later stage could co
 
 A measurement is either `measured` with a value or `not_measured` with a reason and no value; "not measured" is never reported as a value, a pass or a fail.
 
+### Recognition by import
+
+Recognition outputs can exist before any receipt does. They are not re-run to manufacture a history, and no receipt is written for a run that cannot be shown to have happened. What the pipeline records instead is an **import**: the existing outputs are verified against the source bytes at the time of the import, and the receipt says that this, and nothing more, was done.
+
+**PIP-R023.** The `recognise` stage MAY be performed by an import adapter that verifies existing recognition outputs against the source bytes now, instead of running recognition. The receipt of such an adapter MUST name the import in `tool.name` (a name ending in `-import`), MUST give the actual start and finish of the verification as `started_at` and `finished_at`, MUST list as `outputs` the existing recognition outputs that were verified, each by the SHA-256 of its exact bytes, and MUST list as `inputs` the source and MAY list the earlier evidence files by digest.
+
+**PIP-R024.** An import receipt that finished MUST carry the measurement `recognition_executed` as measured with the value `false`, and the measurements `original_run_id` and `original_finished_at`, each either measured (read from the earlier evidence) or `not_measured` with a reason. A quality or damage figure taken from the earlier evidence MUST be named `recorded_` followed by its name and is a figure as recorded, never one measured again by the import.
+
+**PIP-R025.** A receipt whose tool does not name an import MUST NOT claim `recognition_executed` as `false`, a receipt whose tool names an import MUST NOT claim it as `true`, and an import adapter exists for the `recognise` stage only.
+
+**PIP-R026.** A chain with an imported `recognise` is a new chain for the same document key: it starts at `intake` with the source hashed at the time of the import, `classify` MAY end `skipped`, the earlier recognition outputs and evidence are kept unchanged and referenced by digest only, and the rights rule of PIP-R012 applies to it as to any chain (the class is resolved before the chain when evidence exists, otherwise the chain carries `unknown` or `third_party_restricted`). A consumer that needs recognition to have been executed MUST read `recognition_executed`; a checker that accepts the chain does not say that it was.
+
 ## 5. Hand-off formats
 
 The tables name the usual input of each edge; the rules of section 4 are the authority on what a stage may consume.
@@ -125,8 +137,9 @@ The validator reads a directory of receipts and nothing else: a chain occupies a
 | `PIPE-ID`, `PIPE-IDENTITY` | the key changes inside the chain; the key is not the digest of the original |
 | `PIPE-STAGE-ORDER`, `PIPE-SKIP`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-SOURCE`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; an essential stage skipped; a receipt after a paused, refused or failed one; no input from the nearest earlier finished stage (or, where allowed, the source); the original source listed as an input by a stage that may not read it; time running backwards |
 | `PIPE-RIGHTS` | the rights class widened |
+| `PIPE-IMPORT` | a `recognise` receipt of an import adapter without `recognition_executed` measured `false` or without `original_run_id` and `original_finished_at`; `recognition_executed` `false` on a tool that does not name an import; an import name on a stage other than `recognise` |
 
-Twelve valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; one ending in a refusal at each of the nine stages) and twenty-seven mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
+Thirteen valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; an imported `recognise`; one ending in a refusal at each of the nine stages) and thirty-five mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
 
 ## 9. Public-domain works and declared damage in `book-package/2`
 

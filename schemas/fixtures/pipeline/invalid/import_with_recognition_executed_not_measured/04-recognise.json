@@ -1,0 +1,54 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:03:30Z",
+  "inputs": [
+    {
+      "role": "source",
+      "sha256": "dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c"
+    },
+    {
+      "role": "earlier_evidence",
+      "sha256": "ef0d4fb62f03aaf73a1d1cbb301bf8e4cd655171807c0d728ae312cdbcc29886"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "recognition_executed",
+      "reason": "not known",
+      "status": "not_measured"
+    },
+    {
+      "name": "original_run_id",
+      "status": "measured",
+      "value": "run.recognise.earlier"
+    },
+    {
+      "name": "original_finished_at",
+      "reason": "the earlier evidence does not record a finish time",
+      "status": "not_measured"
+    },
+    {
+      "name": "recorded_damage_places",
+      "status": "measured",
+      "value": 5
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "transcription",
+      "sha256": "fa9d32227054bcaa0eb4bf5ee3ddf2d9afdade4e8313d9ace497bbece4500c3b"
+    }
+  ],
+  "previous_receipt_sha256": "4e97358d12efabd31f48c27a6a275dd9f42550ff6dfacaa41676a86b28403a44",
+  "rights_class": "unknown",
+  "run_id": "run.recognise.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "recognise",
+  "started_at": "2026-11-05T10:03:00Z",
+  "tool": {
+    "name": "doclab-import",
+    "version": "0.0.0"
+  }
+}

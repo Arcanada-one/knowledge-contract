@@ -31,6 +31,7 @@ RIGHTS_RANK = {"third_party_restricted": 0, "unknown": 1, "public_domain": 2, "a
 SKIPPABLE = frozenset(("classify", "convert"))
 # The stages that may take the ORIGINAL SOURCE as an input; every later stage works from what an earlier stage produced.
 SOURCE_STAGES = frozenset(("intake", "classify", "convert", "recognise"))
+IMPORT_SUFFIX = "-import"  # a tool that verifies existing outputs instead of running a stage names the import
 MAX_RECEIPT_BYTES = 1 << 20
 FORMAT_CHECKER = jsonschema.FormatChecker()
 
@@ -118,6 +119,19 @@ def check_chain(root: Path) -> list[str]:
             problems.append(f"PIPE-AFTER-STOP: {where}: follows {names[i - 1]}, whose outcome is {chain[i - 1]['outcome']}; nothing consumes a stage that did not finish")
         if record["outcome"] == "skipped" and record["stage"] not in SKIPPABLE:
             problems.append(f"PIPE-SKIP: {where}: stage {record['stage']} is essential and cannot end skipped; only {', '.join(sorted(SKIPPABLE))} can")
+        measured = {m["name"]: m for m in record.get("measurements", [])}
+        executed = measured.get("recognition_executed")
+        if record["tool"]["name"].endswith(IMPORT_SUFFIX):
+            if record["stage"] != "recognise":
+                problems.append(f"PIPE-IMPORT: {where}: the tool names an import but the stage is {record['stage']}; an import adapter exists for recognise only")
+            elif record["outcome"] == "done":
+                if not (executed and executed["status"] == "measured" and executed.get("value") is False):
+                    problems.append(f"PIPE-IMPORT: {where}: an import that finished must carry the measurement recognition_executed as measured false")
+                for name in ("original_run_id", "original_finished_at"):
+                    if name not in measured:
+                        problems.append(f"PIPE-IMPORT: {where}: an import that finished must carry the measurement {name} (measured, or not_measured with a reason)")
+        elif executed and executed["status"] == "measured" and executed.get("value") is False:
+            problems.append(f"PIPE-IMPORT: {where}: recognition_executed is false but the tool {record['tool']['name']} does not name an import")
         if record["finished_at"] < record["started_at"] or (i and record["started_at"] < chain[i - 1]["finished_at"]):
             problems.append(f"PIPE-TIME: {where}: a stage starts after its predecessor finished and does not finish before it started")
         if i and RIGHTS_RANK[record["rights_class"]] > RIGHTS_RANK[chain[i - 1]["rights_class"]]:

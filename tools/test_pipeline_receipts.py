@@ -72,8 +72,8 @@ class FixtureTests(unittest.TestCase):
 
     def test_every_code_of_the_specification_has_a_mutant(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 27)
-        self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 12)
+        self.assertEqual(len(invalid), 35)
+        self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 13)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))
         self.assertEqual(listed - {"PIPE-EMPTY"}, {c for c in set(fx.EXPECTED.values()) if c})
@@ -81,7 +81,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_the_counts_the_specification_states_are_the_counts_of_the_fixtures(self):
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
-        words = {12: "Twelve", 27: "twenty-seven"}
+        words = {13: "Thirteen", 35: "thirty-five"}
         valid = len([n for n in fx.EXPECTED if n.startswith("valid/")])
         invalid = len([n for n in fx.EXPECTED if n.startswith("invalid/")])
         self.assertIn(f"{words[valid]} valid", spec)
@@ -92,6 +92,46 @@ class FixtureTests(unittest.TestCase):
 
     def test_fixtures_are_deterministic(self):
         self.assertEqual(fx.variants(), fx.variants())
+
+
+class ImportAdapterTests(unittest.TestCase):
+    def chain(self, name: str) -> list[dict]:
+        return [json.loads(data) for _, data in sorted(fx.variants()[name].items())]
+
+    def test_the_imported_chain_is_a_new_chain_from_intake_with_the_import_named_and_nothing_executed(self):
+        chain = self.chain("valid/imported-recognition-chain")
+        self.assertEqual([r["stage"] for r in chain][:4], ["intake", "classify", "convert", "recognise"])
+        self.assertEqual(chain[1]["outcome"], "skipped")
+        recognise = chain[3]
+        self.assertTrue(recognise["tool"]["name"].endswith(cpr.IMPORT_SUFFIX))
+        measured = {m["name"]: m for m in recognise["measurements"]}
+        self.assertEqual((measured["recognition_executed"]["status"], measured["recognition_executed"]["value"]), ("measured", False))
+        self.assertEqual(measured["original_finished_at"]["status"], "not_measured")
+        self.assertTrue(measured["recorded_damage_places"]["name"].startswith("recorded_"))
+        self.assertEqual(cpr.check_chain(materialise(fx.variants()["valid/imported-recognition-chain"])), [])
+
+    def test_the_import_rules_object_in_their_own_code_and_the_digest_mismatch_in_the_input_rule(self):
+        imports = [n for n in fx.EXPECTED if n.startswith("invalid/") and ("import" in n or "recognition_not_executed" in n)]
+        self.assertEqual(len(imports), 8)
+        for name in imports:
+            with self.subTest(name):
+                found = codes(cpr.check_chain(materialise(fx.variants()[name])))
+                self.assertEqual(found, {"PIPE-INPUT"} if name.endswith("output_not_consumed") else {"PIPE-IMPORT"}, name)
+        elsewhere = cpr.check_chain(materialise(fx.variants()["invalid/import_named_on_another_stage"]))
+        self.assertTrue(any("recognise only" in p for p in elsewhere), elsewhere)  # the stage rule itself, not the measurement rule that would also object
+
+    def test_an_ordinary_recognition_that_did_not_run_nothing_special_stays_valid_and_a_failed_import_needs_no_measurements(self):
+        chain = self.chain("valid/synthetic-chain")
+        self.assertEqual(cpr.check_chain(materialise(fx.link(chain))), [])
+        imported = self.chain("valid/imported-recognition-chain")
+        imported[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[])
+        self.assertEqual(cpr.check_chain(materialise(fx.link(imported[:4]))), [])
+
+    def test_the_receipt_schema_gained_no_field_for_imports(self):
+        schema = json.loads((cpr.REPO / "schemas" / "pipeline-receipt.schema.json").read_text())
+        self.assertNotIn("import", json.dumps(schema).lower())
+        self.assertEqual(set(schema["properties"]), {"schema", "document_id", "stage", "run_id", "previous_receipt_sha256", "tool", "started_at", "finished_at", "outcome",
+                                                       "reason", "rights_class", "inputs", "outputs", "measurements", "kc2_admission"})
 
 
 class ValidatorBehaviourTests(unittest.TestCase):
