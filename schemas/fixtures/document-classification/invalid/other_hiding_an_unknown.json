@@ -1,0 +1,29 @@
+{
+  "candidates": [],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": "other",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "not_measured",
+  "document_id": "d_04f0165363004260a9e7404f4164ee82b7a9d7ffe33e77c11bb33a2d53004584",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "no recognisable text layer"
+      },
+      "representation_sha256": "e72e0373a7f386a21d3b309d5dbb6c3367a1f774b2c31d1231327974e6f9f7ce"
+    }
+  ],
+  "reason": "the scan is unreadable and carries no metadata",
+  "schema": "DocumentClassification/v1",
+  "status": "unknown",
+  "taxonomy_id": "kc-doc-class/1"
+}

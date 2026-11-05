@@ -1,0 +1,45 @@
+{
+  "schema": "KCDocumentClasses/1",
+  "taxonomy_id": "kc-doc-class/1",
+  "scope": "The class of the content unit that a source represents. It is not the file extension, the transport, the quality of the copy, the rights class or the intended use.",
+  "classes": [
+    {
+      "id": "book",
+      "definition": "A book or an independently identifiable book volume, with an evidenced bibliographic identity and an authorial or editorial structure.",
+      "boundary": "An ISBN or a page count is not a required test. A verified fragment of a book keeps the book identity, and its partial coverage is stated in the result."
+    },
+    {
+      "id": "paper",
+      "definition": "A standalone article, preprint, or research or technical report that addresses a bounded subject as its own publication.",
+      "boundary": "Length and peer-review status do not by themselves make a source a book, and a paper's class proves nothing about its claims."
+    },
+    {
+      "id": "export",
+      "definition": "A contextual archive of an application, a workspace or a correspondence, treated as that archive: its records, their order, participants, relationships and state are retained.",
+      "boundary": "Saving a book or a paper out of an application does not make the saved file an export."
+    },
+    {
+      "id": "dataset",
+      "definition": "A standalone structured collection of observations, examples or records with a data schema or a dataset description.",
+      "boundary": "A table exported from a database with described columns can be a dataset; tables inside a paper do not change the paper's class."
+    },
+    {
+      "id": "other",
+      "definition": "A source of a recognised type that lies outside the four classes above.",
+      "boundary": "An invoice or a slide deck can be other. A source that is unreadable or whose type is uncertain is not other: it is unknown or ambiguous."
+    }
+  ],
+  "statuses": [
+    {"id": "classified", "class": "exactly one of the five class ids", "candidates": "exactly that class", "reason": "optional"},
+    {"id": "ambiguous", "class": null, "candidates": "at least two distinct classes other than other", "reason": "required"},
+    {"id": "unknown", "class": null, "candidates": "none", "reason": "required"}
+  ],
+  "separate_attributes": ["edition", "language", "volume", "media type", "recognition method (OCR or native text)", "acquisition channel", "storage location"],
+  "separate_vocabularies": ["Knowledge Contract role, skill, competency, blueprint, constraint and work-item kinds", "the document types of the publication catalogue"],
+  "migration": {
+    "from": "kc-doc-class/0",
+    "to": "kc-doc-class/1",
+    "history": "The temporary set existed only as text in a task title and in one letter to the implementer. Its identifiers were book, paper, edition, export, dataset and other; the letter dropped edition, and the set was labelled kc-doc-class/0. There was never an article identifier. No code and no stored data carry any class value, because no classifier has been written yet. Edition is an attribute in /1, not a class.",
+    "rule": "A /1 classification is a new artefact for the same source key. A changed version label does not re-evaluate a source, earlier records are kept, and an unknown taxonomy identifier or a canon digest that does not match is refused instead of being read as the latest canon."
+  }
+}

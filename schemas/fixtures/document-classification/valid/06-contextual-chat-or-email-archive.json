@@ -1,0 +1,30 @@
+{
+  "candidates": [
+    "export"
+  ],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": "export",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "complete",
+  "document_id": "d_75bbce79c7b0106a63c96fdb67b80e45389ee738e417083653a84697f510be5c",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "message records with participants, order and timestamps"
+      },
+      "representation_sha256": "e3e6f21b2ae9da42a70f61914883e1b269bb662f97dd6fccb957f2be30848d8b"
+    }
+  ],
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

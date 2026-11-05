@@ -6,6 +6,8 @@ The [book-package schema](book-package.schema.json) implements `book-package/2` 
 
 The [observation and change-event schema](contract-observation.schema.json) implements the bounded `kc-observation/1`, `kc-dependency-change/1` and `kc-profile-advertisement/1` profiles. [Exact synthetic examples](fixtures/contract-observation/valid/), the [validator](../tools/check_contract_profile.py) and [regression tests](../tools/test_contract_profile.py) cover shapes, strict JSON parsing, byte identity, scoped observations and epoch rules. A serialized in-memory publication model exercises the specified atomic guard without claiming a distributed service.
 
+The [document classification schema](document-classification.schema.json) implements `DocumentClassification/v1` for the `kc-doc-class/1` canon of the repository-only [pipeline specification](../engineering/specifications/pipeline/SPECIFICATION.md), with [synthetic fixtures](fixtures/document-classification/) and a [checker](../tools/check_document_classification.py).
+
 The [requirement register](../engineering/specifications/requirements.json) lists stable normative identifiers and distinguishes available finite regression examples from implementation-specific evidence still required.
 
 This directory does not claim to contain a stable universal Knowledge Contract wire schema. Historical bounded profiles retain their identifiers and measured scope in the [compatibility record](../appendices/source-map/APPENDIX.md#4-protocol-compatibility). A newly published schema must state its exact profile, interpretation, migration rules and conformance evidence; an editorial edition number is not a wire-format release.

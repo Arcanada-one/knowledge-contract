@@ -1,0 +1,27 @@
+{
+  "candidates": [
+    "book"
+  ],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": "book",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "complete",
+  "coverage_note": "complete as a content unit; damage declared in the package quality report is not an input of the class and is not recorded here",
+  "document_id": "d_a1f601618f670c41ae78fe821fc922fd6e8acdb68b71daef737a631063cae0af",
+  "evidence": [
+    {
+      "representation_sha256": "3ad94776b7ea61c1fca076de8284bda87f14eae6af96b085e209f5e802493207"
+    }
+  ],
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

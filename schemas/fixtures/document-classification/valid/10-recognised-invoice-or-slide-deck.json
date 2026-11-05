@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    "other"
+  ],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": "other",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "complete",
+  "document_id": "d_ed784f4f6c4220c5e8d18d75ee22aa812e0a4e39318c90749675165e789c059d",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "invoice header and line items"
+      },
+      "representation_sha256": "b13b35a06e80c977ee6ae1b8ed0fc93a73fcc9d817be14d143570de1beb40968"
+    }
+  ],
+  "reason": "a recognised invoice",
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

@@ -1,0 +1,32 @@
+{
+  "candidates": [
+    "book",
+    "book"
+  ],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": null,
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "not_measured",
+  "document_id": "d_20f6f2b4d6f3d0dc727eea874202777a4a21c1d0c02db7b4376c83b7443c5d8e",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "front matter without an imprint"
+      },
+      "representation_sha256": "28fb4af85201f2f1e8fd9040556531b7b39f7cd2deb2ab4783a97d7af076a619"
+    }
+  ],
+  "reason": "the evidence supports both a book and a long report",
+  "schema": "DocumentClassification/v1",
+  "status": "ambiguous",
+  "taxonomy_id": "kc-doc-class/1"
+}
