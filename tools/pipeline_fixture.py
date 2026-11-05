@@ -94,6 +94,17 @@ def variants() -> dict[str, dict[str, bytes]]:
     both[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
     chains["valid/classify-and-convert-skipped"] = link(both)
 
+    imported = copy.deepcopy(base)  # recognition outputs that existed before any receipt: verified now by an import adapter, never re-run
+    imported[1].update(outcome="skipped", reason="no classification is wanted for this document", inputs=[], outputs=[])
+    imported[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", inputs=[], outputs=[])
+    imported[3].update(tool={"name": "doclab-import", "version": "0.0.0"}, inputs=[{"role": "source", "sha256": SOURCE_SHA}, {"role": "earlier_evidence", "sha256": sha("earlier evidence")}],
+                       measurements=[{"name": "recognition_executed", "status": "measured", "value": False},
+                                     {"name": "original_run_id", "status": "measured", "value": "run.recognise.earlier"},
+                                     {"name": "original_finished_at", "status": "not_measured", "reason": "the earlier evidence does not record a finish time"},
+                                     {"name": "recorded_damage_places", "status": "measured", "value": 5}])
+    imported[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}, {"name": "bundle_verified", "status": "measured", "value": True}])  # the existing bundle is verified, not assembled
+    chains["valid/imported-recognition-chain"] = link(imported)
+
     for n, stage in enumerate(cpr.STAGES):  # a chain may end at any stage with a refusal
         stopped = copy.deepcopy(base[: n + 1])
         stopped[n].update(outcome="refused", reason=f"{stage} refused this document", outputs=[])
@@ -170,6 +181,35 @@ def variants() -> dict[str, dict[str, bytes]]:
         rs[2]["publishable"] = True
     mutant("invalid/unknown_field", extra_field)
 
+    def import_mutant(name: str, edit) -> None:
+        rs = copy.deepcopy(imported)
+        edit(rs)
+        chains[name] = link(rs)
+
+    def drop(measurement: str):
+        return lambda rs: rs[3].update(measurements=[m for m in rs[3]["measurements"] if m["name"] != measurement])
+    import_mutant("invalid/import_without_recognition_executed", drop("recognition_executed"))
+    import_mutant("invalid/import_claims_recognition_executed", lambda rs: rs[3]["measurements"][0].update(value=True))
+    import_mutant("invalid/import_with_recognition_executed_not_measured",
+                  lambda rs: rs[3].update(measurements=[{"name": "recognition_executed", "status": "not_measured", "reason": "not known"}] + rs[3]["measurements"][1:]))
+    import_mutant("invalid/import_without_original_run_id", drop("original_run_id"))
+    import_mutant("invalid/import_without_original_finished_at", drop("original_finished_at"))
+    import_mutant("invalid/recognition_not_executed_but_not_an_import", lambda rs: rs[3].update(tool={"name": "doclab-ocr", "version": "0.0.0"}))
+    import_mutant("invalid/import_named_on_another_stage", lambda rs: rs[4].update(tool={"name": "doclab-import", "version": "0.0.0"}))
+    import_mutant("invalid/import_with_recognition_executed_twice",
+                  lambda rs: rs[3].update(measurements=[{"name": "recognition_executed", "status": "measured", "value": True}] + rs[3]["measurements"]))
+    import_mutant("invalid/refused_import_claiming_recognition_executed",
+                  lambda rs: (rs[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[{"name": "recognition_executed", "status": "measured", "value": True}]),
+                              rs.__delitem__(slice(4, None))))
+    import_mutant("invalid/bundle_verify_only_after_a_recognise_that_is_not_an_import", lambda rs: rs[3].update(tool={"name": "doclab-ocr", "version": "0.0.0"}, measurements=[]))
+    import_mutant("invalid/bundle_assembled_false_without_bundle_verified_in_an_import_chain",
+                  lambda rs: rs[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}]))
+    import_mutant("invalid/bundle_measurement_on_the_import_stage_instead_of_bundle",
+                  lambda rs: rs[3].update(measurements=rs[3]["measurements"] + [{"name": "bundle_verified", "status": "measured", "value": True}]))
+    import_mutant("invalid/bundle_neither_assembled_nor_verified_in_an_import_chain",
+                  lambda rs: rs[4].update(measurements=[{"name": "bundle_assembled", "status": "measured", "value": False}, {"name": "bundle_verified", "status": "measured", "value": False}]))
+    import_mutant("invalid/import_output_not_consumed", lambda rs: rs[3].update(outputs=[{"role": "transcription", "sha256": sha("another transcription")}]))
+
     valid = chains["valid/synthetic-chain"]
     names = sorted(valid)
     broken = dict(valid)
@@ -190,7 +230,14 @@ def variants() -> dict[str, dict[str, bytes]]:
 
 
 EXPECTED = {
-    "valid/synthetic-chain": None, "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
+    "valid/synthetic-chain": None, "valid/imported-recognition-chain": None,
+    "invalid/import_without_recognition_executed": "PIPE-IMPORT", "invalid/import_claims_recognition_executed": "PIPE-IMPORT",
+    "invalid/import_with_recognition_executed_not_measured": "PIPE-IMPORT", "invalid/import_without_original_run_id": "PIPE-IMPORT",
+    "invalid/import_without_original_finished_at": "PIPE-IMPORT", "invalid/recognition_not_executed_but_not_an_import": "PIPE-IMPORT",
+    "invalid/import_named_on_another_stage": "PIPE-IMPORT", "invalid/bundle_verify_only_after_a_recognise_that_is_not_an_import": "PIPE-IMPORT",
+    "invalid/bundle_assembled_false_without_bundle_verified_in_an_import_chain": "PIPE-IMPORT", "invalid/bundle_measurement_on_the_import_stage_instead_of_bundle": "PIPE-IMPORT",
+    "invalid/bundle_neither_assembled_nor_verified_in_an_import_chain": "PIPE-IMPORT", "invalid/import_with_recognition_executed_twice": "PIPE-IMPORT",
+    "invalid/refused_import_claiming_recognition_executed": "PIPE-IMPORT", "invalid/import_output_not_consumed": "PIPE-INPUT", "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
     **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA",
     "invalid/source_beside_a_proper_input": "PIPE-SOURCE", "invalid/skipped_stage_with_an_input": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",
     "invalid/refused_intake_with_a_foreign_source": "PIPE-IDENTITY", "invalid/two_source_inputs": "PIPE-IDENTITY", "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
@@ -212,8 +259,8 @@ def write() -> None:
         for fname, data in files.items():
             (target / fname).write_bytes(data)
     (FIXTURE_ROOT / "README.md").write_text(
-        "# Synthetic pipeline receipt chains\n\nEvery receipt here is invented for this repository. `valid/` holds twelve chains: all nine stages, `convert` skipped, `classify` and `convert`\n"
-        "skipped, and one that ends in a refusal at each of the nine stages. Each directory under `invalid/` is a mutant of the first valid chain with one defect and one expected refusal code\n"
+        "# Synthetic pipeline receipt chains\n\nEvery receipt here is invented for this repository. `valid/` holds thirteen chains: all nine stages, `convert` skipped, `classify` and `convert`\n"
+        "skipped, one whose `recognise` is an import of earlier recognition outputs, and one that ends in a refusal at each of the nine stages. Each directory under `invalid/` is a mutant of the first valid chain with one defect and one expected refusal code\n"
         "(see `EXPECTED` in `tools/pipeline_fixture.py`). Regenerate with\n"
         "`python3 tools/pipeline_fixture.py write`; the unit tests fail if the committed files drift.\n", encoding="utf-8")
 

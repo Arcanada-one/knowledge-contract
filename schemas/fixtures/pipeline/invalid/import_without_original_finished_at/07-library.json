@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:06:30Z",
+  "inputs": [
+    {
+      "role": "previous_output",
+      "sha256": "94b9aab6e5d1be361aaf4f4efacd0bfae1f303eae2bad5bac382d725b6176bcb"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "library_entry",
+      "sha256": "c5a21e83097f00c73be9a2205b7fa3ac625b9730e0900321a129cb850c90df6a"
+    }
+  ],
+  "previous_receipt_sha256": "120e8db0fe113cc8eef916e7c11df65daf750e2fab43cd427c5f589cb511c596",
+  "rights_class": "unknown",
+  "run_id": "run.library.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "library",
+  "started_at": "2026-11-05T10:06:00Z",
+  "tool": {
+    "name": "library-submit",
+    "version": "0.0.0"
+  }
+}

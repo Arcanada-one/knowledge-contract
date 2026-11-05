@@ -72,8 +72,8 @@ class FixtureTests(unittest.TestCase):
 
     def test_every_code_of_the_specification_has_a_mutant(self):
         invalid = [n for n in fx.EXPECTED if n.startswith("invalid/")]
-        self.assertEqual(len(invalid), 27)
-        self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 12)
+        self.assertEqual(len(invalid), 41)
+        self.assertEqual(len([n for n in fx.EXPECTED if n.startswith("valid/")]), 13)
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
         listed = set(re.findall(r"`(PIPE-[A-Z-]+)`", spec))
         self.assertEqual(listed - {"PIPE-EMPTY"}, {c for c in set(fx.EXPECTED.values()) if c})
@@ -81,7 +81,7 @@ class FixtureTests(unittest.TestCase):
 
     def test_the_counts_the_specification_states_are_the_counts_of_the_fixtures(self):
         spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
-        words = {12: "Twelve", 27: "twenty-seven"}
+        words = {13: "Thirteen", 41: "forty-one"}
         valid = len([n for n in fx.EXPECTED if n.startswith("valid/")])
         invalid = len([n for n in fx.EXPECTED if n.startswith("invalid/")])
         self.assertIn(f"{words[valid]} valid", spec)
@@ -92,6 +92,133 @@ class FixtureTests(unittest.TestCase):
 
     def test_fixtures_are_deterministic(self):
         self.assertEqual(fx.variants(), fx.variants())
+
+
+class ImportAdapterTests(unittest.TestCase):
+    def chain(self, name: str) -> list[dict]:
+        return [json.loads(data) for _, data in sorted(fx.variants()[name].items())]
+
+    def test_the_imported_chain_is_a_new_chain_from_intake_with_the_import_named_and_nothing_executed(self):
+        chain = self.chain("valid/imported-recognition-chain")
+        self.assertEqual([r["stage"] for r in chain][:4], ["intake", "classify", "convert", "recognise"])
+        self.assertEqual(chain[1]["outcome"], "skipped")
+        recognise = chain[3]
+        self.assertTrue(recognise["tool"]["name"].endswith(cpr.IMPORT_SUFFIX))
+        measured = {m["name"]: m for m in recognise["measurements"]}
+        self.assertEqual((measured["recognition_executed"]["status"], measured["recognition_executed"]["value"]), ("measured", False))
+        self.assertEqual(measured["original_finished_at"]["status"], "not_measured")
+        self.assertTrue(measured["recorded_damage_places"]["name"].startswith("recorded_"))
+        self.assertEqual(cpr.check_chain(materialise(fx.variants()["valid/imported-recognition-chain"])), [])
+
+    def test_the_import_rules_object_in_their_own_code_and_the_digest_mismatch_in_the_input_rule(self):
+        imports = [n for n in fx.EXPECTED if n.startswith("invalid/") and ("import" in n or "recognition_not_executed" in n)]
+        self.assertEqual(len(imports), 14)
+        for name in imports:
+            with self.subTest(name):
+                found = codes(cpr.check_chain(materialise(fx.variants()[name])))
+                self.assertEqual(found, {"PIPE-INPUT"} if name.endswith("output_not_consumed") else {"PIPE-IMPORT"}, name)
+        elsewhere = cpr.check_chain(materialise(fx.variants()["invalid/import_named_on_another_stage"]))
+        self.assertTrue(any("recognise only" in p for p in elsewhere), elsewhere)  # the stage rule itself, not the measurement rule that would also object
+
+    def test_other_spellings_of_false_are_not_false_and_the_match_of_the_import_name_is_exact(self):
+        def check(edit) -> set:
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"] = []  # the verify-only bundle record is tested on its own; here only the recognise receipt is varied
+            edit(chain)
+            return codes(cpr.check_chain(materialise(fx.link(chain))))
+        for value in ("false", 0, None):
+            with self.subTest(import_value=value):
+                found = check(lambda c, value=value: c[3]["measurements"][0].update(value=value))
+                self.assertTrue(found & {"PIPE-IMPORT", "PIPE-SCHEMA"}, found)
+            with self.subTest(ordinary_tool_value=value):
+                found = check(lambda c, value=value: (c[3].update(tool={"name": "doclab-ocr", "version": "0"}), c[3]["measurements"][0].update(value=value)))
+                self.assertNotIn("PIPE-IMPORT", found)  # "false" and 0 are not the boolean the rule is about; null is refused by the schema
+        # an ordinary tool with 0 does not claim the boolean false; with the real false it is refused
+        self.assertEqual(check(lambda c: (c[3].update(tool={"name": "doclab-ocr", "version": "0"}), c[3]["measurements"][0].update(value=0))), set())
+        self.assertIn("PIPE-IMPORT", check(lambda c: c[3].update(tool={"name": "doclab-Import", "version": "0"})))  # not an exact -import name, and false is claimed
+        self.assertEqual(check(lambda c: c[3].update(tool={"name": "doclab-import", "version": "0"})), set())
+        for lookalike in ("reimport", "x_import", "import", "doclab-import-2"):  # only a name that ends with "-import" names an import; the others are ordinary tools
+            self.assertIn("PIPE-IMPORT", check(lambda c, lookalike=lookalike: c[3].update(tool={"name": lookalike, "version": "0"})), lookalike)
+
+    def test_a_repeated_original_run_id_or_finish_time_is_refused_too(self):
+        for name in ("original_run_id", "original_finished_at"):
+            with self.subTest(name):
+                chain = self.chain("valid/imported-recognition-chain")
+                chain[3]["measurements"].append({"name": name, "status": "not_measured", "reason": "listed twice"})
+                self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
+
+    def test_an_ordinary_recognition_that_did_not_run_nothing_special_stays_valid_and_a_failed_import_needs_no_measurements(self):
+        chain = self.chain("valid/synthetic-chain")
+        self.assertEqual(cpr.check_chain(materialise(fx.link(chain))), [])
+        imported = self.chain("valid/imported-recognition-chain")
+        imported[3].update(outcome="refused", reason="the earlier outputs do not match the source", outputs=[], measurements=[])
+        self.assertEqual(cpr.check_chain(materialise(fx.link(imported[:4]))), [])
+
+    def test_the_receipts_carry_the_rights_state_known_and_a_determination_lives_only_in_the_package(self):
+        spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
+        self.assertIn("the rights state known at that stage", spec)
+        self.assertIn("only in the package's rights record, never in a receipt", spec)
+        self.assertIn("a chain that starts at `unknown` does not end at `public_domain`", spec)
+        self.assertIn("A receipt never claims work that was not done", spec)
+        self.assertIn("records work that was verified rather than performed, and says so by its measurements", spec)
+        self.assertNotIn("the one case of a stage that verified and did not run", spec)
+        chain = self.chain("valid/imported-recognition-chain")
+        self.assertEqual({r["rights_class"] for r in chain}, {"unknown"})  # the imported chain determines nothing
+        widened = self.chain("valid/imported-recognition-chain")
+        widened[-1]["rights_class"] = "public_domain"  # a determination made in a receipt is a widening
+        self.assertIn("PIPE-RIGHTS", codes(cpr.check_chain(materialise(fx.link(widened)))))
+
+    def test_the_bundle_of_an_import_chain_records_that_it_verified_and_did_not_assemble(self):
+        chain = self.chain("valid/imported-recognition-chain")
+        measured = {m["name"]: (m["status"], m["value"]) for m in chain[4]["measurements"]}
+        self.assertEqual(measured, {"bundle_assembled": ("measured", False), "bundle_verified": ("measured", True)})
+        self.assertFalse(chain[4]["tool"]["name"].endswith(cpr.IMPORT_SUFFIX))  # the import name belongs to recognise only
+        self.assertEqual(cpr.check_chain(materialise(fx.link(chain))), [])
+        ordinary = self.chain("valid/synthetic-chain")
+        self.assertEqual(cpr.check_chain(materialise(fx.link(ordinary))), [])  # an ordinary bundle carries neither measurement
+        ordinary[4]["measurements"] = [{"name": "bundle_assembled", "status": "measured", "value": True}, {"name": "bundle_verified", "status": "measured", "value": True}]
+        self.assertEqual(cpr.check_chain(materialise(fx.link(ordinary))), [])  # assembled and then verified is allowed anywhere
+        with_import_only = self.chain("valid/imported-recognition-chain")
+        with_import_only[4]["measurements"] = []
+        self.assertEqual(cpr.check_chain(materialise(fx.link(with_import_only))), [])  # the verify-only record is allowed, not required
+        spec = (cpr.REPO / "engineering/specifications/pipeline/SPECIFICATION.md").read_text(encoding="utf-8")
+        self.assertIn("MAY verify an existing bundle instead of assembling it", spec)
+        self.assertIn("it does not check that the output is the hash of the verified manifest", spec)
+        self.assertIn("The checker refuses only a widening of the class along a chain", spec)
+        self.assertIn("a chain whose receipts all carry `public_domain` is not refused by it", spec)
+        every = self.chain("valid/synthetic-chain")
+        for record in every:
+            record["rights_class"] = "public_domain"
+        self.assertEqual(cpr.check_chain(materialise(fx.link(every))), [])  # the limit stated in the text: only widening is refused
+
+    def test_a_non_boolean_bundle_measurement_and_a_repeated_one_are_refused(self):
+        for label, edit in {"string": lambda m: m.update(value="false"), "number": lambda m: m.update(value=0)}.items():
+            with self.subTest(label):
+                chain = self.chain("valid/imported-recognition-chain")
+                edit(chain[4]["measurements"][0])
+                self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
+        for name in ("bundle_assembled", "bundle_verified"):  # the first value is the checker's reading only if there is no other
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"].append({"name": name, "status": "measured", "value": name == "bundle_verified"})  # agrees with the first
+            self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"}, name)
+        chain = self.chain("valid/imported-recognition-chain")
+        chain[4]["measurements"] = [chain[4]["measurements"][0], chain[4]["measurements"][1], {"name": "bundle_assembled", "status": "measured", "value": True}]
+        self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})  # last-wins would read assembled true here
+        for stage_index in (3, 5):  # the bundle measurements on recognise and on kc-package
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[stage_index]["measurements"] = chain[stage_index].get("measurements", []) + [{"name": "bundle_verified", "status": "measured", "value": True},
+                                                                                             {"name": "bundle_assembled", "status": "measured", "value": False}]
+            self.assertIn("PIPE-IMPORT", codes(cpr.check_chain(materialise(fx.link(chain)))), stage_index)
+        for repeated in (False, True):  # a second value is refused even when it agrees with the first: one reading only
+            chain = self.chain("valid/imported-recognition-chain")
+            chain[4]["measurements"].append({"name": "bundle_verified", "status": "measured", "value": repeated})
+            self.assertEqual(codes(cpr.check_chain(materialise(fx.link(chain)))), {"PIPE-IMPORT"})
+
+    def test_the_receipt_schema_gained_no_field_for_imports(self):
+        schema = json.loads((cpr.REPO / "schemas" / "pipeline-receipt.schema.json").read_text())
+        self.assertNotIn("import", json.dumps(schema).lower())
+        self.assertEqual(set(schema["properties"]), {"schema", "document_id", "stage", "run_id", "previous_receipt_sha256", "tool", "started_at", "finished_at", "outcome",
+                                                       "reason", "rights_class", "inputs", "outputs", "measurements", "kc2_admission"})
 
 
 class ValidatorBehaviourTests(unittest.TestCase):
