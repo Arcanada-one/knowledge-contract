@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    "other"
+  ],
+  "canon_sha256": "15a756e07e9994f192b75e1cc5e2fbd8f72148cd3878f6bf5f05f55f5ae3a66d",
+  "class": "other",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "complete",
+  "document_id": "d_5262f32088c07ffb6c3bad827fd405101a2fa082a731b808b5405d693fae6cd4",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "issue contents list"
+      },
+      "representation_sha256": "9f94c26e4f6c77423b1d6079bd7abcf74cb9bc31f3105136992cb4b596e70d89"
+    }
+  ],
+  "reason": "a complete journal issue of independent papers, no separate book identity",
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

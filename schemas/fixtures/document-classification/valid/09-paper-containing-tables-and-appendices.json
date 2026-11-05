@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    "paper"
+  ],
+  "canon_sha256": "15a756e07e9994f192b75e1cc5e2fbd8f72148cd3878f6bf5f05f55f5ae3a66d",
+  "class": "paper",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "complete",
+  "document_id": "d_52728bc90721fea3d2f02ba7e27d0e0a587e9c0cef302abebe986b0767ec2d8d",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "feature",
+        "name": "paper structure"
+      },
+      "representation_sha256": "8262b0e91550d09efeea35864f77c8d44e66423513b1e0a66f2832ec20d7ec07"
+    }
+  ],
+  "reason": "tables and measurement appendices belong to the paper",
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

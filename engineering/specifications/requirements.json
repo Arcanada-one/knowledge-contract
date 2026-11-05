@@ -2135,6 +2135,78 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "PIP-R014",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A classification result MUST name the taxonomy `kc-doc-class/1` and the SHA-256 of the exact bytes of the canon file, and a result that names another taxonomy identifier or another digest MUST be refused and MUST NOT be read against the latest canon.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R015",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A `classified` result MUST carry exactly one class and exactly that class as its only candidate, an `ambiguous` result MUST carry no class, at least two distinct candidates and a reason, and an `unknown` result MUST carry no class, no candidate and a reason.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R016",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A classifier MUST NOT use the class `other` for a source whose class is uncertain, and MUST NOT choose between candidates by an arbitrary priority; it MUST record the alternatives it found.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R017",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A result MUST NOT carry an invented number as confidence: when no calibrated assessment exists it MUST say `not_measured` with a reason, and a measured score MUST name its method, its version and its interpretation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R018",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A result MUST identify, by SHA-256 and by a selector, a rule or a feature, the representation that was actually inspected, and MUST state whether the coverage of the unit is complete, partial or not measured.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R019",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "The classify receipt of a finished stage MUST list the exact bytes of the result as one output with the role `classification` and their `sha256`, and the receipt schema MUST NOT gain a field for a class or a taxonomy.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R020",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A stage that needs a particular content class MUST NOT proceed on an `ambiguous` or an `unknown` result by choosing a class itself.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R021",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A classification MUST NOT change the rights class, the declared damage, the `knowledge_ready` status, publication, indexing or `kc2_admission` of the document; it is provenance for later stages and never an admission.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R022",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "10. Document classes (`kc-doc-class/1`)",
+      "text": "A classification under a later taxonomy MUST be a new result for the same document key with its own receipt chain, the earlier results MUST be kept, and a change of storage location MUST change neither the key nor the class.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",
