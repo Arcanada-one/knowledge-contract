@@ -101,6 +101,12 @@ def variants() -> dict[str, bytes]:
     mutant("coverage_missing", book, lambda r: r.pop("coverage"))
     mutant("partial_coverage_without_a_note", copy.deepcopy(CASES[2][1]), lambda r: r.pop("coverage_note"))
     mutant("confidence_score_above_one", book, lambda r: r.update({"confidence": {"status": "measured", "score": 1.5, "method": "rules", "version": "1", "interpretation": "share of agreeing rules"}}))
+    measured = {"status": "measured", "score": 0.9, "method": "rules", "version": "1", "interpretation": "share of agreeing rules"}
+    mutant("confidence_score_below_zero", book, lambda r: r.update({"confidence": dict(measured, score=-0.1)}))
+    mutant("measured_confidence_without_a_version", book, lambda r: r.update({"confidence": {k: v for k, v in measured.items() if k != "version"}}))
+    mutant("measured_confidence_without_an_interpretation", book, lambda r: r.update({"confidence": {k: v for k, v in measured.items() if k != "interpretation"}}))
+    mutant("unmeasured_confidence_without_a_reason", book, lambda r: r.update({"confidence": {"status": "not_measured"}}))
+    mutant("coverage_outside_the_enum", book, lambda r: r.update({"coverage": "unknown"}))
     mutant("measured_confidence_with_only_a_reason", book, lambda r: r.update({"confidence": {"status": "measured", "reason": "assessed by eye"}}))
     mutant("document_id_not_a_digest", book, lambda r: r.update({"document_id": "d_book"}))
     mutant("unknown_field", book, lambda r: r.update({"rights_class": "author_open"}))
@@ -121,7 +127,9 @@ EXPECTED = {
     "invalid/unknown_without_a_reason": "DCL-SCHEMA", "invalid/other_hiding_an_ambiguity": "DCL-SCHEMA", "invalid/other_hiding_an_unknown": "DCL-SCHEMA", "invalid/class_outside_the_taxonomy": "DCL-SCHEMA",
     "invalid/not_measured_confidence_with_a_score": "DCL-SCHEMA", "invalid/measured_confidence_without_a_method": "DCL-SCHEMA", "invalid/no_evidence": "DCL-SCHEMA",
     "invalid/evidence_digest_not_hex": "DCL-SCHEMA", "invalid/evidence_without_a_basis": "DCL-SCHEMA", "invalid/coverage_missing": "DCL-SCHEMA",
-    "invalid/partial_coverage_without_a_note": "DCL-SCHEMA", "invalid/confidence_score_above_one": "DCL-SCHEMA", "invalid/measured_confidence_with_only_a_reason": "DCL-SCHEMA",
+    "invalid/partial_coverage_without_a_note": "DCL-SCHEMA",
+    "invalid/confidence_score_below_zero": "DCL-SCHEMA", "invalid/measured_confidence_without_a_version": "DCL-SCHEMA", "invalid/measured_confidence_without_an_interpretation": "DCL-SCHEMA",
+    "invalid/unmeasured_confidence_without_a_reason": "DCL-SCHEMA", "invalid/coverage_outside_the_enum": "DCL-SCHEMA", "invalid/confidence_score_above_one": "DCL-SCHEMA", "invalid/measured_confidence_with_only_a_reason": "DCL-SCHEMA",
     "invalid/document_id_not_a_digest": "DCL-SCHEMA", "invalid/unknown_field": "DCL-SCHEMA", "invalid/taxonomy_digest_wrong": "DCL-CANON",
     "invalid/taxonomy_is_the_proposal_label": "DCL-TAXONOMY", "invalid/taxonomy_is_a_later_label": "DCL-TAXONOMY", "invalid/duplicate_member": "DCL-READ",
     "invalid/not_json": "DCL-READ",

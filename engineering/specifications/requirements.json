@@ -2218,7 +2218,7 @@
       "id": "PIP-R018",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "10. Document classes (`kc-doc-class/1`)",
-      "text": "A result MUST identify, by SHA-256 and by a selector, a rule or a feature, the representation that was actually inspected, and MUST state whether the coverage of the unit is complete, partial or not measured.",
+      "text": "A result MUST identify, by SHA-256 and by a selector, a rule or a feature, the representation that was actually inspected, and MUST state whether the coverage of the unit is complete, partial or not measured; a result whose coverage is partial MUST carry a coverage note that says which part of the unit was inspected.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

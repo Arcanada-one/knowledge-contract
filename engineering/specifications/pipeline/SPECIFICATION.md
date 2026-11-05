@@ -185,7 +185,7 @@ A result is a separate file, `classification.json`, tagged `DocumentClassificati
 
 **PIP-R017.** A result MUST NOT carry an invented number as confidence: when no calibrated assessment exists it MUST say `not_measured` with a reason, and a measured score MUST name its method, its version and its interpretation.
 
-**PIP-R018.** A result MUST identify, by SHA-256 and by a selector, a rule or a feature, the representation that was actually inspected, and MUST state whether the coverage of the unit is complete, partial or not measured.
+**PIP-R018.** A result MUST identify, by SHA-256 and by a selector, a rule or a feature, the representation that was actually inspected, and MUST state whether the coverage of the unit is complete, partial or not measured; a result whose coverage is partial MUST carry a coverage note that says which part of the unit was inspected.
 
 **PIP-R019.** The classify receipt of a finished stage MUST list the exact bytes of the result as one output with the role `classification` and their `sha256`, and the receipt schema MUST NOT gain a field for a class or a taxonomy.
 
@@ -199,11 +199,11 @@ A `classify` stage that is skipped still produces nothing and no class. A result
 
 **PIP-R022.** A classification under a later taxonomy MUST be a new result for the same document key with its own receipt chain, the earlier results MUST be kept, and a change of storage location MUST change neither the key nor the class.
 
-The twelve boundary cases are committed as valid results under `schemas/fixtures/document-classification/valid/`: a complete book with evidenced identity and declared damage (the damage stays in the quality report and is not an input of the class); the same book saved as a PDF from a drive; a chapter whose parent book is verified (a book with partial coverage); a standalone preprint or long report; a complete journal issue of several independent papers (`other`); a contextual chat or email archive; an independently packaged labelled dialogue corpus with a dataset manifest; a database CSV with described columns; a paper containing tables and measurement appendices; a recognised invoice or slide deck (`other`); an unreadable scan without metadata (`unknown`); and a source with unresolved book-versus-report evidence (`ambiguous`). Passing them states the outcome for those cases and nothing about the accuracy of any classifier. Thirty-one one-defect mutants under `invalid/`, each with one expected refusal code, are rebuilt by the tests.
+The twelve boundary cases are committed as valid results under `schemas/fixtures/document-classification/valid/`: a complete book with evidenced identity and declared damage (the damage stays in the quality report and is not an input of the class); the same book saved as a PDF from a drive; a chapter whose parent book is verified (a book with partial coverage); a standalone preprint or long report; a complete journal issue of several independent papers (`other`); a contextual chat or email archive; an independently packaged labelled dialogue corpus with a dataset manifest; a database CSV with described columns; a paper containing tables and measurement appendices; a recognised invoice or slide deck (`other`); an unreadable scan without metadata (`unknown`); and a source with unresolved book-versus-report evidence (`ambiguous`). Passing them states the outcome for those cases and nothing about the accuracy of any classifier. Thirty-six one-defect mutants under `invalid/`, each with one expected refusal code, are rebuilt by the tests.
 
 | Code | Refusal |
 | --- | --- |
-| `DCL-READ`, `DCL-SCHEMA` | not strict JSON (duplicate member, BOM, invalid UTF-8) or over 1 MiB; not matching the schema, including every status, class and candidate rule, a confidence number without a measurement, missing evidence or coverage |
+| `DCL-READ`, `DCL-SCHEMA` | not strict JSON (duplicate member, BOM, invalid UTF-8) or over 1 MiB; not matching the schema, including every status, class and candidate rule, a confidence number without a measurement, missing evidence or coverage, partial coverage without a coverage note |
 | `DCL-TAXONOMY`, `DCL-CANON` | a taxonomy identifier other than `kc-doc-class/1`; a canon digest that is not that of the canon file |
 | `DCL-INVARIANT` | the status, class and candidate rules broken (checked again outside the schema) |
 | `DCL-BINDING` | the classify receipt does not list the exact bytes of the result as its single `classification` output, or names another document |
