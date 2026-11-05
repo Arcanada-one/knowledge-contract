@@ -2031,6 +2031,102 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "PIP-R001",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "2. The nine stages",
+      "text": "A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage, and only `classify` and `convert` MAY end `skipped`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R002",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "3. Document identity",
+      "text": "The pipeline key of a document MUST be `d_` followed by the lowercase hexadecimal SHA-256 of the exact bytes of the original file, as Doclab already writes it, and every receipt of the chain MUST carry that key unchanged.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R003",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "3. Document identity",
+      "text": "The `intake` receipt MUST list exactly one input with role `source`, and it MUST be the digest that the key names; a chain whose key is not the digest of its own source is invalid. An `intake` that did not finish and lists no source is not judged.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R004",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "3. Document identity",
+      "text": "If a Source Library decision (task E2) chooses a different pipeline key, this section MUST be amended by a pull request that restates the key, the mapping to the names above and the validator rule, and receipts written under this version stay valid under it.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R005",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "A library-level index of chains MAY exist as a derived view and MUST be rebuildable from them; it never decides a verdict.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R006",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "An outcome of `done` MUST list at least one input and one output; any other outcome (`skipped`, `paused_safe`, `refused`, `failed`) MUST give a reason and list no output.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R007",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "Each receipt after the first MUST carry the SHA-256 of the previous receipt's file bytes, and the first MUST carry null; the order of a chain is the order of its links, never of its file names.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R008",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "A stage MUST verify the digest of its predecessor's receipt and of each of its own inputs before it writes, and an absent or unverifiable predecessor MUST end the stage as `paused_safe`, not be guessed around.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R009",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished, or the original source.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R010",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "No receipt MAY follow a receipt whose outcome is `paused_safe`, `refused` or `failed`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R011",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "4. Stage receipts",
+      "text": "A stage MUST NOT finish before it started or start before its predecessor finished.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PIP-R012",
+      "document": "engineering/specifications/pipeline/SPECIFICATION.md",
+      "section": "6. Rights and publication boundary",
+      "text": "A stage MAY keep the rights class of its predecessor or narrow it, and MUST NOT widen it; from least to most permissive the classes are `third_party_restricted`, `unknown` and `author_open`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",

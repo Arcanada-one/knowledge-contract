@@ -1,0 +1,44 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:00:30Z",
+  "inputs": [
+    {
+      "role": "source",
+      "sha256": "dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c"
+    },
+    {
+      "role": "source",
+      "sha256": "4a3eb085fe20e3872b970b8d3945a69dcc8bbf50db0658bddbe2d6e4cafe0072"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "source_record",
+      "sha256": "ef18d8c742a55c48a26d888a8b853f07b3591ab987f196fe40dccb1ea949f98b"
+    }
+  ],
+  "previous_receipt_sha256": null,
+  "rights_class": "unknown",
+  "run_id": "run.intake.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "intake",
+  "started_at": "2026-11-05T10:00:00Z",
+  "tool": {
+    "name": "doclab-intake",
+    "version": "0.0.0"
+  }
+}

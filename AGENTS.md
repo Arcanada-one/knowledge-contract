@@ -29,7 +29,9 @@ python3 -B tools/check_requirement_register.py
 python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow -v
 ```
 
-When changing the book-package schema, validator or exchange subset, run `cd tools && python3 -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt -v` using the CI dependency `jsonschema==4.23.0`, validate the synthetic package, and check regenerated fixtures against their committed bytes. The `book-package/2` profile uses explicit version-2 record tags; a version-1 package needs a declared migration and new observations, not a metadata-only upgrade.
+When changing the book-package schema, validator or exchange subset, run `cd tools && python3 -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts -v` using the CI dependency `jsonschema==4.23.0`, validate the synthetic package, and check regenerated fixtures against their committed bytes. The `book-package/2` profile uses explicit version-2 record tags; a version-1 package needs a declared migration and new observations, not a metadata-only upgrade.
+
+The pipeline contract (`engineering/specifications/pipeline/`) is a repository-only engineering document: not in the publication catalogue, not exported, not indexed. When changing it, its receipt schema or its validator, run `cd tools && python3 -B -m unittest test_pipeline_receipts -v` (CI dependency `jsonschema==4.23.0`), `python3 -B tools/pipeline_fixture.py write` and `git diff --exit-code -- schemas/fixtures`, and `python3 -B tools/check_requirement_register.py`.
 
 Run the formal regression controls with `python3 -B -m unittest tools.test_reviewed_formal_results -v`. They check finite counterexamples and models; they do not replace the papers' proofs or historical model experiments.
 

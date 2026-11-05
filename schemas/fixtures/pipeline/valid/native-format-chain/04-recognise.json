@@ -1,0 +1,40 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:03:30Z",
+  "inputs": [
+    {
+      "role": "source",
+      "sha256": "dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "done",
+  "outputs": [
+    {
+      "role": "transcription",
+      "sha256": "fa9d32227054bcaa0eb4bf5ee3ddf2d9afdade4e8313d9ace497bbece4500c3b"
+    }
+  ],
+  "previous_receipt_sha256": "99af6e148d68c894044c4d5be09c32442af42e99c4ca6b2dedf82a64157842dd",
+  "rights_class": "unknown",
+  "run_id": "run.recognise.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "recognise",
+  "started_at": "2026-11-05T10:03:00Z",
+  "tool": {
+    "name": "doclab-ocr",
+    "version": "0.0.0"
+  }
+}
