@@ -2098,7 +2098,7 @@
       "id": "PIP-R009",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "4. Stage receipts",
-      "text": "A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished, or the original source.",
+      "text": "A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished; `intake`, `classify`, `convert` and `recognise` MAY also take the original source as an input, and no later stage MAY list it.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

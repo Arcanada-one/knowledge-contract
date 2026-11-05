@@ -87,6 +87,18 @@ def variants() -> dict[str, dict[str, bytes]]:
     native[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", outputs=[])
     native[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
     chains["valid/native-format-chain"] = link(native)
+
+    both = copy.deepcopy(base)  # neither classified nor converted: recognise reads the source
+    both[1].update(outcome="skipped", reason="no classification is wanted for this document", outputs=[])
+    both[2].update(outcome="skipped", reason="the format is read as it is; no conversion is needed", outputs=[])
+    both[1]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
+    both[3]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
+    chains["valid/classify-and-convert-skipped"] = link(both)
+
+    for n, stage in enumerate(cpr.STAGES):  # a chain may end at any stage with a refusal
+        stopped = copy.deepcopy(base[: n + 1])
+        stopped[n].update(outcome="refused", reason=f"{stage} refused this document", outputs=[])
+        chains[f"valid/stopped-at-{stage}"] = link(stopped)
     mutant("invalid/id_changed", lambda rs: rs[4].update(document_id="d_" + "0" * 64))
     mutant("invalid/stage_missing", lambda rs: rs.pop(2))
     mutant("invalid/stage_repeated", lambda rs: rs.insert(3, copy.deepcopy(rs[2])))
@@ -117,6 +129,14 @@ def variants() -> dict[str, dict[str, bytes]]:
     def backwards(rs):
         rs[3].update(started_at="2026-11-05T09:00:00Z", finished_at="2026-11-05T09:00:10Z")
     mutant("invalid/time_runs_backwards", backwards)
+
+    def source_late(rs):
+        rs[4]["inputs"] = [{"role": "source", "sha256": SOURCE_SHA}]
+    mutant("invalid/source_as_input_of_a_later_stage", source_late)
+
+    def blank_reason(rs):
+        rs[2].update(outcome="skipped", reason="   ", outputs=[])
+    mutant("invalid/blank_reason", blank_reason)
 
     def essential_skipped(rs):
         rs[4].update(outcome="skipped", reason="not wanted", outputs=[])
@@ -163,7 +183,8 @@ def variants() -> dict[str, dict[str, bytes]]:
 
 
 EXPECTED = {
-    "valid/synthetic-chain": None, "valid/native-format-chain": None, "invalid/essential_stage_skipped": "PIPE-SKIP",
+    "valid/synthetic-chain": None, "valid/native-format-chain": None, "valid/classify-and-convert-skipped": None,
+    **{f"valid/stopped-at-{stage}": None for stage in cpr.STAGES}, "invalid/source_as_input_of_a_later_stage": "PIPE-SOURCE", "invalid/blank_reason": "PIPE-SCHEMA", "invalid/essential_stage_skipped": "PIPE-SKIP",
     "invalid/refused_intake_with_a_foreign_source": "PIPE-IDENTITY", "invalid/two_source_inputs": "PIPE-IDENTITY", "invalid/id_changed": "PIPE-ID", "invalid/stage_missing": "PIPE-STAGE-ORDER", "invalid/stage_repeated": "PIPE-STAGE-ORDER",
     "invalid/out_of_order": "PIPE-STAGE-ORDER", "invalid/starts_at_classify": "PIPE-STAGE-ORDER", "invalid/rights_widened": "PIPE-RIGHTS",
     "invalid/consumed_after_refusal": "PIPE-AFTER-STOP", "invalid/partial_output_kept": "PIPE-SCHEMA", "invalid/input_not_from_predecessor": "PIPE-INPUT",

@@ -1,0 +1,36 @@
+{
+  "document_id": "d_dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c",
+  "finished_at": "2026-11-05T10:00:30Z",
+  "inputs": [
+    {
+      "role": "source",
+      "sha256": "dff757cd6368139c6460eda1c5aaa2534dafcf6ff4bb4963cb6d6e30811d130c"
+    }
+  ],
+  "kc2_admission": "not_measured",
+  "measurements": [
+    {
+      "name": "units_seen",
+      "status": "measured",
+      "value": 1
+    },
+    {
+      "name": "cer",
+      "reason": "no reference transcription",
+      "status": "not_measured"
+    }
+  ],
+  "outcome": "refused",
+  "outputs": [],
+  "previous_receipt_sha256": null,
+  "reason": "intake refused this document",
+  "rights_class": "unknown",
+  "run_id": "run.intake.1",
+  "schema": "PipelineStageReceipt/v1",
+  "stage": "intake",
+  "started_at": "2026-11-05T10:00:00Z",
+  "tool": {
+    "name": "doclab-intake",
+    "version": "0.0.0"
+  }
+}

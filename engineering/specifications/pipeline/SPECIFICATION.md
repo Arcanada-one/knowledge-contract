@@ -18,7 +18,7 @@ description: "Repository-only engineering contract for the nine stages that carr
 | --- | --- |
 | [Receipt schema](../../../schemas/pipeline-receipt.schema.json) | `PipelineStageReceipt/v1`, one record per stage |
 | [Chain validator](../../../tools/check_pipeline_receipts.py) | Order, links, identity, rights, consumption and honesty of one chain |
-| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Two valid chains and twenty-three one-defect mutants |
+| [Fixtures](../../../schemas/fixtures/pipeline/) · [generator](../../../tools/pipeline_fixture.py) | Twelve valid chains and twenty-five one-defect mutants |
 | [Tests](../../../tools/test_pipeline_receipts.py) | The validator against every fixture, drift of the committed files, mutants of the validator |
 
 ## 1. Purpose, boundary and status
@@ -49,7 +49,7 @@ Every document passes the stages in this order, each exactly once and each leavi
 
 **PIP-R001.** A chain MUST contain the stages in this order without a gap or a repeat, and MUST start at `intake`; it MAY stop after any stage, and only `classify` and `convert` MAY end `skipped`.
 
-A retry of a stage is a new chain for the same document, never a second receipt in the old one: the old chain keeps its record of the attempt that did not finish.
+A stage is *finished* when its outcome is `done`. A `skipped` stage is not finished: it produces nothing and does not end the chain; `paused_safe`, `refused` and `failed` end it. A retry of a stage is a new chain for the same document, never a second receipt in the old one: the old chain keeps its record of the attempt that did not finish.
 
 ## 3. Document identity
 
@@ -79,7 +79,7 @@ A stage that did not finish therefore offers nothing that a later stage could co
 
 **PIP-R008.** A stage MUST verify the digest of its predecessor's receipt and of each of its own inputs before it writes, and an absent or unverifiable predecessor MUST end the stage as `paused_safe`, not be guessed around.
 
-**PIP-R009.** A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished, or the original source.
+**PIP-R009.** A stage that finished MUST list among its inputs at least one output of the nearest earlier stage that finished; `intake`, `classify`, `convert` and `recognise` MAY also take the original source as an input, and no later stage MAY list it.
 
 **PIP-R010.** No receipt MAY follow a receipt whose outcome is `paused_safe`, `refused` or `failed`.
 
@@ -88,6 +88,8 @@ A stage that did not finish therefore offers nothing that a later stage could co
 A measurement is either `measured` with a value or `not_measured` with a reason and no value; "not measured" is never reported as a value, a pass or a fail.
 
 ## 5. Hand-off formats
+
+The tables name the usual input of each edge; the rules of section 4 are the authority on what a stage may consume.
 
 | Edge | What is handed over | Digest and validator |
 | --- | --- | --- |
@@ -112,17 +114,17 @@ A stage that cannot proceed ends as `paused_safe` with a reason; it does not emi
 
 ## 8. Conformance
 
-The validator reads a directory of receipts and nothing else. It applies the schema to every file and then these rules, each with a stable refusal code. The requirement that a different pipeline key amends this document, the rule that a derived index is rebuildable and the rule that a stage verifies its predecessor before it writes are process requirements: they bind the stages and the people who amend this document, and no validator can check them from a chain.
+The validator reads a directory of receipts and nothing else: a chain occupies a directory of its own, and a receipt kept next to a bundle's other files is copied there or referenced by it. It applies the schema to every file and then these rules, each with a stable refusal code. The requirement that a different pipeline key amends this document, the rule that a derived index is rebuildable and the rule that a stage verifies its predecessor before it writes are process requirements: they bind the stages and the people who amend this document, and no validator can check them from a chain.
 
 | Code | Refusal |
 | --- | --- |
 | `PIPE-EMPTY`, `PIPE-READ`, `PIPE-SCHEMA` | no receipt in the directory; not strict JSON (duplicate member, BOM, invalid UTF-8), a symbolic link or a file over 1 MiB; or not matching the schema (unknown field, an unmeasured value with a number, `kc2_admission` other than `not_measured`, outputs on a stage that did not finish) |
 | `PIPE-HEAD`, `PIPE-LINK`, `PIPE-FORK` | not exactly one head (a stray second chain, or none); a link naming no receipt of the chain (a receipt altered, removed or missing); a receipt with two successors |
 | `PIPE-ID`, `PIPE-IDENTITY` | the key changes inside the chain; the key is not the digest of the original |
-| `PIPE-STAGE-ORDER`, `PIPE-SKIP`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; an essential stage skipped; a receipt after a paused, refused or failed one; no input from the nearest earlier finished stage or the source; time running backwards |
+| `PIPE-STAGE-ORDER`, `PIPE-SKIP`, `PIPE-AFTER-STOP`, `PIPE-INPUT`, `PIPE-SOURCE`, `PIPE-TIME` | a stage missing, repeated, out of order or the chain not starting at `intake`; an essential stage skipped; a receipt after a paused, refused or failed one; no input from the nearest earlier finished stage (or, where allowed, the source); the original source listed as an input by a stage that may not read it; time running backwards |
 | `PIPE-RIGHTS` | the rights class widened |
 
-Two valid synthetic chains (all nine stages, and one with `convert` skipped) and twenty-three mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
+Twelve valid synthetic chains (all nine stages; `convert` skipped; `classify` and `convert` both skipped; one ending in a refusal at each of the nine stages) and twenty-five mutants of the first, each with one defect and one expected code, are committed under `schemas/fixtures/pipeline/` and rebuilt by the tests; a test also mutates the validator and requires the fixtures to turn red. A passing chain says that the record is complete, ordered, linked, consistent about one document and one rights class, and honest about what was not measured. It says nothing about the quality of any stage.
 
 ## 9. What is and is not established
 
