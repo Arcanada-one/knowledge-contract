@@ -2154,7 +2154,7 @@
       "id": "PIP-R016",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "10. Document classes (`kc-doc-class/1`)",
-      "text": "A classifier MUST NOT use the class `other` for a source whose class is uncertain, and MUST NOT choose between candidates by an arbitrary priority; it MUST record the alternatives it found.",
+      "text": "(A rule of the classifier's behaviour, not one the schema or the checker can verify.) A classifier MUST NOT use the class `other` for a source whose class is uncertain, and MUST NOT choose between candidates by an arbitrary priority; it MUST record the alternatives it found.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },

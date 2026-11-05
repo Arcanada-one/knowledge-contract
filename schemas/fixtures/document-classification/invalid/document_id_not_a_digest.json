@@ -14,6 +14,7 @@
     "status": "not_measured"
   },
   "coverage": "complete",
+  "coverage_note": "complete as a content unit; damage declared in the package quality report is not an input of the class and is not recorded here",
   "document_id": "d_book",
   "evidence": [
     {

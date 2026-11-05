@@ -48,7 +48,8 @@ def make(label: str, status: str, cls, candidates: list, reason: str | None, bas
 
 # The twelve boundary cases: (file name, record).
 CASES: list[tuple[str, dict]] = [
-    ("01-complete-book-with-evidenced-identity", make("c01", "classified", "book", ["book"], None, ("feature", "title page, imprint and chapter structure"))),
+    ("01-complete-book-with-evidenced-identity", make("c01", "classified", "book", ["book"], None, ("feature", "title page, imprint and chapter structure"),
+                                                         "complete", "complete as a content unit; damage declared in the package quality report is not an input of the class and is not recorded here")),
     ("02-same-book-saved-as-pdf-from-a-drive", make("c02", "classified", "book", ["book"], None, ("feature", "title page, imprint and chapter structure"))),
     ("03-chapter-with-verified-parent-book", make("c03", "classified", "book", ["book"], "a chapter whose parent book identity is verified", ("selector", "parent-book citation on the first page"),
                                                   "partial", "one chapter of the parent book")),
@@ -98,6 +99,9 @@ def variants() -> dict[str, bytes]:
     mutant("evidence_digest_not_hex", book, lambda r: r["evidence"][0].update({"representation_sha256": "abc"}))
     mutant("evidence_without_a_basis", book, lambda r: r["evidence"][0].pop("basis"))
     mutant("coverage_missing", book, lambda r: r.pop("coverage"))
+    mutant("partial_coverage_without_a_note", copy.deepcopy(CASES[2][1]), lambda r: r.pop("coverage_note"))
+    mutant("confidence_score_above_one", book, lambda r: r.update({"confidence": {"status": "measured", "score": 1.5, "method": "rules", "version": "1", "interpretation": "share of agreeing rules"}}))
+    mutant("measured_confidence_with_only_a_reason", book, lambda r: r.update({"confidence": {"status": "measured", "reason": "assessed by eye"}}))
     mutant("document_id_not_a_digest", book, lambda r: r.update({"document_id": "d_book"}))
     mutant("unknown_field", book, lambda r: r.update({"rights_class": "author_open"}))
     mutant("taxonomy_digest_wrong", book, lambda r: r.update({"canon_sha256": "0" * 64}))
@@ -117,6 +121,7 @@ EXPECTED = {
     "invalid/unknown_without_a_reason": "DCL-SCHEMA", "invalid/other_hiding_an_ambiguity": "DCL-SCHEMA", "invalid/other_hiding_an_unknown": "DCL-SCHEMA", "invalid/class_outside_the_taxonomy": "DCL-SCHEMA",
     "invalid/not_measured_confidence_with_a_score": "DCL-SCHEMA", "invalid/measured_confidence_without_a_method": "DCL-SCHEMA", "invalid/no_evidence": "DCL-SCHEMA",
     "invalid/evidence_digest_not_hex": "DCL-SCHEMA", "invalid/evidence_without_a_basis": "DCL-SCHEMA", "invalid/coverage_missing": "DCL-SCHEMA",
+    "invalid/partial_coverage_without_a_note": "DCL-SCHEMA", "invalid/confidence_score_above_one": "DCL-SCHEMA", "invalid/measured_confidence_with_only_a_reason": "DCL-SCHEMA",
     "invalid/document_id_not_a_digest": "DCL-SCHEMA", "invalid/unknown_field": "DCL-SCHEMA", "invalid/taxonomy_digest_wrong": "DCL-CANON",
     "invalid/taxonomy_is_the_proposal_label": "DCL-TAXONOMY", "invalid/taxonomy_is_a_later_label": "DCL-TAXONOMY", "invalid/duplicate_member": "DCL-READ",
     "invalid/not_json": "DCL-READ",

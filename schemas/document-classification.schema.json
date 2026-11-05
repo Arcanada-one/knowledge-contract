@@ -416,6 +416,23 @@
           }
         }
       }
+    },
+    {
+      "if": {
+        "properties": {
+          "coverage": {
+            "const": "partial"
+          }
+        },
+        "required": [
+          "coverage"
+        ]
+      },
+      "then": {
+        "required": [
+          "coverage_note"
+        ]
+      }
     }
   ]
 }

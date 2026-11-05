@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    "book"
+  ],
+  "canon_sha256": "4f54f82385857bd4417f52d6a3e9e14484509f605ff233d4f32e762865b19b44",
+  "class": "book",
+  "classifier": {
+    "method": "rule-based reading of the representation named in the evidence",
+    "name": "synthetic-classifier",
+    "version": "0.0.0"
+  },
+  "confidence": {
+    "reason": "no calibrated assessment exists for this classifier",
+    "status": "not_measured"
+  },
+  "coverage": "partial",
+  "document_id": "d_a0c0723e864a27a0d3e1051e76fe612df5215e5e78c13af8aaee26eb7757b825",
+  "evidence": [
+    {
+      "basis": {
+        "kind": "selector",
+        "name": "parent-book citation on the first page"
+      },
+      "representation_sha256": "b6834446756f59e9e4fd329c4fdd26d35102fb9108c6e1d5e0f4fea4f6a74a18"
+    }
+  ],
+  "reason": "a chapter whose parent book identity is verified",
+  "schema": "DocumentClassification/v1",
+  "status": "classified",
+  "taxonomy_id": "kc-doc-class/1"
+}

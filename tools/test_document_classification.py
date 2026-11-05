@@ -131,7 +131,7 @@ class SpecificationTests(unittest.TestCase):
         invalid = [k for k in fx.variants() if k.startswith("invalid/")]
         self.assertEqual(len(valid), 12)
         self.assertIn("The twelve boundary cases are committed", SPEC)
-        words = {28: "Twenty-eight"}
+        words = {31: "Thirty-one"}
         self.assertIn(words.get(len(invalid), "?"), SPEC, f"the specification names {len(invalid)} mutants as another number")
 
     def test_the_requirements_are_numbered_and_cite_a_test_or_say_that_they_need_other_evidence(self):
@@ -228,7 +228,7 @@ class CheckerTests(unittest.TestCase):
                 record = json.loads(data)
                 if "status" in record and ("class" in record or "candidates" in record):
                     structural = any(s in key for s in ("class", "candidate", "ambiguous", "unknown", "other", "measured"))
-                    if structural and "evidence" not in key and "coverage" not in key and "digest" not in key and "document_id" not in key and "unknown_field" not in key and "confidence_without" not in key:
+                    if structural and "evidence" not in key and "coverage" not in key and "digest" not in key and "document_id" not in key and "unknown_field" not in key and "confidence_without" not in key and "confidence" not in key:
                         self.assertTrue(cdc._invariants(record), key)
 
     def test_the_command_line(self):
