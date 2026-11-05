@@ -2122,7 +2122,7 @@
       "id": "PIP-R023",
       "document": "engineering/specifications/pipeline/SPECIFICATION.md",
       "section": "Recognition by import",
-      "text": "The `recognise` stage MAY be performed by an import adapter that verifies existing recognition outputs against the source bytes now, instead of running recognition. The receipt of such an adapter MUST name the import in `tool.name` (a name ending in `-import`), MUST give the actual start and finish of the verification as `started_at` and `finished_at`, MUST list as `outputs` the existing recognition outputs that were verified, each by the SHA-256 of its exact bytes, and MUST list as `inputs` what PIP-R009 allows (the source when `classify` and `convert` were skipped, otherwise an output of the nearest earlier stage that finished) and MAY list the earlier evidence files by digest.",
+      "text": "The `recognise` stage MAY be performed by an import adapter that verifies existing recognition outputs against the source bytes now, instead of running recognition. The receipt of such an adapter MUST name the import in `tool.name` (a name ending in `-import`), MUST give the actual start and finish of the verification as `started_at` and `finished_at`, MUST list as `outputs` the existing recognition outputs that were verified, each by the SHA-256 of its exact bytes, and MUST list as `inputs` what PIP-R009 allows (an output of the nearest earlier stage that finished, or the source) and MAY list the earlier evidence files by digest.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
