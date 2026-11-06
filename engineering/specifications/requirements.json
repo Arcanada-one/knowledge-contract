@@ -2255,6 +2255,110 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "LOC-R001",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "2. Stable identifiers",
+      "text": "The source id of an original MUST be `d_` followed by the lowercase hexadecimal SHA-256 of the exact bytes of that original, identical to the pipeline key (`PIP-R002`).",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R002",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "2. Stable identifiers",
+      "text": "The package id for a derived package tree MUST be the source id, a single `/`, and the pipeline or tool version string that produced that tree (for example `d_<sha256>/book-package-2` or `d_<sha256>/<tool>@<version>`), matching the Source Library path key `packages/<source-id>/<pipeline-version>/`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R003",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "2. Stable identifiers",
+      "text": "A location (holder host, volume, path, Drive id, URL) MUST NEVER be used as a source id, package id, or card identity. A move of bytes MUST leave the id unchanged and MUST change only the registry row for that copy.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R004",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "3. Location registry",
+      "text": "Each physical copy MUST have exactly one registry row whose required fields are: `object_kind` (`original` or `package`), `object_id` (source id or package id per §2), `holder_host`, `volume`, `path`, `role` (`primary`, `mirror` or `backup`), `size_bytes`, `verified_at` (UTC timestamp or null when never verified), and `verified_sha256` (lowercase hex SHA-256 of the bytes at `path`, or null when never verified).",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R005",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "3. Location registry",
+      "text": "For `object_kind=original`, `verified_sha256` when present MUST equal the 64-hex digest embedded in `object_id` after the `d_` prefix. For `object_kind=package`, `verified_sha256` when present MUST equal the SHA-256 of the package tree's declared root digest file or of the bytes the verifier is configured to hash for that row; a missing configuration MUST leave verification `not_measured`, not invent a digest.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R006",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "3. Location registry",
+      "text": "At most one row per `(object_id, role=primary)` MAY exist for a given holder contour; additional copies MUST use `mirror` or `backup`. A move that changes path MUST update that one row (or replace it atomically); it MUST NOT mint a new object id.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R007",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "3. Location registry",
+      "text": "Consumers that need bytes MUST resolve `object_id` → registry row(s) and then open `path` on `holder_host`/`volume`. A consumer MUST NOT reconstruct a path from an id by string convention alone when a registry row exists for that contour.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R008",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "4. Verifier and receipts",
+      "text": "A verifier run MUST, for each selected row, attempt to read the bytes at the registered path, compute SHA-256, and classify the row as `ok` (digest matches expectation), `missing` (path absent), `corrupt` (digest mismatch), or `not_measured` (path unreachable or hash skipped with an explicit reason). Unexplained mismatches are `corrupt` rows without an authorised exception record.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R009",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "4. Verifier and receipts",
+      "text": "Every verifier run MUST emit a `LocationVerifyReceipt/v1` with: run id, tool name and version, start and finish timestamps, the registry digest (SHA-256 of the exact registry file or query snapshot bytes), counts per classification, the list of non-`ok` rows (or a truncated list with an explicit truncation flag), and `kc2_admission` equal to `not_measured`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R010",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "4. Verifier and receipts",
+      "text": "A scheduled production verifier with zero unexplained mismatches MAY be claimed only when a receipt for that run is measured. Absence of a live run is `not_measured`, never pass.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R011",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "5. Relation to Source Library (S1) and cards",
+      "text": "The location registry MUST address copies held by the Source Library store (or an evidenced DEVS staging root with the same id rules) and MUST NOT re-implement store import, capacity budgets or Drive mirroring; those remain KC-PIPE-S1.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R012",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "5. Relation to Source Library (S1) and cards",
+      "text": "An index card, library entry or database record that refers to an original or package MUST carry the source id and/or package id, and MAY carry registry role metadata, but MUST NOT carry the filesystem path; path resolution is a registry lookup.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "LOC-R013",
+      "document": "engineering/specifications/location-registry/SPECIFICATION.md",
+      "section": "6. Honesty and admission",
+      "text": "Producer records and receipts under this specification MUST keep `kc2_admission` as `not_measured`. This leaf MUST NOT invent a populated imported library, an X5 clean package, or knowledge admission.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",

@@ -1,0 +1,18 @@
+{
+  "schema": "LocationRegistry/v1",
+  "contour": "devs-hermetic",
+  "entries": [
+    {
+      "schema": "LocationRegistryRow/v1",
+      "object_kind": "original",
+      "object_id": "d_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "holder_host": "arcana-devs",
+      "volume": "/tmp",
+      "path": "/tmp/source-library/originals/aa/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "role": "primary",
+      "size_bytes": 0,
+      "verified_at": null,
+      "verified_sha256": null
+    }
+  ]
+}
