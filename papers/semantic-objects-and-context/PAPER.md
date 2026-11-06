@@ -15,17 +15,21 @@ description: "A formal account of source interpretations, context, mandatory dep
 
 ## Abstract
 
-A knowledge system must distinguish what a source contains, how that content is interpreted, and whether an interpretation supports a particular use. This paper specifies a model that keeps those questions separate. Its basic unit is a versioned semantic object with an attributable interpretation, explicit context, and inspectable grounds. Applicability is a decision relative to declared requirements, rather than a permanent property of a passage. We establish five elementary conditional results: source fidelity does not establish truth; a finite dependency graph has a least required closure; mandatory strengthening narrows certified applicability; additional possible readings narrow common consequences; and complete backward slicing preserves selected deterministic outputs. Counterexamples show why omitted dependencies, ambiguous scope, and unexamined modal distinctions defeat stronger conclusions. These are properties of the stated model, not a proof that an interpreter extracts all relevant meaning. The contribution is an integrated, falsifiable account of the obligations between extraction and use. Reproducible transcription and dependency studies are published separately from the scientific argument.
+Faithful extraction does not by itself establish that source content is true or suitable for a task. This paper asks which distinctions a knowledge system must preserve between source material and its use. We define a versioned semantic object with attributable content, explicit context, and inspectable grounds, and define certified applicability relative to declared requirements and assessments. Five elementary conditional results characterize the model: fidelity alone cannot distinguish truth across observationally identical worlds; a finite dependency graph has a least required closure; mandatory strengthening narrows certified applicability; additional readings narrow common consequences; and complete backward slicing preserves selected deterministic outputs. Counterexamples delimit those results: a computed closure may omit an unrecorded exception, a retained quotation may be false, and a representation may lose the scope of a negation or obligation. The contribution is an integrated account of the obligations between extraction and use, not a new general theory of meaning. The method is deductive; the empirical question of whether an interpreter supplies complete and correct representations remains separate. Published engineering studies provide bounded transcription and dependency evidence, not a demonstration of complete semantic extraction.
 
 **Keywords:** semantic object; provenance; context; applicability; interpretation; dependency closure.
 
 ## 1. Research question and contribution
 
-An accurate quotation can be false. A true statement can be irrelevant to a task. Two identical sentences can concern different objects, dates, or obligations. A system that stores only text and a confidence score cannot express these differences without assigning several incompatible meanings to the same field.
+An accurately reproduced quotation can contain a false assertion. A true statement can be irrelevant to a task. Identical sentences can concern different objects, dates, or obligations. Text and a single confidence score do not distinguish these cases unless the system assigns incompatible meanings to the same field.
 
-Our question is: **what must remain explicit when source material becomes knowledge offered for a particular task?** We propose a separation between source representation, interpretation, grounding, applicability, and delivery. The contribution is the organization of these obligations and the identification of their failure conditions. The mathematical results below are elementary consequences of the definitions; we do not claim a new general theory of meaning.
+Our question is: **what must remain explicit when source material becomes knowledge offered for a particular task?** We separate five questions. What representation was inspected? How was it interpreted? What grounds support that interpretation? Which requirements govern its proposed use? What material actually reaches the recipient? A favorable answer to one question does not settle the others.
 
-The model complements established work. W3C PROV-DM describes provenance through entities, activities, and agents [1]. SKOS provides concepts, labels, and relations for knowledge organization [2]. Neither a provenance link nor a concept label is, by itself, evidence that a proposition is true or applicable. We use those distinctions while adding a task-relative admission question: what has to hold before this interpretation may support this use?
+The contribution is the organization of these obligations and their failure conditions. The semantic-object record connects attribution and context to inspectable grounds. The applicability definition makes mandatory conditions and justified exemptions explicit. The conditional results identify what follows from those definitions and what still requires independent evidence. They are elementary results, not a claim to a new general theory of meaning or a new extraction algorithm.
+
+The method is deductive. Sections 2 and 3 define the objects and certification rule. Section 4 states five propositions with their assumptions, proofs, and limits. Sections 5 and 6 examine granularity, delivery, and empirical evaluation; Section 7 identifies the narrower questions addressed by the published engineering studies. The proofs do not establish that an extraction process meets their premises.
+
+The model complements established work. W3C PROV-DM describes provenance through entities, activities, and agents [1]. SKOS provides concepts, labels, and relations for knowledge organization [2]. A provenance link or concept label does not, by itself, establish a proposition's truth or suitability for a task. The question addressed here is what additional conditions must hold before an interpretation may support a particular use.
 
 ## 2. Objects, interpretations, and grounds
 
@@ -37,9 +41,11 @@ A **semantic object** is a record
 o=(i,v,m,A,C,G),
 \]
 
-where \(i\) is identity, \(v\) is revision, \(m\) is the represented content, \(A\) is attribution, \(C\) is context, and \(G\) is a set of grounds and dependency relations. Content may represent a proposition, question, instruction, constraint, example, or another declared role. A role is not an epistemic verdict: recording an instruction does not establish its legitimacy, and recording an example does not establish a universal rule.
+where \(i\) is identity, \(v\) is revision, \(m\) is the represented content, \(A\) is attribution, \(C\) is context, and \(G\) is a set of grounds and dependency relations.
 
-An **interpretation** maps a source region to such a record under declared reading assumptions. Interpretation can be uncertain or plural. If a diagram permits two readings, the record can retain both, with the observations needed to resolve them. Choosing one silently changes the knowledge claim.
+The represented content may be a proposition, question, instruction, constraint, example, or another declared content role. That role describes what the record represents; it is not an epistemic verdict. Recording an instruction does not establish its legitimacy. Recording an example does not establish a universal rule.
+
+An **interpretation** maps a source region to a semantic-object record under declared reading assumptions. It may remain uncertain or admit several readings. When a diagram permits two readings, the record can retain both and identify the observations needed to resolve them. Silently choosing one changes the knowledge claim rather than merely simplifying its presentation.
 
 **Grounding** identifies why a particular part of the interpretation is supported. A source may support that an author asserted \(P\), while an independent measurement supports \(P\) itself. These are different grounds. We therefore distinguish
 
@@ -47,13 +53,28 @@ An **interpretation** maps a source region to such a record under declared readi
 \operatorname{Says}(a,P) \quad\text{and}\quad P.
 \]
 
-There is no inference from the first to the second without additional premises about the source and the relevant domain. Co-occurrence is likewise not an implication: placing two statements in one paragraph does not establish a causal or logical relation between them.
+The first does not entail the second without additional premises about the source and the relevant domain. Faithful attribution and truth therefore require different justifications.
+
+Co-occurrence is not an implication either. Two statements appearing in the same paragraph do not acquire a causal or logical relation merely through their proximity.
 
 Extraction must preserve logical structure when it matters. For a domain with two objects, one satisfying \(P\) and one not, “not every object satisfies \(P\)” is true while “every object fails \(P\)” is false. Similarly, absence of an obligation to act is different from an obligation not to act. A semantic representation that merges these distinctions changes the claim even if it preserves most words.
 
 ## 3. Context and applicability
 
-We distinguish six context roles: source context, including terminology, referents, and local legends; extraction context, including the inspected representation and unresolved details; request context, including intent, completeness requirements, and budget; recipient context, including usable forms and modalities; situation context, including the target object, time, and reference frame; and intended-action context, specifying what is to be explained, compared, computed, or executed. These are functional roles, not a requirement to duplicate a value in six places. A single linked value can serve several roles, while source conditions and target conditions remain distinguishable.
+Context serves six distinct functions in this model.
+
+**Table 1. Context roles and the information they identify.**
+
+| Context role | Relevant information |
+| --- | --- |
+| Source | Terminology, referents, and local legends in the source. |
+| Extraction | The inspected representation and unresolved details. |
+| Request | Intent, completeness requirements, and budget. |
+| Recipient | Usable forms and modalities. |
+| Situation | Target object, time, and reference frame. |
+| Intended action | What is to be explained, compared, computed, or executed. |
+
+These are functional roles, not six required copies of the same value. One linked value may serve several roles. The representation must nevertheless distinguish conditions attached to the source from conditions governing the intended target use.
 
 Let a use request be \(q\), a relevant state be \(s\), and the finite declared mandatory conditions be \(R(q)\). Each condition has an assessment
 
@@ -137,25 +158,35 @@ The result concerns complete computational dependencies. Hidden inputs, changing
 
 ## 5. Granularity, identity, and delivery
 
-There is no task-independent ideal size for a semantic object. A large unit may hide an exception; a tiny unit may detach a predicate from its scope. A useful decomposition exposes independent revision and inspection while retaining explicit mandatory connections. Granularity is therefore evaluated against reconstruction and use obligations, not by a preferred number of words.
+A semantic object has no task-independent ideal size. A large unit may hide an exception; a tiny unit may detach a predicate from its scope. Decomposition is useful when it permits independent revision and inspection without losing mandatory connections. Its adequacy depends on reconstruction and use obligations, not on a preferred word count.
 
-Identity, equivalent content, and interchangeable use must also remain separate. Two records can contain equivalent claims but have different provenance. Two revisions of one record can differ on a critical condition. Two objects interchangeable for one question can be distinguishable for another. Deduplication should consolidate a verified content class without discarding the provenance that supports or qualifies its members.
+Identity, equivalent content, and interchangeable use answer different questions. Records with equivalent claims may have different provenance. Revisions of one record may differ on a critical condition. Objects interchangeable for one question may be distinguishable for another. Deduplication should therefore preserve the provenance that supports or qualifies members of a verified content class.
 
-Delivery creates a further obligation. A preserved image identifier does not guarantee that a recipient receives a readable image; alternative text does not necessarily preserve a visual relation needed by the task. The delivered package must include or expose the relevant material at a usable resolution and with the necessary legend or interpretation. These are inspectable engineering conditions, not consequences of naming a multimodal field.
+Delivery must be checked separately. Keeping an image identifier does not establish that the recipient received a readable image. Alternative text may omit a visual relation needed by the task. The delivered package must include or expose the relevant material at a usable resolution, together with the necessary legend or interpretation. Naming a multimodal field does not establish that these engineering conditions were met.
 
 ## 6. Falsification and scope of evidence
 
-The propositions establish properties of declared representations. The harder empirical question is whether an extraction process supplies the right representations and dependencies. That question requires independently prepared cases and adjudication rules. A useful evaluation distinguishes transcription error, attribution error, logical-scope error, omitted context, and unsupported inference. A single aggregate accuracy score hides these different failure mechanisms.
+The propositions concern declared representations under stated premises. A separate empirical question is whether an extraction process supplies the correct representations and dependencies. Testing that process requires independently prepared cases and adjudication rules. The evaluation should distinguish transcription error, attribution error, logical-scope error, omitted context, and unsupported inference. A single aggregate accuracy score can conceal these different failure mechanisms.
 
-Counterexamples should include a changed referent with unchanged wording, an exception outside the extracted region, an ambiguous visual mark, and a correct quotation of a false assertion. An independent reference annotation should specify what counts as a permissible alternative reading. Agreement between two outputs is insufficient when both inherit the same omitted condition.
+Test cases should include unchanged wording with a changed referent, an exception outside the extracted region, an ambiguous visual mark, and a correct quotation of a false assertion. Independent reference annotations should specify permissible alternative readings. Agreement between two outputs is insufficient when both inherit the same omitted condition.
 
-This article establishes the stated conditional properties and a falsifiable specification of extraction obligations. It reports no measured superiority of a particular model, annotation process, or user interface. Executable examples can test compliance on finite inputs; they cannot prove complete interpretation of unrestricted language or images.
+An omitted dependency can invalidate a system's claim to semantic completeness even when its closure computation is correct. Such a case challenges the completeness of the represented dependencies; it does not refute the conditional closure result for the graph actually declared. The same distinction applies when an implementation fails another proposition's premises. A counterexample to a conditional proposition must satisfy its premises and contradict its conclusion.
+
+This article establishes the stated conditional properties and makes extraction obligations explicit enough to assess. It reports no measured superiority of a model, annotation process, or user interface. Executable examples can test compliance on finite inputs, but cannot establish complete interpretation of unrestricted language or images. The published observations and their untested boundaries are identified next.
 
 ## 7. Connections to the published engineering work
 
 The [source transcription and uncertainty study](../../engineering/studies/source-transcription-and-uncertainty/STUDY.md) demonstrates that a reproducible projection can omit recorded uncertainty, and reports a correction that preserves that field. It does not evaluate plural interpretations or the correctness of source locators. Those extraction obligations remain untested by the published studies. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) separates fixed-graph closure from historical delivery checks; it does not establish that the graph contains every semantic dependency.
 
 Definitions shared across the project are indexed in the [glossary](../../reference/glossary/GLOSSARY.md). The next scientific steps are [constrained transformations](../constrained-transformations/PAPER.md) and [retrieval and context composition](../retrieval-and-context-composition/PAPER.md), which use the applicability and dependency obligations defined here.
+
+## 8. Conclusion
+
+Source fidelity, supported interpretation, certified applicability, and successful delivery are distinct obligations. The semantic-object record makes attribution, context, and grounds inspectable; the applicability rule asks whether each declared mandatory condition has passed or has a justified exemption in the assessed scope. Neither a locator nor a confidence label settles those questions on its own.
+
+The five propositions describe conditional guarantees, not automatic extraction capabilities. Least closure is relative to a declared graph. Strengthening requires unchanged assessments and discharge semantics. Common consequences depend on the recorded readings and consequence relation. Backward slicing requires complete dependencies, fixed inputs, and deterministic functions on an acyclic graph. Fidelity alone cannot discriminate worlds that present the same source evidence but differ in truth.
+
+The remaining empirical obligation is to justify the representations, dependencies, assessments, and delivery on which a proposed use relies. Unknown conditions must not be reported as satisfied, and an empty requirement set must not be mistaken for evidence that no obligation exists. The model supplies a disciplined account of those obligations; it does not certify unrestricted interpretation or establish a performance advantage.
 
 ## References
 
