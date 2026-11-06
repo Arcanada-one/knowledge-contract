@@ -81,13 +81,13 @@ class CheckSourcesTests(unittest.TestCase):
         self.assertEqual(len(check_sources.check(make({"papers/p.md": "# P\n---\nsources: none\n---\n"}))), 1)
 
     def test_detached_source_row_after_blank_fails(self):
-        row2 = "| Roe 2021 | Roe | https://example.org/r | CC-BY-4.0 | definition | \`papers/r.md\` |\\n"
-        root = make({"papers/z.md": "# P\\n"}, DOE + "\\n" + row2)
+        row2 = "| Roe 2021 | Roe | https://example.org/r | CC-BY-4.0 | definition | `papers/r.md` |\n"
+        root = make({"papers/z.md": "# P\n"}, DOE + "\n" + row2)
         problems = check_sources.check(root)
         self.assertTrue(any("detached source row" in issue for issue in problems), problems)
 
     def test_contiguous_source_rows_pass_shape(self):
-        row2 = "| Roe 2021 | Roe | https://example.org/r | CC-BY-4.0 | definition | \`papers/r.md\` |\\n"
+        row2 = "| Roe 2021 | Roe | https://example.org/r | CC-BY-4.0 | definition | `papers/r.md` |\n"
         root = make({"papers/z.md": front("sources: none")}, DOE + row2)
         self.assertEqual(check_sources.table_shape_errors((root / "SOURCES.md").read_text(encoding="utf-8")), [])
 
