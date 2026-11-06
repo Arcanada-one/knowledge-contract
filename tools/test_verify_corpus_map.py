@@ -58,6 +58,26 @@ def v2_map():
 V2=v2_map()
 def drop(d,kind,to=None,frm=None):
     d['relations']=[e for e in d['relations'] if not (e['kind']==kind and (to is None or e['to']==to) and (frm is None or e['from']==frm))]
+class CorpusMapV2ReviewControls(unittest.TestCase):
+    """Controls added in review: a historic label cannot claim independence or verification, and an inspection needs an opened source."""
+    def errors(self, d):
+        return validate(d)['errors']
+    def test_valid_fixture_still_passes(self):
+        self.assertEqual(self.errors(copy.deepcopy(V2)), [])
+    def test_historic_label_cannot_claim_independent_review(self):
+        for level in ('internal_independent', 'external_peer_review'):
+            d = copy.deepcopy(V2); d['evidence_assessments'][1]['reviewer_independence'] = level
+            self.assertTrue(any('historic label claims independent review' in e for e in self.errors(d)), level)
+    def test_historic_label_cannot_say_verified_in_limitations(self):
+        d = copy.deepcopy(V2); d['evidence_assessments'][1]['limitations'] = 'Verified 2026-10-07'
+        self.assertTrue(any('historic label claims verification' in e for e in self.errors(d)))
+    def test_inspection_needs_a_retrieved_source(self):
+        for depth in ('official_abstract_only', 'full_primary_text'):
+            d = copy.deepcopy(V2); d['evidence_assessments'][0]['inspection_depth'] = depth
+            d['source_records'][0]['retrieved_at'] = None; d['source_records'][0]['historical_v2_label'] = 'Historic label'
+            self.assertTrue(any('inspection without a retrieved source' in e for e in self.errors(d)), depth)
+
+
 class CorpusMapV2Controls(unittest.TestCase):
     def check(self,change,fragment):
         d=copy.deepcopy(V2);change(d);r=validate(d)

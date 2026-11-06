@@ -133,8 +133,9 @@ def validate(data: dict) -> dict:
                 f'invalid observed_at {aid}')
         if depth == 'historic_v2_label':
             require(a.get('finding') == 'historical-unchecked', f'historic label claims a finding {aid}')
-            require(not any('verified' in str(a.get(f, '')).lower() for f in ('method', 'scope', 'finding')),
+            require(not any('verified' in str(a.get(f, '')).lower() for f in ('method', 'scope', 'finding', 'limitations')),
                     f'historic label claims verification {aid}')
+            require(a.get('reviewer_independence') == 'author_self_check', f'historic label claims independent review {aid}')
         # ClaimRevision = (claim_id, document_source_commit), resolved claim -> document -> source -> commit.
         claim = nodes.get(a.get('claim_id'), {})
         require(claim.get('kind') == 'claim', f'assessment has no claim {aid}')
@@ -206,6 +207,10 @@ def validate(data: dict) -> dict:
         uses = sum(1 for e in relations if e.get('kind') == 'ground-uses-source' and e.get('from') == aid)
         require(grounds == 1, f'assessment needs exactly one claim-has-ground edge {aid}')
         require(uses >= 1, f'assessment uses no source {aid}')
+        # An inspection of the source itself needs a source that was actually opened.
+        if isinstance(a, dict) and a.get('inspection_depth') in ('official_abstract_only', 'full_primary_text'):
+            used = [nodes.get(e.get('to'), {}) for e in relations if e.get('kind') == 'ground-uses-source' and e.get('from') == aid]
+            require(all(r.get('retrieved_at') for r in used), f'inspection without a retrieved source {aid}')
     for unit in data.get('foundation_units', []):
         actual = {e['to'] for e in relations if e.get('from') == unit['id'] and e.get('kind') == 'addresses-planned-scope'}
         require(actual == set(unit.get('covers', [])), f'coverage mismatch {unit["id"]}')
