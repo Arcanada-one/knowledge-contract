@@ -31,7 +31,7 @@ This specification fixes:
 - the obligation that cards and derived records carry ids only;
 - the **verifier** that re-hashes registered copies and emits a run receipt.
 
-It reuses and does not replace the [pipeline](../pipeline/SPECIFICATION.md) document key (`PIP-R002`), the [book package](../book-package/SPECIFICATION.md) identity fields, or the Source Library store layout (KC-PIPE-S1). It invents no X5 clean package and no KC2 admission (`kc2_admission` remains `not_measured`).
+It reuses and does not replace the [pipeline](../pipeline/SPECIFICATION.md) document key (`PIP-R002`), the [book package](../book-package/SPECIFICATION.md) identity fields, or the Source Library store layout (KC-PIPE-S1). It invents no X5 clean package and no KC2 admission (`kc2_admission` remains `not_measured`). Index ingest cards that cite these ids are specified separately in [package-index-ingest](../package-index-ingest/SPECIFICATION.md).
 
 This document is a repository-only engineering contract. It is not in the publication catalogue. Live population of the registry for an imported library, and a live scheduled verifier run with zero unexplained mismatches, are measured separately; until measured they are `not_measured`, never pass or fail.
 
