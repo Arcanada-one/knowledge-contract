@@ -26,6 +26,17 @@ Four retained public Python procedures reproduce the edition-1.0 examples and ch
 
 This evidence does not establish universal extraction accuracy, general agent superiority, or production readiness of every specified operation. Internal agent review and external peer review are different forms of assessment; review records state which was performed. A complete publication can make a bounded result precise without claiming that every empirical question is settled.
 
+## Knowledge-supply pipeline
+
+This repository is the third hop of the knowledge-supply chain that carries one document from intake to the search index: Doclab Arcana (intake / OCR / bundle) → Conversion Arcana (format conversion) → Knowledge Contract (book packages, library, publish) → the Arcanada knowledge base (Scrutator) and Talomnia. The nine stages, the document key and the stage-receipt chain are defined by the repository-only [pipeline contract](engineering/specifications/pipeline/SPECIFICATION.md). That document is not part of publication edition 1.1 and does not claim runtime admission.
+
+| Linked repository | Role in the chain |
+| --- | --- |
+| [doclab-arcana](https://github.com/Arcanada-one/doclab-arcana) | Intake, classification, recognition, bundling and `book-package/2` export |
+| [doc-md-html](https://github.com/Arcanada-one/doc-md-html) | Format conversion for inputs Doclab does not read as they are |
+
+This README does not claim that every stage is built or that KC-1 book packages become Knowledge Contract 2.0 revisions automatically. Built versus planned stages stay in the pipeline contract and in measured project receipts.
+
 ## Constraints and agent artifacts
 
 Constraints are explicit contract obligations, separate from output acceptance criteria and current authority. The [core specification](engineering/specifications/knowledge-contract-core/SPECIFICATION.md#3-constraints-are-first-class-obligations) defines their role. The [artifact registry](engineering/specifications/artifact-registry/SPECIFICATION.md) specifies readable folders and canonical files for roles, skills, competencies, blueprints, constraints and Work Items. [AGENTS.md](AGENTS.md) tells current coding agents where the canonical documents live and how to verify changes.
