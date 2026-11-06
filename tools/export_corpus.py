@@ -561,7 +561,12 @@ def external_sections(middle: bytes) -> list[str]:
 
 
 def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source: str) -> str:
-    """Validate the receipt behind one decision line; returns the verified base."""
+    """Validate the receipt behind one decision line; returns the verified base.
+
+    Embedded source blobs for ``current`` lines are read at the receipt merge-base tip.
+    Non-current (withdrawn/superseded) lines are read at ``source`` (the allowlist row's
+    source commit) so a later path rewrite cannot block a status decision.
+    """
     receipt_path = decision["obj"]["receipt"]
     first_parent, final_head = info["first_parent"], info["final_head"]
     if hashlib.sha256(CHECKLIST_TEXT.encode()).hexdigest() != CHECKLIST_SHA256:  # check: checklist_pin
@@ -601,9 +606,16 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         raise ExportError("receipt does not bind tuple: decision lines differ from the lines the change adds")
     blobs = b""
     for o in sorted((json.loads(x) for x in added), key=lambda o: (o["path"], o["sha256"], o["upstream"])):
-        blob = command("git", "show", f"{base}:{o['path']}", check=False)
+        # Current lines keep tip-of-base semantics. Non-current (withdrawn/superseded) lines may outlive a
+        # later path rewrite (for example a compatibility link), so their digest is checked at the row's
+        # source commit — the bytes the allowlist still names — not at the receipt merge-base tip.
+        blob_ref = base
+        if o["status"] != "current":  # check: non_current_blob_at_source
+            blob_ref = source
+        blob = command("git", "show", f"{blob_ref}:{o['path']}", check=False)
         if blob.returncode or hashlib.sha256(blob.stdout).hexdigest() != o["sha256"]:  # check: blob_at_base
-            raise ExportError("embedded source blob at the base differs from the decision digest")
+            where = "source commit" if o["status"] != "current" else "base"
+            raise ExportError(f"embedded source blob at the {where} differs from the decision digest")
         blobs += f"BLOB {o['path']} {o['sha256']} {o['upstream']} {len(blob.stdout)}\n".encode() + blob.stdout + b"\n"
     upstreams = sorted({json.loads(x)["upstream"] for x in added})
     own = [u for u in upstreams if upstream_commit(u, source) is not None]
