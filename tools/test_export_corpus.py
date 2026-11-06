@@ -397,6 +397,8 @@ class DecisionRouteTests(unittest.TestCase):
     def test_withdrawal_succeeds_when_tip_content_changed_after_the_source_commit(self) -> None:
         # P00..P13-shaped case: path at tip is rewritten (compatibility link) so tip bytes no longer
         # hash to the published digest; a withdrawn line must still validate against the source commit.
+        # ExportError must become an assertion failure (not an ERROR) so disabling
+        # non_current_blob_at_source is an assertion kill in the mutation harness.
         w = self.world()
         doc = DOCS[0]
         original_sha = w.sha[doc]
@@ -407,7 +409,10 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertNotEqual(tip_sha, original_sha)
         w.decision_pr("b2", [decision_obj(doc, original_sha, "withdrawn", "b2")], parent=w.main)
         row = w.row(doc, "b1", 0, "withdrawn", w.cell("b2", 0))
-        manifest, files = w.run(w.add_rows([row]))
+        try:
+            manifest, files = w.run(w.add_rows([row]))
+        except export.ExportError as error:
+            self.fail(f"withdrawal with tip rewrite must succeed, got ExportError: {error}")
         self.assertEqual(files, {})
         self.assertEqual(manifest["entries"][0]["public_export"], "withheld")
         self.assertEqual(manifest["entries"][0]["sha256"], original_sha)
