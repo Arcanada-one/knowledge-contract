@@ -10,13 +10,19 @@ Publication edition **1.1** contains English scientific and engineering document
 
 | Section | Contents | Start here |
 | --- | --- | --- |
-| Science | Eight papers: models, conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
+| Science | Eight baseline papers plus the proposed foundations introduction: models, conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
 | Engineering specifications | Eleven specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
 | Engineering studies | Six studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
 | Reference | Preferred terms, Russian equivalents and primary sources | [Glossary](reference/glossary/GLOSSARY.md) · [Bibliography](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
-The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) identifies the 29 canonical documents; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [source map](appendices/source-map/APPENDIX.md).
+The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 30 reading entries: the 29 baseline documents and the new foundations research draft; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [source map](appendices/source-map/APPENDIX.md).
+
+## Start with the human-to-computational foundation
+
+[From Human Meaning to Contract-Governed Knowledge](papers/human-meaning-and-computable-knowledge/PAPER.md) explains the passage from a contextual expression to a representation, an artifact and a particular permitted use. It includes an ordinary rule-and-exception example, an exact representation-adequacy argument and explicit limitations. The [foundations map](reference/foundations/README.md) connects its sections to existing definitions, specifications and evidence, with a terminology and source supplement.
+
+The new manuscript is a **research draft proposed for integration**. Its catalogue entry does not assert independent review, a new released edition, deployment or corpus-index admission. Existing publication and raw-evidence histories remain unchanged.
 
 ## What the work establishes
 
