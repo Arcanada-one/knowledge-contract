@@ -15,35 +15,41 @@ description: "How claims, proofs, finite tests, counterexamples and comparative 
 
 ## Abstract
 
-A knowledge system can pass structural checks while offering an unsupported conclusion. It can also possess a sound formal argument whose assumptions are not satisfied by an implementation. This paper specifies how to connect claims, grounds, inference rules, checks, and decisions without confusing their evidential roles. We define a claim record and a finite justification graph, prove a conditional soundness property for supported acyclic derivations, and characterize the scope of finite testing. We then give a falsification protocol that separates counterexamples to a model, implementation defects, annotation failures, and limits of empirical transfer. Evaluation must use pinned requirements, explicit comparators, independent reference judgments where needed, and a predeclared analysis and stopping policy. The contribution is a method for determining exactly what a result supports, including negative findings and unresolved claims. No number of structural checks is treated as proof of unrestricted semantic correctness or practical superiority.
+A validation report, formal proof, review, and deployment log support different claims. Treating them as interchangeable can turn a correct structural check into an unsupported assertion about meaning or practical benefit. This paper asks how a knowledge system can keep a claim accountable to the subject, scope, and limitations of its actual grounds. We distinguish five assessment axes and represent offered justifications as finite graphs of premises and inference applications. Two conditional propositions state when sound rules preserve true premises and when an in-scope countermodel refutes a universal claim. We then specify a falsification protocol that separates failures of the model, implementation, interpretation, and evaluation. The protocol binds observations to exact subjects, retains unresolved outcomes, distinguishes boundary tests from theorem refutations, and requires appropriate comparators and stopping rules. Constructed cases expose shared-oracle errors, vacuous exclusion tests, and changes of scope after a failure. The method is deductive and methodological, not a new empirical benchmark or an automatic semantic verifier. Its contribution is a precise account of what may be concluded from a result, including what remains unmeasured or unsupported.
 
 **Keywords:** evidence; inference; falsification; claim scope; evaluation; counterexample.
 
 ## 1. Research question and evidential distinctions
 
-Knowledge systems produce many objects that resemble evidence: citations, validation reports, explanations, benchmark scores, approvals, and execution logs. Their resemblance does not make them interchangeable. A citation can establish provenance without establishing truth. Approval can establish permission without establishing correctness. A passing test can establish one observed behavior without establishing all possible behaviors.
+Knowledge systems produce citations, validation reports, explanations, benchmark scores, approvals, and execution logs. These objects can be relevant evidence without answering the same question. A citation can identify a source without establishing the truth of its content. Approval can establish permission without establishing correctness. A passing test can establish an observed behavior without covering every possible behavior.
 
-We ask: **how can a scientific and engineering claim remain accountable to the kind, scope, and limitations of its actual grounds?** Our answer is a claim-centered method connecting each assertion to its premises, evaluators, counterexamples, and revision conditions.
+We ask: **how can a scientific and engineering claim remain accountable to the kind, scope, and limitations of its actual grounds?** The proposed method connects each assertion to its subject, premises, assessment procedure, potential refuters, and revision conditions. It does not replace those grounds with one overall success label.
 
-Program-logic reasoning already makes correctness conditional on stated preconditions and semantics [1]. PROV-DM provides a vocabulary for the origins and production of entities [2]. We use those distinctions while addressing a further operational problem: evidence about a source, model, checker, implementation, and deployment must not silently migrate between those subjects.
+Program-logic reasoning already makes correctness conditional on stated preconditions and semantics [1]. PROV-DM provides a vocabulary for the origins and production of entities [2]. We use these established distinctions without claiming that conditional proof or provenance originate here. The additional operational concern is that evidence about a source, model, checker, implementation, and deployment must not silently migrate between those subjects.
+
+The contribution has three parts: a separation of assessment questions; explicit boundaries for deductive and finite-test claims; and a falsification procedure that preserves both failures and uncertainty. The method is deductive and methodological. Section 3 proves two elementary conditional results, while the remaining sections specify obligations and constructed failure cases. The paper introduces neither a general algorithm for deciding natural-language truth nor measured evidence that the proposed organization improves agent performance.
 
 ## 2. Claims and independent assessment axes
 
-A **claim** is a proposition or quantified assertion with an identified subject, scope, and interpretation. A useful record specifies its content, revision, claim kind, assumptions, supporting grounds, potential refuters, assessment method, and unresolved dependencies. The scope includes relevant versions, task distribution, population, time interval, and operating conditions when those matter.
+A **claim** is a proposition or quantified assertion with an identified subject, scope, and interpretation. A useful record specifies its content, revision, claim kind, assumptions, supporting grounds, potential refuters, assessment method, and unresolved dependencies. Relevant versions, task distribution, population, time interval, and operating conditions belong to its scope when they can affect the conclusion.
 
-Claim kinds include definitional, deductive, empirical, comparative, causal, and normative. These are not mutually exclusive labels for an entire document: a paper can define a model, prove a property of it, and propose an empirical hypothesis. Each assertion needs the appropriate grounds.
+Claim kinds include definitional, deductive, empirical, comparative, causal, and normative. They are not mutually exclusive labels for an entire document. A paper can define a model, prove a conditional property, and propose an empirical hypothesis; each assertion still needs the appropriate grounds. A definition fixes terminology within the model. Naming a desired property in that definition does not show that a real system has it.
 
-We distinguish at least five questions:
+**Table 1. Assessment axes that must not be silently substituted for one another.**
 
-- Is the source or record authentic and correctly attributed?
-- Is its represented content faithful to that source?
-- Does the evidence support the proposition under the stated interpretation?
-- Is the proposition applicable to the current use?
-- Is the proposed use authorized?
+| Axis | Question | Insufficient substitute |
+| --- | --- | --- |
+| Authenticity and attribution | Is the source or record authentic and correctly attributed? | A plausible author label alone |
+| Source fidelity | Is the represented content faithful to that source? | Valid fields or fluent wording alone |
+| Evidential support | Do the grounds support the proposition under its stated interpretation? | A citation or positive receipt alone |
+| Applicability | Does the proposition apply to the present use? | Correctness under a different date, task, or scope |
+| Authorization | Is the proposed use permitted? | Truth, usefulness, or technical capability alone |
 
-These assessments need not agree. An accurately attributed false statement can be useful as an object of refutation. A true proposition can be inapplicable to a different date. An authorized decision can be poorly supported. A single confidence score cannot preserve these distinctions unless its meaning and aggregation rule explicitly encode them.
+These assessments need not agree. An accurately attributed false statement can be useful as an object of refutation. A true proposition can be inapplicable to a different date. An authorized decision can be poorly supported. A single confidence score preserves these distinctions only if its interpretation and aggregation rule actually represent them; the presence of a number is not such an explanation.
 
 Unknown is not false, and absence of a recorded refutation is not confirmation. An assessment can remain unresolved while a restricted informational output is permitted. A mandatory action precondition, however, is not satisfied merely because the system failed to find contrary evidence.
+
+An assessment also needs a precise subject. Identify the claim revision, assessed artifact or implementation revision, relevant configuration, input, representation, and assessment method as needed by that claim. A check of one file cannot silently become a check of another rendering or deployed build. A digest helps bind a record to bytes under a declared serialization and hash assumption; it does not authenticate the author, establish semantic equivalence, or show that those bytes were delivered to a recipient. Evidence may be reused only when its relationship to the new subject and scope is justified.
 
 ## 3. Justification graphs and conditional soundness
 
@@ -71,33 +77,52 @@ The domain condition matters. A failure outside the claimed domain can motivate 
 
 ## 4. What different checks establish
 
-Structural validation establishes compliance with a declared representation rule when the validator is correct. It may verify mandatory fields, references, enumerations, or finite relational conditions. It does not establish that a field's natural-language content is correctly interpreted.
+**Table 2. Evidence types and the boundary of their immediate conclusions.**
 
-A formal proof establishes a consequence under its assumptions and formal semantics. Executable tests establish observed behavior for the tested cases, subject to their oracle and execution conditions. An exhaustive finite test can support a universal statement about its enumerated finite model; it does not automatically cover unbounded inputs or a deployed environment with different behavior.
+| Evidence type | What it can support within its stated conditions | What does not follow from it alone |
+| --- | --- | --- |
+| Structural validation | Compliance with the representation rules implemented by a correct validator | Correct interpretation of natural-language fields |
+| Formal proof | A consequence of stated assumptions under specified semantics | Satisfaction of those assumptions by an implementation |
+| Executable test | An observed outcome for the tested input, configuration, and oracle | Correctness on untested cases or other revisions |
+| Exhaustive finite check | The checked property on a completely enumerated finite model | Coverage of an unbounded domain or a different deployment |
+| Substantive review | A scoped assessment under the reviewer's sources, expertise, and rubric | Automatic independence, external peer review, or runtime conformance |
+| Production observation | An actual observed behavior, failure, or cost at the recorded boundary | Causal superiority over an unmeasured alternative |
 
-Human review can assess interpretation, relevance, and argument quality within a defined rubric. Its strength depends on expertise, access to sources, independence, and adjudication. Production observations can reveal actual failures and costs, but selected observations alone do not identify a causal benefit.
+For a finite check, the carrier, enumerated values, supported operations, and tested predicate must be stated. Complete enumeration is a substantive premise, not a synonym for a large iteration count. Coverage may fail because a generator omits an input, an execution outcome, or a configuration. A correct checker applied to an incomplete enumeration cannot establish the advertised larger universal claim.
 
-These evidence types are complementary, not a single ladder on which more items always mean stronger support. Ten tests sharing the same incorrect oracle can repeat one mistake. Two reviewers with access to each other's answer may not provide the intended independent judgment. Independence should be described as a concrete procedure, not inferred from different agent names.
+An empty domain makes a universal formula true vacuously. A test set containing no relevant negative case can likewise fail to challenge an exclusion rule. Neither observation demonstrates successful useful behavior. Record the vacuous or unexercised case separately, and include applicable positive controls when usefulness is part of the claim. Repeated copies of one test do not enlarge the distinct tested domain.
+
+Evidence types are complementary, not a ladder on which more records always mean stronger support. Ten tests sharing an incorrect oracle can repeat one mistake. A second reading by the producer is self-review. A separate reviewer who sees the proposed answer or earlier verdict performs a non-blind review; this is not automatically the independent assessment intended by a blinded design. Describe the actual separation of information, source access, rubric, and adjudication rather than infer independence from different agent names.
+
+For example, suppose an extracted value is wrong and both a calculation and its reference answer use that same extracted value. Their agreement can validate the calculation relative to its input while missing the source-reading error. A reference independently established from the source can expose the discrepancy. This is a constructed example of shared dependence, not a measured extraction-failure rate.
 
 ## 5. A falsification protocol
 
-An evaluation begins by freezing the claim and requirements before examining the decisive cases. The record should specify the subject versions, admissible inputs, expected behavior, failure criteria, scope of generalization, and how uncertain cases will be handled. Changes create a new evaluation record rather than overwriting the earlier one.
+An evaluation begins by freezing the claim and requirements before examining the decisive cases. Record subject versions, admissible inputs, expected behavior, failure criteria, scope of generalization, and the treatment of uncertain cases. Also identify the reference procedure and the evidence needed to decide that a proposed counterexample belongs to the claimed domain. A later change creates a new claim or evaluation revision; it does not overwrite the earlier result.
 
-Counterexamples should target assumptions. For extraction, change a referent, logical scope, or source revision. For composition, omit a jointly required ground or add a conflicting condition. For reuse, change a material dependency or current permission. For resource accounting, repeat a telemetry event or expose a shared cost counted twice. The purpose is to distinguish a system that enforces the condition from one that merely passes familiar positive examples.
+Adversarial cases should probe both the required conditions and the system's enforcement of them. For extraction, change a referent, logical scope, or source revision. For composition, omit a jointly required ground or add a conflicting condition. For reuse, change a material dependency or current permission. For resource accounting, repeat a telemetry event or expose a shared cost counted twice. The objective is to distinguish enforcement from success on familiar positive examples.
 
-An independent impact oracle is especially important for dependency completeness. Traversing an annotated graph can verify traversal; it cannot reveal an omitted dependency if the reference answer is generated from that same graph. A useful test mutates a relevant source feature and independently specifies whether the output should change.
+Two uses of such cases must remain separate. A case outside a theorem's premises can show why those premises matter, but does not refute that conditional theorem. An admissible case in which an implementation wrongly asserts that a condition has passed can refute the implementation's enforcement claim. To refute the theorem itself, the case must satisfy all its premises and falsify its conclusion under the same interpretation. Failure of a premise does not prove that every result outside the premise is wrong either; it removes that particular justification.
 
-The protocol should separate at least four failure classes: the model's claim is false; the implementation violates the model; the input interpretation or annotation is wrong; or the evaluation lacks enough information to decide. Combining them into a single failure total can obscure the repair required.
+An independent impact oracle is especially important for dependency completeness. Traversing an annotated graph can verify traversal; it cannot expose an omitted dependency when the reference answer comes from that same graph. A useful test changes a relevant source feature and separately establishes whether the output should change. Shared errors in annotation and evaluation must not be counted as independent confirmation.
+
+Separate at least four failure classes: the model's claim is false; the implementation violates the model; the input interpretation or annotation is wrong; or the evaluation lacks enough information to decide. These classes identify different repairs. One incident can involve several defects, so assigning a single convenient label must not erase the other supported findings. Uncertain domain membership or an unverified oracle leaves the alleged refutation unresolved rather than making it a confirmed failure or success.
+
+A refutation record should retain the exact claim revision, in-scope witness, conditions, actual output, expected relation, and enough execution or derivation information to inspect the contradiction. For a stochastic or nondeterministic implementation, state whether the claim quantifies over all permitted executions or over a distribution. One verified prohibited success contradicts a claim that such success never occurs. It does not by itself refute a different claim that permits a specified nonzero failure probability. Testing only one convenient outcome does not cover an all-executions claim.
 
 ## 6. Comparators, analysis, and stopping
 
-A comparative claim needs a relevant baseline with matched tasks, resource accounting, and acceptance conditions. A method that produces more complete outputs at a higher cost must not be described as unconditionally cheaper. A method that skips required checks must not gain an apparent speed advantage without reporting the lost assurance.
+A comparative claim needs a relevant baseline with matched tasks, resource accounting, and acceptance conditions. A method that produces more complete outputs at higher cost must not be described as unconditionally cheaper. Skipping required checks cannot yield an apparent speed advantage without disclosing the lost assurance. Report whether comparisons share source material, evaluator information, execution budgets, and the same meaning of an acceptable output.
 
-The analysis plan should state the primary outcome, denominators, treatment of missing and unresolved cases, uncertainty estimates, and stopping conditions. If evaluation stops after a budget limit, the report should identify the covered and uncovered cases. Selecting only successful attempts or changing the success rule after inspection creates a different evidential object from the planned study.
+The analysis plan should state the primary outcome, denominators, missing and unresolved cases, uncertainty estimates, and stopping conditions. A report must distinguish planned cases, attempted cases, interpretable outcomes, and accepted outputs. An infrastructure failure is not automatically a semantic error; excluding it without explanation can nevertheless change the practical-success denominator.
 
-Data separation also matters. Cases used to design a rule, tune a threshold, or repair an implementation are development evidence. A later evaluation can reuse them for regression testing, but should not label that reuse an unseen assessment. Shared sources, repeated near-duplicates, and leaked reference annotations can make nominally separate cases dependent.
+As an arithmetic illustration, two passes, one failure, and one unresolved outcome yield two passes among three resolved outcomes, but only two confirmed passes among four planned cases. If the unresolved outcome may eventually pass or fail, the final fraction on those four cases lies between one half and three quarters. This is an identification bound for that fixed ledger, not a confidence interval or an estimate for a population. Reporting the resolved-only fraction as the overall success rate changes the denominator and conceals the unresolved case.
 
-For causal or practical-effect claims, the required design is stronger than a catalog of passing controls. The [knowledge utility paper](../knowledge-utility/PAPER.md) states the intervention and attribution conditions. Observed use, user approval, or a plausible demonstration alone does not establish that the system improved outcomes relative to a meaningful alternative.
+If evaluation stops at a budget limit, identify the covered and uncovered cases and whether the planned stopping policy was followed. Selecting only successful attempts or revising the success rule after inspection creates a different evidential object from the planned evaluation. Exploratory analysis can be useful, but should be identified as exploratory rather than relabeled as a predeclared test.
+
+Data separation also matters. Cases used to design a rule, tune a threshold, or repair an implementation are development evidence. They may later be reused as regression tests, but not called unseen evaluation. Shared sources, near-duplicates, and leaked reference annotations can make nominally separate cases dependent. Count distinct inputs, execution attempts, graph configurations, and assertions separately; their totals are not interchangeable units of evidence.
+
+For causal or practical-effect claims, the required design is stronger than a catalog of passing controls. The [knowledge utility paper](../knowledge-utility/PAPER.md) states the intervention and attribution conditions. Observed use, user approval, or a plausible demonstration alone does not establish improved outcomes relative to a meaningful alternative.
 
 ## 7. The evidential status of this research program
 
@@ -121,6 +146,14 @@ The [contract profile conformance study](../../engineering/studies/contract-prof
 The model does not automate the discovery of every relevant premise, guarantee the trustworthiness of a reviewer, or establish universal usefulness of structured knowledge. It makes these dependencies inspectable and supplies conditions under which a particular claim can be rejected, retained, or narrowed.
 
 The shared [glossary](../../reference/glossary/GLOSSARY.md) defines evidence, verification, authority, and related terms. [Revision and governance](../revision-and-governance/PAPER.md) specifies how new evidence changes assessments without erasing their history.
+
+## 9. Conclusion
+
+A result supports a claim only through an explicit relationship among its subject, interpretation, assumptions, assessment procedure, and scope. Provenance, fidelity, support, applicability, and authority are distinct questions. A positive structural receipt cannot stand in for all of them.
+
+The two propositions give conditional deductive boundaries. A finite acyclic derivation preserves truth when its premises, rules, and side conditions satisfy the stated assumptions. An admissible countermodel refutes a universal claim within its domain. Neither result discovers missing premises, authenticates observations, or establishes that a deployed system follows the model. Finite checks, substantive reviews, and practical comparisons therefore require their own precisely bounded records.
+
+The practical method is to preserve exact subjects and adverse results, separate missing evidence from negative evidence, test the relevant boundary with a defensible oracle, and retain revisions when a claim changes. Completion of a bounded argument does not require every future experiment to finish. It does require that unmeasured benefits, unchecked implementations, and unresolved cases remain visible rather than being converted into an overall success label.
 
 ## References
 
