@@ -33,6 +33,18 @@ C. A. R. Hoare. **An Axiomatic Basis for Computer Programming.** *Communications
 
 Used for the established idea of reasoning about programs through preconditions, postconditions and inference rules. The transformation paper adapts conditional preservation reasoning to its explicitly defined relations. Its composition argument is not presented as a novel replacement for program logic or a proof of termination.
 
+## Vacuity in temporal model checking
+
+Ilan Beer, Shoham Ben-David, Cindy Eisner and Yoav Rodeh. **Efficient Detection of Vacuity in Temporal Model Checking.** *Formal Methods in System Design* 18(2), 2001, 141–163. [DOI](https://doi.org/10.1023/A:1008779610539). [Authors' institutional publication abstract](https://d3ccyth396mz21.cloudfront.net/publications/efficient-detection-of-vacuity-in-temporal-model-checking).
+
+Used only as a scoped methodological comparison in [evidence and falsification](../../papers/evidence-and-falsification/PAPER.md): trivial satisfaction of some temporal specifications can be exposed by vacuity analysis and nontrivial witnesses. The **official abstract**, not the full article, was inspected on 2026-11-07. It does not prove the present paper's general domain or test-coverage criteria, imply an implemented vacuity checker or certify KC runtime behaviour.
+
+## Mutation of formal specifications
+
+Paul E. Black, Vadim Okun and Yaacov Yesha. **Mutation Operators for Specifications.** *Proceedings of ASE 2000*, 81–88. [DOI](https://doi.org/10.1109/ASE.2000.873653). [NIST publication and authors' abstract](https://www.nist.gov/publications/mutation-operators-specifications).
+
+Used only to identify specification mutation as a prior **test-generation method** in [evidence and falsification](../../papers/evidence-and-falsification/PAPER.md). The **NIST authors' abstract**, not the full paper, was inspected on 2026-11-07. Knowledge Contract's constructed examples do not implement the mutation operators and have no measured mutation score, coverage guarantee or reported experimental advantage.
+
 ## Submodular maximization
 
 George L. Nemhauser, Laurence A. Wolsey and Marshall L. Fisher. **An Analysis of Approximations for Maximizing Submodular Set Functions—I.** *Mathematical Programming* 14, 1978, 265–294. [DOI: 10.1007/BF01588971](https://doi.org/10.1007/BF01588971).

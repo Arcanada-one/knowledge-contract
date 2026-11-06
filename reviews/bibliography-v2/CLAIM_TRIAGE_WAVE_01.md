@@ -6,6 +6,8 @@ status: author-only claim-location triage; no new primary-text verification or m
 
 # First claim-to-reference triage: 12 historical v2 records
 
+**Later scoped follow-up (2026-11-07):** the original twelve-row screening table below is preserved as a *pre-source-check* snapshot. Two candidates, V2-012 and V2-014, now have official authors' **abstract-only** checks and narrowly scoped *proposed* citations in the existing draft PR67. Read [EVIDENCE_FALSIFICATION_BATCH_01.md](EVIDENCE_FALSIFICATION_BATCH_01.md) for the updated per-paper table, exact sentences, verification limits and reviewer gate. No full article or site publication is claimed.
+
 ## Method and evidence boundary
 
 This review follows [BASELINE.md](BASELINE.md) and [V2_REFERENCES.tsv](V2_REFERENCES.tsv). The 74 historical v2 bibliography paragraphs remain intact in the TSV; this first wave examines **12 identifiers**, not the whole bibliography, and makes **no assertion that the original works were newly read**. Historical verification labels from the pinned v2 blog are preserved but do not establish current independent primary-source checking.
