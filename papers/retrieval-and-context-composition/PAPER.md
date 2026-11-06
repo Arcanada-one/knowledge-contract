@@ -15,7 +15,7 @@ description: "Search coverage, finite context selection, dependency closure and 
 
 ## Abstract
 
-Retrieving relevant fragments and assembling a sufficient context are different problems. A retrieved fragment can be pertinent while omitting a mandatory exception; a package can cover declared requirements without demonstrating that the search was exhaustive. This paper gives a finite model of requirements, alternative supporting groups, mandatory dependencies, representations, and resource limits. We distinguish search assurance, requirement coverage, composition feasibility, and actual output verification. Conditional results characterize exact finite selection, a set-cover special case, and the limited applicability of a classical submodular-greedy guarantee. Counterexamples show why jointly necessary grounds and shared dependencies defeat common additive assumptions. The contribution is a precise contract for what a retrieval-and-composition result establishes, including meaningful stopping outcomes. Domain evaluations and executable selectors are separate engineering objects; the present argument establishes no general empirical advantage for a retrieval method or language model.
+A relevant passage is not necessarily a sufficient context, and a complete dependency graph is not evidence that its conditions survived delivery. This paper asks what can be justified about a context assembled from a declared search result under resource limits. We separate search assurance, support for requirements, feasibility of the delivered representation, and verification of the resulting answer. A finite model represents alternative groups of jointly necessary grounds, mandatory dependency closure, transformations, and measured resource budgets. We make explicit that support in the selected closure must be preserved or re-established in the actual representation; a manifest alone does not discharge that obligation. Three conditional results describe a scoped optimum from complete finite enumeration, a set-cover special case, and the classical cardinality-greedy guarantee under submodularity. Counterexamples distinguish joint-ground complementarity, mandatory coverage, shared costs, and loss during rendering. The contribution is a bounded account of selection and delivery obligations, not a new general approximation algorithm. The method combines deductive arguments with separately identified synthetic verification examples. Neither these examples nor exact selection over a finite decision space establish semantic annotation correctness, exhaustive retrieval from an unexamined corpus, recipient understanding, or empirical superiority of a language model.
 
 **Keywords:** retrieval; context composition; coverage; dependency closure; resource budget; submodularity.
 
@@ -23,9 +23,13 @@ Retrieving relevant fragments and assembling a sufficient context are different 
 
 A retrieval system proposes material that may support an answer. The original retrieval-augmented generation formulation combines external retrieval with a generative model [1]. That architecture does not itself certify that every necessary condition reached the generator or survived its answer.
 
-Our question is: **what can be certified about a bounded context assembled from a declared search result?** We separate four judgments: whether the search procedure examined the required scope; whether the available grounds support the requirements; whether the delivered representation fits the resource constraints; and whether the final answer preserves the required content.
+Our question is: **what can be certified about a bounded context assembled from a declared search result?** Four judgments are needed. Did the search procedure examine the required scope? Do the available grounds support the requirements? Does the actual delivered representation retain that support while meeting resource and admission conditions? Does the final answer preserve the required content?
 
-These judgments are related but not interchangeable. Returning ten plausible passages does not prove that an eleventh exception does not exist. Fitting a token limit does not prove that the recipient notices a warning. A completed search does not make contradictory sources consistent.
+These judgments are related but not interchangeable. Returning ten plausible passages does not prove that an eleventh exception does not exist. Fitting a token limit does not prove that the recipient notices a warning. A completed search does not make contradictory sources consistent. Similarly, computing a dependency closure does not show that a renderer transmitted every material condition.
+
+The contribution is to separate those obligations within one finite composition model and to identify where a conclusion exceeds its premises. Set-cover difficulty and the submodular-greedy approximation bound are established results [2, 3], not new complexity or approximation theorems claimed here. Their role is to delimit what transfers to this problem and what does not.
+
+The method is deductive: define the selection and delivery objects, state conditional results, and test omitted assumptions with constructed cases. A separately documented verification package exercises finite abstract instances. It is not a trial of a live retriever, a model-generated summary, or a deployed Knowledge Contract service. The engineering connections and unmeasured questions remain explicit in Section 7.
 
 ## 2. Query, scope, and coverage
 
@@ -37,9 +41,22 @@ Coverage is assessed relative to a pinned requirement set \(R\). For each requir
 
 Coverage should be recorded at three boundaries: the registered source base, the retrieved candidates, and the delivered package. A fourth check concerns the actual answer or action proposal. Keeping these reports distinct locates loss: missing from the base, missed by retrieval, omitted during composition, or ignored during generation.
 
+**Table 1. Assessment boundaries and claims they do not establish alone.**
+
+| Boundary | What is assessed | What that assessment does not establish alone |
+| --- | --- | --- |
+| Source and search scope | Which snapshot, visibility rules, predicate, and search procedure were examined | That an unexamined source or hidden record contains no relevant exception |
+| Candidate support | Whether a valid group supports each pinned requirement | That all supporting conditions survive transformation and delivery |
+| Delivered context | The actual representation, retained obligations, admission conditions, and measured cost | That the recipient understood or used those obligations |
+| Answer or action proposal | Whether the actual result satisfies the stated task checks | General correctness on other tasks or authority to execute an action |
+
+A status applies to its exact boundary and revision. Failure to find support at one boundary must not be relabeled as a proof of absence at another. Unknown validity remains an outstanding assessment, not a passing support group.
+
 ## 3. Composition with joint grounds and dependencies
 
 Let \(V\) be a finite set of candidate object revisions. For a selected subset \(A\subseteq V\), let \(\operatorname{cl}(A)\) denote its mandatory dependency closure under a fixed, declared graph. A requirement \(r\) can have alternative supporting groups \(\mathcal G_r\). A group contains jointly necessary grounds, not merely individually relevant fragments.
+
+The dependency graph ranges over a fixed finite universe containing the candidate revisions and the dependency revisions they may require. Closure includes the selected roots and follows every declared mandatory edge. A reference whose required revision is unavailable is a missing obligation, not a leaf that can silently be ignored. Closure completeness is relative to this declared graph; it does not prove that every material semantic dependency has been discovered.
 
 Under fixed assessments, define support by
 
@@ -57,7 +74,11 @@ A composition decision \(z\) includes selected content, permitted transformation
 c(\operatorname{Render}(z))\leq B.
 \]
 
-The budget may be a vector: tokens, bytes, recipient time, or another measured resource. Different units should not be silently added. A scalar objective requires a declared conversion or priority rule.
+For feasibility, mandatory support must concern the **actual delivered representation**, not only the roots or their abstract closure. Write \(\operatorname{DeliveredSupports}(r,z)\) when a valid supporting group and its task-relevant mandatory conditions are retained in, or correctly transformed into, the representation produced by the decision. That assessment needs a justified preservation argument or checks on the actual output. It is not inferred from membership in a manifest. A separately permitted retrieval route may satisfy an obligation only if the consumer can actually use it within the declared access and resource limits.
+
+A decision may therefore satisfy the closure-based support formula and still be infeasible: a summarizer can drop an exception, a renderer can truncate a condition, or a linked residual can be unavailable to the recipient. Conversely, an authorized transformation need not preserve every source byte when it demonstrably preserves the required observations. The final answer remains a separate assessment even after delivered support passes.
+
+The budget may be a vector: tokens, bytes, recipient time, or another measured resource. In that case the budget inequality is interpreted componentwise, with each measured component compared to its corresponding bound. Different units should not be silently added. An unmeasured required component is unresolved. A scalar objective requires a declared conversion or priority rule.
 
 Costs need not be additive over fragments. Two selected objects can share a dependency, so summing their separately closed sizes double-counts it. Conversely, a delivery format can introduce headings, repeated legends, or fixed overhead. The delivered representation, rather than the unformatted fragments, is the relevant accounting object.
 
@@ -71,7 +92,7 @@ Let \(Z\) be a finite, explicitly declared decision space. Suppose feasibility a
 
 **Proof.** Every possible decision in the declared space has been checked. A better feasible decision or any feasible decision in the second case would therefore have appeared in the enumeration, contradicting the stated result. ∎
 
-This establishes neither completeness of \(Z\) relative to all possible summaries nor correctness of semantic annotations. If execution stops early, the best verified candidate remains a feasible incumbent; optimality and infeasibility are no longer established.
+This establishes neither completeness of \(Z\) relative to all possible summaries nor correctness of semantic annotations. The declared decisions must include the representation and transformation alternatives to which the optimum claim applies; enumerating only roots is insufficient when unexamined renderings can change feasibility or value. If execution stops early and a feasible candidate has been verified, that candidate is an incumbent. If none has been verified, there is no established incumbent. Early stopping alone establishes neither optimality nor infeasibility; an independent sound bound or certificate would be a separate justification.
 
 ### Proposition 2. A restricted composition problem contains set cover
 
@@ -80,6 +101,8 @@ Consider unit-cost, independent packages, no transformations or dependencies, an
 This reduction transfers the known combinatorial difficulty of set cover [2] to this special case. It does not imply that every practical query is difficult, that extraction itself is formally solved, or that a heuristic has a particular approximation ratio.
 
 ### Proposition 3. The cardinality-greedy bound requires submodularity
+
+For this proposition the ground set is finite, each selected element consumes one cardinality unit, and greedy evaluates exact marginal gains. It takes the permitted number of steps unless every element has already been selected. In the latter case, monotonicity makes the full ground set optimal. A rule that stops after seeing zero marginal gains without establishing the proposition's premises is not covered.
 
 Let \(f\) be a nonnegative, monotone, submodular set function with \(f(\varnothing)=0\). With at most \(k\geq1\) selected elements and no other constraints, greedy selection by greatest marginal gain achieves at least
 
@@ -90,7 +113,7 @@ Let \(f\) be a nonnegative, monotone, submodular set function with \(f(\varnothi
 
 **Argument.** Let \(O\) be an optimal set. At step \(i\), monotonicity gives \(\operatorname{OPT}=f(O)\leq f(A_i\cup O)\). Submodularity bounds the gain from \(A_i\) to \(A_i\cup O\) by the sum of at most \(k\) current single-element marginal gains. The best next gain is therefore at least \((\operatorname{OPT}-f(A_i))/k\). Each step reduces the remaining gap by a factor no greater than \(1-1/k\). Iterating from the empty set gives the bound. This is the classical result of Nemhauser, Wolsey, and Fisher [3], not a new theorem of the present model. ∎
 
-The result does not cover arbitrary size-based greedy selection, nonadditive costs, or arbitrary mandatory closure. Those settings need their own justified algorithms and assumptions.
+The result does not cover arbitrary size-based greedy selection, nonadditive costs, or arbitrary mandatory closure. Those settings need their own justified algorithms and assumptions. An approximation to an optional-value objective is not permission to miss a mandatory requirement. Before applying the bound to a derived objective, prove its stated properties on the actual ground set and show that its feasible family is the one in the proposition.
 
 ## 5. Counterexamples to convenient assumptions
 
@@ -102,11 +125,17 @@ Selected roots and delivered objects must not be confused. Removing a required c
 
 Budget pressure does not remove these obligations. If two mandatory grounds and an exception cost seven units in total and the budget is five, deleting the exception produces a smaller but inadmissible package. A feasible reformulation might exist, but it must be constructed and checked. Failure of one heuristic to find it is not proof of impossibility.
 
+Shared dependencies illustrate a separate accounting issue. In a constructed instance, two roots each cost one unit and both require a condition costing three units. The sum of their separately closed costs is eight, but their union costs five when the shared condition is transmitted once and there is no other overhead. A format that repeats that condition has a different cost. This example refutes modular root-cost accounting for the union representation; it does not by itself refute submodularity of an objective. Joint grounds, shared costs, and mandatory feasibility are distinct reasons to check an algorithm's hypotheses.
+
+The delivery boundary has its own counterexample. A root and its required exception may both belong to the computed closure, while the renderer transmits only the root. A closure-only checker can pass the selection even though the delivered context fails the requirement. The correct repair is to check retained support or construct a valid transformed representation, not to relabel the smaller delivery as complete.
+
 Finally, declared coverage can be invalidated by new information. Support is monotone only under explicitly fixed grounds, applicability judgments, and conflict rules. An added contradictory source or a changed requirement can require reassessment even when old passages remain available.
 
 ## 6. Stopping and measurement
 
 A useful result reports its scope and stopping reason. Distinct outcomes include a verified complete package, an explicitly partial package, a need for clarification, insufficient resources, an exhausted search limit, and stale or conflicting evidence. Stopping after a limit does not establish absence. A useful partial answer is possible when the answer form permits it and its uncovered obligations remain visible.
+
+A complete-package claim should identify the selected supporting group for each mandatory requirement, the exact input and output revisions, the relevant preservation or output checks, and the resource measurements. A hash identifies bytes; it does not establish semantic validity. A solver that explored only part of its declared decision space reports that limit rather than treating an empty result as an infeasibility certificate.
 
 Evaluation should compare methods under the same requirement snapshot, source scope, delivery constraints, and outcome rubric. Relevant baselines include ranked selection with dependency repair, selection of complete supporting groups, and exact enumeration on small instances. Removing dependencies or truncating delivery supplies ablations, not necessarily competitive baselines.
 
@@ -116,9 +145,17 @@ The mathematical results here hold for the declared finite model. They establish
 
 ## 7. Connections to the published engineering work
 
-The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) supplies exhaustive fixed-graph closure checks for all-required dependencies, plus historical layout and preliminary delivery checks. Its root-subset enumeration is not a budgeted composition optimizer. Alternative supporting groups, resource-constrained selection, and the counterexamples in §5 have no executable selection study in this corpus. The [projection study](../../engineering/studies/executable-projections-and-revision/STUDY.md) supplies the distinct counterexample to claim-level minimality. The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md) concerns structural validation, which must remain distinct from semantic sufficiency.
+The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) supplies exhaustive fixed-graph closure checks for all-required dependencies, plus historical layout and preliminary delivery checks. Its root-subset enumeration is not a budgeted composition optimizer. Those historical studies do not evaluate alternative supporting groups or resource-constrained selection. The [finite verification note](../../reviews/retrieval-context/REVIEW.md) accompanying this revision adds newly authored abstract cases and a reproducible checker for explicit selection and delivery boundaries. It is not a historical replay, a semantic extraction evaluation, or a production selection study. It supplies no measured comparison of language models or end-to-end retrieval methods. The [projection study](../../engineering/studies/executable-projections-and-revision/STUDY.md) supplies the distinct counterexample to claim-level minimality. The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md) concerns structural validation, which must remain distinct from semantic sufficiency.
 
 The [glossary](../../reference/glossary/GLOSSARY.md) gives common terminology. [Evidence and falsification](../evidence-and-falsification/PAPER.md) specifies evaluation obligations; [knowledge utility](../knowledge-utility/PAPER.md) explains why a composition objective must state its baseline, horizon, and resource accounting.
+
+## 8. Conclusion
+
+A retrieval result, an abstractly supported selection, a feasible delivered context, and a satisfactory final answer are different objects of assessment. Their checks must remain tied to the declared requirements, source snapshot, interpretation, representation, and recipient. In particular, a computed dependency closure cannot certify a delivery that loses a material condition.
+
+Complete enumeration provides an optimum only within a finite declared decision space and only with correct feasibility and value assessments. The set-cover reduction explains a restricted source of combinatorial difficulty. The classical greedy bound applies under its cardinality and submodularity assumptions, not to every budgeted selection procedure. Joint grounds, mandatory coverage, and actual representation costs must be examined separately.
+
+The practical result is a set of explicit proof and measurement obligations: justify support, verify its preservation into delivery, account for resources in their stated units, and report what a stopping condition leaves unresolved. The finite examples help detect particular mistakes in those obligations. They do not replace semantic assessment, independent review, or measurement of actual agent outcomes.
 
 ## References
 
