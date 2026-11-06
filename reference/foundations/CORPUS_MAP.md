@@ -14,7 +14,7 @@ The six editorial works are the prepared-knowledge, semantic-object, transformat
 
 Each document identifies its own immutable repository revision. Four editorial candidates and F01 are deliberately distinguished from the accepted source baseline. This mixed proposal snapshot is useful for review, but it is not a coherent accepted publication release. The dictionary of source pins is part of the artifact. A site must not substitute the latest branch contents while retaining an old map hash.
 
-Definitions remain in the [shared glossary](../glossary/GLOSSARY.md). The short term texts in this map are reading summaries, not replacement normative definitions. Claim summaries name their source location, premises and non-implications. Full source arguments remain authoritative. The existing [eighteen-relation F01 map](relations.json) is retained unchanged and referenced by its Git blob identity; its section-level relations are not silently overwritten or counted as new experimental observations.
+Definitions remain in the [shared glossary](../glossary/GLOSSARY.md). The short term texts in this map are reading summaries, not replacement normative definitions. Claim summaries name their source location, premises and non-implications. Full source arguments remain authoritative. In particular, C03's chain-preservation summary requires the initial state to satisfy `P1(x0)`; local preservation and compatible junctions alone do not discharge that premise. The existing [eighteen-relation F01 map](relations.json) is retained unchanged and referenced by its Git blob identity; its section-level relations are not silently overwritten or counted as new experimental observations.
 
 ## How to read the connected material
 

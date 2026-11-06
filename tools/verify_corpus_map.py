@@ -55,12 +55,19 @@ def validate(data: dict) -> dict:
                 continue
             require(identity not in nodes, f'duplicate ID {identity}')
             nodes[identity] = node
-            if 'source' in node:
-                require(node['source'] in sources, f'unknown source for {identity}')
-            if 'path' in node:
-                p = node['path']
-                require(isinstance(p, str) and not PurePosixPath(p).is_absolute()
-                        and '..' not in PurePosixPath(p).parts and '\\' not in p, f'unsafe path {identity}')
+            # Source-backed nodes need an immutable source and a safe locator.
+            # Claims inherit the source through their explicit document link.
+            source_key = node.get('source')
+            if group != 'claims' or 'source' in node:
+                require(isinstance(source_key, str) and source_key in sources,
+                        f'missing or unknown source for {identity}')
+            locator_key = 'source_path' if group == 'roadmap_nodes' else 'path'
+            if group != 'claims' or locator_key in node:
+                p = node.get(locator_key)
+                require(isinstance(p, str) and bool(p) and not PurePosixPath(p).is_absolute()
+                        and '..' not in PurePosixPath(p).parts and '\\' not in p
+                        and '\x00' not in p and str(PurePosixPath(p)) == p,
+                        f'missing or unsafe {locator_key} for {identity}')
     for node in data.get('documents', []):
         require(node.get('status') in {'accepted-source','editorial-proposal','research-draft'}, f'invalid document status {node.get("id")}')
         require(str(node.get('path','')).endswith('/PAPER.md'), f'not a manuscript {node.get("id")}')

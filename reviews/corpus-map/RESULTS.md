@@ -49,3 +49,9 @@ Verification source hashes:
 - `tools/test_verify_corpus_map.py`: `585ce2160e56abfbf005a04f769637ca058670e2317eaf962b0cb7d7b97f1e73`.
 
 The source-object mode requires a local repository containing every pinned object and was not run here. Source existence, full-text review, external peer review, actual Muneral readiness, catalogue integration, current repository CI, merge, served layout and indexing are not established by these local results. The same producer authored the map, validator and controls. Fourteen controls are fourteen program tests, not fourteen independent semantic judgments.
+
+## Corrections prepared after the independently reviewed baseline
+
+The independent [map review](https://github.com/Arcanada-one/knowledge-contract/pull/48#issuecomment-6693915599) found a missing C03 initial premise and a default source-binding rejection gap. The author has corrected C03, added a required source/locator guard for all source-backed groups, and prepared eight additional negative unit controls.
+
+The JSON and hashes above are **historical measurements of the prior map/checker**, not a rerun on these changed bytes. Exact-head Python and project checks, optional `--repo` validation, new map digest, independent delta review, corpus integration and site readback are **not measured by this record**.
