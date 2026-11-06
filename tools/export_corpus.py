@@ -145,6 +145,23 @@ class ExportError(Exception):
     pass
 
 
+def split_decision_lines(text: str, name: str = "decision file") -> list[str]:
+    """Decision-file records separated by "\\n" only, as a "\\n"-reader sees them.
+
+    Same rule as ``check_book_package.split_lines``: one empty trailing element is allowed
+    (the final newline); a line ending in "\\r" is refused. U+2028, U+0085, ``\\x0b``, ``\\x0c``,
+    ``\\x1c``-``\\x1e`` and a lone "\\r" are ordinary characters here, never separators, so the
+    exporter and a "\\n"-splitting reader see the same records.
+    """
+    parts = text.split("\n")
+    if parts and parts[-1] == "":
+        parts.pop()
+    for number, line in enumerate(parts, 1):
+        if line.endswith("\r"):  # check: decision_line_no_cr
+            raise ExportError(f"{name}:{number}: line ends with a carriage return")
+    return parts
+
+
 def command(*args: str, data: bytes | None = None, check: bool = True) -> subprocess.CompletedProcess[bytes]:
     result = subprocess.run(args, cwd=REPO, input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     if check and result.returncode:
@@ -366,7 +383,7 @@ def load_decisions(main_sha: str) -> list[dict]:
         decision_bytes = command("git", "show", f"{main_sha}:{name}").stdout
         if decision_bytes:  # check: scan_decision_files
             scan_public_text(decision_bytes, "decision file")
-        for number, line in enumerate((show(main_sha, name) or "").splitlines()):
+        for number, line in enumerate(split_decision_lines(show(main_sha, name) or "", name)):
             try:
                 obj = json.loads(line)
             except ValueError as error:
@@ -477,8 +494,8 @@ def added_decision_lines(intro: str) -> list[str]:
     added: list[str] = []
     for name in changed_paths(intro + "^1", intro):
         if DECISION_FILE_RE.fullmatch(name):
-            before = set((show(intro + "^1", name) or "").splitlines())
-            added += [line for line in (show(intro, name) or "").splitlines() if line not in before]
+            before = set(split_decision_lines(show(intro + "^1", name) or "", name))
+            added += [line for line in split_decision_lines(show(intro, name) or "", name) if line not in before]
     return added
 
 
@@ -744,7 +761,10 @@ def build(main_sha: str, rows: list[dict[str, str]]) -> tuple[dict[str, object],
     order = first_parent_order(main_sha) if rows else {}
     infos: dict[str, dict] = {}
     for d in decisions:  # every decision line must come from a clean merged change, rows or not
-        d["intro"] = introducing_commit(main_sha, d["file"], lambda text, line=d["line"]: line in text.splitlines())
+        d["intro"] = introducing_commit(
+            main_sha, d["file"],
+            lambda text, line=d["line"], path=d["file"]: line in split_decision_lines(text, path),
+        )
         if d["intro"] not in infos:
             infos[d["intro"]] = change_info(d["intro"])
     for row in rows:

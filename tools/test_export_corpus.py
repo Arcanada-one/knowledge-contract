@@ -1021,6 +1021,76 @@ class DecisionRouteTests(unittest.TestCase):
         self.assertFalse(hasattr(export, "publication_review"))
         self.assertFalse(hasattr(export, "status_review"))
 
+    # ---- decision-file JSONL split-on-\n-only (KCP-PUB-1a / KCP-ROOT-REPLY-43) ----
+    def test_split_decision_lines_unit(self) -> None:
+        self.assertEqual(export.split_decision_lines(""), [])
+        self.assertEqual(export.split_decision_lines("a\nb\n"), ["a", "b"])
+        self.assertEqual(export.split_decision_lines("a\nb"), ["a", "b"])
+        self.assertEqual(export.split_decision_lines("a\u2028b\x85c\n"), ["a\u2028b\x85c"])
+        with expect_refusal(self, r"line ends with a carriage return"):
+            export.split_decision_lines("a\r\nb\n")
+        with expect_refusal(self, r"line ends with a carriage return"):
+            export.split_decision_lines("a\r")
+
+    def _craft_decision_file_text(self, body: str) -> tuple[World, str]:
+        """Write a raw decision-file body; return (world, main tip) for load_decisions."""
+        w = self.world(no_rows=True)
+        write(w.repo, f"{DEC}b9.jsonl", body)
+        write(w.repo, f"{RECEIPT}b9.json", "{}")
+        main = commit(w.repo, "crafted decision file bytes (#79)")
+        return w, main
+
+    def test_decision_file_crlf_joined_records_are_refused(self) -> None:
+        w0 = self.world(no_rows=True)
+        first = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9"))
+        second = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9", attribution="second"))
+        # Control: str.splitlines would yield two records; the exporter must refuse the CR.
+        self.assertEqual((first + "\r\n" + second + "\r\n").splitlines(), [first, second])
+        w, main = self._craft_decision_file_text(first + "\r\n" + second + "\r\n")
+        with patch.object(export, "REPO", w.repo):
+            with expect_refusal(self, r"line ends with a carriage return"):
+                export.load_decisions(main)
+
+    def test_decision_file_bare_cr_joined_records_are_refused(self) -> None:
+        w0 = self.world(no_rows=True)
+        first = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9"))
+        second = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9", attribution="second"))
+        joined = first + "\r" + second + "\n"
+        # Control: str.splitlines silently splits on a bare CR; the exporter must keep one record and refuse.
+        self.assertEqual(joined.splitlines(), [first, second])
+        w, main = self._craft_decision_file_text(joined)
+        with patch.object(export, "REPO", w.repo):
+            with expect_refusal(self, "decision line malformed"):
+                export.load_decisions(main)
+
+    def test_decision_file_u2028_joined_records_are_refused(self) -> None:
+        w0 = self.world(no_rows=True)
+        first = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9"))
+        second = export.canonical(decision_obj(DOCS[0], w0.sha[DOCS[0]], batch="b9", attribution="second"))
+        joined = first + "\u2028" + second + "\n"
+        # Control: str.splitlines treats U+2028 as a separator; the exporter must keep one record and refuse.
+        self.assertEqual(joined.splitlines(), [first, second])
+        w, main = self._craft_decision_file_text(joined)
+        with patch.object(export, "REPO", w.repo):
+            with expect_refusal(self, "decision line malformed"):
+                export.load_decisions(main)
+
+    def test_decision_file_raw_u2028_inside_a_string_is_one_accepted_record(self) -> None:
+        # Opposite direction: a raw U+2028 inside a JSON string must remain one decision line.
+        w = self.world(no_rows=True, no_decision_commit=True)
+        obj = decision_obj(DOCS[0], w.sha[DOCS[0]], batch="b9", third_party="note\u2028inside")
+        line = export.canonical(obj)
+        self.assertIn("\u2028", line)
+        self.assertEqual(len(line.splitlines()), 2)  # str.splitlines would tear the JSON apart
+        self.assertEqual(export.split_decision_lines(line + "\n"), [line])
+        write(w.repo, f"{DEC}b9.jsonl", line + "\n")
+        write(w.repo, f"{RECEIPT}b9.json", "{}")
+        main = commit(w.repo, "u2028 inside string (#80)")
+        with patch.object(export, "REPO", w.repo):
+            loaded = export.load_decisions(main)
+        self.assertEqual(len(loaded), 1)
+        self.assertEqual(loaded[0]["obj"]["third_party"], "note\u2028inside")
+
 
 class ExportBoundaryTests(unittest.TestCase):
     def setUp(self) -> None:
