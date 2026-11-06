@@ -34,7 +34,9 @@ This specification fixes how **private** Live Lab originals and permitted deriva
 | KC-PIPE-S3 Retrieval | Authorized `GET /v1/kc/retrieve` gateway; live host fetch may remain `not_measured` until separately evidenced |
 | KC-PIPE-X9d Private registry | Semantic private registration is a different plane; this leaf retains **source/result bytes**, not SkillPin admission |
 
-`kc2_admission` is always `not_measured`. This leaf MUST NOT invent an X5 clean package or knowledge admission.
+`kc2_admission` is always `not_measured`.
+
+**RET-R011.** This leaf MUST NOT invent an X5 clean package or knowledge admission.
 
 ## 2. Retention profile
 
