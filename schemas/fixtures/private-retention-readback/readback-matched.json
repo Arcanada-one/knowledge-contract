@@ -1,0 +1,22 @@
+{
+  "schema": "PrivateExactReadbackReceipt/v1",
+  "object_id": "d_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "object_kind": "original",
+  "content_exact": true,
+  "digest_algorithm": "sha256",
+  "digest_domain": "sha256-exact-bytes",
+  "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "size_bytes": 12,
+  "resolution": {
+    "method": "source_library_index",
+    "holder_host": "arcana-dbs",
+    "volume": "/",
+    "path_disclosed": false
+  },
+  "outcome": "matched",
+  "producer_build": null,
+  "source_revision": null,
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured"
+}

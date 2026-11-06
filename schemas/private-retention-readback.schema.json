@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-contract.arcanada.ai/schemas/private-retention-readback.schema.json",
+  "title": "PrivateRetentionReadback",
+  "description": "Schemas for Live Lab private retention profile, exact readback receipt and tombstone records (KCLIVE-03 / RET-*).",
+  "$defs": {
+    "honesty": {
+      "type": "object",
+      "required": ["runtime_authorized", "knowledge_admitted", "kc2_admission"],
+      "properties": {
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      },
+      "additionalProperties": true
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "^d_[0-9a-f]{64}$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$"
+    },
+    "objectId": {
+      "oneOf": [
+        { "$ref": "#/$defs/sourceId" },
+        { "$ref": "#/$defs/packageId" }
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "oneOf": [
+    {
+      "title": "PrivateRetentionProfile/v1",
+      "type": "object",
+      "required": [
+        "schema",
+        "profile_id",
+        "holder_host",
+        "volume",
+        "store_root",
+        "id_grammar",
+        "digest_domain",
+        "corpus_separation",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateRetentionProfile/v1" },
+        "profile_id": { "type": "string", "minLength": 1 },
+        "holder_host": { "type": "string", "minLength": 1 },
+        "volume": { "type": "string", "minLength": 1 },
+        "store_root": { "type": "string", "minLength": 1 },
+        "id_grammar": { "const": "d_<sha256>" },
+        "digest_domain": { "const": "sha256-exact-bytes" },
+        "review_period_days": { "type": ["integer", "null"], "minimum": 1 },
+        "corpus_separation": {
+          "type": "object",
+          "required": [
+            "originals_store",
+            "kc_corpus_derived",
+            "public_publication"
+          ],
+          "properties": {
+            "originals_store": { "type": "string", "minLength": 1 },
+            "kc_corpus_derived": { "type": "string", "minLength": 1 },
+            "public_publication": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "rematch": { "type": "object" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      },
+      "additionalProperties": true
+    },
+    {
+      "title": "PrivateExactReadbackReceipt/v1",
+      "type": "object",
+      "required": [
+        "schema",
+        "object_id",
+        "object_kind",
+        "content_exact",
+        "digest_algorithm",
+        "digest_domain",
+        "sha256",
+        "size_bytes",
+        "resolution",
+        "outcome",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateExactReadbackReceipt/v1" },
+        "object_id": { "$ref": "#/$defs/objectId" },
+        "object_kind": { "enum": ["original", "package"] },
+        "content_exact": { "const": true },
+        "digest_algorithm": { "const": "sha256" },
+        "digest_domain": { "const": "sha256-exact-bytes" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "resolution": {
+          "type": "object",
+          "required": ["method"],
+          "properties": {
+            "method": {
+              "enum": ["location_registry", "source_library_index"]
+            },
+            "holder_host": { "type": "string" },
+            "volume": { "type": "string" },
+            "path_disclosed": { "const": false }
+          },
+          "additionalProperties": true
+        },
+        "outcome": { "enum": ["matched", "refused"] },
+        "refusal_code": {
+          "enum": [
+            "not_found",
+            "unauthorized",
+            "corrupt",
+            "collected",
+            "unavailable",
+            "missing",
+            "invalid_id",
+            "path_injection_refused"
+          ]
+        },
+        "producer_build": { "type": ["string", "null"] },
+        "source_revision": { "type": ["string", "null"] },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      },
+      "additionalProperties": true
+    },
+    {
+      "title": "PrivateRetentionTombstone/v1",
+      "type": "object",
+      "required": [
+        "schema",
+        "object_id",
+        "state",
+        "recorded_at",
+        "prior_sha256",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateRetentionTombstone/v1" },
+        "object_id": { "$ref": "#/$defs/objectId" },
+        "state": { "enum": ["collected", "unavailable"] },
+        "recorded_at": { "type": "string", "minLength": 1 },
+        "prior_sha256": {
+          "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }]
+        },
+        "reason": { "type": "string" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      },
+      "additionalProperties": true
+    }
+  ]
+}

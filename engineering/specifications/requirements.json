@@ -710,7 +710,7 @@
       "id": "CKA-R013",
       "document": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
       "section": "6. Evidence and publication boundary",
-      "text": "Publishing a mutable current pointer MUST follow the complete atomic predicate in [cache identity §5](../cache-identity-and-invalidation/SPECIFICATION.md#5-guarded-publication-and-serving), including dependency and authority epochs in the same decision as the head update.",
+      "text": "Publishing a mutable current pointer MUST follow the complete atomic predicate in [cache identity \u00a75](../cache-identity-and-invalidation/SPECIFICATION.md#5-guarded-publication-and-serving), including dependency and authority epochs in the same decision as the head update.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -926,7 +926,7 @@
       "id": "STA-R007",
       "document": "engineering/specifications/status-model/SPECIFICATION.md",
       "section": "3. Canonical dimension vocabularies",
-      "text": "Legacy labels MUST map explicitly: `terminated` → run phase `finished`; `unsupported in scope` → coverage `unsupported`; “incomplete execution of planned search” → `incomplete_procedure`; `not_measured` → assessment `unknown` with reason “no observation.” Profile-specific quality states such as book-package `reviewed` retain their own declared scope; they are not aliases for `pass`.",
+      "text": "Legacy labels MUST map explicitly: `terminated` \u2192 run phase `finished`; `unsupported in scope` \u2192 coverage `unsupported`; \u201cincomplete execution of planned search\u201d \u2192 `incomplete_procedure`; `not_measured` \u2192 assessment `unknown` with reason \u201cno observation.\u201d Profile-specific quality states such as book-package `reviewed` retain their own declared scope; they are not aliases for `pass`.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -982,7 +982,7 @@
       "id": "STA-R014",
       "document": "engineering/specifications/status-model/SPECIFICATION.md",
       "section": "5. Scientific and editorial status",
-      "text": "The vocabulary MUST NOT equate “published,” “reviewed,” “implemented,” and “effective.”",
+      "text": "The vocabulary MUST NOT equate \u201cpublished,\u201d \u201creviewed,\u201d \u201cimplemented,\u201d and \u201ceffective.\u201d",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -1014,7 +1014,7 @@
       "id": "STA-R018",
       "document": "engineering/specifications/status-model/SPECIFICATION.md",
       "section": "6. User-facing projections",
-      "text": "“Indexed revision X” is more precise than an unqualified “current.” “Checks passed for the supplied record” MUST NOT become “the action is authorized” when current authorization was outside the checked boundary.",
+      "text": "\u201cIndexed revision X\u201d is more precise than an unqualified \u201ccurrent.\u201d \u201cChecks passed for the supplied record\u201d MUST NOT become \u201cthe action is authorized\u201d when current authorization was outside the checked boundary.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -1364,7 +1364,7 @@
       "id": "RUS-R005",
       "document": "engineering/specifications/reuse-policy/SPECIFICATION.md",
       "section": "4. Time model and deadlines",
-      "text": "Bounds and durations MUST be finite; intervals require lower ≤ upper, and TTL and permitted maximum age require nonnegative values.",
+      "text": "Bounds and durations MUST be finite; intervals require lower \u2264 upper, and TTL and permitted maximum age require nonnegative values.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -1612,7 +1612,7 @@
       "id": "BPK-R004",
       "document": "engineering/specifications/book-package/SPECIFICATION.md",
       "section": "2. Layout and reversible edits",
-      "text": "The package identifier MUST be a readable lowercase hyphenated slug, 3–96 characters; a single letter followed by digits is forbidden.",
+      "text": "The package identifier MUST be a readable lowercase hyphenated slug, 3\u201396 characters; a single letter followed by digits is forbidden.",
       "automated_test_references": [],
       "verification_scope": "implementation-specific evidence required"
     },
@@ -2536,6 +2536,106 @@
       "section": "7. Acceptance cases",
       "text": "A contract-delivery acceptance suite MUST additionally exercise missing constraints, a mandatory unknown profile, incomplete closure, insufficient budget, revoked disclosure authority, stale source evidence, and a correct informational response that does not authorize execution.",
       "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R001",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "The Live Lab private retention profile MUST name the authorized store contour, id grammar, digest domain and review-period retention obligation.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R002",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "Originals and full OCR / package trees retained under the Source Library MUST remain separate from kc-corpus derived-artifact collection and from public publication catalogues.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R003",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "Retention pins for acceptance evidence MUST survive ordinary capacity and restart checks for the declared review period without silent deletion without a tombstone.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R004",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "Exact readback MUST accept only an opaque authorized object id and resolve via Location Registry or Source Library allowlisted index; caller-supplied paths/URLs MUST be refused.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R005",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "A successful exact readback MUST recompute SHA-256 over returned bytes, require digest/id binding, and emit PrivateExactReadbackReceipt/v1 with content_exact=true.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R006",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "Exact readback MUST fail closed when required authorization is absent without disclosing private membership.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R007",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "4. Unavailability and collection",
+      "text": "Intentionally collected or expired objects MUST produce an observable tombstone with state collected or unavailable.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R008",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "4. Unavailability and collection",
+      "text": "A missing path without a tombstone is missing; corrupt bytes are corrupt and MUST NOT be served as exact content.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R009",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "5. Honesty and stage delivery",
+      "text": "Every retention profile, readback receipt and tombstone MUST carry runtime_authorized=false, knowledge_admitted=false and kc2_admission=not_measured until separately measured.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R010",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "5. Honesty and stage delivery",
+      "text": "Merge of implementation is stage/batch only (DEC-AUP-0167); an author leaf MUST NOT push to main, force-push, or claim DONE/admission alone.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py"
+      ],
       "verification_scope": "implementation-specific evidence required"
     }
   ]
