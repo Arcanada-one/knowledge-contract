@@ -1,0 +1,21 @@
+{
+  "schema": "PrivateReadbackReceipt/v1",
+  "artifact_id": "urn:arcanada:kc-corpus:fixture:skill:synthetic-private-skill",
+  "revision": "r1",
+  "outcome": "matched",
+  "kind": "skill",
+  "path": "fixtures/accepted/SKILL.md",
+  "sha256": "ff9077278201fb3e7022473b4c9af9b7e809ea1b4fba1422d11f636aab4ed04c",
+  "source_document_id": "d_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "authority_boundaries": {
+    "source_rights": "not_measured",
+    "library_acceptance": "not_applicable",
+    "private_registry_adoption": "pass",
+    "published_corpus_admission": "not_applicable",
+    "index_readback": "not_measured",
+    "native_task_run_authority": "not_applicable"
+  },
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured"
+}
