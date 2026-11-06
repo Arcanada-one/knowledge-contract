@@ -15,19 +15,21 @@ description: "The conditions under which saved knowledge may support a new task,
 
 ## Abstract
 
-Preparing knowledge in advance can reduce repeated work. Whether a prepared artifact can be used again depends on the new task, its requirements, and the current conditions of use. This paper defines a knowledge contract as an explicit account of requirements, constraints, grounds, permitted transformations, and verification obligations. It separates the contract from its professional specializations and from the artifact prepared under it. We model reuse as a directed admission relation for a particular request and state. The conditional preservation theorem identifies sufficient conditions for a new use: sound prior verification, complete material dependencies, agreement on relevant request components, coverage of the new requirements, preservation by every permitted transformation output, and discharge of current-use conditions. Counterexamples address changed requests and permissions, incomplete dependencies, negative search results, and races between admission and delivery. The model distinguishes reusable preparation from current authorization, including cases that require rebuilding or rejection. It does not establish automatic discovery of every semantic dependency, industrial coordination guarantees, or a universal economic advantage from caching.
+Preparing knowledge in advance can reduce repeated work, but prior verification does not by itself justify a new use. This paper asks when a prepared artifact may support a different request under current conditions. We define a knowledge contract as an explicit account of requirements, constraints, grounds, permitted transformations, and verification obligations. Reuse is a directed admission relation for a particular artifact, request, policy, and state. A conditional preservation theorem gives sufficient conditions for reuse: sound prior verification; complete and unchanged relevant state and request observations; preservation by every permitted transformation output; coverage of the new artifact requirements; and discharge of current-use requirements. Counterexamples show why unchanged bytes, previously returned search results, or an unexpired time-to-live are insufficient. The contribution is a precise separation of reusable preparation from current authorization and delivery, with explicit obligations for revalidation, rebuilding, or rejection. The argument is deductive: it does not provide an algorithm for discovering every semantic dependency, establish a production coordination guarantee, or demonstrate a universal economic advantage from caching.
 
 **Keywords:** knowledge contract; compilation; reuse admission; constraints; dependencies; current authorization.
 
 ## 1. Research question and relation to caching
 
-A summary, context package, workflow, or professional instruction may be prepared once and used repeatedly. Repetition saves work only while the prepared result remains suitable. Even identical request text can refer to a changed recipient, policy, source revision, or time interpretation.
+A summary, context package, workflow, or professional instruction may be prepared once and used repeatedly. Repetition avoids some preparation work only while the prepared result remains suitable. Even identical request text can refer to a changed recipient, policy, source revision, or time interpretation.
 
-We ask: **when does an earlier verification justify a new use of a prepared artifact?** The problem resembles caching, with additional obligations: cached knowledge must meet the semantic and normative requirements of its new use.
+We ask: **when does an earlier verification justify a new use of a prepared artifact?** The question has two parts. Which previously established properties remain valid? Which conditions must be checked again for the requested use? Treating these as one question can make a valid preparation appear to authorize an invalid delivery.
 
-HTTP caching provides explicit rules for freshness and reuse [1], and extensions describe limited stale-serving behavior [2]. These protocols offer useful comparisons, but their guarantees do not automatically cover knowledge interpretation or authorization.
+HTTP caching provides explicit freshness and reuse rules, including restrictions for authenticated requests [1]. Extensions permit specified forms of stale serving [2]. These protocols govern HTTP response reuse; they do not, by themselves, establish that a prepared knowledge artifact meets a new task's semantic requirements and current-use conditions. Incremental build correctness likewise depends on consistency between a result and its complete task dependencies [3]. A successful build alone does not establish coverage of new requirements or permission to deliver the result to a new recipient.
 
-The contract model makes those additional admission obligations explicit. Similarity, popularity, and storage location do not by themselves decide reuse. Incremental build correctness already requires consistency between a result and its complete task dependencies [3]. The theorem below follows the same dependency discipline and adds separate requirements for coverage of a new knowledge request and current authority. A successful build alone establishes neither.
+This paper brings those obligations into one bounded admission argument. Its contribution has three parts: a distinction between a contract and the artifact prepared under it; sufficient conditions for preserving verified properties while covering a new request; and counterexamples that identify what fails when a condition is omitted. The contribution is not a new caching algorithm or a claim that dependency tracking and authorization originate here.
+
+The method is deductive. We define the relevant objects and admission relation, state explicit premises, prove their consequence, and examine boundary cases. The theorem is a composition of those premises, not an automatic decision procedure for checking them. Implementation-specific observations belong to the engineering studies linked in Section 8; they are not substituted for the proof.
 
 ## 2. Contracts and their professional specialization
 
@@ -38,6 +40,8 @@ Constraints are first-class obligations. They may restrict scope, resources, tim
 The contract does not itself establish truth, grant authority, or supply a missing capability. It states what must be supported and checked. A structurally valid contract can still contain a false premise or an unimplementable demand.
 
 In a professional profile, the following terms have distinct functions:
+
+**Table 1. Operational distinctions in the professional profile.**
 
 | Term | Function |
 | --- | --- |
@@ -74,6 +78,8 @@ a\rightsquigarrow_{p,s}q'
 when the artifact is admitted for that use. The relation is directed: a complete artifact may support an authorized narrower projection, while a partial artifact does not support a broader task solely because both concern the same topic.
 
 The admission decision may be to reuse unchanged, instantiate with checking, revalidate, rebuild, bypass reuse, or reject the requested use. A decision to revalidate leaves a check outstanding; it does not permit delivery before that check. An instantiated result has its own content identity and requires checks on the actual output.
+
+For the theorem, the complete requirement set includes every mandatory condition imposed by the request and the fixed admission policy. Discharging that set is the policy's admission criterion within the declared scope. Any additional mandatory veto must be included; the theorem does not authorize a use under an unmodeled condition. Current-use obligations are independent of prior preparation in the sense that they require their own discharge, not in the sense of statistical independence.
 
 Build and admission have different dependencies. A generator version can matter for provenance or a known defect, while current permission can matter at every delivery. Neither invalidating everything after every tool update nor ignoring all interpretation changes is a justified general policy.
 
@@ -122,7 +128,9 @@ The theorem is deliberately conditional. A manifest labeled “complete” does 
 
 A dependency can concern a content field, relation, alternative ground, interpretation rule, normative basis, representation, or search scope. Recording dependencies at finer granularity can avoid unnecessary rebuilding, but only if the manifest remains complete for the selected properties.
 
-Negative, exhaustive, counted, and ranked answers expose a common dependency error. Suppose a saved artifact states that no record satisfies a predicate. If its manifest records only previously returned identifiers, a new matching record can change the answer without changing any earlier result.
+Negative, exhaustive, counted, and ranked answers expose a common dependency error. For a previously sound negative answer over a fixed visible search scope and predicate, inserting a newly visible matching record into that scope makes the old answer false, even if all previously returned records are unchanged. A manifest containing only those returned identifiers therefore cannot justify reuse of that answer.
+
+Here, a fixed scope means the same search domain and visibility rule, not a frozen set of record contents. The insertion changes the state within that domain. A record outside the domain, a record invisible to the requester, or a record that does not satisfy the predicate does not supply this counterexample.
 
 The dependency therefore includes the searched scope, visibility, predicate, and completeness assumptions. Exact top-ranked results also depend on ranking and tie rules. Caching the output of an approximate search does not make that search exhaustive.
 
@@ -135,6 +143,8 @@ Losing one source need not invalidate a conclusion if an independently sufficien
 Lifecycle, residency, freshness, and reuse eligibility answer different questions. An artifact may be ready and resident yet unauthorized for a particular recipient. Eviction can change latency without changing its content. A recent cache hit records use, not renewed validation.
 
 Time policies must be explicit:
+
+**Table 2. Time policies and their conditions.**
 
 | Policy | Conditions |
 | --- | --- |
@@ -165,6 +175,12 @@ The result established here is a conditional admission argument with counterexam
 The [reuse admission and cost controls study](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) examines finite admission decisions and accounting controls. The [contract profile conformance study](../../engineering/studies/contract-profile-conformance/STUDY.md) addresses supported representations. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) addresses closure and actual delivery.
 
 Machine interfaces and their compatibility versions belong in the [engineering core specification](../../engineering/specifications/knowledge-contract-core/SPECIFICATION.md). The shared [glossary](../../reference/glossary/GLOSSARY.md), [constrained transformations](../constrained-transformations/PAPER.md), and [knowledge utility](../knowledge-utility/PAPER.md) complete the conceptual links.
+
+## 9. Conclusion
+
+The reuse route established here relies on sound prior verification, complete and unchanged relevant state and request observations, preservation by every permitted transformation output, coverage of the new artifact requirements, and discharge of current-use requirements for the actual output. Together, these premises are sufficient for admission within the declared policy and scope; they are not presented as necessary conditions for every possible way of establishing suitability. A stored receipt, matching hash, familiar topic, or recent cache hit does not establish those premises by itself.
+
+The practical implication is to preserve the distinction between preparing an artifact and authorizing its use. When an obligation cannot be discharged, the system must follow the applicable revalidation, rebuilding, bypass, or rejection route rather than infer permission from prior success. Whether that discipline improves cost, latency, or outcomes remains a separate empirical question. The present result supplies a precise conditional argument and its limits, not a claim that every dependency can be discovered or every implementation enforces the required checks.
 
 ## References
 
