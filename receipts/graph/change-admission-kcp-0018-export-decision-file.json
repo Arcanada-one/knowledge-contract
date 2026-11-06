@@ -1,0 +1,54 @@
+{
+  "schema": "ProvisionalChangeAdmissionReceipt/v1",
+  "work_item": "KCP-0018",
+  "muneral_task": "1f78e1ef-4fe8-46ee-9d64-3593330e5ea1",
+  "repository": "Arcanada-one/knowledge-contract",
+  "supersedes": {
+    "path": "receipts/graph/change-admission-kcp-0018-export.json",
+    "sha256": "bc03a1299310d2464e88e1294fe00ad4dac553778d63913f678e0dd5cea6ef08",
+    "reason": "The historical receipt described the review-based exporter and carried two not_measured impact entries with expires_at_utc 2026-11-02T00:00:00Z. Those expiries are past. This receipt retires those expired entries and remeasures the current decision-file exporter (DEC-AUP-0171) at the pinned main tip. The historical JSON file is left byte-identical."
+  },
+  "base_sha": "584a9cddbfdaf305cdbece5886e3013e4bcf2ec6",
+  "measured_main_sha": "ea0c30575d56e793fb2875df47126ab3f6dc30ad",
+  "source_head_sha": "ea0c30575d56e793fb2875df47126ab3f6dc30ad",
+  "captured_at_utc": "2026-11-06T13:26:58.980620+00:00",
+  "graph": "manual fallback: no installed graph verifier in this public repository",
+  "canonical_admission": "not_measured",
+  "change_set": [
+    "receipts/graph/change-admission-kcp-0018-export-decision-file.json",
+    "cases/candidate-export-gate.md"
+  ],
+  "impact_set": [
+    {
+      "entity": "decision-file allowlist parser and rights decision gate",
+      "maps_from": "public corpus allowlist parser and rights decision gate",
+      "edge": "data/config",
+      "verifier": "local unittest tools.test_export_corpus on measured_main_sha",
+      "verdict": "verified",
+      "evidence": "83/83 local unittest PASS in 297.849s on ea0c30575d56e793fb2875df47126ab3f6dc30ad; CI job candidate-export on the same head (Actions run 42206223831 / job 127853422866) also Ran 83 tests OK"
+    },
+    {
+      "entity": "candidate bundle publication and exact-main executable binding",
+      "maps_from": "candidate bundle publication and exact-main executable binding",
+      "edge": "code/consumer",
+      "verifier": "exact-main CLI export plus resulting-main CI candidate-export step",
+      "verdict": "verified",
+      "evidence": "local python3 -B tools/export_corpus.py on clean ea0c30575d56e793fb2875df47126ab3f6dc30ad produced status=candidate_only, schema=KnowledgeContractCandidateExport/v2, allowlist_commit=ea0c30575d56e793fb2875df47126ab3f6dc30ad, row_count=35, export_count=35, publication_review_readback=decision_file_matched; CI push-to-main step printed CANDIDATE_EXPORT_READBACK_PASS rows=35 on the same head"
+    },
+    {
+      "entity": "nonempty public corpus decision-file review, rights and secret scan into a candidate bundle (index write intentionally not applied)",
+      "maps_from": "live nonempty public corpus review, rights, secret scan and index ingestion",
+      "edge": "external/runtime",
+      "verifier": "live nonempty allowlist export readback; index write boundary asserted by exporter contract",
+      "verdict": "verified",
+      "evidence": "allowlist has 35 current rows; live export and CI both report row_count=35 with publication_review_readback=decision_file_matched and secret scan exercised on each candidate blob; manifest.scrutator_projection=not_applied and kc2_runtime_admission=not_measured. The historical 'index ingestion' obligation is retired as not applicable to this exporter (it never writes an index); that retirement is a measured non-effect, not a claim that Scrutator ingested the bundle."
+    }
+  ],
+  "admission": "remeasured_decision_file_exporter_candidate_only_kc2_not_measured",
+  "limitations": [
+    "Canonical graph admission remains not_measured: this repository still has no installed graph verifier; this receipt is provisional.",
+    "KC2 runtime admission and Scrutator projection remain not_measured / not_applied by exporter contract.",
+    "Reviewer identity class remains same_account_blind_agent; this receipt does not prove independence, author identity or copyright.",
+    "The historical receipt at receipts/graph/change-admission-kcp-0018-export.json is immutable evidence of the earlier review-based exporter and must not be rewritten."
+  ]
+}
