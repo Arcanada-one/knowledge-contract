@@ -203,7 +203,12 @@ class World:
         added = [export.canonical(x) for x in every]
         blobs = b""
         for x in sorted(every, key=lambda x: (x["path"], x["sha256"], x["upstream"])):
-            blob = subprocess.run(("git", "show", f"{base}:{x['path']}"), cwd=repo, env=ENV, check=True, stdout=subprocess.PIPE).stdout
+            # Mirror receipt_check: current lines embed tip-of-base bytes; non-current lines embed the
+            # allowlist source commit (or the content commit when source is not yet chosen).
+            blob_ref = base
+            if x["status"] != "current":
+                blob_ref = getattr(self, "source", None) or self.S
+            blob = subprocess.run(("git", "show", f"{blob_ref}:{x['path']}"), cwd=repo, env=ENV, check=True, stdout=subprocess.PIPE).stdout
             blobs += f"BLOB {x['path']} {x['sha256']} {x['upstream']} {len(blob)}\n".encode() + blob + b"\n"
         decl = b""
         ups = sorted({x["upstream"] for x in every})
@@ -388,6 +393,48 @@ class DecisionRouteTests(unittest.TestCase):
         r3 = w.add_rows([w.row(doc, "b1", 0)])
         with expect_refusal(self, "later decision changes the effective status"):
             w.run(r3)
+
+    def test_withdrawal_succeeds_when_tip_content_changed_after_the_source_commit(self) -> None:
+        # P00..P13-shaped case: path at tip is rewritten (compatibility link) so tip bytes no longer
+        # hash to the published digest; a withdrawn line must still validate against the source commit.
+        # ExportError must become an assertion failure (not an ERROR) so disabling
+        # non_current_blob_at_source is an assertion kill in the mutation harness.
+        w = self.world()
+        doc = DOCS[0]
+        original_sha = w.sha[doc]
+        write(w.repo, doc, b"---\nsources: none\n---\n\n# Compatibility stub after path rewrite\n")
+        commit(w.repo, "path content changed after the source commit")
+        w.main = git(w.repo, "rev-parse", "HEAD")
+        tip_sha = hashlib.sha256((w.repo / doc).read_bytes()).hexdigest()
+        self.assertNotEqual(tip_sha, original_sha)
+        w.decision_pr("b2", [decision_obj(doc, original_sha, "withdrawn", "b2")], parent=w.main)
+        row = w.row(doc, "b1", 0, "withdrawn", w.cell("b2", 0))
+        try:
+            manifest, files = w.run(w.add_rows([row]))
+        except export.ExportError as error:
+            self.fail(f"withdrawal with tip rewrite must succeed, got ExportError: {error}")
+        self.assertEqual(files, {})
+        self.assertEqual(manifest["entries"][0]["public_export"], "withheld")
+        self.assertEqual(manifest["entries"][0]["sha256"], original_sha)
+        self.assertEqual(manifest["export_count"], 0)
+
+    def test_ordinary_current_export_still_checks_blob_at_base_after_tip_rewrite_guard(self) -> None:
+        # Current lines keep tip/base semantics: a bad digest on a current decision still refuses at base.
+        self.refuses("embedded source blob at the base differs", bad_blob_digest=True)
+
+    def test_withdrawn_line_refuses_when_source_commit_blob_does_not_match_digest(self) -> None:
+        w = self.world()
+        doc = DOCS[0]
+        original_sha = w.sha[doc]
+        write(w.repo, doc, b"# Compatibility stub\n")
+        tip = commit(w.repo, "path content changed after the source commit")
+        w.main = tip
+        # Decision and row still name the published digest, but the row's source_commit is the tip rewrite.
+        w.decision_pr("b2", [decision_obj(doc, original_sha, "withdrawn", "b2")], parent=w.main)
+        row = w.row(doc, "b1", 0, "withdrawn", w.cell("b2", 0))
+        row["source_commit"] = tip
+        with expect_refusal(self, "embedded source blob at the source commit differs"):
+            w.run(w.add_rows([row]))
 
     def test_a_key_can_return_to_current_through_a_new_line_with_its_own_receipt(self) -> None:
         w = self.world()
