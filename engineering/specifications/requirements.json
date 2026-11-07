@@ -2255,6 +2255,118 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "PAR-R001",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "2. Authority boundaries",
+      "text": "Every registration, readback, retrieval, delivery and use-witness receipt MUST carry an `authority_boundaries` object with exactly these keys, each valued `pass`, `fail`, `not_applicable` or `not_measured`, and MUST NOT treat any one of them as implying another: `source_rights`, `library_acceptance`, `private_registry_adoption`, `published_corpus_admission`, `index_readback`, `native_task_run_authority`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R011",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "2. Authority boundaries",
+      "text": "A successful private registration MAY set `private_registry_adoption` to `pass` for the hermetic or private-file route under test.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R012",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "2. Authority boundaries",
+      "text": "It MUST leave `published_corpus_admission`, `index_readback` and `native_task_run_authority` as `not_measured` or `not_applicable` unless those authorities were separately measured.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R013",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "2. Authority boundaries",
+      "text": "Library acceptance of a book package MUST NOT be recorded as private registry adoption.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R002",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "3. Acceptance gate",
+      "text": "A private registration MUST refuse an artifact that lacks a pinned `SemanticAcceptanceRecord/v1` whose `result` is `supported`, whose `artifact_sha256` equals the SHA-256 of the exact artifact file bytes being registered, whose `assessor_id` is nonempty and distinct from `producer_id`, and whose `scope` names the permitted purpose and exclusions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R014",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "3. Acceptance gate",
+      "text": "An unreviewed X9c draft MUST be refused with reason `acceptance_missing` or `acceptance_insufficient` and MUST NOT appear as a registered revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R003",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "3. Acceptance gate",
+      "text": "Registration of an accepted artifact MUST record: stable `artifact_id`, `revision`, `kind`, `path`, `sha256`, `byte_length`, `source_document_id` (`d_<sha256>` or an explicit `not_measured` with reason), the acceptance record digest, and a finite `dependency_closure` of required revisions (each with path, sha256 and role). A mutable `current` pointer MUST NOT substitute for a pinned revision.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R004",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "4. Identity readback",
+      "text": "Readback by identity MUST return the registered revision whose `artifact_id` and `revision` match the request, MUST recompute the digest of the stored bytes and refuse on mismatch (`digest_mismatch`), and MUST emit a `PrivateReadbackReceipt/v1` carrying the matched fields and `kc2_admission` = `not_measured`.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R005",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "5. Retrieval and context delivery",
+      "text": "Retrieval for a concrete request MUST select at most the registered revisions whose applicability covers the request (or refuse with `unsuitable_context`), MUST include every member of the primary artifact's `dependency_closure`, MUST record the observed byte/token budget and any truncation as measured values or `not_measured` with reason, and MUST NOT silently omit a required dependency.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R006",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "5. Retrieval and context delivery",
+      "text": "Complete context delivery MUST list every selected revision by identity, path and sha256, the request identifier, the recipient identifier, and the delivery outcome (`delivered` or a refusal code). Changing the recipient or the request outside applicability MUST refuse or reassess; it MUST NOT reuse a prior positive delivery receipt as current suitability.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R007",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "6. Use witness and per-book outcomes",
+      "text": "A use witness for a book MUST record the selected/applied artifact identities, the concrete task or request, the resulting output digest or text hash, and an assessment (`applied`, `refused`, `reassessed`, `unresolved`) with reason. Generated Markdown alone is not a use witness.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R008",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "6. Use witness and per-book outcomes",
+      "text": "For every book in the declared cohort, the outcome record MUST carry either one inspectable use-witness receipt id or a precise `unresolved` outcome with `owner` and `blocking_reason`. A known blocked or unaccepted book is not a completed conversion.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R009",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "7. Negative controls",
+      "text": "The hermetic suite MUST exercise and refuse or reassess each of: changed source bytes or source_document_id, changed request or recipient, missing dependency, malformed or unknown evidence, and unsuitable context. Each case MUST name the failing condition. Prior accepted revisions MUST remain readable after a refusal.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "PAR-R010",
+      "document": "engineering/specifications/private-artifact-registry/SPECIFICATION.md",
+      "section": "8. Honesty labels",
+      "text": "Every receipt MUST set `runtime_authorized` to `false` and `knowledge_admitted` to `false` while the native KC2 dispatcher route remains unwired, and MUST set `kc2_admission` to `not_measured`. A hermetic PASS is not live Scrutator index readback and is not native task-run authority.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",
