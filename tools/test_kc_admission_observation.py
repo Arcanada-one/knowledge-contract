@@ -38,6 +38,7 @@ def load_checker() -> types.ModuleType:
     path = Path(where) / "check_kc_admission_observation.py"
     spec = importlib.util.spec_from_file_location("kcao_under_test", path)
     module = importlib.util.module_from_spec(spec)
+    sys.modules["kcao_under_test"] = module  # a dataclass (Result) looks its module up by name
     spec.loader.exec_module(module)
     return module
 
@@ -77,6 +78,12 @@ def structure(data, *, fixture=True, require=False, module=None) -> Outcome:
         return Outcome(r.problems, r.flags, r.level, r.unavailable, r.mode)
     problems, flags = m.inspect(data)
     return Outcome(problems, flags)
+
+
+def diagnostic(data, src=None, work=None, *, fixture=True, require=False, module=None) -> Outcome:
+    m = module or CKA
+    r = m.check_diagnostic(data, src, work, fixture=fixture, require_work_item=require)
+    return Outcome(r.problems, r.flags, r.level, r.unavailable, r.mode)
 
 
 def sc(name: str, suffix: str):
@@ -121,12 +128,32 @@ def edit_source(case: dict, edit) -> dict:
     return case
 
 
+def untimed_contract() -> dict:
+    """A synthetic ArganaContractRecord-shaped source WITHOUT a stored time and an otherwise valid observation that therefore omits recorded_at."""
+    return fx.contract_case("t1", "T", [], stored_at=None, resolver_verdict="T")
+
+
+def snapshot_case(system: str) -> dict:
+    """An ArganaIntakeSnapshot/v1-shaped record (the Argana PR65 candidate: per-invocation identity, write-once exact bytes). It is NOT a registered profile; hashes are recomputed."""
+    task = "synthetic:task-s1"
+    src = fx.dump({"schema": "ArganaIntakeSnapshot/v1", "system": "argana", "invocation_id": "synthetic:invocation-s1", "task_id": task, "outcome": "contract", "verdict": "T",
+                   "contract_digest": "sha256:" + "2" * 64, "branch": {"obligations": []}})
+    obs = fx.observation("s1", "contract", src, "ArganaIntakeSnapshot/v1", contract_digest="sha256:" + "2" * 64, obligations=[], resolver_verdict="T")
+    obs["native_source"]["system"] = system
+    obs["native_source"]["record_id"] = "synthetic:invocation-s1" if system == K.SYNTHETIC_SYSTEM else "invocation-s1"
+    return {"obs": obs, "source": src}
+
+
 Scenario = namedtuple("Scenario", "id mode fixture require obs src work codes level reason flags", defaults=(None,))
 
 
 def run_scenario(module: types.ModuleType, s: Scenario):
-    check = module.check_structure(s.obs, fixture=s.fixture, require_work_item=s.require) if s.mode == "structure-only" else \
-        module.check_strict(s.obs, s.src, s.work, fixture=s.fixture, require_work_item=s.require)
+    if s.mode == "structure-only":
+        check = module.check_structure(s.obs, fixture=s.fixture, require_work_item=s.require)
+    elif s.mode == "diagnostic-agreement":
+        check = module.check_diagnostic(s.obs, s.src, s.work, fixture=s.fixture, require_work_item=s.require)
+    else:
+        check = module.check_strict(s.obs, s.src, s.work, fixture=s.fixture, require_work_item=s.require)
     return check.codes, check.level, (check.unavailable or {}).get("reason"), frozenset(f.split(":", 1)[0] for f in check.flags)
 
 
@@ -171,40 +198,73 @@ def build_scenarios() -> list[Scenario]:
                             None if flags is None else frozenset(flags)))
 
     # the real source label in the live (non-fixture) mode: synthetic bytes, so this proves the checker's rules and nothing about Argana
+    # KC-Brain 6711755408 (b): the digest-named mutable record is NEVER a strict-evidence source; its content agreement is diagnostic and non-admissive
+    DIAG, STRICT, STRUCT = "diagnostic-agreement", "strict-evidence", "structure-only"
+    MUT = {"KCAO-SOURCE-MUTABLE"}
     c1 = make_real(case_of("01"))
-    add("real:contract-strict", "strict-evidence", False, False, c1, set(), K.LEVEL_NATIVE, flags={"KCAO-FLAG-MUTABLE-LOCATOR"})
-    add("real:contract-structure", "structure-only", False, False, c1, set(), K.LEVEL_STRUCTURE, flags={"KCAO-FLAG-STRUCTURE-ONLY"})
-    add("flags:fixture-contract-strict", "strict-evidence", True, False, case_of("01"), set(), K.LEVEL_FIXTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-MUTABLE-LOCATOR"})
-    add("flags:fixture-decision-strict", "strict-evidence", True, False, case_of("04"), set(), K.LEVEL_FIXTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE"})
-    add("flags:fixture-work-item-strict", "strict-evidence", True, False, case_of("03"), set(), K.LEVEL_FIXTURE,
+    add("real:contract-strict-is-refused-as-a-mutable-source", STRICT, False, False, c1, MUT, K.LEVEL_REFUSED)
+    add("real:contract-diagnostic-is-non-admissive", DIAG, False, False, c1, set(), K.LEVEL_DIAGNOSTIC, flags={"KCAO-FLAG-MUTABLE-LOCATOR", "KCAO-FLAG-NON-ADMISSIVE"})
+    add("real:contract-structure", STRUCT, False, False, c1, set(), K.LEVEL_STRUCTURE, flags={"KCAO-FLAG-STRUCTURE-ONLY"})
+    add("flags:fixture-contract-strict", STRICT, True, False, case_of("01"), set(), K.LEVEL_FIXTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-MUTABLE-LOCATOR"})
+    add("flags:fixture-decision-strict", STRICT, True, False, case_of("04"), set(), K.LEVEL_FIXTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE"})
+    add("flags:fixture-work-item-strict", STRICT, True, False, case_of("03"), set(), K.LEVEL_FIXTURE,
         flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-SYNTHETIC-WORK-ITEM", "KCAO-FLAG-MUTABLE-LOCATOR"})
-    add("flags:fixture-work-item-structure", "structure-only", True, False, case_of("03"), set(), K.LEVEL_STRUCTURE,
+    add("flags:fixture-work-item-structure", STRUCT, True, False, case_of("03"), set(), K.LEVEL_STRUCTURE,
         flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-SYNTHETIC-WORK-ITEM", "KCAO-FLAG-STRUCTURE-ONLY", "KCAO-FLAG-WORK-ITEM-BYTES-NOT-SUPPLIED"})
-    add("flags:fixture-decision-structure", "structure-only", True, False, case_of("04"), set(), K.LEVEL_STRUCTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-STRUCTURE-ONLY"})
-    add("flags:unavailable-record-has-no-flags", "strict-evidence", True, False, case_of("06"), set(), K.LEVEL_UNAVAILABLE_RECORD, flags=set(), with_sidecars=False)
-    add("flags:required-binding-flag", "strict-evidence", True, True, case_of("01"), set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified",
+    add("flags:fixture-decision-structure", STRUCT, True, False, case_of("04"), set(), K.LEVEL_STRUCTURE, flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-STRUCTURE-ONLY"})
+    add("flags:unavailable-record-has-no-flags", STRICT, True, False, case_of("06"), set(), K.LEVEL_UNAVAILABLE_RECORD, flags=set(), with_sidecars=False)
+    add("flags:required-binding-flag", STRICT, True, True, case_of("01"), set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified",
         flags={"KCAO-FLAG-SYNTHETIC-SOURCE", "KCAO-FLAG-MUTABLE-LOCATOR", "KCAO-FLAG-BINDING-REQUIRED"})
-    add("real:contract-k-strict", "strict-evidence", False, False, make_real(case_of("02")), set(), K.LEVEL_NATIVE)
-    add("real:contract-in-fixture-mode-is-fixture-evidence", "strict-evidence", True, False, c1, set(), K.LEVEL_FIXTURE)
-    add("real:strict-without-bytes", "strict-evidence", False, False, c1, {"KCAO-STRICT-NO-NATIVE-BYTES"}, K.LEVEL_REFUSED, with_sidecars=False)
+    c2 = make_real(case_of("02"))
+    add("real:contract-k-strict-is-refused-as-a-mutable-source", STRICT, False, False, c2, MUT, K.LEVEL_REFUSED)
+    add("real:contract-k-diagnostic", DIAG, False, False, c2, set(), K.LEVEL_DIAGNOSTIC)
+    add("real:contract-in-fixture-mode-is-fixture-evidence", STRICT, True, False, c1, set(), K.LEVEL_FIXTURE)
+    # no retained event source: a typed unavailable, never the structural pass and never a refusal-as-pass
+    add("real:strict-without-bytes-is-unavailable", STRICT, False, False, c1, set(), K.LEVEL_UNAVAILABLE, "exact_bytes_unrecoverable",
+        flags={"KCAO-FLAG-MUTABLE-LOCATOR", "KCAO-FLAG-NO-RETAINED-SOURCE"}, with_sidecars=False)
+    add("real:diagnostic-without-bytes-is-a-refusal", DIAG, False, False, c1, {"KCAO-STRICT-NO-NATIVE-BYTES"}, K.LEVEL_REFUSED, with_sidecars=False)
+    # the same real-label bytes, content defects: the comparison guards stay live in the diagnostic mode, and strict refuses the source before any comparison
     relabel = make_real(case_of("01"))
     relabel["obs"].update({"resolver_outcome": "refusal", "refusal_code": "SOME_REFUSAL"})
     relabel["obs"].pop("contract_digest"), relabel["obs"].pop("obligations")
-    add("real:contract-bytes-relabelled-refusal", "strict-evidence", False, False, relabel, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("real:contract-bytes-relabelled-refusal", DIAG, False, False, relabel, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("real:contract-bytes-relabelled-refusal-strict", STRICT, False, False, relabel, MUT, K.LEVEL_REFUSED)
     relabel = make_real(case_of("01"))
     relabel["obs"].update({"resolver_outcome": "underdetermined", "missing": [{"capability_token": "x"}]})
     relabel["obs"].pop("contract_digest"), relabel["obs"].pop("obligations")
-    add("real:contract-bytes-relabelled-underdetermined", "strict-evidence", False, False, relabel, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
-    add("real:decision-profile-has-no-live-source", "strict-evidence", False, False, make_real(case_of("04")), {"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED)
+    add("real:contract-bytes-relabelled-underdetermined", DIAG, False, False, relabel, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("real:decision-profile-has-no-live-source", STRICT, False, False, make_real(case_of("04")), {"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED)
+    add("real:decision-profile-has-no-live-source-diagnostic", DIAG, False, False, make_real(case_of("04")), {"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED)
     for tag, edit, code in (
         ("extra-obligation-field", lambda n: n.update({"obligations": [{"kind": "k", "ref": "r"}]}), "KCAO-NATIVE-UNSUPPORTED-SHAPE"),
         ("request-is-an-array", lambda n: n.update({"request": ["x"]}), "KCAO-NATIVE-INVALID"),
         ("task-differs", lambda n: n["request"].update({"task_id": "synthetic:other"}), "KCAO-NATIVE-MISMATCH"),
     ):
-        add(f"real:{tag}", "strict-evidence", False, False, edit_source(make_real(case_of("01")), edit), {code}, K.LEVEL_REFUSED)
+        add(f"real:{tag}", DIAG, False, False, edit_source(make_real(case_of("01")), edit), {code}, K.LEVEL_REFUSED)
     omitted = make_real(case_of("02"))
     omitted["obs"].pop("resolver_verdict")
-    add("real:native-verdict-omitted", "strict-evidence", False, False, omitted, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("real:native-verdict-omitted", DIAG, False, False, omitted, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    # source time (KC-Brain 6711021786 choice 1, fail-closed; Agent-Brain 6711758550): a known source time is copied, a source without a time leaves recorded_at absent
+    omitted_time = case_of("01")
+    omitted_time["obs"]["native_source"].pop("recorded_at")
+    add("time:known-source-time-omitted-strict", STRICT, True, False, omitted_time, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("time:known-source-time-omitted-diagnostic", DIAG, True, False, omitted_time, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    add("time:known-source-time-omitted-structure-is-only-structure", STRUCT, True, False, omitted_time, set(), K.LEVEL_STRUCTURE)
+    omitted_real = make_real(case_of("01"))
+    omitted_real["obs"]["native_source"].pop("recorded_at")
+    add("time:known-source-time-omitted-real-diagnostic", DIAG, False, False, omitted_real, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    no_time = untimed_contract()
+    add("time:source-without-time-and-no-recorded-at-strict", STRICT, True, False, no_time, set(), K.LEVEL_FIXTURE)
+    add("time:source-without-time-and-no-recorded-at-diagnostic", DIAG, True, False, no_time, set(), K.LEVEL_DIAGNOSTIC)
+    invented = untimed_contract()
+    invented["obs"]["native_source"]["recorded_at"] = fx.TIME
+    add("time:source-without-time-but-recorded-at-invented", STRICT, True, False, invented, {"KCAO-NATIVE-MISMATCH"}, K.LEVEL_REFUSED)
+    # a future profile (Argana PR65 ArganaIntakeSnapshot/v1) is not registered: typed unsupported, never a pass, in every mode
+    for tag, label, fix in (("real", K.ARGANA_SYSTEM, False), ("fixture", K.SYNTHETIC_SYSTEM, True)):
+        snap = snapshot_case(label)
+        add(f"future-profile:{tag}-strict", STRICT, fix, False, snap, {"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED)
+        add(f"future-profile:{tag}-diagnostic", DIAG, fix, False, snap, {"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED)
+    add("future-profile:real-strict-without-bytes", STRICT, False, False, snapshot_case(K.ARGANA_SYSTEM), {"KCAO-STRICT-NO-NATIVE-BYTES"}, K.LEVEL_REFUSED, with_sidecars=False)
     # the work item binding has no approved native profile: the live path omits it
     w3 = make_real(case_of("03"))
     add("real:synthetic-work-item-binding-strict", "strict-evidence", False, False, w3, {"KCAO-SYNTHETIC-NOT-FIXTURE"}, K.LEVEL_REFUSED)
@@ -216,7 +276,8 @@ def build_scenarios() -> list[Scenario]:
     w3f = make_real(case_of("03"))
     add("real:synthetic-binding-on-a-real-source-in-fixture-mode", "strict-evidence", True, False, w3f, {"KCAO-FORGED"}, K.LEVEL_REFUSED)
     # a consumer that requires the binding
-    add("require:live-record-without-binding-strict", "strict-evidence", False, True, c1, set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified")
+    add("require:live-record-without-binding-strict", "strict-evidence", False, True, c1, MUT, K.LEVEL_REFUSED)
+    add("require:live-record-without-binding-diagnostic", "diagnostic-agreement", False, True, c1, set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified")
     add("require:live-record-without-binding-structure", "structure-only", False, True, c1, set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified")
     add("require:fixture-with-verified-binding", "strict-evidence", True, True, case_of("03"), set(), K.LEVEL_FIXTURE)
     add("require:fixture-with-binding-in-structure-mode-is-unverified", "structure-only", True, True, case_of("03"), set(), K.LEVEL_UNAVAILABLE, "native_binding_unverified")
@@ -397,7 +458,6 @@ class FixtureTests(unittest.TestCase):
                 self.assertTrue(record["subject"]["task_id"].startswith("synthetic:"))
                 out = strict(data, sc(name, fx.SOURCE), sc(name, fx.WORK))
                 self.assertEqual(out.level, K.LEVEL_FIXTURE)
-                self.assertNotEqual(out.level, K.LEVEL_NATIVE)
                 self.assertTrue(any("SYNTHETIC-SOURCE" in f for f in out.flags), out.flags)
                 if "work_item_id" in record:
                     self.assertTrue(record["work_item_id"].startswith("synthetic:"))
@@ -510,7 +570,7 @@ class ModeTests(unittest.TestCase):
         self.assertEqual((r.mode, r.level, r.problems), ("structure-only", "structure-only", ()))
         self.assertTrue(any(f.startswith("KCAO-FLAG-STRUCTURE-ONLY") for f in r.flags))
         self.assertTrue(r.passed)
-        self.assertNotIn(r.level, (K.LEVEL_FIXTURE, K.LEVEL_NATIVE))
+        self.assertNotIn(r.level, (K.LEVEL_FIXTURE, K.LEVEL_DIAGNOSTIC))
 
     def test_structure_only_passes_a_record_whose_evidence_is_wrong_so_its_pass_is_not_provenance(self):
         wrong = "invalid/underdetermined_verdict_differs_from_the_native_verdict"
@@ -531,12 +591,11 @@ class ModeTests(unittest.TestCase):
         self.assertEqual(strict(fx.observations()[name], sc(name, fx.SOURCE), fixture=False).codes, {"KCAO-SYNTHETIC-NOT-FIXTURE"})
         self.assertEqual(structure(fx.observations()[name], fixture=False).codes, {"KCAO-SYNTHETIC-NOT-FIXTURE"})
 
-    def test_the_native_level_needs_a_non_fixture_supported_profile_and_still_flags_the_mutable_locator(self):
-        case = make_real(case_of("01"))
-        out = strict(dumpb(case["obs"]), case["source"], fixture=False)
-        self.assertEqual((out.codes, out.level), (set(), K.LEVEL_NATIVE))
-        self.assertTrue(any(f.startswith("KCAO-FLAG-MUTABLE-LOCATOR") for f in out.flags), out.flags)
-        self.assertFalse(any("SYNTHETIC" in f for f in out.flags))
+    def test_there_is_no_strict_native_pass_level_at_all(self):
+        self.assertFalse(hasattr(K, "LEVEL_NATIVE"))
+        self.assertNotIn("native-content-agreement", SOURCE_TEXT)
+        self.assertNotIn("NATIVE_CONTENT_AGREEMENT", SOURCE_TEXT)
+        self.assertFalse(any(p.get("mutable") is False and not p["fixture_only"] for p in CKA.PROFILES.values()), "a registered live profile must be the mutable one")
 
     def test_the_command_line_prints_the_level_and_requires_a_mode(self):
         base = FIXTURE_ROOT / "valid" / "01-observed-contract-with-verified-exact-bytes"
@@ -565,10 +624,213 @@ class ModeTests(unittest.TestCase):
             self.assertEqual((out.codes, out.level), (set(), K.LEVEL_UNAVAILABLE_RECORD))
 
 
+def cli_files(case: dict, tmp: str) -> list[str]:
+    (Path(tmp) / "o.json").write_bytes(dumpb(case["obs"]))
+    args = [str(Path(tmp) / "o.json")]
+    if case.get("source") is not None:
+        (Path(tmp) / "s.json").write_bytes(case["source"])
+        args += ["--source", str(Path(tmp) / "s.json")]
+    return args
+
+
+class StrictEvidenceSourceTests(unittest.TestCase):
+    """KC-Brain 6711755408 (choice b): a digest-named mutable ArganaContractRecord/v1 is not an admissible strict-evidence source."""
+
+    def real(self):
+        case = make_real(case_of("01"))
+        return dumpb(case["obs"]), case["source"]
+
+    def test_mutable_bytes_in_strict_evidence_are_refused_with_the_source_immutability_code_not_a_pass_and_not_a_schema_error(self):
+        data, src = self.real()
+        # the hash is the real hash of the supplied bytes and the diagnostic comparison of the SAME bytes agrees: only the source-immutability guard can refuse
+        self.assertEqual(json.loads(data)["native_source"]["sha256"], fx.sha(src))
+        self.assertEqual(diagnostic(data, src, fixture=False).codes, set())
+        out = strict(data, src, fixture=False)
+        self.assertEqual(out.codes, {"KCAO-SOURCE-MUTABLE"}, out.problems)
+        self.assertEqual(out.level, K.LEVEL_REFUSED)
+        self.assertNotIn("KCAO-SCHEMA", out.codes)
+        self.assertNotIn("KCAO-BYTES-DIGEST", out.codes)
+        self.assertNotIn("native-content-agreement", [out.level])
+        r = CKA.check_strict(data, src, fixture=False)
+        self.assertFalse(r.passed)
+        self.assertTrue(r.refused)
+
+    def test_matching_mutable_bytes_never_give_a_pass_with_the_mutable_locator_flag(self):
+        for n in ("01", "02"):
+            case = make_real(case_of(n))
+            r = CKA.check_strict(dumpb(case["obs"]), case["source"], fixture=False)
+            self.assertFalse(r.passed, n)
+            self.assertNotEqual(r.level, K.LEVEL_FIXTURE)
+            self.assertEqual(r.codes, {"KCAO-SOURCE-MUTABLE"})
+
+    def test_no_retained_event_source_is_a_typed_unavailable_and_exit_3(self):
+        data, _ = self.real()
+        r = CKA.check_strict(data, None, fixture=False)
+        self.assertEqual((r.problems, r.level, r.passed, r.unavailable["reason"]), ((), K.LEVEL_UNAVAILABLE, False, "exact_bytes_unrecoverable"))
+        self.assertIn(r.unavailable["reason"], K.REASONS)
+        self.assertEqual(r.unavailable["subject"], {"task_id": json.loads(data)["subject"]["task_id"]})
+        self.assertEqual(list(cka_validator().iter_errors(r.unavailable)), [])
+        self.assertTrue(any(f.startswith("KCAO-FLAG-NO-RETAINED-SOURCE") for f in r.flags))
+        with tempfile.TemporaryDirectory() as tmp:
+            rc, text = run_cli("--mode", "strict-evidence", *cli_files({"obs": json.loads(data)}, tmp))
+        self.assertEqual(rc, 3, text)
+        self.assertIn("KCAO_UNAVAILABLE exact_bytes_unrecoverable", text)
+        self.assertNotIn("KCAO_PASS", text)
+
+    def test_the_command_line_refuses_mutable_bytes_in_strict_with_exit_1(self):
+        case = make_real(case_of("01"))
+        with tempfile.TemporaryDirectory() as tmp:
+            rc, text = run_cli("--mode", "strict-evidence", *cli_files(case, tmp))
+        self.assertEqual(rc, 1, text)
+        self.assertIn("KCAO-SOURCE-MUTABLE", text)
+        self.assertNotIn("KCAO_PASS", text)
+        self.assertNotIn("KCAO_DIAGNOSTIC", text)
+
+    def test_an_unavailable_or_refused_strict_result_is_never_the_structural_pass(self):
+        data, src = self.real()
+        for r in (CKA.check_strict(data, src, fixture=False), CKA.check_strict(data, None, fixture=False)):
+            self.assertNotEqual(r.level, K.LEVEL_STRUCTURE)
+            self.assertFalse(r.passed)
+            self.assertEqual(r.mode, "strict-evidence")
+        # the structure-only entry point still only reports structure, flagged, for the very same record
+        s = CKA.check_structure(data, fixture=False)
+        self.assertEqual((s.level, s.passed), (K.LEVEL_STRUCTURE, True))
+        self.assertTrue(any(f.startswith("KCAO-FLAG-STRUCTURE-ONLY") for f in s.flags))
+
+    def test_fixture_and_structure_modes_remain_supported_and_flagged(self):
+        name = "valid/01-observed-contract-with-verified-exact-bytes"
+        out = strict(fx.observations()[name], sc(name, fx.SOURCE))
+        self.assertEqual((out.codes, out.level), (set(), K.LEVEL_FIXTURE))
+        self.assertTrue(any(f.startswith("KCAO-FLAG-SYNTHETIC-SOURCE") for f in out.flags))
+        self.assertTrue(any(f.startswith("KCAO-FLAG-MUTABLE-LOCATOR") for f in out.flags))
+        st = structure(fx.observations()[name])
+        self.assertEqual(st.level, K.LEVEL_STRUCTURE)
+        self.assertTrue(any(f.startswith("KCAO-FLAG-STRUCTURE-ONLY") for f in st.flags))
+
+    def test_only_the_mutable_profile_is_gated(self):
+        self.assertEqual([k for k, v in CKA.PROFILES.items() if v["mutable"]], [(K.ARGANA_SYSTEM, K.ARGANA_RECORD_SCHEMA)])
+
+
+class DiagnosticAgreementTests(unittest.TestCase):
+    """Optional diagnostic content agreement: available, explicitly non-admissive, and separate from strict-evidence."""
+
+    def test_diagnostic_agreement_is_its_own_mode_and_level_flagged_non_admissive(self):
+        case = make_real(case_of("01"))
+        r = CKA.check_diagnostic(dumpb(case["obs"]), case["source"], fixture=False)
+        self.assertEqual((r.problems, r.mode, r.level), ((), "diagnostic-agreement", K.LEVEL_DIAGNOSTIC))
+        self.assertFalse(r.passed)
+        self.assertNotEqual(r.mode, "strict-evidence")
+        self.assertNotIn(r.level, (K.LEVEL_FIXTURE, K.LEVEL_STRUCTURE, K.LEVEL_UNAVAILABLE_RECORD))
+        self.assertTrue(any(f.startswith("KCAO-FLAG-NON-ADMISSIVE") for f in r.flags), r.flags)
+        self.assertTrue(any(f.startswith("KCAO-FLAG-MUTABLE-LOCATOR") for f in r.flags), r.flags)
+
+    def test_the_command_line_marks_it_non_admissive_and_does_not_exit_0(self):
+        case = make_real(case_of("01"))
+        with tempfile.TemporaryDirectory() as tmp:
+            rc, text = run_cli("--mode", "diagnostic-agreement", *cli_files(case, tmp))
+        self.assertEqual(rc, 5, text)
+        self.assertIn("KCAO_MODE diagnostic-agreement LEVEL diagnostic-content-agreement", text)
+        self.assertIn("KCAO_DIAGNOSTIC_NON_ADMISSIVE", text)
+        self.assertIn("KCAO-FLAG-NON-ADMISSIVE", text)
+        self.assertNotIn("KCAO_PASS", text)
+
+    def test_diagnostic_agreement_still_refuses_what_differs(self):
+        case = edit_source(make_real(case_of("01")), lambda n: n["request"].update({"task_id": "synthetic:other"}))
+        self.assertEqual(diagnostic(dumpb(case["obs"]), case["source"], fixture=False).codes, {"KCAO-NATIVE-MISMATCH"})
+
+    def test_diagnostic_agreement_needs_the_bytes(self):
+        case = make_real(case_of("01"))
+        self.assertEqual(diagnostic(dumpb(case["obs"]), None, fixture=False).codes, {"KCAO-STRICT-NO-NATIVE-BYTES"})
+
+    def test_the_command_line_requires_bytes_options_only_for_non_structure_modes(self):
+        case = make_real(case_of("01"))
+        with tempfile.TemporaryDirectory() as tmp:
+            args = cli_files(case, tmp)
+            self.assertEqual(run_cli("--mode", "structure-only", *args)[0], 2)
+            self.assertEqual(run_cli("--mode", "diagnostic-agreement", *args)[0], 5)
+
+
+class FutureProfileTests(unittest.TestCase):
+    """Argana PR65 proposes ArganaIntakeSnapshot/v1. It is a CANDIDATE for a later, separately reviewed profile: it is not registered here, so it is typed unsupported, never a pass."""
+
+    def test_an_intake_snapshot_shaped_source_is_not_a_registered_profile(self):
+        self.assertFalse(any("Snapshot" in str(k) for k in CKA.PROFILES))
+        self.assertNotIn("ArganaIntakeSnapshot", SOURCE_TEXT.replace("ArganaIntakeSnapshot/v1 candidate", "").replace("`ArganaIntakeSnapshot/v1`", ""))
+
+    def test_it_gives_unsupported_source_shape_never_a_pass_in_every_mode(self):
+        for system, fixture in ((K.ARGANA_SYSTEM, False), (K.SYNTHETIC_SYSTEM, True)):
+            case = snapshot_case(system)
+            data = dumpb(case["obs"])
+            self.assertEqual(case["obs"]["native_source"]["sha256"], fx.sha(case["source"]), "hash recomputed: the digest guard is not what refuses")
+            for name, out in (("strict", strict(data, case["source"], fixture=fixture)), ("diagnostic", diagnostic(data, case["source"], fixture=fixture))):
+                with self.subTest(system=system, mode=name):
+                    self.assertEqual((out.codes, out.level), ({"KCAO-NATIVE-PROFILE"}, K.LEVEL_REFUSED))
+                    self.assertEqual(CKA.CODE_TO_REASON["KCAO-NATIVE-PROFILE"], "unsupported_source_shape")
+                    self.assertIn("unsupported_source_shape", K.REASONS)
+
+    def test_without_bytes_it_is_refused_not_passed(self):
+        case = snapshot_case(K.ARGANA_SYSTEM)
+        out = strict(dumpb(case["obs"]), None, fixture=False)
+        self.assertEqual((out.codes, out.level), ({"KCAO-STRICT-NO-NATIVE-BYTES"}, K.LEVEL_REFUSED))
+
+
+class SourceTimeTests(unittest.TestCase):
+    """KC-Brain 6711021786 choice 1 (copy genuine source time), fail-closed reading per Agent-Brain 6711758550. PROVISIONAL: KC-Brain may instead permit omission as a narrower projection."""
+
+    def test_a_known_source_time_that_the_observation_omits_is_a_typed_refusal(self):
+        for n in ("01", "04"):
+            case = case_of(n)
+            self.assertIn("stored_at_utc", json.loads(case["source"]))
+            case["obs"]["native_source"].pop("recorded_at")
+            data = dumpb(case["obs"])
+            self.assertEqual(case["obs"]["native_source"]["sha256"], fx.sha(case["source"]), "unchanged exact source bytes")
+            self.assertEqual(list(cka_validator().iter_errors(case["obs"])), [], "otherwise a schema-valid observation")
+            out = strict(data, case["source"])
+            self.assertEqual(out.codes, {"KCAO-NATIVE-MISMATCH"}, (n, out.problems))
+            self.assertIn("omits", out.problems[0])
+            self.assertEqual(out.level, K.LEVEL_REFUSED)
+
+    def test_every_valid_fixture_with_a_source_time_carries_it(self):
+        for name, data in fx.observations().items():
+            if name.startswith("valid/") and sc(name, fx.SOURCE) is not None:
+                native = json.loads(sc(name, fx.SOURCE))
+                with self.subTest(fixture=name):
+                    self.assertEqual(json.loads(data)["native_source"].get("recorded_at"), native.get("stored_at_utc"))
+
+    def test_a_source_without_time_is_a_distinct_positive_and_recorded_at_stays_absent(self):
+        for case in (untimed_contract(), case_of("05"), case_of("08")):
+            self.assertNotIn("stored_at_utc", json.loads(case["source"]))
+            self.assertNotIn("recorded_at", case["obs"]["native_source"])
+            out = strict(dumpb(case["obs"]), case["source"])
+            self.assertEqual((out.codes, out.level), (set(), K.LEVEL_FIXTURE), out.problems)
+
+    def test_an_invented_time_for_a_source_without_time_is_refused(self):
+        case = untimed_contract()
+        case["obs"]["native_source"]["recorded_at"] = fx.TIME
+        self.assertEqual(strict(dumpb(case["obs"]), case["source"]).codes, {"KCAO-NATIVE-MISMATCH"})
+
+    def test_the_producer_time_is_copied_exactly_and_never_replaced_by_a_receipt_time(self):
+        case = case_of("01")
+        stored = json.loads(case["source"])["stored_at_utc"]
+        self.assertEqual(case["obs"]["native_source"]["recorded_at"], stored)
+        for other in ("2026-01-01T00:00:01Z", "2026-11-07T00:00:00Z"):  # e.g. the observer's own receipt time
+            changed = copy.deepcopy(case)
+            changed["obs"]["native_source"]["recorded_at"] = other
+            self.assertEqual(strict(dumpb(changed["obs"]), changed["source"]).codes, {"KCAO-NATIVE-MISMATCH"}, other)
+        # the original representation is preserved: an equivalent instant in another spelling is not the stored string
+        spelled = edit_source(copy.deepcopy(case), lambda n: n.update({"stored_at_utc": "2026-01-01T00:00:00+00:00"}))
+        self.assertEqual(strict(dumpb(spelled["obs"]), spelled["source"]).codes, {"KCAO-NATIVE-MISMATCH"})
+
+    def test_the_time_rule_also_holds_for_the_diagnostic_comparison_of_a_mutable_source(self):
+        case = make_real(case_of("01"))
+        case["obs"]["native_source"].pop("recorded_at")
+        self.assertEqual(diagnostic(dumpb(case["obs"]), case["source"], fixture=False).codes, {"KCAO-NATIVE-MISMATCH"})
+
+
 class BindingAndUnavailableTests(unittest.TestCase):
     def test_a_consumer_requiring_the_binding_gets_unavailable_native_binding_unverified(self):
         case = make_real(case_of("01"))
-        r = CKA.check_strict(dumpb(case["obs"]), case["source"], None, fixture=False, require_work_item=True)
+        r = CKA.check_diagnostic(dumpb(case["obs"]), case["source"], None, fixture=False, require_work_item=True)
         self.assertEqual((r.problems, r.level, r.passed, r.unavailable["reason"]), ((), K.LEVEL_UNAVAILABLE, False, "native_binding_unverified"))
         self.assertEqual(r.unavailable["subject"], {"task_id": case["obs"]["subject"]["task_id"]})
         self.assertEqual(list(cka_validator().iter_errors(r.unavailable)), [])
@@ -578,7 +840,7 @@ class BindingAndUnavailableTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             (Path(tmp) / "o.json").write_bytes(dumpb(case["obs"]))
             (Path(tmp) / "s.json").write_bytes(case["source"])
-            rc, text = run_cli("--mode", "strict-evidence", "--require-work-item", str(Path(tmp) / "o.json"), "--source", str(Path(tmp) / "s.json"))
+            rc, text = run_cli("--mode", "diagnostic-agreement", "--require-work-item", str(Path(tmp) / "o.json"), "--source", str(Path(tmp) / "s.json"))
         self.assertEqual(rc, 3, text)
         self.assertIn("KCAO_UNAVAILABLE native_binding_unverified", text)
         self.assertNotIn("KCAO_PASS", text)
@@ -587,7 +849,7 @@ class BindingAndUnavailableTests(unittest.TestCase):
         case = make_real(case_of("03"))
         case["obs"]["work_item_binding"]["system"] = "muneral"
         for mode in ("structure-only", "strict-evidence"):
-            r = CKA.check_structure(dumpb(case["obs"])) if mode == "structure-only" else CKA.check_strict(dumpb(case["obs"]), case["source"], case["work"])
+            r = CKA.check_structure(dumpb(case["obs"])) if mode == "structure-only" else CKA.check_strict(dumpb(case["obs"]), case["source"], case["work"])  # policy runs before the source gate
             self.assertEqual(r.codes, {"KCAO-WORKITEM-NO-PROFILE"}, (mode, r.problems))
 
     def test_every_unavailable_reason_builds_a_schema_valid_record_whose_subject_is_only_the_request(self):
@@ -624,6 +886,12 @@ class SchemaTests(unittest.TestCase):
         self.assertIn("6711021786", SCHEMA["description"])
         self.assertNotIn("PROVISIONAL", json.dumps(SCHEMA))
         self.assertIn("mutable metadata", SCHEMA["description"])
+        for text in ("6711755408", "NOT an admissible strict-evidence source", "KCAO-SOURCE-MUTABLE", "exact_bytes_unrecoverable", "non-admissive", "provisional", "narrower projection"):
+            self.assertIn(text, SCHEMA["description"])
+        self.assertIn("never the observer receipt time", SCHEMA["$defs"]["native_source"]["properties"]["recorded_at"]["description"])
+        readme = (CKA.REPO / "schemas" / "README.md").read_text(encoding="utf-8")
+        for text in ("6711755408", "KCAO-SOURCE-MUTABLE", "implementer-chosen name", "diagnostic-agreement", "narrower projection", "6711758550"):
+            self.assertIn(text, readme)
 
     def test_the_schema_has_no_boolean_anywhere_so_no_positive_flag_can_be_declared(self):
         self.assertNotIn('"boolean"', json.dumps(SCHEMA))
@@ -825,6 +1093,9 @@ def guard_lines(source: str) -> list[int]:
     for i, line in enumerate(lines):
         m = re.match(r"(\s*)(if|elif)\s.*:\s*$", line)
         if not m:
+            continue
+        if "_mutable(record)" in line:  # the strict-evidence source gate routes to a helper, so its block holds no KCAO- literal itself
+            found.append(i)
             continue
         indent = len(m.group(1))
         j = i + 1

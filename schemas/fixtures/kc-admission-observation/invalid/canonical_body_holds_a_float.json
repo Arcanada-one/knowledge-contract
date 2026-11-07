@@ -11,6 +11,7 @@
   "native_source": {
     "digest_domain": "sha256-exact-bytes",
     "record_id": "synthetic:sha256:48b4fddd453335a13482127d5aa5e5c1589873637127ec0111bc6f4a9c730a74",
+    "recorded_at": "2026-01-01T00:00:00Z",
     "sha256": "f22372c21243a026d1b1f7340a8817881b9ca4dd7d6afe44275b03abae1af638",
     "source_schema": "ArganaContractRecord/v1",
     "system": "synthetic-fixture"

@@ -47,7 +47,7 @@ def halves(label: str) -> tuple[bytes, bytes]:
     return canonical({"synthetic_body": label}), canonical({"synthetic_manifest": label})
 
 
-def native_contract(label: str, verdict: str, obligations: list, task_id: str, stored_at: str = TIME, parts: tuple[bytes, bytes] | None = None) -> tuple[bytes, str]:
+def native_contract(label: str, verdict: str, obligations: list, task_id: str, stored_at: str | None = TIME, parts: tuple[bytes, bytes] | None = None) -> tuple[bytes, str]:
     """A synthetic record shaped like ArganaContractRecord/v1 (src/argana/contracts.py build_record); no goal text, no real digest. `parts` overrides the two canonical halves."""
     body, manifest = parts or halves(label)
     digest = "sha256:" + sha(body + manifest)
@@ -57,8 +57,10 @@ def native_contract(label: str, verdict: str, obligations: list, task_id: str, s
                       "closure_manifest_b64": base64.b64encode(manifest).decode(), "length": len(body) + len(manifest)},
         "kc2": {"revision": None, "snapshot": "synthetic-snapshot", "verdict": verdict, "reduction": "synthetic"},
         "obligations": obligations, "roles": [], "skills": [], "blueprints": [], "other_pinned": [], "budget_envelope": {},
-        "request": {"task_id": task_id, "goal": "synthetic goal"}, "stored_at_utc": stored_at,
+        "request": {"task_id": task_id, "goal": "synthetic goal"},
     }
+    if stored_at is not None:  # a source without a time simply has no stored_at_utc member
+        record["stored_at_utc"] = stored_at
     return dump(record), digest
 
 
@@ -83,10 +85,13 @@ def observation(label: str, outcome: str, source: bytes, source_schema: str, **f
     return record
 
 
-def contract_case(label: str, verdict: str, obligations: list, parts: tuple[bytes, bytes] | None = None, **fields) -> dict:
-    src, digest = native_contract(label, verdict, obligations, f"synthetic:task-{label}", parts=parts)
+def contract_case(label: str, verdict: str, obligations: list, parts: tuple[bytes, bytes] | None = None, stored_at: str | None = TIME, **fields) -> dict:
+    """The source time is copied: a source that stores a time (default) gets the same string as native_source.recorded_at; `stored_at=None` is a source without a time."""
+    src, digest = native_contract(label, verdict, obligations, f"synthetic:task-{label}", stored_at=stored_at, parts=parts)
     obs = observation(label, "contract", src, cka.ARGANA_RECORD_SCHEMA, contract_digest=digest, obligations=copy.deepcopy(obligations), **fields)
     obs["native_source"]["record_id"] = "synthetic:" + digest
+    if stored_at is not None:
+        obs["native_source"]["recorded_at"] = stored_at
     return {"obs": obs, "source": src}
 
 
@@ -94,7 +99,6 @@ def build() -> dict[str, dict]:
     """Case name -> {obs, source, work} for the valid ones; every value is bytes or None."""
     cases: dict[str, dict] = {}
     case = contract_case("c1", "T", [], resolver_verdict="T")
-    case["obs"]["native_source"]["recorded_at"] = TIME
     cases["01-observed-contract-with-verified-exact-bytes"] = case
     cases["02-observed-contract-k-keeps-its-obligation"] = contract_case("c2", "K", [{"kind": "synthetic-obligation"}], resolver_verdict="K")
 
@@ -263,6 +267,9 @@ def variants() -> dict[str, bytes]:
     mutant("recorded_at_emitted_but_the_native_record_has_none", refusal, "KCAO-NATIVE-MISMATCH", lambda r: r["native_source"].update({"recorded_at": TIME}))
     mutant("decision_recorded_at_differs_from_the_native_time", under, "KCAO-NATIVE-MISMATCH", lambda r: r["native_source"].update({"recorded_at": "2026-02-02T00:00:00Z"}))
     mutant("native_stored_time_is_not_a_string", under, "KCAO-NATIVE-INVALID", src_edit=lambda n: n.update({"stored_at_utc": 20260101}))
+    mutant("known_source_time_omitted_by_a_contract_observation", contract, "KCAO-NATIVE-MISMATCH", lambda r: r["native_source"].pop("recorded_at"))
+    mutant("known_source_time_omitted_by_a_decision_observation", under, "KCAO-NATIVE-MISMATCH", lambda r: r["native_source"].pop("recorded_at"))
+    mutant("source_time_representation_is_normalized_by_the_observation", contract, "KCAO-NATIVE-MISMATCH", src_edit=lambda n: n.update({"stored_at_utc": "2026-01-01T00:00:00+00:00"}))
     mutant("recorded_at_differs_from_the_native_record", contract, "KCAO-NATIVE-MISMATCH", lambda r: r["native_source"].update({"recorded_at": "2026-02-02T00:00:00Z"}))
     mutant("task_differs_from_the_native_record", under, "KCAO-NATIVE-MISMATCH", lambda r: r.update({"subject": {"task_id": "synthetic:another-task"}}))
     mutant("outcome_differs_from_the_native_record", refusal, "KCAO-NATIVE-MISMATCH", lambda r: (r.update({"resolver_outcome": "underdetermined", "missing": [{"capability_token": "x"}]}), r.pop("refusal_code")))
@@ -364,8 +371,8 @@ README = (
     "`unavailable` with a typed reason, and `unavailable` / `native_binding_unverified` whose `subject` is the requested target only); passing them is a statement about the "
     "checker's rules only, not about Argana, Muneral or any admission. `NAME.source.json` holds the exact synthetic native record bytes whose SHA-256 is `native_source.sha256`: "
     "an `ArganaContractRecord/v1`-shaped record for the `contract` branch (the only branch the Argana record can support) or a `SyntheticNativeDecision/v1` record that carries every "
-    "fact an `underdetermined` or `refusal` observation asserts; `NAME.work-item.json` holds the exact synthetic `SyntheticWorkItemRecord/v1` bytes. The real digest-named Argana "
-    "record is mutable metadata and cannot be an immutable intake event, so until native capture exists the honest live result is `unavailable`. Each file under `invalid/` is a "
+    "fact an `underdetermined` or `refusal` observation asserts; `NAME.work-item.json` holds the exact synthetic `SyntheticWorkItemRecord/v1` bytes. A source that stores a time (`stored_at_utc`) is projected with the same `recorded_at`; a source without a time leaves it absent. The real digest-named Argana "
+    "record is mutable metadata and cannot be an immutable intake event (KC-Brain 6711755408: not an admissible strict-evidence source), so until native capture exists the honest live result is `unavailable`. Each file under `invalid/` is a "
     "mutant with one defect and one expected refusal code (see `EXPECT` in `tools/kc_admission_observation_fixture.py`); a sidecar defect is re-hashed so the case reaches the intended "
     "comparison, except the two `*_do_not_match_the_digest` mutants. Regenerate with\n`python3 tools/kc_admission_observation_fixture.py write`; the unit tests fail if the committed "
     "files drift.\n")

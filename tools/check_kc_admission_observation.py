@@ -3,25 +3,34 @@
 # SPDX-License-Identifier: Apache-2.0
 """Validate a KCAdmissionObservation/v1 (CANDIDATE) record: the cross-field rules a JSON Schema cannot express (KCLIVE-01; KC-Brain 6710410432 and its review 6711021786).
 
-    check_kc_admission_observation.py --mode structure-only|strict-evidence [--fixture] [--require-work-item] OBSERVATION.json [--source NATIVE_BYTES] [--work-item WORK_ITEM_BYTES]
+    check_kc_admission_observation.py --mode structure-only|strict-evidence|diagnostic-agreement [--fixture] [--require-work-item] OBSERVATION.json [--source NATIVE_BYTES] [--work-item WORK_ITEM_BYTES]
 
-Two entry points, never one that can drop the other's flags (`check_structure`, `check_strict`; both return a `Result` that names its mode and its level):
+Three entry points, never one that can drop another's flags (`check_structure`, `check_strict`, `check_diagnostic`; each returns a `Result` that names its mode and its level):
 
 * structure-only: the record is well formed, honest about what it did not measure, and policy-clean. It reports ONLY structural validity (level `structure-only`); it never
   looks at native bytes and says so in a flag. It cannot be read as provenance.
 * strict-evidence: the exact native bytes MUST be supplied. Their SHA-256 is compared with native_source.sha256, the same bytes are parsed once, the (system, source_schema)
   pair must be a SUPPORTED native source profile, and EVERY fact the observation emits (task, outcome, verdict, time, schema, contract halves and digest, obligations, missing,
   refusal code) is compared with that source. A fact the source lacks, or states differently, is a refusal; a genuinely recorded verdict must appear in the projection.
-  Without native bytes strict mode is a typed refusal, never a pass.
+  Without native bytes strict mode is a typed refusal, never a pass. KC-Brain 6711755408 (choice b): a digest-named mutable `ArganaContractRecord/v1` is NOT an admissible strict-evidence
+  source; a hash of bytes sampled now is content agreement only. Strict mode therefore never returns a pass for it: explicit mutable bytes are refused with `KCAO-SOURCE-MUTABLE`,
+  and no retained event source at all is the typed unavailable `exact_bytes_unrecoverable`. No immutable source profile is registered (an `ArganaIntakeSnapshot/v1` candidate is not one:
+  `KCAO-NATIVE-PROFILE`, `unsupported_source_shape`), so the only strict pass is the synthetic `fixture-evidence`.
+* diagnostic-agreement: the same comparison of every emitted fact with the mutable bytes, kept for diagnosis only. Its level is `diagnostic-content-agreement`, it carries
+  `KCAO-FLAG-NON-ADMISSIVE`, it is never `passed`, and its exit code is 5, not 0. It is not strict evidence and cannot be read as provenance or as a source observation.
 
-Supported profiles. `argana-contract-store` + `ArganaContractRecord/v1` supports ONLY the `contract` branch (the digest-named record is mutable metadata, not an immutable intake
-event: that stays NOT_MEASURED and is flagged). Non-contract branches have no durable native source yet, so only the synthetic profile `SyntheticNativeDecision/v1` can carry
+Source time (KC-Brain 6711021786 choice 1, fail-closed reading; provisional, see the PR body): a supported source that carries `stored_at_utc` requires the observation to carry the same
+string as `native_source.recorded_at`, exactly as stored (producer time, never the observer's receipt time); omitting a known source time is `KCAO-NATIVE-MISMATCH`. A source without a time
+leaves `recorded_at` absent, and that is accepted.
+
+Supported profiles. `argana-contract-store` + `ArganaContractRecord/v1` supports ONLY the `contract` branch and is MUTABLE (the digest-named record is mutable metadata, not an immutable intake
+event): diagnostic only, never strict. Non-contract branches have no durable native source yet, so only the synthetic profile `SyntheticNativeDecision/v1` can carry
 them, and only in `--fixture` mode. The synthetic labels (system `synthetic-fixture`, id prefix `synthetic:`) and the work-item binding (`SyntheticWorkItemRecord/v1`; no native
 binding profile is approved) are valid ONLY with `--fixture`; their pass level is `fixture-evidence`, never a native observation. Without `--fixture` a record that carries
 work_item_id/work_item_binding is refused, and a consumer that requires the binding (`--require-work-item`) gets a typed `unavailable` / `native_binding_unverified`.
 
-Exit codes: 0 pass, 1 refusal (every refusal carries a stable KCAO-... code), 2 usage, 3 unavailable (the consumer's requirement is unmet), 4 operational error (IO), distinct
-from a refusal. Reads of the observation and of each sidecar are bounded. A pass never means admission, authority, runtime authorization, delivery or publication.
+Exit codes: 0 pass, 1 refusal (every refusal carries a stable KCAO-... code), 2 usage, 3 unavailable (no retained source, or the consumer's requirement is unmet), 4 operational error (IO),
+5 diagnostic agreement (non-admissive; never a pass), each distinct from a refusal. Reads of the observation and of each sidecar are bounded. A pass never means admission, authority, runtime authorization, delivery or publication.
 """
 
 from __future__ import annotations
@@ -56,7 +65,7 @@ ARGANA_RECORD_SCHEMA = "ArganaContractRecord/v1"
 SYNTHETIC_DECISION_SCHEMA = "SyntheticNativeDecision/v1"
 SYNTHETIC_WORK_ITEM_SCHEMA = "SyntheticWorkItemRecord/v1"
 VERDICTS = ("T", "K", "U", "F")
-MODES = ("structure-only", "strict-evidence")
+MODES = ("structure-only", "strict-evidence", "diagnostic-agreement")
 REASONS = ("no_native_record", "outcome_not_persisted", "record_unreadable", "read_path_not_opted_in", "exact_bytes_unrecoverable",
            "native_record_invalid", "native_binding_unverified", "unsupported_source_shape")
 COMMON = {"schema", "status", "claims_scope", "claims"}
@@ -67,13 +76,14 @@ UNAVAILABLE_FIELDS = COMMON | {"reason", "subject"}
 FORBIDDEN_ON_UNAVAILABLE = {"native_source", "resolver_outcome", "resolver_verdict"} | ALL_BRANCH_FIELDS
 READ_ERRORS = (cbp.PackageError, ValueError, UnicodeDecodeError, RecursionError, TypeError)
 
-# Levels a Result can have. Only the last two follow a comparison with native bytes, and only `native-content-agreement` is not a fixture.
+# Levels a Result can have. Only the last two follow a comparison with native bytes; `fixture-evidence` is synthetic and `diagnostic-content-agreement` is explicitly non-admissive.
+# There is deliberately no level for a strict native pass: no immutable source profile is registered (KC-Brain 6711755408).
 LEVEL_REFUSED = "refused"
 LEVEL_STRUCTURE = "structure-only"
 LEVEL_UNAVAILABLE_RECORD = "unavailable-record"
 LEVEL_UNAVAILABLE = "unavailable"
 LEVEL_FIXTURE = "fixture-evidence"
-LEVEL_NATIVE = "native-content-agreement"
+LEVEL_DIAGNOSTIC = "diagnostic-content-agreement"
 
 # Refusal codes that correspond to a typed `unavailable.reason` a producer would use after the same attempt (the checker itself only rejects).
 CODE_TO_REASON = {"KCAO-NATIVE-READ": "native_record_invalid", "KCAO-NATIVE-INVALID": "native_record_invalid", "KCAO-NATIVE-UNSUPPORTED-SHAPE": "unsupported_source_shape",
@@ -96,7 +106,8 @@ class Result:
 
     @property
     def passed(self) -> bool:
-        return not self.problems and self.unavailable is None
+        """A pass is neither a refusal, nor unavailable, nor a diagnostic agreement (which is non-admissive by definition)."""
+        return not self.problems and self.unavailable is None and self.level != LEVEL_DIAGNOSTIC
 
     @property
     def codes(self) -> set[str]:
@@ -202,8 +213,15 @@ def check_structure(data: bytes, *, fixture: bool = False, require_work_item: bo
 
 
 def check_strict(data: bytes, source_bytes: bytes | None, work_item_bytes: bytes | None = None, *, fixture: bool = False, require_work_item: bool = False) -> Result:
-    """STRICT EVIDENCE. Without the exact native bytes this is a typed refusal. With them every emitted fact is compared with the source profile."""
+    """STRICT EVIDENCE. Without the exact native bytes this is a typed refusal. With them every emitted fact is compared with the source profile, but a MUTABLE source
+    (the digest-named ArganaContractRecord/v1) is never admissible: explicit bytes are refused (KCAO-SOURCE-MUTABLE), no retained source is the typed unavailable."""
     return _guarded(data, source_bytes, work_item_bytes, "strict-evidence", fixture, require_work_item)
+
+
+def check_diagnostic(data: bytes, source_bytes: bytes | None, work_item_bytes: bytes | None = None, *, fixture: bool = False, require_work_item: bool = False) -> Result:
+    """DIAGNOSTIC CONTENT AGREEMENT. The same comparison as strict evidence, also for a mutable source, but the result is explicitly NON-ADMISSIVE: its own level and flag,
+    never `passed`. It is separate from strict evidence and never a substitute for it."""
+    return _guarded(data, source_bytes, work_item_bytes, "diagnostic-agreement", fixture, require_work_item)
 
 
 def _guarded(data, source_bytes, work_item_bytes, mode: str, fixture: bool, require_work_item: bool) -> Result:
@@ -241,10 +259,32 @@ def _run(data, source_bytes, work_item_bytes, mode: str, fixture: bool, require_
         if "work_item_id" in record:
             flags.append("KCAO-FLAG-WORK-ITEM-BYTES-NOT-SUPPLIED: the work item bytes were not read, so the binding is NOT_MEASURED")
         return _finish(record, flags, mode, LEVEL_STRUCTURE, require_work_item, verified_binding=False)
+    if mode == "strict-evidence" and not fixture and _mutable(record):
+        return _mutable_source(record, source_bytes, flags)
     problems = _evidence(record, source_bytes, work_item_bytes, fixture, flags)
     if problems:
         return _refuse(mode, *problems)
-    return _finish(record, flags, mode, LEVEL_FIXTURE if fixture else LEVEL_NATIVE, require_work_item, verified_binding="work_item_id" in record)
+    if mode == "diagnostic-agreement":
+        flags.append("KCAO-FLAG-NON-ADMISSIVE: diagnostic content agreement only; it is not strict evidence, not a source observation, and never admission, authority, authorization, delivery or publication")
+        return _finish(record, flags, mode, LEVEL_DIAGNOSTIC, require_work_item, verified_binding="work_item_id" in record)
+    return _finish(record, flags, mode, LEVEL_FIXTURE, require_work_item, verified_binding="work_item_id" in record)
+
+
+def _mutable(record: dict) -> bool:
+    ns = record["native_source"]
+    profile = PROFILES.get((ns["system"], ns.get("source_schema")))
+    return bool(profile and profile["mutable"])
+
+
+def _mutable_source(record: dict, source_bytes, flags: list[str]) -> Result:
+    """KC-Brain 6711755408 (b): a digest-named mutable record is not an admissible strict-evidence source. No retained event source = typed unavailable; explicit bytes = refusal."""
+    flags.append("KCAO-FLAG-MUTABLE-LOCATOR: a digest-named ArganaContractRecord is mutable metadata, not an immutable intake event; a matching hash is content agreement only")
+    if source_bytes is None:
+        unavailable = unavailable_record("exact_bytes_unrecoverable", record["subject"]["task_id"])
+        flags.append("KCAO-FLAG-NO-RETAINED-SOURCE: no retained event source was supplied for a record that names a mutable locator")
+        return Result((), tuple(flags), "strict-evidence", LEVEL_UNAVAILABLE, unavailable)
+    return _refuse("strict-evidence", "KCAO-SOURCE-MUTABLE: a digest-named mutable ArganaContractRecord/v1 is not an admissible strict-evidence source; "
+                   "matching bytes are content agreement only (use diagnostic-agreement, which is non-admissive)")
 
 
 def _finish(record: dict, flags: list[str], mode: str, level: str, require_work_item: bool, verified_binding: bool) -> Result:
@@ -339,6 +379,8 @@ def _time(record: dict, native_time) -> list[str]:
     ns = record["native_source"]
     if native_time is not None and not isinstance(native_time, str):
         return ["KCAO-NATIVE-INVALID: the native stored time is not a string"]
+    if native_time is not None and "recorded_at" not in ns:
+        return ["KCAO-NATIVE-MISMATCH: the native record stores a time (stored_at_utc) that the observation omits; a known source time is copied, never dropped"]
     if "recorded_at" in ns and native_time != ns["recorded_at"]:
         return ["KCAO-NATIVE-MISMATCH: recorded_at differs from, or is absent in, the time stored in the native record"]
     return []
@@ -443,9 +485,9 @@ def _verify_decision(record: dict, native: dict) -> list[str]:
 
 
 PROFILES = {
-    (ARGANA_SYSTEM, ARGANA_RECORD_SCHEMA): {"fixture_only": False, "outcomes": frozenset({"contract"}), "verify": _verify_argana},
-    (SYNTHETIC_SYSTEM, ARGANA_RECORD_SCHEMA): {"fixture_only": True, "outcomes": frozenset({"contract"}), "verify": _verify_argana},
-    (SYNTHETIC_SYSTEM, SYNTHETIC_DECISION_SCHEMA): {"fixture_only": True, "outcomes": frozenset({"underdetermined", "refusal"}), "verify": _verify_decision},
+    (ARGANA_SYSTEM, ARGANA_RECORD_SCHEMA): {"fixture_only": False, "mutable": True, "outcomes": frozenset({"contract"}), "verify": _verify_argana},
+    (SYNTHETIC_SYSTEM, ARGANA_RECORD_SCHEMA): {"fixture_only": True, "mutable": False, "outcomes": frozenset({"contract"}), "verify": _verify_argana},
+    (SYNTHETIC_SYSTEM, SYNTHETIC_DECISION_SCHEMA): {"fixture_only": True, "mutable": False, "outcomes": frozenset({"underdetermined", "refusal"}), "verify": _verify_decision},
 }
 
 
@@ -482,8 +524,8 @@ def _work_item(record: dict, work_item_bytes) -> list[str]:
 
 # ---------------------------------------------------------------- command line
 
-USAGE = ("usage: check_kc_admission_observation.py --mode structure-only|strict-evidence [--fixture] [--require-work-item] OBSERVATION.json "
-         "[--source NATIVE_BYTES] [--work-item WORK_ITEM_BYTES]  (the byte options belong to strict-evidence)")
+USAGE = ("usage: check_kc_admission_observation.py --mode structure-only|strict-evidence|diagnostic-agreement [--fixture] [--require-work-item] OBSERVATION.json "
+         "[--source NATIVE_BYTES] [--work-item WORK_ITEM_BYTES]  (the byte options belong to strict-evidence and diagnostic-agreement)")
 
 
 def _read_file(path: str) -> bytes:
@@ -533,7 +575,7 @@ PASS_TEXT = {
     LEVEL_STRUCTURE: "KCAO_PASS_STRUCTURE_ONLY (structural validity ONLY: no native bytes were read, nothing is verified, provenance NOT_MEASURED)",
     LEVEL_UNAVAILABLE_RECORD: "KCAO_PASS_UNAVAILABLE_RECORD (a well-formed unavailable record: it asserts no observation and no evidence)",
     LEVEL_FIXTURE: "KCAO_PASS_FIXTURE_EVIDENCE (a synthetic fixture agrees with its synthetic bytes; this is NOT a native observation)",
-    LEVEL_NATIVE: "KCAO_PASS_NATIVE_CONTENT_AGREEMENT (the record agrees with the supplied native bytes; never admission, authority, authorization, delivery or publication)",
+    LEVEL_DIAGNOSTIC: "KCAO_DIAGNOSTIC_NON_ADMISSIVE (the record agrees with the supplied mutable bytes; this is NOT a pass, NOT strict evidence, and never admission, authority, authorization, delivery or publication)",
 }
 
 
@@ -553,6 +595,8 @@ def main(argv: list[str]) -> int:
     fixture, require = "--fixture" in options, "--require-work-item" in options
     if paths["--mode"] == "structure-only":
         result = check_structure(data, fixture=fixture, require_work_item=require)
+    elif paths["--mode"] == "diagnostic-agreement":
+        result = check_diagnostic(data, source, work, fixture=fixture, require_work_item=require)
     else:
         result = check_strict(data, source, work, fixture=fixture, require_work_item=require)
     for p in result.problems:
@@ -566,7 +610,7 @@ def main(argv: list[str]) -> int:
         print(f"KCAO_UNAVAILABLE {result.unavailable['reason']} {json.dumps(result.unavailable, sort_keys=True)}")
         return 3
     print(PASS_TEXT[result.level])
-    return 0
+    return 5 if result.level == LEVEL_DIAGNOSTIC else 0
 
 
 if __name__ == "__main__":
