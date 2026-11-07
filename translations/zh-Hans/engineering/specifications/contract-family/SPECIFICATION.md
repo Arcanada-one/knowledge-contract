@@ -23,11 +23,11 @@ translation_status: "author-draft"
 
 操作契约说明何时可以执行操作、保留或改变什么、允许哪些结果，以及哪些证据支持所报告的结果。其承诺只对声明的输入、要求修订版和环境成立。完成一个操作不一定满足整个工作项。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
 **KOP-R001.** 本文规定操作语义；符合规范的适配器还必须（MUST）明确其表示配置和可执行检查。
 
-[变换论文](../../../papers/constrained-transformations/PAPER.md)提供条件式形式模型。
+[变换论文](../../../../../papers/constrained-transformations/PAPER.md)提供条件式形式模型。
 
 ## 2. 共通契约记录 {#2-common-contract-record}
 
@@ -113,7 +113,7 @@ translation_status: "author-draft"
 
 预期结果是拒绝或组合未决，而不是自动继续。
 
-[依赖与交付研究](../../studies/dependency-closure-and-package-delivery/STUDY.md)提供有限闭包重放。[可执行投影研究](../../studies/executable-projections-and-revision/STUDY.md)提供有限范围内的投影和修订证据。这些有限结果并不认证本规范中的每个操作族。
+[依赖与交付研究](../../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)提供有限闭包重放。[可执行投影研究](../../../../../engineering/studies/executable-projections-and-revision/STUDY.md)提供有限范围内的投影和修订证据。这些有限结果并不认证本规范中的每个操作族。
 
 ## 7. 表示与演化 {#7-representation-and-evolution}
 

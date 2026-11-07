@@ -23,11 +23,11 @@ translation_status: "author-draft"
 
 知识契约将一组知识绑定到其预期用途、依据、依赖、约束和评估。它让接收者能够检查所提供的内容、哪些条件重要，以及实际检查了什么。它不会将来源断言变成事实，也不会将指令变成行动许可。
 
-本规范定义符合要求的实现应具有的架构。大写的要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+本规范定义符合要求的实现应具有的架构。大写的要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
 **KCC-R001.** 符合性声明必须（MUST）指明所实现的配置、配置版本、读取器和接受评估的范围。
 
-完整符合性声明不能仅凭模式检查成立。出版版本 1.1 是本文档的版本；序列化配置保留各自的版本。[兼容性记录](../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)标识现有的有限实现，而不为其重新命名。
+完整符合性声明不能仅凭模式检查成立。出版版本 1.1 是本文档的版本；序列化配置保留各自的版本。[兼容性记录](../../../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)标识现有的有限实现，而不为其重新命名。
 
 ## 2. 核心模型 {#2-core-model}
 
@@ -134,6 +134,6 @@ translation_status: "author-draft"
 
 **KCC-R022.** 模式、内部一致性、适用性和执行验收必须（MUST）分别报告。
 
-[契约配置研究](../../studies/contract-profile-conformance/STUDY.md)报告了 35/35 和 26/26 的有限场景结果，同时保留了错误可信输入被接受的情况，以及 9/9 对 9/9 的基线持平结果。这些观察支持有限的符合性声明，并暴露信任边界缺口；它们不确立一般任务优势或生产环境授权。
+[契约配置研究](../../../../../engineering/studies/contract-profile-conformance/STUDY.md)报告了 35/35 和 26/26 的有限场景结果，同时保留了错误可信输入被接受的情况，以及 9/9 对 9/9 的基线持平结果。这些观察支持有限的符合性声明，并暴露信任边界缺口；它们不确立一般任务优势或生产环境授权。
 
-科学依据见[受控知识复用](../../../papers/controlled-knowledge-reuse/PAPER.md)、[证据与证伪](../../../papers/evidence-and-falsification/PAPER.md)和[共用术语表](../../../reference/glossary/GLOSSARY.md)。
+科学依据见[受控知识复用](../../../../../papers/controlled-knowledge-reuse/PAPER.md)、[证据与证伪](../../../../../papers/evidence-and-falsification/PAPER.md)和[共用术语表](../../../reference/glossary/GLOSSARY.md)。

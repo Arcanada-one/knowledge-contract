@@ -23,11 +23,11 @@ translation_status: "author-draft"
 
 本规范规定如何标识保存的结果、将其查找为候选项、在变化后使其失效，并在交付边界上准入。字节相等、配方相等、语义适合性和当前授权是不同关系。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。该架构由条件论证和有限模型支持，而不是声称已经部署分布式一致性协议。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。该架构由条件论证和有限模型支持，而不是声称已经部署分布式一致性协议。
 
 **CCH-R001.** 每个实现必须（MUST）说明其一致性假设和失败行为。
 
-参见[受控复用](../../../papers/controlled-knowledge-reuse/PAPER.md)。
+参见[受控复用](../../../../../papers/controlled-knowledge-reuse/PAPER.md)。
 
 ## 2. 身份层次 {#2-identity-layers}
 
@@ -88,7 +88,7 @@ translation_status: "author-draft"
 
 权限撤销会改变可接受性，却不一定改变内容。
 
-[交换模式](../../../schemas/contract-observation.schema.json)中已实现的 `KCDependencyChange/v1` 记录提供 `event_id`、`namespace`、`sequence`、`dependency_id`、`old_epoch`、`new_epoch`、旧／新修订版引用、类别、影响、观察者和时间。
+[交换模式](../../../../../schemas/contract-observation.schema.json)中已实现的 `KCDependencyChange/v1` 记录提供 `event_id`、`namespace`、`sequence`、`dependency_id`、`old_epoch`、`new_epoch`、旧／新修订版引用、类别、影响、观察者和时间。
 
 **CCH-R011.** `new_epoch` 必须（MUST）大于 `old_epoch`；`revoked` 事件必须（MUST）携带 `impact: blocked`。
 
@@ -136,7 +136,7 @@ translation_status: "author-draft"
 
 严格撤销声明不能将无法观察的撤销视为无害，除非明确采纳的授权语义允许所声明的延迟。
 
-[参考模型与回归测试](../../../tools/test_contract_profile.py)在一个内存锁内串行化该谓词的命名空间、代次、依赖代次和撤销部分。它们不评估输出特定的授权、语义有效性或构建检查。它们展示延迟发布者、当前指针令牌下的依赖变化、读取与发布之间的撤销、并发发布者、当前指针或依赖计数器耗尽，以及不复用代次的回滚。这些是有限本地检查，不是分布式部署或持久崩溃恢复的证据。
+[参考模型与回归测试](../../../../../tools/test_contract_profile.py)在一个内存锁内串行化该谓词的命名空间、代次、依赖代次和撤销部分。它们不评估输出特定的授权、语义有效性或构建检查。它们展示延迟发布者、当前指针令牌下的依赖变化、读取与发布之间的撤销、并发发布者、当前指针或依赖计数器耗尽，以及不复用代次的回滚。这些是有限本地检查，不是分布式部署或持久崩溃恢复的证据。
 
 ## 6. 存储、恢复与可观察性 {#6-storage-recovery-and-observability}
 
@@ -156,4 +156,4 @@ translation_status: "author-draft"
 
 **CCH-R028.** 每项测试必须（MUST）标识模拟的或真实的一致性边界。
 
-[复用研究](../../studies/reuse-admission-and-cost-controls/STUDY.md)报告可用证据及其部署限制。[RFC 9111](../../../reference/bibliography/BIBLIOGRAPHY.md#http-caching)是 HTTP 缓存语义的参考，而不是此处定义的语义检查或权限检查已实现的证明。现有有限配置和保留结果见[兼容性附录](../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)。
+[复用研究](../../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)报告可用证据及其部署限制。[RFC 9111](../../../../../reference/bibliography/BIBLIOGRAPHY.md#http-caching)是 HTTP 缓存语义的参考，而不是此处定义的语义检查或权限检查已实现的证明。现有有限配置和保留结果见[兼容性附录](../../../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)。

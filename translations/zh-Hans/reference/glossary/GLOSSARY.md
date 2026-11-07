@@ -143,4 +143,4 @@ translation_status: "author-draft"
 
 引述的历史标签，例如“independent review”，在证据中保持不变。在本出版物讨论的研究中，这个标签通常指同一会话或同一代理家族中另行指派的代理，而不是独立的外部同行评审。当前摘要应明确这一实际范围。“精确”应指明所比较的字节或观察；“全部”应指明有限的计数总体。保存的开发、回归、压力和普通用例应保持分离，即使历史摘要曾将它们合并。
 
-[制品登记规范](../../engineering/specifications/artifact-registry/SPECIFICATION.md)定义文件格式。[状态规范](../../engineering/specifications/status-model/SPECIFICATION.md)定义操作值。[来源映射](../../appendices/source-map/APPENDIX.md)保留旧名称与标识符，仅用于追溯。
+[制品登记规范](../../engineering/specifications/artifact-registry/SPECIFICATION.md)定义文件格式。[状态规范](../../engineering/specifications/status-model/SPECIFICATION.md)定义操作值。[来源映射](../../../../appendices/source-map/APPENDIX.md)保留旧名称与标识符，仅用于追溯。

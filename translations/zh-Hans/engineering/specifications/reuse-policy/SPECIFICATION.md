@@ -25,7 +25,7 @@ translation_status: "author-draft"
 
 它针对具体的制品、接收者、目的、要求修订版和观察时间起作用。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。缓存命中只是候选项。[编译制品规范](../compiled-artifact-contract/SPECIFICATION.md)定义保存结果；[身份与失效处理](../cache-identity-and-invalidation/SPECIFICATION.md)定义其依赖和交付守卫。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。缓存命中只是候选项。[编译制品规范](../compiled-artifact-contract/SPECIFICATION.md)定义保存结果；[身份与失效处理](../cache-identity-and-invalidation/SPECIFICATION.md)定义其依赖和交付守卫。
 
 ## 2. 先准入，再判断时间 {#2-admission-before-timing}
 
@@ -109,7 +109,7 @@ TTL 产生**软**截止时间 `checked.lower + ttl`，除非政策明确将此 T
 
 必需用例包括：当前请求但来源当前版本证据不可用；披露权限撤销后的历史请求；未知时钟边界；恰好等于硬到期时间；软 TTL 与硬 TTL 的区别；无效和重叠时钟边界；从相关检查起算的有界年龄限制；明确允许及明确禁止的陈旧交付；刷新失败；权限改变的模板实例；以及违反强制约束的低成本选项。
 
-[复用准入与成本研究](../../studies/reuse-admission-and-cost-controls/STUDY.md)区分形式检查和实测操作节省。[效用论文](../../../papers/knowledge-utility/PAPER.md)给出条件式成本结果和因果比较所需的假设。[RFC 5861](../../../reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses)提供处理陈旧响应的 HTTP 类比；它不是知识或行动的授权政策。
+[复用准入与成本研究](../../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)区分形式检查和实测操作节省。[效用论文](../../../../../papers/knowledge-utility/PAPER.md)给出条件式成本结果和因果比较所需的假设。[RFC 5861](../../../../../reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses)提供处理陈旧响应的 HTTP 类比；它不是知识或行动的授权政策。
 
 ## 8. 兼容性 {#8-compatibility}
 

@@ -23,9 +23,9 @@ translation_status: "author-draft"
 
 编译知识制品是由声明的提取、选择、变换或组合产生并保存的派生结果。它将结果连接到输入、配方、依赖、要求、输出表示和证据。它的可用性可以避免重复工作，但仅有可用性并不能证明复用合理。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
-**CKA-R001.** 符合性声明必须（MUST）指明制品类别、表示配置和已经执行的检查。[受控知识复用](../../../papers/controlled-knowledge-reuse/PAPER.md)提供模型；[缓存身份](../cache-identity-and-invalidation/SPECIFICATION.md)和[复用政策](../reuse-policy/SPECIFICATION.md)约束后续应用。
+**CKA-R001.** 符合性声明必须（MUST）指明制品类别、表示配置和已经执行的检查。[受控知识复用](../../../../../papers/controlled-knowledge-reuse/PAPER.md)提供模型；[缓存身份](../cache-identity-and-invalidation/SPECIFICATION.md)和[复用政策](../reuse-policy/SPECIFICATION.md)约束后续应用。
 
 ## 2. 结果类别与最少信息 {#2-result-kinds-and-minimum-information}
 
@@ -98,10 +98,10 @@ translation_status: "author-draft"
 
 **CKA-R017.** 预期结果必须（MUST）是明确的新构建、拒绝、未决状态，或在具名政策下有效的受保护复用。
 
-[复用准入研究](../../studies/reuse-admission-and-cost-controls/STUDY.md)区分分析性政策、有限检查和测量结果。[投影研究](../../studies/executable-projections-and-revision/STUDY.md)报告有限变换和修订行为。二者都不能确立已经部署了分布式缓存，也不能确立存在通用语义等价求解器。
+[复用准入研究](../../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)区分分析性政策、有限检查和测量结果。[投影研究](../../../../../engineering/studies/executable-projections-and-revision/STUDY.md)报告有限变换和修订行为。二者都不能确立已经部署了分布式缓存，也不能确立存在通用语义等价求解器。
 
 ## 8. 兼容性与迁移 {#8-compatibility-and-migration}
 
 **CKA-R018.** 迁移必须（MUST）保留旧制品及其哈希域、标识映射及其损失，并创建新的表示记录。
 
-新的文档版本不改变现有二进制或传输协议。[兼容性附录](../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)列明了早期有限配置；声称具备额外行为的实现，需要相应证据。
+新的文档版本不改变现有二进制或传输协议。[兼容性附录](../../../../../appendices/source-map/APPENDIX.md#4-protocol-compatibility)列明了早期有限配置；声称具备额外行为的实现，需要相应证据。

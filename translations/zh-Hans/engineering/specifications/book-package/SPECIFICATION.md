@@ -19,15 +19,15 @@ translation_status: "author-draft"
 
 | 实现组件 | 范围 |
 | --- | --- |
-| [模式](../../../schemas/book-package.schema.json) | `book-package/2`，五类 `KCBook*/v2` 记录 |
-| [验证器与投影](../../../tools/check_book_package.py) | 结构和跨文件检查、安全 Markdown 呈现、候选行 |
-| [构建器](../../../tools/build_book_package.py) | 封装来源字节和提供的转换输出；不解释书籍 |
-| [合成测试夹具](../../../schemas/fixtures/book-package/) | 虚构来源和负向记录；不含第三方书籍文本 |
-| [符合性测试](../../../tools/test_book_package.py) · [审查回归测试](../../../tools/test_book_package_review.py) | 验证、可逆修订、权利、有界审查、呈现与状态推导 |
+| [模式](../../../../../schemas/book-package.schema.json) | `book-package/2`，五类 `KCBook*/v2` 记录 |
+| [验证器与投影](../../../../../tools/check_book_package.py) | 结构和跨文件检查、安全 Markdown 呈现、候选行 |
+| [构建器](../../../../../tools/build_book_package.py) | 封装来源字节和提供的转换输出；不解释书籍 |
+| [合成测试夹具](../../../../../schemas/fixtures/book-package) | 虚构来源和负向记录；不含第三方书籍文本 |
+| [符合性测试](../../../../../tools/test_book_package.py) · [审查回归测试](../../../../../tools/test_book_package_review.py) | 验证、可逆修订、权利、有界审查、呈现与状态推导 |
 
 ## 1. 目的与验证边界 {#1-purpose-and-validation-boundary}
 
-书籍包将一个来源表示绑定到其转换结果、语义记录和审查观察。本规范定义已实现的 `book-package/2` 配置。大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。记录验证不能确立转换保真度、语义真实性、实际审查独立性、出版权利或任务特定准入。
+书籍包将一个来源表示绑定到其转换结果、语义记录和审查观察。本规范定义已实现的 `book-package/2` 配置。大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。记录验证不能确立转换保真度、语义真实性、实际审查独立性、出版权利或任务特定准入。
 
 **BPK-R001.** 清单必须（MUST）声明 `validation_profile: book-package/2`，每条记录必须（MUST）使用对应的 `KCBookPackageManifest/v2`、`KCBookObject/v2`、`KCBookRelation/v2`、`KCBookEdit/v2` 或 `KCBookQuality/v2` 标签。
 
@@ -284,7 +284,7 @@ CER 要么是已测量值，附带参照类别和样本量；要么为 `not_meas
 
 **BPK-R047.** 生产者不得（MUST NOT）扩大该范围，也不得将候选行视为出版或运行时准入。
 
-[API 集成附录](../../../appendices/api-integration/APPENDIX.md)区分仓库出版、索引准入和实际服务结果。本地符合性测试不声称实际消费者已经接受新配置。
+[API 集成附录](../../../../../appendices/api-integration/APPENDIX.md)区分仓库出版、索引准入和实际服务结果。本地符合性测试不声称实际消费者已经接受新配置。
 
 ## 12. 验证与证据限制 {#12-validation-and-evidence-limits}
 
@@ -294,7 +294,7 @@ JSON Schema 检查记录形状、固定词汇和条件字段。包验证器额�
 
 状态表测试枚举 3,240 种输入组合；枚举测试的是决策表，而不是 3,240 次历史书籍实验。结构不一致另行测试。
 
-包不能确立来源保真度、真实性、真实审查独立性、未见来源几何、真实许可证持有权或下游准入。生成描述与其描述的媒体分离。链接的[转录研究](../../studies/source-transcription-and-uncertainty/STUDY.md)报告历史证据，并非对新传输配置的验证。
+包不能确立来源保真度、真实性、真实审查独立性、未见来源几何、真实许可证持有权或下游准入。生成描述与其描述的媒体分离。链接的[转录研究](../../../../../engineering/studies/source-transcription-and-uncertainty/STUDY.md)报告历史证据，并非对新传输配置的验证。
 
 ## 13. 兼容性与迁移 {#13-compatibility-and-migration}
 
@@ -308,4 +308,4 @@ JSON Schema 检查记录形状、固定词汇和条件字段。包验证器额�
 
 V2 构建器在实际执行解释之前输出空语义层。出版版本、包配置、验证器构建和准入运行时版本保持为不同身份。
 
-署名与许可证：Knowledge Contract Arcana，<https://contract.place>（CC BY 4.0）。参见[署名要求](../../../ATTRIBUTION.md)。
+署名与许可证：Knowledge Contract Arcana，<https://contract.place>（CC BY 4.0）。参见[署名要求](../../../../../ATTRIBUTION.md)。

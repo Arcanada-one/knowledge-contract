@@ -23,7 +23,7 @@ translation_status: "author-draft"
 
 上下文包是在资源预算内，为一个声明用途准备的、版本化的知识、条件与依据选择。它使人能够检查选择了什么、为什么足够或仍不完整、纳入了哪些依赖，以及接收者实际获得什么。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。上下文包支持回答、规划或执行阶段，但其本身不是行动授权，也不是预期结果已经发生的证据。覆盖与搜索完整性的形式区别见[检索与上下文组合](../../../papers/retrieval-and-context-composition/PAPER.md)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。上下文包支持回答、规划或执行阶段，但其本身不是行动授权，也不是预期结果已经发生的证据。覆盖与搜索完整性的形式区别见[检索与上下文组合](../../../../../papers/retrieval-and-context-composition/PAPER.md)。
 
 ## 2. 必需的包描述 {#2-required-package-description}
 
@@ -109,7 +109,7 @@ translation_status: "author-draft"
 
 **CTX-R020.** 对每种情形，检查必须（MUST）区分包构建与下游使用。
 
-[依赖闭包与交付研究](../../studies/dependency-closure-and-package-delivery/STUDY.md)包含可执行的有限重放：在一个 110 节点依赖图上，对 12 个技能根节点的全部 4,096 个子集，以及 24,576 个单元素包含关系进行检查。这验证的是指定的图行为，而不是从任意来源提取依赖的完整性。[投影研究](../../studies/executable-projections-and-revision/STUDY.md)考察下游表示，并报告所测最小性的局限。
+[依赖闭包与交付研究](../../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)包含可执行的有限重放：在一个 110 节点依赖图上，对 12 个技能根节点的全部 4,096 个子集，以及 24,576 个单元素包含关系进行检查。这验证的是指定的图行为，而不是从任意来源提取依赖的完整性。[投影研究](../../../../../engineering/studies/executable-projections-and-revision/STUDY.md)考察下游表示，并报告所测最小性的局限。
 
 ## 8. 兼容性 {#8-compatibility}
 

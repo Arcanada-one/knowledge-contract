@@ -25,7 +25,7 @@ translation_status: "author-draft"
 
 按后来的规则重新评估，是一次新观察。原始派生过程和修订版仍可追溯。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。本规范不仅治理软件版本，也治理解释和准入规则的变化。命名一个研究方向本身，不会确立已有实现的模式或可执行验证器。[修订论文](../../../papers/revision-and-governance/PAPER.md)提供底层模型。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。本规范不仅治理软件版本，也治理解释和准入规则的变化。命名一个研究方向本身，不会确立已有实现的模式或可执行验证器。[修订论文](../../../papers/revision-and-governance/PAPER.md)提供底层模型。
 
 ## 2. 创建依据 {#2-creation-basis}
 
@@ -103,7 +103,7 @@ translation_status: "author-draft"
 
 **EVO-R018.** 每个用例必须（MUST）保留历史创建依据，以及独立的当前决定。
 
-[投影与修订研究](../../studies/executable-projections-and-revision/STUDY.md)提供有关可寻址变化和有限投影的有界证据。[符合性研究](../../studies/contract-profile-conformance/STUDY.md)记录有限的迁移检查。其结果不确立任意知识图的自动迁移，也不确立已部署社区治理服务。
+[投影与修订研究](../../../../../engineering/studies/executable-projections-and-revision/STUDY.md)提供有关可寻址变化和有限投影的有界证据。[符合性研究](../../../../../engineering/studies/contract-profile-conformance/STUDY.md)记录有限的迁移检查。其结果不确立任意知识图的自动迁移，也不确立已部署社区治理服务。
 
 ## 8. 出版与实现版本 {#8-publication-and-implementation-versions}
 
@@ -111,4 +111,4 @@ translation_status: "author-draft"
 
 从手稿删除开发标签，不会改变已部署协议。反过来，服务功能未完成，也不妨碍发布具有明确假设的完整形式论证。
 
-[来源映射和兼容性记录](../../../appendices/source-map/APPENDIX.md)标识本出版版本替代了什么，以及哪些历史传输版本保持不变。[API 集成附录](../../../appendices/api-integration/APPENDIX.md)定义可观察的发布边界，而不声称已有未经验证的契约组合端点。
+[来源映射和兼容性记录](../../../../../appendices/source-map/APPENDIX.md)标识本出版版本替代了什么，以及哪些历史传输版本保持不变。[API 集成附录](../../../../../appendices/api-integration/APPENDIX.md)定义可观察的发布边界，而不声称已有未经验证的契约组合端点。

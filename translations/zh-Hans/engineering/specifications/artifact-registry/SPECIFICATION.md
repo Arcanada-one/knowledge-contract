@@ -23,7 +23,7 @@ translation_status: "author-draft"
 
 登记机制为人和代理提供可预测的方式，以查找、解释和修订制品。它将对象身份与标题、修订版、文件表示和当前评估分开。一个新的技术术语不会自动要求一张新的数据库表或一个新服务。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。以下格式是项目约定，明确指定外部格式的情况除外。它们不声称是胜任能力、角色或方案蓝图的通用标准。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。以下格式是项目约定，明确指定外部格式的情况除外。它们不声称是胜任能力、角色或方案蓝图的通用标准。
 
 ## 2. 名称、身份与修订版 {#2-names-identity-and-revisions}
 
@@ -91,7 +91,7 @@ translation_status: "author-draft"
 
 **REG-R011.** 必需引用必须（MUST）解析到预期修订版，或报告依赖未解决。
 
-历史上登记的 34 种制品类型描述的是一个示例登记表，并不确立知识只有这 34 种穷尽类别。其共通封套是这些示例的载体，而不是对所有未来契约的限制。[来源映射](../../../appendices/source-map/APPENDIX.md)在科学论证之外保留这一兼容背景。
+历史上登记的 34 种制品类型描述的是一个示例登记表，并不确立知识只有这 34 种穷尽类别。其共通封套是这些示例的载体，而不是对所有未来契约的限制。[来源映射](../../../../../appendices/source-map/APPENDIX.md)在科学论证之外保留这一兼容背景。
 
 ## 6. 验收与迁移 {#6-acceptance-and-migration}
 
@@ -105,4 +105,4 @@ translation_status: "author-draft"
 
 **REG-R015.** 迁移不得（MUST NOT）仅从制品存在就推断能力、具体授权或成功执行。
 
-[修订论文](../../../papers/revision-and-governance/PAPER.md)解释这些区别；[编辑研究](../../studies/editorial-skill-pilot/STUDY.md)记录了一次真实而有限的技能和蓝图使用，并未因它们存在就声称具有优势。
+[修订论文](../../../papers/revision-and-governance/PAPER.md)解释这些区别；[编辑研究](../../../../../engineering/studies/editorial-skill-pilot/STUDY.md)记录了一次真实而有限的技能和蓝图使用，并未因它们存在就声称具有优势。

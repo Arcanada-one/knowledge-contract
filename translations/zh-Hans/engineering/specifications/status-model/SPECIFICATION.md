@@ -23,11 +23,11 @@ translation_status: "author-draft"
 
 状态只有针对具名的对象、性质、修订版和范围才有意义。单个“已验证”标志无法忠实表示模式有效性、来源保真度、真实性、覆盖、授权、执行结果和出版审查。本规范区分这些问题，并定义状态转换义务。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
 **STA-R001.** 配置必须（MUST）选择其目的所需的维度，并声明任何聚合规则。
 
-不需要给每条记录附加所有可能维度。[证据论文](../../../papers/evidence-and-falsification/PAPER.md)解释为什么更强结论需要不同证据。
+不需要给每条记录附加所有可能维度。[证据论文](../../../../../papers/evidence-and-falsification/PAPER.md)解释为什么更强结论需要不同证据。
 
 ## 2. 观察记录 {#2-observation-record}
 
@@ -169,11 +169,11 @@ translation_status: "author-draft"
 
 **STA-R020.** 测试必须（MUST）覆盖：模式通过但提供的依据为假、执行成功但结果标准未满足、运行结束但效果未知、制品仍驻留但已经撤销、正确的历史结果不具备当前任务资格，以及无法确立经验有效性的内部审查。
 
-[符合性研究](../../studies/contract-profile-conformance/STUDY.md)展示可信输入前提为何重要。[编辑试点](../../studies/editorial-skill-pilot/STUDY.md)报告结构化条件和基线条件的观察评分相等。二者都不允许赋予一般有效性标签。观察与规则采纳之间的区别见[修订与治理](../../../papers/revision-and-governance/PAPER.md)。
+[符合性研究](../../../../../engineering/studies/contract-profile-conformance/STUDY.md)展示可信输入前提为何重要。[编辑试点](../../../../../engineering/studies/editorial-skill-pilot/STUDY.md)报告结构化条件和基线条件的观察评分相等。二者都不允许赋予一般有效性标签。观察与规则采纳之间的区别见[修订与治理](../../../papers/revision-and-governance/PAPER.md)。
 
 ## 8. 有界交换配置 {#8-bounded-exchange-profile}
 
-[JSON Schema](../../../schemas/contract-observation.schema.json)、[验证器](../../../tools/check_contract_profile.py)、[示例](../../../schemas/fixtures/contract-observation/valid/)和[测试](../../../tools/test_contract_profile.py)定义具体交换子集：`kc-observation/1`、`kc-dependency-change/1` 和 `kc-profile-advertisement/1`。这是使用 [JSON](https://www.rfc-editor.org/rfc/rfc8259) 和 [JSON Schema 2020-12](https://json-schema.org/draft/2020-12/json-schema-core)的项目原创配置，而不是声称完整知识契约、执行器或 API 已实现互操作。
+[JSON Schema](../../../../../schemas/contract-observation.schema.json)、[验证器](../../../../../tools/check_contract_profile.py)、[示例](../../../../../schemas/fixtures/contract-observation/valid)和[测试](../../../../../tools/test_contract_profile.py)定义具体交换子集：`kc-observation/1`、`kc-dependency-change/1` 和 `kc-profile-advertisement/1`。这是使用 [JSON](https://www.rfc-editor.org/rfc/rfc8259) 和 [JSON Schema 2020-12](https://json-schema.org/draft/2020-12/json-schema-core)的项目原创配置，而不是声称完整知识契约、执行器或 API 已实现互操作。
 
 **STA-R021.** 交换记录必须（MUST）是单个严格的 UTF-8 JSON 对象，不含 BOM、任何深度上的重复成员名称、非有限数字词元或孤立 Unicode 代理项。
 

@@ -25,11 +25,11 @@ translation_status: "author-draft"
 
 这些侧面用于组织内容，而不声称构成所有人类意义的穷尽分类。一个过程、一段引用的过程以及一个故意错误的过程示例，可能使用相似词语，却支持不同用途。
 
-大写要求用语遵循 [BCP 14](../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
 **SEM-R002.** 符合规范的配置必须（MUST）说明其词汇、基数约束和表示映射。
 
-[科学模型](../../../papers/semantic-objects-and-context/PAPER.md)定义来源表示、解释、依据和适用性之间的分离。
+[科学模型](../../../../../papers/semantic-objects-and-context/PAPER.md)定义来源表示、解释、依据和适用性之间的分离。
 
 ## 2. 独立的语义维度 {#2-independent-semantic-dimensions}
 
@@ -108,9 +108,9 @@ OCR、模型生成的描述、人工转录和原始视觉材料需要分别记�
 
 ## 7. 证据与互操作性 {#7-evidence-and-interoperability}
 
-[转录与不确定性研究](../../studies/source-transcription-and-uncertainty/STUDY.md)报告生成描述和不确定性如何在可读投影中保留。它明确将这一结果与尚未测量的 OCR 或解释准确性区分开。领域示例属于该工程研究。
+[转录与不确定性研究](../../../../../engineering/studies/source-transcription-and-uncertainty/STUDY.md)报告生成描述和不确定性如何在可读投影中保留。它明确将这一结果与尚未测量的 OCR 或解释准确性区分开。领域示例属于该工程研究。
 
-[SKOS](../../../reference/bibliography/BIBLIOGRAPHY.md#skos)提供有用的概念、标签和关系；[PROV-DM](../../../reference/bibliography/BIBLIOGRAPHY.md#provenance)提供溯源方面的区别。本配置不声称取代任何一个标准，也不声称这些标准的图能够证明内容为真。
+[SKOS](../../../../../reference/bibliography/BIBLIOGRAPHY.md#skos)提供有用的概念、标签和关系；[PROV-DM](../../../../../reference/bibliography/BIBLIOGRAPHY.md#provenance)提供溯源方面的区别。本配置不声称取代任何一个标准，也不声称这些标准的图能够证明内容为真。
 
 **SEM-R016.** 词汇映射必须（MUST）说明它们是精确、较宽、较窄，还是仅仅相关的对应关系。
 
