@@ -7,8 +7,24 @@
   "late_research_synthesis": "open",
   "independent_semantic_review": "not_performed",
   "exporter_scope": "not in SCOPE_PATHS; not an indexing input",
-  "corpus_allowlist_rows": "none"
+  "corpus_allowlist_rows": "35"
  },
+ "corrections": [
+  {
+   "id": "corpus-allowlist-rows-gate-r1",
+   "field": "gates.corpus_allowlist_rows",
+   "previous": "none",
+   "corrected": "35",
+   "corrected_at": "2026-11-06",
+   "measured": {
+    "denominator": "data rows in the allowlist table of corpus/README.md (header and separator excluded)",
+    "count": 35,
+    "corpus_readme_sha256": "ab1a2c1c55ac6f8b2a14367c20d324bc101b919560180ed2fb3dff34c12dea03",
+    "measured_against_commit": "ea0c30575d56e793fb2875df47126ab3f6dc30ad"
+   },
+   "note": "Correction, not a silent rewrite of historical meaning. The first-release catalogue recorded corpus_allowlist_rows as none while the allowlist table already had rows: batch b1 (6 mirrored articles) was merged on 2026-10-29 before this catalogue (817a8d8, 2026-11-03), and by the time cases/paper-publication-pipeline.md recorded the finding the table held 20 rows (b1+b2). The prior gate value was therefore stale relative to the table denominator. This revision sets the gate to the measured table denominator at the named commit. It does not claim that any of this catalogue's own item paths currently appear in the allowlist (measured overlap at the named commit: 0), does not change release_digest, items, decisions or deviations, and is not KC2 admission."
+  }
+ ],
  "decisions": [
   {
    "id": "edition-of-record",
