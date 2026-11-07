@@ -124,4 +124,27 @@ class CorpusMapV2Controls(unittest.TestCase):
     def test_assessment_cannot_upgrade_claim(self):self.check(lambda d:d['claims'][0].update(assessment='supports-bounded-comparison'),'unsupported review claim C01')
     def test_new_relation_semantics_required(self):self.check(lambda d:d['relation_kinds'].pop('ground-uses-source'),'relation semantics mismatch')
     def test_new_relation_semantics_descriptive(self):self.check(lambda d:d['relation_kinds'].update({'claim-has-ground':'The claim is verified by this ground.'}),'must state descriptive traceability only')
+class CorpusMapV2ClosedMembers(unittest.TestCase):
+    """/2 source records and assessments accept only the authorised fields, so no ignored extra can look like a status."""
+    def errors(self, d):
+        return validate(d)['errors']
+    def test_source_record_rejects_unknown_fields(self):
+        for field, value in (('verified', True), ('admission', 'production'), ('commit_sha', '0' * 40)):
+            d = copy.deepcopy(V2); d['source_records'][0][field] = value
+            self.assertTrue(any('unknown source record field SR01' in e and field in e for e in self.errors(d)), field)
+    def test_assessment_rejects_unknown_fields(self):
+        for field, value in (('verified', True), ('admission', 'production'), ('peer_reviewed', True)):
+            d = copy.deepcopy(V2); d['evidence_assessments'][0][field] = value
+            self.assertTrue(any('unknown assessment field EA01' in e and field in e for e in self.errors(d)), field)
+    def test_optional_historic_fields_remain_allowed(self):
+        d = copy.deepcopy(V2); d['source_records'][0]['historical_v2_id'] = 'v2-01'
+        self.assertEqual(self.errors(d), [])
+    def test_every_authorised_field_is_used_by_the_fixture(self):
+        from tools.verify_corpus_map import SOURCE_RECORD_KEYS, ASSESSMENT_KEYS
+        self.assertEqual(set().union(*map(set, V2['source_records'])), SOURCE_RECORD_KEYS)
+        self.assertEqual(set().union(*map(set, V2['evidence_assessments'])), ASSESSMENT_KEYS)
+    def test_non_object_members_are_rejected(self):
+        for group in ('source_records', 'evidence_assessments'):
+            d = copy.deepcopy(V2); d[group].append('SR99')
+            self.assertTrue(any('is not an object' in e for e in self.errors(d)), group)
 if __name__=='__main__':unittest.main()

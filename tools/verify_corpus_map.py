@@ -35,6 +35,11 @@ GROUPS_V2 = {'source_records': 'source-record', 'evidence_assessments': 'evidenc
 DEPTHS = {'historic_v2_label', 'official_abstract_only', 'full_primary_text'}
 FINDINGS = {'historical-unchecked', 'supports-bounded-comparison', 'not-applicable', 'contradictory', 'indeterminate'}
 INDEPENDENCE = {'author_self_check', 'internal_independent', 'external_peer_review'}
+# Closed /2 member sets: KC-Brain schema items 2 and 4, plus the assessor declarations of decision 6.
+SOURCE_RECORD_KEYS = {'id', 'kind', 'identifier_type', 'identifier', 'title', 'retrieved_at',
+                      'historical_v2_id', 'historical_v2_label'}
+ASSESSMENT_KEYS = {'id', 'kind', 'claim_id', 'document_source_commit', 'inspection_depth', 'finding', 'method',
+                   'observed_at', 'scope', 'limitations', 'assessor_identity', 'assessor_role', 'reviewer_independence'}
 
 def is_utc(value) -> bool:
     if not isinstance(value, str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z', value):
@@ -108,9 +113,12 @@ def validate(data: dict) -> dict:
             require(node.get('kind') == kind, f'invalid kind for {identity}')
             nodes[identity] = node
     for record in data.get('source_records', []) if v2 else []:
+        require(isinstance(record, dict), 'source record is not an object')
         if not isinstance(record, dict):
             continue
         rid = record.get('id')
+        extra = sorted(set(record) - SOURCE_RECORD_KEYS)
+        require(not extra, f'unknown source record field {rid}: {extra}')
         require(record.get('identifier_type') in {'doi', 'url', 'isbn'}, f'invalid identifier type {rid}')
         require(isinstance(record.get('identifier'), str) and bool(record['identifier'].strip()), f'missing identifier {rid}')
         require(isinstance(record.get('title'), str) and bool(record['title'].strip()), f'missing title {rid}')
@@ -121,9 +129,12 @@ def validate(data: dict) -> dict:
             require(field not in record or (isinstance(record[field], str) and bool(record[field])), f'invalid {field} {rid}')
         require('commit' not in record and 'repository' not in record, f'source record carries a Git pin {rid}')
     for a in data.get('evidence_assessments', []) if v2 else []:
+        require(isinstance(a, dict), 'evidence assessment is not an object')
         if not isinstance(a, dict):
             continue
         aid, depth = a.get('id'), a.get('inspection_depth')
+        extra = sorted(set(a) - ASSESSMENT_KEYS)
+        require(not extra, f'unknown assessment field {aid}: {extra}')
         for field in ('method', 'scope', 'limitations', 'assessor_identity', 'assessor_role'):
             require(isinstance(a.get(field), str) and bool(a[field].strip()), f'missing {field} {aid}')
         require(depth in DEPTHS, f'invalid inspection_depth {aid}')
