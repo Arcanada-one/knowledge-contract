@@ -34,7 +34,7 @@ Each decision line carries the path, the SHA-256 of the file, the rights holder,
 | R8 | corpus/publication-decisions/receipts/b2.json | count | /reviewers | 2 | batch |
 | R9 | corpus/publication-decisions/receipts/b2.json | value | /reviewers/0/verdict | APPROVE | |
 | R10 | receipts/meaning-management/release-catalog.json | value | /gates/independent_semantic_review | not_performed | |
-| R11 | receipts/meaning-management/release-catalog.json | value | /gates/corpus_allowlist_rows | none | |
+| R11 | receipts/meaning-management/release-catalog.json | value | /gates/corpus_allowlist_rows | 35 | |
 | R12 | receipts/meaning-management/release-catalog.json | value | /deviations/0/id | spec-front-matter | |
 | R13 | receipts/meaning-management/release-catalog.json | value | /decisions/0/status | DECIDED-BY-AGENT, reversible | |
 | R14 | receipts/meaning-management/release-catalog.json | value | /gates/exporter_scope | not in SCOPE_PATHS; not an indexing input | |
@@ -50,7 +50,7 @@ The batches were approved by their reviewers (2 [R7] for batch b1 and 2 [R8] for
 
 - The reviewers run under the same account as the writer; the exporter records this as the class same_account_blind_agent, not as proof of independence. The first reviewer of batch b2 states that recomputing the digests from the page bytes was not measured by that reviewer.
 - The semantic content has not been reviewed by an independent party: the catalogue gate reads [R10]. The late research synthesis gate reads [R16] and the release status reads [R17]; the papers are drafts, not results.
-- The catalogue gate for allowlist rows reads [R11] while the table held only the rows of batches b1 and b2 when this case was written, and the repository history dates the first rows (batch b1) before the catalogue. The gate is therefore stale or means no rows for the catalogue's own items; the repository does not say which, and it was not corrected.
+- The catalogue gate for allowlist rows now reads the measured allowlist table denominator [R11]. When this case was first written the same gate still read none while the table already held the rows of batches b1 and b2, and history dates batch b1 before the catalogue; that stale reading was corrected by an explicit catalogue revision note rather than a silent rewrite. The gate reports the table denominator, not that every catalogue item path has a row.
 - The edition of record was chosen by an agent and is marked reversible [R13].
 - Approval of a file for the exporter is not KC2 admission and not a statement that the claims in the papers are true.
 
