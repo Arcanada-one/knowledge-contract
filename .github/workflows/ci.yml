@@ -61,6 +61,11 @@ jobs:
         run: python3 -B -m unittest tools.test_verify_corpus_map -v
       - name: Published corpus map and its pinned source objects
         run: python3 -B tools/verify_corpus_map.py --repo .
+      - name: Inventory-first /2 candidate (KC-MAP2-1)
+        run: |
+          python3 -B -m unittest tools.test_corpus_map_v2_inventory -v
+          python3 -B tools/build_corpus_map_v2_inventory.py --check
+          python3 -B tools/verify_corpus_map.py --map reviews/corpus-map-v2/corpus-map-v2.inventory-candidate.json --repo .
       - name: Negative control (an unpinned source must fail the validator)
         # Exit 1 is a structural refusal; exit 0 or an input error (2) means the step proves nothing.
         run: |

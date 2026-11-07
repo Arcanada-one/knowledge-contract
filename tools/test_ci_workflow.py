@@ -79,6 +79,9 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertIn("tools/verify_corpus_map.py --repo .", job)
         self.assertIn("['commit'] = 'main'", job)
         self.assertIn('test "$status" -eq 1', job)
+        self.assertIn("tools/build_corpus_map_v2_inventory.py --check", job)
+        self.assertIn("python3 -B -m unittest tools.test_corpus_map_v2_inventory -v", job)
+        self.assertIn("--map reviews/corpus-map-v2/corpus-map-v2.inventory-candidate.json --repo .", job)
         self.assertNotIn("|| true", job)
         self.assertNotIn("continue-on-error", job)
 

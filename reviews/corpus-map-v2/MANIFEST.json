@@ -1,0 +1,241 @@
+{
+  "record_type": "knowledge-corpus-map-v2-inventory-candidate-manifest/1",
+  "muneral_task": "ba97d5d1-3a0c-4949-8dde-1c5522be167c",
+  "status": "candidate-only; not published, not indexed, no source inspected by this build",
+  "base_map": {
+    "path": "reference/foundations/corpus-map.json",
+    "blob": "a7b2fb8cde305b8fe4145df1ee7d7179478fdd60",
+    "sha256": "a3b45fcfc6f51f79b5cae586b3dc4e3d07897377ce69b2cd838c60dd0c4d66fc"
+  },
+  "inventory": {
+    "repository": "Arcanada-one/knowledge-contract",
+    "commit": "5e1837a0fc676f89103b3b9f06a38bfb39ab7a66",
+    "path": "reviews/bibliography-v2/V2_REFERENCES.tsv",
+    "blob": "578bf2395846b6b262bd1d0a4b95811704ade749",
+    "vendored_path": "reviews/corpus-map-v2/V2_REFERENCES.tsv",
+    "sha256": "ef6c301492fa999f86f559a1a71ac3c258142828aa149c28a1c50a07c03f26cc",
+    "rows": 74
+  },
+  "counts": {
+    "inventory_rows": 74,
+    "source_records": 34,
+    "excluded": 40,
+    "by_identifier_type": {
+      "doi": 29,
+      "url": 5,
+      "isbn": 0
+    },
+    "evidence_assessments": 0,
+    "claim_has_ground_edges": 0,
+    "ground_uses_source_edges": 0
+  },
+  "rules": [
+    "identifier is copied from the row text; no DOI, URL or ISBN is derived (an arXiv number is not turned into a URL)",
+    "title is the verbatim historical bibliography text, not a parsed title",
+    "retrieved_at is null: this build opened no source",
+    "historical_v2_label is the legacy verification label, a historical label only",
+    "zero approved claim/source pairs: no evidence assessment and no claim-has-ground or ground-uses-source edge"
+  ],
+  "excluded": [
+    {
+      "historical_v2_id": "V2-004",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-005",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-007",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-008",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-010",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-011",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-016",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-023",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-024",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-027",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-029",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-030",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-031",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-032",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-033",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-034",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-035",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-038",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-039",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-040",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-044",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-045",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-048",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-050",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-051",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-052",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-054",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-055",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-056",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-057",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-060",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-063",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-064",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-066",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-068",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-070",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-071",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-072",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": false
+    },
+    {
+      "historical_v2_id": "V2-073",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    },
+    {
+      "historical_v2_id": "V2-074",
+      "reason": "no DOI or URL stated in the inventory text",
+      "arxiv_id_in_text": true
+    }
+  ]
+}
