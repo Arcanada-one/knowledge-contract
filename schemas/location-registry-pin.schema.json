@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-contract.arcanada.ai/schemas/location-registry-pin.schema.json",
+  "title": "LocationRegistryPin/v1 (CANDIDATE)",
+  "description": "CANDIDATE separately versioned envelope that binds the EXACT BYTES of one LocationRegistry/v1 document by sha256 (KCLIVE-03, KC-Brain 6708734290 B). It is supplied by the caller from a TRUSTED source, never read from the registry it pins, and LocationRegistry/v1 itself gains no revision field. registry_revision is a free-form label and is NOT a pin: only registry_sha256, recomputed over the bytes actually read, pins. An authorised issuer/revision witness does not exist yet: issuer_witness MUST be absent or null and is reported NOT_MEASURED; this envelope never claims source admission.",
+  "type": "object",
+  "required": [
+    "schema",
+    "registry_revision",
+    "digest_domain",
+    "registry_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "LocationRegistryPin/v1"
+    },
+    "registry_revision": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Free-form label; non-authenticating."
+    },
+    "digest_domain": {
+      "const": "sha256-exact-bytes"
+    },
+    "registry_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "issuer_witness": {
+      "type": "null",
+      "description": "Reserved. No real issuer exists; any non-null value is refused."
+    }
+  },
+  "additionalProperties": false
+}

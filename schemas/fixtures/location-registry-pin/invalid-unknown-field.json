@@ -1,0 +1,7 @@
+{
+  "schema": "LocationRegistryPin/v1",
+  "registry_revision": "rev-synthetic-1",
+  "digest_domain": "sha256-exact-bytes",
+  "registry_sha256": "5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a",
+  "source_admitted": true
+}

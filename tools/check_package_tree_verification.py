@@ -4,7 +4,11 @@
 """Check a PackageTreeVerification/v1 document (CANDIDATE, KCLIVE-03).
 
 Structural only: a PASS says the document is well formed. It does not prove the scan was
-done, that bytes were delivered to a consumer, or that any receipt matched.
+done, that bytes were delivered to a consumer, that any receipt matched, or that the registry
+row was authenticated (registry_ref is an opaque, non-authenticating label). By rule a record
+exists only for a complete stable scan: this checker cannot see that, so a partial/changing scan
+must simply not produce a document. runtime_authorized=false, knowledge_admitted=false and
+kc2_admission=not_measured are constants; published_corpus_admission is not a field.
 """
 from __future__ import annotations
 
