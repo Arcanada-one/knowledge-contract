@@ -218,7 +218,19 @@ def build_scenarios() -> list[Scenario]:
     c2 = make_real(case_of("02"))
     add("real:contract-k-strict-is-refused-as-a-mutable-source", STRICT, False, False, c2, MUT, K.LEVEL_REFUSED)
     add("real:contract-k-diagnostic", DIAG, False, False, c2, set(), K.LEVEL_DIAGNOSTIC)
-    add("real:contract-in-fixture-mode-is-fixture-evidence", STRICT, True, False, c1, set(), K.LEVEL_FIXTURE)
+    # Agent-Brain 6712290533 R-KCAO-FIXTURE1: fixture mode is for the synthetic source system only; a real label under --fixture is a typed refusal in every mode and never a pass
+    FNS = {"KCAO-FIXTURE-NOT-SYNTHETIC"}
+    add("fixture-on-real:mutable-contract-strict", STRICT, True, False, c1, FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:mutable-contract-k-strict", STRICT, True, False, c2, FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:mutable-contract-strict-without-bytes", STRICT, True, False, c1, FNS, K.LEVEL_REFUSED, with_sidecars=False)
+    add("fixture-on-real:mutable-contract-diagnostic", DIAG, True, False, c1, FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:mutable-contract-structure", STRUCT, True, False, c1, FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:non-contract-profile-strict", STRICT, True, False, make_real(case_of("04")), FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:non-contract-profile-structure", STRUCT, True, False, make_real(case_of("04")), FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:future-profile-strict", STRICT, True, False, snapshot_case(K.ARGANA_SYSTEM), FNS, K.LEVEL_REFUSED)
+    add("fixture-on-real:require-work-item-strict", STRICT, True, True, c1, FNS, K.LEVEL_REFUSED)
+    # positive control: the synthetic label under fixture is unchanged
+    add("fixture-on-synthetic:contract-strict-still-passes-as-fixture-evidence", STRICT, True, False, case_of("01"), set(), K.LEVEL_FIXTURE)
     # no retained event source: a typed unavailable, never the structural pass and never a refusal-as-pass
     add("real:strict-without-bytes-is-unavailable", STRICT, False, False, c1, set(), K.LEVEL_UNAVAILABLE, "exact_bytes_unrecoverable",
         flags={"KCAO-FLAG-MUTABLE-LOCATOR", "KCAO-FLAG-NO-RETAINED-SOURCE"}, with_sidecars=False)
@@ -1032,6 +1044,105 @@ class BoundsAndIoTests(unittest.TestCase):
         self.assertEqual(structure(b'{"a": NaN}').codes, {"KCAO-READ"})
         self.assertEqual(structure(b"\xff").codes, {"KCAO-READ"})
         self.assertEqual(structure(b"[]").codes, {"KCAO-SCHEMA"})
+
+
+class FixtureIsSyntheticOnlyTests(unittest.TestCase):
+    """Agent-Brain 6712290533 R-KCAO-FIXTURE1: `fixture=True` / `--fixture` is accepted only for the synthetic source system; a real-labelled input is never `fixture-evidence` and never exit 0.
+    Both fail-closed halves are tested: (b) the typed refusal of a real label under fixture, and (a) the unconditional mutable-source refusal in strict-evidence."""
+
+    CODE = "KCAO-FIXTURE-NOT-SYNTHETIC"
+
+    def real(self, n="01"):
+        case = make_real(case_of(n))
+        return dumpb(case["obs"]), case["source"]
+
+    def test_the_real_label_with_mutable_bytes_and_fixture_is_refused_through_the_api(self):
+        data, src = self.real()
+        # the hash is the real hash and the same bytes agree in the diagnostic comparison: neither the digest nor a content guard can be what refuses
+        self.assertEqual(json.loads(data)["native_source"]["sha256"], fx.sha(src))
+        self.assertEqual(diagnostic(data, src, fixture=False).codes, set())
+        for n in ("01", "02"):
+            data, src = self.real(n)
+            r = CKA.check_strict(data, src, fixture=True)
+            self.assertEqual(r.codes, {self.CODE}, r.problems)
+            self.assertTrue(r.refused)
+            self.assertFalse(r.passed)
+            self.assertEqual(r.level, K.LEVEL_REFUSED)
+            self.assertNotEqual(r.level, K.LEVEL_FIXTURE)
+            self.assertIsNone(r.unavailable)
+
+    def test_the_real_label_with_mutable_bytes_and_fixture_is_refused_through_the_command_line(self):
+        case = make_real(case_of("01"))
+        with tempfile.TemporaryDirectory() as tmp:
+            rc, text = run_cli("--mode", "strict-evidence", "--fixture", *cli_files(case, tmp))
+            rc_nobytes, text_nobytes = run_cli("--mode", "strict-evidence", "--fixture", *cli_files({"obs": case["obs"]}, tmp))
+        for code, out in ((rc, text), (rc_nobytes, text_nobytes)):
+            self.assertEqual(code, 1, out)
+            self.assertIn(self.CODE, out)
+            self.assertNotIn("PASS_FIXTURE", out)
+            self.assertNotIn("KCAO_PASS", out)
+            self.assertNotIn("LEVEL fixture-evidence", out)
+            self.assertNotIn("KCAO_DIAGNOSTIC", out)
+
+    def test_a_real_label_under_fixture_is_refused_in_every_mode_and_for_every_profile(self):
+        for n in ("01", "02", "04", "05"):
+            case = make_real(case_of(n))
+            data = dumpb(case["obs"])
+            for label, r in (("strict", CKA.check_strict(data, case["source"], fixture=True)), ("diagnostic", CKA.check_diagnostic(data, case["source"], fixture=True)),
+                             ("structure", CKA.check_structure(data, fixture=True))):
+                with self.subTest(case=n, mode=label):
+                    self.assertEqual(r.codes, {self.CODE}, r.problems)
+                    self.assertFalse(r.passed)
+
+    def test_a_real_label_with_a_non_mutable_profile_and_fixture_is_refused_by_the_synthetic_only_rule(self):
+        """(b) on its own: register a hypothetical NON-mutable real profile; the mutable-source gate cannot apply, so only the synthetic-only rule can refuse."""
+        case = make_real(case_of("01"))
+        key = (K.ARGANA_SYSTEM, "ArganaContractRecord/v1")
+        saved = CKA.PROFILES[key]
+        CKA.PROFILES[key] = dict(saved, mutable=False)
+        try:
+            data = dumpb(case["obs"])
+            self.assertFalse(CKA._mutable(json.loads(data)))
+            self.assertEqual(CKA.check_diagnostic(data, case["source"], fixture=False).codes, set())  # the content agrees: only fixture can be wrong
+            r = CKA.check_strict(data, case["source"], fixture=True)
+            self.assertEqual(r.codes, {self.CODE}, r.problems)
+            self.assertFalse(r.passed)
+            self.assertNotEqual(r.level, K.LEVEL_FIXTURE)
+        finally:
+            CKA.PROFILES[key] = saved
+
+    def test_the_mutable_source_refusal_is_unconditional_in_strict_even_when_the_synthetic_only_rule_is_bypassed(self):
+        """(a) on its own: with the policy rule neutralised, strict-evidence still refuses real mutable bytes under fixture and never gives fixture-evidence."""
+        data, src = self.real()
+        saved = CKA._policy
+        CKA._policy = lambda record, fixture, flags: []
+        try:
+            r = CKA.check_strict(data, src, fixture=True)
+            self.assertEqual(r.codes, {"KCAO-SOURCE-MUTABLE"}, r.problems)
+            self.assertFalse(r.passed)
+            self.assertNotEqual(r.level, K.LEVEL_FIXTURE)
+            u = CKA.check_strict(data, None, fixture=True)
+            self.assertEqual((u.problems, u.level, u.passed), ((), K.LEVEL_UNAVAILABLE, False))
+            self.assertEqual(u.unavailable["reason"], "exact_bytes_unrecoverable")
+        finally:
+            CKA._policy = saved
+
+    def test_the_synthetic_fixture_positives_and_the_other_controls_are_unchanged(self):
+        for n in ("01", "02", "03", "04", "05", "08"):
+            case = case_of(n)
+            r = CKA.check_strict(dumpb(case["obs"]), case["source"], case.get("work"), fixture=True)
+            self.assertEqual((r.codes, r.level, r.passed), (set(), K.LEVEL_FIXTURE, True), n)
+        data, src = self.real()
+        self.assertEqual((diagnostic(data, src, fixture=False).codes, diagnostic(data, src, fixture=False).level), (set(), K.LEVEL_DIAGNOSTIC))
+        self.assertEqual(strict(data, src, fixture=False).codes, {"KCAO-SOURCE-MUTABLE"})
+        case = make_real(case_of("01"))
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(run_cli("--mode", "diagnostic-agreement", *cli_files(case, tmp))[0], 5)
+            self.assertEqual(run_cli("--mode", "strict-evidence", *cli_files(case, tmp))[0], 1)
+
+    def test_a_synthetic_label_still_needs_fixture_and_the_converse_code_is_unchanged(self):
+        case = case_of("01")
+        self.assertEqual(CKA.check_strict(dumpb(case["obs"]), case["source"], fixture=False).codes, {"KCAO-SYNTHETIC-NOT-FIXTURE"})
 
 
 class ScenarioTests(unittest.TestCase):

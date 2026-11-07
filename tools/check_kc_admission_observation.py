@@ -16,6 +16,8 @@ Three entry points, never one that can drop another's flags (`check_structure`, 
   source; a hash of bytes sampled now is content agreement only. Strict mode therefore never returns a pass for it: explicit mutable bytes are refused with `KCAO-SOURCE-MUTABLE`,
   and no retained event source at all is the typed unavailable `exact_bytes_unrecoverable`. No immutable source profile is registered (an `ArganaIntakeSnapshot/v1` candidate is not one:
   `KCAO-NATIVE-PROFILE`, `unsupported_source_shape`), so the only strict pass is the synthetic `fixture-evidence`.
+* fixture mode (`--fixture`) applies to synthetic sources only (Agent-Brain 6712290533 R-KCAO-FIXTURE1): it is accepted for the synthetic system and synthetic identities alone, and a real source system
+  with `--fixture` is refused in every mode with `KCAO-FIXTURE-NOT-SYNTHETIC`; the mutable-source refusal of strict-evidence is unconditional, with or without `--fixture`.
 * diagnostic-agreement: the same comparison of every emitted fact with the mutable bytes, kept for diagnosis only. Its level is `diagnostic-content-agreement`, it carries
   `KCAO-FLAG-NON-ADMISSIVE`, it is never `passed`, and its exit code is 5, not 0. It is not strict evidence and cannot be read as provenance or as a source observation.
 
@@ -259,7 +261,8 @@ def _run(data, source_bytes, work_item_bytes, mode: str, fixture: bool, require_
         if "work_item_id" in record:
             flags.append("KCAO-FLAG-WORK-ITEM-BYTES-NOT-SUPPLIED: the work item bytes were not read, so the binding is NOT_MEASURED")
         return _finish(record, flags, mode, LEVEL_STRUCTURE, require_work_item, verified_binding=False)
-    if mode == "strict-evidence" and not fixture and _mutable(record):
+    # unconditional: `fixture` never exempts a mutable real source (Agent-Brain 6712290533 R-KCAO-FIXTURE1)
+    if mode == "strict-evidence" and _mutable(record):
         return _mutable_source(record, source_bytes, flags)
     problems = _evidence(record, source_bytes, work_item_bytes, fixture, flags)
     if problems:
@@ -323,6 +326,9 @@ def _policy(record: dict, fixture: bool, flags: list[str]) -> list[str]:
         if not synthetic:
             return ["KCAO-FORGED: a synthetic work item binding cannot hang on a non-synthetic native source"]
         flags.append("KCAO-FLAG-SYNTHETIC-WORK-ITEM: the work item binding is a synthetic fixture")
+    if fixture and not synthetic:
+        return [f"KCAO-FIXTURE-NOT-SYNTHETIC: fixture mode applies to the synthetic source system {SYNTHETIC_SYSTEM!r} only; the real source system {system!r} is never a fixture and is never "
+                "reported as fixture evidence"]
     return []
 
 
