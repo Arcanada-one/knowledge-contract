@@ -98,7 +98,7 @@ jobs:
         run: |
           set -euo pipefail
           cd tools
-          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts test_document_classification -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts test_document_classification test_private_retention_readback -v
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail

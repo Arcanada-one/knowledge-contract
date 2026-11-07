@@ -2255,6 +2255,109 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "RET-R011",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "1. Purpose, boundary and rematch",
+      "text": "This leaf MUST NOT invent an X5 clean package or knowledge admission.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R001",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "The Live Lab private retention profile MUST name the authorized store contour (`holder_host`, `volume`, `store_root`), the id grammar (`d_<sha256>` for originals; package ids per LOC-R002), the digest domain (`sha256` of exact original or declared package root bytes), and the review-period retention obligation. Declaring a folder in prose MUST NOT assert deployment; measured binding requires a store layout observation.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_valid_fixtures"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R002",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "Originals and full OCR / package trees retained under the Source Library MUST remain separate from `kc-corpus` derived-artifact collection and from public publication catalogues. A private retention receipt MUST set `published_corpus_admission` to `not_applicable` or `not_measured` and MUST NOT claim public library acceptance.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_published_corpus_admission_outside_closed_set"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R003",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "2. Retention profile",
+      "text": "Retention pins for acceptance evidence MUST survive ordinary capacity and restart checks for the declared review period. Capacity alerts remain S1/S5; this profile MUST NOT silently delete a pinned object without a tombstone.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R004",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "Exact readback MUST accept only an opaque authorized object id (`d_<sha256>` or package id). It MUST resolve that id through the Location Registry when a registry row exists for the contour, otherwise through the Source Library allowlisted index (`index/by-id.jsonl` → `originals/<sha[0:2]>/<sha>` under the measured store root). Caller-supplied filesystem paths, Drive URLs or arbitrary fetch URLs MUST be refused. A readback receipt and its `resolution` object are closed: an unknown member MUST be refused, so a receipt cannot carry a path beside `path_disclosed=false`. That Boolean records the producer's statement; it does not authenticate that no path was disclosed elsewhere.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_path_disclosed",
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_unknown_receipt_or_resolution_field",
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_schema_and_checker_agree_on_every_case"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R005",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "A successful exact readback MUST recompute SHA-256 over the returned bytes, MUST require equality with the digest embedded in the original's source id (or the registry `verified_sha256` for a package), MUST record `size_bytes`, digest algorithm/domain, source/producer build when known, and MUST emit `PrivateExactReadbackReceipt/v1` with `content_exact=true`. A metadata-only HTTP 200 or a `content_hash` without body recompute is insufficient.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_digest_mismatch_vs_id",
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_size_bytes_that_is_not_a_nonnegative_integer"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R006",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "3. Opaque id resolution and exact readback",
+      "text": "Exact readback MUST fail closed when the authorization required for the operation is absent. Private membership MUST NOT be disclosed to unauthorized callers (unknown and unauthorized both answer as unavailable / not_found at the gateway). Browser/final-origin access is out of scope for this leaf (KCLIVE-19/20/23).",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R007",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "4. Unavailability and collection",
+      "text": "Intentionally collected or expired objects MUST produce an observable tombstone with state `collected` or `unavailable`, preserving the object id and prior digest when known. Consumers MUST surface that state and MUST NOT fabricate a green download or file link from historical metadata alone.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "RET-R008",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "4. Unavailability and collection",
+      "text": "A missing path without a tombstone is `missing` (distinct from `collected`). Corrupt bytes (digest mismatch) are `corrupt` and MUST NOT be served as exact content.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refusal_code_must_be_in_the_closed_set"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R009",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "5. Honesty and stage delivery",
+      "text": "Every retention profile, readback receipt and tombstone record under this specification MUST carry `runtime_authorized=false`, `knowledge_admitted=false` and `kc2_admission=not_measured` until a separately measured runtime and admission exist.",
+      "automated_test_references": [
+        "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_knowledge_admitted"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "RET-R010",
+      "document": "engineering/specifications/private-retention-readback/SPECIFICATION.md",
+      "section": "5. Honesty and stage delivery",
+      "text": "Merge of implementation is stage/batch only (DEC-AUP-0167). An author leaf MUST NOT push to `main`, force-push, or claim DONE/admission from author evidence alone.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",
