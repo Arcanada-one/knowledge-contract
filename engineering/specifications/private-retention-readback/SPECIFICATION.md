@@ -48,7 +48,7 @@ This specification fixes how **private** Live Lab originals and permitted deriva
 
 ## 3. Opaque id resolution and exact readback
 
-**RET-R004.** Exact readback MUST accept only an opaque authorized object id (`d_<sha256>` or package id). It MUST resolve that id through the Location Registry when a registry row exists for the contour, otherwise through the Source Library allowlisted index (`index/by-id.jsonl` → `originals/<sha[0:2]>/<sha>` under the measured store root). Caller-supplied filesystem paths, Drive URLs or arbitrary fetch URLs MUST be refused.
+**RET-R004.** Exact readback MUST accept only an opaque authorized object id (`d_<sha256>` or package id). It MUST resolve that id through the Location Registry when a registry row exists for the contour, otherwise through the Source Library allowlisted index (`index/by-id.jsonl` → `originals/<sha[0:2]>/<sha>` under the measured store root). Caller-supplied filesystem paths, Drive URLs or arbitrary fetch URLs MUST be refused. A readback receipt and its `resolution` object are closed: an unknown member MUST be refused, so a receipt cannot carry a path beside `path_disclosed=false`. That Boolean records the producer's statement; it does not authenticate that no path was disclosed elsewhere.
 
 **RET-R005.** A successful exact readback MUST recompute SHA-256 over the returned bytes, MUST require equality with the digest embedded in the original's source id (or the registry `verified_sha256` for a package), MUST record `size_bytes`, digest algorithm/domain, source/producer build when known, and MUST emit `PrivateExactReadbackReceipt/v1` with `content_exact=true`. A metadata-only HTTP 200 or a `content_hash` without body recompute is insufficient.
 

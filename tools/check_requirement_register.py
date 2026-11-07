@@ -102,6 +102,11 @@ def test_references(prefix, text):
             (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_path_disclosed"),
             (("recompute SHA-256",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_digest_mismatch_vs_id"),
             (("knowledge_admitted=false",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_knowledge_admitted"),
+            (("published_corpus_admission",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_published_corpus_admission_outside_closed_set"),
+            (("record `size_bytes`",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_size_bytes_that_is_not_a_nonnegative_integer"),
+            (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_unknown_receipt_or_resolution_field"),
+            (("`corrupt` and MUST NOT",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refusal_code_must_be_in_the_closed_set"),
+            (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_schema_and_checker_agree_on_every_case"),
         ],
     }
     for needles, reference in references.get(prefix, []):

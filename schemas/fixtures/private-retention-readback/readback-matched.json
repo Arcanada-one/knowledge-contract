@@ -14,6 +14,7 @@
     "path_disclosed": false
   },
   "outcome": "matched",
+  "published_corpus_admission": "not_measured",
   "producer_build": null,
   "source_revision": null,
   "runtime_authorized": false,

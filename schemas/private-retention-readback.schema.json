@@ -94,6 +94,7 @@
         "size_bytes",
         "resolution",
         "outcome",
+        "published_corpus_admission",
         "runtime_authorized",
         "knowledge_admitted",
         "kc2_admission"
@@ -109,16 +110,17 @@
         "size_bytes": { "type": "integer", "minimum": 0 },
         "resolution": {
           "type": "object",
-          "required": ["method"],
+          "required": ["method", "path_disclosed"],
           "properties": {
             "method": {
               "enum": ["location_registry", "source_library_index"]
             },
             "holder_host": { "type": "string" },
             "volume": { "type": "string" },
+            "role": { "type": ["string", "null"] },
             "path_disclosed": { "const": false }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "outcome": { "enum": ["matched", "refused"] },
         "refusal_code": {
@@ -133,13 +135,26 @@
             "path_injection_refused"
           ]
         },
+        "published_corpus_admission": {
+          "enum": ["not_applicable", "not_measured"]
+        },
         "producer_build": { "type": ["string", "null"] },
         "source_revision": { "type": ["string", "null"] },
         "runtime_authorized": { "const": false },
         "knowledge_admitted": { "const": false },
         "kc2_admission": { "const": "not_measured" }
       },
-      "additionalProperties": true
+      "allOf": [
+        {
+          "if": { "properties": { "outcome": { "const": "matched" } }, "required": ["outcome"] },
+          "then": { "not": { "required": ["refusal_code"] } }
+        },
+        {
+          "if": { "properties": { "outcome": { "const": "refused" } }, "required": ["outcome"] },
+          "then": { "required": ["refusal_code"] }
+        }
+      ],
+      "additionalProperties": false
     },
     {
       "title": "PrivateRetentionTombstone/v1",

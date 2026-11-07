@@ -12,6 +12,39 @@ from pathlib import Path
 
 SOURCE_ID = re.compile(r"^d_[0-9a-f]{64}$")
 PACKAGE_ID = re.compile(r"^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$")
+SHA256 = re.compile(r"^[0-9a-f]{64}$")
+# Closed sets shared with schemas/private-retention-readback.schema.json.
+REFUSAL_CODES = (
+    "not_found",
+    "unauthorized",
+    "corrupt",
+    "collected",
+    "unavailable",
+    "missing",
+    "invalid_id",
+    "path_injection_refused",
+)
+CORPUS_ADMISSION = ("not_applicable", "not_measured")  # RET-R002
+READBACK_KEYS = frozenset({
+    "schema",
+    "object_id",
+    "object_kind",
+    "content_exact",
+    "digest_algorithm",
+    "digest_domain",
+    "sha256",
+    "size_bytes",
+    "resolution",
+    "outcome",
+    "refusal_code",
+    "published_corpus_admission",
+    "producer_build",
+    "source_revision",
+    "runtime_authorized",
+    "knowledge_admitted",
+    "kc2_admission",
+})
+RESOLUTION_KEYS = frozenset({"method", "holder_host", "volume", "role", "path_disclosed"})
 
 
 def _fail(msg: str) -> None:
@@ -27,7 +60,9 @@ def check_honesty(doc: dict) -> None:
         _fail("kc2_admission must be not_measured")
 
 
-def check_object_id(oid: str) -> str:
+def check_object_id(oid: object) -> str:
+    if not isinstance(oid, str):
+        _fail(f"invalid object_id: {oid!r}")
     if SOURCE_ID.fullmatch(oid):
         return "original"
     if PACKAGE_ID.fullmatch(oid):
@@ -56,8 +91,13 @@ def check_profile(doc: dict) -> None:
 def check_readback(doc: dict) -> None:
     if doc.get("schema") != "PrivateExactReadbackReceipt/v1":
         _fail("schema must be PrivateExactReadbackReceipt/v1")
+    unknown = sorted(set(doc) - READBACK_KEYS)
+    if unknown:
+        _fail(f"unknown receipt field(s): {unknown}")
     check_honesty(doc)
-    kind = check_object_id(doc["object_id"])
+    if doc.get("published_corpus_admission") not in CORPUS_ADMISSION:
+        _fail("published_corpus_admission must be not_applicable or not_measured (RET-R002)")
+    kind = check_object_id(doc.get("object_id"))
     if doc.get("object_kind") != kind:
         _fail("object_kind does not match object_id")
     if doc.get("content_exact") is not True:
@@ -66,11 +106,19 @@ def check_readback(doc: dict) -> None:
         _fail("digest_algorithm must be sha256")
     if doc.get("digest_domain") != "sha256-exact-bytes":
         _fail("digest_domain must be sha256-exact-bytes")
-    if not re.fullmatch(r"[0-9a-f]{64}", doc.get("sha256") or ""):
+    sha = doc.get("sha256")
+    if not isinstance(sha, str) or not SHA256.fullmatch(sha):
         _fail("sha256 must be 64 lowercase hex")
-    if int(doc.get("size_bytes", -1)) < 0:
-        _fail("size_bytes must be >= 0")
-    resolution = doc.get("resolution") or {}
+    size = doc.get("size_bytes")
+    # A JSON integer only: no string, Boolean or fraction is coerced.
+    if type(size) is not int or size < 0:
+        _fail("size_bytes must be a non-negative JSON integer")
+    resolution = doc.get("resolution")
+    if not isinstance(resolution, dict):
+        _fail("resolution must be an object")
+    unknown = sorted(set(resolution) - RESOLUTION_KEYS)
+    if unknown:
+        _fail(f"unknown resolution field(s): {unknown} (a receipt never carries a path)")
     if resolution.get("method") not in ("location_registry", "source_library_index"):
         _fail("resolution.method invalid")
     if resolution.get("path_disclosed") is not False:
@@ -78,12 +126,12 @@ def check_readback(doc: dict) -> None:
     if doc.get("outcome") not in ("matched", "refused"):
         _fail("outcome invalid")
     if doc["outcome"] == "matched":
-        if doc.get("refusal_code"):
+        if "refusal_code" in doc:
             _fail("matched receipt must not carry refusal_code")
-        if kind == "original" and doc["sha256"] != doc["object_id"][2:]:
+        if kind == "original" and sha != doc["object_id"][2:]:
             _fail("original sha256 must equal digest embedded in object_id")
-    elif not doc.get("refusal_code"):
-        _fail("refused receipt requires refusal_code")
+    elif doc.get("refusal_code") not in REFUSAL_CODES:
+        _fail(f"refused receipt requires a refusal_code from {list(REFUSAL_CODES)}")
 
 
 def check_tombstone(doc: dict) -> None:
@@ -100,7 +148,9 @@ def check_tombstone(doc: dict) -> None:
         _fail("prior_sha256 must be null or 64 hex")
 
 
-def check_doc(doc: dict) -> str:
+def check_doc(doc: object) -> str:
+    if not isinstance(doc, dict):
+        _fail("document must be a JSON object")
     schema = doc.get("schema")
     if schema == "PrivateRetentionProfile/v1":
         check_profile(doc)
