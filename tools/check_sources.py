@@ -35,6 +35,34 @@ def register(sources_md: str) -> tuple[set[str], set[str]]:
     return paths, names
 
 
+def table_shape_errors(sources_md: str) -> list[str]:
+    """Reject detached pipe rows under a registered Markdown table.
+
+    GitHub Markdown ends a table at the first blank/non-row line; merely
+    scanning all pipe-prefixed lines incorrectly admits later orphan rows.
+    """
+    lines = sources_md.splitlines()
+    problems: list[str] = []
+    for i, line in enumerate(lines):
+        if line.strip().casefold() != "| source | author | uri | license | what was used | where |":
+            continue
+        if i + 1 >= len(lines) or not re.fullmatch(
+            r"\|(?:\s*:?-{3,}:?\s*\|){6}", lines[i + 1].strip()
+        ):
+            problems.append(f"SOURCES.md:{i + 1}: missing six-column table separator")
+            continue
+        active = True
+        for j in range(i + 2, len(lines)):
+            row = lines[j].strip()
+            if row.startswith("#"):
+                break
+            if not row.startswith("|"):
+                active = False
+            elif not active and row.count("|") >= 7:
+                problems.append(f"SOURCES.md:{j + 1}: detached source row outside Markdown table")
+    return problems
+
+
 def declared_entries(text: str) -> list[str] | None:
     """Front-matter `sources:` as a list of entries; ['none'] for none; None if absent or empty."""
     match = FRONT_RE.match(text)
@@ -69,7 +97,7 @@ def check(root: Path) -> list[str]:
     if not sources_md.is_file():
         return ["SOURCES.md is missing"]
     covered, names = register(sources_md.read_text(encoding="utf-8"))
-    problems: list[str] = []
+    problems: list[str] = table_shape_errors(sources_md.read_text(encoding="utf-8"))
     for top in ROOTS:
         base = root / top
         if not base.is_dir():
