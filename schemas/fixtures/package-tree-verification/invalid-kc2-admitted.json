@@ -1,0 +1,21 @@
+{
+  "schema": "PackageTreeVerification/v1",
+  "package_id": "d_abababababababababababababababababababababababababababababababab/pipe-1",
+  "digest_algorithm": "sha256",
+  "digest_domain": "sha256-tree-manifest-v1",
+  "tree_sha256": "3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c3c",
+  "member_count": 2,
+  "size_bytes": 9,
+  "resolution": {
+    "method": "location_registry",
+    "holder_host": "devs-fixture",
+    "volume": "/srv/fixture",
+    "role": "primary",
+    "registry_ref": "LocationRegistry/v1@rev-synthetic-1",
+    "path_disclosed": false
+  },
+  "outcome": "verified",
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "admitted"
+}

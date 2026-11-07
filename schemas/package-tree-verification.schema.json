@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-contract.arcanada.ai/schemas/package-tree-verification.schema.json",
+  "title": "PackageTreeVerification/v1 (CANDIDATE)",
+  "description": "CANDIDATE server-side static-scan observation of a package tree under digest_domain sha256-tree-manifest-v1 (KCLIVE-03, KC-Brain comments 6707986144 and 6708734290). Not a download, not a readback, not a PrivateExactReadbackReceipt/v1, and not a PrivatePackageReadbackReceipt/v1. It claims neither delivery to a consumer nor a matched receipt. A record exists ONLY after a complete, stable scan; a partial, changing, budget-exceeded or otherwise refused scan, or a registry-pin refusal, emits NO record (the typed refusal travels in the enclosing operation detail) and never a fabricated root or count. outcome=refused is valid only when a complete stable scan established a concrete mismatch to the expected root. Without an independently trusted registry-byte digest and an authorised issuer/revision witness this is a claimed-row tree observation, not source admission or a verified authorised registry resolution; no release gate or corpus admission may accept it. runtime_authorized, knowledge_admitted and kc2_admission are constants; there is no published_corpus_admission field (publication/admission and consumer delivery are separate evidence events). Resource budgets are operational limits with typed refusals, not schema bounds. Field names inside resolution and the closed refusal_code set are CANDIDATE choices.",
+  "type": "object",
+  "required": [
+    "schema",
+    "package_id",
+    "digest_algorithm",
+    "digest_domain",
+    "tree_sha256",
+    "member_count",
+    "size_bytes",
+    "resolution",
+    "outcome",
+    "runtime_authorized",
+    "knowledge_admitted",
+    "kc2_admission"
+  ],
+  "properties": {
+    "schema": {
+      "const": "PackageTreeVerification/v1"
+    },
+    "package_id": {
+      "type": "string",
+      "pattern": "^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$"
+    },
+    "digest_algorithm": {
+      "const": "sha256"
+    },
+    "digest_domain": {
+      "const": "sha256-tree-manifest-v1"
+    },
+    "tree_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "member_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Mathematical integer > 0 from a completed non-empty scan; never rounded or capped (operational budgets are enforced separately)."
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Mathematical non-negative integer; never rounded or capped."
+    },
+    "resolution": {
+      "type": "object",
+      "required": [
+        "method",
+        "holder_host",
+        "volume",
+        "role",
+        "registry_ref",
+        "path_disclosed"
+      ],
+      "properties": {
+        "method": {
+          "const": "location_registry"
+        },
+        "holder_host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "volume": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registry_ref": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Opaque, NON-AUTHENTICATING label (for example LocationRegistry/v1@<label>). It does not pin or authenticate the registry bytes; that is the job of a separately versioned LocationRegistryPin/v1 envelope held outside this record."
+        },
+        "path_disclosed": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "outcome": {
+      "enum": [
+        "verified",
+        "refused"
+      ]
+    },
+    "refusal_code": {
+      "enum": [
+        "not_found",
+        "unauthorized",
+        "corrupt",
+        "collected",
+        "unavailable",
+        "missing",
+        "invalid_id",
+        "path_injection_refused"
+      ]
+    },
+    "runtime_authorized": {
+      "const": false,
+      "description": "Constant false in every emitted record."
+    },
+    "knowledge_admitted": {
+      "const": false,
+      "description": "Constant false in every emitted record."
+    },
+    "kc2_admission": {
+      "const": "not_measured",
+      "description": "Constant not_measured in every emitted record."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "verified"
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "refusal_code"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "outcome": {
+            "const": "refused"
+          }
+        },
+        "required": [
+          "outcome"
+        ]
+      },
+      "then": {
+        "required": [
+          "refusal_code"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": false
+}
