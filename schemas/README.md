@@ -8,6 +8,10 @@ The [observation and change-event schema](contract-observation.schema.json) impl
 
 The [document classification schema](document-classification.schema.json) implements `DocumentClassification/v1` for the `kc-doc-class/1` canon of the repository-only [pipeline specification](../engineering/specifications/pipeline/SPECIFICATION.md), with [synthetic fixtures](fixtures/document-classification/) and a [checker](../tools/check_document_classification.py).
 
+The [location registry schema](location-registry.schema.json) implements `LocationRegistry/v1`, `LocationRegistryRow/v1` and `LocationVerifyReceipt/v1` for the repository-only [location-registry specification](../engineering/specifications/location-registry/SPECIFICATION.md), with a [checker](../tools/check_location_registry.py) and [finite tests](../tools/test_location_registry.py). It does not claim a populated live store or KC2 admission.
+
+The [package index card schema](package-index-card.schema.json) implements `PackageIndexCard/v1` and `PackageIngestReceipt/v1` for the repository-only [package-index-ingest specification](../engineering/specifications/package-index-ingest/SPECIFICATION.md), with a [checker](../tools/check_package_index_card.py) and [finite tests](../tools/test_package_index_card.py). Cards carry source/package ids, span and licence/publication state; live Scrutator search, S3 resolve and edge query stay `not_measured` until measured.
+
 The [requirement register](../engineering/specifications/requirements.json) lists stable normative identifiers and distinguishes available finite regression examples from implementation-specific evidence still required.
 
 This directory does not claim to contain a stable universal Knowledge Contract wire schema. Historical bounded profiles retain their identifiers and measured scope in the [compatibility record](../appendices/source-map/APPENDIX.md#4-protocol-compatibility). A newly published schema must state its exact profile, interpretation, migration rules and conformance evidence; an editorial edition number is not a wire-format release.
