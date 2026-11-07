@@ -1,0 +1,30 @@
+{
+  "claims": {
+    "consumer_delivery": "NOT_MEASURED",
+    "issuer_authority": "NOT_MEASURED",
+    "publication": "NOT_MEASURED",
+    "runtime_authorization": "NOT_MEASURED",
+    "source_admission": "NOT_MEASURED"
+  },
+  "claims_scope": "resolver-outcome-observation-only",
+  "missing": [
+    {
+      "capability_token": "synthetic-capability"
+    }
+  ],
+  "native_source": {
+    "digest_domain": "sha256-exact-bytes",
+    "record_id": "synthetic:record-c4",
+    "recorded_at": "2026-01-01T00:00:00Z",
+    "sha256": "17c51439143e5d18e52271d7fd1886421d65ae1a53685c1b76b4b16cfd3b3bd1",
+    "source_schema": "SyntheticNativeDecision/v1",
+    "system": "synthetic-fixture"
+  },
+  "resolver_outcome": "underdetermined",
+  "resolver_verdict": "U",
+  "schema": "KCAdmissionObservation/v1",
+  "status": "observed",
+  "subject": {
+    "task_id": "synthetic:task-c4"
+  }
+}

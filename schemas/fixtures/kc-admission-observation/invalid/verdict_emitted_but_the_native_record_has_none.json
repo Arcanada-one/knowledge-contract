@@ -1,0 +1,25 @@
+{
+  "claims": {
+    "consumer_delivery": "NOT_MEASURED",
+    "issuer_authority": "NOT_MEASURED",
+    "publication": "NOT_MEASURED",
+    "runtime_authorization": "NOT_MEASURED",
+    "source_admission": "NOT_MEASURED"
+  },
+  "claims_scope": "resolver-outcome-observation-only",
+  "native_source": {
+    "digest_domain": "sha256-exact-bytes",
+    "record_id": "synthetic:record-c8",
+    "sha256": "903e35bea72ea7f6e854e11da24468db651f4d74f6301d025f1e5968a3036a3b",
+    "source_schema": "SyntheticNativeDecision/v1",
+    "system": "synthetic-fixture"
+  },
+  "refusal_code": "SYNTHETIC_PRE_RESOLVER_REFUSAL",
+  "resolver_outcome": "refusal",
+  "resolver_verdict": "F",
+  "schema": "KCAdmissionObservation/v1",
+  "status": "observed",
+  "subject": {
+    "task_id": "synthetic:task-c8"
+  }
+}

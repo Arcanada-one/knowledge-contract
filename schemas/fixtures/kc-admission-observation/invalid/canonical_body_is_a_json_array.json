@@ -1,0 +1,26 @@
+{
+  "claims": {
+    "consumer_delivery": "NOT_MEASURED",
+    "issuer_authority": "NOT_MEASURED",
+    "publication": "NOT_MEASURED",
+    "runtime_authorization": "NOT_MEASURED",
+    "source_admission": "NOT_MEASURED"
+  },
+  "claims_scope": "resolver-outcome-observation-only",
+  "contract_digest": "sha256:eec15c0b4ac9a4d6ba3d415c147b2c3d126ff32671dde0aaf2d350be6b73b093",
+  "native_source": {
+    "digest_domain": "sha256-exact-bytes",
+    "record_id": "synthetic:sha256:eec15c0b4ac9a4d6ba3d415c147b2c3d126ff32671dde0aaf2d350be6b73b093",
+    "sha256": "b22b85033e8063011eb7da99c0d6c8d010c60558ea31ca506d62da39f279ae4d",
+    "source_schema": "ArganaContractRecord/v1",
+    "system": "synthetic-fixture"
+  },
+  "obligations": [],
+  "resolver_outcome": "contract",
+  "resolver_verdict": "T",
+  "schema": "KCAdmissionObservation/v1",
+  "status": "observed",
+  "subject": {
+    "task_id": "synthetic:task-m1"
+  }
+}
