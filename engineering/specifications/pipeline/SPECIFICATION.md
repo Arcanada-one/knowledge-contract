@@ -57,7 +57,7 @@ A stage is *finished* when its outcome is `done`. A `skipped` stage is not finis
 
 **PIP-R002.** The pipeline key of a document MUST be `d_` followed by the lowercase hexadecimal SHA-256 of the exact bytes of the original file, as Doclab already writes it, and every receipt of the chain MUST carry that key unchanged.
 
-A changed source is a new document with a new key; it is never an edit of the old one. Human-facing names (a book slug, a package identifier, work, edition and representation identifiers) are names that map to the key in the library registry; a location (a Drive identifier, a path, a server mirror) is never an identifier. The library of books moved from one Drive folder to another with every key intact, which is the case this rule exists for.
+A changed source is a new document with a new key; it is never an edit of the old one. Human-facing names (a book slug, a package identifier, work, edition and representation identifiers) are names that map to the key in the library registry; a location (a Drive identifier, a path, a server mirror) is never an identifier. The library of books moved from one Drive folder to another with every key intact, which is the case this rule exists for. Physical copies are addressed by the repository-only [location registry](../location-registry/SPECIFICATION.md): cards keep the key; the registry alone holds host, volume and path.
 
 **PIP-R003.** The `intake` receipt MUST list exactly one input with role `source`, and it MUST be the digest that the key names; a chain whose key is not the digest of its own source is invalid. An `intake` that did not finish and lists no source is not judged.
 

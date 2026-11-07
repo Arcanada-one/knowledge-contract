@@ -1,0 +1,6 @@
+{
+  "schema": "LocationRegistry/v1",
+  "contour": "arcana-dbs:/srv/source-library",
+  "entries": [],
+  "notes": "Synthetic empty registry; not a populated library claim."
+}
