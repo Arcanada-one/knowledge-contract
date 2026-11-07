@@ -15,7 +15,7 @@ status: "author primary-text reading; proposed comparison only; not independentl
 
 ACON explicitly applies two LLM-based context reductions: older action/observation history above a threshold (§3.2, eq. 3), and large current observations above another threshold (§3.2, eq. 4). Its compressor guidance is refined using contrasts between successful full-context and unsuccessful compressed-context agent trajectories (§3.3), without changing the base agent's weights. A student compressor can be trained separately (§3.4).
 
-The empirical setting (§4.1) consists of AppWorld, OfficeBench and multi-objective QA. In the AppWorld comparison (§4.2, Table 1), the reported no-compression task score is 56.0 at 9.93k peak tokens, versus 56.5 at 7.33k peak tokens for ACON's two-step history compressor. Average interaction steps rise from 16.14 to 22.82 in those rows. Those are **authors' benchmark measurements**, not our own and not per-task semantic-preservation certificates.
+The empirical setting (§4.1) consists of AppWorld, OfficeBench and multi-objective QA. In the AppWorld comparison (§4.2, Table 1), the reported no-compression task score is 56.0 at 9.93k peak tokens, versus 56.5 at 7.33k peak tokens for ACON's history compression with two-stage guideline optimization (utility then compression, UT+CO). Average interaction steps rise from 16.14 to 22.82 in those rows. Those are **authors' benchmark measurements**, not our own and not per-task semantic-preservation certificates.
 
 ## Relevant exact manuscript boundaries
 
