@@ -1,0 +1,6 @@
+{
+  "code": "SYNTHETIC_REFUSAL",
+  "outcome": "refusal",
+  "synthetic": "native-decision",
+  "task_id": "synthetic:task-c5"
+}

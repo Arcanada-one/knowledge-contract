@@ -1,0 +1,28 @@
+{
+  "claims": {
+    "consumer_delivery": "NOT_MEASURED",
+    "issuer_authority": "NOT_MEASURED",
+    "publication": "NOT_MEASURED",
+    "runtime_authorization": "NOT_MEASURED",
+    "source_admission": "NOT_MEASURED"
+  },
+  "claims_scope": "resolver-outcome-observation-only",
+  "missing": [
+    {
+      "capability_token": "synthetic-capability"
+    }
+  ],
+  "native_source": {
+    "digest_domain": "sha256-exact-bytes",
+    "record_id": "synthetic:../../etc/passwd",
+    "sha256": "016a654992b20d919cbd08bfe1ac23cd74f003610484ee681a668ad239e3a52a",
+    "system": "synthetic-fixture"
+  },
+  "resolver_outcome": "underdetermined",
+  "resolver_verdict": "U",
+  "schema": "KCAdmissionObservation/v1",
+  "status": "observed",
+  "subject": {
+    "task_id": "synthetic:task-c4"
+  }
+}
