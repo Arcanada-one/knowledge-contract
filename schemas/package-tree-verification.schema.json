@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://knowledge-contract.arcanada.ai/schemas/package-tree-verification.schema.json",
+  "title": "PackageTreeVerification/v1 (CANDIDATE)",
+  "description": "CANDIDATE server-side static-scan observation of a package tree under digest_domain sha256-tree-manifest-v1 (KCLIVE-03, KC-Brain comment 6707986144). Not a download, not a readback, not a PrivateExactReadbackReceipt/v1, and not a PrivatePackageReadbackReceipt/v1. It claims neither delivery to a consumer nor a matched receipt. Field names inside resolution, the closed refusal_code set, the absence of upper bounds and the absence of any refused record without a scanned tree are CANDIDATE choices pending KC-Brain acceptance.",
+  "type": "object",
+  "required": [
+    "schema", "package_id", "digest_algorithm", "digest_domain", "tree_sha256", "member_count",
+    "size_bytes", "resolution", "outcome", "runtime_authorized", "knowledge_admitted", "kc2_admission"
+  ],
+  "properties": {
+    "schema": { "const": "PackageTreeVerification/v1" },
+    "package_id": { "type": "string", "pattern": "^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$" },
+    "digest_algorithm": { "const": "sha256" },
+    "digest_domain": { "const": "sha256-tree-manifest-v1" },
+    "tree_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "member_count": { "type": "integer", "minimum": 1 },
+    "size_bytes": { "type": "integer", "minimum": 0 },
+    "resolution": {
+      "type": "object",
+      "required": ["method", "holder_host", "volume", "role", "registry_ref", "path_disclosed"],
+      "properties": {
+        "method": { "const": "location_registry" },
+        "holder_host": { "type": "string", "minLength": 1 },
+        "volume": { "type": "string", "minLength": 1 },
+        "role": { "type": ["string", "null"] },
+        "registry_ref": { "type": "string", "minLength": 1 },
+        "path_disclosed": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "outcome": { "enum": ["verified", "refused"] },
+    "refusal_code": {
+      "enum": [
+        "not_found", "unauthorized", "corrupt", "collected", "unavailable", "missing", "invalid_id",
+        "path_injection_refused"
+      ]
+    },
+    "runtime_authorized": { "const": false },
+    "knowledge_admitted": { "const": false },
+    "kc2_admission": { "const": "not_measured" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "outcome": { "const": "verified" } }, "required": ["outcome"] },
+      "then": { "not": { "required": ["refusal_code"] } }
+    },
+    {
+      "if": { "properties": { "outcome": { "const": "refused" } }, "required": ["outcome"] },
+      "then": { "required": ["refusal_code"] }
+    }
+  ],
+  "additionalProperties": false
+}
