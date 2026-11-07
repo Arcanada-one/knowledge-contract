@@ -17,6 +17,7 @@
   },
   "obligations": [],
   "resolver_outcome": "contract",
+  "resolver_verdict": "T",
   "schema": "KCAdmissionObservation/v1",
   "status": "observed",
   "subject": {
@@ -24,8 +25,8 @@
   },
   "work_item_binding": {
     "digest_domain": "sha256-exact-bytes",
-    "record_id": "synthetic:work-item-c3",
-    "sha256": "0e68f165c2876ea3ce389bab4f7943d261350b9ce745306d37744cc4d74bfacb",
+    "record_id": "synthetic:evidence-c3",
+    "sha256": "9c965c57e9b80cffa3e856369cc3446e535a642f121c4982dc3af797730a2ae7",
     "system": "synthetic-fixture"
   },
   "work_item_id": "synthetic:work-item-c3"

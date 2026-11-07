@@ -1,0 +1,21 @@
+{
+  "blueprints": [],
+  "budget_envelope": {},
+  "digest": "sha256:7e93678e1d6838a545415461f0f467f9186f16753f87407e249b61c8ba41d808",
+  "kc2": {
+    "reduction": "synthetic",
+    "revision": null,
+    "snapshot": "synthetic-snapshot",
+    "verdict": "T"
+  },
+  "obligations": [],
+  "other_pinned": [],
+  "request": {
+    "goal": "synthetic goal",
+    "task_id": "synthetic:task-c1"
+  },
+  "roles": [],
+  "schema": "ArganaContractRecord/v1",
+  "skills": [],
+  "stored_at_utc": "2026-01-01T00:00:00Z"
+}

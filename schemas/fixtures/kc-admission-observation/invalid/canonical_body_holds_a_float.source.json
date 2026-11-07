@@ -1,0 +1,27 @@
+{
+  "blueprints": [],
+  "budget_envelope": {},
+  "canonical": {
+    "body_b64": "eyJhIjoxLjV9",
+    "closure_manifest_b64": "e30=",
+    "length": 11,
+    "rule": "sha256(canonical_json(body) || canonical_json(closure_manifest))"
+  },
+  "digest": "sha256:48b4fddd453335a13482127d5aa5e5c1589873637127ec0111bc6f4a9c730a74",
+  "kc2": {
+    "reduction": "synthetic",
+    "revision": null,
+    "snapshot": "synthetic-snapshot",
+    "verdict": "T"
+  },
+  "obligations": [],
+  "other_pinned": [],
+  "request": {
+    "goal": "synthetic goal",
+    "task_id": "synthetic:task-m1"
+  },
+  "roles": [],
+  "schema": "ArganaContractRecord/v1",
+  "skills": [],
+  "stored_at_utc": "2026-01-01T00:00:00Z"
+}

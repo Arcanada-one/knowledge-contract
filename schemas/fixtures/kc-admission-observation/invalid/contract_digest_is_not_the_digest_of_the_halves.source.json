@@ -3,11 +3,11 @@
   "budget_envelope": {},
   "canonical": {
     "body_b64": "eyJzeW50aGV0aWNfYm9keSI6ImFsdGVyZWQifQ==",
-    "closure_manifest_b64": "eyJzeW50aGV0aWNfbWFuaWZlc3QiOiJtMSJ9",
+    "closure_manifest_b64": "eyJzeW50aGV0aWNfbWFuaWZlc3QiOiJjMSJ9",
     "length": 50,
     "rule": "sha256(canonical_json(body) || canonical_json(closure_manifest))"
   },
-  "digest": "sha256:bff8f0a6f43579655ef8fd0508264cc54b6108ce7193e2c3e8dbe1f9868602a3",
+  "digest": "sha256:7e93678e1d6838a545415461f0f467f9186f16753f87407e249b61c8ba41d808",
   "kc2": {
     "reduction": "synthetic",
     "revision": null,
@@ -18,7 +18,7 @@
   "other_pinned": [],
   "request": {
     "goal": "synthetic goal",
-    "task_id": "synthetic:task-m1"
+    "task_id": "synthetic:task-c1"
   },
   "roles": [],
   "schema": "ArganaContractRecord/v1",

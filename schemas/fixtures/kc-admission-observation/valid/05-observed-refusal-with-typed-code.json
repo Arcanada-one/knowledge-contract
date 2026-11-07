@@ -10,7 +10,8 @@
   "native_source": {
     "digest_domain": "sha256-exact-bytes",
     "record_id": "synthetic:record-c5",
-    "sha256": "7514584865844d2c55bc4004b9875ad0dd81575ca740bdaed8ae6f9f88d828fc",
+    "sha256": "1be417625a404a0b09374a8717d7db8037d98d4227706da6690fd49a74096ab0",
+    "source_schema": "SyntheticNativeDecision/v1",
     "system": "synthetic-fixture"
   },
   "refusal_code": "SYNTHETIC_REFUSAL",

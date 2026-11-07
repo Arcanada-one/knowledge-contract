@@ -17,6 +17,7 @@
   },
   "obligations": [],
   "resolver_outcome": "contract",
+  "resolver_verdict": "T",
   "schema": "KCAdmissionObservation/v1",
   "status": "observed",
   "subject": {

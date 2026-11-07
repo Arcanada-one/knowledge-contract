@@ -15,7 +15,9 @@
   "native_source": {
     "digest_domain": "sha256-exact-bytes",
     "record_id": "record-without-prefix",
-    "sha256": "016a654992b20d919cbd08bfe1ac23cd74f003610484ee681a668ad239e3a52a",
+    "recorded_at": "2026-01-01T00:00:00Z",
+    "sha256": "c7b262e3f3fc032dbb5fe580e17fee793011b8908bc403b2ae86870ab86e79a0",
+    "source_schema": "SyntheticNativeDecision/v1",
     "system": "synthetic-fixture"
   },
   "resolver_outcome": "underdetermined",

@@ -7,19 +7,21 @@
     "source_admission": "NOT_MEASURED"
   },
   "claims_scope": "resolver-outcome-observation-only",
-  "contract_digest": "sha256:bff8f0a6f43579655ef8fd0508264cc54b6108ce7193e2c3e8dbe1f9868602a3",
+  "contract_digest": "sha256:7e93678e1d6838a545415461f0f467f9186f16753f87407e249b61c8ba41d808",
   "native_source": {
     "digest_domain": "sha256-exact-bytes",
-    "record_id": "synthetic:sha256:bff8f0a6f43579655ef8fd0508264cc54b6108ce7193e2c3e8dbe1f9868602a3",
-    "sha256": "5176ca411e87da54013235bb8556e01243366cbe10c6412dbfa1ca54c81695ed",
+    "record_id": "synthetic:sha256:7e93678e1d6838a545415461f0f467f9186f16753f87407e249b61c8ba41d808",
+    "recorded_at": "2026-01-01T00:00:00Z",
+    "sha256": "c4c63d18c0daf5115e9f70b59dfe6a48c10becaedb7981a011865fbe4d1edfb3",
     "source_schema": "ArganaContractRecord/v1",
     "system": "synthetic-fixture"
   },
   "obligations": [],
   "resolver_outcome": "contract",
+  "resolver_verdict": "T",
   "schema": "KCAdmissionObservation/v1",
   "status": "observed",
   "subject": {
-    "task_id": "synthetic:task-m1"
+    "task_id": "synthetic:task-c1"
   }
 }

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://contract.place/schemas/kc-admission-observation.schema.json",
   "title": "KCAdmissionObservation/v1 (CANDIDATE)",
-  "description": "CANDIDATE closed record of ONE observed native resolver outcome (KCLIVE-01, KC-Brain decision comment 6710410432 on Arcanada-one/arcanada-shared). It is separate from BookPackage/2, PackageTreeVerification/v1, PrivateExactReadbackReceipt/v1 and any runtime authority receipt. status=observed means a persisted NATIVE record was read and its exact bytes were hashed (sha256-exact-bytes of the same bytes that were parsed); status=unavailable means no durable verifiable source record exists and carries a typed reason, never a synthesized success. SCHEMA VALIDITY NEVER MEANS ADMISSION READY: claims_scope is fixed to resolver-outcome-observation-only and issuer_authority, source_admission, runtime_authorization, consumer_delivery and publication are all NOT_MEASURED; there is no authorized/admitted/publishable or other success boolean. A matching native_source.sha256 shows only that the supplied bytes were the bytes parsed; it does not establish the origin of the expected hash, an issuer, a source revision or admission. Field names marked PROVISIONAL are implementer-chosen pending KC-Brain. Cross-field rules are in tools/check_kc_admission_observation.py; hosted structural checks, native integration, consumer readback and issuer authority are separate proof stages. Task descriptions and private payloads never appear here.",
+  "description": "CANDIDATE closed record of ONE observed native resolver outcome (KCLIVE-01, KC-Brain decision comment 6710410432 on Arcanada-one/arcanada-shared). It is separate from BookPackage/2, PackageTreeVerification/v1, PrivateExactReadbackReceipt/v1 and any runtime authority receipt. status=observed means a persisted NATIVE record was read and its exact bytes were hashed (sha256-exact-bytes of the same bytes that were parsed); status=unavailable means no durable verifiable source record exists and carries a typed reason, never a synthesized success. SCHEMA VALIDITY NEVER MEANS ADMISSION READY: claims_scope is fixed to resolver-outcome-observation-only and issuer_authority, source_admission, runtime_authorization, consumer_delivery and publication are all NOT_MEASURED; there is no authorized/admitted/publishable or other success boolean. A matching native_source.sha256 shows only that the supplied bytes were the bytes parsed; it does not establish the origin of the expected hash, an issuer, a source revision or admission. The eight formerly provisional choices are resolved by KC-Brain 6711021786; message_id is removed. The native Argana digest-named contract record is mutable metadata and cannot be an immutable intake event; until native capture exists the honest live result is unavailable. Two modes exist in tools/check_kc_admission_observation.py: structure-only reports structural validity alone, strict-evidence compares every emitted fact with supported native bytes; synthetic labels and the work-item binding are valid only in explicit fixture mode. Cross-field rules are in tools/check_kc_admission_observation.py; hosted structural checks, native integration, consumer readback and issuer authority are separate proof stages. Task descriptions and private payloads never appear here.",
   "type": "object",
   "oneOf": [
     {"$ref": "#/$defs/unavailable"},
@@ -37,37 +37,37 @@
       }
     },
     "digest_domain": {"const": "sha256-exact-bytes"},
-    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}(?![\\s\\S])"},
     "native_source": {
       "type": "object",
-      "description": "PROVISIONAL names. Where the native source persisted the decision: system, an immutable record id/ref, the actual recorded-at if the record has one, and the sha256 of the exact record bytes that were parsed.",
+      "description": "Names accepted by KC-Brain 6711021786. Where the native source persisted the decision: system, an id that resolves the immutable evidence revision (not a mutable current locator), the actual recorded-at if the record has one, and the sha256 of the exact record bytes that were parsed (the same bytes, parsed once). schema and time are copied exactly from a SUPPORTED source profile, never manufactured or normalized. strict-evidence requires source_schema, which names the supported profile together with system.",
       "additionalProperties": false,
       "required": ["system", "record_id", "digest_domain", "sha256"],
       "properties": {
-        "system": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$", "description": "Source system label. synthetic-fixture marks a fixture, never a native observation."},
-        "record_id": {"type": "string", "minLength": 1, "maxLength": 300, "description": "Immutable id or ref of the native record. Not a file path."},
-        "recorded_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$", "description": "Present only if the native record carries a time; never invented."},
+        "system": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}(?![\\s\\S])", "description": "Source system label. synthetic-fixture marks a fixture, never a native observation."},
+        "record_id": {"type": "string", "minLength": 1, "maxLength": 300, "description": "Id of the immutable evidence revision of the native record. Not a file path and not a mutable current locator."},
+        "recorded_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z(?![\\s\\S])", "description": "Present only if the native record carries a time; copied exactly from the supported source profile, never invented or normalized."},
         "digest_domain": {"$ref": "#/$defs/digest_domain"},
         "sha256": {"$ref": "#/$defs/sha256"},
-        "source_schema": {"type": "string", "minLength": 1, "maxLength": 100, "description": "Only if the native record genuinely carries a schema/version."}
+        "source_schema": {"type": "string", "minLength": 1, "maxLength": 100, "description": "Only if the native record genuinely carries a schema/version. With system it selects the supported native source profile; an unsupported pair is refused by strict-evidence."}
       }
     },
     "work_item_binding": {
       "type": "object",
-      "description": "PROVISIONAL. Source proof of the native Muneral write that created work_item_id: the immutable Muneral record id and the sha256 of the exact record bytes read. A resolver contract alone is not a work item.",
+      "description": "A candidate DESCRIPTOR, not proof. It names the retained write/readback evidence record (an identity different from the task id and from the work item id) and the sha256 of the exact bytes read. The source decoder must recover the work item id and the exact contract/task/intake correlation from those bytes. No native binding profile is approved yet: the live, non-fixture record omits work_item_id and work_item_binding, and a consumer that requires the binding gets unavailable/native_binding_unverified. A resolver contract alone is not a work item.",
       "additionalProperties": false,
       "required": ["system", "record_id", "digest_domain", "sha256"],
       "properties": {
-        "system": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$"},
+        "system": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}(?![\\s\\S])"},
         "record_id": {"type": "string", "minLength": 1, "maxLength": 300},
         "digest_domain": {"$ref": "#/$defs/digest_domain"},
         "sha256": {"$ref": "#/$defs/sha256"}
       }
     },
-    "verdict": {"enum": ["T", "K", "U", "F"], "description": "The measured resolver verdict as the native record states it, never inferred from an HTTP status and never paired with the outcome by this schema."},
+    "verdict": {"enum": ["T", "K", "U", "F"], "description": "The measured resolver verdict as the native record states it, never inferred from an HTTP status and never paired with the outcome by this schema. When the supported source genuinely records a verdict, the projection must carry it (strict-evidence)."},
     "obligation": {
       "type": "object",
-      "description": "PROVISIONAL, mirrors Argana IntakeOutcome.obligations items (src/argana/intake.py, key kind).",
+      "description": "Mirrors Argana IntakeOutcome.obligations items (src/argana/intake.py, key kind). Lossless only for source items that carry nothing but kind; any further native field is unsupported_source_shape, never dropped.",
       "additionalProperties": false,
       "required": ["kind"],
       "properties": {"kind": {"type": "string", "minLength": 1, "maxLength": 100}}
@@ -80,15 +80,15 @@
       "properties": {
         "schema": {"const": "KCAdmissionObservation/v1"},
         "status": {"const": "unavailable"},
-        "reason": {"enum": ["no_native_record", "outcome_not_persisted", "record_unreadable", "read_path_not_opted_in", "exact_bytes_unrecoverable"], "description": "PROVISIONAL enum. outcome_not_persisted: the outcome exists only in a transient response."},
-        "subject": {"$ref": "#/$defs/subject"},
+        "reason": {"enum": ["no_native_record", "outcome_not_persisted", "record_unreadable", "read_path_not_opted_in", "exact_bytes_unrecoverable", "native_record_invalid", "native_binding_unverified", "unsupported_source_shape"], "description": "Vocabulary ratified by KC-Brain 6711021786. A producer uses native_record_invalid, native_binding_unverified and unsupported_source_shape only after the stated retrieval/validation attempt. outcome_not_persisted: the outcome exists only in a transient response. native_binding_unverified: a consumer required the work item binding and no approved native binding profile exists. unsupported_source_shape: the native source carries fields (for example extra condition fields) that the projection cannot preserve losslessly. A submitted invalid observed message is a typed rejection, never silently rewritten into one of these."},
+        "subject": {"$ref": "#/$defs/subject", "description": "The REQUESTED target only. On an unavailable record it is never an observed identity claim."},
         "claims_scope": {"$ref": "#/$defs/claims_scope"},
         "claims": {"$ref": "#/$defs/claims"}
       }
     },
     "observed_contract": {
       "type": "object",
-      "description": "Observed native outcome contract. contract_digest only after the canonical halves recompute to it (checked by the tool, not by this schema).",
+      "description": "Observed native outcome contract. contract_digest only after the canonical halves parse strictly, are canonical, and recompute to it (checked by the tool, not by this schema).",
       "additionalProperties": false,
       "required": ["schema", "status", "subject", "native_source", "resolver_outcome", "contract_digest", "obligations", "claims_scope", "claims"],
       "dependentRequired": {"work_item_id": ["work_item_binding"], "work_item_binding": ["work_item_id"]},
@@ -97,10 +97,9 @@
         "status": {"const": "observed"},
         "subject": {"$ref": "#/$defs/subject"},
         "native_source": {"$ref": "#/$defs/native_source"},
-        "message_id": {"type": "string", "minLength": 1, "maxLength": 300, "description": "PROVISIONAL. Optional message/evidence identity; if present it must equal native_source.record_id."},
         "resolver_outcome": {"const": "contract"},
         "resolver_verdict": {"$ref": "#/$defs/verdict"},
-        "contract_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$", "description": "Mirrors the native digest form sha256:<64 hex>."},
+        "contract_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}(?![\\s\\S])", "description": "Mirrors the native digest form sha256:<64 hex>."},
         "obligations": {"type": "array", "items": {"$ref": "#/$defs/obligation"}, "description": "Existing resolver obligations are carried, never dropped; a K verdict needs at least one."},
         "work_item_id": {"type": "string", "minLength": 1, "maxLength": 200},
         "work_item_binding": {"$ref": "#/$defs/work_item_binding"},
@@ -120,13 +119,12 @@
         "status": {"const": "observed"},
         "subject": {"$ref": "#/$defs/subject"},
         "native_source": {"$ref": "#/$defs/native_source"},
-        "message_id": {"type": "string", "minLength": 1, "maxLength": 300},
         "resolver_outcome": {"const": "underdetermined"},
         "resolver_verdict": {"$ref": "#/$defs/verdict"},
         "missing": {
           "type": "array",
           "minItems": 1,
-          "description": "PROVISIONAL. Mirrors Argana IntakeOutcome.missing (one object per missing artifact; native example key capability_token).",
+          "description": "Mirrors Argana IntakeOutcome.missing (one object per missing artifact; key capability_token). Lossless only for source items that carry nothing but capability_token; any further native field is unsupported_source_shape, never dropped.",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -148,10 +146,9 @@
         "status": {"const": "observed"},
         "subject": {"$ref": "#/$defs/subject"},
         "native_source": {"$ref": "#/$defs/native_source"},
-        "message_id": {"type": "string", "minLength": 1, "maxLength": 300},
         "resolver_outcome": {"const": "refusal"},
         "resolver_verdict": {"$ref": "#/$defs/verdict"},
-        "refusal_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}$", "description": "Mirrors the native code form, e.g. CONFLICT_UNRESOLVED. Open typed string: native codes are not a closed list."},
+        "refusal_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{2,63}(?![\\s\\S])", "description": "Mirrors the native code form, e.g. CONFLICT_UNRESOLVED. Open typed string, but it must equal the supported native code exactly; uppercase syntax alone is not evidence."},
         "claims_scope": {"$ref": "#/$defs/claims_scope"},
         "claims": {"$ref": "#/$defs/claims"}
       }
