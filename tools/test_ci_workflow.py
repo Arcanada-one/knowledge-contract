@@ -72,6 +72,19 @@ class CiWorkflowTests(unittest.TestCase):
         for name in runners:
             self.assertIn("fetch-depth: 0", self.jobs[name], name)
 
+    def test_corpus_map_validator_runs_with_full_history_and_a_negative_control(self):
+        job = self.jobs["corpus-map"]
+        self.assertIn("fetch-depth: 0", job)
+        self.assertIn("python3 -B -m unittest tools.test_verify_corpus_map -v", job)
+        self.assertIn("tools/verify_corpus_map.py --repo .", job)
+        self.assertIn("['commit'] = 'main'", job)
+        self.assertIn('test "$status" -eq 1', job)
+        self.assertIn("tools/build_corpus_map_v2_inventory.py --check", job)
+        self.assertIn("python3 -B -m unittest tools.test_corpus_map_v2_inventory -v", job)
+        self.assertIn("--map reviews/corpus-map-v2/corpus-map-v2.inventory-candidate.json --repo .", job)
+        self.assertNotIn("|| true", job)
+        self.assertNotIn("continue-on-error", job)
+
     def test_security_audit_keeps_its_filter(self):
         self.assertIn("head.repo.full_name == github.repository", self.jobs["security-audit"])
 

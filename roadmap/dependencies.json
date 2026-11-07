@@ -1,0 +1,249 @@
+{
+  "kind": "roadmap-dependencies",
+  "revision": "2026-11-06.1",
+  "baseline_commit": "717c43deb514adc5b40f76837e7ee0fb2da37102",
+  "execution_authority": "Muneral",
+  "execution_bindings": "unverified; RM labels are not work-item IDs",
+  "target_dates": null,
+  "edge_semantics": "requires_output: reviewed prerequisite for dependent acceptance/execution, not for exploratory design; this DAG is not the complete manuscript-preparation scheduling policy",
+  "preparation_sequence_policy": "roadmap/FOUNDATIONS_RELEASE_PLAN.md sections 1, 3 and 7 govern F01–F06 default preparation order; ROADMAP.md section 2 defines the reviewable six-unit package threshold and exceptions for later explicit per-manuscript authorization, first-two-paper review, material corrections and roadmap site delivery. F IDs are not Muneral IDs. The distinct baseline KCLIVE exact-consumer pilot does not inherit RM-18 advanced geometry/hybrid retrieval dependencies.",
+  "nodes": [
+    {
+      "id": "RM-01",
+      "priority": "P0",
+      "content_owner": "KC-Brain",
+      "requires": []
+    },
+    {
+      "id": "RM-02",
+      "priority": "P0",
+      "content_owner": "KC-Brain",
+      "requires": []
+    },
+    {
+      "id": "RM-03",
+      "priority": "P0",
+      "content_owner": "KC-SWE",
+      "requires": []
+    },
+    {
+      "id": "RM-04",
+      "priority": "P0",
+      "content_owner": "KC-SWE",
+      "requires": []
+    },
+    {
+      "id": "RM-05",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01",
+        "RM-06"
+      ]
+    },
+    {
+      "id": "RM-06",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01"
+      ]
+    },
+    {
+      "id": "RM-07",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-05"
+      ]
+    },
+    {
+      "id": "RM-08",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01",
+        "RM-06",
+        "RM-07"
+      ]
+    },
+    {
+      "id": "RM-09",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-07",
+        "RM-08",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "RM-10",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-01"
+      ]
+    },
+    {
+      "id": "RM-11",
+      "priority": "P1",
+      "content_owner": "KC-SWE",
+      "requires": [
+        "RM-02",
+        "RM-09",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "RM-12",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01",
+        "RM-06",
+        "RM-07"
+      ]
+    },
+    {
+      "id": "RM-13",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-09",
+        "RM-10",
+        "RM-12"
+      ]
+    },
+    {
+      "id": "RM-14",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-07",
+        "RM-12",
+        "RM-13"
+      ]
+    },
+    {
+      "id": "RM-15",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-01",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "RM-16",
+      "priority": "P1",
+      "content_owner": "Agent-SWE",
+      "requires": [
+        "RM-11",
+        "RM-15"
+      ]
+    },
+    {
+      "id": "RM-17",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-07",
+        "RM-09",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "RM-18",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-14",
+        "RM-15",
+        "RM-17"
+      ]
+    },
+    {
+      "id": "RM-19",
+      "priority": "P1",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-10",
+        "RM-15"
+      ]
+    },
+    {
+      "id": "RM-20",
+      "priority": "P2",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-16",
+        "RM-18",
+        "RM-19"
+      ]
+    },
+    {
+      "id": "RM-21",
+      "priority": "P2",
+      "content_owner": "Agent-Brain",
+      "requires": [
+        "RM-12",
+        "RM-17"
+      ]
+    },
+    {
+      "id": "RM-22",
+      "priority": "P1",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01"
+      ]
+    },
+    {
+      "id": "RM-23",
+      "priority": "P2",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01",
+        "RM-02"
+      ]
+    },
+    {
+      "id": "RM-24",
+      "priority": "P2",
+      "content_owner": "KC-Brain",
+      "requires": [
+        "RM-01",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "RM-25",
+      "priority": "P0",
+      "content_owner": "KC-Brain",
+      "requires": []
+    }
+  ],
+  "advisory_links": [
+    {
+      "from": "RM-23",
+      "to": "RM-25",
+      "kind": "informs_not_blocks"
+    },
+    {
+      "from": "RM-20",
+      "to": "RM-24",
+      "kind": "informs_not_blocks"
+    },
+    {
+      "from": "RM-22",
+      "to": "RM-02",
+      "kind": "informs_not_blocks"
+    },
+    {
+      "from": "RM-08",
+      "to": "RM-12",
+      "kind": "informs_not_blocks"
+    }
+  ]
+}

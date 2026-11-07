@@ -4,10 +4,13 @@ sources: none
 
 # Scientific Papers
 
-Eight papers develop the formal and methodological argument. Each states its assumptions, conditional results, counterexamples, limits, and the engineering evidence relevant to its claims. These documents are publication edition 1.1; an edition is not a claim of external peer review or universal empirical effectiveness. The [correction record](../reviews/edition-corrections/REVIEW.md) identifies the review findings and their disposition.
+The reading catalogue now proposes a foundations introduction alongside the eight edition-1.1 papers. Start with [From Human Meaning to Contract-Governed Knowledge](human-meaning-and-computable-knowledge/PAPER.md), then follow the [typed corpus map](../reference/foundations/README.md). The new introduction is a research draft: adding a reading entry is not independent acceptance, a new released edition or corpus-index admission.
+
+The existing papers develop the formal and methodological argument. Each states its assumptions, conditional results, counterexamples, limits, and the engineering evidence relevant to its claims. An edition is not a claim of external peer review or universal empirical effectiveness. The [correction record](../reviews/edition-corrections/REVIEW.md) identifies the prior review findings and their disposition.
 
 | Document | Subject |
 | --- | --- |
+| [From Human Meaning to Contract-Governed Knowledge](human-meaning-and-computable-knowledge/PAPER.md) | Research draft: human interpretation, protected distinctions and the interfaces to agent use. |
 | [Semantic Objects, Context, and Conditions of Applicability](semantic-objects-and-context/PAPER.md) | A formal account of source interpretations, context, mandatory dependencies and conditions of applicability. |
 | [Constrained Transformations and the Limits of Knowledge Transfer](constrained-transformations/PAPER.md) | Conditional preservation, composition and reconstruction of knowledge under explicit observations and losses. |
 | [Retrieval, Coverage, and Context Composition under Resource Limits](retrieval-and-context-composition/PAPER.md) | Search coverage, finite context selection, dependency closure and the limits of greedy composition. |

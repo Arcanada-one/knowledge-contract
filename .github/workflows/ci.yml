@@ -49,6 +49,39 @@ jobs:
           assert manifest['kc2_runtime_admission'] == 'not_measured'
           print('CANDIDATE_EXPORT_READBACK_PASS rows=' + str(manifest['row_count']))
           PY
+  corpus-map:
+    name: corpus-map
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Corpus map validator controls
+        run: python3 -B -m unittest tools.test_verify_corpus_map -v
+      - name: Published corpus map and its pinned source objects
+        run: python3 -B tools/verify_corpus_map.py --repo .
+      - name: Inventory-first /2 candidate (KC-MAP2-1)
+        run: |
+          python3 -B -m unittest tools.test_corpus_map_v2_inventory -v
+          python3 -B tools/build_corpus_map_v2_inventory.py --check
+          python3 -B tools/verify_corpus_map.py --map reviews/corpus-map-v2/corpus-map-v2.inventory-candidate.json --repo .
+      - name: Negative control (an unpinned source must fail the validator)
+        # Exit 1 is a structural refusal; exit 0 or an input error (2) means the step proves nothing.
+        run: |
+          python3 -B - "$RUNNER_TEMP/unpinned-map.json" <<'PY'
+          import json, sys
+          d = json.load(open('reference/foundations/corpus-map.json', encoding='utf-8'))
+          next(iter(d['sources'].values()))['commit'] = 'main'
+          json.dump(d, open(sys.argv[1], 'w', encoding='utf-8'))
+          PY
+          set +e
+          python3 -B tools/verify_corpus_map.py --map "$RUNNER_TEMP/unpinned-map.json" > "$RUNNER_TEMP/unpinned.out"
+          status=$?
+          set -e
+          test "$status" -eq 1
+          grep -q '"structural_valid": false' "$RUNNER_TEMP/unpinned.out"
+
   book-package:
     name: book-package
     runs-on: ubuntu-latest

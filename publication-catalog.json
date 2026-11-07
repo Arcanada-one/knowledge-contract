@@ -4,6 +4,16 @@
   "documents": [
     {
       "type": "paper",
+      "slug": "human-meaning-and-computable-knowledge",
+      "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "title": "From Human Meaning to Contract-Governed Knowledge",
+      "summary": "A bounded foundation for preserving task-relevant distinctions between human expressions, formal representations, knowledge artifacts and authorized agent use.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "research-draft"
+    },
+    {
+      "type": "paper",
       "slug": "semantic-objects-and-context",
       "path": "papers/semantic-objects-and-context/PAPER.md",
       "title": "Semantic Objects, Context, and Conditions of Applicability",
