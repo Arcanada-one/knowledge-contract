@@ -15,7 +15,7 @@ description: "Separate identities for content, assessment and normative adoption
 
 ## Abstract
 
-Knowledge can change because its content is corrected, its evidence is reassessed, its use conditions change, or a community adopts a different rule. These changes should not be represented by one undifferentiated status. This paper separates object identity, content revision, representation, assessment, and normative adoption. It defines revision and admission operations, establishes conditional properties of pinned references and dependency-based reassessment, and explains why the adoption of a norm does not generally establish the truth of the claims it contains. A central distinction is between reproducing a historical state and authorizing a present use. The contribution is an explicit account of what changes, what remains attributable, and which previous checks can legitimately transfer. The account is suitable for finite implementation and counterexample testing, but does not establish complete dependency discovery, authenticated authority, or a universally correct governance policy.
+A knowledge record can be corrected, reassessed, rendered differently, or adopted as a rule. Treating these events as one change of status obscures which claims and permissions remain justified. This paper asks how knowledge revision can preserve that distinction. We separate object identity, content revision, representation, assessment, and normative adoption. Four conditional propositions concern exact historical selection, equal results from deterministic checks with equal complete inputs, dependency-based identification of reassessment candidates, and the non-entailment of contingent factual claims by adoption alone. The method is deductive, supplemented by constructed boundary cases rather than deployment measurements. The contribution is a bounded account of the obligations for transferring checks and admitting current use, not a new truth-maintenance algorithm or a realization of AGM belief revision. In particular, reproducing a check result does not establish the check's soundness, and identifying an affected assessment does not establish its failure. Complete dependency discovery, reliable authentication, retention in a deployed system, and the comparative effectiveness of a governance policy remain separate obligations.
 
 **Keywords:** knowledge revision; provenance; versioning; governance; normative adoption; historical reproducibility.
 
@@ -28,6 +28,12 @@ Our question is: **how can a system revise knowledge and adopt norms without con
 PROV-DM offers the general distinction between entities, activities, and responsible agents [1]. We use that structure to connect revisions and decisions. The additional contribution is a set of obligations for transferring checks, following current versions, retaining historical grounds, and admitting normative decisions.
 
 Dependency-directed revision has an established basis in Doyle's truth-maintenance work, which records reasons for beliefs and revises them when assumptions change [2]. The reachability result below isolates an elementary prerequisite for identifying affected assessments; it does not implement a truth-maintenance system. Alchourrón, Gärdenfors, and Makinson study contraction and revision of logical theories under explicit postulates [3]. Our use of “revision” concerns versioned records, assessments, and authority decisions, and claims neither an AGM revision operator nor satisfaction of those postulates.
+
+### 1.1 Method and contribution boundary
+
+The argument proceeds by definitions, explicit premises, and their consequences. The four propositions isolate elementary obligations; their short proofs should not be read as novel results about arbitrary belief systems. Constructed cases expose what stops following when a premise is removed. Neither those cases nor a mechanically checked document establish an implemented governance mechanism.
+
+The references perform different jobs. PROV-DM specifies provenance relations; its revision relation is a specialized derivation, not a proof that a revision is correct [1, Section 5.2.2]. Doyle supplies the prior problem of maintaining reasons for beliefs [2]. AGM supplies formal contraction and revision of theories with a consequence operation and stated postulates [3, Sections 1–2]. A versioned collection of documents is not, merely by being versioned, a deductively closed theory equipped with those operations. Connecting this account to an AGM operator would require an explicit representation, operation correspondence, and proof of the relevant postulates. None is assumed here.
 
 ## 2. Five different objects of change
 
@@ -52,6 +58,12 @@ Not every conflict should be resolved by replacing one statement. The conflict m
 Checks attach to a revision and an assessment scope. A successful check of an old text is not automatically a successful check of a materially changed text. Transfer requires a reason: the checked property is unaffected by the change, the transformation preserves it, or the check has been repeated. The reason should be inspectable rather than inferred from a similar filename.
 
 Duplicate detection is likewise scoped. Equivalent content can be consolidated while retaining multiple provenance relations. Merging identities without a justified identity policy can destroy distinctions between independent sources, conflicting readings, or separate normative authorities.
+
+### 3.1 A scoped transfer obligation
+
+A transfer record should identify the old and new subjects, the selected property, the evaluator and its interpretation, the relevant context, and the grounds for treating the inputs as complete. This is an explanatory obligation, not a new machine schema. Content equality can discharge only those comparisons for which content is the entire relevant input. Changes of policy, recipient, time interpretation, or evaluator can leave the text unchanged while invalidating that justification.
+
+Proposition 2 concerns equality of check results. A deterministic checker that always returns success also repeats its answer on equal inputs. That fact does not make the answer sound. Using the result as evidence for a property requires a separate justification of the checker for that property and scope. Permission to use or disclose the result requires its own current decision.
 
 ## 4. Conditional properties
 
@@ -107,6 +119,22 @@ Likewise, storage retention, publication status, and use eligibility are distinc
 
 Migration between representations introduces another preservation question. A migration report should state what is mapped, what is transformed with checked preservation, what is intentionally omitted, and what cannot be represented. A successful import is not evidence of semantic equivalence if critical distinctions were collapsed.
 
+### 6.1 Constructed revision sequence
+
+Consider a fictional procedure whose first revision permits automated processing only for validated inputs. An assessment records that this revision preserves the condition, and an authorized decision adopts that exact revision for a named process. The following changes have different effects; the example asserts no observed deployment result.
+
+**Table 1. Changes that must not collapse into a single status.**
+
+| Change | What changes | What does not follow |
+| --- | --- | --- |
+| A new counterexample shows that the input checker accepts an invalid case. | The assessment of that checker and dependent assurances needs revision. | The stored procedure text has changed, or every dependent conclusion is false. |
+| A proposed second revision removes the validation condition. | The procedure has new content requiring its own assessment. | An adoption of the first revision also adopts the second. |
+| An authorized withdrawal ends current use of the first revision. | Its present normative status changes. | Its historical content or the earlier adoption event disappears. |
+| A rendered copy omits the condition while retaining the title. | The delivered representation fails the stated preservation obligation. | Matching titles establish equivalent instructions. |
+| The earlier revision is unavailable from storage. | Exact retrieval must report failure under Proposition 1's premise. | A current replacement can be silently returned as the pinned historical revision. |
+
+Suppose two permitted grounds independently suffice for one assessment. Losing one ground makes that assessment a reassessment candidate, but the other may still justify it. Conversely, an omitted dependency can prevent a traversal from finding an assessment that has actually lost its only ground. These cases separate dependency completeness, candidate identification, and the subsequent support judgment.
+
 ## 7. Falsification and evidence boundary
 
 The model can be tested with cases that change one material feature: a source revision, authority grant, effective date, interpretation rule, or mandatory dependency. It should also include unchanged content with a changed assessment, and changed layout with preserved content but impaired delivery.
@@ -117,11 +145,23 @@ These controls can establish behavior on finite represented cases. They do not p
 
 The contribution is an explicit account of the stated distinctions between content, assessment, historical selection, and normative adoption, together with checkable consequences and counterexamples. It does not claim that this list exhausts every governance model. Nor does it make an empirical claim that one governance procedure is universally superior or that the model resolves substantive disagreement automatically.
 
+### 7.1 What a useful test must distinguish
+
+A finite test suite should pair each intended behavior with a deliberately weaker alternative: resolve a pin versus silently follow the current pointer; compare complete inputs versus compare text alone; reassess reachable dependents versus mark them all false; and inspect present authority versus reuse an earlier approval. Failure to distinguish those alternatives is a limitation of the test, not evidence that the extra obligation is unnecessary.
+
+The independence premise of Proposition 4 also needs a control. When the factual proposition is already entailed by the adoption record, the stated non-entailment conclusion is not licensed by that proposition. An adoption event can establish a correctly recorded fact about that event while leaving another empirical claim unsupported. No general rejection of institutional facts follows.
+
 ## 8. Connections to the published engineering work
 
 The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) concerns pinned revisions and bounded update behavior. The [reuse admission and cost controls study](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) examines current eligibility of previously prepared artifacts.
 
 The shared [glossary](../../reference/glossary/GLOSSARY.md), [interaction and memory](../interaction-and-memory/PAPER.md), and [controlled knowledge reuse](../controlled-knowledge-reuse/PAPER.md) define the connected work-state and admission obligations.
+
+## 9. Conclusion
+
+Knowledge revision requires an account of which object changed and which justification remains applicable. Under the stated premises, a pin fixes historical selection, equal complete inputs preserve a deterministic check's result, and complete represented dependencies permit identification of reassessment candidates. Adoption alone does not settle a contingent factual claim when the same adoption record is compatible with both its truth and falsity.
+
+These results are deliberately limited. A repeated result is not a soundness proof; a dependency path is not a finding of invalidity; and a historical adoption is not permanent current authority. The account specifies distinctions and conditional obligations that an implementation can be tested against. It does not establish a universal revision policy, an automatic method for discovering all semantic dependencies, or measured advantages over other systems. Each stronger claim requires its own model, evidence, and review.
 
 ## References
 
