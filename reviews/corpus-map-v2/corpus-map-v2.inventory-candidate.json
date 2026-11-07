@@ -1,0 +1,1803 @@
+{
+  "record_type": "knowledge-corpus-map/2",
+  "status": "proposed-reference-view",
+  "scope": "Selected meanings and bounded claims of nine identified manuscripts, six foundation units and 25 roadmap definitions; not exhaustive semantic extraction.",
+  "not_authority_for": [
+    "scientific truth",
+    "runtime permission",
+    "publication acceptance",
+    "index admission",
+    "Muneral state or readiness"
+  ],
+  "snapshot_policy": "Each document uses its own immutable source pin. Proposal pins are not a coherent accepted release. Rebase or merge requires a fresh graph snapshot and review of changed endpoints.",
+  "sources": {
+    "corpus": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "ea0c30575d56e793fb2875df47126ab3f6dc30ad"
+    },
+    "f01": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "61d674244f70002e20506b387b210fd584074ad2"
+    },
+    "roadmap": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "fb410a8460677b229d2240ba0fb27d184f48aa61"
+    },
+    "transformations": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "3d9b184b15fdee2e67bb0a2dc2aa5815b54364d5"
+    },
+    "retrieval": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "b29ca5bfb5354147549d9e803c8382e7ab917631"
+    },
+    "interaction": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "f5b939855a7bff67af7a0d761b4651cd0a8b3f9c"
+    },
+    "evidence": {
+      "repository": "Arcanada-one/knowledge-contract",
+      "commit": "aa3ae405639aa8e953cd6901a0fd3b95a8ddccc3"
+    }
+  },
+  "documents": [
+    {
+      "id": "D01",
+      "kind": "document",
+      "slug": "controlled-knowledge-reuse",
+      "title": "Knowledge Contracts and the Admission of Prepared Knowledge",
+      "source": "corpus",
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "status": "accepted-source"
+    },
+    {
+      "id": "D02",
+      "kind": "document",
+      "slug": "semantic-objects-and-context",
+      "title": "Semantic Objects, Context, and Conditions of Applicability",
+      "source": "corpus",
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "status": "accepted-source"
+    },
+    {
+      "id": "D03",
+      "kind": "document",
+      "slug": "constrained-transformations",
+      "title": "Constrained Transformations and the Limits of Knowledge Transfer",
+      "source": "transformations",
+      "path": "papers/constrained-transformations/PAPER.md",
+      "status": "editorial-proposal"
+    },
+    {
+      "id": "D04",
+      "kind": "document",
+      "slug": "retrieval-and-context-composition",
+      "title": "Retrieval, Coverage, and Context Composition under Resource Limits",
+      "source": "retrieval",
+      "path": "papers/retrieval-and-context-composition/PAPER.md",
+      "status": "editorial-proposal"
+    },
+    {
+      "id": "D05",
+      "kind": "document",
+      "slug": "interaction-and-memory",
+      "title": "Interaction, Documents, and Memory with Explicit Revision Boundaries",
+      "source": "interaction",
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "status": "editorial-proposal"
+    },
+    {
+      "id": "D06",
+      "kind": "document",
+      "slug": "evidence-and-falsification",
+      "title": "Evidence, Reasoning, and Falsification in Knowledge Systems",
+      "source": "evidence",
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "status": "editorial-proposal"
+    },
+    {
+      "id": "D07",
+      "kind": "document",
+      "slug": "revision-and-governance",
+      "title": "Knowledge Revision, Version Identity, and the Adoption of Norms",
+      "source": "corpus",
+      "path": "papers/revision-and-governance/PAPER.md",
+      "status": "accepted-source"
+    },
+    {
+      "id": "D08",
+      "kind": "document",
+      "slug": "knowledge-utility",
+      "title": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions",
+      "source": "corpus",
+      "path": "papers/knowledge-utility/PAPER.md",
+      "status": "accepted-source"
+    },
+    {
+      "id": "D09",
+      "kind": "document",
+      "slug": "human-meaning-and-computable-knowledge",
+      "title": "From Human Meaning to Contract-Governed Knowledge",
+      "source": "f01",
+      "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "status": "research-draft"
+    }
+  ],
+  "terms": [
+    {
+      "id": "T01",
+      "kind": "term",
+      "label": "Knowledge Contract",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "A versioned specification of knowledge, intended use, grounds, dependencies, constraints and assessment obligations; not truth or execution authority."
+    },
+    {
+      "id": "T02",
+      "kind": "term",
+      "label": "Semantic object",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "An addressable, versioned interpretation with content, attribution, context and grounds; not necessarily a retrieval chunk."
+    },
+    {
+      "id": "T03",
+      "kind": "term",
+      "label": "Interpretation",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "A reading under stated assumptions; several readings can remain possible."
+    },
+    {
+      "id": "T04",
+      "kind": "term",
+      "label": "Context",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "Conditions needed to interpret or use content, including relevant referents, scope, time, exceptions and recipient."
+    },
+    {
+      "id": "T05",
+      "kind": "term",
+      "label": "Constraint",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "A condition restricting admissible interpretation, transformation, delivery or action; distinct from an acceptance criterion."
+    },
+    {
+      "id": "T06",
+      "kind": "term",
+      "label": "Protected property",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Knowledge and its representation",
+      "reading_summary": "An observation or relation that a transformation is required to preserve."
+    },
+    {
+      "id": "T07",
+      "kind": "term",
+      "label": "Coverage",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Retrieval, composition and reuse",
+      "reading_summary": "Established support for required slots of a named request at a named stage; not keyword presence."
+    },
+    {
+      "id": "T08",
+      "kind": "term",
+      "label": "Dependency closure",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Retrieval, composition and reuse",
+      "reading_summary": "The least set containing selected roots and their active mandatory dependencies in a declared graph; it does not discover omitted edges."
+    },
+    {
+      "id": "T09",
+      "kind": "term",
+      "label": "Assessment",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Evidence, versions and review",
+      "reading_summary": "A method-bound judgment about a particular subject revision and property."
+    },
+    {
+      "id": "T10",
+      "kind": "term",
+      "label": "Authority",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Requirements, work and agency",
+      "reading_summary": "The legitimate scope of decisions or actions supplied by an identified authorization basis."
+    },
+    {
+      "id": "T11",
+      "kind": "term",
+      "label": "Revision",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Evidence, versions and review",
+      "reading_summary": "An immutable identified content state; distinct from the mutable current selection."
+    },
+    {
+      "id": "T12",
+      "kind": "term",
+      "label": "Evidence",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Evidence, versions and review",
+      "reading_summary": "An addressed observation or record supporting a specified claim under a method and trust boundary."
+    },
+    {
+      "id": "T13",
+      "kind": "term",
+      "label": "Work Item",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Requirements, work and agency",
+      "reading_summary": "One goal-bearing unit with versioned requirements, constraints, assignments, attempts and acceptance criteria."
+    },
+    {
+      "id": "T14",
+      "kind": "term",
+      "label": "Skill",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Requirements, work and agency",
+      "reading_summary": "A reusable description of a method and its conditions; the file is not evidence that its reader can perform it."
+    },
+    {
+      "id": "T15",
+      "kind": "term",
+      "label": "Admission",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Retrieval, composition and reuse",
+      "reading_summary": "A decision permitting a particular use under specified requirements, policy and trust boundary."
+    },
+    {
+      "id": "T16",
+      "kind": "term",
+      "label": "Knowledge utility",
+      "source": "corpus",
+      "path": "reference/glossary/GLOSSARY.md",
+      "section": "Retrieval, composition and reuse",
+      "reading_summary": "Task-, policy- and horizon-dependent benefit relative to a stated baseline and cost model; not an intrinsic document score."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "kind": "claim",
+      "document": "D01",
+      "source_location": "4. Conditional preservation theorem",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "The paper supplies sufficient conditions under which prepared knowledge is admitted for a new use; prior completion alone does not supply that justification.",
+      "premises": [
+        "Sound prior verification",
+        "Complete unchanged relevant state and request observations",
+        "Preservation for every permitted output",
+        "Coverage of new artifact requirements",
+        "Discharge of current-use obligations"
+      ],
+      "limits": "Not a necessary characterization of every possible justification; not automatic dependency discovery, existence of an output or runtime enforcement.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C02",
+      "kind": "claim",
+      "document": "D02",
+      "source_location": "3. Context and applicability",
+      "claim_kind": "conceptual-distinction",
+      "plain_meaning": "Applicability belongs to a specified use and its conditions, not to a context-free label of validity.",
+      "premises": [
+        "Identified interpretation and request scope",
+        "Mandatory conditions discharged, including a justified exemption when applicable"
+      ],
+      "limits": "Unknown mandatory conditions do not become pass; a source statement is not automatically an endorsement or grant.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C03",
+      "kind": "claim",
+      "document": "D03",
+      "source_location": "3. Composition and preservation",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "For successful finite chains starting in the first precondition P1(x0), compatible step conditions and agreed intermediate observations provide sufficient grounds for endpoint preservation.",
+      "premises": [
+        "The initial state x0 satisfies the first local precondition P1(x0)",
+        "Successful finite chain",
+        "Each local contract preserves its declared observation",
+        "Postcondition implies the next precondition",
+        "Adjacent observation functions agree on the relevant intermediate states"
+      ],
+      "limits": "No termination or output-existence guarantee; failure of a premise blocks this proof, not necessarily every individual successful path.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C04",
+      "kind": "claim",
+      "document": "D04",
+      "source_location": "Scope across the complete manuscript",
+      "claim_kind": "modeling-obligation",
+      "plain_meaning": "Selecting a dependency-complete set does not establish that the necessary conditions survived in the delivered context.",
+      "premises": [
+        "Declared request coverage",
+        "Complete relevant dependencies in the selected model",
+        "Admissible resource and current-use conditions",
+        "Preservation or re-establishment in the actual delivered representation"
+      ],
+      "limits": "A closed graph is not a semantic delivery test; the finite selection models are not production KC conformance.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C05",
+      "kind": "claim",
+      "document": "D05",
+      "source_location": "5. Conditional transition properties",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "An earlier requirement generation cannot become current solely because its old completion event arrives late.",
+      "premises": [
+        "Work Item and non-reissued generation identities",
+        "Comparison at the same serialization point as making the result current",
+        "Otherwise a new assessment bound to the actual output and active generation"
+      ],
+      "limits": "Not interpretation correctness or selection among same-generation attempts; internal atomic replay handling is not external exactly-once execution.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C06",
+      "kind": "claim",
+      "document": "D06",
+      "source_location": "3. Justification graphs and conditional soundness",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "A finite acyclic derivation preserves truth when its premises, rules and side conditions satisfy the stated semantics.",
+      "premises": [
+        "One fixed domain model",
+        "True premises",
+        "Sound applied rules",
+        "Satisfied side conditions",
+        "Finite acyclic derivation"
+      ],
+      "limits": "A graph-shaped explanation does not establish these premises, semantic extraction or implementation compliance.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C07",
+      "kind": "claim",
+      "document": "D07",
+      "source_location": "Proposition 3. Complete dependencies identify candidates for reassessment",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "Reverse reachability finds all potentially affected assessments only relative to a complete represented dependency graph.",
+      "premises": [
+        "Every relevant dependency represented",
+        "Finite graph",
+        "Complete reverse traversal"
+      ],
+      "limits": "Affected does not mean false; alternative sufficient grounds can remain, and an omitted edge defeats completeness.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C08",
+      "kind": "claim",
+      "document": "D08",
+      "source_location": "Proposition 2. A simple reuse policy has a conditional break-even point",
+      "claim_kind": "conditional-deduction",
+      "plain_meaning": "In the restricted accounting model, reuse costs less exactly when its preparation and all admitted-hit costs are below the valid cold-route cost.",
+      "premises": [
+        "Same acceptance conditions",
+        "Nonnegative costs in one unit and horizon",
+        "At least one request",
+        "No intervening invalidation or additional omitted cost"
+      ],
+      "limits": "Not measured savings, causal benefit, universally fair allocation or permission to skip checks.",
+      "assessment": "producer-summary-not-independent-review"
+    },
+    {
+      "id": "C09",
+      "kind": "claim",
+      "document": "D09",
+      "source_location": "4. A bounded semantic bridge",
+      "claim_kind": "conceptual-interface",
+      "plain_meaning": "A representation is assessed against declared task-relevant distinctions rather than identified with all human meaning.",
+      "premises": [
+        "Fixed interpretation and observation profile",
+        "Explicit source/context/attribution",
+        "Nonempty and justified operational assessment domain"
+      ],
+      "limits": "Set-theoretic factorization is not an effective decoder, universal human semantics or evidence of extraction accuracy.",
+      "assessment": "producer-summary-not-independent-review"
+    }
+  ],
+  "foundation_units": [
+    {
+      "id": "F01",
+      "kind": "manuscript-unit",
+      "title": "From Human Meaning to Contract-Governed Knowledge",
+      "document": "D09",
+      "status": "complete-candidate",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-01",
+        "RM-05",
+        "RM-06"
+      ]
+    },
+    {
+      "id": "F02",
+      "kind": "manuscript-unit",
+      "title": "From Source Interpretation to Computable Knowledge: A Bounded Semantic Bridge",
+      "document": null,
+      "status": "planned-target",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-07",
+        "RM-17"
+      ]
+    },
+    {
+      "id": "F03",
+      "kind": "manuscript-unit",
+      "title": "Constrained Transformations: Algebraic Profiles, Composition and Reconstruction",
+      "document": "D03",
+      "status": "planned-extension",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-08",
+        "RM-09",
+        "RM-10"
+      ]
+    },
+    {
+      "id": "F04",
+      "kind": "manuscript-unit",
+      "title": "Geometry of Semantic Representations: Similarity, Context and Limits",
+      "document": null,
+      "status": "planned-target",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-12",
+        "RM-13",
+        "RM-14"
+      ]
+    },
+    {
+      "id": "F05",
+      "kind": "manuscript-unit",
+      "title": "Verification Contracts for Semantic Claims and Implementations",
+      "document": null,
+      "status": "planned-target",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-02",
+        "RM-10",
+        "RM-11",
+        "RM-15"
+      ]
+    },
+    {
+      "id": "F06",
+      "kind": "manuscript-unit",
+      "title": "Worked Semantic Operations: Examples, Counterexamples and Bounded Checks",
+      "document": null,
+      "status": "planned-target",
+      "source": "roadmap",
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "covers": [
+        "RM-09",
+        "RM-11",
+        "RM-13",
+        "RM-17",
+        "RM-18"
+      ]
+    }
+  ],
+  "roadmap_nodes": [
+    {
+      "id": "RM-01",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P0",
+      "requires": [],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-02",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P0",
+      "requires": [],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-03",
+      "kind": "research-work-definition",
+      "owner": "KC-SWE",
+      "priority": "P0",
+      "requires": [],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-04",
+      "kind": "research-work-definition",
+      "owner": "KC-SWE",
+      "priority": "P0",
+      "requires": [],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-05",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01",
+        "RM-06"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-06",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-07",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-05"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-08",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01",
+        "RM-06",
+        "RM-07"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-09",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-07",
+        "RM-08",
+        "RM-10"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-10",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-11",
+      "kind": "research-work-definition",
+      "owner": "KC-SWE",
+      "priority": "P1",
+      "requires": [
+        "RM-02",
+        "RM-09",
+        "RM-10"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-12",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01",
+        "RM-06",
+        "RM-07"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-13",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-09",
+        "RM-10",
+        "RM-12"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-14",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-07",
+        "RM-12",
+        "RM-13"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-15",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01",
+        "RM-10"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-16",
+      "kind": "research-work-definition",
+      "owner": "Agent-SWE",
+      "priority": "P1",
+      "requires": [
+        "RM-11",
+        "RM-15"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-17",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-07",
+        "RM-09",
+        "RM-10"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-18",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-14",
+        "RM-15",
+        "RM-17"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-19",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-10",
+        "RM-15"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-20",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P2",
+      "requires": [
+        "RM-16",
+        "RM-18",
+        "RM-19"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-21",
+      "kind": "research-work-definition",
+      "owner": "Agent-Brain",
+      "priority": "P2",
+      "requires": [
+        "RM-12",
+        "RM-17"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-22",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P1",
+      "requires": [
+        "RM-01"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-23",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P2",
+      "requires": [
+        "RM-01",
+        "RM-02"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-24",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P2",
+      "requires": [
+        "RM-01",
+        "RM-10"
+      ],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    },
+    {
+      "id": "RM-25",
+      "kind": "research-work-definition",
+      "owner": "KC-Brain",
+      "priority": "P0",
+      "requires": [],
+      "source": "roadmap",
+      "source_path": "roadmap/dependencies.json",
+      "execution_state": "not-established-by-this-map"
+    }
+  ],
+  "preparation_order": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06"
+  ],
+  "preparation_order_semantics": "Default author-directed manuscript preparation; not a runtime dependency. Later explicit per-document instructions and existing independent authorized work retain their scope.",
+  "baseline_pilot_boundary": "RM-18 is the advanced research extension. Its geometry and hybrid-retrieval prerequisites are not new prerequisites for the separately authorized baseline Live Lab or KB-CONS-01.",
+  "relation_kinds": {
+    "uses-term": "Reading crosswalk to a shared term, not a claim of identical implementation semantics.",
+    "states-bounded-claim": "Identifies an authored summary and its premises; the source argument remains authoritative.",
+    "has-candidate": "A complete candidate exists at the pinned path; not scientific or publication acceptance.",
+    "extends-existing-path": "Planned work develops an existing manuscript; the current editorial revision does not complete the plan.",
+    "addresses-planned-scope": "A manuscript unit covers topics of an RM definition; not completion or a whole-task alias.",
+    "informs-not-blocks": "Advisory relation from the roadmap, not a start gate.",
+    "reading-interface": "Source-grounded conceptual cross-reference; may form cycles and is not an inference rule.",
+    "claim-has-ground": "Descriptive traceability from a claim revision to an assessment; not a truth verdict.",
+    "ground-uses-source": "Descriptive traceability from an assessment to an external source record; not endorsement."
+  },
+  "relations": [
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T01",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T05",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T08",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T10",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T11",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T12",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T14",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "uses-term",
+      "to": "T15",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D02",
+      "kind": "uses-term",
+      "to": "T02",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D02",
+      "kind": "uses-term",
+      "to": "T03",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D02",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D02",
+      "kind": "uses-term",
+      "to": "T05",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D02",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D03",
+      "kind": "uses-term",
+      "to": "T03",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D03",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D03",
+      "kind": "uses-term",
+      "to": "T06",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T05",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T07",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T08",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T15",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D04",
+      "kind": "uses-term",
+      "to": "T16",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T10",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T11",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T12",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D05",
+      "kind": "uses-term",
+      "to": "T13",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D06",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D06",
+      "kind": "uses-term",
+      "to": "T12",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D07",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D07",
+      "kind": "uses-term",
+      "to": "T10",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D07",
+      "kind": "uses-term",
+      "to": "T11",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D07",
+      "kind": "uses-term",
+      "to": "T12",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D08",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D08",
+      "kind": "uses-term",
+      "to": "T12",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D08",
+      "kind": "uses-term",
+      "to": "T15",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D08",
+      "kind": "uses-term",
+      "to": "T16",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T01",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T02",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T03",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T04",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T05",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T06",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T07",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T09",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T10",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T14",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D09",
+      "kind": "uses-term",
+      "to": "T15",
+      "basis": "authored-reading-crosswalk"
+    },
+    {
+      "from": "D01",
+      "kind": "states-bounded-claim",
+      "to": "C01",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D02",
+      "kind": "states-bounded-claim",
+      "to": "C02",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D03",
+      "kind": "states-bounded-claim",
+      "to": "C03",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D04",
+      "kind": "states-bounded-claim",
+      "to": "C04",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D05",
+      "kind": "states-bounded-claim",
+      "to": "C05",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D06",
+      "kind": "states-bounded-claim",
+      "to": "C06",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D07",
+      "kind": "states-bounded-claim",
+      "to": "C07",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D08",
+      "kind": "states-bounded-claim",
+      "to": "C08",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "D09",
+      "kind": "states-bounded-claim",
+      "to": "C09",
+      "basis": "named-source-location"
+    },
+    {
+      "from": "F01",
+      "kind": "has-candidate",
+      "to": "D09",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F01",
+      "kind": "addresses-planned-scope",
+      "to": "RM-01",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F01",
+      "kind": "addresses-planned-scope",
+      "to": "RM-05",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F01",
+      "kind": "addresses-planned-scope",
+      "to": "RM-06",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F02",
+      "kind": "addresses-planned-scope",
+      "to": "RM-07",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F02",
+      "kind": "addresses-planned-scope",
+      "to": "RM-17",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F03",
+      "kind": "extends-existing-path",
+      "to": "D03",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F03",
+      "kind": "addresses-planned-scope",
+      "to": "RM-08",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F03",
+      "kind": "addresses-planned-scope",
+      "to": "RM-09",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F03",
+      "kind": "addresses-planned-scope",
+      "to": "RM-10",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F04",
+      "kind": "addresses-planned-scope",
+      "to": "RM-12",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F04",
+      "kind": "addresses-planned-scope",
+      "to": "RM-13",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F04",
+      "kind": "addresses-planned-scope",
+      "to": "RM-14",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F05",
+      "kind": "addresses-planned-scope",
+      "to": "RM-02",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F05",
+      "kind": "addresses-planned-scope",
+      "to": "RM-10",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F05",
+      "kind": "addresses-planned-scope",
+      "to": "RM-11",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F05",
+      "kind": "addresses-planned-scope",
+      "to": "RM-15",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F06",
+      "kind": "addresses-planned-scope",
+      "to": "RM-09",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F06",
+      "kind": "addresses-planned-scope",
+      "to": "RM-11",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F06",
+      "kind": "addresses-planned-scope",
+      "to": "RM-13",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F06",
+      "kind": "addresses-planned-scope",
+      "to": "RM-17",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "F06",
+      "kind": "addresses-planned-scope",
+      "to": "RM-18",
+      "basis": "foundations-plan"
+    },
+    {
+      "from": "RM-23",
+      "kind": "informs-not-blocks",
+      "to": "RM-25",
+      "basis": "roadmap-dependencies"
+    },
+    {
+      "from": "RM-20",
+      "kind": "informs-not-blocks",
+      "to": "RM-24",
+      "basis": "roadmap-dependencies"
+    },
+    {
+      "from": "RM-22",
+      "kind": "informs-not-blocks",
+      "to": "RM-02",
+      "basis": "roadmap-dependencies"
+    },
+    {
+      "from": "RM-08",
+      "kind": "informs-not-blocks",
+      "to": "RM-12",
+      "basis": "roadmap-dependencies"
+    },
+    {
+      "from": "D01",
+      "kind": "reading-interface",
+      "to": "D02",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Requirement discharge and task applicability"
+    },
+    {
+      "from": "D01",
+      "kind": "reading-interface",
+      "to": "D03",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Transformation preservation"
+    },
+    {
+      "from": "D01",
+      "kind": "reading-interface",
+      "to": "D08",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Admission precedes economic comparison"
+    },
+    {
+      "from": "D03",
+      "kind": "reading-interface",
+      "to": "D02",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Interpretation boundary"
+    },
+    {
+      "from": "D03",
+      "kind": "reading-interface",
+      "to": "D01",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Prepared-artifact application"
+    },
+    {
+      "from": "D05",
+      "kind": "reading-interface",
+      "to": "D07",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Dependency-directed reassessment"
+    },
+    {
+      "from": "D05",
+      "kind": "reading-interface",
+      "to": "D06",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Assessment and learning evidence"
+    },
+    {
+      "from": "D06",
+      "kind": "reading-interface",
+      "to": "D08",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Causal and practical-effect comparison"
+    },
+    {
+      "from": "D06",
+      "kind": "reading-interface",
+      "to": "D07",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Evidence changes assessments"
+    },
+    {
+      "from": "D07",
+      "kind": "reading-interface",
+      "to": "D05",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Work-state revision"
+    },
+    {
+      "from": "D07",
+      "kind": "reading-interface",
+      "to": "D01",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Present-use admission"
+    },
+    {
+      "from": "D08",
+      "kind": "reading-interface",
+      "to": "D01",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Admissibility before economic ranking"
+    },
+    {
+      "from": "D08",
+      "kind": "reading-interface",
+      "to": "D06",
+      "basis": "explicit-paper-cross-reference",
+      "meaning": "Claim and measurement scope"
+    }
+  ],
+  "retained_source_map": {
+    "source": "f01",
+    "path": "reference/foundations/relations.json",
+    "blob": "f67ae8f491cb82a72703de9a2143b3620f5b9291",
+    "relation_count": 18,
+    "semantics": "Retained exact section-level F01 map. This new view references it rather than replacing its 18 independently reviewable statements."
+  },
+  "required_output_semantics": "Only roadmap_nodes.requires carries the 45 existing requires_output edges. These are proposal definitions, not observed Muneral readiness. Reading links never become execution prerequisites automatically.",
+  "provenance": "Original KC-Brain reading synthesis at the author's request; definitions and bounded arguments are attributed to the pinned project sources. No external-book payload or new empirical result.",
+  "source_records": [
+    {
+      "id": "SR-V2-001",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.2307/2274239",
+      "title": "Alchourrón, C. E., Gärdenfors, P., Makinson, D. (1985). On the logic of theory change: Partial meet contraction and revision functions. Journal of Symbolic Logic 50(2):510–530. DOI: 10.2307/2274239. Read edition .",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-001",
+      "historical_v2_label": "v2_claims_read_edition_2026-09-12"
+    },
+    {
+      "id": "SR-V2-002",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1214/aoms/1177698950",
+      "title": "Dempster, A. P. (1967). Upper and lower probabilities induced by a multivalued mapping. Annals of Mathematical Statistics 38(2):325–339. DOI: 10.1214/aoms/1177698950. Read edition .",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-002",
+      "historical_v2_label": "v2_claims_read_edition_2026-09-12"
+    },
+    {
+      "id": "SR-V2-003",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1016/0004-3702(94)00041-X",
+      "title": "Dung, P. M. (1995). On the acceptability of arguments and its fundamental role in nonmonotonic reasoning, logic programming and n-person games. Artificial Intelligence 77(2):321–357. DOI: 10.1016/0004-3702(94)00041-X. Read edition .",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-003",
+      "historical_v2_label": "v2_claims_read_edition_2026-09-12"
+    },
+    {
+      "id": "SR-V2-006",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/s10506-012-9125-8",
+      "title": "Horty, J. F., Bench-Capon, T. J. M. (2012). A factor-based definition of precedential constraint. Artificial Intelligence and Law 20:181–214. DOI: 10.1007/s10506-012-9125-8. Read edition .",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-006",
+      "historical_v2_label": "v2_claims_read_edition_2026-09-12"
+    },
+    {
+      "id": "SR-V2-009",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1109/ICFEM.1998.730569",
+      "title": "Ammann, P., Black, P. E., Majurski, W. (1998). Using model checking to generate tests from specifications. ICFEM 1998 , pp. 46–54. DOI: 10.1109/ICFEM.1998.730569.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-009",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-012",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1023/A:1008779610539",
+      "title": "Beer, I., Ben-David, S., Eisner, C., Rodeh, Y. (2001). Efficient detection of vacuity in temporal model checking. Formal Methods in System Design 18(2):141–163. DOI: 10.1023/A:1008779610539.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-012",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-013",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/978-94-010-1161-7_2",
+      "title": "Belnap, N. D. (1977). A useful four-valued logic. In J. M. Dunn & G. Epstein (eds.), Modern Uses of Multiple-Valued Logic , Episteme vol. 2, Reidel, pp. 5–37. DOI: 10.1007/978-94-010-1161-7_2.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-013",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-014",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1109/ASE.2000.873653",
+      "title": "Black, P. E., Okun, V., Yesha, Y. (2000). Mutation operators for specifications. ASE 2000 , pp. 81–88. DOI: 10.1109/ASE.2000.873653.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-014",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-015",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1016/0096-0551(85)90011-6",
+      "title": "Budd, T. A., Gopal, A. S. (1985). Program testing by specification mutation. Computer Languages 10(1):63–73. DOI: 10.1016/0096-0551(85)90011-6.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-015",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-017",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/3-540-44503-X_20",
+      "title": "Buneman, P., Khanna, S., Tan, W.-C. (2001). Why and where: A characterization of data provenance. ICDT 2001 . DOI: 10.1007/3-540-44503-X_20.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-017",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-018",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.5281/zenodo.18944351",
+      "title": "Chudinov, Y. (2026a). Skill Without Training [navigation-index methodology and benchmark]. Zenodo. DOI: 10.5281/zenodo.18944351 (open, CC-BY-NC-ND-4.0).",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-018",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-019",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.5281/zenodo.19261510",
+      "title": "Chudinov, Y. (2026b). Dual-Layer SPO Architecture. Zenodo. DOI: 10.5281/zenodo.19261510 (embargoed; public abstract).",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-019",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-020",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.5281/zenodo.19319709",
+      "title": "Chudinov, Y. (2026c). Deterministic Inference Engine. Zenodo. DOI: 10.5281/zenodo.19319709 (embargoed; public abstract).",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-020",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-021",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.5281/zenodo.19367887",
+      "title": "Chudinov, Y. (2026d). Stationarity by Governance. Zenodo. DOI: 10.5281/zenodo.19367887 (embargoed; public abstract).",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-021",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-022",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.5281/zenodo.19337904",
+      "title": "Chudinov, Y. (2026e). Engineering Approximation Stack. Zenodo. DOI: 10.5281/zenodo.19337904 (open, CC-BY-4.0).",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-022",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-025",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1109/ASE.2019.00057",
+      "title": "Çelik, A., Palmskog, K., Parovic, M., Gallego Arias, E. J., Gligoric, M. (2019). Mutation analysis for Coq. ASE 2019 , pp. 539–551. DOI: 10.1109/ASE.2019.00057.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-025",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-026",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1145/3611643.3613080",
+      "title": "Cordy, M., Lazreg, S., Legay, A., Schobbens, P.-Y. (2023). Towards strengthening formal specifications with mutation model checking. ESEC/FSE 2023 , pp. 2102–2106. DOI: 10.1145/3611643.3613080.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-026",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-028",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1109/C-M.1978.218136",
+      "title": "DeMillo, R. A., Lipton, R. J., Sayward, F. G. (1978). Hints on test data selection: Help for the practicing programmer. Computer 11(4):34–41. DOI: 10.1109/C-M.1978.218136.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-028",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-036",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1145/1265530.1265535",
+      "title": "Green, T. J., Karvounarakis, G., Tannen, V. (2007). Provenance semirings. PODS 2007 . DOI: 10.1145/1265530.1265535.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-036",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-037",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.3233/ISU-2010-0613",
+      "title": "Groth, P., Gibson, A., Velterop, J. (2010). The anatomy of a nanopublication. Information Services & Use 30:51–56. DOI: 10.3233/ISU-2010-0613.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-037",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-041",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1109/TSE.1982.235571",
+      "title": "Howden, W. E. (1982). Weak mutation testing and completeness of test sets. IEEE Transactions on Software Engineering SE-8(4):371–379. DOI: 10.1109/TSE.1982.235571.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-041",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-042",
+      "kind": "source-record",
+      "identifier_type": "url",
+      "identifier": "https://www.w3.org/TR/json-ld11/",
+      "title": "JSON-LD 1.1 (2020). A JSON-based Serialization for Linked Data . W3C Recommendation, 16 July 2020. https://www.w3.org/TR/json-ld11/",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-042",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-043",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1145/3377812.3382156",
+      "title": "Jain, K., Palmskog, K., Çelik, A., Gallego Arias, E. J., Gligoric, M. (2020). mCoq: Mutation analysis for Coq verification projects. ICSE 2020 Companion , pp. 89–92. DOI: 10.1145/3377812.3382156.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-043",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-046",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/978-3-319-07443-6_27",
+      "title": "Kuhn, T., Dumontier, M. (2014). Trusty URIs: Verifiable, immutable, and permanent digital artifacts for linked data. In The Semantic Web: Trends and Challenges (ESWC 2014) , LNCS 8465, pp. 395–410. Springer. doi:10.1007/978-3-319-07443-6_27.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-046",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-047",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/s100090100062",
+      "title": "Kupferman, O., Vardi, M. Y. (2003). Vacuity detection in temporal model checking. International Journal on Software Tools for Technology Transfer 4(2):224–233. DOI: 10.1007/s100090100062. (Conference version: CHARME 1999 , LNCS 1703, pp. 82–96.)",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-047",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-049",
+      "kind": "source-record",
+      "identifier_type": "url",
+      "identifier": "https://github.com/ailev/FPF",
+      "title": "Levenchuk, A. First Principles Framework (FPF). GitHub repository, https://github.com/ailev/FPF, main branch at commit 434e17ec (accessed 2026-09-01; no license file — default copyright; no release or version tag; cited for ideas with attribution per §2.9). Not to be confused with the unrelated “First Principles Framework (FPF)” of Gilda & Gilda, arXiv:2601.21116 (2026), which this paper does not cite.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-049",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-053",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1016/0012-365X(75)90058-8",
+      "title": "Lovász, L. (1975). On the ratio of optimal integral and fractional covers. Discrete Mathematics 13(4):383–390. DOI: 10.1016/0012-365X(75)90058-8.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-053",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-058",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1145/125489.125473",
+      "title": "Offutt, A. J. (1992). Investigations of the software testing coupling effect. ACM Transactions on Software Engineering and Methodology 1(1):5–20. DOI: 10.1145/125489.125473.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-058",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-059",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/s10664-017-9498-0",
+      "title": "Paige, R. F., Cabot, J., Ernst, N. A. (2017). Foreword to the special section on negative results in software engineering. Empirical Software Engineering 22(5):2453–2456. DOI: 10.1007/s10664-017-9498-0.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-059",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-061",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1145/3377813.3381350",
+      "title": "Ramanathan, M. K., Clapp, L., Barik, R., Sridharan, M. (2020). Piranha: Reducing feature flag debt at Uber. ICSE-SEIP 2020 , pp. 221–230. DOI: 10.1145/3377813.3381350.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-061",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-062",
+      "kind": "source-record",
+      "identifier_type": "url",
+      "identifier": "https://www.w3.org/TR/2024/REC-rdf-canon-20240521/",
+      "title": "RDF Dataset Canonicalization (RDFC-1.0) (2024). W3C Recommendation, 21 May 2024. D. Longley, G. Kellogg, D. Yamamoto (eds.). https://www.w3.org/TR/2024/REC-rdf-canon-20240521/",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-062",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-065",
+      "kind": "source-record",
+      "identifier_type": "url",
+      "identifier": "https://www.w3.org/TR/shacl/",
+      "title": "SHACL (2017). Shapes Constraint Language (SHACL) . W3C Recommendation, 20 July 2017. https://www.w3.org/TR/shacl/",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-065",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-067",
+      "kind": "source-record",
+      "identifier_type": "doi",
+      "identifier": "10.1007/978-3-642-24550-3_29",
+      "title": "Shapiro, M., Preguiça, N., Baquero, C., Zawirski, M. (2011). Conflict-free replicated data types. In Stabilization, Safety, and Security of Distributed Systems (SSS 2011) , LNCS 6976, pp. 386–400. Springer. DOI: 10.1007/978-3-642-24550-3_29.",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-067",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    },
+    {
+      "id": "SR-V2-069",
+      "kind": "source-record",
+      "identifier_type": "url",
+      "identifier": "https://www.w3.org/TR/prov-o/",
+      "title": "W3C (2013). PROV-O: The PROV Ontology. W3C Recommendation, 2013-04-30. https://www.w3.org/TR/prov-o/",
+      "retrieved_at": null,
+      "historical_v2_id": "V2-069",
+      "historical_v2_label": "v2_bibliography_entry_historic_verification_scope"
+    }
+  ],
+  "evidence_assessments": []
+}
