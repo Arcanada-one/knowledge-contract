@@ -89,3 +89,5 @@ preparation never sets `effects_authorized: true`.
 - rendition/K8 sidecar endpoint verification
 - overlays beyond exactly two canonical English packages
 - released `cross-package-relations` wire schema registration
+
+<!-- round-5-ci-retrigger -->
