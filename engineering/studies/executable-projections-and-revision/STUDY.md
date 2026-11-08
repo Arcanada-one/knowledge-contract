@@ -14,9 +14,6 @@ study_type: "finite-consumer-and-agent-case-study"
 review_state: "internally-reviewed"
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="executable-projections-addressable-revisions-and-the-limits-of-graph-minimality"></a>
-
 # Executable Projections: Addressable revisions and the limits of graph minimality
 
 ## Abstract

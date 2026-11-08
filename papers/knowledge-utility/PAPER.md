@@ -12,9 +12,6 @@ license: "CC-BY-4.0"
 description: "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference."
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="knowledge-utility-resource-accounting-and-lifecycle-decisions"></a>
-
 # Knowledge Utility: Resource Accounting and Lifecycle Decisions
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1

@@ -14,9 +14,6 @@ study_type: "finite-graph-and-integration-evaluation"
 review_state: "internally-reviewed"
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="dependency-closure-readable-artifact-layouts-and-a-pinned-package-replay"></a>
-
 # Dependency Closure: Readable artifact layouts and a pinned package replay
 
 ## Abstract

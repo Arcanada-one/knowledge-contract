@@ -12,9 +12,6 @@ license: "CC-BY-4.0"
 description: "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions."
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="knowledge-revision-version-identity-and-the-adoption-of-norms"></a>
-
 # Knowledge Revision: Version Identity and the Adoption of Norms
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1

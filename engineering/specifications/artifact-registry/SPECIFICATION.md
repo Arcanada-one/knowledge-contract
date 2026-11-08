@@ -12,9 +12,6 @@ license: "CC-BY-4.0"
 description: "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions."
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="artifact-registry-readable-names-and-document-formats"></a>
-
 # Artifact Registry: Readable Names and Document Formats
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1

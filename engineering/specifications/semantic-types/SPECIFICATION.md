@@ -12,9 +12,6 @@ license: "CC-BY-4.0"
 description: "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations."
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="semantic-types-attribution-and-representations"></a>
-
 # Semantic Types: Attribution and Representations
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1

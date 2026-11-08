@@ -89,5 +89,15 @@ class ReadableTitleControls(unittest.TestCase):
         self.assertTrue(result.endswith('Body unchanged.\n'))
 
 
+class HeadingAliasRegression(unittest.TestCase):
+    def test_changed_punctuation_with_same_slug_has_no_extra_alias(self):
+        title = 'Semantic Types, Attribution, and Representations'
+        raw = '---\ntitle: "' + title + '"\n---\n\n# ' + title + '\n\nOriginal body.\n'
+        result = rename_document(raw, title, 'Semantic Types')
+        self.assertNotIn('<a id=', result)
+        self.assertIn('# Semantic Types: Attribution and Representations', result)
+        self.assertTrue(result.endswith('Original body.\n'))
+
+
 if __name__ == '__main__':
     unittest.main()

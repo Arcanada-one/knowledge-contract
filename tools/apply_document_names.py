@@ -105,7 +105,7 @@ def validate_rows(rows: list, slugs: set[str]) -> None:
 
 def rename_document(raw: str, old: str, short: str) -> str:
     full, subtitle = display_parts(short, old)
-    header_alias = '' if full == old else alias(anchor(old))
+    header_alias = '' if anchor(full) == anchor(old) else alias(anchor(old))
     title_lines = re.findall(r'^title:.*$', raw, flags=re.M)
     old_h1 = '# ' + old
     if len(title_lines) != 1 or raw.count('\n' + old_h1 + '\n') != 1:
@@ -319,7 +319,7 @@ def main() -> int:
                     raise ValueError('Unsafe output path: ' + path)
                 if target.exists() and path not in ['ROADMAP.md', 'DOCUMENTS.md', 'roadmap/ROADMAP.ru.md', 'roadmap/COMPATIBILITY.md', 'reviews/naming-roadmap/REVIEW.md', 'reviews/naming-roadmap/RESULTS.json']:
                     before = current(path)
-                    if before not in (original(path), git('show', 'd10ba0500be8c0ad2f031445df9c539b5e41fe54:' + path), git('show', '548abd01d089faf81570efaafd41ef873c693e47:' + path), text):
+                    if before not in (original(path), git('show', 'd10ba0500be8c0ad2f031445df9c539b5e41fe54:' + path), git('show', '548abd01d089faf81570efaafd41ef873c693e47:' + path), git('show', 'b65706a386b9a39c23fcbbfb1b185ddf69ef4787:' + path), text):
                         raise ValueError('Concurrent or unexpected change: ' + path)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text, encoding='utf-8', newline='\n')
