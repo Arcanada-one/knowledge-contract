@@ -88,6 +88,12 @@ class CiWorkflowTests(unittest.TestCase):
     def test_security_audit_keeps_its_filter(self):
         self.assertIn("head.repo.full_name == github.repository", self.jobs["security-audit"])
 
+    def test_licensing_runs_cross_package_overlay_corpus(self):
+        job = self.jobs["licensing"]
+        self.assertIn("Cross-package overlay preparation corpus (G11)", job)
+        self.assertIn("python3 -B -m unittest tools.test_cross_package_overlay -v", job)
+        self.assertIn("tools/cross_package_overlay.py", job)
+
     def test_publication_integrity_runs_retrieval_context_checker_with_pins(self):
         job = self.jobs["publication-integrity"]
         self.assertIn("fetch-depth: 0", job)
