@@ -9,24 +9,52 @@ or a substitute for manuscript peer review.
 `cross_package_overlay.py` is a **bounded producer-side preparation** for the
 G11 draft model in `reference/relations/CROSS-PACKAGE-OVERLAY.md` section 3. It
 evaluates one candidate overlay over **exactly two distinct canonical English
-packages**, with endpoint identity = full package release pin + local object id.
+packages**, with endpoint identity = the complete eight-part tuple from overlay
+§2.
 
 **Fail closed (default deny).** A passing/inspectable status is returned only
-after every A10 condition is affirmatively established: full release digests
-(`algorithm == "sha256"`, `value` 64 lowercase hex, non-empty string
-`byte_domain` / `source_revision`), `language == "en"` and `canonical is True`
-on both packages, non-empty string endpoint ids (`package_id`, `release_id`,
-`object_id`, `source_anchor`), `from`/`to` pins matching packages A/B,
-`grounding.from_anchor` / `grounding.to_anchor` equal to the endpoint
-`source_anchor` values, current `permitted: true`, `accessible: true` and
-`revoked: false` (all three present booleans) on both request pins, and an
-**independent** scoped review whose pins equal the request pins. Missing
-fields, non-string `path` when present, `rendition_of` relation edges, path
-segments named `translations` (any case), same `package_id` on both sides, and
-`contradicts_under` without an explicit common assumption + `harmonized: true`
-are typed refusals (exit 1). Malformed shapes yield `malformed_input`;
-`evaluate()` and the CLI never crash without a JSON refusal report. Input is
-read at most `MAX_INPUT_BYTES+1` bytes.
+after every A10 condition is affirmatively established:
+
+- **R1 endpoint identity.** Each endpoint requires `package_id`,
+  `package_manifest_digest`, `release_id`, `component_id`, `object_id`,
+  `representation_id`, `representation_digest`, and `source_anchor`. Digests use
+  `algorithm == "sha256"`, `value` 64 lowercase hex, and non-empty string
+  `byte_domain` / `source_revision`. The endpoint's `package_manifest_digest`
+  must equal its package (A or B) digest; a valid-but-different sha256 refuses
+  (`endpoint_digest_mismatch`). `representation_digest.source_revision` must
+  equal the endpoint `release_id` (`representation_identity_mismatch`).
+- **Packages.** `language == "en"` and `canonical is True` on both packages;
+  `from`/`to` pins match packages A/B; `grounding.from_anchor` /
+  `grounding.to_anchor` equal the endpoint `source_anchor` values.
+- **Permissions.** Current `permitted: true`, `accessible: true` and
+  `revoked: false` (all three present booleans) on both request pins.
+- **R2 review binding.** An independent scoped review whose release pins equal
+  the request pins, with non-empty string `reviewer` distinct from relation /
+  package authors, `verdict == "accepted"`, `relation_id` and
+  `reviewed_edge_revision` equal to the evaluated edge / overlay revision,
+  `scope` compatible with assessment scope, and `pin_manifest_digests` equal to
+  package A/B manifest bytes (not just release strings).
+- **R3 comparability.** For `compares_with`, affirmative `peer_units`,
+  `peer_quantifier_scope`, and `unit_scope_aligned is True` are required;
+  otherwise `inspectable_unresolved` / `unit_scope_unresolved` (never
+  `scoped_inspection_ok`). Incompatible peer time/conditions refuse
+  (`conditions_incompatible`).
+- **A3 / A9 order.** Unresolved mandatory dependencies are evaluated before the
+  copied-support early return, so `use_closure_incomplete` is preserved.
+- **A5 contradiction (KC-SWE fail-closed interpretation pending KC-Brain).**
+  `harmonized: true` alone is an author assertion, not proof. Retention requires
+  affirmative equal peer overlap fields (units, quantifier scope, conditions,
+  valid time) **and** an R2-bound review of this exact edge. Missing overlap →
+  `inspectable_unresolved` / `premise_overlap_unproven`; missing bound review →
+  `inspectable_unresolved` / `no_bound_edge_review`; unequal overlap →
+  `conditions_incompatible`.
+
+Missing fields, non-string `path` when present, `rendition_of` relation edges,
+path segments named `translations` (any case), same `package_id` on both sides,
+and `contradicts_under` without an explicit common assumption are typed
+refusals (exit 1). Malformed shapes yield `malformed_input`; `evaluate()` and
+the CLI never crash without a JSON refusal report. Input is read at most
+`MAX_INPUT_BYTES+1` bytes.
 
 It is **not** independent scientific review, production validation,
 authorization, an execution grant, or a released wire schema. `book-package/2`
@@ -44,7 +72,7 @@ Exit codes:
 | `0` | Accepted/complete inspectable outcome (`inspectable`, `prerequisite_closure_complete`, `accepted`) |
 | `1` | Typed refusal (always with a JSON report) |
 | `2` | Usage error |
-| `3` | Incomplete-but-inspectable (`inspectable_unresolved`, e.g. A2 unit/scope or A9a use-closure) |
+| `3` | Incomplete-but-inspectable (`inspectable_unresolved`, e.g. A2 unit/scope, A5 unproven overlap, or A9a use-closure) |
 
 A missing report must never be read as pass. `request_pins` and matching review
 pins must contain exactly keys `A` and `B` selecting the overlay package

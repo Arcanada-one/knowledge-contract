@@ -37,11 +37,21 @@ SUPPORTED_PROFILE = "cross-package-relations/0.1"
 CANONICAL_LANGUAGE = "en"
 MAX_INPUT_BYTES = 256 * 1024
 DIGEST_FIELDS = ("algorithm", "value", "byte_domain", "source_revision")
-ENDPOINT_REQUIRED_FIELDS = ("package_id", "release_id", "object_id", "source_anchor")
+# Overlay §2 eight-part endpoint identity (all mandatory for inspection).
+ENDPOINT_REQUIRED_STRING_FIELDS = (
+    "package_id",
+    "release_id",
+    "component_id",
+    "object_id",
+    "representation_id",
+    "source_anchor",
+)
+ENDPOINT_REQUIRED_FIELDS = ENDPOINT_REQUIRED_STRING_FIELDS  # compatibility alias
 PACKAGE_ID_FIELDS = ("package_id", "release_id")
 REQUIRED_PIN_KEYS = frozenset({"A", "B"})
 PERMISSION_BOOL_FIELDS = ("permitted", "accessible", "revoked")
 SHA256_HEX = re.compile(r"^[0-9a-f]{64}$")
+ACCEPTED_REVIEW_VERDICTS = frozenset({"accepted"})
 PASS_STATUSES = frozenset({
     "inspectable",
     "prerequisite_closure_complete",
@@ -59,6 +69,12 @@ RELATION_KINDS = frozenset({
     "requires_for_use",
     "related_to",
 })
+PREMISE_OVERLAP_FIELDS = (
+    ("units", "peer_units"),
+    ("quantifier_scope", "peer_quantifier_scope"),
+    ("conditions", "peer_conditions"),
+    ("valid_time", "peer_valid_time"),
+)
 
 
 class DuplicateKeyError(ValueError):
@@ -134,12 +150,12 @@ def digest_complete(digest: Any) -> bool:
     return all(digest.get(field) not in (None, "") for field in DIGEST_FIELDS)
 
 
-def digest_malformed(digest: Any) -> str | None:
+def digest_malformed(digest: Any, label: str = "package_manifest_digest") -> str | None:
     """Return a detail string when digest shape/type/format is malformed."""
     if digest is None:
         return None
     if not isinstance(digest, dict):
-        return "package_manifest_digest must be an object"
+        return f"{label} must be an object"
     for field in DIGEST_FIELDS:
         if field not in digest:
             continue
@@ -147,12 +163,16 @@ def digest_malformed(digest: Any) -> str | None:
         if value in (None, ""):
             continue
         if not isinstance(value, str):
-            return f"package_manifest_digest.{field} must be a non-empty string"
+            return f"{label}.{field} must be a non-empty string"
         if field == "algorithm" and value != "sha256":
-            return "package_manifest_digest.algorithm must be 'sha256'"
+            return f"{label}.algorithm must be 'sha256'"
         if field == "value" and SHA256_HEX.fullmatch(value) is None:
-            return "package_manifest_digest.value must be 64 lowercase hex characters"
+            return f"{label}.value must be 64 lowercase hex characters"
     return None
+
+
+def digests_equal(left: Any, right: Any) -> bool:
+    return digest_complete(left) and digest_complete(right) and _digest_tuple(left) == _digest_tuple(right)
 
 
 def require_non_empty_string(value: Any, label: str) -> dict | None:
@@ -329,7 +349,7 @@ def _evaluate(overlay: dict, context: dict) -> dict:
         if path_bad is not None:
             return path_bad
         missing = []
-        for field in ENDPOINT_REQUIRED_FIELDS:
+        for field in ENDPOINT_REQUIRED_STRING_FIELDS:
             value = endpoint.get(field)
             if value is None or value == "":
                 missing.append(field)
@@ -337,18 +357,49 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             bad = require_non_empty_string(value, f"relation.{label}.{field}")
             if bad is not None:
                 return bad
+        ep_digest = endpoint.get("package_manifest_digest")
+        rep_digest = endpoint.get("representation_digest")
+        if ep_digest is None or ep_digest == "":
+            missing.append("package_manifest_digest")
+        if rep_digest is None or rep_digest == "":
+            missing.append("representation_digest")
         if missing:
             return refuse(
                 "incomplete_release_pin",
                 side=label,
                 missing_fields=missing,
-                detail="endpoint requires package_id, release_id, object_id, source_anchor",
+                detail=(
+                    "endpoint requires the complete eight-part identity: package_id, "
+                    "package_manifest_digest, release_id, component_id, object_id, "
+                    "representation_id, representation_digest, source_anchor"
+                ),
             )
-        ep_digest = endpoint.get("package_manifest_digest")
-        if "package_manifest_digest" in endpoint:
-            digest_bad = digest_malformed(ep_digest)
-            if digest_bad is not None:
-                return refuse("malformed_input", side=label, detail=digest_bad)
+        digest_bad = digest_malformed(ep_digest, "package_manifest_digest")
+        if digest_bad is not None:
+            return refuse("malformed_input", side=label, detail=digest_bad)
+        if not digest_complete(ep_digest):
+            return refuse(
+                "incomplete_release_pin",
+                side=label,
+                missing_fields=["package_manifest_digest"],
+                detail="endpoint package_manifest_digest requires algorithm, value, byte_domain, source_revision",
+            )
+        rep_bad = digest_malformed(rep_digest, "representation_digest")
+        if rep_bad is not None:
+            return refuse("malformed_input", side=label, detail=rep_bad)
+        if not digest_complete(rep_digest):
+            return refuse(
+                "incomplete_release_pin",
+                side=label,
+                missing_fields=["representation_digest"],
+                detail="endpoint representation_digest requires algorithm, value, byte_domain, source_revision",
+            )
+        if rep_digest.get("source_revision") != endpoint.get("release_id"):
+            return refuse(
+                "representation_identity_mismatch",
+                side=label,
+                detail="representation_digest.source_revision must equal endpoint release_id",
+            )
 
     if path_has_translations_segment(from_ep.get("path")) or path_has_translations_segment(to_ep.get("path")):
         return refuse(
@@ -356,7 +407,7 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             detail="endpoint path segment 'translations' is out of scope",
         )
 
-    # from must match package A; to must match package B exactly.
+    # from must match package A; to must match package B exactly (id before digest).
     if from_ep.get("package_id") != pkg_a.get("package_id") or from_ep.get("release_id") != pkg_a.get("release_id"):
         return refuse(
             "endpoint_package_mismatch",
@@ -368,6 +419,18 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             "endpoint_package_mismatch",
             side="to",
             detail="to endpoint must match package B package_id and release_id",
+        )
+    if not digests_equal(from_ep.get("package_manifest_digest"), pkg_a.get("package_manifest_digest")):
+        return refuse(
+            "endpoint_digest_mismatch",
+            side="from",
+            detail="endpoint package_manifest_digest must equal its package digest",
+        )
+    if not digests_equal(to_ep.get("package_manifest_digest"), pkg_b.get("package_manifest_digest")):
+        return refuse(
+            "endpoint_digest_mismatch",
+            side="to",
+            detail="endpoint package_manifest_digest must equal its package digest",
         )
 
     id_from = endpoint_identity(from_ep)
@@ -484,8 +547,8 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 )
         return None
 
-    def require_independent_review() -> dict | None:
-        """A10: independent scoped review whose pins equal the request pins."""
+    def require_independent_review(*, as_unresolved_when_missing: bool = False) -> dict | None:
+        """A10/R2: independent scoped review bound to this exact edge and manifest bytes."""
         for review in reviews:
             if not isinstance(review, dict):
                 continue
@@ -510,11 +573,31 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                     request_pins=request_pins,
                     detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
                 )
+            if as_unresolved_when_missing:
+                return outcome(
+                    "inspectable_unresolved",
+                    "no_bound_edge_review",
+                    endpoint_identities=identities,
+                    detail="contradicts_under retention requires a bound independent review of this edge",
+                )
             return refuse(
                 "review_missing",
                 detail="independent scoped review whose pins equal the request pins is required",
             )
         matched = matching[0]
+        reviewer = matched.get("reviewer")
+        if not isinstance(reviewer, str) or reviewer == "":
+            if as_unresolved_when_missing:
+                return outcome(
+                    "inspectable_unresolved",
+                    "no_bound_edge_review",
+                    endpoint_identities=identities,
+                    detail="bound review requires a non-empty string reviewer identity",
+                )
+            return refuse(
+                "review_missing",
+                detail="matching review requires a present non-empty string reviewer identity",
+            )
         if matched.get("independent") is not True:
             return refuse(
                 "review_not_independent",
@@ -525,96 +608,66 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 "review_not_independent",
                 detail="reviewer identity must be present and distinct from author / package author",
             )
-        return None
-
-    # A6b early: assessment/review pins that disagree with the request.
-    if reviewed_pins:
-        if not pins_complete(reviewed_pins) or not pins_equal(reviewed_pins, request_pins):
+        relation_author = overlay.get("author")
+        if relation_author not in (None, "") and reviewer == relation_author:
+            return refuse(
+                "review_not_independent",
+                detail="reviewer must differ from the overlay/relation author",
+            )
+        verdict = matched.get("verdict")
+        if verdict not in ACCEPTED_REVIEW_VERDICTS:
+            return refuse(
+                "review_not_accepted",
+                verdict=verdict,
+                detail="matching review verdict must be accepted",
+            )
+        expected_revision = overlay.get("overlay_revision")
+        if matched.get("reviewed_edge_revision") != expected_revision:
+            return refuse(
+                "review_edge_mismatch",
+                detail="reviewed_edge_revision must equal the overlay_revision under evaluation",
+            )
+        expected_relation_id = relation.get("relation_id")
+        if matched.get("relation_id") != expected_relation_id:
+            return refuse(
+                "review_edge_mismatch",
+                detail="review relation_id must equal the relation being evaluated",
+            )
+        expected_scope = assessment.get("scope")
+        review_scope = matched.get("scope")
+        if review_scope in (None, "") or (
+            expected_scope not in (None, "") and review_scope != expected_scope
+        ):
+            return refuse(
+                "review_scope_incompatible",
+                review_scope=review_scope,
+                assessment_scope=expected_scope,
+                detail="review scope must be present and compatible with the assessed edge scope",
+            )
+        pin_digests = matched.get("pin_manifest_digests")
+        if not isinstance(pin_digests, dict) or set(pin_digests.keys()) != REQUIRED_PIN_KEYS:
             return refuse(
                 "review_pin_mismatch",
-                reviewed_pins=reviewed_pins,
-                request_pins=request_pins,
-                detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
+                detail="review pin_manifest_digests must contain exact keys A and B",
             )
-
-    # Current permission is required before every positive / inspectable branch.
-    permission_refusal = require_current_permissions()
-    if permission_refusal is not None:
-        return permission_refusal
-
-    review_refusal = require_independent_review()
-    if review_refusal is not None:
-        return review_refusal
-
-    # A4: one-sided contradiction.
-    if kind == "contradicts_under":
-        if not from_anchor or not to_anchor:
-            missing = "from" if not from_anchor else "to"
+        if not digests_equal(pin_digests.get("A"), pkg_a.get("package_manifest_digest")):
             return refuse(
-                "one_sided_contradiction",
-                missing_side=missing,
-                candidate_preserved=True,
+                "review_pin_mismatch",
+                side="A",
+                detail="review pin_manifest_digests.A must equal package A manifest bytes",
             )
-        common_assumption = (
-            assertions.get("conditions")
-            or assertions.get("common_assumption")
-            or grounding.get("common_assumption")
-            or grounding.get("conditions")
-        )
-        # Default False: harmonized must be affirmatively true with a stated assumption.
-        harmonized = assertions.get("harmonized") is True
-        if not common_assumption or not harmonized:
+        if not digests_equal(pin_digests.get("B"), pkg_b.get("package_manifest_digest")):
             return refuse(
-                "common_assumption_required",
-                detail="contradicts_under requires an explicit common assumption and harmonized=true",
+                "review_pin_mismatch",
+                side="B",
+                detail="review pin_manifest_digests.B must equal package B manifest bytes",
             )
-        return outcome(
-            "inspectable",
-            "contradicts_under_retained",
-            endpoint_identities=identities,
-            both_facts_retained=True,
-            winner_selected=False,
-            harmonized=True,
-            common_assumption=common_assumption,
-        )
+        return None
 
-    # A2: unit/scope mismatch left unresolved.
-    peer_units = assertions.get("peer_units")
-    peer_scope = assertions.get("peer_quantifier_scope")
-    units = assertions.get("units")
-    scope = assertions.get("quantifier_scope")
-    mismatched = False
-    if peer_units is not None and units is not None and peer_units != units:
-        mismatched = True
-    if peer_scope is not None and scope is not None and peer_scope != scope:
-        mismatched = True
-    if unit_scope_aligned is False:
-        mismatched = True
-    if kind == "compares_with" and mismatched:
-        return outcome(
-            "inspectable_unresolved",
-            "unit_scope_unresolved",
-            endpoint_identities=identities,
-            detail="comparison unresolved until a reviewed conversion/scope rule is supplied",
-        )
-
-    # A3: copied/translated support collapses to one lineage family.
-    derivative_kinds = {"quotes", "rendition_of", "derivative", "quotation"}
-    lineage_derivative = any(
-        isinstance(item, dict) and item.get("kind") in derivative_kinds for item in lineage
-    )
-    support_kind = grounding.get("support_kind")
-    if support_kind in {"quotation", "derivative"} or lineage_derivative:
-        return outcome(
-            "inspectable",
-            "single_lineage_family",
-            endpoint_identities=identities,
-            independent_support_count=1,
-            lineage_family_count=1,
-        )
-
-    # A9: mandatory dependency closure under shared R/context.
-    if mandatory is not None:
+    def mandatory_closure_result() -> dict | None:
+        """A9: validate and evaluate mandatory dependency closure when supplied."""
+        if mandatory is None:
+            return None
         if not isinstance(mandatory, list):
             return refuse(
                 "malformed_input",
@@ -657,6 +710,160 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 effects_authorized=False,
                 detail="consequential effects still require current authority, delivery and durable effect identity",
             )
+        return None
+
+    # A6b early: assessment/review pins that disagree with the request.
+    if reviewed_pins:
+        if not pins_complete(reviewed_pins) or not pins_equal(reviewed_pins, request_pins):
+            return refuse(
+                "review_pin_mismatch",
+                reviewed_pins=reviewed_pins,
+                request_pins=request_pins,
+                detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
+            )
+
+    # Current permission is required before every positive / inspectable branch.
+    permission_refusal = require_current_permissions()
+    if permission_refusal is not None:
+        return permission_refusal
+
+    # A4 / A5: contradiction path. Review binding is evaluated inside so a missing
+    # bound review becomes inspectable_unresolved rather than a hard refuse.
+    if kind == "contradicts_under":
+        if not from_anchor or not to_anchor:
+            missing = "from" if not from_anchor else "to"
+            return refuse(
+                "one_sided_contradiction",
+                missing_side=missing,
+                candidate_preserved=True,
+            )
+        common_assumption = (
+            assertions.get("conditions")
+            or assertions.get("common_assumption")
+            or grounding.get("common_assumption")
+            or grounding.get("conditions")
+        )
+        harmonized = assertions.get("harmonized") is True
+        if not common_assumption:
+            return refuse(
+                "common_assumption_required",
+                detail="contradicts_under requires an explicit common assumption",
+            )
+        missing_overlap = []
+        unequal_overlap = []
+        for left_key, right_key in PREMISE_OVERLAP_FIELDS:
+            left = assertions.get(left_key)
+            right = assertions.get(right_key)
+            if left in (None, "") or right in (None, ""):
+                missing_overlap.append(right_key if right in (None, "") else left_key)
+                continue
+            if left != right:
+                unequal_overlap.append(right_key)
+        if unequal_overlap:
+            return refuse(
+                "conditions_incompatible",
+                mismatched_fields=unequal_overlap,
+                detail="contradicts_under premises must affirmatively overlap on unit/time/scope/conditions",
+            )
+        if missing_overlap or not harmonized:
+            return outcome(
+                "inspectable_unresolved",
+                "premise_overlap_unproven",
+                endpoint_identities=identities,
+                missing_fields=missing_overlap,
+                harmonized_assertion=harmonized,
+                detail=(
+                    "harmonized:true is an author assertion, not proof; affirmative "
+                    "peer overlap fields are required (KC-SWE fail-closed pending KC-Brain)"
+                ),
+            )
+        review_outcome = require_independent_review(as_unresolved_when_missing=True)
+        if review_outcome is not None:
+            return review_outcome
+        return outcome(
+            "inspectable",
+            "contradicts_under_retained",
+            endpoint_identities=identities,
+            both_facts_retained=True,
+            winner_selected=False,
+            harmonized=True,
+            common_assumption=common_assumption,
+        )
+
+    review_refusal = require_independent_review()
+    if review_refusal is not None:
+        return review_refusal
+
+    # A9 unresolved members must surface even when A3 lineage would otherwise return.
+    mandatory_early = mandatory_closure_result()
+    if mandatory_early is not None and mandatory_early.get("reason_code") == "use_closure_incomplete":
+        return mandatory_early
+    if mandatory_early is not None and mandatory_early.get("status") == "refused":
+        return mandatory_early
+
+    # A2 / R3: comparison requires affirmative comparability evidence.
+    peer_units = assertions.get("peer_units")
+    peer_scope = assertions.get("peer_quantifier_scope")
+    units = assertions.get("units")
+    scope = assertions.get("quantifier_scope")
+    peer_time = assertions.get("peer_valid_time")
+    peer_conditions = assertions.get("peer_conditions")
+    valid_time = assertions.get("valid_time")
+    conditions = assertions.get("conditions")
+    if kind == "compares_with":
+        if (
+            peer_time not in (None, "")
+            and valid_time not in (None, "")
+            and peer_time != valid_time
+        ) or (
+            peer_conditions not in (None, "")
+            and conditions not in (None, "")
+            and peer_conditions != conditions
+        ):
+            return refuse(
+                "conditions_incompatible",
+                detail="comparison refuses incompatible peer valid_time or conditions",
+            )
+        missing_comparability = (
+            peer_units in (None, "")
+            or peer_scope in (None, "")
+            or units in (None, "")
+            or scope in (None, "")
+            or unit_scope_aligned is not True
+        )
+        mismatched = False
+        if peer_units not in (None, "") and units not in (None, "") and peer_units != units:
+            mismatched = True
+        if peer_scope not in (None, "") and scope not in (None, "") and peer_scope != scope:
+            mismatched = True
+        if unit_scope_aligned is False:
+            mismatched = True
+        if missing_comparability or mismatched:
+            return outcome(
+                "inspectable_unresolved",
+                "unit_scope_unresolved",
+                endpoint_identities=identities,
+                detail="comparison unresolved until affirmative peer units/scope alignment is supplied",
+            )
+
+    # A3: copied/translated support collapses to one lineage family.
+    derivative_kinds = {"quotes", "rendition_of", "derivative", "quotation"}
+    lineage_derivative = any(
+        isinstance(item, dict) and item.get("kind") in derivative_kinds for item in lineage
+    )
+    support_kind = grounding.get("support_kind")
+    if support_kind in {"quotation", "derivative"} or lineage_derivative:
+        return outcome(
+            "inspectable",
+            "single_lineage_family",
+            endpoint_identities=identities,
+            independent_support_count=1,
+            lineage_family_count=1,
+        )
+
+    # A9 completed closure (after lineage), still never authorizes effects.
+    if mandatory_early is not None:
+        return mandatory_early
 
     # A1: same local object id across distinct full pins — preserve both.
     if from_ep.get("object_id") == to_ep.get("object_id") and id_from != id_to:
