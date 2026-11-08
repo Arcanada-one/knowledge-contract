@@ -157,9 +157,9 @@ PROV-DM задает общее различие между сущностями
 
 ## 8. Связь с опубликованными инженерными работами {#8-connections-to-the-published-engineering-work}
 
-[Исследование исполняемых проекций и пересмотра](../../../../engineering/studies/executable-projections-and-revision/STUDY.md) рассматривает закрепленные редакции и ограниченное поведение обновления. [Исследование допуска к повторному использованию и контроля затрат](../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) изучает текущую пригодность ранее подготовленных артефактов.
+[Исследование исполняемых проекций и пересмотра](../../engineering/studies/executable-projections-and-revision/STUDY.md) рассматривает закрепленные редакции и ограниченное поведение обновления. [Исследование допуска к повторному использованию и контроля затрат](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md) изучает текущую пригодность ранее подготовленных артефактов.
 
-Общие [глоссарий](../../reference/glossary/GLOSSARY.md), [взаимодействие и память](../../../../papers/interaction-and-memory/PAPER.md) и [контролируемое повторное использование знаний](../../../../papers/controlled-knowledge-reuse/PAPER.md) определяют связанные обязательства по состоянию работы и допуску.
+Общие [глоссарий](../../reference/glossary/GLOSSARY.md), [взаимодействие и память](../interaction-and-memory/PAPER.md) и [контролируемое повторное использование знаний](../controlled-knowledge-reuse/PAPER.md) определяют связанные обязательства по состоянию работы и допуску.
 
 ## 9. Заключение {#9-conclusion}
 
