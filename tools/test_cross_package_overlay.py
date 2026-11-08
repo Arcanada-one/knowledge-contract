@@ -48,7 +48,7 @@ DIGEST_B2 = {
 def pkg(package_id: str, release_id: str, digest: dict, *, language: str = "en", path: str = "objects/o.json") -> dict:
     return {
         "package_id": package_id,
-        "package_manifest_digest": digest,
+        "package_manifest_digest": dict(digest),
         "release_id": release_id,
         "language": language,
         "canonical": language == "en",
@@ -59,9 +59,10 @@ def pkg(package_id: str, release_id: str, digest: dict, *, language: str = "en",
 def endpoint(package: dict, object_id: str, *, component_id: str = "main",
              representation_id: str = "canonical-en", source_anchor: str = "s1",
              representation_digest: str | None = None, path: str | None = None) -> dict:
+    package_digest = package.get("package_manifest_digest")
     return {
         "package_id": package["package_id"],
-        "package_manifest_digest": package["package_manifest_digest"],
+        "package_manifest_digest": dict(package_digest) if isinstance(package_digest, dict) else package_digest,
         "release_id": package["release_id"],
         "component_id": component_id,
         "object_id": object_id,
@@ -239,8 +240,8 @@ class CorpusG11Tests(unittest.TestCase):
 
     def test_g11_a3_copied_support_one_lineage_family(self):
         a, b = base_packages()
-        from_ep = endpoint(a, "stmt-1")
-        to_ep = endpoint(b, "stmt-copy")
+        from_ep = endpoint(a, "stmt-1", source_anchor="a1")
+        to_ep = endpoint(b, "stmt-copy", source_anchor="b1")
         lineage = [
             {"kind": "quotes", "origin": "pkg-alpha@A1:stmt-1", "revision": "A1"},
             {"kind": "rendition_of", "origin": "pkg-beta@B1:stmt-copy", "revision": "B1-tr"},
@@ -659,8 +660,8 @@ class FailClosedRound2Tests(unittest.TestCase):
 
     def test_r2_10_a3_lineage_with_b_not_permitted_refused(self):
         a, b = base_packages()
-        from_ep = endpoint(a, "stmt-1")
-        to_ep = endpoint(b, "stmt-copy")
+        from_ep = endpoint(a, "stmt-1", source_anchor="a1")
+        to_ep = endpoint(b, "stmt-copy", source_anchor="b1")
         lineage = [{"kind": "quotes", "origin": "pkg-alpha@A1:stmt-1", "revision": "A1"}]
         grounding = {"from_anchor": "a1", "to_anchor": "b1", "support_kind": "quotation"}
         ov = overlay_record(
@@ -955,6 +956,137 @@ class FailClosedRound3Tests(unittest.TestCase):
         report = require_report(self, result)
         self.assertEqual(result.returncode, 1)
         self.assertEqual(report["reason_code"], "rendition_endpoint_refused")
+
+
+class FailClosedRound4Tests(unittest.TestCase):
+    """KC-SWE round-4 strict input types / no-crash (findings 1-6). Red on a51dbab."""
+
+    def _supported_pair(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="supports_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        return a, b, ov
+
+    def test_r4_01_non_object_package_manifest_digest_malformed(self):
+        a, b, ov = self._supported_pair()
+        ov["packages"]["A"]["package_manifest_digest"] = "not-an-object"
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_02_unhashable_relation_kind_malformed(self):
+        a, b, ov = self._supported_pair()
+        ov["relation"]["kind"] = ["supports_under"]
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_03_digest_algorithm_and_value_must_be_sha256_hex(self):
+        a, b, ov = self._supported_pair()
+        ov["packages"]["A"]["package_manifest_digest"]["algorithm"] = "x"
+        ov["packages"]["A"]["package_manifest_digest"]["value"] = "x"
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_04_digest_fields_reject_non_strings(self):
+        a, b, ov = self._supported_pair()
+        ov["packages"]["B"]["package_manifest_digest"]["byte_domain"] = 0
+        ov["packages"]["B"]["package_manifest_digest"]["source_revision"] = True
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_05_endpoint_ids_reject_non_strings(self):
+        a, b, ov = self._supported_pair()
+        ov["relation"]["from"]["object_id"] = 0
+        ov["relation"]["to"]["source_anchor"] = True
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_06_accessible_missing_refused(self):
+        a, b, ov = self._supported_pair()
+        perms = {
+            cpo.permission_key(a["package_id"], "A1"): {
+                "permitted": True, "revoked": False,
+            },
+            cpo.permission_key(b["package_id"], "B1"): {
+                "permitted": True, "revoked": False, "accessible": True,
+            },
+        }
+        result = run_cli(payload(ov, context_record(permissions=perms)))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertIn(report["reason_code"], {
+            "malformed_input", "endpoint_inaccessible", "endpoint_not_permitted",
+        })
+
+    def test_r4_07_grounding_required_and_must_match_endpoints(self):
+        a, b, ov = self._supported_pair()
+        ov["relation"].pop("grounding", None)
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+        a, b, ov = self._supported_pair()
+        ov["relation"]["grounding"]["from_anchor"] = "different-from-endpoint"
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_08_path_non_string_malformed(self):
+        a, b, ov = self._supported_pair()
+        ov["packages"]["A"]["path"] = 0
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r4_09_cli_unexpected_exception_prints_refusal(self):
+        """Guard: unexpected evaluate errors still emit a refusal report and exit 1."""
+        a, b, ov = self._supported_pair()
+        data = payload(ov, context_record())
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "input.json"
+            path.write_text(json.dumps(data), encoding="utf-8")
+            injector = (
+                "import sys\n"
+                "import tools.cross_package_overlay as m\n"
+                "m.evaluate_document = lambda d: (_ for _ in ()).throw("
+                "RuntimeError('injected'))\n"
+                "sys.argv = ['cross_package_overlay.py', '--input', sys.argv[1]]\n"
+                "raise SystemExit(m.main(sys.argv))\n"
+            )
+            result = subprocess.run(
+                [sys.executable, "-B", "-c", injector, str(path)],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=30,
+            )
+            report = require_report(self, result)
+            self.assertEqual(result.returncode, 1)
+            self.assertEqual(report["status"], "refused")
+            self.assertEqual(report["reason_code"], "malformed_input")
 
 
 if __name__ == "__main__":

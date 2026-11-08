@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -37,8 +38,10 @@ CANONICAL_LANGUAGE = "en"
 MAX_INPUT_BYTES = 256 * 1024
 DIGEST_FIELDS = ("algorithm", "value", "byte_domain", "source_revision")
 ENDPOINT_REQUIRED_FIELDS = ("package_id", "release_id", "object_id", "source_anchor")
+PACKAGE_ID_FIELDS = ("package_id", "release_id")
 REQUIRED_PIN_KEYS = frozenset({"A", "B"})
 PERMISSION_BOOL_FIELDS = ("permitted", "accessible", "revoked")
+SHA256_HEX = re.compile(r"^[0-9a-f]{64}$")
 PASS_STATUSES = frozenset({
     "inspectable",
     "prerequisite_closure_complete",
@@ -79,27 +82,35 @@ def permission_key(package_id: str, release_id: str) -> str:
     return f"{package_id}@{release_id}"
 
 
+def _digest_tuple(digest: Any) -> tuple:
+    if not isinstance(digest, dict):
+        return (None, None, None, None)
+    return (
+        digest.get("algorithm"),
+        digest.get("value"),
+        digest.get("byte_domain"),
+        digest.get("source_revision"),
+    )
+
+
 def endpoint_identity(endpoint: dict) -> tuple:
-    digest = endpoint.get("package_manifest_digest") or {}
-    rep = endpoint.get("representation_digest") or {}
     return (
         endpoint.get("package_id"),
-        (digest.get("algorithm"), digest.get("value"), digest.get("byte_domain"), digest.get("source_revision")),
+        _digest_tuple(endpoint.get("package_manifest_digest")),
         endpoint.get("release_id"),
         endpoint.get("component_id"),
         endpoint.get("object_id"),
         endpoint.get("representation_id"),
-        (rep.get("algorithm"), rep.get("value"), rep.get("byte_domain"), rep.get("source_revision")),
+        _digest_tuple(endpoint.get("representation_digest")),
         endpoint.get("source_anchor"),
     )
 
 
 def package_identity(package: dict) -> tuple:
-    digest = package.get("package_manifest_digest") or {}
     return (
         package.get("package_id"),
         package.get("release_id"),
-        (digest.get("algorithm"), digest.get("value"), digest.get("byte_domain"), digest.get("source_revision")),
+        _digest_tuple(package.get("package_manifest_digest")),
     )
 
 
@@ -123,8 +134,49 @@ def digest_complete(digest: Any) -> bool:
     return all(digest.get(field) not in (None, "") for field in DIGEST_FIELDS)
 
 
+def digest_malformed(digest: Any) -> str | None:
+    """Return a detail string when digest shape/type/format is malformed."""
+    if digest is None:
+        return None
+    if not isinstance(digest, dict):
+        return "package_manifest_digest must be an object"
+    for field in DIGEST_FIELDS:
+        if field not in digest:
+            continue
+        value = digest.get(field)
+        if value in (None, ""):
+            continue
+        if not isinstance(value, str):
+            return f"package_manifest_digest.{field} must be a non-empty string"
+        if field == "algorithm" and value != "sha256":
+            return "package_manifest_digest.algorithm must be 'sha256'"
+        if field == "value" and SHA256_HEX.fullmatch(value) is None:
+            return "package_manifest_digest.value must be 64 lowercase hex characters"
+    return None
+
+
+def require_non_empty_string(value: Any, label: str) -> dict | None:
+    if value is None or value == "":
+        return None
+    if not isinstance(value, str):
+        return refuse("malformed_input", detail=f"{label} must be a non-empty string")
+    return None
+
+
+def path_type_malformed(owner: dict, label: str) -> dict | None:
+    if "path" not in owner:
+        return None
+    if not isinstance(owner.get("path"), str):
+        return refuse("malformed_input", detail=f"{label}.path must be a string when present")
+    return None
+
+
 def path_has_translations_segment(path: Any) -> bool:
-    normalized = str(path or "").replace("\\", "/").lower()
+    if path is None:
+        return False
+    if not isinstance(path, str):
+        return False
+    normalized = path.replace("\\", "/").lower()
     return any(segment == "translations" for segment in normalized.split("/") if segment)
 
 
@@ -154,9 +206,9 @@ def pins_equal(left: Any, right: Any) -> bool:
 
 
 def permission_flags_malformed(state: dict) -> bool:
-    """True when a present permission flag is not a real boolean."""
+    """True when any required permission flag is missing or not a real boolean."""
     for field in PERMISSION_BOOL_FIELDS:
-        if field in state and not isinstance(state.get(field), bool):
+        if field not in state or not isinstance(state.get(field), bool):
             return True
     return False
 
@@ -181,6 +233,17 @@ def review_is_self_authored(review: dict, overlay: dict, pkg_a: dict, pkg_b: dic
 
 def evaluate(overlay: dict, context: dict) -> dict:
     """Evaluate one candidate overlay record plus explicit consumer context."""
+    try:
+        return _evaluate(overlay, context)
+    except Exception as exc:  # noqa: BLE001 — never raise on any JSON value
+        return refuse(
+            "malformed_input",
+            detail=f"unexpected evaluation error: {type(exc).__name__}: {exc}",
+        )
+
+
+def _evaluate(overlay: dict, context: dict) -> dict:
+    """Inner evaluator; callers use evaluate() which refuses on unexpected errors."""
     if not isinstance(overlay, dict) or not isinstance(context, dict):
         return refuse("malformed_input", detail="overlay and context must be objects")
 
@@ -202,8 +265,28 @@ def evaluate(overlay: dict, context: dict) -> dict:
         return refuse("malformed_input", detail="package A and B must be objects")
 
     # Two DISTINCT packages are required; a same-id revision pair belongs to A6, not overlay.
-    if pkg_a.get("package_id") is None or pkg_b.get("package_id") is None:
-        return refuse("malformed_input", detail="package_id required on both packages")
+    for label, package in (("A", pkg_a), ("B", pkg_b)):
+        for field in PACKAGE_ID_FIELDS:
+            value = package.get(field)
+            if value is None or value == "":
+                return refuse("malformed_input", detail=f"package {label} requires non-empty {field}")
+            bad = require_non_empty_string(value, f"packages.{label}.{field}")
+            if bad is not None:
+                return bad
+        path_bad = path_type_malformed(package, f"packages.{label}")
+        if path_bad is not None:
+            return path_bad
+        digest = package.get("package_manifest_digest")
+        digest_bad = digest_malformed(digest)
+        if digest_bad is not None:
+            return refuse("malformed_input", side=label, detail=digest_bad)
+        if not digest_complete(digest):
+            return refuse(
+                "incomplete_release_pin",
+                side=label,
+                detail="each package requires package_manifest_digest with algorithm, value, byte_domain, source_revision",
+            )
+
     if pkg_a.get("package_id") == pkg_b.get("package_id"):
         return refuse(
             "same_package_both_sides",
@@ -212,12 +295,6 @@ def evaluate(overlay: dict, context: dict) -> dict:
         )
     if package_identity(pkg_a) == package_identity(pkg_b):
         return refuse("same_package_both_sides", package_identity=list(package_identity(pkg_a)))
-
-    if not digest_complete(pkg_a.get("package_manifest_digest")) or not digest_complete(pkg_b.get("package_manifest_digest")):
-        return refuse(
-            "incomplete_release_pin",
-            detail="each package requires package_manifest_digest with algorithm, value, byte_domain, source_revision",
-        )
 
     if package_rendition_qualified(pkg_a) or package_rendition_qualified(pkg_b):
         return refuse(
@@ -239,7 +316,7 @@ def evaluate(overlay: dict, context: dict) -> dict:
             "rendition_endpoint_refused",
             detail="rendition relation edges are out of scope for this preparation (AC4)",
         )
-    if kind not in RELATION_KINDS:
+    if not isinstance(kind, str) or kind not in RELATION_KINDS:
         return refuse("malformed_input", detail=f"unsupported relation kind: {kind!r}")
 
     from_ep = relation.get("from")
@@ -248,7 +325,18 @@ def evaluate(overlay: dict, context: dict) -> dict:
         return refuse("malformed_input", detail="from and to endpoints required")
 
     for label, endpoint in (("from", from_ep), ("to", to_ep)):
-        missing = [field for field in ENDPOINT_REQUIRED_FIELDS if endpoint.get(field) in (None, "")]
+        path_bad = path_type_malformed(endpoint, f"relation.{label}")
+        if path_bad is not None:
+            return path_bad
+        missing = []
+        for field in ENDPOINT_REQUIRED_FIELDS:
+            value = endpoint.get(field)
+            if value is None or value == "":
+                missing.append(field)
+                continue
+            bad = require_non_empty_string(value, f"relation.{label}.{field}")
+            if bad is not None:
+                return bad
         if missing:
             return refuse(
                 "incomplete_release_pin",
@@ -256,6 +344,11 @@ def evaluate(overlay: dict, context: dict) -> dict:
                 missing_fields=missing,
                 detail="endpoint requires package_id, release_id, object_id, source_anchor",
             )
+        ep_digest = endpoint.get("package_manifest_digest")
+        if "package_manifest_digest" in endpoint:
+            digest_bad = digest_malformed(ep_digest)
+            if digest_bad is not None:
+                return refuse("malformed_input", side=label, detail=digest_bad)
 
     if path_has_translations_segment(from_ep.get("path")) or path_has_translations_segment(to_ep.get("path")):
         return refuse(
@@ -281,7 +374,46 @@ def evaluate(overlay: dict, context: dict) -> dict:
     id_to = endpoint_identity(to_ep)
     identities = [list(id_from), list(id_to)]
 
-    grounding = relation.get("grounding") if isinstance(relation.get("grounding"), dict) else {}
+    grounding_raw = relation.get("grounding")
+    if grounding_raw is None:
+        grounding: dict = {}
+    elif not isinstance(grounding_raw, dict):
+        return refuse("malformed_input", detail="relation.grounding must be an object when present")
+    else:
+        grounding = grounding_raw
+
+    from_anchor = grounding.get("from_anchor")
+    to_anchor = grounding.get("to_anchor")
+    if kind == "contradicts_under":
+        # A4: missing side stays one_sided_contradiction; present anchors must match endpoints.
+        if from_anchor not in (None, "") and to_anchor not in (None, ""):
+            if not isinstance(from_anchor, str) or not isinstance(to_anchor, str):
+                return refuse(
+                    "malformed_input",
+                    detail="grounding.from_anchor and grounding.to_anchor must be strings",
+                )
+            if from_anchor != from_ep.get("source_anchor") or to_anchor != to_ep.get("source_anchor"):
+                return refuse(
+                    "malformed_input",
+                    detail="grounding anchors must equal endpoint source_anchor values",
+                )
+    else:
+        if not isinstance(grounding_raw, dict):
+            return refuse(
+                "malformed_input",
+                detail="relation.grounding with from_anchor and to_anchor is required",
+            )
+        if not isinstance(from_anchor, str) or not from_anchor or not isinstance(to_anchor, str) or not to_anchor:
+            return refuse(
+                "malformed_input",
+                detail="grounding.from_anchor and grounding.to_anchor must be non-empty strings",
+            )
+        if from_anchor != from_ep.get("source_anchor") or to_anchor != to_ep.get("source_anchor"):
+            return refuse(
+                "malformed_input",
+                detail="grounding anchors must equal endpoint source_anchor values",
+            )
+
     assertions = relation.get("assertions") if isinstance(relation.get("assertions"), dict) else {}
     lineage = relation.get("lineage") if isinstance(relation.get("lineage"), list) else []
     assessment = overlay.get("assessment") if isinstance(overlay.get("assessment"), dict) else {}
@@ -324,11 +456,17 @@ def evaluate(overlay: dict, context: dict) -> dict:
     def require_current_permissions() -> dict | None:
         """Affirmative permitted+accessible and not revoked for BOTH pins."""
         for side, state in (("A", state_a), ("B", state_b)):
-            if state.get("missing") is not True and permission_flags_malformed(state):
+            if state.get("missing") is True:
+                return refuse(
+                    "endpoint_not_permitted",
+                    side=side,
+                    detail="current permission must affirmatively be permitted=true and accessible=true",
+                )
+            if permission_flags_malformed(state):
                 return refuse(
                     "malformed_input",
                     side=side,
-                    detail="permitted, accessible and revoked must be real booleans when present",
+                    detail="permitted, accessible and revoked must all be present real booleans",
                 )
             if state.get("revoked") is True:
                 return refuse(
@@ -336,9 +474,9 @@ def evaluate(overlay: dict, context: dict) -> dict:
                     side=side,
                     historical_record_retained=bool(state.get("historically_inspectable", True)),
                 )
-            if state.get("accessible") is False:
+            if state.get("accessible") is not True:
                 return refuse("endpoint_inaccessible", side=side)
-            if state.get("permitted") is not True or state.get("missing") is True:
+            if state.get("permitted") is not True:
                 return refuse(
                     "endpoint_not_permitted",
                     side=side,
@@ -410,8 +548,6 @@ def evaluate(overlay: dict, context: dict) -> dict:
 
     # A4: one-sided contradiction.
     if kind == "contradicts_under":
-        from_anchor = grounding.get("from_anchor")
-        to_anchor = grounding.get("to_anchor")
         if not from_anchor or not to_anchor:
             missing = "from" if not from_anchor else "to"
             return refuse(
@@ -621,12 +757,18 @@ def main(argv: list[str] | None = None) -> int:
         print("error: --input PATH is required", file=sys.stderr)
         return 2
 
-    path = Path(path_value)
-    document, early = load_input(path)
-    if document is None:
-        report = early
-    else:
-        report = evaluate_document(document)
+    try:
+        path = Path(path_value)
+        document, early = load_input(path)
+        if document is None:
+            report = early
+        else:
+            report = evaluate_document(document)
+    except Exception as exc:  # noqa: BLE001 — CLI must never crash without a report
+        report = refuse(
+            "malformed_input",
+            detail=f"unexpected evaluation error: {type(exc).__name__}: {exc}",
+        )
 
     # Always emit a JSON report for evaluated inputs; usage errors alone may omit it.
     sys.stdout.write(json.dumps(report, sort_keys=True, ensure_ascii=False) + "\n")
