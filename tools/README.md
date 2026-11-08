@@ -22,23 +22,36 @@ after every A10 condition is affirmatively established:
   `byte_domain` / `source_revision`. The endpoint's `package_manifest_digest`
   must equal its package (A or B) digest; a valid-but-different sha256 refuses
   (`endpoint_digest_mismatch`). `representation_digest.source_revision` must
-  equal the endpoint `release_id` (`representation_identity_mismatch`).
+  equal the endpoint `release_id`. **Representation binding (KC-SWE reading of
+  overlay §2, pending KC-Brain confirmation):** each package requires a
+  non-empty `representations` map
+  `representation_id -> {representation_digest, language}`. The endpoint's
+  `representation_id` must be a key in its package map and
+  `representation_digest` must equal the declared digest on all four fields
+  (`representation_identity_mismatch` otherwise). Declared representation
+  `language` must be `"en"`; if `endpoint.language` is present it must equal
+  that declared language (`rendition_endpoint_refused`). The fixture id
+  `canonical-en` is not a rule — only a test label.
 - **Packages.** `language == "en"` and `canonical is True` on both packages;
   `from`/`to` pins match packages A/B; `grounding.from_anchor` /
   `grounding.to_anchor` equal the endpoint `source_anchor` values.
 - **Permissions.** Current `permitted: true`, `accessible: true` and
   `revoked: false` (all three present booleans) on both request pins.
-- **R2 review binding.** An independent scoped review whose release pins equal
-  the request pins, with non-empty string `reviewer` distinct from relation /
-  package authors, `verdict == "accepted"`, `relation_id` and
-  `reviewed_edge_revision` equal to the evaluated edge / overlay revision,
-  `scope` compatible with assessment scope, and `pin_manifest_digests` equal to
-  package A/B manifest bytes (not just release strings).
-- **R3 comparability.** For `compares_with`, affirmative `peer_units`,
-  `peer_quantifier_scope`, and `unit_scope_aligned is True` are required;
-  otherwise `inspectable_unresolved` / `unit_scope_unresolved` (never
-  `scoped_inspection_ok`). Incompatible peer time/conditions refuse
-  (`conditions_incompatible`).
+- **R2 review binding.** Among reviews whose release pins equal the request
+  pins, select those bound to this `relation_id` and `reviewed_edge_revision`
+  (order-independent). With none, refuse (`review_edge_mismatch`) or, on the
+  A5 unresolved path, `no_bound_edge_review`. With more than one bound review
+  that disagree on `verdict`, refuse (`review_verdict_conflict`). The selected
+  review requires non-empty string `reviewer` distinct from relation / package
+  authors, `verdict == "accepted"`, `scope` compatible with assessment scope,
+  and `pin_manifest_digests` equal to package A/B manifest bytes.
+- **R3 comparability.** For `compares_with`, all four `PREMISE_OVERLAP_FIELDS`
+  pairs (units, quantifier scope, conditions, valid time) must be present and
+  equal — the same constant as the A5 path. Missing any pair →
+  `inspectable_unresolved` / `unit_scope_unresolved`. Unequal time/conditions →
+  `conditions_incompatible`. Unequal units/scope or `unit_scope_aligned is not
+  True` → `unit_scope_unresolved`. `unit_scope_aligned` does not waive any
+  missing field.
 - **A3 / A9 order.** Unresolved mandatory dependencies are evaluated before the
   copied-support early return, so `use_closure_incomplete` is preserved.
 - **A5 contradiction (KC-SWE fail-closed interpretation pending KC-Brain).**

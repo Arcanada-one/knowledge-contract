@@ -216,6 +216,115 @@ def package_rendition_qualified(package: dict) -> bool:
     return False
 
 
+def validate_package_representations(package: dict, label: str) -> dict | None:
+    """Require package.representations map (KC-SWE interpretation of overlay §2).
+
+    Pending KC-Brain confirmation: endpoint representation identity resolves against
+    what the pinned package declares, not an invented literal id vocabulary.
+    """
+    reps = package.get("representations")
+    if not isinstance(reps, dict) or len(reps) == 0:
+        return refuse(
+            "malformed_input",
+            side=label,
+            detail=(
+                f"package {label} requires a non-empty representations map: "
+                "representation_id -> {representation_digest, language}"
+            ),
+        )
+    for rep_id, entry in reps.items():
+        if not isinstance(rep_id, str) or rep_id == "":
+            return refuse(
+                "malformed_input",
+                side=label,
+                detail=f"package {label} representations keys must be non-empty strings",
+            )
+        if not isinstance(entry, dict):
+            return refuse(
+                "malformed_input",
+                side=label,
+                detail=f"package {label} representations[{rep_id!r}] must be an object",
+            )
+        digest = entry.get("representation_digest")
+        digest_bad = digest_malformed(digest, f"packages.{label}.representations[{rep_id}].representation_digest")
+        if digest_bad is not None:
+            return refuse("malformed_input", side=label, detail=digest_bad)
+        if not digest_complete(digest):
+            return refuse(
+                "malformed_input",
+                side=label,
+                detail=(
+                    f"package {label} representations[{rep_id!r}].representation_digest "
+                    "requires algorithm, value, byte_domain, source_revision"
+                ),
+            )
+        if digest.get("source_revision") != package.get("release_id"):
+            return refuse(
+                "malformed_input",
+                side=label,
+                detail=(
+                    f"package {label} representations[{rep_id!r}].representation_digest."
+                    "source_revision must equal package release_id"
+                ),
+            )
+        language = entry.get("language")
+        if not isinstance(language, str) or language == "":
+            return refuse(
+                "malformed_input",
+                side=label,
+                detail=f"package {label} representations[{rep_id!r}].language must be a non-empty string",
+            )
+        if language != CANONICAL_LANGUAGE:
+            return refuse(
+                "rendition_endpoint_refused",
+                side=label,
+                representation_id=rep_id,
+                detail=(
+                    "G11 preparation accepts only canonical English representations "
+                    "(declared representation language must be 'en')"
+                ),
+            )
+    return None
+
+
+def bind_endpoint_representation(endpoint: dict, package: dict, label: str) -> dict | None:
+    """Refuse when endpoint representation is not the package-declared binding."""
+    reps = package.get("representations")
+    if not isinstance(reps, dict):
+        return refuse(
+            "malformed_input",
+            side=label,
+            detail=f"package for endpoint {label} lacks representations map",
+        )
+    rep_id = endpoint.get("representation_id")
+    declared = reps.get(rep_id)
+    if not isinstance(declared, dict):
+        return refuse(
+            "representation_identity_mismatch",
+            side=label,
+            representation_id=rep_id,
+            detail="endpoint representation_id must be a key in its package representations map",
+        )
+    declared_digest = declared.get("representation_digest")
+    endpoint_digest = endpoint.get("representation_digest")
+    if not digests_equal(endpoint_digest, declared_digest):
+        return refuse(
+            "representation_identity_mismatch",
+            side=label,
+            representation_id=rep_id,
+            detail="endpoint representation_digest must equal the package-declared digest for that id",
+        )
+    declared_language = declared.get("language")
+    endpoint_language = endpoint.get("language")
+    if endpoint_language not in (None, "") and endpoint_language != declared_language:
+        return refuse(
+            "rendition_endpoint_refused",
+            side=label,
+            detail="endpoint.language must equal the package-declared representation language",
+        )
+    return None
+
+
 def pins_equal(left: Any, right: Any) -> bool:
     if not pins_complete(left) or not pins_complete(right):
         return False
@@ -306,6 +415,9 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 side=label,
                 detail="each package requires package_manifest_digest with algorithm, value, byte_domain, source_revision",
             )
+        reps_bad = validate_package_representations(package, label)
+        if reps_bad is not None:
+            return reps_bad
 
     if pkg_a.get("package_id") == pkg_b.get("package_id"):
         return refuse(
@@ -432,6 +544,14 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             side="to",
             detail="endpoint package_manifest_digest must equal its package digest",
         )
+
+    # Representation identity resolves against the matched package declaration (§2 / R1).
+    bind_from = bind_endpoint_representation(from_ep, pkg_a, "from")
+    if bind_from is not None:
+        return bind_from
+    bind_to = bind_endpoint_representation(to_ep, pkg_b, "to")
+    if bind_to is not None:
+        return bind_to
 
     id_from = endpoint_identity(from_ep)
     id_to = endpoint_identity(to_ep)
@@ -584,7 +704,36 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 "review_missing",
                 detail="independent scoped review whose pins equal the request pins is required",
             )
-        matched = matching[0]
+        expected_revision = overlay.get("overlay_revision")
+        expected_relation_id = relation.get("relation_id")
+        bound = [
+            review for review in matching
+            if review.get("relation_id") == expected_relation_id
+            and review.get("reviewed_edge_revision") == expected_revision
+        ]
+        if not bound:
+            if as_unresolved_when_missing:
+                return outcome(
+                    "inspectable_unresolved",
+                    "no_bound_edge_review",
+                    endpoint_identities=identities,
+                    detail="no pin-matching review is bound to this relation_id and reviewed_edge_revision",
+                )
+            return refuse(
+                "review_edge_mismatch",
+                detail=(
+                    "among pin-matching reviews, none bind relation_id and "
+                    "reviewed_edge_revision to the evaluated edge"
+                ),
+            )
+        verdicts = {review.get("verdict") for review in bound}
+        if len(verdicts) > 1:
+            return refuse(
+                "review_verdict_conflict",
+                verdicts=sorted(str(item) for item in verdicts),
+                detail="multiple bound reviews for this edge disagree on verdict",
+            )
+        matched = bound[0]
         reviewer = matched.get("reviewer")
         if not isinstance(reviewer, str) or reviewer == "":
             if as_unresolved_when_missing:
@@ -620,18 +769,6 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 "review_not_accepted",
                 verdict=verdict,
                 detail="matching review verdict must be accepted",
-            )
-        expected_revision = overlay.get("overlay_revision")
-        if matched.get("reviewed_edge_revision") != expected_revision:
-            return refuse(
-                "review_edge_mismatch",
-                detail="reviewed_edge_revision must equal the overlay_revision under evaluation",
-            )
-        expected_relation_id = relation.get("relation_id")
-        if matched.get("relation_id") != expected_relation_id:
-            return refuse(
-                "review_edge_mismatch",
-                detail="review relation_id must equal the relation being evaluated",
             )
         expected_scope = assessment.get("scope")
         review_scope = matched.get("scope")
@@ -801,49 +938,44 @@ def _evaluate(overlay: dict, context: dict) -> dict:
     if mandatory_early is not None and mandatory_early.get("status") == "refused":
         return mandatory_early
 
-    # A2 / R3: comparison requires affirmative comparability evidence.
-    peer_units = assertions.get("peer_units")
-    peer_scope = assertions.get("peer_quantifier_scope")
-    units = assertions.get("units")
-    scope = assertions.get("quantifier_scope")
-    peer_time = assertions.get("peer_valid_time")
-    peer_conditions = assertions.get("peer_conditions")
-    valid_time = assertions.get("valid_time")
-    conditions = assertions.get("conditions")
+    # A2 / R3: comparison requires affirmative evidence for all PREMISE_OVERLAP_FIELDS.
+    # unit_scope_aligned must not stand in for any missing field (same constant as A5).
     if kind == "compares_with":
-        if (
-            peer_time not in (None, "")
-            and valid_time not in (None, "")
-            and peer_time != valid_time
-        ) or (
-            peer_conditions not in (None, "")
-            and conditions not in (None, "")
-            and peer_conditions != conditions
-        ):
+        missing_comparability = []
+        unequal_time_conditions = []
+        unequal_unit_scope = []
+        for left_key, right_key in PREMISE_OVERLAP_FIELDS:
+            left = assertions.get(left_key)
+            right = assertions.get(right_key)
+            if left in (None, "") or right in (None, ""):
+                missing_comparability.append(right_key if right in (None, "") else left_key)
+                continue
+            if left != right:
+                if right_key in ("peer_conditions", "peer_valid_time"):
+                    unequal_time_conditions.append(right_key)
+                else:
+                    unequal_unit_scope.append(right_key)
+        if unequal_time_conditions:
             return refuse(
                 "conditions_incompatible",
+                mismatched_fields=unequal_time_conditions,
                 detail="comparison refuses incompatible peer valid_time or conditions",
             )
-        missing_comparability = (
-            peer_units in (None, "")
-            or peer_scope in (None, "")
-            or units in (None, "")
-            or scope in (None, "")
+        if (
+            missing_comparability
+            or unequal_unit_scope
             or unit_scope_aligned is not True
-        )
-        mismatched = False
-        if peer_units not in (None, "") and units not in (None, "") and peer_units != units:
-            mismatched = True
-        if peer_scope not in (None, "") and scope not in (None, "") and peer_scope != scope:
-            mismatched = True
-        if unit_scope_aligned is False:
-            mismatched = True
-        if missing_comparability or mismatched:
+        ):
             return outcome(
                 "inspectable_unresolved",
                 "unit_scope_unresolved",
                 endpoint_identities=identities,
-                detail="comparison unresolved until affirmative peer units/scope alignment is supplied",
+                missing_fields=missing_comparability,
+                mismatched_fields=unequal_unit_scope,
+                detail=(
+                    "comparison unresolved until all PREMISE_OVERLAP_FIELDS pairs are "
+                    "present and equal; unit_scope_aligned does not waive missing fields"
+                ),
             )
 
     # A3: copied/translated support collapses to one lineage family.

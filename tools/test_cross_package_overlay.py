@@ -45,7 +45,22 @@ DIGEST_B2 = {
 }
 
 
-def pkg(package_id: str, release_id: str, digest: dict, *, language: str = "en", path: str = "objects/o.json") -> dict:
+def representation_digest_obj(release_id: str, *, value: str | None = None) -> dict:
+    return {
+        "algorithm": "sha256",
+        "value": value or ("d" * 64),
+        "byte_domain": "object-bytes",
+        "source_revision": release_id,
+    }
+
+
+def pkg(package_id: str, release_id: str, digest: dict, *, language: str = "en",
+        path: str = "objects/o.json",
+        representation_id: str = "canonical-en",
+        representation_digest_value: str | None = None,
+        representation_language: str | None = None) -> dict:
+    """Package fixture with required representations map (KC-SWE §2 interpretation)."""
+    rep_language = language if representation_language is None else representation_language
     return {
         "package_id": package_id,
         "package_manifest_digest": dict(digest),
@@ -53,6 +68,14 @@ def pkg(package_id: str, release_id: str, digest: dict, *, language: str = "en",
         "language": language,
         "canonical": language == "en",
         "path": path,
+        "representations": {
+            representation_id: {
+                "representation_digest": representation_digest_obj(
+                    release_id, value=representation_digest_value,
+                ),
+                "language": rep_language,
+            },
+        },
     }
 
 
@@ -60,6 +83,14 @@ def endpoint(package: dict, object_id: str, *, component_id: str = "main",
              representation_id: str = "canonical-en", source_anchor: str = "s1",
              representation_digest: str | None = None, path: str | None = None) -> dict:
     package_digest = package.get("package_manifest_digest")
+    reps = package.get("representations") if isinstance(package.get("representations"), dict) else {}
+    declared = reps.get(representation_id) if isinstance(reps.get(representation_id), dict) else None
+    if declared and isinstance(declared.get("representation_digest"), dict) and representation_digest is None:
+        rep_digest = dict(declared["representation_digest"])
+    else:
+        rep_digest = representation_digest_obj(
+            package["release_id"], value=representation_digest,
+        )
     return {
         "package_id": package["package_id"],
         "package_manifest_digest": dict(package_digest) if isinstance(package_digest, dict) else package_digest,
@@ -67,12 +98,7 @@ def endpoint(package: dict, object_id: str, *, component_id: str = "main",
         "component_id": component_id,
         "object_id": object_id,
         "representation_id": representation_id,
-        "representation_digest": {
-            "algorithm": "sha256",
-            "value": representation_digest or ("d" * 64),
-            "byte_domain": "object-bytes",
-            "source_revision": package["release_id"],
-        },
+        "representation_digest": rep_digest,
         "source_anchor": source_anchor,
         "language": package["language"],
         "path": path if path is not None else package.get("path", "objects/o.json"),
@@ -1365,6 +1391,147 @@ class FailClosedRound5Tests(unittest.TestCase):
         self.assertEqual(result.returncode, 3)
         self.assertEqual(report["status"], "inspectable_unresolved")
         self.assertEqual(report["reason_code"], "no_bound_edge_review")
+
+
+class FailClosedRound6Tests(unittest.TestCase):
+    """KC-SWE round-6 findings on 1cd98f18: R3 full PREMISE_OVERLAP, R1 package map, R2 selection."""
+
+    def _a10_positive(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(
+            kind="compares_with", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=comparable_assertions(),
+        )
+        ctx = context_record(unit_scope_aligned=True)
+        return a, b, ov, ctx
+
+    def test_r6_r3_missing_peer_valid_time_unresolved_despite_aligned(self):
+        a, b, ov, ctx = self._a10_positive()
+        del ov["relation"]["assertions"]["peer_valid_time"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r6_r3_missing_peer_conditions_unresolved_despite_aligned(self):
+        a, b, ov, ctx = self._a10_positive()
+        del ov["relation"]["assertions"]["peer_conditions"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+
+    def test_r6_r3_missing_valid_time_unresolved_despite_aligned(self):
+        a, b, ov, ctx = self._a10_positive()
+        del ov["relation"]["assertions"]["valid_time"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+
+    def test_r6_r3_missing_conditions_unresolved_despite_aligned(self):
+        a, b, ov, ctx = self._a10_positive()
+        del ov["relation"]["assertions"]["conditions"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+
+    def test_r6_r1_undeclared_representation_id_refused(self):
+        a, b, ov, ctx = self._a10_positive()
+        ov["relation"]["from"]["representation_id"] = "ru-draft"
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "representation_identity_mismatch")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r6_r1_declared_but_different_digest_refused(self):
+        a, b, ov, ctx = self._a10_positive()
+        ov["relation"]["to"]["representation_digest"] = representation_digest_obj(
+            "B1", value="e" * 64,
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "representation_identity_mismatch")
+
+    def test_r6_r1_declared_representation_language_ru_refused(self):
+        a = pkg("pkg-alpha", "A1", DIGEST_A1, representation_language="ru")
+        b = pkg("pkg-beta", "B1", DIGEST_B1)
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(
+            kind="compares_with", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=comparable_assertions(),
+        )
+        result = run_cli(payload(ov, context_record(unit_scope_aligned=True)))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "rendition_endpoint_refused")
+
+    def test_r6_r1_endpoint_language_mismatch_refused(self):
+        a, b, ov, ctx = self._a10_positive()
+        ov["relation"]["from"]["language"] = "ru"
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "rendition_endpoint_refused")
+
+    def test_r6_r1_missing_representations_map_malformed(self):
+        a, b, ov, ctx = self._a10_positive()
+        del ov["packages"]["A"]["representations"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r6_r2_other_relation_first_then_own_accepted(self):
+        a, b, ov, ctx = self._a10_positive()
+        ctx["reviews"] = [
+            bound_review(relation_id="rel-other"),
+            bound_review(),
+        ]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r6_r2_own_first_then_other_accepted(self):
+        a, b, ov, ctx = self._a10_positive()
+        ctx["reviews"] = [
+            bound_review(),
+            bound_review(relation_id="rel-other"),
+        ]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r6_r2_disagreeing_bound_reviews_refused(self):
+        a, b, ov, ctx = self._a10_positive()
+        ctx["reviews"] = [
+            bound_review(verdict="accepted", reviewer="rev-a", author="author-a"),
+            bound_review(verdict="declined", reviewer="rev-b", author="author-b"),
+        ]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "review_verdict_conflict")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
 
 
 if __name__ == "__main__":
