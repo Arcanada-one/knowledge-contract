@@ -8,13 +8,16 @@ accepted paper blob bytes; modified manuscript copies are not committed.
 """
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import io
 import json
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 CHECKER = ROOT / "tools" / "verify_retrieval_context.py"
@@ -24,6 +27,12 @@ PAPER_SHA256 = "e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f
 MAIN_CLEAR_NAMES_SHA256 = "a27a209c419480f2eb3c80e826c0da507fece1c1c66045d5c34d647656c3c2a9"
 ACCEPTED_TITLE = "Retrieval, Coverage, and Context Composition under Resource Limits"
 ACCEPTED_SLUG = "retrieval-coverage-and-context-composition-under-resource-limits"
+STRUCTURE_REFUSALS = frozenset({
+    "structure_broken",
+    "incomplete_mapping",
+    "corrupted_candidate",
+})
+BODY_SWEEP_COUNT = 200
 
 
 def accepted_bytes() -> bytes:
@@ -41,7 +50,43 @@ def run_checker(args: list[str], cwd: Path | None = None) -> subprocess.Complete
         capture_output=True,
         text=True,
         check=False,
+        timeout=30,
     )
+
+
+def run_checker_main(args: list[str]) -> tuple[int, str, str]:
+    """Invoke checker main() in-process; returns (exit_code, stdout, stderr)."""
+    import tools.verify_retrieval_context as checker
+
+    stdout = io.StringIO()
+    stderr = io.StringIO()
+    with mock.patch.object(sys, "argv", [str(CHECKER), *args]):
+        with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            code = checker.main()
+    return code, stdout.getvalue(), stderr.getvalue()
+
+
+def first_alpha_at_or_after(text: str, start: int) -> int:
+    for index in range(start, len(text)):
+        if text[index].isalpha():
+            return index
+    raise AssertionError(f"no alphabetic character at or after {start}")
+
+
+def body_start_index(text: str) -> int:
+    """First index after the H1 line (body under title-only residual)."""
+    import tools.verify_retrieval_context as checker
+
+    _inner, _fm, remainder = checker.split_document(text)
+    lines = remainder.splitlines(keepends=True)
+    index = 0
+    offset = text.index(remainder)
+    while index < len(lines) and not lines[index].startswith("# "):
+        offset += len(lines[index])
+        index += 1
+    if index >= len(lines):
+        raise AssertionError("H1 not found")
+    return offset + len(lines[index])
 
 
 def write_paper(directory: Path, data: bytes) -> Path:
@@ -274,7 +319,7 @@ class TitleOnlyNegativeControls(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(
             json.loads(result.stdout)["refusal_reason"],
-            {"incomplete_mapping", "corrupted_candidate"},
+            STRUCTURE_REFUSALS,
         )
 
     def test_unsupported_version_exits_nonzero(self) -> None:
@@ -302,8 +347,100 @@ class TitleOnlyNegativeControls(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(
             json.loads(result.stdout)["refusal_reason"],
-            {"incomplete_mapping", "corrupted_candidate"},
+            STRUCTURE_REFUSALS,
         )
+
+
+class StructureRefusalControls(unittest.TestCase):
+    """Typed refusals for structural extraction failures (no traceback)."""
+
+    def test_mid_body_alpha_mutation_title_only_typed_refusal(self) -> None:
+        text = PAPER.read_text(encoding="utf-8")
+        idx = first_alpha_at_or_after(text, len(text) // 2)
+        mutated = text[:idx] + "X" + text[idx + 1 :]
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), mutated.encode("utf-8"))
+            result = run_checker(
+                ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+            )
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertIn(report["refusal_reason"], STRUCTURE_REFUSALS)
+
+    def test_body_char_sweep_title_only_typed_refusals(self) -> None:
+        text = PAPER.read_text(encoding="utf-8")
+        start = body_start_index(text)
+        body_len = len(text) - start
+        self.assertGreater(body_len, BODY_SWEEP_COUNT)
+        failures: list[str] = []
+        for step in range(BODY_SWEEP_COUNT):
+            pos = start + (step * body_len) // BODY_SWEEP_COUNT
+            if pos >= len(text):
+                pos = len(text) - 1
+            replacement = "X" if text[pos] != "X" else "Y"
+            mutated = text[:pos] + replacement + text[pos + 1 :]
+            with tempfile.TemporaryDirectory() as tmp:
+                paper = write_paper(Path(tmp), mutated.encode("utf-8"))
+                code, stdout, stderr = run_checker_main(
+                    ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+                )
+            if code != 1 or stderr.strip():
+                failures.append(f"pos={pos} code={code} stderr={stderr[:200]!r}")
+                continue
+            try:
+                report = json.loads(stdout)
+            except json.JSONDecodeError as exc:
+                failures.append(f"pos={pos} json={exc}")
+                continue
+            if report.get("pass") is not False:
+                failures.append(f"pos={pos} pass={report.get('pass')!r}")
+        self.assertEqual(failures, [], failures[:5])
+
+    def test_invalid_utf8_title_only_typed_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), b"---\nTitle: x\n---\n\n# X\n\xff")
+            result = run_checker(
+                ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+            )
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertIn(report["refusal_reason"], STRUCTURE_REFUSALS)
+
+    def test_empty_file_title_only_typed_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), b"")
+            result = run_checker(
+                ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+            )
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertIn(report["refusal_reason"], STRUCTURE_REFUSALS)
+
+    def test_invalid_utf8_exact_mode_typed_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), b"\xff\xfe")
+            result = run_checker(["--paper", str(paper)])
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertEqual(report["refusal_reason"], "structure_broken")
+
+    def test_empty_file_exact_mode_typed_refusal(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), b"")
+            result = run_checker(["--paper", str(paper)])
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertEqual(report["refusal_reason"], "structure_broken")
 
 
 class DefaultModeCorruptionControls(unittest.TestCase):

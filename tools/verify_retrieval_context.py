@@ -523,6 +523,14 @@ def protected_body_digests(text: str) -> dict[str, str]:
     return {name: sha(value) for name, value in blocks.items()}
 
 
+def try_protected_body_digests(text: str) -> dict[str, str] | None:
+    """Return PROTECTED digests, or None when structural extraction fails."""
+    try:
+        return protected_body_digests(text)
+    except (ValueError, IndexError):
+        return None
+
+
 def title_only_report(candidate_path: Path, against: str, version: str) -> dict:
     record = {
         'record_type': TITLE_ONLY_RECORD,
@@ -578,13 +586,20 @@ def title_only_report(candidate_path: Path, against: str, version: str) -> dict:
     }
     record['title_fields_changed'] = title_fields_changed(accepted_obs, candidate_obs)
     if shape_refusal or accepted_projected != candidate_projected:
+        accepted_digests = try_protected_body_digests(accepted_text)
+        candidate_digests = try_protected_body_digests(candidate_text)
+        # Marker/index extraction failure is a typed structure refusal, not a traceback.
+        if accepted_digests is None or candidate_digests is None:
+            reason = 'structure_broken'
+        else:
+            reason = shape_refusal or 'incomplete_mapping'
         record.update({
             'pass': False,
-            'refusal_reason': shape_refusal or 'incomplete_mapping',
+            'refusal_reason': reason,
             'differing_regions': differing_regions(accepted_text, candidate_text),
             'protected_digests_after_title_projection': {
-                'accepted': protected_body_digests(accepted_text),
-                'candidate': protected_body_digests(candidate_text),
+                'accepted': accepted_digests,
+                'candidate': candidate_digests,
             },
         })
         return record
@@ -600,15 +615,45 @@ def title_only_report(candidate_path: Path, against: str, version: str) -> dict:
 
 
 def full_report(paper: Path) -> dict:
-    report = {'record_type': 'retrieval-context-finite-verification/1',
-              'candidate_sha256': PAPER_SHA256, 'source_sha256': SOURCE_SHA256,
-              'document': document_checks(paper),
-              'selection': exact_selection_model(), 'greedy': greedy_model(),
-              'boundaries': boundary_controls(),
-              'not_established': ['general proofs by enumeration', 'semantic annotation correctness',
-                                  'production selector conformance', 'human comprehension',
-                                  'editorial superiority', 'repository-wide CI', 'site deployment',
-                                  'independent scientific review', 'production verification']}
+    not_established = [
+        'general proofs by enumeration', 'semantic annotation correctness',
+        'production selector conformance', 'human comprehension',
+        'editorial superiority', 'repository-wide CI', 'site deployment',
+        'independent scientific review', 'production verification',
+    ]
+    selection = exact_selection_model()
+    greedy = greedy_model()
+    boundaries = boundary_controls()
+    try:
+        document = document_checks(paper)
+    except (OSError, UnicodeDecodeError, ValueError, IndexError) as exc:
+        candidate_sha256 = None
+        try:
+            candidate_sha256 = hashlib.sha256(paper.read_bytes()).hexdigest()
+        except OSError:
+            pass
+        return {
+            'record_type': 'retrieval-context-finite-verification/1',
+            'candidate_sha256': candidate_sha256,
+            'source_sha256': SOURCE_SHA256,
+            'pass': False,
+            'refusal_reason': 'structure_broken',
+            'detail': str(exc),
+            'selection': selection,
+            'greedy': greedy,
+            'boundaries': boundaries,
+            'not_established': not_established,
+        }
+    report = {
+        'record_type': 'retrieval-context-finite-verification/1',
+        'candidate_sha256': PAPER_SHA256,
+        'source_sha256': SOURCE_SHA256,
+        'document': document,
+        'selection': selection,
+        'greedy': greedy,
+        'boundaries': boundaries,
+        'not_established': not_established,
+    }
     report['pass'] = report['document']['pass']
     return report
 
@@ -621,10 +666,26 @@ def main() -> int:
     parser.add_argument('--title-only-version', default='1',
                         help='Title-only projection schema version (supported: 1)')
     args = parser.parse_args()
-    if args.title_only_against is not None:
-        report = title_only_report(args.paper, args.title_only_against, args.title_only_version)
-    else:
-        report = full_report(args.paper)
+    try:
+        if args.title_only_against is not None:
+            report = title_only_report(args.paper, args.title_only_against, args.title_only_version)
+        else:
+            report = full_report(args.paper)
+    except (OSError, UnicodeDecodeError, ValueError, IndexError) as exc:
+        report = {
+            'record_type': (
+                TITLE_ONLY_RECORD if args.title_only_against is not None
+                else 'retrieval-context-finite-verification/1'
+            ),
+            'pass': False,
+            'refusal_reason': 'structure_broken',
+            'detail': str(exc),
+            'source_sha256': SOURCE_SHA256,
+            'not_established': [
+                'independent scientific review',
+                'production verification',
+            ],
+        }
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
     return 0 if report.get('pass') else 1
 
