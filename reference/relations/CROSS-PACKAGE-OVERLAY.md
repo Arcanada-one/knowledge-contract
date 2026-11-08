@@ -74,7 +74,7 @@ Let `R` be the exact trusted task-requirements revision, `P_A,P_B` the pinned pa
 - conditions, quantifiers, attribution, units and applicable time have been compared, not silently normalized;
 - the edge's requested use fits its recorded review scope and accepted status, and required evidence is accessible;
 - both endpoint access/revocation checks are current for the consumer and permitted purpose;
-- any mandatory closure set arises from `R` and its trusted dependencies, with every member discharged or explicitly unresolved.
+- any mandatory closure set arises from `R` and its trusted dependencies. An **inspectable** overlay may explicitly retain unresolved members, but an **actually completed use-closure** requires every mandatory member to be discharged under the **same applicable** `R`/context, with current permission checks. `usable` for inspection never means complete closure or authorizes effects.
 
 If any requirement fails, return an explicit **partial, conflicting, stale, inaccessible, unsupported or unresolved** assessment with preserved causes; these labels describe a **proposal-level** decision taxonomy, not registered runtime error codes. No externally consequential operation follows solely from this relation evaluator. At action dispatch additionally check (i) complete mandatory context delivery, (ii) discharge of **all** individual prerequisites, and (iii) current authority/effect identity. A known fact for member A and unknown fact for member B in a two-member requirement is **not** success.
 
@@ -89,10 +89,13 @@ For contradiction `contradicts_under`, verify that premises genuinely overlap. F
 | G11-A3 copied support | B quotes A; a translation of B repeats the same claim. | One lineage family, not three independent supports. |
 | G11-A4 one-sided contradiction | Contradiction edge has only a from-side anchor. | Reject semantic acceptance; preserve candidate and missing-side reason. |
 | G11-A5 true two-sided conflict | Both qualified endpoints conflict under a stated common assumption. | Retain both facts and a scoped `contradicts_under` record; do not silently select winner. |
-| G11-A6 revision drift | Source B changes while its name/local ID remains unchanged. | Old overlay is stale for new use; old pinned run remains historically inspectable. |
+| G11-A6a newer immutable revision | B1 remains immutable, accessible and permitted; a distinct B2 is published, but request `R` still pins A1/B1. | Publication of B2 alone does not revoke B1 or invalidate an otherwise applicable, scoped A1/B1 review. Do not transfer the review to B2. |
+| G11-A6b revision-selected use | Request `R′` pins B2 rather than B1, with identical readable title/local ID. | The reviewed A1/B1 pair cannot discharge R′; new qualified endpoints and scoped review are required. |
+| G11-A6c revoked original | B1 bytes remain historically inspectable but current-use permission for B1 has been revoked. | Refuse current use under R even with intact source hashes; historical record is retained without recreating authority. |
 | G11-A7 revoked/inaccessible endpoint | Digest resolves but current authorization denies read. | No current multi-source closure; never infer source availability from historic hash. |
 | G11-A8 unknown overlay profile | Unsupported `cross-package-relations/9`. | Explicit unsupported, no permissive fallback. |
-| G11-A9 trusted dependency | Task requires independently verified A and B; A grounded, B unknown. | No completed mandatory closure and zero new external effects. |
+| G11-A9a unresolved mandatory dependency | Task requires independently discharged A and B under a shared R/context; A is grounded, B unknown. | The overlay may be inspected with explicit unresolved B, but use-closure is incomplete and causes zero new external effects. |
+| G11-A9b completed dependency positive control | Both A and B are independently discharged under the same current R/context, and both endpoints remain permitted. | This limited prerequisite closure may be reported complete; consequential effects still separately require current authority, delivery and durable effect identity. |
 | G11-A10 positive supported pair | Two accessible pinned packages, source-specific anchors, compatible conditions, independent scoped review and current permitted read. | Scoped relation may be consumed for inspection; no promotion to proof or execution grant. |
 
 The consumer's **positive control** must remain useful. A validator that rejects every relation is not conformant. A structure-only PASS is not a semantic review, a native admission result or a successful site demonstration. Real schemas/tests/runs and reviewer evidence must be cited separately when they exist.
