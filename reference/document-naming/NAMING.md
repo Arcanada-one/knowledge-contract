@@ -37,7 +37,7 @@ Keep three dimensions separate: existence of an artifact; its review/publication
 
 ## Translation fidelity
 
-Russian and Chinese titles express the same scope, negations and epistemic strength as English. A localized name is not a full document translation and does not inherit independent review. Existing source-pinned translation branches are not silently rebased or overwritten by a naming change. They need an explicit old/new title mapping, fresh target hashes and scoped review of any altered text. Body translation, title adaptation and site integration remain separate deliverables.
+Russian and Chinese titles express the same scope, negations and epistemic strength as English. Use the [shared trilingual glossary](../glossary/GLOSSARY.md#multilingual-terminology-policy) for preferred scientific terms; a concise title alias does not silently rename a technical type or weaken its definition. A localized name is not a full document translation and does not inherit independent review. Existing source-pinned translation branches are not silently rebased or overwritten by a naming change. They need an explicit old/new title mapping, fresh target hashes and scoped review of any altered text. Body translation, title adaptation and site integration remain separate deliverables.
 
 ## Review checklist
 

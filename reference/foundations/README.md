@@ -37,17 +37,17 @@ The introduction explains interfaces, not the truth of all connected claims. **U
 
 ## Bounded terminology supplement
 
-The [shared glossary](../glossary/GLOSSARY.md) remains the reference for Semantic object, Interpretation, Context, Ground, Applicability, Constraint, Skill, Competency, Capability, Authority and Admission. New terms below point to their actual definitions, not to a second normative schema.
+The [shared glossary](../glossary/GLOSSARY.md) remains the reference for Semantic object, Interpretation, Context, Ground, Applicability, Constraint, Skill, Competency, Capability, Authority and Admission. New terms below point to their actual definitions, not to a second normative schema. Russian and Simplified Chinese equivalents follow the [multilingual terminology policy](../glossary/GLOSSARY.md#multilingual-terminology-policy); they do not broaden the linked English definitions.
 
-| Term | Russian equivalent | Definition location and boundary |
-| --- | --- | --- |
-| Human meaning | Человеческий смысл | [Section 3.1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#31-working-distinctions-not-a-complete-psychology): contextual expression, understanding and intention; not a scalar or complete computational object. |
-| Communicative intention | Коммуникативное намерение | [Section 3.1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#31-working-distinctions-not-a-complete-psychology): attributed purpose with grounds, not direct access to a mental state. |
-| Operationalization | Операционализация | [Section 3.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#32-from-a-human-abstraction-to-an-operational-criterion): a declared criterion whose relation to the intended concept needs justification. |
-| Semantic bridge | Смысловой переход | [Section 4](../../papers/human-meaning-and-computable-knowledge/PAPER.md#4-a-bounded-semantic-bridge): source–interpretation–representation–use relationship, not a deployed service. |
-| Protected observation | Сохраняемое наблюдение | [Section 4.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#42-representation-profile-and-protected-observations): a function answering a selected question under a fixed model. |
-| Representation adequacy | Адекватность представления | [Section 4.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#42-representation-profile-and-protected-observations): recovery of selected observations, not all human meaning. |
-| Encoding collision | Совпадение кодировок разных случаев | [Proposition 1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions): material loss when merged cases require different observations. |
+| Term | Russian equivalent | Chinese equivalent (zh-Hans) | Definition location and boundary |
+| --- | --- | --- | --- |
+| Human meaning | Человеческий смысл | 人类意义 | [Section 3.1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#31-working-distinctions-not-a-complete-psychology): contextual expression, understanding and intention; not a scalar or complete computational object. |
+| Communicative intention | Коммуникативное намерение | 交际意图 | [Section 3.1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#31-working-distinctions-not-a-complete-psychology): attributed purpose with grounds, not direct access to a mental state. |
+| Operationalization | Операционализация | 操作化 | [Section 3.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#32-from-a-human-abstraction-to-an-operational-criterion): a declared criterion whose relation to the intended concept needs justification. |
+| Semantic bridge | Смысловой переход | 语义桥接 | [Section 4](../../papers/human-meaning-and-computable-knowledge/PAPER.md#4-a-bounded-semantic-bridge): source–interpretation–representation–use relationship, not a deployed service. |
+| Protected observation | Сохраняемое наблюдение | 受保护观察 | [Section 4.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#42-representation-profile-and-protected-observations): a function answering a selected question under a fixed model. |
+| Representation adequacy | Адекватность представления | 表示充分性 | [Section 4.2](../../papers/human-meaning-and-computable-knowledge/PAPER.md#42-representation-profile-and-protected-observations): recovery of selected observations, not all human meaning. |
+| Encoding collision | Совпадение кодировок разных случаев | 编码碰撞 | [Proposition 1](../../papers/human-meaning-and-computable-knowledge/PAPER.md#proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions): material loss when merged cases require different observations. |
 
 ## Primary-source supplement
 
