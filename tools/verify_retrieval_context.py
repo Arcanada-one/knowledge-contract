@@ -319,9 +319,18 @@ def yaml_scalar_text(raw: str) -> str:
     return value
 
 
+def front_matter_lines(inner: str) -> list[str]:
+    """Split FM inner on literal LF only.
+
+    Do not use str.splitlines(): it drops CR and treats VT/FF/NEL/U+2028/U+2029
+    as breaks, so non-title residual comparison would re-join unequal bytes as LF.
+    """
+    return inner.split('\n')
+
+
 def parse_front_matter_entries(inner: str) -> list[tuple[str, str]]:
     entries: list[tuple[str, str]] = []
-    for line in inner.splitlines():
+    for line in front_matter_lines(inner):
         matched = NON_TITLE_FM_LINE_RE.match(line)
         if not matched:
             raise ValueError(f'unsupported front matter line: {line!r}')
@@ -346,7 +355,7 @@ def classify_front_matter_lines(inner: str) -> tuple[list[str], dict[str, str], 
     non_title_lines: list[str] = []
     title_values: dict[str, str] = {}
     title_counts = {key: 0 for key in TITLE_ONLY_FM_KEYS}
-    for line in inner.splitlines():
+    for line in front_matter_lines(inner):
         title_match = PERMITTED_TITLE_FM_LINE_RE.match(line)
         if title_match:
             key = title_match.group('key')

@@ -510,5 +510,102 @@ class DefaultModeCorruptionControls(unittest.TestCase):
         self.assertFalse(json.loads(result.stdout)["pass"])
 
 
+class FrontMatterSeparatorControls(unittest.TestCase):
+    """Title-only must keep real FM separators (LF-only split; no splitlines()).
+
+    Non-title residual comparison must not normalize CRLF/VT/FF/NEL/LS/PS into LF.
+    Title-line region stays allowlisted: trailing CR on the title scalar is absorbed
+    by yaml_scalar_text strip; exotic separators that glue title to the next key
+    break the LF profile and must refuse.
+    """
+
+    EDITION_LF = 'edition: "1.1"\n'
+    TITLE_LF = f'title: "{ACCEPTED_TITLE}"\n'
+    # Unicode line separators that str.splitlines() treats as breaks.
+    EXOTIC_SEPS = (
+        ("VT", "\v"),
+        ("FF", "\f"),
+        ("NEL", "\x85"),
+        ("LS", "\u2028"),
+        ("PS", "\u2029"),
+    )
+
+    def _cli_title_only(self, data: bytes) -> subprocess.CompletedProcess[str]:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), data)
+            return run_checker(
+                ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+            )
+
+    def _assert_title_only_refuses(self, data: bytes) -> dict:
+        result = self._cli_title_only(data)
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertIn(report["refusal_reason"], STRUCTURE_REFUSALS)
+        return report
+
+    def test_single_crlf_after_non_title_edition_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        self.assertIn(self.EDITION_LF, text)
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\r\n', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_crlf_on_every_line_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace("\n", "\r\n")
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_crlf_throughout_front_matter_inner_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        end = text.index("\n---\n", 4)
+        inner = text[4:end]
+        mutated = text[:4] + inner.replace("\n", "\r\n") + text[end:]
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_vt_replaces_non_title_lf_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\v', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_ff_replaces_non_title_lf_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\f', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_nel_replaces_non_title_lf_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\x85', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_line_separator_replaces_non_title_lf_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\u2028', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_paragraph_separator_replaces_non_title_lf_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        mutated = text.replace(self.EDITION_LF, 'edition: "1.1"\u2029', 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+    def test_single_crlf_after_title_line_still_passes(self) -> None:
+        """Title allowlist: trailing CR on the title scalar is stripped; residual matches."""
+        text = accepted_bytes().decode("utf-8")
+        self.assertIn(self.TITLE_LF, text)
+        mutated = text.replace(self.TITLE_LF, self.TITLE_LF[:-1] + "\r\n", 1)
+        result = self._cli_title_only(mutated.encode("utf-8"))
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertTrue(json.loads(result.stdout)["pass"])
+
+    def test_exotic_separator_after_title_line_exits_nonzero(self) -> None:
+        """Exotic sep after title glues keys under LF-only split → incomplete_mapping."""
+        text = accepted_bytes().decode("utf-8")
+        self.assertIn(self.TITLE_LF, text)
+        # One representative (VT); non-title suite covers the full exotic set.
+        mutated = text.replace(self.TITLE_LF, self.TITLE_LF[:-1] + "\v", 1)
+        self._assert_title_only_refuses(mutated.encode("utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()
