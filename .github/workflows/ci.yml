@@ -120,6 +120,8 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Title-only projection reads the pinned accepted paper via git cat-file.
+          fetch-depth: 0
           persist-credentials: false
       - name: Install the publication parser
         run: |
@@ -133,6 +135,31 @@ jobs:
           python3 -B tools/check_requirement_register.py
       - name: Recheck formal counterexamples and corrected finite models
         run: python3 -B -m unittest tools.test_reviewed_formal_results -v
+      - name: Retrieval-context checker controls
+        run: python3 -B -m unittest tools.test_verify_retrieval_context -v
+      - name: Pin and run retrieval-context checker
+        # Bounded author-side control. A missing report or non-zero exit is failure, never PASS.
+        env:
+          CHECKER_SHA256: 90e5d42d7599959c56f403cdaa0a789273b7f10181c9bec9591f76e780cb37e9
+          PAPER_SHA256: e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f
+          ACCEPTED_PAPER_BLOB: 9311c0d157d5a926e3c08f6a087a53866064f4e0
+        run: |
+          set -euo pipefail
+          echo "${CHECKER_SHA256}  tools/verify_retrieval_context.py" | sha256sum -c -
+          echo "${PAPER_SHA256}  papers/retrieval-and-context-composition/PAPER.md" | sha256sum -c -
+          report="$RUNNER_TEMP/retrieval-context-report.json"
+          python3 -B tools/verify_retrieval_context.py \
+            --paper papers/retrieval-and-context-composition/PAPER.md \
+            > "$report"
+          test -s "$report"
+          python3 -B -m json.tool "$report"
+          title_only="$RUNNER_TEMP/retrieval-context-title-only-report.json"
+          python3 -B tools/verify_retrieval_context.py \
+            --paper papers/retrieval-and-context-composition/PAPER.md \
+            --title-only-against "${ACCEPTED_PAPER_BLOB}" \
+            > "$title_only"
+          test -s "$title_only"
+          python3 -B -m json.tool "$title_only"
       - name: Reproduce public finite studies
         run: |
           python3 -B engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py

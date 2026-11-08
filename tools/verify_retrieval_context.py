@@ -4,16 +4,33 @@
 """Finite abstract checks for retrieval-and-context-composition/PAPER.md.
 
 Original project verification code, derived from the paper's stated model.
-Not a production selector, semantic validator, empirical benchmark or proof.
-Python standard library only. Prints deterministic JSON; no network or writes.
-Usage: python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md>
+This is a bounded author-side control: not independent scientific review,
+not production verification, not a semantic validator, empirical benchmark
+or proof. Python standard library only. Prints deterministic JSON; no network
+writes. Default mode binds PAPER_SHA256 and PROTECTED digests. Title-only
+mode (--title-only-against) proves a candidate differs from pinned accepted
+bytes only in the explicit title-field allowlist below; it does not judge the
+new name (naming canon is separate).
+
+Title-field allowlist (every other byte, including all PROTECTED sections
+except these fields, must stay identical):
+  - front-matter key `title`
+  - front-matter key `subtitle`
+  - the single H1 line
+
+Usage:
+  python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md>
+  python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md> \\
+    --title-only-against <git-blob-id-or-path>
 """
 from __future__ import annotations
 import argparse
+import difflib
 import hashlib
 import itertools
 import json
 import re
+import subprocess
 from fractions import Fraction
 from pathlib import Path
 
@@ -22,6 +39,12 @@ PAPER_SHA256 = 'e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f
 SOURCE_BLOB = '1163fcb4223023919f63f26876d1702de359a1aa'
 SOURCE_SHA256 = '6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773'
 PROTECTED = {'front_matter': 'dd777ba4289802fda9698b4e2b2e56ebcf87887a78f6e664ac6f6b36104f5ac5', 'references': '45206a6b93e46346a9560133d549cf9958eef772d30f6285b7a0831645c646fa', 'proposition_1': '6ba06755c29874daa0247e4413f1624f2d844e383ab53e6cbb0a7140fd93bbdf', 'proposition_2': '577922c726193a0cfcddcbef8bfa66b20b0ed2e88608a38d0d082571c6f85274', 'proposition_3': '6d530a2b812948bfa82a735e40cc38056f026bafae3fd7aa980b949b9effa308', 'joint_ground_counterexample': '069bd939c2e56a9b1afc53b7b417622fee64d141a2d00a782e5b83b1ab2489e8'}
+
+# Explicit allowlist for --title-only-against. Do not widen silently.
+TITLE_FIELD_ALLOWLIST = ('title', 'subtitle', 'h1')
+TITLE_ONLY_RECORD = 'retrieval-context-title-only-projection/1'
+SUPPORTED_TITLE_ONLY_VERSIONS = frozenset({'1'})
+ACCEPTED_PAPER_BLOB = '9311c0d157d5a926e3c08f6a087a53866064f4e0'
 
 
 def sha(text: str) -> str:
@@ -249,21 +272,225 @@ def boundary_controls() -> dict:
             'mutation_scope': 'six explicit faulty alternatives in this abstract harness, not production code mutations'}
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--paper', type=Path, default=Path(__file__).resolve().parents[1] / 'papers/retrieval-and-context-composition/PAPER.md')
-    args = parser.parse_args()
+def load_reference_bytes(spec: str) -> tuple[bytes | None, str | None]:
+    """Load accepted bytes from a git blob id or a filesystem path."""
+    path = Path(spec)
+    if path.is_file():
+        return path.read_bytes(), None
+    try:
+        data = subprocess.check_output(['git', 'cat-file', '-p', spec], stderr=subprocess.STDOUT)
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        detail = exc.output.decode('utf-8', errors='replace') if isinstance(exc, subprocess.CalledProcessError) else str(exc)
+        return None, detail.strip() or 'unknown source'
+    return data, None
+
+
+def split_document(text: str) -> tuple[str, str, str]:
+    """Return (front_matter_inner, body_including_closing_fence_consumed, remainder_after_fm)."""
+    if not text.startswith('---\n'):
+        raise ValueError('missing front matter opening fence')
+    end = text.index('\n---\n', 4)
+    inner = text[4:end]
+    remainder = text[end + 5:]
+    return inner, text[: end + 5], remainder
+
+
+def project_title_fields(text: str) -> tuple[str, dict[str, str | None]]:
+    """Strip allowlisted title/subtitle keys and normalize H1; return projected text and values.
+
+    Allowlisted front-matter keys are removed entirely so that adding, removing or
+    changing `title` / `subtitle` does not affect the residual. Every other
+    front-matter line and every non-H1 body byte must still match exactly.
+    """
+    inner, _fm, remainder = split_document(text)
+    observed: dict[str, str | None] = {'title': None, 'subtitle': None, 'h1': None}
+    projected_lines: list[str] = []
+    for line in inner.splitlines(keepends=True):
+        matched = re.match(r'^(title|subtitle):\s*(.*)$', line.rstrip('\n'))
+        if matched:
+            observed[matched.group(1)] = matched.group(2)
+            continue
+        projected_lines.append(line if line.endswith('\n') else line + '\n')
+    body_lines: list[str] = []
+    h1_seen = False
+    for line in remainder.splitlines(keepends=True):
+        if not h1_seen and re.match(r'^# ', line):
+            observed['h1'] = line.rstrip('\n')
+            body_lines.append('# __TITLE_ONLY_H1__\n')
+            h1_seen = True
+        else:
+            body_lines.append(line if line.endswith('\n') else line + '\n')
+    projected = '---\n' + ''.join(projected_lines) + '---\n' + ''.join(body_lines)
+    return projected, observed
+
+
+def section_name_for_line(text: str, line_no: int) -> str:
+    lines = text.splitlines()
+    if line_no <= 0 or line_no > len(lines):
+        return 'out_of_range'
+    # Front matter occupies lines until the closing --- after the opening fence.
+    try:
+        _inner, fm, _rem = split_document(text)
+    except ValueError:
+        fm = ''
+    fm_line_count = fm.count('\n')
+    if line_no <= fm_line_count:
+        return 'front_matter'
+    prefix = '\n'.join(lines[:line_no])
+    heading = None
+    for match in re.finditer(r'^(#{1,6}) (.+)$', prefix, re.M):
+        heading = match.group(0)
+    if heading is None:
+        return 'preamble'
+    if heading.startswith('# ') and not heading.startswith('## '):
+        return 'h1'
+    lowered = heading.lower()
+    if 'references' in lowered:
+        return 'references'
+    if 'proposition 1' in lowered:
+        return 'proposition_1'
+    if 'proposition 2' in lowered:
+        return 'proposition_2'
+    if 'proposition 3' in lowered:
+        return 'proposition_3'
+    if 'joint' in lowered and 'ground' in lowered:
+        return 'joint_ground_counterexample'
+    return heading.lstrip('#').strip()
+
+
+def differing_regions(accepted: str, candidate: str) -> list[dict]:
+    """Line-oriented residual differences after title projection (not a semantic judgment)."""
+    a_lines = accepted.splitlines()
+    c_lines = candidate.splitlines()
+    regions: list[dict] = []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(a=a_lines, b=c_lines).get_opcodes():
+        if tag == 'equal':
+            continue
+        sections = sorted({
+            *(section_name_for_line(accepted, i + 1) for i in range(i1, max(i1 + 1, i2))),
+            *(section_name_for_line(candidate, j + 1) for j in range(j1, max(j1 + 1, j2))),
+        })
+        regions.append({
+            'op': tag,
+            'accepted_lines': [i1 + 1, i2],
+            'candidate_lines': [j1 + 1, j2],
+            'sections': sections,
+        })
+    return regions
+
+
+def title_fields_changed(accepted_obs: dict[str, str | None],
+                         candidate_obs: dict[str, str | None]) -> list[str]:
+    changed = []
+    for key in TITLE_FIELD_ALLOWLIST:
+        if accepted_obs.get(key) != candidate_obs.get(key):
+            changed.append(key)
+    return changed
+
+
+def protected_body_digests(text: str) -> dict[str, str]:
+    """PROTECTED digests with allowlisted title fields projected out of front_matter."""
+    projected, _ = project_title_fields(text)
+    blocks = protected_blocks(projected)
+    return {name: sha(value) for name, value in blocks.items()}
+
+
+def title_only_report(candidate_path: Path, against: str, version: str) -> dict:
+    record = {
+        'record_type': TITLE_ONLY_RECORD,
+        'title_field_allowlist': list(TITLE_FIELD_ALLOWLIST),
+        'title_only_version': version,
+        'against': against,
+        'candidate_path': str(candidate_path),
+        'accepted_paper_blob': ACCEPTED_PAPER_BLOB,
+        'source_sha256': SOURCE_SHA256,
+        'not_established': [
+            'independent scientific review',
+            'production verification',
+            'naming-canon acceptance of the new title',
+            'semantic annotation correctness',
+            'site deployment',
+        ],
+    }
+    if version not in SUPPORTED_TITLE_ONLY_VERSIONS:
+        record.update({'pass': False, 'refusal_reason': 'unsupported_version'})
+        return record
+    accepted_raw, err = load_reference_bytes(against)
+    if accepted_raw is None:
+        record.update({'pass': False, 'refusal_reason': 'unknown_source', 'detail': err})
+        return record
+    try:
+        candidate_raw = candidate_path.read_bytes()
+        candidate_text = candidate_raw.decode('utf-8', errors='strict')
+        accepted_text = accepted_raw.decode('utf-8', errors='strict')
+    except (OSError, UnicodeDecodeError) as exc:
+        record.update({'pass': False, 'refusal_reason': 'corrupted_candidate', 'detail': str(exc)})
+        return record
+    try:
+        accepted_projected, accepted_obs = project_title_fields(accepted_text)
+        candidate_projected, candidate_obs = project_title_fields(candidate_text)
+    except (ValueError, IndexError) as exc:
+        record.update({'pass': False, 'refusal_reason': 'corrupted_candidate', 'detail': str(exc)})
+        return record
+    record['candidate_sha256'] = hashlib.sha256(candidate_raw).hexdigest()
+    record['accepted_sha256'] = hashlib.sha256(accepted_raw).hexdigest()
+    record['title_fields_observed'] = {
+        'accepted': accepted_obs,
+        'candidate': candidate_obs,
+    }
+    record['title_fields_changed'] = title_fields_changed(accepted_obs, candidate_obs)
+    # Body identity: projected documents must match exactly.
+    if accepted_projected != candidate_projected:
+        record.update({
+            'pass': False,
+            'refusal_reason': 'incomplete_mapping',
+            'differing_regions': differing_regions(accepted_text, candidate_text),
+            'protected_digests_after_title_projection': {
+                'accepted': protected_body_digests(accepted_text),
+                'candidate': protected_body_digests(candidate_text),
+            },
+        })
+        return record
+    # Finite harness still runs; it does not depend on manuscript title bytes.
+    record.update({
+        'pass': True,
+        'refusal_reason': None,
+        'differing_regions': [],
+        'selection': exact_selection_model(),
+        'greedy': greedy_model(),
+        'boundaries': boundary_controls(),
+    })
+    return record
+
+
+def full_report(paper: Path) -> dict:
     report = {'record_type': 'retrieval-context-finite-verification/1',
               'candidate_sha256': PAPER_SHA256, 'source_sha256': SOURCE_SHA256,
-              'document': document_checks(args.paper),
+              'document': document_checks(paper),
               'selection': exact_selection_model(), 'greedy': greedy_model(),
               'boundaries': boundary_controls(),
               'not_established': ['general proofs by enumeration', 'semantic annotation correctness',
                                   'production selector conformance', 'human comprehension',
-                                  'editorial superiority', 'repository-wide CI', 'site deployment']}
+                                  'editorial superiority', 'repository-wide CI', 'site deployment',
+                                  'independent scientific review', 'production verification']}
     report['pass'] = report['document']['pass']
+    return report
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--paper', type=Path, default=Path(__file__).resolve().parents[1] / 'papers/retrieval-and-context-composition/PAPER.md')
+    parser.add_argument('--title-only-against', default=None,
+                        help='Git blob id or path of the pinned accepted paper bytes')
+    parser.add_argument('--title-only-version', default='1',
+                        help='Title-only projection schema version (supported: 1)')
+    args = parser.parse_args()
+    if args.title_only_against is not None:
+        report = title_only_report(args.paper, args.title_only_against, args.title_only_version)
+    else:
+        report = full_report(args.paper)
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
-    return 0 if report['pass'] else 1
+    return 0 if report.get('pass') else 1
 
 
 if __name__ == '__main__':
