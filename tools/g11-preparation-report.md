@@ -1,6 +1,7 @@
 # G11 bounded cross-package preparation — worker report
 
 - **PR:** [knowledge-contract#81](https://github.com/Arcanada-one/knowledge-contract/pull/81) (DRAFT)
+- **Head SHA:** `1adebf889c667e9d87f5b9b96a7a8a1d10d2cb71`
 - **Branch:** `Arcanada/g11-cross-package-preparation`
 - **Clone:** `/home/dev/aup/claude-work/kcswe-g11/knowledge-contract`
 
@@ -40,3 +41,7 @@
 - rendition/K8 sidecar endpoint verification
 - overlays beyond exactly two canonical English packages
 - released `cross-package-relations` wire schema registration
+
+## Hosted CI (`gh pr checks 81` on 1adebf8)
+
+All required checks **pass** (run 42498586179).
