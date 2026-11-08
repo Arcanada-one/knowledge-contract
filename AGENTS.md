@@ -52,3 +52,9 @@ These programs use Python's standard library. Run relevant old and corrected pro
 Preserve the existing separation between content changes, publication decisions and corpus allowlist changes. The catalogue organizes reading; it does not authorize indexing. Existing corpus receipts certify their original bytes only. Follow [CONTRIBUTING.md](CONTRIBUTING.md) for review, attribution and DCO. Do not manufacture a human sign-off or a review receipt.
 
 The site is built in the separate `contract-place-site` repository from an exact source commit. A backend index refresh and a deployment require their own actual readback. Record what was built or checked locally separately from what was merged or deployed.
+
+## Reader-facing names and roadmap
+
+Follow [Clear Names](reference/document-naming/NAMING.md) and the [complete name register](DOCUMENTS.md): one-to-three-word short name, colon, explanatory subtitle. Catalogue title, source front matter and H1 agree. Preserve slugs, requirement IDs, old anchors, historical evidence and source-pinned review/translation records. Roadmap headings use meaningful names; F/RM codes are secondary compatibility metadata, never the primary reader interface. [ROADMAP.md](ROADMAP.md) separates artifact state, review and Muneral execution state.
+
+English remains the source language of the canonical catalogue. Explicitly authorized Russian and Simplified Chinese renditions and reader guides are allowed with exact source bindings and separate fidelity status; a translated title does not certify a translated body. Engineering execution remains paused until the operator resumes it. Preparing content or a PR does not dispatch an engineer or authorize deployment.

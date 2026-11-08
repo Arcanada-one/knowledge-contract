@@ -1,6 +1,9 @@
 ---
 name: "executable-projections-and-revision"
-title: "Executable projections, addressable revisions, and the limits of graph minimality"
+title: "Executable Projections: Addressable revisions and the limits of graph minimality"
+short_title: "Executable Projections"
+subtitle: "Addressable revisions and the limits of graph minimality"
+previous_title: "Executable projections, addressable revisions, and the limits of graph minimality"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +14,7 @@ study_type: "finite-consumer-and-agent-case-study"
 review_state: "internally-reviewed"
 ---
 
-# Executable projections, addressable revisions, and the limits of graph minimality
+# Executable Projections: Addressable revisions and the limits of graph minimality
 
 ## Abstract
 

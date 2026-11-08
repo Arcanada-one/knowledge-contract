@@ -1,6 +1,9 @@
 ---
 name: "reuse-policy"
 title: "Reuse Policy: Time, Authorization, and Decision Outcomes"
+short_title: "Reuse Policy"
+subtitle: "Time, Authorization, and Decision Outcomes"
+previous_title: "Reuse Policy: Time, Authorization, and Decision Outcomes"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"

@@ -1,6 +1,9 @@
 ---
 name: "interaction-and-memory"
-title: "Interaction, Documents, and Memory with Explicit Revision Boundaries"
+title: "Interaction and Memory: Interaction, Documents, and Memory with Explicit Revision Boundaries"
+short_title: "Interaction and Memory"
+subtitle: "Interaction, Documents, and Memory with Explicit Revision Boundaries"
+previous_title: "Interaction, Documents, and Memory with Explicit Revision Boundaries"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Versioned requirements, dialogue branches, memory and evidence of learning in agent interaction."
 ---
 
-# Interaction, Documents, and Memory with Explicit Revision Boundaries
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="interaction-documents-and-memory-with-explicit-revision-boundaries"></a>
+
+# Interaction and Memory: Interaction, Documents, and Memory with Explicit Revision Boundaries
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

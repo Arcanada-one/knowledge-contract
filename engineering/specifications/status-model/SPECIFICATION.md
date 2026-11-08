@@ -1,6 +1,9 @@
 ---
 name: "status-model"
-title: "Assessment, Execution, and Publication States"
+title: "Status Model: Assessment, Execution, and Publication States"
+short_title: "Status Model"
+subtitle: "Assessment, Execution, and Publication States"
+previous_title: "Assessment, Execution, and Publication States"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Independent assessment, execution, effect, freshness, publication and review states."
 ---
 
-# Assessment, Execution, and Publication States
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="assessment-execution-and-publication-states"></a>
+
+# Status Model: Assessment, Execution, and Publication States
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

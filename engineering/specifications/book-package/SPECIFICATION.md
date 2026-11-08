@@ -1,6 +1,9 @@
 ---
 name: "book-package"
 title: "Book Packages: Source Identity, Semantic Layers, and Validation"
+short_title: "Book Packages"
+subtitle: "Source Identity, Semantic Layers, and Validation"
+previous_title: "Book Packages: Source Identity, Semantic Layers, and Validation"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"

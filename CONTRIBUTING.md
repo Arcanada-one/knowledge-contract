@@ -2,7 +2,7 @@
 
 This repository maintains a coherent publication of scientific papers, engineering specifications and studies. A proposed change should identify its scope, evidence, affected canonical document and intended revision. Follow the [artifact format](engineering/specifications/artifact-registry/SPECIFICATION.md) and [AGENTS.md](AGENTS.md). Publication review and corpus admission follow the existing decision-and-receipt process in [OPENNESS.md](OPENNESS.md); a submitted change does not itself imply adoption or indexing.
 
-Keep contributions in English, provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](LICENSE); code and schemas are offered under [Apache-2.0](LICENSE-CODE). Raise any licensing exception before submitting material. The project policy is in [OPENNESS.md](OPENNESS.md).
+Keep canonical source contributions in English (authorized translations and localized reader guides are identified separately), provide sources for factual claims, and identify third-party material and its license. Do not include secrets, private data, or unpublished draft packages. Text contributions are offered under [CC BY 4.0](LICENSE); code and schemas are offered under [Apache-2.0](LICENSE-CODE). Raise any licensing exception before submitting material. The project policy is in [OPENNESS.md](OPENNESS.md).
 
 Report security concerns through the private channel in [SECURITY.md](SECURITY.md).
 
@@ -27,3 +27,9 @@ Reuse of this project must credit the author and link to the source ([ATTRIBUTIO
 Run `python3 -B tools/check_publication.py .` with Pandoc 3.1.3 and `python3 -B tools/check_sources.py .`. The gate checks the catalogue, canonical metadata, local links and anchors, and claim–evidence references. Run relevant public replay programs when changing the evidence or its interpretation. Keep the existing export, licensing, DCO and decision-separation checks.
 
 Scientific changes require review of assumptions, derivations and inferential scope. Engineering studies must retain failed cases and comparator outcomes, identify units of observation, and distinguish exact retained evidence from a new reproduction. A formatting pass is not a substantive scientific review.
+
+## Reader-facing names and roadmap
+
+Follow [Clear Names](reference/document-naming/NAMING.md) and the [complete name register](DOCUMENTS.md): one-to-three-word short name, colon, explanatory subtitle. Catalogue title, source front matter and H1 agree. Preserve slugs, requirement IDs, old anchors, historical evidence and source-pinned review/translation records. Roadmap headings use meaningful names; F/RM codes are secondary compatibility metadata, never the primary reader interface. [ROADMAP.md](ROADMAP.md) separates artifact state, review and Muneral execution state.
+
+English remains the source language of the canonical catalogue. Explicitly authorized Russian and Simplified Chinese renditions and reader guides are allowed with exact source bindings and separate fidelity status; a translated title does not certify a translated body. Engineering execution remains paused until the operator resumes it. Preparing content or a PR does not dispatch an engineer or authorize deployment.

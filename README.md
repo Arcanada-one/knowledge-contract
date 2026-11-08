@@ -1,5 +1,7 @@
 # Knowledge Contract Arcana
 
+Read [all 30 document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. Engineering execution is currently paused; the roadmap separates authoring from later site integration.
+
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
 Knowledge Contract connects a body of knowledge to its intended use, sources, dependencies, constraints and assessment. It helps a person or agent distinguish what a source says, what is supported, what applies to the task, and what may be done with it.
@@ -13,14 +15,14 @@ Publication edition **1.1** contains English scientific and engineering document
 | Science | Eight baseline papers plus the proposed foundations introduction: models, conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
 | Engineering specifications | Eleven specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
 | Engineering studies | Six studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
-| Reference | Preferred terms, Russian equivalents and primary sources | [Glossary](reference/glossary/GLOSSARY.md) · [Bibliography](reference/bibliography/BIBLIOGRAPHY.md) |
+| Reference | Preferred terms, Russian equivalents and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
-The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 30 reading entries: the 29 baseline documents and the new foundations research draft; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [source map](appendices/source-map/APPENDIX.md).
+The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 30 reading entries: the 29 baseline documents and the new foundations research draft; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
 
 ## Start with the human-to-computational foundation
 
-[From Human Meaning to Contract-Governed Knowledge](papers/human-meaning-and-computable-knowledge/PAPER.md) explains the passage from a contextual expression to a representation, an artifact and a particular permitted use. It includes an ordinary rule-and-exception example, an exact representation-adequacy argument and explicit limitations. The [foundations map](reference/foundations/README.md) connects its sections to existing definitions, specifications and evidence, with a terminology and source supplement.
+[Meaning Bridge](papers/human-meaning-and-computable-knowledge/PAPER.md) explains the passage from a contextual expression to a representation, an artifact and a particular permitted use. It includes an ordinary rule-and-exception example, an exact representation-adequacy argument and explicit limitations. The [foundations map](reference/foundations/README.md) connects its sections to existing definitions, specifications and evidence, with a terminology and source supplement.
 
 The new manuscript is a **research draft proposed for integration**. Its catalogue entry does not assert independent review, a new released edition, deployment or corpus-index admission. Existing publication and raw-evidence histories remain unchanged.
 
@@ -34,11 +36,11 @@ This evidence does not establish universal extraction accuracy, general agent su
 
 ## Constraints and agent artifacts
 
-Constraints are explicit contract obligations, separate from output acceptance criteria and current authority. The [core specification](engineering/specifications/knowledge-contract-core/SPECIFICATION.md#3-constraints-are-first-class-obligations) defines their role. The [artifact registry](engineering/specifications/artifact-registry/SPECIFICATION.md) specifies readable folders and canonical files for roles, skills, competencies, blueprints, constraints and Work Items. [AGENTS.md](AGENTS.md) tells current coding agents where the canonical documents live and how to verify changes.
+Constraints are explicit contract obligations, separate from output acceptance criteria and current authority. The [Contract Core](engineering/specifications/knowledge-contract-core/SPECIFICATION.md#3-constraints-are-first-class-obligations) defines their role. The [Artifact Registry](engineering/specifications/artifact-registry/SPECIFICATION.md) specifies readable folders and canonical files for roles, skills, competencies, blueprints, constraints and Work Items. [AGENTS.md](AGENTS.md) tells current coding agents where the canonical documents live and how to verify changes.
 
 ## Service and publication versions
 
-The API and MCP surface provides machine access to the project. The [API integration appendix](appendices/api-integration/APPENDIX.md) distinguishes the documented read interfaces from the requirements for delivering a ready task-specific contract. Document edition, wire profile, service build and index snapshot have separate identities. The site is built from an exact source commit and shows when a search result belongs to a different indexed revision.
+The API and MCP surface provides machine access to the project. The [Publication Interfaces](appendices/api-integration/APPENDIX.md) distinguishes the documented read interfaces from the requirements for delivering a ready task-specific contract. Document edition, wire profile, service build and index snapshot have separate identities. The site is built from an exact source commit and shows when a search result belongs to a different indexed revision.
 
 The reading catalogue does not bypass the [corpus publication decisions and allowlist](corpus/README.md). New content, its admission decision and index promotion retain their separate checks. [Publishing instructions](PUBLISHING.md) describe the concrete release sequence and readback requirements.
 

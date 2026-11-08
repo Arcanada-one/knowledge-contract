@@ -1,102 +1,109 @@
 ---
-title: Knowledge Contract research roadmap
+title: "Knowledge Roadmap: Publications, Research and Practical Validation"
 sources: none
-status: planned
-updated: 2026-11-06
+status: repository-editorial-proposal
+updated: 2026-11-08
 ---
 
-# Knowledge Contract research roadmap
+# Knowledge Roadmap: Publications, Research and Practical Validation
 
-**A bounded publication now; a transparent programme of research next.**
+[Русская дорожная карта](roadmap/ROADMAP.ru.md) · [All document names](DOCUMENTS.md) · [Detailed work packages](roadmap/TASKS.md) · [Dependencies](roadmap/dependencies.json)
 
-This roadmap separates two commitments: finish a readable and scientifically honest edition of the existing corpus, and develop missing foundations and verification without pretending that planned work is already evidence. It defines 25 work packages, priorities, acceptance conditions and adversarial checks. None of the future research results is asserted as completed.
+## 1. What this roadmap covers
 
-Read the [task definitions](roadmap/TASKS.md), [dependency graph](roadmap/dependencies.json), [experiment and falsification plan](roadmap/EXPERIMENTS.md), and [Contract Place delivery specification](roadmap/SITE_DELIVERY.md).
+This is the complete reading map of the current agreed publication and research programme, not a claim that every future question has been anticipated. It covers the English corpus, readable naming, Russian and Simplified Chinese editions, primary-source assessment, the foundations sequence, evidence recovery and practical validation. Muneral remains the execution authority; these files define outputs and acceptance criteria, not a second task system.
 
-## 1. Baseline and scope
+The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The catalogue contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The foundations introduction remains a `research-draft`. The new naming and roadmap revision is a repository proposal until ordinarily accepted. It has not changed the live website or index.
 
-The baseline is Knowledge Contract commit `717c43deb514adc5b40f76837e7ee0fb2da37102`. Its [publication catalogue](publication-catalog.json) contains 29 documents: eight papers, eleven engineering specifications, six studies, a glossary, a bibliography and two appendices. Editorial proposals already made for the first two papers are separate from this baseline; their current review and publication states need their own evidence. This roadmap does not rewrite those manuscripts or imply their deployment.
+**Engineering execution is paused by the operator because agent quotas are exhausted.** Reading, theory, translation, editorial correction and preparation of bounded tests can continue with the Brain roles. No server job, implementation assignment, deployment or new paid experiment is dispatched by this roadmap. Resumption requires the operator's direction; a date is not invented.
 
-We are not starting from an absence of mathematics. [Semantic objects](papers/semantic-objects-and-context/PAPER.md) and [constrained transformations](papers/constrained-transformations/PAPER.md) already define objects, observations, conditional preservation, equivalence, composition and reconstruction. The [source map](appendices/source-map/APPENDIX.md) preserves earlier work, but its topical mapping is not a claim-by-claim completeness audit. Historical algebra/geometry drafts are research inputs, not automatically current normative authority.
+## 2. A finite release and an open research programme
 
-The missing work includes a coherent introduction from human meaning to explicit computational abstractions; a fuller family of algebraic and geometric profiles; diversified examples and attempted refutations; and verified links from claims through requirements to actual code, deployment and useful task outcomes. Mathematical notation alone, a schema pass, a small exhaustive enumeration and a production observation have different evidential roles.
+A release is a finite selected set of exact documents and explicit limitations. Research can continue indefinitely without keeping that release permanently unfinished. The accepted English baseline is distinct from candidate revisions, runtime implementation, site deployment and index admission. A title-only correction changes bytes but not automatically the scientific argument or its epistemic status.
 
-The scope is the Knowledge Contract scientific/engineering corpus and its agent/knowledge-base interfaces. It is not an instruction to restart a bulk conversion of third-party books. Existing source-derived skills may be used within declared applicability, rights and review limits.
+Default foundations preparation proceeds through Meaning Bridge, Semantic Bridge, Transformation Algebra, Semantic Geometry, Semantic Verification and Meaning Controls. The existing [foundations plan](roadmap/FOUNDATIONS_RELEASE_PLAN.md) retains the detailed per-unit acceptance and review obligations. Its six-unit reviewable package is a threshold for the default new foundations programme, not a new retroactive prohibition on later explicitly authorized paper revisions, material-error correction, the first-two-paper review or roadmap publication. The baseline exact-consumer pilot does not inherit advanced geometry prerequisites. A new costly run needs separate authorization and a prepared protocol.
 
-## 2. Two tracks and a finite release rule
+## 3. Work that can progress during the pause
 
-**Track A: editorial completion (RM-25).** Review the frozen catalogue document by document, including chapters, references and appendices. Improve research questions, contribution statements, definitions, argument order, examples, conclusions and typography. Preserve mathematical premises, normative identifiers and raw evidence; identify substantive corrections separately. Use genre-specific structures for papers, specifications and studies. Apply each accepted change to the owning repository, then verify the actual site output through the normal publishing workflow.
+| Workstream | Current artifact boundary | Next output | Acceptance boundary |
+| --- | --- | --- | --- |
+| Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 30 documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
+| Russian and Chinese Editions | PR76 has 13 of 30 author drafts per language | Write the remaining 17 per language; assess all 60 target documents; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
+| Source Audit | Historical bibliography screening is not full primary reading | Read sources supporting actual current claims and document novelty boundaries | Exact cited basis, explicit unavailable material, no borrowed claim presented as original |
+| Semantic Bridge | Separate specification not yet complete | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
+| Transformation Algebra | Existing conditional paper, incomplete planned extension | Extend that same paper with typed profiles and countermodels | Precise assumptions and reconstruction limits; no parallel competing article |
+| Semantic Geometry | Standalone work planned | Define representation, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
+| Semantic Verification | Separate specification planned | Link claims, assumptions, exact versions, methods and observed outcomes | Proof, model check, implementation test and empirical comparison remain separate |
+| Meaning Controls | New study planned | Derive examples now; report runs only when actually executed | Rights-cleared inputs, declared oracles, denominators, failures and limitations |
+| Open Review | Existing contribution rules | Clear public guidance for humans and agents to submit version-specific objections | A reproducible objection can change or retract a claim; agreement count is not evidence |
 
-**Track B: research and engineering (RM-01 to RM-24).** Develop the missing materials as bounded work packages. A failed or inconclusive hypothesis is a valid research result when the method, evidence and consequence are reported honestly. It is not a reason to conceal the study or claim success.
+See [Translations](roadmap/TRANSLATIONS.md) for exact coverage and [Work packages](roadmap/TASKS.md) for the retained detailed obligations. Their readable names take precedence in navigation; older F/RM labels remain compatibility identifiers only.
 
-New research does not automatically block Track A. A local release block is justified only when a known defect makes an affected assertion false or materially misleading, a required evidence/source/rights condition fails, or the document/site delivery is broken. Correct, narrow or explicitly withdraw that assertion; do not wait for a universal theory. Optional richer examples, larger tests and future geometry results remain roadmap items. Completion of the existing corpus is not completion of all future research.
+## 4. The full research work map
 
-The original roadmap-only restart checkpoint was superseded by the author's later [foundations-first manuscript plan](roadmap/FOUNDATIONS_RELEASE_PLAN.md) (§§1, 3 and 7). The default preparation order is F01 → F02 → F03 (a substantive revision at the existing transformation-paper path) → F04 → F05 → F06, with each subsequent document started only under an explicit user-directed step. F labels are manuscript units, not Muneral IDs; this preparation order is not an additional `requires_output` graph. Roadmap delivery (RM-03), existing first-two-paper review/publication and material-defect corrections remain independently authorized. Later direct author instructions to edit particular existing papers supersede the old roadmap-only hold for those papers; they must not be retroactively rejected.
+The [workstream register](roadmap/workstreams.json) names all 25 existing directions. The [detailed work packages](roadmap/TASKS.md) retain each gap, deliverable, adversarial control and acceptance criterion. The dependency graph retains its 25 nodes, 45 required-output edges and four advisory links. Readable labels do not create new tasks or modify that graph.
 
-For the default general editorial resumption, **foundation package available** means that all six units have complete substantive, inspectable manuscript candidates at their canonical paths (F03 changes the existing paper, F06 reports actual derived or executed cases rather than unperformed tests), and a version-pinned definitions/claims/sources/corpus-relations map records remaining uncertainties and conflicts. Availability does not mean that independent scientific reviews, merge, deployment, indexing, every future experiment or all 25 RM tasks have succeeded. Each scientific release still follows its own exact-revision review and publication controls; a newer explicit per-document author instruction may change the preparation order without changing these release controls.
+<!-- WORKSTREAM_TABLE -->
 
-## 3. Known gaps and work packages
+| Workstream | Artifact observation |
+| --- | --- |
+| [Claim Atlas](roadmap/TASKS.md#rm-01) | A selected corpus map exists; it is not an exhaustive accounting of historical claims. |
+| [Verification Records](roadmap/TASKS.md#rm-02) | Bounded checker reports exist; a complete reviewed passport set is not established. |
+| [Roadmap Publication](roadmap/TASKS.md#rm-03) | Repository roadmap exists; this naming/status revision has not been deployed to the website. |
+| [Workgraph Reconciliation](roadmap/TASKS.md#rm-04) | Previously reported bindings are not a fresh Muneral reconciliation. |
+| [Meaning Bridge](roadmap/TASKS.md#rm-05) | The complete foundations introduction is in the catalogue with research-draft status. |
+| [Source Audit](roadmap/TASKS.md#rm-06) | PR67 contains historical bibliography triage; triage is not full reading of all primary sources. |
+| [Semantic Bridge](roadmap/TASKS.md#rm-07) | A separate bounded conversion specification remains planned. |
+| [Transformation Algebra](roadmap/TASKS.md#rm-08) | The transformation paper has conditional results; the planned algebra extension is not thereby complete. |
+| [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
+| [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
+| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused. |
+| [Semantic Geometry](roadmap/TASKS.md#rm-12) | A standalone current geometry manuscript remains planned. |
+| [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
+| [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
+| [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
+| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; execution is paused. |
+| [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
+| [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
+| [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
+| [Practical Utility](roadmap/TASKS.md#rm-20) | Six bounded studies are published; no general superiority or universal savings follows. |
+| [Cross-Language Meaning](roadmap/TASKS.md#rm-21) | Body translation drafts and a semantic cross-language benchmark are distinct deliverables. |
+| [Evidence Recovery](roadmap/TASKS.md#rm-22) | Retained evidence and documented historical recovery gaps coexist. |
+| [Editorial Evaluation](roadmap/TASKS.md#rm-23) | The published single-section pilot reports a tie, not a measured general benefit. |
+| [Corpus Integration](roadmap/TASKS.md#rm-24) | Typed reading maps exist; links are not proof and proposal pins are not a coherent release. |
+| [Editorial Release](roadmap/TASKS.md#rm-25) | The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate. |
 
-| Gap or requested extension | Work packages | Nature of the gap |
+<!-- /WORKSTREAM_TABLE -->
+
+A required edge means that the reviewed prerequisite output is needed for dependent acceptance or execution. It does not prohibit exploratory analysis. An advisory link informs work but never becomes a mandatory release gate. Output dependencies must be read by their names, not guessed from a numerical label.
+
+## 5. Practical validation: prepared work, not resumed engineering
+
+| Capability | Content to prepare now | Evidence needed after authorized engineering resumes |
 | --- | --- | --- |
-| Historical mathematical material is not mapped at claim level | RM-01, RM-22 | Traceability and evidence recovery |
-| Finite counts lack sufficient explanation of carrier, bounds and implementation scope | RM-02, RM-11 | Reporting and verification design |
-| Readers cannot see the planned programme and actual execution bindings | RM-03, RM-04 | Public communication and task reconciliation |
-| No unified foundations treatment from human interpretation to bounded computable use | RM-05, RM-06, RM-07 | Exposition, research positioning and representation contract |
-| Algebra profiles and practically diverse transformation examples are incomplete | RM-08, RM-09, RM-10 | Theory, examples and attempted refutation |
-| Geometry is not yet a sufficiently explicit, validated current profile | RM-12, RM-13, RM-14 | Definitions, evaluation and retrieval interface |
-| Specification and reference models do not establish deployed enforcement | RM-15, RM-16, RM-18, RM-19 | Traceability and runtime conformance |
-| Correct extraction of material context and ambiguity is not established by record validity | RM-17, RM-21 | Source fidelity and robustness |
-| General quality/cost benefit is not established | RM-20 | Controlled empirical comparison |
-| Cross-language editorial effectiveness and comprehension remain bounded | RM-23 | Applicability and reader evaluation |
-| Results need controlled integration without an endless publication hold | RM-24, RM-25 | Revision and finite editorial completion |
+| Observable agent runs | Specify the exact subject, attempted operation and required observations | Real run records and a useful positive control; a screenshot or schema alone is insufficient |
+| Faithful export | Define preservation of meaning-bearing fields, qualifiers and media | Tests of actual converter/renderer output, including omissions and unsafe structure |
+| Source addressing | Define stable source/object/representation identity | Exact-source and locator readback, not a title or retrieval hit |
+| Durable reading evidence | Specify retained bytes and complete append/write behavior | Corruption, malformed JSON, symlink, incomplete-write and crash-boundary tests |
+| Required context | Distinguish preserving an obligation, discharging its prerequisites and current authority | Tests at actual model/tool dispatch; no execution from an obligation string alone |
+| Safe routing | Specify profile support and permitted consumer capabilities | Unsupported-reader and wrong-recipient controls on actual routes |
+| Recovery | Define what must survive interruption and restart | Retained history, correct continuation and no duplicate external effect |
+| Resource boundaries | Define complete budgets and stopping behavior | Measured limits, positive completion and explicit exhausted-budget outcomes |
+| Joint readiness | Define compatible source, reader, implementation and policy versions | A coherent end-to-end snapshot rather than several unrelated green checks |
+| Storage integrity | Separate file digest, package-tree digest, registry pin and authority | Actual authenticated storage readback; synthetic fixtures remain synthetic |
+| Cross-package relations | Specify typed evidence-backed endpoints and required dependencies from trusted requirements | Missing-obligation, changed-requirements, withdrawn-source and conflicting-relation controls |
+| Source influence | Specify a comparison that changes the relevant source while controlling other inputs | Observed changes in the intended result; no inference of use from mere retrieval |
 
-This is the currently identified scope, not a claim that no undiscovered gap exists. RM-01 refines the ledger without silently enlarging the frozen editorial release.
+These streams refine Theory Traceability, Runtime Conformance, Agent Application, Current Authority and Corpus Integration. They summarize existing integration questions, not a second executable work graph. Candidate schemas, receipts and validators in open PRs remain candidates until their own review and acceptance. An unavailable engineering operation does not block independent content analysis.
 
-## 4. Priorities and dependency structure
+## 6. Repository completion and later website handoff
 
-P0 means immediate transparency or release enablement: RM-01, RM-02, RM-03, RM-04 and RM-25. P1 means next substantive foundations, algebra, geometry and verification work. P2 means subsequent robustness, comparisons and result integration. These are proposed ordering priorities, not dates or proof that a worker has started.
+Repository completion for this editorial pass means: all catalogue titles follow the naming canon; the complete reading list exists; all old canonical paths remain valid; roadmap deliverables are understandable; translation counts and remaining work are explicit; and checks report what they actually tested. It does not mean that all planned research is finished.
 
-The machine graph has 25 nodes and 45 `requires_output` edges. An edge means that the named reviewed output is needed for acceptance or dependent execution. Preliminary reading and design may proceed earlier. Four `informs_not_blocks` links are advisory and do not create execution cycles. The graph does not mean that a whole upstream research programme must finish before a useful incremental result can be used.
+The later site handoff uses the accepted source SHA, not a mutable branch name. It must update cards, navigation, page titles, alternate-language labels, downloads, search metadata and roadmap links coherently. Compare actual served text, formulas, tables, source pins and mobile/desktop rendering. Do not reinterpret a title translation as a body translation. The [handoff specification](roadmap/SITE_DELIVERY.md) remains subordinate to the engineering pause.
 
-The main research path is:
+## 7. Sources, review and state
 
-```text
-Claim inventory -> related work -> human-meaning foundations -> formal bridge
-    -> algebra profiles -> practical cases -> scaled checks -> conformance
-    -> geometry profile -> geometry tests -> hybrid retrieval -> agent use
-Claim inventory -> falsification docket -> theory/code/evidence trace
-    -> runtime and revision checks -> controlled comparisons
-```
+The catalogue, canonical documents, [claim-evidence index](engineering/studies/evidence-index.json), [historical recovery gaps](engineering/studies/historical-recovery-gaps.json), [foundations map](reference/foundations/README.md), existing roadmap definitions and exact linked PRs support the artifact inventory. This is an author-maintained editorial projection, not a fresh audit of all Muneral statuses. Report discrepancies rather than fabricating IDs or silently closing tasks.
 
-These lines summarize the graph; [dependencies.json](roadmap/dependencies.json) is the exact edge definition. Site publication and task reconciliation run beside the research path. Editorial work is not dependent on completion of that path.
-
-## 5. Ownership, tasks and status
-
-KC-Brain owns foundations, mathematical interpretation, manuscript content and scientific acceptance. Agent-Brain owns integration analysis, the independent adversarial view and cross-component designs. Brains write and review the actual artifacts themselves. Engineers receive only necessary server, implementation, registry or deployment operations with prepared inputs and acceptance conditions.
-
-The public `RM-xx` labels identify these definitions. They are not invented Muneral identifiers and do not establish execution status. Muneral remains the execution authority. RM-04 reconciles existing work and creates only missing items, retaining original task history. Its private binding report maps every public definition to actual work items or a precisely stated unresolved binding; no private identifiers, credentials, server locations or mail content need be published.
-
-A public status update is a dated projection of actual task evidence. At this roadmap revision, task execution bindings are **not verified here** and research is **planned**. Do not label all items scheduled, in progress or completed merely because they are written down. Avoid unsupported completion percentages and fixed delivery dates. Public status values may include planned, active, under review, blocked, completed or deferred only with the corresponding dated source; unknown remains unknown.
-
-Completing a task means delivering and assessing its promised output. A research output can refute the proposed hypothesis. Completion never means that a theory has become universally true.
-
-## 6. Startable work
-
-KC-Brain can begin RM-01 and RM-02 without waiting for a server. Agent-Brain can review the gap map and prepare the RM-10 adversarial docket from identified claims. KC-SWE can immediately reconcile the task graph (RM-04) and implement/publish the prepared roadmap surface (RM-03) under the repository and deployment rules. There is no broad instruction to delegate the theoretical work to SWE.
-
-Later server runs require a finite prepared input packet: source/build pins, cases, permitted operations, expected evidence, budgets and negative controls. Do not run a new costly benchmark merely because its task exists. Reconcile the existing consumer, readiness, editorial and verification work before adding a duplicate.
-
-## 7. Baseline sources and evidence boundaries
-
-The baseline references are project documents, not new experiments:
-
-- [Catalogue at the audited commit](https://github.com/Arcanada-one/knowledge-contract/blob/717c43deb514adc5b40f76837e7ee0fb2da37102/publication-catalog.json).
-- [Semantic objects and applicability](https://github.com/Arcanada-one/knowledge-contract/blob/717c43deb514adc5b40f76837e7ee0fb2da37102/papers/semantic-objects-and-context/PAPER.md).
-- [Transformations, composition, equivalence and residuals](https://github.com/Arcanada-one/knowledge-contract/blob/717c43deb514adc5b40f76837e7ee0fb2da37102/papers/constrained-transformations/PAPER.md).
-- [Historical source map and explicit limits of consolidation](https://github.com/Arcanada-one/knowledge-contract/blob/717c43deb514adc5b40f76837e7ee0fb2da37102/appendices/source-map/APPENDIX.md).
-- [Engineering claim/evidence index](engineering/studies/evidence-index.json) and [historical recovery inventory](engineering/studies/historical-recovery-gaps.json).
-- [Operation contracts](engineering/specifications/contract-family/SPECIFICATION.md) and [semantic representations](engineering/specifications/semantic-types/SPECIFICATION.md).
-- [Publication procedure](PUBLISHING.md), [contribution rules](CONTRIBUTING.md) and [site build contract](https://github.com/Arcanada-one/contract-place-site/blob/main/README.md). The site's actual build source must be pinned again during delivery; this mutable documentation link is not a deployment receipt.
-
-The roadmap changes no theorem, wire profile, publication edition, allowlist or runtime permission. Proposed new foundations/geometry manuscripts enter the publication catalogue only after they exist and pass the relevant reviews.
+Preserve negative results, comparator ties, unknowns and draft labels. Separate author checks from Agent-Brain's recorded review and from external human peer review. Any claimed completion must identify its subject, exact revision, evidence and limits. Future research is not an unbounded blocker to publishing a precise limited result.
