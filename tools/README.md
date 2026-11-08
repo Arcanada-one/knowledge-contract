@@ -17,10 +17,10 @@ candidate differs from pinned accepted bytes only in a constrained title shape:
 front-matter `title` may change; `subtitle` / `short_title` may be added or
 changed; `previous_title` may be added and must equal the accepted title;
 before the H1 at most the MD033 markdownlint comment, an `<a id>` whose id is
-the GitHub slug of the accepted H1, and one blank line; the H1 must equal
-`# ` plus the new title. Every other byte must stay identical. It does not
-judge the new name. Any other change refuses with a typed reason and a
-non-zero exit.
+the GitHub slug of the accepted H1, and one blank line; the H1 must equal a
+hash-space prefix plus the new title text. Every other byte must stay
+identical. It does not judge the new name. Any other change refuses with a
+typed reason and a non-zero exit.
 
 ```sh
 python3 -B tools/verify_retrieval_context.py \
