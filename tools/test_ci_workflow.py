@@ -94,6 +94,22 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertIn("python3 -B -m unittest tools.test_cross_package_overlay -v", job)
         self.assertIn("tools/cross_package_overlay.py", job)
 
+    def test_publication_integrity_runs_retrieval_context_checker_with_pins(self):
+        job = self.jobs["publication-integrity"]
+        self.assertIn("fetch-depth: 0", job)
+        self.assertIn("python3 -B -m unittest tools.test_verify_retrieval_context -v", job)
+        self.assertIn("Pin and run retrieval-context checker", job)
+        self.assertIn("tools/verify_retrieval_context.py", job)
+        self.assertIn("CHECKER_SHA256:", job)
+        self.assertIn("PAPER_SHA256: e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f", job)
+        self.assertIn("sha256sum -c", job)
+        self.assertIn("ACCEPTED_PAPER_BLOB: 9311c0d157d5a926e3c08f6a087a53866064f4e0", job)
+        self.assertIn("--title-only-against", job)
+        self.assertIn("retrieval-context-report.json", job)
+        self.assertIn('test -s "$report"', job)
+        self.assertNotIn("|| true", job)
+        self.assertNotIn("continue-on-error", job)
+
 
 if __name__ == "__main__":
     unittest.main()
