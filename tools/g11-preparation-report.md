@@ -1,7 +1,7 @@
 # G11 bounded cross-package preparation — worker report
 
 - **PR:** [knowledge-contract#81](https://github.com/Arcanada-one/knowledge-contract/pull/81) (DRAFT)
-- **Head SHA:** `87d22d1e026fa1b72b142208a21b90db1bb469e4`
+- **Head SHA:** `ac5f7d2214858201e63fa155d6a5da15cb749f82`
 - **Branch:** `Arcanada/g11-cross-package-preparation`
 - **Clone:** `/home/dev/aup/claude-work/kcswe-g11/knowledge-contract`
 
@@ -82,7 +82,11 @@ Per-item red-before / green-after (RC1–RC4):
 ### Local unit checks (Round 9)
 
 `tools.test_cross_package_overlay` + retrieval-context + sources/DCO/CI/separation:
-overlay **116** + related (same set as Round 8).
+overlay **116** + related (same set as Round 8). Ran **206** / failed **0**.
+
+### Hosted CI (Round 9)
+
+All listed checks pass on tip `ac5f7d2214858201e63fa155d6a5da15cb749f82` (run `42514845668`).
 
 ## Round 8 (typed identities before every equality)
 
