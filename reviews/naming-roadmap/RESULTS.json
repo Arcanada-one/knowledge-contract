@@ -123,9 +123,9 @@
     {
       "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
       "old_title": "Compiled Knowledge Artifacts and Reproducible Derivation",
-      "new_title": "Compiled Knowledge: Compiled Knowledge Artifacts and Reproducible Derivation",
+      "new_title": "Compiled Knowledge: Artifacts and Reproducible Derivation",
       "old_sha256": "2cc5e781565136b5ad9fdbb2facae47d58564b1e300173d0a91a2c6cf16d5a82",
-      "new_sha256": "46b2aa0ef354abfbb4b1a347cd9e0653ce297fd52537d37e26422420d5ed63c2",
+      "new_sha256": "9ae7f45c048b1ca1c3cd4861539df95381af19ad9e06a26f1410b6adc3ad6c1a",
       "preserved_anchor": "compiled-knowledge-artifacts-and-reproducible-derivation",
       "body_unchanged": true
     },

@@ -51,7 +51,7 @@ def display_parts(short: str, explanation: str) -> tuple[str, str]:
     if separator and prefix.casefold() in allowed:
         subtitle = remainder
     else:
-        for join in (', ', ' and ', ' и '):
+        for join in (', ', ' and ', ' и ', ' '):
             leading = short + join
             if explanation.casefold().startswith(leading.casefold()):
                 subtitle = explanation[len(leading):]
@@ -92,6 +92,8 @@ def validate_rows(rows: list, slugs: set[str]) -> None:
         for value in (en, ru):
             if not 1 <= len(value.split()) <= 3 or ':' in value or re.search(r'\b(?:RM-?\d+|F\d+|G\d+)\b', value):
                 raise ValueError('Short name must be one to three meaningful words: ' + value)
+        if ru_sub.casefold().startswith(ru.casefold()) or zh_sub.startswith(zh):
+            raise ValueError('Localized explanatory subtitle duplicates its short lead: ' + slug)
         if not 2 <= len(zh) <= 12 or '：' in zh:
             raise ValueError('Chinese short name is not a compact phrase')
         for index, value in enumerate((en, ru, zh)):

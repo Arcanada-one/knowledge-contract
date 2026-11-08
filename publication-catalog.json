@@ -163,12 +163,12 @@
       "type": "specification",
       "slug": "compiled-artifact-contract",
       "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
-      "title": "Compiled Knowledge: Compiled Knowledge Artifacts and Reproducible Derivation",
+      "title": "Compiled Knowledge: Artifacts and Reproducible Derivation",
       "summary": "Saved derivatives with exact inputs, recipes, dependency manifests, templates and output evidence.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Compiled Knowledge",
-      "subtitle": "Compiled Knowledge Artifacts and Reproducible Derivation",
+      "subtitle": "Artifacts and Reproducible Derivation",
       "previous_title": "Compiled Knowledge Artifacts and Reproducible Derivation"
     },
     {

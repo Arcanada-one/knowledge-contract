@@ -82,6 +82,20 @@ class ReadableTitleControls(unittest.TestCase):
         from tools.apply_document_names import display_parts
         self.assertEqual(display_parts('Книжные пакеты', 'Книжные пакеты: Идентичность источника')[0], 'Книжные пакеты: Идентичность источника')
 
+    def test_compiled_knowledge_lead_not_repeated(self):
+        from tools.apply_document_names import display_parts
+        self.assertEqual(display_parts('Compiled Knowledge', 'Compiled Knowledge Artifacts and Reproducible Derivation')[0],
+                         'Compiled Knowledge: Artifacts and Reproducible Derivation')
+
+    def test_repeated_locale_subtitle_rejected(self):
+        rows = [['topic', 'Meaning Bridge', 'Мост смысла', 'Мост смысла: описание', '意义桥接', '含义说明']]
+        with self.assertRaises(ValueError):
+            validate_rows(rows, {'topic'})
+        rows[0][3] = 'Описание'
+        rows[0][5] = '意义桥接的含义说明'
+        with self.assertRaises(ValueError):
+            validate_rows(rows, {'topic'})
+
     def test_unchanged_full_title_does_not_duplicate_anchor(self):
         raw = '---\ntitle: "Book Packages: Source Identity"\n---\n\n# Book Packages: Source Identity\n\nBody unchanged.\n'
         result = rename_document(raw, 'Book Packages: Source Identity', 'Book Packages')
