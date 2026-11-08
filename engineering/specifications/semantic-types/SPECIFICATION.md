@@ -1,6 +1,8 @@
 ---
 name: "semantic-types"
-title: "Semantic Types, Attribution, and Representations"
+title: "Semantic Types: Semantic Types, Attribution, and Representations"
+short_title: "Semantic Types"
+subtitle: "Semantic Types, Attribution, and Representations"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations."
 ---
 
-# Semantic Types, Attribution, and Representations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="semantic-types-attribution-and-representations"></a>
+
+# Semantic Types: Semantic Types, Attribution, and Representations
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

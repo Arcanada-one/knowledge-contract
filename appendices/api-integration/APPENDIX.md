@@ -1,6 +1,8 @@
 ---
 name: "api-integration"
-title: "API Integration and Publication Consistency"
+title: "Publication Interfaces: API Integration and Publication Consistency"
+short_title: "Publication Interfaces"
+subtitle: "API Integration and Publication Consistency"
 artifact: "appendix"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Published read interfaces, task-contract delivery requirements and consistency between repository, reader and index."
 ---
 
-# API Integration and Publication Consistency
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="api-integration-and-publication-consistency"></a>
+
+# Publication Interfaces: API Integration and Publication Consistency
 
 **Publication edition:** 1.1 · **Interface inventory date:** 4 November 2026
 

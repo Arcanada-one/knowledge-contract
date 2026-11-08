@@ -1,6 +1,8 @@
 ---
 name: "reuse-admission-and-cost-controls"
-title: "Controlled reuse: admission counterexamples and the cost of a cache hit"
+title: "Reuse Economics: Controlled reuse: admission counterexamples and the cost of a cache hit"
+short_title: "Reuse Economics"
+subtitle: "Controlled reuse: admission counterexamples and the cost of a cache hit"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +13,10 @@ study_type: "analytical-engineering-study"
 review_state: "internally-reviewed"
 ---
 
-# Controlled reuse: admission counterexamples and the cost of a cache hit
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit"></a>
+
+# Reuse Economics: Controlled reuse: admission counterexamples and the cost of a cache hit
 
 ## Abstract
 

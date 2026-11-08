@@ -1,6 +1,8 @@
 ---
 name: "knowledge-utility"
-title: "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
+title: "Knowledge Utility: Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
+short_title: "Knowledge Utility"
+subtitle: "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference."
 ---
 
-# Knowledge Utility, Resource Accounting, and Lifecycle Decisions
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="knowledge-utility-resource-accounting-and-lifecycle-decisions"></a>
+
+# Knowledge Utility: Knowledge Utility, Resource Accounting, and Lifecycle Decisions
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

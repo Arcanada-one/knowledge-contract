@@ -1,6 +1,8 @@
 ---
 name: "semantic-objects-and-context"
-title: "Semantic Objects, Context, and Conditions of Applicability"
+title: "Meaning in Context: Semantic Objects, Context, and Conditions of Applicability"
+short_title: "Meaning in Context"
+subtitle: "Semantic Objects, Context, and Conditions of Applicability"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "A formal account of source interpretations, context, mandatory dependencies and conditions of applicability."
 ---
 
-# Semantic Objects, Context, and Conditions of Applicability
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="semantic-objects-context-and-conditions-of-applicability"></a>
+
+# Meaning in Context: Semantic Objects, Context, and Conditions of Applicability
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

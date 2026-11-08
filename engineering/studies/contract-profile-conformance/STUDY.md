@@ -1,6 +1,8 @@
 ---
 name: "contract-profile-conformance"
-title: "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator"
+title: "Contract Checks: Contract profiles: finite conformance, trust boundaries, and a strong simple comparator"
+short_title: "Contract Checks"
+subtitle: "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +13,10 @@ study_type: "finite-implementation-evaluation"
 review_state: "internally-reviewed"
 ---
 
-# Contract profiles: finite conformance, trust boundaries, and a strong simple comparator
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator"></a>
+
+# Contract Checks: Contract profiles: finite conformance, trust boundaries, and a strong simple comparator
 
 ## Abstract
 

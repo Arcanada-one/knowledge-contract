@@ -1,6 +1,8 @@
 ---
 name: "revision-and-governance"
-title: "Knowledge Revision, Version Identity, and the Adoption of Norms"
+title: "Knowledge Revision: Knowledge Revision, Version Identity, and the Adoption of Norms"
+short_title: "Knowledge Revision"
+subtitle: "Knowledge Revision, Version Identity, and the Adoption of Norms"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions."
 ---
 
-# Knowledge Revision, Version Identity, and the Adoption of Norms
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="knowledge-revision-version-identity-and-the-adoption-of-norms"></a>
+
+# Knowledge Revision: Knowledge Revision, Version Identity, and the Adoption of Norms
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

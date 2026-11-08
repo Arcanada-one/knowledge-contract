@@ -1,6 +1,8 @@
 ---
 name: "human-meaning-and-computable-knowledge"
-title: "From Human Meaning to Contract-Governed Knowledge"
+title: "Meaning Bridge: From Human Meaning to Contract-Governed Knowledge"
+short_title: "Meaning Bridge"
+subtitle: "From Human Meaning to Contract-Governed Knowledge"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -20,7 +22,10 @@ sources:
   - "Bender and Koller 2020"
 ---
 
-# From Human Meaning to Contract-Governed Knowledge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="from-human-meaning-to-contract-governed-knowledge"></a>
+
+# Meaning Bridge: From Human Meaning to Contract-Governed Knowledge
 
 **Author:** Pavel Valentov · **Status:** research draft for corpus integration
 

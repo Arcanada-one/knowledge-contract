@@ -7,7 +7,9 @@ updated: 2026-11-06
 
 # Contract Place roadmap delivery
 
-**Owner of content:** KC-Brain. **Independent architectural review:** Agent-Brain. **Necessary site/server execution:** KC-SWE. This is the prepared scope for RM-03, with task bindings reconciled by RM-04. It does not request new theory authorship from an engineer.
+> Current editorial note, 8 November 2026: names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). The foundations introduction already exists as a research draft. The operator has paused engineering execution; this plan is not an instruction to restart it. Later explicit per-document authorizations remain valid, and future research is not an unbounded release gate.
+
+**Owner of content:** KC-Brain. **Independent architectural review:** Agent-Brain. **Necessary site/server execution:** KC-SWE. This is the prepared scope for Roadmap Publication, with task bindings reconciled by Workgraph Reconciliation. It does not request new theory authorship from an engineer.
 
 ## 1. Source and publication boundary
 
@@ -21,7 +23,7 @@ No secret, private mailbox URL, internal server path, credential, unpublished so
 
 Proposed canonical routes are `/en/roadmap/`, `/ru/roadmap/` and `/zh-Hans/roadmap/`, consistent with existing language-prefixed navigation. Confirm their compatibility with the actual router. Link the section from primary navigation and the project overview. Preserve existing science, engineering, reference and appendix routes.
 
-The page contains a short introduction, the two-track release policy, the current gap map, priority bands, all 25 task cards, their dependency relationships, acceptance/refutation criteria and a link to the versioned source. Show the author's current [foundations-first preparation sequence](FOUNDATIONS_RELEASE_PLAN.md) F01–F06 as a distinct editorial ordering policy, not new Muneral tasks or inferred DAG edges. Clearly mark the earlier roadmap-only restart checkpoint as superseded; the default resumption threshold is the complete reviewable six-unit package and a version-pinned corpus link map described in [ROADMAP.md](../ROADMAP.md) §2, not successful completion of all future research, site publishing or model experiments. Keep explicit later per-document author permissions and the independently authorized RM-03/first-two-paper/defect-fix work visible as exceptions. Provide stable anchors for RM-01 through RM-25 and an accessible text/table alternative to any visual graph. The initial full task text is English; localized navigation is not presented as a translated manuscript. A Russian translation of the overview can be added with an explicit language label and review state.
+The page contains a short introduction, the two-track release policy, the current gap map, priority bands, all 25 task cards, their dependency relationships, acceptance/refutation criteria and a link to the versioned source. Show the author's current [foundations-first preparation sequence](FOUNDATIONS_RELEASE_PLAN.md) Meaning Bridge–Meaning Controls as a distinct editorial ordering policy, not new Muneral tasks or inferred DAG edges. Clearly mark the earlier roadmap-only restart checkpoint as superseded; the default resumption threshold is the complete reviewable six-unit package and a version-pinned corpus link map described in [ROADMAP.md](../ROADMAP.md) §2, not successful completion of all future research, site publishing or model experiments. Keep explicit later per-document author permissions and the independently authorized Roadmap Publication/first-two-paper/defect-fix work visible as exceptions. Provide stable anchors for Claim Atlas through Editorial Release and an accessible text/table alternative to any visual graph. The initial full task text is English; localized navigation is not presented as a translated manuscript. A Russian translation of the overview can be added with an explicit language label and review state.
 
 Suggested public introduction:
 
@@ -29,7 +31,7 @@ Suggested public introduction:
 
 Suggested navigation label: `Roadmap` (English), `Дорожная карта` (Russian), `路线图` (Chinese interface; native-language editorial review not claimed).
 
-Do not promise completion 'soon' as a date-backed fact. Use priority and dependency order until actual estimates are accepted. Empty/unverified task status is shown as planned or unknown, never as active/completed. Where execution state is synchronized, display its observation time and source; RM-04 retains one execution authority.
+Do not promise completion 'soon' as a date-backed fact. Use priority and dependency order until actual estimates are accepted. Empty/unverified task status is shown as planned or unknown, never as active/completed. Where execution state is synchronized, display its observation time and source; Workgraph Reconciliation retains one execution authority.
 
 ## 3. Implementation and validation
 
@@ -37,7 +39,7 @@ Reconcile existing site work before creating a new work item. Implement only the
 
 Required checks include:
 
-1. All 25 RM IDs appear once as cards; every required and advisory edge resolves; priorities and owners match the canonical task definition. Broken or cyclic required dependencies are rejected or visibly diagnosed. F01–F06 appear only as the distinct current preparation order with an exact plan reference; the graph does not silently add F tasks or geometry prerequisites to the Live Lab baseline.
+1. All 25 RM IDs appear once as cards; every required and advisory edge resolves; priorities and owners match the canonical task definition. Broken or cyclic required dependencies are rejected or visibly diagnosed. Meaning Bridge–Meaning Controls appear only as the distinct current preparation order with an exact plan reference; the graph does not silently add F tasks or geometry prerequisites to the Live Lab baseline.
 2. The actual generated HTML contains the introduction and substantive task text without requiring script execution to reveal all content. Anchors and source links work; the roadmap has an accessible reading order and mobile layout.
 3. A deliberately stale source pin, missing task, changed dependency and absent execution evidence cannot produce a false completed-state view. Status projection is not an editable second tracker.
 4. Existing paper/specification/study pages, citation metadata, equations, references, search and compatibility routes do not regress. Site integrity, link, hygiene, security and publication checks run at the actual changed commit.

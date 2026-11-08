@@ -7,21 +7,23 @@ updated: 2026-11-06
 
 # Foundations-first manuscript package
 
+> Current editorial note, 8 November 2026: names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). The foundations introduction already exists as a research draft. The operator has paused engineering execution; this plan is not an instruction to restart it. Later explicit per-document authorizations remain valid, and future research is not an unbounded release gate.
+
 ## 1. Updated decision and scope
 
-The author's updated direction on 6 November 2026 is to prepare the missing foundations first, reconcile their links to the corpus, and only then resume its general editorial pass. This changes the immediate order in [ROADMAP.md](../ROADMAP.md) and the start boundary of RM-25 in [TASKS.md](TASKS.md). It does not erase the 25 work packages, history or real execution bindings. The finite research boundary remains: completing every future experiment is not a condition for publishing an honest, bounded contribution.
+The author's updated direction on 6 November 2026 is to prepare the missing foundations first, reconcile their links to the corpus, and only then resume its general editorial pass. This changes the immediate order in [ROADMAP.md](../ROADMAP.md) and the start boundary of Editorial Release in [TASKS.md](TASKS.md). It does not erase the 25 work packages, history or real execution bindings. The finite research boundary remains: completing every future experiment is not a condition for publishing an honest, bounded contribution.
 
 The package has six document units: two new scientific papers, a substantial extension of one existing paper, two new engineering specifications and one new study of explicitly bounded worked cases. A shared integration map, vocabulary update and source ledger accompany them. The new paths below are proposed targets, not existing files.
 
 6 November is the intended manuscript-preparation batch, not a promise that six independently reviewed publications, a deployment or a whole empirical programme will finish that day. Complete first manuscripts are saved in repository changes immediately; scientific acceptance, main-branch integration and live publication remain separately verified. An outline, planned experiment or unsupported theorem is not a completed result.
 
-This turn establishes the plan. The next content operation is F01, not the old third-document copy-edit. Proceed one work at a time in the user-directed workflow; do not start the entire sequence from a mailbox timer. Existing authorized review and delivery of the first two edited papers may finish. Preserve their work and unrelated sessions.
+This turn establishes the plan. The next content operation is Meaning Bridge, not the old third-document copy-edit. Proceed one work at a time in the user-directed workflow; do not start the entire sequence from a mailbox timer. Existing authorized review and delivery of the first two edited papers may finish. Preserve their work and unrelated sessions.
 
 ## 2. Baseline and reuse
 
 The inspected source baseline is `717c43deb514adc5b40f76837e7ee0fb2da37102`. Its [catalogue](../publication-catalog.json) contains 29 canonical documents. It already includes semantic objects, constrained transformations, evidence and falsification, semantic types, operation contracts, professional artifacts and actual studies. These are the starting point, not material to replace silently.
 
-The [transformation paper](../papers/constrained-transformations/PAPER.md) already covers partial relations, composition, observation equivalence, projection, residuals and reconstruction. F03 extends that path instead of creating a competing algebra manuscript. The [semantic-types specification](../engineering/specifications/semantic-types/SPECIFICATION.md) remains authoritative for its existing facets; F02 supplies a bounded conversion process. The [evidence paper](../papers/evidence-and-falsification/PAPER.md) remains the scientific account; F05 specifies preparation and assessment of concrete verification packets. Historical I10/I12 material is a recovery lead under RM-01, not automatically current authority.
+The [transformation paper](../papers/constrained-transformations/PAPER.md) already covers partial relations, composition, observation equivalence, projection, residuals and reconstruction. Transformation Algebra extends that path instead of creating a competing algebra manuscript. The [semantic-types specification](../engineering/specifications/semantic-types/SPECIFICATION.md) remains authoritative for its existing facets; Semantic Bridge supplies a bounded conversion process. The [evidence paper](../papers/evidence-and-falsification/PAPER.md) remains the scientific account; Semantic Verification specifies preparation and assessment of concrete verification packets. Historical I10/I12 material is a recovery lead under Claim Atlas, not automatically current authority.
 
 No edition, protocol, API behavior or index state changes because this plan exists. Read [AGENTS.md](../AGENTS.md), [CONTRIBUTING.md](../CONTRIBUTING.md) and [PUBLISHING.md](../PUBLISHING.md) at the actual source revision before changes.
 
@@ -29,16 +31,19 @@ No edition, protocol, API behavior or index state changes because this plan exis
 
 | Unit | Kind | Working title | Action | Roadmap coverage |
 | --- | --- | --- | --- | --- |
-| F01 | Scientific paper | From Human Meaning to Contract-Governed Knowledge | New | RM-01, RM-05, RM-06 |
-| F02 | Engineering specification | From Source Interpretation to Computable Knowledge: A Bounded Semantic Bridge | New; reuse semantic-types | RM-07, RM-17 |
-| F03 | Scientific paper | Constrained Transformations: Algebraic Profiles, Composition and Reconstruction | Extend existing constrained-transformations | RM-08, RM-09, RM-10 |
-| F04 | Scientific paper | Geometry of Semantic Representations: Similarity, Context and Limits | New | RM-12, RM-13, RM-14 |
-| F05 | Engineering specification | Verification Contracts for Semantic Claims and Implementations | New; reuse evidence paper | RM-02, RM-10, RM-11, RM-15 |
-| F06 | Engineering study | Worked Semantic Operations: Examples, Counterexamples and Bounded Checks | New, with actual analytic or executed results | RM-09, RM-11, RM-13, RM-17, RM-18 |
+| Meaning Bridge | Scientific paper | From Human Meaning to Contract-Governed Knowledge | New | Claim Atlas, Meaning Bridge, Source Audit |
+| Semantic Bridge | Engineering specification | From Source Interpretation to Computable Knowledge: A Bounded Semantic Bridge | New; reuse semantic-types | Semantic Bridge, Extraction Fidelity |
+| Transformation Algebra | Scientific paper | Constrained Transformations: Algebraic Profiles, Composition and Reconstruction | Extend existing constrained-transformations | Transformation Algebra, Meaning Cases, Falsification Register |
+| Semantic Geometry | Scientific paper | Geometry of Semantic Representations: Similarity, Context and Limits | New | Semantic Geometry, Geometry Evaluation, Hybrid Retrieval |
+| Semantic Verification | Engineering specification | Verification Contracts for Semantic Claims and Implementations | New; reuse evidence paper | Verification Records, Falsification Register, Scaled Checks, Theory Traceability |
+| Meaning Controls | Engineering study | Worked Semantic Operations: Examples, Counterexamples and Bounded Checks | New, with actual analytic or executed results | Meaning Cases, Scaled Checks, Geometry Evaluation, Extraction Fidelity, Agent Application |
 
 F identifiers name this sequence, not new Muneral tasks. Reconcile them to existing RM work and actual records. Writing a geometry paper does not complete its benchmark; writing a bridge specification does not implement an extractor.
 
-### F01. Human meaning and contract-governed knowledge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f01.-human-meaning-and-contract-governed-knowledge"></a>
+
+### Meaning Bridge. Human meaning and contract-governed knowledge
 
 **Proposed target:** `papers/human-meaning-and-computable-knowledge/PAPER.md`.
 
@@ -52,7 +57,10 @@ Include related work and a precise contribution statement. Verify primary litera
 
 **Acceptance:** a new reader follows the entire chain without private project knowledge; symbols are defined; source assertion is not endorsement; a worked example preserves its exception, attribution and unresolved information. A theorem has a complete proof; an unproved proposal is identified as such.
 
-### F02. The bounded semantic bridge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f02.-the-bounded-semantic-bridge"></a>
+
+### Semantic Bridge. The bounded semantic bridge
 
 **Proposed target:** `engineering/specifications/semantic-bridge/SPECIFICATION.md`.
 
@@ -64,7 +72,10 @@ Describe accepted, partial, ambiguous, unsupported and rejected outcomes by reus
 
 **Acceptance:** inputs, outputs and failure behavior are explicit; multiple readings survive when warranted; losses distinguish omission from uncertainty; proposed fields are not described as deployed. References to semantic-types, core, artifact-registry and context-package replace duplicated definitions.
 
-### F03. Algebraic profiles and transformations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f03.-algebraic-profiles-and-transformations"></a>
+
+### Transformation Algebra. Algebraic profiles and transformations
 
 **Canonical target:** `papers/constrained-transformations/PAPER.md`.
 
@@ -76,7 +87,10 @@ Use exact Boolean and typed-record/quantity profiles as declared examples. Logic
 
 **Acceptance:** each operation has types, domain, semantics, conditions, a positive example and an adverse case. Changed scientific claims have a derivation or explicit unresolved status. Existing citations and dependent propositions remain traceable. This is substantive revision, not a typography-only change.
 
-### F04. Geometry of semantic representations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f04.-geometry-of-semantic-representations"></a>
+
+### Semantic Geometry. Geometry of semantic representations
 
 **Proposed target:** `papers/geometry-of-semantic-representations/PAPER.md`.
 
@@ -88,7 +102,10 @@ Develop exact countermodels and bounded deductions. Model-specific reliability, 
 
 **Acceptance:** every geometric term has a carrier and operation; claimed axioms are justified for the selected measure; examples distinguish similarity from equivalence; the intended useful interface and untested claims are both explicit.
 
-### F05. Verification contracts
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f05.-verification-contracts"></a>
+
+### Semantic Verification. Verification contracts
 
 **Proposed target:** `engineering/specifications/semantic-verification/SPECIFICATION.md`.
 
@@ -100,7 +117,10 @@ Every finite count identifies its space, formula, bound and justification. Separ
 
 **Acceptance:** a reviewer can reconstruct the scope; the graph-root and Boolean-function uses of 4096 cannot be confused; actual code is distinguished from a separate reference model; self-review, rerun and independent reproduction remain different. The specification does not report unperformed tests.
 
-### F06. Worked operations and bounded controls
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="f06.-worked-operations-and-bounded-controls"></a>
+
+### Meaning Controls. Worked operations and bounded controls
 
 **Proposed target:** `engineering/studies/meaning-operations-controls/STUDY.md`, with its supporting files.
 
@@ -110,13 +130,13 @@ Begin with three coherent traces: a rule with exception and attribution; a quant
 
 Perform and record feasible exact analytic or local checks. Preserve inputs, code, environment, outputs and failures. Attribute any service run to its actual build/executor. An expected answer is not an observed output; a worked mathematical example is not a production benchmark. Do not fabricate runs to satisfy the preparation date.
 
-**Acceptance:** each result links to a derivation or actual run; controls exercise the intended distinction; missing coverage is visible. If execution is unavailable, keep its protocol in F05 or a preparation file and do not call the unexecuted study finished. Conclusions remain within the actual evaluated cases.
+**Acceptance:** each result links to a derivation or actual run; controls exercise the intended distinction; missing coverage is visible. If execution is unavailable, keep its protocol in Semantic Verification or a preparation file and do not call the unexecuted study finished. Conclusions remain within the actual evaluated cases.
 
 ## 4. Dependencies and coherent corpus links
 
-Before F01, complete a bounded slice of RM-01/RM-06: locate the definitions, historical inputs and primary sources needed here. This is not completion of the whole historical audit. Record omissions and use only material actually inspected.
+Before Meaning Bridge, complete a bounded slice of Claim Atlas/Source Audit: locate the definitions, historical inputs and primary sources needed here. This is not completion of the whole historical audit. Record omissions and use only material actually inspected.
 
-Draft order is F01, F02, F03, F04, F05, F06. F02 uses F01's distinctions. F03 and F04 share F02's representation vocabulary and the existing semantic-objects definitions. F05 connects their claims to verification obligations. F06 exercises selected operations under that methodology. Evidence preparation may proceed alongside writing, but dependent conclusions need actual reviewed prerequisites.
+Draft order is Meaning Bridge, Semantic Bridge, Transformation Algebra, Semantic Geometry, Semantic Verification, Meaning Controls. Semantic Bridge uses Meaning Bridge's distinctions. Transformation Algebra and Semantic Geometry share Semantic Bridge's representation vocabulary and the existing semantic-objects definitions. Semantic Verification connects their claims to verification obligations. Meaning Controls exercises selected operations under that methodology. Evidence preparation may proceed alongside writing, but dependent conclusions need actual reviewed prerequisites.
 
 Create a section-level integration map using defines, uses-definition, proves-under, operationalizes, illustrates, tests, limits and supersedes links. A reading link is not a proof dependency. Cross-reading or bibliographic cycles may be legitimate; circular justification is not. Do not convert every link into an execution prerequisite.
 
@@ -159,7 +179,7 @@ KC-Brain authors the six units, source/claim/integration maps, examples and avai
 
 KC-SWE reconciles task bindings and performs only necessary server/build/register/implementation/site operations with prepared inputs. Agent-SWE provides narrowly requested integration facts or runs. Neither is assigned a new broad benchmark, grant change or production mutation by the existence of this plan.
 
-Immediate sequence: save and communicate the plan; prepare F01; inspect its whole result; continue the remaining units in order under the user-directed workflow. Resume the general cosmetic pass only after the missing foundation package and coherent link map are available. Existing publication defect fixes, roadmap-site work and first-two-paper review/delivery are not cancelled.
+Immediate sequence: save and communicate the plan; prepare Meaning Bridge; inspect its whole result; continue the remaining units in order under the user-directed workflow. Resume the general cosmetic pass only after the missing foundation package and coherent link map are available. Existing publication defect fixes, roadmap-site work and first-two-paper review/delivery are not cancelled.
 
 This bounded package does not complete the 25-item roadmap. Larger empirical studies, universal human semantics, production-wide conformance and model-specific superiority remain separate unless actually established. No unattended all-document run is authorized by the preparation plan.
 

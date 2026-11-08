@@ -12,25 +12,33 @@
       "id": "RM-01",
       "priority": "P0",
       "content_owner": "KC-Brain",
-      "requires": []
+      "requires": [],
+      "display_name": "Claim Atlas",
+      "display_name_ru": "Карта утверждений"
     },
     {
       "id": "RM-02",
       "priority": "P0",
       "content_owner": "KC-Brain",
-      "requires": []
+      "requires": [],
+      "display_name": "Verification Records",
+      "display_name_ru": "Паспорта проверок"
     },
     {
       "id": "RM-03",
       "priority": "P0",
       "content_owner": "KC-SWE",
-      "requires": []
+      "requires": [],
+      "display_name": "Roadmap Publication",
+      "display_name_ru": "Публикация планов"
     },
     {
       "id": "RM-04",
       "priority": "P0",
       "content_owner": "KC-SWE",
-      "requires": []
+      "requires": [],
+      "display_name": "Workgraph Reconciliation",
+      "display_name_ru": "Сверка задач"
     },
     {
       "id": "RM-05",
@@ -39,7 +47,9 @@
       "requires": [
         "RM-01",
         "RM-06"
-      ]
+      ],
+      "display_name": "Meaning Bridge",
+      "display_name_ru": "Мост смысла"
     },
     {
       "id": "RM-06",
@@ -47,7 +57,9 @@
       "content_owner": "KC-Brain",
       "requires": [
         "RM-01"
-      ]
+      ],
+      "display_name": "Source Audit",
+      "display_name_ru": "Проверка источников"
     },
     {
       "id": "RM-07",
@@ -55,7 +67,9 @@
       "content_owner": "KC-Brain",
       "requires": [
         "RM-05"
-      ]
+      ],
+      "display_name": "Semantic Bridge",
+      "display_name_ru": "Семантический мост"
     },
     {
       "id": "RM-08",
@@ -65,7 +79,9 @@
         "RM-01",
         "RM-06",
         "RM-07"
-      ]
+      ],
+      "display_name": "Transformation Algebra",
+      "display_name_ru": "Алгебра преобразований"
     },
     {
       "id": "RM-09",
@@ -75,7 +91,9 @@
         "RM-07",
         "RM-08",
         "RM-10"
-      ]
+      ],
+      "display_name": "Meaning Cases",
+      "display_name_ru": "Смысловые примеры"
     },
     {
       "id": "RM-10",
@@ -83,7 +101,9 @@
       "content_owner": "Agent-Brain",
       "requires": [
         "RM-01"
-      ]
+      ],
+      "display_name": "Falsification Register",
+      "display_name_ru": "Реестр опровержений"
     },
     {
       "id": "RM-11",
@@ -93,7 +113,9 @@
         "RM-02",
         "RM-09",
         "RM-10"
-      ]
+      ],
+      "display_name": "Scaled Checks",
+      "display_name_ru": "Масштабирование проверок"
     },
     {
       "id": "RM-12",
@@ -103,7 +125,9 @@
         "RM-01",
         "RM-06",
         "RM-07"
-      ]
+      ],
+      "display_name": "Semantic Geometry",
+      "display_name_ru": "Геометрия смысла"
     },
     {
       "id": "RM-13",
@@ -113,7 +137,9 @@
         "RM-09",
         "RM-10",
         "RM-12"
-      ]
+      ],
+      "display_name": "Geometry Evaluation",
+      "display_name_ru": "Проверка геометрии"
     },
     {
       "id": "RM-14",
@@ -123,7 +149,9 @@
         "RM-07",
         "RM-12",
         "RM-13"
-      ]
+      ],
+      "display_name": "Hybrid Retrieval",
+      "display_name_ru": "Гибридный поиск"
     },
     {
       "id": "RM-15",
@@ -132,7 +160,9 @@
       "requires": [
         "RM-01",
         "RM-10"
-      ]
+      ],
+      "display_name": "Theory Traceability",
+      "display_name_ru": "Связь с реализацией"
     },
     {
       "id": "RM-16",
@@ -141,7 +171,9 @@
       "requires": [
         "RM-11",
         "RM-15"
-      ]
+      ],
+      "display_name": "Runtime Conformance",
+      "display_name_ru": "Проверка реализации"
     },
     {
       "id": "RM-17",
@@ -151,7 +183,9 @@
         "RM-07",
         "RM-09",
         "RM-10"
-      ]
+      ],
+      "display_name": "Extraction Fidelity",
+      "display_name_ru": "Точность извлечения"
     },
     {
       "id": "RM-18",
@@ -161,7 +195,9 @@
         "RM-14",
         "RM-15",
         "RM-17"
-      ]
+      ],
+      "display_name": "Agent Application",
+      "display_name_ru": "Применение агентами"
     },
     {
       "id": "RM-19",
@@ -170,7 +206,9 @@
       "requires": [
         "RM-10",
         "RM-15"
-      ]
+      ],
+      "display_name": "Current Authority",
+      "display_name_ru": "Действующие полномочия"
     },
     {
       "id": "RM-20",
@@ -180,7 +218,9 @@
         "RM-16",
         "RM-18",
         "RM-19"
-      ]
+      ],
+      "display_name": "Practical Utility",
+      "display_name_ru": "Практическая польза"
     },
     {
       "id": "RM-21",
@@ -189,7 +229,9 @@
       "requires": [
         "RM-12",
         "RM-17"
-      ]
+      ],
+      "display_name": "Cross-Language Meaning",
+      "display_name_ru": "Межъязыковой смысл"
     },
     {
       "id": "RM-22",
@@ -197,7 +239,9 @@
       "content_owner": "KC-Brain",
       "requires": [
         "RM-01"
-      ]
+      ],
+      "display_name": "Evidence Recovery",
+      "display_name_ru": "Восстановление свидетельств"
     },
     {
       "id": "RM-23",
@@ -206,7 +250,9 @@
       "requires": [
         "RM-01",
         "RM-02"
-      ]
+      ],
+      "display_name": "Editorial Evaluation",
+      "display_name_ru": "Проверка редактуры"
     },
     {
       "id": "RM-24",
@@ -215,13 +261,17 @@
       "requires": [
         "RM-01",
         "RM-10"
-      ]
+      ],
+      "display_name": "Corpus Integration",
+      "display_name_ru": "Согласование корпуса"
     },
     {
       "id": "RM-25",
       "priority": "P0",
       "content_owner": "KC-Brain",
-      "requires": []
+      "requires": [],
+      "display_name": "Editorial Release",
+      "display_name_ru": "Редакторский выпуск"
     }
   ],
   "advisory_links": [
@@ -245,5 +295,7 @@
       "to": "RM-12",
       "kind": "informs_not_blocks"
     }
-  ]
+  ],
+  "display_revision": "2026-11-08",
+  "execution_pause": "Engineering paused by operator; analytical authorship continues; not a Muneral state update"
 }

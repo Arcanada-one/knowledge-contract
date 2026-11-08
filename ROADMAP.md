@@ -45,6 +45,36 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 
 <!-- WORKSTREAM_TABLE -->
 
+| Workstream | Artifact observation |
+| --- | --- |
+| [Claim Atlas](roadmap/TASKS.md#rm-01) | A selected corpus map exists; it is not an exhaustive accounting of historical claims. |
+| [Verification Records](roadmap/TASKS.md#rm-02) | Bounded checker reports exist; a complete reviewed passport set is not established. |
+| [Roadmap Publication](roadmap/TASKS.md#rm-03) | Repository roadmap exists; this naming/status revision has not been deployed to the website. |
+| [Workgraph Reconciliation](roadmap/TASKS.md#rm-04) | Previously reported bindings are not a fresh Muneral reconciliation. |
+| [Meaning Bridge](roadmap/TASKS.md#rm-05) | The complete foundations introduction is in the catalogue with research-draft status. |
+| [Source Audit](roadmap/TASKS.md#rm-06) | PR67 contains historical bibliography triage; triage is not full reading of all primary sources. |
+| [Semantic Bridge](roadmap/TASKS.md#rm-07) | A separate bounded conversion specification remains planned. |
+| [Transformation Algebra](roadmap/TASKS.md#rm-08) | The transformation paper has conditional results; the planned algebra extension is not thereby complete. |
+| [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
+| [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
+| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused. |
+| [Semantic Geometry](roadmap/TASKS.md#rm-12) | A standalone current geometry manuscript remains planned. |
+| [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
+| [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
+| [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
+| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; execution is paused. |
+| [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
+| [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
+| [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
+| [Practical Utility](roadmap/TASKS.md#rm-20) | Six bounded studies are published; no general superiority or universal savings follows. |
+| [Cross-Language Meaning](roadmap/TASKS.md#rm-21) | Body translation drafts and a semantic cross-language benchmark are distinct deliverables. |
+| [Evidence Recovery](roadmap/TASKS.md#rm-22) | Retained evidence and documented historical recovery gaps coexist. |
+| [Editorial Evaluation](roadmap/TASKS.md#rm-23) | The published single-section pilot reports a tie, not a measured general benefit. |
+| [Corpus Integration](roadmap/TASKS.md#rm-24) | Typed reading maps exist; links are not proof and proposal pins are not a coherent release. |
+| [Editorial Release](roadmap/TASKS.md#rm-25) | The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate. |
+
+<!-- /WORKSTREAM_TABLE -->
+
 A required edge means that the reviewed prerequisite output is needed for dependent acceptance or execution. It does not prohibit exploratory analysis. An advisory link informs work but never becomes a mandatory release gate. Output dependencies must be read by their names, not guessed from a numerical label.
 
 ## 5. Practical validation: prepared work, not resumed engineering

@@ -1,27 +1,33 @@
 ---
 title: Knowledge Contract research and engineering work packages
 sources: none
-status: planned
-updated: 2026-11-06
+status: definitions-with-artifact-observations
+updated: 2026-11-08
 ---
 
 # Research and engineering work packages
 
-These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; RM-04 reconciles the bindings. No deadline or completion is invented. Proposed priorities: P0 = immediate transparency/release enablement; P1 = next substantive research/verification; P2 = subsequent expansion and integration. All tasks begin as **planned, execution unverified**.
+These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; Workgraph Reconciliation reconciles the bindings. No deadline or completion is invented. Proposed priorities: P0 = immediate transparency/release enablement; P1 = next substantive research/verification; P2 = subsequent expansion and integration. The original planning baseline was 6 November 2026. The dated artifact observations below supersede any impression that an existing document is still absent; execution states remain unverified in Muneral. Engineering execution is paused by the operator.
 
 KC-Brain and Agent-Brain retain analytical authorship, examples, scientific tests, interpretation and acceptance. SWE roles perform only the necessary server, task-registry, implementation or deployment operations with prepared inputs. A task naming SWE does not delegate scientific authorship. Each dependent task needs the named reviewed output, not closure of an entire research programme. Every task also uses the common evidence rules in [EXPERIMENTS.md](EXPERIMENTS.md).
 
 The [dependency definition](dependencies.json) is the machine-readable companion. [ROADMAP.md](../ROADMAP.md) gives release boundaries, sequence and baseline sources. Task acceptance means the promised deliverable is complete; its scientific result may be negative or inconclusive.
 
-## RM-01
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-01"></a>
 
-### Recover the claim-level mathematical crosswalk
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="recover-the-claim-level-mathematical-crosswalk"></a>
+
+## Claim Atlas: Recover the claim-level mathematical crosswalk
+
+**Artifact observation (8 November 2026).** A selected corpus map exists; it is not an exhaustive accounting of historical claims.
 
 **Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
 
-**Gap.** The source map is topical, not a complete accounting of historical definitions, laws and geometry proposals.
+**Original gap (6 November 2026).** The source map is topical, not a complete accounting of historical definitions, laws and geometry proposals.
 
-**Work.** Inventory all 29 catalogue documents by section and the historical I10/I12 leads. Map each relevant definition, proposition, counterexample and limitation to a current location or an explicit disposition. Separate absent exposition, unsupported claims, missing evidence and absent implementation; do not equate these gaps.
+**Work.** Inventory all documents in the pinned current catalogue (30 at the present baseline) by section and the historical I10/I12 leads. Map each relevant definition, proposition, counterexample and limitation to a current location or an explicit disposition. Separate absent exposition, unsupported claims, missing evidence and absent implementation; do not equate these gaps.
 
 **Deliverables.** A version-pinned claim inventory, old-to-current crosswalk and gap ledger with source anchors.
 
@@ -29,15 +35,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Try to find a historical premise, exception or result not accounted for by the map; an omitted item reopens only the affected row.
 
-**Start boundary.** Ready for Brain analysis now; no server or full-corpus experiment is required.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-02
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-02"></a>
 
-### Explain and publish the scope of each verification result
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="explain-and-publish-the-scope-of-each-verification-result"></a>
+
+## Verification Records: Explain and publish the scope of each verification result
+
+**Artifact observation (8 November 2026).** Bounded checker reports exist; a complete reviewed passport set is not established.
 
 **Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
 
-**Gap.** Raw case totals can conceal the carrier, duplicated behaviors, arbitrary bounds and the distinction between a model and production code.
+**Original gap (6 November 2026).** Raw case totals can conceal the carrier, duplicated behaviors, arbitrary bounds and the distinction between a model and production code.
 
 **Work.** Prepare a verification passport for each cited checker: exact program/hash, tested object, parameter space, enumeration formula, iteration bound, oracle, vacuous cases, observed verdicts and exclusions. Reconcile the graph-root 4096 cases with the different historical 16-cubed Boolean-function triples. Publish only original or cleared reproducible inputs.
 
@@ -47,15 +59,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Remove a necessary assumption and inject an implementation defect. A checker unable to detect the intended defect cannot support that assertion; same-code reruns are not independent validation.
 
-**Start boundary.** Brain prepares the explanatory records now; KC-SWE later executes the exact prepared public packet on the required host.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-03
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-03"></a>
 
-### Publish the research roadmap on Contract Place
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="publish-the-research-roadmap-on-contract-place"></a>
+
+## Roadmap Publication: Publish the research roadmap on Contract Place
+
+**Artifact observation (8 November 2026).** Repository roadmap exists; this naming/status revision has not been deployed to the website.
 
 **Priority:** P0 · **Owner:** KC-SWE · **Required outputs:** none.
 
-**Gap.** Readers need a visible separation between current results, known limits and planned research.
+**Original gap (6 November 2026).** Readers need a visible separation between current results, known limits and planned research.
 
 **Work.** Implement the prepared roadmap reading surface using the canonical repository files, the existing site build and its pinned source revision. Provide localized navigation, task anchors, priorities, dependencies and truthful delivery state. Follow SITE_DELIVERY.md; do not create a second independent task database.
 
@@ -65,15 +83,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Test a stale source pin, broken task anchor, missing task and blocked/no-evidence status. None may render as completed research.
 
-**Start boundary.** Ready for the necessary site/server work after reconciling existing tasks and the reviewed source PR; no completed theory is a prerequisite.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-04
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-04"></a>
 
-### Bind roadmap definitions to the execution work graph
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="bind-roadmap-definitions-to-the-execution-work-graph"></a>
+
+## Workgraph Reconciliation: Bind roadmap definitions to the execution work graph
+
+**Artifact observation (8 November 2026).** Previously reported bindings are not a fresh Muneral reconciliation.
 
 **Priority:** P0 · **Owner:** KC-SWE · **Required outputs:** none.
 
-**Gap.** Public roadmap IDs describe planned work; they are not verified task identities or execution status.
+**Original gap (6 November 2026).** Public roadmap IDs describe planned work; they are not verified task identities or execution status.
 
 **Work.** Reconcile each item against existing Muneral work, including the existing editorial, validation and consumer tasks. Reuse or split existing scope without losing history; create only genuinely missing work items. Return actual IDs, owners and typed dependencies privately. Publish only a sanitized, timestamped status projection where supported.
 
@@ -83,15 +107,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attempt duplicate registration and conflicting status updates. Reconciliation preserves one execution authority and reports disagreement.
 
-**Start boundary.** Ready for the narrow registry operation now; task creation is not permission to run every research experiment.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-05
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-05"></a>
 
-### Write the foundations: from human meaning to usable knowledge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="write-the-foundations-from-human-meaning-to-usable-knowledge"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-01, RM-06.
+## Meaning Bridge: Write the foundations: from human meaning to usable knowledge
 
-**Gap.** The corpus has semantic objects and conditional results but lacks a single accessible foundations treatment spanning human meaning and agent use.
+**Artifact observation (8 November 2026).** The complete foundations introduction is in the catalogue with research-draft status.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit.
+
+**Original gap (6 November 2026).** The corpus has semantic objects and conditional results but lacks a single accessible foundations treatment spanning human meaning and agent use.
 
 **Work.** Draft a standalone introduction with scope, research questions and a terminology map. Separate expression, referent, proposition, intended meaning, context, interpretation, truth, justification, applicability and authorization. Trace human abstraction to explicit representation, formal interpretation, checked operation, knowledge storage and bounded agent use. State where ambiguity or judgment cannot be made deterministic by declaration.
 
@@ -101,15 +131,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Use ambiguous intent, metaphor, context-dependent reference and conflicting norms to test whether the proposed account overclaims a universal reduction of human meaning.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-06
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-06"></a>
 
-### Establish related work and the boundary of novelty
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="establish-related-work-and-the-boundary-of-novelty"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-01.
+## Source Audit: Establish related work and the boundary of novelty
 
-**Gap.** Standard mathematical constructions and project-specific integration need a transparent comparison with prior work.
+**Artifact observation (8 November 2026).** PR67 contains historical bibliography triage; triage is not full reading of all primary sources.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
+
+**Original gap (6 November 2026).** Standard mathematical constructions and project-specific integration need a transparent comparison with prior work.
 
 **Work.** Review primary sources in semantics/pragmatics, model theory and logic, program correctness, abstraction, database views/provenance, conceptual or vector representations and knowledge graphs. Compare assumptions, operations and guarantees rather than matching names. Treat unavailable or unpublished material as unavailable, not a reconstructed authoritative theory.
 
@@ -119,15 +155,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Seek earlier work that already supplies the claimed contribution; narrowing or abandoning a novelty claim is an acceptable result.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-07
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-07"></a>
 
-### Specify the human-to-formal semantic bridge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="specify-the-human-to-formal-semantic-bridge"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-05.
+## Semantic Bridge: Specify the human-to-formal semantic bridge
 
-**Gap.** The structure of a semantic object does not itself define a correct conversion of arbitrary language into computable content.
+**Artifact observation (8 November 2026).** A separate bounded conversion specification remains planned.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Meaning Bridge.
+
+**Original gap (6 November 2026).** The structure of a semantic object does not itself define a correct conversion of arbitrary language into computable content.
 
 **Work.** Define a bounded typed representation with scoped negation, quantifiers, conditions, units, time, referents, attribution, alternatives, provenance and uncertainty. Specify candidate extraction separately from deterministic validation. Define abstract/concrete mappings, supported language fragments, loss accounting, computability limits and refusal or unresolved outcomes. Connect it to professional artifacts without treating a skill file as capability.
 
@@ -137,15 +179,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Find a text pair collapsed into the same representation despite different required actions, or a round trip that drops a mandatory qualifier.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-08
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-08"></a>
 
-### Complete the profile algebra of meaning operations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="complete-the-profile-algebra-of-meaning-operations"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-01, RM-06, RM-07.
+## Transformation Algebra: Complete the profile algebra of meaning operations
 
-**Gap.** Operations exist, but a coherent family of carriers, partial domains and laws is not fully traced to all intended uses.
+**Artifact observation (8 November 2026).** The transformation paper has conditional results; the planned algebra extension is not thereby complete.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
+
+**Original gap (6 November 2026).** Operations exist, but a coherent family of carriers, partial domains and laws is not fully traced to all intended uses.
 
 **Work.** Specify equivalence, entailment, conjunction/merge, common consequence, projection, residual, reconstruction, composition and transfer for named profiles. State partial domains, nonempty/consistent interpretations, representative independence, supported decision procedures and resource limits. Distinguish observation equivalence from identity and similarity; list laws that do not hold.
 
@@ -155,15 +203,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attack domain congruence, noninjective reconstruction, incompatible observation interfaces, inconsistent premises, and claims of minimal residual size.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-09
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-09"></a>
 
-### Build practical algebra examples and adversarial controls
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="build-practical-algebra-examples-and-adversarial-controls"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-07, RM-08, RM-10.
+## Meaning Cases: Build practical algebra examples and adversarial controls
 
-**Gap.** Small synthetic spaces do not provide a diverse test set of practically meaningful transformations.
+**Artifact observation (8 November 2026).** Analytic and synthetic examples exist; a new independent benchmark is not established.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Transformation Algebra, Falsification Register.
+
+**Original gap (6 November 2026).** Small synthetic spaces do not provide a diverse test set of practically meaningful transformations.
 
 **Work.** Instantiate the algebra families in EXPERIMENTS.md using original or licensed sources. Cover units, exceptions, roles, scoped negation, attributions, changing recipients, residuals, conflicting sources and cross-domain transfer. Preserve source anchors and both positive and minimally changed negative cases. Separate visible development cases from withheld evaluation cases.
 
@@ -173,15 +227,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Have the independent architect construct unseen cases that defeat the proposed rule; retain failures, annotation disagreement and dataset leakage findings.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-10
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-10"></a>
 
-### Maintain proof obligations and a falsification docket
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="maintain-proof-obligations-and-a-falsification-docket"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-01.
+## Falsification Register: Maintain proof obligations and a falsification docket
 
-**Gap.** A failed premise, failed implementation and counterexample to a theorem are different diagnoses.
+**Artifact observation (8 November 2026).** Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed.
+
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas.
+
+**Original gap (6 November 2026).** A failed premise, failed implementation and counterexample to a theorem are different diagnoses.
 
 **Work.** For every selected claim record quantifiers, assumptions, carrier, intended observation, proof route and attempted refutation. Classify evidence as deductive argument, bounded model, implementation regression or empirical comparison. A theorem counterexample satisfies all premises and violates the conclusion; premise-breaking cases test boundaries or conformance instead.
 
@@ -191,15 +251,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Search for vacuous success, hidden policy vetoes, inconsistent carriers, circular oracles and quantifier changes. Report unsuccessful searches with their actual bounds.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-11
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-11"></a>
 
-### Scale bounded checks and connect them to implementation
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="scale-bounded-checks-and-connect-them-to-implementation"></a>
 
-**Priority:** P1 · **Owner:** KC-SWE · **Required outputs:** RM-02, RM-09, RM-10.
+## Scaled Checks: Scale bounded checks and connect them to implementation
 
-**Gap.** Three-vertex enumeration and the fixed iteration limit do not establish large-graph or production correctness.
+**Artifact observation (8 November 2026).** Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused.
+
+**Priority:** P1 · **Owner:** KC-SWE · **Required outputs:** Verification Records, Meaning Cases, Falsification Register.
+
+**Original gap (6 November 2026).** Three-vertex enumeration and the fixed iteration limit do not establish large-graph or production correctness.
 
 **Work.** Run the Brain-prepared plan with parameterized graph sizes, independent closure oracle, long chains/cycles, generated and mutation cases, and explicit deterministic budgets. Start with complete n=1..4 scope when feasible and use justified generated cases beyond it. Replace size-specific loop bounds only through reviewed implementation; separate model-only runs from tests importing actual code.
 
@@ -209,15 +275,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Inject missing-edge, early-stop, wrong-root, inconsistent-oracle and vacuous-case mutations; surviving mutants are reported and explained.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-12
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-12"></a>
 
-### Develop the geometry-of-meaning profile
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="develop-the-geometry-of-meaning-profile"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-01, RM-06, RM-07.
+## Semantic Geometry: Develop the geometry-of-meaning profile
 
-**Gap.** Historical geometry arguments exist, but a current explicit and validated geometry profile is not established.
+**Artifact observation (8 November 2026).** A standalone current geometry manuscript remains planned.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
+
+**Original gap (6 November 2026).** Historical geometry arguments exist, but a current explicit and validated geometry profile is not established.
 
 **Work.** Specify what points/regions represent, the embedding map and version, dimensions, context conditioning, similarity or distance, topology if used, and claimed invariants. State metric axioms only when proved or verified for the chosen definition; separate pseudometric, similarity and directed entailment. Define information loss and the limits of inverse interpretation.
 
@@ -227,15 +299,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Construct threshold nontransitivity, collisions, norm changes and context-dependent nearest-neighbor reversals; a contradiction narrows or rejects the affected claim.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-13
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-13"></a>
 
-### Test geometry against semantic distinctions
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="test-geometry-against-semantic-distinctions"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-09, RM-10, RM-12.
+## Geometry Evaluation: Test geometry against semantic distinctions
 
-**Gap.** Geometric similarity has not been validated against the distinctions required by concrete KC tasks.
+**Artifact observation (8 November 2026).** No new held-out geometry result is claimed.
+
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Meaning Cases, Falsification Register, Semantic Geometry.
+
+**Original gap (6 November 2026).** Geometric similarity has not been validated against the distinctions required by concrete KC tasks.
 
 **Work.** Prepare a frozen comparison of high-similarity contradictions and low-similarity equivalent expressions. Include negation, quantifier scope, units, numbers, actor swaps and context. Compare lexical, vector and formal/profile-aware routes. Calibrate thresholds only on development data; keep separate unseen evaluation and explicit coverage/refusal outcomes.
 
@@ -245,15 +323,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Search for a system that looks precise only because it refuses everything, learns test labels, or uses similarity as an unexamined correctness oracle.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-14
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-14"></a>
 
-### Specify hybrid retrieval without semantic overreach
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="specify-hybrid-retrieval-without-semantic-overreach"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-07, RM-12, RM-13.
+## Hybrid Retrieval: Specify hybrid retrieval without semantic overreach
 
-**Gap.** Candidate ranking and contract-based admissibility need a documented interface between the geometric and logical layers.
+**Artifact observation (8 November 2026).** Architecture candidates do not establish a completed integrated consumer.
+
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Semantic Bridge, Semantic Geometry, Geometry Evaluation.
+
+**Original gap (6 November 2026).** Candidate ranking and contract-based admissibility need a documented interface between the geometric and logical layers.
 
 **Work.** Specify geometry/lexical retrieval as candidate generation, followed by source, scope, dependency, policy and semantic checks. Record ranking exclusions versus mandatory rejections. Define adapters to Scrutator without inventing new grants or namespaces. Retain an uncertainty/refusal route and a useful positive path.
 
@@ -263,15 +347,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attempt metadata-hash substitution, omitted dependency, misleading similarity, wrong reader and context-budget truncation.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-15
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-15"></a>
 
-### Trace theory to requirements, code and observations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="trace-theory-to-requirements-code-and-observations"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-01, RM-10.
+## Theory Traceability: Trace theory to requirements, code and observations
 
-**Gap.** Existing propositions, specifications, standalone checks and services are not connected by a complete verified map.
+**Artifact observation (8 November 2026).** The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open.
+
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas, Falsification Register.
+
+**Original gap (6 November 2026).** Existing propositions, specifications, standalone checks and services are not connected by a complete verified map.
 
 **Work.** For each selected property identify the exact definition/proposition, requirement ID, implementation function/build, tests, raw evidence and limits. Distinguish code read, component tested and live behavior observed. Mark specified-but-unimplemented operations explicitly; reuse existing consumer/readiness tasks rather than dispatch duplicates.
 
@@ -281,15 +371,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Follow an allegedly supported guarantee to an unrelated test, stale build, stub or unsupported representation; downgrade that row instead of treating the matrix as proof.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-16
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-16"></a>
 
-### Run production-representative conformance and fault tests
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="run-production-representative-conformance-and-fault-tests"></a>
 
-**Priority:** P1 · **Owner:** Agent-SWE · **Required outputs:** RM-11, RM-15.
+## Runtime Conformance: Run production-representative conformance and fault tests
 
-**Gap.** Finite reference checks do not establish that the deployed implementation enforces the same contract.
+**Artifact observation (8 November 2026).** No all-system production conformance verdict; execution is paused.
+
+**Priority:** P1 · **Owner:** Agent-SWE · **Required outputs:** Scaled Checks, Theory Traceability.
+
+**Original gap (6 November 2026).** Finite reference checks do not establish that the deployed implementation enforces the same contract.
 
 **Work.** Execute prepared fixtures against named actual builds in authorized environments. Exercise malformed data, unsupported profiles, missing dependencies, wrong subject/recipient, stale evidence and altered outputs; include positive controls and independent observable counters. Preserve secrets and unrelated environments.
 
@@ -299,15 +395,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Mutate or bypass an actual gate and show the test observes the intended violation; zero downstream calls require a positive-path control.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-17
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-17"></a>
 
-### Evaluate extraction, ambiguity and source fidelity
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="evaluate-extraction-ambiguity-and-source-fidelity"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-07, RM-09, RM-10.
+## Extraction Fidelity: Evaluate extraction, ambiguity and source fidelity
 
-**Gap.** Well-formed records do not show that all material semantic conditions were extracted from a source.
+**Artifact observation (8 November 2026).** The transcription study does not measure unrestricted semantic extraction accuracy.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Meaning Cases, Falsification Register.
+
+**Original gap (6 November 2026).** Well-formed records do not show that all material semantic conditions were extracted from a source.
 
 **Work.** Prepare independently annotated, rights-cleared tasks for extraction and transformation, with source coordinates, preserved alternatives and damage/uncertainty labels. Define omission, hallucination, attribution and operator-scope errors separately. Freeze the evaluation protocol before any model run and preserve human/agent reviewer roles honestly.
 
@@ -317,19 +419,25 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Insert a crucial exception in a table, footnote, image or different chapter and test whether a structurally valid artifact silently loses it.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-18
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-18"></a>
 
-### Demonstrate accepted knowledge in a bounded agent task
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="demonstrate-accepted-knowledge-in-a-bounded-agent-task"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-14, RM-15, RM-17.
+## Agent Application: Demonstrate accepted knowledge in a bounded agent task
 
-**Gap.** Prepared artifacts, indexed entries, exact retrieval and successful task use are separate stages.
+**Artifact observation (8 November 2026).** Advanced retrieval work is separate from the baseline exact-consumer pilot.
 
-**Work.** Prepare an advanced research demonstration of one accepted semantic artifact and its finite required closure, including the RM-14 hybrid-retrieval interface, then reuse a suitable existing private consumer route for exact readback, complete context delivery and bounded task use. Bind source, representation, revision, purpose and assessment. Engineer executes only the required ingestion/service operations.
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Hybrid Retrieval, Theory Traceability, Extraction Fidelity.
 
-**Scope separation.** RM-18 is an advanced research extension whose own acceptance depends on RM-14, RM-15 and RM-17. The existing Live Lab exact-consumer baseline has its own approved KCLIVE prerequisites and can supply earlier evidence without satisfying RM-18. Do not alias the whole RM-18 task to that baseline or import geometry / hybrid-retrieval dependencies into an otherwise ready KCLIVE task. Link only an actually matching, reviewed output; keep both task identities and their distinct acceptance conditions.
+**Original gap (6 November 2026).** Prepared artifacts, indexed entries, exact retrieval and successful task use are separate stages.
+
+**Work.** Prepare an advanced research demonstration of one accepted semantic artifact and its finite required closure, including the Hybrid Retrieval hybrid-retrieval interface, then reuse a suitable existing private consumer route for exact readback, complete context delivery and bounded task use. Bind source, representation, revision, purpose and assessment. Engineer executes only the required ingestion/service operations.
+
+**Scope separation.** Agent Application is an advanced research extension whose own acceptance depends on Hybrid Retrieval, Theory Traceability and Extraction Fidelity. The existing Live Lab exact-consumer baseline has its own approved KCLIVE prerequisites and can supply earlier evidence without satisfying Agent Application. Do not alias the whole Agent Application task to that baseline or import geometry / hybrid-retrieval dependencies into an otherwise ready KCLIVE task. Link only an actually matching, reviewed output; keep both task identities and their distinct acceptance conditions.
 
 **Deliverables.** An exact-byte handoff manifest, task output, assessment and trace across storage/retrieval/use.
 
@@ -337,15 +445,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Change one source, request, reader grant or dependency while retaining the old artifact; stale acceptance must not silently survive.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-19
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-19"></a>
 
-### Verify current-use authority and revision races
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="verify-current-use-authority-and-revision-races"></a>
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** RM-10, RM-15.
+## Current Authority: Verify current-use authority and revision races
 
-**Gap.** A recent check or TTL does not establish authorization at the protected operation or safe publication ordering.
+**Artifact observation (8 November 2026).** Policies and candidate controls are not proof of a live authorization boundary.
+
+**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Falsification Register, Theory Traceability.
+
+**Original gap (6 November 2026).** A recent check or TTL does not establish authorization at the protected operation or safe publication ordering.
 
 **Work.** Specify a concrete admission point, supported snapshot/lease/lock assumptions, generation identity and revocation behavior. Prepare races involving check-then-revoke, slow-old-writer, lost/reordered invalidation and changed recipients. Reuse existing authority/readiness/install work and request only missing bounded observations.
 
@@ -355,15 +469,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Force the interleaving that violates the claimed current-state property and check whether the implementation detects or prevents it.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-20
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-20"></a>
 
-### Measure practical benefit against strong alternatives
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="measure-practical-benefit-against-strong-alternatives"></a>
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** RM-16, RM-18, RM-19.
+## Practical Utility: Measure practical benefit against strong alternatives
 
-**Gap.** The corpus does not establish universal quality, latency or economic superiority.
+**Artifact observation (8 November 2026).** Six bounded studies are published; no general superiority or universal savings follows.
+
+**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Runtime Conformance, Agent Application, Current Authority.
+
+**Original gap (6 November 2026).** The corpus does not establish universal quality, latency or economic superiority.
 
 **Work.** Design task-matched comparisons among no reuse, simple strong reuse, lexical/vector retrieval and contract-aware routes where applicable. Equalize required quality and authority. Account for preparation, storage, validation, retries, review and coordination without double counting. Choose sample size and uncertainty reporting before evaluation.
 
@@ -373,15 +493,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Test conditions where a simple baseline ties or wins and where safe rejection creates apparent speed improvements at the expense of usefulness.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-21
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-21"></a>
 
-### Test multilingual, multimodal and shifted-context limits
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="test-multilingual-multimodal-and-shifted-context-limits"></a>
 
-**Priority:** P2 · **Owner:** Agent-Brain · **Required outputs:** RM-12, RM-17.
+## Cross-Language Meaning: Test multilingual, multimodal and shifted-context limits
 
-**Gap.** Language/genre and modality transfer cannot be inferred from one textual profile.
+**Artifact observation (8 November 2026).** Body translation drafts and a semantic cross-language benchmark are distinct deliverables.
+
+**Priority:** P2 · **Owner:** Agent-Brain · **Required outputs:** Semantic Geometry, Extraction Fidelity.
+
+**Original gap (6 November 2026).** Language/genre and modality transfer cannot be inferred from one textual profile.
 
 **Work.** Prepare paired cross-language and multimodal cases with independently checked references, including numeric notation, image legends, OCR damage, missing assets and changed professional context. Keep interface translation separate from manuscript translation. Bound intended use instead of promising universal transfer.
 
@@ -391,15 +517,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Find a translation or visual normalization that leaves topical similarity unchanged but reverses a scoped condition or numerical interpretation.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-22
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-22"></a>
 
-### Recover historical evidence without rewriting history
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="recover-historical-evidence-without-rewriting-history"></a>
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** RM-01.
+## Evidence Recovery: Recover historical evidence without rewriting history
 
-**Gap.** Some historical programs/fixtures remain unavailable and source-rights constraints limit reproducibility.
+**Artifact observation (8 November 2026).** Retained evidence and documented historical recovery gaps coexist.
+
+**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
+
+**Original gap (6 November 2026).** Some historical programs/fixtures remain unavailable and source-rights constraints limit reproducibility.
 
 **Work.** Audit the existing recovery inventory and cited reports; request only exact missing exports/logs from their owners. Preserve originals and hashes; distinguish recovered original, reconstructed view and new synthetic reproduction. Prepare public substitutes only when clearly labeled and appropriately licensed.
 
@@ -409,15 +541,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Try to reproduce a historical conclusion from only available inputs; an inability is reported, not repaired by substituting a new result without disclosure.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-23
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-23"></a>
 
-### Validate editorial skills and reader comprehension
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="validate-editorial-skills-and-reader-comprehension"></a>
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** RM-01, RM-02.
+## Editorial Evaluation: Validate editorial skills and reader comprehension
 
-**Gap.** Russian applied-writing skills and a single-section tie do not establish English scientific-editing effectiveness.
+**Artifact observation (8 November 2026).** The published single-section pilot reports a tie, not a measured general benefit.
+
+**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Verification Records.
+
+**Original gap (6 November 2026).** Russian applied-writing skills and a single-section tie do not establish English scientific-editing effectiveness.
 
 **Work.** Define a bounded genre/language adaptation and protected-claim contract. Evaluate complete documents with separate scientific review and comprehension questions, and compare with a well-specified ordinary editing baseline where a benefit claim is intended. Preserve measured ties and unknown reader results.
 
@@ -427,15 +565,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Seek a clearer-sounding edit that turns sufficient conditions into necessary ones, deletes a qualifier or increases confidence without evidence.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-24
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-24"></a>
 
-### Integrate new findings through versioned research updates
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="integrate-new-findings-through-versioned-research-updates"></a>
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** RM-01, RM-10.
+## Corpus Integration: Integrate new findings through versioned research updates
 
-**Gap.** New theory and negative results need a controlled route back into papers, specifications, studies and appendices.
+**Artifact observation (8 November 2026).** Typed reading maps exist; links are not proof and proposal pins are not a coherent release.
+
+**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Falsification Register.
+
+**Original gap (6 November 2026).** New theory and negative results need a controlled route back into papers, specifications, studies and appendices.
 
 **Work.** For each completed work package prepare its claim-level impact set, corrected manuscript/specification/study, evidence links and historical compatibility mapping. Add new foundations or geometry papers to the catalogue only when actual reviewed documents exist. Preserve task outcome separately from scientific support.
 
@@ -445,15 +589,21 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Check for stale downstream theorems, unsupported catalogue entries, rewritten old evidence or a site serving a different source commit.
 
-**Start boundary.** After the named dependency outputs are reviewed; design can start earlier without claiming them complete.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
 
-## RM-25
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="rm-25"></a>
 
-### Finish the bounded editorial publication pass
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="finish-the-bounded-editorial-publication-pass"></a>
+
+## Editorial Release: Finish the bounded editorial publication pass
+
+**Artifact observation (8 November 2026).** The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate.
 
 **Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
 
-**Gap.** Unlimited research expansion must not prevent a readable, scientifically honest release of the existing corpus.
+**Original gap (6 November 2026).** Unlimited research expansion must not prevent a readable, scientifically honest release of the existing corpus.
 
 **Work.** Freeze the current editorial inventory at the 29 catalogue documents, then review sections one document at a time with protected scientific content, genre-specific structure and exact repository changes. Include specifications, studies, glossary, bibliography and appendices. Repair material false claims locally; defer enrichment to this roadmap. Existing approved first/second-document publication work is preserved.
 
@@ -463,4 +613,4 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Reject a pass that only looks scholarly, hides an unsupported result, lacks source traceability or treats successful typography/CI as scientific validation.
 
-**Start boundary.** The earlier roadmap-only checkpoint is superseded by [FOUNDATIONS_RELEASE_PLAN.md](FOUNDATIONS_RELEASE_PLAN.md) (§§1, 3, 7). For otherwise unassigned general editorial work, use that plan's F01–F06 preparation order and the precise "foundation package available" threshold defined in [ROADMAP.md](../ROADMAP.md) §2. This is a preparation priority, not a prerequisite that all research experiments, independent publications or the 25 RM tasks finish. Preserve the already authorized first-two-paper reviews and delivery, roadmap-site publication and material-defect fixes. Later explicit author instructions for particular existing papers take precedence over this default order; they do not waive scientific review, DCO, CI or site verification.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.

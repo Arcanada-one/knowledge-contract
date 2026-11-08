@@ -1,6 +1,8 @@
 ---
 name: "editorial-skill-pilot"
-title: "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
+title: "Editorial Pilot: Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
+short_title: "Editorial Pilot"
+subtitle: "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +13,10 @@ study_type: "paired-editorial-process-pilot"
 review_state: "internally-reviewed"
 ---
 
-# Editing a scientific section with a knowledge toolkit: a masked single-section comparison
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="editing-a-scientific-section-with-a-knowledge-toolkit-a-masked-single-section-comparison"></a>
+
+# Editorial Pilot: Editing a scientific section with a knowledge toolkit: a masked single-section comparison
 
 ## Abstract
 

@@ -1,6 +1,8 @@
 ---
 name: "retrieval-and-context-composition"
-title: "Retrieval, Coverage, and Context Composition under Resource Limits"
+title: "Context Assembly: Retrieval, Coverage, and Context Composition under Resource Limits"
+short_title: "Context Assembly"
+subtitle: "Retrieval, Coverage, and Context Composition under Resource Limits"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Search coverage, finite context selection, dependency closure and the limits of greedy composition."
 ---
 
-# Retrieval, Coverage, and Context Composition under Resource Limits
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="retrieval-coverage-and-context-composition-under-resource-limits"></a>
+
+# Context Assembly: Retrieval, Coverage, and Context Composition under Resource Limits
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

@@ -1,6 +1,8 @@
 ---
 name: "compiled-artifact-contract"
-title: "Compiled Knowledge Artifacts and Reproducible Derivation"
+title: "Compiled Knowledge: Compiled Knowledge Artifacts and Reproducible Derivation"
+short_title: "Compiled Knowledge"
+subtitle: "Compiled Knowledge Artifacts and Reproducible Derivation"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Saved derivatives with exact inputs, recipes, dependency manifests, templates and output evidence."
 ---
 
-# Compiled Knowledge Artifacts and Reproducible Derivation
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="compiled-knowledge-artifacts-and-reproducible-derivation"></a>
+
+# Compiled Knowledge: Compiled Knowledge Artifacts and Reproducible Derivation
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

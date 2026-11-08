@@ -1,6 +1,8 @@
 ---
 name: "reuse-policy"
-title: "Reuse Policy: Time, Authorization, and Decision Outcomes"
+title: "Reuse Policy: Reuse Policy: Time, Authorization, and Decision Outcomes"
+short_title: "Reuse Policy"
+subtitle: "Reuse Policy: Time, Authorization, and Decision Outcomes"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Temporal modes, conservative deadlines, authorization, decision outcomes and retention boundaries."
 ---
 
-# Reuse Policy: Time, Authorization, and Decision Outcomes
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="reuse-policy-time-authorization-and-decision-outcomes"></a>
+
+# Reuse Policy: Reuse Policy: Time, Authorization, and Decision Outcomes
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

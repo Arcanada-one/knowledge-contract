@@ -1,6 +1,8 @@
 ---
 name: "controlled-knowledge-reuse"
-title: "Knowledge Contracts and the Admission of Prepared Knowledge"
+title: "Knowledge Reuse: Knowledge Contracts and the Admission of Prepared Knowledge"
+short_title: "Knowledge Reuse"
+subtitle: "Knowledge Contracts and the Admission of Prepared Knowledge"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "The conditions under which saved knowledge may support a new task, recipient or execution."
 ---
 
-# Knowledge Contracts and the Admission of Prepared Knowledge
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="knowledge-contracts-and-the-admission-of-prepared-knowledge"></a>
+
+# Knowledge Reuse: Knowledge Contracts and the Admission of Prepared Knowledge
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

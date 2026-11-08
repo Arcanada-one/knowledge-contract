@@ -1,6 +1,8 @@
 ---
 name: "dependency-closure-and-package-delivery"
-title: "Dependency closure, readable artifact layouts, and a pinned package replay"
+title: "Dependency Closure: Dependency closure, readable artifact layouts, and a pinned package replay"
+short_title: "Dependency Closure"
+subtitle: "Dependency closure, readable artifact layouts, and a pinned package replay"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +13,10 @@ study_type: "finite-graph-and-integration-evaluation"
 review_state: "internally-reviewed"
 ---
 
-# Dependency closure, readable artifact layouts, and a pinned package replay
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="dependency-closure-readable-artifact-layouts-and-a-pinned-package-replay"></a>
+
+# Dependency Closure: Dependency closure, readable artifact layouts, and a pinned package replay
 
 ## Abstract
 

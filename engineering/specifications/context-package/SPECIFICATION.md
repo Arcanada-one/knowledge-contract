@@ -1,6 +1,8 @@
 ---
 name: "context-package"
-title: "Context Packages: Coverage, Dependencies, and Delivery"
+title: "Context Package: Context Packages: Coverage, Dependencies, and Delivery"
+short_title: "Context Package"
+subtitle: "Context Packages: Coverage, Dependencies, and Delivery"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "Requirements for selected context, coverage, mandatory dependencies, budgets and observed delivery."
 ---
 
-# Context Packages: Coverage, Dependencies, and Delivery
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="context-packages-coverage-dependencies-and-delivery"></a>
+
+# Context Package: Context Packages: Coverage, Dependencies, and Delivery
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

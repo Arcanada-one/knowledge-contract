@@ -1,6 +1,8 @@
 ---
 name: "evidence-and-falsification"
-title: "Evidence, Reasoning, and Falsification in Knowledge Systems"
+title: "Evidence and Falsification: Evidence, Reasoning, and Falsification in Knowledge Systems"
+short_title: "Evidence and Falsification"
+subtitle: "Evidence, Reasoning, and Falsification in Knowledge Systems"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "How claims, proofs, finite tests, counterexamples and comparative evaluations support different conclusions."
 ---
 
-# Evidence, Reasoning, and Falsification in Knowledge Systems
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="evidence-reasoning-and-falsification-in-knowledge-systems"></a>
+
+# Evidence and Falsification: Evidence, Reasoning, and Falsification in Knowledge Systems
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

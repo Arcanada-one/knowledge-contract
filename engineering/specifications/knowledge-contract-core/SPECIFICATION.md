@@ -1,6 +1,8 @@
 ---
 name: "knowledge-contract-core"
-title: "Knowledge Contract: Core Model and Admission Requirements"
+title: "Contract Core: Knowledge Contract: Core Model and Admission Requirements"
+short_title: "Contract Core"
+subtitle: "Knowledge Contract: Core Model and Admission Requirements"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "The nine core groups, first-class constraints, profiles, admission and execution requirements."
 ---
 
-# Knowledge Contract: Core Model and Admission Requirements
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="knowledge-contract-core-model-and-admission-requirements"></a>
+
+# Contract Core: Knowledge Contract: Core Model and Admission Requirements
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

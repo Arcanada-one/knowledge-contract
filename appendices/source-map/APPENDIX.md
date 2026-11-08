@@ -1,6 +1,8 @@
 ---
 name: "source-map"
-title: "Source Map, Earlier Editions, and Protocol Compatibility"
+title: "Source History: Source Map, Earlier Editions, and Protocol Compatibility"
+short_title: "Source History"
+subtitle: "Source Map, Earlier Editions, and Protocol Compatibility"
 artifact: "appendix"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +11,10 @@ license: "CC-BY-4.0"
 description: "The migration from the earlier corpus, immutable history, evidence provenance and explicit protocol compatibility boundaries."
 ---
 
-# Source Map, Earlier Editions, and Protocol Compatibility
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="source-map-earlier-editions-and-protocol-compatibility"></a>
+
+# Source History: Source Map, Earlier Editions, and Protocol Compatibility
 
 **Publication edition:** 1.1 · **Source audit date:** 4 November 2026
 
