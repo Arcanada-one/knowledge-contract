@@ -154,6 +154,8 @@ def context_record(*, request_pins: dict | None = None, permissions: dict | None
         "reviews": reviews if reviews is not None else [{
             "pins": {"A": "A1", "B": "B1"},
             "independent": True,
+            "author": "fixture-author",
+            "reviewer": "fixture-reviewer",
             "verdict": "accepted",
             "scope": "inspection-only",
             "reviewed_edge_revision": "ov-1",
@@ -231,7 +233,7 @@ class CorpusG11Tests(unittest.TestCase):
         )
         result = run_cli(payload(ov, context_record(unit_scope_aligned=False)))
         report = require_report(self, result)
-        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(result.returncode, 3, result.stderr + result.stdout)
         self.assertEqual(report["reason_code"], "unit_scope_unresolved")
         self.assertEqual(report["status"], "inspectable_unresolved")
 
@@ -421,7 +423,7 @@ class CorpusG11Tests(unittest.TestCase):
         )
         result = run_cli(payload(ov, ctx))
         report = require_report(self, result)
-        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(result.returncode, 3, result.stderr + result.stdout)
         self.assertEqual(report["reason_code"], "use_closure_incomplete")
         self.assertEqual(report["status"], "inspectable_unresolved")
         self.assertFalse(report["use_closure_complete"])
@@ -733,6 +735,226 @@ class FailClosedRound2Tests(unittest.TestCase):
             self.assertEqual(report["reason_code"], "malformed_input")
             self.assertEqual(report["status"], "refused")
             self.assertLessEqual(report.get("size", MAX_BYTES + 1), MAX_BYTES + 1)
+
+
+class FailClosedRound3Tests(unittest.TestCase):
+    """KC-SWE round-3 remaining open paths (findings 1-8). Red on 17033619."""
+
+    def _supported_pair(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="supports_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        return a, b, ov
+
+    def test_r3_01_request_pin_diverges_from_overlay(self):
+        a, b, ov = self._supported_pair()
+        # Match the KC-SWE probe shape: no assessment reviewed_pins that would
+        # short-circuit before request-vs-overlay pin comparison.
+        ov["assessment"].pop("reviewed_pins", None)
+        perms = {
+            cpo.permission_key(a["package_id"], "A2"): {
+                "permitted": True, "revoked": False, "accessible": True,
+            },
+            cpo.permission_key(b["package_id"], "B1"): {
+                "permitted": True, "revoked": False, "accessible": True,
+            },
+        }
+        ctx = context_record(
+            request_pins={"A": "A2", "B": "B1"},
+            permissions=perms,
+            reviews=[{
+                "pins": {"A": "A2", "B": "B1"},
+                "independent": True,
+                "verdict": "accepted",
+                "scope": "inspection-only",
+                "reviewed_edge_revision": "ov-1",
+            }],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "request_pin_mismatch")
+
+    def test_r3_02_partial_request_and_review_pins(self):
+        _, _, ov = self._supported_pair()
+        ov["assessment"].pop("reviewed_pins", None)
+        ctx = context_record(
+            request_pins={"A": "A1"},
+            reviews=[{
+                "pins": {"A": "A1"},
+                "independent": True,
+                "verdict": "accepted",
+                "scope": "inspection-only",
+                "reviewed_edge_revision": "ov-1",
+            }],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "request_pin_mismatch")
+
+    def test_r3_03a_mandatory_dependencies_as_strings_malformed(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        ctx = context_record(mandatory_dependencies=["A", "B"])
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r3_03b_discharged_string_false_malformed(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        ctx = context_record(
+            mandatory_dependencies=[
+                {"id": "A", "discharged": True},
+                {"id": "B", "discharged": "false"},
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r3_04_effects_authorized_never_from_caller(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        ctx = context_record(
+            mandatory_dependencies=[
+                {"id": "A", "discharged": True},
+                {"id": "B", "discharged": True},
+            ],
+            current_authority_for_effects=True,
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "prerequisite_closure_complete")
+        self.assertFalse(report["effects_authorized"])
+
+    def test_r3_05a_use_closure_incomplete_exit_3(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        ctx = context_record(
+            mandatory_dependencies=[
+                {"id": "A", "discharged": True},
+                {"id": "B", "discharged": False, "state": "unknown"},
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "use_closure_incomplete")
+
+    def test_r3_05b_unit_scope_unresolved_exit_3(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "claim-1")
+        to_ep = endpoint(b, "claim-1")
+        assertions = {
+            "polarity": "affirmative",
+            "modality": "claim",
+            "attribution": "author",
+            "quantifier_scope": "present-population",
+            "conditions": "load-limit",
+            "units": "kg",
+            "valid_time": "2026",
+            "peer_units": "lb",
+            "peer_quantifier_scope": "historical-population",
+        }
+        ov = overlay_record(
+            kind="compares_with", from_ep=from_ep, to_ep=to_ep, packages=(a, b), assertions=assertions,
+        )
+        result = run_cli(payload(ov, context_record(unit_scope_aligned=False)))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+
+    def test_r3_06_self_review_not_independent(self):
+        _, _, ov = self._supported_pair()
+        reviews = [{
+            "pins": {"A": "A1", "B": "B1"},
+            "independent": True,
+            "author": "same-person",
+            "reviewer": "same-person",
+            "verdict": "accepted",
+            "scope": "inspection-only",
+            "reviewed_edge_revision": "ov-1",
+        }]
+        result = run_cli(payload(ov, context_record(reviews=reviews)))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "review_not_independent")
+
+    def test_r3_07_non_boolean_permission_flags_malformed(self):
+        a, b, ov = self._supported_pair()
+        perms = {
+            cpo.permission_key(a["package_id"], "A1"): {
+                "permitted": True, "revoked": False, "accessible": True,
+            },
+            cpo.permission_key(b["package_id"], "B1"): {
+                "permitted": True, "revoked": "true", "accessible": True,
+            },
+        }
+        result = run_cli(payload(ov, context_record(permissions=perms)))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r3_08_duplicate_json_keys_malformed(self):
+        a, b, ov = self._supported_pair()
+        data = payload(ov, context_record())
+        text = json.dumps(data)
+        # Force a duplicate "permitted" key inside the B1 permission object.
+        needle = '"pkg-beta@B1": {"permitted": true, "revoked": false, "accessible": true}'
+        replacement = (
+            '"pkg-beta@B1": {"permitted": false, "revoked": false, '
+            '"accessible": true, "permitted": true}'
+        )
+        self.assertIn(needle, text)
+        raw = text.replace(needle, replacement, 1).encode("utf-8")
+        result = run_cli(raw, as_bytes=True)
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r3_regression_backslash_translations_path(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y", path="translations\\ru\\x")
+        ov = overlay_record(kind="supports_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["reason_code"], "rendition_endpoint_refused")
+
+    def test_r3_regression_dotdot_translations_path(self):
+        a, b = base_packages()
+        b["path"] = "papers/../translations/ru/x"
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y", path="papers/../translations/ru/x")
+        ov = overlay_record(kind="supports_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
+        result = run_cli(payload(ov, context_record()))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["reason_code"], "rendition_endpoint_refused")
 
 
 if __name__ == "__main__":

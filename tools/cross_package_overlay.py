@@ -20,8 +20,9 @@ NOT_MEASURED:
 - multi-package overlays beyond exactly two canonical English packages
 - released cross-package-relations wire schema registration
 
-CLI exit codes: 0 accepted/inspectable report, 1 typed refusal (always with a
-JSON report), 2 usage. A missing report must never be read as pass.
+CLI exit codes: 0 accepted/complete inspectable report, 1 typed refusal
+(always with a JSON report), 2 usage, 3 incomplete-but-inspectable
+(`inspectable_unresolved`). A missing report must never be read as pass.
 """
 from __future__ import annotations
 
@@ -36,11 +37,15 @@ CANONICAL_LANGUAGE = "en"
 MAX_INPUT_BYTES = 256 * 1024
 DIGEST_FIELDS = ("algorithm", "value", "byte_domain", "source_revision")
 ENDPOINT_REQUIRED_FIELDS = ("package_id", "release_id", "object_id", "source_anchor")
+REQUIRED_PIN_KEYS = frozenset({"A", "B"})
+PERMISSION_BOOL_FIELDS = ("permitted", "accessible", "revoked")
 PASS_STATUSES = frozenset({
     "inspectable",
-    "inspectable_unresolved",
     "prerequisite_closure_complete",
     "accepted",
+})
+INCOMPLETE_STATUSES = frozenset({
+    "inspectable_unresolved",
 })
 # Rendition relation edges are out of scope for this preparation (AC4).
 RELATION_KINDS = frozenset({
@@ -51,6 +56,23 @@ RELATION_KINDS = frozenset({
     "requires_for_use",
     "related_to",
 })
+
+
+class DuplicateKeyError(ValueError):
+    """Raised when JSON object_pairs_hook sees a repeated key."""
+
+
+def reject_duplicate_keys(pairs: list[tuple[Any, Any]]) -> dict:
+    result: dict = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateKeyError(f"duplicate JSON key: {key!r}")
+        result[key] = value
+    return result
+
+
+def pins_complete(pins: Any) -> bool:
+    return isinstance(pins, dict) and set(pins.keys()) == REQUIRED_PIN_KEYS
 
 
 def permission_key(package_id: str, release_id: str) -> str:
@@ -123,12 +145,38 @@ def package_rendition_qualified(package: dict) -> bool:
 
 
 def pins_equal(left: Any, right: Any) -> bool:
-    if not isinstance(left, dict) or not isinstance(right, dict):
+    if not pins_complete(left) or not pins_complete(right):
         return False
     for side in ("A", "B"):
         if left.get(side) != right.get(side):
             return False
     return True
+
+
+def permission_flags_malformed(state: dict) -> bool:
+    """True when a present permission flag is not a real boolean."""
+    for field in PERMISSION_BOOL_FIELDS:
+        if field in state and not isinstance(state.get(field), bool):
+            return True
+    return False
+
+
+def review_is_self_authored(review: dict, overlay: dict, pkg_a: dict, pkg_b: dict) -> bool:
+    """Refuse when reviewer equals a stated author, or author is stated without reviewer."""
+    reviewer = review.get("reviewer")
+    review_author = review.get("author")
+    package_authors = [
+        source for source in (overlay.get("author"), pkg_a.get("author"), pkg_b.get("author"))
+        if source not in (None, "")
+    ]
+    if review_author not in (None, ""):
+        if reviewer in (None, ""):
+            return True
+        if reviewer == review_author:
+            return True
+    if reviewer not in (None, "") and reviewer in package_authors:
+        return True
+    return False
 
 
 def evaluate(overlay: dict, context: dict) -> dict:
@@ -238,7 +286,22 @@ def evaluate(overlay: dict, context: dict) -> dict:
     lineage = relation.get("lineage") if isinstance(relation.get("lineage"), list) else []
     assessment = overlay.get("assessment") if isinstance(overlay.get("assessment"), dict) else {}
 
-    request_pins = context.get("request_pins") if isinstance(context.get("request_pins"), dict) else {}
+    request_pins = context.get("request_pins")
+    if not pins_complete(request_pins):
+        return refuse(
+            "request_pin_mismatch",
+            request_pins=request_pins if isinstance(request_pins, dict) else None,
+            detail="request_pins must contain exactly keys A and B",
+        )
+    overlay_pins = {"A": pkg_a.get("release_id"), "B": pkg_b.get("release_id")}
+    if not pins_equal(request_pins, overlay_pins):
+        return refuse(
+            "request_pin_mismatch",
+            request_pins=dict(request_pins),
+            overlay_pins=overlay_pins,
+            detail="request_pins must select exactly the releases the overlay packages describe",
+        )
+
     permissions = context.get("permissions") if isinstance(context.get("permissions"), dict) else {}
     reviews = context.get("reviews") if isinstance(context.get("reviews"), list) else []
     published = context.get("published_releases") if isinstance(context.get("published_releases"), list) else []
@@ -246,7 +309,7 @@ def evaluate(overlay: dict, context: dict) -> dict:
     unit_scope_aligned = context.get("unit_scope_aligned")
 
     def pin_state(side: str, package: dict) -> dict:
-        release = request_pins.get(side) or package.get("release_id")
+        release = request_pins.get(side)
         key = permission_key(package["package_id"], release)
         state = permissions.get(key)
         if not isinstance(state, dict):
@@ -261,6 +324,12 @@ def evaluate(overlay: dict, context: dict) -> dict:
     def require_current_permissions() -> dict | None:
         """Affirmative permitted+accessible and not revoked for BOTH pins."""
         for side, state in (("A", state_a), ("B", state_b)):
+            if state.get("missing") is not True and permission_flags_malformed(state):
+                return refuse(
+                    "malformed_input",
+                    side=side,
+                    detail="permitted, accessible and revoked must be real booleans when present",
+                )
             if state.get("revoked") is True:
                 return refuse(
                     "current_use_revoked",
@@ -279,8 +348,18 @@ def evaluate(overlay: dict, context: dict) -> dict:
 
     def require_independent_review() -> dict | None:
         """A10: independent scoped review whose pins equal the request pins."""
-        if not request_pins:
-            return refuse("review_missing", detail="request_pins required for scoped review binding")
+        for review in reviews:
+            if not isinstance(review, dict):
+                continue
+            pins = review.get("pins")
+            if pins is None:
+                continue
+            if not pins_complete(pins):
+                return refuse(
+                    "request_pin_mismatch",
+                    review_pins=pins if isinstance(pins, dict) else None,
+                    detail="review pins must contain exactly keys A and B",
+                )
         matching = [
             review for review in reviews
             if isinstance(review, dict) and pins_equal(review.get("pins"), request_pins)
@@ -303,16 +382,22 @@ def evaluate(overlay: dict, context: dict) -> dict:
                 "review_not_independent",
                 detail="matching review must affirmatively set independent=true",
             )
+        if review_is_self_authored(matched, overlay, pkg_a, pkg_b):
+            return refuse(
+                "review_not_independent",
+                detail="reviewer identity must be present and distinct from author / package author",
+            )
         return None
 
     # A6b early: assessment/review pins that disagree with the request.
-    if reviewed_pins and request_pins and not pins_equal(reviewed_pins, request_pins):
-        return refuse(
-            "review_pin_mismatch",
-            reviewed_pins=reviewed_pins,
-            request_pins=request_pins,
-            detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
-        )
+    if reviewed_pins:
+        if not pins_complete(reviewed_pins) or not pins_equal(reviewed_pins, request_pins):
+            return refuse(
+                "review_pin_mismatch",
+                reviewed_pins=reviewed_pins,
+                request_pins=request_pins,
+                detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
+            )
 
     # Current permission is required before every positive / inspectable branch.
     permission_refusal = require_current_permissions()
@@ -393,11 +478,29 @@ def evaluate(overlay: dict, context: dict) -> dict:
         )
 
     # A9: mandatory dependency closure under shared R/context.
-    if isinstance(mandatory, list):
-        unresolved = [
-            item for item in mandatory
-            if isinstance(item, dict) and not item.get("discharged")
-        ]
+    if mandatory is not None:
+        if not isinstance(mandatory, list):
+            return refuse(
+                "malformed_input",
+                detail="mandatory_dependencies must be a list of objects with id and boolean discharged",
+            )
+        for item in mandatory:
+            if not isinstance(item, dict):
+                return refuse(
+                    "malformed_input",
+                    detail="each mandatory_dependencies member must be an object with id and boolean discharged",
+                )
+            if item.get("id") in (None, ""):
+                return refuse(
+                    "malformed_input",
+                    detail="each mandatory_dependencies member requires a non-empty id",
+                )
+            if not isinstance(item.get("discharged"), bool):
+                return refuse(
+                    "malformed_input",
+                    detail="mandatory_dependencies.discharged must be a real boolean",
+                )
+        unresolved = [item for item in mandatory if item.get("discharged") is not True]
         if unresolved:
             return outcome(
                 "inspectable_unresolved",
@@ -414,7 +517,8 @@ def evaluate(overlay: dict, context: dict) -> dict:
                 "prerequisite_closure_complete",
                 endpoint_identities=identities,
                 use_closure_complete=True,
-                effects_authorized=bool(context.get("current_authority_for_effects")),
+                # Preparation never authorizes effects (overlay §6 A9b).
+                effects_authorized=False,
                 detail="consequential effects still require current authority, delivery and durable effect identity",
             )
 
@@ -446,10 +550,7 @@ def evaluate(overlay: dict, context: dict) -> dict:
         endpoint_identities=identities,
         execution_granted=False,
         proof_promoted=False,
-        applicable_pins=dict(request_pins) if request_pins else {
-            "A": pkg_a.get("release_id"),
-            "B": pkg_b.get("release_id"),
-        },
+        applicable_pins=dict(request_pins),
     )
 
 
@@ -480,7 +581,9 @@ def load_input(path: Path) -> tuple[dict | None, dict]:
     except UnicodeDecodeError as exc:
         return None, refuse("malformed_input", detail=f"utf-8 decode failed: {exc}")
     try:
-        document = json.loads(text)
+        document = json.loads(text, object_pairs_hook=reject_duplicate_keys)
+    except DuplicateKeyError as exc:
+        return None, refuse("malformed_input", detail=str(exc))
     except json.JSONDecodeError as exc:
         return None, refuse("malformed_input", detail=f"json decode failed: {exc}")
     if not isinstance(document, dict):
@@ -491,8 +594,11 @@ def load_input(path: Path) -> tuple[dict | None, dict]:
 def report_exit_code(report: dict) -> int:
     if not isinstance(report, dict) or "status" not in report or "reason_code" not in report:
         return 1
-    if report.get("status") in PASS_STATUSES:
+    status = report.get("status")
+    if status in PASS_STATUSES:
         return 0
+    if status in INCOMPLETE_STATUSES:
+        return 3
     return 1
 
 

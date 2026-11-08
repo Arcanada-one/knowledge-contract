@@ -30,9 +30,20 @@ python3 -B tools/cross_package_overlay.py --input /path/to/document.json
 python3 -B -m unittest tools.test_cross_package_overlay -v
 ```
 
-Exit `0` only when a typed accepted/inspectable report is printed; exit `1` for
-a typed refusal (always with a JSON report); exit `2` for usage. A missing
-report must never be read as pass.
+Exit codes:
+
+| Code | Meaning |
+| --- | --- |
+| `0` | Accepted/complete inspectable outcome (`inspectable`, `prerequisite_closure_complete`, `accepted`) |
+| `1` | Typed refusal (always with a JSON report) |
+| `2` | Usage error |
+| `3` | Incomplete-but-inspectable (`inspectable_unresolved`, e.g. A2 unit/scope or A9a use-closure) |
+
+A missing report must never be read as pass. `request_pins` and matching review
+pins must contain exactly keys `A` and `B` selecting the overlay package
+releases. Permission flags `permitted` / `accessible` / `revoked` and A9
+`discharged` must be real booleans. Duplicate JSON keys are refused at load.
+This preparation never sets `effects_authorized: true`.
 
 ### NOT_MEASURED
 
