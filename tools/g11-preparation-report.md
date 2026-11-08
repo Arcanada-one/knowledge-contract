@@ -1,7 +1,7 @@
 # G11 bounded cross-package preparation — worker report
 
 - **PR:** [knowledge-contract#81](https://github.com/Arcanada-one/knowledge-contract/pull/81) (DRAFT)
-- **Head SHA:** *(updated after Round 5 commit)*
+- **Head SHA:** `3b639477c5e97ebf57e5937f850880e767423729`
 - **Branch:** `Arcanada/g11-cross-package-preparation`
 - **Clone:** `/home/dev/aup/claude-work/kcswe-g11/knowledge-contract`
 
@@ -64,3 +64,16 @@ edge review required. Pending KC-Brain semantic confirmation.
 - rendition/K8 sidecar endpoint verification
 - overlays beyond exactly two canonical English packages
 - released `cross-package-relations` wire schema registration
+
+### Exit-0 mutation justifications (one line each path class)
+
+- `packages.*.path` absent/empty/string tokens — optional path; present value must be a string
+- `relation.from/to.object_id|component_id|representation_id` string tokens — required non-empty strings with open vocabulary
+- `representation_digest.byte_domain` string tokens — required non-empty string, open vocabulary
+- `reviews[0].reviewer` alternate non-empty strings ≠ author — R2 requires non-empty string reviewer
+- `reviews[0].author` / `overlay.author` alternate values ≠ reviewer — self-authorship refused only when equal
+- `overlay.assessment` deleted or `assessment.scope` empty — review still carries compatible scope
+
+## Hosted CI (`gh pr checks 81` on `3b63947`)
+
+All required checks **pass** (run 42501591609).
