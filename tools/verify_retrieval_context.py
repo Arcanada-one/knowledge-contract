@@ -52,6 +52,12 @@ TITLE_FIELD_ALLOWLIST = (
     'title', 'subtitle', 'short_title', 'previous_title', 'h1', 'h1_preamble'
 )
 TITLE_ONLY_OPTIONAL_FM_KEYS = frozenset({'subtitle', 'short_title', 'previous_title'})
+TITLE_ONLY_FM_KEYS = frozenset({'title', 'subtitle', 'short_title', 'previous_title'})
+# Exact line matchers for the only front-matter keys title-only may normalize.
+PERMITTED_TITLE_FM_LINE_RE = re.compile(
+    r'^(?P<key>title|subtitle|short_title|previous_title):\s*(?P<value>.*)$'
+)
+NON_TITLE_FM_LINE_RE = re.compile(r'^([A-Za-z0-9_]+):\s*(.*)$')
 TITLE_ONLY_RECORD = 'retrieval-context-title-only-projection/1'
 SUPPORTED_TITLE_ONLY_VERSIONS = frozenset({'1'})
 ACCEPTED_PAPER_BLOB = '9311c0d157d5a926e3c08f6a087a53866064f4e0'
@@ -316,7 +322,7 @@ def yaml_scalar_text(raw: str) -> str:
 def parse_front_matter_entries(inner: str) -> list[tuple[str, str]]:
     entries: list[tuple[str, str]] = []
     for line in inner.splitlines():
-        matched = re.match(r'^([A-Za-z0-9_]+):\s*(.*)$', line)
+        matched = NON_TITLE_FM_LINE_RE.match(line)
         if not matched:
             raise ValueError(f'unsupported front matter line: {line!r}')
         entries.append((matched.group(1), matched.group(2)))
@@ -335,24 +341,47 @@ def fm_map(entries: list[tuple[str, str]]) -> dict[str, str]:
     return {key: value for key, value in entries}
 
 
+def classify_front_matter_lines(inner: str) -> tuple[list[str], dict[str, str], dict[str, int]]:
+    """Split FM into raw non-title lines and title observations; count each title key."""
+    non_title_lines: list[str] = []
+    title_values: dict[str, str] = {}
+    title_counts = {key: 0 for key in TITLE_ONLY_FM_KEYS}
+    for line in inner.splitlines():
+        title_match = PERMITTED_TITLE_FM_LINE_RE.match(line)
+        if title_match:
+            key = title_match.group('key')
+            title_counts[key] += 1
+            title_values[key] = title_match.group('value')
+            continue
+        matched = NON_TITLE_FM_LINE_RE.match(line)
+        if not matched:
+            raise ValueError(f'unsupported front matter line: {line!r}')
+        non_title_lines.append(line)
+    return non_title_lines, title_values, title_counts
+
+
 def project_title_document(text: str) -> tuple[str, dict[str, str | None]]:
-    """Project allowlisted title material to placeholders; return residual and observations."""
+    """Project allowlisted title material to placeholders; return residual and observations.
+
+    Only the explicitly permitted title front-matter keys and the H1 line are
+    normalized. Every other front-matter line and every body byte after H1 are
+    kept as raw residual (including the final newline state).
+    """
     inner, _fm, remainder = split_document(text)
-    entries = parse_front_matter_entries(inner)
-    values = fm_map(entries)
+    non_title_lines, title_values, title_counts = classify_front_matter_lines(inner)
+    if any(count > 1 for count in title_counts.values()):
+        raise ValueError('incomplete_mapping: duplicate permitted title front-matter key')
     observed: dict[str, str | None] = {
-        'title': values.get('title'),
-        'subtitle': values.get('subtitle'),
-        'short_title': values.get('short_title'),
-        'previous_title': values.get('previous_title'),
+        'title': title_values.get('title'),
+        'subtitle': title_values.get('subtitle'),
+        'short_title': title_values.get('short_title'),
+        'previous_title': title_values.get('previous_title'),
         'h1': None,
         'h1_preamble': None,
     }
-    projected_fm_lines = [
-        f'{key}: {value}\n'
-        for key, value in entries
-        if key not in {'title', 'subtitle', 'short_title', 'previous_title'}
-    ]
+    # Preserve non-title FM line bytes exactly; re-attach the conventional LF that
+    # split_document strips from the final FM line before the closing fence.
+    projected_fm = ''.join(f'{line}\n' for line in non_title_lines)
     lines = remainder.splitlines(keepends=True)
     index = 0
     preamble_parts: list[str] = []
@@ -374,14 +403,15 @@ def project_title_document(text: str) -> tuple[str, dict[str, str | None]]:
     # Any non-allowlisted residue in the captured preamble is rejected by validate_title_only_shape.
     observed['h1'] = lines[index].rstrip('\n')
     observed['h1_preamble'] = ''.join(preamble_parts) or None
-    body_after = lines[index + 1:]
+    # Body after H1 is compared as raw bytes, including a missing final LF.
+    body_after = ''.join(lines[index + 1:])
     projected = (
         '---\n'
-        + ''.join(projected_fm_lines)
+        + projected_fm
         + '---\n'
         + '\n'
         + '# __TITLE_ONLY_H1__\n'
-        + ''.join(line if line.endswith('\n') else line + '\n' for line in body_after)
+        + body_after
     )
     return projected, observed
 
@@ -393,8 +423,23 @@ def validate_title_only_shape(
     candidate_obs: dict[str, str | None],
 ) -> str | None:
     """Return a typed refusal reason, or None when the constrained shape holds."""
-    accepted_entries = parse_front_matter_entries(split_document(accepted_text)[0])
-    candidate_entries = parse_front_matter_entries(split_document(candidate_text)[0])
+    accepted_inner = split_document(accepted_text)[0]
+    candidate_inner = split_document(candidate_text)[0]
+    accepted_non_title, accepted_title_values, accepted_title_counts = classify_front_matter_lines(
+        accepted_inner
+    )
+    candidate_non_title, candidate_title_values, candidate_title_counts = classify_front_matter_lines(
+        candidate_inner
+    )
+    if any(count > 1 for count in candidate_title_counts.values()):
+        return 'incomplete_mapping'
+    if any(count > 1 for count in accepted_title_counts.values()):
+        return 'corrupted_candidate'
+    if 'title' not in accepted_title_values or 'title' not in candidate_title_values:
+        return 'incomplete_mapping'
+
+    accepted_entries = parse_front_matter_entries(accepted_inner)
+    candidate_entries = parse_front_matter_entries(candidate_inner)
     accepted_keys = [key for key, _ in accepted_entries]
     candidate_keys = [key for key, _ in candidate_entries]
     accepted_values = fm_map(accepted_entries)
@@ -409,16 +454,22 @@ def validate_title_only_shape(
     if filtered != accepted_keys:
         return 'incomplete_mapping'
 
+    # Non-title front-matter lines must match the accepted lines byte for byte, in order.
+    if accepted_non_title != candidate_non_title:
+        return 'incomplete_mapping'
+
     for key in accepted_keys:
         if key == 'title':
+            continue
+        if key in TITLE_ONLY_FM_KEYS:
             continue
         if accepted_values[key] != candidate_values.get(key):
             return 'incomplete_mapping'
 
-    accepted_title = yaml_scalar_text(accepted_values['title'])
-    candidate_title = yaml_scalar_text(candidate_values['title'])
-    if 'previous_title' in candidate_values:
-        if yaml_scalar_text(candidate_values['previous_title']) != accepted_title:
+    accepted_title = yaml_scalar_text(accepted_title_values['title'])
+    candidate_title = yaml_scalar_text(candidate_title_values['title'])
+    if 'previous_title' in candidate_title_values:
+        if yaml_scalar_text(candidate_title_values['previous_title']) != accepted_title:
             return 'incomplete_mapping'
 
     accepted_h1 = accepted_obs.get('h1') or ''

@@ -142,7 +142,7 @@ jobs:
         # Exact mode runs on a temp materialization of the pinned accepted blob (PAPER_SHA256 /
         # PROTECTED unchanged). Title-only compares the working-tree paper to that blob.
         env:
-          CHECKER_SHA256: 2c9bcf3c24ee3db522027e344320e8fff225bd388c4fb7efb4f5742df0cacd51
+          CHECKER_SHA256: dc3dae7658314905d4aff144a47fbabd05e13fed6fef377e78acdcfc67d61491
           PAPER_SHA256: e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f
           ACCEPTED_PAPER_BLOB: 9311c0d157d5a926e3c08f6a087a53866064f4e0
         run: |

@@ -350,6 +350,62 @@ class TitleOnlyNegativeControls(unittest.TestCase):
             STRUCTURE_REFUSALS,
         )
 
+    def _assert_title_only_refusal(self, data: bytes) -> dict:
+        with tempfile.TemporaryDirectory() as tmp:
+            paper = write_paper(Path(tmp), data)
+            result = run_checker(
+                ["--paper", str(paper), "--title-only-against", ACCEPTED_BLOB]
+            )
+        self.assertEqual(result.returncode, 1, result.stderr + result.stdout)
+        self.assertFalse(result.stderr.strip(), result.stderr)
+        report = json.loads(result.stdout)
+        self.assertFalse(report["pass"])
+        self.assertIn(report["refusal_reason"], STRUCTURE_REFUSALS)
+        return report
+
+    def test_removed_final_lf_exits_nonzero(self) -> None:
+        data = accepted_bytes()
+        self.assertTrue(data.endswith(b"\n"))
+        self._assert_title_only_refusal(data[:-1])
+
+    def test_non_title_front_matter_spacing_exits_nonzero(self) -> None:
+        text = accepted_bytes().decode("utf-8")
+        needle = 'edition: "1.1"'
+        self.assertIn(needle, text)
+        mutated = text.replace(needle, 'edition:  "1.1"', 1)
+        self._assert_title_only_refusal(mutated.encode("utf-8"))
+
+    def test_duplicate_title_key_exits_nonzero(self) -> None:
+        text = clear_names_text()
+        needle = (
+            'title: "Context Assembly: Retrieval, Coverage, and '
+            'Context Composition under Resource Limits"\n'
+        )
+        self.assertIn(needle, text)
+        mutated = text.replace(needle, needle + needle, 1)
+        self._assert_title_only_refusal(mutated.encode("utf-8"))
+
+    def test_duplicate_short_title_key_exits_nonzero(self) -> None:
+        text = clear_names_text()
+        needle = 'short_title: "Context Assembly"\n'
+        self.assertIn(needle, text)
+        mutated = text.replace(needle, needle + needle, 1)
+        self._assert_title_only_refusal(mutated.encode("utf-8"))
+
+    def test_duplicate_subtitle_key_exits_nonzero(self) -> None:
+        text = clear_names_text()
+        needle = f'subtitle: "{ACCEPTED_TITLE}"\n'
+        self.assertIn(needle, text)
+        mutated = text.replace(needle, needle + needle, 1)
+        self._assert_title_only_refusal(mutated.encode("utf-8"))
+
+    def test_duplicate_previous_title_key_exits_nonzero(self) -> None:
+        text = clear_names_text()
+        needle = f'previous_title: "{ACCEPTED_TITLE}"\n'
+        self.assertIn(needle, text)
+        mutated = text.replace(needle, needle + needle, 1)
+        self._assert_title_only_refusal(mutated.encode("utf-8"))
+
 
 class StructureRefusalControls(unittest.TestCase):
     """Typed refusals for structural extraction failures (no traceback)."""
