@@ -1839,5 +1839,189 @@ class FailClosedRound7Tests(unittest.TestCase):
         self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
 
 
+class FailClosedRound8Tests(unittest.TestCase):
+    """Typed identities before equality (Agent-Brain 6725034836). Red on 6da3361d."""
+
+    def _a10_positive(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(
+            kind="compares_with", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=comparable_assertions(),
+        )
+        ctx = context_record(unit_scope_aligned=True)
+        return a, b, ov, ctx
+
+    def _a5_positive(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "p1")
+        to_ep = endpoint(b, "p2")
+        ov = overlay_record(
+            kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=a5_conflict_assertions(),
+        )
+        ctx = context_record(reviews=[bound_review(evidence=INCOMPATIBILITY_EVIDENCE)])
+        return a, b, ov, ctx
+
+    def test_r8_both_revisions_absent_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        del ov["overlay_revision"]
+        del ctx["reviews"][0]["reviewed_edge_revision"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_both_relation_ids_absent_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        del ov["relation"]["relation_id"]
+        del ctx["reviews"][0]["relation_id"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_equal_int_relation_ids_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["relation"]["relation_id"] = 7
+        ctx["reviews"] = [bound_review(relation_id=7)]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_equal_list_revisions_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["overlay_revision"] = ["ov-1"]
+        ctx["reviews"] = [bound_review(reviewed_edge_revision=["ov-1"])]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r8_equal_dict_relation_ids_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["relation"]["relation_id"] = {"id": "rel-1"}
+        ctx["reviews"] = [bound_review(relation_id={"id": "rel-1"})]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r8_equal_bool_revisions_overlay_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["overlay_revision"] = True
+        ctx["reviews"] = [bound_review(reviewed_edge_revision=True)]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+
+    def test_r8_review_missing_identities_cannot_bind_a10(self):
+        _, _, ov, ctx = self._a10_positive()
+        review = bound_review()
+        del review["relation_id"]
+        del review["reviewed_edge_revision"]
+        ctx["reviews"] = [review]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertIn(report["reason_code"], {"review_edge_mismatch", "review_missing"})
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_review_missing_identities_cannot_bind_a5(self):
+        _, _, ov, ctx = self._a5_positive()
+        review = bound_review(evidence=INCOMPATIBILITY_EVIDENCE)
+        del review["relation_id"]
+        del review["reviewed_edge_revision"]
+        ctx["reviews"] = [review]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "no_bound_edge_review")
+        self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
+
+    def test_r8_both_request_and_overlay_pins_empty_not_equal(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["packages"]["A"]["release_id"] = ""
+        ov["packages"]["B"]["release_id"] = ""
+        ov["relation"]["from"]["release_id"] = ""
+        ov["relation"]["to"]["release_id"] = ""
+        ctx["request_pins"] = {"A": "", "B": ""}
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_both_pin_values_absent_keys_present_not_equal(self):
+        _, _, ov, ctx = self._a10_positive()
+        ctx["request_pins"] = {"A": None, "B": None}
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertIn(report["reason_code"], {"request_pin_mismatch", "malformed_input"})
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_equal_nonstring_units_not_comparable(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["relation"]["assertions"]["units"] = 1
+        ov["relation"]["assertions"]["peer_units"] = 1
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_both_conditions_absent_not_equal(self):
+        _, _, ov, ctx = self._a10_positive()
+        del ov["relation"]["assertions"]["conditions"]
+        del ov["relation"]["assertions"]["peer_conditions"]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "unit_scope_unresolved")
+
+    def test_r8_equal_nonstring_scopes_not_compatible(self):
+        _, _, ov, ctx = self._a10_positive()
+        ov["assessment"]["scope"] = 42
+        ctx["reviews"] = [bound_review(scope=42)]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertIn(report["reason_code"], {"review_scope_incompatible", "malformed_input"})
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+    def test_r8_a10_positive_exact_string_identities(self):
+        _, _, ov, ctx = self._a10_positive()
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "scoped_inspection_ok")
+        self.assertFalse(report.get("effects_authorized", False))
+
+    def test_r8_a5_positive_exact_string_identities(self):
+        _, _, ov, ctx = self._a5_positive()
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "contradicts_under_retained")
+        self.assertTrue(report["both_facts_retained"])
+        self.assertFalse(report.get("effects_authorized", False))
+
+
 if __name__ == "__main__":
     unittest.main()

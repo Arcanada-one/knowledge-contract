@@ -37,18 +37,24 @@ after every A10 condition is affirmatively established:
   `grounding.to_anchor` equal the endpoint `source_anchor` values.
 - **Permissions.** Current `permitted: true`, `accessible: true` and
   `revoked: false` (all three present booleans) on both request pins.
-- **R2 review binding.** Among reviews whose release pins equal the request
-  pins, select those bound to this `relation_id` and `reviewed_edge_revision`
-  (order-independent). With none, refuse (`review_edge_mismatch`) or, on the
-  A5 unresolved path, `no_bound_edge_review`. With more than one bound review
-  that disagree on `verdict`, refuse (`review_verdict_conflict`). The selected
-  review requires non-empty string `reviewer` distinct from relation / package
-  authors, `verdict == "accepted"`, `scope` compatible with assessment scope,
-  and `pin_manifest_digests` equal to package A/B manifest bytes.
+- **R2 review binding.** `overlay_revision` and `relation.relation_id` must each
+  be a non-empty string before any equality (`malformed_input` otherwise; no
+  default revision and no inference from the A/B release pair). Among reviews
+  whose release pins equal the request pins, select those whose
+  `relation_id` and `reviewed_edge_revision` are also non-empty strings and
+  equal those overlay identities (order-independent). A review missing a typed
+  identity never binds. With none, refuse (`review_edge_mismatch` /
+  `review_missing`) or, on the A5 unresolved path, `no_bound_edge_review`. With
+  more than one bound review that disagree on `verdict`, refuse
+  (`review_verdict_conflict`). The selected review requires non-empty string
+  `reviewer` distinct from relation / package authors, `verdict == "accepted"`,
+  non-empty string `scope` compatible with assessment scope, and
+  `pin_manifest_digests` equal to package A/B manifest bytes.
 - **R3 comparability.** For `compares_with`, all four `PREMISE_OVERLAP_FIELDS`
-  pairs (units, quantifier scope, conditions, valid time) must be present and
-  equal — the same constant as the A5 path. Missing any pair →
-  `inspectable_unresolved` / `unit_scope_unresolved`. Unequal time/conditions →
+  pairs (units, quantifier scope, conditions, valid time) must be present
+  **non-empty strings** and equal — the same constant as the A5 path.
+  Missing/empty/non-string on either side → `inspectable_unresolved` /
+  `unit_scope_unresolved` (never counts as equal). Unequal time/conditions →
   `conditions_incompatible`. Unequal units/scope or `unit_scope_aligned is not
   True` → `unit_scope_unresolved`. `unit_scope_aligned` does not waive any
   missing field.

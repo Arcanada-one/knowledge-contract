@@ -172,13 +172,32 @@ def digest_malformed(digest: Any, label: str = "package_manifest_digest") -> str
 
 
 def digests_equal(left: Any, right: Any) -> bool:
-    return digest_complete(left) and digest_complete(right) and _digest_tuple(left) == _digest_tuple(right)
+    """True only when both digests are complete, well-typed, and byte-identical.
+
+    Missing or malformed fields on either side never count as equal.
+    """
+    if not digest_complete(left) or not digest_complete(right):
+        return False
+    if digest_malformed(left) is not None or digest_malformed(right) is not None:
+        return False
+    return _digest_tuple(left) == _digest_tuple(right)
+
+
+def is_non_empty_string(value: Any) -> bool:
+    return isinstance(value, str) and value != ""
 
 
 def require_non_empty_string(value: Any, label: str) -> dict | None:
     if value is None or value == "":
         return None
     if not isinstance(value, str):
+        return refuse("malformed_input", detail=f"{label} must be a non-empty string")
+    return None
+
+
+def require_present_non_empty_string(value: Any, label: str) -> dict | None:
+    """Refuse when a required identity is missing, empty, or not a string."""
+    if not is_non_empty_string(value):
         return refuse("malformed_input", detail=f"{label} must be a non-empty string")
     return None
 
@@ -326,10 +345,18 @@ def bind_endpoint_representation(endpoint: dict, package: dict, label: str) -> d
 
 
 def pins_equal(left: Any, right: Any) -> bool:
+    """True only when both pins carry non-empty string A/B releases that match.
+
+    Missing, empty, or non-string values on either side never count as equal.
+    """
     if not pins_complete(left) or not pins_complete(right):
         return False
     for side in ("A", "B"):
-        if left.get(side) != right.get(side):
+        lv = left.get(side)
+        rv = right.get(side)
+        if not is_non_empty_string(lv) or not is_non_empty_string(rv):
+            return False
+        if lv != rv:
             return False
     return True
 
@@ -348,14 +375,14 @@ def review_is_self_authored(review: dict, overlay: dict, pkg_a: dict, pkg_b: dic
     review_author = review.get("author")
     package_authors = [
         source for source in (overlay.get("author"), pkg_a.get("author"), pkg_b.get("author"))
-        if source not in (None, "")
+        if is_non_empty_string(source)
     ]
-    if review_author not in (None, ""):
-        if reviewer in (None, ""):
+    if is_non_empty_string(review_author):
+        if not is_non_empty_string(reviewer):
             return True
         if reviewer == review_author:
             return True
-    if reviewer not in (None, "") and reviewer in package_authors:
+    if is_non_empty_string(reviewer) and reviewer in package_authors:
         return True
     return False
 
@@ -705,13 +732,33 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 "review_missing",
                 detail="independent scoped review whose pins equal the request pins is required",
             )
+        # Typed edge identities before equality: overlay side must be present
+        # non-empty strings; a review missing typed identity cannot bind.
         expected_revision = overlay.get("overlay_revision")
         expected_relation_id = relation.get("relation_id")
-        bound = [
-            review for review in matching
-            if review.get("relation_id") == expected_relation_id
-            and review.get("reviewed_edge_revision") == expected_revision
-        ]
+        revision_bad = require_present_non_empty_string(
+            expected_revision, "overlay_revision",
+        )
+        if revision_bad is not None:
+            return revision_bad
+        relation_bad = require_present_non_empty_string(
+            expected_relation_id, "relation.relation_id",
+        )
+        if relation_bad is not None:
+            return relation_bad
+        bound = []
+        for review in matching:
+            review_relation_id = review.get("relation_id")
+            review_revision = review.get("reviewed_edge_revision")
+            if not is_non_empty_string(review_relation_id):
+                continue
+            if not is_non_empty_string(review_revision):
+                continue
+            if (
+                review_relation_id == expected_relation_id
+                and review_revision == expected_revision
+            ):
+                bound.append(review)
         if not bound:
             if as_unresolved_when_missing:
                 return outcome(
@@ -759,7 +806,7 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 detail="reviewer identity must be present and distinct from author / package author",
             )
         relation_author = overlay.get("author")
-        if relation_author not in (None, "") and reviewer == relation_author:
+        if is_non_empty_string(relation_author) and reviewer == relation_author:
             return refuse(
                 "review_not_independent",
                 detail="reviewer must differ from the overlay/relation author",
@@ -773,15 +820,26 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             )
         expected_scope = assessment.get("scope")
         review_scope = matched.get("scope")
-        if review_scope in (None, "") or (
-            expected_scope not in (None, "") and review_scope != expected_scope
-        ):
+        if not is_non_empty_string(review_scope):
             return refuse(
                 "review_scope_incompatible",
                 review_scope=review_scope,
                 assessment_scope=expected_scope,
-                detail="review scope must be present and compatible with the assessed edge scope",
+                detail="review scope must be a present non-empty string compatible with the assessed edge scope",
             )
+        if expected_scope not in (None, ""):
+            if not is_non_empty_string(expected_scope):
+                return refuse(
+                    "malformed_input",
+                    detail="assessment.scope must be a non-empty string when present",
+                )
+            if review_scope != expected_scope:
+                return refuse(
+                    "review_scope_incompatible",
+                    review_scope=review_scope,
+                    assessment_scope=expected_scope,
+                    detail="review scope must be present and compatible with the assessed edge scope",
+                )
         pin_digests = matched.get("pin_manifest_digests")
         if not isinstance(pin_digests, dict) or set(pin_digests.keys()) != REQUIRED_PIN_KEYS:
             return refuse(
@@ -1111,8 +1169,12 @@ def _evaluate(overlay: dict, context: dict) -> dict:
         for left_key, right_key in PREMISE_OVERLAP_FIELDS:
             left = assertions.get(left_key)
             right = assertions.get(right_key)
-            if left in (None, "") or right in (None, ""):
-                missing_overlap.append(right_key if right in (None, "") else left_key)
+            # Missing/empty/non-string on either side is unproven overlap, never equality.
+            if not is_non_empty_string(left) or not is_non_empty_string(right):
+                if not is_non_empty_string(right):
+                    missing_overlap.append(right_key)
+                else:
+                    missing_overlap.append(left_key)
                 continue
             if left != right:
                 unequal_overlap.append(right_key)
@@ -1199,8 +1261,12 @@ def _evaluate(overlay: dict, context: dict) -> dict:
         for left_key, right_key in PREMISE_OVERLAP_FIELDS:
             left = assertions.get(left_key)
             right = assertions.get(right_key)
-            if left in (None, "") or right in (None, ""):
-                missing_comparability.append(right_key if right in (None, "") else left_key)
+            # Missing/empty/non-string on either side never counts as equal.
+            if not is_non_empty_string(left) or not is_non_empty_string(right):
+                if not is_non_empty_string(right):
+                    missing_comparability.append(right_key)
+                else:
+                    missing_comparability.append(left_key)
                 continue
             if left != right:
                 if right_key in ("peer_conditions", "peer_valid_time"):
