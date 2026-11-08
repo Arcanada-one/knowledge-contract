@@ -50,6 +50,16 @@ after every A10 condition is affirmatively established:
   `reviewer` distinct from relation / package authors, `verdict == "accepted"`,
   non-empty string `scope` compatible with assessment scope, and
   `pin_manifest_digests` equal to package A/B manifest bytes.
+- **Review / result boundary (Round 9).** Independent-review selection returns a
+  tagged `ReviewSelection` (`refusal` **or** `review`); callers never infer the
+  kind from a caller-controlled key such as `status`. Every emitted report is
+  built by `outcome()` / `seal_report()` with `effects_authorized`,
+  `execution_granted`, and `proof_promoted` fixed `false` by the evaluator. An
+  input review object is never returned or merged into a report. Pin-matching
+  reviews that carry output-reserved keys (`status`, `reason_code`,
+  `also_reason_code`, `effects_authorized`, `execution_granted`,
+  `proof_promoted`, `bounded_preparation`, `released_schema`) are refused as
+  `malformed_input`; those keys never shape the verdict.
 - **R3 comparability.** For `compares_with`, all four `PREMISE_OVERLAP_FIELDS`
   pairs (units, quantifier scope, conditions, valid time) must be present
   **non-empty strings** and equal — the same constant as the A5 path.

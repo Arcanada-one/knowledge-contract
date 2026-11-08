@@ -2023,5 +2023,154 @@ class FailClosedRound8Tests(unittest.TestCase):
         self.assertFalse(report.get("effects_authorized", False))
 
 
+class FailClosedRound9Tests(unittest.TestCase):
+    """R-G11-RESULT-CONFUSION: review records must never become evaluator reports."""
+
+    REVIEW_LEAK_KEYS = (
+        "reviewer", "author", "relation_id", "reviewed_edge_revision",
+    )
+    AUTHORITY_FLAGS = (
+        "effects_authorized", "execution_granted", "proof_promoted",
+    )
+
+    def _a10_positive(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "x")
+        to_ep = endpoint(b, "y")
+        ov = overlay_record(
+            kind="compares_with", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=comparable_assertions(),
+        )
+        ctx = context_record(unit_scope_aligned=True)
+        return a, b, ov, ctx
+
+    def _a5_positive(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "p1")
+        to_ep = endpoint(b, "p2")
+        ov = overlay_record(
+            kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=a5_conflict_assertions(),
+        )
+        ctx = context_record(reviews=[bound_review(evidence=INCOMPATIBILITY_EVIDENCE)])
+        return a, b, ov, ctx
+
+    def _assert_not_review_leak(self, report: dict) -> None:
+        for key in self.REVIEW_LEAK_KEYS:
+            self.assertNotIn(key, report)
+        for key in self.AUTHORITY_FLAGS:
+            self.assertFalse(report.get(key, False))
+
+    def test_r9_rc1_a10_review_plus_output_shaped_keys_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ctx["reviews"][0].update({
+            "status": "accepted",
+            "reason_code": "scoped_inspection_ok",
+            "effects_authorized": True,
+            "execution_granted": True,
+            "proof_promoted": True,
+        })
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc1b_a10_status_reason_only_malformed(self):
+        _, _, ov, ctx = self._a10_positive()
+        ctx["reviews"][0].update({
+            "status": "accepted",
+            "reason_code": "scoped_inspection_ok",
+        })
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(report["status"], "refused")
+        self.assertEqual(report["reason_code"], "malformed_input")
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc2_incomplete_closure_with_injected_review_not_exit_0(self):
+        _, _, ov, ctx = self._a10_positive()
+        ctx["reviews"][0].update({
+            "status": "accepted",
+            "reason_code": "scoped_inspection_ok",
+            "effects_authorized": True,
+            "execution_granted": True,
+            "proof_promoted": True,
+        })
+        ctx["task_requirements"] = task_requirements_record(members=["A", "B"])
+        ctx["mandatory_dependencies"] = [discharge("A")]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+        self.assertIn(
+            report["reason_code"],
+            {"malformed_input", "use_closure_incomplete"},
+        )
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc3_a5_no_evidence_plus_status_reason_not_accepted(self):
+        _, _, ov, ctx = self._a5_positive()
+        review = bound_review()
+        review.pop("evidence", None)
+        review.update({
+            "status": "accepted",
+            "reason_code": "contradicts_under_retained",
+        })
+        ctx["reviews"] = [review]
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
+        self.assertIn(
+            report["reason_code"],
+            {"malformed_input", "no_bound_incompatibility_assessment"},
+        )
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc4_a10_positive_retained(self):
+        _, _, ov, ctx = self._a10_positive()
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "scoped_inspection_ok")
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc4_a5_positive_retained(self):
+        _, _, ov, ctx = self._a5_positive()
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "contradicts_under_retained")
+        self._assert_not_review_leak(report)
+
+    def test_r9_rc4_caller_chosen_refusal_status_cannot_choose_outcome(self):
+        for status in ("refused", "unresolved"):
+            with self.subTest(status=status):
+                _, _, ov, ctx = self._a10_positive()
+                ctx["reviews"][0].update({"status": status, "reason_code": "x"})
+                result = run_cli(payload(ov, ctx))
+                report = require_report(self, result)
+                self.assertEqual(result.returncode, 1)
+                self.assertEqual(report["status"], "refused")
+                self.assertEqual(report["reason_code"], "malformed_input")
+                self.assertNotEqual(report["reason_code"], "x")
+                self._assert_not_review_leak(report)
+
+    def test_r9_outcome_forces_authority_flags_false(self):
+        report = cpo.outcome(
+            "inspectable",
+            "scoped_inspection_ok",
+            effects_authorized=True,
+            execution_granted=True,
+            proof_promoted=True,
+        )
+        self.assertFalse(report["effects_authorized"])
+        self.assertFalse(report["execution_granted"])
+        self.assertFalse(report["proof_promoted"])
+
+
 if __name__ == "__main__":
     unittest.main()

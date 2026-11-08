@@ -1,9 +1,87 @@
 # G11 bounded cross-package preparation — worker report
 
 - **PR:** [knowledge-contract#81](https://github.com/Arcanada-one/knowledge-contract/pull/81) (DRAFT)
-- **Head SHA:** `d6ccaf03d5bbd16382fd6eca91f6469a87e7ba8d`
+- **Head SHA:** *(updated at Round 9 tip)*
 - **Branch:** `Arcanada/g11-cross-package-preparation`
 - **Clone:** `/home/dev/aup/claude-work/kcswe-g11/knowledge-contract`
+
+## Round 9 (review must never become the evaluator result)
+
+Base head before fix: `f6a7a0225a4a62674dd953aa2864feb3568ad5f0`.
+
+Finding: Agent-Brain PR81 comment `6725581829` (R-G11-RESULT-CONFUSION).
+KC-SWE reproduced with `/tmp/kcswe_g11p10.py` (read-only): **BAD_TOTAL 7** on
+the base head — an input review carrying `status` / `reason_code` / authority
+flags was returned as the report (exit 0, true flags, review keys leaked).
+
+| Stage | Ran | Passed | Failed |
+| --- | ---: | ---: | ---: |
+| Red-before (`/tmp/kcswe_g11p10.py` on `f6a7a022`) | 11 | 4 | 7 |
+| Green-after (full `tools.test_cross_package_overlay`) | 116 | 116 | 0 |
+
+Per-item red-before / green-after (RC1–RC4):
+
+| Item | Red-before | Green-after |
+| --- | --- | --- |
+| RC1 A10 + output-shaped keys / flags | exit 0, true authority flags, review keys in report | `refused/malformed_input`; flags false; no review keys |
+| RC1b A10 + status/reason only | exit 0 accepted review-as-report | `refused/malformed_input` |
+| RC2 trusted R=`{A,B}`, only A discharged + injection | exit 0 (closure bypassed) | `refused/malformed_input` (strict reserved-key refusal) |
+| RC2 control without injection | exit 3 `use_closure_incomplete` | unchanged |
+| RC3 A5 no evidence + status/reason | exit 0 `contradicts_under_retained` | `refused/malformed_input` |
+| RC4 A10 / A5 positives | pass | pass retained |
+| A10 review `status=refused\|unresolved` `reason_code=x` | emitted as caller-chosen refusal/unresolved | `refused/malformed_input` (not `x`) |
+
+### Structural fix
+
+1. **Disjoint internal return.** `require_independent_review` returns
+   `ReviewSelection(refusal=…)` or `ReviewSelection(review=…)`. Callers branch
+   on those fields — never on `"status" in dict`.
+2. **Trusted result boundary.** Every emitted report is built by `outcome()`
+   (and `seal_report()` before CLI / `evaluate_document` emission) with
+   `effects_authorized`, `execution_granted`, `proof_promoted`,
+   `bounded_preparation`, and `released_schema` fixed by the evaluator. Input
+   objects are never returned or merged into a report; review-shaped keys are
+   stripped at seal.
+3. **Reserved keys on review input.** Pin-matching reviews carrying any of
+   `status`, `reason_code`, `also_reason_code`, `effects_authorized`,
+   `execution_granted`, `proof_promoted`, `bounded_preparation`,
+   `released_schema` → `malformed_input`. Documented in `tools/README.md`.
+
+### Return-channel / kind-inference audit (`tools/cross_package_overlay.py`)
+
+| Site | Pattern | Disposition |
+| --- | --- | --- |
+| `require_independent_review` success path | formerly `return matched` (input dict) | **Fixed** — `ReviewSelection(review=matched)`; never emitted |
+| A10 / A5 callers | formerly `"status" in review_*` to detect refusal | **Fixed** — `review_selection.refusal is not None` |
+| `outcome` / `refuse` | constructor for all evaluator reports | **Hardened** — authority flags always forced false |
+| `seal_report` | final emission guard | **Added** — rebuild via `outcome`; drop review-shaped keys |
+| `require_current_permissions` / `require_present_non_empty_string` / representation helpers | `dict \| None` where `None` means OK and dict is always `refuse(...)` | **Safe** — kind is Optional presence, not key inference; never returns input |
+| `mandatory_closure_result` | returns `outcome`/`refuse` or `None` | **Safe** — evaluator-built only |
+| `prefer_unresolved_mandatory` | reads `primary.get("status")` / `reason_code` | **Safe after fix** — `primary` is always an evaluator report, never a review |
+| `load_input` | `(document, {})` vs `(None, refuse(...))` | **Safe** — discriminated by `document is None` |
+| `report_exit_code` | `"status" not in report` | **Safe** — validates sealed evaluator reports only |
+| `isinstance(..., dict)` elsewhere | structural validation of packages, pins, digests, lineage items | **Safe** — input shape checks, not return-channel tagging |
+| Other `tools/*.py` checkers | own schemas; do not share review-selection return channel | **Out of scope / safe** for this finding |
+
+### Probe
+
+- `/tmp/kcswe_g11p10.py` left unmodified (read-only). After fix: **BAD_TOTAL 2**
+  — the two `status=refused/unresolved` lines still expect `want=pos`; they now
+  correctly refuse with `reason_code=malformed_input` (not caller `x`).
+- Adapted copy `/tmp/kcswe_g11p10_probe.py`: those two cases expect
+  `malformed_input` refusal. Change vs original: dropped `want="pos"` for the
+  reserved-key refusal cases and added `expect_rc="malformed_input"` on RC1–RC3
+  and the status-injection lines. **BAD_TOTAL 0**.
+- `/tmp/kcswe_g11p9.py` unmodified: **BAD_TOTAL 0**.
+
+### Sweep (`python3 -B /tmp/kcswe_g11r7_sweep.py`)
+
+- mutations **1707**, exit0 **90**, crash **0**
+
+### Local unit checks
+
+`tools.test_cross_package_overlay` + retrieval-context + sources/DCO/CI/separation:
+overlay **116** + related (same set as Round 8).
 
 ## Round 8 (typed identities before every equality)
 

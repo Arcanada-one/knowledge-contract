@@ -31,7 +31,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, NamedTuple
 
 SUPPORTED_PROFILE = "cross-package-relations/0.1"
 CANONICAL_LANGUAGE = "en"
@@ -75,11 +75,47 @@ PREMISE_OVERLAP_FIELDS = (
     ("conditions", "peer_conditions"),
     ("valid_time", "peer_valid_time"),
 )
+# Review records must not carry evaluator-output keys. Presence is malformed_input;
+# those keys never shape the verdict and are never merged into a report.
+REVIEW_OUTPUT_RESERVED_KEYS = frozenset({
+    "status",
+    "reason_code",
+    "also_reason_code",
+    "effects_authorized",
+    "execution_granted",
+    "proof_promoted",
+    "bounded_preparation",
+    "released_schema",
+})
+# Identity / binding fields that belong on reviews, never on sealed reports.
+REPORT_FORBIDDEN_REVIEW_KEYS = frozenset({
+    "reviewer",
+    "author",
+    "relation_id",
+    "reviewed_edge_revision",
+    "verdict",
+    "independent",
+    "pins",
+    "pin_manifest_digests",
+    "evidence",
+    "scope",
+})
 
 
 class DuplicateKeyError(ValueError):
     """Raised when JSON object_pairs_hook sees a repeated key."""
 
+
+class ReviewSelection(NamedTuple):
+    """Tagged return from independent-review selection.
+
+    Exactly one of ``refusal`` or ``review`` is set. Callers must branch on
+    these fields — never on whether a dict contains ``status`` or similar
+    caller-controlled keys.
+    """
+
+    refusal: dict | None = None
+    review: dict | None = None
 
 def reject_duplicate_keys(pairs: list[tuple[Any, Any]]) -> dict:
     result: dict = {}
@@ -131,12 +167,20 @@ def package_identity(package: dict) -> tuple:
 
 
 def outcome(status: str, reason_code: str, **fields: Any) -> dict:
+    """Trusted result constructor: every emitted report is built here.
+
+    Non-authorizing flags are fixed by the evaluator. Caller- or input-supplied
+    values for those keys are ignored. Input review objects must never be
+    returned or merged into a report.
+    """
     report = {"status": status, "reason_code": reason_code}
     report.update(fields)
-    report.setdefault("bounded_preparation", True)
-    report.setdefault("released_schema", False)
-    report.setdefault("execution_granted", False)
-    report.setdefault("proof_promoted", False)
+    # Fixed by the evaluator — never taken from input or **fields.
+    report["bounded_preparation"] = True
+    report["released_schema"] = False
+    report["execution_granted"] = False
+    report["proof_promoted"] = False
+    report["effects_authorized"] = False
     return report
 
 
@@ -144,6 +188,37 @@ def refuse(reason_code: str, **fields: Any) -> dict:
     return outcome("refused", reason_code, **fields)
 
 
+def seal_report(report: Any) -> dict:
+    """Final trusted boundary before emission.
+
+    Rebuilds through ``outcome`` so authority flags stay false and review-shaped
+    keys cannot leak even if a future path mishandles an input object.
+    """
+    if not isinstance(report, dict):
+        return refuse(
+            "malformed_input",
+            detail="evaluator produced a non-object report",
+        )
+    status = report.get("status")
+    reason_code = report.get("reason_code")
+    if not isinstance(status, str) or status == "":
+        return refuse(
+            "malformed_input",
+            detail="evaluator report missing non-empty status",
+        )
+    if not isinstance(reason_code, str) or reason_code == "":
+        return refuse(
+            "malformed_input",
+            detail="evaluator report missing non-empty reason_code",
+        )
+    extra = {
+        key: value
+        for key, value in report.items()
+        if key not in ("status", "reason_code")
+        and key not in REPORT_FORBIDDEN_REVIEW_KEYS
+    }
+    # outcome() re-fixes authority / preparation flags regardless of extras.
+    return outcome(status, reason_code, **extra)
 def digest_complete(digest: Any) -> bool:
     if not isinstance(digest, dict):
         return False
@@ -695,8 +770,21 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 )
         return None
 
-    def require_independent_review(*, as_unresolved_when_missing: bool = False) -> dict | None:
-        """A10/R2: independent scoped review bound to this exact edge and manifest bytes."""
+    def require_independent_review(
+        *, as_unresolved_when_missing: bool = False,
+    ) -> ReviewSelection:
+        """A10/R2: independent scoped review bound to this exact edge and manifest bytes.
+
+        Returns a tagged ``ReviewSelection``: either an evaluator refusal/outcome
+        or the accepted input review. Callers must not infer the kind from dict
+        keys such as ``status``.
+        """
+        def as_refusal(report: dict) -> ReviewSelection:
+            return ReviewSelection(refusal=report, review=None)
+
+        def as_review(selected: dict) -> ReviewSelection:
+            return ReviewSelection(refusal=None, review=selected)
+
         for review in reviews:
             if not isinstance(review, dict):
                 continue
@@ -704,34 +792,46 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             if pins is None:
                 continue
             if not pins_complete(pins):
-                return refuse(
+                return as_refusal(refuse(
                     "request_pin_mismatch",
                     review_pins=pins if isinstance(pins, dict) else None,
                     detail="review pins must contain exactly keys A and B",
-                )
+                ))
         matching = [
             review for review in reviews
             if isinstance(review, dict) and pins_equal(review.get("pins"), request_pins)
         ]
         if not matching:
             if reviewed_pins and not pins_equal(reviewed_pins, request_pins):
-                return refuse(
+                return as_refusal(refuse(
                     "review_pin_mismatch",
                     reviewed_pins=reviewed_pins,
                     request_pins=request_pins,
                     detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
-                )
+                ))
             if as_unresolved_when_missing:
-                return outcome(
+                return as_refusal(outcome(
                     "inspectable_unresolved",
                     "no_bound_edge_review",
                     endpoint_identities=identities,
                     detail="contradicts_under retention requires a bound independent review of this edge",
-                )
-            return refuse(
+                ))
+            return as_refusal(refuse(
                 "review_missing",
                 detail="independent scoped review whose pins equal the request pins is required",
-            )
+            ))
+        # Reject pin-matching reviews that smuggle evaluator-output keys.
+        for review in matching:
+            reserved = sorted(REVIEW_OUTPUT_RESERVED_KEYS.intersection(review))
+            if reserved:
+                return as_refusal(refuse(
+                    "malformed_input",
+                    reserved_keys=reserved,
+                    detail=(
+                        "review must not carry evaluator output-reserved keys; "
+                        f"found {reserved}"
+                    ),
+                ))
         # Typed edge identities before equality: overlay side must be present
         # non-empty strings; a review missing typed identity cannot bind.
         expected_revision = overlay.get("overlay_revision")
@@ -740,12 +840,12 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             expected_revision, "overlay_revision",
         )
         if revision_bad is not None:
-            return revision_bad
+            return as_refusal(revision_bad)
         relation_bad = require_present_non_empty_string(
             expected_relation_id, "relation.relation_id",
         )
         if relation_bad is not None:
-            return relation_bad
+            return as_refusal(relation_bad)
         bound = []
         for review in matching:
             review_relation_id = review.get("relation_id")
@@ -761,105 +861,104 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 bound.append(review)
         if not bound:
             if as_unresolved_when_missing:
-                return outcome(
+                return as_refusal(outcome(
                     "inspectable_unresolved",
                     "no_bound_edge_review",
                     endpoint_identities=identities,
                     detail="no pin-matching review is bound to this relation_id and reviewed_edge_revision",
-                )
-            return refuse(
+                ))
+            return as_refusal(refuse(
                 "review_edge_mismatch",
                 detail=(
                     "among pin-matching reviews, none bind relation_id and "
                     "reviewed_edge_revision to the evaluated edge"
                 ),
-            )
+            ))
         verdicts = {review.get("verdict") for review in bound}
         if len(verdicts) > 1:
-            return refuse(
+            return as_refusal(refuse(
                 "review_verdict_conflict",
                 verdicts=sorted(str(item) for item in verdicts),
                 detail="multiple bound reviews for this edge disagree on verdict",
-            )
+            ))
         matched = bound[0]
         reviewer = matched.get("reviewer")
         if not isinstance(reviewer, str) or reviewer == "":
             if as_unresolved_when_missing:
-                return outcome(
+                return as_refusal(outcome(
                     "inspectable_unresolved",
                     "no_bound_edge_review",
                     endpoint_identities=identities,
                     detail="bound review requires a non-empty string reviewer identity",
-                )
-            return refuse(
+                ))
+            return as_refusal(refuse(
                 "review_missing",
                 detail="matching review requires a present non-empty string reviewer identity",
-            )
+            ))
         if matched.get("independent") is not True:
-            return refuse(
+            return as_refusal(refuse(
                 "review_not_independent",
                 detail="matching review must affirmatively set independent=true",
-            )
+            ))
         if review_is_self_authored(matched, overlay, pkg_a, pkg_b):
-            return refuse(
+            return as_refusal(refuse(
                 "review_not_independent",
                 detail="reviewer identity must be present and distinct from author / package author",
-            )
+            ))
         relation_author = overlay.get("author")
         if is_non_empty_string(relation_author) and reviewer == relation_author:
-            return refuse(
+            return as_refusal(refuse(
                 "review_not_independent",
                 detail="reviewer must differ from the overlay/relation author",
-            )
+            ))
         verdict = matched.get("verdict")
         if verdict not in ACCEPTED_REVIEW_VERDICTS:
-            return refuse(
+            return as_refusal(refuse(
                 "review_not_accepted",
                 verdict=verdict,
                 detail="matching review verdict must be accepted",
-            )
+            ))
         expected_scope = assessment.get("scope")
         review_scope = matched.get("scope")
         if not is_non_empty_string(review_scope):
-            return refuse(
+            return as_refusal(refuse(
                 "review_scope_incompatible",
                 review_scope=review_scope,
                 assessment_scope=expected_scope,
                 detail="review scope must be a present non-empty string compatible with the assessed edge scope",
-            )
+            ))
         if expected_scope not in (None, ""):
             if not is_non_empty_string(expected_scope):
-                return refuse(
+                return as_refusal(refuse(
                     "malformed_input",
                     detail="assessment.scope must be a non-empty string when present",
-                )
+                ))
             if review_scope != expected_scope:
-                return refuse(
+                return as_refusal(refuse(
                     "review_scope_incompatible",
                     review_scope=review_scope,
                     assessment_scope=expected_scope,
                     detail="review scope must be present and compatible with the assessed edge scope",
-                )
+                ))
         pin_digests = matched.get("pin_manifest_digests")
         if not isinstance(pin_digests, dict) or set(pin_digests.keys()) != REQUIRED_PIN_KEYS:
-            return refuse(
+            return as_refusal(refuse(
                 "review_pin_mismatch",
                 detail="review pin_manifest_digests must contain exact keys A and B",
-            )
+            ))
         if not digests_equal(pin_digests.get("A"), pkg_a.get("package_manifest_digest")):
-            return refuse(
+            return as_refusal(refuse(
                 "review_pin_mismatch",
                 side="A",
                 detail="review pin_manifest_digests.A must equal package A manifest bytes",
-            )
+            ))
         if not digests_equal(pin_digests.get("B"), pkg_b.get("package_manifest_digest")):
-            return refuse(
+            return as_refusal(refuse(
                 "review_pin_mismatch",
                 side="B",
                 detail="review pin_manifest_digests.B must equal package B manifest bytes",
-            )
-        return matched
-
+            ))
+        return as_review(matched)
     def bound_incompatibility_evidence(review: dict) -> str | None:
         evidence = review.get("evidence")
         if isinstance(evidence, str) and evidence.strip():
@@ -1205,10 +1304,15 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                     "peer overlap fields are required"
                 ),
             ))
-        review_outcome = require_independent_review(as_unresolved_when_missing=True)
-        if isinstance(review_outcome, dict) and "status" in review_outcome:
-            return prefer_unresolved_mandatory(review_outcome)
-        matched_review = review_outcome
+        review_selection = require_independent_review(as_unresolved_when_missing=True)
+        if review_selection.refusal is not None:
+            return prefer_unresolved_mandatory(review_selection.refusal)
+        matched_review = review_selection.review
+        if not isinstance(matched_review, dict):
+            return prefer_unresolved_mandatory(refuse(
+                "malformed_input",
+                detail="internal review selection returned neither refusal nor review",
+            ))
         if bound_incompatibility_evidence(matched_review) is None:
             return prefer_unresolved_mandatory(outcome(
                 "inspectable_unresolved",
@@ -1239,9 +1343,10 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             ),
         ))
 
-    review_refusal = require_independent_review()
-    if isinstance(review_refusal, dict) and "status" in review_refusal:
-        return review_refusal
+    review_selection = require_independent_review()
+    if review_selection.refusal is not None:
+        return review_selection.refusal
+    # Accepted review is used only for binding checks above; never emitted.
 
     # A9 unresolved members must surface even when A3 lineage would otherwise return.
     mandatory_early = mandatory_closure_result()
@@ -1349,12 +1454,15 @@ def _evaluate(overlay: dict, context: dict) -> dict:
 
 def evaluate_document(document: dict) -> dict:
     if not isinstance(document, dict):
-        return refuse("malformed_input", detail="document must be an object")
+        return seal_report(refuse("malformed_input", detail="document must be an object"))
     overlay = document.get("overlay")
     context = document.get("context")
     if overlay is None or context is None:
-        return refuse("malformed_input", detail="document requires overlay and context")
-    return evaluate(overlay, context)
+        return seal_report(refuse(
+            "malformed_input",
+            detail="document requires overlay and context",
+        ))
+    return seal_report(evaluate(overlay, context))
 
 
 def load_input(path: Path) -> tuple[dict | None, dict]:
@@ -1418,19 +1526,18 @@ def main(argv: list[str] | None = None) -> int:
         path = Path(path_value)
         document, early = load_input(path)
         if document is None:
-            report = early
+            report = seal_report(early)
         else:
             report = evaluate_document(document)
     except Exception as exc:  # noqa: BLE001 — CLI must never crash without a report
-        report = refuse(
+        report = seal_report(refuse(
             "malformed_input",
             detail=f"unexpected evaluation error: {type(exc).__name__}: {exc}",
-        )
+        ))
 
     # Always emit a JSON report for evaluated inputs; usage errors alone may omit it.
     sys.stdout.write(json.dumps(report, sort_keys=True, ensure_ascii=False) + "\n")
     return report_exit_code(report)
-
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv))
