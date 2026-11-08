@@ -1,0 +1,64 @@
+name: Materialize author-prepared names and roadmap
+
+on:
+  push:
+    branches: [editorial/readable-names-and-roadmap-20261108]
+    paths:
+      - .github/workflows/materialize-editorial-names.yml
+      - tools/apply_document_names.py
+      - tools/test_document_names.py
+      - reference/document-naming/names.json
+      - roadmap/workstreams.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-readable-names-materialization
+  cancel-in-progress: false
+
+jobs:
+  materialize:
+    if: github.repository == 'Arcanada-one/knowledge-contract' && github.ref == 'refs/heads/editorial/readable-names-and-roadmap-20261108'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out only the dedicated proposal branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # same pinned checkout as ordinary CI
+        with:
+          ref: editorial/readable-names-and-roadmap-20261108
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Refuse stale execution and run author controls
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git ls-remote origin refs/heads/editorial/readable-names-and-roadmap-20261108 | cut -f1)" = "$EXPECTED_HEAD"
+          python3 -B -m unittest tools.test_document_names -v
+          python3 -B tools/apply_document_names.py --apply
+          python3 -B tools/apply_document_names.py --check
+      - name: Commit only the declared editorial outputs to the same branch
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import subprocess
+          from tools.apply_document_names import build
+          outputs, _ = build()
+          allowed = set(outputs)
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          untracked = set(subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines())
+          if not (changed | untracked) <= allowed:
+              raise SystemExit('Unexpected file changes; refusing to stage or push')
+          subprocess.run(['git', 'add', '--', *sorted(allowed)], check=True)
+          PY
+          if git diff --cached --quiet; then
+            echo 'Editorial outputs already identical; no commit or push.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -s -m 'Apply KC-Brain authored readable names and complete roadmap' -m 'Deterministic header-only migration and roadmap projection; no main merge, deployment, index or task-state operation. Normal PR review and CI still required.'
+          git push origin HEAD:refs/heads/editorial/readable-names-and-roadmap-20261108
+          git rev-parse HEAD
