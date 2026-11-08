@@ -11,6 +11,16 @@ G11 draft model in `reference/relations/CROSS-PACKAGE-OVERLAY.md` section 3. It
 evaluates one candidate overlay over **exactly two distinct canonical English
 packages**, with endpoint identity = full package release pin + local object id.
 
+**Fail closed (default deny).** A passing/inspectable status is returned only
+after every A10 condition is affirmatively established: full release digests,
+`language == "en"` and `canonical is True` on both packages, `from`/`to` pins
+matching packages A/B, current `permitted: true` and `accessible: true` (not
+revoked) on both request pins, and an **independent** scoped review whose pins
+equal the request pins. Missing fields, `rendition_of` relation edges, path
+segments named `translations` (any case), same `package_id` on both sides, and
+`contradicts_under` without an explicit common assumption + `harmonized: true`
+are typed refusals (exit 1). Input is read at most `MAX_INPUT_BYTES+1` bytes.
+
 It is **not** independent scientific review, production validation,
 authorization, an execution grant, or a released wire schema. `book-package/2`
 stays unchanged. Unknown overlay profile versions fail closed.

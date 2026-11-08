@@ -8,6 +8,10 @@ not a released wire schema, not independent scientific review, not production
 validation, and not authorization or an execution grant. book-package/2 is
 unchanged. Python standard library only.
 
+Default deny: every unknown or missing field is a typed refusal. A passing
+status is returned only after every A10 condition is positively established.
+Rendition relation edges and non-canonical endpoints are out of scope (AC4).
+
 NOT_MEASURED:
 - live Muneral producer package admission or KCLIVE-08 task closure
 - independent scientific peer review of candidate relations
@@ -30,15 +34,17 @@ from typing import Any
 SUPPORTED_PROFILE = "cross-package-relations/0.1"
 CANONICAL_LANGUAGE = "en"
 MAX_INPUT_BYTES = 256 * 1024
+DIGEST_FIELDS = ("algorithm", "value", "byte_domain", "source_revision")
+ENDPOINT_REQUIRED_FIELDS = ("package_id", "release_id", "object_id", "source_anchor")
 PASS_STATUSES = frozenset({
     "inspectable",
     "inspectable_unresolved",
     "prerequisite_closure_complete",
     "accepted",
 })
+# Rendition relation edges are out of scope for this preparation (AC4).
 RELATION_KINDS = frozenset({
     "quotes",
-    "rendition_of",
     "compares_with",
     "supports_under",
     "contradicts_under",
@@ -89,21 +95,40 @@ def refuse(reason_code: str, **fields: Any) -> dict:
     return outcome("refused", reason_code, **fields)
 
 
-def is_rendition_endpoint(endpoint: dict, package: dict | None = None) -> bool:
-    language = endpoint.get("language")
-    if language is None and package is not None:
-        language = package.get("language")
-    path = str(endpoint.get("path") or (package or {}).get("path") or "")
-    canonical_flag = endpoint.get("canonical")
-    if canonical_flag is None and package is not None:
-        canonical_flag = package.get("canonical")
+def digest_complete(digest: Any) -> bool:
+    if not isinstance(digest, dict):
+        return False
+    return all(digest.get(field) not in (None, "") for field in DIGEST_FIELDS)
+
+
+def path_has_translations_segment(path: Any) -> bool:
+    normalized = str(path or "").replace("\\", "/").lower()
+    return any(segment == "translations" for segment in normalized.split("/") if segment)
+
+
+def is_canonical_english_package(package: dict) -> bool:
+    return package.get("language") == CANONICAL_LANGUAGE and package.get("canonical") is True
+
+
+def package_rendition_qualified(package: dict) -> bool:
+    """True when the package affirmatively declares a non-canonical/rendition side."""
+    language = package.get("language")
     if language is not None and language != CANONICAL_LANGUAGE:
         return True
-    if canonical_flag is False:
+    if package.get("canonical") is False:
         return True
-    if "translations/" in path.replace("\\", "/"):
+    if path_has_translations_segment(package.get("path")):
         return True
     return False
+
+
+def pins_equal(left: Any, right: Any) -> bool:
+    if not isinstance(left, dict) or not isinstance(right, dict):
+        return False
+    for side in ("A", "B"):
+        if left.get(side) != right.get(side):
+            return False
+    return True
 
 
 def evaluate(overlay: dict, context: dict) -> dict:
@@ -128,15 +153,44 @@ def evaluate(overlay: dict, context: dict) -> dict:
     if not isinstance(pkg_a, dict) or not isinstance(pkg_b, dict):
         return refuse("malformed_input", detail="package A and B must be objects")
 
+    # Two DISTINCT packages are required; a same-id revision pair belongs to A6, not overlay.
+    if pkg_a.get("package_id") is None or pkg_b.get("package_id") is None:
+        return refuse("malformed_input", detail="package_id required on both packages")
+    if pkg_a.get("package_id") == pkg_b.get("package_id"):
+        return refuse(
+            "same_package_both_sides",
+            package_id=pkg_a.get("package_id"),
+            detail="cross-package overlay requires two distinct package_id values",
+        )
     if package_identity(pkg_a) == package_identity(pkg_b):
         return refuse("same_package_both_sides", package_identity=list(package_identity(pkg_a)))
-    if pkg_a.get("package_id") == pkg_b.get("package_id") and pkg_a.get("release_id") == pkg_b.get("release_id"):
-        return refuse("same_package_both_sides", package_id=pkg_a.get("package_id"))
+
+    if not digest_complete(pkg_a.get("package_manifest_digest")) or not digest_complete(pkg_b.get("package_manifest_digest")):
+        return refuse(
+            "incomplete_release_pin",
+            detail="each package requires package_manifest_digest with algorithm, value, byte_domain, source_revision",
+        )
+
+    if package_rendition_qualified(pkg_a) or package_rendition_qualified(pkg_b):
+        return refuse(
+            "rendition_endpoint_refused",
+            detail="only canonical English package endpoints are accepted in this preparation",
+        )
+    if not is_canonical_english_package(pkg_a) or not is_canonical_english_package(pkg_b):
+        return refuse(
+            "canonical_language_required",
+            detail="both packages must affirmatively assert language='en' and canonical=true",
+        )
 
     relation = overlay.get("relation")
     if not isinstance(relation, dict):
         return refuse("malformed_input", detail="relation must be an object")
     kind = relation.get("kind")
+    if kind == "rendition_of":
+        return refuse(
+            "rendition_endpoint_refused",
+            detail="rendition relation edges are out of scope for this preparation (AC4)",
+        )
     if kind not in RELATION_KINDS:
         return refuse("malformed_input", detail=f"unsupported relation kind: {kind!r}")
 
@@ -145,18 +199,34 @@ def evaluate(overlay: dict, context: dict) -> dict:
     if not isinstance(from_ep, dict) or not isinstance(to_ep, dict):
         return refuse("malformed_input", detail="from and to endpoints required")
 
-    if is_rendition_endpoint(from_ep, pkg_a) or is_rendition_endpoint(to_ep, pkg_b):
+    for label, endpoint in (("from", from_ep), ("to", to_ep)):
+        missing = [field for field in ENDPOINT_REQUIRED_FIELDS if endpoint.get(field) in (None, "")]
+        if missing:
+            return refuse(
+                "incomplete_release_pin",
+                side=label,
+                missing_fields=missing,
+                detail="endpoint requires package_id, release_id, object_id, source_anchor",
+            )
+
+    if path_has_translations_segment(from_ep.get("path")) or path_has_translations_segment(to_ep.get("path")):
         return refuse(
             "rendition_endpoint_refused",
-            detail="only canonical English package endpoints are accepted in this preparation",
+            detail="endpoint path segment 'translations' is out of scope",
         )
-    # Also refuse if package records themselves are rendition-qualified even when
-    # endpoints omit language/path (caller may pin the package side only).
-    if is_rendition_endpoint({"language": pkg_a.get("language"), "path": pkg_a.get("path"), "canonical": pkg_a.get("canonical")}) or \
-       is_rendition_endpoint({"language": pkg_b.get("language"), "path": pkg_b.get("path"), "canonical": pkg_b.get("canonical")}):
+
+    # from must match package A; to must match package B exactly.
+    if from_ep.get("package_id") != pkg_a.get("package_id") or from_ep.get("release_id") != pkg_a.get("release_id"):
         return refuse(
-            "rendition_endpoint_refused",
-            detail="package side is rendition-qualified",
+            "endpoint_package_mismatch",
+            side="from",
+            detail="from endpoint must match package A package_id and release_id",
+        )
+    if to_ep.get("package_id") != pkg_b.get("package_id") or to_ep.get("release_id") != pkg_b.get("release_id"):
+        return refuse(
+            "endpoint_package_mismatch",
+            side="to",
+            detail="to endpoint must match package B package_id and release_id",
         )
 
     id_from = endpoint_identity(from_ep)
@@ -175,7 +245,6 @@ def evaluate(overlay: dict, context: dict) -> dict:
     mandatory = context.get("mandatory_dependencies")
     unit_scope_aligned = context.get("unit_scope_aligned")
 
-    # Permission / revocation / accessibility for the request pins.
     def pin_state(side: str, package: dict) -> dict:
         release = request_pins.get(side) or package.get("release_id")
         key = permission_key(package["package_id"], release)
@@ -188,36 +257,71 @@ def evaluate(overlay: dict, context: dict) -> dict:
     state_b = pin_state("B", pkg_b)
 
     reviewed_pins = assessment.get("reviewed_pins") if isinstance(assessment.get("reviewed_pins"), dict) else {}
-    if not reviewed_pins and reviews:
-        first = reviews[0]
-        if isinstance(first, dict) and isinstance(first.get("pins"), dict):
-            reviewed_pins = first["pins"]
 
-    # A6c: revoked current use (bytes may remain historically inspectable).
-    for side, state in (("A", state_a), ("B", state_b)):
-        if state.get("revoked") is True or state.get("permitted") is False and state.get("historically_inspectable"):
+    def require_current_permissions() -> dict | None:
+        """Affirmative permitted+accessible and not revoked for BOTH pins."""
+        for side, state in (("A", state_a), ("B", state_b)):
             if state.get("revoked") is True:
                 return refuse(
                     "current_use_revoked",
                     side=side,
                     historical_record_retained=bool(state.get("historically_inspectable", True)),
                 )
+            if state.get("accessible") is False:
+                return refuse("endpoint_inaccessible", side=side)
+            if state.get("permitted") is not True or state.get("missing") is True:
+                return refuse(
+                    "endpoint_not_permitted",
+                    side=side,
+                    detail="current permission must affirmatively be permitted=true and accessible=true",
+                )
+        return None
 
-    # A7: digest may resolve but current authorization denies read.
-    for side, state in (("A", state_a), ("B", state_b)):
-        if state.get("accessible") is False and state.get("revoked") is not True:
-            return refuse("endpoint_inaccessible", side=side)
-
-    # A6b: request pins select a release the scoped review did not cover.
-    if reviewed_pins and request_pins:
-        for side in ("A", "B"):
-            if side in reviewed_pins and side in request_pins and reviewed_pins[side] != request_pins[side]:
+    def require_independent_review() -> dict | None:
+        """A10: independent scoped review whose pins equal the request pins."""
+        if not request_pins:
+            return refuse("review_missing", detail="request_pins required for scoped review binding")
+        matching = [
+            review for review in reviews
+            if isinstance(review, dict) and pins_equal(review.get("pins"), request_pins)
+        ]
+        if not matching:
+            if reviewed_pins and not pins_equal(reviewed_pins, request_pins):
                 return refuse(
                     "review_pin_mismatch",
                     reviewed_pins=reviewed_pins,
                     request_pins=request_pins,
                     detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
                 )
+            return refuse(
+                "review_missing",
+                detail="independent scoped review whose pins equal the request pins is required",
+            )
+        matched = matching[0]
+        if matched.get("independent") is not True:
+            return refuse(
+                "review_not_independent",
+                detail="matching review must affirmatively set independent=true",
+            )
+        return None
+
+    # A6b early: assessment/review pins that disagree with the request.
+    if reviewed_pins and request_pins and not pins_equal(reviewed_pins, request_pins):
+        return refuse(
+            "review_pin_mismatch",
+            reviewed_pins=reviewed_pins,
+            request_pins=request_pins,
+            detail="reviewed A1/B1 pair cannot discharge a request that selects a different pin",
+        )
+
+    # Current permission is required before every positive / inspectable branch.
+    permission_refusal = require_current_permissions()
+    if permission_refusal is not None:
+        return permission_refusal
+
+    review_refusal = require_independent_review()
+    if review_refusal is not None:
+        return review_refusal
 
     # A4: one-sided contradiction.
     if kind == "contradicts_under":
@@ -230,6 +334,28 @@ def evaluate(overlay: dict, context: dict) -> dict:
                 missing_side=missing,
                 candidate_preserved=True,
             )
+        common_assumption = (
+            assertions.get("conditions")
+            or assertions.get("common_assumption")
+            or grounding.get("common_assumption")
+            or grounding.get("conditions")
+        )
+        # Default False: harmonized must be affirmatively true with a stated assumption.
+        harmonized = assertions.get("harmonized") is True
+        if not common_assumption or not harmonized:
+            return refuse(
+                "common_assumption_required",
+                detail="contradicts_under requires an explicit common assumption and harmonized=true",
+            )
+        return outcome(
+            "inspectable",
+            "contradicts_under_retained",
+            endpoint_identities=identities,
+            both_facts_retained=True,
+            winner_selected=False,
+            harmonized=True,
+            common_assumption=common_assumption,
+        )
 
     # A2: unit/scope mismatch left unresolved.
     peer_units = assertions.get("peer_units")
@@ -249,17 +375,6 @@ def evaluate(overlay: dict, context: dict) -> dict:
             "unit_scope_unresolved",
             endpoint_identities=identities,
             detail="comparison unresolved until a reviewed conversion/scope rule is supplied",
-        )
-
-    # A5: true two-sided conditioned contradiction retains both facts.
-    if kind == "contradicts_under":
-        return outcome(
-            "inspectable",
-            "contradicts_under_retained",
-            endpoint_identities=identities,
-            both_facts_retained=True,
-            winner_selected=False,
-            harmonized=bool(assertions.get("harmonized", True)),
         )
 
     # A3: copied/translated support collapses to one lineage family.
@@ -314,18 +429,17 @@ def evaluate(overlay: dict, context: dict) -> dict:
         )
 
     # A6a: newer immutable revision published, but R still pins the reviewed pair.
-    if published and reviewed_pins and request_pins == reviewed_pins:
-        if state_a.get("permitted") and state_b.get("permitted") and state_a.get("accessible") and state_b.get("accessible"):
-            return outcome(
-                "inspectable",
-                "publication_non_revoking",
-                endpoint_identities=identities,
-                applicable_pins=dict(request_pins),
-                published_releases=list(published),
-                review_transferred_to_b2=False,
-            )
+    if published and reviewed_pins and pins_equal(request_pins, reviewed_pins):
+        return outcome(
+            "inspectable",
+            "publication_non_revoking",
+            endpoint_identities=identities,
+            applicable_pins=dict(request_pins),
+            published_releases=list(published),
+            review_transferred_to_b2=False,
+        )
 
-    # A10 / general positive inspection control.
+    # A10 / general positive inspection control — only after every condition above.
     return outcome(
         "inspectable",
         "scoped_inspection_ok",
@@ -351,7 +465,8 @@ def evaluate_document(document: dict) -> dict:
 
 def load_input(path: Path) -> tuple[dict | None, dict]:
     try:
-        raw = path.read_bytes()
+        with path.open("rb") as handle:
+            raw = handle.read(MAX_INPUT_BYTES + 1)
     except OSError as exc:
         return None, refuse("malformed_input", detail=f"cannot read input: {exc}")
     if len(raw) > MAX_INPUT_BYTES:
