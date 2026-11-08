@@ -1,8 +1,9 @@
 ---
 name: "book-package"
-title: "Book Packages: Book Packages: Source Identity, Semantic Layers, and Validation"
+title: "Book Packages: Source Identity, Semantic Layers, and Validation"
 short_title: "Book Packages"
-subtitle: "Book Packages: Source Identity, Semantic Layers, and Validation"
+subtitle: "Source Identity, Semantic Layers, and Validation"
+previous_title: "Book Packages: Source Identity, Semantic Layers, and Validation"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,10 +12,7 @@ license: "CC-BY-4.0"
 description: "A concrete book-package schema, reversible conversion ledger, semantic layers, rights boundaries and synthetic conformance checks."
 ---
 
-<!-- markdownlint-disable-next-line MD033 -->
-<a id="book-packages-source-identity-semantic-layers-and-validation"></a>
-
-# Book Packages: Book Packages: Source Identity, Semantic Layers, and Validation
+# Book Packages: Source Identity, Semantic Layers, and Validation
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

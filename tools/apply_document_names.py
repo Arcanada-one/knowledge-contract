@@ -18,7 +18,7 @@ WORK = 'roadmap/workstreams.json'
 
 
 def git(*args: str) -> str:
-    return subprocess.check_output(['git', *args], cwd=ROOT, text=True, encoding='utf-8')
+    return subprocess.check_output(['git', *args], cwd=ROOT).decode('utf-8', errors='strict')
 
 
 def original(path: str) -> str:
@@ -35,6 +35,31 @@ def dumped(value: object) -> str:
 
 def digest(value: str) -> str:
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
+
+
+def display_parts(short: str, explanation: str) -> tuple[str, str]:
+    """Keep explanatory scope, without repeating an already existing short label."""
+    subtitle = explanation
+    allowed = {short.casefold()}
+    extra = {'Contract Core': 'Knowledge Contract', 'Context Package': 'Context Packages',
+             'Contract Checks': 'Contract profiles', 'Ядро контракта': 'Контракт знаний',
+             'Пакет контекста': 'Пакеты контекста',
+             'Политика повторного использования': 'Повторное использование'}
+    if short in extra:
+        allowed.add(extra[short].casefold())
+    prefix, separator, remainder = explanation.partition(': ')
+    if separator and prefix.casefold() in allowed:
+        subtitle = remainder
+    else:
+        for join in (', ', ' and ', ' и '):
+            leading = short + join
+            if explanation.casefold().startswith(leading.casefold()):
+                subtitle = explanation[len(leading):]
+                break
+    if not subtitle.strip():
+        raise ValueError('An explanatory subtitle is required')
+    subtitle = subtitle[0].upper() + subtitle[1:]
+    return short + ': ' + subtitle, subtitle
 
 
 def anchor(title: str) -> str:
@@ -77,18 +102,19 @@ def validate_rows(rows: list, slugs: set[str]) -> None:
 
 
 def rename_document(raw: str, old: str, short: str) -> str:
-    full = short + ': ' + old
+    full, subtitle = display_parts(short, old)
+    header_alias = '' if full == old else alias(anchor(old))
     title_lines = re.findall(r'^title:.*$', raw, flags=re.M)
     old_h1 = '# ' + old
     if len(title_lines) != 1 or raw.count('\n' + old_h1 + '\n') != 1:
         raise ValueError('Unexpected original title or H1')
     if json.loads(title_lines[0].split(':', 1)[1].strip()) != old:
         raise ValueError('Original front matter differs from catalogue')
-    new_meta = 'title: ' + json.dumps(full, ensure_ascii=False) + '\nshort_title: ' + json.dumps(short, ensure_ascii=False) + '\nsubtitle: ' + json.dumps(old, ensure_ascii=False)
+    new_meta = 'title: ' + json.dumps(full, ensure_ascii=False) + '\nshort_title: ' + json.dumps(short, ensure_ascii=False) + '\nsubtitle: ' + json.dumps(subtitle, ensure_ascii=False) + '\nprevious_title: ' + json.dumps(old, ensure_ascii=False)
     result = raw.replace(title_lines[0], new_meta, 1)
-    result = result.replace('\n' + old_h1 + '\n', '\n' + alias(anchor(old)) + '# ' + full + '\n', 1)
+    result = result.replace('\n' + old_h1 + '\n', '\n' + header_alias + '# ' + full + '\n', 1)
     # Inverting the exact header-only change must reproduce every original byte.
-    restored = result.replace(new_meta, title_lines[0], 1).replace('\n' + alias(anchor(old)) + '# ' + full + '\n', '\n' + old_h1 + '\n', 1)
+    restored = result.replace(new_meta, title_lines[0], 1).replace('\n' + header_alias + '# ' + full + '\n', '\n' + old_h1 + '\n', 1)
     if restored != raw:
         raise ValueError('Scientific body was altered')
     return result
@@ -126,23 +152,24 @@ def build() -> tuple[dict[str, str], dict]:
     labels = {row[0]: row[1] for row in tasks}
     labels.update({row[0]: row[1] for row in work['foundations']})
     labels.update({row[0].replace('RM-', 'RM'): row[1] for row in tasks})
+    labels.update({'P0': 'Immediate', 'P1': 'Next', 'P2': 'Expansion'})
     out: dict[str, str] = {}
     receipt = {'schema': 'knowledge-contract.naming-migration-check/1', 'baseline_commit': BASE,
                'scope': 'deterministic header/catalogue/roadmap checks by the author; not independent scientific review',
                'documents': [], 'body_preservation': 'checked by exact inverse transformation'}
     table = ['# Reading Guide: All Publication Names', '',
              'English source baseline: `' + BASE + '`. New titles do not change canonical paths, edition 1.1, protocol versions or scientific status. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).', '',
-             '| Document | English title | Русское название | 简体中文标题 |',
-             '| --- | --- | --- | --- |']
+             '| Document | English title | Русское название | 简体中文标题 | Previous English title |',
+             '| --- | --- | --- | --- | --- |']
     for doc in docs:
         old = doc['title']
         row = names[doc['slug']]
-        full = row[1] + ': ' + old
+        full, subtitle = display_parts(row[1], old)
         raw = original(doc['path'])
         translated = rename_document(raw, old, row[1])
         out[doc['path']] = translated
-        doc.update(title=full, short_title=row[1], subtitle=old)
-        table.append('| [' + doc['type'] + '](' + doc['path'] + ') | ' + full + ' | ' + row[2] + ': ' + row[3] + ' | ' + row[4] + '：' + row[5] + ' |')
+        doc.update(title=full, short_title=row[1], subtitle=subtitle, previous_title=old)
+        table.append('| [' + doc['type'] + '](' + doc['path'] + ') | ' + full + ' | ' + display_parts(row[2], row[3])[0] + ' | ' + row[4] + '：' + row[5] + ' | ' + old + ' |')
         receipt['documents'].append({'path': doc['path'], 'old_title': old, 'new_title': full,
                                       'old_sha256': digest(raw), 'new_sha256': digest(translated),
                                       'preserved_anchor': anchor(old), 'body_unchanged': True})
@@ -290,7 +317,7 @@ def main() -> int:
                     raise ValueError('Unsafe output path: ' + path)
                 if target.exists() and path not in ['ROADMAP.md', 'DOCUMENTS.md', 'roadmap/ROADMAP.ru.md', 'roadmap/COMPATIBILITY.md', 'reviews/naming-roadmap/REVIEW.md', 'reviews/naming-roadmap/RESULTS.json']:
                     before = current(path)
-                    if before not in (original(path), text):
+                    if before not in (original(path), git('show', 'd10ba0500be8c0ad2f031445df9c539b5e41fe54:' + path), text):
                         raise ValueError('Concurrent or unexpected change: ' + path)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text, encoding='utf-8', newline='\n')

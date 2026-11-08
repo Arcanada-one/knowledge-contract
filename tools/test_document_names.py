@@ -69,5 +69,25 @@ class NamingControls(unittest.TestCase):
         self.assertIn('{"id":"RM-01"}', renamed)
 
 
+class ReadableTitleControls(unittest.TestCase):
+    def test_existing_label_is_not_duplicated(self):
+        from tools.apply_document_names import display_parts
+        self.assertEqual(display_parts('Book Packages', 'Book Packages: Source Identity')[0], 'Book Packages: Source Identity')
+
+    def test_repeated_lead_is_removed_but_scope_retained(self):
+        from tools.apply_document_names import display_parts
+        self.assertEqual(display_parts('Knowledge Revision', 'Knowledge Revision, Version Identity, and the Adoption of Norms')[0], 'Knowledge Revision: Version Identity, and the Adoption of Norms')
+
+    def test_russian_repeated_lead(self):
+        from tools.apply_document_names import display_parts
+        self.assertEqual(display_parts('Книжные пакеты', 'Книжные пакеты: Идентичность источника')[0], 'Книжные пакеты: Идентичность источника')
+
+    def test_unchanged_full_title_does_not_duplicate_anchor(self):
+        raw = '---\ntitle: "Book Packages: Source Identity"\n---\n\n# Book Packages: Source Identity\n\nBody unchanged.\n'
+        result = rename_document(raw, 'Book Packages: Source Identity', 'Book Packages')
+        self.assertNotIn('<a id=', result)
+        self.assertTrue(result.endswith('Body unchanged.\n'))
+
+
 if __name__ == '__main__':
     unittest.main()

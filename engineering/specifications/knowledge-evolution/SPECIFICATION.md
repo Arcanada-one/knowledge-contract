@@ -1,8 +1,9 @@
 ---
 name: "knowledge-evolution"
-title: "Knowledge Evolution: Knowledge Evolution and Versioned Rules"
+title: "Knowledge Evolution: Versioned Rules"
 short_title: "Knowledge Evolution"
-subtitle: "Knowledge Evolution and Versioned Rules"
+subtitle: "Versioned Rules"
+previous_title: "Knowledge Evolution and Versioned Rules"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -14,7 +15,7 @@ description: "Versioned creation rules, adoption, impact analysis, reassessment,
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="knowledge-evolution-and-versioned-rules"></a>
 
-# Knowledge Evolution: Knowledge Evolution and Versioned Rules
+# Knowledge Evolution: Versioned Rules
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

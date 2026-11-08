@@ -12,7 +12,8 @@
       "edition": "1.1",
       "status": "research-draft",
       "short_title": "Meaning Bridge",
-      "subtitle": "From Human Meaning to Contract-Governed Knowledge"
+      "subtitle": "From Human Meaning to Contract-Governed Knowledge",
+      "previous_title": "From Human Meaning to Contract-Governed Knowledge"
     },
     {
       "type": "paper",
@@ -23,7 +24,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Meaning in Context",
-      "subtitle": "Semantic Objects, Context, and Conditions of Applicability"
+      "subtitle": "Semantic Objects, Context, and Conditions of Applicability",
+      "previous_title": "Semantic Objects, Context, and Conditions of Applicability"
     },
     {
       "type": "paper",
@@ -34,7 +36,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Transformations",
-      "subtitle": "Constrained Transformations and the Limits of Knowledge Transfer"
+      "subtitle": "Constrained Transformations and the Limits of Knowledge Transfer",
+      "previous_title": "Constrained Transformations and the Limits of Knowledge Transfer"
     },
     {
       "type": "paper",
@@ -45,7 +48,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Context Assembly",
-      "subtitle": "Retrieval, Coverage, and Context Composition under Resource Limits"
+      "subtitle": "Retrieval, Coverage, and Context Composition under Resource Limits",
+      "previous_title": "Retrieval, Coverage, and Context Composition under Resource Limits"
     },
     {
       "type": "paper",
@@ -56,7 +60,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Interaction and Memory",
-      "subtitle": "Interaction, Documents, and Memory with Explicit Revision Boundaries"
+      "subtitle": "Interaction, Documents, and Memory with Explicit Revision Boundaries",
+      "previous_title": "Interaction, Documents, and Memory with Explicit Revision Boundaries"
     },
     {
       "type": "paper",
@@ -67,18 +72,20 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Evidence and Falsification",
-      "subtitle": "Evidence, Reasoning, and Falsification in Knowledge Systems"
+      "subtitle": "Evidence, Reasoning, and Falsification in Knowledge Systems",
+      "previous_title": "Evidence, Reasoning, and Falsification in Knowledge Systems"
     },
     {
       "type": "paper",
       "slug": "revision-and-governance",
       "path": "papers/revision-and-governance/PAPER.md",
-      "title": "Knowledge Revision: Knowledge Revision, Version Identity, and the Adoption of Norms",
+      "title": "Knowledge Revision: Version Identity, and the Adoption of Norms",
       "summary": "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Revision",
-      "subtitle": "Knowledge Revision, Version Identity, and the Adoption of Norms"
+      "subtitle": "Version Identity, and the Adoption of Norms",
+      "previous_title": "Knowledge Revision, Version Identity, and the Adoption of Norms"
     },
     {
       "type": "paper",
@@ -89,29 +96,32 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Reuse",
-      "subtitle": "Knowledge Contracts and the Admission of Prepared Knowledge"
+      "subtitle": "Knowledge Contracts and the Admission of Prepared Knowledge",
+      "previous_title": "Knowledge Contracts and the Admission of Prepared Knowledge"
     },
     {
       "type": "paper",
       "slug": "knowledge-utility",
       "path": "papers/knowledge-utility/PAPER.md",
-      "title": "Knowledge Utility: Knowledge Utility, Resource Accounting, and Lifecycle Decisions",
+      "title": "Knowledge Utility: Resource Accounting, and Lifecycle Decisions",
       "summary": "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Utility",
-      "subtitle": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
+      "subtitle": "Resource Accounting, and Lifecycle Decisions",
+      "previous_title": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
     },
     {
       "type": "specification",
       "slug": "knowledge-contract-core",
       "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
-      "title": "Contract Core: Knowledge Contract: Core Model and Admission Requirements",
+      "title": "Contract Core: Core Model and Admission Requirements",
       "summary": "The nine core groups, first-class constraints, profiles, admission and execution requirements.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Contract Core",
-      "subtitle": "Knowledge Contract: Core Model and Admission Requirements"
+      "subtitle": "Core Model and Admission Requirements",
+      "previous_title": "Knowledge Contract: Core Model and Admission Requirements"
     },
     {
       "type": "specification",
@@ -122,29 +132,32 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Operations",
-      "subtitle": "Contracts for Knowledge Operations"
+      "subtitle": "Contracts for Knowledge Operations",
+      "previous_title": "Contracts for Knowledge Operations"
     },
     {
       "type": "specification",
       "slug": "semantic-types",
       "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
-      "title": "Semantic Types: Semantic Types, Attribution, and Representations",
+      "title": "Semantic Types: Attribution, and Representations",
       "summary": "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Semantic Types",
-      "subtitle": "Semantic Types, Attribution, and Representations"
+      "subtitle": "Attribution, and Representations",
+      "previous_title": "Semantic Types, Attribution, and Representations"
     },
     {
       "type": "specification",
       "slug": "context-package",
       "path": "engineering/specifications/context-package/SPECIFICATION.md",
-      "title": "Context Package: Context Packages: Coverage, Dependencies, and Delivery",
+      "title": "Context Package: Coverage, Dependencies, and Delivery",
       "summary": "Requirements for selected context, coverage, mandatory dependencies, budgets and observed delivery.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Context Package",
-      "subtitle": "Context Packages: Coverage, Dependencies, and Delivery"
+      "subtitle": "Coverage, Dependencies, and Delivery",
+      "previous_title": "Context Packages: Coverage, Dependencies, and Delivery"
     },
     {
       "type": "specification",
@@ -155,18 +168,20 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Compiled Knowledge",
-      "subtitle": "Compiled Knowledge Artifacts and Reproducible Derivation"
+      "subtitle": "Compiled Knowledge Artifacts and Reproducible Derivation",
+      "previous_title": "Compiled Knowledge Artifacts and Reproducible Derivation"
     },
     {
       "type": "specification",
       "slug": "artifact-registry",
       "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
-      "title": "Artifact Registry: Artifact Registry, Readable Names, and Document Formats",
+      "title": "Artifact Registry: Readable Names, and Document Formats",
       "summary": "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Artifact Registry",
-      "subtitle": "Artifact Registry, Readable Names, and Document Formats"
+      "subtitle": "Readable Names, and Document Formats",
+      "previous_title": "Artifact Registry, Readable Names, and Document Formats"
     },
     {
       "type": "specification",
@@ -177,7 +192,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Status Model",
-      "subtitle": "Assessment, Execution, and Publication States"
+      "subtitle": "Assessment, Execution, and Publication States",
+      "previous_title": "Assessment, Execution, and Publication States"
     },
     {
       "type": "specification",
@@ -188,62 +204,68 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Cache Validity",
-      "subtitle": "Cache Identity, Dependency Tracking, and Invalidation"
+      "subtitle": "Cache Identity, Dependency Tracking, and Invalidation",
+      "previous_title": "Cache Identity, Dependency Tracking, and Invalidation"
     },
     {
       "type": "specification",
       "slug": "reuse-policy",
       "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
-      "title": "Reuse Policy: Reuse Policy: Time, Authorization, and Decision Outcomes",
+      "title": "Reuse Policy: Time, Authorization, and Decision Outcomes",
       "summary": "Temporal modes, conservative deadlines, authorization, decision outcomes and retention boundaries.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Reuse Policy",
-      "subtitle": "Reuse Policy: Time, Authorization, and Decision Outcomes"
+      "subtitle": "Time, Authorization, and Decision Outcomes",
+      "previous_title": "Reuse Policy: Time, Authorization, and Decision Outcomes"
     },
     {
       "type": "specification",
       "slug": "knowledge-evolution",
       "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
-      "title": "Knowledge Evolution: Knowledge Evolution and Versioned Rules",
+      "title": "Knowledge Evolution: Versioned Rules",
       "summary": "Versioned creation rules, adoption, impact analysis, reassessment, migration and coherent publication.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Evolution",
-      "subtitle": "Knowledge Evolution and Versioned Rules"
+      "subtitle": "Versioned Rules",
+      "previous_title": "Knowledge Evolution and Versioned Rules"
     },
     {
       "type": "specification",
       "slug": "book-package",
       "path": "engineering/specifications/book-package/SPECIFICATION.md",
-      "title": "Book Packages: Book Packages: Source Identity, Semantic Layers, and Validation",
+      "title": "Book Packages: Source Identity, Semantic Layers, and Validation",
       "summary": "A concrete book-package schema, reversible conversion ledger, semantic layers, rights boundaries and synthetic conformance checks.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Book Packages",
-      "subtitle": "Book Packages: Source Identity, Semantic Layers, and Validation"
+      "subtitle": "Source Identity, Semantic Layers, and Validation",
+      "previous_title": "Book Packages: Source Identity, Semantic Layers, and Validation"
     },
     {
       "type": "study",
       "slug": "contract-profile-conformance",
       "path": "engineering/studies/contract-profile-conformance/STUDY.md",
-      "title": "Contract Checks: Contract profiles: finite conformance, trust boundaries, and a strong simple comparator",
+      "title": "Contract Checks: Finite conformance, trust boundaries, and a strong simple comparator",
       "summary": "Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Contract Checks",
-      "subtitle": "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator"
+      "subtitle": "Finite conformance, trust boundaries, and a strong simple comparator",
+      "previous_title": "Contract profiles: finite conformance, trust boundaries, and a strong simple comparator"
     },
     {
       "type": "study",
       "slug": "dependency-closure-and-package-delivery",
       "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
-      "title": "Dependency Closure: Dependency closure, readable artifact layouts, and a pinned package replay",
+      "title": "Dependency Closure: Readable artifact layouts, and a pinned package replay",
       "summary": "Historical package evidence and a public exhaustive replay of a finite dependency graph.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Dependency Closure",
-      "subtitle": "Dependency closure, readable artifact layouts, and a pinned package replay"
+      "subtitle": "Readable artifact layouts, and a pinned package replay",
+      "previous_title": "Dependency closure, readable artifact layouts, and a pinned package replay"
     },
     {
       "type": "study",
@@ -254,18 +276,20 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Uncertainty Preservation",
-      "subtitle": "Reproducible transcription is not preservation of uncertainty"
+      "subtitle": "Reproducible transcription is not preservation of uncertainty",
+      "previous_title": "Reproducible transcription is not preservation of uncertainty"
     },
     {
       "type": "study",
       "slug": "executable-projections-and-revision",
       "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
-      "title": "Executable Projections: Executable projections, addressable revisions, and the limits of graph minimality",
+      "title": "Executable Projections: Addressable revisions, and the limits of graph minimality",
       "summary": "Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Executable Projections",
-      "subtitle": "Executable projections, addressable revisions, and the limits of graph minimality"
+      "subtitle": "Addressable revisions, and the limits of graph minimality",
+      "previous_title": "Executable projections, addressable revisions, and the limits of graph minimality"
     },
     {
       "type": "study",
@@ -276,7 +300,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Reuse Economics",
-      "subtitle": "Controlled reuse: admission counterexamples and the cost of a cache hit"
+      "subtitle": "Controlled reuse: admission counterexamples and the cost of a cache hit",
+      "previous_title": "Controlled reuse: admission counterexamples and the cost of a cache hit"
     },
     {
       "type": "study",
@@ -287,7 +312,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Editorial Pilot",
-      "subtitle": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
+      "subtitle": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison",
+      "previous_title": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
     },
     {
       "type": "glossary",
@@ -298,7 +324,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Shared Vocabulary",
-      "subtitle": "Knowledge Contract Glossary"
+      "subtitle": "Knowledge Contract Glossary",
+      "previous_title": "Knowledge Contract Glossary"
     },
     {
       "type": "bibliography",
@@ -309,7 +336,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Research Foundations",
-      "subtitle": "Primary Sources and Research Foundations"
+      "subtitle": "Primary Sources and Research Foundations",
+      "previous_title": "Primary Sources and Research Foundations"
     },
     {
       "type": "appendix",
@@ -320,7 +348,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Source History",
-      "subtitle": "Source Map, Earlier Editions, and Protocol Compatibility"
+      "subtitle": "Source Map, Earlier Editions, and Protocol Compatibility",
+      "previous_title": "Source Map, Earlier Editions, and Protocol Compatibility"
     },
     {
       "type": "appendix",
@@ -331,7 +360,8 @@
       "language": "en",
       "edition": "1.1",
       "short_title": "Publication Interfaces",
-      "subtitle": "API Integration and Publication Consistency"
+      "subtitle": "API Integration and Publication Consistency",
+      "previous_title": "API Integration and Publication Consistency"
     }
   ]
 }

@@ -11,7 +11,7 @@ This canon implements the author's explicit naming direction of 8 November 2026.
 
 ## Short name and explanatory subtitle
 
-A full document title has the form **Short Name: Explanatory Subtitle**. The short name is one to three ordinary words in English or Russian and identifies the actual subject, not a code, slogan or claim of superiority. The subtitle states the document's scope, method or important limit. The first colon is the separator; an inherited subtitle can contain its own colon. Chinese uses a compact natural phrase and the full-width separator `：`; artificial spaces are not introduced to imitate English word counts.
+A full document title has the form **Short Name: Explanatory Subtitle**. The short name is one to three ordinary words in English or Russian and identifies the actual subject, not a code, slogan or claim of superiority. The subtitle states the document's scope, method or important limit. The first colon is the separator. When the previous title already begins with the same short label, do not repeat that label: for example, keep “Book Packages: Source Identity, Semantic Layers, and Validation”, not “Book Packages: Book Packages: …”. The explanatory wording is retained after removing that duplicated lead; the exact old title is stored separately. An inherited explanatory clause can contain its own colon. Chinese uses a compact natural phrase and the full-width separator `：`; artificial spaces are not introduced to imitate English word counts.
 
 Examples: **Meaning Bridge: From Human Meaning to Contract-Governed Knowledge**; **Мост смысла: От человеческого смысла к знаниям, управляемым контрактом**; **意义桥接：从人类意义到受契约约束的知识**.
 

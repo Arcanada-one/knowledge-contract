@@ -7,7 +7,7 @@ updated: 2026-11-08
 
 # Research and engineering work packages
 
-These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; Workgraph Reconciliation reconciles the bindings. No deadline or completion is invented. Proposed priorities: P0 = immediate transparency/release enablement; P1 = next substantive research/verification; P2 = subsequent expansion and integration. The original planning baseline was 6 November 2026. The dated artifact observations below supersede any impression that an existing document is still absent; execution states remain unverified in Muneral. Engineering execution is paused by the operator.
+These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; Workgraph Reconciliation reconciles the bindings. No deadline or completion is invented. Proposed priorities: Immediate = immediate transparency/release enablement; Next = next substantive research/verification; Expansion = subsequent expansion and integration. The original planning baseline was 6 November 2026. The dated artifact observations below supersede any impression that an existing document is still absent; execution states remain unverified in Muneral. Engineering execution is paused by the operator.
 
 KC-Brain and Agent-Brain retain analytical authorship, examples, scientific tests, interpretation and acceptance. SWE roles perform only the necessary server, task-registry, implementation or deployment operations with prepared inputs. A task naming SWE does not delegate scientific authorship. Each dependent task needs the named reviewed output, not closure of an entire research programme. Every task also uses the common evidence rules in [EXPERIMENTS.md](EXPERIMENTS.md).
 
@@ -23,7 +23,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** A selected corpus map exists; it is not an exhaustive accounting of historical claims.
 
-**Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
+**Priority:** Immediate · **Owner:** KC-Brain · **Required outputs:** none.
 
 **Original gap (6 November 2026).** The source map is topical, not a complete accounting of historical definitions, laws and geometry proposals.
 
@@ -47,7 +47,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Bounded checker reports exist; a complete reviewed passport set is not established.
 
-**Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
+**Priority:** Immediate · **Owner:** KC-Brain · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Raw case totals can conceal the carrier, duplicated behaviors, arbitrary bounds and the distinction between a model and production code.
 
@@ -71,7 +71,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Repository roadmap exists; this naming/status revision has not been deployed to the website.
 
-**Priority:** P0 · **Owner:** KC-SWE · **Required outputs:** none.
+**Priority:** Immediate · **Owner:** KC-SWE · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Readers need a visible separation between current results, known limits and planned research.
 
@@ -95,7 +95,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Previously reported bindings are not a fresh Muneral reconciliation.
 
-**Priority:** P0 · **Owner:** KC-SWE · **Required outputs:** none.
+**Priority:** Immediate · **Owner:** KC-SWE · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Public roadmap IDs describe planned work; they are not verified task identities or execution status.
 
@@ -119,7 +119,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The complete foundations introduction is in the catalogue with research-draft status.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit.
 
 **Original gap (6 November 2026).** The corpus has semantic objects and conditional results but lacks a single accessible foundations treatment spanning human meaning and agent use.
 
@@ -143,7 +143,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** PR67 contains historical bibliography triage; triage is not full reading of all primary sources.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
 
 **Original gap (6 November 2026).** Standard mathematical constructions and project-specific integration need a transparent comparison with prior work.
 
@@ -167,7 +167,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** A separate bounded conversion specification remains planned.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Meaning Bridge.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Meaning Bridge.
 
 **Original gap (6 November 2026).** The structure of a semantic object does not itself define a correct conversion of arbitrary language into computable content.
 
@@ -191,7 +191,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The transformation paper has conditional results; the planned algebra extension is not thereby complete.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
 
 **Original gap (6 November 2026).** Operations exist, but a coherent family of carriers, partial domains and laws is not fully traced to all intended uses.
 
@@ -215,7 +215,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Analytic and synthetic examples exist; a new independent benchmark is not established.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Transformation Algebra, Falsification Register.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Transformation Algebra, Falsification Register.
 
 **Original gap (6 November 2026).** Small synthetic spaces do not provide a diverse test set of practically meaningful transformations.
 
@@ -239,7 +239,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas.
 
 **Original gap (6 November 2026).** A failed premise, failed implementation and counterexample to a theorem are different diagnoses.
 
@@ -263,7 +263,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused.
 
-**Priority:** P1 · **Owner:** KC-SWE · **Required outputs:** Verification Records, Meaning Cases, Falsification Register.
+**Priority:** Next · **Owner:** KC-SWE · **Required outputs:** Verification Records, Meaning Cases, Falsification Register.
 
 **Original gap (6 November 2026).** Three-vertex enumeration and the fixed iteration limit do not establish large-graph or production correctness.
 
@@ -287,7 +287,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** A standalone current geometry manuscript remains planned.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
 
 **Original gap (6 November 2026).** Historical geometry arguments exist, but a current explicit and validated geometry profile is not established.
 
@@ -311,7 +311,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** No new held-out geometry result is claimed.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Meaning Cases, Falsification Register, Semantic Geometry.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Meaning Cases, Falsification Register, Semantic Geometry.
 
 **Original gap (6 November 2026).** Geometric similarity has not been validated against the distinctions required by concrete KC tasks.
 
@@ -335,7 +335,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Architecture candidates do not establish a completed integrated consumer.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Semantic Bridge, Semantic Geometry, Geometry Evaluation.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Semantic Bridge, Semantic Geometry, Geometry Evaluation.
 
 **Original gap (6 November 2026).** Candidate ranking and contract-based admissibility need a documented interface between the geometric and logical layers.
 
@@ -359,7 +359,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas, Falsification Register.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Claim Atlas, Falsification Register.
 
 **Original gap (6 November 2026).** Existing propositions, specifications, standalone checks and services are not connected by a complete verified map.
 
@@ -383,7 +383,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** No all-system production conformance verdict; execution is paused.
 
-**Priority:** P1 · **Owner:** Agent-SWE · **Required outputs:** Scaled Checks, Theory Traceability.
+**Priority:** Next · **Owner:** Agent-SWE · **Required outputs:** Scaled Checks, Theory Traceability.
 
 **Original gap (6 November 2026).** Finite reference checks do not establish that the deployed implementation enforces the same contract.
 
@@ -407,7 +407,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The transcription study does not measure unrestricted semantic extraction accuracy.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Meaning Cases, Falsification Register.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Semantic Bridge, Meaning Cases, Falsification Register.
 
 **Original gap (6 November 2026).** Well-formed records do not show that all material semantic conditions were extracted from a source.
 
@@ -431,7 +431,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Advanced retrieval work is separate from the baseline exact-consumer pilot.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Hybrid Retrieval, Theory Traceability, Extraction Fidelity.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Hybrid Retrieval, Theory Traceability, Extraction Fidelity.
 
 **Original gap (6 November 2026).** Prepared artifacts, indexed entries, exact retrieval and successful task use are separate stages.
 
@@ -457,7 +457,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Policies and candidate controls are not proof of a live authorization boundary.
 
-**Priority:** P1 · **Owner:** Agent-Brain · **Required outputs:** Falsification Register, Theory Traceability.
+**Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Falsification Register, Theory Traceability.
 
 **Original gap (6 November 2026).** A recent check or TTL does not establish authorization at the protected operation or safe publication ordering.
 
@@ -481,7 +481,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Six bounded studies are published; no general superiority or universal savings follows.
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Runtime Conformance, Agent Application, Current Authority.
+**Priority:** Expansion · **Owner:** KC-Brain · **Required outputs:** Runtime Conformance, Agent Application, Current Authority.
 
 **Original gap (6 November 2026).** The corpus does not establish universal quality, latency or economic superiority.
 
@@ -505,7 +505,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Body translation drafts and a semantic cross-language benchmark are distinct deliverables.
 
-**Priority:** P2 · **Owner:** Agent-Brain · **Required outputs:** Semantic Geometry, Extraction Fidelity.
+**Priority:** Expansion · **Owner:** Agent-Brain · **Required outputs:** Semantic Geometry, Extraction Fidelity.
 
 **Original gap (6 November 2026).** Language/genre and modality transfer cannot be inferred from one textual profile.
 
@@ -529,7 +529,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Retained evidence and documented historical recovery gaps coexist.
 
-**Priority:** P1 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
+**Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas.
 
 **Original gap (6 November 2026).** Some historical programs/fixtures remain unavailable and source-rights constraints limit reproducibility.
 
@@ -553,7 +553,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The published single-section pilot reports a tie, not a measured general benefit.
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Verification Records.
+**Priority:** Expansion · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Verification Records.
 
 **Original gap (6 November 2026).** Russian applied-writing skills and a single-section tie do not establish English scientific-editing effectiveness.
 
@@ -577,7 +577,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Typed reading maps exist; links are not proof and proposal pins are not a coherent release.
 
-**Priority:** P2 · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Falsification Register.
+**Priority:** Expansion · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Falsification Register.
 
 **Original gap (6 November 2026).** New theory and negative results need a controlled route back into papers, specifications, studies and appendices.
 
@@ -601,7 +601,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate.
 
-**Priority:** P0 · **Owner:** KC-Brain · **Required outputs:** none.
+**Priority:** Immediate · **Owner:** KC-Brain · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Unlimited research expansion must not prevent a readable, scientifically honest release of the existing corpus.
 
