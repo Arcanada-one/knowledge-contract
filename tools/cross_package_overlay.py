@@ -621,6 +621,7 @@ def _evaluate(overlay: dict, context: dict) -> dict:
     reviews = context.get("reviews") if isinstance(context.get("reviews"), list) else []
     published = context.get("published_releases") if isinstance(context.get("published_releases"), list) else []
     mandatory = context.get("mandatory_dependencies")
+    task_requirements = context.get("task_requirements")
     unit_scope_aligned = context.get("unit_scope_aligned")
 
     def pin_state(side: str, package: dict) -> dict:
@@ -799,24 +800,144 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 side="B",
                 detail="review pin_manifest_digests.B must equal package B manifest bytes",
             )
+        return matched
+
+    def bound_incompatibility_evidence(review: dict) -> str | None:
+        evidence = review.get("evidence")
+        if isinstance(evidence, str) and evidence.strip():
+            return evidence.strip()
         return None
 
     def mandatory_closure_result() -> dict | None:
-        """A9: validate and evaluate mandatory dependency closure when supplied."""
-        if mandatory is None:
+        """A9: closure is complete only against a trusted requirements revision R."""
+        # Absent requirements and absent discharges: no A9 claim.
+        if task_requirements is None and mandatory is None:
             return None
+
+        if task_requirements is None:
+            return outcome(
+                "inspectable_unresolved",
+                "requirements_revision_missing",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                detail="caller discharges alone cannot prove closure without trusted requirements revision R",
+            )
+        if not isinstance(task_requirements, dict):
+            return refuse(
+                "malformed_input",
+                detail="task_requirements must be an object with revision and members",
+            )
+
+        revision = task_requirements.get("revision")
+        members = task_requirements.get("members")
+        empty_justification = task_requirements.get("empty_set_justification")
+        if not isinstance(revision, str) or not revision.strip():
+            return outcome(
+                "inspectable_unresolved",
+                "requirements_revision_missing",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                detail="task_requirements.revision R must be a non-empty string",
+            )
+        if not isinstance(members, list):
+            return refuse(
+                "malformed_input",
+                detail="task_requirements.members must be a list of qualified member identity strings",
+            )
+        for member in members:
+            if not isinstance(member, str) or not member:
+                return refuse(
+                    "malformed_input",
+                    detail="each task_requirements.members entry must be a non-empty string",
+                )
+        if len(members) != len(set(members)):
+            return refuse(
+                "malformed_input",
+                detail="task_requirements.members must not contain duplicate qualified identities",
+            )
+
+        if len(members) == 0:
+            if not isinstance(empty_justification, str) or not empty_justification.strip():
+                return outcome(
+                    "inspectable_unresolved",
+                    "use_closure_incomplete",
+                    endpoint_identities=identities,
+                    use_closure_complete=False,
+                    external_effects=0,
+                    unresolved_mandatory=True,
+                    effects_authorized=False,
+                    requirements_revision=revision,
+                    detail=(
+                        "explicit empty requirements set requires non-empty "
+                        "empty_set_justification; absent set is a missing task_requirements key"
+                    ),
+                )
+            if mandatory is None:
+                discharges: list = []
+            elif not isinstance(mandatory, list):
+                return refuse(
+                    "malformed_input",
+                    detail="mandatory_dependencies must be a list when present",
+                )
+            else:
+                discharges = mandatory
+            if discharges:
+                return outcome(
+                    "inspectable_unresolved",
+                    "requirements_unknown_member",
+                    endpoint_identities=identities,
+                    use_closure_complete=False,
+                    external_effects=0,
+                    unresolved_mandatory=True,
+                    effects_authorized=False,
+                    requirements_revision=revision,
+                    detail="justified empty requirements set cannot carry discharge members",
+                )
+            return outcome(
+                "prerequisite_closure_complete",
+                "prerequisite_closure_complete",
+                endpoint_identities=identities,
+                use_closure_complete=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                empty_requirements_set=True,
+                detail="consequential effects still require current authority, delivery and durable effect identity",
+            )
+
+        if mandatory is None:
+            return outcome(
+                "inspectable_unresolved",
+                "use_closure_incomplete",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                omitted_members=list(members),
+                detail="requirements members are present but no discharge list was supplied",
+            )
         if not isinstance(mandatory, list):
             return refuse(
                 "malformed_input",
                 detail="mandatory_dependencies must be a list of objects with id and boolean discharged",
             )
+
+        seen_ids: list[str] = []
         for item in mandatory:
             if not isinstance(item, dict):
                 return refuse(
                     "malformed_input",
                     detail="each mandatory_dependencies member must be an object with id and boolean discharged",
                 )
-            if item.get("id") in (None, ""):
+            member_id = item.get("id")
+            if not isinstance(member_id, str) or not member_id:
                 return refuse(
                     "malformed_input",
                     detail="each mandatory_dependencies member requires a non-empty id",
@@ -826,7 +947,74 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                     "malformed_input",
                     detail="mandatory_dependencies.discharged must be a real boolean",
                 )
-        unresolved = [item for item in mandatory if item.get("discharged") is not True]
+            seen_ids.append(member_id)
+
+        required = set(members)
+        discharge_ids = set(seen_ids)
+        if len(seen_ids) != len(discharge_ids):
+            return outcome(
+                "inspectable_unresolved",
+                "requirements_member_duplicate_discharge",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                detail="duplicate discharge aliases cannot stand in for distinct required members",
+            )
+        unknown = sorted(discharge_ids - required)
+        if unknown:
+            return outcome(
+                "inspectable_unresolved",
+                "requirements_unknown_member",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                unknown_members=unknown,
+            )
+        omitted = sorted(required - discharge_ids)
+        if omitted:
+            return outcome(
+                "inspectable_unresolved",
+                "use_closure_incomplete",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                omitted_members=omitted,
+            )
+
+        missing_witness = []
+        unresolved = []
+        for item in mandatory:
+            if item.get("discharged") is not True:
+                unresolved.append(item)
+                continue
+            witness = item.get("witness_ref")
+            if not isinstance(witness, str) or not witness.strip():
+                missing_witness.append(item.get("id"))
+        if missing_witness:
+            return outcome(
+                "inspectable_unresolved",
+                "discharge_witness_missing",
+                endpoint_identities=identities,
+                use_closure_complete=False,
+                external_effects=0,
+                unresolved_mandatory=True,
+                effects_authorized=False,
+                requirements_revision=revision,
+                members_missing_witness=missing_witness,
+                detail=(
+                    "discharged:true requires a non-empty witness_ref reference; "
+                    "the reference is recorded, not proof of admission (NOT_MEASURED)"
+                ),
+            )
         if unresolved:
             return outcome(
                 "inspectable_unresolved",
@@ -835,19 +1023,44 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 use_closure_complete=False,
                 external_effects=0,
                 unresolved_members=unresolved,
+                unresolved_mandatory=True,
                 effects_authorized=False,
+                requirements_revision=revision,
             )
-        if mandatory:
-            return outcome(
-                "prerequisite_closure_complete",
-                "prerequisite_closure_complete",
-                endpoint_identities=identities,
-                use_closure_complete=True,
-                # Preparation never authorizes effects (overlay §6 A9b).
-                effects_authorized=False,
-                detail="consequential effects still require current authority, delivery and durable effect identity",
-            )
-        return None
+        return outcome(
+            "prerequisite_closure_complete",
+            "prerequisite_closure_complete",
+            endpoint_identities=identities,
+            use_closure_complete=True,
+            # Preparation never authorizes effects (overlay §6 A9b).
+            effects_authorized=False,
+            requirements_revision=revision,
+            detail="consequential effects still require current authority, delivery and durable effect identity",
+        )
+
+    def prefer_unresolved_mandatory(primary: dict) -> dict:
+        """Early returns keep an unresolved mandatory reason when one exists."""
+        # Typed refusals (access, malformed identity, one-sided) stay refusals.
+        if primary.get("status") == "refused":
+            return primary
+        mandatory_report = mandatory_closure_result()
+        if mandatory_report is None:
+            return primary
+        if mandatory_report.get("status") == "refused":
+            return mandatory_report
+        if mandatory_report.get("reason_code") == "prerequisite_closure_complete":
+            # Complete closure does not override an independent A5/A3 outcome.
+            return primary
+        # Incomplete mandatory wins as the exit reason, preserving the primary code.
+        report = dict(mandatory_report)
+        report["unresolved_mandatory"] = True
+        if primary.get("reason_code") and primary.get("reason_code") != report.get("reason_code"):
+            report["also_reason_code"] = primary.get("reason_code")
+        if primary.get("both_facts_retained") is True:
+            report["both_facts_retained"] = True
+        if "endpoint_identities" not in report and "endpoint_identities" in primary:
+            report["endpoint_identities"] = primary["endpoint_identities"]
+        return report
 
     # A6b early: assessment/review pins that disagree with the request.
     if reviewed_pins:
@@ -874,18 +1087,25 @@ def _evaluate(overlay: dict, context: dict) -> dict:
                 missing_side=missing,
                 candidate_preserved=True,
             )
-        common_assumption = (
-            assertions.get("conditions")
-            or assertions.get("common_assumption")
-            or grounding.get("common_assumption")
-            or grounding.get("conditions")
-        )
+        # KC-SWE field map (coordinator Round 7): common applicability domain is
+        # nonempty common_assumption only — not assertions.conditions.
+        common_assumption = assertions.get("common_assumption")
+        if common_assumption in (None, ""):
+            common_assumption = grounding.get("common_assumption")
         harmonized = assertions.get("harmonized") is True
-        if not common_assumption:
-            return refuse(
-                "common_assumption_required",
-                detail="contradicts_under requires an explicit common assumption",
-            )
+        if not isinstance(common_assumption, str) or not common_assumption.strip():
+            return prefer_unresolved_mandatory(outcome(
+                "inspectable_unresolved",
+                "common_assumption_missing",
+                endpoint_identities=identities,
+                both_facts_retained=True,
+                detail=(
+                    "contradicts_under retention requires a non-empty common_assumption "
+                    "domain on the relation (assertions or grounding); conditions is an "
+                    "overlap pair, not the domain field"
+                ),
+            ))
+        common_assumption = common_assumption.strip()
         missing_overlap = []
         unequal_overlap = []
         for left_key, right_key in PREMISE_OVERLAP_FIELDS:
@@ -897,27 +1117,51 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             if left != right:
                 unequal_overlap.append(right_key)
         if unequal_overlap:
-            return refuse(
-                "conditions_incompatible",
+            # Unequal context is unsupported alignment, not a typed refusal that
+            # the statements cannot conflict (KC-Brain / Agent-Brain A5).
+            return prefer_unresolved_mandatory(outcome(
+                "inspectable_unresolved",
+                "premise_alignment_unsupported",
+                endpoint_identities=identities,
                 mismatched_fields=unequal_overlap,
-                detail="contradicts_under premises must affirmatively overlap on unit/time/scope/conditions",
-            )
+                both_facts_retained=True,
+                detail=(
+                    "unequal unit/time/scope/conditions pairs mean unsupported premise "
+                    "alignment in this preparation, not proof that no conflict exists"
+                ),
+            ))
         if missing_overlap or not harmonized:
-            return outcome(
+            return prefer_unresolved_mandatory(outcome(
                 "inspectable_unresolved",
                 "premise_overlap_unproven",
                 endpoint_identities=identities,
                 missing_fields=missing_overlap,
                 harmonized_assertion=harmonized,
+                both_facts_retained=True,
                 detail=(
                     "harmonized:true is an author assertion, not proof; affirmative "
-                    "peer overlap fields are required (KC-SWE fail-closed pending KC-Brain)"
+                    "peer overlap fields are required"
                 ),
-            )
+            ))
         review_outcome = require_independent_review(as_unresolved_when_missing=True)
-        if review_outcome is not None:
-            return review_outcome
-        return outcome(
+        if isinstance(review_outcome, dict) and "status" in review_outcome:
+            return prefer_unresolved_mandatory(review_outcome)
+        matched_review = review_outcome
+        if bound_incompatibility_evidence(matched_review) is None:
+            return prefer_unresolved_mandatory(outcome(
+                "inspectable_unresolved",
+                "no_bound_incompatibility_assessment",
+                endpoint_identities=identities,
+                both_facts_retained=True,
+                detail=(
+                    "retained contradicts_under requires a non-empty evidence string on "
+                    "the R2-bound accepted review explaining why both propositions cannot "
+                    "hold in the common_assumption domain; the evaluator validates record "
+                    "presence and binding only and does not prove natural-language "
+                    "incompatibility"
+                ),
+            ))
+        return prefer_unresolved_mandatory(outcome(
             "inspectable",
             "contradicts_under_retained",
             endpoint_identities=identities,
@@ -925,17 +1169,25 @@ def _evaluate(overlay: dict, context: dict) -> dict:
             winner_selected=False,
             harmonized=True,
             common_assumption=common_assumption,
-        )
+            effects_authorized=False,
+            nl_incompatibility_proven=False,
+            detail=(
+                "record/bindings validated only; evaluator does not prove "
+                "natural-language incompatibility"
+            ),
+        ))
 
     review_refusal = require_independent_review()
-    if review_refusal is not None:
+    if isinstance(review_refusal, dict) and "status" in review_refusal:
         return review_refusal
 
     # A9 unresolved members must surface even when A3 lineage would otherwise return.
     mandatory_early = mandatory_closure_result()
-    if mandatory_early is not None and mandatory_early.get("reason_code") == "use_closure_incomplete":
+    if mandatory_early is not None and mandatory_early.get("unresolved_mandatory") is True:
         return mandatory_early
     if mandatory_early is not None and mandatory_early.get("status") == "refused":
+        return mandatory_early
+    if mandatory_early is not None and mandatory_early.get("reason_code") == "use_closure_incomplete":
         return mandatory_early
 
     # A2 / R3: comparison requires affirmative evidence for all PREMISE_OVERLAP_FIELDS.

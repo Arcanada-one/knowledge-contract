@@ -53,21 +53,44 @@ after every A10 condition is affirmatively established:
   True` → `unit_scope_unresolved`. `unit_scope_aligned` does not waive any
   missing field.
 - **A3 / A9 order.** Unresolved mandatory dependencies are evaluated before the
-  copied-support early return, so `use_closure_incomplete` is preserved.
-- **A5 contradiction (KC-SWE fail-closed interpretation pending KC-Brain).**
-  `harmonized: true` alone is an author assertion, not proof. Retention requires
-  affirmative equal peer overlap fields (units, quantifier scope, conditions,
-  valid time) **and** an R2-bound review of this exact edge. Missing overlap →
-  `inspectable_unresolved` / `premise_overlap_unproven`; missing bound review →
-  `inspectable_unresolved` / `no_bound_edge_review`; unequal overlap →
-  `conditions_incompatible`.
+  copied-support early return. A3 and A5 early returns keep
+  `unresolved_mandatory` when an incomplete closure exists (primary reason
+  `use_closure_incomplete` / more precise A9 codes).
+- **A5 contradiction (KC-Brain / Agent-Brain Round 7).** Metadata equality plus
+  `harmonized: true` is **not** proof of contradiction. Retention requires all
+  of: (1) non-empty relation `common_assumption` (assertions or grounding; KC-SWE
+  field map — **not** `conditions`, which remains one of the four overlap pairs);
+  (2) affirmative equal peer overlap fields; (3) an R2-bound accepted review
+  whose non-empty `evidence` string records why both propositions cannot hold in
+  that domain. The evaluator validates **record presence and bindings only**; it
+  does **not** prove natural-language incompatibility (`nl_incompatibility_proven:
+  false` on retention). Missing/empty `common_assumption` →
+  `inspectable_unresolved` / `common_assumption_missing`. Missing overlap →
+  `premise_overlap_unproven`. Unequal overlap → `premise_alignment_unsupported`
+  (unresolved, both statements retained — **not** `conditions_incompatible`
+  refusal). Missing bound review → `no_bound_edge_review`. Bound review without
+  non-empty `evidence` → `no_bound_incompatibility_assessment`. Missing/revoked
+  access and malformed identity keep their refusals.
+- **A9 completeness bound to trusted requirements (Round 7).** Caller
+  `mandatory_dependencies` with every `discharged: true` is **not** enough for
+  `prerequisite_closure_complete`. Closure requires `context.task_requirements`
+  with non-empty `revision` R and `members` (qualified id strings; duplicates in
+  `members` → `malformed_input`). Each member must appear exactly once among
+  discharges; each `discharged: true` needs a non-empty `witness_ref` (a recorded
+  reference, **not** proof of admission — admission remains NOT_MEASURED).
+  Missing R → `requirements_revision_missing`; omitted member →
+  `use_closure_incomplete`; duplicate discharge aliases →
+  `requirements_member_duplicate_discharge`; unknown extra →
+  `requirements_unknown_member`; discharged without witness →
+  `discharge_witness_missing`. **Absent set** = no `task_requirements` key.
+  **Explicit empty set** = `members: []` with non-empty
+  `empty_set_justification` (and no discharge members).
 
 Missing fields, non-string `path` when present, `rendition_of` relation edges,
-path segments named `translations` (any case), same `package_id` on both sides,
-and `contradicts_under` without an explicit common assumption are typed
-refusals (exit 1). Malformed shapes yield `malformed_input`; `evaluate()` and
-the CLI never crash without a JSON refusal report. Input is read at most
-`MAX_INPUT_BYTES+1` bytes.
+path segments named `translations` (any case), and same `package_id` on both
+sides are typed refusals (exit 1). Malformed shapes yield `malformed_input`;
+`evaluate()` and the CLI never crash without a JSON refusal report. Input is
+read at most `MAX_INPUT_BYTES+1` bytes.
 
 It is **not** independent scientific review, production validation,
 authorization, an execution grant, or a released wire schema. `book-package/2`
@@ -85,7 +108,7 @@ Exit codes:
 | `0` | Accepted/complete inspectable outcome (`inspectable`, `prerequisite_closure_complete`, `accepted`) |
 | `1` | Typed refusal (always with a JSON report) |
 | `2` | Usage error |
-| `3` | Incomplete-but-inspectable (`inspectable_unresolved`, e.g. A2 unit/scope, A5 unproven overlap, or A9a use-closure) |
+| `3` | Incomplete-but-inspectable (`inspectable_unresolved`, e.g. A2 unit/scope, A5 alignment/evidence gaps, or A9 use-closure) |
 
 A missing report must never be read as pass. `request_pins` and matching review
 pins must contain exactly keys `A` and `B` selecting the overlay package

@@ -164,7 +164,8 @@ def bound_review(*, pins: dict | None = None, digests: tuple[dict, dict] | None 
                  relation_id: str = "rel-1", reviewed_edge_revision: str = "ov-1",
                  reviewer: str = "fixture-reviewer", author: str = "fixture-author",
                  verdict: str = "accepted", scope: str = "inspection-only",
-                 independent: bool = True, **extra: object) -> dict:
+                 independent: bool = True, evidence: str | None = None,
+                 **extra: object) -> dict:
     """Independent scoped review with complete release + manifest-byte pins."""
     a_digest, b_digest = digests or (DIGEST_A1, DIGEST_B1)
     review = {
@@ -181,8 +182,15 @@ def bound_review(*, pins: dict | None = None, digests: tuple[dict, dict] | None 
         "relation_id": relation_id,
         "reviewed_edge_revision": reviewed_edge_revision,
     }
+    if evidence is not None:
+        review["evidence"] = evidence
     review.update(extra)
     return review
+
+
+INCOMPATIBILITY_EVIDENCE = (
+    "On the shared applicability domain, x <= 10 and x > 10 cannot both hold."
+)
 
 
 def comparable_assertions(**overrides: object) -> dict:
@@ -204,9 +212,53 @@ def comparable_assertions(**overrides: object) -> dict:
     return assertions
 
 
+def a5_conflict_assertions(**overrides: object) -> dict:
+    """Equal-overlap contradicts_under assertions with an explicit common_assumption."""
+    assertions = comparable_assertions(
+        polarity="conflict",
+        attribution="both-sides",
+        quantifier_scope="same-subject",
+        peer_quantifier_scope="same-subject",
+        conditions="shared-assumption-load",
+        peer_conditions="shared-assumption-load",
+        common_assumption="shared-domain-x-on-same-referent",
+        harmonized=True,
+        from_proposition="x <= 10",
+        to_proposition="x > 10",
+    )
+    assertions.update(overrides)
+    return assertions
+
+
+def task_requirements_record(
+    *,
+    revision: str = "R1",
+    members: list | None = None,
+    empty_set_justification: str | None = None,
+) -> dict:
+    """Trusted requirements set (context.task_requirements); absent key ≠ empty set."""
+    record: dict = {
+        "revision": revision,
+        "members": ["A", "B"] if members is None else list(members),
+    }
+    if empty_set_justification is not None:
+        record["empty_set_justification"] = empty_set_justification
+    return record
+
+
+def discharge(member_id: str, *, discharged: bool = True, witness_ref: str | None = "wit-1",
+              **extra: object) -> dict:
+    item: dict = {"id": member_id, "discharged": discharged}
+    if witness_ref is not None:
+        item["witness_ref"] = witness_ref
+    item.update(extra)
+    return item
+
+
 def context_record(*, request_pins: dict | None = None, permissions: dict | None = None,
                    reviews: list | None = None, published_releases: list | None = None,
                    mandatory_dependencies: list | None = None,
+                   task_requirements: dict | None = None,
                    current_authority_for_effects: bool = False,
                    unit_scope_aligned: bool | None = None) -> dict:
     a, b = base_packages()
@@ -227,6 +279,8 @@ def context_record(*, request_pins: dict | None = None, permissions: dict | None
         "mandatory_dependencies": mandatory_dependencies,
         "current_authority_for_effects": current_authority_for_effects,
     }
+    if task_requirements is not None:
+        ctx["task_requirements"] = task_requirements
     if unit_scope_aligned is not None:
         ctx["unit_scope_aligned"] = unit_scope_aligned
     return ctx
@@ -345,24 +399,18 @@ class CorpusG11Tests(unittest.TestCase):
         a, b = base_packages()
         from_ep = endpoint(a, "p1")
         to_ep = endpoint(b, "p2")
-        assertions = comparable_assertions(
-            polarity="conflict",
-            attribution="both-sides",
-            quantifier_scope="same-subject",
-            peer_quantifier_scope="same-subject",
-            conditions="shared-assumption-load",
-            peer_conditions="shared-assumption-load",
-            harmonized=True,
-        )
         ov = overlay_record(
-            kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b), assertions=assertions,
+            kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=a5_conflict_assertions(),
         )
-        result = run_cli(payload(ov, context_record()))
+        ctx = context_record(reviews=[bound_review(evidence=INCOMPATIBILITY_EVIDENCE)])
+        result = run_cli(payload(ov, ctx))
         report = require_report(self, result)
         self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
         self.assertEqual(report["reason_code"], "contradicts_under_retained")
         self.assertTrue(report["both_facts_retained"])
         self.assertFalse(report.get("winner_selected", False))
+        self.assertFalse(report.get("effects_authorized", False))
 
     def test_g11_a6a_b2_publication_does_not_revoke_b1(self):
         a, b = base_packages()
@@ -480,9 +528,10 @@ class CorpusG11Tests(unittest.TestCase):
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
         ctx = context_record(
+            task_requirements=task_requirements_record(),
             mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": False, "state": "unknown"},
+                discharge("A"),
+                discharge("B", discharged=False, witness_ref=None, state="unknown"),
             ],
             current_authority_for_effects=False,
         )
@@ -493,6 +542,7 @@ class CorpusG11Tests(unittest.TestCase):
         self.assertEqual(report["status"], "inspectable_unresolved")
         self.assertFalse(report["use_closure_complete"])
         self.assertEqual(report["external_effects"], 0)
+        self.assertTrue(report.get("unresolved_mandatory"))
 
     def test_g11_a9b_completed_dependency_still_needs_authority(self):
         a, b = base_packages()
@@ -500,10 +550,8 @@ class CorpusG11Tests(unittest.TestCase):
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
         ctx = context_record(
-            mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": True},
-            ],
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=[discharge("A"), discharge("B")],
             current_authority_for_effects=False,
         )
         result = run_cli(payload(ov, ctx))
@@ -686,7 +734,7 @@ class FailClosedRound2Tests(unittest.TestCase):
         self.assertEqual(report["status"], "refused")
         self.assertEqual(report["reason_code"], "endpoint_package_mismatch")
 
-    def test_r2_08_contradicts_without_common_assumption_refused(self):
+    def test_r2_08_contradicts_without_common_assumption_unresolved(self):
         a, b = base_packages()
         from_ep = endpoint(a, "p1")
         to_ep = endpoint(b, "p2")
@@ -695,18 +743,26 @@ class FailClosedRound2Tests(unittest.TestCase):
             "modality": "claim",
             "attribution": "both-sides",
             "quantifier_scope": "same-subject",
+            "peer_quantifier_scope": "same-subject",
             "units": "kg",
+            "peer_units": "kg",
             "valid_time": "2026",
+            "peer_valid_time": "2026",
+            "conditions": "shared-assumption-load",
+            "peer_conditions": "shared-assumption-load",
+            "harmonized": True,
         }
         ov = overlay_record(
             kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
             assertions=assertions,
         )
-        result = run_cli(payload(ov, context_record()))
+        ctx = context_record(reviews=[bound_review(evidence=INCOMPATIBILITY_EVIDENCE)])
+        result = run_cli(payload(ov, ctx))
         report = require_report(self, result)
-        self.assertEqual(result.returncode, 1)
-        self.assertEqual(report["status"], "refused")
-        self.assertEqual(report["reason_code"], "common_assumption_required")
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "common_assumption_missing")
+        self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
 
     def test_r2_09_a9b_closure_with_b_not_permitted_refused(self):
         a, b = base_packages()
@@ -723,10 +779,8 @@ class FailClosedRound2Tests(unittest.TestCase):
         }
         ctx = context_record(
             permissions=perms,
-            mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": True},
-            ],
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=[discharge("A"), discharge("B")],
         )
         result = run_cli(payload(ov, ctx))
         report = require_report(self, result)
@@ -863,7 +917,10 @@ class FailClosedRound3Tests(unittest.TestCase):
         from_ep = endpoint(a, "x")
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
-        ctx = context_record(mandatory_dependencies=["A", "B"])
+        ctx = context_record(
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=["A", "B"],
+        )
         result = run_cli(payload(ov, ctx))
         report = require_report(self, result)
         self.assertEqual(result.returncode, 1)
@@ -876,9 +933,10 @@ class FailClosedRound3Tests(unittest.TestCase):
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
         ctx = context_record(
+            task_requirements=task_requirements_record(),
             mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": "false"},
+                discharge("A"),
+                {"id": "B", "discharged": "false", "witness_ref": "wit-b"},
             ],
         )
         result = run_cli(payload(ov, ctx))
@@ -893,10 +951,8 @@ class FailClosedRound3Tests(unittest.TestCase):
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
         ctx = context_record(
-            mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": True},
-            ],
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=[discharge("A"), discharge("B")],
             current_authority_for_effects=True,
         )
         result = run_cli(payload(ov, ctx))
@@ -911,9 +967,10 @@ class FailClosedRound3Tests(unittest.TestCase):
         to_ep = endpoint(b, "y")
         ov = overlay_record(kind="requires_for_use", from_ep=from_ep, to_ep=to_ep, packages=(a, b))
         ctx = context_record(
+            task_requirements=task_requirements_record(),
             mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": False, "state": "unknown"},
+                discharge("A"),
+                discharge("B", discharged=False, witness_ref=None, state="unknown"),
             ],
         )
         result = run_cli(payload(ov, ctx))
@@ -1330,9 +1387,10 @@ class FailClosedRound5Tests(unittest.TestCase):
             lineage=lineage, grounding=grounding,
         )
         ctx = context_record(
+            task_requirements=task_requirements_record(),
             mandatory_dependencies=[
-                {"id": "A", "discharged": True},
-                {"id": "B", "discharged": False, "state": "unknown"},
+                discharge("A"),
+                discharge("B", discharged=False, witness_ref=None, state="unknown"),
             ],
         )
         result = run_cli(payload(ov, ctx))
@@ -1342,6 +1400,7 @@ class FailClosedRound5Tests(unittest.TestCase):
         self.assertEqual(report["reason_code"], "use_closure_incomplete")
         self.assertFalse(report["use_closure_complete"])
         self.assertEqual(report["external_effects"], 0)
+        self.assertTrue(report.get("unresolved_mandatory"))
         self.assertTrue(any(item.get("id") == "B" for item in report.get("unresolved_members", [])))
 
     def test_r5_a5_harmonized_alone_unproven(self):
@@ -1354,6 +1413,7 @@ class FailClosedRound5Tests(unittest.TestCase):
             "attribution": "both-sides",
             "quantifier_scope": "same-subject",
             "conditions": "shared-assumption-load",
+            "common_assumption": "shared-domain-x-on-same-referent",
             "units": "kg",
             "valid_time": "2026",
             "harmonized": True,
@@ -1373,18 +1433,9 @@ class FailClosedRound5Tests(unittest.TestCase):
         a, b = base_packages()
         from_ep = endpoint(a, "p1")
         to_ep = endpoint(b, "p2")
-        assertions = comparable_assertions(
-            polarity="conflict",
-            attribution="both-sides",
-            quantifier_scope="same-subject",
-            peer_quantifier_scope="same-subject",
-            conditions="shared-assumption-load",
-            peer_conditions="shared-assumption-load",
-            harmonized=True,
-        )
         ov = overlay_record(
             kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
-            assertions=assertions,
+            assertions=a5_conflict_assertions(),
         )
         result = run_cli(payload(ov, context_record(reviews=[])))
         report = require_report(self, result)
@@ -1532,6 +1583,260 @@ class FailClosedRound6Tests(unittest.TestCase):
         self.assertEqual(report["status"], "refused")
         self.assertEqual(report["reason_code"], "review_verdict_conflict")
         self.assertNotEqual(report["reason_code"], "scoped_inspection_ok")
+
+
+class FailClosedRound7Tests(unittest.TestCase):
+    """KC-Brain / Agent-Brain A5+A9 semantic decisions. Red on 8f9e1be8."""
+
+    def _a5_payload(self, assertions: dict, *, reviews=None, **ctx_extra):
+        a, b = base_packages()
+        from_ep = endpoint(a, "p1")
+        to_ep = endpoint(b, "p2")
+        ov = overlay_record(
+            kind="contradicts_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            assertions=assertions,
+        )
+        if reviews is None:
+            reviews = [bound_review(evidence=INCOMPATIBILITY_EVIDENCE)]
+        return ov, context_record(reviews=reviews, **ctx_extra)
+
+    def test_r7_a5_compatible_bounds_without_incompatibility_evidence_not_retained(self):
+        # x <= 10 vs x >= 5: equal metadata + harmonized, but no incompatibility explanation.
+        assertions = a5_conflict_assertions(
+            from_proposition="x <= 10",
+            to_proposition="x >= 5",
+        )
+        ov, ctx = self._a5_payload(
+            assertions,
+            reviews=[bound_review()],  # accepted R2 binding, empty/absent evidence
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "no_bound_incompatibility_assessment")
+        self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
+
+    def test_r7_a5_unequal_time_windows_unresolved_not_refused(self):
+        assertions = a5_conflict_assertions(
+            valid_time="[0,10]",
+            peer_valid_time="[5,15]",
+        )
+        ov, ctx = self._a5_payload(assertions)
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "premise_alignment_unsupported")
+        self.assertNotEqual(report["reason_code"], "conditions_incompatible")
+        self.assertTrue(report.get("both_facts_retained"))
+
+    def test_r7_a5_empty_common_assumption_unresolved(self):
+        assertions = a5_conflict_assertions(common_assumption="")
+        ov, ctx = self._a5_payload(assertions)
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "common_assumption_missing")
+
+    def test_r7_a5_missing_common_assumption_unresolved(self):
+        assertions = a5_conflict_assertions()
+        del assertions["common_assumption"]
+        ov, ctx = self._a5_payload(assertions)
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "common_assumption_missing")
+
+    def test_r7_a5_positive_retained_with_evidence_no_winner(self):
+        assertions = a5_conflict_assertions()
+        ov, ctx = self._a5_payload(assertions)
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "contradicts_under_retained")
+        self.assertTrue(report["both_facts_retained"])
+        self.assertFalse(report.get("winner_selected", False))
+        self.assertFalse(report.get("effects_authorized", False))
+
+    def test_r7_a9_all_discharged_without_requirements_revision_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            mandatory_dependencies=[discharge("A"), discharge("B")],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertIn(report["reason_code"], {
+            "use_closure_incomplete", "requirements_revision_missing",
+        })
+        self.assertNotEqual(report["reason_code"], "prerequisite_closure_complete")
+        self.assertTrue(report.get("unresolved_mandatory"))
+
+    def test_r7_a9_omitted_member_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(members=["A", "B"]),
+            mandatory_dependencies=[discharge("A")],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "use_closure_incomplete")
+        self.assertTrue(report.get("unresolved_mandatory"))
+
+    def test_r7_a9_duplicate_discharge_aliases_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(members=["A", "B"]),
+            mandatory_dependencies=[
+                discharge("A", witness_ref="wit-a1"),
+                discharge("A", witness_ref="wit-a2"),
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertIn(report["reason_code"], {
+            "use_closure_incomplete", "requirements_member_duplicate_discharge",
+        })
+
+    def test_r7_a9_unknown_extra_member_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(members=["A", "B"]),
+            mandatory_dependencies=[
+                discharge("A"), discharge("B"), discharge("C"),
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertIn(report["reason_code"], {
+            "use_closure_incomplete", "requirements_unknown_member",
+        })
+
+    def test_r7_a9_discharged_without_witness_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(members=["A", "B"]),
+            mandatory_dependencies=[
+                discharge("A"),
+                {"id": "B", "discharged": True},
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertIn(report["reason_code"], {
+            "use_closure_incomplete", "discharge_witness_missing",
+        })
+
+    def test_r7_a9_explicit_empty_set_complete(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(
+                members=[],
+                empty_set_justification="R1 intentionally requires no overlay members",
+            ),
+            mandatory_dependencies=[],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertEqual(report["reason_code"], "prerequisite_closure_complete")
+        self.assertFalse(report["effects_authorized"])
+
+    def test_r7_a9_empty_set_without_justification_unresolved(self):
+        a, b = base_packages()
+        ov = overlay_record(
+            kind="requires_for_use",
+            from_ep=endpoint(a, "x"), to_ep=endpoint(b, "y"), packages=(a, b),
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(members=[]),
+            mandatory_dependencies=[],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "use_closure_incomplete")
+
+    def test_r7_a3_early_return_keeps_unresolved_mandatory(self):
+        a, b = base_packages()
+        from_ep = endpoint(a, "stmt-1", source_anchor="a1")
+        to_ep = endpoint(b, "stmt-copy", source_anchor="b1")
+        ov = overlay_record(
+            kind="supports_under", from_ep=from_ep, to_ep=to_ep, packages=(a, b),
+            lineage=[{"kind": "quotes", "origin": "pkg-alpha@A1:stmt-1", "revision": "A1"}],
+            grounding={
+                "from_anchor": "a1", "to_anchor": "b1", "support_kind": "quotation",
+            },
+        )
+        ctx = context_record(
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=[
+                discharge("A"),
+                discharge("B", discharged=False, witness_ref=None, state="unknown"),
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "use_closure_incomplete")
+        self.assertTrue(report.get("unresolved_mandatory"))
+        self.assertNotEqual(report["reason_code"], "single_lineage_family")
+
+    def test_r7_a5_early_return_keeps_unresolved_mandatory(self):
+        assertions = a5_conflict_assertions()
+        ov, ctx = self._a5_payload(
+            assertions,
+            task_requirements=task_requirements_record(),
+            mandatory_dependencies=[
+                discharge("A"),
+                discharge("B", discharged=False, witness_ref=None, state="unknown"),
+            ],
+        )
+        result = run_cli(payload(ov, ctx))
+        report = require_report(self, result)
+        self.assertEqual(result.returncode, 3)
+        self.assertEqual(report["status"], "inspectable_unresolved")
+        self.assertEqual(report["reason_code"], "use_closure_incomplete")
+        self.assertTrue(report.get("unresolved_mandatory"))
+        self.assertNotEqual(report["reason_code"], "contradicts_under_retained")
 
 
 if __name__ == "__main__":
