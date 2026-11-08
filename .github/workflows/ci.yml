@@ -155,6 +155,11 @@ jobs:
       # No fork filter and no secrets on this job or on `dco`: fork PRs must run both, because a skipped required check counts as passed.
       - name: Source register, DCO and workflow tests
         run: python3 -B -m unittest tools.test_check_sources tools.test_check_dco tools.test_ci_workflow tools.test_check_separation -v
+      - name: Cross-package overlay preparation corpus (G11)
+        # Bounded producer-side preparation for tools/cross_package_overlay.py.
+        # A missing JSON report or non-zero refusal exit is failure for positives;
+        # typed refusals must stay non-zero.
+        run: python3 -B -m unittest tools.test_cross_package_overlay -v
       - name: Every publication and evidence file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint

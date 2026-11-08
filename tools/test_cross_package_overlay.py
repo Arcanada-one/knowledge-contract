@@ -16,7 +16,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from tools import cross_package_overlay as cpo
+try:
+    from tools import cross_package_overlay as cpo
+except ImportError:  # `cd tools && python3 -B -m unittest test_cross_package_overlay`
+    import cross_package_overlay as cpo
 
 ROOT = Path(__file__).resolve().parents[1]
 CLI = ROOT / "tools" / "cross_package_overlay.py"
