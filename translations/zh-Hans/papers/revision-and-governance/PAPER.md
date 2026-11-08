@@ -157,9 +157,9 @@ PROV-DM 提供实体、活动和负责的代理之间的一般性区分 [1]。�
 
 ## 8. 与已发表工程研究的联系 {#8-connections-to-the-published-engineering-work}
 
-[可执行投影与修订研究](../../../../engineering/studies/executable-projections-and-revision/STUDY.md)讨论固定版本修订和有限范围的更新行为。[复用准入与成本控制研究](../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)考察先前准备的制品在当前是否具备使用资格。
+[可执行投影与修订研究](../../engineering/studies/executable-projections-and-revision/STUDY.md)讨论固定版本修订和有限范围的更新行为。[复用准入与成本控制研究](../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)考察先前准备的制品在当前是否具备使用资格。
 
-共用的[术语表](../../reference/glossary/GLOSSARY.md)、[交互与记忆](../../../../papers/interaction-and-memory/PAPER.md)和[受控知识复用](../../../../papers/controlled-knowledge-reuse/PAPER.md)定义了相关工作状态及准入义务。
+共用的[术语表](../../reference/glossary/GLOSSARY.md)、[交互与记忆](../interaction-and-memory/PAPER.md)和[受控知识复用](../controlled-knowledge-reuse/PAPER.md)定义了相关工作状态及准入义务。
 
 ## 9. 结论 {#9-conclusion}
 
