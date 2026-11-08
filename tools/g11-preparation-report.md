@@ -83,4 +83,4 @@ Genuine positives retained: A10 `scoped_inspection_ok`, A5 `contradicts_under_re
 
 ## Hosted CI
 
-Filled after `gh pr checks 81` on the Round-7 tip.
+`gh pr checks 81` on tip `f100d870a9d8135e3bbbfb566062e9d62e179ae8` (run 42507224051): all listed checks **pass** (book-package, candidate-export, cases, corpus-map, dco, decision-separation, licensing, link-check, markdown-lint, publication-integrity, security-audit).
