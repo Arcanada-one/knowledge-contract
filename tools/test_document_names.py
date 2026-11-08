@@ -76,7 +76,7 @@ class ReadableTitleControls(unittest.TestCase):
 
     def test_repeated_lead_is_removed_but_scope_retained(self):
         from tools.apply_document_names import display_parts
-        self.assertEqual(display_parts('Knowledge Revision', 'Knowledge Revision, Version Identity, and the Adoption of Norms')[0], 'Knowledge Revision: Version Identity, and the Adoption of Norms')
+        self.assertEqual(display_parts('Knowledge Revision', 'Knowledge Revision, Version Identity, and the Adoption of Norms')[0], 'Knowledge Revision: Version Identity and the Adoption of Norms')
 
     def test_russian_repeated_lead(self):
         from tools.apply_document_names import display_parts

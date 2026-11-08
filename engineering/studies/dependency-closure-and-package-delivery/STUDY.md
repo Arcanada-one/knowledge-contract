@@ -1,8 +1,8 @@
 ---
 name: "dependency-closure-and-package-delivery"
-title: "Dependency Closure: Readable artifact layouts, and a pinned package replay"
+title: "Dependency Closure: Readable artifact layouts and a pinned package replay"
 short_title: "Dependency Closure"
-subtitle: "Readable artifact layouts, and a pinned package replay"
+subtitle: "Readable artifact layouts and a pinned package replay"
 previous_title: "Dependency closure, readable artifact layouts, and a pinned package replay"
 artifact: "engineering-study"
 edition: "1.1"
@@ -17,7 +17,7 @@ review_state: "internally-reviewed"
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="dependency-closure-readable-artifact-layouts-and-a-pinned-package-replay"></a>
 
-# Dependency Closure: Readable artifact layouts, and a pinned package replay
+# Dependency Closure: Readable artifact layouts and a pinned package replay
 
 ## Abstract
 

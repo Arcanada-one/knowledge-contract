@@ -1,8 +1,8 @@
 ---
 name: "artifact-registry"
-title: "Artifact Registry: Readable Names, and Document Formats"
+title: "Artifact Registry: Readable Names and Document Formats"
 short_title: "Artifact Registry"
-subtitle: "Readable Names, and Document Formats"
+subtitle: "Readable Names and Document Formats"
 previous_title: "Artifact Registry, Readable Names, and Document Formats"
 artifact: "engineering-specification"
 edition: "1.1"
@@ -15,7 +15,7 @@ description: "Readable artifact names, canonical Markdown formats, identity rule
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="artifact-registry-readable-names-and-document-formats"></a>
 
-# Artifact Registry: Readable Names, and Document Formats
+# Artifact Registry: Readable Names and Document Formats
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

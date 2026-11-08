@@ -58,6 +58,8 @@ def display_parts(short: str, explanation: str) -> tuple[str, str]:
                 break
     if not subtitle.strip():
         raise ValueError('An explanatory subtitle is required')
+    if subtitle != explanation and subtitle.count(',') == 1 and ', and ' in subtitle:
+        subtitle = subtitle.replace(', and ', ' and ', 1)
     subtitle = subtitle[0].upper() + subtitle[1:]
     return short + ': ' + subtitle, subtitle
 
@@ -317,7 +319,7 @@ def main() -> int:
                     raise ValueError('Unsafe output path: ' + path)
                 if target.exists() and path not in ['ROADMAP.md', 'DOCUMENTS.md', 'roadmap/ROADMAP.ru.md', 'roadmap/COMPATIBILITY.md', 'reviews/naming-roadmap/REVIEW.md', 'reviews/naming-roadmap/RESULTS.json']:
                     before = current(path)
-                    if before not in (original(path), git('show', 'd10ba0500be8c0ad2f031445df9c539b5e41fe54:' + path), text):
+                    if before not in (original(path), git('show', 'd10ba0500be8c0ad2f031445df9c539b5e41fe54:' + path), git('show', '548abd01d089faf81570efaafd41ef873c693e47:' + path), text):
                         raise ValueError('Concurrent or unexpected change: ' + path)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_text(text, encoding='utf-8', newline='\n')

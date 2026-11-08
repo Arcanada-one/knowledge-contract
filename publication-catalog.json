@@ -79,12 +79,12 @@
       "type": "paper",
       "slug": "revision-and-governance",
       "path": "papers/revision-and-governance/PAPER.md",
-      "title": "Knowledge Revision: Version Identity, and the Adoption of Norms",
+      "title": "Knowledge Revision: Version Identity and the Adoption of Norms",
       "summary": "Separate identities for content, assessment and normative adoption, with explicit revision and publication decisions.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Revision",
-      "subtitle": "Version Identity, and the Adoption of Norms",
+      "subtitle": "Version Identity and the Adoption of Norms",
       "previous_title": "Knowledge Revision, Version Identity, and the Adoption of Norms"
     },
     {
@@ -103,12 +103,12 @@
       "type": "paper",
       "slug": "knowledge-utility",
       "path": "papers/knowledge-utility/PAPER.md",
-      "title": "Knowledge Utility: Resource Accounting, and Lifecycle Decisions",
+      "title": "Knowledge Utility: Resource Accounting and Lifecycle Decisions",
       "summary": "Task-relative benefit, complete resource accounting, comparison baselines and limits of causal inference.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Utility",
-      "subtitle": "Resource Accounting, and Lifecycle Decisions",
+      "subtitle": "Resource Accounting and Lifecycle Decisions",
       "previous_title": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
     },
     {
@@ -139,12 +139,12 @@
       "type": "specification",
       "slug": "semantic-types",
       "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
-      "title": "Semantic Types: Attribution, and Representations",
+      "title": "Semantic Types: Attribution and Representations",
       "summary": "Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Semantic Types",
-      "subtitle": "Attribution, and Representations",
+      "subtitle": "Attribution and Representations",
       "previous_title": "Semantic Types, Attribution, and Representations"
     },
     {
@@ -175,12 +175,12 @@
       "type": "specification",
       "slug": "artifact-registry",
       "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
-      "title": "Artifact Registry: Readable Names, and Document Formats",
+      "title": "Artifact Registry: Readable Names and Document Formats",
       "summary": "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Artifact Registry",
-      "subtitle": "Readable Names, and Document Formats",
+      "subtitle": "Readable Names and Document Formats",
       "previous_title": "Artifact Registry, Readable Names, and Document Formats"
     },
     {
@@ -259,12 +259,12 @@
       "type": "study",
       "slug": "dependency-closure-and-package-delivery",
       "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
-      "title": "Dependency Closure: Readable artifact layouts, and a pinned package replay",
+      "title": "Dependency Closure: Readable artifact layouts and a pinned package replay",
       "summary": "Historical package evidence and a public exhaustive replay of a finite dependency graph.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Dependency Closure",
-      "subtitle": "Readable artifact layouts, and a pinned package replay",
+      "subtitle": "Readable artifact layouts and a pinned package replay",
       "previous_title": "Dependency closure, readable artifact layouts, and a pinned package replay"
     },
     {
@@ -283,12 +283,12 @@
       "type": "study",
       "slug": "executable-projections-and-revision",
       "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
-      "title": "Executable Projections: Addressable revisions, and the limits of graph minimality",
+      "title": "Executable Projections: Addressable revisions and the limits of graph minimality",
       "summary": "Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Executable Projections",
-      "subtitle": "Addressable revisions, and the limits of graph minimality",
+      "subtitle": "Addressable revisions and the limits of graph minimality",
       "previous_title": "Executable projections, addressable revisions, and the limits of graph minimality"
     },
     {

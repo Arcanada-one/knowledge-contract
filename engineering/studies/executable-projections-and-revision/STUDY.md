@@ -1,8 +1,8 @@
 ---
 name: "executable-projections-and-revision"
-title: "Executable Projections: Addressable revisions, and the limits of graph minimality"
+title: "Executable Projections: Addressable revisions and the limits of graph minimality"
 short_title: "Executable Projections"
-subtitle: "Addressable revisions, and the limits of graph minimality"
+subtitle: "Addressable revisions and the limits of graph minimality"
 previous_title: "Executable projections, addressable revisions, and the limits of graph minimality"
 artifact: "engineering-study"
 edition: "1.1"
@@ -17,7 +17,7 @@ review_state: "internally-reviewed"
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="executable-projections-addressable-revisions-and-the-limits-of-graph-minimality"></a>
 
-# Executable Projections: Addressable revisions, and the limits of graph minimality
+# Executable Projections: Addressable revisions and the limits of graph minimality
 
 ## Abstract
 
