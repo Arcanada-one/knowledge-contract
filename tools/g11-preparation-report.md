@@ -115,4 +115,4 @@ Base head before fix: `1cd98f186e593913e925fcd878d7b4854f5ae8d4`.
 
 ## Hosted CI
 
-Pending after Round 8 push (`gh pr checks 81`).
+`gh pr checks 81` on tip `8eb5098b1476197594c60ef37dae8b6aaaec31fe` (run 42510265806): all listed checks **pass** (book-package, candidate-export, cases, corpus-map, dco, decision-separation, licensing, link-check, markdown-lint, publication-integrity, security-audit).
