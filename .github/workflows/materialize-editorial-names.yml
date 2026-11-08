@@ -1,0 +1,93 @@
+name: Repair author-prepared heading aliases
+
+on:
+  push:
+    branches: [editorial/readable-names-and-roadmap-20261108]
+    paths: [.github/workflows/materialize-editorial-names.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: editorial-readable-names-materialization
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    if: github.repository == 'Arcanada-one/knowledge-contract' && github.ref == 'refs/heads/editorial/readable-names-and-roadmap-20261108'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: editorial/readable-names-and-roadmap-20261108
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Apply exact author repair and recheck all manuscript bodies
+        env:
+          EXPECTED_HEAD: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
+          test "$(git ls-remote origin refs/heads/editorial/readable-names-and-roadmap-20261108 | cut -f1)" = "$EXPECTED_HEAD"
+          python3 -B - <<'PY'
+          from pathlib import Path
+          import subprocess
+          previous = 'b65706a386b9a39c23fcbbfb1b185ddf69ef4787'
+          p = Path('tools/apply_document_names.py')
+          expected = subprocess.check_output(['git', 'show', previous + ':' + str(p)])
+          if p.read_bytes() != expected:
+              raise SystemExit('Author repair source changed')
+          text = expected.decode('utf-8')
+          old = "header_alias = '' if full == old else alias(anchor(old))"
+          new = "header_alias = '' if anchor(full) == anchor(old) else alias(anchor(old))"
+          if text.count(old) != 1:
+              raise SystemExit('Expected heading rule missing')
+          text = text.replace(old, new, 1)
+          old = "git('show', '548abd01d089faf81570efaafd41ef873c693e47:' + path), text)"
+          new = "git('show', '548abd01d089faf81570efaafd41ef873c693e47:' + path), git('show', '" + previous + ":' + path), text)"
+          if text.count(old) != 1:
+              raise SystemExit('Expected byte guard changed')
+          p.write_text(text.replace(old, new, 1), encoding='utf-8', newline='\n')
+          p = Path('tools/test_document_names.py')
+          text = p.read_text(encoding='utf-8')
+          marker = "\n\nif __name__ == '__main__':"
+          addition = '''
+
+          class HeadingAliasRegression(unittest.TestCase):
+              def test_changed_punctuation_with_same_slug_has_no_extra_alias(self):
+                  title = 'Semantic Types, Attribution, and Representations'
+                  raw = '---\\ntitle: "' + title + '"\\n---\\n\\n# ' + title + '\\n\\nOriginal body.\\n'
+                  result = rename_document(raw, title, 'Semantic Types')
+                  self.assertNotIn('<a id=', result)
+                  self.assertIn('# Semantic Types: Attribution and Representations', result)
+                  self.assertTrue(result.endswith('Original body.\\n'))
+          '''
+          import textwrap
+          if text.count(marker) != 1:
+              raise SystemExit('Test insertion point changed')
+          p.write_text(text.replace(marker, textwrap.dedent(addition) + marker, 1), encoding='utf-8', newline='\n')
+          PY
+          python3 -B -m unittest tools.test_document_names -v
+          python3 -B tools/apply_document_names.py --apply
+          python3 -B tools/apply_document_names.py --check
+          python3 -B tools/check_document_names.py .
+      - name: Commit only exact content outputs
+        run: |
+          set -euo pipefail
+          python3 -B - <<'PY'
+          import subprocess
+          from tools.apply_document_names import build
+          outputs, _ = build()
+          allowed = set(outputs) | {'tools/apply_document_names.py', 'tools/test_document_names.py'}
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
+          untracked = set(subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines())
+          if not (changed | untracked) <= allowed:
+              raise SystemExit('Unexpected change; refusing to stage')
+          subprocess.run(['git', 'add', '--', *sorted(allowed)], check=True)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -s -m 'Preserve old heading destinations without duplicate aliases' -m 'Scoped regression for punctuation-equivalent headings; all 30 source bodies rechecked. Ordinary publication/link guards remain unchanged.'
+          git push origin HEAD:refs/heads/editorial/readable-names-and-roadmap-20261108
+          git rev-parse HEAD
