@@ -96,7 +96,7 @@ translation_status: "author-draft"
 
 每项研究的 `evidence/origin.json` 标识其证据文件的来源、精确输出哈希和转换状态。精确恢复的JSON与从保留HTML重建的可读文字视图区分开来。后者并不声称复现了不可获得的原始Markdown字节。
 
-本仓库不再分发第三方图书、页面图像或OCR语料。当前论证是自足的；可公开运行的示例使用原创合成数据或仅含元数据的图。来源访问受限会限制相应历史实验的独立复现，研究会在受影响的主张处明确说明这一限制。
+本仓库不重新分发第三方图书、页面图像或OCR语料。当前论证是自足的；可公开运行的示例使用原创合成数据或仅含元数据的图。来源访问受限会限制相应历史实验的独立复现，研究会在受影响的主张处明确说明这一限制。
 
 项目文本仍采用 [CC BY 4.0](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/LICENSE)，代码仍采用 [Apache-2.0](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/LICENSE-CODE)。当前[来源登记表——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/SOURCES.md)用具名的原始文献及明确的文档覆盖关系，替代了新版本此前笼统的来源描述。
 
