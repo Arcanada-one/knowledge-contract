@@ -1,6 +1,9 @@
 ---
 name: "constrained-transformations"
-title: "Constrained Transformations and the Limits of Knowledge Transfer"
+title: "Knowledge Transformations: Constrained Transformations and the Limits of Knowledge Transfer"
+short_title: "Knowledge Transformations"
+subtitle: "Constrained Transformations and the Limits of Knowledge Transfer"
+previous_title: "Constrained Transformations and the Limits of Knowledge Transfer"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Conditional preservation, composition and reconstruction of knowledge under explicit observations and losses."
 ---
 
-# Constrained Transformations and the Limits of Knowledge Transfer
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="constrained-transformations-and-the-limits-of-knowledge-transfer"></a>
+
+# Knowledge Transformations: Constrained Transformations and the Limits of Knowledge Transfer
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

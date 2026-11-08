@@ -1,6 +1,9 @@
 ---
 name: "contract-family"
-title: "Contracts for Knowledge Operations"
+title: "Knowledge Operations: Contracts for Knowledge Operations"
+short_title: "Knowledge Operations"
+subtitle: "Contracts for Knowledge Operations"
+previous_title: "Contracts for Knowledge Operations"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Common preconditions, invariants, postconditions, effects and evidence for knowledge operations."
 ---
 
-# Contracts for Knowledge Operations
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="contracts-for-knowledge-operations"></a>
+
+# Knowledge Operations: Contracts for Knowledge Operations
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

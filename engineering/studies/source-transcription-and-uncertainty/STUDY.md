@@ -1,6 +1,9 @@
 ---
 name: "source-transcription-and-uncertainty"
-title: "Reproducible transcription is not preservation of uncertainty"
+title: "Uncertainty Preservation: Reproducible transcription is not preservation of uncertainty"
+short_title: "Uncertainty Preservation"
+subtitle: "Reproducible transcription is not preservation of uncertainty"
+previous_title: "Reproducible transcription is not preservation of uncertainty"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -11,7 +14,10 @@ study_type: "corpus-and-projection-audit"
 review_state: "internally-reviewed"
 ---
 
-# Reproducible transcription is not preservation of uncertainty
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="reproducible-transcription-is-not-preservation-of-uncertainty"></a>
+
+# Uncertainty Preservation: Reproducible transcription is not preservation of uncertainty
 
 ## Abstract
 

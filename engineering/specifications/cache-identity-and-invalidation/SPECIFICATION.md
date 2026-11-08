@@ -1,6 +1,9 @@
 ---
 name: "cache-identity-and-invalidation"
-title: "Cache Identity, Dependency Tracking, and Invalidation"
+title: "Cache Validity: Cache Identity, Dependency Tracking, and Invalidation"
+short_title: "Cache Validity"
+subtitle: "Cache Identity, Dependency Tracking, and Invalidation"
+previous_title: "Cache Identity, Dependency Tracking, and Invalidation"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Content, build and lookup identity, dependency changes and guarded publication and serving."
 ---
 
-# Cache Identity, Dependency Tracking, and Invalidation
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="cache-identity-dependency-tracking-and-invalidation"></a>
+
+# Cache Validity: Cache Identity, Dependency Tracking, and Invalidation
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

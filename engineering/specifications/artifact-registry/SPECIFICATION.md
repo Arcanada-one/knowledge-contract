@@ -1,6 +1,9 @@
 ---
 name: "artifact-registry"
-title: "Artifact Registry, Readable Names, and Document Formats"
+title: "Artifact Registry: Readable Names and Document Formats"
+short_title: "Artifact Registry"
+subtitle: "Readable Names and Document Formats"
+previous_title: "Artifact Registry, Readable Names, and Document Formats"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,7 @@ license: "CC-BY-4.0"
 description: "Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions."
 ---
 
-# Artifact Registry, Readable Names, and Document Formats
+# Artifact Registry: Readable Names and Document Formats
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 

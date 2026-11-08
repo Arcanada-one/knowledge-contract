@@ -8,12 +8,12 @@ Six studies connect the scientific claims to actual finite checks, counterexampl
 
 | Document | Subject |
 | --- | --- |
-| [Contract profiles: finite conformance, trust boundaries, and a strong simple comparator](contract-profile-conformance/STUDY.md) | Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result. |
-| [Dependency closure, readable artifact layouts, and a pinned package replay](dependency-closure-and-package-delivery/STUDY.md) | Historical package evidence and a public exhaustive replay of a finite dependency graph. |
-| [Reproducible transcription is not preservation of uncertainty](source-transcription-and-uncertainty/STUDY.md) | Retained generated descriptions, lost uncertainty and a reproducible synthetic projection counterexample. |
-| [Executable projections, addressable revisions, and the limits of graph minimality](executable-projections-and-revision/STUDY.md) | Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality. |
-| [Controlled reuse: admission counterexamples and the cost of a cache hit](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
-| [Editing a scientific section with a knowledge toolkit: a masked single-section comparison](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
+| [Contract Checks](contract-profile-conformance/STUDY.md) | Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result. |
+| [Dependency Closure](dependency-closure-and-package-delivery/STUDY.md) | Historical package evidence and a public exhaustive replay of a finite dependency graph. |
+| [Uncertainty Preservation](source-transcription-and-uncertainty/STUDY.md) | Retained generated descriptions, lost uncertainty and a reproducible synthetic projection counterexample. |
+| [Executable Projections](executable-projections-and-revision/STUDY.md) | Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality. |
+| [Reuse Economics](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
+| [Editorial Pilot](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
 
 ## Counting and interpretation
 
@@ -39,6 +39,6 @@ The edition-1.0 replay programs and their stored outputs remain in each `evidenc
 | [Admission gates and costs](reuse-admission-and-cost-controls/checks/check_admission_and_cost.py) | Rejects missing, failed and unknown mandatory gates in a nine-gate synthetic profile and recomputes cost examples | Gate inputs are not authenticated; no historical service or agent run is repeated |
 | [Uncertainty projection illustration](source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py) | Compares new synthetic output with a separately stored target and exposes omitted qualifiers and a damaged restoration trace | It illustrates a mechanism on invented inputs; it does not reconstruct the historical source corpus |
 
-The method references for fixed-point reasoning, preregistration, program mutation, agent judging and transcription scores are in the [shared bibliography](../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods). Each study distinguishes that background from its own observations.
+The method references for fixed-point reasoning, preregistration, program mutation, agent judging and transcription scores are in the [Research Foundations](../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods). Each study distinguishes that background from its own observations.
 
-[Publication home](../../README.md) · [Shared glossary](../../reference/glossary/GLOSSARY.md)
+[Publication home](../../README.md) · [Shared Vocabulary](../../reference/glossary/GLOSSARY.md)

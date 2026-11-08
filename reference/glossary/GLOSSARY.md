@@ -1,6 +1,9 @@
 ---
 name: "glossary"
-title: "Knowledge Contract Glossary"
+title: "Shared Vocabulary: Knowledge Contract Glossary"
+short_title: "Shared Vocabulary"
+subtitle: "Knowledge Contract Glossary"
+previous_title: "Knowledge Contract Glossary"
 artifact: "glossary"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -9,7 +12,10 @@ license: "CC-BY-4.0"
 description: "Shared English definitions, Russian equivalents, technical spellings and distinctions between related concepts."
 ---
 
-# Knowledge Contract Glossary
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="knowledge-contract-glossary"></a>
+
+# Shared Vocabulary: Knowledge Contract Glossary
 
 **Publication edition:** 1.1 · **Maintainer:** Pavel Valentov
 
