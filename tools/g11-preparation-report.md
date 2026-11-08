@@ -64,7 +64,7 @@ Per-item red-before / green-after (RC1–RC4):
 | `isinstance(..., dict)` elsewhere | structural validation of packages, pins, digests, lineage items | **Safe** — input shape checks, not return-channel tagging |
 | Other `tools/*.py` checkers | own schemas; do not share review-selection return channel | **Out of scope / safe** for this finding |
 
-### Probe
+### Probe (Round 9)
 
 - `/tmp/kcswe_g11p10.py` left unmodified (read-only). After fix: **BAD_TOTAL 2**
   — the two `status=refused/unresolved` lines still expect `want=pos`; they now
@@ -75,11 +75,11 @@ Per-item red-before / green-after (RC1–RC4):
   and the status-injection lines. **BAD_TOTAL 0**.
 - `/tmp/kcswe_g11p9.py` unmodified: **BAD_TOTAL 0**.
 
-### Sweep (`python3 -B /tmp/kcswe_g11r7_sweep.py`)
+### Sweep Round 9 (`python3 -B /tmp/kcswe_g11r7_sweep.py`)
 
 - mutations **1707**, exit0 **90**, crash **0**
 
-### Local unit checks
+### Local unit checks (Round 9)
 
 `tools.test_cross_package_overlay` + retrieval-context + sources/DCO/CI/separation:
 overlay **116** + related (same set as Round 8).
