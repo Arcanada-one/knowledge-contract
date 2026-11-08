@@ -4,16 +4,40 @@
 """Finite abstract checks for retrieval-and-context-composition/PAPER.md.
 
 Original project verification code, derived from the paper's stated model.
-Not a production selector, semantic validator, empirical benchmark or proof.
-Python standard library only. Prints deterministic JSON; no network or writes.
-Usage: python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md>
+This is a bounded author-side control: not independent scientific review,
+not production verification, not a semantic validator, empirical benchmark
+or proof. Python standard library only. Prints deterministic JSON; no network
+writes. Default mode binds PAPER_SHA256 and PROTECTED digests. Title-only
+mode (--title-only-against) proves a candidate differs from pinned accepted
+bytes only in the explicit title-field allowlist below; it does not judge the
+new name (naming canon is separate).
+
+Title-only allowlist for --title-only-against (constrained; do not widen silently):
+  - front matter: `title` may change; `subtitle` and `short_title` may be added or
+    changed; `previous_title` may be added and MUST equal the accepted title value
+    exactly; every other front-matter key and the order of pre-existing keys stay
+    unchanged; no other new key
+  - before H1: at most the exact comment
+    `<!-- markdownlint-disable-next-line MD033 -->`, an
+    `<a id="X"></a>` line where X MUST equal the GitHub-style slug of the
+    accepted H1, and one blank line
+  - H1 may change and MUST equal `# ` + the new front-matter title text
+  - every other byte identical, including all PROTECTED sections except the
+    allowlisted title fields inside front_matter
+
+Usage:
+  python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md>
+  python3 tools/verify_retrieval_context.py --paper <candidate PAPER.md> \\
+    --title-only-against <git-blob-id-or-path>
 """
 from __future__ import annotations
 import argparse
+import difflib
 import hashlib
 import itertools
 import json
 import re
+import subprocess
 from fractions import Fraction
 from pathlib import Path
 
@@ -22,6 +46,22 @@ PAPER_SHA256 = 'e457fadcb17424e15083504a2babb2646aedc8aec7370048cd77854a8c7af64f
 SOURCE_BLOB = '1163fcb4223023919f63f26876d1702de359a1aa'
 SOURCE_SHA256 = '6ebbb43bcdd09ba44b60d6b0e4fce9ec05dcd1550f1d8c43bf451379508b6773'
 PROTECTED = {'front_matter': 'dd777ba4289802fda9698b4e2b2e56ebcf87887a78f6e664ac6f6b36104f5ac5', 'references': '45206a6b93e46346a9560133d549cf9958eef772d30f6285b7a0831645c646fa', 'proposition_1': '6ba06755c29874daa0247e4413f1624f2d844e383ab53e6cbb0a7140fd93bbdf', 'proposition_2': '577922c726193a0cfcddcbef8bfa66b20b0ed2e88608a38d0d082571c6f85274', 'proposition_3': '6d530a2b812948bfa82a735e40cc38056f026bafae3fd7aa980b949b9effa308', 'joint_ground_counterexample': '069bd939c2e56a9b1afc53b7b417622fee64d141a2d00a782e5b83b1ab2489e8'}
+
+# Explicit allowlist for --title-only-against. Do not widen silently.
+TITLE_FIELD_ALLOWLIST = (
+    'title', 'subtitle', 'short_title', 'previous_title', 'h1', 'h1_preamble'
+)
+TITLE_ONLY_OPTIONAL_FM_KEYS = frozenset({'subtitle', 'short_title', 'previous_title'})
+TITLE_ONLY_FM_KEYS = frozenset({'title', 'subtitle', 'short_title', 'previous_title'})
+# Exact line matchers for the only front-matter keys title-only may normalize.
+PERMITTED_TITLE_FM_LINE_RE = re.compile(
+    r'^(?P<key>title|subtitle|short_title|previous_title):\s*(?P<value>.*)$'
+)
+NON_TITLE_FM_LINE_RE = re.compile(r'^([A-Za-z0-9_]+):\s*(.*)$')
+TITLE_ONLY_RECORD = 'retrieval-context-title-only-projection/1'
+SUPPORTED_TITLE_ONLY_VERSIONS = frozenset({'1'})
+ACCEPTED_PAPER_BLOB = '9311c0d157d5a926e3c08f6a087a53866064f4e0'
+MARKDOWNLINT_MD033_COMMENT = '<!-- markdownlint-disable-next-line MD033 -->'
 
 
 def sha(text: str) -> str:
@@ -249,21 +289,465 @@ def boundary_controls() -> dict:
             'mutation_scope': 'six explicit faulty alternatives in this abstract harness, not production code mutations'}
 
 
+def load_reference_bytes(spec: str) -> tuple[bytes | None, str | None]:
+    """Load accepted bytes from a git blob id or a filesystem path."""
+    path = Path(spec)
+    if path.is_file():
+        return path.read_bytes(), None
+    try:
+        data = subprocess.check_output(['git', 'cat-file', '-p', spec], stderr=subprocess.STDOUT)
+    except (subprocess.CalledProcessError, FileNotFoundError) as exc:
+        detail = exc.output.decode('utf-8', errors='replace') if isinstance(exc, subprocess.CalledProcessError) else str(exc)
+        return None, detail.strip() or 'unknown source'
+    return data, None
+
+
+def split_document(text: str) -> tuple[str, str, str]:
+    """Return (front_matter_inner, fm_with_fences, remainder_after_fm)."""
+    if not text.startswith('---\n'):
+        raise ValueError('missing front matter opening fence')
+    end = text.index('\n---\n', 4)
+    inner = text[4:end]
+    remainder = text[end + 5:]
+    return inner, text[: end + 5], remainder
+
+
+def yaml_scalar_text(raw: str) -> str:
+    value = raw.strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in '"\'':
+        return value[1:-1]
+    return value
+
+
+def front_matter_lines(inner: str) -> list[str]:
+    """Split FM inner on literal LF only.
+
+    Do not use str.splitlines(): it drops CR and treats VT/FF/NEL/U+2028/U+2029
+    as breaks, so non-title residual comparison would re-join unequal bytes as LF.
+    """
+    return inner.split('\n')
+
+
+def parse_front_matter_entries(inner: str) -> list[tuple[str, str]]:
+    entries: list[tuple[str, str]] = []
+    for line in front_matter_lines(inner):
+        matched = NON_TITLE_FM_LINE_RE.match(line)
+        if not matched:
+            raise ValueError(f'unsupported front matter line: {line!r}')
+        entries.append((matched.group(1), matched.group(2)))
+    return entries
+
+
+def github_slug(heading_text: str) -> str:
+    """GitHub-style heading slug used by compatibility anchors."""
+    text = heading_text.strip().lower()
+    text = re.sub(r'[^\w\s-]', '', text, flags=re.UNICODE)
+    text = re.sub(r'\s+', '-', text.strip())
+    return text
+
+
+def fm_map(entries: list[tuple[str, str]]) -> dict[str, str]:
+    return {key: value for key, value in entries}
+
+
+def classify_front_matter_lines(inner: str) -> tuple[list[str], dict[str, str], dict[str, int]]:
+    """Split FM into raw non-title lines and title observations; count each title key."""
+    non_title_lines: list[str] = []
+    title_values: dict[str, str] = {}
+    title_counts = {key: 0 for key in TITLE_ONLY_FM_KEYS}
+    for line in front_matter_lines(inner):
+        title_match = PERMITTED_TITLE_FM_LINE_RE.match(line)
+        if title_match:
+            key = title_match.group('key')
+            title_counts[key] += 1
+            title_values[key] = title_match.group('value')
+            continue
+        matched = NON_TITLE_FM_LINE_RE.match(line)
+        if not matched:
+            raise ValueError(f'unsupported front matter line: {line!r}')
+        non_title_lines.append(line)
+    return non_title_lines, title_values, title_counts
+
+
+def project_title_document(text: str) -> tuple[str, dict[str, str | None]]:
+    """Project allowlisted title material to placeholders; return residual and observations.
+
+    Only the explicitly permitted title front-matter keys and the H1 line are
+    normalized. Every other front-matter line and every body byte after H1 are
+    kept as raw residual (including the final newline state).
+    """
+    inner, _fm, remainder = split_document(text)
+    non_title_lines, title_values, title_counts = classify_front_matter_lines(inner)
+    if any(count > 1 for count in title_counts.values()):
+        raise ValueError('incomplete_mapping: duplicate permitted title front-matter key')
+    observed: dict[str, str | None] = {
+        'title': title_values.get('title'),
+        'subtitle': title_values.get('subtitle'),
+        'short_title': title_values.get('short_title'),
+        'previous_title': title_values.get('previous_title'),
+        'h1': None,
+        'h1_preamble': None,
+    }
+    # Preserve non-title FM line bytes exactly; re-attach the conventional LF that
+    # split_document strips from the final FM line before the closing fence.
+    projected_fm = ''.join(f'{line}\n' for line in non_title_lines)
+    lines = remainder.splitlines(keepends=True)
+    index = 0
+    preamble_parts: list[str] = []
+    if index < len(lines) and lines[index] == '\n':
+        preamble_parts.append(lines[index])
+        index += 1
+    if index < len(lines) and lines[index].rstrip('\n') == MARKDOWNLINT_MD033_COMMENT:
+        preamble_parts.append(lines[index])
+        index += 1
+    if index < len(lines) and re.match(r'^<a id="[^"]+"></a>\n?$', lines[index]):
+        preamble_parts.append(lines[index])
+        index += 1
+    if index < len(lines) and lines[index] == '\n':
+        preamble_parts.append(lines[index])
+        index += 1
+    if index >= len(lines) or not re.match(r'^# ', lines[index]):
+        # An unexpected inserted line before H1 is an incomplete title-only mapping.
+        raise ValueError('incomplete_mapping: unexpected bytes before H1')
+    # Any non-allowlisted residue in the captured preamble is rejected by validate_title_only_shape.
+    observed['h1'] = lines[index].rstrip('\n')
+    observed['h1_preamble'] = ''.join(preamble_parts) or None
+    # Body after H1 is compared as raw bytes, including a missing final LF.
+    body_after = ''.join(lines[index + 1:])
+    projected = (
+        '---\n'
+        + projected_fm
+        + '---\n'
+        + '\n'
+        + '# __TITLE_ONLY_H1__\n'
+        + body_after
+    )
+    return projected, observed
+
+
+def validate_title_only_shape(
+    accepted_text: str,
+    candidate_text: str,
+    accepted_obs: dict[str, str | None],
+    candidate_obs: dict[str, str | None],
+) -> str | None:
+    """Return a typed refusal reason, or None when the constrained shape holds."""
+    accepted_inner = split_document(accepted_text)[0]
+    candidate_inner = split_document(candidate_text)[0]
+    accepted_non_title, accepted_title_values, accepted_title_counts = classify_front_matter_lines(
+        accepted_inner
+    )
+    candidate_non_title, candidate_title_values, candidate_title_counts = classify_front_matter_lines(
+        candidate_inner
+    )
+    if any(count > 1 for count in candidate_title_counts.values()):
+        return 'incomplete_mapping'
+    if any(count > 1 for count in accepted_title_counts.values()):
+        return 'corrupted_candidate'
+    if 'title' not in accepted_title_values or 'title' not in candidate_title_values:
+        return 'incomplete_mapping'
+
+    accepted_entries = parse_front_matter_entries(accepted_inner)
+    candidate_entries = parse_front_matter_entries(candidate_inner)
+    accepted_keys = [key for key, _ in accepted_entries]
+    candidate_keys = [key for key, _ in candidate_entries]
+    accepted_values = fm_map(accepted_entries)
+    candidate_values = fm_map(candidate_entries)
+
+    unknown = [key for key in candidate_keys if key not in accepted_keys and key not in TITLE_ONLY_OPTIONAL_FM_KEYS]
+    if unknown:
+        return 'incomplete_mapping'
+
+    # Pre-existing keys keep their relative order.
+    filtered = [key for key in candidate_keys if key in accepted_keys]
+    if filtered != accepted_keys:
+        return 'incomplete_mapping'
+
+    # Non-title front-matter lines must match the accepted lines byte for byte, in order.
+    if accepted_non_title != candidate_non_title:
+        return 'incomplete_mapping'
+
+    for key in accepted_keys:
+        if key == 'title':
+            continue
+        if key in TITLE_ONLY_FM_KEYS:
+            continue
+        if accepted_values[key] != candidate_values.get(key):
+            return 'incomplete_mapping'
+
+    accepted_title = yaml_scalar_text(accepted_title_values['title'])
+    candidate_title = yaml_scalar_text(candidate_title_values['title'])
+    if 'previous_title' in candidate_title_values:
+        if yaml_scalar_text(candidate_title_values['previous_title']) != accepted_title:
+            return 'incomplete_mapping'
+
+    accepted_h1 = accepted_obs.get('h1') or ''
+    if not accepted_h1.startswith('# '):
+        return 'corrupted_candidate'
+    accepted_slug = github_slug(accepted_h1[2:])
+    preamble = candidate_obs.get('h1_preamble') or ''
+    # Allowed preamble: optional leading blank, optional MD033 comment, optional anchor, optional blank.
+    preamble_lines = preamble.splitlines(keepends=True)
+    cursor = 0
+    if cursor < len(preamble_lines) and preamble_lines[cursor] == '\n':
+        cursor += 1
+    if cursor < len(preamble_lines) and preamble_lines[cursor].rstrip('\n') == MARKDOWNLINT_MD033_COMMENT:
+        cursor += 1
+    if cursor < len(preamble_lines):
+        anchor = preamble_lines[cursor].rstrip('\n')
+        matched = re.match(r'^<a id="([^"]+)"></a>$', anchor)
+        if matched:
+            if matched.group(1) != accepted_slug:
+                return 'incomplete_mapping'
+            cursor += 1
+        elif anchor:
+            return 'incomplete_mapping'
+    if cursor < len(preamble_lines) and preamble_lines[cursor] == '\n':
+        cursor += 1
+    if cursor != len(preamble_lines):
+        return 'incomplete_mapping'
+
+    expected_h1 = f'# {candidate_title}'
+    if candidate_obs.get('h1') != expected_h1:
+        return 'incomplete_mapping'
+    return None
+
+
+def section_name_for_line(text: str, line_no: int) -> str:
+    lines = text.splitlines()
+    if line_no <= 0 or line_no > len(lines):
+        return 'out_of_range'
+    try:
+        _inner, fm, _rem = split_document(text)
+    except ValueError:
+        fm = ''
+    fm_line_count = fm.count('\n')
+    if line_no <= fm_line_count:
+        return 'front_matter'
+    prefix = '\n'.join(lines[:line_no])
+    heading = None
+    for match in re.finditer(r'^(#{1,6}) (.+)$', prefix, re.M):
+        heading = match.group(0)
+    if heading is None:
+        return 'preamble'
+    if heading.startswith('# ') and not heading.startswith('## '):
+        return 'h1'
+    lowered = heading.lower()
+    if 'references' in lowered:
+        return 'references'
+    if 'proposition 1' in lowered:
+        return 'proposition_1'
+    if 'proposition 2' in lowered:
+        return 'proposition_2'
+    if 'proposition 3' in lowered:
+        return 'proposition_3'
+    if 'joint' in lowered and 'ground' in lowered:
+        return 'joint_ground_counterexample'
+    return heading.lstrip('#').strip()
+
+
+def differing_regions(accepted: str, candidate: str) -> list[dict]:
+    """Line-oriented residual differences (not a semantic judgment)."""
+    a_lines = accepted.splitlines()
+    c_lines = candidate.splitlines()
+    regions: list[dict] = []
+    for tag, i1, i2, j1, j2 in difflib.SequenceMatcher(a=a_lines, b=c_lines).get_opcodes():
+        if tag == 'equal':
+            continue
+        sections = sorted({
+            *(section_name_for_line(accepted, i + 1) for i in range(i1, max(i1 + 1, i2))),
+            *(section_name_for_line(candidate, j + 1) for j in range(j1, max(j1 + 1, j2))),
+        })
+        regions.append({
+            'op': tag,
+            'accepted_lines': [i1 + 1, i2],
+            'candidate_lines': [j1 + 1, j2],
+            'sections': sections,
+        })
+    return regions
+
+
+def title_fields_changed(accepted_obs: dict[str, str | None],
+                         candidate_obs: dict[str, str | None]) -> list[str]:
+    changed = []
+    for key in TITLE_FIELD_ALLOWLIST:
+        if accepted_obs.get(key) != candidate_obs.get(key):
+            changed.append(key)
+    return changed
+
+
+def protected_body_digests(text: str) -> dict[str, str]:
+    """PROTECTED digests with allowlisted title material projected out."""
+    projected, _ = project_title_document(text)
+    blocks = protected_blocks(projected)
+    return {name: sha(value) for name, value in blocks.items()}
+
+
+def try_protected_body_digests(text: str) -> dict[str, str] | None:
+    """Return PROTECTED digests, or None when structural extraction fails."""
+    try:
+        return protected_body_digests(text)
+    except (ValueError, IndexError):
+        return None
+
+
+def title_only_report(candidate_path: Path, against: str, version: str) -> dict:
+    record = {
+        'record_type': TITLE_ONLY_RECORD,
+        'title_field_allowlist': list(TITLE_FIELD_ALLOWLIST),
+        'title_only_version': version,
+        'against': against,
+        'candidate_path': str(candidate_path),
+        'accepted_paper_blob': ACCEPTED_PAPER_BLOB,
+        'source_sha256': SOURCE_SHA256,
+        'not_established': [
+            'independent scientific review',
+            'production verification',
+            'naming-canon acceptance of the new title',
+            'semantic annotation correctness',
+            'site deployment',
+        ],
+    }
+    if version not in SUPPORTED_TITLE_ONLY_VERSIONS:
+        record.update({'pass': False, 'refusal_reason': 'unsupported_version'})
+        return record
+    accepted_raw, err = load_reference_bytes(against)
+    if accepted_raw is None:
+        record.update({'pass': False, 'refusal_reason': 'unknown_source', 'detail': err})
+        return record
+    try:
+        candidate_raw = candidate_path.read_bytes()
+        candidate_text = candidate_raw.decode('utf-8', errors='strict')
+        accepted_text = accepted_raw.decode('utf-8', errors='strict')
+    except (OSError, UnicodeDecodeError) as exc:
+        record.update({'pass': False, 'refusal_reason': 'corrupted_candidate', 'detail': str(exc)})
+        return record
+    try:
+        accepted_projected, accepted_obs = project_title_document(accepted_text)
+        candidate_projected, candidate_obs = project_title_document(candidate_text)
+        shape_refusal = validate_title_only_shape(
+            accepted_text, candidate_text, accepted_obs, candidate_obs
+        )
+    except (ValueError, IndexError) as exc:
+        reason = 'incomplete_mapping' if str(exc).startswith('incomplete_mapping:') else 'corrupted_candidate'
+        record.update({
+            'pass': False,
+            'refusal_reason': reason,
+            'detail': str(exc),
+            'differing_regions': differing_regions(accepted_text, candidate_text)
+            if reason == 'incomplete_mapping' else [],
+        })
+        return record
+    record['candidate_sha256'] = hashlib.sha256(candidate_raw).hexdigest()
+    record['accepted_sha256'] = hashlib.sha256(accepted_raw).hexdigest()
+    record['title_fields_observed'] = {
+        'accepted': accepted_obs,
+        'candidate': candidate_obs,
+    }
+    record['title_fields_changed'] = title_fields_changed(accepted_obs, candidate_obs)
+    if shape_refusal or accepted_projected != candidate_projected:
+        accepted_digests = try_protected_body_digests(accepted_text)
+        candidate_digests = try_protected_body_digests(candidate_text)
+        # Marker/index extraction failure is a typed structure refusal, not a traceback.
+        if accepted_digests is None or candidate_digests is None:
+            reason = 'structure_broken'
+        else:
+            reason = shape_refusal or 'incomplete_mapping'
+        record.update({
+            'pass': False,
+            'refusal_reason': reason,
+            'differing_regions': differing_regions(accepted_text, candidate_text),
+            'protected_digests_after_title_projection': {
+                'accepted': accepted_digests,
+                'candidate': candidate_digests,
+            },
+        })
+        return record
+    record.update({
+        'pass': True,
+        'refusal_reason': None,
+        'differing_regions': [],
+        'selection': exact_selection_model(),
+        'greedy': greedy_model(),
+        'boundaries': boundary_controls(),
+    })
+    return record
+
+
+def full_report(paper: Path) -> dict:
+    not_established = [
+        'general proofs by enumeration', 'semantic annotation correctness',
+        'production selector conformance', 'human comprehension',
+        'editorial superiority', 'repository-wide CI', 'site deployment',
+        'independent scientific review', 'production verification',
+    ]
+    selection = exact_selection_model()
+    greedy = greedy_model()
+    boundaries = boundary_controls()
+    try:
+        document = document_checks(paper)
+    except (OSError, UnicodeDecodeError, ValueError, IndexError) as exc:
+        candidate_sha256 = None
+        try:
+            candidate_sha256 = hashlib.sha256(paper.read_bytes()).hexdigest()
+        except OSError:
+            pass
+        return {
+            'record_type': 'retrieval-context-finite-verification/1',
+            'candidate_sha256': candidate_sha256,
+            'source_sha256': SOURCE_SHA256,
+            'pass': False,
+            'refusal_reason': 'structure_broken',
+            'detail': str(exc),
+            'selection': selection,
+            'greedy': greedy,
+            'boundaries': boundaries,
+            'not_established': not_established,
+        }
+    report = {
+        'record_type': 'retrieval-context-finite-verification/1',
+        'candidate_sha256': PAPER_SHA256,
+        'source_sha256': SOURCE_SHA256,
+        'document': document,
+        'selection': selection,
+        'greedy': greedy,
+        'boundaries': boundaries,
+        'not_established': not_established,
+    }
+    report['pass'] = report['document']['pass']
+    return report
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--paper', type=Path, default=Path(__file__).resolve().parents[1] / 'papers/retrieval-and-context-composition/PAPER.md')
+    parser.add_argument('--title-only-against', default=None,
+                        help='Git blob id or path of the pinned accepted paper bytes')
+    parser.add_argument('--title-only-version', default='1',
+                        help='Title-only projection schema version (supported: 1)')
     args = parser.parse_args()
-    report = {'record_type': 'retrieval-context-finite-verification/1',
-              'candidate_sha256': PAPER_SHA256, 'source_sha256': SOURCE_SHA256,
-              'document': document_checks(args.paper),
-              'selection': exact_selection_model(), 'greedy': greedy_model(),
-              'boundaries': boundary_controls(),
-              'not_established': ['general proofs by enumeration', 'semantic annotation correctness',
-                                  'production selector conformance', 'human comprehension',
-                                  'editorial superiority', 'repository-wide CI', 'site deployment']}
-    report['pass'] = report['document']['pass']
+    try:
+        if args.title_only_against is not None:
+            report = title_only_report(args.paper, args.title_only_against, args.title_only_version)
+        else:
+            report = full_report(args.paper)
+    except (OSError, UnicodeDecodeError, ValueError, IndexError) as exc:
+        report = {
+            'record_type': (
+                TITLE_ONLY_RECORD if args.title_only_against is not None
+                else 'retrieval-context-finite-verification/1'
+            ),
+            'pass': False,
+            'refusal_reason': 'structure_broken',
+            'detail': str(exc),
+            'source_sha256': SOURCE_SHA256,
+            'not_established': [
+                'independent scientific review',
+                'production verification',
+            ],
+        }
     print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
-    return 0 if report['pass'] else 1
+    return 0 if report.get('pass') else 1
 
 
 if __name__ == '__main__':
