@@ -34,6 +34,9 @@ jobs:
           test "$(git rev-parse HEAD)" = "$EXPECTED_HEAD"
           test "$(git ls-remote origin refs/heads/editorial/readable-names-and-roadmap-20261108 | cut -f1)" = "$EXPECTED_HEAD"
           python3 -B tools/refine_document_names.py
+          # The runner has no workflow-write permission. Keep ordinary CI unchanged.
+          # The author checks below are run here without granting any additional permission.
+          git restore --source=HEAD -- .github/workflows/ci.yml
           python3 -B -m unittest tools.test_document_names -v
           python3 -B tools/apply_document_names.py --apply
           python3 -B tools/apply_document_names.py --check
@@ -45,7 +48,7 @@ jobs:
           import subprocess
           from tools.apply_document_names import build
           outputs, _ = build()
-          allowed = set(outputs) | {'tools/apply_document_names.py', 'tools/test_document_names.py', 'reference/document-naming/NAMING.md', '.github/workflows/ci.yml'}
+          allowed = set(outputs) | {'tools/apply_document_names.py', 'tools/test_document_names.py', 'reference/document-naming/NAMING.md'}
           changed = set(subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines())
           untracked = set(subprocess.check_output(['git', 'ls-files', '--others', '--exclude-standard'], text=True).splitlines())
           if not (changed | untracked) <= allowed:
@@ -58,6 +61,6 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -s -m 'Refine readable titles without duplicated labels and add naming checks' -m 'Author-prepared exact-input refinement. Preserves original scientific bodies and old-title provenance. No deployment, index, task mutation or main merge.'
+          git commit -s -m 'Refine readable titles without duplicated labels and add naming checks' -m 'Author-prepared exact-input refinement. Preserves original scientific bodies and old-title provenance. Ordinary CI unchanged. No deployment, index, task mutation or main merge.'
           git push origin HEAD:refs/heads/editorial/readable-names-and-roadmap-20261108
           git rev-parse HEAD
