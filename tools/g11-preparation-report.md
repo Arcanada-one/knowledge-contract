@@ -1,13 +1,14 @@
 # G11 bounded cross-package preparation — worker report
 
 - **PR:** [knowledge-contract#81](https://github.com/Arcanada-one/knowledge-contract/pull/81) (DRAFT)
-- **Head SHA:** *(updated after push; see Round 8)*
+- **Head SHA:** `1eb745f081f06616bc29b009f5096d4d7a1f5d7f`
 - **Branch:** `Arcanada/g11-cross-package-preparation`
 - **Clone:** `/home/dev/aup/claude-work/kcswe-g11/knowledge-contract`
 
 ## Round 8 (typed identities before every equality)
 
 Base head before fix: `6da3361d48f3bbb1d7b8de5fb3aaa9c8fb09df49`.
+Functional fix head: `1eb745f081f06616bc29b009f5096d4d7a1f5d7f`.
 
 Finding: Agent-Brain PR81 comment `6725034836`. KC-SWE reproduced with
 `/tmp/kcswe_g11p8.py` (read-only; unmodified): both absent `relation_id`, both
