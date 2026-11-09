@@ -1,23 +1,36 @@
 ---
-title: "Reading Dependencies: Glossary Links and Release Boundaries"
+title: "Reading Dependencies: Exact Glossary Link Reconciliation"
 sources: ["Knowledge Contract project corpus and publication edition"]
-status: repository dependency record; not rendition admission
+status: producer link-only correction; not a new full-body review
 updated: 2026-11-09
 ---
 
-# Reading Dependencies: Glossary Links and Release Boundaries
+# Reading Dependencies: Exact Glossary Link Reconciliation
 
-The initial extraction of twenty reviewed translations omitted two files that their existing links require. The ordinary link job in run `42593994509` found exactly two missing local targets: the final glossary link in each full Contract Checks translation. The separately executed readiness run `42593994174` passed all eighteen synthetic controls and the complete twenty-target source/title comparison. A successful identity comparison did not hide the link failure.
+The first extraction of twenty reviewed translations exposed two missing links: the final glossary link in each Contract Checks translation pointed to a locale glossary outside the finite release. Run `42593994509` reported those two errors. Restoring both old glossary drafts in `ae945f2c297319895d8e5808da9f4818c36f67ee` resolved those addresses but introduced four more omitted-specification dependencies, as run `42595616137` reported. Rather than expanding the batch into unreviewed drafts, the final correction removes that intermediate restoration and fixes the two literal link destinations to the existing canonical glossary.
 
-This correction restores the **already authored glossary bodies unchanged** from translation snapshot `34405422aad944fab20f96bcecd863f7bad7cd59`. It does not edit a reviewed study, invent a stub, weaken link checking or substitute an English document under a translated-body label.
+## Exact correction
 
-| Auxiliary file | Exact restored Git blob |
-| --- | --- |
-| `translations/ru/reference/glossary/GLOSSARY.md` | `81364f076440f58680c5ef4770fdb6b3a66d73f1` |
-| `translations/zh-Hans/reference/glossary/GLOSSARY.md` | `72015a328dbbd9af4ad3872887b571f7a123ebf9` |
+In each of the two study files, exactly one Markdown destination changes:
 
-These two files retain their original author-draft metadata and historical source pins. **They are not added to the twenty-pair reviewed release manifest**, not newly reviewed, not current-source certified and not admitted as website renditions. Thus this repository extraction contains twenty reviewed bodies plus two existing draft glossary dependencies; it is not twenty-two reviewed translations. The current authoritative English glossary and its accepted Russian/Chinese terminology crosswalk are at [Shared Vocabulary](../../reference/glossary/GLOSSARY.md).
+```text
+../../../reference/glossary/GLOSSARY.md
+../../../../../reference/glossary/GLOSSARY.md
+```
 
-The source-language glossary has evolved beyond a title change, so the source/title-only preparation tool must not repin these auxiliary bodies as if their full semantics had been rechecked. Their later full-text reconciliation remains translation work. A website compiler must either resolve a glossary reference to the actual current canonical work with an explicit English fallback, or use a separately admitted full rendition. It must not claim these historical draft bodies are the current published translations merely because the files exist in the source tree.
+The added two parent components account for the `translations/<language>/` directory depth. From the study's own directory the new path resolves to [Shared Vocabulary](../../reference/glossary/GLOSSARY.md), the canonical English glossary with the accepted Russian and Chinese terminology crosswalk. The visible translated link text is unchanged. This is not a claim that a full current glossary translation has been admitted.
 
-Any mechanical site-link normalization must identify the same logical work and relevant anchor, preserve historical evidence URLs, and record the exact link-only delta. If that delta changes meaning or scientific prose it returns to KC-Brain. This correction changes no historical review, corpus allowlist, index state or production deployment.
+| Target | Earlier reviewed Git blob | Link-corrected Git blob |
+| --- | --- | --- |
+| Russian Contract Checks | `8237877bb67680e4ece8b56b1f0bf96e92dbd226` | `6da54d4eab2d45838c5f123ef6fb7d7021255264` |
+| Simplified Chinese Contract Checks | `27f4c0daa1b5be6577473da158bdea5a546fa994` | `aff7156e0cd550f8bb776d73f1447cda7263acfc` |
+
+No statement, formula, result, heading, table, requirement identifier or bibliography changes in these two texts. The other eighteen reviewed translation files are unchanged. The primary full-body verdict remains bound to its old exact pair; this producer record discloses the small technical delta instead of pretending the old reviewer signed the new blob. Ordinary diff and link CI must verify the submitted bytes.
+
+## Title-preparation output must retain this correction
+
+`first-reviewed-batch.json` deliberately identifies the original reviewed inputs, and `prepare_reviewed_publication.py` compares those exact historical source/target objects. Its generated title/source proposals therefore still contain the old literal glossary URL in these two files. After generating the proposals, apply the same single destination replacement above to each proposed Contract Checks file. Require exactly one old match per file; compare against the original proposal and record the final bytes and hashes. Do not publish the old intermediate proposed target hash as the hash of the repaired file.
+
+The narrow review scope is the explicit title/source metadata, stable headings and these two same-logical-work link relocations, not another review of the unchanged scientific prose. The site compiler must still perform actual section, formula, code and logical-link parity against the current English source. No fixture-mode output or weakened guard can substitute for that run.
+
+This branch contains **twenty full translation texts**, not twenty-two. The two historical glossary drafts remain untouched in the original PR76 history and are not included in this finite release. The final naming/translation source remains separate from the site build, served readback and backend index admission.
