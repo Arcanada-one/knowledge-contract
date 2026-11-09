@@ -989,7 +989,7 @@ Production `scripts/build_publication.py` against an eight-entry tip refused fir
 
 Per-entry report-mode compile: the same `RENDITION_SECTION_MISSING` on preamble for all four below; links otherwise classified cleanly (no `RENDITION_LINK_*`). No rendition bytes were edited.
 
-#### `source-transcription-and-uncertainty / ru`
+#### Iteration 3 refused — `source-transcription-and-uncertainty / ru`
 
 - Exact diagnostic: `RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/ru: section (preamble) has text in the source but none in the rendition`
 - English source blob `8ca885fc3f144d89e95e4813868fd953450f1f71` preamble lines:
@@ -997,13 +997,13 @@ Per-entry report-mode compile: the same `RENDITION_SECTION_MISSING` on preamble 
   - `<a id="reproducible-transcription-is-not-preservation-of-uncertainty"></a>`
 - Admitted rendition blob `8aaa8dae18a2014be6495c479e85a3e114538420` H1 carrying the same id: `# Сохранение неопределённости: Воспроизводимая транскрипция не равна сохранению неопределённости {#reproducible-transcription-is-not-preservation-of-uncertainty}`
 
-#### `source-transcription-and-uncertainty / zh-Hans`
+#### Iteration 3 refused — `source-transcription-and-uncertainty / zh-Hans`
 
 - Exact diagnostic: `RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/zh-Hans: section (preamble) has text in the source but none in the rendition`
 - English source blob `8ca885fc3f144d89e95e4813868fd953450f1f71` preamble lines: same two lines as ru above
 - Admitted rendition blob `2f001123a165ef342b3b70e9de36389d765ff40a` H1: `# 不确定性保留：可复现的转录不等于保留不确定性 {#reproducible-transcription-is-not-preservation-of-uncertainty}`
 
-#### `reuse-admission-and-cost-controls / ru`
+#### Iteration 3 refused — `reuse-admission-and-cost-controls / ru`
 
 - Exact diagnostic: `RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/ru: section (preamble) has text in the source but none in the rendition`
 - English source blob `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` preamble lines:
@@ -1011,7 +1011,7 @@ Per-entry report-mode compile: the same `RENDITION_SECTION_MISSING` on preamble 
   - `<a id="controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit"></a>`
 - Admitted rendition blob `ecd4203da7ba35ad7611cd65f02e32b0c4087e17` H1: `# Экономика повторного использования: Контролируемое повторное использование, контрпримеры допуска и стоимость попадания в кеш {#controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit}`
 
-#### `reuse-admission-and-cost-controls / zh-Hans`
+#### Iteration 3 refused — `reuse-admission-and-cost-controls / zh-Hans`
 
 - Exact diagnostic: `RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/zh-Hans: section (preamble) has text in the source but none in the rendition`
 - English source blob `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` preamble lines: same two lines as ru above
