@@ -1,0 +1,779 @@
+{
+  "schema_version": 2,
+  "kind": "arcanada-publication-renditions",
+  "edition": "1.1",
+  "renditions": [
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+        "revision": "e17d33711210331b1ab1377a92d728e58eb93c02",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "8d4ff8363466f9eb1f63332052cf5f6ebcdda210eb3f04396ea582e1ce54d76e",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
+          "rendition_blob": "5aa9ee44986a68c0e47d99c801ec11a2fe1ddd9e"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "the-delivery-problem",
+            "model-and-algorithms",
+            "exhaustive-finite-checks",
+            "a-public-reproduction-of-the-graph-result",
+            "delivered-record-counts-and-fault-controls",
+            "readable-layout-migration",
+            "historical-package-replay",
+            "claim-evidence-and-boundary",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "the-delivery-problem",
+          "rendition": "the-delivery-problem"
+        },
+        {
+          "source": "model-and-algorithms",
+          "rendition": "model-and-algorithms"
+        },
+        {
+          "source": "exhaustive-finite-checks",
+          "rendition": "exhaustive-finite-checks"
+        },
+        {
+          "source": "a-public-reproduction-of-the-graph-result",
+          "rendition": "a-public-reproduction-of-the-graph-result"
+        },
+        {
+          "source": "delivered-record-counts-and-fault-controls",
+          "rendition": "delivered-record-counts-and-fault-controls"
+        },
+        {
+          "source": "readable-layout-migration",
+          "rendition": "readable-layout-migration"
+        },
+        {
+          "source": "historical-package-replay",
+          "rendition": "historical-package-replay"
+        },
+        {
+          "source": "claim-evidence-and-boundary",
+          "rendition": "claim-evidence-and-boundary"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+        "revision": "e17d33711210331b1ab1377a92d728e58eb93c02",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "bc595b4c88f71f388a3ebfc0307a59b869bcd2c7caf0b560e5dd0ce56945bc42",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
+          "rendition_blob": "6d78e14dd29bbe751e5d7699a8ff76383395dc62"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "the-delivery-problem",
+            "model-and-algorithms",
+            "exhaustive-finite-checks",
+            "a-public-reproduction-of-the-graph-result",
+            "delivered-record-counts-and-fault-controls",
+            "readable-layout-migration",
+            "historical-package-replay",
+            "claim-evidence-and-boundary",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "the-delivery-problem",
+          "rendition": "the-delivery-problem"
+        },
+        {
+          "source": "model-and-algorithms",
+          "rendition": "model-and-algorithms"
+        },
+        {
+          "source": "exhaustive-finite-checks",
+          "rendition": "exhaustive-finite-checks"
+        },
+        {
+          "source": "a-public-reproduction-of-the-graph-result",
+          "rendition": "a-public-reproduction-of-the-graph-result"
+        },
+        {
+          "source": "delivered-record-counts-and-fault-controls",
+          "rendition": "delivered-record-counts-and-fault-controls"
+        },
+        {
+          "source": "readable-layout-migration",
+          "rendition": "readable-layout-migration"
+        },
+        {
+          "source": "historical-package-replay",
+          "rendition": "historical-package-replay"
+        },
+        {
+          "source": "claim-evidence-and-boundary",
+          "rendition": "claim-evidence-and-boundary"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "548abd01d089faf81570efaafd41ef873c693e47",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "66cb5efc16efcbe36e028b8c34346e6536125d6ee34268716a1ffb43e6c863ac",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "4a8e7b8d986c3eb846cb6ea381dcc1b0685755d1"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "548abd01d089faf81570efaafd41ef873c693e47",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "32fbb5eceff4bdaca7088d6a518f04b44c5d092866262299199529cd00f4be0f",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "1be23f4f57ae705870149cc61964c3bb2c1d3784"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+        "revision": "e17d33711210331b1ab1377a92d728e58eb93c02",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "f575edd55379c02f0d44cd1942aabfe036c8509084b1bde6b52e7858666143c8",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
+          "rendition_blob": "f9361172e1fe559e90aac4be615f19474dc7a941"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-design-progression",
+            "initial-reader-four-distinct-failure-mechanisms",
+            "revised-reader-boundaries",
+            "targeted-revision-and-a-strong-alternative",
+            "executable-projection-contract",
+            "consumer-qualification-before-the-new-responses",
+            "five-agent-case-pairs",
+            "counterexample-to-claim-level-minimality",
+            "evidence-and-reproduction-boundaries",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-design-progression",
+          "rendition": "question-and-design-progression"
+        },
+        {
+          "source": "initial-reader-four-distinct-failure-mechanisms",
+          "rendition": "initial-reader-four-distinct-failure-mechanisms"
+        },
+        {
+          "source": "revised-reader-boundaries",
+          "rendition": "revised-reader-boundaries"
+        },
+        {
+          "source": "targeted-revision-and-a-strong-alternative",
+          "rendition": "targeted-revision-and-a-strong-alternative"
+        },
+        {
+          "source": "executable-projection-contract",
+          "rendition": "executable-projection-contract"
+        },
+        {
+          "source": "consumer-qualification-before-the-new-responses",
+          "rendition": "consumer-qualification-before-the-new-responses"
+        },
+        {
+          "source": "five-agent-case-pairs",
+          "rendition": "five-agent-case-pairs"
+        },
+        {
+          "source": "counterexample-to-claim-level-minimality",
+          "rendition": "counterexample-to-claim-level-minimality"
+        },
+        {
+          "source": "evidence-and-reproduction-boundaries",
+          "rendition": "evidence-and-reproduction-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+        "revision": "e17d33711210331b1ab1377a92d728e58eb93c02",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "b62759e482c6134cab1f69137df1d2e63ea84010aa9156da25d8d00790629f94",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
+          "rendition_blob": "346d23b860650abbebfe55e3f7d9f90e85dcedd2"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-design-progression",
+            "initial-reader-four-distinct-failure-mechanisms",
+            "revised-reader-boundaries",
+            "targeted-revision-and-a-strong-alternative",
+            "executable-projection-contract",
+            "consumer-qualification-before-the-new-responses",
+            "five-agent-case-pairs",
+            "counterexample-to-claim-level-minimality",
+            "evidence-and-reproduction-boundaries",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-design-progression",
+          "rendition": "question-and-design-progression"
+        },
+        {
+          "source": "initial-reader-four-distinct-failure-mechanisms",
+          "rendition": "initial-reader-four-distinct-failure-mechanisms"
+        },
+        {
+          "source": "revised-reader-boundaries",
+          "rendition": "revised-reader-boundaries"
+        },
+        {
+          "source": "targeted-revision-and-a-strong-alternative",
+          "rendition": "targeted-revision-and-a-strong-alternative"
+        },
+        {
+          "source": "executable-projection-contract",
+          "rendition": "executable-projection-contract"
+        },
+        {
+          "source": "consumer-qualification-before-the-new-responses",
+          "rendition": "consumer-qualification-before-the-new-responses"
+        },
+        {
+          "source": "five-agent-case-pairs",
+          "rendition": "five-agent-case-pairs"
+        },
+        {
+          "source": "counterexample-to-claim-level-minimality",
+          "rendition": "counterexample-to-claim-level-minimality"
+        },
+        {
+          "source": "evidence-and-reproduction-boundaries",
+          "rendition": "evidence-and-reproduction-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "548abd01d089faf81570efaafd41ef873c693e47",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "a82156801e051e597a78c0fd83ee0487f846f39a529b413a0a271f5d14705f9a",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "90bca419fac0c0834fe4bce4513772812958bbec"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "Pavel Valentov"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "548abd01d089faf81570efaafd41ef873c693e47",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "f630c56a85092972232199cf259b0e7f27241ad257f05fc54aba2238e122bfc7",
+        "revision": "8c8f2dc304e7db3a55e2b203d6ca3effadb77b91"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Agent-Brain is a distinct agent identity from the rendition front-matter author Pavel Valentov; the review is an independent agent examination recorded under Agent-Brain authorship, not a self-review by the manuscript author."
+        },
+        "method": "Agent-Brain independent full-section fidelity review of the earlier English source against these exact rendition blobs (comment 6735134008), plus Agent-Brain independent current-source title/subtitle/H1/anchor delta review establishing Abstract-to-EOF byte identity (comment 6739674011); recorded by KC-Brain in reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "1c3cbeff2939888d2a95414ec3315b2671cb46f0"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T00:00:00Z",
+        "limitations": "The full fidelity review in GitHub comment 6735134008 was against the earlier English source blob at commit a0450428704fcd41b411203f2fc88c06c779610b, not the current English source identity. The current-source review in GitHub comment 6739674011 covered only the title/subtitle/H1/anchor delta and established that English bytes from ## Abstract through EOF are byte-identical between the earlier and current English sources. This is internal agent review only, not native-speaker or external certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    }
+  ]
+}
