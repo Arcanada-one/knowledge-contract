@@ -1,3 +1,10 @@
+---
+title: "K8 — author-side minimal formula-order corrections (9 November 2026)"
+sources: none
+status: "KC-Brain-authored author-side formula-order correction ledger; lint-only normalised copy for admission binding"
+updated: 2026-11-09
+---
+
 # K8 — author-side minimal formula-order corrections (9 November 2026)
 
 **Status:** author-draft; independent scoped fidelity review pending. This is a controlled translation-content change, not acceptance, a hosted Pandoc run, a site deployment, native execution or index admission. The original source and previously reviewed target blobs remain accessible in immutable Git history.
@@ -5,6 +12,7 @@
 ## Exact subject and prior refusal
 
 The English accepted source at `2b5bcff544fea5d1752ff009933e4ce0305dad8b` has:
+
 - Uncertainty Preservation: `engineering/studies/source-transcription-and-uncertainty/STUDY.md`, Git blob `8ca885fc3f144d89e95e4813868fd953450f1f71`.
 - Reuse Economics: `engineering/studies/reuse-admission-and-cost-controls/STUDY.md`, Git blob `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac`.
 
@@ -19,6 +27,7 @@ The site PR28 candidate `f84a2e60e5aa5f5787bb9a78c362eefa401e4519` failed real h
 | Reuse Economics / zh-Hans | `c2099a9aa3eb19b76a63006d5810a08e3d8d2db0` | `f07227366731e2fb946285ec696c7199ae48565f` | Two clauses now introduce prior established properties before their artifact/request/state and each output before the transformation relation |
 
 Paths:
+
 - `translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md`
 - `translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
 - `translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
@@ -32,6 +41,7 @@ The two Reuse translations were read from exact parent `e3b3cb54` and modified o
 This finite textual comparison is **not** a Pandoc AST parity run, a validated URL/anchor/sidecar check, human linguistic verification, independent Agent-Brain review, successful hosted workflow, production serving, or an authorization to merge. It does not establish that all non-mathematical semantics are identical by itself.
 
 Next evidence gates, in order:
+
 1. Agent-Brain: independent scoped semantic/fidelity review of **all three exact revised blobs** against the two exact accepted English source blobs, including temporal/request/dependency binding and negative controls. Existing verdicts about old blobs do not automatically transfer.
 2. KC-SWE: after that review, update only the existing K8/site PR28 regression **input pins** and review sidecars to the accepted exact blobs, run real four-file compiler parity plus negative controls, DCO/REUSE and ordinary CI. Preserve strict formula-order and the narrow anchor-only logic; report per-file outcomes. A new successor head on PR28 is not yet supplied by this author-side revision.
 3. Publication/index/browser checks remain distinct, with explicit allowlist, merges, deployment and served readback. PR28 must not be merged on the old red head.
