@@ -14,13 +14,13 @@
       "source": {
         "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
         "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
-        "revision": "2b5bcff544fea5d1752ff009933e4ce0305dad8b",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
-        "sha256": "09c0db6f99a849b66c5f7124244c06210c218622633f36a15303ca04aa9869af",
-        "revision": "690e6e3b6fdf1df2a771000933588cd7542521cc"
+        "sha256": "bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
       },
       "review": {
         "reviewer": {
@@ -29,10 +29,10 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
         "reviewed": {
           "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
-          "rendition_blob": "1a8f278cf6e179607f717999176962769187d982"
+          "rendition_blob": "7937a6a4bf27adfb9b0846c92b8b945a7c259cc8"
         },
         "scope": {
           "coverage": "full",
@@ -52,8 +52,8 @@
           "proofs": []
         },
         "corrections": [],
-        "reviewed_at": "2026-11-09T13:20:31Z",
-        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged); no one re-reviewed the complete translation against the newer source; not native-speaker, external or scientific-truth certification.",
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
           "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
@@ -113,13 +113,13 @@
       "source": {
         "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
         "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
-        "revision": "2b5bcff544fea5d1752ff009933e4ce0305dad8b",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
-        "sha256": "2798de80ffd73980ad248a70c817b9a886be8a86c27c5d2e5023116858c9ca32",
-        "revision": "690e6e3b6fdf1df2a771000933588cd7542521cc"
+        "sha256": "e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
       },
       "review": {
         "reviewer": {
@@ -128,10 +128,10 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
         "reviewed": {
           "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
-          "rendition_blob": "0c91fe6cce8b2a8e496b973b93e1bd278620b010"
+          "rendition_blob": "2094c4318aea9eaea2e71567c49f95e229cfd027"
         },
         "scope": {
           "coverage": "full",
@@ -151,8 +151,8 @@
           "proofs": []
         },
         "corrections": [],
-        "reviewed_at": "2026-11-09T13:20:31Z",
-        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged); no one re-reviewed the complete translation against the newer source; not native-speaker, external or scientific-truth certification.",
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
           "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
@@ -212,13 +212,13 @@
       "source": {
         "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
         "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
-        "revision": "2b5bcff544fea5d1752ff009933e4ce0305dad8b",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md",
-        "sha256": "5d9be194925259f83dfc91944e1cb7a728c788ae109a6716679f3beee3a3b934",
-        "revision": "690e6e3b6fdf1df2a771000933588cd7542521cc"
+        "sha256": "73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
       },
       "review": {
         "reviewer": {
@@ -227,10 +227,10 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
         "reviewed": {
           "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
-          "rendition_blob": "e45ae5bfd7acb121aecded5907671b4c10aa8cd3"
+          "rendition_blob": "da402f346cc5ddfede98a170a67d107429ce1209"
         },
         "scope": {
           "coverage": "full",
@@ -251,8 +251,8 @@
           "proofs": []
         },
         "corrections": [],
-        "reviewed_at": "2026-11-09T13:20:31Z",
-        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged); no one re-reviewed the complete translation against the newer source; not native-speaker, external or scientific-truth certification.",
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
           "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
@@ -316,13 +316,13 @@
       "source": {
         "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
         "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
-        "revision": "2b5bcff544fea5d1752ff009933e4ce0305dad8b",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md",
-        "sha256": "8cfb892e196ab53a0996942b18c82a491e26f2dd79feacd22a23ec9eacb3336c",
-        "revision": "690e6e3b6fdf1df2a771000933588cd7542521cc"
+        "sha256": "ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
       },
       "review": {
         "reviewer": {
@@ -331,10 +331,10 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
         "reviewed": {
           "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
-          "rendition_blob": "eea8b6e92e1a731aa0459a8b3ef3ec4bc4972f4f"
+          "rendition_blob": "a5183a8a8f19a12e83bab44a3fc0de198d8ca77c"
         },
         "scope": {
           "coverage": "full",
@@ -355,8 +355,8 @@
           "proofs": []
         },
         "corrections": [],
-        "reviewed_at": "2026-11-09T13:20:31Z",
-        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) delta review 6742099993 of exactly these new rendition blobs (links, source pin; prose, formulae, results unchanged); no one re-reviewed the complete translation against the newer source; not native-speaker, external or scientific-truth certification.",
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
           "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
@@ -402,6 +402,372 @@
         {
           "source": "evidence-and-reproduction-boundaries",
           "rendition": "evidence-and-reproduction-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "fa8dce6bfa9a2e030d756c661f39cbd30e7ffa876aee4c79348c013500610845",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "8aaa8dae18a2014be6495c479e85a3e114538420"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "161c34bdd61faff3e41aec02a74e7703b86b7c7fa0d29bfc1fb12ec19b47c49e",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "2f001123a165ef342b3b70e9de36389d765ff40a"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "4f7d492c1a7852f17aefcdc6e160fb583c316b7a346c92f28c005836741e58f5",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "ecd4203da7ba35ad7611cd65f02e32b0c4087e17"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "cfcf845b17cdabd7b6beb8bb0150479b46693665c096f6eacae641403b5dad28",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). Recorded with reviews/renditions/four-studies-current-source-review-20261109.md; evidence completeness remains OPEN until KC-Brain authors one complete evidence record listing all four reviews.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "c2099a9aa3eb19b76a63006d5810a08e3d8d2db0"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
+          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
         },
         {
           "source": "conclusion",
