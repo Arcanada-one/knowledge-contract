@@ -111,6 +111,24 @@
         "R"
       ],
       "trusted_test_premise": true
+    },
+    {
+      "evidence_id": "na-ev-b",
+      "immutable_bytes_digest": "bytes-na-ev-b",
+      "origin_id": "origin-na-b",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "revoked_for_required_use": false,
+        "rule_revision": "rev-rule-1",
+        "service_status": "available",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T23:59:59Z"
+      },
+      "revision_claim": "rev-na-ev-b",
+      "satisfies": [
+        "NA"
+      ],
+      "trusted_test_premise": true
     }
   ],
   "expected": {

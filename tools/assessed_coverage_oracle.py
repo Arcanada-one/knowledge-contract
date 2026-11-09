@@ -19,11 +19,106 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 SUPPORTED_SCOPE = "synthetic_semantics_only"
 MAX_INPUT_BYTES = 512 * 1024
+
+PASS = "pass"
+FAIL = "fail"
+UNKNOWN = "unknown"
+
+MEMBER_DISCHARGED = "discharged"
+MEMBER_NA = "not_applicable"
+MEMBER_FAIL = "fail"
+MEMBER_UNKNOWN = "unknown"
+MEMBER_MISSING = "missing_assessment"
+
+# Reason codes that may appear alongside pass. Every other emitted code must
+# classify as fail or unknown and cannot be ignored when shaping the closure.
+INFORMATIONAL_REASON_CODES = frozenset({
+    "all_mandatory_members_discharged",
+    "empty_set_justified",
+    "not_applicable_authorized",
+})
+
+FAIL_REASON_CODES = frozenset({
+    "malformed_input",
+    "reserved_key_in_input",
+    "reserved_key_in_requirements",
+    "reserved_key_in_member",
+    "reserved_key_in_evidence",
+    "reserved_key_in_assessment",
+    "reserved_key_in_na_decision",
+    "reserved_key_in_conflict",
+    "binding_identity_incomplete",
+    "evidence_identity_conflict",
+    "assessment_identity_conflict",
+    "invalid_provenance",
+    "required_use_denied",
+    "evidence_revoked_for_required_use",
+    "evidence_validity_excludes_evaluation_time",
+    "binding_mismatch",
+    "independence_same_origin",
+    "na_scope_mismatch",
+    "mandatory_conflict_established",
+    "temporal_support_incompatible_fail",
+    "input_unreadable",
+    "input_too_large",
+    "duplicate_json_key",
+})
+
+UNKNOWN_REASON_CODES = frozenset({
+    "binding_missing",
+    "mandatory_inventory_absent",
+    "requirements_not_trusted_premise",
+    "requirements_revision_missing",
+    "requirements_member_duplicate",
+    "empty_set_unjustified",
+    "member_definitions_missing",
+    "member_definition_missing",
+    "member_rule_missing",
+    "member_rule_incomplete",
+    "caller_boolean_not_premise",
+    "evidence_not_trusted_premise",
+    "evidence_provenance_missing",
+    "evidence_service_unavailable",
+    "unrecognized_reviewer_revision",
+    "unrecognized_rule_revision",
+    "reviewer_revision_unpinned",
+    "rule_revision_unpinned",
+    "assessment_binding_missing",
+    "assessment_not_trusted_premise",
+    "conjunction_incomplete",
+    "evidence_missing",
+    "predicate_unsatisfied",
+    "evidence_origin_missing",
+    "assessment_evidence_refs_missing",
+    "independence_unresolved",
+    "member_entailment_unchecked",
+    "na_not_trusted_premise",
+    "na_missing_authority",
+    "na_scope_unverified",
+    "na_rule_missing",
+    "na_evidence_missing",
+    "mandatory_conflict_unresolved",
+    "temporal_support_incoherent",
+    "evaluation_time_missing",
+    "required_profile_uninterpretable",
+    "unresolved_mandatory_dependency",
+    "closure_incomplete",
+    "evidence_current_use_unverified",
+    "time_unparsable",
+    "no_reason_recorded",
+})
+
+REASON_CODE_CLASS = {
+    **{code: FAIL for code in FAIL_REASON_CODES},
+    **{code: UNKNOWN for code in UNKNOWN_REASON_CODES},
+    **{code: "informational" for code in INFORMATIONAL_REASON_CODES},
+}
 
 BINDING_FIELDS = (
     "work_item_revision",
@@ -57,17 +152,6 @@ REPORT_RESERVED_INPUT_KEYS = frozenset({
     "bindings",
 })
 
-PASS = "pass"
-FAIL = "fail"
-UNKNOWN = "unknown"
-
-MEMBER_DISCHARGED = "discharged"
-MEMBER_NA = "not_applicable"
-MEMBER_FAIL = "fail"
-MEMBER_UNKNOWN = "unknown"
-MEMBER_MISSING = "missing_assessment"
-
-
 class DuplicateKeyError(ValueError):
     """Raised when JSON object_pairs_hook sees a repeated key."""
 
@@ -83,6 +167,43 @@ def reject_duplicate_keys(pairs: list[tuple[Any, Any]]) -> dict:
 
 def is_non_empty_string(value: Any) -> bool:
     return isinstance(value, str) and value != ""
+
+
+def classify_reason_code(code: str) -> str:
+    """Return fail, unknown, or informational for one emitted reason code."""
+    if code in REASON_CODE_CLASS:
+        return REASON_CODE_CLASS[code]
+    if code.startswith("missing_assessment:"):
+        return UNKNOWN
+    return UNKNOWN
+
+
+def parse_rfc3339(value: Any) -> datetime | None:
+    """Parse RFC 3339 timestamps that carry an explicit offset (Z or ±hh:mm)."""
+    if not is_non_empty_string(value):
+        return None
+    text = value
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    elif len(text) < 6 or text[-6] not in "+-" or text[-3] != ":":
+        return None
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return None
+    return parsed
+
+
+def string_list_field(container: dict, key: str) -> tuple[list[str] | None, list[str]]:
+    """Absent key => empty list. Present non-list / non-strings => malformed_input."""
+    if key not in container:
+        return [], []
+    value = container.get(key)
+    if not isinstance(value, list) or not all(is_non_empty_string(item) for item in value):
+        return None, ["malformed_input"]
+    return list(value), []
 
 
 def identity_tuple(fields: tuple[str, ...], obj: Any) -> tuple[Any, ...] | None:
@@ -280,6 +401,7 @@ def _evidence_index(document: dict) -> tuple[dict[str, dict], list[str]]:
     if not isinstance(records, list):
         return {}, ["malformed_input"]
     index: dict[str, dict] = {}
+    conflicted: set[str] = set()
     reasons: list[str] = []
     for record in records:
         if not isinstance(record, dict):
@@ -292,14 +414,18 @@ def _evidence_index(document: dict) -> tuple[dict[str, dict], list[str]]:
         if not is_non_empty_string(evidence_id):
             reasons.append("malformed_input")
             continue
+        if evidence_id in conflicted:
+            reasons.append("evidence_identity_conflict")
+            continue
         if evidence_id in index:
-            # Same id with different immutable claims is an identity conflict.
+            # Same id with any differing field is an identity conflict (S18/P19).
+            # Byte-identical duplicates may collapse. Conflicting identities are
+            # unusable: drop the id so order cannot choose a winner.
             prior = index[evidence_id]
-            if (
-                prior.get("immutable_bytes_digest") != record.get("immutable_bytes_digest")
-                or prior.get("revision_claim") != record.get("revision_claim")
-            ):
+            if prior != record:
                 reasons.append("evidence_identity_conflict")
+                del index[evidence_id]
+                conflicted.add(evidence_id)
             continue
         index[evidence_id] = record
     return index, reasons
@@ -322,16 +448,18 @@ def _assessment_list(document: dict) -> tuple[list[dict], list[str]]:
             reasons.append("reserved_key_in_assessment")
             continue
         assessment_id = assessment.get("assessment_id")
-        if is_non_empty_string(assessment_id):
-            if assessment_id in by_id:
-                prior = by_id[assessment_id]
-                if (
-                    prior.get("immutable_bytes_digest") != assessment.get("immutable_bytes_digest")
-                    or prior.get("revision_claim") != assessment.get("revision_claim")
-                ):
-                    reasons.append("assessment_identity_conflict")
-                    continue
-            by_id[assessment_id] = assessment
+        if not is_non_empty_string(assessment_id):
+            reasons.append("malformed_input")
+            continue
+        if assessment_id in by_id:
+            prior = by_id[assessment_id]
+            if (
+                prior.get("immutable_bytes_digest") != assessment.get("immutable_bytes_digest")
+                or prior.get("revision_claim") != assessment.get("revision_claim")
+            ):
+                reasons.append("assessment_identity_conflict")
+                continue
+        by_id[assessment_id] = assessment
         out.append(assessment)
     return out, reasons
 
@@ -378,21 +506,34 @@ def _evidence_current_use(
         return UNKNOWN, ["evidence_provenance_missing"]
     if provenance.get("invalid_provenance_proven") is True:
         return FAIL, ["invalid_provenance"]
+    # Absent current-use signals are not clean (P11).
+    if (
+        "valid_from" not in provenance
+        or "valid_to" not in provenance
+        or "service_status" not in provenance
+        or "revoked_for_required_use" not in provenance
+    ):
+        return UNKNOWN, ["evidence_current_use_unverified"]
     service = provenance.get("service_status")
     if service == "denied":
         return FAIL, ["required_use_denied"]
     if service == "unavailable":
         return UNKNOWN, ["evidence_service_unavailable"]
+    if service != "available":
+        return UNKNOWN, ["evidence_current_use_unverified"]
     if provenance.get("revoked_for_required_use") is True:
         return FAIL, ["evidence_revoked_for_required_use"]
+    if not isinstance(provenance.get("revoked_for_required_use"), bool):
+        return UNKNOWN, ["evidence_current_use_unverified"]
     valid_from = provenance.get("valid_from")
     valid_to = provenance.get("valid_to")
-    if is_non_empty_string(valid_from) and is_non_empty_string(evaluation_time):
-        if evaluation_time < valid_from:
-            return FAIL, ["evidence_validity_excludes_evaluation_time"]
-    if is_non_empty_string(valid_to) and is_non_empty_string(evaluation_time):
-        if evaluation_time > valid_to:
-            return FAIL, ["evidence_validity_excludes_evaluation_time"]
+    eval_dt = parse_rfc3339(evaluation_time)
+    from_dt = parse_rfc3339(valid_from)
+    to_dt = parse_rfc3339(valid_to)
+    if eval_dt is None or from_dt is None or to_dt is None:
+        return UNKNOWN, ["time_unparsable"]
+    if eval_dt < from_dt or eval_dt > to_dt:
+        return FAIL, ["evidence_validity_excludes_evaluation_time"]
     reviewer_revision = provenance.get("reviewer_revision")
     rule_revision = provenance.get("rule_revision")
     if expected_reviewer_revision is not None and is_non_empty_string(expected_reviewer_revision):
@@ -428,9 +569,10 @@ def _assessment_trust(
     if REPORT_RESERVED_INPUT_KEYS.intersection(assessment.keys()):
         return FAIL, ["reserved_key_in_assessment"]
     assessment_binding = assessment.get("binding")
-    if assessment_binding is not None:
-        if not bindings_equal(assessment_binding, binding_b0):
-            return FAIL, ["binding_mismatch"]
+    if not isinstance(assessment_binding, dict):
+        return UNKNOWN, ["assessment_binding_missing"]
+    if not bindings_equal(assessment_binding, binding_b0):
+        return FAIL, ["binding_mismatch"]
     if isinstance(provenance, dict) and provenance.get("invalid_provenance_proven") is True:
         return FAIL, ["invalid_provenance"]
     if expected_reviewer_revision is not None:
@@ -543,27 +685,53 @@ def _evaluate_member_rule(
             aliases = evidence.get("aliases_of")
             if isinstance(aliases, list) and any(item in bound_ids for item in aliases):
                 return MEMBER_FAIL, reasons + ["independence_same_origin"]
-    # Member-specific entailment checks when declared on the assessment.
+    # Shared observation supports a member only through a checked member-specific
+    # entailment (S05 / P02–P04). Absent, empty, or unchecked ⇒ unknown.
     entailments = assessment.get("entailments")
-    if isinstance(entailments, list):
-        matched = False
-        for entailment in entailments:
-            if not isinstance(entailment, dict):
-                continue
-            if entailment.get("member_id") != member_id:
-                continue
-            if entailment.get("checked") is True:
-                matched = True
-                break
-        if entailments and not matched:
-            return MEMBER_UNKNOWN, reasons + ["member_entailment_unchecked"]
+    if not isinstance(entailments, list) or not entailments:
+        return MEMBER_UNKNOWN, reasons + ["member_entailment_unchecked"]
+    matched = False
+    for entailment in entailments:
+        if not isinstance(entailment, dict):
+            continue
+        if entailment.get("member_id") != member_id:
+            continue
+        if entailment.get("checked") is True:
+            matched = True
+            break
+    if not matched:
+        return MEMBER_UNKNOWN, reasons + ["member_entailment_unchecked"]
     return MEMBER_DISCHARGED, reasons
+
+
+def _scan_na_decisions(document: dict) -> list[str]:
+    """Record malformation reasons for the na_decisions collection."""
+    decisions = document.get("na_decisions")
+    if decisions is None:
+        return []
+    if not isinstance(decisions, list):
+        return ["malformed_input"]
+    reasons: list[str] = []
+    for decision in decisions:
+        if not isinstance(decision, dict):
+            reasons.append("malformed_input")
+            continue
+        if REPORT_RESERVED_INPUT_KEYS.intersection(decision.keys()):
+            reasons.append("reserved_key_in_na_decision")
+            continue
+        if not is_non_empty_string(decision.get("member_id")):
+            reasons.append("malformed_input")
+    return reasons
 
 
 def _na_decision_for(
     member_id: str,
     document: dict,
     binding_b0: dict,
+    evidence_index: dict[str, dict],
+    evaluation_time: str,
+    expected_reviewer_revision: str | None,
+    expected_rule_revision: str | None,
 ) -> tuple[str | None, list[str]]:
     decisions = document.get("na_decisions")
     if decisions is None:
@@ -589,8 +757,20 @@ def _na_decision_for(
             return MEMBER_UNKNOWN, ["na_scope_unverified"]
         if not is_non_empty_string(decision.get("rule_id")):
             return MEMBER_UNKNOWN, ["na_rule_missing"]
-        if not is_non_empty_string(decision.get("evidence_id")):
+        evidence_id = decision.get("evidence_id")
+        if not is_non_empty_string(evidence_id):
             return MEMBER_UNKNOWN, ["na_evidence_missing"]
+        evidence = evidence_index.get(evidence_id)
+        if evidence is None:
+            return MEMBER_UNKNOWN, ["na_evidence_missing"]
+        category, evidence_reasons = _evidence_current_use(
+            evidence,
+            evaluation_time,
+            expected_reviewer_revision,
+            expected_rule_revision,
+        )
+        if category is not None:
+            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons
         # Optional binding object must match B0 when present.
         decision_binding = decision.get("binding")
         if decision_binding is not None and not bindings_equal(decision_binding, binding_b0):
@@ -617,6 +797,14 @@ def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, boo
             reasons.append("malformed_input")
             has_unknown = True
             continue
+        if REPORT_RESERVED_INPUT_KEYS.intersection(conflict.keys()):
+            reasons.append("reserved_key_in_conflict")
+            has_fail = True
+            continue
+        if not is_non_empty_string(conflict.get("conflict_id")):
+            reasons.append("malformed_input")
+            has_unknown = True
+            continue
         record = {
             "conflict_id": conflict.get("conflict_id"),
             "kind": conflict.get("kind"),
@@ -636,14 +824,18 @@ def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, boo
 
 
 def _support_times_coherent(assessments_by_member: dict[str, dict], member_ids: list[str]) -> tuple[bool, list[str]]:
-    times: dict[str, str] = {}
+    times: dict[str, datetime] = {}
     for member_id in member_ids:
         assessment = assessments_by_member.get(member_id)
         if assessment is None:
             continue
         support_time = assessment.get("support_time")
-        if is_non_empty_string(support_time):
-            times[member_id] = support_time
+        if not is_non_empty_string(support_time):
+            continue
+        parsed = parse_rfc3339(support_time)
+        if parsed is None:
+            return False, ["time_unparsable"]
+        times[member_id] = parsed
     if len(times) < 2:
         return True, []
     unique = set(times.values())
@@ -656,6 +848,40 @@ def _support_times_coherent(assessments_by_member: dict[str, dict], member_ids: 
     ):
         return False, ["temporal_support_incompatible_fail"]
     return False, ["temporal_support_incoherent"]
+
+
+def _closure_from_reasons(
+    reasons: list[str],
+    member_verdicts: dict[str, str],
+    unresolved_dependencies: list[str],
+    fail_conflict: bool,
+    unknown_conflict: bool,
+) -> tuple[str, list[str]]:
+    """Derive closure from classified reasons; informational codes alone may pass."""
+    working = list(reasons)
+    saw_fail = fail_conflict or any(
+        verdict == MEMBER_FAIL for verdict in member_verdicts.values()
+    )
+    saw_unknown = unknown_conflict or bool(unresolved_dependencies) or any(
+        verdict in (MEMBER_UNKNOWN, MEMBER_MISSING) for verdict in member_verdicts.values()
+    )
+    for code in working:
+        kind = classify_reason_code(code)
+        if kind == FAIL:
+            saw_fail = True
+        elif kind == UNKNOWN:
+            saw_unknown = True
+    if saw_fail:
+        return FAIL, working
+    if saw_unknown:
+        return UNKNOWN, working
+    if all(
+        verdict in (MEMBER_DISCHARGED, MEMBER_NA) for verdict in member_verdicts.values()
+    ) and not unresolved_dependencies:
+        working.append("all_mandatory_members_discharged")
+        return PASS, working
+    working.append("closure_incomplete")
+    return UNKNOWN, working
 
 
 def evaluate(document: dict) -> dict:
@@ -724,13 +950,10 @@ def evaluate(document: dict) -> dict:
             conflicts=[],
             bindings={"b0": binding_b0},
         )
-
-    expected_reviewer_revision = document.get("reviewer_revision")
-    expected_rule_revision = document.get("rule_revision")
-    if expected_reviewer_revision is not None and not is_non_empty_string(expected_reviewer_revision):
+    if parse_rfc3339(evaluation_time) is None:
         return outcome(
             UNKNOWN,
-            ["malformed_input"],
+            ["time_unparsable"],
             member_verdicts={},
             addressed_members=[],
             missing_members=[],
@@ -738,10 +961,19 @@ def evaluate(document: dict) -> dict:
             conflicts=[],
             bindings={"b0": binding_b0},
         )
-    if expected_rule_revision is not None and not is_non_empty_string(expected_rule_revision):
+
+    # Spec §2 pins reviewer and rule revisions; absence does not skip the check (P05).
+    pin_reasons: list[str] = []
+    if "reviewer_revision" not in document or not is_non_empty_string(document.get("reviewer_revision")):
+        pin_reasons.append("reviewer_revision_unpinned")
+    if "rule_revision" not in document or not is_non_empty_string(document.get("rule_revision")):
+        pin_reasons.append("rule_revision_unpinned")
+    expected_reviewer_revision = document.get("reviewer_revision")
+    expected_rule_revision = document.get("rule_revision")
+    if pin_reasons:
         return outcome(
             UNKNOWN,
-            ["malformed_input"],
+            pin_reasons,
             member_verdicts={},
             addressed_members=[],
             missing_members=[],
@@ -754,16 +986,28 @@ def evaluate(document: dict) -> dict:
     reasons.extend(inv_reasons)
 
     # Required constraint-bearing profiles must be interpretable from trusted premises.
+    # Present-but-malformed trusted inventory fields fail closed (P09/P10).
     if isinstance(inventory, dict):
-        required_profiles = inventory.get("required_profiles") or []
-        interpretable = inventory.get("interpretable_profiles") or []
-        if isinstance(required_profiles, list) and isinstance(interpretable, list):
-            for profile in required_profiles:
-                if not is_non_empty_string(profile):
-                    continue
-                if profile not in interpretable:
-                    # Producer optional flag cannot suppress a trusted required profile.
-                    reasons.append("required_profile_uninterpretable")
+        required_profiles, profile_reasons = string_list_field(inventory, "required_profiles")
+        interpretable, interpretable_reasons = string_list_field(inventory, "interpretable_profiles")
+        dependencies_field, dependency_reasons = string_list_field(inventory, "dependencies")
+        shape_reasons = profile_reasons + interpretable_reasons + dependency_reasons
+        if shape_reasons:
+            return outcome(
+                FAIL,
+                reasons + shape_reasons,
+                member_verdicts={},
+                addressed_members=[],
+                missing_members=[],
+                unresolved_dependencies=[],
+                conflicts=[],
+                bindings={"b0": binding_b0},
+            )
+        assert required_profiles is not None and interpretable is not None
+        for profile in required_profiles:
+            if profile not in interpretable:
+                # Producer optional flag cannot suppress a trusted required profile.
+                reasons.append("required_profile_uninterpretable")
         producer_optional = inventory.get("producer_marks_optional")
         if producer_optional is True and "required_profile_uninterpretable" in reasons:
             # Keep the gap; do not honor producer optional.
@@ -778,7 +1022,7 @@ def evaluate(document: dict) -> dict:
             addressed_members=[],
             missing_members=[],
             unresolved_dependencies=list((inventory or {}).get("dependencies") or [])
-            if isinstance(inventory, dict)
+            if isinstance(inventory, dict) and isinstance((inventory or {}).get("dependencies"), list)
             else [],
             conflicts=[],
             bindings={"b0": binding_b0},
@@ -800,11 +1044,11 @@ def evaluate(document: dict) -> dict:
         )
 
     member_ids = list(inventory.get("members") or [])
-    dependencies = inventory.get("dependencies") or []
-    if not isinstance(dependencies, list):
+    dependencies, dependency_reasons = string_list_field(inventory, "dependencies")
+    if dependency_reasons:
         return outcome(
             FAIL,
-            ["malformed_input"],
+            reasons + dependency_reasons,
             member_verdicts={},
             addressed_members=[],
             missing_members=[],
@@ -812,46 +1056,32 @@ def evaluate(document: dict) -> dict:
             conflicts=[],
             bindings={"b0": binding_b0},
         )
-    unresolved_dependencies = [
-        dep for dep in dependencies if is_non_empty_string(dep) and dep not in member_ids
-    ]
+    assert dependencies is not None
+    unresolved_dependencies = [dep for dep in dependencies if dep not in member_ids]
     if unresolved_dependencies:
         reasons.append("unresolved_mandatory_dependency")
 
     if inv_mode == "empty_justified":
         conflicts, conflict_reasons, fail_conflict, unknown_conflict = _collect_conflicts(document)
         reasons.extend(conflict_reasons)
-        if fail_conflict:
-            return outcome(
-                FAIL,
-                reasons,
-                member_verdicts={},
-                addressed_members=[],
-                missing_members=[],
-                unresolved_dependencies=unresolved_dependencies,
-                conflicts=conflicts,
-                bindings={"b0": binding_b0},
-                empty_set_justification=inventory.get("empty_set_justification"),
-            )
-        if unknown_conflict or unresolved_dependencies:
-            return outcome(
-                UNKNOWN,
-                reasons,
-                member_verdicts={},
-                addressed_members=[],
-                missing_members=[],
-                unresolved_dependencies=unresolved_dependencies,
-                conflicts=conflicts,
-                bindings={"b0": binding_b0},
-                empty_set_justification=inventory.get("empty_set_justification"),
-            )
+        reasons.extend(_scan_na_decisions(document))
+        closure, reasons = _closure_from_reasons(
+            reasons,
+            {},
+            unresolved_dependencies,
+            fail_conflict,
+            unknown_conflict,
+        )
+        if closure == PASS:
+            reasons = [code for code in reasons if code != "all_mandatory_members_discharged"]
+            reasons.append("empty_set_justified")
         return outcome(
-            PASS,
-            reasons + ["empty_set_justified"],
+            closure,
+            reasons,
             member_verdicts={},
             addressed_members=[],
             missing_members=[],
-            unresolved_dependencies=[],
+            unresolved_dependencies=[] if closure == PASS else unresolved_dependencies,
             conflicts=conflicts,
             bindings={"b0": binding_b0},
             empty_set_justification=inventory.get("empty_set_justification"),
@@ -863,71 +1093,108 @@ def evaluate(document: dict) -> dict:
     reasons.extend(evidence_reasons)
     assessments, assessment_reasons = _assessment_list(document)
     reasons.extend(assessment_reasons)
+    reasons.extend(_scan_na_decisions(document))
 
     conflicts, conflict_reasons, fail_conflict, unknown_conflict = _collect_conflicts(document)
     reasons.extend(conflict_reasons)
 
     known_members = set(member_ids)
     addressed: list[str] = []
-    assessments_by_member: dict[str, dict] = {}
+    candidates_by_member: dict[str, list[dict]] = {}
     for assessment in assessments:
         qualified = _qualified_member_id(assessment, known_members)
         if qualified is None:
             continue
         if qualified not in addressed:
             addressed.append(qualified)
-        # First trusted candidate wins for evaluation; identity conflicts already recorded.
-        assessments_by_member.setdefault(qualified, assessment)
+        candidates_by_member.setdefault(qualified, []).append(assessment)
+
+    # Representative assessment per member for temporal coherence (any candidate).
+    assessments_by_member: dict[str, dict] = {
+        member_id: candidates[0]
+        for member_id, candidates in candidates_by_member.items()
+        if candidates
+    }
 
     member_verdicts: dict[str, str] = {}
 
     for member_id in member_ids:
-        na_verdict, na_reasons = _na_decision_for(member_id, document, binding_b0)
+        na_verdict, na_reasons = _na_decision_for(
+            member_id,
+            document,
+            binding_b0,
+            evidence_index,
+            evaluation_time,
+            expected_reviewer_revision,
+            expected_rule_revision,
+        )
         if na_verdict is not None:
             member_verdicts[member_id] = na_verdict
             reasons.extend(na_reasons)
             continue
-        assessment = assessments_by_member.get(member_id)
-        if assessment is None:
+        candidates = candidates_by_member.get(member_id) or []
+        if not candidates:
             member_verdicts[member_id] = MEMBER_MISSING
             reasons.append(f"missing_assessment:{member_id}")
             continue
-        trust_category, trust_reasons = _assessment_trust(
-            assessment,
-            binding_b0,
-            expected_reviewer_revision if is_non_empty_string(expected_reviewer_revision) else None,
-            expected_rule_revision if is_non_empty_string(expected_rule_revision) else None,
-        )
-        reasons.extend(trust_reasons)
-        if trust_category == FAIL:
-            member_verdicts[member_id] = MEMBER_FAIL
-            continue
-        if trust_category == UNKNOWN:
-            member_verdicts[member_id] = MEMBER_UNKNOWN
-            continue
         definition = member_defs.get(member_id)
-        if definition is None:
+        saw_binding_mismatch = False
+        saw_member_fail = False
+        saw_member_unknown = False
+        saw_discharged = False
+        for assessment in candidates:
+            trust_category, trust_reasons = _assessment_trust(
+                assessment,
+                binding_b0,
+                expected_reviewer_revision,
+                expected_rule_revision,
+            )
+            reasons.extend(trust_reasons)
+            if "binding_mismatch" in trust_reasons:
+                saw_binding_mismatch = True
+                saw_member_fail = True
+                continue
+            if trust_category == FAIL:
+                saw_member_fail = True
+                continue
+            if trust_category == UNKNOWN:
+                saw_member_unknown = True
+                continue
+            if definition is None:
+                saw_member_unknown = True
+                reasons.append("member_definition_missing")
+                continue
+            verdict, rule_reasons = _evaluate_member_rule(
+                member_id,
+                definition,
+                assessment,
+                evidence_index,
+                evaluation_time,
+                expected_reviewer_revision,
+                expected_rule_revision,
+            )
+            reasons.extend(rule_reasons)
+            if verdict == MEMBER_FAIL:
+                saw_member_fail = True
+            elif verdict == MEMBER_UNKNOWN:
+                saw_member_unknown = True
+            elif verdict == MEMBER_DISCHARGED:
+                saw_discharged = True
+        if saw_binding_mismatch or saw_member_fail:
+            member_verdicts[member_id] = MEMBER_FAIL
+        elif saw_discharged:
+            member_verdicts[member_id] = MEMBER_DISCHARGED
+        elif saw_member_unknown:
             member_verdicts[member_id] = MEMBER_UNKNOWN
-            reasons.append("member_definition_missing")
-            continue
-        verdict, rule_reasons = _evaluate_member_rule(
-            member_id,
-            definition,
-            assessment,
-            evidence_index,
-            evaluation_time,
-            expected_reviewer_revision if is_non_empty_string(expected_reviewer_revision) else None,
-            expected_rule_revision if is_non_empty_string(expected_rule_revision) else None,
-        )
-        member_verdicts[member_id] = verdict
-        reasons.extend(rule_reasons)
+        else:
+            member_verdicts[member_id] = MEMBER_UNKNOWN
 
     # Diagnostic addressed coverage: members with any candidate assessment.
     # Missing assessment is diagnostic; NA without an assessment is still valid discharge.
     missing_members = [
         member_id
         for member_id in member_ids
-        if member_id not in assessments_by_member
+        if member_id not in candidates_by_member
         and member_verdicts.get(member_id) != MEMBER_NA
     ]
 
@@ -937,55 +1204,20 @@ def evaluate(document: dict) -> dict:
 
     coherent, temporal_reasons = _support_times_coherent(assessments_by_member, member_ids)
     reasons.extend(temporal_reasons)
-
-    saw_fail = fail_conflict or any(
-        verdict == MEMBER_FAIL for verdict in member_verdicts.values()
-    ) or ("evidence_identity_conflict" in reasons) or ("assessment_identity_conflict" in reasons)
     if not coherent and "temporal_support_incompatible_fail" in temporal_reasons:
-        saw_fail = True
-    saw_unknown = (
-        unknown_conflict
-        or bool(unresolved_dependencies)
-        or any(
-            verdict in (MEMBER_UNKNOWN, MEMBER_MISSING)
-            for verdict in member_verdicts.values()
-        )
-        or (not coherent and "temporal_support_incoherent" in temporal_reasons)
-        or any(
-            code.startswith("missing_assessment:")
-            or code in {
-                "conjunction_incomplete",
-                "caller_boolean_not_premise",
-                "unrecognized_reviewer_revision",
-                "unrecognized_rule_revision",
-                "evidence_service_unavailable",
-                "independence_unresolved",
-                "member_entailment_unchecked",
-                "na_missing_authority",
-                "na_evidence_missing",
-                "na_scope_unverified",
-                "assessment_not_trusted_premise",
-                "evidence_not_trusted_premise",
-            }
-            for code in reasons
-        )
-    )
+        fail_conflict = True
+    if not coherent and "temporal_support_incoherent" in temporal_reasons:
+        unknown_conflict = True
+    if "time_unparsable" in temporal_reasons:
+        unknown_conflict = True
 
-    if saw_fail:
-        closure = FAIL
-    elif saw_unknown:
-        closure = UNKNOWN
-    else:
-        # Every mandatory member discharged or validly NA; no unresolved conflict.
-        if all(
-            verdict in (MEMBER_DISCHARGED, MEMBER_NA)
-            for verdict in member_verdicts.values()
-        ) and not unresolved_dependencies:
-            closure = PASS
-            reasons.append("all_mandatory_members_discharged")
-        else:
-            closure = UNKNOWN
-            reasons.append("closure_incomplete")
+    closure, reasons = _closure_from_reasons(
+        reasons,
+        member_verdicts,
+        unresolved_dependencies,
+        fail_conflict,
+        unknown_conflict,
+    )
 
     return outcome(
         closure,

@@ -9,8 +9,10 @@ Agent-Brain packet section 5 are reported as killed / survived / equivalent.
 """
 from __future__ import annotations
 
+import copy
 import json
 import os
+import random
 import shutil
 import subprocess
 import sys
@@ -263,8 +265,20 @@ MUTANTS: dict[str, Mutator] = {
     # shared reference: ignore missing member-specific entailment
     "shared-reference": lambda s: _replace_once(
         s,
-        "if entailments and not matched:\n            return MEMBER_UNKNOWN, reasons + [\"member_entailment_unchecked\"]",
-        "if False and entailments and not matched:\n            return MEMBER_UNKNOWN, reasons + [\"member_entailment_unchecked\"]",
+        "if not isinstance(entailments, list) or not entailments:\n"
+        "        return MEMBER_UNKNOWN, reasons + [\"member_entailment_unchecked\"]\n"
+        "    matched = False\n"
+        "    for entailment in entailments:\n"
+        "        if not isinstance(entailment, dict):\n"
+        "            continue\n"
+        "        if entailment.get(\"member_id\") != member_id:\n"
+        "            continue\n"
+        "        if entailment.get(\"checked\") is True:\n"
+        "            matched = True\n"
+        "            break\n"
+        "    if not matched:\n"
+        "        return MEMBER_UNKNOWN, reasons + [\"member_entailment_unchecked\"]",
+        "matched = True  # mutant: shared reference alone discharges",
         "shared-reference",
     ),
     # alias counting: treat aliases as covering every missing mandatory member
@@ -285,8 +299,13 @@ MUTANTS: dict[str, Mutator] = {
     # producer optional: suppress required-profile gap
     "producer-optional": lambda s: _replace_once(
         s,
-        'if profile not in interpretable:\n                    # Producer optional flag cannot suppress a trusted required profile.\n                    reasons.append("required_profile_uninterpretable")',
-        'if profile not in interpretable:\n                    if inventory.get("producer_marks_optional") is True:\n                        continue\n                    reasons.append("required_profile_uninterpretable")',
+        'if profile not in interpretable:\n'
+        '                # Producer optional flag cannot suppress a trusted required profile.\n'
+        '                reasons.append("required_profile_uninterpretable")',
+        'if profile not in interpretable:\n'
+        '                if inventory.get("producer_marks_optional") is True:\n'
+        '                    continue\n'
+        '                reasons.append("required_profile_uninterpretable")',
         "producer-optional",
     ),
     # missing-as-empty: absent requirements become empty justified set
@@ -299,9 +318,170 @@ MUTANTS: dict[str, Mutator] = {
     # skipped binding: ignore binding mismatches
     "skipped-binding": lambda s: _replace_once(
         s,
-        "if assessment_binding is not None:\n        if not bindings_equal(assessment_binding, binding_b0):\n            return FAIL, [\"binding_mismatch\"]",
-        "if assessment_binding is not None:\n        if False and not bindings_equal(assessment_binding, binding_b0):\n            return FAIL, [\"binding_mismatch\"]",
+        "if not isinstance(assessment_binding, dict):\n"
+        "        return UNKNOWN, [\"assessment_binding_missing\"]\n"
+        "    if not bindings_equal(assessment_binding, binding_b0):\n"
+        "        return FAIL, [\"binding_mismatch\"]",
+        "if False and not isinstance(assessment_binding, dict):\n"
+        "        return UNKNOWN, [\"assessment_binding_missing\"]\n"
+        "    if False and not bindings_equal(assessment_binding, binding_b0):\n"
+        "        return FAIL, [\"binding_mismatch\"]",
         "skipped-binding",
+    ),
+    # missing binding treated as discharged (P01 revert)
+    "missing-binding-ok": lambda s: _replace_once(
+        s,
+        "if not isinstance(assessment_binding, dict):\n"
+        "        return UNKNOWN, [\"assessment_binding_missing\"]\n"
+        "    if not bindings_equal(assessment_binding, binding_b0):\n"
+        "        return FAIL, [\"binding_mismatch\"]",
+        "if not isinstance(assessment_binding, dict):\n"
+        "        return None, []  # mutant: absent binding is fine\n"
+        "    if not bindings_equal(assessment_binding, binding_b0):\n"
+        "        return FAIL, [\"binding_mismatch\"]",
+        "missing-binding-ok",
+    ),
+    # skip revision pinning (P05 revert)
+    "skip-revision-pin": lambda s: _replace_once(
+        s,
+        "if pin_reasons:\n"
+        "        return outcome(\n"
+        "            UNKNOWN,\n"
+        "            pin_reasons,\n",
+        "if False and pin_reasons:\n"
+        "        return outcome(\n"
+        "            UNKNOWN,\n"
+        "            pin_reasons,\n",
+        "skip-revision-pin",
+    ),
+    # ignore malformed reason classification (P06/P07 revert)
+    "ignore-malformed-reason": lambda s: _replace_once(
+        s,
+        'FAIL_REASON_CODES = frozenset({\n    "malformed_input",',
+        'FAIL_REASON_CODES = frozenset({\n    "malformed_input_disabled_for_mutant",',
+        "ignore-malformed-reason",
+    ),
+    # skip NA evidence resolution (P08 revert)
+    "skip-na-evidence-resolve": lambda s: _replace_once(
+        s,
+        "evidence = evidence_index.get(evidence_id)\n"
+        "        if evidence is None:\n"
+        "            return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
+        "        category, evidence_reasons = _evidence_current_use(\n"
+        "            evidence,\n"
+        "            evaluation_time,\n"
+        "            expected_reviewer_revision,\n"
+        "            expected_rule_revision,\n"
+        "        )\n"
+        "        if category is not None:\n"
+        "            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
+        "evidence = evidence_index.get(evidence_id)\n"
+        "        if False and evidence is None:\n"
+        "            return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
+        "        category, evidence_reasons = None, []\n"
+        "        if False:\n"
+        "            category, evidence_reasons = _evidence_current_use(\n"
+        "                evidence,\n"
+        "                evaluation_time,\n"
+        "                expected_reviewer_revision,\n"
+        "                expected_rule_revision,\n"
+        "            )\n"
+        "        if category is not None:\n"
+        "            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
+        "skip-na-evidence-resolve",
+    ),
+    # skip trusted inventory string-list shape (P09/P10 revert)
+    "skip-profile-shape": lambda s: _replace_once(
+        s,
+        "if not isinstance(value, list) or not all(is_non_empty_string(item) for item in value):\n"
+        "        return None, [\"malformed_input\"]\n"
+        "    return list(value), []",
+        "if not isinstance(value, list):\n"
+        "        return [], []  # mutant: ignore malformed shape\n"
+        "    return [item for item in value if is_non_empty_string(item)], []",
+        "skip-profile-shape",
+    ),
+    # absent current-use signals read as clean (P11 revert)
+    "skip-current-use-signals": lambda s: _replace_once(
+        s,
+        "# Absent current-use signals are not clean (P11).\n"
+        "    if (\n"
+        "        \"valid_from\" not in provenance\n"
+        "        or \"valid_to\" not in provenance\n"
+        "        or \"service_status\" not in provenance\n"
+        "        or \"revoked_for_required_use\" not in provenance\n"
+        "    ):\n"
+        "        return UNKNOWN, [\"evidence_current_use_unverified\"]\n"
+        "    service = provenance.get(\"service_status\")\n"
+        "    if service == \"denied\":\n"
+        "        return FAIL, [\"required_use_denied\"]\n"
+        "    if service == \"unavailable\":\n"
+        "        return UNKNOWN, [\"evidence_service_unavailable\"]\n"
+        "    if service != \"available\":\n"
+        "        return UNKNOWN, [\"evidence_current_use_unverified\"]\n"
+        "    if provenance.get(\"revoked_for_required_use\") is True:\n"
+        "        return FAIL, [\"evidence_revoked_for_required_use\"]\n"
+        "    if not isinstance(provenance.get(\"revoked_for_required_use\"), bool):\n"
+        "        return UNKNOWN, [\"evidence_current_use_unverified\"]",
+        "# Mutant: absent current-use signals read as clean/available.\n"
+        "    service = provenance.get(\"service_status\") or \"available\"\n"
+        "    if service == \"denied\":\n"
+        "        return FAIL, [\"required_use_denied\"]\n"
+        "    if service == \"unavailable\":\n"
+        "        return UNKNOWN, [\"evidence_service_unavailable\"]\n"
+        "    if False and service != \"available\":\n"
+        "        return UNKNOWN, [\"evidence_current_use_unverified\"]\n"
+        "    if provenance.get(\"revoked_for_required_use\") is True:\n"
+        "        return FAIL, [\"evidence_revoked_for_required_use\"]",
+        "skip-current-use-signals",
+    ),
+    # lexicographic time compare (P13 revert)
+    "lex-time-compare": lambda s: _replace_once(
+        s,
+        "eval_dt = parse_rfc3339(evaluation_time)\n"
+        "    from_dt = parse_rfc3339(valid_from)\n"
+        "    to_dt = parse_rfc3339(valid_to)\n"
+        "    if eval_dt is None or from_dt is None or to_dt is None:\n"
+        "        return UNKNOWN, [\"time_unparsable\"]\n"
+        "    if eval_dt < from_dt or eval_dt > to_dt:\n"
+        "        return FAIL, [\"evidence_validity_excludes_evaluation_time\"]",
+        "if is_non_empty_string(valid_from) and is_non_empty_string(evaluation_time):\n"
+        "        if evaluation_time < valid_from:\n"
+        "            return FAIL, [\"evidence_validity_excludes_evaluation_time\"]\n"
+        "    if is_non_empty_string(valid_to) and is_non_empty_string(evaluation_time):\n"
+        "        if evaluation_time > valid_to:\n"
+        "            return FAIL, [\"evidence_validity_excludes_evaluation_time\"]\n"
+        "    if False:\n"
+        "        return UNKNOWN, [\"time_unparsable\"]",
+        "lex-time-compare",
+    ),
+    # first-wins assessment order (P14a revert)
+    "first-wins-assessment": lambda s: _replace_once(
+        s,
+        "candidates_by_member.setdefault(qualified, []).append(assessment)",
+        "if qualified not in candidates_by_member:\n"
+        "            candidates_by_member[qualified] = [assessment]  # mutant: first-wins",
+        "first-wins-assessment",
+    ),
+    # digest/revision-only evidence identity (P19 revert)
+    "digest-only-evidence-identity": lambda s: _replace_once(
+        s,
+        "# Same id with any differing field is an identity conflict (S18/P19).\n"
+        "            # Byte-identical duplicates may collapse. Conflicting identities are\n"
+        "            # unusable: drop the id so order cannot choose a winner.\n"
+        "            prior = index[evidence_id]\n"
+        "            if prior != record:\n"
+        "                reasons.append(\"evidence_identity_conflict\")\n"
+        "                del index[evidence_id]\n"
+        "                conflicted.add(evidence_id)",
+        "prior = index[evidence_id]\n"
+        "            if (\n"
+        "                prior.get(\"immutable_bytes_digest\") != record.get(\"immutable_bytes_digest\")\n"
+        "                or prior.get(\"revision_claim\") != record.get(\"revision_claim\")\n"
+        "            ):\n"
+        "                reasons.append(\"evidence_identity_conflict\")\n"
+        "                # mutant: keep first record; digest/revision-only conflict",
+        "digest-only-evidence-identity",
     ),
     # ignored revocation
     "ignored-revocation": lambda s: _replace_once(
@@ -333,15 +513,48 @@ MUTANTS: dict[str, Mutator] = {
     # ungrounded NA
     "ungrounded-na": lambda s: _replace_once(
         s,
-        'if not is_non_empty_string(decision.get("evidence_id")):\n            return MEMBER_UNKNOWN, ["na_evidence_missing"]',
-        'if False and not is_non_empty_string(decision.get("evidence_id")):\n            return MEMBER_UNKNOWN, ["na_evidence_missing"]',
+        'evidence_id = decision.get("evidence_id")\n'
+        '        if not is_non_empty_string(evidence_id):\n'
+        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
+        '        evidence = evidence_index.get(evidence_id)\n'
+        '        if evidence is None:\n'
+        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
+        '        category, evidence_reasons = _evidence_current_use(\n'
+        '            evidence,\n'
+        '            evaluation_time,\n'
+        '            expected_reviewer_revision,\n'
+        '            expected_rule_revision,\n'
+        '        )\n'
+        '        if category is not None:\n'
+        '            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons',
+        '# Mutant: accept ungrounded NA without resolving evidence.\n'
+        '        evidence_id = decision.get("evidence_id")\n'
+        '        _ = (evidence_id, evidence_index, evaluation_time)\n'
+        '        if False:\n'
+        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]',
         "ungrounded-na",
     ),
     # last-write dedup conflicting identities
     "last-write-dedup": lambda s: _replace_once(
         s,
-        "if assessment_id in by_id:\n                prior = by_id[assessment_id]\n                if (\n                    prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n                    or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n                ):\n                    reasons.append(\"assessment_identity_conflict\")\n                    continue\n            by_id[assessment_id] = assessment",
-        "if assessment_id in by_id:\n                prior = by_id[assessment_id]\n                if (\n                    prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n                    or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n                ):\n                    by_id[assessment_id] = assessment\n                    # mutant: last write wins, no conflict reason\n            by_id[assessment_id] = assessment",
+        "if assessment_id in by_id:\n"
+        "            prior = by_id[assessment_id]\n"
+        "            if (\n"
+        "                prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n"
+        "                or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n"
+        "            ):\n"
+        "                reasons.append(\"assessment_identity_conflict\")\n"
+        "                continue\n"
+        "        by_id[assessment_id] = assessment",
+        "if assessment_id in by_id:\n"
+        "            prior = by_id[assessment_id]\n"
+        "            if (\n"
+        "                prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n"
+        "                or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n"
+        "            ):\n"
+        "                by_id[assessment_id] = assessment\n"
+        "                # mutant: last write wins, no conflict reason\n"
+        "        by_id[assessment_id] = assessment",
         "last-write-dedup",
     ),
     # temporal union
@@ -433,6 +646,59 @@ class SealBoundaryTests(unittest.TestCase):
         )
         self.assertIs(sealed["effects_authorized"], False)
         self.assertEqual(sealed["scope"], "synthetic_semantics_only")
+
+
+class ReasonClassificationTests(unittest.TestCase):
+    def test_every_catalogued_reason_has_exactly_one_class(self) -> None:
+        self.assertEqual(aco.FAIL_REASON_CODES & aco.UNKNOWN_REASON_CODES, set())
+        self.assertEqual(aco.FAIL_REASON_CODES & aco.INFORMATIONAL_REASON_CODES, set())
+        self.assertEqual(aco.UNKNOWN_REASON_CODES & aco.INFORMATIONAL_REASON_CODES, set())
+        paired = aco.FAIL_REASON_CODES | aco.UNKNOWN_REASON_CODES | aco.INFORMATIONAL_REASON_CODES
+        self.assertEqual(set(aco.REASON_CODE_CLASS), paired)
+        for code, kind in aco.REASON_CODE_CLASS.items():
+            self.assertIn(kind, (aco.FAIL, aco.UNKNOWN, "informational"), code)
+
+    def test_emitted_fixture_reasons_are_classified_and_pass_is_informational_only(self) -> None:
+        for path in sorted(FIX_DIR.glob("*.json")):
+            with self.subTest(case=path.name):
+                working, expected = load_fixture(path)
+                report = aco.evaluate_document(working)
+                for code in report["reason_codes"]:
+                    kind = aco.classify_reason_code(code)
+                    self.assertIn(
+                        kind,
+                        (aco.FAIL, aco.UNKNOWN, "informational"),
+                        f"{path.name}: unclassified {code}",
+                    )
+                if report["closure_verdict"] == "pass":
+                    for code in report["reason_codes"]:
+                        self.assertEqual(
+                            aco.classify_reason_code(code),
+                            "informational",
+                            f"{path.name}: non-informational {code} coexisted with pass",
+                        )
+                self.assertEqual(report["closure_verdict"], expected["closure_verdict"], path.name)
+
+
+class PermutationIndependenceTests(unittest.TestCase):
+    def test_shuffling_collections_preserves_verdict_and_reason_set(self) -> None:
+        rng = random.Random(82)
+        list_keys = ("assessments", "evidence", "na_decisions", "conflicts")
+        for path in sorted(FIX_DIR.glob("*.json")):
+            with self.subTest(case=path.name):
+                working, _ = load_fixture(path)
+                baseline = aco.evaluate_document(copy.deepcopy(working))
+                base_verdict = baseline["closure_verdict"]
+                base_reasons = reason_set(baseline["reason_codes"])
+                for _ in range(5):
+                    shuffled = copy.deepcopy(working)
+                    for key in list_keys:
+                        value = shuffled.get(key)
+                        if isinstance(value, list) and len(value) > 1:
+                            rng.shuffle(value)
+                    report = aco.evaluate_document(shuffled)
+                    self.assertEqual(report["closure_verdict"], base_verdict, path.name)
+                    self.assertEqual(reason_set(report["reason_codes"]), base_reasons, path.name)
 
 
 if __name__ == "__main__":

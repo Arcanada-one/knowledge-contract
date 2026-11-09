@@ -1,9 +1,10 @@
 # Assessed-coverage finite oracle report (Layer S)
 
-Marker: `agent-brain-assessed-coverage-oracle-20261109-v1`.
+Marker: `agent-brain-assessed-coverage-oracle-20261109-v2`.
 Specification: arcanada-workspace PR1886 comment 6734249466; Muneral e445c6a4 (child of KCLIVE-08).
+Round 2: close KC-SWE probe bypasses from PR #82 (probe `/tmp/kcswe_or82p1.py`).
 
-## Per-case results
+## Per-case results (S-layer)
 
 | Case id | Fixture file | Expected | Observed | Reasons |
 | --- | --- | --- | --- | --- |
@@ -45,13 +46,38 @@ Specification: arcanada-workspace PR1886 comment 6734249466; Muneral e445c6a4 (c
 | S22a-same-origin | `S22a-same-origin.json` | `fail` | `fail` | independence_same_origin |
 | S22b-independence-unknown | `S22b-independence-unknown.json` | `unknown` | `unknown` | evidence_origin_missing |
 
+### S-fixture content updates (pinned expectations unchanged)
+
+| Fixture | Change | Why |
+| --- | --- | --- |
+| `S16.json` | Added trusted current-use-valid evidence `na-ev-b` | P08 requires NA `evidence_id` to resolve; without it S16 would become unknown |
+| `S17a-caller-only.json` | Added `na-ev-b` evidence | Same grounding; failure remains `caller_boolean_not_premise` before evidence use |
+| `S17b-wrong-scope.json` | Added `na-ev-b` evidence | Same grounding; failure remains `na_scope_mismatch` before evidence use |
+
+No pinned `expected` reason blocks changed for S01–S22.
+
+## Round-2 K fixtures (probe bypass closures)
+
+| Defect | Fixture | Observed | Reasons |
+| --- | --- | --- | --- |
+| P01 | `K01-assessment-binding-missing.json` | `unknown` | assessment_binding_missing |
+| P02/P03/P04 | `K02-member-entailment-unchecked.json` | `unknown` | member_entailment_unchecked |
+| P05 | `K03-revisions-unpinned.json` | `unknown` | reviewer_revision_unpinned, rule_revision_unpinned |
+| P06/P07 | `K04-malformed-collection-records.json` | `fail` | malformed_input |
+| P08 | `K05-na-evidence-missing.json` | `unknown` | na_evidence_missing |
+| P09/P10 | `K06-malformed-required-profiles.json` | `fail` | malformed_input |
+| P11 | `K07-evidence-current-use-unverified.json` | `unknown` | evidence_current_use_unverified |
+| P13 | `K08-time-fractional-stale.json` | `fail` | evidence_validity_excludes_evaluation_time |
+| P14a | `K09-wrong-bound-after-good.json` | `fail` | binding_mismatch |
+| P19 | `K10-evidence-identity-conflict-content.json` | `fail` | evidence_identity_conflict |
+
 ## Deny-everything stub
 
 A deny-everything stub returns `fail` for every input. Positive cases
 S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
 ≠ pinned `pass`). Observed: all five positives reject the stub.
 
-## Mutation table (section 5)
+## Mutation table
 
 | Target | Result |
 | --- | --- |
@@ -64,6 +90,15 @@ S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
 | `producer-optional` | killed |
 | `missing-as-empty` | killed |
 | `skipped-binding` | killed |
+| `missing-binding-ok` | killed |
+| `skip-revision-pin` | killed |
+| `ignore-malformed-reason` | killed |
+| `skip-na-evidence-resolve` | killed |
+| `skip-profile-shape` | killed |
+| `skip-current-use-signals` | killed |
+| `lex-time-compare` | killed |
+| `first-wins-assessment` | killed |
+| `digest-only-evidence-identity` | killed |
 | `ignored-revocation` | killed |
 | `caller-boolean` | killed |
 | `ungrounded-na` | killed |
@@ -74,6 +109,25 @@ S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
 
 Baseline unmutated scratch copy exits 0 before mutants run. A mutant is
 counted killed only on assertion failure, not crash/import error.
+
+## KC-SWE probe (`kcswe_or82p1.py`)
+
+At reviewed head before Round 2: `BAD 13 of 25`.
+After Round 2: `BAD 1 of 25` — only **P19**, whose probe line still expects
+`pass` (first-wins report-only). Observed honest verdict for P19 is
+`fail` / `evidence_identity_conflict` (and `evidence_missing` after the
+conflicting id is dropped from the usable index). All other probe rows OK,
+including P12 still `pass`.
+
+## Unit tests
+
+```sh
+python3 -B -m unittest tools.test_assessed_coverage_oracle -v
+```
+
+Observed: `Ran 11 tests` … `OK` (fixture corpus via subTests over S+K files,
+deny stub, seal boundary, reason classification, permutation independence,
+mutation harness).
 
 ## Limits
 
