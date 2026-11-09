@@ -1124,3 +1124,49 @@ python3 -B scripts/build_publication.py \
 Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to the evidence-binding head `8d2675f…` so pin checks pass; restored afterward; no site commit, merge, deploy, or pin change.
 
 Record marker: `k8-first-admission-diagnostics-20261109-v4`.
+
+## Iteration 4b (2026-11-09) — align method/limitations with bound evidence
+
+### Iteration 4b — Scope
+
+Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
+Branch head at report authorship: `5b2a2cefac7050338fd70d0d9af9dd61dd82a687` (sidecar `review.method` / `review.limitations` only; admitted rendition bytes and `review.evidence` unchanged).
+Site compiler: `contract-place-site` `main` `b6d7532f48498d385171a41941cb864195a4fbc0` in a separate local checkout.
+No rendition bytes were modified. No evidence-record edits. No compiler changes. No site-pin commit. No Muneral writes, merge, or deploy.
+
+### Iteration 4b — Sidecar wording
+
+For all four admitted entries, replaced the stale process claim that evidence completeness remained OPEN and that the reviews were recorded only in `reviews/renditions/four-studies-current-source-review-20261109.md` with the bound provenance statement: the four reviews are recorded in `reviews/renditions/k8-composite-exact-blob-evidence-20261109.md` (blob `eb689d2b5eaf40cd124fdec27d4fe312867d2d73`), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Deleted `evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews;` from `review.limitations`. Restated the former "Iteration-3 admission scope" clause as the plain admission fact that only these four compile-clean entries are admitted. Kept composite method detail, the no-single-fresh-full-pass limitation, and the not-native-speaker / external / scientific-truth-certification limitation. AI translator and AI reviewer remain stated in `review.reviewer.independence_basis` (unchanged).
+
+Grep of the whole sidecar and the four rendered admitted study pages for `OPEN` and `until KC-Brain`: **zero hits**.
+
+### Iteration 4b — Admitted computed state
+
+| Work | Language | Source blob | Rendition blob | Rendition sha256 | resolve_state | computed state | MathML |
+| --- | --- | --- | --- | --- | --- | --- | ---: |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `7937a6a4bf27adfb9b0846c92b8b945a7c259cc8` | `bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995` | `reviewed` | `reviewed` | 11 |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `2094c4318aea9eaea2e71567c49f95e229cfd027` | `e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd` | `reviewed` | `reviewed` | 11 |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `da402f346cc5ddfede98a170a67d107429ce1209` | `73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443` | `reviewed` | `reviewed` | 0 |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `a5183a8a8f19a12e83bab44a3fc0de198d8ca77c` | `ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8` | `reviewed` | `reviewed` | 0 |
+
+### Iteration 4b — Outcome
+
+`scripts/build_publication.py` against knowledge head `5b2a2cefac7050338fd70d0d9af9dd61dd82a687` with a temporary local site `publication-manifest.json` commit override (not committed; site pin restored afterward) **succeeds**. `scripts/check_publication.py`: **OK** — 30 full documents / 90 localized reading pages, 442 original MathML expressions, 297 pages; 60 rendition pages checked (4 `reviewed` + 56 catalogue `missing` shells); exact body and source bindings.
+
+Per admitted entry: `resolve_state=reviewed`, computed publication state `reviewed`, `review_issue=null`, compile failures none. Link classes unchanged from iteration 4 (dependency-closure: document 7 / document_fallback 7 / invariant 14; executable-projections: document 6 / document_fallback 5 / document_shown 1 / invariant 12).
+
+Rendered `ru` review aside for `dependency-closure-and-package-delivery` shows the updated Method and Limitations strings (no OPEN / until KC-Brain wording) and still names evidence `reviews/renditions/k8-composite-exact-blob-evidence-20261109.md`.
+
+### Iteration 4b — Build command used
+
+```text
+python3 -B scripts/build_publication.py \
+  --source-dir /tmp/k8-iter4b-knowledge-source \
+  --roadmap-source-dir /tmp/k8-iter4b-roadmap-source \
+  --manifest /tmp/k8-iter4b-publication-manifest.json
+```
+
+Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to `5b2a2cefac7050338fd70d0d9af9dd61dd82a687` so pin checks pass; restored afterward to `0b284c6cd971566e7fe38d572c86b164c28b27c5`; no site commit, merge, deploy, or pin change.
+
+Record marker: `k8-first-admission-diagnostics-20261109-v4b`.
+
