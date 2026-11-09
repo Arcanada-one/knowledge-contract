@@ -161,17 +161,20 @@ service markers.
 Fixtures live under `tools/fixtures/assessed-coverage/` — one concrete variant
 per file (`S01.json`, `S08a-absent.json`, …, Round-2 `K01`–`K10` bypass
 closures, Round-3 `K11`–`K16` order/trust/NA/boolean, Round-4 `K17`/`K17b`
-support-time and `K18`/`K18b` NA+wrong-bound pins). Each file pins an
-`expected` block (verdict + reason codes) before execution; the runner never
-chooses fail vs unknown. Member definitions and NA decisions require
-`trusted_test_premise: true` and a B0 binding object on each NA; assessments
-require a B0 binding and a checked member-specific entailment; document
-`reviewer_revision` / `rule_revision` are pinned; current-use signals and
-RFC 3339 offset times are required; trusted-premise booleans must be exact
-JSON booleans; malformed collection / inventory shapes and conflicting
-evidence identities fail closed. Assessment-discharged members require
-demonstrated `support_time` (common snapshot; mixed/absent ⇒
-`temporal_support_unverified`); NA-discharged members are exempt. Assessment
+support-time and `K18`/`K18b` NA+wrong-bound pins, Round-5 `K19`–`K21e`
+identity/applicability pins, Round-6 `K22`–`K22f` NA-must-not-mask
+established-violation pins). Each file pins an `expected` block (verdict +
+reason codes) before execution; the runner never chooses fail vs unknown.
+Member definitions and NA decisions require `trusted_test_premise: true` and a
+B0 binding object on each NA; assessments require a B0 binding and a checked
+member-specific entailment; document `reviewer_revision` / `rule_revision` are
+pinned; current-use signals and RFC 3339 offset times are required;
+trusted-premise booleans must be exact JSON booleans; malformed collection /
+inventory shapes and conflicting evidence identities fail closed.
+Assessment-discharged members require demonstrated `support_time` (common
+snapshot; mixed/absent ⇒ `temporal_support_unverified`); NA-discharged members
+are exempt from the common-snapshot obligation, but a trusted B0-bound
+`applicability_violation_established: true` still forces FAIL (F3). Assessment
 integrity is evaluated before NA discharge. List order — including candidates
 within a member and NA decisions — does not change the closure. See
 `assessed-coverage-oracle-report.md`.

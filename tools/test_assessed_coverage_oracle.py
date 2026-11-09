@@ -674,8 +674,9 @@ MUTANTS: dict[str, Mutator] = {
     # Q6 revert: absent/mixed support_time treated as coherent
     "skip-support-time-required": lambda s: _replace_once(
         s,
-        "# Trusted established applicability violation is FAIL on its own (F2):\n"
+        "# Trusted established applicability violation is FAIL on its own (F2/F3):\n"
         "    # timestamp intersection cannot negate it; it dominates missing-support UNKNOWN.\n"
+        "    # A valid authorised NA for the same member also cannot erase it.\n"
         "    if applicability_fail and missing_support:\n"
         "        return False, [\"applicability_violation_established\"]\n"
         "    # Any discharging assessment without demonstrated support time ⇒ unverified\n"
@@ -690,6 +691,60 @@ MUTANTS: dict[str, Mutator] = {
         "    if not times_by_member:\n"
         "        return True, []",
         "skip-support-time-required",
+    ),
+    # F3 revert: established-violation scanned only for assessment-discharged members
+    "skip-applicability-na-mask": lambda s: _replace_once(
+        s,
+        "# F3: scan established-violation over every admitted trusted B0-bound\n"
+        "    # assessment, not only over assessment-discharged members.\n"
+        "    for _member_id, candidates in trusted_candidates_by_member.items():\n"
+        "        for assessment in candidates:\n"
+        "            flag, flag_malformed = bool_field(\n"
+        "                assessment, \"applicability_violation_established\"\n"
+        "            )\n"
+        "            if flag_malformed:\n"
+        "                return False, flag_malformed\n"
+        "            if flag is True:\n"
+        "                applicability_fail = True\n"
+        "    for member_id in assessment_discharged_members:\n"
+        "        candidates = trusted_candidates_by_member.get(member_id) or []\n"
+        "        times: set[datetime] = set()\n"
+        "        for assessment in candidates:\n"
+        "            support_time = assessment.get(\"support_time\")\n"
+        "            if not is_non_empty_string(support_time):\n"
+        "                continue\n"
+        "            parsed = parse_rfc3339(support_time)\n"
+        "            if parsed is None:\n"
+        "                return False, [\"time_unparsable\"]\n"
+        "            times.add(parsed)\n"
+        "        if not times:\n"
+        "            missing_support = True\n"
+        "        else:\n"
+        "            times_by_member[member_id] = times",
+        "# Mutant: only assessment-discharged members expose established-violation (NA masks).\n"
+        "    for member_id in assessment_discharged_members:\n"
+        "        candidates = trusted_candidates_by_member.get(member_id) or []\n"
+        "        times: set[datetime] = set()\n"
+        "        for assessment in candidates:\n"
+        "            flag, flag_malformed = bool_field(\n"
+        "                assessment, \"applicability_violation_established\"\n"
+        "            )\n"
+        "            if flag_malformed:\n"
+        "                return False, flag_malformed\n"
+        "            if flag is True:\n"
+        "                applicability_fail = True\n"
+        "            support_time = assessment.get(\"support_time\")\n"
+        "            if not is_non_empty_string(support_time):\n"
+        "                continue\n"
+        "            parsed = parse_rfc3339(support_time)\n"
+        "            if parsed is None:\n"
+        "                return False, [\"time_unparsable\"]\n"
+        "            times.add(parsed)\n"
+        "        if not times:\n"
+        "            missing_support = True\n"
+        "        else:\n"
+        "            times_by_member[member_id] = times",
+        "skip-applicability-na-mask",
     ),
     # Q8 revert: NA short-circuits before assessment integrity
     "na-before-assessments": lambda s: _replace_once(
@@ -957,6 +1012,12 @@ class PermutationIndependenceTests(unittest.TestCase):
         "K21c-applicability-flag-wrong-bound.json",
         "K21d-applicability-established-dominates-missing-time.json",
         "K21e-applicability-flag-not-masked.json",
+        "K22-na-masks-established-violation.json",
+        "K22b-na-masks-established-violation-reversed.json",
+        "K22c-na-masks-established-plus-clean.json",
+        "K22d-na-with-assessment-flag-absent.json",
+        "K22e-na-with-assessment-flag-false.json",
+        "K22f-na-established-flag-untrusted.json",
         "S19b-applicability-violation.json",
     )
 

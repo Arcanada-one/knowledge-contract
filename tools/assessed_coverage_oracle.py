@@ -945,16 +945,22 @@ def _support_times_coherent(
     any assessment-discharged member lacks a support_time — including the
     mixed missing/present case — emit ``temporal_support_unverified``; do not
     intersect over a partial mandatory set. Members discharged only by a
-    valid NA are exempt. Incompatible declared times still yield
-    ``temporal_support_incoherent`` (or ``temporal_support_incompatible_fail``
-    when an applicability violation is established).
+    valid NA are exempt from the common-snapshot obligation. Incompatible
+    declared times still yield ``temporal_support_incoherent`` (or
+    ``temporal_support_incompatible_fail`` when an applicability violation is
+    established).
+
+    F3: a trusted B0-bound ``applicability_violation_established: true`` is an
+    independent FAIL premise over *every* admitted trusted candidate, including
+    assessments for members later discharged by a valid authorised NA. NA does
+    not erase that established contradiction.
     """
     times_by_member: dict[str, set[datetime]] = {}
     applicability_fail = False
     missing_support = False
-    for member_id in assessment_discharged_members:
-        candidates = trusted_candidates_by_member.get(member_id) or []
-        times: set[datetime] = set()
+    # F3: scan established-violation over every admitted trusted B0-bound
+    # assessment, not only over assessment-discharged members.
+    for _member_id, candidates in trusted_candidates_by_member.items():
         for assessment in candidates:
             flag, flag_malformed = bool_field(
                 assessment, "applicability_violation_established"
@@ -963,6 +969,10 @@ def _support_times_coherent(
                 return False, flag_malformed
             if flag is True:
                 applicability_fail = True
+    for member_id in assessment_discharged_members:
+        candidates = trusted_candidates_by_member.get(member_id) or []
+        times: set[datetime] = set()
+        for assessment in candidates:
             support_time = assessment.get("support_time")
             if not is_non_empty_string(support_time):
                 continue
@@ -974,8 +984,9 @@ def _support_times_coherent(
             missing_support = True
         else:
             times_by_member[member_id] = times
-    # Trusted established applicability violation is FAIL on its own (F2):
+    # Trusted established applicability violation is FAIL on its own (F2/F3):
     # timestamp intersection cannot negate it; it dominates missing-support UNKNOWN.
+    # A valid authorised NA for the same member also cannot erase it.
     if applicability_fail and missing_support:
         return False, ["applicability_violation_established"]
     # Any discharging assessment without demonstrated support time ⇒ unverified
