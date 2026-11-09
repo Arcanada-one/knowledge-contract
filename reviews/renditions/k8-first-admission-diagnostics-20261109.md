@@ -708,7 +708,7 @@ Record marker: `k8-first-admission-diagnostics-20261109-v1`.
 
 ## Iteration 2 (2026-11-09) — SCOPED PASS import
 
-### Scope
+### Iteration 2 — Scope
 
 Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
 Branch head at report authorship: `c782f102e6370671e32008cd177bc133ae9cd64c` (bytes commit `690e6e3b6fdf1df2a771000933588cd7542521cc`; sidecar tip).
@@ -728,7 +728,7 @@ Admitted (exact blobs):
 
 Removed from PR86 (CHANGES_REQUIRED; later iteration): `source-transcription-and-uncertainty` and `reuse-admission-and-cost-controls` × `ru`/`zh-Hans` (files and sidecar entries).
 
-### Outcome
+### Iteration 2 — Outcome
 
 `scripts/build_publication.py` against this head **refuses** every admitted entry on link classification. Review bind reaches `reviewed` (`resolve_state`), and `check_parity` with links set aside reports **OK** (section/structure/formula/code/reference multiset parity holds for these four). Native publish still blocked by English-depth relative hrefs that resolve under `translations/<lang>/` from the rendition file directory.
 
@@ -738,12 +738,12 @@ C5 / published-page checks: **not measured** — build did not produce rendition
 
 Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no compile). Source/rendition heading maps in the sidecar are unchanged from iteration 1 for these works; parity stage did not report `RENDITION_SECTION_*` or structure failures once link classification is collected separately.
 
-### Ownership split
+### Iteration 2 — Ownership split
 
 - **KC-Brain / translator content (must change rendition bytes + re-review):** every non-local-looking relative href that was written at English source depth (`../`, `../../../`, `evidence/...`, `checks/...`) must be rewritten so that a **literal** resolve from `translations/<lang>/engineering/studies/<study>/` reaches the same canonical English-tree path (example: English `../../../papers/X/PAPER.md` → `../../../../../papers/X/PAPER.md`). Same-language peer targets under `translations/<lang>/...` are only legal when that work/language is registered in the sidecar; today only these four studies are registered, so papers/glossary/bibliography/editorial-pilot peers are refused.
 - **KC-SWE (this iteration, done without byte edits):** imported four SCOPED PASS blobs byte-exact; removed four CHANGES_REQUIRED files; added corrections ledger; repinned four sidecar entries with `author.identity=KC-Brain`, Agent-Brain composite review (comments 6735134008 + 6739674011 + 6742099993), source pin `2b5bcff544fea5d1752ff009933e4ce0305dad8b`, rendition revision `690e6e3b6fdf1df2a771000933588cd7542521cc`.
 
-### `dependency-closure-and-package-delivery / ru`
+### Iteration 2 — `dependency-closure-and-package-delivery / ru`
 
 - Rendition path: `translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
 - Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
@@ -752,7 +752,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links (literal resolve from the rendition directory)
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -778,7 +778,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 | 124 | `../evidence-language-index.json` | `translations/ru/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
 | 124 | `../review-corrections.json` | `translations/ru/engineering/studies/review-corrections.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/review-corrections.json` | not a catalogue document path; not a legal peer |
 
-### `dependency-closure-and-package-delivery / zh-Hans`
+### Iteration 2 — `dependency-closure-and-package-delivery / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
 - Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
@@ -787,7 +787,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links (literal resolve from the rendition directory)
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -813,7 +813,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 | 124 | `../evidence-language-index.json` | `translations/zh-Hans/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
 | 124 | `../review-corrections.json` | `translations/zh-Hans/engineering/studies/review-corrections.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/review-corrections.json` | not a catalogue document path; not a legal peer |
 
-### `executable-projections-and-revision / ru`
+### Iteration 2 — `executable-projections-and-revision / ru`
 
 - Rendition path: `translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md`
 - Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
@@ -822,7 +822,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links (literal resolve from the rendition directory)
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -844,7 +844,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 | 120 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
 | 124 | `../../../reference/glossary/GLOSSARY.md` | `translations/ru/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/ru/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
 
-### `executable-projections-and-revision / zh-Hans`
+### Iteration 2 — `executable-projections-and-revision / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md`
 - Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
@@ -853,7 +853,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links (literal resolve from the rendition directory)
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -875,7 +875,23 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 | 120 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
 | 124 | `../../../reference/glossary/GLOSSARY.md` | `translations/zh-Hans/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/zh-Hans/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
 
-### Dry-run language totals
+
+### Iteration 2 — knowledge-contract link-check (lychee)
+
+Hosted CI `link-check` on head `8281ebeb40fb050b33b131bb38ffb0e176f93491` (run `42635137977`) reported **76** offline `File not found` errors, all under `translations/<lang>/…` from the four admitted SCOPED PASS blobs. This is the same English-depth relative-href problem as the site compiler; rendition bytes were not edited. Per-file counts from the job log:
+
+| File | File not found |
+| --- | ---: |
+| `translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md` | 21 |
+| `translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md` | 17 |
+| `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md` | 21 |
+| `translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md` | 17 |
+| **Total** | **76** |
+
+`markdown-lint` MD024 duplicates on this diagnostics file are fixed in a follow-up tip; `link-check` remains red until new rendition-depth blobs arrive. PR stays draft.
+
+
+### Iteration 2 — Dry-run language totals
 
 ```json
 {
@@ -932,7 +948,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 
 Dry-run notes: `RENDITION_REVISION_PIN` rows are the known dry-run artifact (synthetic source.revision=HEAD vs earlier/mixed pins). `front_matter_pin_agrees=0` remains because dry-run compares front-matter pins in its own way; the admitted blobs now name current main source blobs (`42294151…` / `b2306980…`) at commit `2b5bcff`.
 
-### Build command used
+### Iteration 2 — Build command used
 
 ```text
 python3 -B scripts/build_publication.py \
