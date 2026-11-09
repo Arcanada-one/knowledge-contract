@@ -15,7 +15,7 @@ This is an author-side addendum to [the exact formula-order correction record](k
 - Russian rendition path: `translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`.
 - Prior Russian rendition blob: `7376c33010abde5a67c9fca6c40408a8056a2500` (passed 56/56 ordered mathematical occurrences but failed inline-code parity).
 - New Russian author-draft blob: `f7d53ee85bea6966c7068a0835b19ba4593a8e19`.
-- Exact sole edit, once, in the paragraph about historical six controls: `Её шесть проверок \`fail\`/\`unknown\`` → `Её шесть проверок fail/unknown`. This now treats fail/unknown as plain prose, matching the English `Its six fail/unknown controls`, instead of creating two additional inline-code AST nodes.
+- Exact sole edit, once, in the paragraph about historical six controls: removed the inline-code markup around the terms **fail** and **unknown**. The resulting Russian text is «Её шесть проверок fail/unknown не устанавливают выполнение обязанности при пропущенном условии». English has plain prose “Its six fail/unknown controls”, not two code spans.
 - All other bytes, front matter, headings, formulas, links, tables and code are unchanged, verified by an exact reversible single-phrase substitution. No scientific or historical outcome is reinterpreted.
 
 ## Boundary and follow-up
