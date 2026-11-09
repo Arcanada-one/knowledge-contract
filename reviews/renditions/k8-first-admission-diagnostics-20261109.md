@@ -1,11 +1,13 @@
 ---
 title: "K8 first rendition admission diagnostics (2026-11-09)"
 sources: none
-status: "diagnostic only; admission not completed; draft PR evidence for KC-Brain"
+status: "diagnostic only; iteration-2 import recorded; native compile still refused on link depth; draft PR evidence for KC-Brain"
 updated: 2026-11-09
 ---
 
 # K8 first rendition admission diagnostics
+
+## Iteration 1 (2026-11-09) — initial eight-entry admission
 
 ## Scope
 
@@ -703,3 +705,240 @@ python3 -B scripts/build_publication.py \
 First build error: `RENDITION_REFERENCE_DROPPED` on `dependency-closure-and-package-delivery/ru` (absolute GitHub blob URLs). Per-entry `compile_entry(..., report=...)` was used afterward so all eight entries are covered even when the production build stops at the first refusal.
 
 Record marker: `k8-first-admission-diagnostics-20261109-v1`.
+
+## Iteration 2 (2026-11-09) — SCOPED PASS import
+
+### Scope
+
+Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
+Branch head at report authorship: `c782f102e6370671e32008cd177bc133ae9cd64c` (bytes commit `690e6e3b6fdf1df2a771000933588cd7542521cc`; sidecar tip).
+Translator corrections: PR76 commit `68a0b17ad766c189466fdf3e83cd0805388258ba`; record `reviews/renditions/k8-author-structural-corrections-20261109.md` (blob `b91dc0b0b8f877271f084ddb7a47117d9d986e67`).
+Independent delta review: Agent-Brain comment 6742099993 (SCOPED PASS for four; CHANGES_REQUIRED for four).
+Site compiler: `contract-place-site` `main` `b6d7532f48498d385171a41941cb864195a4fbc0` in a separate local checkout.
+No rendition bytes were modified after import. No compiler changes.
+
+Admitted (exact blobs):
+
+| Work | Language | Source blob | Rendition blob | Rendition sha256 | resolve_state |
+| --- | --- | --- | --- | --- | --- |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `1a8f278cf6e179607f717999176962769187d982` | `09c0db6f99a849b66c5f7124244c06210c218622633f36a15303ca04aa9869af` | `reviewed` |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `0c91fe6cce8b2a8e496b973b93e1bd278620b010` | `2798de80ffd73980ad248a70c817b9a886be8a86c27c5d2e5023116858c9ca32` | `reviewed` |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `e45ae5bfd7acb121aecded5907671b4c10aa8cd3` | `5d9be194925259f83dfc91944e1cb7a728c788ae109a6716679f3beee3a3b934` | `reviewed` |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `eea8b6e92e1a731aa0459a8b3ef3ec4bc4972f4f` | `8cfb892e196ab53a0996942b18c82a491e26f2dd79feacd22a23ec9eacb3336c` | `reviewed` |
+
+Removed from PR86 (CHANGES_REQUIRED; later iteration): `source-transcription-and-uncertainty` and `reuse-admission-and-cost-controls` × `ru`/`zh-Hans` (files and sidecar entries).
+
+### Outcome
+
+`scripts/build_publication.py` against this head **refuses** every admitted entry on link classification. Review bind reaches `reviewed` (`resolve_state`), and `check_parity` with links set aside reports **OK** (section/structure/formula/code/reference multiset parity holds for these four). Native publish still blocked by English-depth relative hrefs that resolve under `translations/<lang>/` from the rendition file directory.
+
+First build error: `RENDITION_LINK_UNPINNED` on `dependency-closure-and-package-delivery/ru` for `../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` → `translations/ru/reference/bibliography/BIBLIOGRAPHY.md`.
+
+C5 / published-page checks: **not measured** — build did not produce rendition pages. No localized study page from these four entries is emitted; English fallback behaviour for missing/uncompiled locales therefore remains the site default, and noindex inventory for these routes was not produced by a successful compile.
+
+Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no compile). Source/rendition heading maps in the sidecar are unchanged from iteration 1 for these works; parity stage did not report `RENDITION_SECTION_*` or structure failures once link classification is collected separately.
+
+### Ownership split
+
+- **KC-Brain / translator content (must change rendition bytes + re-review):** every non-local-looking relative href that was written at English source depth (`../`, `../../../`, `evidence/...`, `checks/...`) must be rewritten so that a **literal** resolve from `translations/<lang>/engineering/studies/<study>/` reaches the same canonical English-tree path (example: English `../../../papers/X/PAPER.md` → `../../../../../papers/X/PAPER.md`). Same-language peer targets under `translations/<lang>/...` are only legal when that work/language is registered in the sidecar; today only these four studies are registered, so papers/glossary/bibliography/editorial-pilot peers are refused.
+- **KC-SWE (this iteration, done without byte edits):** imported four SCOPED PASS blobs byte-exact; removed four CHANGES_REQUIRED files; added corrections ledger; repinned four sidecar entries with `author.identity=KC-Brain`, Agent-Brain composite review (comments 6735134008 + 6739674011 + 6742099993), source pin `2b5bcff544fea5d1752ff009933e4ce0305dad8b`, rendition revision `690e6e3b6fdf1df2a771000933588cd7542521cc`.
+
+### `dependency-closure-and-package-delivery / ru`
+
+- Rendition path: `translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
+- Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
+- Sidecar rendition.revision: `690e6e3b6fdf1df2a771000933588cd7542521cc`
+- `resolve_state`: `reviewed`
+- Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
+- Parity with link classify set aside: `[{'parity': 'OK'}]`
+
+#### Failing links (literal resolve from the rendition directory)
+
+| Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
+| ---: | --- | --- | --- | --- | --- |
+| 26 | `../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/retrieval-and-context-composition/PAPER.md` | `translations/ru/papers/retrieval-and-context-composition/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/retrieval-and-context-composition/PAPER.md` | catalogue work `papers/retrieval-and-context-composition/PAPER.md`; peer `translations/ru/papers/retrieval-and-context-composition/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/constrained-transformations/PAPER.md` | `translations/ru/papers/constrained-transformations/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/constrained-transformations/PAPER.md` | catalogue work `papers/constrained-transformations/PAPER.md`; peer `translations/ru/papers/constrained-transformations/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/revision-and-governance/PAPER.md` | `translations/ru/papers/revision-and-governance/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/revision-and-governance/PAPER.md` | catalogue work `papers/revision-and-governance/PAPER.md`; peer `translations/ru/papers/revision-and-governance/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 52 | `evidence/finite-package-selftest.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | not a catalogue document path; not a legal peer |
+| 54 | `../README.md#counting-and-interpretation` | `translations/ru/engineering/studies/README.md` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/README.md#counting-and-interpretation` | not a catalogue document path; not a legal peer |
+| 60 | `evidence/dependency-graph.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | not a catalogue document path; not a legal peer |
+| 60 | `evidence/replay_closure.py` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | not a catalogue document path; not a legal peer |
+| 68 | `evidence/public-closure-replay.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | not a catalogue document path; not a legal peer |
+| 72 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 74 | `checks/check_closure_size_and_mutations.py` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | not a catalogue document path; not a legal peer |
+| 74 | `checks/closure-size-and-mutation-check.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | not a catalogue document path; not a legal peer |
+| 96 | `evidence/layout-preservation-report.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | not a catalogue document path; not a legal peer |
+| 98 | `evidence/layout-conformance-report.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/historical-package-replay.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/historical-replay-environment.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | not a catalogue document path; not a legal peer |
+| 122 | `../editorial-skill-pilot/STUDY.md` | `translations/ru/engineering/studies/editorial-skill-pilot/STUDY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../engineering/studies/editorial-skill-pilot/STUDY.md` | catalogue work `engineering/studies/editorial-skill-pilot/STUDY.md`; peer `translations/ru/engineering/studies/editorial-skill-pilot/STUDY.md` registered=False — peer only legal if sidecar-registered |
+| 122 | `../../../reference/glossary/GLOSSARY.md` | `translations/ru/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/ru/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
+| 124 | `evidence/origin.json` | `translations/ru/engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | not a catalogue document path; not a legal peer |
+| 124 | `../evidence-language-index.json` | `translations/ru/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
+| 124 | `../review-corrections.json` | `translations/ru/engineering/studies/review-corrections.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/review-corrections.json` | not a catalogue document path; not a legal peer |
+
+### `dependency-closure-and-package-delivery / zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
+- Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
+- Sidecar rendition.revision: `690e6e3b6fdf1df2a771000933588cd7542521cc`
+- `resolve_state`: `reviewed`
+- Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
+- Parity with link classify set aside: `[{'parity': 'OK'}]`
+
+#### Failing links (literal resolve from the rendition directory)
+
+| Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
+| ---: | --- | --- | --- | --- | --- |
+| 26 | `../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/retrieval-and-context-composition/PAPER.md` | `translations/zh-Hans/papers/retrieval-and-context-composition/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/retrieval-and-context-composition/PAPER.md` | catalogue work `papers/retrieval-and-context-composition/PAPER.md`; peer `translations/zh-Hans/papers/retrieval-and-context-composition/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/constrained-transformations/PAPER.md` | `translations/zh-Hans/papers/constrained-transformations/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/constrained-transformations/PAPER.md` | catalogue work `papers/constrained-transformations/PAPER.md`; peer `translations/zh-Hans/papers/constrained-transformations/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 28 | `../../../papers/revision-and-governance/PAPER.md` | `translations/zh-Hans/papers/revision-and-governance/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/revision-and-governance/PAPER.md` | catalogue work `papers/revision-and-governance/PAPER.md`; peer `translations/zh-Hans/papers/revision-and-governance/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 52 | `evidence/finite-package-selftest.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | not a catalogue document path; not a legal peer |
+| 54 | `../README.md#counting-and-interpretation` | `translations/zh-Hans/engineering/studies/README.md` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/README.md#counting-and-interpretation` | not a catalogue document path; not a legal peer |
+| 60 | `evidence/dependency-graph.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | not a catalogue document path; not a legal peer |
+| 60 | `evidence/replay_closure.py` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | not a catalogue document path; not a legal peer |
+| 68 | `evidence/public-closure-replay.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | not a catalogue document path; not a legal peer |
+| 72 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 74 | `checks/check_closure_size_and_mutations.py` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | not a catalogue document path; not a legal peer |
+| 74 | `checks/closure-size-and-mutation-check.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | not a catalogue document path; not a legal peer |
+| 96 | `evidence/layout-preservation-report.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | not a catalogue document path; not a legal peer |
+| 98 | `evidence/layout-conformance-report.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/historical-package-replay.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/historical-replay-environment.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | not a catalogue document path; not a legal peer |
+| 122 | `../editorial-skill-pilot/STUDY.md` | `translations/zh-Hans/engineering/studies/editorial-skill-pilot/STUDY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../engineering/studies/editorial-skill-pilot/STUDY.md` | catalogue work `engineering/studies/editorial-skill-pilot/STUDY.md`; peer `translations/zh-Hans/engineering/studies/editorial-skill-pilot/STUDY.md` registered=False — peer only legal if sidecar-registered |
+| 122 | `../../../reference/glossary/GLOSSARY.md` | `translations/zh-Hans/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/zh-Hans/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
+| 124 | `evidence/origin.json` | `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | not a catalogue document path; not a legal peer |
+| 124 | `../evidence-language-index.json` | `translations/zh-Hans/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
+| 124 | `../review-corrections.json` | `translations/zh-Hans/engineering/studies/review-corrections.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/review-corrections.json` | not a catalogue document path; not a legal peer |
+
+### `executable-projections-and-revision / ru`
+
+- Rendition path: `translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md`
+- Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
+- Sidecar rendition.revision: `690e6e3b6fdf1df2a771000933588cd7542521cc`
+- `resolve_state`: `reviewed`
+- Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
+- Parity with link classify set aside: `[{'parity': 'OK'}]`
+
+#### Failing links (literal resolve from the rendition directory)
+
+| Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
+| ---: | --- | --- | --- | --- | --- |
+| 26 | `../../../papers/retrieval-and-context-composition/PAPER.md` | `translations/ru/papers/retrieval-and-context-composition/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/retrieval-and-context-composition/PAPER.md` | catalogue work `papers/retrieval-and-context-composition/PAPER.md`; peer `translations/ru/papers/retrieval-and-context-composition/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 26 | `../../../papers/revision-and-governance/PAPER.md` | `translations/ru/papers/revision-and-governance/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/revision-and-governance/PAPER.md` | catalogue work `papers/revision-and-governance/PAPER.md`; peer `translations/ru/papers/revision-and-governance/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 26 | `../../../papers/evidence-and-falsification/PAPER.md` | `translations/ru/papers/evidence-and-falsification/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/evidence-and-falsification/PAPER.md` | catalogue work `papers/evidence-and-falsification/PAPER.md`; peer `translations/ru/papers/evidence-and-falsification/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 32 | `evidence/historical-reader-study-source.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | not a catalogue document path; not a legal peer |
+| 34 | `../source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | `translations/ru/engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | not a catalogue document path; not a legal peer |
+| 53 | `evidence/reader-boundary-report.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | not a catalogue document path; not a legal peer |
+| 57 | `evidence/targeted-revision-comparison.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | not a catalogue document path; not a legal peer |
+| 74 | `evidence/addressability-study-source.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | not a catalogue document path; not a legal peer |
+| 88 | `evidence/consumer-qualification-report.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/agent-projection-results.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | not a catalogue document path; not a legal peer |
+| 116 | `evidence/origin.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/origin.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/origin.json` | not a catalogue document path; not a legal peer |
+| 116 | `evidence/offline-projection-replay-report.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | not a catalogue document path; not a legal peer |
+| 118 | `../historical-recovery-gaps.json` | `translations/ru/engineering/studies/historical-recovery-gaps.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/historical-recovery-gaps.json` | not a catalogue document path; not a legal peer |
+| 120 | `evidence/projection-study-source.json` | `translations/ru/engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | not a catalogue document path; not a legal peer |
+| 120 | `../evidence-language-index.json` | `translations/ru/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
+| 120 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/ru/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 124 | `../../../reference/glossary/GLOSSARY.md` | `translations/ru/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/ru/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
+
+### `executable-projections-and-revision / zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md`
+- Sidecar source.revision: `2b5bcff544fea5d1752ff009933e4ce0305dad8b`
+- Sidecar rendition.revision: `690e6e3b6fdf1df2a771000933588cd7542521cc`
+- `resolve_state`: `reviewed`
+- Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
+- Parity with link classify set aside: `[{'parity': 'OK'}]`
+
+#### Failing links (literal resolve from the rendition directory)
+
+| Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
+| ---: | --- | --- | --- | --- | --- |
+| 26 | `../../../papers/retrieval-and-context-composition/PAPER.md` | `translations/zh-Hans/papers/retrieval-and-context-composition/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/retrieval-and-context-composition/PAPER.md` | catalogue work `papers/retrieval-and-context-composition/PAPER.md`; peer `translations/zh-Hans/papers/retrieval-and-context-composition/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 26 | `../../../papers/revision-and-governance/PAPER.md` | `translations/zh-Hans/papers/revision-and-governance/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/revision-and-governance/PAPER.md` | catalogue work `papers/revision-and-governance/PAPER.md`; peer `translations/zh-Hans/papers/revision-and-governance/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 26 | `../../../papers/evidence-and-falsification/PAPER.md` | `translations/zh-Hans/papers/evidence-and-falsification/PAPER.md` | `RENDITION_LINK_UNPINNED` | `../../../../../papers/evidence-and-falsification/PAPER.md` | catalogue work `papers/evidence-and-falsification/PAPER.md`; peer `translations/zh-Hans/papers/evidence-and-falsification/PAPER.md` registered=False — peer only legal if sidecar-registered |
+| 32 | `evidence/historical-reader-study-source.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | not a catalogue document path; not a legal peer |
+| 34 | `../source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | `translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | not a catalogue document path; not a legal peer |
+| 53 | `evidence/reader-boundary-report.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | not a catalogue document path; not a legal peer |
+| 57 | `evidence/targeted-revision-comparison.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | not a catalogue document path; not a legal peer |
+| 74 | `evidence/addressability-study-source.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | not a catalogue document path; not a legal peer |
+| 88 | `evidence/consumer-qualification-report.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | not a catalogue document path; not a legal peer |
+| 104 | `evidence/agent-projection-results.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | not a catalogue document path; not a legal peer |
+| 116 | `evidence/origin.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/origin.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/origin.json` | not a catalogue document path; not a legal peer |
+| 116 | `evidence/offline-projection-replay-report.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | not a catalogue document path; not a legal peer |
+| 118 | `../historical-recovery-gaps.json` | `translations/zh-Hans/engineering/studies/historical-recovery-gaps.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/historical-recovery-gaps.json` | not a catalogue document path; not a legal peer |
+| 120 | `evidence/projection-study-source.json` | `translations/zh-Hans/engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | not a catalogue document path; not a legal peer |
+| 120 | `../evidence-language-index.json` | `translations/zh-Hans/engineering/studies/evidence-language-index.json` | `RENDITION_LINK_TRANSLATION` | `../../../../../engineering/studies/evidence-language-index.json` | not a catalogue document path; not a legal peer |
+| 120 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
+| 124 | `../../../reference/glossary/GLOSSARY.md` | `translations/zh-Hans/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/zh-Hans/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
+
+### Dry-run language totals
+
+```json
+{
+  "ru": {
+    "absent_documents": 28,
+    "files_clean": 0,
+    "files_found": 2,
+    "files_with_a_failure": 2,
+    "front_matter_pin_agrees": 0,
+    "link_classes": {
+      "document_shown": 1,
+      "peer": 1
+    },
+    "other_failures": {
+      "RENDITION_REVISION_PIN": 2
+    },
+    "parity_failures": {},
+    "path_matches": 2,
+    "states": {
+      "unreviewed": 2
+    },
+    "unmatched_paths": [],
+    "unresolved_links": {
+      "RENDITION_LINK_TRANSLATION": 26,
+      "RENDITION_LINK_UNPINNED": 12
+    }
+  },
+  "zh-Hans": {
+    "absent_documents": 28,
+    "files_clean": 0,
+    "files_found": 2,
+    "files_with_a_failure": 2,
+    "front_matter_pin_agrees": 0,
+    "link_classes": {
+      "document_shown": 1,
+      "peer": 1
+    },
+    "other_failures": {
+      "RENDITION_REVISION_PIN": 2
+    },
+    "parity_failures": {},
+    "path_matches": 2,
+    "states": {
+      "unreviewed": 2
+    },
+    "unmatched_paths": [],
+    "unresolved_links": {
+      "RENDITION_LINK_TRANSLATION": 26,
+      "RENDITION_LINK_UNPINNED": 12
+    }
+  }
+}
+```
+
+Dry-run notes: `RENDITION_REVISION_PIN` rows are the known dry-run artifact (synthetic source.revision=HEAD vs earlier/mixed pins). `front_matter_pin_agrees=0` remains because dry-run compares front-matter pins in its own way; the admitted blobs now name current main source blobs (`42294151…` / `b2306980…`) at commit `2b5bcff`.
+
+### Build command used
+
+```text
+python3 -B scripts/build_publication.py \
+  --source-dir /tmp/k8-iter2-knowledge-source \
+  --roadmap-source-dir /tmp/k8-iter2-roadmap-source \
+  --manifest /tmp/k8-iter2-publication-manifest.json
+```
+
+Record marker: `k8-first-admission-diagnostics-20261109-v2`.
