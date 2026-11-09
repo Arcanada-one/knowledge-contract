@@ -10,7 +10,7 @@ Base reviewed head: `d85842508a1bdaae0015ece886f8726105fded6a`.
 | Path | git blob SHA |
 | --- | --- |
 | `tools/assessed_coverage_oracle.py` | `971990aadf834148821981a7d46ad98b2fb01e6f` |
-| `tools/test_assessed_coverage_oracle.py` | `ed51a87a76d70d4382fff9eb19caafc11505b4f8` |
+| `tools/test_assessed_coverage_oracle.py` | `37e97ce41cd53ff8c541639e9c0799a20187b7d6` |
 
 ## Per-case results (S-layer)
 
@@ -39,10 +39,13 @@ Base reviewed head: `d85842508a1bdaae0015ece886f8726105fded6a`.
 | K18b | `K18b-na-wrong-bound-reversed.json` | `fail` | `fail` | binding_mismatch, not_applicable_authorized | `36a37f89f4ad92841edcfc0bfc7f56a147c489a9` |
 | K19-assessment-identity-content-conflict | `K19-assessment-identity-content-conflict.json` | `fail` | `fail` | assessment_identity_conflict, missing_assessment:a | `a6208ac7be6f4c13dbb9952f29d47e4efeac49a8` |
 | K19b-assessment-identity-content-conflict-reversed | `K19b-assessment-identity-content-conflict-reversed.json` | `fail` | `fail` | assessment_identity_conflict, missing_assessment:a | `e4731845d191f247dd7044c12f25c0eaa3873cd0` |
+| K19c-assessment-identity-digests-absent | `K19c-assessment-identity-digests-absent.json` | `fail` | `fail` | assessment_identity_conflict, missing_assessment:a | `2890d4f8ec73a8abaeab2ab8145a7390b6ad20d3` |
 | K20-assessment-identical-duplicate | `K20-assessment-identical-duplicate.json` | `pass` | `pass` | all_mandatory_members_discharged | `a39e3f41b27fc81033a346bad734d30a47a33788` |
 | K21-applicability-coincident-established | `K21-applicability-coincident-established.json` | `fail` | `fail` | applicability_violation_established | `5e7d3837ac889ec4abde1faf40b1e880278b963f` |
 | K21b-applicability-coincident-absent | `K21b-applicability-coincident-absent.json` | `pass` | `pass` | all_mandatory_members_discharged | `f08014275d3380d903df225e6c01f890389d9a3a` |
 | K21c-applicability-flag-wrong-bound | `K21c-applicability-flag-wrong-bound.json` | `fail` | `fail` | binding_mismatch | `2b80f0f6a1e52503ae48d02cb6ea2531f6e7f25f` |
+| K21d-applicability-established-dominates-missing-time | `K21d-applicability-established-dominates-missing-time.json` | `fail` | `fail` | applicability_violation_established | `94f99066ad320724b4469bc519ed733e813829b8` |
+| K21e-applicability-flag-not-masked | `K21e-applicability-flag-not-masked.json` | `fail` | `fail` | applicability_violation_established | `70a6eb888f3c3ab4c0c6331d180b9801daeac2af` |
 | S01 | `S01.json` | `pass` | `pass` | all_mandatory_members_discharged | `90a839688036fdd77c6cedecae4bd01a7598d534` |
 | S02 | `S02.json` | `unknown` | `unknown` | missing_assessment:b | `514cd736a5d2b5d99607965e995a8cb081f77ec9` |
 | S03 | `S03.json` | `unknown` | `unknown` | conjunction_incomplete | `4c3566aa1e234531c7cf485e4101fe9dd2de963a` |
@@ -81,7 +84,7 @@ Base reviewed head: `d85842508a1bdaae0015ece886f8726105fded6a`.
 | S22a-same-origin | `S22a-same-origin.json` | `fail` | `fail` | independence_same_origin | `35c35aee818a1e5631097763d7e259d300105de2` |
 | S22b-independence-unknown | `S22b-independence-unknown.json` | `unknown` | `unknown` | evidence_origin_missing | `54fc6751b132de1b4e29486aaa936b9927491d35` |
 
-Fixture count: **64**. Positives S01, S04, S09, S16, S20 remain `pass`. New useful controls: K20 (identical duplicate pass), K21b (coincident applicability absent pass).
+Fixture count: **67**. Positives S01, S04, S09, S16, S20 remain `pass`. New useful controls: K20 (identical duplicate pass), K21b (coincident applicability absent pass). Round-5b pins: K19c, K21d, K21e.
 
 ## Round-5 rules (KC-Brain 6739733958)
 
@@ -123,6 +126,9 @@ Dropping the conflicted `assess-a` identity changes member discharge. Allowed re
 | `K21-applicability-coincident-established.json` | `fail` / applicability_violation_established | `fail` / applicability_violation_established | members {'a': 'discharged', 'b': 'discharged'} |
 | `K21b-applicability-coincident-absent.json` | `pass` / all_mandatory_members_discharged | `pass` / all_mandatory_members_discharged | members {'a': 'discharged', 'b': 'discharged'} |
 | `K21c-applicability-flag-wrong-bound.json` | `fail` / binding_mismatch | `fail` / binding_mismatch | members {'a': 'fail', 'b': 'discharged'} |
+| `K19c-assessment-identity-digests-absent.json` | `fail` / assessment_identity_conflict, missing_assessment:a | `fail` / assessment_identity_conflict, missing_assessment:a | members {'a': 'missing_assessment', 'b': 'discharged'}; digests absent on both assess-a records |
+| `K21d-applicability-established-dominates-missing-time.json` | `fail` / applicability_violation_established | `fail` / applicability_violation_established | members {'a': 'discharged', 'b': 'discharged'}; FAIL dominates missing-support UNKNOWN |
+| `K21e-applicability-flag-not-masked.json` | `fail` / applicability_violation_established | `fail` / applicability_violation_established | members {'a': 'discharged', 'b': 'discharged'}; clean companion does not mask flagged assess-a |
 
 K21c: coincident times with `applicability_violation_established=true` on a wrong-bound
 `assess-a`. Existing B0 gate yields `fail` / `binding_mismatch` only — the flag does **not**
@@ -145,6 +151,7 @@ Unmutated baseline run first: pass. Round-5 revert mutants:
 
 - `/tmp/kcswe_or82p1b.py`: BAD 0 of 25
 - `/tmp/kcswe_or82p5.py`: BAD 0 of 19 (Q3 now fails with `assessment_identity_conflict`)
+- `/tmp/kcswe_or82p6.py`: BAD 0 (F1/F2 rows including F1i, F2i, F2j)
 
 ## Native tests
 

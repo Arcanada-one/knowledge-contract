@@ -950,10 +950,13 @@ class PermutationIndependenceTests(unittest.TestCase):
         "K18b-na-wrong-bound-reversed.json",
         "K19-assessment-identity-content-conflict.json",
         "K19b-assessment-identity-content-conflict-reversed.json",
+        "K19c-assessment-identity-digests-absent.json",
         "K20-assessment-identical-duplicate.json",
         "K21-applicability-coincident-established.json",
         "K21b-applicability-coincident-absent.json",
         "K21c-applicability-flag-wrong-bound.json",
+        "K21d-applicability-established-dominates-missing-time.json",
+        "K21e-applicability-flag-not-masked.json",
         "S19b-applicability-violation.json",
     )
 
