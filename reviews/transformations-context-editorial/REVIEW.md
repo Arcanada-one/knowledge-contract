@@ -14,7 +14,7 @@ KC-Brain prepared this continuation under Pavel's instruction to refine the Engl
 
 ## Exact scope and prior versions
 
-Base commit: `660874393f740c07f5f4bac6a1627bda1921a119`.
+Base commit: `660874393f740c07f5f4bac6a1627bda1921a119`. English content commit: `d0b2c18ca16c0b78bb0f93c075b826f4555f20e5`.
 
 | Canonical path | Previous Git blob | Proposed English Git blob |
 | --- | --- | --- |
@@ -34,12 +34,20 @@ The first two changes clarify the existing relational model. The third exposes t
 
 ## Executed finite examples
 
-Run `python3 -B reviews/transformations-context-editorial/check_examples.py` from the repository root. The program uses only Python's standard library and original synthetic inputs. [Saved output](example-checks.json) records six case groups with explicit expected and observed values; all six passed in the assistant's local container. One group contains 32 subset/budget comparisons, not 32 independent empirical trials. The program hash in the output binds the executed script. No repository-wide suite, Pandoc build, historical replay, live retriever, model or production service was run locally for this record.
+Run `python3 -B tools/check_transformations_context_editorial.py` from the repository root. The program uses only Python's standard library and original synthetic inputs. [Saved output](RESULTS.md) records six case groups with explicit expected and observed values; all six passed in the assistant's local container. One group contains 32 subset/budget comparisons, not 32 independent empirical trials. The program hash in the output binds the executed script. No repository-wide suite, Pandoc build, historical replay, live retriever, model or production service was run locally for this record.
 
 The groups cover mismatched observations on unchanged states; a branching relation with one favorable and one violating output; the precondition boundary; incompatible versus coherent support snapshots; intact unit-cost set cover; and a deliberately lossful delivery of the same covering selection. Positive controls remain present. These examples illustrate the four edits and their adjacent boundaries; they are not proofs or a new full conformance suite. They must not be added to historical study totals.
 
+## Hosted CI and the retained source-acceptance boundary
+
+Run `42582267462` on English content commit `d0b2c18c` completed with nine successful jobs and two failed jobs. Licensing identified missing source declarations for the new code and JSON under `reviews/`. The follow-up adopts the repository's existing layout: the unchanged original program is in `tools/`, and its output is preserved in `RESULTS.md` with explicit `sources: none` and original-work attribution. No source-checking rule is removed or weakened.
+
+The other failure is materially different. The retrieval-context guard first successfully rechecked its exact previously accepted paper, then refused the current paper under its **title-only** mapping. The new proposal deliberately changes two body passages; it is not a title-only change. The existing [retrieval verification note](../retrieval-context/REVIEW.md) requires a new recorded candidate and a separately reviewed update of those locks. This proposal therefore leaves the accepted paper blob, checker hash, workflow and historical result intact. A red title-only comparison is not relabeled as evidence that these new bytes were accepted. Separate review must identify the precise new English target before that narrow verification binding can be updated. This is not a live-server, permission, model-budget or deployment blocker, and not an instruction to engineers to rewrite either paper.
+
+The same run did successfully complete the publication metadata/navigation checks, the eight formal-regression tests, and the 39 retrieval-checker controls before the title-only refusal. Those results retain their exact subjects; they are not a blanket CI pass. A later run must be reported from its own observed result.
+
 ## Translation and release boundaries
 
-The next Russian and Simplified Chinese targets must bind this exact proposed English revision, with `translation_status: author-draft` and an explicit source status identifying it as an editorial candidate until reviewed. The earlier 46 full targets are not repinned or re-reviewed merely because this new batch exists. Existing accepted unchanged batches need not wait for these papers.
+The next Russian and Simplified Chinese targets bind the exact proposed English content revision above, with `translation_status: author-draft` and a source status identifying an editorial candidate until reviewed. The earlier 46 full targets are not repinned or re-reviewed merely because this new batch exists. Existing accepted unchanged batches need not wait for these papers.
 
 Separate review should examine the four changed English passages and each full new translation against its exact source. Author checks do not grant rendition admission. This proposal changes no allowlist, native schema, grants, Muneral state or deployment. Hosted CI, any later acceptance and served publication must be reported from their own observed records, not inferred from this note.

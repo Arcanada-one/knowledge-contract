@@ -1,3 +1,19 @@
+---
+title: "Transformation and Context Clarity: Synthetic example results"
+author: "Pavel Valentov"
+language: "en"
+license: "CC-BY-4.0"
+sources: none
+status: "author-run finite examples; not independent acceptance"
+---
+
+# Transformation and Context Clarity: Synthetic example results
+
+Original synthetic examples prepared by KC-Brain under Pavel Valentov's publication instruction. The [script](../../tools/check_transformations_context_editorial.py) is licensed Apache-2.0; this explanatory record is CC BY 4.0. No external dataset, source-book content or third-party program is incorporated.
+
+The six groups passed in the assistant's local container. The JSON below preserves the expected and observed values with normalized formatting. The earlier candidate stored these same data in `example-checks.json` and the same program as `reviews/transformations-context-editorial/check_examples.py` at `d0b2c18ca16c0b78bb0f93c075b826f4555f20e5`. Moving the unchanged program to the established `tools/` directory and wrapping the result in a source-declared Markdown record changes neither the observations nor the code hash. This is not a historical study update, production test, formal proof, source-acceptance receipt or deployment.
+
+```json
 {
   "scope": "new_finite_synthetic_editorial_examples",
   "effects_authorized": false,
@@ -7,16 +23,8 @@
   "cases": [
     {
       "id": "E01-state-versus-observation",
-      "expected": {
-        "state_paths": [[0, 0, 0], [1, 1, 1]],
-        "within_step_preservation": true,
-        "endpoint_observations_equal": [false, false]
-      },
-      "observed": {
-        "state_paths": [[0, 0, 0], [1, 1, 1]],
-        "within_step_preservation": true,
-        "endpoint_observations_equal": [false, false]
-      },
+      "expected": {"state_paths": [[0, 0, 0], [1, 1, 1]], "within_step_preservation": true, "endpoint_observations_equal": [false, false]},
+      "observed": {"state_paths": [[0, 0, 0], [1, 1, 1]], "within_step_preservation": true, "endpoint_observations_equal": [false, false]},
       "pass": true,
       "scope": "Two Boolean states; two identity transitions; mismatched observation interface."
     },
@@ -58,3 +66,4 @@
   ],
   "limits": "Not a proof, historical replay, semantic extraction evaluation, repository-wide test suite, model trial, or production admission."
 }
+```
