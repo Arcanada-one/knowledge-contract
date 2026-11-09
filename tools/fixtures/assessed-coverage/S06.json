@@ -195,7 +195,8 @@
         ],
         "kind": "conjunction",
         "require_independent_origins": true
-      }
+      },
+      "trusted_test_premise": true
     },
     "b": {
       "applicability": "scope-b",
@@ -209,7 +210,8 @@
         ],
         "kind": "single",
         "require_independent_origins": false
-      }
+      },
+      "trusted_test_premise": true
     }
   },
   "na_decisions": [],

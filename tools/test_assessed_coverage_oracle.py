@@ -273,7 +273,10 @@ MUTANTS: dict[str, Mutator] = {
         "            continue\n"
         "        if entailment.get(\"member_id\") != member_id:\n"
         "            continue\n"
-        "        if entailment.get(\"checked\") is True:\n"
+        "        checked, checked_malformed = bool_field(entailment, \"checked\")\n"
+        "        if checked_malformed:\n"
+        "            return MEMBER_FAIL, reasons + checked_malformed\n"
+        "        if checked is True:\n"
         "            matched = True\n"
         "            break\n"
         "    if not matched:\n"
@@ -365,29 +368,29 @@ MUTANTS: dict[str, Mutator] = {
     "skip-na-evidence-resolve": lambda s: _replace_once(
         s,
         "evidence = evidence_index.get(evidence_id)\n"
-        "        if evidence is None:\n"
-        "            return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
+        "    if evidence is None:\n"
+        "        return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
+        "    category, evidence_reasons = _evidence_current_use(\n"
+        "        evidence,\n"
+        "        evaluation_time,\n"
+        "        expected_reviewer_revision,\n"
+        "        expected_rule_revision,\n"
+        "    )\n"
+        "    if category is not None:\n"
+        "        return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
+        "evidence = evidence_index.get(evidence_id)\n"
+        "    if False and evidence is None:\n"
+        "        return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
+        "    category, evidence_reasons = None, []\n"
+        "    if False:\n"
         "        category, evidence_reasons = _evidence_current_use(\n"
         "            evidence,\n"
         "            evaluation_time,\n"
         "            expected_reviewer_revision,\n"
         "            expected_rule_revision,\n"
         "        )\n"
-        "        if category is not None:\n"
-        "            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
-        "evidence = evidence_index.get(evidence_id)\n"
-        "        if False and evidence is None:\n"
-        "            return MEMBER_UNKNOWN, [\"na_evidence_missing\"]\n"
-        "        category, evidence_reasons = None, []\n"
-        "        if False:\n"
-        "            category, evidence_reasons = _evidence_current_use(\n"
-        "                evidence,\n"
-        "                evaluation_time,\n"
-        "                expected_reviewer_revision,\n"
-        "                expected_rule_revision,\n"
-        "            )\n"
-        "        if category is not None:\n"
-        "            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
+        "    if category is not None:\n"
+        "        return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons",
         "skip-na-evidence-resolve",
     ),
     # skip trusted inventory string-list shape (P09/P10 revert)
@@ -514,24 +517,24 @@ MUTANTS: dict[str, Mutator] = {
     "ungrounded-na": lambda s: _replace_once(
         s,
         'evidence_id = decision.get("evidence_id")\n'
-        '        if not is_non_empty_string(evidence_id):\n'
-        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
-        '        evidence = evidence_index.get(evidence_id)\n'
-        '        if evidence is None:\n'
-        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
-        '        category, evidence_reasons = _evidence_current_use(\n'
-        '            evidence,\n'
-        '            evaluation_time,\n'
-        '            expected_reviewer_revision,\n'
-        '            expected_rule_revision,\n'
-        '        )\n'
-        '        if category is not None:\n'
-        '            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons',
+        '    if not is_non_empty_string(evidence_id):\n'
+        '        return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
+        '    evidence = evidence_index.get(evidence_id)\n'
+        '    if evidence is None:\n'
+        '        return MEMBER_UNKNOWN, ["na_evidence_missing"]\n'
+        '    category, evidence_reasons = _evidence_current_use(\n'
+        '        evidence,\n'
+        '        evaluation_time,\n'
+        '        expected_reviewer_revision,\n'
+        '        expected_rule_revision,\n'
+        '    )\n'
+        '    if category is not None:\n'
+        '        return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons',
         '# Mutant: accept ungrounded NA without resolving evidence.\n'
-        '        evidence_id = decision.get("evidence_id")\n'
-        '        _ = (evidence_id, evidence_index, evaluation_time)\n'
-        '        if False:\n'
-        '            return MEMBER_UNKNOWN, ["na_evidence_missing"]',
+        '    evidence_id = decision.get("evidence_id")\n'
+        '    _ = (evidence_id, evidence_index, evaluation_time)\n'
+        '    if False:\n'
+        '        return MEMBER_UNKNOWN, ["na_evidence_missing"]',
         "ungrounded-na",
     ),
     # last-write dedup conflicting identities
@@ -560,8 +563,14 @@ MUTANTS: dict[str, Mutator] = {
     # temporal union
     "temporal-union": lambda s: _replace_once(
         s,
-        "if len(unique) == 1:\n        return True, []\n    # Incompatible historical supports — never union them.",
-        "if len(unique) >= 1:\n        return True, []\n    # Mutant unions incompatible historical supports.",
+        "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
+        "    if common:\n"
+        "        return True, []\n"
+        "    # No single snapshot covers every member that declared a support time.",
+        "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
+        "    if True:  # mutant: union incompatible historical supports\n"
+        "        return True, []\n"
+        "    # No single snapshot covers every member that declared a support time.",
         "temporal-union",
     ),
     # harmless-addition: ignore unresolved conflicts
@@ -577,6 +586,125 @@ MUTANTS: dict[str, Mutator] = {
         "if len(set(origins)) != len(origins):\n            # Sameness established via equal origin_id.\n            return MEMBER_FAIL, reasons + [\"independence_same_origin\"]",
         "if False and len(set(origins)) != len(origins):\n            return MEMBER_FAIL, reasons + [\"independence_same_origin\"]",
         "copies-as-independent",
+    ),
+    # Q1 revert: temporal coherence uses only the first candidate per member
+    "temporal-first-candidate": lambda s: _replace_once(
+        s,
+        "coherent, temporal_reasons = _support_times_coherent(\n"
+        "        trusted_temporal_candidates, member_ids\n"
+        "    )",
+        "first_only = {\n"
+        "        mid: ([cands[0]] if cands else [])\n"
+        "        for mid, cands in trusted_temporal_candidates.items()\n"
+        "    }\n"
+        "    coherent, temporal_reasons = _support_times_coherent(first_only, member_ids)",
+        "temporal-first-candidate",
+    ),
+    # Q2 revert: first matching NA decision wins
+    "na-first-match": lambda s: _replace_once(
+        s,
+        "saw_fail = False\n"
+        "    saw_unknown = False\n"
+        "    saw_na = False\n"
+        "    reasons: list[str] = []\n"
+        "    matched = False\n"
+        "    for decision in decisions:\n"
+        "        if not isinstance(decision, dict):\n"
+        "            continue\n"
+        "        if decision.get(\"member_id\") != member_id:\n"
+        "            continue\n"
+        "        matched = True\n"
+        "        verdict, decision_reasons = _evaluate_one_na_decision(\n"
+        "            decision,\n"
+        "            binding_b0,\n"
+        "            evidence_index,\n"
+        "            evaluation_time,\n"
+        "            expected_reviewer_revision,\n"
+        "            expected_rule_revision,\n"
+        "        )\n"
+        "        reasons.extend(decision_reasons)\n"
+        "        if verdict == MEMBER_FAIL:\n"
+        "            saw_fail = True\n"
+        "        elif verdict == MEMBER_UNKNOWN:\n"
+        "            saw_unknown = True\n"
+        "        elif verdict == MEMBER_NA:\n"
+        "            saw_na = True\n"
+        "    if not matched:\n"
+        "        return None, []\n"
+        "    if saw_fail:\n"
+        "        return MEMBER_FAIL, reasons\n"
+        "    if saw_unknown:\n"
+        "        return MEMBER_UNKNOWN, reasons\n"
+        "    if saw_na:\n"
+        "        return MEMBER_NA, reasons\n"
+        "    return MEMBER_UNKNOWN, reasons or [\"na_scope_unverified\"]",
+        "for decision in decisions:\n"
+        "        if not isinstance(decision, dict):\n"
+        "            continue\n"
+        "        if decision.get(\"member_id\") != member_id:\n"
+        "            continue\n"
+        "        return _evaluate_one_na_decision(\n"
+        "            decision,\n"
+        "            binding_b0,\n"
+        "            evidence_index,\n"
+        "            evaluation_time,\n"
+        "            expected_reviewer_revision,\n"
+        "            expected_rule_revision,\n"
+        "        )\n"
+        "    return None, []",
+        "na-first-match",
+    ),
+    # Q4 revert: accept unmarked member rule definitions
+    "skip-member-trust-mark": lambda s: _replace_once(
+        s,
+        "# Spec §2: each member keeps its exact rule from the trusted snapshot.\n"
+        "        if not _mark_trusted(definition):\n"
+        "            if definition.get(\"trusted\") is True:\n"
+        "                reasons.append(\"caller_boolean_not_premise\")\n"
+        "            else:\n"
+        "                reasons.append(\"member_rule_not_trusted_premise\")\n"
+        "            continue",
+        "# Mutant: unmarked member rules are accepted.\n"
+        "        if False and not _mark_trusted(definition):\n"
+        "            reasons.append(\"member_rule_not_trusted_premise\")\n"
+        "            continue",
+        "skip-member-trust-mark",
+    ),
+    # Q5 revert: non-bool require_independent_origins treated as not required
+    "string-independence-ok": lambda s: _replace_once(
+        _replace_once(
+            s,
+            "# Present non-bool independence flag is a malformed trusted rule (Q5).\n"
+            "        _, indep_malformed = bool_field(rule, \"require_independent_origins\")\n"
+            "        if indep_malformed:\n"
+            "            reasons.extend(indep_malformed)\n"
+            "            continue\n"
+            "        out[member_id] = definition",
+            "# Mutant: ignore non-bool independence flag at definition load.\n"
+            "        out[member_id] = definition",
+            "string-independence-ok/defs",
+        ),
+        "require_independent, indep_malformed = bool_field(rule, \"require_independent_origins\")\n"
+        "    if indep_malformed:\n"
+        "        return MEMBER_FAIL, reasons + indep_malformed\n"
+        "    if require_independent is True:",
+        "if rule.get(\"require_independent_origins\") is True:  # mutant: string \"true\" disables check",
+        "string-independence-ok/eval",
+    ),
+    # Q7 revert: absent NA binding is fine
+    "skip-na-binding-required": lambda s: _replace_once(
+        s,
+        "# NA binding must be an object matching B0 (Q7); absent/non-object ⇒ unknown.\n"
+        "    decision_binding = decision.get(\"binding\")\n"
+        "    if not isinstance(decision_binding, dict):\n"
+        "        return MEMBER_UNKNOWN, [\"na_binding_missing\"]\n"
+        "    if not bindings_equal(decision_binding, binding_b0):\n"
+        "        return MEMBER_FAIL, [\"na_scope_mismatch\"]",
+        "# Mutant: absent NA binding is fine; only mismatch fails.\n"
+        "    decision_binding = decision.get(\"binding\")\n"
+        "    if decision_binding is not None and not bindings_equal(decision_binding, binding_b0):\n"
+        "        return MEMBER_FAIL, [\"na_scope_mismatch\"]",
+        "skip-na-binding-required",
     ),
 }
 
@@ -681,21 +809,59 @@ class ReasonClassificationTests(unittest.TestCase):
 
 
 class PermutationIndependenceTests(unittest.TestCase):
+    """Order of assessments (incl. within a member), NA decisions, evidence, conflicts
+    must not change closure or reason set. Explicitly includes Q1/Q2 fixtures K11/K12.
+    """
+
+    PERMUTE_FOCUS = (
+        "K11-temporal-candidate-order.json",
+        "K11b-temporal-no-common-snapshot.json",
+        "K12-na-scope-mismatch-after-valid.json",
+    )
+
+    def _permute_document(self, working: dict, rng: random.Random) -> dict:
+        shuffled = copy.deepcopy(working)
+        for key in ("assessments", "evidence", "na_decisions", "conflicts"):
+            value = shuffled.get(key)
+            if isinstance(value, list) and len(value) > 1:
+                rng.shuffle(value)
+        # Also permute nested candidate-adjacent lists inside each assessment
+        # and NA-adjacent rule component order so within-member order cannot
+        # choose a winner.
+        for assessment in shuffled.get("assessments") or []:
+            if not isinstance(assessment, dict):
+                continue
+            for nested in ("evidence_refs", "entailments", "member_aliases"):
+                value = assessment.get(nested)
+                if isinstance(value, list) and len(value) > 1:
+                    rng.shuffle(value)
+        members = shuffled.get("members")
+        if isinstance(members, dict):
+            for definition in members.values():
+                if not isinstance(definition, dict):
+                    continue
+                rule = definition.get("rule")
+                if isinstance(rule, dict):
+                    components = rule.get("components")
+                    if isinstance(components, list) and len(components) > 1:
+                        rng.shuffle(components)
+        return shuffled
+
     def test_shuffling_collections_preserves_verdict_and_reason_set(self) -> None:
         rng = random.Random(82)
-        list_keys = ("assessments", "evidence", "na_decisions", "conflicts")
-        for path in sorted(FIX_DIR.glob("*.json")):
+        paths = sorted(FIX_DIR.glob("*.json"))
+        focus = {name: FIX_DIR / name for name in self.PERMUTE_FOCUS}
+        for name, path in focus.items():
+            self.assertTrue(path.is_file(), f"missing Q1/Q2 permute fixture {name}")
+        for path in paths:
             with self.subTest(case=path.name):
                 working, _ = load_fixture(path)
                 baseline = aco.evaluate_document(copy.deepcopy(working))
                 base_verdict = baseline["closure_verdict"]
                 base_reasons = reason_set(baseline["reason_codes"])
-                for _ in range(5):
-                    shuffled = copy.deepcopy(working)
-                    for key in list_keys:
-                        value = shuffled.get(key)
-                        if isinstance(value, list) and len(value) > 1:
-                            rng.shuffle(value)
+                rounds = 8 if path.name in focus else 5
+                for _ in range(rounds):
+                    shuffled = self._permute_document(working, rng)
                     report = aco.evaluate_document(shuffled)
                     self.assertEqual(report["closure_verdict"], base_verdict, path.name)
                     self.assertEqual(reason_set(report["reason_codes"]), base_reasons, path.name)

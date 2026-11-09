@@ -159,14 +159,19 @@ service markers.
 `scope: synthetic_semantics_only`. Input must not supply evaluator output keys.
 
 Fixtures live under `tools/fixtures/assessed-coverage/` — one concrete variant
-per file (`S01.json`, `S08a-absent.json`, …, plus Round-2 `K01`–`K10`
-bypass closures). Each file pins an `expected` block (verdict + reason codes)
-before execution; the runner never chooses fail vs unknown. Assessments require
-a B0 binding and a checked member-specific entailment; document
-`reviewer_revision` / `rule_revision` are pinned; current-use signals and RFC
-3339 offset times are required; malformed collection / inventory shapes and
-conflicting evidence identities fail closed; list order does not change the
-closure.
+per file (`S01.json`, `S08a-absent.json`, …, Round-2 `K01`–`K10` bypass
+closures, Round-3 `K11`–`K18` order/trust/NA/boolean and pending pins). Each
+file pins an `expected` block (verdict + reason codes) before execution; the
+runner never chooses fail vs unknown. Member definitions and NA decisions
+require `trusted_test_premise: true` and a B0 binding object on each NA;
+assessments require a B0 binding and a checked member-specific entailment;
+document `reviewer_revision` / `rule_revision` are pinned; current-use signals
+and RFC 3339 offset times are required; trusted-premise booleans must be exact
+JSON booleans; malformed collection / inventory shapes and conflicting
+evidence identities fail closed. Temporal coherence uses every trusted
+binding-matched candidate (coherent snapshot = one shared support_time);
+list order — including candidates within a member and NA decisions — does not
+change the closure. See `assessed-coverage-oracle-report.md`.
 
 ```sh
 python3 -B tools/assessed_coverage_oracle.py --input tools/fixtures/assessed-coverage/S01.json

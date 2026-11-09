@@ -149,7 +149,8 @@
         ],
         "kind": "conjunction",
         "require_independent_origins": true
-      }
+      },
+      "trusted_test_premise": true
     },
     "b": {
       "applicability": "scope-b",
@@ -163,7 +164,8 @@
         ],
         "kind": "single",
         "require_independent_origins": false
-      }
+      },
+      "trusted_test_premise": true
     }
   },
   "na_decisions": [
@@ -173,7 +175,22 @@
       "evidence_id": "",
       "member_id": "b",
       "rule_id": "na-rule-b",
-      "trusted_test_premise": true
+      "trusted_test_premise": true,
+      "binding": {
+        "action": "assess-coverage",
+        "actor": "actor-1",
+        "contract_profile": "assessed-coverage/0.1",
+        "contract_revision": "ctr-1",
+        "effective_request_digest": "digest-b0",
+        "environment": "env-test",
+        "intended_recipient": "recipient-1",
+        "operation_key": "op-1",
+        "project": "proj-1",
+        "requirements_revision": "req-1",
+        "resource": "res-1",
+        "subject": "subj-1",
+        "work_item_revision": "wi-1"
+      }
     }
   ],
   "requirements": {

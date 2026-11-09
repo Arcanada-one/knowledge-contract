@@ -1,8 +1,8 @@
 # Assessed-coverage finite oracle report (Layer S)
 
-Marker: `agent-brain-assessed-coverage-oracle-20261109-v2`.
+Marker: `agent-brain-assessed-coverage-oracle-20261109-v3`.
 Specification: arcanada-workspace PR1886 comment 6734249466; Muneral e445c6a4 (child of KCLIVE-08).
-Round 2: close KC-SWE probe bypasses from PR #82 (probe `/tmp/kcswe_or82p1.py`).
+Round 3: order dependence and untrusted member rules (PR #82, probe `/tmp/kcswe_or82p2.py`).
 
 ## Per-case results (S-layer)
 
@@ -46,17 +46,84 @@ Round 2: close KC-SWE probe bypasses from PR #82 (probe `/tmp/kcswe_or82p1.py`).
 | S22a-same-origin | `S22a-same-origin.json` | `fail` | `fail` | independence_same_origin |
 | S22b-independence-unknown | `S22b-independence-unknown.json` | `unknown` | `unknown` | evidence_origin_missing |
 
-### S-fixture content updates (pinned expectations unchanged)
+### Fixture-only changes (Round 3; pinned S-verdicts unchanged)
 
 | Fixture | Change | Why |
 | --- | --- | --- |
-| `S16.json` | Added trusted current-use-valid evidence `na-ev-b` | P08 requires NA `evidence_id` to resolve; without it S16 would become unknown |
-| `S17a-caller-only.json` | Added `na-ev-b` evidence | Same grounding; failure remains `caller_boolean_not_premise` before evidence use |
-| `S17b-wrong-scope.json` | Added `na-ev-b` evidence | Same grounding; failure remains `na_scope_mismatch` before evidence use |
+| All S* / K01–K10 with `members` | Added `trusted_test_premise: true` on every member definition | Q4: member rules must come from the trusted snapshot |
+| `S17a-caller-only.json` | Added B0 `binding` on the NA decision | Q7: NA binding required; pinned reason stays `caller_boolean_not_premise` |
+| `S17c-missing-evidence.json` | Added B0 `binding` on the NA decision | Q7: same; pinned reason stays `na_evidence_missing` |
+| `S16.json` / `S17b-wrong-scope.json` | Already carried B0 NA binding from Round 2 | Kept; pinned verdicts unchanged |
 
-No pinned `expected` reason blocks changed for S01–S22.
+## Round-3 rules implemented
 
-## Round-2 K fixtures (probe bypass closures)
+### Q1 — temporal coherence (order-invariant)
+
+Collect `support_time` from **every trusted, binding-matched** candidate per
+member (not `candidates[0]`). A **coherent snapshot** is one support_time that
+appears in every member that declares at least one support_time. If such a
+snapshot exists, the set is coherent. Otherwise emit
+`temporal_support_incoherent` (or `temporal_support_incompatible_fail` when
+`applicability_violation_established` is an exact `true`). Absent support_time
+on all candidates remains coherent (Q6, pending).
+
+### Q2 — NA decisions (order-invariant)
+
+Evaluate **every** NA decision for the member. Any established scope mismatch
+⇒ member `fail` / `na_scope_mismatch`. Otherwise unknown reasons dominate a
+valid NA. A sole valid NA discharges the member.
+
+### Q4 — member rule trust mark
+
+Every `members.<id>` definition requires `trusted_test_premise: true`.
+Unmarked ⇒ member `unknown` / `member_rule_not_trusted_premise`. Caller
+boolean `trusted: true` without the premise mark ⇒
+`caller_boolean_not_premise`. A trust-marked rule **is** the Layer-S trusted
+snapshot; rewriting it while keeping the mark is out of scope for the oracle
+(stale probe Q4 — see probe notes).
+
+### Q5 — exact-type booleans on trusted premises
+
+Present but not a Python `bool` ⇒ `fail` / `malformed_input`. Applied to every
+boolean field the evaluator reads from trusted premises:
+
+- `require_independent_origins` (member rule)
+- `authorized` (NA)
+- `binding_scope_matches_b0` (NA)
+- `scope_mismatch_established` (NA)
+- `checked` (entailment)
+- `resolved` (conflict)
+- `established` (conflict)
+- `applicability_violation_established` (assessment)
+- `invalid_provenance_proven` (evidence / assessment provenance)
+
+Absent keys keep prior semantics (treated as not-true / not-required).
+
+### Q7 — NA binding required
+
+Absent or non-object NA `binding` ⇒ member `unknown` / `na_binding_missing`.
+Object that fails B0 equality ⇒ `fail` / `na_scope_mismatch`.
+
+## Round-3 K fixtures
+
+| Defect | Fixture | Observed | Reasons |
+| --- | --- | --- | --- |
+| Q1 | `K11-temporal-candidate-order.json` | `pass` | all_mandatory_members_discharged (coherent snapshot t1 covers a,b; a2 at t13 first in list) |
+| Q1 | `K11b-temporal-no-common-snapshot.json` | `unknown` | temporal_support_incoherent |
+| Q2 | `K12-na-scope-mismatch-after-valid.json` | `fail` | na_scope_mismatch |
+| Q4 | `K13-member-rule-not-trusted.json` | `unknown` | member_rule_not_trusted_premise |
+| Q4 | `K14-member-caller-boolean.json` | `unknown` | caller_boolean_not_premise |
+| Q5 | `K15-independence-flag-string.json` | `fail` | malformed_input |
+| Q7 | `K16-na-binding-missing.json` | `unknown` | na_binding_missing |
+
+### Pending semantic verdict (KC-Brain; behaviour unchanged)
+
+| Question | Fixture | Pinned current verdict | Note |
+| --- | --- | --- | --- |
+| Q6 | `K17-pending-no-support-time.json` | `pass` | `pending_semantic_verdict` — absent support_time treated as coherent |
+| Q8 | `K18-pending-na-short-circuit-wrong-bound.json` | `pass` | `pending_semantic_verdict` — valid NA short-circuits wrong-bound assessment for b |
+
+## Round-2 K fixtures (unchanged semantics; members now trust-marked)
 
 | Defect | Fixture | Observed | Reasons |
 | --- | --- | --- | --- |
@@ -106,18 +173,31 @@ S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
 | `temporal-union` | killed |
 | `harmless-addition` | killed |
 | `copies-as-independent` | killed |
+| `temporal-first-candidate` | killed |
+| `na-first-match` | killed |
+| `skip-member-trust-mark` | killed |
+| `string-independence-ok` | killed |
+| `skip-na-binding-required` | killed |
 
 Baseline unmutated scratch copy exits 0 before mutants run. A mutant is
 counted killed only on assertion failure, not crash/import error.
 
-## KC-SWE probe (`kcswe_or82p1.py`)
+## KC-SWE probes
 
-At reviewed head before Round 2: `BAD 13 of 25`.
-After Round 2: `BAD 1 of 25` — only **P19**, whose probe line still expects
-`pass` (first-wins report-only). Observed honest verdict for P19 is
-`fail` / `evidence_identity_conflict` (and `evidence_missing` after the
-conflicting id is dropped from the usable index). All other probe rows OK,
-including P12 still `pass`.
+### `kcswe_or82p1.py`
+
+`BAD 1 of 25` — only **P19** (stale probe expectation of `pass`; honest verdict
+`fail` / `evidence_identity_conflict`).
+
+### `kcswe_or82p2.py`
+
+`BAD 3 of 14`:
+
+| Row | Status | Note |
+| --- | --- | --- |
+| Q1, Q2, Q2b, Q3, Q5, Q7 | OK | Round-3 fixes |
+| Q4 | BAD (stale probe) | Probe rewrites S03 rule **while keeping** `trusted_test_premise`; Layer S treats a marked rule as the trusted snapshot. K13/K14 cover unmarked / caller-boolean. Coordinator: leave reported; KC-SWE will update probe to drop the mark on rewrite. |
+| Q6, Q8 | BAD | `pending_semantic_verdict` — fixtures K17/K18 pin current behaviour; no oracle change |
 
 ## Unit tests
 
@@ -126,7 +206,8 @@ python3 -B -m unittest tools.test_assessed_coverage_oracle -v
 ```
 
 Observed: `Ran 11 tests` … `OK` (fixture corpus via subTests over S+K files,
-deny stub, seal boundary, reason classification, permutation independence,
+deny stub, seal boundary, reason classification, permutation independence
+including within-member candidate / NA / component shuffles over K11/K12,
 mutation harness).
 
 ## Limits
@@ -136,6 +217,7 @@ mutation harness).
 - No production trust, admission or authority claim.
 - `effects_authorized` is always `false`; `scope` is always `synthetic_semantics_only`.
 - book-package/2, G11 overlay, schemas, migrations, Auth/pricing and publication routes are unchanged.
+- Q6 / Q8 left to KC-Brain (`pending_semantic_verdict`).
 
 ## How to run
 

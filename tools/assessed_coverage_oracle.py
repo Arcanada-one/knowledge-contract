@@ -81,6 +81,7 @@ UNKNOWN_REASON_CODES = frozenset({
     "member_definition_missing",
     "member_rule_missing",
     "member_rule_incomplete",
+    "member_rule_not_trusted_premise",
     "caller_boolean_not_premise",
     "evidence_not_trusted_premise",
     "evidence_provenance_missing",
@@ -103,6 +104,7 @@ UNKNOWN_REASON_CODES = frozenset({
     "na_scope_unverified",
     "na_rule_missing",
     "na_evidence_missing",
+    "na_binding_missing",
     "mandatory_conflict_unresolved",
     "temporal_support_incoherent",
     "evaluation_time_missing",
@@ -204,6 +206,20 @@ def string_list_field(container: dict, key: str) -> tuple[list[str] | None, list
     if not isinstance(value, list) or not all(is_non_empty_string(item) for item in value):
         return None, ["malformed_input"]
     return list(value), []
+
+
+def bool_field(container: dict, key: str) -> tuple[bool | None, list[str]]:
+    """Exact-type boolean from a trusted premise.
+
+    Absent => (None, []). Exact bool => (value, []). Present non-bool =>
+    malformed_input (string \"true\" is not a boolean).
+    """
+    if key not in container:
+        return None, []
+    value = container.get(key)
+    if not isinstance(value, bool):
+        return None, ["malformed_input"]
+    return value, []
 
 
 def identity_tuple(fields: tuple[str, ...], obj: Any) -> tuple[Any, ...] | None:
@@ -365,6 +381,13 @@ def _member_defs(document: dict, member_ids: list[str]) -> tuple[dict[str, dict]
         if not isinstance(definition, dict):
             reasons.append("member_definition_missing")
             continue
+        # Spec §2: each member keeps its exact rule from the trusted snapshot.
+        if not _mark_trusted(definition):
+            if definition.get("trusted") is True:
+                reasons.append("caller_boolean_not_premise")
+            else:
+                reasons.append("member_rule_not_trusted_premise")
+            continue
         if REPORT_RESERVED_INPUT_KEYS.intersection(definition.keys()):
             reasons.append("reserved_key_in_member")
             continue
@@ -389,6 +412,11 @@ def _member_defs(document: dict, member_ids: list[str]) -> tuple[dict[str, dict]
                 break
         if not ok:
             reasons.append("member_rule_incomplete")
+            continue
+        # Present non-bool independence flag is a malformed trusted rule (Q5).
+        _, indep_malformed = bool_field(rule, "require_independent_origins")
+        if indep_malformed:
+            reasons.extend(indep_malformed)
             continue
         out[member_id] = definition
     return out, reasons
@@ -504,7 +532,10 @@ def _evidence_current_use(
     provenance = evidence.get("provenance")
     if not isinstance(provenance, dict):
         return UNKNOWN, ["evidence_provenance_missing"]
-    if provenance.get("invalid_provenance_proven") is True:
+    invalid_proven, invalid_malformed = bool_field(provenance, "invalid_provenance_proven")
+    if invalid_malformed:
+        return FAIL, invalid_malformed
+    if invalid_proven is True:
         return FAIL, ["invalid_provenance"]
     # Absent current-use signals are not clean (P11).
     if (
@@ -573,8 +604,12 @@ def _assessment_trust(
         return UNKNOWN, ["assessment_binding_missing"]
     if not bindings_equal(assessment_binding, binding_b0):
         return FAIL, ["binding_mismatch"]
-    if isinstance(provenance, dict) and provenance.get("invalid_provenance_proven") is True:
-        return FAIL, ["invalid_provenance"]
+    if isinstance(provenance, dict):
+        invalid_proven, invalid_malformed = bool_field(provenance, "invalid_provenance_proven")
+        if invalid_malformed:
+            return FAIL, invalid_malformed
+        if invalid_proven is True:
+            return FAIL, ["invalid_provenance"]
     if expected_reviewer_revision is not None:
         reviewer_revision = None
         if isinstance(provenance, dict):
@@ -670,7 +705,10 @@ def _evaluate_member_rule(
         return MEMBER_FAIL, reasons
     if saw_unknown:
         return MEMBER_UNKNOWN, reasons
-    if rule.get("require_independent_origins") is True:
+    require_independent, indep_malformed = bool_field(rule, "require_independent_origins")
+    if indep_malformed:
+        return MEMBER_FAIL, reasons + indep_malformed
+    if require_independent is True:
         # Copies/aliases/renditions share origin_id; independence requires distinct origins.
         if len(origins) != len(components):
             return MEMBER_UNKNOWN, reasons + ["independence_unresolved"]
@@ -696,7 +734,10 @@ def _evaluate_member_rule(
             continue
         if entailment.get("member_id") != member_id:
             continue
-        if entailment.get("checked") is True:
+        checked, checked_malformed = bool_field(entailment, "checked")
+        if checked_malformed:
+            return MEMBER_FAIL, reasons + checked_malformed
+        if checked is True:
             matched = True
             break
     if not matched:
@@ -724,6 +765,62 @@ def _scan_na_decisions(document: dict) -> list[str]:
     return reasons
 
 
+def _evaluate_one_na_decision(
+    decision: dict,
+    binding_b0: dict,
+    evidence_index: dict[str, dict],
+    evaluation_time: str,
+    expected_reviewer_revision: str | None,
+    expected_rule_revision: str | None,
+) -> tuple[str, list[str]]:
+    """Evaluate a single NA decision for one member. Returns (verdict, reasons)."""
+    if not _mark_trusted(decision):
+        if isinstance(decision.get("provenance"), dict) and decision["provenance"].get("trusted") is True:
+            return MEMBER_UNKNOWN, ["caller_boolean_not_premise"]
+        return MEMBER_UNKNOWN, ["na_not_trusted_premise"]
+    authorized, auth_malformed = bool_field(decision, "authorized")
+    if auth_malformed:
+        return MEMBER_FAIL, auth_malformed
+    if authorized is not True:
+        return MEMBER_UNKNOWN, ["na_missing_authority"]
+    scope_matches, scope_malformed = bool_field(decision, "binding_scope_matches_b0")
+    if scope_malformed:
+        return MEMBER_FAIL, scope_malformed
+    established_mismatch, established_malformed = bool_field(
+        decision, "scope_mismatch_established"
+    )
+    if established_malformed:
+        return MEMBER_FAIL, established_malformed
+    if scope_matches is not True:
+        # Proven scope mismatch is fail when the fixture marks it established.
+        if established_mismatch is True:
+            return MEMBER_FAIL, ["na_scope_mismatch"]
+        return MEMBER_UNKNOWN, ["na_scope_unverified"]
+    if not is_non_empty_string(decision.get("rule_id")):
+        return MEMBER_UNKNOWN, ["na_rule_missing"]
+    evidence_id = decision.get("evidence_id")
+    if not is_non_empty_string(evidence_id):
+        return MEMBER_UNKNOWN, ["na_evidence_missing"]
+    evidence = evidence_index.get(evidence_id)
+    if evidence is None:
+        return MEMBER_UNKNOWN, ["na_evidence_missing"]
+    category, evidence_reasons = _evidence_current_use(
+        evidence,
+        evaluation_time,
+        expected_reviewer_revision,
+        expected_rule_revision,
+    )
+    if category is not None:
+        return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons
+    # NA binding must be an object matching B0 (Q7); absent/non-object ⇒ unknown.
+    decision_binding = decision.get("binding")
+    if not isinstance(decision_binding, dict):
+        return MEMBER_UNKNOWN, ["na_binding_missing"]
+    if not bindings_equal(decision_binding, binding_b0):
+        return MEMBER_FAIL, ["na_scope_mismatch"]
+    return MEMBER_NA, ["not_applicable_authorized"]
+
+
 def _na_decision_for(
     member_id: str,
     document: dict,
@@ -733,52 +830,51 @@ def _na_decision_for(
     expected_reviewer_revision: str | None,
     expected_rule_revision: str | None,
 ) -> tuple[str | None, list[str]]:
+    """Aggregate every NA decision for the member (order-invariant).
+
+    Any established scope mismatch ⇒ fail. Otherwise unknown reasons dominate a
+    valid NA. A sole valid NA discharges the member.
+    """
     decisions = document.get("na_decisions")
     if decisions is None:
         return None, []
     if not isinstance(decisions, list):
         return None, ["malformed_input"]
+    saw_fail = False
+    saw_unknown = False
+    saw_na = False
+    reasons: list[str] = []
+    matched = False
     for decision in decisions:
         if not isinstance(decision, dict):
             continue
         if decision.get("member_id") != member_id:
             continue
-        reasons: list[str] = []
-        if not _mark_trusted(decision):
-            if isinstance(decision.get("provenance"), dict) and decision["provenance"].get("trusted") is True:
-                return MEMBER_UNKNOWN, ["caller_boolean_not_premise"]
-            return MEMBER_UNKNOWN, ["na_not_trusted_premise"]
-        if decision.get("authorized") is not True:
-            return MEMBER_UNKNOWN, ["na_missing_authority"]
-        if decision.get("binding_scope_matches_b0") is not True:
-            # Proven scope mismatch is fail when the fixture marks it established.
-            if decision.get("scope_mismatch_established") is True:
-                return MEMBER_FAIL, ["na_scope_mismatch"]
-            return MEMBER_UNKNOWN, ["na_scope_unverified"]
-        if not is_non_empty_string(decision.get("rule_id")):
-            return MEMBER_UNKNOWN, ["na_rule_missing"]
-        evidence_id = decision.get("evidence_id")
-        if not is_non_empty_string(evidence_id):
-            return MEMBER_UNKNOWN, ["na_evidence_missing"]
-        evidence = evidence_index.get(evidence_id)
-        if evidence is None:
-            return MEMBER_UNKNOWN, ["na_evidence_missing"]
-        category, evidence_reasons = _evidence_current_use(
-            evidence,
+        matched = True
+        verdict, decision_reasons = _evaluate_one_na_decision(
+            decision,
+            binding_b0,
+            evidence_index,
             evaluation_time,
             expected_reviewer_revision,
             expected_rule_revision,
         )
-        if category is not None:
-            return (MEMBER_FAIL if category == FAIL else MEMBER_UNKNOWN), evidence_reasons
-        # Optional binding object must match B0 when present.
-        decision_binding = decision.get("binding")
-        if decision_binding is not None and not bindings_equal(decision_binding, binding_b0):
-            return MEMBER_FAIL, ["na_scope_mismatch"]
-        if reasons:
-            return MEMBER_UNKNOWN, reasons
-        return MEMBER_NA, ["not_applicable_authorized"]
-    return None, []
+        reasons.extend(decision_reasons)
+        if verdict == MEMBER_FAIL:
+            saw_fail = True
+        elif verdict == MEMBER_UNKNOWN:
+            saw_unknown = True
+        elif verdict == MEMBER_NA:
+            saw_na = True
+    if not matched:
+        return None, []
+    if saw_fail:
+        return MEMBER_FAIL, reasons
+    if saw_unknown:
+        return MEMBER_UNKNOWN, reasons
+    if saw_na:
+        return MEMBER_NA, reasons
+    return MEMBER_UNKNOWN, reasons or ["na_scope_unverified"]
 
 
 def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, bool]:
@@ -805,11 +901,17 @@ def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, boo
             reasons.append("malformed_input")
             has_unknown = True
             continue
+        resolved, resolved_malformed = bool_field(conflict, "resolved")
+        established, established_malformed = bool_field(conflict, "established")
+        if resolved_malformed or established_malformed:
+            reasons.extend(resolved_malformed + established_malformed)
+            has_fail = True
+            continue
         record = {
             "conflict_id": conflict.get("conflict_id"),
             "kind": conflict.get("kind"),
-            "resolved": conflict.get("resolved") is True,
-            "established": conflict.get("established") is True,
+            "resolved": resolved is True,
+            "established": established is True,
         }
         out.append(record)
         if record["resolved"]:
@@ -823,29 +925,50 @@ def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, boo
     return out, reasons, has_fail, has_unknown
 
 
-def _support_times_coherent(assessments_by_member: dict[str, dict], member_ids: list[str]) -> tuple[bool, list[str]]:
-    times: dict[str, datetime] = {}
+def _support_times_coherent(
+    trusted_candidates_by_member: dict[str, list[dict]],
+    member_ids: list[str],
+) -> tuple[bool, list[str]]:
+    """Temporal coherence over every trusted, binding-matched candidate.
+
+    Rule (Q1): collect support_time values from all trusted binding-matched
+    candidates per member. A coherent snapshot is one support_time present in
+    every member that declares at least one support_time. If such a snapshot
+    exists, the set is coherent (order-independent). Otherwise members whose
+    candidate times cannot share one snapshot yield ``temporal_support_incoherent``
+    (or ``temporal_support_incompatible_fail`` when an applicability violation
+    is established). Absent support_time on all candidates remains coherent
+    (Q6 pending semantic verdict — behaviour unchanged).
+    """
+    times_by_member: dict[str, set[datetime]] = {}
+    applicability_fail = False
     for member_id in member_ids:
-        assessment = assessments_by_member.get(member_id)
-        if assessment is None:
-            continue
-        support_time = assessment.get("support_time")
-        if not is_non_empty_string(support_time):
-            continue
-        parsed = parse_rfc3339(support_time)
-        if parsed is None:
-            return False, ["time_unparsable"]
-        times[member_id] = parsed
-    if len(times) < 2:
+        candidates = trusted_candidates_by_member.get(member_id) or []
+        times: set[datetime] = set()
+        for assessment in candidates:
+            flag, flag_malformed = bool_field(
+                assessment, "applicability_violation_established"
+            )
+            if flag_malformed:
+                return False, flag_malformed
+            if flag is True:
+                applicability_fail = True
+            support_time = assessment.get("support_time")
+            if not is_non_empty_string(support_time):
+                continue
+            parsed = parse_rfc3339(support_time)
+            if parsed is None:
+                return False, ["time_unparsable"]
+            times.add(parsed)
+        if times:
+            times_by_member[member_id] = times
+    if not times_by_member:
         return True, []
-    unique = set(times.values())
-    if len(unique) == 1:
+    common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))
+    if common:
         return True, []
-    # Incompatible historical supports — never union them.
-    if any(
-        (assessments_by_member.get(member_id) or {}).get("applicability_violation_established") is True
-        for member_id in member_ids
-    ):
+    # No single snapshot covers every member that declared a support time.
+    if applicability_fail:
         return False, ["temporal_support_incompatible_fail"]
     return False, ["temporal_support_incoherent"]
 
@@ -1109,14 +1232,11 @@ def evaluate(document: dict) -> dict:
             addressed.append(qualified)
         candidates_by_member.setdefault(qualified, []).append(assessment)
 
-    # Representative assessment per member for temporal coherence (any candidate).
-    assessments_by_member: dict[str, dict] = {
-        member_id: candidates[0]
-        for member_id, candidates in candidates_by_member.items()
-        if candidates
-    }
-
     member_verdicts: dict[str, str] = {}
+    # Trusted + binding-matched candidates per member for order-invariant temporal coherence.
+    trusted_temporal_candidates: dict[str, list[dict]] = {
+        member_id: [] for member_id in member_ids
+    }
 
     for member_id in member_ids:
         na_verdict, na_reasons = _na_decision_for(
@@ -1160,9 +1280,23 @@ def evaluate(document: dict) -> dict:
             if trust_category == UNKNOWN:
                 saw_member_unknown = True
                 continue
+            # Trusted and binding-matched: eligible for temporal coherence (Q1).
+            trusted_temporal_candidates[member_id].append(assessment)
             if definition is None:
                 saw_member_unknown = True
-                reasons.append("member_definition_missing")
+                # member_defs already recorded the specific rejection reason.
+                already = {
+                    "member_rule_not_trusted_premise",
+                    "caller_boolean_not_premise",
+                    "malformed_input",
+                    "member_rule_incomplete",
+                    "member_rule_missing",
+                    "reserved_key_in_member",
+                    "member_definition_missing",
+                    "member_definitions_missing",
+                }
+                if not already.intersection(reasons):
+                    reasons.append("member_definition_missing")
                 continue
             verdict, rule_reasons = _evaluate_member_rule(
                 member_id,
@@ -1202,12 +1336,16 @@ def evaluate(document: dict) -> dict:
     # keep: alias_coverage_guard
     _ = assessments  # assessments already reconciled by qualified identity
 
-    coherent, temporal_reasons = _support_times_coherent(assessments_by_member, member_ids)
+    coherent, temporal_reasons = _support_times_coherent(
+        trusted_temporal_candidates, member_ids
+    )
     reasons.extend(temporal_reasons)
     if not coherent and "temporal_support_incompatible_fail" in temporal_reasons:
         fail_conflict = True
     if not coherent and "temporal_support_incoherent" in temporal_reasons:
         unknown_conflict = True
+    if "malformed_input" in temporal_reasons:
+        fail_conflict = True
     if "time_unparsable" in temporal_reasons:
         unknown_conflict = True
 
