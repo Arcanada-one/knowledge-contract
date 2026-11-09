@@ -4,7 +4,7 @@ author: "Pavel Valentov"
 language: "en"
 license: "CC-BY-4.0"
 sources: none
-status: "author verification; catalogue integration and separate review pending"
+status: "author catalogue integration proposal; exact scoped mathematical review complete; source/site admission pending"
 updated: 2026-11-09
 ---
 
@@ -41,3 +41,13 @@ The geometry manuscript is a complete public branch draft, not yet an entry in t
 The already accepted four-rendition site release is independent: site `6d41bca673fd68611b0626085bc81579cb7f75f2`, deployment `42682616519`, completed successfully on 9 November 2026. KC-SWE separately reported HTTPS body/language/formula/table readback. This does not publish the geometry draft or constitute our own production visual check.
 
 No new Muneral task, worker, grant, permission, independent-review receipt, catalogue admission, merge of PR89, index promotion or deployment of this manuscript is asserted.
+
+## 9 November — independent mathematical review and catalogue integration proposal
+
+Agent-Brain reviewed complete PR89 exact head `d07301f4e57f4c6d7eaf7cef9378c6f7452ae2a3` and paper Git blob `077c13ad7e8d47646cd04ed2bdbeadceef48f9e3`, including six conditional deductions, countermodels, finite checker and limits: **SCOPED PASS** ([independent review #6750112496](https://github.com/Arcanada-one/knowledge-contract/pull/89#issuecomment-6750112496)). This is not external peer review, a verified benchmark, publisher approval or source admission.
+
+The subsequent author integration changes only catalogue metadata and reader/naming/programme interfaces in English, Russian and Simplified Chinese, plus expected paper count from nine to ten and negative-count controls. The complete mathematical manuscript, its checker and earlier evidence remain **unchanged**; scientific review is bound to the exact paper blob above. Previously accepted 30-entry publication baseline, 29 older paths, edition 1.1, locale rendition sidecars, selected nine-manuscript reading map and explicit index-export allowlist retain their own authority. Proposed catalogue: 31 documents (10 papers, 11 specifications, 6 studies and 4 reference/appendix documents); two papers are research drafts.
+
+The research programme target remains 34 documents after three additional planned engineering works; Meaning Theory and Algebra still require separately scoped future extensions. Reader links to Geometry target the English proposed manuscript in all three language guides; localized titles are not RU/ZH full-body translations.
+
+Publication acceptance requires ordinary CI including the new count fixtures, PR merge through its normal gate, explicit source decision and separate site/browser/index evidence. No direct `main`, Muneral, server deploy, index, release allowlist or external-review mutation is implied by this author-side branch proposal.
