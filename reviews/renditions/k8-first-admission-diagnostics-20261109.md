@@ -1054,3 +1054,73 @@ python3 -B scripts/build_publication.py \
 Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to the PR head so `build.mjs` pin checks pass; restored afterward; no site commit, merge, deploy, or pin change.
 
 Record marker: `k8-first-admission-diagnostics-20261109-v3`.
+
+## Iteration 4 (2026-11-09) — bind complete composite exact-blob evidence
+
+### Iteration 4 — Scope
+
+Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
+Branch head at report authorship: `8d2675f7dcb21e9ba22d3bdf776af97710065527` (evidence import + sidecar `review.evidence` repin; admitted rendition bytes unchanged at `be3674951c5416a9bc0505abef5d9111dc1b63f5`).
+Evidence record authored by KC-Brain on PR76 commit `791d23c3c2e44c17c0f6d123f0d9d9e0af4aceec`: `reviews/renditions/k8-composite-exact-blob-evidence-20261109.md` (Git blob `eb689d2b5eaf40cd124fdec27d4fe312867d2d73`), copied byte-exact into PR86 (`git hash-object` match verified).
+Site compiler: `contract-place-site` `main` `b6d7532f48498d385171a41941cb864195a4fbc0` in a separate local checkout.
+No rendition bytes were modified. Composite `review.method` / `review.limitations` strings kept as in iteration 3. `translation_status: author-draft` retained in the four admitted files. No compiler changes. No site-pin commit. No Muneral writes, merge, or deploy.
+
+### Iteration 4 — Evidence completeness (step 2)
+
+**Evidence completeness is CLOSED for the four admitted sidecar entries.** For each admitted entry, the KC-Brain evidence table names the same English source blob and rendition blob that the sidecar binds in `review.reviewed`; mismatches found: none.
+
+| Work | Language | Evidence-table source blob | Sidecar `review.reviewed.source_blob` | Evidence-table rendition blob | Sidecar `review.reviewed.rendition_blob` | Match |
+| --- | --- | --- | --- | --- | --- | --- |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `42294151076e662129a8716ea13a29dc2f967ec9` | `7937a6a4bf27adfb9b0846c92b8b945a7c259cc8` | `7937a6a4bf27adfb9b0846c92b8b945a7c259cc8` | yes |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `42294151076e662129a8716ea13a29dc2f967ec9` | `2094c4318aea9eaea2e71567c49f95e229cfd027` | `2094c4318aea9eaea2e71567c49f95e229cfd027` | yes |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `da402f346cc5ddfede98a170a67d107429ce1209` | `da402f346cc5ddfede98a170a67d107429ce1209` | yes |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `a5183a8a8f19a12e83bab44a3fc0de198d8ca77c` | `a5183a8a8f19a12e83bab44a3fc0de198d8ca77c` | yes |
+
+`review.evidence` for all four entries is now `{path: reviews/renditions/k8-composite-exact-blob-evidence-20261109.md, blob: eb689d2b5eaf40cd124fdec27d4fe312867d2d73}`. On-disk `git hash-object` for each admitted source and rendition path also equals the reviewed pins. Sidecar pins otherwise unchanged: `source.revision=e96fe08344997af24b2408e6ecdf3d97019c91ca`; `rendition.revision=be3674951c5416a9bc0505abef5d9111dc1b63f5`; reviewer Agent-Brain (`kind=agent`, `independent_of_author=true`); COMPOSITE method/limitations still name reviews 6735134008, 6739674011, 6742099993, 6744010479 (wording left intact, including the historical OPEN phrase inside those strings).
+
+The evidence record also lists four refused study/language pairs (source-transcription / reuse-admission × ru/zh-Hans). Those remain out of the PR86 sidecar after iteration 3 and were not re-admitted.
+
+### Iteration 4 — Admitted computed state
+
+| Work | Language | Source blob | Rendition blob | Rendition sha256 | resolve_state | computed state | MathML |
+| --- | --- | --- | --- | --- | --- | --- | ---: |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `7937a6a4bf27adfb9b0846c92b8b945a7c259cc8` | `bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995` | `reviewed` | `reviewed` | 11 |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `2094c4318aea9eaea2e71567c49f95e229cfd027` | `e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd` | `reviewed` | `reviewed` | 11 |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `da402f346cc5ddfede98a170a67d107429ce1209` | `73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443` | `reviewed` | `reviewed` | 0 |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `a5183a8a8f19a12e83bab44a3fc0de198d8ca77c` | `ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8` | `reviewed` | `reviewed` | 0 |
+
+### Iteration 4 — Outcome
+
+`scripts/build_publication.py` against knowledge head `8d2675f…` with a temporary local site `publication-manifest.json` commit override (not committed; site pin unchanged on `main`) **succeeds**. `scripts/check_publication.py`: **OK** — 30 full documents / 90 localized reading pages, 442 original MathML expressions, 297 pages; 60 rendition pages checked (4 `reviewed` + 56 catalogue `missing` shells); exact body and source bindings.
+
+Per admitted entry: `resolve_state=reviewed`, computed publication state `reviewed`, `review_issue=null`, compile failures none, MathML counts match English (dependency-closure 11; executable-projections 0). Link classes collected without `RENDITION_LINK_*` refusals (dependency-closure: document 7 / document_fallback 7 / invariant 14; executable-projections: document 6 / document_fallback 5 / document_shown 1 / invariant 12).
+
+DOM id uniqueness on the four reviewed pages: no duplicate `id` attributes (ru/zh-Hans dependency-closure 17 unique; executable-projections 18 unique). Sibling refused works remain catalogue `missing` shells.
+
+### Iteration 4 — C5 noindex
+
+Localized pages that carry `noindex` under this build include 130 ru/zh-Hans routes total. Study routes among them (8):
+
+- `ru/engineering/studies/contract-profile-conformance/`
+- `ru/engineering/studies/editorial-skill-pilot/`
+- `ru/engineering/studies/reuse-admission-and-cost-controls/`
+- `ru/engineering/studies/source-transcription-and-uncertainty/`
+- `zh-Hans/engineering/studies/contract-profile-conformance/`
+- `zh-Hans/engineering/studies/editorial-skill-pilot/`
+- `zh-Hans/engineering/studies/reuse-admission-and-cost-controls/`
+- `zh-Hans/engineering/studies/source-transcription-and-uncertainty/`
+
+The four admitted reviewed pages are **indexable** (`noindex=False`). The four refused works remain `missing` shells and are noindex.
+
+### Iteration 4 — Build command used
+
+```text
+python3 -B scripts/build_publication.py \
+  --source-dir /tmp/k8-iter4-knowledge-source \
+  --roadmap-source-dir /tmp/k8-iter4-roadmap-source \
+  --manifest /tmp/k8-iter4-publication-manifest.json
+```
+
+Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to the evidence-binding head `8d2675f…` so pin checks pass; restored afterward; no site commit, merge, deploy, or pin change.
+
+Record marker: `k8-first-admission-diagnostics-20261109-v4`.
