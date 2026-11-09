@@ -14,7 +14,7 @@ updated: 2026-11-09
 | Study / path stem | Earlier reviewed English blob | Current accepted English blob | RU target blob | zh-Hans target blob |
 | --- | --- | --- | --- | --- |
 | `dependency-closure-and-package-delivery` | `63078110074e82b47f76a8f132a3cfdcbfb555b1` | `42294151076e662129a8716ea13a29dc2f967ec9` | `5aa9ee44986a68c0e47d99c801ec11a2fe1ddd9e` | `6d78e14dd29bbe751e5d7699a8ff76383395dc62` |
-| `source-transcription-and-uncertainty` | `5f19fc3d33fa0e185c34056188ce7742bee87` | `8ca885fc3f144d89e95e4813868fd953450f1f71` | `4a8e7b8d986c3eb846cb6ea381dcc1b0685755d1` | `1be23f4f57ae705870149cc61964c3bb2c1d3784` |
+| `source-transcription-and-uncertainty` | `5f19fc3d33fa0e185c34056188ce7746742bee87` | `8ca885fc3f144d89e95e4813868fd953450f1f71` | `4a8e7b8d986c3eb846cb6ea381dcc1b0685755d1` | `1be23f4f57ae705870149cc61964c3bb2c1d3784` |
 | `executable-projections-and-revision` | `2d247a01d4dbd6a1d1491d2b54464336c6fef190` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `f9361172e1fe559e90aac4be615f19474dc7a941` | `346d23b860650abbebfe55e3f7d9f90e85dcedd2` |
 | `reuse-admission-and-cost-controls` | `67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e` | `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` | `90bca419fac0c0834fe4bce4513772812958bbec` | `1c3cbeff2939888d2a95414ec3315b2671cb46f0` |
 
