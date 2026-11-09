@@ -1,7 +1,7 @@
 ---
 title: "K8 first rendition admission diagnostics (2026-11-09)"
 sources: none
-status: "diagnostic only; iteration-2 import recorded; native compile still refused on link depth; draft PR evidence for KC-Brain"
+status: "diagnostic only; iteration-3 four compile-clean admissions; four preamble refusals recorded for KC-Brain; evidence completeness OPEN"
 updated: 2026-11-09
 ---
 
@@ -956,3 +956,101 @@ python3 -B scripts/build_publication.py \
 ```
 
 Record marker: `k8-first-admission-diagnostics-20261109-v2`.
+
+## Iteration 3 (2026-11-09) — link-depth correction import (four admitted)
+
+### Iteration 3 — Scope
+
+Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
+Branch head at report authorship: `f94df648754292a22ce86344f7e97ec4afa80ac0` (bytes commit `be3674951c5416a9bc0505abef5d9111dc1b63f5` for the four admitted blobs; merge of `main` `e96fe08344997af24b2408e6ecdf3d97019c91ca` included).
+Translator corrections: PR76 commit `151dc8927547d27a88d0d5082b8abd1f98bd7b33` (parent `68a0b17a`); record `reviews/renditions/k8-translator-link-depth-and-anchor-fix-20261109.md` (blob `dac4b46e2222637d73691afe9c93b1ec0399ee01`).
+Independent delta review: Agent-Brain comment [6744010479](https://github.com/Arcanada-one/knowledge-contract/pull/76#issuecomment-6744010479) (ALL EIGHT SCOPED STATIC/SEMANTIC DELTA PASS). Earlier composite basis: 6735134008, 6739674011, 6742099993.
+Site compiler: `contract-place-site` `main` `b6d7532f48498d385171a41941cb864195a4fbc0` in a separate local checkout.
+No rendition bytes were modified after copy. No compiler changes. No site-pin commit.
+
+Coordinator redirect after preamble refusal: admit only the four compile-clean blobs; leave source-transcription and reuse-admission × ru/zh-Hans out of PR86 (no old bytes remain); record exact refuse diagnostics for KC-Brain / Agent-Brain.
+
+### Iteration 3 — Admitted (exact blobs)
+
+| Work | Language | Source blob | Rendition blob | Rendition sha256 | resolve_state | computed state |
+| --- | --- | --- | --- | --- | --- | --- |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `7937a6a4bf27adfb9b0846c92b8b945a7c259cc8` | `bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995` | `reviewed` | `reviewed` |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `2094c4318aea9eaea2e71567c49f95e229cfd027` | `e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd` | `reviewed` | `reviewed` |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `da402f346cc5ddfede98a170a67d107429ce1209` | `73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443` | `reviewed` | `reviewed` |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `a5183a8a8f19a12e83bab44a3fc0de198d8ca77c` | `ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8` | `reviewed` | `reviewed` |
+
+Sidecar pins: `source.revision=e96fe08344997af24b2408e6ecdf3d97019c91ca` (current main bytes); `rendition.revision=be3674951c5416a9bc0505abef5d9111dc1b63f5`. Review author KC-Brain; reviewer Agent-Brain (`kind=agent`, `independent_of_author=true`); COMPOSITE method/limitations name reviews 6735134008, 6739674011, 6742099993, 6744010479. `review.evidence` still points at `reviews/renditions/four-studies-current-source-review-20261109.md` / blob `99b6293b7d2d8245e297c880583cbd823eb1b85f`. **Evidence completeness is OPEN** until KC-Brain authors one complete evidence record that lists all four reviews.
+
+### Iteration 3 — Refused (exact blobs; not in PR86 tree)
+
+Production `scripts/build_publication.py` against an eight-entry tip refused first with:
+
+`RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/ru: section (preamble) has text in the source but none in the rendition`
+
+Per-entry report-mode compile: the same `RENDITION_SECTION_MISSING` on preamble for all four below; links otherwise classified cleanly (no `RENDITION_LINK_*`). No rendition bytes were edited.
+
+#### `source-transcription-and-uncertainty / ru`
+
+- Exact diagnostic: `RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/ru: section (preamble) has text in the source but none in the rendition`
+- English source blob `8ca885fc3f144d89e95e4813868fd953450f1f71` preamble lines:
+  - `<!-- markdownlint-disable-next-line MD033 -->`
+  - `<a id="reproducible-transcription-is-not-preservation-of-uncertainty"></a>`
+- Admitted rendition blob `8aaa8dae18a2014be6495c479e85a3e114538420` H1 carrying the same id: `# Сохранение неопределённости: Воспроизводимая транскрипция не равна сохранению неопределённости {#reproducible-transcription-is-not-preservation-of-uncertainty}`
+
+#### `source-transcription-and-uncertainty / zh-Hans`
+
+- Exact diagnostic: `RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/zh-Hans: section (preamble) has text in the source but none in the rendition`
+- English source blob `8ca885fc3f144d89e95e4813868fd953450f1f71` preamble lines: same two lines as ru above
+- Admitted rendition blob `2f001123a165ef342b3b70e9de36389d765ff40a` H1: `# 不确定性保留：可复现的转录不等于保留不确定性 {#reproducible-transcription-is-not-preservation-of-uncertainty}`
+
+#### `reuse-admission-and-cost-controls / ru`
+
+- Exact diagnostic: `RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/ru: section (preamble) has text in the source but none in the rendition`
+- English source blob `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` preamble lines:
+  - `<!-- markdownlint-disable-next-line MD033 -->`
+  - `<a id="controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit"></a>`
+- Admitted rendition blob `ecd4203da7ba35ad7611cd65f02e32b0c4087e17` H1: `# Экономика повторного использования: Контролируемое повторное использование, контрпримеры допуска и стоимость попадания в кеш {#controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit}`
+
+#### `reuse-admission-and-cost-controls / zh-Hans`
+
+- Exact diagnostic: `RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/zh-Hans: section (preamble) has text in the source but none in the rendition`
+- English source blob `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` preamble lines: same two lines as ru above
+- Admitted rendition blob `c2099a9aa3eb19b76a63006d5810a08e3d8d2db0` H1: `# 复用经济性：受控复用中的准入反例与缓存命中的成本 {#controlled-reuse-admission-counterexamples-and-the-cost-of-a-cache-hit}`
+
+Decision space for KC-Brain / Agent-Brain: restore an anchor-only HTML preamble in those four rendition bytes, or change the compiler to treat anchor-only historic preambles specially. This iteration did neither.
+
+### Iteration 3 — Outcome (four admitted)
+
+`scripts/build_publication.py` against head `f94df64…` with a temporary local site `publication-manifest.json` commit override (not committed; site pin unchanged on `main`) **succeeds**. `scripts/check_publication.py`: **OK** — 30 full documents / 90 localized reading pages; 60 rendition pages checked (4 `reviewed` + 56 catalogue `missing` shells); exact body and source bindings.
+
+Per admitted entry: `resolve_state=reviewed`, computed publication state `reviewed`, compile failures none, MathML counts match English (dependency-closure 11; executable-projections 0). Link classes collected without `RENDITION_LINK_*` refusals.
+
+DOM id uniqueness on the four reviewed pages: no duplicate `id` attributes (ru/zh-Hans dependency-closure 17 unique; executable-projections 18 unique). The four missing-state sibling study pages (source-transcription / reuse-admission × ru/zh-Hans) also show unique ids while serving English fallback bodies.
+
+### Iteration 3 — C5 noindex
+
+Localized pages that carry `noindex` under this build include 130 ru/zh-Hans routes total. Study routes among them (8):
+
+- `ru/engineering/studies/contract-profile-conformance/`
+- `ru/engineering/studies/editorial-skill-pilot/`
+- `ru/engineering/studies/reuse-admission-and-cost-controls/`
+- `ru/engineering/studies/source-transcription-and-uncertainty/`
+- `zh-Hans/engineering/studies/contract-profile-conformance/`
+- `zh-Hans/engineering/studies/editorial-skill-pilot/`
+- `zh-Hans/engineering/studies/reuse-admission-and-cost-controls/`
+- `zh-Hans/engineering/studies/source-transcription-and-uncertainty/`
+
+The four admitted reviewed pages are **indexable** (`noindex=False`). The four refused works remain `missing` shells and are noindex.
+
+### Iteration 3 — Build command used
+
+```text
+python3 -B scripts/build_publication.py \
+  --source-dir /tmp/k8-iter3-knowledge-source \
+  --roadmap-source-dir /tmp/k8-iter3-roadmap-source \
+  --manifest /tmp/k8-iter3-publication-manifest.json
+```
+
+Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to the PR head so `build.mjs` pin checks pass; restored afterward; no site commit, merge, deploy, or pin change.
+
+Record marker: `k8-first-admission-diagnostics-20261109-v3`.
