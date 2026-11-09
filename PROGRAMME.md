@@ -16,9 +16,9 @@ Knowledge Contract is an open scientific and engineering programme for represent
 
 ## What is available, and what is being developed
 
-The current edition-1.1 catalogue contains **30 works**: nine scientific manuscripts (including the explicitly labelled Meaning Bridge research draft), eleven specifications, six studies and four reference/appendix documents. The author-approved target structure contains **34 works**: ten scientific works, thirteen specifications, seven studies and four reference/appendix documents. The four additions are planned, not four newly completed publications. Two foundations develop existing manuscripts rather than create competing copies.
+The proposed edition-1.1 catalogue in PR89 contains **31 works**: ten scientific manuscripts (including the research-draft Meaning Bridge and newly authored, independently scoped-reviewed research-draft Meaning Geometry), eleven specifications, six studies and four reference/appendix documents. The accepted earlier catalogue retains 30 works until a separate integration decision. The author-approved target structure contains **34 works**: ten scientific works, thirteen specifications, seven studies and four reference/appendix documents. Three additional engineering works remain planned, not completed or released; two other foundations develop existing manuscripts without duplicate papers.
 
-This guide implements the author's decision to make the foundations and their connections explicit. It does not change a scientific proposition, its reviewed bytes, any historical result, the publication catalogue, corpus admission or an execution task. Full manuscripts and their actual rendition/review states remain authoritative. Updating a heading alone cannot complete a research programme.
+This guide implements the author's decision to make the foundations and their connections explicit. The PR89 catalogue proposal adds one identified research-draft source without changing its reviewed mathematical bytes, earlier research results, prior accepted source versions, corpus admission or an execution task. Full manuscripts and their actual rendition/review states remain authoritative. Updating a heading alone cannot complete a research programme.
 
 ## Three connected foundations
 
@@ -26,7 +26,7 @@ This guide implements the author's decision to make the foundations and their co
 
 **Meaning Algebra: Typed Operations, Composition and Preserved Distinctions.** Extend [Knowledge Transformations](papers/constrained-transformations/PAPER.md) on its existing canonical path. The work develops carriers, partial domains, operation semantics and the conditions under which composition, projection, residual information, reconstruction and transfer are justified. Laws belong to specified profiles; they are not silently transferred to arbitrary language operations. Status: substantive extension, not a title-only upgrade or a second algebra paper.
 
-**Meaning Geometry: Representation Spaces, Distinguishability and the Limits of Similarity.** Prepare the separately planned paper on spaces, representation maps, distances, context-dependent comparison and information loss. Geometric similarity may generate candidates; it does not by itself establish entailment, applicability or permission. Status: planned manuscript; no completed geometry paper or benchmark is claimed here.
+**Meaning Geometry: Representation Spaces, Distinguishability and the Limits of Similarity.** The [complete research draft](papers/geometry-of-semantic-representations/PAPER.md) treats spaces, representation maps, distances, context-dependent comparison and information loss. Agent-Brain reviewed its exact mathematical manuscript with a limited SCOPED PASS; this is not external peer review, an accepted source, deployment or a measured benchmark. Geometric similarity may generate candidates but cannot itself establish entailment, applicability or permission.
 
 The three titles name the programme's foundations. They do not claim that one version captures all human understanding. Theory supplies the objects and questions; algebra studies justified operations; geometry studies distinguishability and comparison. Neither mathematical perspective automatically proves the other.
 
@@ -38,7 +38,7 @@ The following are the author-approved target titles. Links identify existing sou
 | --- | --- | --- |
 | **Meaning Theory: Representation, Interpretation and Conditions of Use** | Common objects, distinctions and scope | Develop [Meaning Bridge](papers/human-meaning-and-computable-knowledge/PAPER.md) |
 | **Meaning Algebra: Typed Operations, Composition and Preserved Distinctions** | Operations, laws and counterexamples within declared profiles | Extend [Knowledge Transformations](papers/constrained-transformations/PAPER.md) |
-| **Meaning Geometry: Representation Spaces, Distinguishability and the Limits of Similarity** | Spaces, distances, comparison and contextual limits | New manuscript in the [foundations plan](roadmap/FOUNDATIONS_RELEASE_PLAN.md) |
+| **Meaning Geometry: Representation Spaces, Distinguishability and the Limits of Similarity** | Spaces, distances, comparison and contextual limits | [Complete research draft for separate admission](papers/geometry-of-semantic-representations/PAPER.md) |
 | **Meaning in Context: Semantic Objects and Conditions of Applicability** | Detailed context model and dependencies | [Existing manuscript](papers/semantic-objects-and-context/PAPER.md) |
 | **Context Assembly: Retrieval, Requirement Coverage and Resource Limits** | Selecting and actually delivering sufficient grounds | [Existing manuscript](papers/retrieval-and-context-composition/PAPER.md) |
 | **Interaction and Memory: Dialogue, Documents and Revision Boundaries** | Changing requests, remembered information and interaction | [Existing manuscript](papers/interaction-and-memory/PAPER.md) |
@@ -115,4 +115,4 @@ Release already accepted finite reading batches without waiting for every planne
 
 The author is Pavel Valentov. This programme and its localized guides are original editorial work assisted by KC-Brain, not independent scientific review. Text is CC BY 4.0. Contributions may propose corrections, reproducible examples, counterarguments and implementations through the [contribution process](CONTRIBUTING.md). State the exact work/revision, evidence and limits. A contribution from an agent is assessed by its content and traceability, not counted as independent evidence merely because another agent repeats it.
 
-Publishing this guide establishes the public structure and reading map. It does not establish completion of the four planned works, a new scientific theorem, deployment, server indexing or permission for an agent to act.
+Publishing this guide establishes the public structure and reading map. It does not establish completion of the three remaining planned engineering works, an unrestricted new scientific theorem, deployment, server indexing or permission for an agent to act. Meaning Geometry remains a bounded research-draft proposal until ordinary source and publication acceptance.
