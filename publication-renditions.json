@@ -408,6 +408,372 @@
           "rendition": "conclusion"
         }
       ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "fa8dce6bfa9a2e030d756c661f39cbd30e7ffa876aee4c79348c013500610845",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate set including this exact Uncertainty ru blob 8aaa8dae18a2014be6495c479e85a3e114538420 (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Uncertainty ru formula order was already source-faithful; Agent-Brain comment 6751312234 explicitly left this blob unrevisited.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "8aaa8dae18a2014be6495c479e85a3e114538420"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (anchors later covered by 6744010479), (4) link-depth/anchor delta review 6744010479 binding this exact Uncertainty ru blob; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "a2c89965f33702a079234f59f6a9791b8c6d0ca03cf8255c719a500e5d1756fb",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "9a94c63085287f59f42df75014844801f1ffca1e"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T21:00:00Z",
+        "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
+          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "a5a669e3ca143640c5447cf4d1e8ac06f163d958ef339ad88fa9b5f11078b800",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "7376c33010abde5a67c9fca6c40408a8056a2500"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T21:00:00Z",
+        "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
+          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+        "sha256": "34e06ef3ee73e821e042144c9a0d3a8733b6743c648003a8908a3e4baa692235",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "reviewed": {
+          "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
+          "rendition_blob": "f07227366731e2fb946285ec696c7199ae48565f"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-objects",
+            "admission-before-optimization",
+            "counterexamples-that-determine-the-design",
+            "time-concurrency-and-state",
+            "an-exact-cost-model",
+            "utility-and-double-counting",
+            "public-examples-and-claim-limits",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T21:00:00Z",
+        "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
+          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-objects",
+          "rendition": "question-and-objects"
+        },
+        {
+          "source": "admission-before-optimization",
+          "rendition": "admission-before-optimization"
+        },
+        {
+          "source": "counterexamples-that-determine-the-design",
+          "rendition": "counterexamples-that-determine-the-design"
+        },
+        {
+          "source": "time-concurrency-and-state",
+          "rendition": "time-concurrency-and-state"
+        },
+        {
+          "source": "an-exact-cost-model",
+          "rendition": "an-exact-cost-model"
+        },
+        {
+          "source": "utility-and-double-counting",
+          "rendition": "utility-and-double-counting"
+        },
+        {
+          "source": "public-examples-and-claim-limits",
+          "rendition": "public-examples-and-claim-limits"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
     }
   ]
 }
