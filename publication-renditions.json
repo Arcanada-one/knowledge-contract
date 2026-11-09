@@ -1,0 +1,413 @@
+{
+  "schema_version": 2,
+  "kind": "arcanada-publication-renditions",
+  "edition": "1.1",
+  "renditions": [
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "reviewed": {
+          "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
+          "rendition_blob": "7937a6a4bf27adfb9b0846c92b8b945a7c259cc8"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "the-delivery-problem",
+            "model-and-algorithms",
+            "exhaustive-finite-checks",
+            "a-public-reproduction-of-the-graph-result",
+            "delivered-record-counts-and-fault-controls",
+            "readable-layout-migration",
+            "historical-package-replay",
+            "claim-evidence-and-boundary",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "the-delivery-problem",
+          "rendition": "the-delivery-problem"
+        },
+        {
+          "source": "model-and-algorithms",
+          "rendition": "model-and-algorithms"
+        },
+        {
+          "source": "exhaustive-finite-checks",
+          "rendition": "exhaustive-finite-checks"
+        },
+        {
+          "source": "a-public-reproduction-of-the-graph-result",
+          "rendition": "a-public-reproduction-of-the-graph-result"
+        },
+        {
+          "source": "delivered-record-counts-and-fault-controls",
+          "rendition": "delivered-record-counts-and-fault-controls"
+        },
+        {
+          "source": "readable-layout-migration",
+          "rendition": "readable-layout-migration"
+        },
+        {
+          "source": "historical-package-replay",
+          "rendition": "historical-package-replay"
+        },
+        {
+          "source": "claim-evidence-and-boundary",
+          "rendition": "claim-evidence-and-boundary"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+        "sha256": "e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "reviewed": {
+          "source_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
+          "rendition_blob": "2094c4318aea9eaea2e71567c49f95e229cfd027"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "the-delivery-problem",
+            "model-and-algorithms",
+            "exhaustive-finite-checks",
+            "a-public-reproduction-of-the-graph-result",
+            "delivered-record-counts-and-fault-controls",
+            "readable-layout-migration",
+            "historical-package-replay",
+            "claim-evidence-and-boundary",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "the-delivery-problem",
+          "rendition": "the-delivery-problem"
+        },
+        {
+          "source": "model-and-algorithms",
+          "rendition": "model-and-algorithms"
+        },
+        {
+          "source": "exhaustive-finite-checks",
+          "rendition": "exhaustive-finite-checks"
+        },
+        {
+          "source": "a-public-reproduction-of-the-graph-result",
+          "rendition": "a-public-reproduction-of-the-graph-result"
+        },
+        {
+          "source": "delivered-record-counts-and-fault-controls",
+          "rendition": "delivered-record-counts-and-fault-controls"
+        },
+        {
+          "source": "readable-layout-migration",
+          "rendition": "readable-layout-migration"
+        },
+        {
+          "source": "historical-package-replay",
+          "rendition": "historical-package-replay"
+        },
+        {
+          "source": "claim-evidence-and-boundary",
+          "rendition": "claim-evidence-and-boundary"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "reviewed": {
+          "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
+          "rendition_blob": "da402f346cc5ddfede98a170a67d107429ce1209"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-design-progression",
+            "initial-reader-four-distinct-failure-mechanisms",
+            "revised-reader-boundaries",
+            "targeted-revision-and-a-strong-alternative",
+            "executable-projection-contract",
+            "consumer-qualification-before-the-new-responses",
+            "five-agent-case-pairs",
+            "counterexample-to-claim-level-minimality",
+            "evidence-and-reproduction-boundaries",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-design-progression",
+          "rendition": "question-and-design-progression"
+        },
+        {
+          "source": "initial-reader-four-distinct-failure-mechanisms",
+          "rendition": "initial-reader-four-distinct-failure-mechanisms"
+        },
+        {
+          "source": "revised-reader-boundaries",
+          "rendition": "revised-reader-boundaries"
+        },
+        {
+          "source": "targeted-revision-and-a-strong-alternative",
+          "rendition": "targeted-revision-and-a-strong-alternative"
+        },
+        {
+          "source": "executable-projection-contract",
+          "rendition": "executable-projection-contract"
+        },
+        {
+          "source": "consumer-qualification-before-the-new-responses",
+          "rendition": "consumer-qualification-before-the-new-responses"
+        },
+        {
+          "source": "five-agent-case-pairs",
+          "rendition": "five-agent-case-pairs"
+        },
+        {
+          "source": "counterexample-to-claim-level-minimality",
+          "rendition": "counterexample-to-claim-level-minimality"
+        },
+        {
+          "source": "evidence-and-reproduction-boundaries",
+          "rendition": "evidence-and-reproduction-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md",
+        "sha256": "ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8",
+        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "reviewed": {
+          "source_blob": "b2306980ba150d0a0841896b6123df5ff72fc319",
+          "rendition_blob": "a5183a8a8f19a12e83bab44a3fc0de198d8ca77c"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-design-progression",
+            "initial-reader-four-distinct-failure-mechanisms",
+            "revised-reader-boundaries",
+            "targeted-revision-and-a-strong-alternative",
+            "executable-projection-contract",
+            "consumer-qualification-before-the-new-responses",
+            "five-agent-case-pairs",
+            "counterexample-to-claim-level-minimality",
+            "evidence-and-reproduction-boundaries",
+            "conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification. Only these four compile-clean entries are admitted; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-design-progression",
+          "rendition": "question-and-design-progression"
+        },
+        {
+          "source": "initial-reader-four-distinct-failure-mechanisms",
+          "rendition": "initial-reader-four-distinct-failure-mechanisms"
+        },
+        {
+          "source": "revised-reader-boundaries",
+          "rendition": "revised-reader-boundaries"
+        },
+        {
+          "source": "targeted-revision-and-a-strong-alternative",
+          "rendition": "targeted-revision-and-a-strong-alternative"
+        },
+        {
+          "source": "executable-projection-contract",
+          "rendition": "executable-projection-contract"
+        },
+        {
+          "source": "consumer-qualification-before-the-new-responses",
+          "rendition": "consumer-qualification-before-the-new-responses"
+        },
+        {
+          "source": "five-agent-case-pairs",
+          "rendition": "five-agent-case-pairs"
+        },
+        {
+          "source": "counterexample-to-claim-level-minimality",
+          "rendition": "counterexample-to-claim-level-minimality"
+        },
+        {
+          "source": "evidence-and-reproduction-boundaries",
+          "rendition": "evidence-and-reproduction-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    }
+  ]
+}

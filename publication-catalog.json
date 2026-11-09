@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "edition": "1.1",
+  "renditions": "publication-renditions.json",
   "documents": [
     {
       "type": "paper",
