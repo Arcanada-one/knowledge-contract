@@ -55,8 +55,8 @@
         "reviewed_at": "2026-11-09T16:09:39Z",
         "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification. Iteration-3 admission scope: only these four compile-clean entries; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
         "evidence": {
-          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
-          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
         }
       },
       "sections": [
@@ -154,8 +154,8 @@
         "reviewed_at": "2026-11-09T16:09:39Z",
         "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification. Iteration-3 admission scope: only these four compile-clean entries; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
         "evidence": {
-          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
-          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
         }
       },
       "sections": [
@@ -254,8 +254,8 @@
         "reviewed_at": "2026-11-09T16:09:39Z",
         "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification. Iteration-3 admission scope: only these four compile-clean entries; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
         "evidence": {
-          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
-          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
         }
       },
       "sections": [
@@ -358,8 +358,8 @@
         "reviewed_at": "2026-11-09T16:09:39Z",
         "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479), (4) link-depth/anchor delta review 6744010479 of exactly these eight rendition blobs; no one re-reviewed the complete translation against the newer source as a single fresh full pass; evidence completeness OPEN until KC-Brain authors one complete evidence record listing all four reviews; not native-speaker, external or scientific-truth certification. Iteration-3 admission scope: only these four compile-clean entries; source-transcription and reuse-admission × ru/zh-Hans remain out of PR86 after RENDITION_SECTION_MISSING on HTML historic-anchor preamble (see reviews/renditions/k8-first-admission-diagnostics-20261109.md iteration 3).",
         "evidence": {
-          "path": "reviews/renditions/four-studies-current-source-review-20261109.md",
-          "blob": "99b6293b7d2d8245e297c880583cbd823eb1b85f"
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
         }
       },
       "sections": [
