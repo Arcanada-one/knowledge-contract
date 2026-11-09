@@ -752,7 +752,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Iteration 2 failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links — `dependency-closure-and-package-delivery / ru`
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -787,7 +787,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Iteration 2 failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links — `dependency-closure-and-package-delivery / zh-Hans`
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -822,7 +822,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Iteration 2 failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links — `executable-projections-and-revision / ru`
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -853,7 +853,7 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 - Compile failure codes: `RENDITION_LINK_TRANSLATION`, `RENDITION_LINK_UNPINNED`
 - Parity with link classify set aside: `[{'parity': 'OK'}]`
 
-#### Iteration 2 failing links (literal resolve from the rendition directory)
+#### Iteration 2 failing links — `executable-projections-and-revision / zh-Hans`
 
 | Line | Literal href | Resolves to | Code | Href that reaches the English canonical target | Peer note |
 | ---: | --- | --- | --- | --- | --- |
@@ -875,7 +875,6 @@ Anchor/ID uniqueness on the four pages: **not measured on rendered HTML** (no co
 | 120 | `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | catalogue work `reference/bibliography/BIBLIOGRAPHY.md`; peer `translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md` registered=False — peer only legal if sidecar-registered |
 | 124 | `../../../reference/glossary/GLOSSARY.md` | `translations/zh-Hans/reference/glossary/GLOSSARY.md` | `RENDITION_LINK_UNPINNED` | `../../../../../reference/glossary/GLOSSARY.md` | catalogue work `reference/glossary/GLOSSARY.md`; peer `translations/zh-Hans/reference/glossary/GLOSSARY.md` registered=False — peer only legal if sidecar-registered |
 
-
 ### Iteration 2 — knowledge-contract link-check (lychee)
 
 Hosted CI `link-check` on head `8281ebeb40fb050b33b131bb38ffb0e176f93491` (run `42635137977`) reported **76** offline `File not found` errors, all under `translations/<lang>/…` from the four admitted SCOPED PASS blobs. This is the same English-depth relative-href problem as the site compiler; rendition bytes were not edited. Per-file counts from the job log:
@@ -889,7 +888,6 @@ Hosted CI `link-check` on head `8281ebeb40fb050b33b131bb38ffb0e176f93491` (run `
 | **Total** | **76** |
 
 `markdown-lint` MD024 duplicates on this diagnostics file are fixed in a follow-up tip; `link-check` remains red until new rendition-depth blobs arrive. PR stays draft.
-
 
 ### Iteration 2 — Dry-run language totals
 
