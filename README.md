@@ -1,10 +1,16 @@
 # Knowledge Contract Arcana
 
-Read [all 30 document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. Engineering execution is currently paused; the roadmap separates authoring from later site integration.
+Start with the **programme and reading map**: [English](PROGRAMME.md) · [Русский](guides/programme.ru.md) · [简体中文](guides/programme.zh-Hans.md). Explore [all 30 current document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. Dated roadmap observations are not live execution or publication status.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
 Knowledge Contract connects a body of knowledge to its intended use, sources, dependencies, constraints and assessment. It helps a person or agent distinguish what a source says, what is supported, what applies to the task, and what may be done with it.
+
+## The scientific programme
+
+**Meaning Theory**, **Meaning Algebra** and **Meaning Geometry** organize the author-approved scientific programme. Theory develops the existing Meaning Bridge research draft; Algebra extends Knowledge Transformations on its existing path; Geometry is a separately planned manuscript. Their target titles do not declare the extensions finished or transfer earlier reviews to unwritten results.
+
+The [programme map](PROGRAMME.md) names and connects the target **34 works**: ten scientific works, thirteen specifications, seven studies and four reference or appendix documents. The current reading catalogue remains **30 documents**. Four planned additions are clearly separated from existing texts. Already accepted finite reading batches can be released without waiting for every future foundation or experiment. The programme is available in full in [Russian](guides/programme.ru.md) and [Simplified Chinese](guides/programme.zh-Hans.md); these guides are not a claim that every scientific manuscript is already translated or deployed.
 
 ## Read the publication
 
