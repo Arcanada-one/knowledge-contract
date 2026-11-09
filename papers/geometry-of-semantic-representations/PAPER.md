@@ -156,6 +156,7 @@ W_I=\sum_{q\in I}w_q,
 d_I^*(x,y)=\sum_{q\in I}w_q\mathbf 1[f_{q,c}(x)\ne f_{q,c}(y)].
 \]
 
+<!-- markdownlint-disable-next-line MD049 -->
 Then \(d_I^*\leq d_c\). If the restricted profile is renormalized to total weight one, its distance is \(d_I=d_I^*/W_I\), so \(d_I\leq d_c/W_I\); it need not be at most \(d_c\).
 
 For two fixed profiles on the same carrier, with distances \(d_Q,d_R\), the disjoint labelled union with weight mixture \(0<\alpha<1\) gives
@@ -280,6 +281,6 @@ The countermodels show why proximity, equivalence, entailment and permission mus
 
 ## References
 
-1. Hamming, R. W. “Error Detecting and Error Correcting Codes.” *Bell System Technical Journal* 29(2), 1950, 147–160. <https://doi.org/10.1002/j.1538-7305.1950.tb00463.x>. [Bell Labs publication record](https://www.nokia.com/bell-labs/publications-and-media/publications/error-detecting-and-error-correcting-codes/).
-2. Gärdenfors, P. *Conceptual Spaces: The Geometry of Thought*. MIT Press, 2000. [Author's institutional publication record](https://portal.research.lu.se/en/publications/conceptual-spaces-the-geometry-of-thought/).
+1. Hamming, R. W. “Error Detecting and Error Correcting Codes.” _Bell System Technical Journal_ 29(2), 1950, 147–160. <https://doi.org/10.1002/j.1538-7305.1950.tb00463.x>. [Bell Labs publication record](https://www.nokia.com/bell-labs/publications-and-media/publications/error-detecting-and-error-correcting-codes/).
+2. Gärdenfors, P. _Conceptual Spaces: The Geometry of Thought_. MIT Press, 2000. [Author's institutional publication record](https://portal.research.lu.se/en/publications/conceptual-spaces-the-geometry-of-thought/).
 3. Coecke, B., Sadrzadeh, M., and Clark, S. “Mathematical Foundations for a Compositional Distributional Model of Meaning.” 2010. <https://arxiv.org/abs/1003.4394>.
