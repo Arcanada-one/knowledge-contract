@@ -1169,3 +1169,14 @@ python3 -B scripts/build_publication.py \
 Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to `5b2a2cefac7050338fd70d0d9af9dd61dd82a687` so pin checks pass; restored afterward to `0b284c6cd971566e7fe38d572c86b164c28b27c5`; no site commit, merge, deploy, or pin change.
 
 Record marker: `k8-first-admission-diagnostics-20261109-v4b`.
+
+
+### Post-merge sidecar revision repin (Muneral b2ffbd14)
+
+After PR86 squash-merged as `277e23f836a9586575c1378723f8e4d14a733d57`, the four admitted sidecar entries still pinned `rendition.revision` to PR-branch tip `be3674951c5416a9bc0505abef5d9111dc1b63f5`, which is not an ancestor of `main`, so the site compiler refused with `RENDITION_REVISION_PIN` even though the four rendition blobs on main are byte-identical.
+
+Repin (all four entries): `rendition.revision` `be3674951c5416a9bc0505abef5d9111dc1b63f5` → `277e23f836a9586575c1378723f8e4d14a733d57`.
+
+Unchanged after ancestor checks: `source.revision` remains `e96fe08344997af24b2408e6ecdf3d97019c91ca` (ancestor of main). No other revision fields exist on these entries. `review.reviewed` blobs, `review.method`, `review.limitations`, and `review.evidence` path/blob were not modified. Rendition and source sha256/blob at the new pin equal the sidecar values.
+
+Record marker: `k8-first-admission-diagnostics-20261109-post-merge-repin`.
