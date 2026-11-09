@@ -524,7 +524,7 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob c03b338155e4ff4e5300829f1a1bbb596357733e). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
         "reviewed": {
           "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
           "rendition_blob": "9a94c63085287f59f42df75014844801f1ffca1e"
@@ -549,7 +549,7 @@
         "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
-          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+          "blob": "c03b338155e4ff4e5300829f1a1bbb596357733e"
         }
       },
       "sections": [
@@ -613,7 +613,7 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob c03b338155e4ff4e5300829f1a1bbb596357733e). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
         "reviewed": {
           "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
           "rendition_blob": "7376c33010abde5a67c9fca6c40408a8056a2500"
@@ -639,7 +639,7 @@
         "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
-          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+          "blob": "c03b338155e4ff4e5300829f1a1bbb596357733e"
         }
       },
       "sections": [
@@ -707,7 +707,7 @@
           "independent_of_author": true,
           "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
         },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob b0fe0f0ae1e4bb7c0117f8034714843c635f612c). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob c03b338155e4ff4e5300829f1a1bbb596357733e). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
         "reviewed": {
           "source_blob": "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac",
           "rendition_blob": "f07227366731e2fb946285ec696c7199ae48565f"
@@ -733,7 +733,7 @@
         "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
         "evidence": {
           "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
-          "blob": "b0fe0f0ae1e4bb7c0117f8034714843c635f612c"
+          "blob": "c03b338155e4ff4e5300829f1a1bbb596357733e"
         }
       },
       "sections": [
