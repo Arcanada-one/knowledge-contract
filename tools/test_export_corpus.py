@@ -667,16 +667,19 @@ class DecisionRouteTests(unittest.TestCase):
         base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                 "decision": f"{DEC}b3.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
         catalogue = json.loads((export.REPO / "publication-catalog.json").read_text())["documents"]
-        # The catalogue lists 30 documents; the research-draft paper is published but not admitted to the export scope.
+        # The PR89 catalogue proposes 31 documents. Both research drafts remain excluded from the 29-path export scope.
         drafts = sorted(d["path"] for d in catalogue if d.get("status") == "research-draft")
-        self.assertEqual(drafts, ["papers/human-meaning-and-computable-knowledge/PAPER.md"])
+        self.assertEqual(drafts, [
+            "papers/geometry-of-semantic-representations/PAPER.md",
+            "papers/human-meaning-and-computable-knowledge/PAPER.md",
+        ])
         for path in drafts:
             with self.subTest(draft=path):
                 self.assertNotIn(path, export.SCOPE_PATHS)
                 with self.assertRaises(export.ExportError):
                     export.validate_row({**base, "path": path})
         edition = sorted(d["path"] for d in catalogue if d.get("status") != "research-draft")
-        self.assertEqual(len(catalogue), 30)
+        self.assertEqual(len(catalogue), 31)
         self.assertEqual(len(edition), 29)
         self.assertEqual(len(export.SCOPE_PATHS), 6 + 14 + 29)
         for path in edition:
