@@ -107,6 +107,7 @@ UNKNOWN_REASON_CODES = frozenset({
     "na_binding_missing",
     "mandatory_conflict_unresolved",
     "temporal_support_incoherent",
+    "temporal_support_unverified",
     "evaluation_time_missing",
     "required_profile_uninterpretable",
     "unresolved_mandatory_dependency",
@@ -927,22 +928,24 @@ def _collect_conflicts(document: dict) -> tuple[list[dict], list[str], bool, boo
 
 def _support_times_coherent(
     trusted_candidates_by_member: dict[str, list[dict]],
-    member_ids: list[str],
+    assessment_discharged_members: list[str],
 ) -> tuple[bool, list[str]]:
-    """Temporal coherence over every trusted, binding-matched candidate.
+    """Temporal coherence for members discharged by assessment (not NA).
 
-    Rule (Q1): collect support_time values from all trusted binding-matched
-    candidates per member. A coherent snapshot is one support_time present in
-    every member that declares at least one support_time. If such a snapshot
-    exists, the set is coherent (order-independent). Otherwise members whose
-    candidate times cannot share one snapshot yield ``temporal_support_incoherent``
-    (or ``temporal_support_incompatible_fail`` when an applicability violation
-    is established). Absent support_time on all candidates remains coherent
-    (Q6 pending semantic verdict — behaviour unchanged).
+    Rule (Q1 / Q6): every assessment-discharged member must demonstrate at
+    least one ``support_time`` on a trusted binding-matched candidate. A
+    coherent snapshot is one support_time present for every such member. If
+    any assessment-discharged member lacks a support_time — including the
+    mixed missing/present case — emit ``temporal_support_unverified``; do not
+    intersect over a partial mandatory set. Members discharged only by a
+    valid NA are exempt. Incompatible declared times still yield
+    ``temporal_support_incoherent`` (or ``temporal_support_incompatible_fail``
+    when an applicability violation is established).
     """
     times_by_member: dict[str, set[datetime]] = {}
     applicability_fail = False
-    for member_id in member_ids:
+    missing_support = False
+    for member_id in assessment_discharged_members:
         candidates = trusted_candidates_by_member.get(member_id) or []
         times: set[datetime] = set()
         for assessment in candidates:
@@ -960,14 +963,20 @@ def _support_times_coherent(
             if parsed is None:
                 return False, ["time_unparsable"]
             times.add(parsed)
-        if times:
+        if not times:
+            missing_support = True
+        else:
             times_by_member[member_id] = times
+    # Any discharging assessment without demonstrated support time ⇒ unverified
+    # (covers all-absent and mixed missing/present; order-invariant).
+    if missing_support:
+        return False, ["temporal_support_unverified"]
     if not times_by_member:
         return True, []
     common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))
     if common:
         return True, []
-    # No single snapshot covers every member that declared a support time.
+    # No single snapshot covers every assessment-discharged member.
     if applicability_fail:
         return False, ["temporal_support_incompatible_fail"]
     return False, ["temporal_support_incoherent"]
@@ -1239,24 +1248,10 @@ def evaluate(document: dict) -> dict:
     }
 
     for member_id in member_ids:
-        na_verdict, na_reasons = _na_decision_for(
-            member_id,
-            document,
-            binding_b0,
-            evidence_index,
-            evaluation_time,
-            expected_reviewer_revision,
-            expected_rule_revision,
-        )
-        if na_verdict is not None:
-            member_verdicts[member_id] = na_verdict
-            reasons.extend(na_reasons)
-            continue
+        # Q8: evaluate every submitted assessment candidate for integrity
+        # BEFORE the NA discharge decision. A valid NA does not sanitize a
+        # wrong-bound / failing companion in the same scoped collection.
         candidates = candidates_by_member.get(member_id) or []
-        if not candidates:
-            member_verdicts[member_id] = MEMBER_MISSING
-            reasons.append(f"missing_assessment:{member_id}")
-            continue
         definition = member_defs.get(member_id)
         saw_binding_mismatch = False
         saw_member_fail = False
@@ -1314,14 +1309,41 @@ def evaluate(document: dict) -> dict:
                 saw_member_unknown = True
             elif verdict == MEMBER_DISCHARGED:
                 saw_discharged = True
-        if saw_binding_mismatch or saw_member_fail:
+
+        assessment_verdict: str | None = None
+        if candidates:
+            if saw_binding_mismatch or saw_member_fail:
+                assessment_verdict = MEMBER_FAIL
+            elif saw_discharged:
+                assessment_verdict = MEMBER_DISCHARGED
+            else:
+                assessment_verdict = MEMBER_UNKNOWN
+
+        na_verdict, na_reasons = _na_decision_for(
+            member_id,
+            document,
+            binding_b0,
+            evidence_index,
+            evaluation_time,
+            expected_reviewer_revision,
+            expected_rule_revision,
+        )
+
+        if assessment_verdict == MEMBER_FAIL:
             member_verdicts[member_id] = MEMBER_FAIL
-        elif saw_discharged:
-            member_verdicts[member_id] = MEMBER_DISCHARGED
-        elif saw_member_unknown:
-            member_verdicts[member_id] = MEMBER_UNKNOWN
-        else:
-            member_verdicts[member_id] = MEMBER_UNKNOWN
+            # Retain NA justification/reasons as evidence alongside the fail.
+            if na_verdict is not None:
+                reasons.extend(na_reasons)
+            continue
+        if na_verdict is not None:
+            member_verdicts[member_id] = na_verdict
+            reasons.extend(na_reasons)
+            continue
+        if not candidates:
+            member_verdicts[member_id] = MEMBER_MISSING
+            reasons.append(f"missing_assessment:{member_id}")
+            continue
+        member_verdicts[member_id] = assessment_verdict or MEMBER_UNKNOWN
 
     # Diagnostic addressed coverage: members with any candidate assessment.
     # Missing assessment is diagnostic; NA without an assessment is still valid discharge.
@@ -1336,13 +1358,22 @@ def evaluate(document: dict) -> dict:
     # keep: alias_coverage_guard
     _ = assessments  # assessments already reconciled by qualified identity
 
+    # Q6: only assessment-discharged members require demonstrated support times.
+    # NA-discharged members are exempt from the common-snapshot obligation.
+    assessment_discharged = [
+        member_id
+        for member_id in member_ids
+        if member_verdicts.get(member_id) == MEMBER_DISCHARGED
+    ]
     coherent, temporal_reasons = _support_times_coherent(
-        trusted_temporal_candidates, member_ids
+        trusted_temporal_candidates, assessment_discharged
     )
     reasons.extend(temporal_reasons)
     if not coherent and "temporal_support_incompatible_fail" in temporal_reasons:
         fail_conflict = True
     if not coherent and "temporal_support_incoherent" in temporal_reasons:
+        unknown_conflict = True
+    if not coherent and "temporal_support_unverified" in temporal_reasons:
         unknown_conflict = True
     if "malformed_input" in temporal_reasons:
         fail_conflict = True

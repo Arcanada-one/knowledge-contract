@@ -566,11 +566,11 @@ MUTANTS: dict[str, Mutator] = {
         "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
         "    if common:\n"
         "        return True, []\n"
-        "    # No single snapshot covers every member that declared a support time.",
+        "    # No single snapshot covers every assessment-discharged member.",
         "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
         "    if True:  # mutant: union incompatible historical supports\n"
         "        return True, []\n"
-        "    # No single snapshot covers every member that declared a support time.",
+        "    # No single snapshot covers every assessment-discharged member.",
         "temporal-union",
     ),
     # harmless-addition: ignore unresolved conflicts
@@ -591,14 +591,64 @@ MUTANTS: dict[str, Mutator] = {
     "temporal-first-candidate": lambda s: _replace_once(
         s,
         "coherent, temporal_reasons = _support_times_coherent(\n"
-        "        trusted_temporal_candidates, member_ids\n"
+        "        trusted_temporal_candidates, assessment_discharged\n"
         "    )",
         "first_only = {\n"
         "        mid: ([cands[0]] if cands else [])\n"
         "        for mid, cands in trusted_temporal_candidates.items()\n"
         "    }\n"
-        "    coherent, temporal_reasons = _support_times_coherent(first_only, member_ids)",
+        "    coherent, temporal_reasons = _support_times_coherent(first_only, assessment_discharged)",
         "temporal-first-candidate",
+    ),
+    # Q6 revert: absent/mixed support_time treated as coherent
+    "skip-support-time-required": lambda s: _replace_once(
+        s,
+        "# Any discharging assessment without demonstrated support time ⇒ unverified\n"
+        "    # (covers all-absent and mixed missing/present; order-invariant).\n"
+        "    if missing_support:\n"
+        "        return False, [\"temporal_support_unverified\"]\n"
+        "    if not times_by_member:\n"
+        "        return True, []",
+        "# Mutant: absent/mixed support_time is treated as coherent.\n"
+        "    if not times_by_member:\n"
+        "        return True, []",
+        "skip-support-time-required",
+    ),
+    # Q8 revert: NA short-circuits before assessment integrity
+    "na-before-assessments": lambda s: _replace_once(
+        s,
+        "# Q8: evaluate every submitted assessment candidate for integrity\n"
+        "        # BEFORE the NA discharge decision. A valid NA does not sanitize a\n"
+        "        # wrong-bound / failing companion in the same scoped collection.\n"
+        "        candidates = candidates_by_member.get(member_id) or []\n"
+        "        definition = member_defs.get(member_id)\n"
+        "        saw_binding_mismatch = False\n"
+        "        saw_member_fail = False\n"
+        "        saw_member_unknown = False\n"
+        "        saw_discharged = False\n"
+        "        for assessment in candidates:",
+        "# Mutant: NA short-circuits before assessment integrity (pre-Q8).\n"
+        "        na_verdict_early, na_reasons_early = _na_decision_for(\n"
+        "            member_id,\n"
+        "            document,\n"
+        "            binding_b0,\n"
+        "            evidence_index,\n"
+        "            evaluation_time,\n"
+        "            expected_reviewer_revision,\n"
+        "            expected_rule_revision,\n"
+        "        )\n"
+        "        if na_verdict_early is not None:\n"
+        "            member_verdicts[member_id] = na_verdict_early\n"
+        "            reasons.extend(na_reasons_early)\n"
+        "            continue\n"
+        "        candidates = candidates_by_member.get(member_id) or []\n"
+        "        definition = member_defs.get(member_id)\n"
+        "        saw_binding_mismatch = False\n"
+        "        saw_member_fail = False\n"
+        "        saw_member_unknown = False\n"
+        "        saw_discharged = False\n"
+        "        for assessment in candidates:",
+        "na-before-assessments",
     ),
     # Q2 revert: first matching NA decision wins
     "na-first-match": lambda s: _replace_once(
@@ -817,6 +867,10 @@ class PermutationIndependenceTests(unittest.TestCase):
         "K11-temporal-candidate-order.json",
         "K11b-temporal-no-common-snapshot.json",
         "K12-na-scope-mismatch-after-valid.json",
+        "K17-no-support-time.json",
+        "K17b-mixed-support-time.json",
+        "K18-na-with-wrong-bound.json",
+        "K18b-na-wrong-bound-reversed.json",
     )
 
     def _permute_document(self, working: dict, rng: random.Random) -> dict:

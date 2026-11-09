@@ -202,7 +202,7 @@
   "rule_revision": "rev-rule-1",
   "source_revision": "src-1",
   "expected": {
-    "closure_verdict": "pass",
+    "closure_verdict": "unknown",
     "effects_authorized": false,
     "member_verdicts": {
       "a": "discharged",
@@ -210,7 +210,7 @@
     },
     "missing_members": [],
     "reason_codes": [
-      "all_mandatory_members_discharged"
+      "temporal_support_unverified"
     ],
     "scope": "synthetic_semantics_only",
     "unresolved_dependencies": [],

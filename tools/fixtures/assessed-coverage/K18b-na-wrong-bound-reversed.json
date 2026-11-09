@@ -1,6 +1,43 @@
 {
   "assessments": [
     {
+      "assessment_id": "assess-b-wrong",
+      "binding": {
+        "action": "assess-coverage",
+        "actor": "actor-OTHER",
+        "contract_profile": "assessed-coverage/0.1",
+        "contract_revision": "ctr-1",
+        "effective_request_digest": "digest-b0",
+        "environment": "env-test",
+        "intended_recipient": "recipient-1",
+        "operation_key": "op-1",
+        "project": "proj-1",
+        "requirements_revision": "req-1",
+        "resource": "res-1",
+        "subject": "subj-1",
+        "work_item_revision": "wi-1"
+      },
+      "entailments": [
+        {
+          "checked": true,
+          "member_id": "b"
+        }
+      ],
+      "evidence_refs": [
+        "e3"
+      ],
+      "immutable_bytes_digest": "abytes-b-wrong",
+      "member_id": "b",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "rule_revision": "rev-rule-1"
+      },
+      "revision_claim": "arev-b-wrong",
+      "support_time": "2026-11-09T12:00:00Z",
+      "trusted_test_premise": true,
+      "verdict_label": "accepted"
+    },
+    {
       "assessment_id": "assess-a",
       "binding": {
         "action": "assess-coverage",
@@ -37,43 +74,6 @@
       "support_time": "2026-11-09T12:00:00Z",
       "trusted_test_premise": true,
       "verdict_label": "accepted"
-    },
-    {
-      "assessment_id": "assess-b-wrong",
-      "binding": {
-        "action": "assess-coverage",
-        "actor": "actor-OTHER",
-        "contract_profile": "assessed-coverage/0.1",
-        "contract_revision": "ctr-1",
-        "effective_request_digest": "digest-b0",
-        "environment": "env-test",
-        "intended_recipient": "recipient-1",
-        "operation_key": "op-1",
-        "project": "proj-1",
-        "requirements_revision": "req-1",
-        "resource": "res-1",
-        "subject": "subj-1",
-        "work_item_revision": "wi-1"
-      },
-      "entailments": [
-        {
-          "checked": true,
-          "member_id": "b"
-        }
-      ],
-      "evidence_refs": [
-        "e3"
-      ],
-      "immutable_bytes_digest": "abytes-b-wrong",
-      "member_id": "b",
-      "provenance": {
-        "reviewer_revision": "rev-reviewer-1",
-        "rule_revision": "rev-rule-1"
-      },
-      "revision_claim": "arev-b-wrong",
-      "support_time": "2026-11-09T12:00:00Z",
-      "trusted_test_premise": true,
-      "verdict_label": "accepted"
     }
   ],
   "binding_b0": {
@@ -91,7 +91,7 @@
     "subject": "subj-1",
     "work_item_revision": "wi-1"
   },
-  "case_id": "K18",
+  "case_id": "K18b",
   "conflicts": [],
   "evaluation_time": "2026-11-09T12:00:00Z",
   "evidence": [
@@ -246,22 +246,22 @@
   "rule_revision": "rev-rule-1",
   "source_revision": "src-1",
   "expected": {
-    "closure_verdict": "pass",
+    "closure_verdict": "fail",
     "effects_authorized": false,
     "member_verdicts": {
       "a": "discharged",
-      "b": "not_applicable"
+      "b": "fail"
     },
     "missing_members": [],
     "reason_codes": [
-      "not_applicable_authorized",
-      "all_mandatory_members_discharged"
+      "binding_mismatch",
+      "not_applicable_authorized"
     ],
     "scope": "synthetic_semantics_only",
     "unresolved_dependencies": [],
     "addressed_members": [
-      "a",
-      "b"
+      "b",
+      "a"
     ]
   }
 }

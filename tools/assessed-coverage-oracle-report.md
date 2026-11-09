@@ -1,8 +1,9 @@
 # Assessed-coverage finite oracle report (Layer S)
 
-Marker: `agent-brain-assessed-coverage-oracle-20261109-v3`.
+Marker: `kc-brain-oracle-pr82-k17-k18-semantic-adjudication-20261109-v1`.
 Specification: arcanada-workspace PR1886 comment 6734249466; Muneral e445c6a4 (child of KCLIVE-08).
-Round 3: order dependence and untrusted member rules (PR #82, probe `/tmp/kcswe_or82p2.py`).
+Round 4: KC-Brain re-pins K17/K18 (PR #82, comment 6736573962) at prior head
+`0d3349fe1e3841787f9115aeb204d2c4ddfa9193`.
 
 ## Per-case results (S-layer)
 
@@ -45,104 +46,72 @@ Round 3: order dependence and untrusted member rules (PR #82, probe `/tmp/kcswe_
 | S21b-established-inconsistency | `S21b-established-inconsistency.json` | `fail` | `fail` | mandatory_conflict_established |
 | S22a-same-origin | `S22a-same-origin.json` | `fail` | `fail` | independence_same_origin |
 | S22b-independence-unknown | `S22b-independence-unknown.json` | `unknown` | `unknown` | evidence_origin_missing |
+| K01 | `K01-assessment-binding-missing.json` | `unknown` | `unknown` | assessment_binding_missing |
+| K02 | `K02-member-entailment-unchecked.json` | `unknown` | `unknown` | member_entailment_unchecked |
+| K03 | `K03-revisions-unpinned.json` | `unknown` | `unknown` | reviewer_revision_unpinned, rule_revision_unpinned |
+| K04 | `K04-malformed-collection-records.json` | `fail` | `fail` | malformed_input |
+| K05 | `K05-na-evidence-missing.json` | `unknown` | `unknown` | na_evidence_missing |
+| K06 | `K06-malformed-required-profiles.json` | `fail` | `fail` | malformed_input |
+| K07 | `K07-evidence-current-use-unverified.json` | `unknown` | `unknown` | evidence_current_use_unverified |
+| K08 | `K08-time-fractional-stale.json` | `fail` | `fail` | evidence_validity_excludes_evaluation_time |
+| K09 | `K09-wrong-bound-after-good.json` | `fail` | `fail` | binding_mismatch |
+| K10 | `K10-evidence-identity-conflict-content.json` | `fail` | `fail` | evidence_identity_conflict, evidence_missing |
+| K11 | `K11-temporal-candidate-order.json` | `pass` | `pass` | all_mandatory_members_discharged |
+| K11b | `K11b-temporal-no-common-snapshot.json` | `unknown` | `unknown` | temporal_support_incoherent |
+| K12 | `K12-na-scope-mismatch-after-valid.json` | `fail` | `fail` | not_applicable_authorized, na_scope_mismatch |
+| K13 | `K13-member-rule-not-trusted.json` | `unknown` | `unknown` | member_rule_not_trusted_premise |
+| K14 | `K14-member-caller-boolean.json` | `unknown` | `unknown` | caller_boolean_not_premise |
+| K15 | `K15-independence-flag-string.json` | `fail` | `fail` | malformed_input |
+| K16 | `K16-na-binding-missing.json` | `unknown` | `unknown` | na_binding_missing |
+| K17 | `K17-no-support-time.json` | `unknown` | `unknown` | temporal_support_unverified |
+| K17b | `K17b-mixed-support-time.json` | `unknown` | `unknown` | temporal_support_unverified |
+| K18 | `K18-na-with-wrong-bound.json` | `fail` | `fail` | binding_mismatch, not_applicable_authorized |
+| K18b | `K18b-na-wrong-bound-reversed.json` | `fail` | `fail` | binding_mismatch, not_applicable_authorized |
 
-### Fixture-only changes (Round 3; pinned S-verdicts unchanged)
+Fixture count: **58**. Positives S01, S04, S09, S16, S20 remain `pass` (unchanged;
+all assessment-discharged positives already carried `support_time`).
 
-| Fixture | Change | Why |
-| --- | --- | --- |
-| All S* / K01–K10 with `members` | Added `trusted_test_premise: true` on every member definition | Q4: member rules must come from the trusted snapshot |
-| `S17a-caller-only.json` | Added B0 `binding` on the NA decision | Q7: NA binding required; pinned reason stays `caller_boolean_not_premise` |
-| `S17c-missing-evidence.json` | Added B0 `binding` on the NA decision | Q7: same; pinned reason stays `na_evidence_missing` |
-| `S16.json` / `S17b-wrong-scope.json` | Already carried B0 NA binding from Round 2 | Kept; pinned verdicts unchanged |
+## Round-4 rules (KC-Brain 6736573962)
 
-## Round-3 rules implemented
+### Q6 / K17 — assessment discharge needs demonstrated support time
 
-### Q1 — temporal coherence (order-invariant)
+Every member discharged by assessment must show at least one `support_time` on
+a trusted binding-matched candidate. A coherent snapshot is one support_time
+shared by every such member. Missing support time on any assessment-discharged
+member — including the mixed missing/present case — yields closure `unknown` /
+`temporal_support_unverified`; do not intersect over a partial mandatory set.
+Members discharged only by a valid NA are exempt (S16 stays `pass`).
 
-Collect `support_time` from **every trusted, binding-matched** candidate per
-member (not `candidates[0]`). A **coherent snapshot** is one support_time that
-appears in every member that declares at least one support_time. If such a
-snapshot exists, the set is coherent. Otherwise emit
-`temporal_support_incoherent` (or `temporal_support_incompatible_fail` when
-`applicability_violation_established` is an exact `true`). Absent support_time
-on all candidates remains coherent (Q6, pending).
+Optional positive control (separately declared trusted same-snapshot premise at
+B0): **skipped** — no clean explicit field exists without inventing a default;
+absent-by-default documentation would be speculative.
 
-### Q2 — NA decisions (order-invariant)
+### Q8 / K18 — integrity before NA discharge
 
-Evaluate **every** NA decision for the member. Any established scope mismatch
-⇒ member `fail` / `na_scope_mismatch`. Otherwise unknown reasons dominate a
-valid NA. A sole valid NA discharges the member.
+Evaluate every submitted assessment candidate for a member **before** the NA
+discharge decision. A valid NA plus a wrong-bound assessment for the same
+member yields closure `fail`, retains `binding_mismatch` and the NA's
+`not_applicable_authorized` reason as evidence, and does **not** emit
+`all_mandatory_members_discharged`. S16 (valid NA, no invalid companion) stays
+`pass`. Reversed-order variant permutes both `assessments` and `na_decisions`.
 
-### Q4 — member rule trust mark
+### Letter-102 expectations (unchanged)
 
-Every `members.<id>` definition requires `trusted_test_premise: true`.
-Unmarked ⇒ member `unknown` / `member_rule_not_trusted_premise`. Caller
-boolean `trusted: true` without the premise mark ⇒
-`caller_boolean_not_premise`. A trust-marked rule **is** the Layer-S trusted
-snapshot; rewriting it while keeping the mark is out of scope for the oracle
-(stale probe Q4 — see probe notes).
+Assessment binding absent → `unknown` / `assessment_binding_missing`; unequal
+B0 binding → `fail` / `binding_mismatch`. Unpinned reviewer/rule revision →
+`unknown`. Missing current-use signals → `unknown` /
+`evidence_current_use_unverified`. Good-plus-wrong-bound → `fail` /
+`binding_mismatch`. Duplicate evidence identity with equal claimed digest and
+different content → `fail` / `evidence_identity_conflict`.
 
-### Q5 — exact-type booleans on trusted premises
+## Round-4 K fixtures
 
-Present but not a Python `bool` ⇒ `fail` / `malformed_input`. Applied to every
-boolean field the evaluator reads from trusted premises:
-
-- `require_independent_origins` (member rule)
-- `authorized` (NA)
-- `binding_scope_matches_b0` (NA)
-- `scope_mismatch_established` (NA)
-- `checked` (entailment)
-- `resolved` (conflict)
-- `established` (conflict)
-- `applicability_violation_established` (assessment)
-- `invalid_provenance_proven` (evidence / assessment provenance)
-
-Absent keys keep prior semantics (treated as not-true / not-required).
-
-### Q7 — NA binding required
-
-Absent or non-object NA `binding` ⇒ member `unknown` / `na_binding_missing`.
-Object that fails B0 equality ⇒ `fail` / `na_scope_mismatch`.
-
-## Round-3 K fixtures
-
-| Defect | Fixture | Observed | Reasons |
+| Defect | Fixture | Expected / observed | Reasons |
 | --- | --- | --- | --- |
-| Q1 | `K11-temporal-candidate-order.json` | `pass` | all_mandatory_members_discharged (coherent snapshot t1 covers a,b; a2 at t13 first in list) |
-| Q1 | `K11b-temporal-no-common-snapshot.json` | `unknown` | temporal_support_incoherent |
-| Q2 | `K12-na-scope-mismatch-after-valid.json` | `fail` | na_scope_mismatch |
-| Q4 | `K13-member-rule-not-trusted.json` | `unknown` | member_rule_not_trusted_premise |
-| Q4 | `K14-member-caller-boolean.json` | `unknown` | caller_boolean_not_premise |
-| Q5 | `K15-independence-flag-string.json` | `fail` | malformed_input |
-| Q7 | `K16-na-binding-missing.json` | `unknown` | na_binding_missing |
-
-### Pending semantic verdict (KC-Brain; behaviour unchanged)
-
-| Question | Fixture | Pinned current verdict | Note |
-| --- | --- | --- | --- |
-| Q6 | `K17-pending-no-support-time.json` | `pass` | `pending_semantic_verdict` — absent support_time treated as coherent |
-| Q8 | `K18-pending-na-short-circuit-wrong-bound.json` | `pass` | `pending_semantic_verdict` — valid NA short-circuits wrong-bound assessment for b |
-
-## Round-2 K fixtures (unchanged semantics; members now trust-marked)
-
-| Defect | Fixture | Observed | Reasons |
-| --- | --- | --- | --- |
-| P01 | `K01-assessment-binding-missing.json` | `unknown` | assessment_binding_missing |
-| P02/P03/P04 | `K02-member-entailment-unchecked.json` | `unknown` | member_entailment_unchecked |
-| P05 | `K03-revisions-unpinned.json` | `unknown` | reviewer_revision_unpinned, rule_revision_unpinned |
-| P06/P07 | `K04-malformed-collection-records.json` | `fail` | malformed_input |
-| P08 | `K05-na-evidence-missing.json` | `unknown` | na_evidence_missing |
-| P09/P10 | `K06-malformed-required-profiles.json` | `fail` | malformed_input |
-| P11 | `K07-evidence-current-use-unverified.json` | `unknown` | evidence_current_use_unverified |
-| P13 | `K08-time-fractional-stale.json` | `fail` | evidence_validity_excludes_evaluation_time |
-| P14a | `K09-wrong-bound-after-good.json` | `fail` | binding_mismatch |
-| P19 | `K10-evidence-identity-conflict-content.json` | `fail` | evidence_identity_conflict |
-
-## Deny-everything stub
-
-A deny-everything stub returns `fail` for every input. Positive cases
-S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
-≠ pinned `pass`). Observed: all five positives reject the stub.
+| Q6 all-absent | `K17-no-support-time.json` | `unknown` | temporal_support_unverified |
+| Q6 mixed | `K17b-mixed-support-time.json` | `unknown` | temporal_support_unverified |
+| Q8 NA+wrong-bound | `K18-na-with-wrong-bound.json` | `fail` | binding_mismatch, not_applicable_authorized |
+| Q8 reversed | `K18b-na-wrong-bound-reversed.json` | `fail` | binding_mismatch, not_applicable_authorized |
 
 ## Mutation table
 
@@ -174,30 +143,30 @@ S01, S04, S09, S16, S20 therefore fail the stub comparison (stub verdict
 | `harmless-addition` | killed |
 | `copies-as-independent` | killed |
 | `temporal-first-candidate` | killed |
+| `skip-support-time-required` | killed |
+| `na-before-assessments` | killed |
 | `na-first-match` | killed |
 | `skip-member-trust-mark` | killed |
 | `string-independence-ok` | killed |
 | `skip-na-binding-required` | killed |
 
-Baseline unmutated scratch copy exits 0 before mutants run. A mutant is
-counted killed only on assertion failure, not crash/import error.
+Baseline unmutated scratch copy exits 0 before mutants run. Round-4 revert
+mutants: `skip-support-time-required` (Q6) and `na-before-assessments` (Q8).
 
 ## KC-SWE probes
 
-### `kcswe_or82p1.py`
+### `kcswe_or82p1b.py`
 
-`BAD 1 of 25` — only **P19** (stale probe expectation of `pass`; honest verdict
-`fail` / `evidence_identity_conflict`).
+`BAD 0 of 25`.
 
-### `kcswe_or82p2.py`
+### `kcswe_or82p3.py`
 
-`BAD 3 of 14`:
+`BAD 1 of 14` — only **Q8**:
 
 | Row | Status | Note |
 | --- | --- | --- |
-| Q1, Q2, Q2b, Q3, Q5, Q7 | OK | Round-3 fixes |
-| Q4 | BAD (stale probe) | Probe rewrites S03 rule **while keeping** `trusted_test_premise`; Layer S treats a marked rule as the trusted snapshot. K13/K14 cover unmarked / caller-boolean. Coordinator: leave reported; KC-SWE will update probe to drop the mark on rewrite. |
-| Q6, Q8 | BAD | `pending_semantic_verdict` — fixtures K17/K18 pin current behaviour; no oracle change |
+| Q1–Q7, controls | OK | Q6 now `unknown` / `temporal_support_unverified` |
+| Q8 | BAD (probe gap) | Probe flips `member_id==b` on S16, but S16 has no b assessment (NA-only). Mutation is a no-op → still `pass`. Coordinator: leave S16 unchanged; K18/K18b are the witness. KC-SWE will fix the probe to inject a wrong-bound b assessment. |
 
 ## Unit tests
 
@@ -205,19 +174,18 @@ counted killed only on assertion failure, not crash/import error.
 python3 -B -m unittest tools.test_assessed_coverage_oracle -v
 ```
 
-Observed: `Ran 11 tests` … `OK` (fixture corpus via subTests over S+K files,
-deny stub, seal boundary, reason classification, permutation independence
-including within-member candidate / NA / component shuffles over K11/K12,
-mutation harness).
+Observed: `Ran 11 tests` … `OK` (58 fixtures via corpus subTests; deny stub;
+seal; reason classification; permutation independence over K11/K12/K17/K17b/K18/K18b;
+mutation harness with unmutated baseline).
 
 ## Limits
 
 - Layer S only: synthetic semantics / structural conformance.
-- N01–N06: **NOT_MEASURED** (no production admission, Auth, budget, dispatch fencing, or live provider evidence).
+- N01–N06: **NOT_MEASURED**.
 - No production trust, admission or authority claim.
 - `effects_authorized` is always `false`; `scope` is always `synthetic_semantics_only`.
 - book-package/2, G11 overlay, schemas, migrations, Auth/pricing and publication routes are unchanged.
-- Q6 / Q8 left to KC-Brain (`pending_semantic_verdict`).
+- Optional trusted same-snapshot B0 premise control: not added (no clean field without inventing a default).
 
 ## How to run
 
