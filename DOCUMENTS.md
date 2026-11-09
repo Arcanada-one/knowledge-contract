@@ -1,6 +1,6 @@
 # Reading Guide: All Publication Names
 
-English source baseline: `a0450428704fcd41b411203f2fc88c06c779610b`. New titles do not change canonical paths, edition 1.1, protocol versions or scientific status. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).
+The inherited thirty name rows retain source baseline `a0450428704fcd41b411203f2fc88c06c779610b`; the added Meaning Geometry entry is a separately reviewed research-draft candidate in PR89. Titles do not change prior canonical paths, edition 1.1 or protocol versions. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).
 
 | Document | English title | Русское название | 简体中文标题 | Previous English title |
 | --- | --- | --- | --- | --- |
@@ -13,6 +13,7 @@ English source baseline: `a0450428704fcd41b411203f2fc88c06c779610b`. New titles 
 | [paper](papers/revision-and-governance/PAPER.md) | Knowledge Revision: Version Identity and the Adoption of Norms | Пересмотр знаний: Идентичность версий и принятие норм | 知识修订：版本身份与规范的采纳 | Knowledge Revision, Version Identity, and the Adoption of Norms |
 | [paper](papers/controlled-knowledge-reuse/PAPER.md) | Knowledge Reuse: Knowledge Contracts and the Admission of Prepared Knowledge | Повторное использование: Контракты знаний и допуск подготовленных знаний к применению | 知识复用：知识契约与已准备知识的使用准入 | Knowledge Contracts and the Admission of Prepared Knowledge |
 | [paper](papers/knowledge-utility/PAPER.md) | Knowledge Utility: Resource Accounting and Lifecycle Decisions | Полезность знаний: Учёт ресурсов и решения жизненного цикла | 知识效用：资源核算与生命周期决策 | Knowledge Utility, Resource Accounting, and Lifecycle Decisions |
+| [paper](papers/geometry-of-semantic-representations/PAPER.md) | Meaning Geometry: Representation Spaces, Distinguishability, and the Limits of Similarity | Геометрия смысла: Пространства представлений, различимость и пределы сходства | 意义几何：表示空间、可区分性与相似性的局限 | New research-draft work; no earlier catalogue title |
 | [specification](engineering/specifications/knowledge-contract-core/SPECIFICATION.md) | Contract Core: Core Model and Admission Requirements | Ядро контракта: Основная модель и требования допуска | 契约核心：知识契约的核心模型与准入要求 | Knowledge Contract: Core Model and Admission Requirements |
 | [specification](engineering/specifications/contract-family/SPECIFICATION.md) | Knowledge Operations: Contracts for Knowledge Operations | Операции над знаниями: Контракты операций над знаниями | 知识操作：契约要求 | Contracts for Knowledge Operations |
 | [specification](engineering/specifications/semantic-types/SPECIFICATION.md) | Semantic Types: Attribution and Representations | Семантические типы: Атрибуция и представления | 语义类型：归属与表示 | Semantic Types, Attribution, and Representations |

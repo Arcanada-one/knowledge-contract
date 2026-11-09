@@ -80,6 +80,20 @@ class PublicationMutations(unittest.TestCase):
         self.write_catalog()
         self.assert_rejected("duplicate catalog path or slug")
 
+    def test_new_tenth_paper_count_is_required(self):
+        self.documents[:] = [doc for doc in self.documents if not (doc["type"] == "paper" and doc["slug"] == "paper-9")]
+        self.write_catalog()
+        self.assert_rejected("document counts differ")
+
+    def test_extra_eleventh_paper_is_refused(self):
+        extra = dict(next(doc for doc in self.documents if doc["type"] == "paper"))
+        extra["slug"] = "paper-extra"
+        extra["path"] = "papers/paper-extra/PAPER.md"
+        extra["title"] = "Paper extra"
+        self.documents.append(extra)
+        self.write_catalog()
+        self.assert_rejected("document counts differ")
+
     def test_opaque_numbered_names_cannot_enter_the_current_catalog(self):
         for slug in ("r1", "r10", "p09", "123"):
             with self.subTest(slug=slug):

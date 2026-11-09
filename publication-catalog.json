@@ -113,6 +113,18 @@
       "previous_title": "Knowledge Utility, Resource Accounting, and Lifecycle Decisions"
     },
     {
+      "type": "paper",
+      "slug": "geometry-of-semantic-representations",
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "title": "Meaning Geometry: Representation Spaces, Distinguishability, and the Limits of Similarity",
+      "summary": "Task-relative observation spaces, quotient metrics, incomplete-observation bounds and limits of similarity for knowledge use.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "research-draft",
+      "short_title": "Meaning Geometry",
+      "subtitle": "Representation Spaces, Distinguishability, and the Limits of Similarity"
+    },
+    {
       "type": "specification",
       "slug": "knowledge-contract-core",
       "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
