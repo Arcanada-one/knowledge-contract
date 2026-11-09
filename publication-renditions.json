@@ -20,7 +20,7 @@
       "rendition": {
         "path": "translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
         "sha256": "bdc4f86c8dc4be9c736935b2cd701adde68ea15f6be5719ac2d33f2c243c1995",
-        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+        "revision": "277e23f836a9586575c1378723f8e4d14a733d57"
       },
       "review": {
         "reviewer": {
@@ -119,7 +119,7 @@
       "rendition": {
         "path": "translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
         "sha256": "e19e32ba1d558788697765df91a898d670edef4bddcee5c00ccd0f7fb0cf67dd",
-        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+        "revision": "277e23f836a9586575c1378723f8e4d14a733d57"
       },
       "review": {
         "reviewer": {
@@ -218,7 +218,7 @@
       "rendition": {
         "path": "translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md",
         "sha256": "73c30a5672b97a333d1839989fbde6d5c58b9b9fce480dc96b37d887200f0443",
-        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+        "revision": "277e23f836a9586575c1378723f8e4d14a733d57"
       },
       "review": {
         "reviewer": {
@@ -322,7 +322,7 @@
       "rendition": {
         "path": "translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md",
         "sha256": "ba0341fc3f3e32be56e66ad3d4dc1edd66d0fbb46eeaf885658e7726572292a8",
-        "revision": "be3674951c5416a9bc0505abef5d9111dc1b63f5"
+        "revision": "277e23f836a9586575c1378723f8e4d14a733d57"
       },
       "review": {
         "reviewer": {
