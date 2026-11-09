@@ -1,0 +1,705 @@
+---
+title: "K8 first rendition admission diagnostics (2026-11-09)"
+sources: none
+status: "diagnostic only; admission not completed; draft PR evidence for KC-Brain"
+updated: 2026-11-09
+---
+
+# K8 first rendition admission diagnostics
+
+## Scope
+
+Draft PR: https://github.com/Arcanada-one/knowledge-contract/pull/86
+Branch head: `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`
+Site compiler: `contract-place-site` `main` at local checkout used for this run.
+No rendition bytes were modified after admission. No compiler remapping of old-commit GitHub blob URLs was applied.
+
+Pre-write verification for all eight admission-list rows: current EN blob on `main` matched the listed blob; rendition blob at PR76 head `4ce30f167b32b9b811b269a3cfa0a22ec2080359` matched the listed blob; EN bytes from `## Abstract` through EOF matched the earlier EN at `a0450428704fcd41b411203f2fc88c06c779610b`.
+
+## Outcome
+
+`scripts/build_publication.py` against this HEAD **refuses** the sidecar. No entry reaches a published `reviewed` page state. Review objects in the sidecar would bind to `reviewed` under `resolve_state` (independent Agent-Brain review bound to current EN + rendition blobs with `coverage: full`), but structural parity fails first.
+
+knowledge-contract required checks on the draft PR were green at the time of this note (DCO, publication-integrity, licensing, etc.). Those checks do not run the site rendition compiler.
+
+## Ownership split
+
+- **KC-Brain / translator content (must change rendition bytes + re-review):** absolute `https://github.com/.../blob/a0450428.../` links instead of English-relative targets; missing EN historic-anchor preamble (`<!-- markdownlint-disable-next-line MD033 -->` + `<a id="..."></a>`) on two studies; front-matter `source_commit` / `source_git_blob` / `translation_status: author-draft` still naming the earlier source identity.
+- **KC-SWE sidecar values already set on this branch (not the compile blockers above):** `publication-renditions.json` schema v2 entries, catalogue key, section maps from pandoc anchors, review evidence path/blob, source/rendition pin revisions and sha256 digests. Sidecar pin ancestry verifies cleanly against HEAD; the dry-run `RENDITION_REVISION_PIN` rows are an artifact of dry-run using the publication HEAD as `source.revision` while the rendition file commit is earlier.
+
+## Summary table
+
+| Work | Language | Source blob | Rendition blob | Source sha256 | Rendition sha256 | resolve_state (review bind) | First compile failure |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `dependency-closure-and-package-delivery` | `ru` | `42294151076e662129a8716ea13a29dc2f967ec9` | `5aa9ee44986a68c0e47d99c801ec11a2fe1ddd9e` | `5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce` | `8d4ff8363466f9eb1f63332052cf5f6ebcdda210eb3f04396ea582e1ce54d76e` | `reviewed` | `RENDITION_REFERENCE_DROPPED` |
+| `dependency-closure-and-package-delivery` | `zh-Hans` | `42294151076e662129a8716ea13a29dc2f967ec9` | `6d78e14dd29bbe751e5d7699a8ff76383395dc62` | `5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce` | `bc595b4c88f71f388a3ebfc0307a59b869bcd2c7caf0b560e5dd0ce56945bc42` | `reviewed` | `RENDITION_REFERENCE_DROPPED` |
+| `source-transcription-and-uncertainty` | `ru` | `8ca885fc3f144d89e95e4813868fd953450f1f71` | `4a8e7b8d986c3eb846cb6ea381dcc1b0685755d1` | `3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a` | `66cb5efc16efcbe36e028b8c34346e6536125d6ee34268716a1ffb43e6c863ac` | `reviewed` | `RENDITION_SECTION_MISSING` |
+| `source-transcription-and-uncertainty` | `zh-Hans` | `8ca885fc3f144d89e95e4813868fd953450f1f71` | `1be23f4f57ae705870149cc61964c3bb2c1d3784` | `3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a` | `32fbb5eceff4bdaca7088d6a518f04b44c5d092866262299199529cd00f4be0f` | `reviewed` | `RENDITION_SECTION_MISSING` |
+| `executable-projections-and-revision` | `ru` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `f9361172e1fe559e90aac4be615f19474dc7a941` | `77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255` | `f575edd55379c02f0d44cd1942aabfe036c8509084b1bde6b52e7858666143c8` | `reviewed` | `RENDITION_REFERENCE_DROPPED` |
+| `executable-projections-and-revision` | `zh-Hans` | `b2306980ba150d0a0841896b6123df5ff72fc319` | `346d23b860650abbebfe55e3f7d9f90e85dcedd2` | `77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255` | `b62759e482c6134cab1f69137df1d2e63ea84010aa9156da25d8d00790629f94` | `reviewed` | `RENDITION_REFERENCE_DROPPED` |
+| `reuse-admission-and-cost-controls` | `ru` | `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` | `90bca419fac0c0834fe4bce4513772812958bbec` | `dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13` | `a82156801e051e597a78c0fd83ee0487f846f39a529b413a0a271f5d14705f9a` | `reviewed` | `RENDITION_SECTION_MISSING` |
+| `reuse-admission-and-cost-controls` | `zh-Hans` | `aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac` | `1c3cbeff2939888d2a95414ec3315b2671cb46f0` | `dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13` | `f630c56a85092972232199cf259b0e7f27241ad257f05fc54aba2238e122bfc7` | `reviewed` | `RENDITION_SECTION_MISSING` |
+
+## Per-entry diagnostics
+
+### `dependency-closure-and-package-delivery` / `ru`
+
+- Rendition path: `translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
+- Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=63078110074e82b47f76a8f132a3cfdcbfb555b1`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | line 25: `../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md` | line 27: `../../../papers/retrieval-and-context-composition/PAPER.md` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md` | line 27: `../../../papers/constrained-transformations/PAPER.md` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md` | line 27: `../../../papers/revision-and-governance/PAPER.md` |
+| 52 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | line 51: `evidence/finite-package-selftest.json` |
+| 54 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md#counting-and-interpretation` | line 53: `../README.md#counting-and-interpretation` |
+| 60 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | line 59: `evidence/dependency-graph.json` |
+| 60 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | line 59: `evidence/replay_closure.py` |
+| 68 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | line 67: `evidence/public-closure-replay.json` |
+| 72 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 71: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | line 73: `checks/check_closure_size_and_mutations.py` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | line 73: `checks/closure-size-and-mutation-check.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | line 95: `evidence/layout-preservation-report.json` |
+| 98 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | line 97: `evidence/layout-conformance-report.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | line 103: `evidence/historical-package-replay.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | line 103: `evidence/historical-replay-environment.json` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md` | line 121: `../editorial-skill-pilot/STUDY.md` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 121: `../../../reference/glossary/GLOSSARY.md` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | line 123: `evidence/origin.json` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 123: `../evidence-language-index.json` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 123: `../review-corrections.json` |
+
+#### Section / structure codes
+
+- No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
+
+#### Reference / other `RENDITION_*` codes
+
+- `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: dependency-closure-and-package-delivery/ru: references or footnotes of the source are missing: ["('Link', 'engineering/studies/README.md#counting-and-interpretation')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json')"], footnotes 0 -> 0
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/README.md#counting-and-interpretation') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py') x1`
+  - `('Link', 'engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'papers/constrained-transformations/PAPER.md') x1`
+  - `('Link', 'papers/retrieval-and-context-composition/PAPER.md') x1`
+  - `('Link', 'papers/revision-and-governance/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#editorial-input') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=21
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md#counting-and-interpretation') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
+  - … and 16 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `dependency-closure-and-package-delivery` / `zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
+- Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=63078110074e82b47f76a8f132a3cfdcbfb555b1`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#editorial-input` | line 25: `../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md` | line 27: `../../../papers/retrieval-and-context-composition/PAPER.md` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md` | line 27: `../../../papers/constrained-transformations/PAPER.md` |
+| 28 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md` | line 27: `../../../papers/revision-and-governance/PAPER.md` |
+| 52 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json` | line 51: `evidence/finite-package-selftest.json` |
+| 54 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md#counting-and-interpretation` | line 53: `../README.md#counting-and-interpretation` |
+| 60 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json` | line 59: `evidence/dependency-graph.json` |
+| 60 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py` | line 59: `evidence/replay_closure.py` |
+| 68 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json` | line 67: `evidence/public-closure-replay.json` |
+| 72 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 71: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py` | line 73: `checks/check_closure_size_and_mutations.py` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json` | line 73: `checks/closure-size-and-mutation-check.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json` | line 95: `evidence/layout-preservation-report.json` |
+| 98 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json` | line 97: `evidence/layout-conformance-report.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json` | line 103: `evidence/historical-package-replay.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json` | line 103: `evidence/historical-replay-environment.json` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md` | line 121: `../editorial-skill-pilot/STUDY.md` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 121: `../../../reference/glossary/GLOSSARY.md` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json` | line 123: `evidence/origin.json` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 123: `../evidence-language-index.json` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 123: `../review-corrections.json` |
+
+#### Section / structure codes
+
+- No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
+
+#### Reference / other `RENDITION_*` codes
+
+- `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: dependency-closure-and-package-delivery/zh-Hans: references or footnotes of the source are missing: ["('Link', 'engineering/studies/README.md#counting-and-interpretation')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json')"], footnotes 0 -> 0
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/README.md#counting-and-interpretation') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/historical-package-replay.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/historical-replay-environment.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/layout-conformance-report.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/layout-preservation-report.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/public-closure-replay.json') x1`
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/replay_closure.py') x1`
+  - `('Link', 'engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'papers/constrained-transformations/PAPER.md') x1`
+  - `('Link', 'papers/retrieval-and-context-composition/PAPER.md') x1`
+  - `('Link', 'papers/revision-and-governance/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#editorial-input') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=21
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md#counting-and-interpretation') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
+  - … and 16 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `source-transcription-and-uncertainty` / `ru`
+
+- Rendition path: `translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md`
+- Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=5f19fc3d33fa0e185c34056188ce7746742bee87`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/semantic-objects-and-context/PAPER.md` | line 28: `../../../papers/semantic-objects-and-context/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md` | line 28: `../../../papers/constrained-transformations/PAPER.md` |
+| 37 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json` | line 39: `evidence/structural-corpus-report.json` |
+| 43 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json` | line 45: `evidence/corpus-audit-source.json` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json` | line 59: `evidence/uncertainty-projection-source.json` |
+| 72 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md` | line 74: `../executable-projections-and-revision/STUDY.md` |
+| 82 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json` | line 84: `evidence/local-export-integration-report.json` |
+| 88 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/origin.json` | line 90: `evidence/origin.json` |
+| 90 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py` | line 92: `checks/demonstrate_uncertainty_projection.py` |
+| 90 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt` | line 92: `checks/synthetic-base.txt` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/uncertainty-projection-check.json` | line 98: `checks/uncertainty-projection-check.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py` | line 98: `evidence/replay_uncertainty_projection.py` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json` | line 98: `evidence/public-projection-demonstration.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 98: `../review-corrections.json` |
+| 98 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 100: `../evidence-language-index.json` |
+| 102 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 104: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 106: `../executable-projections-and-revision/evidence/addressability-study-source.json` |
+| 106 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 108: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/ru: section (preamble) has text in the source but none in the rendition
+- Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
+- Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-source-scope`, `audit-and-transformation-method`, `preserving-uncertainty-as-a-testable-obligation`, `domain-specific-consequences`, `trace-defects-and-later-integration`, `public-illustration-and-retained-evidence`, `limits-and-conclusion`
+
+#### Reference / other `RENDITION_*` codes
+
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/STUDY.md') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/uncertainty-projection-check.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json') x1`
+  - `('Link', 'papers/constrained-transformations/PAPER.md') x1`
+  - `('Link', 'papers/semantic-objects-and-context/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=18
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
+  - … and 13 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `source-transcription-and-uncertainty` / `zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md`
+- Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=5f19fc3d33fa0e185c34056188ce7746742bee87`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/semantic-objects-and-context/PAPER.md` | line 28: `../../../papers/semantic-objects-and-context/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md` | line 28: `../../../papers/constrained-transformations/PAPER.md` |
+| 37 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json` | line 39: `evidence/structural-corpus-report.json` |
+| 43 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json` | line 45: `evidence/corpus-audit-source.json` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json` | line 59: `evidence/uncertainty-projection-source.json` |
+| 72 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md` | line 74: `../executable-projections-and-revision/STUDY.md` |
+| 82 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json` | line 84: `evidence/local-export-integration-report.json` |
+| 88 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/origin.json` | line 90: `evidence/origin.json` |
+| 90 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py` | line 92: `checks/demonstrate_uncertainty_projection.py` |
+| 90 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt` | line 92: `checks/synthetic-base.txt` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/uncertainty-projection-check.json` | line 98: `checks/uncertainty-projection-check.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py` | line 98: `evidence/replay_uncertainty_projection.py` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json` | line 98: `evidence/public-projection-demonstration.json` |
+| 96 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 98: `../review-corrections.json` |
+| 98 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 100: `../evidence-language-index.json` |
+| 102 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 104: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 106: `../executable-projections-and-revision/evidence/addressability-study-source.json` |
+| 106 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 108: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/zh-Hans: section (preamble) has text in the source but none in the rendition
+- Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
+- Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-source-scope`, `audit-and-transformation-method`, `preserving-uncertainty-as-a-testable-obligation`, `domain-specific-consequences`, `trace-defects-and-later-integration`, `public-illustration-and-retained-evidence`, `limits-and-conclusion`
+
+#### Reference / other `RENDITION_*` codes
+
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/STUDY.md') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/checks/uncertainty-projection-check.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/corpus-audit-source.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/local-export-integration-report.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/public-projection-demonstration.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/replay_uncertainty_projection.py') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/structural-corpus-report.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/uncertainty-projection-source.json') x1`
+  - `('Link', 'papers/constrained-transformations/PAPER.md') x1`
+  - `('Link', 'papers/semantic-objects-and-context/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=18
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
+  - … and 13 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `executable-projections-and-revision` / `ru`
+
+- Rendition path: `translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md`
+- Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=2d247a01d4dbd6a1d1491d2b54464336c6fef190`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md` | line 25: `../../../papers/retrieval-and-context-composition/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md` | line 25: `../../../papers/revision-and-governance/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md` | line 25: `../../../papers/evidence-and-falsification/PAPER.md` |
+| 32 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | line 31: `evidence/historical-reader-study-source.json` |
+| 34 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | line 33: `../source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` |
+| 53 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | line 52: `evidence/reader-boundary-report.json` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | line 56: `evidence/targeted-revision-comparison.json` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 73: `evidence/addressability-study-source.json` |
+| 88 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | line 87: `evidence/consumer-qualification-report.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | line 103: `evidence/agent-projection-results.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/origin.json` | line 115: `evidence/origin.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | line 115: `evidence/offline-projection-replay-report.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/historical-recovery-gaps.json` | line 117: `../historical-recovery-gaps.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md` | line 117: `../dependency-closure-and-package-delivery/STUDY.md` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | line 119: `evidence/projection-study-source.json` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 119: `../evidence-language-index.json` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 119: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 123: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
+
+#### Reference / other `RENDITION_*` codes
+
+- `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: executable-projections-and-revision/ru: references or footnotes of the source are missing: ["('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md')", "('Link', 'engineering/studies/evidence-language-index.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json')"], footnotes 0 -> 0
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json') x1`
+  - `('Link', 'engineering/studies/historical-recovery-gaps.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json') x1`
+  - `('Link', 'papers/evidence-and-falsification/PAPER.md') x1`
+  - `('Link', 'papers/retrieval-and-context-composition/PAPER.md') x1`
+  - `('Link', 'papers/revision-and-governance/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=18
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
+  - … and 13 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `executable-projections-and-revision` / `zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md`
+- Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=2d247a01d4dbd6a1d1491d2b54464336c6fef190`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md` | line 25: `../../../papers/retrieval-and-context-composition/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md` | line 25: `../../../papers/revision-and-governance/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md` | line 25: `../../../papers/evidence-and-falsification/PAPER.md` |
+| 32 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json` | line 31: `evidence/historical-reader-study-source.json` |
+| 34 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` | line 33: `../source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json` |
+| 53 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json` | line 52: `evidence/reader-boundary-report.json` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json` | line 56: `evidence/targeted-revision-comparison.json` |
+| 74 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 73: `evidence/addressability-study-source.json` |
+| 88 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json` | line 87: `evidence/consumer-qualification-report.json` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json` | line 103: `evidence/agent-projection-results.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/origin.json` | line 115: `evidence/origin.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json` | line 115: `evidence/offline-projection-replay-report.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/historical-recovery-gaps.json` | line 117: `../historical-recovery-gaps.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md` | line 117: `../dependency-closure-and-package-delivery/STUDY.md` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json` | line 119: `evidence/projection-study-source.json` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 119: `../evidence-language-index.json` |
+| 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 119: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
+| 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 123: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
+
+#### Reference / other `RENDITION_*` codes
+
+- `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: executable-projections-and-revision/zh-Hans: references or footnotes of the source are missing: ["('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md')", "('Link', 'engineering/studies/evidence-language-index.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json')"], footnotes 0 -> 0
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/historical-reader-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/offline-projection-replay-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/projection-study-source.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/reader-boundary-report.json') x1`
+  - `('Link', 'engineering/studies/executable-projections-and-revision/evidence/targeted-revision-comparison.json') x1`
+  - `('Link', 'engineering/studies/historical-recovery-gaps.json') x1`
+  - `('Link', 'engineering/studies/source-transcription-and-uncertainty/evidence/historical-ocr-reader-report.json') x1`
+  - `('Link', 'papers/evidence-and-falsification/PAPER.md') x1`
+  - `('Link', 'papers/retrieval-and-context-composition/PAPER.md') x1`
+  - `('Link', 'papers/revision-and-governance/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=18
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
+  - … and 13 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `reuse-admission-and-cost-controls` / `ru`
+
+- Rendition path: `translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
+- Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md` | line 28: `../../../papers/controlled-knowledge-reuse/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/knowledge-utility/PAPER.md` | line 28: `../../../papers/knowledge-utility/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json` | line 28: `evidence/reuse-properties-source.json` |
+| 40 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md` | line 42: `../../specifications/status-model/SPECIFICATION.md` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md` | line 59: `../../../papers/controlled-knowledge-reuse/PAPER.md` |
+| 65 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#http-caching` | line 67: `../../../reference/bibliography/BIBLIOGRAPHY.md#http-caching` |
+| 65 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses` | line 67: `../../../reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md` | line 106: `../editorial-skill-pilot/STUDY.md` |
+| 108 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py` | line 110: `checks/check_admission_and_cost.py` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json` | line 116: `checks/admission-and-cost-check.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py` | line 116: `evidence/replay_reuse_counterexamples.py` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json` | line 116: `evidence/public-reuse-counterexamples.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 116: `../review-corrections.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json` | line 118: `evidence/origin.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 118: `../evidence-language-index.json` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 122: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/ru: section (preamble) has text in the source but none in the rendition
+- Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
+- Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-objects`, `admission-before-optimization`, `counterexamples-that-determine-the-design`, `time-concurrency-and-state`, `an-exact-cost-model`, `utility-and-double-counting`, `public-examples-and-claim-limits`, `conclusion`
+
+#### Reference / other `RENDITION_*` codes
+
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/specifications/status-model/SPECIFICATION.md') x1`
+  - `('Link', 'engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'papers/controlled-knowledge-reuse/PAPER.md') x2`
+  - `('Link', 'papers/knowledge-utility/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#http-caching') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=15
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
+  - … and 10 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
+
+### `reuse-admission-and-cost-controls` / `zh-Hans`
+
+- Rendition path: `translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
+- Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
+- Sidecar rendition.revision: `8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`
+- Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e`, `translation_status=author-draft`, `author=Pavel Valentov`
+- `resolve_state`: `reviewed`
+
+#### Absolute GitHub blob URLs in the rendition
+
+| Line | Rendition URL | English counterpart at same link index (or note) |
+| ---: | --- | --- |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md` | line 28: `../../../papers/controlled-knowledge-reuse/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/knowledge-utility/PAPER.md` | line 28: `../../../papers/knowledge-utility/PAPER.md` |
+| 26 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json` | line 28: `evidence/reuse-properties-source.json` |
+| 40 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md` | line 42: `../../specifications/status-model/SPECIFICATION.md` |
+| 57 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md` | line 59: `../../../papers/controlled-knowledge-reuse/PAPER.md` |
+| 65 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#http-caching` | line 67: `../../../reference/bibliography/BIBLIOGRAPHY.md#http-caching` |
+| 65 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses` | line 67: `../../../reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses` |
+| 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md` | line 106: `../editorial-skill-pilot/STUDY.md` |
+| 108 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py` | line 110: `checks/check_admission_and_cost.py` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json` | line 116: `checks/admission-and-cost-check.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py` | line 116: `evidence/replay_reuse_counterexamples.py` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json` | line 116: `evidence/public-reuse-counterexamples.json` |
+| 116 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 116: `../review-corrections.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json` | line 118: `evidence/origin.json` |
+| 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 118: `../evidence-language-index.json` |
+| 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 122: `../../../reference/glossary/GLOSSARY.md` |
+
+#### Section / structure codes
+
+- `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/zh-Hans: section (preamble) has text in the source but none in the rendition
+- Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
+- Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-objects`, `admission-before-optimization`, `counterexamples-that-determine-the-design`, `time-concurrency-and-state`, `an-exact-cost-model`, `utility-and-double-counting`, `public-examples-and-claim-limits`, `conclusion`
+
+#### Reference / other `RENDITION_*` codes
+
+- Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
+  - `('Link', 'engineering/specifications/status-model/SPECIFICATION.md') x1`
+  - `('Link', 'engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py') x1`
+  - `('Link', 'engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json') x1`
+  - `('Link', 'engineering/studies/review-corrections.json') x1`
+  - `('Link', 'papers/controlled-knowledge-reuse/PAPER.md') x2`
+  - `('Link', 'papers/knowledge-utility/PAPER.md') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#http-caching') x1`
+  - `('Link', 'reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses') x1`
+  - `('Link', 'reference/glossary/GLOSSARY.md') x1`
+- Extra/changed reference identities on the rendition side (absolute URLs counted as external):
+  - count=15
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json') x1`
+  - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
+  - … and 10 more
+
+#### `RENDITION_REVISION_PIN`
+
+- **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
+- **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
+- **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
+- Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
+
+## Dry-run language totals
+
+```json
+{
+  "ru": {
+    "absent_documents": 26,
+    "files_clean": 0,
+    "files_found": 4,
+    "files_with_a_failure": 4,
+    "front_matter_pin_agrees": 0,
+    "link_classes": {
+      "document": 26,
+      "document_fallback": 24,
+      "document_shown": 2,
+      "external": 47
+    },
+    "other_failures": {
+      "RENDITION_REVISION_PIN": 4
+    },
+    "parity_failures": {
+      "RENDITION_REFERENCE_DROPPED": 2,
+      "RENDITION_SECTION_MISSING": 2
+    },
+    "path_matches": 4,
+    "states": {
+      "unreviewed": 4
+    },
+    "unmatched_paths": [],
+    "unresolved_links": {}
+  },
+  "zh-Hans": {
+    "absent_documents": 26,
+    "files_clean": 0,
+    "files_found": 4,
+    "files_with_a_failure": 4,
+    "front_matter_pin_agrees": 0,
+    "link_classes": {
+      "document": 26,
+      "document_fallback": 24,
+      "document_shown": 2,
+      "external": 47
+    },
+    "other_failures": {
+      "RENDITION_REVISION_PIN": 4
+    },
+    "parity_failures": {
+      "RENDITION_REFERENCE_DROPPED": 2,
+      "RENDITION_SECTION_MISSING": 2
+    },
+    "path_matches": 4,
+    "states": {
+      "unreviewed": 4
+    },
+    "unmatched_paths": [],
+    "unresolved_links": {}
+  }
+}
+```
+
+## Build command used
+
+```text
+python3 -B scripts/build_publication.py \
+  --source-dir /tmp/k8-worker-bdc939-knowledge-source \
+  --roadmap-source-dir /tmp/k8-worker-bdc939-roadmap-source \
+  --manifest /tmp/k8-worker-bdc939-publication-manifest.json
+```
+
+First build error: `RENDITION_REFERENCE_DROPPED` on `dependency-closure-and-package-delivery/ru` (absolute GitHub blob URLs). Per-entry `compile_entry(..., report=...)` was used afterward so all eight entries are covered even when the production build stops at the first refusal.
+
+Record marker: `k8-first-admission-diagnostics-20261109-v1`.
