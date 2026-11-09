@@ -9,23 +9,23 @@ updated: 2026-11-09
 
 ## Scope
 
-Draft PR: https://github.com/Arcanada-one/knowledge-contract/pull/86
-Branch head: `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`
-Site compiler: `contract-place-site` `main` at local checkout used for this run.
+Draft PR: [Arcanada-one/knowledge-contract#86](https://github.com/Arcanada-one/knowledge-contract/pull/86)
+Branch head at report authorship: `1b321d553c25fb0552a970e8861ae1cd09580c2c` (sidecar admission tip was `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`).
+Site compiler: `contract-place-site` `main` in a separate local checkout.
 No rendition bytes were modified after admission. No compiler remapping of old-commit GitHub blob URLs was applied.
 
 Pre-write verification for all eight admission-list rows: current EN blob on `main` matched the listed blob; rendition blob at PR76 head `4ce30f167b32b9b811b269a3cfa0a22ec2080359` matched the listed blob; EN bytes from `## Abstract` through EOF matched the earlier EN at `a0450428704fcd41b411203f2fc88c06c779610b`.
 
 ## Outcome
 
-`scripts/build_publication.py` against this HEAD **refuses** the sidecar. No entry reaches a published `reviewed` page state. Review objects in the sidecar would bind to `reviewed` under `resolve_state` (independent Agent-Brain review bound to current EN + rendition blobs with `coverage: full`), but structural parity fails first.
+`scripts/build_publication.py` against the admission tip **refuses** the sidecar. No entry reaches a published `reviewed` page state. Review objects in the sidecar would bind to `reviewed` under `resolve_state` (independent Agent-Brain review bound to current EN + rendition blobs with `coverage: full`), but structural parity fails first.
 
-knowledge-contract required checks on the draft PR were green at the time of this note (DCO, publication-integrity, licensing, etc.). Those checks do not run the site rendition compiler.
+knowledge-contract required checks on the draft PR were green for the admission tip (DCO, publication-integrity, licensing, and the other required jobs). Those checks do not run the site rendition compiler. This diagnostic file is added so KC-Brain can repair content against exact compiler refusals.
 
 ## Ownership split
 
 - **KC-Brain / translator content (must change rendition bytes + re-review):** absolute `https://github.com/.../blob/a0450428.../` links instead of English-relative targets; missing EN historic-anchor preamble (`<!-- markdownlint-disable-next-line MD033 -->` + `<a id="..."></a>`) on two studies; front-matter `source_commit` / `source_git_blob` / `translation_status: author-draft` still naming the earlier source identity.
-- **KC-SWE sidecar values already set on this branch (not the compile blockers above):** `publication-renditions.json` schema v2 entries, catalogue key, section maps from pandoc anchors, review evidence path/blob, source/rendition pin revisions and sha256 digests. Sidecar pin ancestry verifies cleanly against HEAD; the dry-run `RENDITION_REVISION_PIN` rows are an artifact of dry-run using the publication HEAD as `source.revision` while the rendition file commit is earlier.
+- **KC-SWE sidecar values already set on this branch (not the compile blockers above):** `publication-renditions.json` schema v2 entries, catalogue key, section maps from pandoc anchors, review evidence path/blob, source/rendition pin revisions and sha256 digests. Sidecar pin ancestry verifies cleanly against the admission tip; the dry-run `RENDITION_REVISION_PIN` rows are an artifact of dry-run using the publication HEAD as `source.revision` while the rendition file commit is earlier.
 
 ## Summary table
 
@@ -42,7 +42,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 
 ## Per-entry diagnostics
 
-### `dependency-closure-and-package-delivery` / `ru`
+### `dependency-closure-and-package-delivery / ru`
 
 - Rendition path: `translations/ru/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
 - Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
@@ -50,7 +50,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=63078110074e82b47f76a8f132a3cfdcbfb555b1`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `dependency-closure-and-package-delivery / ru`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -76,11 +76,11 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 123: `../evidence-language-index.json` |
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 123: `../review-corrections.json` |
 
-#### Section / structure codes
+#### Section / structure codes — `dependency-closure-and-package-delivery / ru`
 
 - No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `dependency-closure-and-package-delivery / ru`
 
 - `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: dependency-closure-and-package-delivery/ru: references or footnotes of the source are missing: ["('Link', 'engineering/studies/README.md#counting-and-interpretation')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json')"], footnotes 0 -> 0
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
@@ -114,14 +114,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
   - … and 16 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `dependency-closure-and-package-delivery / ru`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `dependency-closure-and-package-delivery` / `zh-Hans`
+### `dependency-closure-and-package-delivery / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/STUDY.md`
 - Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
@@ -129,7 +129,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=63078110074e82b47f76a8f132a3cfdcbfb555b1`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `dependency-closure-and-package-delivery / zh-Hans`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -155,11 +155,11 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 123: `../evidence-language-index.json` |
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json` | line 123: `../review-corrections.json` |
 
-#### Section / structure codes
+#### Section / structure codes — `dependency-closure-and-package-delivery / zh-Hans`
 
 - No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `dependency-closure-and-package-delivery / zh-Hans`
 
 - `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: dependency-closure-and-package-delivery/zh-Hans: references or footnotes of the source are missing: ["('Link', 'engineering/studies/README.md#counting-and-interpretation')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/checks/closure-size-and-mutation-check.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/dependency-graph.json')", "('Link', 'engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json')"], footnotes 0 -> 0
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
@@ -193,14 +193,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/evidence/finite-package-selftest.json') x1`
   - … and 16 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `dependency-closure-and-package-delivery / zh-Hans`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `source-transcription-and-uncertainty` / `ru`
+### `source-transcription-and-uncertainty / ru`
 
 - Rendition path: `translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md`
 - Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
@@ -208,7 +208,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=5f19fc3d33fa0e185c34056188ce7746742bee87`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `source-transcription-and-uncertainty / ru`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -231,13 +231,13 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 106: `../executable-projections-and-revision/evidence/addressability-study-source.json` |
 | 106 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 108: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `source-transcription-and-uncertainty / ru`
 
 - `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/ru: section (preamble) has text in the source but none in the rendition
 - Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
 - Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-source-scope`, `audit-and-transformation-method`, `preserving-uncertainty-as-a-testable-obligation`, `domain-specific-consequences`, `trace-defects-and-later-integration`, `public-illustration-and-retained-evidence`, `limits-and-conclusion`
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `source-transcription-and-uncertainty / ru`
 
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
   - `('Link', 'engineering/studies/evidence-language-index.json') x1`
@@ -267,14 +267,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
   - … and 13 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `source-transcription-and-uncertainty / ru`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `source-transcription-and-uncertainty` / `zh-Hans`
+### `source-transcription-and-uncertainty / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md`
 - Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
@@ -282,7 +282,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=5f19fc3d33fa0e185c34056188ce7746742bee87`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `source-transcription-and-uncertainty / zh-Hans`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -305,13 +305,13 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 104 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json` | line 106: `../executable-projections-and-revision/evidence/addressability-study-source.json` |
 | 106 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 108: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `source-transcription-and-uncertainty / zh-Hans`
 
 - `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: source-transcription-and-uncertainty/zh-Hans: section (preamble) has text in the source but none in the rendition
 - Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
 - Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-source-scope`, `audit-and-transformation-method`, `preserving-uncertainty-as-a-testable-obligation`, `domain-specific-consequences`, `trace-defects-and-later-integration`, `public-illustration-and-retained-evidence`, `limits-and-conclusion`
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `source-transcription-and-uncertainty / zh-Hans`
 
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
   - `('Link', 'engineering/studies/evidence-language-index.json') x1`
@@ -341,14 +341,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py') x1`
   - … and 13 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `source-transcription-and-uncertainty / zh-Hans`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `executable-projections-and-revision` / `ru`
+### `executable-projections-and-revision / ru`
 
 - Rendition path: `translations/ru/engineering/studies/executable-projections-and-revision/STUDY.md`
 - Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
@@ -356,7 +356,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=2d247a01d4dbd6a1d1491d2b54464336c6fef190`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `executable-projections-and-revision / ru`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -379,11 +379,11 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 119: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 123: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `executable-projections-and-revision / ru`
 
 - No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `executable-projections-and-revision / ru`
 
 - `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: executable-projections-and-revision/ru: references or footnotes of the source are missing: ["('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md')", "('Link', 'engineering/studies/evidence-language-index.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json')"], footnotes 0 -> 0
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
@@ -414,14 +414,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
   - … and 13 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `executable-projections-and-revision / ru`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `executable-projections-and-revision` / `zh-Hans`
+### `executable-projections-and-revision / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/executable-projections-and-revision/STUDY.md`
 - Sidecar source.revision: `e17d33711210331b1ab1377a92d728e58eb93c02`
@@ -429,7 +429,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=2d247a01d4dbd6a1d1491d2b54464336c6fef190`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `executable-projections-and-revision / zh-Hans`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -452,11 +452,11 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 120 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` | line 119: `../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods` |
 | 124 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 123: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `executable-projections-and-revision / zh-Hans`
 
 - No `RENDITION_SECTION_*` raised for this entry under the real sidecar (heading counts and mapped h2/h3 anchors align).
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `executable-projections-and-revision / zh-Hans`
 
 - `RENDITION_REFERENCE_DROPPED`: RENDITION_REFERENCE_DROPPED: executable-projections-and-revision/zh-Hans: references or footnotes of the source are missing: ["('Link', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md')", "('Link', 'engineering/studies/evidence-language-index.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/addressability-study-source.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/agent-projection-results.json')", "('Link', 'engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json')"], footnotes 0 -> 0
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
@@ -487,14 +487,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/evidence/consumer-qualification-report.json') x1`
   - … and 13 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `executable-projections-and-revision / zh-Hans`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_REFERENCE_DROPPED`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `reuse-admission-and-cost-controls` / `ru`
+### `reuse-admission-and-cost-controls / ru`
 
 - Rendition path: `translations/ru/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
 - Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
@@ -502,7 +502,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `reuse-admission-and-cost-controls / ru`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -523,13 +523,13 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 118: `../evidence-language-index.json` |
 | 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 122: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `reuse-admission-and-cost-controls / ru`
 
 - `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/ru: section (preamble) has text in the source but none in the rendition
 - Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
 - Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-objects`, `admission-before-optimization`, `counterexamples-that-determine-the-design`, `time-concurrency-and-state`, `an-exact-cost-model`, `utility-and-double-counting`, `public-examples-and-claim-limits`, `conclusion`
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `reuse-admission-and-cost-controls / ru`
 
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
   - `('Link', 'engineering/specifications/status-model/SPECIFICATION.md') x1`
@@ -556,14 +556,14 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
   - … and 10 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `reuse-admission-and-cost-controls / ru`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
 - **Front-matter pin (translator content, not sidecar):** still `source_commit=a0450428704fcd41b411203f2fc88c06c779610b` with the old `source_git_blob`; dry-run `front_matter_pin_agrees=0` for every matched file.
 - Dry-run failure rows for this path: `RENDITION_SECTION_MISSING`/parity, `RENDITION_REVISION_PIN`/pins
 
-### `reuse-admission-and-cost-controls` / `zh-Hans`
+### `reuse-admission-and-cost-controls / zh-Hans`
 
 - Rendition path: `translations/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/STUDY.md`
 - Sidecar source.revision: `548abd01d089faf81570efaafd41ef873c693e47`
@@ -571,7 +571,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 - Front matter: `source_commit=a0450428704fcd41b411203f2fc88c06c779610b`, `source_git_blob=67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e`, `translation_status=author-draft`, `author=Pavel Valentov`
 - `resolve_state`: `reviewed`
 
-#### Absolute GitHub blob URLs in the rendition
+#### Absolute GitHub blob URLs — `reuse-admission-and-cost-controls / zh-Hans`
 
 | Line | Rendition URL | English counterpart at same link index (or note) |
 | ---: | --- | --- |
@@ -592,13 +592,13 @@ knowledge-contract required checks on the draft PR were green at the time of thi
 | 118 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json` | line 118: `../evidence-language-index.json` |
 | 122 | `https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md` | line 122: `../../../reference/glossary/GLOSSARY.md` |
 
-#### Section / structure codes
+#### Section / structure codes — `reuse-admission-and-cost-controls / zh-Hans`
 
 - `RENDITION_SECTION_MISSING`: RENDITION_SECTION_MISSING: reuse-admission-and-cost-controls/zh-Hans: section (preamble) has text in the source but none in the rendition
 - Cause: English has a preamble historic-anchor block (`<!-- markdownlint-disable-next-line MD033 -->` plus `<a id="…legacy-anchor…"></a>` before the H1). The rendition places the legacy id on the H1 via `{#…}` and has an empty preamble, so parity reports preamble text in the source and none in the rendition.
 - Source anchors in the sidecar map (h2/h3 only; preamble is implicit): `abstract`, `question-and-objects`, `admission-before-optimization`, `counterexamples-that-determine-the-design`, `time-concurrency-and-state`, `an-exact-cost-model`, `utility-and-double-counting`, `public-examples-and-claim-limits`, `conclusion`
 
-#### Reference / other `RENDITION_*` codes
+#### Reference / other RENDITION codes — `reuse-admission-and-cost-controls / zh-Hans`
 
 - Full missing reference multiset (English relative identity absent on the rendition side because links were rewritten to absolute GitHub blob URLs):
   - `('Link', 'engineering/specifications/status-model/SPECIFICATION.md') x1`
@@ -625,7 +625,7 @@ knowledge-contract required checks on the draft PR were green at the time of thi
   - `('Link', 'https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py') x1`
   - … and 10 more
 
-#### `RENDITION_REVISION_PIN`
+#### RENDITION_REVISION_PIN — `reuse-admission-and-cost-controls / zh-Hans`
 
 - **Real sidecar:** `verify_pin` for source and rendition revisions succeeds against publication commit `2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`; mixed-pin check (source revision ancestor of rendition revision) succeeds.
 - **Dry-run artifact:** `renditions_dry_run.py` synthesizes `source.revision=<publication HEAD>` and `rendition.revision=<commit that added the file>` (`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`), then reports `RENDITION_REVISION_PIN` because HEAD is not an ancestor of the earlier file commit. Message shape: `<work>/<lang>: the rendition revision predates the source revision it claims to render (mixed source/rendition pins)`. Compared pins in that audit: source.revision=`2ec7490b6c1fa9f95e6dbad49f6a6f44e6d17d2c`, rendition.revision=`8c8f2dc304e7db3a55e2b203d6ca3effadb77b91`.
