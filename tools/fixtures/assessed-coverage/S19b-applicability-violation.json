@@ -164,7 +164,8 @@
     },
     "missing_members": [],
     "reason_codes": [
-      "temporal_support_incompatible_fail"
+      "temporal_support_incompatible_fail",
+      "applicability_violation_established"
     ],
     "scope": "synthetic_semantics_only",
     "unresolved_dependencies": []

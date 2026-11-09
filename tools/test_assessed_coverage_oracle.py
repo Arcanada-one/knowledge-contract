@@ -540,37 +540,108 @@ MUTANTS: dict[str, Mutator] = {
     # last-write dedup conflicting identities
     "last-write-dedup": lambda s: _replace_once(
         s,
-        "if assessment_id in by_id:\n"
-        "            prior = by_id[assessment_id]\n"
+        "if assessment_id in index:\n"
+        "            # Same id with any differing field is an identity conflict (F1).\n"
+        "            # Claimed digest/revision equality does not prove content equality.\n"
+        "            # Byte-identical duplicates may collapse. Conflicting identities are\n"
+        "            # unusable: drop the id so order cannot choose a winner.\n"
+        "            prior = index[assessment_id]\n"
+        "            if prior != assessment:\n"
+        "                reasons.append(\"assessment_identity_conflict\")\n"
+        "                del index[assessment_id]\n"
+        "                conflicted.add(assessment_id)\n"
+        "            continue\n"
+        "        index[assessment_id] = assessment",
+        "if assessment_id in index:\n"
+        "            # mutant: last write wins, no conflict reason\n"
+        "            index[assessment_id] = assessment\n"
+        "            continue\n"
+        "        index[assessment_id] = assessment",
+        "last-write-dedup",
+    ),
+    # F1 revert: digest/revision-only assessment identity (pre-round-5)
+    "digest-only-assessment-identity": lambda s: _replace_once(
+        s,
+        "if assessment_id in index:\n"
+        "            # Same id with any differing field is an identity conflict (F1).\n"
+        "            # Claimed digest/revision equality does not prove content equality.\n"
+        "            # Byte-identical duplicates may collapse. Conflicting identities are\n"
+        "            # unusable: drop the id so order cannot choose a winner.\n"
+        "            prior = index[assessment_id]\n"
+        "            if prior != assessment:\n"
+        "                reasons.append(\"assessment_identity_conflict\")\n"
+        "                del index[assessment_id]\n"
+        "                conflicted.add(assessment_id)\n"
+        "            continue\n"
+        "        index[assessment_id] = assessment\n"
+        "    return list(index.values()), reasons",
+        "if assessment_id in index:\n"
+        "            prior = index[assessment_id]\n"
         "            if (\n"
         "                prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n"
         "                or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n"
         "            ):\n"
         "                reasons.append(\"assessment_identity_conflict\")\n"
+        "                # mutant: keep first; digest/revision-only; still append both below\n"
         "                continue\n"
-        "        by_id[assessment_id] = assessment",
-        "if assessment_id in by_id:\n"
-        "            prior = by_id[assessment_id]\n"
-        "            if (\n"
-        "                prior.get(\"immutable_bytes_digest\") != assessment.get(\"immutable_bytes_digest\")\n"
-        "                or prior.get(\"revision_claim\") != assessment.get(\"revision_claim\")\n"
-        "            ):\n"
-        "                by_id[assessment_id] = assessment\n"
-        "                # mutant: last write wins, no conflict reason\n"
-        "        by_id[assessment_id] = assessment",
-        "last-write-dedup",
+        "        index[assessment_id] = assessment\n"
+        "    # mutant: rebuild out including duplicates with matching claimed digests\n"
+        "    out = []\n"
+        "    seen = set()\n"
+        "    for assessment in assessments if isinstance(assessments, list) else []:\n"
+        "        if not isinstance(assessment, dict):\n"
+        "            continue\n"
+        "        aid = assessment.get(\"assessment_id\")\n"
+        "        if aid in conflicted:\n"
+        "            continue\n"
+        "        if aid in index:\n"
+        "            out.append(assessment)\n"
+        "    return out, reasons",
+        "digest-only-assessment-identity",
+    ),
+    # F2 revert: coincident support times ignore established applicability violation
+    "skip-applicability-coincident": lambda s: _replace_once(
+        s,
+        "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
+        "    if common:\n"
+        "        if applicability_fail:\n"
+        "            return False, [\"applicability_violation_established\"]\n"
+        "        return True, []\n"
+        "    # No single snapshot covers every assessment-discharged member.\n"
+        "    if applicability_fail:\n"
+        "        return False, [\n"
+        "            \"temporal_support_incompatible_fail\",\n"
+        "            \"applicability_violation_established\",\n"
+        "        ]\n"
+        "    return False, [\"temporal_support_incoherent\"]",
+        "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
+        "    if common:\n"
+        "        return True, []  # mutant: ignore established applicability when times coincide\n"
+        "    # No single snapshot covers every assessment-discharged member.\n"
+        "    if applicability_fail:\n"
+        "        return False, [\"temporal_support_incompatible_fail\"]\n"
+        "    return False, [\"temporal_support_incoherent\"]",
+        "skip-applicability-coincident",
     ),
     # temporal union
     "temporal-union": lambda s: _replace_once(
         s,
         "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
         "    if common:\n"
+        "        if applicability_fail:\n"
+        "            return False, [\"applicability_violation_established\"]\n"
         "        return True, []\n"
-        "    # No single snapshot covers every assessment-discharged member.",
+        "    # No single snapshot covers every assessment-discharged member.\n"
+        "    if applicability_fail:\n"
+        "        return False, [\n"
+        "            \"temporal_support_incompatible_fail\",\n"
+        "            \"applicability_violation_established\",\n"
+        "        ]\n"
+        "    return False, [\"temporal_support_incoherent\"]",
         "common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))\n"
         "    if True:  # mutant: union incompatible historical supports\n"
         "        return True, []\n"
-        "    # No single snapshot covers every assessment-discharged member.",
+        "    return False, [\"temporal_support_incoherent\"]",
         "temporal-union",
     ),
     # harmless-addition: ignore unresolved conflicts
@@ -603,11 +674,17 @@ MUTANTS: dict[str, Mutator] = {
     # Q6 revert: absent/mixed support_time treated as coherent
     "skip-support-time-required": lambda s: _replace_once(
         s,
-        "# Any discharging assessment without demonstrated support time ⇒ unverified\n"
+        "# Trusted established applicability violation is FAIL on its own (F2):\n"
+        "    # timestamp intersection cannot negate it; it dominates missing-support UNKNOWN.\n"
+        "    if applicability_fail and missing_support:\n"
+        "        return False, [\"applicability_violation_established\"]\n"
+        "    # Any discharging assessment without demonstrated support time ⇒ unverified\n"
         "    # (covers all-absent and mixed missing/present; order-invariant).\n"
         "    if missing_support:\n"
         "        return False, [\"temporal_support_unverified\"]\n"
         "    if not times_by_member:\n"
+        "        if applicability_fail:\n"
+        "            return False, [\"applicability_violation_established\"]\n"
         "        return True, []",
         "# Mutant: absent/mixed support_time is treated as coherent.\n"
         "    if not times_by_member:\n"
@@ -871,6 +948,13 @@ class PermutationIndependenceTests(unittest.TestCase):
         "K17b-mixed-support-time.json",
         "K18-na-with-wrong-bound.json",
         "K18b-na-wrong-bound-reversed.json",
+        "K19-assessment-identity-content-conflict.json",
+        "K19b-assessment-identity-content-conflict-reversed.json",
+        "K20-assessment-identical-duplicate.json",
+        "K21-applicability-coincident-established.json",
+        "K21b-applicability-coincident-absent.json",
+        "K21c-applicability-flag-wrong-bound.json",
+        "S19b-applicability-violation.json",
     )
 
     def _permute_document(self, working: dict, rng: random.Random) -> dict:
@@ -881,14 +965,23 @@ class PermutationIndependenceTests(unittest.TestCase):
                 rng.shuffle(value)
         # Also permute nested candidate-adjacent lists inside each assessment
         # and NA-adjacent rule component order so within-member order cannot
-        # choose a winner.
+        # choose a winner. Identical assessment_id duplicates (K20) must keep
+        # the same nested order after shuffle so collapse stays a true identity
+        # check rather than an accidental content divergence.
+        nested_orders: dict[tuple, list[int]] = {}
         for assessment in shuffled.get("assessments") or []:
             if not isinstance(assessment, dict):
                 continue
+            assessment_id = assessment.get("assessment_id")
             for nested in ("evidence_refs", "entailments", "member_aliases"):
                 value = assessment.get(nested)
                 if isinstance(value, list) and len(value) > 1:
-                    rng.shuffle(value)
+                    key = (assessment_id, nested, len(value))
+                    if key not in nested_orders:
+                        order = list(range(len(value)))
+                        rng.shuffle(order)
+                        nested_orders[key] = order
+                    assessment[nested] = [value[i] for i in nested_orders[key]]
         members = shuffled.get("members")
         if isinstance(members, dict):
             for definition in members.values():

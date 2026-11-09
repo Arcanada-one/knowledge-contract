@@ -190,18 +190,20 @@
   ],
   "expected": {
     "addressed_members": [
-      "a",
       "b"
     ],
     "closure_verdict": "fail",
     "effects_authorized": false,
     "member_verdicts": {
-      "a": "discharged",
+      "a": "missing_assessment",
       "b": "discharged"
     },
-    "missing_members": [],
+    "missing_members": [
+      "a"
+    ],
     "reason_codes": [
-      "assessment_identity_conflict"
+      "assessment_identity_conflict",
+      "missing_assessment:a"
     ],
     "scope": "synthetic_semantics_only",
     "unresolved_dependencies": []

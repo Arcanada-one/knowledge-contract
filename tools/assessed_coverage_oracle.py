@@ -65,6 +65,7 @@ FAIL_REASON_CODES = frozenset({
     "na_scope_mismatch",
     "mandatory_conflict_established",
     "temporal_support_incompatible_fail",
+    "applicability_violation_established",
     "input_unreadable",
     "input_too_large",
     "duplicate_json_key",
@@ -466,9 +467,9 @@ def _assessment_list(document: dict) -> tuple[list[dict], list[str]]:
         return [], []
     if not isinstance(assessments, list):
         return [], ["malformed_input"]
-    out: list[dict] = []
+    index: dict[str, dict] = {}
+    conflicted: set[str] = set()
     reasons: list[str] = []
-    by_id: dict[str, dict] = {}
     for assessment in assessments:
         if not isinstance(assessment, dict):
             reasons.append("malformed_input")
@@ -480,17 +481,23 @@ def _assessment_list(document: dict) -> tuple[list[dict], list[str]]:
         if not is_non_empty_string(assessment_id):
             reasons.append("malformed_input")
             continue
-        if assessment_id in by_id:
-            prior = by_id[assessment_id]
-            if (
-                prior.get("immutable_bytes_digest") != assessment.get("immutable_bytes_digest")
-                or prior.get("revision_claim") != assessment.get("revision_claim")
-            ):
+        if assessment_id in conflicted:
+            # Same conflicted id again: still a conflict; identity stays unusable.
+            reasons.append("assessment_identity_conflict")
+            continue
+        if assessment_id in index:
+            # Same id with any differing field is an identity conflict (F1).
+            # Claimed digest/revision equality does not prove content equality.
+            # Byte-identical duplicates may collapse. Conflicting identities are
+            # unusable: drop the id so order cannot choose a winner.
+            prior = index[assessment_id]
+            if prior != assessment:
                 reasons.append("assessment_identity_conflict")
-                continue
-        by_id[assessment_id] = assessment
-        out.append(assessment)
-    return out, reasons
+                del index[assessment_id]
+                conflicted.add(assessment_id)
+            continue
+        index[assessment_id] = assessment
+    return list(index.values()), reasons
 
 
 def _qualified_member_id(assessment: dict, known: set[str]) -> str | None:
@@ -967,18 +974,29 @@ def _support_times_coherent(
             missing_support = True
         else:
             times_by_member[member_id] = times
+    # Trusted established applicability violation is FAIL on its own (F2):
+    # timestamp intersection cannot negate it; it dominates missing-support UNKNOWN.
+    if applicability_fail and missing_support:
+        return False, ["applicability_violation_established"]
     # Any discharging assessment without demonstrated support time ⇒ unverified
     # (covers all-absent and mixed missing/present; order-invariant).
     if missing_support:
         return False, ["temporal_support_unverified"]
     if not times_by_member:
+        if applicability_fail:
+            return False, ["applicability_violation_established"]
         return True, []
     common = set.intersection(*(times_by_member[member_id] for member_id in times_by_member))
     if common:
+        if applicability_fail:
+            return False, ["applicability_violation_established"]
         return True, []
     # No single snapshot covers every assessment-discharged member.
     if applicability_fail:
-        return False, ["temporal_support_incompatible_fail"]
+        return False, [
+            "temporal_support_incompatible_fail",
+            "applicability_violation_established",
+        ]
     return False, ["temporal_support_incoherent"]
 
 
@@ -1370,6 +1388,8 @@ def evaluate(document: dict) -> dict:
     )
     reasons.extend(temporal_reasons)
     if not coherent and "temporal_support_incompatible_fail" in temporal_reasons:
+        fail_conflict = True
+    if not coherent and "applicability_violation_established" in temporal_reasons:
         fail_conflict = True
     if not coherent and "temporal_support_incoherent" in temporal_reasons:
         unknown_conflict = True
