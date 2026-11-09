@@ -1,0 +1,50 @@
+{
+  "assessments": [],
+  "binding_b0": {
+    "action": "assess-coverage",
+    "actor": "actor-1",
+    "contract_profile": "assessed-coverage/0.1",
+    "contract_revision": "ctr-1",
+    "effective_request_digest": "digest-b0",
+    "environment": "env-test",
+    "intended_recipient": "recipient-1",
+    "operation_key": "op-1",
+    "project": "proj-1",
+    "requirements_revision": "req-1",
+    "resource": "res-1",
+    "subject": "subj-1",
+    "work_item_revision": "wi-1"
+  },
+  "case_id": "S09",
+  "conflicts": [],
+  "evaluation_time": "2026-11-09T12:00:00Z",
+  "evidence": [],
+  "expected": {
+    "addressed_members": [],
+    "closure_verdict": "pass",
+    "effects_authorized": false,
+    "member_verdicts": {},
+    "missing_members": [],
+    "reason_codes": [
+      "empty_set_justified"
+    ],
+    "scope": "synthetic_semantics_only",
+    "unresolved_dependencies": []
+  },
+  "members": {},
+  "na_decisions": [],
+  "requirements": {
+    "dependencies": [],
+    "empty_set_justification": "Admitted empty mandatory set for limited informational scope S09.",
+    "interpretable_profiles": [
+      "assessed-coverage/0.1"
+    ],
+    "members": [],
+    "required_profiles": [],
+    "revision": "req-1",
+    "trusted_test_premise": true
+  },
+  "reviewer_revision": "rev-reviewer-1",
+  "rule_revision": "rev-rule-1",
+  "source_revision": "src-1"
+}

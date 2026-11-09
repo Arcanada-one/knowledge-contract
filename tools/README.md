@@ -142,6 +142,51 @@ preparation never sets `effects_authorized: true`.
 - overlays beyond exactly two canonical English packages
 - released `cross-package-relations` wire schema registration
 
+## Assessed-coverage finite oracle (Layer S)
+
+`assessed_coverage_oracle.py` is a **network-free finite semantic/structural
+oracle** for the Agent-Brain assessed-coverage acceptance packet (PR comment
+6734249466 / Muneral e445c6a4). It evaluates one trusted fixture snapshot:
+binding `B0`, derived mandatory set `R*`, member rules (conjunctions and
+independence), evidence provenance/origin, assessments, NA decisions,
+conflicts, evaluation time, revocation/validity, and unavailable/denied
+service markers.
+
+**Fail closed for untrusted premises.** Only fixture fields marked
+`trusted_test_premise: true` count as premises. A caller boolean such as
+`trusted=true` is never a premise. Every report is built through `outcome()` /
+`seal_report()` with `effects_authorized: false` and
+`scope: synthetic_semantics_only`. Input must not supply evaluator output keys.
+
+Fixtures live under `tools/fixtures/assessed-coverage/` — one concrete variant
+per file (`S01.json`, `S08a-absent.json`, …, Round-2 `K01`–`K10` bypass
+closures, Round-3 `K11`–`K16` order/trust/NA/boolean, Round-4 `K17`/`K17b`
+support-time and `K18`/`K18b` NA+wrong-bound pins, Round-5 `K19`–`K21e`
+identity/applicability pins, Round-6 `K22`–`K22f` NA-must-not-mask
+established-violation pins). Each file pins an `expected` block (verdict +
+reason codes) before execution; the runner never chooses fail vs unknown.
+Member definitions and NA decisions require `trusted_test_premise: true` and a
+B0 binding object on each NA; assessments require a B0 binding and a checked
+member-specific entailment; document `reviewer_revision` / `rule_revision` are
+pinned; current-use signals and RFC 3339 offset times are required;
+trusted-premise booleans must be exact JSON booleans; malformed collection /
+inventory shapes and conflicting evidence identities fail closed.
+Assessment-discharged members require demonstrated `support_time` (common
+snapshot; mixed/absent ⇒ `temporal_support_unverified`); NA-discharged members
+are exempt from the common-snapshot obligation, but a trusted B0-bound
+`applicability_violation_established: true` still forces FAIL (F3). Assessment
+integrity is evaluated before NA discharge. List order — including candidates
+within a member and NA decisions — does not change the closure. See
+`assessed-coverage-oracle-report.md`.
+
+```sh
+python3 -B tools/assessed_coverage_oracle.py --input tools/fixtures/assessed-coverage/S01.json
+python3 -B -m unittest tools.test_assessed_coverage_oracle -v
+```
+
+Exit codes: `0` pass, `1` fail, `3` unknown, `2` usage. Layer N (N01–N06) is
+**NOT_MEASURED**. This oracle is not production trust, admission or authority.
+
 ## Retrieval-context checker
 
 `verify_retrieval_context.py` binds the accepted retrieval-and-context paper

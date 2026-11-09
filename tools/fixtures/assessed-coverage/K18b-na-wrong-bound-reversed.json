@@ -1,0 +1,267 @@
+{
+  "assessments": [
+    {
+      "assessment_id": "assess-b-wrong",
+      "binding": {
+        "action": "assess-coverage",
+        "actor": "actor-OTHER",
+        "contract_profile": "assessed-coverage/0.1",
+        "contract_revision": "ctr-1",
+        "effective_request_digest": "digest-b0",
+        "environment": "env-test",
+        "intended_recipient": "recipient-1",
+        "operation_key": "op-1",
+        "project": "proj-1",
+        "requirements_revision": "req-1",
+        "resource": "res-1",
+        "subject": "subj-1",
+        "work_item_revision": "wi-1"
+      },
+      "entailments": [
+        {
+          "checked": true,
+          "member_id": "b"
+        }
+      ],
+      "evidence_refs": [
+        "e3"
+      ],
+      "immutable_bytes_digest": "abytes-b-wrong",
+      "member_id": "b",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "rule_revision": "rev-rule-1"
+      },
+      "revision_claim": "arev-b-wrong",
+      "support_time": "2026-11-09T12:00:00Z",
+      "trusted_test_premise": true,
+      "verdict_label": "accepted"
+    },
+    {
+      "assessment_id": "assess-a",
+      "binding": {
+        "action": "assess-coverage",
+        "actor": "actor-1",
+        "contract_profile": "assessed-coverage/0.1",
+        "contract_revision": "ctr-1",
+        "effective_request_digest": "digest-b0",
+        "environment": "env-test",
+        "intended_recipient": "recipient-1",
+        "operation_key": "op-1",
+        "project": "proj-1",
+        "requirements_revision": "req-1",
+        "resource": "res-1",
+        "subject": "subj-1",
+        "work_item_revision": "wi-1"
+      },
+      "entailments": [
+        {
+          "checked": true,
+          "member_id": "a"
+        }
+      ],
+      "evidence_refs": [
+        "e1",
+        "e2"
+      ],
+      "immutable_bytes_digest": "abytes-assess-a",
+      "member_id": "a",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "rule_revision": "rev-rule-1"
+      },
+      "revision_claim": "arev-assess-a",
+      "support_time": "2026-11-09T12:00:00Z",
+      "trusted_test_premise": true,
+      "verdict_label": "accepted"
+    }
+  ],
+  "binding_b0": {
+    "action": "assess-coverage",
+    "actor": "actor-1",
+    "contract_profile": "assessed-coverage/0.1",
+    "contract_revision": "ctr-1",
+    "effective_request_digest": "digest-b0",
+    "environment": "env-test",
+    "intended_recipient": "recipient-1",
+    "operation_key": "op-1",
+    "project": "proj-1",
+    "requirements_revision": "req-1",
+    "resource": "res-1",
+    "subject": "subj-1",
+    "work_item_revision": "wi-1"
+  },
+  "case_id": "K18b",
+  "conflicts": [],
+  "evaluation_time": "2026-11-09T12:00:00Z",
+  "evidence": [
+    {
+      "evidence_id": "e1",
+      "immutable_bytes_digest": "bytes-e1",
+      "origin_id": "origin-1",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "revoked_for_required_use": false,
+        "rule_revision": "rev-rule-1",
+        "service_status": "available",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T23:59:59Z"
+      },
+      "revision_claim": "rev-e1",
+      "satisfies": [
+        "P"
+      ],
+      "trusted_test_premise": true
+    },
+    {
+      "evidence_id": "e2",
+      "immutable_bytes_digest": "bytes-e2",
+      "origin_id": "origin-2",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "revoked_for_required_use": false,
+        "rule_revision": "rev-rule-1",
+        "service_status": "available",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T23:59:59Z"
+      },
+      "revision_claim": "rev-e2",
+      "satisfies": [
+        "Q"
+      ],
+      "trusted_test_premise": true
+    },
+    {
+      "evidence_id": "e3",
+      "immutable_bytes_digest": "bytes-e3",
+      "origin_id": "origin-3",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "revoked_for_required_use": false,
+        "rule_revision": "rev-rule-1",
+        "service_status": "available",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T23:59:59Z"
+      },
+      "revision_claim": "rev-e3",
+      "satisfies": [
+        "R"
+      ],
+      "trusted_test_premise": true
+    },
+    {
+      "evidence_id": "na-ev-b",
+      "immutable_bytes_digest": "bytes-na-ev-b",
+      "origin_id": "origin-na-b",
+      "provenance": {
+        "reviewer_revision": "rev-reviewer-1",
+        "revoked_for_required_use": false,
+        "rule_revision": "rev-rule-1",
+        "service_status": "available",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "valid_to": "2026-12-31T23:59:59Z"
+      },
+      "revision_claim": "rev-na-ev-b",
+      "satisfies": [
+        "NA"
+      ],
+      "trusted_test_premise": true
+    }
+  ],
+  "members": {
+    "a": {
+      "applicability": "scope-a",
+      "proposition": "P_and_Q",
+      "rule": {
+        "components": [
+          {
+            "evidence_id": "e1",
+            "predicate": "P"
+          },
+          {
+            "evidence_id": "e2",
+            "predicate": "Q"
+          }
+        ],
+        "kind": "conjunction",
+        "require_independent_origins": true
+      },
+      "trusted_test_premise": true
+    },
+    "b": {
+      "applicability": "scope-b",
+      "proposition": "R",
+      "rule": {
+        "components": [
+          {
+            "evidence_id": "e3",
+            "predicate": "R"
+          }
+        ],
+        "kind": "single",
+        "require_independent_origins": false
+      },
+      "trusted_test_premise": true
+    }
+  },
+  "na_decisions": [
+    {
+      "authorized": true,
+      "binding": {
+        "action": "assess-coverage",
+        "actor": "actor-1",
+        "contract_profile": "assessed-coverage/0.1",
+        "contract_revision": "ctr-1",
+        "effective_request_digest": "digest-b0",
+        "environment": "env-test",
+        "intended_recipient": "recipient-1",
+        "operation_key": "op-1",
+        "project": "proj-1",
+        "requirements_revision": "req-1",
+        "resource": "res-1",
+        "subject": "subj-1",
+        "work_item_revision": "wi-1"
+      },
+      "binding_scope_matches_b0": true,
+      "evidence_id": "na-ev-b",
+      "member_id": "b",
+      "rule_id": "na-rule-b",
+      "trusted_test_premise": true
+    }
+  ],
+  "requirements": {
+    "dependencies": [],
+    "interpretable_profiles": [
+      "assessed-coverage/0.1"
+    ],
+    "members": [
+      "a",
+      "b"
+    ],
+    "required_profiles": [],
+    "revision": "req-1",
+    "trusted_test_premise": true
+  },
+  "reviewer_revision": "rev-reviewer-1",
+  "rule_revision": "rev-rule-1",
+  "source_revision": "src-1",
+  "expected": {
+    "closure_verdict": "fail",
+    "effects_authorized": false,
+    "member_verdicts": {
+      "a": "discharged",
+      "b": "fail"
+    },
+    "missing_members": [],
+    "reason_codes": [
+      "binding_mismatch",
+      "not_applicable_authorized"
+    ],
+    "scope": "synthetic_semantics_only",
+    "unresolved_dependencies": [],
+    "addressed_members": [
+      "b",
+      "a"
+    ]
+  }
+}
