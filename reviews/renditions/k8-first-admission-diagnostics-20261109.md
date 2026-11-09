@@ -1169,4 +1169,3 @@ python3 -B scripts/build_publication.py \
 Local evidence note: site checkout temporarily set `publication-manifest.json` `commit` to `5b2a2cefac7050338fd70d0d9af9dd61dd82a687` so pin checks pass; restored afterward to `0b284c6cd971566e7fe38d572c86b164c28b27c5`; no site commit, merge, deploy, or pin change.
 
 Record marker: `k8-first-admission-diagnostics-20261109-v4b`.
-
