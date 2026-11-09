@@ -94,6 +94,12 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertIn("python3 -B -m unittest tools.test_cross_package_overlay -v", job)
         self.assertIn("tools/cross_package_overlay.py", job)
 
+    def test_licensing_runs_assessed_coverage_oracle_corpus(self):
+        job = self.jobs["licensing"]
+        self.assertIn("Assessed-coverage finite oracle corpus (Layer S)", job)
+        self.assertIn("python3 -B -m unittest tools.test_assessed_coverage_oracle -v", job)
+        self.assertIn("tools/assessed_coverage_oracle.py", job)
+
     def test_publication_integrity_runs_retrieval_context_checker_with_pins(self):
         job = self.jobs["publication-integrity"]
         self.assertIn("fetch-depth: 0", job)
