@@ -189,6 +189,10 @@ jobs:
         # A missing JSON report or non-zero refusal exit is failure for positives;
         # typed refusals must stay non-zero.
         run: python3 -B -m unittest tools.test_cross_package_overlay -v
+      - name: Assessed-coverage finite oracle corpus (Layer S)
+        # Network-free S01–S22 oracle for tools/assessed_coverage_oracle.py.
+        # effects_authorized stays false; Layer N (N01–N06) is NOT_MEASURED.
+        run: python3 -B -m unittest tools.test_assessed_coverage_oracle -v
       - name: Every publication and evidence file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint
