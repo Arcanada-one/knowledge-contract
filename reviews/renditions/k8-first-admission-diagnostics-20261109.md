@@ -1170,7 +1170,6 @@ Local evidence note: site checkout temporarily set `publication-manifest.json` `
 
 Record marker: `k8-first-admission-diagnostics-20261109-v4b`.
 
-
 ### Post-merge sidecar revision repin (Muneral b2ffbd14)
 
 After PR86 squash-merged as `277e23f836a9586575c1378723f8e4d14a733d57`, the four admitted sidecar entries still pinned `rendition.revision` to PR-branch tip `be3674951c5416a9bc0505abef5d9111dc1b63f5`, which is not an ancestor of `main`, so the site compiler refused with `RENDITION_REVISION_PIN` even though the four rendition blobs on main are byte-identical.
