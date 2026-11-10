@@ -2315,7 +2315,7 @@
         "D08"
       ]
     ],
-    "note": "Cycles among reading-interface edges are reported for navigation only; they are not proofs, inference rules or semantic entailments."
+    "note": "Strongly connected reading-link components list member ids only (membership only; no implied edge). Directed paths may exist among members; actual edges stay only in the relations layer. Not proofs, inference rules or semantic entailments."
   },
   "record_type": "knowledge-corpus-map-projection/1",
   "semantics": {

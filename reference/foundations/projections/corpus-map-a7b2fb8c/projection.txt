@@ -20,7 +20,9 @@ Legend
 Counts: nodes=65 relations=99 planning_requires=45
 
 Reading-link cycles (not proofs)
-  - D01 <-> D03 <-> D05 <-> D06 <-> D07 <-> D08
+  note: Strongly connected reading-link components list member ids only (membership only; no implied edge). Directed paths may exist among members; actual edges stay only in the relations layer. Not proofs, inference rules or semantic entailments.
+  membership only; no implied edge
+  - strongly connected reading-link component: {D01, D03, D05, D06, D07, D08}
 
 Nodes
 ## D01 (documents/document)

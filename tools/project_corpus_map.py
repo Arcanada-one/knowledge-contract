@@ -302,7 +302,12 @@ def build_projection(data: dict, input_path: str, blob: str) -> dict:
         },
         "reading_link_cycles": {
             "components": cycles,
-            "note": "Cycles among reading-interface edges are reported for navigation only; they are not proofs, inference rules or semantic entailments.",
+            "note": (
+                "Strongly connected reading-link components list member ids only "
+                "(membership only; no implied edge). Directed paths may exist among "
+                "members; actual edges stay only in the relations layer. Not proofs, "
+                "inference rules or semantic entailments."
+            ),
         },
     }
 
@@ -338,11 +343,14 @@ def render_text(projection: dict) -> str:
     )
     lines.append("")
     lines.append("Reading-link cycles (not proofs)")
+    lines.append(f"  note: {projection['reading_link_cycles']['note']}")
+    lines.append("  membership only; no implied edge")
     comps = projection["reading_link_cycles"]["components"]
     if not comps:
         lines.append("  (none)")
     for comp in comps:
-        lines.append("  - " + " <-> ".join(comp))
+        members = ", ".join(comp)
+        lines.append(f"  - strongly connected reading-link component: {{{members}}}")
     lines.append("")
     rel_out, rel_in = index_edges(projection["layers"]["relations"])
     plan_out, plan_in = index_edges(projection["layers"]["planning_requires"])
@@ -456,12 +464,17 @@ def render_html(projection: dict) -> str:
     parts.append('<section id="cycles" aria-labelledby="cycles-h">')
     parts.append('<h2 id="cycles-h">Reading-link cycles (not proofs)</h2>')
     parts.append(f"<p>{esc(projection['reading_link_cycles']['note'])}</p>")
+    parts.append("<p>membership only; no implied edge</p>")
     parts.append("<ul>")
     comps = projection["reading_link_cycles"]["components"]
     if not comps:
         parts.append("<li>(none)</li>")
     for comp in comps:
-        parts.append("<li>" + " <-> ".join(f'<a href="#node-{esc(n)}">{esc(n)}</a>' for n in comp) + "</li>")
+        member_links = ", ".join(f'<a href="#node-{esc(n)}">{esc(n)}</a>' for n in comp)
+        parts.append(
+            "<li>strongly connected reading-link component: "
+            f"{{{member_links}}}</li>"
+        )
     parts.append("</ul></section>")
     parts.append('<section id="nodes" aria-labelledby="nodes-h">')
     parts.append('<h2 id="nodes-h">Nodes</h2>')
