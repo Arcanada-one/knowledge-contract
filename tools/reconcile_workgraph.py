@@ -18,9 +18,20 @@ Definition edges:
 
 - node ``requires`` → expected ``depends_on`` (dependent = node, prereq = member).
 - node ``informs_not_blocks`` → expected ``related_to`` (same orientation).
-- top-level ``advisory_links`` with ``kind: informs_not_blocks`` use the informs
-  direction (``from`` informs ``to``), so the expected tracker edge is
-  dependent=``to``, prerequisite=``from``, type ``related_to``.
+- top-level ``advisory_links`` with ``kind: informs_not_blocks`` keep the ordered
+  source pair (``from``, ``to``): ``from`` informs ``to`` but does not block
+  ``to``. Expected ``related_to`` compares that same ordered pair.
+
+Snapshot option ``related_to_orientation`` (also CLI
+``--related-to-orientation``):
+
+- ``ordered``: compare exact from→to; a reverse advisory observation is
+  ``reversed_edge``.
+- ``unverified`` (default): tracker ``related_to`` orientation is not assumed
+  order-preserving. A reverse advisory observation is neither a match nor an
+  accepted reversal; it is reported as ``advisory_direction_unverified`` and
+  keeps exit non-zero / hold. ``depends_on`` comparisons stay ordered always.
+  External ``related_to`` edges stay classified separately.
 
 External edges (an endpoint outside the bound RM task set) are classified
 separately and never satisfy a ``requires`` edge. A ``depends_on`` external edge
@@ -40,11 +51,15 @@ RECORD_TYPE = "rm04-reconcile-report/1"
 EDGE_DEPENDS = "depends_on"
 EDGE_RELATED = "related_to"
 ADVISORY_KIND = "informs_not_blocks"
+ORIENTATION_ORDERED = "ordered"
+ORIENTATION_UNVERIFIED = "unverified"
+RELATED_TO_ORIENTATIONS = frozenset({ORIENTATION_ORDERED, ORIENTATION_UNVERIFIED})
 
 REASON_OK = "agreement"
 REASON_DUPLICATE_RM_BINDING = "duplicate_rm_binding"
 REASON_CONFLICTING_STATUS = "conflicting_status"
 REASON_REVERSED_EDGE = "reversed_edge"
+REASON_ADVISORY_DIRECTION_UNVERIFIED = "advisory_direction_unverified"
 REASON_MISSING_EDGE = "missing_edge"
 REASON_EXCESS_EDGE = "excess_edge"
 REASON_EXTERNAL_DEPENDS_ON = "external_depends_on"
@@ -58,6 +73,7 @@ DISAGREEMENT_REASONS = frozenset(
         REASON_DUPLICATE_RM_BINDING,
         REASON_CONFLICTING_STATUS,
         REASON_REVERSED_EDGE,
+        REASON_ADVISORY_DIRECTION_UNVERIFIED,
         REASON_MISSING_EDGE,
         REASON_EXCESS_EDGE,
         REASON_EXTERNAL_DEPENDS_ON,
@@ -133,8 +149,8 @@ def load_definition(data: Any) -> dict[str, Any]:
             )
         src = _require_str(item.get("from"), f"advisory_links[{i}].from")
         dst = _require_str(item.get("to"), f"advisory_links[{i}].to")
-        # from informs to → dependent=to, prerequisite=from
-        related.add((dst, src))
+        # from informs to but does not block to — keep ordered source pair (from, to).
+        related.add((src, dst))
     rm_set = set(rm_ids)
     for dependent, prereq in requires | related:
         if dependent not in rm_set or prereq not in rm_set:
@@ -209,17 +225,43 @@ def load_snapshot(data: Any) -> dict[str, Any]:
                 "type": etype,
             }
         )
-    return {"tasks": tasks_out, "edges": edges_out, "raw": doc}
+    orientation_raw = doc.get("related_to_orientation", ORIENTATION_UNVERIFIED)
+    orientation = _require_str(orientation_raw, "snapshot.related_to_orientation")
+    if orientation not in RELATED_TO_ORIENTATIONS:
+        raise ReconcileError(
+            REASON_MALFORMED_INPUT,
+            f"unsupported related_to_orientation {orientation}",
+            {"related_to_orientation": orientation},
+        )
+    return {
+        "tasks": tasks_out,
+        "edges": edges_out,
+        "related_to_orientation": orientation,
+        "raw": doc,
+    }
 
 
 def _sorted_pairs(pairs: set[tuple[str, str]]) -> list[list[str]]:
     return [[a, b] for a, b in sorted(pairs)]
 
 
-def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
+def reconcile(
+    definition_data: Any,
+    snapshot_data: Any,
+    *,
+    related_to_orientation: str | None = None,
+) -> dict[str, Any]:
     """Pure reconcile. Returns a deterministic report; never mutates inputs."""
     definition = load_definition(definition_data)
     snapshot = load_snapshot(snapshot_data)
+
+    orientation = related_to_orientation or snapshot["related_to_orientation"]
+    if orientation not in RELATED_TO_ORIENTATIONS:
+        raise ReconcileError(
+            REASON_MALFORMED_INPUT,
+            f"unsupported related_to_orientation {orientation}",
+            {"related_to_orientation": orientation},
+        )
 
     reason_codes: list[str] = []
     disagreements: list[dict[str, Any]] = []
@@ -231,6 +273,7 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
 
     claims_by_rm: dict[str, list[dict[str, Any]]] = defaultdict(list)
     unknown_labels: list[dict[str, str]] = []
+    statuses_by_rm: dict[str, set[str]] = defaultdict(set)
     for task in snapshot["tasks"]:
         label = task["rm_label"]
         if label is None:
@@ -245,6 +288,7 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
             )
             continue
         claims_by_rm[label].append(task)
+        statuses_by_rm[label].add(task["status"])
 
     bindings: dict[str, str] = {}
     unbound: list[str] = []
@@ -266,23 +310,12 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
                 rm_id=rm_id,
                 task_ids=ids,
             )
-            statuses = {c["status"] for c in claimants}
-            if len(statuses) > 1:
-                add_disagreement(
-                    REASON_CONFLICTING_STATUS,
-                    f"RM {rm_id} has conflicting statuses; no merge performed",
-                    rm_id=rm_id,
-                    statuses=sorted(statuses),
-                    task_ids=ids,
-                    execution_authority="single; statuses not merged",
-                )
             continue
         bindings[rm_id] = claimants[0]["id"]
 
-    # Optional multi-record status claims without requiring duplicate bindings.
+    # Union of per-RM task statuses and optional status_records.
     status_records = snapshot["raw"].get("status_records")
     if status_records is not None:
-        by_rm: dict[str, set[str]] = defaultdict(set)
         for i, rec in enumerate(_require_list(status_records, "snapshot.status_records")):
             item = _require_mapping(rec, f"status_records[{i}]")
             rm_id = _require_str(item.get("rm_label"), f"status_records[{i}].rm_label")
@@ -294,16 +327,18 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
                     rm_label=rm_id,
                 )
                 continue
-            by_rm[rm_id].add(status)
-        for rm_id, statuses in sorted(by_rm.items()):
-            if len(statuses) > 1:
-                add_disagreement(
-                    REASON_CONFLICTING_STATUS,
-                    f"RM {rm_id} has conflicting statuses; no merge performed",
-                    rm_id=rm_id,
-                    statuses=sorted(statuses),
-                    execution_authority="single; statuses not merged",
-                )
+            statuses_by_rm[rm_id].add(status)
+
+    for rm_id, statuses in sorted(statuses_by_rm.items()):
+        if len(statuses) > 1:
+            add_disagreement(
+                REASON_CONFLICTING_STATUS,
+                f"RM {rm_id} has conflicting statuses; no status selected",
+                rm_id=rm_id,
+                statuses=sorted(statuses),
+                disagreement_detected=True,
+                effects="none",
+            )
 
     bound_task_ids = set(bindings.values())
     task_to_rm = {tid: rm for rm, tid in bindings.items()}
@@ -313,6 +348,7 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
 
     observed_depends: set[tuple[str, str]] = set()
     observed_related: set[tuple[str, str]] = set()
+    direction_unverified_pairs: set[tuple[str, str]] = set()
     external_edges: list[dict[str, Any]] = []
     unknown_endpoint_edges: list[dict[str, Any]] = []
 
@@ -352,6 +388,7 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
         pair = (dep_rm, pre_rm)
         rev = (pre_rm, dep_rm)
         if etype == EDGE_DEPENDS:
+            # depends_on comparisons are always ordered.
             if pair in expected_depends:
                 observed_depends.add(pair)
             elif rev in expected_depends:
@@ -372,19 +409,37 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
                     prerequisite_rm=pre_rm,
                     edge_type=etype,
                 )
-        else:  # related_to
+        else:  # related_to (advisory / informs_not_blocks)
             if pair in expected_related:
                 observed_related.add(pair)
             elif rev in expected_related:
-                add_disagreement(
-                    REASON_REVERSED_EDGE,
-                    "related_to edge is reversed relative to informs_not_blocks",
-                    expected_dependent=pre_rm,
-                    expected_prerequisite=dep_rm,
-                    observed_from=frm,
-                    observed_to=to,
-                    edge_type=etype,
-                )
+                if orientation == ORIENTATION_ORDERED:
+                    add_disagreement(
+                        REASON_REVERSED_EDGE,
+                        "related_to edge is reversed relative to informs_not_blocks",
+                        expected_from=pre_rm,
+                        expected_to=dep_rm,
+                        observed_from=frm,
+                        observed_to=to,
+                        edge_type=etype,
+                        related_to_orientation=orientation,
+                    )
+                else:
+                    # Unverified: neither match nor accepted reversal.
+                    direction_unverified_pairs.add(rev)
+                    add_disagreement(
+                        REASON_ADVISORY_DIRECTION_UNVERIFIED,
+                        (
+                            "related_to orientation unverified; reversed advisory "
+                            "pair is neither matched nor an accepted reversal"
+                        ),
+                        expected_from=pre_rm,
+                        expected_to=dep_rm,
+                        observed_from=frm,
+                        observed_to=to,
+                        edge_type=etype,
+                        related_to_orientation=orientation,
+                    )
             else:
                 add_disagreement(
                     REASON_EXCESS_EDGE,
@@ -403,6 +458,9 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
             edge_type=EDGE_DEPENDS,
         )
     for pair in sorted(expected_related - observed_related):
+        if pair in direction_unverified_pairs:
+            # Covered by advisory_direction_unverified; do not also count as missing.
+            continue
         add_disagreement(
             REASON_MISSING_EDGE,
             "informs_not_blocks edge missing from snapshot related_to edges",
@@ -417,11 +475,15 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
         reason_codes = [REASON_OK]
 
     agreement = reason_codes == [REASON_OK]
+    disagreement_detected = not agreement
     report = {
         "record_type": RECORD_TYPE,
         "schema": SCHEMA_ID,
         "agreement": agreement,
+        "disagreement_detected": disagreement_detected,
+        "effects": "none",
         "reason_codes": reason_codes,
+        "related_to_orientation": orientation,
         "definition": {
             "revision": definition["revision"],
             "rm_count": len(definition["rm_ids"]),
@@ -449,6 +511,11 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
                 for d in disagreements
                 if d["reason_code"] == REASON_REVERSED_EDGE
             ],
+            "advisory_direction_unverified": [
+                d["details"]
+                for d in disagreements
+                if d["reason_code"] == REASON_ADVISORY_DIRECTION_UNVERIFIED
+            ],
             "external": external_edges,
         },
         "disagreements": disagreements,
@@ -456,7 +523,8 @@ def reconcile(definition_data: Any, snapshot_data: Any) -> dict[str, Any]:
         "network_calls": False,
         "notes": (
             "Dry-run / replay only. No tracker write, no Muneral call, "
-            "no status merge, no binding repair."
+            "no status merge, no binding repair. effects=none (never a permission). "
+            f"related_to_orientation={orientation}."
         ),
     }
     return report
@@ -536,6 +604,18 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to tracker snapshot JSON (rm04-tracker-snapshot/1)",
     )
     parser.add_argument(
+        "--related-to-orientation",
+        choices=sorted(RELATED_TO_ORIENTATIONS),
+        default=None,
+        help=(
+            "Override snapshot related_to_orientation. "
+            f"Default when unset on snapshot: {ORIENTATION_UNVERIFIED}. "
+            f"{ORIENTATION_ORDERED}=exact from→to (reversed_edge on reverse); "
+            f"{ORIENTATION_UNVERIFIED}=reversed advisory → "
+            f"{REASON_ADVISORY_DIRECTION_UNVERIFIED} (exit non-zero / hold)."
+        ),
+    )
+    parser.add_argument(
         "--output",
         help="Optional path to write the JSON report (stdout always used too)",
     )
@@ -548,11 +628,17 @@ def main(argv: list[str] | None = None) -> int:
     try:
         definition = json.loads(Path(args.definition).read_text(encoding="utf-8"))
         snapshot = json.loads(Path(args.snapshot).read_text(encoding="utf-8"))
-        report = reconcile(definition, snapshot)
+        report = reconcile(
+            definition,
+            snapshot,
+            related_to_orientation=args.related_to_orientation,
+        )
     except ReconcileError as exc:
         report = {
             "record_type": RECORD_TYPE,
             "agreement": False,
+            "disagreement_detected": True,
+            "effects": "none",
             "reason_codes": [exc.reason_code],
             "disagreements": [
                 {
@@ -572,6 +658,8 @@ def main(argv: list[str] | None = None) -> int:
         report = {
             "record_type": RECORD_TYPE,
             "agreement": False,
+            "disagreement_detected": True,
+            "effects": "none",
             "reason_codes": [REASON_INPUT_ERROR],
             "disagreements": [
                 {

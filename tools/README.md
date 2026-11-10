@@ -194,19 +194,36 @@ roadmap definition (`roadmap/dependencies.json` shape) with a synthetic tracker
 snapshot (`rm04-tracker-snapshot/1`). It reports bindings, unbound RMs,
 missing / excess / reversed edges, external edges and typed disagreements. It
 never repairs state, never calls Muneral or a tracker API, and never merges
-conflicting statuses.
+conflicting statuses. Reports carry `disagreement_detected` (bool) and
+`effects: "none"` (dry-run marker; never a permission). There is no
+`execution_authority` field.
+
+Advisory `informs_not_blocks` links keep the ordered source pair
+(`from` informs `to` but does not block `to`). Snapshot / CLI option
+`related_to_orientation` is `ordered` (exact from→to; reverse →
+`reversed_edge`) or `unverified` (default: reverse →
+`advisory_direction_unverified`, exit non-zero / hold; not matched and not an
+accepted reversal). The 45 `depends_on` comparisons stay ordered; external
+`related_to` edges stay separate. Status conflict is the union of per-RM
+`tasks[].status` and `status_records[].status` (more than one distinct value →
+`conflicting_status`, no selected status).
 
 ```sh
 python3 -B tools/reconcile_workgraph.py \
   --definition roadmap/dependencies.json \
   --snapshot /path/to/synthetic-snapshot.json
+python3 -B tools/reconcile_workgraph.py \
+  --definition roadmap/dependencies.json \
+  --snapshot /path/to/synthetic-snapshot.json \
+  --related-to-orientation ordered
 python3 -B -m unittest tools.test_reconcile_workgraph -v
 ```
 
 Exit codes: `0` agreement, `1` disagreement / typed refusal (JSON report always),
 `2` usage or unreadable input. Reason codes include `duplicate_rm_binding`,
-`conflicting_status`, `reversed_edge`, `missing_edge`, `excess_edge`,
-`external_depends_on`, `unknown_rm_label`, `unbound_rm`.
+`conflicting_status`, `reversed_edge`, `advisory_direction_unverified`,
+`missing_edge`, `excess_edge`, `external_depends_on`, `unknown_rm_label`,
+`unbound_rm`.
 
 ## Retrieval-context checker
 

@@ -16,6 +16,9 @@ from pathlib import Path
 from tools.reconcile_workgraph import (
     EDGE_DEPENDS,
     EDGE_RELATED,
+    ORIENTATION_ORDERED,
+    ORIENTATION_UNVERIFIED,
+    REASON_ADVISORY_DIRECTION_UNVERIFIED,
     REASON_CONFLICTING_STATUS,
     REASON_DUPLICATE_RM_BINDING,
     REASON_EXCESS_EDGE,
@@ -28,6 +31,7 @@ from tools.reconcile_workgraph import (
     SCHEMA_ID,
     build_synthetic_snapshot_from_definition,
     dumps_deterministic,
+    load_definition,
     main,
     reconcile,
 )
@@ -35,6 +39,15 @@ from tools.reconcile_workgraph import (
 REPO = Path(__file__).resolve().parents[1]
 DEFINITION_PATH = REPO / "roadmap" / "dependencies.json"
 TOOL = REPO / "tools" / "reconcile_workgraph.py"
+
+# Hand-written literal advisory pairs (not generated from load_definition).
+# Must match roadmap/dependencies.json advisory_links from→to order.
+LITERAL_ADVISORY_PAIRS = (
+    ("RM-23", "RM-25"),
+    ("RM-20", "RM-24"),
+    ("RM-22", "RM-02"),
+    ("RM-08", "RM-12"),
+)
 
 
 def _mini_definition() -> dict:
@@ -57,12 +70,22 @@ def _agreeing_mini_snapshot(definition: dict) -> dict:
     return build_synthetic_snapshot_from_definition(definition)
 
 
+def _rm_to_task(snapshot: dict) -> dict[str, str]:
+    return {
+        t["rm_label"]: t["id"]
+        for t in snapshot["tasks"]
+        if t.get("rm_label") is not None
+    }
+
+
 class ReconcileWorkgraphControls(unittest.TestCase):
     def test_positive_real_definition_25_bound_45_requires_4_informs(self):
         definition = json.loads(DEFINITION_PATH.read_text(encoding="utf-8"))
         snapshot = build_synthetic_snapshot_from_definition(definition)
         report = reconcile(definition, snapshot)
         self.assertTrue(report["agreement"])
+        self.assertFalse(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
         self.assertEqual(report["reason_codes"], [REASON_OK])
         self.assertEqual(len(report["bindings"]), 25)
         self.assertEqual(report["definition"]["requires_count"], 45)
@@ -98,6 +121,77 @@ class ReconcileWorkgraphControls(unittest.TestCase):
             report = json.loads(out_path.read_text(encoding="utf-8"))
             self.assertTrue(report["agreement"])
             self.assertEqual(report["reason_codes"], [REASON_OK])
+            self.assertEqual(report["effects"], "none")
+
+    def test_literal_advisory_pairs_match_dependencies_json(self):
+        """Independent literal fixture: four pairs must match real advisory_links."""
+        definition = json.loads(DEFINITION_PATH.read_text(encoding="utf-8"))
+        raw_links = definition["advisory_links"]
+        literal_from_file = tuple((link["from"], link["to"]) for link in raw_links)
+        self.assertEqual(literal_from_file, LITERAL_ADVISORY_PAIRS)
+        loaded = load_definition(definition)
+        self.assertEqual(
+            sorted(loaded["related"]),
+            sorted(LITERAL_ADVISORY_PAIRS),
+        )
+        snapshot = build_synthetic_snapshot_from_definition(definition)
+        for orientation in (ORIENTATION_ORDERED, ORIENTATION_UNVERIFIED):
+            report = reconcile(
+                definition, snapshot, related_to_orientation=orientation
+            )
+            self.assertTrue(report["agreement"], orientation)
+            self.assertEqual(
+                report["edges"]["informs_matched"],
+                [list(p) for p in sorted(LITERAL_ADVISORY_PAIRS)],
+            )
+
+    def test_advisory_mutant_reversed_one_pair_ordered_and_unverified(self):
+        """Each of four mutants reverses exactly one advisory pair."""
+        definition = json.loads(DEFINITION_PATH.read_text(encoding="utf-8"))
+        base = build_synthetic_snapshot_from_definition(definition)
+        rm_task = _rm_to_task(base)
+        for idx, (frm, to) in enumerate(LITERAL_ADVISORY_PAIRS):
+            with self.subTest(pair=(frm, to), index=idx):
+                snapshot = copy.deepcopy(base)
+                tid_from = rm_task[frm]
+                tid_to = rm_task[to]
+                flipped = False
+                for edge in snapshot["edges"]:
+                    if (
+                        edge["type"] == EDGE_RELATED
+                        and edge["from"] == tid_from
+                        and edge["to"] == tid_to
+                    ):
+                        edge["from"], edge["to"] = edge["to"], edge["from"]
+                        flipped = True
+                        break
+                self.assertTrue(flipped, f"failed to locate related_to {frm}->{to}")
+
+                ordered = reconcile(
+                    definition, snapshot, related_to_orientation=ORIENTATION_ORDERED
+                )
+                self.assertFalse(ordered["agreement"])
+                self.assertTrue(ordered["disagreement_detected"])
+                self.assertEqual(ordered["effects"], "none")
+                self.assertIn(REASON_REVERSED_EDGE, ordered["reason_codes"])
+                self.assertNotIn(
+                    REASON_ADVISORY_DIRECTION_UNVERIFIED, ordered["reason_codes"]
+                )
+                self.assertNotIn([frm, to], ordered["edges"]["informs_matched"])
+
+                unverified = reconcile(
+                    definition,
+                    snapshot,
+                    related_to_orientation=ORIENTATION_UNVERIFIED,
+                )
+                self.assertFalse(unverified["agreement"])
+                self.assertTrue(unverified["disagreement_detected"])
+                self.assertEqual(unverified["effects"], "none")
+                self.assertIn(
+                    REASON_ADVISORY_DIRECTION_UNVERIFIED, unverified["reason_codes"]
+                )
+                self.assertNotIn(REASON_REVERSED_EDGE, unverified["reason_codes"])
+                self.assertNotIn([frm, to], unverified["edges"]["informs_matched"])
 
     def test_duplicate_registration_refuses_both(self):
         definition = _mini_definition()
@@ -113,6 +207,8 @@ class ReconcileWorkgraphControls(unittest.TestCase):
         )
         report = reconcile(definition, snapshot)
         self.assertFalse(report["agreement"])
+        self.assertTrue(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
         self.assertIn(REASON_DUPLICATE_RM_BINDING, report["reason_codes"])
         self.assertNotIn("RM-A", report["bindings"])
         detail = next(
@@ -129,6 +225,8 @@ class ReconcileWorkgraphControls(unittest.TestCase):
         ]
         report = reconcile(definition, snapshot)
         self.assertFalse(report["agreement"])
+        self.assertTrue(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
         self.assertIn(REASON_CONFLICTING_STATUS, report["reason_codes"])
         # Single binding for RM-B remains; statuses are not merged into one value.
         self.assertEqual(report["bindings"].get("RM-B"), "syn-0002")
@@ -136,7 +234,36 @@ class ReconcileWorkgraphControls(unittest.TestCase):
             d for d in report["disagreements"] if d["reason_code"] == REASON_CONFLICTING_STATUS
         )
         self.assertEqual(detail["details"]["statuses"], ["done", "open"])
-        self.assertIn("not merged", detail["details"]["execution_authority"])
+        self.assertNotIn("execution_authority", detail["details"])
+        self.assertTrue(detail["details"]["disagreement_detected"])
+        self.assertEqual(detail["details"]["effects"], "none")
+
+    def test_conflicting_status_task_vs_status_record(self):
+        """Union of task.status and status_records.status must detect conflict."""
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        # Synthetic tasks are status=open; one status_records entry says done.
+        snapshot["status_records"] = [{"rm_label": "RM-B", "status": "done"}]
+        report = reconcile(definition, snapshot)
+        self.assertFalse(report["agreement"])
+        self.assertIn(REASON_CONFLICTING_STATUS, report["reason_codes"])
+        detail = next(
+            d for d in report["disagreements"] if d["reason_code"] == REASON_CONFLICTING_STATUS
+        )
+        self.assertEqual(detail["details"]["rm_id"], "RM-B")
+        self.assertEqual(detail["details"]["statuses"], ["done", "open"])
+        self.assertEqual(detail["details"]["effects"], "none")
+
+    def test_status_records_agreeing_with_task_pass(self):
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        snapshot["status_records"] = [{"rm_label": "RM-B", "status": "open"}]
+        report = reconcile(definition, snapshot)
+        self.assertTrue(report["agreement"])
+        self.assertFalse(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
+        self.assertEqual(report["reason_codes"], [REASON_OK])
+        self.assertNotIn(REASON_CONFLICTING_STATUS, report["reason_codes"])
 
     def test_conflicting_status_via_duplicate_claimants(self):
         definition = _mini_definition()
@@ -289,9 +416,17 @@ class ReconcileWorkgraphControls(unittest.TestCase):
             report = json.loads(proc.stdout)
             self.assertTrue(report["agreement"])
             self.assertFalse(report["network_calls"])
+            self.assertEqual(report["effects"], "none")
 
     def test_schema_constant(self):
         self.assertEqual(SCHEMA_ID, "rm04-tracker-snapshot/1")
+
+    def test_no_execution_authority_field_in_report(self):
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        report = reconcile(definition, snapshot)
+        blob = dumps_deterministic(report)
+        self.assertNotIn("execution_authority", blob)
 
 
 if __name__ == "__main__":
