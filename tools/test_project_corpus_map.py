@@ -137,7 +137,7 @@ class ProjectCorpusMapControls(unittest.TestCase):
 
     def test_c03_premises_and_limits_verbatim_in_projection_and_renders(self):
         # Positive: C03 (composition/preservation claim under F01-related D03 path)
-        # keeps BOTH premises — including initial-state P1(x0) — and limits
+        # preserves all five premises, including P1(x0), and limits
         # byte/field-exact from the pinned map into JSON and rendered txt/html.
         projection, text, page = project_bytes(RAW, INPUT_PATH, PINNED_BLOB)
         src = claim_source("C03")
