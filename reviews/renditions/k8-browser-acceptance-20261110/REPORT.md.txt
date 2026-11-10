@@ -1,0 +1,331 @@
+# K8 Browser Acceptance Report — contract.place
+
+- Generated: `2026-11-10T01:40:58Z`
+- Site main: `37e9fec93a4e1043ae8f707f148aac6e60e2a778`
+- Deploy run: `42729598828`
+- KC source: `1208dfbc2a5651a9ff6085a5b454f8511048d629`
+- Base URL: `https://contract.place`
+
+## Browsers / tooling
+
+- **playwright_python**: `venv at <local-venv>`
+- **install_method**: `python3 -m venv + pip install playwright; playwright install chromium webkit (user cache)`
+- **chromium**: `158.0.8127.18`
+- **webkit**: `NOT_AVAILABLE`
+- **webkit_error**: `BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7 (Host system is missing dependencies; apt install not permitted by task). PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 still fails at runtime.`
+- **playwright_package_version**: `1.65.0`
+- **chromium_browser**: `Playwright Chromium 158.0.8127.18 (cache chromium-1254)`
+- **profiles_measured**: `['desktop_chromium_1440x900', 'mobile_chromium_Pixel7']`
+- **profiles_not_measured**: `[{'name': 'mobile_webkit_iPhone13', 'status': 'NOT_MEASURED', 'reason': 'BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7 (Host system is missing dependencies; apt install not permitted by task). PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 still fails at runtime.'}]`
+
+## Coverage note
+
+This report states observed coverage only. No overall PASS claim is made beyond the checks listed. Anything not measured is marked NOT_MEASURED with a reason.
+
+## Pages × profiles (summary)
+
+| Path | Profile | HTTP | lang | robots | h1 | math | tables | h-overflow | screenshot | anomalies |
+|---|---|---:|---|---|---:|---:|---:|---|---|---|
+| `/ru/engineering/studies/dependency-closure-and-package-delivery/` | desktop_chromium_1440x900 | 200 | ru | — | 1 | 11 | 2 | False | `ru_engineering_studies_dependency-closure-and-package-delivery_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/` | desktop_chromium_1440x900 | 200 | zh-Hans | — | 1 | 11 | 2 | False | `zh-Hans_engineering_studies_dependency-closure-and-package-delivery_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/executable-projections-and-revision/` | desktop_chromium_1440x900 | 200 | ru | — | 1 | 0 | 3 | False | `ru_engineering_studies_executable-projections-and-revision_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/executable-projections-and-revision/` | desktop_chromium_1440x900 | 200 | zh-Hans | — | 1 | 0 | 3 | False | `zh-Hans_engineering_studies_executable-projections-and-revision_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/source-transcription-and-uncertainty/` | desktop_chromium_1440x900 | 200 | ru | — | 1 | 2 | 2 | False | `ru_engineering_studies_source-transcription-and-uncertainty_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/source-transcription-and-uncertainty/` | desktop_chromium_1440x900 | 200 | zh-Hans | — | 1 | 2 | 2 | False | `zh-Hans_engineering_studies_source-transcription-and-uncertainty_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/reuse-admission-and-cost-controls/` | desktop_chromium_1440x900 | 200 | ru | — | 1 | 56 | 2 | False | `ru_engineering_studies_reuse-admission-and-cost-controls_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/` | desktop_chromium_1440x900 | 200 | zh-Hans | — | 1 | 56 | 2 | False | `zh-Hans_engineering_studies_reuse-admission-and-cost-controls_desktop_chromium_1440x900.png` |  |
+| `/en/engineering/studies/dependency-closure-and-package-delivery/` | desktop_chromium_1440x900 | 200 | en | — | 1 | 11 | 2 | False | `en_engineering_studies_dependency-closure-and-package-delivery_desktop_chromium_1440x900.png` |  |
+| `/en/engineering/studies/executable-projections-and-revision/` | desktop_chromium_1440x900 | 200 | en | — | 1 | 0 | 3 | False | `en_engineering_studies_executable-projections-and-revision_desktop_chromium_1440x900.png` |  |
+| `/en/engineering/studies/source-transcription-and-uncertainty/` | desktop_chromium_1440x900 | 200 | en | — | 1 | 2 | 2 | False | `en_engineering_studies_source-transcription-and-uncertainty_desktop_chromium_1440x900.png` |  |
+| `/en/engineering/studies/reuse-admission-and-cost-controls/` | desktop_chromium_1440x900 | 200 | en | — | 1 | 56 | 2 | False | `en_engineering_studies_reuse-admission-and-cost-controls_desktop_chromium_1440x900.png` |  |
+| `/en/programme/` | desktop_chromium_1440x900 | 200 | en | — | 1 | 0 | 6 | False | `en_programme_desktop_chromium_1440x900.png` |  |
+| `/ru/programme/` | desktop_chromium_1440x900 | 200 | ru | — | 1 | 0 | 6 | False | `ru_programme_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/programme/` | desktop_chromium_1440x900 | 200 | zh-Hans | — | 1 | 0 | 6 | False | `zh-Hans_programme_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/contract-profile-conformance/` | desktop_chromium_1440x900 | 200 | ru | noindex,follow | 1 | 3 | 3 | False | `ru_engineering_studies_contract-profile-conformance_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/editorial-skill-pilot/` | desktop_chromium_1440x900 | 200 | ru | noindex,follow | 1 | 0 | 2 | False | `ru_engineering_studies_editorial-skill-pilot_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/contract-profile-conformance/` | desktop_chromium_1440x900 | 200 | zh-Hans | noindex,follow | 1 | 3 | 3 | False | `zh-Hans_engineering_studies_contract-profile-conformance_desktop_chromium_1440x900.png` |  |
+| `/zh-Hans/engineering/studies/editorial-skill-pilot/` | desktop_chromium_1440x900 | 200 | zh-Hans | noindex,follow | 1 | 0 | 2 | False | `zh-Hans_engineering_studies_editorial-skill-pilot_desktop_chromium_1440x900.png` |  |
+| `/ru/engineering/studies/dependency-closure-and-package-delivery/` | mobile_chromium_Pixel7 | 200 | ru | — | 1 | 11 | 2 | False | `ru_engineering_studies_dependency-closure-and-package-delivery_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/` | mobile_chromium_Pixel7 | 200 | zh-Hans | — | 1 | 11 | 2 | False | `zh-Hans_engineering_studies_dependency-closure-and-package-delivery_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/executable-projections-and-revision/` | mobile_chromium_Pixel7 | 200 | ru | — | 1 | 0 | 3 | False | `ru_engineering_studies_executable-projections-and-revision_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/executable-projections-and-revision/` | mobile_chromium_Pixel7 | 200 | zh-Hans | — | 1 | 0 | 3 | False | `zh-Hans_engineering_studies_executable-projections-and-revision_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/source-transcription-and-uncertainty/` | mobile_chromium_Pixel7 | 200 | ru | — | 1 | 2 | 2 | False | `ru_engineering_studies_source-transcription-and-uncertainty_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/source-transcription-and-uncertainty/` | mobile_chromium_Pixel7 | 200 | zh-Hans | — | 1 | 2 | 2 | False | `zh-Hans_engineering_studies_source-transcription-and-uncertainty_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/reuse-admission-and-cost-controls/` | mobile_chromium_Pixel7 | 200 | ru | — | 1 | 56 | 2 | False | `ru_engineering_studies_reuse-admission-and-cost-controls_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/` | mobile_chromium_Pixel7 | 200 | zh-Hans | — | 1 | 56 | 2 | False | `zh-Hans_engineering_studies_reuse-admission-and-cost-controls_mobile_chromium_Pixel7.png` |  |
+| `/en/engineering/studies/dependency-closure-and-package-delivery/` | mobile_chromium_Pixel7 | 200 | en | — | 1 | 11 | 2 | False | `en_engineering_studies_dependency-closure-and-package-delivery_mobile_chromium_Pixel7.png` |  |
+| `/en/engineering/studies/executable-projections-and-revision/` | mobile_chromium_Pixel7 | 200 | en | — | 1 | 0 | 3 | False | `en_engineering_studies_executable-projections-and-revision_mobile_chromium_Pixel7.png` |  |
+| `/en/engineering/studies/source-transcription-and-uncertainty/` | mobile_chromium_Pixel7 | 200 | en | — | 1 | 2 | 2 | False | `en_engineering_studies_source-transcription-and-uncertainty_mobile_chromium_Pixel7.png` |  |
+| `/en/engineering/studies/reuse-admission-and-cost-controls/` | mobile_chromium_Pixel7 | 200 | en | — | 1 | 56 | 2 | False | `en_engineering_studies_reuse-admission-and-cost-controls_mobile_chromium_Pixel7.png` |  |
+| `/en/programme/` | mobile_chromium_Pixel7 | 200 | en | — | 1 | 0 | 6 | False | `en_programme_mobile_chromium_Pixel7.png` |  |
+| `/ru/programme/` | mobile_chromium_Pixel7 | 200 | ru | — | 1 | 0 | 6 | False | `ru_programme_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/programme/` | mobile_chromium_Pixel7 | 200 | zh-Hans | — | 1 | 0 | 6 | False | `zh-Hans_programme_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/contract-profile-conformance/` | mobile_chromium_Pixel7 | 200 | ru | noindex,follow | 1 | 3 | 3 | False | `ru_engineering_studies_contract-profile-conformance_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/editorial-skill-pilot/` | mobile_chromium_Pixel7 | 200 | ru | noindex,follow | 1 | 0 | 2 | False | `ru_engineering_studies_editorial-skill-pilot_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/contract-profile-conformance/` | mobile_chromium_Pixel7 | 200 | zh-Hans | noindex,follow | 1 | 3 | 3 | False | `zh-Hans_engineering_studies_contract-profile-conformance_mobile_chromium_Pixel7.png` |  |
+| `/zh-Hans/engineering/studies/editorial-skill-pilot/` | mobile_chromium_Pixel7 | 200 | zh-Hans | noindex,follow | 1 | 0 | 2 | False | `zh-Hans_engineering_studies_editorial-skill-pilot_mobile_chromium_Pixel7.png` |  |
+| `/ru/engineering/studies/dependency-closure-and-package-delivery/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/engineering/studies/executable-projections-and-revision/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/executable-projections-and-revision/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/engineering/studies/source-transcription-and-uncertainty/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/source-transcription-and-uncertainty/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/engineering/studies/reuse-admission-and-cost-controls/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/en/engineering/studies/dependency-closure-and-package-delivery/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/en/engineering/studies/executable-projections-and-revision/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/en/engineering/studies/source-transcription-and-uncertainty/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/en/engineering/studies/reuse-admission-and-cost-controls/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/en/programme/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/programme/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/programme/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/engineering/studies/contract-profile-conformance/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/ru/engineering/studies/editorial-skill-pilot/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/contract-profile-conformance/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+| `/zh-Hans/engineering/studies/editorial-skill-pilot/` | mobile_webkit_iPhone13 | NOT_MEASURED | — | — | — | — | — | — | — | BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7  |
+
+## Last-Modified headers
+
+| Path | Last-Modified |
+|---|---|
+| `/ru/engineering/studies/dependency-closure-and-package-delivery/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/engineering/studies/executable-projections-and-revision/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/executable-projections-and-revision/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/engineering/studies/source-transcription-and-uncertainty/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/source-transcription-and-uncertainty/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/engineering/studies/reuse-admission-and-cost-controls/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/en/engineering/studies/dependency-closure-and-package-delivery/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/en/engineering/studies/executable-projections-and-revision/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/en/engineering/studies/source-transcription-and-uncertainty/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/en/engineering/studies/reuse-admission-and-cost-controls/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/en/programme/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/programme/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/programme/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/engineering/studies/contract-profile-conformance/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/ru/engineering/studies/editorial-skill-pilot/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/contract-profile-conformance/` | Tue, 10 Nov 2026 00:38:58 GMT |
+| `/zh-Hans/engineering/studies/editorial-skill-pilot/` | Tue, 10 Nov 2026 00:38:58 GMT |
+
+## Failures / anomalies (explicit)
+
+### `*` — profile `chromium_measured`
+
+```json
+[
+  {
+    "kind": "console_warning_font_preload_unused",
+    "verbatim": "The resource https://contract.place/assets/SourceSerif4-Regular.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "occurrences": 38,
+    "rows": [
+      {
+        "path": "/ru/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/executable-projections-and-revision/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/executable-projections-and-revision/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/en/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/en/engineering/studies/executable-projections-and-revision/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/en/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/en/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/en/programme/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/programme/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/programme/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/contract-profile-conformance/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/editorial-skill-pilot/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/contract-profile-conformance/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/editorial-skill-pilot/",
+        "profile": "desktop_chromium_1440x900"
+      },
+      {
+        "path": "/ru/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/engineering/studies/executable-projections-and-revision/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/executable-projections-and-revision/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/en/engineering/studies/dependency-closure-and-package-delivery/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/en/engineering/studies/executable-projections-and-revision/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/en/engineering/studies/source-transcription-and-uncertainty/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/en/engineering/studies/reuse-admission-and-cost-controls/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/en/programme/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/programme/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/programme/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/engineering/studies/contract-profile-conformance/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/ru/engineering/studies/editorial-skill-pilot/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/contract-profile-conformance/",
+        "profile": "mobile_chromium_Pixel7"
+      },
+      {
+        "path": "/zh-Hans/engineering/studies/editorial-skill-pilot/",
+        "profile": "mobile_chromium_Pixel7"
+      }
+    ]
+  }
+]
+```
+
+### `*` — profile `mobile_webkit_iPhone13`
+
+```json
+[
+  {
+    "kind": "profile_not_measured",
+    "verbatim": "BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7 (Host system is missing dependencies; apt install not permitted by task). PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 still fails at runtime.",
+    "pages_affected": 19
+  }
+]
+```
+
+### `*` — profile `cloudflare_beacon`
+
+```json
+[
+  {
+    "kind": "beacon_observation",
+    "in_dom_on_measured_rows": 0,
+    "blocked_by_csp_on_measured_rows": 0,
+    "note": "script[src*=static.cloudflareinsights.com/beacon.min.js] not present in DOM on any of 38 Chromium measurements; no CSP securitypolicyviolation events recorded."
+  }
+]
+```
+
+## Link check (main same-origin, de-duplicated)
+
+Checked 101 of 101 unique URLs (requested raw 1182; max 300; truncated=False; concurrency=2).
+
+All checked main same-origin links returned success (2xx/3xx treated as ok in harness).
+
+## Console warnings (verbatim)
+
+Observed on all **38** Chromium-measured page×profile rows:
+
+```
+The resource https://contract.place/assets/SourceSerif4-Regular.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+```
+
+## WebKit / iPhone 13
+
+NOT_MEASURED for all 19 pages:
+
+```
+BrowserType.launch failed: MiniBrowser missing shared library libevent-2.1.so.7 (Host system is missing dependencies; apt install not permitted by task). PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1 still fails at runtime.
+```
+
+## Cloudflare beacon
+
+- `beacon.min.js` **not** present in DOM on any of 38 Chromium measurements.
+- CSP `securitypolicyviolation` events: **none** recorded.
+- Therefore blocked-by-CSP: **not observed** (script absent).
+
