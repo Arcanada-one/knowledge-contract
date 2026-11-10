@@ -187,6 +187,27 @@ python3 -B -m unittest tools.test_assessed_coverage_oracle -v
 Exit codes: `0` pass, `1` fail, `3` unknown, `2` usage. Layer N (N01–N06) is
 **NOT_MEASURED**. This oracle is not production trust, admission or authority.
 
+## RM-04 workgraph reconcile harness
+
+`reconcile_workgraph.py` is an **isolated replay / dry-run** that compares a
+roadmap definition (`roadmap/dependencies.json` shape) with a synthetic tracker
+snapshot (`rm04-tracker-snapshot/1`). It reports bindings, unbound RMs,
+missing / excess / reversed edges, external edges and typed disagreements. It
+never repairs state, never calls Muneral or a tracker API, and never merges
+conflicting statuses.
+
+```sh
+python3 -B tools/reconcile_workgraph.py \
+  --definition roadmap/dependencies.json \
+  --snapshot /path/to/synthetic-snapshot.json
+python3 -B -m unittest tools.test_reconcile_workgraph -v
+```
+
+Exit codes: `0` agreement, `1` disagreement / typed refusal (JSON report always),
+`2` usage or unreadable input. Reason codes include `duplicate_rm_binding`,
+`conflicting_status`, `reversed_edge`, `missing_edge`, `excess_edge`,
+`external_depends_on`, `unknown_rm_label`, `unbound_rm`.
+
 ## Retrieval-context checker
 
 `verify_retrieval_context.py` binds the accepted retrieval-and-context paper
