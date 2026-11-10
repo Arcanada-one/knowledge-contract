@@ -76,7 +76,12 @@ class CiWorkflowTests(unittest.TestCase):
         job = self.jobs["corpus-map"]
         self.assertIn("fetch-depth: 0", job)
         self.assertIn("python3 -B -m unittest tools.test_verify_corpus_map -v", job)
+        self.assertIn("python3 -B -m unittest tools.test_project_corpus_map -v", job)
         self.assertIn("tools/verify_corpus_map.py --repo .", job)
+        self.assertIn("tools/project_corpus_map.py", job)
+        self.assertIn("--expect-blob a7b2fb8cde305b8fe4145df1ee7d7179478fdd60", job)
+        self.assertIn("reference/foundations/projections/corpus-map-a7b2fb8c", job)
+        self.assertIn("--check", job)
         self.assertIn("['commit'] = 'main'", job)
         self.assertIn('test "$status" -eq 1', job)
         self.assertIn("tools/build_corpus_map_v2_inventory.py --check", job)
