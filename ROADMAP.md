@@ -13,7 +13,7 @@ updated: 2026-11-08
 
 This is the complete reading map of the current agreed publication and research programme, not a claim that every future question has been anticipated. It covers the English corpus, readable naming, Russian and Simplified Chinese editions, primary-source assessment, the foundations sequence, evidence recovery and practical validation. Muneral remains the execution authority; these files define outputs and acceptance criteria, not a second task system.
 
-The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The catalogue contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The foundations introduction remains a `research-draft`. The new naming and roadmap revision is a repository proposal until ordinarily accepted. It has not changed the live website or index.
+The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. PR89 separately proposes a 31st research-draft document, Meaning Geometry; this does not modify the old baseline or imply source/index admission. Meaning Bridge remains a `research-draft`. Editorial integration stays a proposal until ordinarily accepted. It has not changed the live website or index.
 
 **Engineering execution is paused by the operator because agent quotas are exhausted.** Reading, theory, translation, editorial correction and preparation of bounded tests can continue with the Brain roles. No server job, implementation assignment, deployment or new paid experiment is dispatched by this roadmap. Resumption requires the operator's direction; a date is not invented.
 
@@ -27,12 +27,12 @@ Default foundations preparation proceeds through Meaning Bridge, Semantic Bridge
 
 | Workstream | Current artifact boundary | Next output | Acceptance boundary |
 | --- | --- | --- | --- |
-| Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 30 documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
+| Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 31 proposed documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
 | Russian and Chinese Editions | PR76 has 13 of 30 author drafts per language | Write the remaining 17 per language; assess all 60 target documents; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
 | Source Audit | Historical bibliography screening is not full primary reading | Read sources supporting actual current claims and document novelty boundaries | Exact cited basis, explicit unavailable material, no borrowed claim presented as original |
 | Semantic Bridge | Separate specification not yet complete | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
 | Transformation Algebra | Existing conditional paper, incomplete planned extension | Extend that same paper with typed profiles and countermodels | Precise assumptions and reconstruction limits; no parallel competing article |
-| Semantic Geometry | Standalone work planned | Define representation, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
+| Semantic Geometry | Complete PR89 research draft with independently scoped mathematical review; release not accepted | Maintain bounded representations, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
 | Semantic Verification | Separate specification planned | Link claims, assumptions, exact versions, methods and observed outcomes | Proof, model check, implementation test and empirical comparison remain separate |
 | Meaning Controls | New study planned | Derive examples now; report runs only when actually executed | Rights-cleared inputs, declared oracles, denominators, failures and limitations |
 | Open Review | Existing contribution rules | Clear public guidance for humans and agents to submit version-specific objections | A reproducible objection can change or retract a claim; agreement count is not evidence |
@@ -58,7 +58,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
 | [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
 | [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused. |
-| [Semantic Geometry](roadmap/TASKS.md#rm-12) | A standalone current geometry manuscript remains planned. |
+| [Semantic Geometry](roadmap/TASKS.md#rm-12) | The complete PR89 research draft received a scoped mathematical review; catalogue acceptance, release and held-out benchmarks remain separate. |
 | [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
 | [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |

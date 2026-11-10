@@ -19,10 +19,11 @@ Knowledge Contract connects knowledge to the conditions under which it can be in
 | How does knowledge survive processing? | [Knowledge Transformations](papers/constrained-transformations/PAPER.md) | [Context Assembly](papers/retrieval-and-context-composition/PAPER.md) |
 | How do we inspect and revise a claim? | [Evidence and Falsification](papers/evidence-and-falsification/PAPER.md) | [Knowledge Revision](papers/revision-and-governance/PAPER.md) |
 | What must an implementation check? | [Contract Core](engineering/specifications/knowledge-contract-core/SPECIFICATION.md) | [Knowledge Operations](engineering/specifications/contract-family/SPECIFICATION.md), [Status Model](engineering/specifications/status-model/SPECIFICATION.md) |
+| How should representations be compared? | [Meaning Geometry](papers/geometry-of-semantic-representations/PAPER.md), a research draft with bounded mathematical review | [Meaning in Context](papers/semantic-objects-and-context/PAPER.md); proximity is not logical entailment or authorization |
 | What was actually observed? | [Engineering studies](engineering/studies/README.md) | [Claim–evidence index](engineering/studies/evidence-index.json), including limitations and negative results |
 | How can an agent access the publication? | [Publication Interfaces](appendices/api-integration/APPENDIX.md) | [Context Package](engineering/specifications/context-package/SPECIFICATION.md), [Reuse Policy](engineering/specifications/reuse-policy/SPECIFICATION.md) |
 
-The [complete document register](DOCUMENTS.md) lists all 30 catalogue works with readable names. They comprise nine scientific papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The foundations introduction is identified as a research draft; a catalogue entry is not a claim of external peer review or production readiness.
+The [complete document register](DOCUMENTS.md) lists all 31 proposed catalogue works with readable names. They comprise ten scientific papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The foundations introduction is identified as a research draft; a catalogue entry is not a claim of external peer review or production readiness.
 
 ## Read, inspect and obtain the source
 
