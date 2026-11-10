@@ -10,7 +10,9 @@ writes bindings, statuses or edges. Exit non-zero when disagreements exist.
 Tracker snapshot schema ``rm04-tracker-snapshot/1``:
 
 - ``tasks``: opaque ``id``, ``title``, ``status``, optional ``rm_label`` binding
-  claim (or ``binding`` alias).
+  claim (or ``binding`` alias). Dual-key support is retained: when both are
+  present they must agree exactly; contradictory non-null aliases refuse with
+  ``alias_conflict`` and select neither claim.
 - ``edges``: ``from`` = dependent task id, ``to`` = prerequisite task id,
   ``type`` in ``depends_on`` | ``related_to``.
 
@@ -57,6 +59,7 @@ RELATED_TO_ORIENTATIONS = frozenset({ORIENTATION_ORDERED, ORIENTATION_UNVERIFIED
 
 REASON_OK = "agreement"
 REASON_DUPLICATE_RM_BINDING = "duplicate_rm_binding"
+REASON_ALIAS_CONFLICT = "alias_conflict"
 REASON_CONFLICTING_STATUS = "conflicting_status"
 REASON_REVERSED_EDGE = "reversed_edge"
 REASON_ADVISORY_DIRECTION_UNVERIFIED = "advisory_direction_unverified"
@@ -71,6 +74,7 @@ REASON_INPUT_ERROR = "input_error"
 DISAGREEMENT_REASONS = frozenset(
     {
         REASON_DUPLICATE_RM_BINDING,
+        REASON_ALIAS_CONFLICT,
         REASON_CONFLICTING_STATUS,
         REASON_REVERSED_EDGE,
         REASON_ADVISORY_DIRECTION_UNVERIFIED,
@@ -169,12 +173,28 @@ def load_definition(data: Any) -> dict[str, Any]:
     }
 
 
-def _task_rm_label(task: dict[str, Any]) -> str | None:
-    if "rm_label" in task and task["rm_label"] is not None:
-        return _require_str(task["rm_label"], "task.rm_label")
-    if "binding" in task and task["binding"] is not None:
-        return _require_str(task["binding"], "task.binding")
-    return None
+def _task_rm_claim(
+    task: dict[str, Any],
+) -> tuple[str | None, dict[str, str] | None]:
+    """Resolve optional ``rm_label`` / ``binding`` aliases.
+
+    Dual-key support is retained: when both non-null aliases are present they
+    must agree exactly. On conflict return ``(None, details)`` so neither
+    claim is selected (``alias_conflict``).
+    """
+    has_rm = "rm_label" in task and task["rm_label"] is not None
+    has_binding = "binding" in task and task["binding"] is not None
+    rm_val = _require_str(task["rm_label"], "task.rm_label") if has_rm else None
+    bind_val = _require_str(task["binding"], "task.binding") if has_binding else None
+    if rm_val is not None and bind_val is not None:
+        if rm_val != bind_val:
+            return None, {"rm_label": rm_val, "binding": bind_val}
+        return rm_val, None
+    if rm_val is not None:
+        return rm_val, None
+    if bind_val is not None:
+        return bind_val, None
+    return None, None
 
 
 def load_snapshot(data: Any) -> dict[str, Any]:
@@ -200,14 +220,16 @@ def load_snapshot(data: Any) -> dict[str, Any]:
         seen_ids.add(tid)
         title = _require_str(t.get("title"), f"snapshot.tasks[{i}].title")
         status = _require_str(t.get("status"), f"snapshot.tasks[{i}].status")
-        tasks_out.append(
-            {
-                "id": tid,
-                "title": title,
-                "status": status,
-                "rm_label": _task_rm_label(t),
-            }
-        )
+        label, alias_conflict = _task_rm_claim(t)
+        entry: dict[str, Any] = {
+            "id": tid,
+            "title": title,
+            "status": status,
+            "rm_label": label,
+        }
+        if alias_conflict is not None:
+            entry["alias_conflict"] = alias_conflict
+        tasks_out.append(entry)
     edges_out: list[dict[str, str]] = []
     for i, edge in enumerate(_require_list(doc.get("edges", []), "snapshot.edges")):
         e = _require_mapping(edge, f"snapshot.edges[{i}]")
@@ -275,6 +297,21 @@ def reconcile(
     unknown_labels: list[dict[str, str]] = []
     statuses_by_rm: dict[str, set[str]] = defaultdict(set)
     for task in snapshot["tasks"]:
+        conflict = task.get("alias_conflict")
+        if conflict is not None:
+            add_disagreement(
+                REASON_ALIAS_CONFLICT,
+                (
+                    f"snapshot task {task['id']} has conflicting rm_label="
+                    f"{conflict['rm_label']} and binding={conflict['binding']}; "
+                    "neither claim selected"
+                ),
+                task_id=task["id"],
+                rm_label=conflict["rm_label"],
+                binding=conflict["binding"],
+            )
+            # Never prefer one alias; do not claim either RM from this task.
+            continue
         label = task["rm_label"]
         if label is None:
             continue

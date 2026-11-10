@@ -221,9 +221,10 @@ python3 -B -m unittest tools.test_reconcile_workgraph -v
 
 Exit codes: `0` agreement, `1` disagreement / typed refusal (JSON report always),
 `2` usage or unreadable input. Reason codes include `duplicate_rm_binding`,
-`conflicting_status`, `reversed_edge`, `advisory_direction_unverified`,
-`missing_edge`, `excess_edge`, `external_depends_on`, `unknown_rm_label`,
-`unbound_rm`.
+`alias_conflict` (both `rm_label` and `binding` present and disagree; neither
+selected; identical dual keys are accepted), `conflicting_status`,
+`reversed_edge`, `advisory_direction_unverified`, `missing_edge`,
+`excess_edge`, `external_depends_on`, `unknown_rm_label`, `unbound_rm`.
 
 ## Retrieval-context checker
 

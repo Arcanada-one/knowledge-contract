@@ -19,6 +19,7 @@ from tools.reconcile_workgraph import (
     ORIENTATION_ORDERED,
     ORIENTATION_UNVERIFIED,
     REASON_ADVISORY_DIRECTION_UNVERIFIED,
+    REASON_ALIAS_CONFLICT,
     REASON_CONFLICTING_STATUS,
     REASON_DUPLICATE_RM_BINDING,
     REASON_EXCESS_EDGE,
@@ -192,6 +193,95 @@ class ReconcileWorkgraphControls(unittest.TestCase):
                 )
                 self.assertNotIn(REASON_REVERSED_EDGE, unverified["reason_codes"])
                 self.assertNotIn([frm, to], unverified["edges"]["informs_matched"])
+
+    def test_alias_conflict_refuses_both_claims(self):
+        """Contradictory rm_label vs binding on one task → alias_conflict; neither selected."""
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        # One otherwise matching task carries both aliases; strip the separate
+        # RM-B claim so neither conflicting label can be selected.
+        for task in snapshot["tasks"]:
+            if task.get("rm_label") == "RM-A":
+                task["binding"] = "RM-B"
+            elif task.get("rm_label") == "RM-B":
+                del task["rm_label"]
+        report = reconcile(definition, snapshot)
+        self.assertFalse(report["agreement"])
+        self.assertTrue(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
+        self.assertIn(REASON_ALIAS_CONFLICT, report["reason_codes"])
+        self.assertNotIn("RM-A", report["bindings"])
+        self.assertNotIn("RM-B", report["bindings"])
+        detail = next(
+            d for d in report["disagreements"] if d["reason_code"] == REASON_ALIAS_CONFLICT
+        )
+        self.assertEqual(detail["details"]["rm_label"], "RM-A")
+        self.assertEqual(detail["details"]["binding"], "RM-B")
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            def_path = tmp_path / "def.json"
+            snap_path = tmp_path / "snap.json"
+            def_path.write_text(dumps_deterministic(definition), encoding="utf-8")
+            snap_path.write_text(dumps_deterministic(snapshot), encoding="utf-8")
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    "-B",
+                    str(TOOL),
+                    "--definition",
+                    str(def_path),
+                    "--snapshot",
+                    str(snap_path),
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(proc.returncode, 0, proc.stderr)
+            cli_report = json.loads(proc.stdout)
+            self.assertIn(REASON_ALIAS_CONFLICT, cli_report["reason_codes"])
+            self.assertNotIn("RM-A", cli_report.get("bindings", {}))
+            self.assertNotIn("RM-B", cli_report.get("bindings", {}))
+            self.assertEqual(cli_report["effects"], "none")
+
+    def test_rm_label_alone_binds(self):
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        report = reconcile(definition, snapshot)
+        self.assertTrue(report["agreement"])
+        self.assertEqual(report["reason_codes"], [REASON_OK])
+        self.assertEqual(report["bindings"]["RM-A"], "syn-0001")
+        self.assertEqual(report["bindings"]["RM-B"], "syn-0002")
+        self.assertEqual(report["bindings"]["RM-C"], "syn-0003")
+
+    def test_binding_alias_alone_binds(self):
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        for task in snapshot["tasks"]:
+            label = task.pop("rm_label", None)
+            if label is not None:
+                task["binding"] = label
+        report = reconcile(definition, snapshot)
+        self.assertTrue(report["agreement"])
+        self.assertEqual(report["reason_codes"], [REASON_OK])
+        self.assertEqual(report["bindings"]["RM-A"], "syn-0001")
+        self.assertEqual(report["bindings"]["RM-B"], "syn-0002")
+        self.assertEqual(report["bindings"]["RM-C"], "syn-0003")
+
+    def test_identical_dual_aliases_accepted(self):
+        definition = _mini_definition()
+        snapshot = _agreeing_mini_snapshot(definition)
+        for task in snapshot["tasks"]:
+            label = task.get("rm_label")
+            if label is not None:
+                task["binding"] = label
+        report = reconcile(definition, snapshot)
+        self.assertTrue(report["agreement"])
+        self.assertEqual(report["reason_codes"], [REASON_OK])
+        self.assertNotIn(REASON_ALIAS_CONFLICT, report["reason_codes"])
+        self.assertEqual(report["bindings"]["RM-A"], "syn-0001")
+        self.assertEqual(report["bindings"]["RM-B"], "syn-0002")
+        self.assertEqual(report["bindings"]["RM-C"], "syn-0003")
 
     def test_duplicate_registration_refuses_both(self):
         definition = _mini_definition()
