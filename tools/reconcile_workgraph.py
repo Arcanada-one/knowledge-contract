@@ -28,12 +28,17 @@ Snapshot option ``related_to_orientation`` (also CLI
 ``--related-to-orientation``):
 
 - ``ordered``: compare exact from→to; a reverse advisory observation is
-  ``reversed_edge``.
+  ``reversed_edge`` only (do not also emit ``missing_edge`` for that same
+  expected pair). The pair is not matched; raw observed from/to are preserved
+  in the ``reversed_edge`` detail. A genuinely absent advisory pair (neither
+  direction stored) still emits ``missing_edge``.
 - ``unverified`` (default): tracker ``related_to`` orientation is not assumed
   order-preserving. A reverse advisory observation is neither a match nor an
   accepted reversal; it is reported as ``advisory_direction_unverified`` and
-  keeps exit non-zero / hold. ``depends_on`` comparisons stay ordered always.
-  External ``related_to`` edges stay classified separately.
+  keeps exit non-zero / hold (already non-duplicating vs ``missing_edge``).
+  ``depends_on`` comparisons stay ordered always. External ``related_to``
+  edges stay classified separately. A reversal is never an equivalent /
+  undirected match in any mode.
 
 External edges (an endpoint outside the bound RM task set) are classified
 separately and never satisfy a ``requires`` edge. A ``depends_on`` external edge
@@ -386,6 +391,7 @@ def reconcile(
     observed_depends: set[tuple[str, str]] = set()
     observed_related: set[tuple[str, str]] = set()
     direction_unverified_pairs: set[tuple[str, str]] = set()
+    reversed_advisory_pairs: set[tuple[str, str]] = set()
     external_edges: list[dict[str, Any]] = []
     unknown_endpoint_edges: list[dict[str, Any]] = []
 
@@ -451,6 +457,8 @@ def reconcile(
                 observed_related.add(pair)
             elif rev in expected_related:
                 if orientation == ORIENTATION_ORDERED:
+                    # Dedup: reversed_edge covers this expected pair; skip missing.
+                    reversed_advisory_pairs.add(rev)
                     add_disagreement(
                         REASON_REVERSED_EDGE,
                         "related_to edge is reversed relative to informs_not_blocks",
@@ -497,6 +505,9 @@ def reconcile(
     for pair in sorted(expected_related - observed_related):
         if pair in direction_unverified_pairs:
             # Covered by advisory_direction_unverified; do not also count as missing.
+            continue
+        if pair in reversed_advisory_pairs:
+            # Covered by reversed_edge in ordered mode; do not also count as missing.
             continue
         add_disagreement(
             REASON_MISSING_EDGE,

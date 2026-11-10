@@ -147,7 +147,13 @@ class ReconcileWorkgraphControls(unittest.TestCase):
             )
 
     def test_advisory_mutant_reversed_one_pair_ordered_and_unverified(self):
-        """Each of four mutants reverses exactly one advisory pair."""
+        """Each of four mutants reverses exactly one advisory pair.
+
+        Ordered-mode dedup (adjusted assertions): for the reversed expected
+        pair emit exactly one ``reversed_edge`` and zero ``missing_edge`` for
+        that pair (no duplicate missing); pair not matched; raw stored
+        observed from/to preserved; CLI exit non-zero; effects none.
+        """
         definition = json.loads(DEFINITION_PATH.read_text(encoding="utf-8"))
         base = build_synthetic_snapshot_from_definition(definition)
         rm_task = _rm_to_task(base)
@@ -179,6 +185,56 @@ class ReconcileWorkgraphControls(unittest.TestCase):
                     REASON_ADVISORY_DIRECTION_UNVERIFIED, ordered["reason_codes"]
                 )
                 self.assertNotIn([frm, to], ordered["edges"]["informs_matched"])
+                # Adjusted: ordered reversal must NOT also emit missing_edge
+                # for the same expected advisory pair (dedup rule).
+                self.assertNotIn(REASON_MISSING_EDGE, ordered["reason_codes"])
+                reversed_for_pair = [
+                    d
+                    for d in ordered["disagreements"]
+                    if d["reason_code"] == REASON_REVERSED_EDGE
+                    and d["details"].get("expected_from") == frm
+                    and d["details"].get("expected_to") == to
+                ]
+                self.assertEqual(len(reversed_for_pair), 1)
+                detail = reversed_for_pair[0]["details"]
+                self.assertEqual(detail["observed_from"], tid_to)
+                self.assertEqual(detail["observed_to"], tid_from)
+                missing_for_pair = [
+                    m
+                    for m in ordered["edges"]["missing"]
+                    if m.get("dependent_rm") == frm
+                    and m.get("prerequisite_rm") == to
+                    and m.get("edge_type") == EDGE_RELATED
+                ]
+                self.assertEqual(missing_for_pair, [])
+                with tempfile.TemporaryDirectory() as tmp:
+                    tmp_path = Path(tmp)
+                    snap_path = tmp_path / "snap.json"
+                    snap_path.write_text(
+                        dumps_deterministic(snapshot), encoding="utf-8"
+                    )
+                    proc = subprocess.run(
+                        [
+                            sys.executable,
+                            "-B",
+                            str(TOOL),
+                            "--definition",
+                            str(DEFINITION_PATH),
+                            "--snapshot",
+                            str(snap_path),
+                            "--related-to-orientation",
+                            ORIENTATION_ORDERED,
+                        ],
+                        check=False,
+                        capture_output=True,
+                        text=True,
+                    )
+                    self.assertNotEqual(proc.returncode, 0, proc.stderr)
+                    cli_report = json.loads(proc.stdout)
+                    self.assertFalse(cli_report["agreement"])
+                    self.assertEqual(cli_report["effects"], "none")
+                    self.assertIn(REASON_REVERSED_EDGE, cli_report["reason_codes"])
+                    self.assertNotIn(REASON_MISSING_EDGE, cli_report["reason_codes"])
 
                 unverified = reconcile(
                     definition,
@@ -193,6 +249,68 @@ class ReconcileWorkgraphControls(unittest.TestCase):
                 )
                 self.assertNotIn(REASON_REVERSED_EDGE, unverified["reason_codes"])
                 self.assertNotIn([frm, to], unverified["edges"]["informs_matched"])
+                self.assertNotIn(REASON_MISSING_EDGE, unverified["reason_codes"])
+
+    def test_advisory_absent_both_directions_missing_edge_ordered(self):
+        """Advisory pair absent in both directions → missing_edge (ordered)."""
+        definition = json.loads(DEFINITION_PATH.read_text(encoding="utf-8"))
+        snapshot = build_synthetic_snapshot_from_definition(definition)
+        rm_task = _rm_to_task(snapshot)
+        frm, to = LITERAL_ADVISORY_PAIRS[0]
+        tid_from = rm_task[frm]
+        tid_to = rm_task[to]
+        snapshot["edges"] = [
+            e
+            for e in snapshot["edges"]
+            if not (
+                e["type"] == EDGE_RELATED
+                and (
+                    (e["from"] == tid_from and e["to"] == tid_to)
+                    or (e["from"] == tid_to and e["to"] == tid_from)
+                )
+            )
+        ]
+        report = reconcile(
+            definition, snapshot, related_to_orientation=ORIENTATION_ORDERED
+        )
+        self.assertFalse(report["agreement"])
+        self.assertTrue(report["disagreement_detected"])
+        self.assertEqual(report["effects"], "none")
+        self.assertIn(REASON_MISSING_EDGE, report["reason_codes"])
+        self.assertNotIn(REASON_REVERSED_EDGE, report["reason_codes"])
+        self.assertNotIn([frm, to], report["edges"]["informs_matched"])
+        missing_for_pair = [
+            m
+            for m in report["edges"]["missing"]
+            if m.get("dependent_rm") == frm
+            and m.get("prerequisite_rm") == to
+            and m.get("edge_type") == EDGE_RELATED
+        ]
+        self.assertEqual(len(missing_for_pair), 1)
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            snap_path = tmp_path / "snap.json"
+            snap_path.write_text(dumps_deterministic(snapshot), encoding="utf-8")
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    "-B",
+                    str(TOOL),
+                    "--definition",
+                    str(DEFINITION_PATH),
+                    "--snapshot",
+                    str(snap_path),
+                    "--related-to-orientation",
+                    ORIENTATION_ORDERED,
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(proc.returncode, 0, proc.stderr)
+            cli_report = json.loads(proc.stdout)
+            self.assertIn(REASON_MISSING_EDGE, cli_report["reason_codes"])
+            self.assertEqual(cli_report["effects"], "none")
 
     def test_alias_conflict_refuses_both_claims(self):
         """Contradictory rm_label vs binding on one task → alias_conflict; neither selected."""

@@ -200,13 +200,16 @@ conflicting statuses. Reports carry `disagreement_detected` (bool) and
 
 Advisory `informs_not_blocks` links keep the ordered source pair
 (`from` informs `to` but does not block `to`). Snapshot / CLI option
-`related_to_orientation` is `ordered` (exact from→to; reverse →
-`reversed_edge`) or `unverified` (default: reverse →
+`related_to_orientation` is `ordered` (exact from→to; reverse → exactly one
+`reversed_edge` for that expected pair, without a duplicate `missing_edge`;
+pair not matched; raw observed from/to kept in the detail; absent in both
+directions → `missing_edge`) or `unverified` (default: reverse →
 `advisory_direction_unverified`, exit non-zero / hold; not matched and not an
-accepted reversal). The 45 `depends_on` comparisons stay ordered; external
-`related_to` edges stay separate. Status conflict is the union of per-RM
-`tasks[].status` and `status_records[].status` (more than one distinct value →
-`conflicting_status`, no selected status).
+accepted reversal; already non-duplicating vs `missing_edge`). A reversal is
+never an equivalent/undirected match in any mode. The 45 `depends_on`
+comparisons stay ordered; external `related_to` edges stay separate. Status
+conflict is the union of per-RM `tasks[].status` and `status_records[].status`
+(more than one distinct value → `conflicting_status`, no selected status).
 
 ```sh
 python3 -B tools/reconcile_workgraph.py \
