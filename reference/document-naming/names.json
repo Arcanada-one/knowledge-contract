@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.document-names/1",
   "source_commit": "a0450428704fcd41b411203f2fc88c06c779610b",
-  "scope": "All 30 edition-1.1 catalogue documents; localized names are not completed body translations",
+  "scope": "All 31 edition-1.1 catalogue documents; localized names are not completed body translations",
   "columns": [
     "slug",
     "short_en",
