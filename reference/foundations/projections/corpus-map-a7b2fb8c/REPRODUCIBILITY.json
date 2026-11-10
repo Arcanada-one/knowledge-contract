@@ -1,0 +1,38 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "tools/project_corpus_map.py",
+    "--map",
+    "reference/foundations/corpus-map.json",
+    "--expect-blob",
+    "a7b2fb8cde305b8fe4145df1ee7d7179478fdd60",
+    "--out-dir",
+    "reference/foundations/projections/corpus-map-a7b2fb8c"
+  ],
+  "dependencies": {
+    "python_packages": [],
+    "note": "Generator uses the Python standard library only; no third-party packages."
+  },
+  "generator": {
+    "git_blob": "e5b92fad610322ac6c6518702ba152845fb504bb",
+    "path": "tools/project_corpus_map.py",
+    "pinned_at_commit": "e9cad2828ab44315a4f5941bbadd072e28ea074b"
+  },
+  "input": {
+    "git_blob": "a7b2fb8cde305b8fe4145df1ee7d7179478fdd60",
+    "path": "reference/foundations/corpus-map.json"
+  },
+  "outputs_sha256": {
+    "CANDIDATE": "2e71f56ecdf3c19391674b02022658f5ca8355b13a7ad008628ff675b4a08b4c",
+    "projection.html": "c4197b2f773e91744d7ac396e35283da2de6ef7a523424198b23ea60df965780",
+    "projection.json": "b726f5d5a48a5a36d3f429f71ceec7e84afdeb50c2ec06b8d5c203c0d3908e12",
+    "projection.txt": "e8132a2309b0214b65afe3ea18a166efb9717a90d62cbf075e9ca9fa5a3df7c7"
+  },
+  "python": {
+    "version": "3.12.3",
+    "version_observed_at_pin": "Python 3.12.3"
+  },
+  "record_type": "knowledge-corpus-map-projection-reproducibility/1",
+  "status": "candidate"
+}
