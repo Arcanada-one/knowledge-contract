@@ -63,6 +63,7 @@ responses had none). Raw HTTP bytes on those urllib responses are therefore
 | `SCREENSHOTS.sha256` | sha256 + byte size + path + profile for all 38 original PNGs |
 | `screenshots/` | Representative byte-exact PNG copies (under 15 MB) |
 | `README.md` | This note |
+| `ADDENDUM-20261110.md` | Later findings addendum (this PR head); original evidence hashes unchanged |
 
 ### `REPORT.md.txt`
 
