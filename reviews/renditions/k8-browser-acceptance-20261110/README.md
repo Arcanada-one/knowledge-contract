@@ -54,8 +54,12 @@ responses had none). Raw HTTP bytes on those urllib responses are therefore
 | --- | --- |
 | `report.json` | Redacted machine report |
 | `REPORT.md.txt` | Redacted human report (evidence artefact; see below) |
-| `REDACTION.md` | Exact substitution rules, counts, and hashes |
-| `redact_host_paths.py` | Deterministic redaction script |
+| `REDACTION.md` | Rule ids, after-strings, digests, counts, and hashes |
+| `redact_host_paths.py` | Deterministic redaction script (requires private mapping) |
+| `field_review_report.py` | Deterministic residual-field scanner for `report.json` |
+| `FIELD_REVIEW.json` | Machine output of the field review |
+| `FIELD_REVIEW.md` | Human-readable field review |
+| `test_redact_host_paths.py` | Synthetic unit tests (no private strings) |
 | `SCREENSHOTS.sha256` | sha256 + byte size + path + profile for all 38 original PNGs |
 | `screenshots/` | Representative byte-exact PNG copies (under 15 MB) |
 | `README.md` | This note |
@@ -132,4 +136,48 @@ matches `SCREENSHOTS.sha256`.
 - `zh-Hans_programme_mobile_chromium_Pixel7.png`
 
 Full private set size is about 123 MB across 38 PNGs. Hashes and sizes for all
-38 remain in `SCREENSHOTS.sha256`.
+38 remain in `SCREENSHOTS.sha256`. The 33 PNGs not committed in this PR are
+retrievable from the private review route below. Hashes alone are not
+independent acceptance. WebKit and search indexing remain NOT_MEASURED.
+
+## Private review route
+
+Private originals, all 38 PNGs, `MANIFEST.sha256`, and
+`REDACTION-MAPPING-PRIVATE.json` are published as a prerelease asset on the
+private repository `Arcanada-one/kc-corpus` (access requires Arcanada-one
+permission on that repo):
+
+| Item | Value |
+| --- | --- |
+| Repo | `Arcanada-one/kc-corpus` (private) |
+| Tag | `k8-browser-evidence-20261110` |
+| Asset | `k8-browser-evidence-20261110.tar.gz` |
+| Asset sha256 | `a889e4ecc6e71a27cd23e17f2699454e07d79969a212bf22de987f3da0790556` |
+
+Download:
+
+```text
+gh release download k8-browser-evidence-20261110 --repo Arcanada-one/kc-corpus
+```
+
+Verify the archive sha256, extract it, then reproduce the public redacted
+bytes:
+
+```text
+python3 -B redact_host_paths.py \
+  --mapping REDACTION-MAPPING-PRIVATE.json \
+  --src <extracted-dir> \
+  --dst /tmp/k8-redact-a
+```
+
+Expected redacted sha256 values are in `REDACTION.md`
+(`report.json` `78dd20f3…`, `REPORT.md` `4c0b557d…`). Run twice and confirm
+identical output. Rule before-strings stay in the private mapping; public text
+names only rule id, after-string, count, and before-string sha256.
+
+## Residual public trace
+
+Earlier commits on this PR branch (before the privacy repair) contained the
+literal host-local working-directory prefix in tracked files and in the PR
+description. History is not rewritten. This PR is intended to be squash-merged,
+so `main` will not contain that path from those earlier commits.
