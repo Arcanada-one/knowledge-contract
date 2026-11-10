@@ -1,3 +1,10 @@
+---
+title: "K8 real-browser acceptance evidence (redacted)"
+sources: none
+status: "Owner-reported KC-SWE worker evidence for Muneral b2ffbd14; not independent review"
+updated: 2026-11-10
+---
+
 # K8 real-browser acceptance evidence (redacted)
 
 Owner-reported KC-SWE worker evidence for Muneral `b2ffbd14`. This is **not**

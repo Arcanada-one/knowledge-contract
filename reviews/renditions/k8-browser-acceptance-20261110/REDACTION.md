@@ -1,3 +1,10 @@
+---
+title: "K8 browser-acceptance host-path redaction record"
+sources: none
+status: "Redaction reproduction record for Muneral b2ffbd14 browser evidence"
+updated: 2026-11-10
+---
+
 # K8 browser-acceptance host-path redaction record
 
 This directory publishes redacted worker evidence for Muneral `b2ffbd14`.
