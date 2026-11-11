@@ -72,7 +72,7 @@ Under fixed assessments, define support by
 \ \land\ \operatorname{Valid}(G,r).
 \]
 
-The validity predicate includes the relevant interpretation and applicability checks. All groups being combined are assessed within the same pinned requirement revision, source snapshot, and interpretation context. Separately valid assessments from incompatible snapshots do not establish joint support. Listing a group does not prove that its members support the requirement. In empirical use, that judgment requires independently assessed evidence or a sound supported rule.
+The validity predicate includes the relevant interpretation and applicability checks. Listing a group does not prove that its members support the requirement. In empirical use, that judgment requires independently assessed evidence or a sound supported rule.
 
 A composition decision \(z\) includes selected content, permitted transformations, ordering, modality, and delivery form. Its actual representation is \(\operatorname{Render}(z)\), with declared cost \(c\). Feasibility requires mandatory support, all other admission conditions, and
 
@@ -102,7 +102,7 @@ This establishes neither completeness of \(Z\) relative to all possible summarie
 
 ### Proposition 2. A restricted composition problem contains set cover
 
-Consider unit-cost, independent packages, no transformations or dependencies, and the requirement to cover every obligation using at most \(k\) packages. In this restricted instance, each package is delivered intact at its stated unit cost, so candidate support and delivered support coincide. Given a set-cover instance with universe \(U\) and subsets \(F_1,\ldots,F_n\), create one requirement per element of \(U\) and one package per \(F_i\), supporting exactly those requirements. The construction is polynomial, and selected packages cover all requirements exactly when their corresponding subsets cover \(U\).
+Consider unit-cost, independent packages, no transformations or dependencies, and the requirement to cover every obligation using at most \(k\) packages. Given a set-cover instance with universe \(U\) and subsets \(F_1,\ldots,F_n\), create one requirement per element of \(U\) and one package per \(F_i\), supporting exactly those requirements. The construction is polynomial, and selected packages cover all requirements exactly when their corresponding subsets cover \(U\).
 
 This reduction transfers the known combinatorial difficulty of set cover [2] to this special case. It does not imply that every practical query is difficult, that extraction itself is formally solved, or that a heuristic has a particular approximation ratio.
 
