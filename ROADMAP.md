@@ -57,12 +57,12 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Transformation Algebra](roadmap/TASKS.md#rm-08) | The transformation paper has conditional results; the planned algebra extension is not thereby complete. |
 | [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
 | [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
-| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; further checks require the actual matching task and protocol. |
+| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; further checks require a matching authorized task, predeclared protocol and measured evidence. |
 | [Semantic Geometry](roadmap/TASKS.md#rm-12) | The current Meaning Geometry manuscript is a research draft on source main; independent full-package review and held-out geometry evaluation remain open. |
 | [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
 | [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
-| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; authorized bounded verification may proceed. |
+| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; bounded verification may proceed only under the matching task, current authority and actual execution gates. |
 | [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
 | [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
 | [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
@@ -77,9 +77,9 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 
 A required edge means that the reviewed prerequisite output is needed for dependent acceptance or execution. It does not prohibit exploratory analysis. An advisory link informs work but never becomes a mandatory release gate. Output dependencies must be read by their names, not guessed from a numerical label.
 
-## 5. Practical validation: prepared work, not resumed engineering
+## 5. Practical validation under current authorization and evidence gates
 
-| Capability | Content to prepare now | Evidence needed after authorized engineering resumes |
+| Capability | Content to prepare or verify | Evidence required for bounded authorized engineering |
 | --- | --- | --- |
 | Observable agent runs | Specify the exact subject, attempted operation and required observations | Real run records and a useful positive control; a screenshot or schema alone is insufficient |
 | Faithful export | Define preservation of meaning-bearing fields, qualifiers and media | Tests of actual converter/renderer output, including omissions and unsafe structure |

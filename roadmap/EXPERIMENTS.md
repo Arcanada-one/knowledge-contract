@@ -7,7 +7,7 @@ updated: 2026-11-06
 
 # Verification and falsification plan
 
-> Current editorial note, 8 November 2026: names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). The foundations introduction already exists as a research draft. The operator has paused engineering execution; this plan is not an instruction to restart it. Later explicit per-document authorizations remain valid, and future research is not an unbounded release gate.
+> Editorial context (8 November 2026; execution direction updated 11 November): names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). At the 8 November checkpoint the operator had paused engineering execution. The operator restored availability on 11 November; [Active Work](EXECUTION_STATUS.md) now governs current work. This document alone authorizes no deployment, costly experiment or unrestricted execution; task, review, access and budget gates still apply.
 
 This is a prepared design for [the roadmap tasks](TASKS.md), not a report of new experiments. It combines exact mathematical obligations, bounded model checks, implementation tests and empirical studies without conflating their conclusions. The existing papers retain their own narrower evidence.
 
