@@ -1,0 +1,13 @@
+{
+  "missing": [
+    {
+      "capability_token": "synthetic-capability",
+      "reason": "synthetic"
+    }
+  ],
+  "outcome": "underdetermined",
+  "schema": "SyntheticNativeDecision/v1",
+  "stored_at_utc": "2026-01-01T00:00:00Z",
+  "task_id": "synthetic:task-c4",
+  "verdict": "U"
+}
