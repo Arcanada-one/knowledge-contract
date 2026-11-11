@@ -25,7 +25,7 @@ Take the finite carrier X₀ = X₁ = O = {0,1} and one step `n=1`. Define a rel
 4. **The weakened conclusion is false.** The successful relation pair (0,1) starts with P₁(0)=false and has p₁⁻(0)=0 but p₁⁺(1)=1. Thus a successful chain and valid local conditional contracts alone do not entail endpoint equality.
 5. **The stated proposition survives this test.** For the admitted successful pair (1,1), P₁(1)=true and endpoint equality holds. The countermodel violates a premise of the original theorem; it is **not a refutation** of that theorem.
 
-The producer-owned executable finite control is [tools/test_c03_initial_precondition.py](../../tools/test_c03_initial_precondition.py). Its six initial tests cover the one-step model; four additional tests cover two-step junctions. The module therefore has ten executable controls at this head. These finite checks do not prove the proposition for arbitrary sets or chains.
+The producer-owned executable finite control is [tools/test_c03_initial_precondition.py](../../tools/test_c03_initial_precondition.py). Its six initial tests cover the one-step model; four additional tests cover two-step junctions. The module therefore has ten executable controls at this head. The admitted-successful-path control enumerates the admitted relation pairs and compares **their actual endpoint observations**, not a constant to itself; an additional admitted pair (1,0) would invalidate that assertion. This makes the formerly tautological positive test informative without strengthening the paper's claim or turning the finite model into a general proof.
 
 ## Two-step controls: a non-vacuous junction boundary
 

@@ -38,9 +38,12 @@ class C03InitialPreconditionTests(unittest.TestCase):
                             for x, y in RELATION))
 
     def test_admitted_successful_path_preserves_endpoint(self):
-        self.assertIn((1, 1), RELATION)
-        self.assertTrue(precondition(1))
-        self.assertEqual(observation(1), observation(1))
+        # Enumerate all admitted successful paths; no self-equality tautology.
+        admitted = [(x, y) for x, y in RELATION if precondition(x)]
+        self.assertTrue(admitted, "at least one admitted path is needed")
+        for x, y in admitted:
+            with self.subTest(path=(x, y)):
+                self.assertEqual(observation(x), observation(y))
 
     def test_omitting_p1_allows_a_successful_path_that_loses_observation(self):
         self.assertIn((0, 1), RELATION)
