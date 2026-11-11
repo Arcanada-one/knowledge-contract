@@ -90,7 +90,7 @@ The planned study begins with a rule and its exception/attribution, a quantity w
 | Target work | Purpose and source |
 | --- | --- |
 | **Shared Vocabulary: Terms of Meaning and Knowledge Engineering** | Consistent English, Russian and Simplified Chinese terms; [glossary](reference/glossary/GLOSSARY.md) |
-| **Research Sources: Primary Literature and Related Work** | Bibliography, not a second foundational theory; [source](reference/bibliography/BIBLIOGRAPHY.md) |
+| **Research Foundations: Primary Literature and Related Work** | Bibliography, not a second foundational theory; [source](reference/bibliography/BIBLIOGRAPHY.md) |
 | **Source History: Provenance and Version Compatibility** | Origin, revisions and compatibility; [source](appendices/source-map/APPENDIX.md) |
 | **Publication Interfaces: Document Access and Representation Consistency** | Source, website, downloads and machine access; [source](appendices/api-integration/APPENDIX.md) |
 

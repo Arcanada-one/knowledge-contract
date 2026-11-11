@@ -82,3 +82,13 @@ The previous statement that the author had not performed a network clone in the 
 For site delivery: `contract-place-site` PR33 was merged at `f4b0eab1` and deployed successfully. KC-SWE reported a bounded 337-file served-byte comparison and 336 public HTTP-200 responses, excluding the expected 404 page. KC-Brain did not repeat those HTTP downloads; mobile display, index admission and native Knowledge Contract runtime status remain separate and unmeasured. Further site pin hardening is a distinct limited improvement, not a retroactive failure of the accepted PR33 delivery.
 
 Remaining: full hosted checks at the **new** PR97 head, correction of any source-title cross-references revealed by the publication validator, independent exact-head review, and explicit review of changed title/translation bindings. Historical evidence files and previous decisions remain immutable.
+
+## Final title-surface consistency follow-up (11 November, T1/T2)
+
+The exact-head real-checkout report from KC-SWE for PR #97 at `4ad4604c6b9fed2fd2294f071d8abe6ed50d988f` identified two remaining, narrow title mismatches after 12/12 reporter tests and 11/11 hosted checks passed. This is a subsequent correction, not a change to the earlier inventory evidence.
+
+- **T1 (programme)**: the current reader-facing bibliography link in `PROGRAMME.md` now says `Research Foundations: Primary Literature and Related Work`, in agreement with canonical front matter, H1 and the publication catalogue. The target path is unchanged.
+- **T2 (catalogue metadata)**: `publication-catalog.json` now gives `Knowledge Operations` the subtitle `Preconditions, Results and Transformation Obligations` and `Research Foundations` the subtitle `Primary Literature and Related Work`. These exact values are the portions following the colon in their canonical titles. Their `previous_title` fields remain untouched, preserving historical discoverability without presenting an obsolete display subtitle.
+- No slug, canonical path, evidence, requirement identifier, `previous_title`, indexed receipt, research argument or translated body is edited. Historical references and previously pinned reviewer text intentionally remain traceable. The other five fuzzy title reports are not admitted by similarity alone.
+
+The source-title consistency is **author-corrected, not independently accepted**. Apply existing publication/source/metadata/DCO/CI gates to the new commit; request a separate exact-head reviewer verdict on the final diff, including all display surfaces and rendition source binding. Do not infer translated-body fidelity, merged-source delivery, served-site or index admission.
