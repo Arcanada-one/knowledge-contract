@@ -89,11 +89,11 @@ class ReadableTitleControls(unittest.TestCase):
 
     def test_compiled_equal_anchor_needs_no_explicit_alias(self):
         title = 'Compiled Knowledge Artifacts and Reproducible Derivation'
-        raw = '---\\ntitle: "' + title + '"\\n---\\n\\n# ' + title + '\\n\\nScientific body.\\n'
+        raw = '---\ntitle: "' + title + '"\n---\n\n# ' + title + '\n\nScientific body.\n'
         result = rename_document(raw, title, 'Compiled Knowledge')
         self.assertNotIn('<a id=', result)
         self.assertIn('# Compiled Knowledge: Artifacts and Reproducible Derivation', result)
-        self.assertTrue(result.endswith('Scientific body.\\n'))
+        self.assertTrue(result.endswith('Scientific body.\n'))
 
     def test_repeated_locale_subtitle_rejected(self):
         rows = [['topic', 'Meaning Bridge', 'Мост смысла', 'Мост смысла: описание', '意义桥接', '含义说明']]
