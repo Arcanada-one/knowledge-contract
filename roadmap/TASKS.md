@@ -7,7 +7,7 @@ updated: 2026-11-08
 
 # Research and engineering work packages
 
-These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; Workgraph Reconciliation reconciles the bindings. No deadline or completion is invented. Proposed priorities: Immediate = immediate transparency/release enablement; Next = next substantive research/verification; Expansion = subsequent expansion and integration. The original planning baseline was 6 November 2026. The dated artifact observations below supersede any impression that an existing document is still absent; execution states remain unverified in Muneral. Engineering execution is paused by the operator.
+These are executable task definitions, not completed research. Public RM identifiers are stable roadmap references, not Muneral IDs. Execution ownership, acceptance and state remain in the existing work graph; Workgraph Reconciliation reconciles the bindings. No deadline or completion is invented. Proposed priorities: Immediate = immediate transparency/release enablement; Next = next substantive research/verification; Expansion = subsequent expansion and integration. The original planning baseline was 6 November 2026. The dated artifact observations below supersede any impression that an existing document is still absent; execution states remain unverified in Muneral. Engineering availability was restored by the operator on 11 November 2026; see [Active Work](EXECUTION_STATUS.md).
 
 KC-Brain and Agent-Brain retain analytical authorship, examples, scientific tests, interpretation and acceptance. SWE roles perform only the necessary server, task-registry, implementation or deployment operations with prepared inputs. A task naming SWE does not delegate scientific authorship. Each dependent task needs the named reviewed output, not closure of an entire research programme. Every task also uses the common evidence rules in [EXPERIMENTS.md](EXPERIMENTS.md).
 
@@ -27,7 +27,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Original gap (6 November 2026).** The source map is topical, not a complete accounting of historical definitions, laws and geometry proposals.
 
-**Work.** Inventory all documents in the pinned current catalogue (30 at the present baseline) by section and the historical I10/I12 leads. Map each relevant definition, proposition, counterexample and limitation to a current location or an explicit disposition. Separate absent exposition, unsupported claims, missing evidence and absent implementation; do not equate these gaps.
+**Work.** Inventory all documents in the pinned current catalogue (31 at `0892eeb1`; historical baseline 30) by section and the historical I10/I12 leads. Map each relevant definition, proposition, counterexample and limitation to a current location or an explicit disposition. Separate absent exposition, unsupported claims, missing evidence and absent implementation; do not equate these gaps.
 
 **Deliverables.** A version-pinned claim inventory, old-to-current crosswalk and gap ledger with source anchors.
 
@@ -35,7 +35,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Try to find a historical premise, exception or result not accounted for by the map; an omitted item reopens only the affected row.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-02"></a>
@@ -59,7 +59,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Remove a necessary assumption and inject an implementation defect. A checker unable to detect the intended defect cannot support that assertion; same-code reruns are not independent validation.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-03"></a>
@@ -83,7 +83,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Test a stale source pin, broken task anchor, missing task and blocked/no-evidence status. None may render as completed research.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-04"></a>
@@ -107,7 +107,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attempt duplicate registration and conflicting status updates. Reconciliation preserves one execution authority and reports disagreement.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-05"></a>
@@ -131,7 +131,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Use ambiguous intent, metaphor, context-dependent reference and conflicting norms to test whether the proposed account overclaims a universal reduction of human meaning.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-06"></a>
@@ -155,7 +155,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Seek earlier work that already supplies the claimed contribution; narrowing or abandoning a novelty claim is an acceptable result.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-07"></a>
@@ -179,7 +179,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Find a text pair collapsed into the same representation despite different required actions, or a round trip that drops a mandatory qualifier.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-08"></a>
@@ -203,7 +203,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attack domain congruence, noninjective reconstruction, incompatible observation interfaces, inconsistent premises, and claims of minimal residual size.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-09"></a>
@@ -227,7 +227,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Have the independent architect construct unseen cases that defeat the proposed rule; retain failures, annotation disagreement and dataset leakage findings.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-10"></a>
@@ -251,7 +251,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Search for vacuous success, hidden policy vetoes, inconsistent carriers, circular oracles and quantifier changes. Report unsuccessful searches with their actual bounds.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-11"></a>
@@ -261,7 +261,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 ## Scaled Checks: Scale bounded checks and connect them to implementation
 
-**Artifact observation (8 November 2026).** Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused.
+**Artifact observation (8 November 2026).** Existing finite checks do not establish production or arbitrary-scale correctness; subsequent scoped runs need observed evidence.
 
 **Priority:** Next · **Owner:** KC-SWE · **Required outputs:** Verification Records, Meaning Cases, Falsification Register.
 
@@ -275,7 +275,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Inject missing-edge, early-stop, wrong-root, inconsistent-oracle and vacuous-case mutations; surviving mutants are reported and explained.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-12"></a>
@@ -299,7 +299,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Construct threshold nontransitivity, collisions, norm changes and context-dependent nearest-neighbor reversals; a contradiction narrows or rejects the affected claim.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-13"></a>
@@ -323,7 +323,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Search for a system that looks precise only because it refuses everything, learns test labels, or uses similarity as an unexamined correctness oracle.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-14"></a>
@@ -347,7 +347,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Attempt metadata-hash substitution, omitted dependency, misleading similarity, wrong reader and context-budget truncation.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-15"></a>
@@ -371,7 +371,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Follow an allegedly supported guarantee to an unrelated test, stale build, stub or unsupported representation; downgrade that row instead of treating the matrix as proof.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-16"></a>
@@ -381,7 +381,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 ## Runtime Conformance: Run production-representative conformance and fault tests
 
-**Artifact observation (8 November 2026).** No all-system production conformance verdict; execution is paused.
+**Artifact observation (8 November 2026).** No all-system production conformance verdict; subsequent scoped runs need actual evidence.
 
 **Priority:** Next · **Owner:** Agent-SWE · **Required outputs:** Scaled Checks, Theory Traceability.
 
@@ -395,7 +395,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Mutate or bypass an actual gate and show the test observes the intended violation; zero downstream calls require a positive-path control.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-17"></a>
@@ -419,7 +419,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Insert a crucial exception in a table, footnote, image or different chapter and test whether a structurally valid artifact silently loses it.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-18"></a>
@@ -445,7 +445,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Change one source, request, reader grant or dependency while retaining the old artifact; stale acceptance must not silently survive.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-19"></a>
@@ -469,7 +469,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Force the interleaving that violates the claimed current-state property and check whether the implementation detects or prevents it.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-20"></a>
@@ -493,7 +493,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Test conditions where a simple baseline ties or wins and where safe rejection creates apparent speed improvements at the expense of usefulness.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-21"></a>
@@ -517,7 +517,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Find a translation or visual normalization that leaves topical similarity unchanged but reverses a scoped condition or numerical interpretation.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-22"></a>
@@ -541,7 +541,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Try to reproduce a historical conclusion from only available inputs; an inability is reported, not repaired by substituting a new result without disclosure.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-23"></a>
@@ -565,7 +565,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Seek a clearer-sounding edit that turns sufficient conditions into necessary ones, deletes a qualifier or increases confidence without evidence.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-24"></a>
@@ -589,7 +589,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Check for stale downstream theorems, unsupported catalogue entries, rewritten old evidence or a site serving a different source commit.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
 
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="rm-25"></a>
@@ -599,13 +599,13 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 ## Editorial Release: Finish the bounded editorial publication pass
 
-**Artifact observation (8 November 2026).** The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate.
+**Artifact observation (8 November 2026).** The current ten-paper reading catalogue has eight baseline papers and two foundations research drafts; historical editorial-pass counts remain distinct.
 
 **Priority:** Immediate · **Owner:** KC-Brain · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Unlimited research expansion must not prevent a readable, scientifically honest release of the existing corpus.
 
-**Work.** Freeze the current editorial inventory at the 29 catalogue documents, then review sections one document at a time with protected scientific content, genre-specific structure and exact repository changes. Include specifications, studies, glossary, bibliography and appendices. Repair material false claims locally; defer enrichment to this roadmap. Existing approved first/second-document publication work is preserved.
+**Work.** Freeze the current editorial inventory at the 31 documents of source main `0892eeb1` (retaining the historic 29-record snapshot as evidence), then review sections one document at a time with protected scientific content, genre-specific structure and exact repository changes. Include specifications, studies, glossary, bibliography and appendices. Repair material false claims locally; defer enrichment to this roadmap. Existing approved first/second-document publication work is preserved.
 
 **Deliverables.** A finite per-document editorial checklist, reviewed changes and verified publication handoffs.
 
@@ -613,4 +613,4 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Adversarial check.** Reject a pass that only looks scholarly, hides an unsupported result, lacks source traceability or treats successful typography/CI as scientific validation.
 
-**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Engineering execution is paused, including earlier notes that said server/registry work was ready to start.
+**Preparation boundary.** Analysis follows the directly authorized scope; dependent acceptance needs the named reviewed outputs. Authorized bounded engineering may proceed under current Muneral ownership and applicable review/CI/access gates; a task description does not itself grant release authority.
