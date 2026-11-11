@@ -25,7 +25,7 @@ Take the finite carrier X₀ = X₁ = O = {0,1} and one step `n=1`. Define a rel
 4. **The weakened conclusion is false.** The successful relation pair (0,1) starts with P₁(0)=false and has p₁⁻(0)=0 but p₁⁺(1)=1. Thus a successful chain and valid local conditional contracts alone do not entail endpoint equality.
 5. **The stated proposition survives this test.** For the admitted successful pair (1,1), P₁(1)=true and endpoint equality holds. The countermodel violates a premise of the original theorem; it is **not a refutation** of that theorem.
 
-The producer-owned executable finite control is [tools/test_c03_initial_precondition.py](../../tools/test_c03_initial_precondition.py). Its six tests enumerate the stipulated transition relation and distinguish admitted and non-admitted traces. These tests check precisely this small constructed model; they are not a proof for arbitrary sets or arbitrary chain length.
+The producer-owned executable finite control is [tools/test_c03_initial_precondition.py](../../tools/test_c03_initial_precondition.py). Its six initial tests cover the one-step model; four additional tests cover two-step junctions. The module therefore has ten executable controls at this head. These finite checks do not prove the proposition for arbitrary sets or chains.
 
 ## Two-step controls: a non-vacuous junction boundary
 
@@ -51,9 +51,7 @@ the manuscript, not new theorems, not a proof for all chains and not approved
 evidence edges.
 
 The test module now has ten finite checks (six one-step plus four two-step).
-The C03 workflow invokes the whole module, but the added four cases require
-a new exact-head hosted execution readback and separate non-author review
-before any broader acceptance claim.
+The C03 workflow invokes the full module. Hosted run [42977546592](https://github.com/Arcanada-one/knowledge-contract/actions/runs/42977546592), job `130380040412`, executed ten named tests on candidate `abb23fc56d4184e6804ae2034bc4cd95b240e5a3` (`Ran 10 tests`, `OK`, no C03 skips). This is execution evidence only; separate non-author scientific review of the expanded model is still required.
 
 ## Interpretation and non-implications
 
@@ -63,4 +61,6 @@ For the proposed knowledge-corpus-map/2 inventory, this audit is a **candidate i
 
 ## Acceptance boundary
 
-An independent reviewer (Agent-Brain or another designated non-author reviewer) should compare both pinned source versions, recalculate the six finite checks in a fresh environment, verify the universal initial-state premise of the paper's proposition and identify any premise-satisfying counterexample if one exists. Report *review* separately from source identity, local finite model, CI, merge, site rendering and index admission. No edit to the publication catalogue, v1/v2 graph, evidence register or Muneral task state is made by this candidate audit.
+C03 review-test inventory: 10 executable tests
+
+An independent reviewer (Agent-Brain or another designated non-author reviewer) should compare both pinned source versions and all tests at the exact candidate head: six one-step and four two-step controls at this revision. Recompute admitted and inadmissible paths, check each non-vacuous junction obligation and the corresponding omitted-premise mutant, verify the universal initial-state premise of the paper's proposition, and report any premise-satisfying counterexample. Verify the hosted test names and count separately: this inventory is a structural check, not scientific proof. Report *review* separately from source identity, local finite model, CI, merge, site rendering and index admission. No edit to the publication catalogue, v1/v2 graph, evidence register or Muneral task state is made by this candidate audit.

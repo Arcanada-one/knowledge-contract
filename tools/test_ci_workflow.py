@@ -1,3 +1,4 @@
+import ast
 import re
 import unittest
 from pathlib import Path
@@ -186,6 +187,58 @@ class C03WorkflowTests(unittest.TestCase):
 
     def test_missing_job_is_refused(self):
         self.assertTrue(c03_workflow_errors(self.text.replace("  c03-finite-controls:", "  other:")))
+
+
+# Keep the exact-head scientific review checklist aligned with the executable
+# finite controls. This is structural coverage, not evidence of hosted execution.
+C03_NOTE = CI.parents[2] / "reviews" / "corpus-map-v2" / "C03_INITIAL_PRECONDITION.md"
+C03_TESTS = CI.parents[2] / "tools" / "test_c03_initial_precondition.py"
+C03_INVENTORY = re.compile(r"^C03 review-test inventory: ([0-9]+) executable tests$", re.M)
+
+
+def c03_inventory_errors(note: str, test_source: str) -> list[str]:
+    declared = C03_INVENTORY.findall(note)
+    if len(declared) != 1:
+        return ["expected exactly one review inventory"]
+    if "recalculate the six finite checks" in note:
+        return ["obsolete review requirement"]
+    try:
+        syntax = ast.parse(test_source)
+    except SyntaxError:
+        return ["unparseable test module"]
+    methods = [
+        method for suite in syntax.body if isinstance(suite, ast.ClassDef)
+        for method in suite.body if isinstance(method, (ast.FunctionDef, ast.AsyncFunctionDef))
+        and method.name.startswith("test_")
+    ]
+    return [] if int(declared[0]) == len(methods) else [
+        f"review inventory {declared[0]} differs from {len(methods)} test definitions"
+    ]
+
+
+class C03ReviewInventoryTests(unittest.TestCase):
+    def setUp(self):
+        self.note = C03_NOTE.read_text(encoding="utf-8")
+        self.source = C03_TESTS.read_text(encoding="utf-8")
+
+    def test_actual_review_inventory_matches_defined_tests(self):
+        self.assertEqual(c03_inventory_errors(self.note, self.source), [])
+
+    def test_stale_six_test_review_inventory_fails(self):
+        mutant = self.note.replace("C03 review-test inventory: 10 executable tests",
+                                   "C03 review-test inventory: 6 executable tests")
+        self.assertTrue(c03_inventory_errors(mutant, self.source))
+
+    def test_removed_test_method_fails_review_inventory(self):
+        mutant = self.source.replace("def test_", "def disabled_", 1)
+        self.assertNotEqual(mutant, self.source)
+        self.assertTrue(c03_inventory_errors(self.note, mutant))
+
+    def test_missing_or_duplicate_review_inventory_fails(self):
+        marker = "C03 review-test inventory: 10 executable tests"
+        for mutant in (self.note.replace(marker, ""), self.note + "\n" + marker + "\n"):
+            with self.subTest():
+                self.assertTrue(c03_inventory_errors(mutant, self.source))
 
 
 if __name__ == "__main__":
