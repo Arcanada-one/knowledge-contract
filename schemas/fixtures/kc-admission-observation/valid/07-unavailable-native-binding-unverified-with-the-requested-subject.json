@@ -1,0 +1,16 @@
+{
+  "claims": {
+    "consumer_delivery": "NOT_MEASURED",
+    "issuer_authority": "NOT_MEASURED",
+    "publication": "NOT_MEASURED",
+    "runtime_authorization": "NOT_MEASURED",
+    "source_admission": "NOT_MEASURED"
+  },
+  "claims_scope": "resolver-outcome-observation-only",
+  "reason": "native_binding_unverified",
+  "schema": "KCAdmissionObservation/v1",
+  "status": "unavailable",
+  "subject": {
+    "task_id": "synthetic:task-requested"
+  }
+}

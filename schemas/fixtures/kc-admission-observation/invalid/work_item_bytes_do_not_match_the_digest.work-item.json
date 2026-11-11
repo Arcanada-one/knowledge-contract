@@ -1,0 +1,9 @@
+{
+  "contract_digest": "sha256:c33e03e41f200b83263e8bbb0d92514076b829ac4d6bb0abb1664ed4e540091a",
+  "intake_record_id": "synthetic:sha256:c33e03e41f200b83263e8bbb0d92514076b829ac4d6bb0abb1664ed4e540091a",
+  "record_id": "synthetic:evidence-c3",
+  "schema": "SyntheticWorkItemRecord/v1",
+  "task_id": "synthetic:task-c3",
+  "work_item_id": "synthetic:work-item-c3"
+}
+ 
