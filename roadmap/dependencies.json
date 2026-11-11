@@ -296,6 +296,6 @@
       "kind": "informs_not_blocks"
     }
   ],
-  "display_revision": "2026-11-08",
-  "execution_pause": "Engineering paused by operator; analytical authorship continues; not a Muneral state update"
+  "display_revision": "2026-11-11",
+  "execution_pause": "rescinded_by_operator_2026-11-11; see roadmap/EXECUTION_STATUS.md; not a Muneral state update"
 }
