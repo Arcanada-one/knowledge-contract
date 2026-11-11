@@ -71,6 +71,10 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** Repository roadmap exists; this naming/status revision has not been deployed to the website.
 
+**Current delivery observation (11 November 2026).** Knowledge Contract source `161a01afb1b756adf059ea2e1cbdd0dca29d83a2` was rebuilt and deployed through contract-place-site `1d29084ad34f42f4f5279acd9b4836eec9ee5565` (PR #34, deploy run 42985309321). KC-SWE reported byte-equivalent EN/RU/zh-Hans served roadmap pages after stripping the Cloudflare beacon; DEUS-Arcana reported its scoped check 5 PASS. These are attributed delivery observations, not new scientific admission, fresh Muneral reconciliation, or a proof that a later source edit is already served.
+
+**Next revision boundary.** For a new source commit, rebuild the site from that exact pin, carry the changed source status into every localized roadmap, and inspect the new served readback after review/CI/deployment. Preserve the historical 8 November observation above.
+
 **Priority:** Immediate · **Owner:** KC-SWE · **Required outputs:** none.
 
 **Original gap (6 November 2026).** Readers need a visible separation between current results, known limits and planned research.
