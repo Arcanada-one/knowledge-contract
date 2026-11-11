@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -22,6 +24,7 @@ from tools.project_corpus_map import (
     REASON_STATUS_RELABEL,
     REASON_UNKNOWN_ENDPOINT,
     REASON_UNSUPPORTED_EDGE_KIND,
+    REASON_VALIDATION_FAILED,
     dumps_deterministic,
     git_blob_sha1,
     project_bytes,
@@ -33,6 +36,15 @@ from tools.project_corpus_map import (
 
 REPO = Path(__file__).resolve().parents[1]
 MAP_PATH = REPO / "reference/foundations/corpus-map.json"
+OUT_DIR = REPO / "reference/foundations/projections/corpus-map-a7b2fb8c"
+PIN_PATH = OUT_DIR / "REPRODUCIBILITY.json"
+READER_GUIDE = REPO / "reference/foundations/CORPUS_MAP_PROJECTION_READING.md"
+G2_BLOCK_SHA256 = "6a41c4704d86459e011a30c952bddd09b53200e4e8d712bfc6e7913aeeaae2b3"
+EXPECTED_SCC = {"D01", "D03", "D05", "D06", "D07", "D08"}
+# Pinned C03 initial-state premise (P1(x0)); used by premise-preservation controls.
+PINNED_C03_P1_X0 = (
+    "The initial state x0 satisfies the first local precondition P1(x0)"
+)
 BASE = json.loads(MAP_PATH.read_text(encoding="utf-8"))
 RAW = MAP_PATH.read_bytes()
 INPUT_PATH = MAP_PATH.as_posix()
@@ -42,6 +54,26 @@ def mutate_raw(change) -> bytes:
     data = copy.deepcopy(BASE)
     change(data)
     return dumps_deterministic(data).encode("utf-8")
+
+
+def claim_source(claim_id: str) -> dict:
+    return next(c for c in BASE["claims"] if c["id"] == claim_id)
+
+
+def assert_c03_p1_x0_premise_preserved(data: dict) -> None:
+    """Explicit premise-preservation gate (test-module only; not a generator reason code).
+
+    Fails when the pinned C03 P1(x0) premise text is missing or altered relative
+    to the accepted corpus-map pin. Named explicitly so mutant reports can
+    distinguish this check from expect_blob_mismatch pin/drift refusal.
+    """
+    claim = next(c for c in data["claims"] if c["id"] == "C03")
+    premises = claim.get("premises") or []
+    if PINNED_C03_P1_X0 not in premises:
+        raise AssertionError(
+            "c03_p1_x0_premise_preservation_failed: "
+            f"pinned P1(x0) text missing or altered; premises={premises!r}"
+        )
 
 
 class ProjectCorpusMapControls(unittest.TestCase):
@@ -92,12 +124,35 @@ class ProjectCorpusMapControls(unittest.TestCase):
             for name in dig1:
                 self.assertEqual((d1 / name).read_bytes(), (d2 / name).read_bytes())
 
-    def test_claim_premises_and_limits_verbatim(self):
+    def assert_claim_premises_limits_verbatim(self, claim_id: str) -> None:
+        """Field-exact premises/limits from pinned map into projection JSON (C01 style)."""
         projection, _, _ = project_bytes(RAW, INPUT_PATH, PINNED_BLOB)
-        src = next(c for c in BASE["claims"] if c["id"] == "C01")
-        out = next(n for n in projection["nodes"] if n["id"] == "C01")
+        src = claim_source(claim_id)
+        out = next(n for n in projection["nodes"] if n["id"] == claim_id)
         self.assertEqual(out["premises"], src["premises"])
         self.assertEqual(out["limits"], src["limits"])
+
+    def test_claim_premises_and_limits_verbatim(self):
+        self.assert_claim_premises_limits_verbatim("C01")
+
+    def test_c03_premises_and_limits_verbatim_in_projection_and_renders(self):
+        # Positive: C03 (composition/preservation claim under F01-related D03 path)
+        # preserves all five premises, including P1(x0), and limits
+        # byte/field-exact from the pinned map into JSON and rendered txt/html.
+        projection, text, page = project_bytes(RAW, INPUT_PATH, PINNED_BLOB)
+        src = claim_source("C03")
+        out = next(n for n in projection["nodes"] if n["id"] == "C03")
+        self.assertEqual(src["premises"][0], PINNED_C03_P1_X0)
+        self.assertEqual(out["premises"], src["premises"])
+        self.assertEqual(out["limits"], src["limits"])
+        self.assertEqual(len(out["premises"]), 5)
+        self.assertIn(PINNED_C03_P1_X0, out["premises"])
+        for premise in src["premises"]:
+            self.assertIn(premise, text)
+            self.assertIn(premise, page)
+        self.assertIn(src["limits"], text)
+        self.assertIn(src["limits"], page)
+        assert_c03_p1_x0_premise_preserved(BASE)
 
     def test_reading_link_cycles_reported_not_as_proofs(self):
         projection, text, page = project_bytes(RAW, INPUT_PATH, PINNED_BLOB)
@@ -179,8 +234,9 @@ class ProjectCorpusMapControls(unittest.TestCase):
         scc = next(
             c
             for c in projection["reading_link_cycles"]["components"]
-            if set(c) >= {"D01", "D03", "D05", "D06", "D07", "D08"}
+            if set(c) >= EXPECTED_SCC
         )
+        self.assertEqual(set(scc), EXPECTED_SCC)
         self.assertEqual(scc, ["D01", "D03", "D05", "D06", "D07", "D08"])
         forbidden_fragments = (
             "D03 <-> D05",
@@ -209,6 +265,71 @@ class ProjectCorpusMapControls(unittest.TestCase):
         # Real forward edge stays in the relations layer only.
         self.assertIn("D05 -[reading-interface]-> D06", text)
 
+    def test_reproducibility_pin_matches_generator_input_and_outputs(self):
+        pin = json.loads(PIN_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(pin["record_type"], "knowledge-corpus-map-projection-reproducibility/1")
+        self.assertEqual(pin["status"], "candidate")
+        self.assertEqual(pin["input"]["git_blob"], PINNED_BLOB)
+        self.assertEqual(pin["input"]["path"], "reference/foundations/corpus-map.json")
+        map_blob = subprocess.check_output(
+            ["git", "-C", str(REPO), "rev-parse", "HEAD:reference/foundations/corpus-map.json"],
+            text=True,
+        ).strip()
+        gen_blob = subprocess.check_output(
+            ["git", "-C", str(REPO), "rev-parse", "HEAD:tools/project_corpus_map.py"],
+            text=True,
+        ).strip()
+        self.assertEqual(map_blob, pin["input"]["git_blob"])
+        self.assertEqual(gen_blob, pin["generator"]["git_blob"])
+        self.assertEqual(pin["generator"]["path"], "tools/project_corpus_map.py")
+        self.assertEqual(
+            pin["generator"]["pinned_at_commit"],
+            "e9cad2828ab44315a4f5941bbadd072e28ea074b",
+        )
+        self.assertEqual(
+            pin["command"],
+            [
+                "python3",
+                "-B",
+                "tools/project_corpus_map.py",
+                "--map",
+                "reference/foundations/corpus-map.json",
+                "--expect-blob",
+                PINNED_BLOB,
+                "--out-dir",
+                "reference/foundations/projections/corpus-map-a7b2fb8c",
+            ],
+        )
+        self.assertEqual(pin["dependencies"]["python_packages"], [])
+        self.assertTrue(pin["python"]["version"])
+        for name, digest in pin["outputs_sha256"].items():
+            actual = hashlib.sha256((OUT_DIR / name).read_bytes()).hexdigest()
+            self.assertEqual(actual, digest, name)
+        # Fresh double rebuild in empty dirs must match the pinned digests byte-for-byte.
+        # Use the documented relative input path (absolute paths change provenance and digests).
+        relative_input = "reference/foundations/corpus-map.json"
+        projection, text, page = project_bytes(RAW, relative_input, PINNED_BLOB)
+        with tempfile.TemporaryDirectory() as tmp:
+            d1 = Path(tmp) / "a"
+            d2 = Path(tmp) / "b"
+            dig1 = write_outputs(d1, projection, text, page)
+            dig2 = write_outputs(d2, projection, text, page)
+            self.assertEqual(dig1, dig2)
+            self.assertEqual(dig1, pin["outputs_sha256"])
+            for name in dig1:
+                self.assertEqual((d1 / name).read_bytes(), (OUT_DIR / name).read_bytes())
+
+    def test_g2_reader_guide_authored_block_hash(self):
+        text = READER_GUIDE.read_text(encoding="utf-8")
+        bullets = [ln for ln in text.splitlines(keepends=True) if ln.startswith("- ")]
+        self.assertEqual(len(bullets), 7)
+        block = "".join(bullets)
+        if not block.endswith("\n"):
+            block += "\n"
+        self.assertEqual(hashlib.sha256(block.encode("utf-8")).hexdigest(), G2_BLOCK_SHA256)
+        self.assertIn("Authored by KC-Brain, 2026-11-10", text)
+        self.assertIn(PINNED_BLOB, text)
+
     def test_semantics_copied_from_map(self):
         projection, _, _ = project_bytes(RAW, INPUT_PATH, PINNED_BLOB)
         self.assertEqual(
@@ -231,11 +352,110 @@ class ProjectCorpusMapControls(unittest.TestCase):
         return err
 
     def test_wrong_expect_blob_refused(self):
-        self.refuse(RAW, "0" * 40, REASON_EXPECT_BLOB_MISMATCH)
+        err = self.refuse(RAW, "0" * 40, REASON_EXPECT_BLOB_MISMATCH)
+        self.assertEqual(err.reason_code, "expect_blob_mismatch")
+        self.assertIn("does not match --expect-blob", err.message)
+
+    def test_c03_deleted_p1_x0_premise_refused(self):
+        # Negative (a): delete C03 P1(x0). Generator structural validation still
+        # accepts the mutant; the declared generator gate that fires against the
+        # pinned blob is expect_blob_mismatch (pin/drift, not premise-semantics).
+        # An explicit test-module premise-preservation assertion also fails.
+        def change(d):
+            c03 = next(c for c in d["claims"] if c["id"] == "C03")
+            c03["premises"] = [p for p in c03["premises"] if p != PINNED_C03_P1_X0]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            mutant_path = Path(tmp) / "corpus-map-c03-deleted-p1.json"
+            raw = mutate_raw(change)
+            mutant_path.write_bytes(raw)
+            mutant = json.loads(mutant_path.read_text(encoding="utf-8"))
+            from tools.verify_corpus_map import validate
+
+            self.assertTrue(validate(mutant)["structural_valid"])
+            with self.assertRaises(AssertionError) as preserve_ctx:
+                assert_c03_p1_x0_premise_preserved(mutant)
+            self.assertIn(
+                "c03_p1_x0_premise_preservation_failed",
+                str(preserve_ctx.exception),
+            )
+            err = self.refuse(raw, PINNED_BLOB, REASON_EXPECT_BLOB_MISMATCH)
+            self.assertEqual(err.reason_code, "expect_blob_mismatch")
+            self.assertIn("does not match --expect-blob", err.message)
+            # With a matching mutant blob the projector would accept the map —
+            # confirming no generator premise-semantics gate exists beyond the pin.
+            projection, _, _ = project_bytes(raw, mutant_path.as_posix(), git_blob_sha1(raw))
+            out = next(n for n in projection["nodes"] if n["id"] == "C03")
+            self.assertNotIn(PINNED_C03_P1_X0, out["premises"])
+
+    def test_c03_altered_p1_x0_premise_refused(self):
+        # Negative (b): alter C03 P1(x0) text. Same gate profile as delete:
+        # structural validation passes; generator refusal is expect_blob_mismatch
+        # only (pin/drift); explicit c03_p1_x0_premise_preservation_failed also fires.
+        altered = "ALTERED " + PINNED_C03_P1_X0
+
+        def change(d):
+            c03 = next(c for c in d["claims"] if c["id"] == "C03")
+            c03["premises"] = [
+                altered if p == PINNED_C03_P1_X0 else p for p in c03["premises"]
+            ]
+
+        with tempfile.TemporaryDirectory() as tmp:
+            mutant_path = Path(tmp) / "corpus-map-c03-altered-p1.json"
+            raw = mutate_raw(change)
+            mutant_path.write_bytes(raw)
+            mutant = json.loads(mutant_path.read_text(encoding="utf-8"))
+            from tools.verify_corpus_map import validate
+
+            self.assertTrue(validate(mutant)["structural_valid"])
+            with self.assertRaises(AssertionError) as preserve_ctx:
+                assert_c03_p1_x0_premise_preserved(mutant)
+            self.assertIn(
+                "c03_p1_x0_premise_preservation_failed",
+                str(preserve_ctx.exception),
+            )
+            err = self.refuse(raw, PINNED_BLOB, REASON_EXPECT_BLOB_MISMATCH)
+            self.assertEqual(err.reason_code, "expect_blob_mismatch")
+            self.assertIn("does not match --expect-blob", err.message)
+            projection, _, _ = project_bytes(raw, mutant_path.as_posix(), git_blob_sha1(raw))
+            out = next(n for n in projection["nodes"] if n["id"] == "C03")
+            self.assertIn(altered, out["premises"])
+            self.assertNotIn(PINNED_C03_P1_X0, out["premises"])
 
     def test_unknown_endpoint_refused(self):
         raw = mutate_raw(lambda d: d["relations"][0].update(to="ABSENT-NODE"))
-        self.refuse(raw, git_blob_sha1(raw), REASON_UNKNOWN_ENDPOINT)
+        err = self.refuse(raw, git_blob_sha1(raw), REASON_UNKNOWN_ENDPOINT)
+        self.assertEqual(err.reason_code, "unknown_endpoint")
+        self.assertIn("dangling relation", err.message)
+
+    def test_kind_swap_endpoint_typing_refused(self):
+        # Swap kinds between otherwise valid edges so endpoint types violate each kind.
+        def change(d):
+            uses = next(e for e in d["relations"] if e["kind"] == "uses-term")
+            reading = next(e for e in d["relations"] if e["kind"] == "reading-interface")
+            uses["kind"], reading["kind"] = reading["kind"], uses["kind"]
+
+        raw = mutate_raw(change)
+        err = self.refuse(raw, git_blob_sha1(raw), REASON_VALIDATION_FAILED)
+        self.assertEqual(err.reason_code, "validation_failed")
+        self.assertIn("relation type mismatch", err.message)
+
+    def test_planning_requires_masquerading_as_relation_refused(self):
+        # Inject a roadmap_nodes.requires pair into the typed relations layer.
+        def change(d):
+            node = next(n for n in d["roadmap_nodes"] if n.get("requires"))
+            dep = node["requires"][0]
+            d["relations"].append({
+                "from": node["id"],
+                "kind": "requires",
+                "to": dep,
+                "basis": "fixture-planning-masquerade",
+            })
+
+        raw = mutate_raw(change)
+        err = self.refuse(raw, git_blob_sha1(raw), REASON_UNSUPPORTED_EDGE_KIND)
+        self.assertEqual(err.reason_code, "unsupported_edge_kind")
+        self.assertIn("unknown relation kind requires", err.message)
 
     def test_duplicate_id_refused(self):
         raw = mutate_raw(lambda d: d["terms"].append(copy.deepcopy(d["terms"][0])))
