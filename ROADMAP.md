@@ -13,9 +13,9 @@ updated: 2026-11-08
 
 This is the complete reading map of the current agreed publication and research programme, not a claim that every future question has been anticipated. It covers the English corpus, readable naming, Russian and Simplified Chinese editions, primary-source assessment, the foundations sequence, evidence recovery and practical validation. Muneral remains the execution authority; these files define outputs and acceptance criteria, not a second task system.
 
-The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. PR89 separately proposes a 31st research-draft document, Meaning Geometry; this does not modify the old baseline or imply source/index admission. Meaning Bridge remains a `research-draft`. Editorial integration stays a proposal until ordinarily accepted. It has not changed the live website or index.
+The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The current source `main` at `0892eeb1` contains 31 documents, including the Meaning Geometry research draft; the historical 30-document baseline remains pinned. Meaning Bridge also remains `research-draft`. Site PR33 merged `f4b0eab1` and deployed the 31-document reader; neither site delivery nor source merge proves index admission.
 
-**Engineering execution is paused by the operator because agent quotas are exhausted.** Reading, theory, translation, editorial correction and preparation of bounded tests can continue with the Brain roles. No server job, implementation assignment, deployment or new paid experiment is dispatched by this roadmap. Resumption requires the operator's direction; a date is not invented.
+**Current direction (11 November 2026):** the operator restored engineering capacity. [Active Work](roadmap/EXECUTION_STATUS.md) governs autonomous scientific and engineering activity under existing review, CI, access and deployment gates. New paid experiments or widened permissions still need distinct authorization.
 
 ## 2. A finite release and an open research programme
 
@@ -23,16 +23,16 @@ A release is a finite selected set of exact documents and explicit limitations. 
 
 Default foundations preparation proceeds through Meaning Bridge, Semantic Bridge, Transformation Algebra, Semantic Geometry, Semantic Verification and Meaning Controls. The existing [foundations plan](roadmap/FOUNDATIONS_RELEASE_PLAN.md) retains the detailed per-unit acceptance and review obligations. Its six-unit reviewable package is a threshold for the default new foundations programme, not a new retroactive prohibition on later explicitly authorized paper revisions, material-error correction, the first-two-paper review or roadmap publication. The baseline exact-consumer pilot does not inherit advanced geometry prerequisites. A new costly run needs separate authorization and a prepared protocol.
 
-## 3. Work that can progress during the pause
+## 3. Active work under the existing gates
 
 | Workstream | Current artifact boundary | Next output | Acceptance boundary |
 | --- | --- | --- | --- |
 | Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 31 proposed documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
-| Russian and Chinese Editions | PR76 has 13 of 30 author drafts per language | Write the remaining 17 per language; assess all 60 target documents; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
+| Russian and Chinese Editions | PR76 at `9723b478` has 25 author-draft bodies per language; four overlap main; six missing per language from the current 31 | Author the remaining 12 bodies, then assess all 62 locale slots; count historical 30 separately; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
 | Source Audit | Historical bibliography screening is not full primary reading | Read sources supporting actual current claims and document novelty boundaries | Exact cited basis, explicit unavailable material, no borrowed claim presented as original |
 | Semantic Bridge | Separate specification not yet complete | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
 | Transformation Algebra | Existing conditional paper, incomplete planned extension | Extend that same paper with typed profiles and countermodels | Precise assumptions and reconstruction limits; no parallel competing article |
-| Semantic Geometry | Complete PR89 research draft with independently scoped mathematical review; release not accepted | Maintain bounded representations, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
+| Semantic Geometry | Research draft in source main `0892eeb1` and deployed site `f4b0eab1`; index admission remains separate | Maintain bounded representations, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
 | Semantic Verification | Separate specification planned | Link claims, assumptions, exact versions, methods and observed outcomes | Proof, model check, implementation test and empirical comparison remain separate |
 | Meaning Controls | New study planned | Derive examples now; report runs only when actually executed | Rights-cleared inputs, declared oracles, denominators, failures and limitations |
 | Open Review | Existing contribution rules | Clear public guidance for humans and agents to submit version-specific objections | A reproducible objection can change or retract a claim; agreement count is not evidence |
@@ -57,12 +57,12 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Transformation Algebra](roadmap/TASKS.md#rm-08) | The transformation paper has conditional results; the planned algebra extension is not thereby complete. |
 | [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
 | [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
-| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; engineering is paused. |
+| [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; further checks require the actual matching task and protocol. |
 | [Semantic Geometry](roadmap/TASKS.md#rm-12) | The complete PR89 research draft received a scoped mathematical review; catalogue acceptance, release and held-out benchmarks remain separate. |
 | [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
 | [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
-| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; execution is paused. |
+| [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; authorized bounded verification may proceed. |
 | [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
 | [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
 | [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
@@ -71,7 +71,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Evidence Recovery](roadmap/TASKS.md#rm-22) | Retained evidence and documented historical recovery gaps coexist. |
 | [Editorial Evaluation](roadmap/TASKS.md#rm-23) | The published single-section pilot reports a tie, not a measured general benefit. |
 | [Corpus Integration](roadmap/TASKS.md#rm-24) | Typed reading maps exist; links are not proof and proposal pins are not a coherent release. |
-| [Editorial Release](roadmap/TASKS.md#rm-25) | The accepted English baseline includes seven revised baseline papers and the foundations draft; future research remains separate. |
+| [Editorial Release](roadmap/TASKS.md#rm-25) | The current ten-paper reading inventory comprises eight baseline papers and two foundations research drafts; historical editorial-pass counts remain distinct. |
 
 <!-- /WORKSTREAM_TABLE -->
 
@@ -100,7 +100,7 @@ These streams refine Theory Traceability, Runtime Conformance, Agent Application
 
 Repository completion for this editorial pass means: all catalogue titles follow the naming canon; the complete reading list exists; all old canonical paths remain valid; roadmap deliverables are understandable; translation counts and remaining work are explicit; and checks report what they actually tested. It does not mean that all planned research is finished.
 
-The later site handoff uses the accepted source SHA, not a mutable branch name. It must update cards, navigation, page titles, alternate-language labels, downloads, search metadata and roadmap links coherently. Compare actual served text, formulas, tables, source pins and mobile/desktop rendering. Do not reinterpret a title translation as a body translation. The [handoff specification](roadmap/SITE_DELIVERY.md) remains subordinate to the engineering pause.
+The later site handoff uses the accepted source SHA, not a mutable branch name. It must update cards, navigation, page titles, alternate-language labels, downloads, search metadata and roadmap links coherently. Compare actual served text, formulas, tables, source pins and mobile/desktop rendering. Do not reinterpret a title translation as a body translation. The [handoff specification](roadmap/SITE_DELIVERY.md) follows the currently authorized engineering work under explicit publication and deployment gates.
 
 ## 7. Sources, review and state
 
