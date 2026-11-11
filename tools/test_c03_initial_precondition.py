@@ -53,5 +53,79 @@ class C03InitialPreconditionTests(unittest.TestCase):
         self.assertEqual(list(range(1, n)), [])
 
 
+class C03TwoStepJunctionControls(unittest.TestCase):
+    """n=2 finite controls, with genuine junction obligations, not a general proof."""
+
+    def test_two_step_true_junction_and_admitted_chain(self):
+        second_relation = ((1, 1),)
+        q1 = lambda y: y == 1
+        second_input_observation = lambda y: y
+        # The junction antecedent is true somewhere: unlike n=1 this is not empty.
+        self.assertTrue(any(q1(y) for y in DOMAIN))
+        self.assertTrue(all(not q1(y) or precondition(y) for y in DOMAIN))
+        self.assertTrue(all(not q1(y) or observation(y) == second_input_observation(y)
+                            for y in DOMAIN))
+        self.assertTrue(all(not precondition(x) or q1(y)
+                            for x, y in RELATION))
+        self.assertTrue(all(not precondition(x) or observation(x) == observation(y)
+                            for x, y in second_relation))
+        chains = {(x, z) for x, y in RELATION for m, z in second_relation
+                  if y == m}
+        self.assertEqual(chains, {(0, 1), (1, 1)})
+        self.assertTrue(all(not precondition(x) or observation(x) == observation(z)
+                            for x, z in chains))
+        self.assertIn((1, 1), chains)
+        self.assertTrue(precondition(1))
+
+    def test_two_step_still_needs_initial_premise(self):
+        second_relation = ((1, 1),)
+        q1 = lambda y: y == 1
+        second_input_observation = lambda y: y
+        self.assertTrue(all(not q1(y) or precondition(y) for y in DOMAIN))
+        self.assertTrue(all(not q1(y) or observation(y) == second_input_observation(y)
+                            for y in DOMAIN))
+        self.assertIn((0, 1), RELATION)
+        self.assertIn((1, 1), second_relation)
+        self.assertFalse(precondition(0))
+        self.assertNotEqual(observation(0), observation(1))
+
+    def test_missing_observation_junction_can_lose_endpoint(self):
+        second_relation = ((1, 1),)
+        q1 = lambda y: y == 1
+        second_input_observation = lambda y: 1 - y
+        second_output_observation = lambda y: 1 - y
+        self.assertTrue(all(not q1(y) or precondition(y) for y in DOMAIN))
+        self.assertTrue(all(not precondition(x) or
+                            second_input_observation(x) == second_output_observation(y)
+                            for x, y in second_relation))
+        self.assertFalse(all(not q1(y) or
+                             observation(y) == second_input_observation(y)
+                             for y in DOMAIN))
+        self.assertIn((1, 1), RELATION)
+        self.assertIn((1, 1), second_relation)
+        self.assertTrue(precondition(1))
+        self.assertNotEqual(observation(1), second_output_observation(1))
+
+    def test_missing_precondition_junction_can_lose_endpoint(self):
+        second_relation = ((0, 0), (1, 1))
+        q1 = lambda y: y == 1
+        second_precondition = lambda y: y == 0
+        second_output_observation = lambda _y: 0
+        self.assertTrue(any(second_precondition(y) for y in DOMAIN))
+        self.assertTrue(all(not second_precondition(x) or postcondition(y)
+                            for x, y in second_relation))
+        self.assertTrue(all(not second_precondition(x) or
+                            observation(x) == second_output_observation(y)
+                            for x, y in second_relation))
+        self.assertTrue(all(not q1(y) or observation(y) == observation(y)
+                            for y in DOMAIN))
+        self.assertFalse(all(not q1(y) or second_precondition(y)
+                             for y in DOMAIN))
+        self.assertIn((1, 1), RELATION)
+        self.assertIn((1, 1), second_relation)
+        self.assertTrue(precondition(1))
+        self.assertNotEqual(observation(1), second_output_observation(1))
+
+
 if __name__ == "__main__":
     unittest.main()

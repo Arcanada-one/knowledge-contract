@@ -27,6 +27,34 @@ Take the finite carrier X₀ = X₁ = O = {0,1} and one step (n=1). Define a rel
 
 The producer-owned executable finite control is [tools/test_c03_initial_precondition.py](../../tools/test_c03_initial_precondition.py). Its six tests enumerate the stipulated transition relation and distinguish admitted and non-admitted traces. These tests check precisely this small constructed model; they are not a proof for arbitrary sets or arbitrary chain length.
 
+## Two-step controls: a non-vacuous junction boundary
+
+The original one-step witness has no junction to test. A separate finite two-step
+control now enumerates the successful chains of (T_1=\{(0,1),(1,1)\}) and
+(T_2=\{(1,1)\}) on (\{0,1\}). With (P_1=P_2=(x=1)),
+(Q_1=(y=1)) and identity observations, both junction implications are
+checked on **both intermediate states**, including the state where (Q_1) is
+true. The two successful paths are (0\to1\to1) (not initially admitted;
+endpoint observation changes) and (1\to1\to1) (initially admitted; endpoint
+observation is retained). Thus the initial-premise omission also fails with an
+actual, non-empty junction, rather than only in the vacuous (n=1) case.
+
+Two adverse finite controls separately omit each junction implication while
+keeping the other: complementing both protected observations on step 2 leaves
+local observation preservation intact but breaks inter-step observation
+compatibility; alternatively a step-2 precondition true only at 0 and an
+output observation constantly 0 preserve step-2 local guarantees on admitted
+pairs, while the reachable intermediate state 1 fails (Q_1\Rightarrow P_2).
+Both produce an admitted-initial-state path that loses its final observation.
+These are executable checks of the *existing* two-junction distinctions in
+the manuscript, not new theorems, not a proof for all chains and not approved
+evidence edges.
+
+The test module now has ten finite checks (six one-step plus four two-step).
+The C03 workflow invokes the whole module, but the added four cases require
+a new exact-head hosted execution readback and separate non-author review
+before any broader acceptance claim.
+
 ## Interpretation and non-implications
 
 This shows that P₁(x₀) cannot be **omitted from these sufficient assumptions** without invalidating the general implication. It does not establish that the premise is logically necessary for *every particular* successful path: some inadmissible paths may happen to preserve the observation. Nor does it establish termination, existence of an output for every admitted input, semantic fidelity of the observation functions, permission to execute, or production conformance. The original source's induction proof, not this finite control, addresses the positive result for arbitrary finite chains under all its premises.
