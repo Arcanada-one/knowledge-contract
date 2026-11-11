@@ -17,7 +17,7 @@ The paper's sufficient condition includes P₁(x₀) before invoking partial cor
 
 ## Countermodel to the weakened inference
 
-Take the finite carrier X₀ = X₁ = O = {0,1} and one step (n=1). Define a relation T₁ = {(0,1),(1,1)}. Let P₁(x) mean x=1; let Q₁(y) be true for every y. Both protected observations are identity: p₁⁻(x)=x and p₁⁺(y)=y.
+Take the finite carrier X₀ = X₁ = O = {0,1} and one step `n=1`. Define a relation T₁ = {(0,1),(1,1)}. Let P₁(x) mean x=1; let Q₁(y) be true for every y. Both protected observations are identity: p₁⁻(x)=x and p₁⁺(y)=y.
 
 1. **Local Hoare partial correctness holds.** For each (x,y) in T₁, P₁(x) implies Q₁(y); the only admitted input is x=1.
 2. **Local observation preservation holds for admitted transitions.** The sole admitted pair is (1,1) and its observations are equal.
@@ -30,21 +30,21 @@ The producer-owned executable finite control is [tools/test_c03_initial_precondi
 ## Two-step controls: a non-vacuous junction boundary
 
 The original one-step witness has no junction to test. A separate finite two-step
-control now enumerates the successful chains of (T_1=\{(0,1),(1,1)\}) and
-(T_2=\{(1,1)\}) on (\{0,1\}). With (P_1=P_2=(x=1)),
-(Q_1=(y=1)) and identity observations, both junction implications are
-checked on **both intermediate states**, including the state where (Q_1) is
-true. The two successful paths are (0\to1\to1) (not initially admitted;
-endpoint observation changes) and (1\to1\to1) (initially admitted; endpoint
+control now enumerates the successful chains of `T1={(0,1),(1,1)}` and
+`T2={(1,1)}` on `{0,1}`. With `P1=P2=(x==1)`,
+`Q1=(y==1)` and identity observations, both junction implications are
+checked on **both intermediate states**, including the state where `Q1` is
+true. The two successful paths are `0→1→1` (not initially admitted;
+endpoint observation changes) and `1→1→1` (initially admitted; endpoint
 observation is retained). Thus the initial-premise omission also fails with an
-actual, non-empty junction, rather than only in the vacuous (n=1) case.
+actual, non-empty junction, rather than only in the vacuous `n=1` case.
 
 Two adverse finite controls separately omit each junction implication while
 keeping the other: complementing both protected observations on step 2 leaves
 local observation preservation intact but breaks inter-step observation
 compatibility; alternatively a step-2 precondition true only at 0 and an
 output observation constantly 0 preserve step-2 local guarantees on admitted
-pairs, while the reachable intermediate state 1 fails (Q_1\Rightarrow P_2).
+pairs, while the reachable intermediate state 1 fails `Q1⇒P2`.
 Both produce an admitted-initial-state path that loses its final observation.
 These are executable checks of the *existing* two-junction distinctions in
 the manuscript, not new theorems, not a proof for all chains and not approved
