@@ -49,7 +49,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | --- | --- |
 | [Claim Atlas](roadmap/TASKS.md#rm-01) | A selected corpus map exists; it is not an exhaustive accounting of historical claims. |
 | [Verification Records](roadmap/TASKS.md#rm-02) | Bounded checker reports exist; a complete reviewed passport set is not established. |
-| [Roadmap Publication](roadmap/TASKS.md#rm-03) | Repository roadmap exists; this naming/status revision has not been deployed to the website. |
+| [Roadmap Publication](roadmap/TASKS.md#rm-03) | Roadmap source 161a01af was deployed through site main 1d29084a; KC-SWE reported served EN/RU/zh-Hans readback. Later source changes need a new build and review. |
 | [Workgraph Reconciliation](roadmap/TASKS.md#rm-04) | Previously reported bindings are not a fresh Muneral reconciliation. |
 | [Meaning Bridge](roadmap/TASKS.md#rm-05) | The complete foundations introduction is in the catalogue with research-draft status. |
 | [Source Audit](roadmap/TASKS.md#rm-06) | PR67 contains historical bibliography triage; triage is not full reading of all primary sources. |
