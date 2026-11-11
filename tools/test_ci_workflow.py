@@ -95,6 +95,11 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertNotIn("|| true", job)
         self.assertNotIn("continue-on-error", job)
 
+    def test_private_retention_checker_tests_run_with_the_pinned_schema_validator(self):
+        job = self.jobs["book-package"]
+        self.assertIn('pip" install --quiet jsonschema==4.23.0', job)
+        self.assertRegex(job, r'bp-venv/bin/python" -B -m unittest [^\n]*\btest_private_retention_readback\b')
+
     def test_security_audit_keeps_its_filter(self):
         self.assertIn("head.repo.full_name == github.repository", self.jobs["security-audit"])
 
