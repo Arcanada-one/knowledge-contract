@@ -111,6 +111,37 @@ class ReadableTitleControls(unittest.TestCase):
         self.assertTrue(result.endswith('Body unchanged.\n'))
 
 
+class ReadingGuideRegisterRegression(unittest.TestCase):
+    def setUp(self):
+        self.docs = [{
+            'slug': 'topic', 'type': 'paper', 'path': 'papers/topic/PAPER.md',
+            'title': 'Meaning Bridge: Context'
+        }]
+        self.rows = [['topic', 'Meaning Bridge', 'Мост смысла', 'Описание',
+                      '意义桥接', '范围说明']]
+        self.row = ('| [paper](papers/topic/PAPER.md) | Meaning Bridge: Context '
+                    '| Мост смысла: Описание | 意义桥接：范围说明 | Historical Title |')
+
+    def check(self, guide):
+        from tools.check_document_names import check_reading_guide
+        return check_reading_guide(self.docs, self.rows, guide)
+
+    def test_exact_localized_names_pass(self):
+        self.assertEqual(self.check(self.row + '\n'), [])
+
+    def test_stale_russian_subtitle_fails(self):
+        self.assertIn('DOCUMENTS title/register mismatch: topic',
+                      self.check(self.row.replace('Описание', 'Старое описание')))
+
+    def test_stale_chinese_subtitle_fails(self):
+        self.assertIn('DOCUMENTS title/register mismatch: topic',
+                      self.check(self.row.replace('范围说明', '旧说明')))
+
+    def test_missing_and_duplicate_rows_fail(self):
+        self.assertTrue(self.check(''))
+        self.assertTrue(self.check(self.row + '\n' + self.row + '\n'))
+
+
 class HeadingAliasRegression(unittest.TestCase):
     def test_changed_punctuation_with_same_slug_has_no_extra_alias(self):
         title = 'Semantic Types, Attribution, and Representations'

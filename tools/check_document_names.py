@@ -9,6 +9,31 @@ import sys
 from pathlib import Path
 
 
+def check_reading_guide(docs: list[dict], rows: list[list[str]], guide: str) -> list[str]:
+    """Validate displayed EN/RU/zh-Hans names against the source register, read-only."""
+    from tools.apply_document_names import display_parts
+
+    lines = [line for line in guide.splitlines() if line.startswith('| [')]
+    names = {row[0]: row for row in rows}
+    errors: list[str] = []
+    for doc in docs:
+        row = names[doc['slug']]
+        prefix = f"| [{doc['type']}]({doc['path']}) | "
+        candidates = [line for line in lines if line.startswith(prefix)]
+        if len(candidates) != 1:
+            errors.append('missing or duplicate DOCUMENTS row: ' + doc['slug'])
+            continue
+        fields = candidates[0].split(' | ')
+        expected_ru = display_parts(row[2], row[3])[0]
+        expected_zh = row[4] + '：' + row[5]
+        if (len(fields) != 5 or fields[1] != doc['title']
+                or fields[2] != expected_ru or fields[3] != expected_zh):
+            errors.append('DOCUMENTS title/register mismatch: ' + doc['slug'])
+    if len(lines) != len(docs):
+        errors.append('DOCUMENTS row count mismatch')
+    return errors
+
+
 def check(root: Path) -> list[str]:
     errors = []
     try:
@@ -18,6 +43,7 @@ def check(root: Path) -> list[str]:
         rows = register['documents']
         from tools.apply_document_names import validate_rows
         validate_rows(rows, {d['slug'] for d in docs})
+        errors.extend(check_reading_guide(docs, rows, (root / 'DOCUMENTS.md').read_text(encoding='utf-8')))
         names = {row[0]: row[1] for row in rows}
         for doc in docs:
             path = root / doc['path']
