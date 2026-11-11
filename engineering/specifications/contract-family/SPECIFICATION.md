@@ -1,8 +1,8 @@
 ---
 name: "contract-family"
-title: "Knowledge Operations: Contracts for Knowledge Operations"
+title: "Knowledge Operations: Preconditions, Results and Transformation Obligations"
 short_title: "Knowledge Operations"
-subtitle: "Contracts for Knowledge Operations"
+subtitle: "Preconditions, Results and Transformation Obligations"
 previous_title: "Contracts for Knowledge Operations"
 artifact: "engineering-specification"
 edition: "1.1"
@@ -15,7 +15,7 @@ description: "Common preconditions, invariants, postconditions, effects and evid
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="contracts-for-knowledge-operations"></a>
 
-# Knowledge Operations: Contracts for Knowledge Operations
+# Knowledge Operations: Preconditions, Results and Transformation Obligations
 
 **Author:** Pavel Valentov · **Publication edition:** 1.1
 
