@@ -287,6 +287,8 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (8 November 2026).** A standalone current geometry manuscript remains planned.
 
+**Current source observation (11 November 2026).** The [Meaning Geometry manuscript](../papers/geometry-of-semantic-representations/PAPER.md) is now present in source `main` at `0892eeb1` with `research-draft` status (paper blob `077c13ad7e8d47646cd04ed2bdbeadceef48f9e3`). The 8 November statement above is retained as dated history, not a current missing-file claim. Completion of the F04 draft does not establish independent full-package review, held-out geometry results or release acceptance.
+
 **Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Claim Atlas, Source Audit, Semantic Bridge.
 
 **Original gap (6 November 2026).** Historical geometry arguments exist, but a current explicit and validated geometry profile is not established.

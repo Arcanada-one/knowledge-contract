@@ -7,6 +7,8 @@ updated: 2026-11-06
 
 # Foundations-first manuscript package
 
+> **Current source status (11 November 2026).** The F04 target `papers/geometry-of-semantic-representations/PAPER.md` now exists on source main `0892eeb1` with `research-draft` status. The 8 November preparation table and its `New` action are historical planning records, not today's missing-document inventory. A bounded mathematical review of a draft is not acceptance of the full F04 package, independent geometry evaluation or the six-unit foundations release.
+>
 > Current editorial note, 8 November 2026: names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). The foundations introduction already exists as a research draft. The operator has paused engineering execution; this plan is not an instruction to restart it. Later explicit per-document authorizations remain valid, and future research is not an unbounded release gate.
 
 ## 1. Updated decision and scope

@@ -58,7 +58,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
 | [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
 | [Scaled Checks](roadmap/TASKS.md#rm-11) | Existing finite checks do not establish production or arbitrary-scale correctness; further checks require the actual matching task and protocol. |
-| [Semantic Geometry](roadmap/TASKS.md#rm-12) | The complete PR89 research draft received a scoped mathematical review; catalogue acceptance, release and held-out benchmarks remain separate. |
+| [Semantic Geometry](roadmap/TASKS.md#rm-12) | The current Meaning Geometry manuscript is a research draft on source main; independent full-package review and held-out geometry evaluation remain open. |
 | [Geometry Evaluation](roadmap/TASKS.md#rm-13) | No new held-out geometry result is claimed. |
 | [Hybrid Retrieval](roadmap/TASKS.md#rm-14) | Architecture candidates do not establish a completed integrated consumer. |
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
