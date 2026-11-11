@@ -18,6 +18,8 @@ Definitions remain in the [shared glossary](../glossary/GLOSSARY.md). The short 
 
 ## How to read the connected material
 
+For the candidate read-only projection of this map (pinned blob `a7b2fb8c…`), see the [projection reader guide](CORPUS_MAP_PROJECTION_READING.md). That guide is interpretation authored by KC-Brain; it is not a second map, proof graph or acceptance decision.
+
 Begin with F01's distinction between human expressions and a purpose-selected representation. Follow semantic objects and context to determine what the representation asserts and under which interpretation. Transformations then describe what an operation preserves. Retrieval and composition select support and require checks on the actual delivered representation. Interaction and memory bind results to tasks and revisions. Evidence specifies what an observation supports; revision distinguishes a changed object from a changed assessment or adopted rule. Prepared-knowledge reuse combines preserved artifact properties with current-use obligations. Utility compares only stated interventions and cost scopes; it does not override mandatory conditions.
 
 This is a suggested reading route, not a new theorem or execution schedule. Reading cycles are legitimate: the reuse and transformation papers can explain each other's application boundaries. A circular argument cannot become justified merely because those reading links exist.

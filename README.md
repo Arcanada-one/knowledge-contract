@@ -34,6 +34,25 @@ Four retained public Python procedures reproduce the edition-1.0 examples and ch
 
 This evidence does not establish universal extraction accuracy, general agent superiority, or production readiness of every specified operation. Internal agent review and external peer review are different forms of assessment; review records state which was performed. A complete publication can make a bounded result precise without claiming that every empirical question is settled.
 
+## Russian and Chinese reading texts
+
+The [first finite translation release](translations/release/README.md) selects ten complete works in Russian and Simplified Chinese: twenty texts, with their [recorded source-specific reviews](translations/release/RECORDED-REVIEWS.md) and an explicit [two-link reconciliation](translations/release/DEPENDENCIES.md). Follow its document table to read each full Markdown body. A repository file is not automatically an admitted or deployed website rendition.
+
+The broader [translation proposal](https://github.com/Arcanada-one/knowledge-contract/pull/76) contains **50 of 60 intended author-draft bodies**, 25 per language at the 9 November checkpoint. The remaining five works per language and the separate publication boundaries are listed in the [roadmap](ROADMAP.md). Existing full-body review findings remain bound to their exact source and target. Current titles, source pins, renderer checks and new exact-delta review must not be confused with a new whole-body scientific verdict.
+
+Pavel's 9 November instruction authorizes the prepared public-reading release through the existing review, CI, merge and deployment process. The earlier general engineering pause is not a reason to withhold an otherwise accepted finite reading batch. This does not authorize unrelated experiments or declare a site build, index refresh or production result completed.
+
+## Knowledge-supply pipeline
+
+This repository is the third hop of the knowledge-supply chain that carries one document from intake to the search index: Doclab Arcana (intake / OCR / bundle) → Conversion Arcana (format conversion) → Knowledge Contract (book packages, library, publish) → the Arcanada knowledge base (Scrutator) and Talomnia. The nine stages, the document key and the stage-receipt chain are defined by the repository-only [pipeline contract](engineering/specifications/pipeline/SPECIFICATION.md). That document is not part of publication edition 1.1 and does not claim runtime admission.
+
+| Linked repository | Role in the chain |
+| --- | --- |
+| [doclab-arcana](https://github.com/Arcanada-one/doclab-arcana) | Intake, classification, recognition, bundling and `book-package/2` export |
+| [doc-md-html](https://github.com/Arcanada-one/doc-md-html) | Format conversion for inputs Doclab does not read as they are |
+
+This README does not claim that every stage is built or that KC-1 book packages become Knowledge Contract 2.0 revisions automatically. Built versus planned stages stay in the pipeline contract and in measured project receipts.
+
 ## Constraints and agent artifacts
 
 Constraints are explicit contract obligations, separate from output acceptance criteria and current authority. The [Contract Core](engineering/specifications/knowledge-contract-core/SPECIFICATION.md#3-constraints-are-first-class-obligations) defines their role. The [Artifact Registry](engineering/specifications/artifact-registry/SPECIFICATION.md) specifies readable folders and canonical files for roles, skills, competencies, blueprints, constraints and Work Items. [AGENTS.md](AGENTS.md) tells current coding agents where the canonical documents live and how to verify changes.

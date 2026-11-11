@@ -98,6 +98,8 @@ For a finite check, the carrier, enumerated values, supported operations, and te
 
 An empty domain makes a universal formula true vacuously. A test set containing no relevant negative case can likewise fail to challenge an exclusion rule. Neither observation demonstrates successful useful behavior. Record the vacuous or unexercised case separately, and include applicable positive controls when usefulness is part of the claim. Repeated copies of one test do not enlarge the distinct tested domain.
 
+A narrower related method is **vacuity detection in temporal model checking**. Beer and colleagues describe specification checks that pass trivially because an implication's antecedent is unsatisfiable, and investigate nontrivial witnesses in a temporal-logic setting [3]. This motivates explicitly checking that the intended condition has actually been exercised; it does not validate our general assessment protocol or transfer their model-checking algorithm to arbitrary knowledge contracts.
+
 Evidence types are complementary, not a ladder on which more records always mean stronger support. Ten tests sharing an incorrect oracle can repeat one mistake. A second reading by the producer is self-review. A separate reviewer who sees the proposed answer or earlier verdict performs a non-blind review; this is not automatically the independent assessment intended by a blinded design. Describe the actual separation of information, source access, rubric, and adjudication rather than infer independence from different agent names.
 
 For example, suppose an extracted value is wrong and both a calculation and its reference answer use that same extracted value. Their agreement can validate the calculation relative to its input while missing the source-reading error. A reference independently established from the source can expose the discrepancy. This is a constructed example of shared dependence, not a measured extraction-failure rate.
@@ -107,6 +109,8 @@ For example, suppose an extracted value is wrong and both a calculation and its 
 An evaluation begins by freezing the claim and requirements before examining the decisive cases. Record subject versions, admissible inputs, expected behavior, failure criteria, scope of generalization, and the treatment of uncertain cases. Also identify the reference procedure and the evidence needed to decide that a proposed counterexample belongs to the claimed domain. A later change creates a new claim or evaluation revision; it does not overwrite the earlier result.
 
 Adversarial cases should probe both the required conditions and the system's enforcement of them. For extraction, change a referent, logical scope, or source revision. For composition, omit a jointly required ground or add a conflicting condition. For reuse, change a material dependency or current permission. For resource accounting, repeat a telemetry event or expose a shared cost counted twice. The objective is to distinguish enforcement from success on familiar positive examples.
+
+**Specification mutation** supplies a narrower established test-generation approach: Black, Okun and Yesha describe mutation operators on formal specifications and examine the fault classes those operators can detect [4]. The adverse examples here are author-constructed boundary probes; we neither implement their mutation operators nor report mutation coverage, detection rates, or an experimental comparison.
 
 Two uses of such cases must remain separate. A case outside a theorem's premises can show why those premises matter, but does not refute that conditional theorem. An admissible case in which an implementation wrongly asserts that a condition has passed can refute the implementation's enforcement claim. To refute the theorem itself, the case must satisfy all its premises and falsify its conclusion under the same interpretation. Failure of a premise does not prove that every result outside the premise is wrong either; it removes that particular justification.
 
@@ -165,3 +169,5 @@ The practical method is to preserve exact subjects and adverse results, separate
 
 1. Hoare, C. A. R. “An Axiomatic Basis for Computer Programming.” *Communications of the ACM* 12(10), 1969, 576–580, 583. <https://doi.org/10.1145/363235.363259>
 2. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
+3. Beer, I., Ben-David, S., Eisner, C., and Rodeh, Y. “Efficient Detection of Vacuity in Temporal Model Checking.” *Formal Methods in System Design* 18(2), 2001, 141–163. <https://doi.org/10.1023/A:1008779610539>.
+4. Black, P. E., Okun, V., and Yesha, Y. “Mutation Operators for Specifications.” *Proceedings of ASE 2000*, 81–88. <https://doi.org/10.1109/ASE.2000.873653>.

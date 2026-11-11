@@ -19,6 +19,8 @@ PREFIXES = {
     "knowledge-contract-core": "KCC", "contract-family": "KOP", "semantic-types": "SEM", "context-package": "CTX",
     "compiled-artifact-contract": "CKA", "artifact-registry": "REG", "status-model": "STA",
     "cache-identity-and-invalidation": "CCH", "reuse-policy": "RUS", "knowledge-evolution": "EVO", "book-package": "BPK", "pipeline": "PIP",
+    "location-registry": "LOC", "private-artifact-registry": "PAR",
+    "private-retention-readback": "RET",
 }
 NORMATIVE = re.compile(r"\b(?:MUST|SHALL|SHOULD|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b")
 ID = re.compile(r"^\*\*([A-Z]+-R[0-9]{3,})\.\*\*\s+", re.S)
@@ -95,6 +97,17 @@ def test_references(prefix, text):
         "API": [
             (("gate record conforming",), "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_all_2187_check_state_and_decision_combinations"),
             (("Receipt validation MUST reject omitted checks",), "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_each_required_check_cannot_be_omitted"),
+        ],
+        "RET": [
+            (("MUST name the authorized store contour",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_valid_fixtures"),
+            (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_path_disclosed"),
+            (("recompute SHA-256",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_digest_mismatch_vs_id"),
+            (("knowledge_admitted=false",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_knowledge_admitted"),
+            (("published_corpus_admission",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_published_corpus_admission_outside_closed_set"),
+            (("record `size_bytes`",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_size_bytes_that_is_not_a_nonnegative_integer"),
+            (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refuse_unknown_receipt_or_resolution_field"),
+            (("`corrupt` and MUST NOT",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_refusal_code_must_be_in_the_closed_set"),
+            (("Caller-supplied filesystem paths",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_schema_and_checker_agree_on_every_case"),
         ],
     }
     for needles, reference in references.get(prefix, []):

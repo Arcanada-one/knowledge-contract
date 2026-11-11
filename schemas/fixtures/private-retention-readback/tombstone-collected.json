@@ -1,0 +1,11 @@
+{
+  "schema": "PrivateRetentionTombstone/v1",
+  "object_id": "d_bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "state": "collected",
+  "recorded_at": "2026-11-06T18:00:00Z",
+  "prior_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "reason": "retention exercise (synthetic fixture)",
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured"
+}

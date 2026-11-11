@@ -145,6 +145,23 @@ class ExportError(Exception):
     pass
 
 
+def split_decision_lines(text: str, name: str = "decision file") -> list[str]:
+    """Decision-file records separated by "\\n" only, as a "\\n"-reader sees them.
+
+    Same rule as ``check_book_package.split_lines``: one empty trailing element is allowed
+    (the final newline); a line ending in "\\r" is refused. U+2028, U+0085, ``\\x0b``, ``\\x0c``,
+    ``\\x1c``-``\\x1e`` and a lone "\\r" are ordinary characters here, never separators, so the
+    exporter and a "\\n"-splitting reader see the same records.
+    """
+    parts = text.split("\n")
+    if parts and parts[-1] == "":
+        parts.pop()
+    for number, line in enumerate(parts, 1):
+        if line.endswith("\r"):  # check: decision_line_no_cr
+            raise ExportError(f"{name}:{number}: line ends with a carriage return")
+    return parts
+
+
 def command(*args: str, data: bytes | None = None, check: bool = True) -> subprocess.CompletedProcess[bytes]:
     result = subprocess.run(args, cwd=REPO, input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     if check and result.returncode:
@@ -366,7 +383,7 @@ def load_decisions(main_sha: str) -> list[dict]:
         decision_bytes = command("git", "show", f"{main_sha}:{name}").stdout
         if decision_bytes:  # check: scan_decision_files
             scan_public_text(decision_bytes, "decision file")
-        for number, line in enumerate((show(main_sha, name) or "").splitlines()):
+        for number, line in enumerate(split_decision_lines(show(main_sha, name) or "", name)):
             try:
                 obj = json.loads(line)
             except ValueError as error:
@@ -477,8 +494,8 @@ def added_decision_lines(intro: str) -> list[str]:
     added: list[str] = []
     for name in changed_paths(intro + "^1", intro):
         if DECISION_FILE_RE.fullmatch(name):
-            before = set((show(intro + "^1", name) or "").splitlines())
-            added += [line for line in (show(intro, name) or "").splitlines() if line not in before]
+            before = set(split_decision_lines(show(intro + "^1", name) or "", name))
+            added += [line for line in split_decision_lines(show(intro, name) or "", name) if line not in before]
     return added
 
 
@@ -561,7 +578,12 @@ def external_sections(middle: bytes) -> list[str]:
 
 
 def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source: str) -> str:
-    """Validate the receipt behind one decision line; returns the verified base."""
+    """Validate the receipt behind one decision line; returns the verified base.
+
+    Embedded source blobs for ``current`` lines are read at the receipt merge-base tip.
+    Non-current (withdrawn/superseded) lines are read at ``source`` (the allowlist row's
+    source commit) so a later path rewrite cannot block a status decision.
+    """
     receipt_path = decision["obj"]["receipt"]
     first_parent, final_head = info["first_parent"], info["final_head"]
     if hashlib.sha256(CHECKLIST_TEXT.encode()).hexdigest() != CHECKLIST_SHA256:  # check: checklist_pin
@@ -601,9 +623,16 @@ def receipt_check(main_sha: str, decision: dict, intro: str, info: dict, source:
         raise ExportError("receipt does not bind tuple: decision lines differ from the lines the change adds")
     blobs = b""
     for o in sorted((json.loads(x) for x in added), key=lambda o: (o["path"], o["sha256"], o["upstream"])):
-        blob = command("git", "show", f"{base}:{o['path']}", check=False)
+        # Current lines keep tip-of-base semantics. Non-current (withdrawn/superseded) lines may outlive a
+        # later path rewrite (for example a compatibility link), so their digest is checked at the row's
+        # source commit — the bytes the allowlist still names — not at the receipt merge-base tip.
+        blob_ref = base
+        if o["status"] != "current":  # check: non_current_blob_at_source
+            blob_ref = source
+        blob = command("git", "show", f"{blob_ref}:{o['path']}", check=False)
         if blob.returncode or hashlib.sha256(blob.stdout).hexdigest() != o["sha256"]:  # check: blob_at_base
-            raise ExportError("embedded source blob at the base differs from the decision digest")
+            where = "source commit" if o["status"] != "current" else "base"
+            raise ExportError(f"embedded source blob at the {where} differs from the decision digest")
         blobs += f"BLOB {o['path']} {o['sha256']} {o['upstream']} {len(blob.stdout)}\n".encode() + blob.stdout + b"\n"
     upstreams = sorted({json.loads(x)["upstream"] for x in added})
     own = [u for u in upstreams if upstream_commit(u, source) is not None]
@@ -744,7 +773,10 @@ def build(main_sha: str, rows: list[dict[str, str]]) -> tuple[dict[str, object],
     order = first_parent_order(main_sha) if rows else {}
     infos: dict[str, dict] = {}
     for d in decisions:  # every decision line must come from a clean merged change, rows or not
-        d["intro"] = introducing_commit(main_sha, d["file"], lambda text, line=d["line"]: line in text.splitlines())
+        d["intro"] = introducing_commit(
+            main_sha, d["file"],
+            lambda text, line=d["line"], path=d["file"]: line in split_decision_lines(text, path),
+        )
         if d["intro"] not in infos:
             infos[d["intro"]] = change_info(d["intro"])
     for row in rows:

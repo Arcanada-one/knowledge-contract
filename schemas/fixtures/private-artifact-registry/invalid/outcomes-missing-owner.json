@@ -1,0 +1,116 @@
+{
+  "schema": "PrivatePerBookOutcomes/v1",
+  "cohort": "drive-books-18",
+  "task": "94c7ee6d-82a3-4830-828d-a88f795e08a2",
+  "books": [
+    {
+      "book_id": "EN01",
+      "status": "unresolved"
+    },
+    {
+      "book_id": "EN02",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN03",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN04",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN05",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN06",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN07",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "EN08",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU01",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU02",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU03",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU04",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU05",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU06",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU07",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU08",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU09",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    },
+    {
+      "book_id": "RU10",
+      "status": "unresolved",
+      "owner": "KC-Brain",
+      "blocking_reason": "No SemanticAcceptanceRecord/v1 with result=supported"
+    }
+  ],
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured"
+}

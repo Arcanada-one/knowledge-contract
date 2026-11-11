@@ -1,0 +1,18 @@
+{
+  "schema": "LocationRegistry/v1",
+  "contour": "devs-hermetic",
+  "entries": [
+    {
+      "schema": "LocationRegistryRow/v1",
+      "object_kind": "original",
+      "object_id": "/srv/source-library/book.pdf",
+      "holder_host": "arcana-dbs",
+      "volume": "/srv",
+      "path": "/srv/source-library/book.pdf",
+      "role": "primary",
+      "size_bytes": 1,
+      "verified_at": null,
+      "verified_sha256": null
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "PrivateRetentionProfile/v1",
+  "profile_id": "live-lab-private-v1",
+  "holder_host": "arcana-dbs",
+  "volume": "/",
+  "store_root": "/srv/source-library",
+  "id_grammar": "d_<sha256>",
+  "digest_domain": "sha256-exact-bytes",
+  "review_period_days": 90,
+  "corpus_separation": {
+    "originals_store": "arcana-dbs:/srv/source-library (S1)",
+    "kc_corpus_derived": "kc-corpus derived-artifact collection only — not originals",
+    "public_publication": "books-library / public catalogue — not this private retention path"
+  },
+  "rematch": {
+    "S1": "952d9cf2-7c98-4f70-8053-dfdc8c1cc85f",
+    "S2": "2af96de4-f4ff-474e-ab57-0c6665bf24e5",
+    "S3": "a4d60611-0d00-4291-9f2f-9d970d0679d9"
+  },
+  "runtime_authorized": false,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured"
+}

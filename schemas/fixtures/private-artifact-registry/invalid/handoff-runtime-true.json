@@ -1,0 +1,50 @@
+{
+  "schema": "PrivateRegistrationHandoff/v1",
+  "artifact_id": "urn:arcanada:kc-corpus:fixture:skill:synthetic-private-skill",
+  "revision": "r1",
+  "kind": "skill",
+  "path": "fixtures/accepted/SKILL.md",
+  "sha256": "ff9077278201fb3e7022473b4c9af9b7e809ea1b4fba1422d11f636aab4ed04c",
+  "byte_length": 1363,
+  "source_document_id": "d_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source_document_id_status": "measured",
+  "acceptance": {
+    "schema": "SemanticAcceptanceRecord/v1",
+    "artifact_id": "urn:arcanada:kc-corpus:fixture:skill:synthetic-private-skill",
+    "revision": "r1",
+    "artifact_sha256": "ff9077278201fb3e7022473b4c9af9b7e809ea1b4fba1422d11f636aab4ed04c",
+    "result": "supported",
+    "assessor_id": "fixture-assessor-blind",
+    "producer_id": "fixture-producer",
+    "scope": {
+      "permitted_purpose": "hermetic private-registry positive path",
+      "exclusions": [
+        "live Scrutator",
+        "native task-run",
+        "X9c real books"
+      ]
+    },
+    "notes": "Synthetic acceptance for hermetic fixture only; not an X9c acceptance."
+  },
+  "dependency_closure": [
+    {
+      "artifact_id": "urn:arcanada:kc-corpus:fixture:constraint:synthetic-fixture-constraint",
+      "revision": "r1",
+      "path": "fixtures/accepted/CONSTRAINT.md",
+      "sha256": "205e06f1dd683934bc53d60c491335aa54ea68edc7e8e7efa4a5269e37635beb",
+      "role": "constraint"
+    }
+  ],
+  "authority_boundaries": {
+    "source_rights": "not_measured",
+    "library_acceptance": "not_applicable",
+    "private_registry_adoption": "not_measured",
+    "published_corpus_admission": "not_applicable",
+    "index_readback": "not_measured",
+    "native_task_run_authority": "not_applicable"
+  },
+  "runtime_authorized": true,
+  "knowledge_admitted": false,
+  "kc2_admission": "not_measured",
+  "collection": "kc-corpus"
+}

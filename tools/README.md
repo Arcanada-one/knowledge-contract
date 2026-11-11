@@ -187,6 +187,48 @@ python3 -B -m unittest tools.test_assessed_coverage_oracle -v
 Exit codes: `0` pass, `1` fail, `3` unknown, `2` usage. Layer N (N01–N06) is
 **NOT_MEASURED**. This oracle is not production trust, admission or authority.
 
+## RM-04 workgraph reconcile harness
+
+`reconcile_workgraph.py` is an **isolated replay / dry-run** that compares a
+roadmap definition (`roadmap/dependencies.json` shape) with a synthetic tracker
+snapshot (`rm04-tracker-snapshot/1`). It reports bindings, unbound RMs,
+missing / excess / reversed edges, external edges and typed disagreements. It
+never repairs state, never calls Muneral or a tracker API, and never merges
+conflicting statuses. Reports carry `disagreement_detected` (bool) and
+`effects: "none"` (dry-run marker; never a permission). There is no
+`execution_authority` field.
+
+Advisory `informs_not_blocks` links keep the ordered source pair
+(`from` informs `to` but does not block `to`). Snapshot / CLI option
+`related_to_orientation` is `ordered` (exact from→to; reverse → exactly one
+`reversed_edge` for that expected pair, without a duplicate `missing_edge`;
+pair not matched; raw observed from/to kept in the detail; absent in both
+directions → `missing_edge`) or `unverified` (default: reverse →
+`advisory_direction_unverified`, exit non-zero / hold; not matched and not an
+accepted reversal; already non-duplicating vs `missing_edge`). A reversal is
+never an equivalent/undirected match in any mode. The 45 `depends_on`
+comparisons stay ordered; external `related_to` edges stay separate. Status
+conflict is the union of per-RM `tasks[].status` and `status_records[].status`
+(more than one distinct value → `conflicting_status`, no selected status).
+
+```sh
+python3 -B tools/reconcile_workgraph.py \
+  --definition roadmap/dependencies.json \
+  --snapshot /path/to/synthetic-snapshot.json
+python3 -B tools/reconcile_workgraph.py \
+  --definition roadmap/dependencies.json \
+  --snapshot /path/to/synthetic-snapshot.json \
+  --related-to-orientation ordered
+python3 -B -m unittest tools.test_reconcile_workgraph -v
+```
+
+Exit codes: `0` agreement, `1` disagreement / typed refusal (JSON report always),
+`2` usage or unreadable input. Reason codes include `duplicate_rm_binding`,
+`alias_conflict` (both `rm_label` and `binding` present and disagree; neither
+selected; identical dual keys are accepted), `conflicting_status`,
+`reversed_edge`, `advisory_direction_unverified`, `missing_edge`,
+`excess_edge`, `external_depends_on`, `unknown_rm_label`, `unbound_rm`.
+
 ## Retrieval-context checker
 
 `verify_retrieval_context.py` binds the accepted retrieval-and-context paper

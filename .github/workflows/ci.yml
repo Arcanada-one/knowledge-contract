@@ -61,7 +61,7 @@ jobs:
         run: python3 -B -m unittest tools.test_report_translation_coverage -v
       - name: Corpus map validator controls
         run: python3 -B -m unittest tools.test_verify_corpus_map -v
-      - name: Corpus map projection controls (RM-04 sub-scope)
+      - name: Corpus map projection controls (RM-01 G0-G2 candidate)
         run: python3 -B -m unittest tools.test_project_corpus_map -v
       - name: Published corpus map and its pinned source objects
         run: python3 -B tools/verify_corpus_map.py --repo .
@@ -72,6 +72,41 @@ jobs:
             --expect-blob a7b2fb8cde305b8fe4145df1ee7d7179478fdd60 \
             --out-dir reference/foundations/projections/corpus-map-a7b2fb8c \
             --check
+      - name: Reproducibility pin for corpus-map projection a7b2fb8c
+        # Any input or generator blob change, or output digest drift, must fail here.
+        run: |
+          python3 -B - <<'PY'
+          import hashlib, json, subprocess, sys
+          from pathlib import Path
+          pin_path = Path('reference/foundations/projections/corpus-map-a7b2fb8c/REPRODUCIBILITY.json')
+          pin = json.loads(pin_path.read_text(encoding='utf-8'))
+          out = Path('reference/foundations/projections/corpus-map-a7b2fb8c')
+          map_blob = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD:reference/foundations/corpus-map.json'], text=True
+          ).strip()
+          gen_blob = subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD:tools/project_corpus_map.py'], text=True
+          ).strip()
+          errors = []
+          if map_blob != pin['input']['git_blob']:
+              errors.append(f"input blob {map_blob} != pin {pin['input']['git_blob']}")
+          if gen_blob != pin['generator']['git_blob']:
+              errors.append(f"generator blob {gen_blob} != pin {pin['generator']['git_blob']}")
+          for name, expected in sorted(pin['outputs_sha256'].items()):
+              actual = hashlib.sha256((out / name).read_bytes()).hexdigest()
+              if actual != expected:
+                  errors.append(f"{name}: {actual} != {expected}")
+          if errors:
+              print('REPRODUCIBILITY_PIN_MISMATCH')
+              print('\n'.join(errors))
+              sys.exit(1)
+          print('REPRODUCIBILITY_PIN_OK')
+          print(json.dumps({
+              'input_blob': map_blob,
+              'generator_blob': gen_blob,
+              'outputs_sha256': pin['outputs_sha256'],
+          }, indent=2, sort_keys=True))
+          PY
       - name: Inventory-first /2 candidate (KC-MAP2-1)
         run: |
           python3 -B -m unittest tools.test_corpus_map_v2_inventory -v
@@ -109,7 +144,7 @@ jobs:
         run: |
           set -euo pipefail
           cd tools
-          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts test_document_classification -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts test_document_classification test_private_retention_readback -v
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail
@@ -206,6 +241,10 @@ jobs:
         # Network-free S01–S22 oracle for tools/assessed_coverage_oracle.py.
         # effects_authorized stays false; Layer N (N01–N06) is NOT_MEASURED.
         run: python3 -B -m unittest tools.test_assessed_coverage_oracle -v
+      - name: RM-04 workgraph reconcile harness (synthetic dry-run)
+        # Isolated replay for tools/reconcile_workgraph.py against synthetic snapshots.
+        # No Muneral/network calls; disagreements exit non-zero with typed codes.
+        run: python3 -B -m unittest tools.test_reconcile_workgraph -v
       - name: Every publication and evidence file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint
