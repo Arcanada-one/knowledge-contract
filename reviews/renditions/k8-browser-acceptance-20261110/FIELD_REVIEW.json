@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "absolute_host_paths": 0,
+    "cf_ray": 0,
+    "cookies": 0,
+    "emails": 0,
+    "ipv4": 0,
+    "tokens_keys": 0,
+    "user_agents": 0
+  },
+  "header_keys_kept": [
+    "content-type",
+    "last-modified"
+  ],
+  "non_github_hosts": [
+    "contract.place",
+    "static.cloudflareinsights.com"
+  ],
+  "report_bytes": 733560,
+  "report_path": "report.json",
+  "report_sha256": "78dd20f3a3e9192865bfab07f4d8f1f56c550cfa8fcfc04506c3507dedbb4242"
+}
