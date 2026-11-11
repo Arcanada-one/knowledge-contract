@@ -89,11 +89,11 @@ class ReadableTitleControls(unittest.TestCase):
 
     def test_compiled_equal_anchor_needs_no_explicit_alias(self):
         title = 'Compiled Knowledge Artifacts and Reproducible Derivation'
-        raw = '---\\ntitle: "' + title + '"\\n---\\n\\n# ' + title + '\\n\\nScientific body.\\n'
+        raw = '---\ntitle: "' + title + '"\n---\n\n# ' + title + '\n\nScientific body.\n'
         result = rename_document(raw, title, 'Compiled Knowledge')
         self.assertNotIn('<a id=', result)
         self.assertIn('# Compiled Knowledge: Artifacts and Reproducible Derivation', result)
-        self.assertTrue(result.endswith('Scientific body.\\n'))
+        self.assertTrue(result.endswith('Scientific body.\n'))
 
     def test_repeated_locale_subtitle_rejected(self):
         rows = [['topic', 'Meaning Bridge', 'Мост смысла', 'Мост смысла: описание', '意义桥接', '含义说明']]
@@ -109,6 +109,37 @@ class ReadableTitleControls(unittest.TestCase):
         result = rename_document(raw, 'Book Packages: Source Identity', 'Book Packages')
         self.assertNotIn('<a id=', result)
         self.assertTrue(result.endswith('Body unchanged.\n'))
+
+
+class ReadingGuideRegisterRegression(unittest.TestCase):
+    def setUp(self):
+        self.docs = [{
+            'slug': 'topic', 'type': 'paper', 'path': 'papers/topic/PAPER.md',
+            'title': 'Meaning Bridge: Context'
+        }]
+        self.rows = [['topic', 'Meaning Bridge', 'Мост смысла', 'Описание',
+                      '意义桥接', '范围说明']]
+        self.row = ('| [paper](papers/topic/PAPER.md) | Meaning Bridge: Context '
+                    '| Мост смысла: Описание | 意义桥接：范围说明 | Historical Title |')
+
+    def check(self, guide):
+        from tools.check_document_names import check_reading_guide
+        return check_reading_guide(self.docs, self.rows, guide)
+
+    def test_exact_localized_names_pass(self):
+        self.assertEqual(self.check(self.row + '\n'), [])
+
+    def test_stale_russian_subtitle_fails(self):
+        self.assertIn('DOCUMENTS title/register mismatch: topic',
+                      self.check(self.row.replace('Описание', 'Старое описание')))
+
+    def test_stale_chinese_subtitle_fails(self):
+        self.assertIn('DOCUMENTS title/register mismatch: topic',
+                      self.check(self.row.replace('范围说明', '旧说明')))
+
+    def test_missing_and_duplicate_rows_fail(self):
+        self.assertTrue(self.check(''))
+        self.assertTrue(self.check(self.row + '\n' + self.row + '\n'))
 
 
 class HeadingAliasRegression(unittest.TestCase):

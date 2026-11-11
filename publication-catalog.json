@@ -140,12 +140,12 @@
       "type": "specification",
       "slug": "contract-family",
       "path": "engineering/specifications/contract-family/SPECIFICATION.md",
-      "title": "Knowledge Operations: Contracts for Knowledge Operations",
+      "title": "Knowledge Operations: Preconditions, Results and Transformation Obligations",
       "summary": "Common preconditions, invariants, postconditions, effects and evidence for knowledge operations.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Knowledge Operations",
-      "subtitle": "Contracts for Knowledge Operations",
+      "subtitle": "Preconditions, Results and Transformation Obligations",
       "previous_title": "Contracts for Knowledge Operations"
     },
     {
@@ -344,12 +344,12 @@
       "type": "bibliography",
       "slug": "bibliography",
       "path": "reference/bibliography/BIBLIOGRAPHY.md",
-      "title": "Research Foundations: Primary Sources and Research Foundations",
+      "title": "Research Foundations: Primary Literature and Related Work",
       "summary": "Named primary sources and the exact conceptual or technical role each plays in the current edition.",
       "language": "en",
       "edition": "1.1",
       "short_title": "Research Foundations",
-      "subtitle": "Primary Sources and Research Foundations",
+      "subtitle": "Primary Literature and Related Work",
       "previous_title": "Primary Sources and Research Foundations"
     },
     {

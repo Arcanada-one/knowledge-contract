@@ -1,8 +1,8 @@
 ---
 name: "bibliography"
-title: "Research Foundations: Primary Sources and Research Foundations"
+title: "Research Foundations: Primary Literature and Related Work"
 short_title: "Research Foundations"
-subtitle: "Primary Sources and Research Foundations"
+subtitle: "Primary Literature and Related Work"
 previous_title: "Primary Sources and Research Foundations"
 artifact: "bibliography"
 edition: "1.1"
@@ -15,7 +15,7 @@ description: "Named primary sources and the exact conceptual or technical role e
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="primary-sources-and-research-foundations"></a>
 
-# Research Foundations: Primary Sources and Research Foundations
+# Research Foundations: Primary Literature and Related Work
 
 **Publication edition:** 1.1 · **Bibliographic verification:** 4 November 2026
 

@@ -86,7 +86,7 @@ PR89提出的1.1版候选目录包含 **31项材料**：十篇科学稿件（包
 | 目标名称 | 来源 |
 | --- | --- |
 | **共同词汇：意义理论与知识工程术语** | [术语表](../reference/glossary/GLOSSARY.md) |
-| **研究文献：原始来源与相关工作** | [参考文献](../reference/bibliography/BIBLIOGRAPHY.md)，不是第二份基础理论 |
+| **研究基础：原始文献与相关研究** | [参考文献](../reference/bibliography/BIBLIOGRAPHY.md)，不是第二份基础理论 |
 | **来源历史：溯源与版本兼容性** | [来源映射](../appendices/source-map/APPENDIX.md) |
 | **发布接口：文档访问与表示一致性** | [接口附录](../appendices/api-integration/APPENDIX.md) |
 
