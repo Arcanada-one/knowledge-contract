@@ -122,5 +122,71 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertNotIn("continue-on-error", job)
 
 
+C03_WORKFLOW = CI.with_name("c03-finite-controls.yml")
+C03_COMMAND = "python3 -B -m unittest tools.test_c03_initial_precondition -v"
+
+
+def c03_workflow_errors(text: str) -> list[str]:
+    """Narrow structural guard for this deliberately simple workflow, not a YAML validator.
+
+    Runtime success still requires the exact-head job and its test log. The guard
+    runs from the existing licensing job, so deleting this workflow is not silent.
+    """
+    errors = []
+    live = "\n".join(line for line in text.splitlines()
+                     if not line.lstrip().startswith("#")) + "\n"
+    if "on:\n  pull_request:\n  push:\n    branches: [main]\n" not in live:
+        errors.append("missing unfiltered pull-request and main-push triggers")
+    if "permissions:\n  contents: read\n" not in live or "secrets." in live:
+        errors.append("expected read-only token and no secrets")
+    if re.search(r"^\s*(?:if|continue-on-error|paths|paths-ignore|branches-ignore):", live, re.M):
+        errors.append("conditional or failure-masking configuration")
+    try:
+        job = job_blocks(live)["c03-finite-controls"]
+    except (IndexError, KeyError):
+        return errors + ["missing C03 job"]
+    expected = "        run: " + C03_COMMAND
+    if expected not in job.splitlines():
+        errors.append("missing direct, unmasked C03 command")
+    if "persist-credentials: false" not in job:
+        errors.append("checkout must not persist credentials")
+    return errors
+
+
+class C03WorkflowTests(unittest.TestCase):
+    def setUp(self):
+        self.text = C03_WORKFLOW.read_text(encoding="utf-8")
+
+    def test_real_workflow_runs_c03_without_skips(self):
+        self.assertEqual(c03_workflow_errors(self.text), [])
+
+    def test_omitted_command_is_refused(self):
+        self.assertTrue(c03_workflow_errors(self.text.replace(C03_COMMAND, "true")))
+
+    def test_printed_command_is_not_execution(self):
+        self.assertTrue(c03_workflow_errors(self.text.replace(C03_COMMAND, "echo " + C03_COMMAND)))
+
+    def test_commented_command_is_not_execution(self):
+        self.assertTrue(c03_workflow_errors(self.text.replace("        run: " + C03_COMMAND,
+                                                              "        # run: " + C03_COMMAND)))
+
+    def test_skipped_job_is_refused(self):
+        changed = self.text.replace("    runs-on:", "    if: false\n    runs-on:")
+        self.assertTrue(c03_workflow_errors(changed))
+
+    def test_masked_failure_is_refused(self):
+        for changed in (self.text.replace(C03_COMMAND, C03_COMMAND + " || true"),
+                        self.text.replace("    steps:", "    continue-on-error: true\n    steps:")):
+            with self.subTest(changed=changed):
+                self.assertTrue(c03_workflow_errors(changed))
+
+    def test_wrong_module_is_refused(self):
+        self.assertTrue(c03_workflow_errors(self.text.replace("tools.test_c03_initial_precondition",
+                                                              "tools.test_reviewed_formal_results")))
+
+    def test_missing_job_is_refused(self):
+        self.assertTrue(c03_workflow_errors(self.text.replace("  c03-finite-controls:", "  other:")))
+
+
 if __name__ == "__main__":
     unittest.main()
