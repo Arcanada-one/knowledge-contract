@@ -7,6 +7,14 @@ updated: 2026-11-09
 
 # Translation Coverage: Full-body publication progress
 
+## New full-body author drafts — 11 November 2026, Knowledge Utility
+
+Two complete intended translations of **Knowledge Utility** are now on this proposal branch: [Russian](ru/papers/knowledge-utility/PAPER.md) and [Simplified Chinese](zh-Hans/papers/knowledge-utility/PAPER.md). The exact source and target identities, structural checks and pending fidelity review are in the [batch record](KNOWLEDGE-UTILITY-2026-11-11.md).
+
+Against the **current pinned 31-document catalogue** at 0892eeb150acae9df5e5d498902c7b5e04ce1871, this branch proposes **26 full-body author drafts per locale**. Four paths per locale coincide with existing main bodies, 22 are proposal-only, and **five source bodies per locale remain absent** (ten slots). Across both locales, the union contains **52 distinct authored files of 62 slots**, not 52 accepted, source-current or served renditions. The 9 November **50/60** statement below remains a historical snapshot of the 30-work baseline, not the current 31-document count.
+
+The remaining current paper bodies per locale are Meaning Bridge, Interaction and Memory, Evidence and Falsification, Knowledge Reuse, and Meaning Geometry. These author drafts retain the original mathematical displays and two propositions, but a structural self-check is **not independent semantic or native-language fidelity review**. No publication, indexing or deployed page is asserted.
+
 ## Current snapshot — 9 November 2026, transformations and context increment
 
 **50/60 intended full author-draft bodies are present: 25 in Russian and 25 in Simplified Chinese.** The denominator is 30 canonical works multiplied by two target languages. **Five scientific papers per language remain: ten target bodies.** All eleven specifications, six studies, glossary, bibliography, two appendices and four scientific papers have full intended targets in both languages. These are authored files, not 50 accepted or deployed renditions. Interface/navigation/roadmap prose and evidence attachments are separate scope.
