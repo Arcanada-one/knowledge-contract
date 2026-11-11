@@ -241,6 +241,10 @@ jobs:
         # Network-free S01–S22 oracle for tools/assessed_coverage_oracle.py.
         # effects_authorized stays false; Layer N (N01–N06) is NOT_MEASURED.
         run: python3 -B -m unittest tools.test_assessed_coverage_oracle -v
+      - name: RM-04 workgraph reconcile harness (synthetic dry-run)
+        # Isolated replay for tools/reconcile_workgraph.py against synthetic snapshots.
+        # No Muneral/network calls; disagreements exit non-zero with typed codes.
+        run: python3 -B -m unittest tools.test_reconcile_workgraph -v
       - name: Every publication and evidence file declares its sources
         run: python3 -B tools/check_sources.py .
       - name: REUSE lint

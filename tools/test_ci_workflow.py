@@ -108,6 +108,12 @@ class CiWorkflowTests(unittest.TestCase):
         self.assertIn("python3 -B -m unittest tools.test_assessed_coverage_oracle -v", job)
         self.assertIn("tools/assessed_coverage_oracle.py", job)
 
+    def test_licensing_runs_reconcile_workgraph_harness(self):
+        job = self.jobs["licensing"]
+        self.assertIn("RM-04 workgraph reconcile harness (synthetic dry-run)", job)
+        self.assertIn("python3 -B -m unittest tools.test_reconcile_workgraph -v", job)
+        self.assertIn("tools/reconcile_workgraph.py", job)
+
     def test_publication_integrity_runs_retrieval_context_checker_with_pins(self):
         job = self.jobs["publication-integrity"]
         self.assertIn("fetch-depth: 0", job)
