@@ -1,0 +1,360 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcanada.ai/schemas/private-artifact-registry.schema.json",
+  "title": "Private Artifact Registry records",
+  "description": "Handoff, registry, readback, retrieval, delivery, use-witness and per-book outcome records for the private knowledge route.",
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sourceDocumentId": {
+      "type": "string",
+      "pattern": "^d_[0-9a-f]{64}$"
+    },
+    "triState": {
+      "type": "string",
+      "enum": ["pass", "fail", "not_applicable", "not_measured"]
+    },
+    "authorityBoundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_rights",
+        "library_acceptance",
+        "private_registry_adoption",
+        "published_corpus_admission",
+        "index_readback",
+        "native_task_run_authority"
+      ],
+      "properties": {
+        "source_rights": { "$ref": "#/$defs/triState" },
+        "library_acceptance": { "$ref": "#/$defs/triState" },
+        "private_registry_adoption": { "$ref": "#/$defs/triState" },
+        "published_corpus_admission": { "$ref": "#/$defs/triState" },
+        "index_readback": { "$ref": "#/$defs/triState" },
+        "native_task_run_authority": { "$ref": "#/$defs/triState" }
+      }
+    },
+    "honesty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_authorized", "knowledge_admitted", "kc2_admission"],
+      "properties": {
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    },
+    "closureMember": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_id", "revision", "path", "sha256", "role"],
+      "properties": {
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "semanticAcceptanceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "artifact_id",
+        "revision",
+        "artifact_sha256",
+        "result",
+        "assessor_id",
+        "producer_id",
+        "scope"
+      ],
+      "properties": {
+        "schema": { "const": "SemanticAcceptanceRecord/v1" },
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "artifact_sha256": { "$ref": "#/$defs/sha256" },
+        "result": { "enum": ["supported", "unsupported", "ambiguous", "failed"] },
+        "assessor_id": { "type": "string", "minLength": 1 },
+        "producer_id": { "type": "string", "minLength": 1 },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["permitted_purpose", "exclusions"],
+          "properties": {
+            "permitted_purpose": { "type": "string", "minLength": 1 },
+            "exclusions": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "artifact_id",
+        "revision",
+        "kind",
+        "path",
+        "sha256",
+        "byte_length",
+        "acceptance",
+        "dependency_closure",
+        "authority_boundaries",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateRegistrationHandoff/v1" },
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "kind": {
+          "type": "string",
+          "enum": ["role", "skill", "competency", "blueprint", "constraint", "other"]
+        },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "byte_length": { "type": "integer", "minimum": 0 },
+        "source_document_id": { "$ref": "#/$defs/sourceDocumentId" },
+        "source_document_id_status": {
+          "type": "string",
+          "enum": ["measured", "not_measured"]
+        },
+        "source_document_id_reason": { "type": "string" },
+        "acceptance": { "$ref": "#/$defs/semanticAcceptanceRecord" },
+        "dependency_closure": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/closureMember" }
+        },
+        "authority_boundaries": { "$ref": "#/$defs/authorityBoundaries" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" },
+        "collection": { "type": "string", "const": "kc-corpus" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "entries"],
+      "properties": {
+        "schema": { "const": "PrivateArtifactRegistry/v1" },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_id",
+              "revision",
+              "kind",
+              "path",
+              "sha256",
+              "byte_length",
+              "acceptance_sha256",
+              "dependency_closure",
+              "registered_at"
+            ],
+            "properties": {
+              "artifact_id": { "type": "string", "minLength": 1 },
+              "revision": { "type": "string", "minLength": 1 },
+              "kind": { "type": "string", "minLength": 1 },
+              "path": { "type": "string", "minLength": 1 },
+              "sha256": { "$ref": "#/$defs/sha256" },
+              "byte_length": { "type": "integer", "minimum": 0 },
+              "source_document_id": { "$ref": "#/$defs/sourceDocumentId" },
+              "acceptance_sha256": { "$ref": "#/$defs/sha256" },
+              "dependency_closure": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/closureMember" }
+              },
+              "applicability": { "type": "string" },
+              "registered_at": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "artifact_id",
+        "revision",
+        "outcome",
+        "authority_boundaries",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateReadbackReceipt/v1" },
+        "artifact_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "outcome": { "enum": ["matched", "not_found", "digest_mismatch", "refused"] },
+        "kind": { "type": "string" },
+        "path": { "type": "string" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "source_document_id": { "$ref": "#/$defs/sourceDocumentId" },
+        "reason": { "type": "string" },
+        "authority_boundaries": { "$ref": "#/$defs/authorityBoundaries" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "request_id",
+        "outcome",
+        "selected",
+        "authority_boundaries",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateRetrievalReceipt/v1" },
+        "request_id": { "type": "string", "minLength": 1 },
+        "request_text": { "type": "string" },
+        "outcome": {
+          "enum": [
+            "retrieved",
+            "unsuitable_context",
+            "missing_dependency",
+            "not_found",
+            "refused"
+          ]
+        },
+        "reason": { "type": "string" },
+        "selected": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/closureMember" }
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "enum": ["measured", "not_measured"] },
+            "max_bytes": { "type": "integer", "minimum": 0 },
+            "observed_bytes": { "type": "integer", "minimum": 0 },
+            "truncated": { "type": "boolean" },
+            "reason": { "type": "string" }
+          }
+        },
+        "authority_boundaries": { "$ref": "#/$defs/authorityBoundaries" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "request_id",
+        "recipient_id",
+        "outcome",
+        "delivered",
+        "authority_boundaries",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateDeliveryReceipt/v1" },
+        "request_id": { "type": "string", "minLength": 1 },
+        "recipient_id": { "type": "string", "minLength": 1 },
+        "outcome": {
+          "enum": ["delivered", "refused", "reassessed", "recipient_changed"]
+        },
+        "reason": { "type": "string" },
+        "delivered": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/closureMember" }
+        },
+        "authority_boundaries": { "$ref": "#/$defs/authorityBoundaries" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "book_id",
+        "request_id",
+        "assessment",
+        "selected",
+        "authority_boundaries",
+        "runtime_authorized",
+        "knowledge_admitted",
+        "kc2_admission"
+      ],
+      "properties": {
+        "schema": { "const": "PrivateUseWitness/v1" },
+        "book_id": { "type": "string", "minLength": 1 },
+        "request_id": { "type": "string", "minLength": 1 },
+        "assessment": {
+          "enum": ["applied", "refused", "reassessed", "unresolved"]
+        },
+        "reason": { "type": "string" },
+        "selected": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/closureMember" }
+        },
+        "output_sha256": { "$ref": "#/$defs/sha256" },
+        "authority_boundaries": { "$ref": "#/$defs/authorityBoundaries" },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "cohort", "books"],
+      "properties": {
+        "schema": { "const": "PrivatePerBookOutcomes/v1" },
+        "cohort": { "type": "string", "minLength": 1 },
+        "task": { "type": "string" },
+        "books": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["book_id", "status"],
+            "properties": {
+              "book_id": { "type": "string", "minLength": 1 },
+              "status": { "enum": ["use_witness", "unresolved"] },
+              "use_witness_id": { "type": "string" },
+              "owner": { "type": "string" },
+              "blocking_reason": { "type": "string" }
+            }
+          }
+        },
+        "runtime_authorized": { "const": false },
+        "knowledge_admitted": { "const": false },
+        "kc2_admission": { "const": "not_measured" }
+      }
+    }
+  ]
+}

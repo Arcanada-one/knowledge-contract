@@ -19,7 +19,7 @@ PREFIXES = {
     "knowledge-contract-core": "KCC", "contract-family": "KOP", "semantic-types": "SEM", "context-package": "CTX",
     "compiled-artifact-contract": "CKA", "artifact-registry": "REG", "status-model": "STA",
     "cache-identity-and-invalidation": "CCH", "reuse-policy": "RUS", "knowledge-evolution": "EVO", "book-package": "BPK", "pipeline": "PIP",
-    "location-registry": "LOC",
+    "location-registry": "LOC", "private-artifact-registry": "PAR",
 }
 NORMATIVE = re.compile(r"\b(?:MUST|SHALL|SHOULD|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b")
 ID = re.compile(r"^\*\*([A-Z]+-R[0-9]{3,})\.\*\*\s+", re.S)
