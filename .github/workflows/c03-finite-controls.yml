@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Pavel Valentov
+# SPDX-License-Identifier: Apache-2.0
+name: C03 finite controls
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  c03-finite-controls:
+    name: c03-finite-controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check the finite initial-precondition witness, not the general proof
+        run: python3 -B -m unittest tools.test_c03_initial_precondition -v
