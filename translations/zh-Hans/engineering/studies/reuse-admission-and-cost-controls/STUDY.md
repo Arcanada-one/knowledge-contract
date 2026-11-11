@@ -10,8 +10,8 @@ description: "可执行的准入反例，以及明确核算成本的解析盈亏
 study_type: "analytical-engineering-study"
 source_review_state: "internally-reviewed"
 translation_of: "engineering/studies/reuse-admission-and-cost-controls/STUDY.md"
-source_commit: "2b5bcff544fea5d1752ff009933e4ce0305dad8b"
-source_git_blob: "aff97b3cda92bbb8067b1db47ce7c16ddd98c5ac"
+source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
+source_git_blob: "67ab4b55faf9f42df2d6d7214bbbe4f30c143a8e"
 translation_status: "author-draft"
 ---
 
@@ -23,7 +23,7 @@ translation_status: "author-draft"
 
 ## 问题与对象 {#question-and-objects}
 
-问题在于：何时能够为新请求使用保留制品，而不丢失其要求、不夸大证据、也不隐藏验证成本。科学模型见英文原文[《知识复用》](../../../../../papers/controlled-knowledge-reuse/PAPER.md)和[《知识效用》](../../../../../papers/knowledge-utility/PAPER.md)。[保存的条件性质来源](../../../../../engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json)记录了支撑本分析的原始假设、论证和反例。
+问题在于：何时能够为新请求使用保留制品，而不丢失其要求、不夸大证据、也不隐藏验证成本。科学模型见英文原文[《知识复用》](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md)和[《知识效用》](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/knowledge-utility/PAPER.md)。[保存的条件性质来源](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/reuse-properties-source.json)记录了支撑本分析的原始假设、论证和反例。
 
 一次构建可表示为
 
@@ -37,7 +37,7 @@ translation_status: "author-draft"
 
 ## 先准入，后优化 {#admission-before-optimization}
 
-[状态模型（英文原文）](../../../../../engineering/specifications/status-model/SPECIFICATION.md)区分`pass`、`fail`、`unknown`和`not_applicable`。一项强制义务由`pass`解除，或由`not_applicable`加上已识别规则及证明该精确范围内排除有效的证据解除。缺乏依据的排除、观察缺失，以及适用条件下的未知，均不能解除它。这里使用九类门禁：完整性、结果类别、任务要求、实质依赖等价、当前访问、时间政策、允许的变换、模态交付，以及预算。有限公开检查器有意将九项全部设为适用，因此要求每项都有明确`pass`，并拒绝没有适用性见证的`not_applicable`。它不从任意文本中推断适用性。
+[状态模型（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md)区分`pass`、`fail`、`unknown`和`not_applicable`。一项强制义务由`pass`解除，或由`not_applicable`加上已识别规则及证明该精确范围内排除有效的证据解除。缺乏依据的排除、观察缺失，以及适用条件下的未知，均不能解除它。这里使用九类门禁：完整性、结果类别、任务要求、实质依赖等价、当前访问、时间政策、允许的变换、模态交付，以及预算。有限公开检查器有意将九项全部设为适用，因此要求每项都有明确`pass`，并拒绝没有适用性见证的`not_applicable`。它不从任意文本中推断适用性。
 
 当请求明确允许部分内容且缺口保持可见时，部分内容可以获准。但这不会让附着于所选内容的条件变成可选。预测效用再高，也不能把失败的强制条件变成许可。经济优化只能在可准入替代方案集合内进行。
 
@@ -54,7 +54,7 @@ translation_status: "author-draft"
 | 缓存的完成消息可以完成另一个任务 | 消息描述的是较早尝试和外部效果 | 保留内容不是新的执行事件 |
 | 频繁读取证明持续有效 | 重复命中不增加来源评估 | 访问统计与验证时间不同 |
 
-保留主张必然是有条件的。假设一项可靠的先前评估已确立性质\(P_1,\ldots,P_m\)：这些性质属于制品\(a\)，针对请求\(q\)，并在状态\(s_0\)下成立。这些性质的完整依赖与解释接口必须在\(s_1\)中保持等价；每项性质对请求的依赖，必须经由已声明的组成部分因子化，而\(q\)与新请求\(q'\)在这些组成部分上相同。对于每个输出\(a'\)，若其为变换关系\(T(a,a')\)所允许，变换都必须保留这些性质。这些前提确立其保留；但是，为\(q'\)准入还要求保留性质能够推出\(q'\)的每项强制要求均被解除，在使用不适用性排除时有有效见证，并满足当前授权和交付义务。旧的已验证性质集不能为未覆盖的新要求提供正当依据。遗漏实际依赖，或无依据地假定旧评估可靠，会使一项前提失效；名为`complete_manifest`的布尔字段不能确立任一前提。[受控复用定理（英文原文）](../../../../../papers/controlled-knowledge-reuse/PAPER.md)给出相应的条件论证。
+保留主张必然是有条件的。假设一个可靠的先前评估，在状态\(s_0\)下为请求\(q\)确立了制品\(a\)的性质\(P_1,\ldots,P_m\)。这些性质的完整依赖与解释接口必须在\(s_1\)中保持等价；每项性质对请求的依赖，必须经由已声明的组成部分因子化，而\(q\)与新请求\(q'\)在这些组成部分上相同。对于变换关系\(T(a,a')\)允许的每个输出\(a'\)，变换都必须保留这些性质。这些前提确立其保留；但是，为\(q'\)准入还要求保留性质能够推出\(q'\)的每项强制要求均被解除，在使用不适用性排除时有有效见证，并满足当前授权和交付义务。旧的已验证性质集不能为未覆盖的新要求提供正当依据。遗漏实际依赖，或无依据地假定旧评估可靠，会使一项前提失效；名为`complete_manifest`的布尔字段不能确立任一前提。[受控复用定理（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md)给出相应的条件论证。
 
 适合性还具有方向性。完整的非空集合可以通过允许的投影支持存在性答案。一个已知成员不能确立整个集合、其数量或不存在其他成员。对称的相似性分数不能提供缺失的蕴涵。
 
@@ -62,7 +62,7 @@ translation_status: "author-draft"
 
 制品生命周期、驻留状态、时效性和当前使用资格是不同评估。有效的保留修订版可能处于冷存储或暂时不可用；驻留且具有时效性的制品也可能不允许该请求者访问。历史答案可以有意使用固定的旧修订版，同时遵守当前访问限制。
 
-严格当前政策需要声明一个一致性时点：在该点，相关来源头版本和权限被视为当前。有限陈旧政策需要明确允许的范围和年龄。两者都不能默默忽略已知撤回、损坏、不兼容或实质性未决缺口。缓存命中更新使用统计，不重置底层来源被检查的时间。[HTTP缓存时效性](../../../../../reference/bibliography/BIBLIOGRAPHY.md#http-caching)与[陈旧响应扩展](../../../../../reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses)只提供有限技术类比，不授予绕过知识或权限检查的许可。
+严格当前政策需要声明一个一致性时点：在该点，相关来源头版本和权限被视为当前。有限陈旧政策需要明确允许的范围和年龄。两者都不能默默忽略已知撤回、损坏、不兼容或实质性未决缺口。缓存命中更新使用统计，不重置底层来源被检查的时间。[HTTP缓存时效性](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#http-caching)与[陈旧响应扩展](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#stale-http-responses)只提供有限技术类比，不授予绕过知识或权限检查的许可。
 
 检查与交付之间也存在间隙。验证之后、提供结果之前，权限或依赖可能改变。实现必须说明其一致性边界，例如使用经过检查的纪元、租约或事务性发布协议。这些机制需要自身的并发测试。这里的解析义务不声称某个分布式服务已经正确实现它们。
 
@@ -101,11 +101,11 @@ C_0-C_1=Nd-F(N).
 
 成本还需要共享基线。假设冷路径操作成本为十个单位，供应商缓存将其降为六个，使用准备好的制品将其降为一个。分别算出的两项节省——四个和九个——不能相加，变成从十单位操作中节省十三单位。如果制品命中消除了模型调用，那么该不存在调用上的供应商缓存节省并不是又一项观察到的收益。资源事件、重试、存储与共享基础设施需要互不重叠的核算，或明确的分摊规则。
 
-仅凭引用数、交付制品数或完成任务数，不能推出因果贡献。例如，[编辑试验（英文原文）](../../../../../engineering/studies/editorial-skill-pilot/STUDY.md)在两种条件下均观察到可用输出，结果为平局。缺少资源和结果观察，就不能把它转化为实测经济收益。
+仅凭引用数、交付制品数或完成任务数，不能推出因果贡献。例如，[编辑试验（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md)在两种条件下均观察到可用输出，结果为平局。缺少资源和结果观察，就不能把它转化为实测经济收益。
 
 ## 公开示例与主张限制 {#public-examples-and-claim-limits}
 
-修正后的[反例程序](../../../../../engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py)列出全部九类强制门禁。它检查一项全部通过的阳性对照，以及27项单独的缺失、失败或未知门禁变异；还检查格式错误输入，包括仅含一个门禁的映射和无正当依据的`not_applicable`。所提供状态仍然只是本地输入，不会认证权限服务或确立现实世界适用性。精确有理数成本计算是恒等式的演算示例，包括线性增长的存储开销，不是经济假设的经验验证。小型依赖与不存在性模型在虚构输入上说明反例。
+修正后的[反例程序](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py)列出全部九类强制门禁。它检查一项全部通过的阳性对照，以及27项单独的缺失、失败或未知门禁变异；还检查格式错误输入，包括仅含一个门禁的映射和无正当依据的`not_applicable`。所提供状态仍然只是本地输入，不会认证权限服务或确立现实世界适用性。精确有理数成本计算是恒等式的演算示例，包括线性增长的存储开销，不是经济假设的经验验证。小型依赖与不存在性模型在虚构输入上说明反例。
 
 在英文研究目录中运行：
 
@@ -113,10 +113,10 @@ C_0-C_1=Nd-F(N).
 python3 checks/check_admission_and_cost.py
 ```
 
-[保存的修正结果](../../../../../engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json)是一项新的确定性演示。较早的[1.0版程序](../../../../../engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py)与[结果](../../../../../engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json)作为历史证据逐字节保留：该程序只检查三个提供的门禁，在遗漏必需门禁时错误接受了非空子集。它的六项失败／未知控制不能确立缺失门禁义务。修正程序替代的是这一局部门禁演示，不改变任何历史模型结果。[更正记录](../../../../../engineering/studies/review-corrections.json)单独标识新文件。
+[保存的修正结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/checks/admission-and-cost-check.json)是一项新的确定性演示。较早的[1.0版程序](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/replay_reuse_counterexamples.py)与[结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/public-reuse-counterexamples.json)作为历史证据逐字节保留：该程序只检查三个提供的门禁，在遗漏必需门禁时错误接受了非空子集。它的六项失败／未知控制不能确立缺失门禁义务。修正程序替代的是这一局部门禁演示，不改变任何历史模型结果。[更正记录](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/review-corrections.json)单独标识新文件。
 
-原始性质来源是俄语渲染文字视图，其来源哈希与表示哈希分别记录于[origin.json](../../../../../engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json)。英文来源中，上述准入条件、依赖反例和时间限制属于英文摘要与当前论证；本译文传达这些内容。加强后的新请求覆盖前提是一项明确更正，不是声称旧来源已经证明它。[证据语言索引](../../../../../engineering/studies/evidence-language-index.json)记录各文件语言。没有任何公开程序重新运行早期生产系统。
+原始性质来源是俄语渲染文字视图，其来源哈希与表示哈希分别记录于[origin.json](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/evidence/origin.json)。英文来源中，上述准入条件、依赖反例和时间限制属于英文摘要与当前论证；本译文传达这些内容。加强后的新请求覆盖前提是一项明确更正，不是声称旧来源已经证明它。[证据语言索引](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json)记录各文件语言。没有任何公开程序重新运行早期生产系统。
 
 ## 结论 {#conclusion}
 
-受控复用需要两个决定：一条路径是否满足自身义务，以及它是否优于其他可准入路径。逻辑反例指出第一项决定中不能遗漏的输入；成本恒等式说明第二项决定需要测量什么。完成的解析结果恰恰因为允许否定答案而有用：缓存可以正确却不经济，可以在虚构假设下经济却在实践中尚未测量，也可以表面高效但不具备准入资格。术语汇总于[英文来源的术语表](../../../../../reference/glossary/GLOSSARY.md)。
+受控复用需要两个决定：一条路径是否满足自身义务，以及它是否优于其他可准入路径。逻辑反例指出第一项决定中不能遗漏的输入；成本恒等式说明第二项决定需要测量什么。完成的解析结果恰恰因为允许否定答案而有用：缓存可以正确却不经济，可以在虚构假设下经济却在实践中尚未测量，也可以表面高效但不具备准入资格。术语汇总于[英文来源的术语表](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md)。

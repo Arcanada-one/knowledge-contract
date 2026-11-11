@@ -1,0 +1,24 @@
+{
+  "schema": "knowledge-contract.rendition-link-relocations/1",
+  "scope": "Exact producer-declared technical link deltas; not independent full-body review or admission",
+  "replacements": [
+    {
+      "path": "translations/ru/engineering/studies/contract-profile-conformance/STUDY.md",
+      "old_destination": "../../../reference/glossary/GLOSSARY.md",
+      "new_destination": "../../../../../reference/glossary/GLOSSARY.md",
+      "old_occurrences_required": 1,
+      "reviewed_original_blob": "8237877bb67680e4ece8b56b1f0bf96e92dbd226",
+      "link_corrected_blob_before_title_mapping": "6da54d4eab2d45838c5f123ef6fb7d7021255264",
+      "logical_target": "reference/glossary/GLOSSARY.md"
+    },
+    {
+      "path": "translations/zh-Hans/engineering/studies/contract-profile-conformance/STUDY.md",
+      "old_destination": "../../../reference/glossary/GLOSSARY.md",
+      "new_destination": "../../../../../reference/glossary/GLOSSARY.md",
+      "old_occurrences_required": 1,
+      "reviewed_original_blob": "27f4c0daa1b5be6577473da158bdea5a546fa994",
+      "link_corrected_blob_before_title_mapping": "aff7156e0cd550f8bb776d73f1447cda7263acfc",
+      "logical_target": "reference/glossary/GLOSSARY.md"
+    }
+  ]
+}

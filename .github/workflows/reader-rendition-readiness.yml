@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: Apache-2.0
+name: Reader rendition readiness
+
+on:
+  pull_request:
+    paths:
+      - 'translations/release/**'
+      - 'tools/prepare_reviewed_publication.py'
+      - 'tools/test_prepare_reviewed_publication.py'
+      - '.github/workflows/reader-rendition-readiness.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-title-alignment:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Positive and adverse source-title controls
+        run: python3 -B -m unittest tools.test_prepare_reviewed_publication -v
+      - name: Prepare exact twenty-target delta without a publication decision
+        run: |
+          set -euo pipefail
+          python3 -B tools/prepare_reviewed_publication.py \
+            --repository . \
+            --source-commit 2b5bcff544fea5d1752ff009933e4ce0305dad8b \
+            --output "$RUNNER_TEMP/reader-rendition-proposals"
+          test -s "$RUNNER_TEMP/reader-rendition-proposals/preparation-report.json"
+          test -s "$RUNNER_TEMP/reader-rendition-proposals/title-source-alignment.patch"
+          cat "$RUNNER_TEMP/reader-rendition-proposals/title-source-alignment.patch"
