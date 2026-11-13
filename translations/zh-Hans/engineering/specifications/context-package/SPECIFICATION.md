@@ -1,6 +1,6 @@
 ---
 name: "context-package"
-title: "上下文包：覆盖、依赖与交付"
+title: "语境包：覆盖、依赖与交付"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -16,13 +16,13 @@ translation_status: "author-draft"
 <!-- markdownlint-disable-next-line MD033 -->
 <a id="context-packages-coverage-dependencies-and-delivery"></a>
 
-# 上下文包：覆盖、依赖与交付 {#context-package-coverage-dependencies-and-delivery}
+# 语境包：覆盖、依赖与交付 {#context-package-coverage-dependencies-and-delivery}
 
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}
 
-本文是一组架构要求。互操作性需要具名的表示配置；已实现的交换子集仅限于[观察、变更事件和配置通告](../status-model/SPECIFICATION.md#8-bounded-exchange-profile)，而[书籍包配置](../book-package/SPECIFICATION.md)具有自己的模式。这并不意味着已有完整契约的传输格式或已部署的运行时。
+本文是一组架构要求。互操作性需要具名的表示配置；已实现的交换子集仅限于[观察、变更事件和配置通告](../../../../../engineering/specifications/status-model/SPECIFICATION.md#8-bounded-exchange-profile)，而[书籍包配置](../../../../../engineering/specifications/book-package/SPECIFICATION.md)具有自己的模式。这并不意味着已有完整契约的传输格式或已部署的运行时。
 
 上下文包是在资源预算内，为一个声明用途准备的、版本化的知识、条件与依据选择。它使人能够检查选择了什么、为什么足够或仍不完整、纳入了哪些依赖，以及接收者实际获得什么。
 
@@ -74,7 +74,7 @@ translation_status: "author-draft"
 | conflicted | 实质上不兼容的依据阻止形成一个可准入结论 |
 | unknown | 现有观察不能确立覆盖状态 |
 
-搜索保证是独立维度：`candidate_only`、`exhaustive_in_scope` 或 `incomplete_procedure`，采用[规范词元定义](../status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies)。要求两个例子的请求可以在没有穷尽搜索的情况下得到支持。要求全部匹配对象的请求则需要额外的完整性义务。
+搜索保证是独立维度：`candidate_only`、`exhaustive_in_scope` 或 `incomplete_procedure`，采用[规范词元定义](../../../../../engineering/specifications/status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies)。要求两个例子的请求可以在没有穷尽搜索的情况下得到支持。要求全部匹配对象的请求则需要额外的完整性义务。
 
 **CTX-R010.** 空的 top-k 结果不得（MUST NOT）报告为全局不存在的证明。
 
@@ -100,7 +100,7 @@ translation_status: "author-draft"
 
 清单描述应当交付什么；回执记录在接收者边界上观察到了什么。媒体 URL 不能确立字节可用、已经显示、可辨读或已被理解。
 
-**CTX-R017.** 交付检查必须（MUST）符合任务的表示要求以及读取器声明的能力。
+**CTX-R017.** 交付检查必须（MUST）符合任务的表示要求以及读取方的已声明能力。
 
 **CTX-R018.** 任何输出评估都必须（MUST）指出精确的已交付包和要求修订版。
 
@@ -116,4 +116,4 @@ translation_status: "author-draft"
 
 ## 8. 兼容性 {#8-compatibility}
 
-历史覆盖字段只有与其对象和语义一起保留时才可导入。缺失的来源快照、预算测量或交付观察仍然是未知的。新的文档版本不会追溯性地把早期示例升级为已经执行的包。术语定义见[术语表](../../../reference/glossary/GLOSSARY.md)。
+历史覆盖字段只有与其对象和语义一起保留时才可导入。缺失的来源快照、预算测量或交付观察仍然是未知的。新的文档版本不会追溯性地把早期示例升级为已经执行的包。术语定义见[术语表](../../../../../reference/glossary/GLOSSARY.md)。
