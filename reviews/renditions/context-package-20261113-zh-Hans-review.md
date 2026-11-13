@@ -6,7 +6,7 @@ review_kind: "internal_technical"
 reviewer: "ChatGPT automated reviewer task /root/review_context_zh"
 independence: "NOT_VERIFIED"
 status: "changes required for publication; internal semantic findings only"
-sources:
+reviewed_material:
   - "Knowledge Contract exact English and Simplified Chinese blobs identified below"
   - "Knowledge Contract naming, glossary, contribution and rendition records identified below"
   - "Contract Place exact K8 compiler blob identified below"
