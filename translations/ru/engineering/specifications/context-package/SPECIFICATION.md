@@ -1,6 +1,6 @@
 ---
 name: "context-package"
-title: "Пакеты контекста: покрытие, зависимости и выдача"
+title: "Пакет контекста: покрытие, зависимости и выдача"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -8,12 +8,15 @@ language: "ru"
 license: "CC-BY-4.0"
 description: "Требования к отобранному контексту, покрытию, обязательным зависимостям, бюджетам и наблюдаемой доставке."
 translation_of: "engineering/specifications/context-package/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "274c7fb2a72e6a832b397b29c399e2d2f2607dfc"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "30ca8d2e5b5dd0e38b30cdb46919f514771a01da"
 translation_status: "author-draft"
 ---
 
-# Пакеты контекста: покрытие, зависимости и выдача {#context-packages-coverage-dependencies-and-delivery}
+<!-- markdownlint-disable-next-line MD033 -->
+<a id="context-packages-coverage-dependencies-and-delivery"></a>
+
+# Пакет контекста: покрытие, зависимости и выдача {#context-package-coverage-dependencies-and-delivery}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

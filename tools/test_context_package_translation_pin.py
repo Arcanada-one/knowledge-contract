@@ -1,0 +1,75 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Exact-source pin checks for the two existing Context Package draft translations.
+
+These are structural/edit integrity checks, not independent semantic reviews.
+"""
+import hashlib
+import re
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / 'engineering/specifications/context-package/SPECIFICATION.md'
+COMMIT = '161a01afb1b756adf059ea2e1cbdd0dca29d83a2'
+BLOB = '30ca8d2e5b5dd0e38b30cdb46919f514771a01da'
+LANGS = {
+    'ru': 'Пакет контекста: покрытие, зависимости и выдача',
+    'zh-Hans': '上下文包：覆盖、依赖与交付',
+}
+NEW_ANCHOR = 'context-package-coverage-dependencies-and-delivery'
+OLD_ANCHOR = 'context-packages-coverage-dependencies-and-delivery'
+
+def git_blob(data: bytes) -> str:
+    return hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+
+def requirement_ids(text: str):
+    return re.findall(r'\*\*(CTX-R\d{3})\.\*\*', text)
+
+def translation_state(text: str, language: str) -> bool:
+    front = text.split('---', 2)[1]
+    return all(field in front for field in (
+        f'language: "{language}"',
+        'translation_status: "author-draft"',
+        f'source_commit: "{COMMIT}"',
+        f'source_git_blob: "{BLOB}"',
+        'translation_of: "engineering/specifications/context-package/SPECIFICATION.md"'
+    ))
+
+class ContextPackagePinTests(unittest.TestCase):
+    def test_exact_published_source_blob(self):
+        self.assertEqual(git_blob(SOURCE.read_bytes()), BLOB)
+
+    def test_source_exact_twenty_requirements(self):
+        self.assertEqual(requirement_ids(SOURCE.read_text(encoding='utf-8')),
+                         [f'CTX-R{i:03}' for i in range(1,21)])
+
+    def test_drafts_repin_and_remain_unreviewed(self):
+        for lang in LANGS:
+            with self.subTest(lang=lang):
+                p = ROOT / 'translations' / lang / 'engineering/specifications/context-package/SPECIFICATION.md'
+                self.assertTrue(translation_state(p.read_text(encoding='utf-8'), lang))
+
+    def test_both_historic_and_current_title_anchors(self):
+        for lang,title in LANGS.items():
+            with self.subTest(lang=lang):
+                p = ROOT / 'translations' / lang / 'engineering/specifications/context-package/SPECIFICATION.md'
+                t = p.read_text(encoding='utf-8')
+                self.assertIn(f'<a id="{OLD_ANCHOR}"></a>', t)
+                self.assertIn(f'# {title} {{#{NEW_ANCHOR}}}', t)
+
+    def test_twenty_requirement_identity_pairs(self):
+        expected = requirement_ids(SOURCE.read_text(encoding='utf-8'))
+        for lang in LANGS:
+            with self.subTest(lang=lang):
+                p = ROOT / 'translations' / lang / 'engineering/specifications/context-package/SPECIFICATION.md'
+                self.assertEqual(requirement_ids(p.read_text(encoding='utf-8')), expected)
+
+    def test_negative_source_and_status_controls(self):
+        p = ROOT / 'translations/ru/engineering/specifications/context-package/SPECIFICATION.md'
+        t = p.read_text(encoding='utf-8')
+        self.assertFalse(translation_state(t.replace(COMMIT,'unknown'), 'ru'))
+        self.assertFalse(translation_state(t.replace('author-draft','reviewed'), 'ru'))
+        self.assertFalse(translation_state(t.replace(BLOB,'0'*40), 'ru'))
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
