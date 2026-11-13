@@ -14,7 +14,6 @@ The adjacent `tools/test_context_package_translation_pin.py` checks source SHA, 
 
 **Next editorial step:** independent EN↔RU and EN↔ZH-Hans semantic review, all link/anchor/terminology/MathML checks against the immutable published source, then the existing K8 rendition sidecar process (no artificial override of admission). Until that process completes, the site must retain the truthful English-fallback notice. Do not infer that a draft file is an approved translation.
 
-
 ## Successor: source fidelity and link repair
 
 A separate internal delegated EN→RU and EN→zh-Hans full-body review found four unpinned peer-rendition links in each target. The unmodified K8 `classify_link` / `analyse_links` functions from contract-place-site `731720eb54d42b5e07019d49b954a72e855ae912`, compiler blob `f387ded563e9ab03d37436b3ad9dafb53792a70c`, reproduced four `RENDITION_LINK_UNPINNED` findings per original and zero per corrected target. The four hrefs now resolve to the original canonical work and fragment. File existence and canonical parity alone had not established link admission.
