@@ -7,6 +7,8 @@ No claim of scientific admission, linguistic review, site serving or KC2 use.
 """
 import json
 import hashlib
+import re
+import tempfile
 from pathlib import Path
 import unittest
 
@@ -74,7 +76,12 @@ class SnapshotReaderControls(unittest.TestCase):
 REPORT_SOURCE_COMMIT = "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e"
 REPORT_BLOB = "c02b44d69a0cd7b704b10323389a56c563b1b62d"
 
-def report_pointer_problems(study_reader, report_bytes, index):
+REPORT_NAME = "validation-report.json"
+STUDIES_DIR = ROOT / "engineering/studies"
+# Inline Markdown link: [text](destination). Destination has no space or ')'.
+LINK = re.compile(r"\[[^\]]*\]\(([^()\s]*)\)")
+
+def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDIES_DIR):
     errors = []
     passages = [p for p in study_reader.split("\n\n")
                 if "Historical validation scope." in p]
@@ -90,6 +97,12 @@ def report_pointer_problems(study_reader, report_bytes, index):
     )
     if any(item not in passage for item in required):
         errors.append("unbound_or_misrepresented_historical_report")
+    # The report must be a real link, not just the filename as text: a parsed
+    # destination exactly equal to REPORT_NAME, resolving to a file beside the README.
+    if REPORT_NAME not in LINK.findall(passage):
+        errors.append("report_link_destination_not_exact")
+    elif not (Path(studies_dir) / REPORT_NAME).is_file():
+        errors.append("report_link_target_missing")
     actual_blob = hashlib.sha1(b"blob " + str(len(report_bytes)).encode("ascii") +
                                b"\0" + report_bytes).hexdigest()
     if actual_blob != REPORT_BLOB:
@@ -132,6 +145,42 @@ class HistoricalReportPointerControls(unittest.TestCase):
         changed_index = dict(self.index, claim_count=24)
         self.assertIn("successor_claim_count_changed",
                       report_pointer_problems(self.study, self.report, changed_index))
+    def link_mutant(self, replacement):
+        original = "](validation-report.json)"
+        self.assertEqual(self.study.count(original), 1)
+        return self.study.replace(original, replacement, 1)
+
+    def test_link_destination_nonexistent_target_is_detected(self):
+        """Only the destination changes; the link text stays identical."""
+        changed = self.link_mutant("](nonexistent-report.json)")
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_destination_non_exact_form_is_refused(self):
+        """Rule: the destination must equal `validation-report.json` byte for
+        byte. Prefixes (`./`), fragments (`#x`), queries and other spellings of
+        an existing file are refused, even though they would resolve."""
+        for dest in ("./validation-report.json#x", "./validation-report.json",
+                     "validation-report.json#x", "validation-report.json?x"):
+            with self.subTest(dest=dest):
+                changed = self.link_mutant(f"]({dest})")
+                self.assertIn("report_link_destination_not_exact",
+                              report_pointer_problems(changed, self.report, self.index))
+
+    def test_bare_filename_without_link_is_refused(self):
+        """Only the link is removed; the bare filename text stays in the paragraph."""
+        label = "[preserved mechanical `validation-report.json`]"
+        changed = self.link_mutant("").replace(label, label[1:-1], 1)
+        self.assertNotIn("](validation-report.json)", changed)
+        self.assertIn("`validation-report.json`", changed)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_exact_link_to_missing_file_is_refused(self):
+        """The README is unchanged; the studies directory lacks the report file."""
+        with tempfile.TemporaryDirectory() as empty:
+            self.assertIn("report_link_target_missing",
+                          report_pointer_problems(self.study, self.report, self.index, empty))
 
 if __name__ == "__main__":
     unittest.main()
