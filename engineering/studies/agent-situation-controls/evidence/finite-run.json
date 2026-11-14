@@ -1,0 +1,5419 @@
+{
+  "command": "python3 /workspace/scratch/aff956949d29/agent-situation-research/prototype/checks/check_agent_situation.py --evidence /workspace/scratch/aff956949d29/agent-situation-research/prototype/evidence/finite-run.json",
+  "controls": [
+    {
+      "actual": {
+        "recovered_value": 2,
+        "recovery": "KNOWN",
+        "ttl_states": [
+          "KNOWN",
+          "STALE",
+          "STALE"
+        ]
+      },
+      "description": "TTL is fresh before its boundary, expired at/after it; only a new observation recovers.",
+      "expected": {
+        "recovered_value": 2,
+        "recovery": "KNOWN",
+        "ttl_states": [
+          "KNOWN",
+          "STALE",
+          "STALE"
+        ]
+      },
+      "id": 1,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": 10,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 9,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 1
+              }
+            ],
+            "state": "KNOWN",
+            "value": 1
+          }
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 10,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "STALE"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 1
+              }
+            ],
+            "state": "STALE",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 11,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "STALE"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 1
+              }
+            ],
+            "state": "STALE",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:2",
+            "key": "x",
+            "observed_at": 12,
+            "received_at": 12,
+            "scope": "A",
+            "sequence": 2,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": 10,
+            "value": 2
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 12,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:2",
+                "key": "x",
+                "observed_at": 12,
+                "received_at": 12,
+                "scope": "A",
+                "sequence": 2,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 2
+              }
+            ],
+            "state": "KNOWN",
+            "value": 2
+          }
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 12,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:2",
+                "key": "x",
+                "observed_at": 12,
+                "received_at": 12,
+                "scope": "A",
+                "sequence": 2,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 2
+              }
+            ],
+            "state": "KNOWN",
+            "value": 2
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "false_type": "bool",
+        "states": [
+          "UNKNOWN",
+          "KNOWN",
+          "KNOWN"
+        ],
+        "unknown_value": null,
+        "zero_type": "int"
+      },
+      "description": "Unknown, false and integer zero remain distinct.",
+      "expected": {
+        "false_type": "bool",
+        "states": [
+          "UNKNOWN",
+          "KNOWN",
+          "KNOWN"
+        ],
+        "unknown_value": null,
+        "zero_type": "int"
+      },
+      "id": 2,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:unknown:1",
+            "key": "unknown",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "unknown-sensor",
+            "state": "UNKNOWN",
+            "ttl": null,
+            "value": null
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:false:1",
+            "key": "false",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "false-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": false
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:zero:1",
+            "key": "zero",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "zero-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 0
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "key": "unknown",
+            "now": 0,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "UNKNOWN"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:unknown:1",
+                "key": "unknown",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "unknown-sensor",
+                "state": "UNKNOWN",
+                "ttl": null,
+                "value": null
+              }
+            ],
+            "state": "UNKNOWN",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "key": "false",
+            "now": 0,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:false:1",
+                "key": "false",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "false-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": false
+              }
+            ],
+            "state": "KNOWN",
+            "value": false
+          }
+        },
+        {
+          "input": {
+            "key": "zero",
+            "now": 0,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:zero:1",
+                "key": "zero",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "zero-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": 0
+              }
+            ],
+            "state": "KNOWN",
+            "value": 0
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "after": "STALE",
+        "duplicate": "DUPLICATE",
+        "first": "STALE",
+        "retained_observed_at": 0,
+        "retained_received_at": 8
+      },
+      "description": "Late receipt and identical replay retain original event age and first receipt.",
+      "expected": {
+        "after": "STALE",
+        "duplicate": "DUPLICATE",
+        "first": "STALE",
+        "retained_observed_at": 0,
+        "retained_received_at": 8
+      },
+      "id": 3,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 8,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": 5,
+            "value": 7
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 8,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "STALE"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 8,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 5,
+                "value": 7
+              }
+            ],
+            "state": "STALE",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": 5,
+            "value": 7
+          },
+          "operation": "ingest",
+          "output": "DUPLICATE"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 10,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "STALE"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 8,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 5,
+                "value": 7
+              }
+            ],
+            "state": "STALE",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "backward": "NOT_READY",
+        "before": "READY",
+        "clock_invalid": true,
+        "future": "NOT_READY"
+      },
+      "description": "Future observation time and clock regression cannot produce ready context.",
+      "expected": {
+        "backward": "NOT_READY",
+        "before": "READY",
+        "clock_invalid": true,
+        "future": "NOT_READY"
+      },
+      "id": 4,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:future:1",
+            "key": "future",
+            "observed_at": 20,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "future-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "future"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 1,
+            "included": [
+              "future"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "future:INVALID_TIME"
+            ],
+            "required_closure": [
+              "future"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "future": {
+                "reasons": [
+                  "INVALID_TIME"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:future:1",
+                    "key": "future",
+                    "observed_at": 20,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "future-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "INVALID_TIME",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:normal:1",
+            "key": "normal",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "normal-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 10,
+            "optional": [],
+            "required": [
+              "normal"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "normal"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "normal"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "normal"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-4",
+              "required": [
+                "normal"
+              ],
+              "scope": "A",
+              "versions": {
+                "normal": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "normal": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:normal:1",
+                    "key": "normal",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "normal-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 9,
+            "optional": [],
+            "required": [
+              "normal"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "normal"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "normal:INVALID_TIME",
+              "CLOCK_INVALID"
+            ],
+            "required_closure": [
+              "normal"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "normal": {
+                "reasons": [
+                  "INVALID_TIME"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:normal:1",
+                    "key": "normal",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "normal-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "INVALID_TIME",
+                "value": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "cross_key_lower": "OUT_OF_ORDER",
+        "equal": "SEQUENCE_REJECTED",
+        "lower": "OUT_OF_ORDER",
+        "value": "new"
+      },
+      "description": "Lower or reused producer sequence cannot replace current state, including another key in that stream.",
+      "expected": {
+        "cross_key_lower": "OUT_OF_ORDER",
+        "equal": "SEQUENCE_REJECTED",
+        "lower": "OUT_OF_ORDER",
+        "value": "new"
+      },
+      "id": 5,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:2",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 2,
+            "source": "stream",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "new"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 1,
+            "source": "stream",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "old"
+          },
+          "operation": "ingest",
+          "output": "OUT_OF_ORDER"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "equal-sequence-new-event",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 2,
+            "scope": "A",
+            "sequence": 2,
+            "source": "stream",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "different"
+          },
+          "operation": "ingest",
+          "output": "SEQUENCE_REJECTED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:other:1",
+            "key": "other",
+            "observed_at": 0,
+            "received_at": 3,
+            "scope": "A",
+            "sequence": 1,
+            "source": "stream",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "old"
+          },
+          "operation": "ingest",
+          "output": "OUT_OF_ORDER"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 3,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:2",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 2,
+                "source": "stream",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": "new"
+              }
+            ],
+            "state": "KNOWN",
+            "value": "new"
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "chosen_value": null,
+        "projection": "NOT_READY",
+        "source_count": 2,
+        "state": "CONFLICT"
+      },
+      "description": "Independent source disagreement retains both observations and blocks readiness.",
+      "expected": {
+        "chosen_value": null,
+        "projection": "NOT_READY",
+        "source_count": 2,
+        "state": "CONFLICT"
+      },
+      "id": 6,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "first",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "first",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": true
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "second",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "second",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": false
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 0,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "CONFLICT"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "first",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "first",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": true
+              },
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "second",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "second",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": false
+              }
+            ],
+            "state": "CONFLICT",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "x"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "x"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "x:CONFLICT"
+            ],
+            "required_closure": [
+              "x"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "x": {
+                "reasons": [
+                  "CONFLICT"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "first",
+                    "key": "x",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "first",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": true
+                  },
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "second",
+                    "key": "x",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "second",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": false
+                  }
+                ],
+                "state": "CONFLICT",
+                "value": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "duplicate": "DUPLICATE",
+        "generation": 1,
+        "inconsistent": "DUPLICATE_REJECTED",
+        "value": 1
+      },
+      "description": "Exact logical duplicate is idempotent; inconsistent event-ID reuse is rejected.",
+      "expected": {
+        "duplicate": "DUPLICATE",
+        "generation": 1,
+        "inconsistent": "DUPLICATE_REJECTED",
+        "value": 1
+      },
+      "id": 7,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "same",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "same",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "DUPLICATE"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "same",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 2,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 2
+          },
+          "operation": "ingest",
+          "output": "DUPLICATE_REJECTED"
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 2,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "same",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": 1
+              }
+            ],
+            "state": "KNOWN",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "derived_state": "INVALIDATED",
+        "relevant_request": true,
+        "relevant_snapshot": "INVALID",
+        "unrelated_snapshot": "VALID"
+      },
+      "description": "A dependency update invalidates a derived fact and its snapshot; unrelated generation change does not.",
+      "expected": {
+        "derived_state": "INVALIDATED",
+        "relevant_request": true,
+        "relevant_snapshot": "INVALID",
+        "unrelated_snapshot": "VALID"
+      },
+      "id": 8,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": [
+              [
+                "a",
+                1
+              ]
+            ],
+            "event_id": "A:b:1",
+            "key": "b",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "b-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "derived"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:unrelated:1",
+            "key": "unrelated",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "unrelated-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "b"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 3,
+            "included": [
+              "a",
+              "b"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "a",
+              "b"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a",
+                "b"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-8",
+              "required": [
+                "b"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 1,
+                "b": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:1",
+                    "key": "a",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              },
+              "b": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "a",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:b:1",
+                    "key": "b",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "b-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "derived"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "derived"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:unrelated:2",
+            "key": "unrelated",
+            "observed_at": 1,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 2,
+            "source": "unrelated-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 2
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "now": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a",
+                "b"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-8",
+              "required": [
+                "b"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 1,
+                "b": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [],
+            "status": "VALID"
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:2",
+            "key": "a",
+            "observed_at": 2,
+            "received_at": 2,
+            "scope": "A",
+            "sequence": 2,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 2
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "changed": true,
+            "event_key": "a",
+            "now": 2,
+            "required": [
+              "b"
+            ],
+            "scope": "A",
+            "trigger": "EVENT"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [],
+            "reason": "RELEVANT_EVENT",
+            "request_model_call": true
+          }
+        },
+        {
+          "input": {
+            "key": "b",
+            "now": 2,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "INVALIDATED",
+              "INVALID_DERIVATION_TIME"
+            ],
+            "sources": [
+              {
+                "dependencies": [
+                  "a"
+                ],
+                "dependency_pins": [
+                  [
+                    "a",
+                    1
+                  ]
+                ],
+                "event_id": "A:b:1",
+                "key": "b",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "b-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": "derived"
+              }
+            ],
+            "state": "INVALIDATED",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "now": 2,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a",
+                "b"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-8",
+              "required": [
+                "b"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 1,
+                "b": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "CRITICAL_GENERATION_CHANGED:a",
+              "b:INVALIDATED"
+            ],
+            "status": "INVALID"
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "heartbeat_request": false,
+        "observed_at": 0,
+        "unchanged_request": false,
+        "unrelated_request": false
+      },
+      "description": "Heartbeat and messages without a relevant fact change neither renew observation time nor request rebuild.",
+      "expected": {
+        "heartbeat_request": false,
+        "observed_at": 0,
+        "unchanged_request": false,
+        "unrelated_request": false
+      },
+      "id": 9,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": 10,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "now": 5,
+            "required": [
+              "x"
+            ],
+            "scope": "A",
+            "trigger": "HEARTBEAT"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [],
+            "reason": "NO_RELEVANT_CHANGE",
+            "request_model_call": false
+          }
+        },
+        {
+          "input": {
+            "changed": false,
+            "event_key": "x",
+            "now": 5,
+            "required": [
+              "x"
+            ],
+            "scope": "A",
+            "trigger": "EVENT"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [],
+            "reason": "NO_RELEVANT_CHANGE",
+            "request_model_call": false
+          }
+        },
+        {
+          "input": {
+            "changed": true,
+            "event_key": "noise",
+            "now": 5,
+            "required": [
+              "x"
+            ],
+            "scope": "A",
+            "trigger": "EVENT"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [],
+            "reason": "NO_RELEVANT_CHANGE",
+            "request_model_call": false
+          }
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 5,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": 10,
+                "value": 1
+              }
+            ],
+            "state": "KNOWN",
+            "value": 1
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "account_B_value": "account-B",
+        "cross_scope": "INVALID",
+        "own_scope": "VALID"
+      },
+      "description": "A ready snapshot from account A cannot be reused for B even when per-key versions coincide.",
+      "expected": {
+        "account_B_value": "account-B",
+        "cross_scope": "INVALID",
+        "own_scope": "VALID"
+      },
+      "id": 10,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "account-A"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "B:x:1",
+            "key": "x",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "B",
+            "sequence": 1,
+            "source": "x-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "account-B"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "x"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "x"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "x"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "x"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-10",
+              "required": [
+                "x"
+              ],
+              "scope": "A",
+              "versions": {
+                "x": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "x": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:x:1",
+                    "key": "x",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "x-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "account-A"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "account-A"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 0,
+            "scope": "B",
+            "snapshot": {
+              "closure": [
+                "x"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-10",
+              "required": [
+                "x"
+              ],
+              "scope": "A",
+              "versions": {
+                "x": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "SCOPE_CHANGED"
+            ],
+            "status": "INVALID"
+          }
+        },
+        {
+          "input": {
+            "now": 0,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "x"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-10",
+              "required": [
+                "x"
+              ],
+              "scope": "A",
+              "versions": {
+                "x": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [],
+            "status": "VALID"
+          }
+        },
+        {
+          "input": {
+            "key": "x",
+            "now": 0,
+            "scope": "B"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "B:x:1",
+                "key": "x",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "B",
+                "sequence": 1,
+                "source": "x-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": "account-B"
+              }
+            ],
+            "state": "KNOWN",
+            "value": "account-B"
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "below_closure": [
+          "a",
+          "b",
+          "c"
+        ],
+        "below_included": [],
+        "below_required_cost": 6,
+        "below_status": "NOT_FIT",
+        "exact_cost": 6,
+        "exact_included": [
+          "a",
+          "b",
+          "c"
+        ],
+        "exact_status": "READY",
+        "optional_omitted": [
+          {
+            "key": "bonus",
+            "reason": "BUDGET"
+          }
+        ]
+      },
+      "description": "Transitive mandatory closure fits exactly at six units; five cannot omit a required member.",
+      "expected": {
+        "below_closure": [
+          "a",
+          "b",
+          "c"
+        ],
+        "below_included": [],
+        "below_required_cost": 6,
+        "below_status": "NOT_FIT",
+        "exact_cost": 6,
+        "exact_included": [
+          "a",
+          "b",
+          "c"
+        ],
+        "exact_status": "READY",
+        "optional_omitted": [
+          {
+            "key": "bonus",
+            "reason": "BUDGET"
+          }
+        ]
+      },
+      "id": 11,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": [
+              [
+                "a",
+                1
+              ]
+            ],
+            "event_id": "A:b:1",
+            "key": "b",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "b-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 2
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "b"
+            ],
+            "dependency_pins": [
+              [
+                "b",
+                1
+              ]
+            ],
+            "event_id": "A:c:1",
+            "key": "c",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "c-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 3
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:bonus:1",
+            "key": "bonus",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "bonus-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 4
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 6,
+            "costs": {
+              "a": 2,
+              "b": 3,
+              "bonus": 1,
+              "c": 1
+            },
+            "now": 0,
+            "optional": [
+              "bonus"
+            ],
+            "required": [
+              "c"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 6,
+            "cost": 6,
+            "generation": 4,
+            "included": [
+              "a",
+              "b",
+              "c"
+            ],
+            "omitted": [
+              {
+                "key": "bonus",
+                "reason": "BUDGET"
+              }
+            ],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "a",
+              "b",
+              "c"
+            ],
+            "required_cost": 6,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a",
+                "b",
+                "c"
+              ],
+              "generation": 4,
+              "model_id": "fixture-model-11",
+              "required": [
+                "c"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 1,
+                "b": 1,
+                "c": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:1",
+                    "key": "a",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              },
+              "b": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "a",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:b:1",
+                    "key": "b",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "b-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 2
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 2
+              },
+              "c": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "b"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "b",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:c:1",
+                    "key": "c",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "c-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 3
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 3
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 5,
+            "costs": {
+              "a": 2,
+              "b": 3,
+              "bonus": 1,
+              "c": 1
+            },
+            "now": 0,
+            "optional": [
+              "bonus"
+            ],
+            "required": [
+              "c"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 5,
+            "cost": 0,
+            "generation": 4,
+            "included": [],
+            "omitted": [
+              {
+                "key": "bonus",
+                "reason": "MANDATORY_CONTEXT_UNAVAILABLE"
+              }
+            ],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "mandatory closure exceeds budget"
+            ],
+            "required_closure": [
+              "a",
+              "b",
+              "c"
+            ],
+            "required_cost": 6,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_FIT",
+            "values": {}
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "missing": "NOT_READY",
+        "optional_included": [
+          "known"
+        ],
+        "optional_omission": [
+          {
+            "details": [
+              "unknown:UNKNOWN"
+            ],
+            "key": "unknown",
+            "reason": "NOT_READY"
+          }
+        ],
+        "optional_status": "READY",
+        "unknown": "NOT_READY"
+      },
+      "description": "Missing or unknown mandatory facts block readiness; optional unknown is explicitly omitted.",
+      "expected": {
+        "missing": "NOT_READY",
+        "optional_included": [
+          "known"
+        ],
+        "optional_omission": [
+          {
+            "details": [
+              "unknown:UNKNOWN"
+            ],
+            "key": "unknown",
+            "reason": "NOT_READY"
+          }
+        ],
+        "optional_status": "READY",
+        "unknown": "NOT_READY"
+      },
+      "id": 12,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:known:1",
+            "key": "known",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "known-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:unknown:1",
+            "key": "unknown",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "unknown-sensor",
+            "state": "UNKNOWN",
+            "ttl": null,
+            "value": null
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [
+              "unknown"
+            ],
+            "required": [
+              "known"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "known"
+            ],
+            "omitted": [
+              {
+                "details": [
+                  "unknown:UNKNOWN"
+                ],
+                "key": "unknown",
+                "reason": "NOT_READY"
+              }
+            ],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "known"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "known"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-12",
+              "required": [
+                "known"
+              ],
+              "scope": "A",
+              "versions": {
+                "known": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "known": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:known:1",
+                    "key": "known",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "known-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "missing"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "missing"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "missing:MISSING"
+            ],
+            "required_closure": [
+              "missing"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "missing": {
+                "reasons": [
+                  "no observation"
+                ],
+                "state": "MISSING",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "unknown"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 2,
+            "included": [
+              "unknown"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "unknown:UNKNOWN"
+            ],
+            "required_closure": [
+              "unknown"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "unknown": {
+                "reasons": [
+                  "UNKNOWN"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:unknown:1",
+                    "key": "unknown",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "unknown-sensor",
+                    "state": "UNKNOWN",
+                    "ttl": null,
+                    "value": null
+                  }
+                ],
+                "state": "UNKNOWN",
+                "value": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "deterministic": true,
+        "included": [
+          "r",
+          "z",
+          "b"
+        ],
+        "omitted": [
+          {
+            "key": "a",
+            "reason": "BUDGET"
+          }
+        ]
+      },
+      "description": "Optional ranking is stable; repeated identical requests yield identical projections.",
+      "expected": {
+        "deterministic": true,
+        "included": [
+          "r",
+          "z",
+          "b"
+        ],
+        "omitted": [
+          {
+            "key": "a",
+            "reason": "BUDGET"
+          }
+        ]
+      },
+      "id": 13,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:r:1",
+            "key": "r",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "r-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "r"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "a"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:b:1",
+            "key": "b",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "b-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "b"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:z:1",
+            "key": "z",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "z-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "z"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 3,
+            "costs": null,
+            "now": 0,
+            "optional": [
+              "z",
+              "b",
+              "a"
+            ],
+            "required": [
+              "r"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 3,
+            "cost": 3,
+            "generation": 4,
+            "included": [
+              "r",
+              "z",
+              "b"
+            ],
+            "omitted": [
+              {
+                "key": "a",
+                "reason": "BUDGET"
+              }
+            ],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "r"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "r"
+              ],
+              "generation": 4,
+              "model_id": "fixture-model-13",
+              "required": [
+                "r"
+              ],
+              "scope": "A",
+              "versions": {
+                "r": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "b": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:b:1",
+                    "key": "b",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "b-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "b"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "b"
+              },
+              "r": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:r:1",
+                    "key": "r",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "r-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "r"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "r"
+              },
+              "z": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:z:1",
+                    "key": "z",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "z-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "z"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "z"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 3,
+            "costs": null,
+            "now": 0,
+            "optional": [
+              "z",
+              "b",
+              "a"
+            ],
+            "required": [
+              "r"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 3,
+            "cost": 3,
+            "generation": 4,
+            "included": [
+              "r",
+              "z",
+              "b"
+            ],
+            "omitted": [
+              {
+                "key": "a",
+                "reason": "BUDGET"
+              }
+            ],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "r"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "r"
+              ],
+              "generation": 4,
+              "model_id": "fixture-model-13",
+              "required": [
+                "r"
+              ],
+              "scope": "A",
+              "versions": {
+                "r": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "b": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:b:1",
+                    "key": "b",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "b-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "b"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "b"
+              },
+              "r": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:r:1",
+                    "key": "r",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "r-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "r"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "r"
+              },
+              "z": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:z:1",
+                    "key": "z",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "z-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "z"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "z"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "after": "INVALID",
+        "before": "VALID",
+        "false_fact_structural_status": "READY",
+        "plan_state": "INVALIDATED",
+        "readiness_grants_permission": false
+      },
+      "description": "Revocation fixture invalidates its dependent plan but no fixture implements a grant authority.",
+      "expected": {
+        "after": "INVALID",
+        "before": "VALID",
+        "false_fact_structural_status": "READY",
+        "plan_state": "INVALIDATED",
+        "readiness_grants_permission": false
+      },
+      "id": 14,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:grant_fixture:1",
+            "key": "grant_fixture",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "grant_fixture-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": true
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "grant_fixture"
+            ],
+            "dependency_pins": [
+              [
+                "grant_fixture",
+                1
+              ]
+            ],
+            "event_id": "A:plan:1",
+            "key": "plan",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "plan-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "prepared"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "plan"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 2,
+            "included": [
+              "grant_fixture",
+              "plan"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "grant_fixture",
+              "plan"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "grant_fixture",
+                "plan"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-14",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "grant_fixture": 1,
+                "plan": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "grant_fixture": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:grant_fixture:1",
+                    "key": "grant_fixture",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "grant_fixture-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": true
+                  }
+                ],
+                "state": "KNOWN",
+                "value": true
+              },
+              "plan": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "grant_fixture"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "grant_fixture",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:plan:1",
+                    "key": "plan",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "plan-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "prepared"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "prepared"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 0,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "grant_fixture",
+                "plan"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-14",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "grant_fixture": 1,
+                "plan": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [],
+            "status": "VALID"
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:grant_fixture:2",
+            "key": "grant_fixture",
+            "observed_at": 1,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 2,
+            "source": "grant_fixture-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": false
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 1,
+            "optional": [],
+            "required": [
+              "grant_fixture"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 3,
+            "included": [
+              "grant_fixture"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "grant_fixture"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "grant_fixture"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-14",
+              "required": [
+                "grant_fixture"
+              ],
+              "scope": "A",
+              "versions": {
+                "grant_fixture": 2
+              }
+            },
+            "status": "READY",
+            "values": {
+              "grant_fixture": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:grant_fixture:2",
+                    "key": "grant_fixture",
+                    "observed_at": 1,
+                    "received_at": 1,
+                    "scope": "A",
+                    "sequence": 2,
+                    "source": "grant_fixture-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": false
+                  }
+                ],
+                "state": "KNOWN",
+                "value": false
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "grant_fixture",
+                "plan"
+              ],
+              "generation": 2,
+              "model_id": "fixture-model-14",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "grant_fixture": 1,
+                "plan": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "CRITICAL_GENERATION_CHANGED:grant_fixture",
+              "plan:INVALIDATED"
+            ],
+            "status": "INVALID"
+          }
+        },
+        {
+          "input": {
+            "key": "plan",
+            "now": 1,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "INVALIDATED",
+              "INVALID_DERIVATION_TIME"
+            ],
+            "sources": [
+              {
+                "dependencies": [
+                  "grant_fixture"
+                ],
+                "dependency_pins": [
+                  [
+                    "grant_fixture",
+                    1
+                  ]
+                ],
+                "event_id": "A:plan:1",
+                "key": "plan",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "plan-sensor",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": "prepared"
+              }
+            ],
+            "state": "INVALIDATED",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "changed": "INVALID",
+        "unchanged": "VALID",
+        "version_reason": true
+      },
+      "description": "Unchanged snapshot validates; a new critical observation invalidates it even at an equal value.",
+      "expected": {
+        "changed": "INVALID",
+        "unchanged": "VALID",
+        "version_reason": true
+      },
+      "id": 15,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:critical:1",
+            "key": "critical",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "critical-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "same-value"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "critical"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 1,
+            "included": [
+              "critical"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "critical"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-15",
+              "required": [
+                "critical"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "critical": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:critical:1",
+                    "key": "critical",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "critical-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "same-value"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "same-value"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 0,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-15",
+              "required": [
+                "critical"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [],
+            "status": "VALID"
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:critical:2",
+            "key": "critical",
+            "observed_at": 1,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 2,
+            "source": "critical-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "same-value"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "now": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-15",
+              "required": [
+                "critical"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "CRITICAL_GENERATION_CHANGED:critical"
+            ],
+            "status": "INVALID"
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "observe": [
+          "sensor"
+        ],
+        "reason": "OBSERVATION_NEEDED",
+        "request_model_call": false
+      },
+      "description": "Expiry backstop requests observation without a received change event or an LLM call.",
+      "expected": {
+        "observe": [
+          "sensor"
+        ],
+        "reason": "OBSERVATION_NEEDED",
+        "request_model_call": false
+      },
+      "id": 16,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:sensor:1",
+            "key": "sensor",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "sensor-sensor",
+            "state": "KNOWN",
+            "ttl": 5,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "sensor"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 1,
+            "included": [
+              "sensor"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "sensor"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "sensor"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-16",
+              "required": [
+                "sensor"
+              ],
+              "scope": "A",
+              "versions": {
+                "sensor": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "sensor": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:sensor:1",
+                    "key": "sensor",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "sensor-sensor",
+                    "state": "KNOWN",
+                    "ttl": 5,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 5,
+            "required": [
+              "sensor"
+            ],
+            "scope": "A",
+            "trigger": "EXPIRY"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [
+              "sensor"
+            ],
+            "reason": "OBSERVATION_NEEDED",
+            "request_model_call": false
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "fresh_model_request": false,
+        "fresh_observe": [],
+        "fresh_reason": "FRESH",
+        "stale_observe": [
+          "critical",
+          "plan"
+        ],
+        "stale_reason": "OBSERVATION_NEEDED"
+      },
+      "description": "Pre-action check covers critical dependency closure, not unrelated expired facts.",
+      "expected": {
+        "fresh_model_request": false,
+        "fresh_observe": [],
+        "fresh_reason": "FRESH",
+        "stale_observe": [
+          "critical",
+          "plan"
+        ],
+        "stale_reason": "OBSERVATION_NEEDED"
+      },
+      "id": 17,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:critical:1",
+            "key": "critical",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "critical-sensor",
+            "state": "KNOWN",
+            "ttl": 10,
+            "value": 1
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "critical"
+            ],
+            "dependency_pins": [
+              [
+                "critical",
+                1
+              ]
+            ],
+            "event_id": "A:plan:1",
+            "key": "plan",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "plan-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "prepared"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:unrelated:1",
+            "key": "unrelated",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "unrelated-sensor",
+            "state": "KNOWN",
+            "ttl": 1,
+            "value": 0
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "plan"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 3,
+            "included": [
+              "critical",
+              "plan"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "critical",
+              "plan"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical",
+                "plan"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-17",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1,
+                "plan": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "critical": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:critical:1",
+                    "key": "critical",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "critical-sensor",
+                    "state": "KNOWN",
+                    "ttl": 10,
+                    "value": 1
+                  }
+                ],
+                "state": "KNOWN",
+                "value": 1
+              },
+              "plan": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "critical"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "critical",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:plan:1",
+                    "key": "plan",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "plan-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "prepared"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "prepared"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "now": 2,
+            "required": [
+              "plan"
+            ],
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical",
+                "plan"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-17",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1,
+                "plan": 1
+              }
+            },
+            "trigger": "PRE_ACTION"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [],
+            "reason": "FRESH",
+            "request_model_call": false
+          }
+        },
+        {
+          "input": {
+            "now": 10,
+            "required": [
+              "plan"
+            ],
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "critical",
+                "plan"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-17",
+              "required": [
+                "plan"
+              ],
+              "scope": "A",
+              "versions": {
+                "critical": 1,
+                "plan": 1
+              }
+            },
+            "trigger": "PRE_ACTION"
+          },
+          "operation": "refresh",
+          "output": {
+            "observe": [
+              "critical",
+              "plan"
+            ],
+            "reason": "OBSERVATION_NEEDED",
+            "request_model_call": false
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "outcome": "UNKNOWN",
+        "projection": "NOT_READY",
+        "readiness_grants_permission": false
+      },
+      "description": "Unknown external outcome stays unknown; it confers neither success nor retry authority.",
+      "expected": {
+        "outcome": "UNKNOWN",
+        "projection": "NOT_READY",
+        "readiness_grants_permission": false
+      },
+      "id": 18,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:external_outcome:1",
+            "key": "external_outcome",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "external_outcome-sensor",
+            "state": "UNKNOWN",
+            "ttl": null,
+            "value": null
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "external_outcome"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 1,
+            "included": [
+              "external_outcome"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "external_outcome:UNKNOWN"
+            ],
+            "required_closure": [
+              "external_outcome"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "external_outcome": {
+                "reasons": [
+                  "UNKNOWN"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:external_outcome:1",
+                    "key": "external_outcome",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "external_outcome-sensor",
+                    "state": "UNKNOWN",
+                    "ttl": null,
+                    "value": null
+                  }
+                ],
+                "state": "UNKNOWN",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "key": "external_outcome",
+            "now": 0,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "UNKNOWN"
+            ],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "A:external_outcome:1",
+                "key": "external_outcome",
+                "observed_at": 0,
+                "received_at": 0,
+                "scope": "A",
+                "sequence": 1,
+                "source": "external_outcome-sensor",
+                "state": "UNKNOWN",
+                "ttl": null,
+                "value": null
+              }
+            ],
+            "state": "UNKNOWN",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "future_pin": "NOT_READY",
+        "future_pin_state": "INVALID_DERIVATION_TIME",
+        "old_pin": "NOT_READY",
+        "old_pin_state": "INVALIDATED",
+        "unbound": "NOT_READY",
+        "unbound_state": "UNBOUND_DEPENDENCIES"
+      },
+      "description": "Review-added regression: delayed derivations cannot bind to receipt-time premises; absent, stale and future-version pins block readiness.",
+      "expected": {
+        "future_pin": "NOT_READY",
+        "future_pin_state": "INVALID_DERIVATION_TIME",
+        "old_pin": "NOT_READY",
+        "old_pin_state": "INVALIDATED",
+        "unbound": "NOT_READY",
+        "unbound_state": "UNBOUND_DEPENDENCIES"
+      },
+      "id": 19,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "old"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:2",
+            "key": "a",
+            "observed_at": 5,
+            "received_at": 5,
+            "scope": "A",
+            "sequence": 2,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "new"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": null,
+            "event_id": "A:unbound:1",
+            "key": "unbound",
+            "observed_at": 0,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "unbound-sensor",
+            "state": "KNOWN",
+            "ttl": 20,
+            "value": "derived from old a"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": [
+              [
+                "a",
+                1
+              ]
+            ],
+            "event_id": "A:old_pin:1",
+            "key": "old_pin",
+            "observed_at": 0,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "old_pin-sensor",
+            "state": "KNOWN",
+            "ttl": 20,
+            "value": "derived from old a"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": [
+              [
+                "a",
+                2
+              ]
+            ],
+            "event_id": "A:future_pin:1",
+            "key": "future_pin",
+            "observed_at": 0,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "future_pin-sensor",
+            "state": "KNOWN",
+            "ttl": 20,
+            "value": "claims future premise"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 10,
+            "optional": [],
+            "required": [
+              "unbound"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 5,
+            "included": [
+              "a",
+              "unbound"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "unbound:UNBOUND_DEPENDENCIES"
+            ],
+            "required_closure": [
+              "a",
+              "unbound"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:2",
+                    "key": "a",
+                    "observed_at": 5,
+                    "received_at": 5,
+                    "scope": "A",
+                    "sequence": 2,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "new"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "new"
+              },
+              "unbound": {
+                "reasons": [
+                  "UNBOUND_DEPENDENCIES"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": null,
+                    "event_id": "A:unbound:1",
+                    "key": "unbound",
+                    "observed_at": 0,
+                    "received_at": 10,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "unbound-sensor",
+                    "state": "KNOWN",
+                    "ttl": 20,
+                    "value": "derived from old a"
+                  }
+                ],
+                "state": "UNBOUND_DEPENDENCIES",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 10,
+            "optional": [],
+            "required": [
+              "old_pin"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 5,
+            "included": [
+              "a",
+              "old_pin"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "old_pin:INVALIDATED"
+            ],
+            "required_closure": [
+              "a",
+              "old_pin"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:2",
+                    "key": "a",
+                    "observed_at": 5,
+                    "received_at": 5,
+                    "scope": "A",
+                    "sequence": 2,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "new"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "new"
+              },
+              "old_pin": {
+                "reasons": [
+                  "INVALIDATED",
+                  "INVALID_DERIVATION_TIME"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "a",
+                        1
+                      ]
+                    ],
+                    "event_id": "A:old_pin:1",
+                    "key": "old_pin",
+                    "observed_at": 0,
+                    "received_at": 10,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "old_pin-sensor",
+                    "state": "KNOWN",
+                    "ttl": 20,
+                    "value": "derived from old a"
+                  }
+                ],
+                "state": "INVALIDATED",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 10,
+            "optional": [],
+            "required": [
+              "future_pin"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 5,
+            "included": [
+              "a",
+              "future_pin"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [
+              "future_pin:INVALID_DERIVATION_TIME"
+            ],
+            "required_closure": [
+              "a",
+              "future_pin"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": null,
+            "status": "NOT_READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:2",
+                    "key": "a",
+                    "observed_at": 5,
+                    "received_at": 5,
+                    "scope": "A",
+                    "sequence": 2,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "new"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "new"
+              },
+              "future_pin": {
+                "reasons": [
+                  "INVALID_DERIVATION_TIME"
+                ],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "a",
+                        2
+                      ]
+                    ],
+                    "event_id": "A:future_pin:1",
+                    "key": "future_pin",
+                    "observed_at": 0,
+                    "received_at": 10,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "future_pin-sensor",
+                    "state": "KNOWN",
+                    "ttl": 20,
+                    "value": "claims future premise"
+                  }
+                ],
+                "state": "INVALID_DERIVATION_TIME",
+                "value": null
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "key": "unbound",
+            "now": 10,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "UNBOUND_DEPENDENCIES"
+            ],
+            "sources": [
+              {
+                "dependencies": [
+                  "a"
+                ],
+                "dependency_pins": null,
+                "event_id": "A:unbound:1",
+                "key": "unbound",
+                "observed_at": 0,
+                "received_at": 10,
+                "scope": "A",
+                "sequence": 1,
+                "source": "unbound-sensor",
+                "state": "KNOWN",
+                "ttl": 20,
+                "value": "derived from old a"
+              }
+            ],
+            "state": "UNBOUND_DEPENDENCIES",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "key": "old_pin",
+            "now": 10,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "INVALIDATED",
+              "INVALID_DERIVATION_TIME"
+            ],
+            "sources": [
+              {
+                "dependencies": [
+                  "a"
+                ],
+                "dependency_pins": [
+                  [
+                    "a",
+                    1
+                  ]
+                ],
+                "event_id": "A:old_pin:1",
+                "key": "old_pin",
+                "observed_at": 0,
+                "received_at": 10,
+                "scope": "A",
+                "sequence": 1,
+                "source": "old_pin-sensor",
+                "state": "KNOWN",
+                "ttl": 20,
+                "value": "derived from old a"
+              }
+            ],
+            "state": "INVALIDATED",
+            "value": null
+          }
+        },
+        {
+          "input": {
+            "key": "future_pin",
+            "now": 10,
+            "scope": "A"
+          },
+          "operation": "resolve",
+          "output": {
+            "reasons": [
+              "INVALID_DERIVATION_TIME"
+            ],
+            "sources": [
+              {
+                "dependencies": [
+                  "a"
+                ],
+                "dependency_pins": [
+                  [
+                    "a",
+                    2
+                  ]
+                ],
+                "event_id": "A:future_pin:1",
+                "key": "future_pin",
+                "observed_at": 0,
+                "received_at": 10,
+                "scope": "A",
+                "sequence": 1,
+                "source": "future_pin-sensor",
+                "state": "KNOWN",
+                "ttl": 20,
+                "value": "claims future premise"
+              }
+            ],
+            "state": "INVALID_DERIVATION_TIME",
+            "value": null
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "closure": [
+          "a",
+          "b"
+        ],
+        "derived_value": "derived from new a",
+        "matching_pin": "READY",
+        "observed_at": 6
+      },
+      "description": "Review-added positive: delayed derivation with matching premises already present at derivation time remains ready.",
+      "expected": {
+        "closure": [
+          "a",
+          "b"
+        ],
+        "derived_value": "derived from new a",
+        "matching_pin": "READY",
+        "observed_at": 6
+      },
+      "id": 20,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "old"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:2",
+            "key": "a",
+            "observed_at": 5,
+            "received_at": 5,
+            "scope": "A",
+            "sequence": 2,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "new"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "dependencies": [
+              "a"
+            ],
+            "dependency_pins": [
+              [
+                "a",
+                2
+              ]
+            ],
+            "event_id": "A:b:1",
+            "key": "b",
+            "observed_at": 6,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "b-sensor",
+            "state": "KNOWN",
+            "ttl": 20,
+            "value": "derived from new a"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 10,
+            "optional": [],
+            "required": [
+              "b"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 2,
+            "generation": 3,
+            "included": [
+              "a",
+              "b"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "a",
+              "b"
+            ],
+            "required_cost": 2,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a",
+                "b"
+              ],
+              "generation": 3,
+              "model_id": "fixture-model-20",
+              "required": [
+                "b"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 2,
+                "b": 1
+              }
+            },
+            "status": "READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:2",
+                    "key": "a",
+                    "observed_at": 5,
+                    "received_at": 5,
+                    "scope": "A",
+                    "sequence": 2,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "new"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "new"
+              },
+              "b": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [
+                      "a"
+                    ],
+                    "dependency_pins": [
+                      [
+                        "a",
+                        2
+                      ]
+                    ],
+                    "event_id": "A:b:1",
+                    "key": "b",
+                    "observed_at": 6,
+                    "received_at": 10,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "b-sensor",
+                    "state": "KNOWN",
+                    "ttl": 20,
+                    "value": "derived from new a"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "derived from new a"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "actual": {
+        "damaged": "INVALID",
+        "modification_detected": true,
+        "original_changed": "INVALID"
+      },
+      "description": "Review-added integrity control: removal of snapshot prerequisite pins is rejected; original receipt also invalidates after change.",
+      "expected": {
+        "damaged": "INVALID",
+        "modification_detected": true,
+        "original_changed": "INVALID"
+      },
+      "id": 21,
+      "passed": true,
+      "trace": [
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:1",
+            "key": "a",
+            "observed_at": 0,
+            "received_at": 0,
+            "scope": "A",
+            "sequence": 1,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "old"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "budget": 100,
+            "costs": null,
+            "now": 0,
+            "optional": [],
+            "required": [
+              "a"
+            ],
+            "scope": "A"
+          },
+          "operation": "project",
+          "output": {
+            "budget": 100,
+            "cost": 1,
+            "generation": 1,
+            "included": [
+              "a"
+            ],
+            "omitted": [],
+            "readiness_grants_permission": false,
+            "reasons": [],
+            "required_closure": [
+              "a"
+            ],
+            "required_cost": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-21",
+              "required": [
+                "a"
+              ],
+              "scope": "A",
+              "versions": {}
+            },
+            "status": "READY",
+            "values": {
+              "a": {
+                "reasons": [],
+                "sources": [
+                  {
+                    "dependencies": [],
+                    "dependency_pins": null,
+                    "event_id": "A:a:1",
+                    "key": "a",
+                    "observed_at": 0,
+                    "received_at": 0,
+                    "scope": "A",
+                    "sequence": 1,
+                    "source": "a-sensor",
+                    "state": "KNOWN",
+                    "ttl": null,
+                    "value": "old"
+                  }
+                ],
+                "state": "KNOWN",
+                "value": "old"
+              }
+            }
+          }
+        },
+        {
+          "input": {
+            "dependencies": [],
+            "dependency_pins": null,
+            "event_id": "A:a:2",
+            "key": "a",
+            "observed_at": 1,
+            "received_at": 1,
+            "scope": "A",
+            "sequence": 2,
+            "source": "a-sensor",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "new"
+          },
+          "operation": "ingest",
+          "output": "UPDATED"
+        },
+        {
+          "input": {
+            "now": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-21",
+              "required": [
+                "a"
+              ],
+              "scope": "A",
+              "versions": {}
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "SNAPSHOT_NOT_ISSUED_OR_MODIFIED"
+            ],
+            "status": "INVALID"
+          }
+        },
+        {
+          "input": {
+            "now": 1,
+            "scope": "A",
+            "snapshot": {
+              "closure": [
+                "a"
+              ],
+              "generation": 1,
+              "model_id": "fixture-model-21",
+              "required": [
+                "a"
+              ],
+              "scope": "A",
+              "versions": {
+                "a": 1
+              }
+            }
+          },
+          "operation": "validate",
+          "output": {
+            "reasons": [
+              "CRITICAL_GENERATION_CHANGED:a"
+            ],
+            "status": "INVALID"
+          }
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "declared_controls": 18,
+    "executed_controls": 21,
+    "expected_fields_checked": 87,
+    "failed_controls": 0,
+    "mutation_controls": 3,
+    "mutations_detected": 3,
+    "passed_controls": 21,
+    "review_added_controls": 3
+  },
+  "development_history": {
+    "correction": "explicit dependency version pins, derivation-time check, and issued-snapshot integrity check",
+    "counterexample": "development/v1/delayed-derivation-counterexample.json",
+    "initial_suite": "18/18 passed and 3/3 mutants detected, but missed a material delayed-derivation bug",
+    "review": "same-controller non-author inspection; actual independence NOT_VERIFIED"
+  },
+  "limitations": [
+    "One synthetic integer clock domain; clock regression stays invalid until a new model.",
+    "The finite authored cases are not exhaustive, independent, or an external benchmark.",
+    "Abstract positive integer costs are not measured model tokens.",
+    "All source conflicts are conservatively retained; there is no trust-ranking adjudication.",
+    "Refresh flags request a hypothetical rebuild or observation; no external call is made.",
+    "A false fixture can be structurally ready; readiness never grants permission."
+  ],
+  "negative_controls": [
+    {
+      "completed_without_exception": true,
+      "control": {
+        "actual": {
+          "recovered_value": 2,
+          "recovery": "KNOWN",
+          "ttl_states": [
+            "KNOWN",
+            "KNOWN",
+            "KNOWN"
+          ]
+        },
+        "description": "TTL is fresh before its boundary, expired at/after it; only a new observation recovers.",
+        "expected": {
+          "recovered_value": 2,
+          "recovery": "KNOWN",
+          "ttl_states": [
+            "KNOWN",
+            "STALE",
+            "STALE"
+          ]
+        },
+        "id": 1,
+        "passed": false,
+        "trace": [
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "A:x:1",
+              "key": "x",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "x-sensor",
+              "state": "KNOWN",
+              "ttl": 10,
+              "value": 1
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 9,
+              "scope": "A"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "A:x:1",
+                  "key": "x",
+                  "observed_at": 0,
+                  "received_at": 0,
+                  "scope": "A",
+                  "sequence": 1,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": 10,
+                  "value": 1
+                }
+              ],
+              "state": "KNOWN",
+              "value": 1
+            }
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 10,
+              "scope": "A"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "A:x:1",
+                  "key": "x",
+                  "observed_at": 0,
+                  "received_at": 0,
+                  "scope": "A",
+                  "sequence": 1,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": 10,
+                  "value": 1
+                }
+              ],
+              "state": "KNOWN",
+              "value": 1
+            }
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 11,
+              "scope": "A"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "A:x:1",
+                  "key": "x",
+                  "observed_at": 0,
+                  "received_at": 0,
+                  "scope": "A",
+                  "sequence": 1,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": 10,
+                  "value": 1
+                }
+              ],
+              "state": "KNOWN",
+              "value": 1
+            }
+          },
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "A:x:2",
+              "key": "x",
+              "observed_at": 12,
+              "received_at": 12,
+              "scope": "A",
+              "sequence": 2,
+              "source": "x-sensor",
+              "state": "KNOWN",
+              "ttl": 10,
+              "value": 2
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 12,
+              "scope": "A"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "A:x:2",
+                  "key": "x",
+                  "observed_at": 12,
+                  "received_at": 12,
+                  "scope": "A",
+                  "sequence": 2,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": 10,
+                  "value": 2
+                }
+              ],
+              "state": "KNOWN",
+              "value": 2
+            }
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 12,
+              "scope": "A"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "A:x:2",
+                  "key": "x",
+                  "observed_at": 12,
+                  "received_at": 12,
+                  "scope": "A",
+                  "sequence": 2,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": 10,
+                  "value": 2
+                }
+              ],
+              "state": "KNOWN",
+              "value": 2
+            }
+          }
+        ]
+      },
+      "detected": true,
+      "mutation": "disabled_freshness_guard"
+    },
+    {
+      "completed_without_exception": true,
+      "control": {
+        "actual": {
+          "below_closure": [
+            "c"
+          ],
+          "below_included": [
+            "c",
+            "bonus"
+          ],
+          "below_required_cost": 1,
+          "below_status": "READY",
+          "exact_cost": 2,
+          "exact_included": [
+            "c",
+            "bonus"
+          ],
+          "exact_status": "READY",
+          "optional_omitted": []
+        },
+        "description": "Transitive mandatory closure fits exactly at six units; five cannot omit a required member.",
+        "expected": {
+          "below_closure": [
+            "a",
+            "b",
+            "c"
+          ],
+          "below_included": [],
+          "below_required_cost": 6,
+          "below_status": "NOT_FIT",
+          "exact_cost": 6,
+          "exact_included": [
+            "a",
+            "b",
+            "c"
+          ],
+          "exact_status": "READY",
+          "optional_omitted": [
+            {
+              "key": "bonus",
+              "reason": "BUDGET"
+            }
+          ]
+        },
+        "id": 11,
+        "passed": false,
+        "trace": [
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "A:a:1",
+              "key": "a",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "a-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": 1
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "dependencies": [
+                "a"
+              ],
+              "dependency_pins": [
+                [
+                  "a",
+                  1
+                ]
+              ],
+              "event_id": "A:b:1",
+              "key": "b",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "b-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": 2
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "dependencies": [
+                "b"
+              ],
+              "dependency_pins": [
+                [
+                  "b",
+                  1
+                ]
+              ],
+              "event_id": "A:c:1",
+              "key": "c",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "c-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": 3
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "A:bonus:1",
+              "key": "bonus",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "bonus-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": 4
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "budget": 6,
+              "costs": {
+                "a": 2,
+                "b": 3,
+                "bonus": 1,
+                "c": 1
+              },
+              "now": 0,
+              "optional": [
+                "bonus"
+              ],
+              "required": [
+                "c"
+              ],
+              "scope": "A"
+            },
+            "operation": "project",
+            "output": {
+              "budget": 6,
+              "cost": 2,
+              "generation": 4,
+              "included": [
+                "c",
+                "bonus"
+              ],
+              "omitted": [],
+              "readiness_grants_permission": false,
+              "reasons": [],
+              "required_closure": [
+                "c"
+              ],
+              "required_cost": 1,
+              "scope": "A",
+              "snapshot": {
+                "closure": [
+                  "c"
+                ],
+                "generation": 4,
+                "model_id": "fixture-model-23",
+                "required": [
+                  "c"
+                ],
+                "scope": "A",
+                "versions": {
+                  "c": 1
+                }
+              },
+              "status": "READY",
+              "values": {
+                "bonus": {
+                  "reasons": [],
+                  "sources": [
+                    {
+                      "dependencies": [],
+                      "dependency_pins": null,
+                      "event_id": "A:bonus:1",
+                      "key": "bonus",
+                      "observed_at": 0,
+                      "received_at": 0,
+                      "scope": "A",
+                      "sequence": 1,
+                      "source": "bonus-sensor",
+                      "state": "KNOWN",
+                      "ttl": null,
+                      "value": 4
+                    }
+                  ],
+                  "state": "KNOWN",
+                  "value": 4
+                },
+                "c": {
+                  "reasons": [],
+                  "sources": [
+                    {
+                      "dependencies": [
+                        "b"
+                      ],
+                      "dependency_pins": [
+                        [
+                          "b",
+                          1
+                        ]
+                      ],
+                      "event_id": "A:c:1",
+                      "key": "c",
+                      "observed_at": 0,
+                      "received_at": 0,
+                      "scope": "A",
+                      "sequence": 1,
+                      "source": "c-sensor",
+                      "state": "KNOWN",
+                      "ttl": null,
+                      "value": 3
+                    }
+                  ],
+                  "state": "KNOWN",
+                  "value": 3
+                }
+              }
+            }
+          },
+          {
+            "input": {
+              "budget": 5,
+              "costs": {
+                "a": 2,
+                "b": 3,
+                "bonus": 1,
+                "c": 1
+              },
+              "now": 0,
+              "optional": [
+                "bonus"
+              ],
+              "required": [
+                "c"
+              ],
+              "scope": "A"
+            },
+            "operation": "project",
+            "output": {
+              "budget": 5,
+              "cost": 2,
+              "generation": 4,
+              "included": [
+                "c",
+                "bonus"
+              ],
+              "omitted": [],
+              "readiness_grants_permission": false,
+              "reasons": [],
+              "required_closure": [
+                "c"
+              ],
+              "required_cost": 1,
+              "scope": "A",
+              "snapshot": {
+                "closure": [
+                  "c"
+                ],
+                "generation": 4,
+                "model_id": "fixture-model-23",
+                "required": [
+                  "c"
+                ],
+                "scope": "A",
+                "versions": {
+                  "c": 1
+                }
+              },
+              "status": "READY",
+              "values": {
+                "bonus": {
+                  "reasons": [],
+                  "sources": [
+                    {
+                      "dependencies": [],
+                      "dependency_pins": null,
+                      "event_id": "A:bonus:1",
+                      "key": "bonus",
+                      "observed_at": 0,
+                      "received_at": 0,
+                      "scope": "A",
+                      "sequence": 1,
+                      "source": "bonus-sensor",
+                      "state": "KNOWN",
+                      "ttl": null,
+                      "value": 4
+                    }
+                  ],
+                  "state": "KNOWN",
+                  "value": 4
+                },
+                "c": {
+                  "reasons": [],
+                  "sources": [
+                    {
+                      "dependencies": [
+                        "b"
+                      ],
+                      "dependency_pins": [
+                        [
+                          "b",
+                          1
+                        ]
+                      ],
+                      "event_id": "A:c:1",
+                      "key": "c",
+                      "observed_at": 0,
+                      "received_at": 0,
+                      "scope": "A",
+                      "sequence": 1,
+                      "source": "c-sensor",
+                      "state": "KNOWN",
+                      "ttl": null,
+                      "value": 3
+                    }
+                  ],
+                  "state": "KNOWN",
+                  "value": 3
+                }
+              }
+            }
+          }
+        ]
+      },
+      "detected": true,
+      "mutation": "disabled_dependency_closure"
+    },
+    {
+      "completed_without_exception": true,
+      "control": {
+        "actual": {
+          "account_B_value": "account-B",
+          "cross_scope": "VALID",
+          "own_scope": "VALID"
+        },
+        "description": "A ready snapshot from account A cannot be reused for B even when per-key versions coincide.",
+        "expected": {
+          "account_B_value": "account-B",
+          "cross_scope": "INVALID",
+          "own_scope": "VALID"
+        },
+        "id": 10,
+        "passed": false,
+        "trace": [
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "A:x:1",
+              "key": "x",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "A",
+              "sequence": 1,
+              "source": "x-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": "account-A"
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "dependencies": [],
+              "dependency_pins": null,
+              "event_id": "B:x:1",
+              "key": "x",
+              "observed_at": 0,
+              "received_at": 0,
+              "scope": "B",
+              "sequence": 1,
+              "source": "x-sensor",
+              "state": "KNOWN",
+              "ttl": null,
+              "value": "account-B"
+            },
+            "operation": "ingest",
+            "output": "UPDATED"
+          },
+          {
+            "input": {
+              "budget": 100,
+              "costs": null,
+              "now": 0,
+              "optional": [],
+              "required": [
+                "x"
+              ],
+              "scope": "A"
+            },
+            "operation": "project",
+            "output": {
+              "budget": 100,
+              "cost": 1,
+              "generation": 2,
+              "included": [
+                "x"
+              ],
+              "omitted": [],
+              "readiness_grants_permission": false,
+              "reasons": [],
+              "required_closure": [
+                "x"
+              ],
+              "required_cost": 1,
+              "scope": "A",
+              "snapshot": {
+                "closure": [
+                  "x"
+                ],
+                "generation": 2,
+                "model_id": "fixture-model-24",
+                "required": [
+                  "x"
+                ],
+                "scope": "A",
+                "versions": {
+                  "x": 1
+                }
+              },
+              "status": "READY",
+              "values": {
+                "x": {
+                  "reasons": [],
+                  "sources": [
+                    {
+                      "dependencies": [],
+                      "dependency_pins": null,
+                      "event_id": "A:x:1",
+                      "key": "x",
+                      "observed_at": 0,
+                      "received_at": 0,
+                      "scope": "A",
+                      "sequence": 1,
+                      "source": "x-sensor",
+                      "state": "KNOWN",
+                      "ttl": null,
+                      "value": "account-A"
+                    }
+                  ],
+                  "state": "KNOWN",
+                  "value": "account-A"
+                }
+              }
+            }
+          },
+          {
+            "input": {
+              "now": 0,
+              "scope": "B",
+              "snapshot": {
+                "closure": [
+                  "x"
+                ],
+                "generation": 2,
+                "model_id": "fixture-model-24",
+                "required": [
+                  "x"
+                ],
+                "scope": "A",
+                "versions": {
+                  "x": 1
+                }
+              }
+            },
+            "operation": "validate",
+            "output": {
+              "reasons": [],
+              "status": "VALID"
+            }
+          },
+          {
+            "input": {
+              "now": 0,
+              "scope": "A",
+              "snapshot": {
+                "closure": [
+                  "x"
+                ],
+                "generation": 2,
+                "model_id": "fixture-model-24",
+                "required": [
+                  "x"
+                ],
+                "scope": "A",
+                "versions": {
+                  "x": 1
+                }
+              }
+            },
+            "operation": "validate",
+            "output": {
+              "reasons": [],
+              "status": "VALID"
+            }
+          },
+          {
+            "input": {
+              "key": "x",
+              "now": 0,
+              "scope": "B"
+            },
+            "operation": "resolve",
+            "output": {
+              "reasons": [],
+              "sources": [
+                {
+                  "dependencies": [],
+                  "dependency_pins": null,
+                  "event_id": "B:x:1",
+                  "key": "x",
+                  "observed_at": 0,
+                  "received_at": 0,
+                  "scope": "B",
+                  "sequence": 1,
+                  "source": "x-sensor",
+                  "state": "KNOWN",
+                  "ttl": null,
+                  "value": "account-B"
+                }
+              ],
+              "state": "KNOWN",
+              "value": "account-B"
+            }
+          }
+        ]
+      },
+      "detected": true,
+      "mutation": "disabled_scope_binding"
+    }
+  ],
+  "provenance": {
+    "actual_independence": "NOT_VERIFIED",
+    "design": "author-designed predeclared finite contract, not independent preregistration",
+    "external_effects_executed": false,
+    "fixtures": "hand-authored expected outcomes",
+    "grants_implemented": false,
+    "implementation_and_runner": "same implementing agent",
+    "llm_calls": 0,
+    "native_admission": "NOT_VERIFIED",
+    "native_agent_runtime_observed": false,
+    "network_calls": 0,
+    "source_identities_authenticated": false
+  },
+  "python": "3.12.14",
+  "recorded_at_utc": "2026-11-14T02:29:34.975035+00:00",
+  "result": "FINITE_CONTROLS_PASS",
+  "schema": "agent-situation-finite-evidence-v1",
+  "source_digests": {
+    "README.md": {
+      "bytes": 6356,
+      "sha256": "2093042114a29b6e41c52fc27f65b33b6a2ae3a4e132232052bcf10bf6b3d968"
+    },
+    "checks/DESIGN_INPUT.md": {
+      "bytes": 4574,
+      "sha256": "dc5187687398441ffa0d0011234e19471d94c84c1859683d5bb423aabba9403e"
+    },
+    "checks/check_agent_situation.py": {
+      "bytes": 18175,
+      "sha256": "b77eda085d9335f585a227fdfb4dc99d1abcca6590f52318d01c97922b324fdd"
+    },
+    "checks/expected.json": {
+      "bytes": 6772,
+      "sha256": "97dc4a0bd07d826e2d208514570c519dd3c015f1883a933b3cf91451b7ccfb28"
+    },
+    "situation.py": {
+      "bytes": 14501,
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+    }
+  },
+  "unimplemented": [
+    "real sensors, tools, permissions, effects, LLM context/token accounting",
+    "distributed clock synchronization and restart recovery",
+    "causal ordering across independent producer streams",
+    "persistence, authenticated sources/snapshots, adversarial access control",
+    "optimal refresh scheduling, calibrated uncertainty or value of information",
+    "general autonomous intentions, empirical agent outcomes and native admission"
+  ]
+}

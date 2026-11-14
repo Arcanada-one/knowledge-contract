@@ -4,7 +4,7 @@ sources: none
 
 # Engineering Studies and Evidence
 
-Six studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 24 explicit bindings; per-study origin records identify exact evidence bytes.
+Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 24 explicit bindings; per-study origin records identify exact evidence bytes.
 
 | Document | Subject |
 | --- | --- |
@@ -14,6 +14,7 @@ Six studies connect the scientific claims to actual finite checks, counterexampl
 | [Executable Projections](executable-projections-and-revision/STUDY.md) | Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality. |
 | [Reuse Economics](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
 | [Editorial Pilot](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
+| [Context Controls](agent-situation-controls/STUDY.md) | Authored finite state/projection controls and explicit disabled-guard cases; no LLM or live effects. |
 
 ## Counting and interpretation
 

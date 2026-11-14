@@ -125,6 +125,18 @@
       "subtitle": "Representation Spaces, Distinguishability, and the Limits of Similarity"
     },
     {
+      "type": "paper",
+      "slug": "agent-situation",
+      "path": "papers/agent-situation/PAPER.md",
+      "title": "Agent Situation: Initialization, Change, and Bounded Context",
+      "summary": "A research draft on explicit agent situations, initialization, revision-sensitive change and task-bounded context projection.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "research-draft",
+      "short_title": "Agent Situation",
+      "subtitle": "Initialization, Change, and Bounded Context"
+    },
+    {
       "type": "specification",
       "slug": "knowledge-contract-core",
       "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
@@ -327,6 +339,18 @@
       "short_title": "Editorial Pilot",
       "subtitle": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison",
       "previous_title": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
+    },
+    {
+      "type": "study",
+      "slug": "agent-situation-controls",
+      "path": "engineering/studies/agent-situation-controls/STUDY.md",
+      "title": "Context Controls: Finite Checks of Situation State and Context Projection",
+      "summary": "A research-draft report of bounded finite checks for situation state and context projection, separate from a planned LLM trial.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "research-draft",
+      "short_title": "Context Controls",
+      "subtitle": "Finite Checks of Situation State and Context Projection"
     },
     {
       "type": "glossary",

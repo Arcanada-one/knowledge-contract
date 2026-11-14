@@ -1,6 +1,6 @@
 # Knowledge Contract Arcana
 
-Read [all 31 proposed document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
+Read [all 33 proposed document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
@@ -12,13 +12,13 @@ Publication edition **1.1** contains English scientific and engineering document
 
 | Section | Contents | Start here |
 | --- | --- | --- |
-| Science | Eight baseline papers and two bounded foundations research drafts (Meaning Bridge, Meaning Geometry): conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
+| Science | Eight baseline papers and three bounded research drafts (Meaning Bridge, Meaning Geometry, Agent Situation): conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
 | Engineering specifications | Eleven specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
-| Engineering studies | Six studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
+| Engineering studies | Seven studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
-The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 31 reading entries: the 29 baseline documents, Meaning Bridge and the new Meaning Geometry research draft; Meaning Geometry entered source main at `0892eeb1` as a research draft and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
+The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 33 reading entries: the 29 baseline documents, the Meaning Bridge, Meaning Geometry and Agent Situation research drafts, and the Context Controls finite study; Meaning Geometry entered source main at `0892eeb1` as a research draft and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
 
 ## Start with the human-to-computational foundation
 

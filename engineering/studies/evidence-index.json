@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.claim-evidence-index/1",
   "edition": "1.1",
-  "review_state": "internally-reviewed",
+  "review_state": "mixed-scoped-review",
   "interpretation": {
     "paths": "Relative to this file. JSON pointers use RFC6901; an empty pointer denotes the complete JSON document.",
     "observation_units": "Cases, calls, criteria, records, projections and pages are distinct and must not be summed into a success rate.",
@@ -14,7 +14,7 @@
     "language": "evidence-language-index.json records representation languages and English summary locations.",
     "historical_recovery": "historical-recovery-gaps.json records exact missing identities, a recovered matching schema, and a rejected nonmatching implementation candidate."
   },
-  "claim_count": 24,
+  "claim_count": 25,
   "studies": [
     {
       "name": "contract-profile-conformance",
@@ -45,6 +45,11 @@
       "name": "source-transcription-and-uncertainty",
       "report": "source-transcription-and-uncertainty/STUDY.md",
       "origin": "source-transcription-and-uncertainty/evidence/origin.json"
+    },
+    {
+      "name": "agent-situation-controls",
+      "report": "agent-situation-controls/STUDY.md",
+      "origin": "agent-situation-controls/evidence/origin.json"
     }
   ],
   "claims": [
@@ -917,6 +922,90 @@
         "../../papers/knowledge-utility/PAPER.md"
       ],
       "public_reproduction": "published audit report and public output records; full source-range audit needs original restricted sources"
+    },
+    {
+      "claim_id": "agent-situation-finite-controls",
+      "study": "agent-situation-controls/STUDY.md",
+      "statement": "The corrected authored situation-state model matched 21 finite control outcomes and detected three selected disabled guards; the preserved initial passing suite missed a subsequently reproduced delayed-derivation defect.",
+      "claim_kind": "recorded_observation",
+      "model": "Synthetic observations, one integer clock domain, local premise versions, typed unknown/conflict states and abstract positive integer context costs.",
+      "test_or_argument": "18 predeclared authored controls plus three review-added controls; three separate freshness/closure/scope negative mutations; same-controller review reproduced delayed-premise and snapshot failures before correction.",
+      "evidence": [
+        {
+          "path": "agent-situation-controls/evidence/finite-run.json",
+          "json_pointer": "/counts"
+        },
+        {
+          "path": "agent-situation-controls/evidence/finite-run.json",
+          "json_pointer": "/negative_controls"
+        },
+        {
+          "path": "agent-situation-controls/evidence/internal-review.json",
+          "json_pointer": ""
+        },
+        {
+          "path": "agent-situation-controls/development/v1/delayed-derivation-counterexample.json",
+          "json_pointer": ""
+        }
+      ],
+      "counterexample_or_rival": "The initial 18/18 suite passed while an obsolete delayed derivation incorrectly became READY. A valid delayed positive in the corrected suite rejects an always-refuse repair; selected disabled guards are detected without exceptions.",
+      "result": {
+        "corrected_controls": "21/21",
+        "selected_mutations_detected": "3/3",
+        "initial_controls": "18/18, missed the preserved defect",
+        "llm_calls": 0,
+        "native_admission": "NOT_VERIFIED"
+      },
+      "limits": [
+        "Author-designed and implementation-informed finite cases; no population error rate or exhaustive proof.",
+        "Review uses the same controller/model family; actual independence NOT_VERIFIED.",
+        "No authenticated external producers, real permissions, effect execution, distributed clocks, persistence or live consumer.",
+        "Abstract costs are not measured tokens; LLM performance and total operational cost remain unmeasured."
+      ],
+      "scientific_context": [
+        "../../papers/agent-situation/PAPER.md",
+        "../../papers/retrieval-and-context-composition/PAPER.md"
+      ],
+      "public_reproduction": "Standard-library runner and exact authored fixtures are distributed; replay from a temporary study copy to preserve retained evidence."
+    }
+  ],
+  "review_scopes": [
+    {
+      "claims": [
+        "finite-contract-conformance",
+        "structural-conformance-does-not-establish-truth",
+        "strong-plain-form-tie",
+        "profile-composition-preserves-core-conditionally",
+        "finite-required-closure-laws",
+        "literal-preservation-is-not-meaning-preservation",
+        "readable-layout-preserves-artifact-content",
+        "expected-resolution-is-not-server-acceptance",
+        "byte-reconstruction-can-omit-uncertainty",
+        "explicit-uncertainty-projection-is-reversible",
+        "addressability-gaps-are-not-ocr-error-counts",
+        "local-export-is-not-upstream-deployment",
+        "reader-boundaries-have-distinct-meanings",
+        "targeted-revision-graph-plain-tie",
+        "finite-projection-consumer-qualification",
+        "five-agent-projection-pairs-tie",
+        "entity-minimality-does-not-imply-claim-minimality",
+        "reuse-preservation-needs-complete-material-dependencies",
+        "absence-and-completeness-depend-on-domain",
+        "reuse-break-even-is-not-hit-rate",
+        "cache-benefits-require-common-baseline",
+        "editorial-single-section-tie",
+        "editorial-mechanical-invariants-are-replayable",
+        "editorial-trace-operational-scope"
+      ],
+      "review_state": "internally-reviewed",
+      "basis": "Existing index scope retained without changing prior claims or their evidence; this label is not a new review receipt."
+    },
+    {
+      "claims": [
+        "agent-situation-finite-controls"
+      ],
+      "review_state": "author-draft",
+      "basis": "New finite demonstration with bounded same-controller non-author review. Actual independence, empirical agent benefit and native admission NOT_VERIFIED."
     }
   ]
 }

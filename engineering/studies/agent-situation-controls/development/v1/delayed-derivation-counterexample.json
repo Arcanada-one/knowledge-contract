@@ -1,0 +1,131 @@
+{
+  "actual_independence": "NOT_VERIFIED",
+  "actual_status": "READY",
+  "bug_reproduced": true,
+  "expected": "NOT_READY",
+  "explanation": "Receipt-time dependency rebinding accepts an old derivation against newer premises.",
+  "initial_18_control_suite_missed_this_bug": true,
+  "input": [
+    {
+      "dependencies": [],
+      "event_id": "a-1",
+      "key": "a",
+      "observed_at": 0,
+      "received_at": 0,
+      "scope": "A",
+      "sequence": 1,
+      "source": "a-source",
+      "state": "KNOWN",
+      "ttl": null,
+      "value": "old"
+    },
+    {
+      "dependencies": [],
+      "event_id": "a-2",
+      "key": "a",
+      "observed_at": 5,
+      "received_at": 5,
+      "scope": "A",
+      "sequence": 2,
+      "source": "a-source",
+      "state": "KNOWN",
+      "ttl": null,
+      "value": "new"
+    },
+    {
+      "dependencies": [
+        "a"
+      ],
+      "event_id": "b-1",
+      "key": "b",
+      "observed_at": 0,
+      "received_at": 10,
+      "scope": "A",
+      "sequence": 1,
+      "source": "b-source",
+      "state": "KNOWN",
+      "ttl": 20,
+      "value": "derived from old a"
+    }
+  ],
+  "kind": "same-controller non-author review counterexample",
+  "output": {
+    "budget": 10,
+    "cost": 2,
+    "generation": 3,
+    "included": [
+      "a",
+      "b"
+    ],
+    "omitted": [],
+    "readiness_grants_permission": false,
+    "reasons": [],
+    "required_closure": [
+      "a",
+      "b"
+    ],
+    "required_cost": 2,
+    "scope": "A",
+    "snapshot": {
+      "closure": [
+        "a",
+        "b"
+      ],
+      "generation": 3,
+      "model_id": "fixture-model-1",
+      "required": [
+        "b"
+      ],
+      "scope": "A",
+      "versions": {
+        "a": 2,
+        "b": 1
+      }
+    },
+    "status": "READY",
+    "values": {
+      "a": {
+        "reasons": [],
+        "sources": [
+          {
+            "dependencies": [],
+            "event_id": "a-2",
+            "key": "a",
+            "observed_at": 5,
+            "received_at": 5,
+            "scope": "A",
+            "sequence": 2,
+            "source": "a-source",
+            "state": "KNOWN",
+            "ttl": null,
+            "value": "new"
+          }
+        ],
+        "state": "KNOWN",
+        "value": "new"
+      },
+      "b": {
+        "reasons": [],
+        "sources": [
+          {
+            "dependencies": [
+              "a"
+            ],
+            "event_id": "b-1",
+            "key": "b",
+            "observed_at": 0,
+            "received_at": 10,
+            "scope": "A",
+            "sequence": 1,
+            "source": "b-source",
+            "state": "KNOWN",
+            "ttl": 20,
+            "value": "derived from old a"
+          }
+        ],
+        "state": "KNOWN",
+        "value": "derived from old a"
+      }
+    }
+  }
+}

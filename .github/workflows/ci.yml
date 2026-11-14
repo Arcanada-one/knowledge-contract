@@ -221,6 +221,14 @@ jobs:
           python3 -B engineering/studies/dependency-closure-and-package-delivery/checks/check_closure_size_and_mutations.py
           python3 -B engineering/studies/source-transcription-and-uncertainty/checks/demonstrate_uncertainty_projection.py
           python3 -B engineering/studies/reuse-admission-and-cost-controls/checks/check_admission_and_cost.py
+      - name: Recheck agent situation controls in an isolated study copy
+        run: |
+          set -euo pipefail
+          kc_situation_tmp="$(mktemp -d)"
+          mkdir -p "$kc_situation_tmp/engineering/studies"
+          cp -R engineering/studies/agent-situation-controls "$kc_situation_tmp/engineering/studies/"
+          cd "$kc_situation_tmp"
+          python3 -B engineering/studies/agent-situation-controls/checks/check_agent_situation.py --evidence "$kc_situation_tmp/finite-run.json"
 
   licensing:
     name: licensing

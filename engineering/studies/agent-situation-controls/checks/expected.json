@@ -1,0 +1,263 @@
+[
+  {
+    "id": 1,
+    "description": "TTL is fresh before its boundary, expired at/after it; only a new observation recovers.",
+    "expected": {
+      "ttl_states": [
+        "KNOWN",
+        "STALE",
+        "STALE"
+      ],
+      "recovery": "KNOWN",
+      "recovered_value": 2
+    }
+  },
+  {
+    "id": 2,
+    "description": "Unknown, false and integer zero remain distinct.",
+    "expected": {
+      "states": [
+        "UNKNOWN",
+        "KNOWN",
+        "KNOWN"
+      ],
+      "false_type": "bool",
+      "zero_type": "int",
+      "unknown_value": null
+    }
+  },
+  {
+    "id": 3,
+    "description": "Late receipt and identical replay retain original event age and first receipt.",
+    "expected": {
+      "first": "STALE",
+      "duplicate": "DUPLICATE",
+      "after": "STALE",
+      "retained_observed_at": 0,
+      "retained_received_at": 8
+    }
+  },
+  {
+    "id": 4,
+    "description": "Future observation time and clock regression cannot produce ready context.",
+    "expected": {
+      "future": "NOT_READY",
+      "before": "READY",
+      "backward": "NOT_READY",
+      "clock_invalid": true
+    }
+  },
+  {
+    "id": 5,
+    "description": "Lower or reused producer sequence cannot replace current state, including another key in that stream.",
+    "expected": {
+      "lower": "OUT_OF_ORDER",
+      "equal": "SEQUENCE_REJECTED",
+      "cross_key_lower": "OUT_OF_ORDER",
+      "value": "new"
+    }
+  },
+  {
+    "id": 6,
+    "description": "Independent source disagreement retains both observations and blocks readiness.",
+    "expected": {
+      "state": "CONFLICT",
+      "source_count": 2,
+      "projection": "NOT_READY",
+      "chosen_value": null
+    }
+  },
+  {
+    "id": 7,
+    "description": "Exact logical duplicate is idempotent; inconsistent event-ID reuse is rejected.",
+    "expected": {
+      "duplicate": "DUPLICATE",
+      "inconsistent": "DUPLICATE_REJECTED",
+      "generation": 1,
+      "value": 1
+    }
+  },
+  {
+    "id": 8,
+    "description": "A dependency update invalidates a derived fact and its snapshot; unrelated generation change does not.",
+    "expected": {
+      "unrelated_snapshot": "VALID",
+      "derived_state": "INVALIDATED",
+      "relevant_snapshot": "INVALID",
+      "relevant_request": true
+    }
+  },
+  {
+    "id": 9,
+    "description": "Heartbeat and messages without a relevant fact change neither renew observation time nor request rebuild.",
+    "expected": {
+      "heartbeat_request": false,
+      "unchanged_request": false,
+      "unrelated_request": false,
+      "observed_at": 0
+    }
+  },
+  {
+    "id": 10,
+    "description": "A ready snapshot from account A cannot be reused for B even when per-key versions coincide.",
+    "expected": {
+      "cross_scope": "INVALID",
+      "own_scope": "VALID",
+      "account_B_value": "account-B"
+    }
+  },
+  {
+    "id": 11,
+    "description": "Transitive mandatory closure fits exactly at six units; five cannot omit a required member.",
+    "expected": {
+      "exact_status": "READY",
+      "exact_included": [
+        "a",
+        "b",
+        "c"
+      ],
+      "exact_cost": 6,
+      "optional_omitted": [
+        {
+          "key": "bonus",
+          "reason": "BUDGET"
+        }
+      ],
+      "below_status": "NOT_FIT",
+      "below_included": [],
+      "below_closure": [
+        "a",
+        "b",
+        "c"
+      ],
+      "below_required_cost": 6
+    }
+  },
+  {
+    "id": 12,
+    "description": "Missing or unknown mandatory facts block readiness; optional unknown is explicitly omitted.",
+    "expected": {
+      "missing": "NOT_READY",
+      "unknown": "NOT_READY",
+      "optional_status": "READY",
+      "optional_included": [
+        "known"
+      ],
+      "optional_omission": [
+        {
+          "key": "unknown",
+          "reason": "NOT_READY",
+          "details": [
+            "unknown:UNKNOWN"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "description": "Optional ranking is stable; repeated identical requests yield identical projections.",
+    "expected": {
+      "deterministic": true,
+      "included": [
+        "r",
+        "z",
+        "b"
+      ],
+      "omitted": [
+        {
+          "key": "a",
+          "reason": "BUDGET"
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "description": "Revocation fixture invalidates its dependent plan but no fixture implements a grant authority.",
+    "expected": {
+      "before": "VALID",
+      "after": "INVALID",
+      "plan_state": "INVALIDATED",
+      "false_fact_structural_status": "READY",
+      "readiness_grants_permission": false
+    }
+  },
+  {
+    "id": 15,
+    "description": "Unchanged snapshot validates; a new critical observation invalidates it even at an equal value.",
+    "expected": {
+      "unchanged": "VALID",
+      "changed": "INVALID",
+      "version_reason": true
+    }
+  },
+  {
+    "id": 16,
+    "description": "Expiry backstop requests observation without a received change event or an LLM call.",
+    "expected": {
+      "reason": "OBSERVATION_NEEDED",
+      "observe": [
+        "sensor"
+      ],
+      "request_model_call": false
+    }
+  },
+  {
+    "id": 17,
+    "description": "Pre-action check covers critical dependency closure, not unrelated expired facts.",
+    "expected": {
+      "fresh_reason": "FRESH",
+      "fresh_observe": [],
+      "fresh_model_request": false,
+      "stale_reason": "OBSERVATION_NEEDED",
+      "stale_observe": [
+        "critical",
+        "plan"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "description": "Unknown external outcome stays unknown; it confers neither success nor retry authority.",
+    "expected": {
+      "outcome": "UNKNOWN",
+      "projection": "NOT_READY",
+      "readiness_grants_permission": false
+    }
+  },
+  {
+    "id": 19,
+    "description": "Review-added regression: delayed derivations cannot bind to receipt-time premises; absent, stale and future-version pins block readiness.",
+    "expected": {
+      "unbound": "NOT_READY",
+      "old_pin": "NOT_READY",
+      "future_pin": "NOT_READY",
+      "unbound_state": "UNBOUND_DEPENDENCIES",
+      "old_pin_state": "INVALIDATED",
+      "future_pin_state": "INVALID_DERIVATION_TIME"
+    }
+  },
+  {
+    "id": 20,
+    "description": "Review-added positive: delayed derivation with matching premises already present at derivation time remains ready.",
+    "expected": {
+      "matching_pin": "READY",
+      "closure": [
+        "a",
+        "b"
+      ],
+      "derived_value": "derived from new a",
+      "observed_at": 6
+    }
+  },
+  {
+    "id": 21,
+    "description": "Review-added integrity control: removal of snapshot prerequisite pins is rejected; original receipt also invalidates after change.",
+    "expected": {
+      "damaged": "INVALID",
+      "original_changed": "INVALID",
+      "modification_detected": true
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "actual_independence": "NOT_VERIFIED",
+  "external_endorsement": false,
+  "fix": "Explicit derivation dependency pins, temporal feasibility, and canonical issued-snapshot integrity checks.",
+  "initial_material_finding": "Delayed derived evidence was rebound to receipt-time dependency versions; the initial 18-case suite missed the defect.",
+  "native_admission": "NOT_VERIFIED",
+  "recorded_at_utc": "2026-11-14T02:31:01.880686+00:00",
+  "reported_recheck": {
+    "controls_executed": 21,
+    "controls_passed": 21,
+    "mutants_detected": 3,
+    "mutation_exceptions": 0,
+    "remaining_material_issue_found": false
+  },
+  "reporting_limit": "Recheck details were reported by the internal reviewer; this record is not an external review receipt or independent preregistration.",
+  "reproduction": "development/v1/delayed-derivation-counterexample.json",
+  "review_kind": "same-controller non-author automated inspection and local recheck",
+  "reviewer": "/root/review_context_zh",
+  "schema": "agent-situation-internal-review-v1",
+  "source_sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+}
