@@ -92,14 +92,23 @@ PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
 def rendered_scope_observation(readme):
     """Return (visible text, hrefs, link labels, has-html) for one scope block.
 
-    Raw HTML can hide an otherwise visible Markdown link or provenance caveat;
-    this one critical scope paragraph is deliberately restricted to CommonMark
-    non-HTML inline content. This is not general browser-renderer equivalence.
+    This reader is restricted to a structural CommonMark subset: no html_block
+    or html_inline token anywhere in the README. An enclosing raw HTML block
+    can hide the scope paragraph even when that paragraph has no inline HTML.
+    Pointer and qualifier checks concern one scope paragraph; contradictory
+    prose elsewhere remains a content-review responsibility. This is not
+    general browser-renderer equivalence.
     """
     if MarkdownIt is None:
         raise RuntimeError(PARSER_MISSING)
+    tokens = MarkdownIt("commonmark").parse(readme)
+    pending, has_html = list(tokens), False
+    while pending:
+        token = pending.pop()
+        has_html |= token.type in ("html_block", "html_inline")
+        pending.extend(token.children or [])
     matches = []
-    for token in MarkdownIt("commonmark").parse(readme):
+    for token in tokens:
         if token.type != "inline":
             continue
         children = token.children or []
@@ -116,7 +125,6 @@ def rendered_scope_observation(readme):
                     active = None
                 elif child.type in ("text", "code_inline") and active is not None:
                     active.append(child.content)
-            has_html = any(child.type == "html_inline" for child in children)
             matches.append((visible, links, labels, has_html))
     return matches[0] if len(matches) == 1 else None
 
@@ -156,8 +164,8 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     else:
         if any(phrase not in observed[0] for phrase in required_visible):
             errors.append("scope_caveat_not_visible")
-        # CommonMark retains raw HTML as html_inline tokens; an HTML attribute
-        # may hide a link/caveat in the actual browser even when token text exists.
+        # The declared README subset excludes both inline and block raw HTML,
+        # including wrappers outside the selected scope paragraph.
         if observed[3]:
             errors.append("scope_raw_html_not_allowed")
         if (len(observed[1]) != len(observed[2]) or
@@ -354,6 +362,17 @@ class HistoricalReportPointerControls(unittest.TestCase):
         changed = self.study.replace(
             "**not regenerated**", "<b>**not regenerated**</b>", 1)
         self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_enclosing_raw_html_block_is_refused(self):
+        """A block wrapper can hide an unchanged, normally parsed paragraph."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(
+            para, "<div hidden>\n\n" + para + "\n\n</div>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(changed.count(para), 1)
         self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
         self.assertIn("scope_raw_html_not_allowed",
                       report_pointer_problems(changed, self.report, self.index))
