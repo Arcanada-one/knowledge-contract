@@ -1,0 +1,79 @@
+{
+  "schema": "kc-semantic-bridge-relations-integration-run/1",
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools.test_semantic_bridge_relations",
+    "-v"
+  ],
+  "working_directory": "/workspace/scratch/5cd1d6f67b86/semantic-bridge-work",
+  "started_utc": "2026-11-14T19:11:02.081800+00:00",
+  "exit_code": 0,
+  "wall_seconds": 0.12493146400083788,
+  "sources_before": [
+    {
+      "path": "tools/semantic_bridge.py",
+      "bytes": 18256,
+      "sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a"
+    },
+    {
+      "path": "tools/semantic_relations.py",
+      "bytes": 8663,
+      "sha256": "28f9dfc445782024017409fed802bc8733dc482d4a9c2cc8d0cf07ddfee0e7af"
+    },
+    {
+      "path": "tools/test_semantic_bridge_relations.py",
+      "bytes": 11835,
+      "sha256": "96b4bea7d525baf6cbb48ba0c0981c73f2979457c1dc78bae1fc3cce6a34d1d4"
+    }
+  ],
+  "sources_after": [
+    {
+      "path": "tools/semantic_bridge.py",
+      "bytes": 18256,
+      "sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a"
+    },
+    {
+      "path": "tools/semantic_relations.py",
+      "bytes": 8663,
+      "sha256": "28f9dfc445782024017409fed802bc8733dc482d4a9c2cc8d0cf07ddfee0e7af"
+    },
+    {
+      "path": "tools/test_semantic_bridge_relations.py",
+      "bytes": 11835,
+      "sha256": "96b4bea7d525baf6cbb48ba0c0981c73f2979457c1dc78bae1fc3cce6a34d1d4"
+    }
+  ],
+  "source_bytes_unchanged_during_run": true,
+  "retained_output": {
+    "path": "RELATIONS_INTEGRATION_TESTS.txt",
+    "sha256": "58c4e597839a0f97898d71dd9e9ed1be1d16d3abe41268dfe5d0d875dba6dd28",
+    "capture": "Actual subprocess stdout and stderr combined; bytes written without alteration."
+  },
+  "finite_scope": {
+    "test_count": 4,
+    "maximum_carrier_states": 8,
+    "maximum_worlds_in_a_bridge_report": 8,
+    "obligations": [
+      "computed relation and sufficient/insufficient observation quotient",
+      "two computed stages and compatible quotient composition",
+      "known-input embedding, partial composition and nonempty metric domain",
+      "marginal set geometry versus same-world disagreement"
+    ]
+  },
+  "historical_initial_run": {
+    "output": "RELATIONS_INTEGRATION_TESTS.initial.txt",
+    "unbound_metadata": "RELATIONS_INTEGRATION_RUN.unbound.json",
+    "limitation": "Initial four tests passed, but source hashes were collected after a concurrent implementation update; that record does not pin the executed implementation. Both original files retained. This fresh run pins hashes before and after."
+  },
+  "limitations": [
+    "Internal same-controller integration assessment, not external independent evidence.",
+    "Supplied source/observation fixtures; no natural-language extraction fidelity, real-world truth, authority or effects.",
+    "Finite actual outputs only, not a general preservation proof.",
+    "Intermediate semantic label compatibility is explicitly supplied by the caller; the relation API checks finite carriers, not authenticates labels.",
+    "Empty successful-path images do not encode refusal or unavailable outcome."
+  ],
+  "implementation_files_changed_by_this_task": false
+}

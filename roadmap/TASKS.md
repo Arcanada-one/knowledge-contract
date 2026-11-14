@@ -169,7 +169,7 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 ## Semantic Bridge: Specify the human-to-formal semantic bridge
 
-**Artifact observation (8 November 2026).** A separate bounded conversion specification remains planned.
+**Artifact observation (14 November 2026).** The [Semantic Bridge specification](../engineering/specifications/semantic-bridge/SPECIFICATION.md) and [Source Rule Checks study](../engineering/studies/semantic-bridge-conformance/STUDY.md) implement and evaluate one finite supplied-reading profile: complete source units, attributed alternatives, Boolean observations, scoped exceptions and explicit invalid/unsupported outcomes. This is a bounded increment. General natural-language fidelity, units, time, quantifiers, richer attribution, required media and complete artifact integration remain open.
 
 **Priority:** Next · **Owner:** KC-Brain · **Required outputs:** Meaning Bridge.
 

@@ -1,0 +1,2 @@
+NOTE 在本示例中，已完成培训的会员符合借用相机的条件，但借用服务暂停时除外。此陈述描述示例中的条件，不授予现实中的使用权限。
+RULE lending: (member AND trained) UNLESS suspended

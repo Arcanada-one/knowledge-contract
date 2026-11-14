@@ -4,9 +4,9 @@ sources: none
 
 # Engineering Studies and Evidence
 
-Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 26 explicit bindings; per-study origin records identify exact evidence bytes.
+Eight studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 29 explicit bindings; per-study origin records identify exact evidence bytes.
 
-**Historical validation scope.** The [preserved mechanical `validation-report.json`](validation-report.json) (Git blob `c02b44d69a0cd7b704b10323389a56c563b1b62d`, **present at source `main` commit** `d5e684e201f6d41498c4fbd8c2a3497eed2bb30e`) reports **24 claims**. It was **not regenerated** for this **26-claim** candidate index. The precise source revision and execution procedure that generated the earlier report are **NOT_VERIFIED**. Its internal phrase `Current integrated edition` describes the pinned source snapshot, not the current candidate. This report is not independent scientific review, a current 26-claim validation, or native admission.
+**Historical validation scope.** The [preserved mechanical `validation-report.json`](validation-report.json) (Git blob `c02b44d69a0cd7b704b10323389a56c563b1b62d`, **present at source `main` commit** `d5e684e201f6d41498c4fbd8c2a3497eed2bb30e`) reports **24 claims**. It was **not regenerated** for this **29-claim** candidate index. The precise source revision and execution procedure that generated the earlier report are **NOT_VERIFIED**. Its internal phrase `Current integrated edition` describes the pinned source snapshot, not the current candidate. This report is not independent scientific review, a current 29-claim validation, or native admission.
 
 | Document | Subject |
 | --- | --- |
@@ -17,6 +17,9 @@ Seven studies connect the scientific claims to actual finite checks, counterexam
 | [Reuse Economics](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
 | [Editorial Pilot](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
 | [Context Controls](agent-situation-controls/STUDY.md) | Authored finite state/projection controls and explicit disabled-guard cases; no LLM or live effects. |
+| [Source Rule Checks](semantic-bridge-conformance/STUDY.md) | Complete finite Boolean families, source/JSON refusal controls, retained decoder failure and algebra/geometry integration. |
+
+The retained `validation-report.json` (linked above) describes the earlier 24-claim snapshot. It is not a validation report for the current 29-claim index; its generating source/procedure remains NOT_VERIFIED. New finite results are bound by the Semantic Bridge study and its own records.
 
 ## Counting and interpretation
 
@@ -28,7 +31,7 @@ Calls, cases, criteria, records, graph subsets, page entries and source families
 
 ## Languages and source access
 
-The retained source prose and most agent reports are in Russian, with English code and field names. The current studies provide English accounts of their design, principal results, failure mechanisms and limitations. They are not a full independently reviewed translation of every source. The [evidence language index](evidence-language-index.json) records the representation, prose language, hash and English summary location for all 47 evidence files, without changing their bytes or origin records.
+The retained source prose and most agent reports are in Russian, with English code and field names. The current studies provide English accounts of their design, principal results, failure mechanisms and limitations. They are not a full independently reviewed translation of every source. The [evidence language index](evidence-language-index.json) records the representation, prose language, hash and English summary location for its historical 47-file evidence snapshot, without changing those bytes or origin records. New Semantic Bridge evidence has its own origin record and explicitly authored source/observation scope.
 
 The [historical recovery inventory](historical-recovery-gaps.json) separates missing synthetic runners and fixtures from restricted source books. A copyright limitation is not used to explain missing project-authored code. Retained reports remain inspectable where full historical replay is unavailable.
 

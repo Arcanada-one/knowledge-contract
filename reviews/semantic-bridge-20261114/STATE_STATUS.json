@@ -1,0 +1,133 @@
+{
+  "record_kind": "repository-state-integration-status/1",
+  "observed_on_utc": "2026-11-14",
+  "recording_method": "Recorded from the completed bounded readback; no additional reads, tests or polling during file creation.",
+  "reviewer": "/root/mailbox_status",
+  "disposition": {
+    "kc_swe_environment_gap": "CLOSED_WITHIN_BOUNDED_FILE_IDENTITY_AND_SESSION_PROFILE",
+    "statement": "KC-SWE reports an actual exact-head reproduction in its environment. The old residual 'not checked in KC-SWE environment' is discharged for the stated observer/session lifecycle only.",
+    "next_gate": "Parent integration, followed by reconciliation and exact-new-head CI/review for PR107 and then PR109.",
+    "current_authority": "NOT_OBSERVED",
+    "effect_outcome": "NOT_OBSERVED",
+    "external_independence": "NOT_VERIFIED",
+    "authority_event_r4": "NOT_READY as stated in the archived KC-SWE message",
+    "native_source_admission": "NOT_READY as stated in the archived KC-SWE message"
+  },
+  "archive": {
+    "repository": "Arcanada-one/collective-mailbox",
+    "snapshot": "6a8423c9e8a6bfb3c6264bce7101fc7a272c8c9e",
+    "path": "archive/knowledge-collective/KC-Brain/20261114T100350Z__to-KC-Brain__from-KC-SWE__e9cd23e2-c2e1-4dde-812e-ee4313753ca3__pr109-repro-pass.txt",
+    "git_blob": "ba9aad644d83596d2b4d397ddaef36f98f85f765",
+    "message_id": "20261114T100350Z-e9cd23e2-c2e1-4dde-812e-ee4313753ca3",
+    "created_at": "2026-11-14T10:03:50Z",
+    "url": "https://github.com/Arcanada-one/collective-mailbox/blob/6a8423c9e8a6bfb3c6264bce7101fc7a272c8c9e/archive/knowledge-collective/KC-Brain/20261114T100350Z__to-KC-Brain__from-KC-SWE__e9cd23e2-c2e1-4dde-812e-ee4313753ca3__pr109-repro-pass.txt",
+    "handling": "2026-11-14T11:08:17Z KC-Brain disposition=fyi; PR109 bounded review; no new task or admission.",
+    "expected_response": "None required at the reviewed head; the next head after retarget is the next review subject."
+  },
+  "kc_swe_record": {
+    "url": "https://github.com/Arcanada-one/knowledge-contract/pull/109#issuecomment-6875613754",
+    "exact_head": "4184014cb4aeaee16b6989a5205d978529558403",
+    "environment": {
+      "host": "arcana-devs",
+      "checkout": "fresh public clone at the exact head",
+      "user": "dev",
+      "python": "3.12.3",
+      "git": "2.43.0"
+    },
+    "execution": "CI commands verbatim, each in a new process: 11 Observer tests and 14 Session tests, all OK.",
+    "own_api_probe": "Temporary real Git repository: START, PREFLIGHT, required-file commit, PREFLIGHT, PREFLIGHT. Original returns READY, VALID, INVALID, RESUME_REQUIRED.",
+    "adverse_controls": "Preflight adoption, clearing resume_required after failure, and adopting non-READY context were each detected. Removing either the adopted-context comparison (S3) or prior-validation check (S4) alone preserves the property; removing both exposes the defect and is detected by three tests.",
+    "evidence_limit": "Host environment and own probes are recorded in the KC-SWE message/comment. A separate complete machine log from arcana-devs was not supplied there; this reviewer did not rerun those commands.",
+    "independence": "Same controller family and host as other internal checks; no external independence.",
+    "no_paid_llm_run": true
+  },
+  "observed_prs": [
+    {
+      "pr": 107,
+      "url": "https://github.com/Arcanada-one/knowledge-contract/pull/107",
+      "head": "880d4ea059e8110a81a37348c4cd17075f881780",
+      "base": "dec63e4631d1b02e7b22bbc2e780c41cd6a7bfd7",
+      "state": "open",
+      "draft": false,
+      "checks": "12/12 success",
+      "review": "https://github.com/Arcanada-one/knowledge-contract/pull/107#issuecomment-6872027103",
+      "actual_log": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43554804553/job/132325129963",
+      "actual_tests": "11 Observer tests PASS, including fresh-process replay and configured-filter regression"
+    },
+    {
+      "pr": 109,
+      "url": "https://github.com/Arcanada-one/knowledge-contract/pull/109",
+      "head": "4184014cb4aeaee16b6989a5205d978529558403",
+      "base": "880d4ea059e8110a81a37348c4cd17075f881780",
+      "state": "open",
+      "draft": true,
+      "checks": "12/12 success",
+      "actual_log": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43581147897/job/132405936491",
+      "actual_tests": "11 Observer and 14 Session tests PASS; fresh-process lifecycle, repeated-preflight refusal, failed-resume recovery, JSON/tamper and unavailable/recovery cases executed",
+      "integrator_readback": "https://github.com/Arcanada-one/knowledge-contract/pull/109#issuecomment-6875362990"
+    },
+    {
+      "pr": 113,
+      "url": "https://github.com/Arcanada-one/knowledge-contract/pull/113",
+      "head": "459333b3bbd85a9d6f5fd3a2ebd9351aca54fb7e",
+      "base": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+      "state": "open",
+      "draft": true,
+      "checks": "12/12 success",
+      "actual_log": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43630192830/job/132554853831",
+      "actual_tests": "22 reader tests PASS, including test_enclosing_raw_html_block_is_refused; observed at 2026-11-14T19:06:30Z"
+    }
+  ],
+  "observed_main": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "source_readback": {
+    "method": "Fetched the four exact-head GitHub file blobs and matched them against the previously reviewed local bytes. Source SHA-256 values below correspond to those matching Git blobs.",
+    "files": [
+      {
+        "path": "tools/repository_observer.py",
+        "head": "880d4ea059e8110a81a37348c4cd17075f881780",
+        "git_blob": "e6139467aaa055a4ff9e9c4c43a2cb6de2afd0cb",
+        "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba"
+      },
+      {
+        "path": "tools/test_repository_observer.py",
+        "head": "880d4ea059e8110a81a37348c4cd17075f881780",
+        "git_blob": "cf85f8776016c7a200b528d836893bd0e1a5bafc",
+        "sha256": "6f57ea3ef038dfdce986641ca7710bc70547d9ebfcae7bed687c9fff678734cf"
+      },
+      {
+        "path": "tools/repository_session.py",
+        "head": "4184014cb4aeaee16b6989a5205d978529558403",
+        "git_blob": "654b254b90c1a7d228c54e9c7cd99bf4afcade25",
+        "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a"
+      },
+      {
+        "path": "tools/test_repository_session.py",
+        "head": "4184014cb4aeaee16b6989a5205d978529558403",
+        "git_blob": "2cca8c671ecdd7a4ba2abaedb95f8ac76b0556ee",
+        "sha256": "a42809e3aed52c36dda916c42de05121110726a9df7a23a257abda17bc5f068c"
+      }
+    ],
+    "preserved_boundaries": {
+      "not_observed": [
+        "ci",
+        "effect_outcome",
+        "authority"
+      ],
+      "readiness_grants_permission": false,
+      "llm_calls": 0,
+      "history_complete": false,
+      "inspection": "HISTORICAL_ONLY; requires_fresh_capture=true"
+    },
+    "prior_full_package_readback": "The integrator comment records 25/25 remote file matches. This follow-up rechecked four code/test files, not all 25."
+  },
+  "next_steps": [
+    "Finish the exact-head PR113 content/release decision and integrate its PR105 replacement into main.",
+    "Reconcile the PR107 increment onto the resulting main while preserving its old review pin and checked implementation/model bytes; review the integration delta and run the new head's gates.",
+    "Then reconcile PR109 onto the accepted Observer and evaluate that new head's gates. No repeat of the unchanged old-head suite is required solely to recover status."
+  ],
+  "limits": [
+    "Fresh-process CLI/ledger lifecycle is covered; a production agent restart with an external effect is not established.",
+    "The API32 /health and journal deliveries in the same letter are separate service results, not effect evidence for Repository Session.",
+    "Mail is evidence data and grants no authority. No inbox poll, message handling, remote mutation or suite rerun was performed in this follow-up."
+  ]
+}

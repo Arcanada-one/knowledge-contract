@@ -1,0 +1,58 @@
+{
+  "record_kind": "semantic-bridge-bounded-nonauthor-review/1",
+  "recorded_at_utc": "2026-11-14T19:10:56.190736+00:00",
+  "verdict": "PASS after one resolved CLI decode-error finding",
+  "reviewer": "/root/mailbox_status",
+  "reviewer_authored_implementation": false,
+  "reviewer_authored_probes_and_record": true,
+  "same_controller_and_host": true,
+  "external_independence": "NOT_VERIFIED",
+  "base_revision": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "initial_module_sha256": "395fd92911688cc688b01405b001bf03a4d786811e4bef47604235db98cf46f3",
+  "accepted_module_sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+  "draft_specification_sha256": "fba25935adf19b69a2070039c175b315cbd8e874fa48a090ea1459f4b3741d0a",
+  "finding": {
+    "id": "SB-REVIEW-1",
+    "description": "A 5341-byte valid-JSON packet containing a 5000-digit integer escaped the structured error path through the Python integer-conversion ValueError.",
+    "before": {
+      "exit_code": 1,
+      "stdout": "empty",
+      "stderr": "traceback retained in oversized-integer-result.json"
+    },
+    "correction": "Preserve existing BridgeError codes, then wrap built-in ValueError and RecursionError as malformed_json.",
+    "after": {
+      "exit_code": 2,
+      "status": "INVALID",
+      "error_code": "malformed_json",
+      "stderr": "empty",
+      "truth": "absent"
+    },
+    "disposition": "RESOLVED on exact accepted module hash"
+  },
+  "checks": {
+    "bounded_source_input_status_probes": 30,
+    "outcome": "PASS",
+    "separate_actual_cli_replay": "PASS with PYTHONINTMAXSTRDIGITS=4300",
+    "independent_arithmetic_oracle": "not claimed here; separately authored by site_review",
+    "hosted_ci": "NOT_RUN by this reviewer"
+  },
+  "evidence_sha256": {
+    "semantic_bridge_reviewed.py": "395fd92911688cc688b01405b001bf03a4d786811e4bef47604235db98cf46f3",
+    "semantic_bridge_successor.py": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+    "SPECIFICATION_reviewed.md": "fba25935adf19b69a2070039c175b315cbd8e874fa48a090ea1459f4b3741d0a",
+    "integer-bound-source.txt": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+    "oversized-integer-packet.json": "0cff5ea97278cb2f6c920485644270cd4b2bbec7dabdf43fe362503d870132fb",
+    "oversized-integer-result.json": "4acba885ab70f288c315c27c4e832c5c2c9330d2f1862b9b01bea8ded002956f",
+    "oversized-integer-successor-result.json": "4db256af0c0ff552e6ce185ab2c877b6478c020c28c9cea9f69f3512d2fdde05",
+    "review_checks.py": "8a6ccfcfc855431be5766eeabc0bfc510fa6be3a8b210ca8b7d6de51c84fddfd",
+    "bounded-review-results.json": "5f73d902ead2e97c28356fd08eb952ac7f3f153c7ae91a6e4f358ad57993874c"
+  },
+  "limits": [
+    "The AST evaluator accepts only compiler-produced ASTs, as declared by the specification.",
+    "Controlled source binding does not establish natural-language fidelity, attribution authenticity, real-world truth or current authority.",
+    "No general language extraction, browser rendering, model calls, external effects or native admission reviewed.",
+    "Finite probes do not prove whole-program correctness; later implementation changes need renewed exact-hash review."
+  ],
+  "remote_mutations": "NONE",
+  "implementation_edits_by_reviewer": "NONE"
+}

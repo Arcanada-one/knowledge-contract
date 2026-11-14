@@ -1,0 +1,97 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "semantic-bridge-conformance",
+  "scope": "Original controlled inputs and actual finite local executions on 14 November 2026; no source-book, historical LLM or production rerun.",
+  "files": [
+    {
+      "file": "RELATIONS_INTEGRATION_RUN.json",
+      "representation": "actual new local finite-check or CLI execution record; not a historical model experiment",
+      "published_sha256": "adca468d82cf8e09947b9d2fd5201ea0dadac52c63a7e075324ae67ba2f2907f",
+      "size_bytes": 3161
+    },
+    {
+      "file": "RELATIONS_INTEGRATION_RUN.unbound.json",
+      "representation": "retained initial local integration execution or unbound metadata; not a final implementation verification",
+      "published_sha256": "63027d2eb15fb7e04aaac160cc26d58840e962b2f53406845883829bf4cef1b0",
+      "size_bytes": 2201
+    },
+    {
+      "file": "RELATIONS_INTEGRATION_TESTS.initial.txt",
+      "representation": "retained initial local integration execution or unbound metadata; not a final implementation verification",
+      "published_sha256": "58c4e597839a0f97898d71dd9e9ed1be1d16d3abe41268dfe5d0d875dba6dd28",
+      "size_bytes": 976
+    },
+    {
+      "file": "RELATIONS_INTEGRATION_TESTS.txt",
+      "representation": "actual new local finite-check or CLI execution record; not a historical model experiment",
+      "published_sha256": "58c4e597839a0f97898d71dd9e9ed1be1d16d3abe41268dfe5d0d875dba6dd28",
+      "size_bytes": 976
+    },
+    {
+      "file": "UNITTEST_FINAL.txt",
+      "representation": "actual new local finite-check or CLI execution record; not a historical model experiment",
+      "published_sha256": "b350d116a3c16d98188cf651671f2c067e9af8a509221f9c81b9769b7fe099c9",
+      "size_bytes": 3112
+    },
+    {
+      "file": "example-cli-runs.json",
+      "representation": "actual new local finite-check or CLI execution record; not a historical model experiment",
+      "published_sha256": "a4a9e569cd5b4f8a174122723b53c10eecb1af2fe69ed8840ce01ad9e5639b3c",
+      "size_bytes": 13871
+    },
+    {
+      "file": "examples/alternatives.en.packet.json",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "93897fcfb079c5b2d2223d42281f3f842e69d9c8dabee7de206f3c3f28919d44",
+      "size_bytes": 1442
+    },
+    {
+      "file": "examples/alternatives.en.txt",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "56f6af007a5da28b959417fff11117ca95cb086a4c59fb135b5cba586a251649",
+      "size_bytes": 201
+    },
+    {
+      "file": "examples/lending.en.packet.json",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "b9ed4e4a61eb1f70760be5c7948944cfd5a5e3005a1389fef6bae009d46bbd96",
+      "size_bytes": 1120
+    },
+    {
+      "file": "examples/lending.en.txt",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "61acf67002a39c0a20446729a98eaff1595abc5be1a2cea2121c6d191072d3da",
+      "size_bytes": 246
+    },
+    {
+      "file": "examples/lending.ru.packet.json",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "2fa8cd357c9d04c5b72497dd5732dbaf52abf74a163e5ed4394e34543c63a34b",
+      "size_bytes": 1120
+    },
+    {
+      "file": "examples/lending.ru.txt",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "4256f72ea9f20f6db8c9ace96647ebccd5bfeba86faa9897f6890811f81aab28",
+      "size_bytes": 373
+    },
+    {
+      "file": "examples/lending.zh-Hans.packet.json",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "6810561ad72f4c9b5b14cdbbf6027c5d855a76c71e51ba59eeb81525a016bdc8",
+      "size_bytes": 1120
+    },
+    {
+      "file": "examples/lending.zh-Hans.txt",
+      "representation": "newly authored controlled source or supplied interpretation packet; not extracted historical data",
+      "published_sha256": "92446ccf80502171bca71c2412a735afe8d1cc7b000c157dacca1020258e76ef",
+      "size_bytes": 235
+    },
+    {
+      "file": "finite-oracle.json",
+      "representation": "actual new local finite-check or CLI execution record; not a historical model experiment",
+      "published_sha256": "cb2ba5da934521eed676482b6abfd3f864e52ff85b3a7501b17bbbe31071499d",
+      "size_bytes": 19276
+    }
+  ]
+}

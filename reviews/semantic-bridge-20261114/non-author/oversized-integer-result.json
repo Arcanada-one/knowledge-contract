@@ -1,0 +1,11 @@
+{
+  "module_sha256": "395fd92911688cc688b01405b001bf03a4d786811e4bef47604235db98cf46f3",
+  "spec_sha256": "fba25935adf19b69a2070039c175b315cbd8e874fa48a090ea1459f4b3741d0a",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "packet_bytes": 5341,
+  "source_bytes": 13,
+  "integer_digits": 5000,
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/5cd1d6f67b86/semantic-bridge-review/semantic_bridge_reviewed.py\", line 388, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/workspace/scratch/5cd1d6f67b86/semantic-bridge-review/semantic_bridge_reviewed.py\", line 376, in main\n    packet = read_packet(args.packet)\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/5cd1d6f67b86/semantic-bridge-review/semantic_bridge_reviewed.py\", line 91, in read_packet\n    return json.loads(raw.decode(\"utf-8\"), object_pairs_hook=_pairs,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py\", line 359, in loads\n    return cls(**kw).decode(s)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 338, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 354, in raw_decode\n    obj, end = self.scan_once(s, idx)\n               ^^^^^^^^^^^^^^^^^^^^^^\nValueError: Exceeds the limit (4300 digits) for integer string conversion: value has 5000 digits; use sys.set_int_max_str_digits() to increase the limit\n"
+}

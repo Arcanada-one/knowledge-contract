@@ -1,0 +1,7 @@
+{
+  "module_sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+  "returncode": 2,
+  "stdout": "{\n  \"attribution_authenticity\": \"NOT_ASSESSED\",\n  \"controlled_parsing\": \"NOT_VERIFIED\",\n  \"current_authority\": \"NOT_ASSESSED\",\n  \"effects_authorized\": false,\n  \"errors\": [\n    {\n      \"code\": \"malformed_json\",\n      \"message\": \"packet is not supported well-formed UTF-8 JSON\"\n    }\n  ],\n  \"real_world_truth\": \"NOT_ASSESSED\",\n  \"schema\": \"kc-semantic-bridge-report/1\",\n  \"source_binding\": \"NOT_VERIFIED\",\n  \"source_semantic_fidelity\": \"NOT_ASSESSED\",\n  \"status\": \"INVALID\"\n}\n",
+  "stderr": "",
+  "PYTHONINTMAXSTRDIGITS": "4300"
+}

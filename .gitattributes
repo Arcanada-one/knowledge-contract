@@ -4,3 +4,6 @@ engineering/studies/editorial-skill-pilot/evidence/source-section.txt whitespace
 engineering/studies/source-transcription-and-uncertainty/checks/synthetic-base.txt whitespace=-blank-at-eof
 # The unmodified reviewer transcript uses intentional Markdown hard line breaks.
 reviews/publication-integrity/science-review.md whitespace=-blank-at-eol
+# These exact-size JSON inputs deliberately pad with legal trailing JSON whitespace.
+reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_at_byte_limit.json whitespace=-blank-at-eol
+reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_over_byte_limit.json whitespace=-blank-at-eol
