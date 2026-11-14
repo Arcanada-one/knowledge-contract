@@ -1,6 +1,6 @@
 # Knowledge Contract Arcana
 
-Read [all 31 proposed document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
+Read [all 31 source-catalogue document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
@@ -18,13 +18,13 @@ Publication edition **1.1** contains English scientific and engineering document
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
-The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. Its [publication catalogue](publication-catalog.json) proposes 31 reading entries: the 29 baseline documents, Meaning Bridge and the new Meaning Geometry research draft; Meaning Geometry entered source main at `0892eeb1` as a research draft and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission; short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
+The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. The [publication catalogue](publication-catalog.json) at source snapshot `6a6f202f` contains 31 reading entries: the 29 baseline documents, Meaning Bridge and Meaning Geometry; both foundations manuscripts retain their research-draft status. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
 
 ## Start with the human-to-computational foundation
 
 [Meaning Bridge](papers/human-meaning-and-computable-knowledge/PAPER.md) explains the passage from a contextual expression to a representation, an artifact and a particular permitted use. It includes an ordinary rule-and-exception example, an exact representation-adequacy argument and explicit limitations. The [foundations map](reference/foundations/README.md) connects its sections to existing definitions, specifications and evidence, with a terminology and source supplement.
 
-The new manuscript is a **research draft proposed for integration**. Its catalogue entry does not assert independent review, a new released edition, deployment or corpus-index admission. Existing publication and raw-evidence histories remain unchanged.
+The manuscript is a **research draft included in the source catalogue**. Its catalogue entry does not assert independent review, a new released edition, deployment or corpus-index admission. Existing publication and raw-evidence histories remain unchanged.
 
 ## What the work establishes
 
@@ -38,7 +38,7 @@ This evidence does not establish universal extraction accuracy, general agent su
 
 The [first finite translation release](translations/release/README.md) selects ten complete works in Russian and Simplified Chinese: twenty texts, with their [recorded source-specific reviews](translations/release/RECORDED-REVIEWS.md) and an explicit [two-link reconciliation](translations/release/DEPENDENCIES.md). Follow its document table to read each full Markdown body. A repository file is not automatically an admitted or deployed website rendition.
 
-The broader [translation proposal](https://github.com/Arcanada-one/knowledge-contract/pull/76) contains **50 of 60 intended author-draft bodies**, 25 per language at the 9 November checkpoint. The remaining five works per language and the separate publication boundaries are listed in the [roadmap](ROADMAP.md). Existing full-body review findings remain bound to their exact source and target. Current titles, source pins, renderer checks and new exact-delta review must not be confused with a new whole-body scientific verdict.
+The [translation inventory](roadmap/TRANSLATIONS.md) at source snapshot `6a6f202f` records **52 present body files out of 62 work-language slots**, 26 per language for the 31-document catalogue; five works per language still lack body files. The rendition sidecar separately contains eight entries with recorded agent reviews. Presence does not establish complete or faithful translation, native-speaker review or actual website delivery. The earlier [PR76 checkpoint](https://github.com/Arcanada-one/knowledge-contract/pull/76) remains **50 of 60 intended author-draft bodies**, 25 per language against its historical 30-document scope; its counts are not the current source inventory. Existing full-body review findings remain bound to their exact source and target. Current titles, source pins, renderer checks and new exact-delta review must not be confused with a new whole-body scientific verdict.
 
 Pavel's 9 November instruction authorizes the prepared public-reading release through the existing review, CI, merge and deployment process. The earlier general engineering pause is not a reason to withhold an otherwise accepted finite reading batch. This does not authorize unrelated experiments or declare a site build, index refresh or production result completed.
 

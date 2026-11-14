@@ -3,7 +3,7 @@ title: "开始阅读：面向人类与代理的知识契约"
 sources: ["Knowledge Contract project corpus and publication edition"]
 language: zh-Hans
 status: localized reader guide; no native-speaker certification
-updated: 2026-11-09
+updated: 2026-11-14
 ---
 
 # 开始阅读：面向人类与代理的知识契约
@@ -22,11 +22,11 @@ updated: 2026-11-09
 
 ## 阅读与获取来源
 
-[项目网站](https://contract.place/)提供阅读界面。仓库保存原文、证据和版本历史。[完整文档登记表](../DOCUMENTS.md)列出31项候选作品的可读名称：十篇科学论文、十一份规范、六项研究、术语表、参考文献以及两个附录。上述文档链接指向规范英文来源；中文链接文字本身不表示正文已经翻译。
+[项目网站](https://contract.place/)提供阅读界面。仓库保存原文、证据和版本历史。[完整文档登记表](../DOCUMENTS.md)列出来源目录快照`6a6f202f`中31项作品的可读名称：十篇科学论文、十一份规范、六项研究、术语表、参考文献以及两个附录。上述文档链接指向规范英文来源；中文链接文字本身不表示正文已经翻译。
 
 通过文档链接可以阅读完整Markdown，并使用GitHub的Raw功能获取相应原文。引用或归档时应选择具体commit，而不是不断变化的分支。未声明的PDF或尚未发布的译文，不应被宣传为已经可供下载。
 
-网站界面语言与正文语言是两回事。译文缺失或过期时，页面应明确说明显示的是英文来源。[翻译提案](https://github.com/Arcanada-one/knowledge-contract/pull/76)记录文本准备工作，而不是证明译文已在网站上线。本中文读者指南也不声称获得母语编辑认证。
+网站界面语言与正文语言是两回事。译文缺失或过期时，页面应明确说明显示的是英文来源。[翻译清单](../roadmap/TRANSLATIONS.md)列出精确来源快照中存在与缺失的正文文件，并将文件统计与审查记录分开。[简体中文来源文本](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596/translations/zh-Hans)可以在该修订版直接阅读。此前的[翻译提案](https://github.com/Arcanada-one/knowledge-contract/pull/76)仍保留为历史记录。仓库中存在文件，并不证明网站已提供该译文。本中文读者指南也不声称获得母语编辑认证。
 
 ## 理解不同的检查
 

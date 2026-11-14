@@ -1,6 +1,6 @@
 # Reading Guide: All Publication Names
 
-The inherited thirty name rows retain source baseline `a0450428704fcd41b411203f2fc88c06c779610b`; the added Meaning Geometry entry is a separately reviewed research-draft candidate in PR89. Titles do not change prior canonical paths, edition 1.1 or protocol versions. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).
+The inherited thirty name rows retain source baseline `a0450428704fcd41b411203f2fc88c06c779610b`; Meaning Geometry, originally proposed in PR89, is included in the 31-document source catalogue at `6a6f202f7f70be2ad3aea3369e45409761708596` and retains its research-draft status and scoped review. Titles do not change prior canonical paths, edition 1.1 or protocol versions. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).
 
 | Document | English title | Русское название | 简体中文标题 | Previous English title |
 | --- | --- | --- | --- | --- |
