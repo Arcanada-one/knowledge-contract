@@ -2,7 +2,7 @@
 title: "Start Reading: Knowledge Contract for People and Agents"
 sources: ["Knowledge Contract project corpus and publication edition"]
 status: public reading guide
-updated: 2026-11-09
+updated: 2026-11-14
 ---
 
 # Start Reading: Knowledge Contract for People and Agents
@@ -23,13 +23,13 @@ Knowledge Contract connects knowledge to the conditions under which it can be in
 | What was actually observed? | [Engineering studies](engineering/studies/README.md) | [Claim–evidence index](engineering/studies/evidence-index.json), including limitations and negative results |
 | How can an agent access the publication? | [Publication Interfaces](appendices/api-integration/APPENDIX.md) | [Context Package](engineering/specifications/context-package/SPECIFICATION.md), [Reuse Policy](engineering/specifications/reuse-policy/SPECIFICATION.md) |
 
-The [complete document register](DOCUMENTS.md) lists all 31 proposed catalogue works with readable names. They comprise ten scientific papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The foundations introduction is identified as a research draft; a catalogue entry is not a claim of external peer review or production readiness.
+The [complete document register](DOCUMENTS.md) lists the 31 source-catalogue works at snapshot `6a6f202f` with readable names. They comprise ten scientific papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. Meaning Bridge and Meaning Geometry retain their research-draft status; a catalogue entry is not a claim of external peer review or production readiness.
 
 ## Read, inspect and obtain the source
 
 The [website](https://contract.place/) is the reading surface. This repository is the source and version history. Follow each document's Markdown link for its full text; GitHub's raw-file control provides that exact Markdown. For a reproducible collection, use a pinned Git commit or GitHub's repository archive at that revision. Do not treat a moving branch name as an immutable citation.
 
-The website's language selector and the language of a manuscript are separate. A Russian or Chinese interface must not be counted as a translated manuscript when its body is English. Versioned translations have explicit source, review and fallback states. The source repository's [translation proposal](https://github.com/Arcanada-one/knowledge-contract/pull/76) is a work-in-progress record, not a list of served locale pages.
+The website's language selector and the language of a manuscript are separate. A Russian or Chinese interface must not be counted as a translated manuscript when its body is English. Versioned translations have explicit source, review and fallback states. The [translation inventory](roadmap/TRANSLATIONS.md) identifies the present and missing bodies at an exact source snapshot and separates them from recorded rendition reviews. The [Russian](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596/translations/ru) and [Simplified Chinese](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596/translations/zh-Hans) source files can be read directly at that revision. The earlier [PR76 proposal](https://github.com/Arcanada-one/knowledge-contract/pull/76) remains part of their history. None of these file lists establishes which locale pages the website serves.
 
 ## Understand the kinds of evidence
 

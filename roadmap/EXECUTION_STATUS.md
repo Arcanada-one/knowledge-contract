@@ -1,7 +1,7 @@
 ---
 title: "Active Work: Autonomous Authorship and Engineering Boundaries"
 sources: none
-updated: 2026-11-11
+updated: 2026-11-14
 status: current-operator-direction
 ---
 
@@ -14,6 +14,10 @@ status: current-operator-direction
 KC-Brain performs accessible analysis, manuscript work, proof and counterexample review, primary-source assessment, translations, corpus mapping, code, tests and repository changes directly. A Brain role must not delegate content merely because it is extensive. A necessary operation in a restricted server, registry or build environment is assigned to the responsible SWE with prepared inputs, an exact version, bounded scope and required evidence. Separate review is still performed separately from authorship.
 
 This direction supersedes the earlier **resource-based blanket pause**, not the scientific limitations, review findings or retained observations of earlier work. A historical failed attempt remains a historical failed attempt; it is not evidence that the entire team remains unavailable.
+
+## Priority update: 14 November 2026
+
+The operator explicitly prioritizes **knowledge algebra, meaning geometry, meaning algebra, meaning theory and agent state**, including substantial scientific development, implementation and tests. [Priority Research](PRIORITIES_20261114.md) gives the existing canonical artifacts, bounded increments and next acceptance criteria. Coordinated parallel work is authorized; this replaces the old default foundations preparation order while preserving review, evidence and task dependencies.
 
 ## Russian counterpart
 

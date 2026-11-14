@@ -2,7 +2,7 @@
 title: Foundations-first manuscript package
 sources: none
 status: planned manuscript preparation; not a released corpus
-updated: 2026-11-06
+updated: 2026-11-14
 ---
 
 # Foundations-first manuscript package
@@ -10,6 +10,8 @@ updated: 2026-11-06
 > **Current source status (11 November 2026).** The F04 target `papers/geometry-of-semantic-representations/PAPER.md` now exists on source main `0892eeb1` with `research-draft` status. The 8 November preparation table and its `New` action are historical planning records, not today's missing-document inventory. A bounded mathematical review of a draft is not acceptance of the full F04 package, independent geometry evaluation or the six-unit foundations release.
 >
 > Editorial context (8 November 2026; execution direction updated 11 November): names replace opaque reader-facing labels; compatibility mappings are in [workstreams.json](workstreams.json). At the 8 November checkpoint the operator had paused engineering execution. The operator restored availability on 11 November; [Active Work](EXECUTION_STATUS.md) now governs current work. This document alone authorizes no deployment, costly experiment or unrestricted execution; task, review, access and budget gates still apply.
+>
+> **Priority update (14 November 2026).** The operator explicitly prioritizes knowledge algebra, meaning geometry, meaning algebra, meaning theory and agent state with proofs, executable engineering and tests. [The current five-direction plan](PRIORITIES_20261114.md) supersedes the historical one-manuscript-at-a-time preparation order below. The six-unit inventory and its acceptance dependencies remain; parallel preparation does not close them.
 
 ## 1. Updated decision and scope
 

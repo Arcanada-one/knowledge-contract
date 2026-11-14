@@ -5,7 +5,7 @@ license: "CC-BY-4.0"
 author: "Pavel Valentov"
 sources: none
 status: "author-approved programme and reading map; not a claim that planned manuscripts are complete"
-updated: 2026-11-09
+updated: 2026-11-14
 ---
 
 # Knowledge Contract: Meaning, Knowledge and Their Responsible Use
@@ -16,9 +16,11 @@ Knowledge Contract is an open scientific and engineering programme for represent
 
 ## What is available, and what is being developed
 
-The proposed edition-1.1 catalogue in PR89 contains **31 works**: ten scientific manuscripts (including the research-draft Meaning Bridge and newly authored, independently scoped-reviewed research-draft Meaning Geometry), eleven specifications, six studies and four reference/appendix documents. The accepted earlier catalogue retains 30 works until a separate integration decision. The author-approved target structure contains **34 works**: ten scientific works, thirteen specifications, seven studies and four reference/appendix documents. Three additional engineering works remain planned, not completed or released; two other foundations develop existing manuscripts without duplicate papers.
+The edition-1.1 source catalogue at [6a6f202f](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596) contains **31 works**: ten scientific manuscripts (including the research drafts Meaning Bridge and Meaning Geometry), eleven specifications, six studies and four reference/appendix documents. Meaning Geometry is already integrated into this source catalogue; the earlier 30-work catalogue remains a historical snapshot. The author-approved target structure contains **34 works**: ten scientific works, thirteen specifications, seven studies and four reference/appendix documents. Three additional engineering works remain planned, not completed or released; two other foundations develop existing manuscripts without duplicate papers.
 
-This guide implements the author's decision to make the foundations and their connections explicit. The PR89 catalogue proposal adds one identified research-draft source without changing its reviewed mathematical bytes, earlier research results, prior accepted source versions, corpus admission or an execution task. Full manuscripts and their actual rendition/review states remain authoritative. Updating a heading alone cannot complete a research programme.
+This guide implements the author's decision to make the foundations and their connections explicit. Source integration preserves the research-draft statuses and does not establish scientific acceptance, corpus admission or completion of an execution task. Full manuscripts and their actual rendition/review states remain authoritative. Updating a heading alone cannot complete a research programme.
+
+The [translation inventory](roadmap/TRANSLATIONS.md) at the same source snapshot records **26 body files per language**, Russian and Simplified Chinese: **52 of 62 work-language slots**, with ten files still absent. The rendition sidecar contains eight entries with recorded agent reviews. File presence and those scoped records do not establish native-speaker review or the versions actually served by the website.
 
 ## Three connected foundations
 
@@ -115,4 +117,4 @@ Release already accepted finite reading batches without waiting for every planne
 
 The author is Pavel Valentov. This programme and its localized guides are original editorial work assisted by KC-Brain, not independent scientific review. Text is CC BY 4.0. Contributions may propose corrections, reproducible examples, counterarguments and implementations through the [contribution process](CONTRIBUTING.md). State the exact work/revision, evidence and limits. A contribution from an agent is assessed by its content and traceability, not counted as independent evidence merely because another agent repeats it.
 
-Publishing this guide establishes the public structure and reading map. It does not establish completion of the three remaining planned engineering works, an unrestricted new scientific theorem, deployment, server indexing or permission for an agent to act. Meaning Geometry remains a bounded research-draft proposal until ordinary source and publication acceptance.
+Publishing this guide establishes the public structure and reading map. It does not establish completion of the three remaining planned engineering works, an unrestricted new scientific theorem, deployment, server indexing or permission for an agent to act. Meaning Geometry retains its bounded research-draft status after source-catalogue integration; any broader scientific acceptance or change of status requires its own scoped review and publication decision.
