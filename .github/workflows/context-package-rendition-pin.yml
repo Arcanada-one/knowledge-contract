@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2026 Pavel Valentov
+# SPDX-License-Identifier: Apache-2.0
+name: Context Package rendition pin checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  context-package-translation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check exact source pin, legacy anchors and 20 requirement identities
+        run: python3 -B -m unittest tools.test_context_package_translation_pin -v
