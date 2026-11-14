@@ -1,0 +1,101 @@
+{
+  "schema": "knowledge-contract.finite-relation-oracle/1",
+  "base_commit": "6a6f202f7f70be2ad3aea3369e45409761708596",
+  "source_identity_note": "The files below may be uncommitted; their hashes bind this run, not base HEAD alone.",
+  "programs": {
+    "tools/semantic_relations.py": {
+      "sha256": "28f9dfc445782024017409fed802bc8733dc482d4a9c2cc8d0cf07ddfee0e7af",
+      "bytes": 8663
+    },
+    "tools/test_semantic_relations.py": {
+      "sha256": "4f5db4778264007d972121c5699a029cc221b735f5976b5058cf03843801379f",
+      "bytes": 22352
+    }
+  },
+  "runner": {
+    "sha256": "5e1300f97d9b1edb201c1c3a3a24c7d21fc131290e1e13bcba553af4718af015",
+    "bytes": 2837
+  },
+  "runtime": "3.12.14",
+  "started_at": "2026-11-14T09:18:12.989204+00:00",
+  "completed_at": "2026-11-14T09:18:16.458994+00:00",
+  "elapsed_seconds": 3.466115,
+  "audit": {
+    "relations": {
+      "space": "all 3-by-3 Boolean relations; partition ((0,1),(2,)) on each carrier",
+      "enumeration_formula": "2^(3*3); all ordered pairs of actually coherent relations",
+      "observed_counts": {
+        "admitted_ordered_pairs": 25600,
+        "coherent_empty_relations": 1,
+        "coherent_relations": 160,
+        "coherent_total_relations": 133,
+        "incoherent_relations": 352,
+        "pairs_with_all_source_images_nonempty": 20021,
+        "pairs_with_empty_composite": 649,
+        "pairs_with_nonempty_composite": 24951,
+        "relations": 512
+      },
+      "result": "pass",
+      "limits": "Successful-edge semantics only; no refusal, termination or permission observation."
+    },
+    "geometry": {
+      "space": "all nonempty-valued maps on exact metric carrier {0,1/2,1}",
+      "enumeration_formula": "(2^3-1)^3 maps; ((2^3-1)^3)^2 ordered pairs",
+      "observed_counts": {
+        "bound_equalities": 40345,
+        "constant_composites": 30061,
+        "constant_maps": 7,
+        "deterministic_maps": 27,
+        "nonempty_set_pairs": 49,
+        "ordered_map_pairs": 117649,
+        "strict_inequalities": 77304,
+        "total_nonempty_valued_maps": 343
+      },
+      "least_lipschitz_bound_histogram": {
+        "0": 7,
+        "1": 182,
+        "2": 154
+      },
+      "result": "pass",
+      "limits": "Exact finite reference maps; no learned representation or empirical similarity claim."
+    },
+    "single_defect_controls": {
+      "result": "pass",
+      "mutants": [
+        {
+          "id": "omit-coherence-guard",
+          "single_defect": "replace exact quotient composition by coarse existential composition",
+          "baseline_rejects_adverse": true,
+          "detected": true,
+          "positive_control_preserved": true
+        },
+        {
+          "id": "ignore-empty-images",
+          "single_defect": "compare only nonempty representative images",
+          "baseline_rejects_adverse": true,
+          "detected": true,
+          "positive_control_preserved": true
+        },
+        {
+          "id": "closest-pair-distance",
+          "single_defect": "replace symmetric Hausdorff aggregation by minimum pair distance",
+          "baseline_expected": "1",
+          "mutant_observed": "0",
+          "detected": true,
+          "positive_control_preserved": true
+        },
+        {
+          "id": "empty-distance-zero",
+          "single_defect": "replace empty-set rejection by distance zero",
+          "baseline_rejects_adverse": true,
+          "detected": true,
+          "positive_control_preserved": true
+        }
+      ],
+      "limits": "Four explicit API-behaviour wrappers; not an exhaustive source-mutation campaign."
+    },
+    "independence": "Separately authored finite bit-mask/neighbourhood oracle; same controller/model family/host."
+  },
+  "effects_authorized": false,
+  "limits": "Finite exact reference semantics and API controls; same controller/model family/host. Not an external review, model trial or production admission."
+}

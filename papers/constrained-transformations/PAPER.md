@@ -21,7 +21,7 @@ description: "Conditional preservation, composition and reconstruction of knowle
 
 ## Abstract
 
-A transformation can retain a source's words while losing a condition needed for their use. Conversely, a change of representation can preserve every observation required by a particular task. This paper asks when such preservation survives a sequence of operations, which distinctions a projection may discard, and what is needed for reconstruction or transfer. We model transformations as partial relations with explicit preconditions, postconditions, protected observations, and loss records. Two conditional propositions establish partial-correctness composition and endpoint preservation when adjacent steps have compatible preconditions and agree on the observation passed between them. A third proposition rules out a left inverse for a noninjective transformation. We distinguish observation equivalence from identity, state coordinate-projection laws with their domains and codomains, and make the retained-information condition for reconstruction explicit. A Boolean construction illustrates shared consequences and residuals without claiming compression or general document similarity. Cross-domain examples explain why matching labels do not justify transferring a rule. The method is deductive: these results do not establish termination, complete semantic annotation, or compliance by a deployed model. Their role is to make the assumptions and limits of a preservation claim inspectable and refutable.
+A transformation can retain a source's words while losing a condition needed for their use. Conversely, a change of representation can preserve every observation required by a particular task. This paper asks when such preservation survives a sequence of operations, which distinctions a projection may discard, and what is needed for reconstruction or transfer. We model transformations as partial relations with explicit preconditions, postconditions, protected observations, and loss records. Two conditional propositions establish partial-correctness composition and endpoint preservation when adjacent steps have compatible preconditions and agree on the observation passed between them. A third proposition rules out a left inverse for a noninjective transformation. A fourth gives a necessary and sufficient condition for a relation to descend to observation classes and proves exact composition of the resulting sets of possible output observations. We distinguish observation equivalence from identity, state coordinate-projection laws with their domains and codomains, and make the retained-information condition for reconstruction explicit. A Boolean construction illustrates shared consequences and residuals without claiming compression or general document similarity. Cross-domain examples explain why matching labels do not justify transferring a rule. The method is deductive: these results do not establish termination, complete semantic annotation, or compliance by a deployed model. Their role is to make the assumptions and limits of a preservation claim inspectable and refutable.
 
 **Keywords:** transformation contract; partial relation; semantic preservation; projection; transfer; reconstruction.
 
@@ -108,7 +108,7 @@ x\sim_p x'\iff p(x)=p(x').
 
 This is an equivalence relation because equality is reflexive, symmetric, and transitive. It is an equivalence of declared observations, not of object identity or all meaning. Enlarging the observation set can split an equivalence class that was adequate for a narrower task.
 
-A transformation descends to equivalence classes only if it respects the chosen relation. For a deterministic transformation \(f\), this requires that \(x\sim_p x'\) imply \(f(x)\sim_{p'}f(x')\). For a deterministic partial transformation, its domain must also contain every equivalent representative or none of them. Otherwise admission or output depends on which representative was selected, and replacing one representative by another is not justified. For a nondeterministic relation, a quotient construction requires its own stated criterion for the reachable output classes; the deterministic-function condition alone does not specify that construction.
+A transformation descends to equivalence classes only if it respects the chosen relation. For a deterministic transformation \(f\), this requires that \(x\sim_p x'\) imply \(f(x)\sim_{p'}f(x')\). For a deterministic partial transformation, its domain must also contain every equivalent representative or none of them. Otherwise admission or output depends on which representative was selected, and replacing one representative by another is not justified. For a nondeterministic relation, the deterministic-function condition alone does not specify the reachable output classes. Proposition 4 below supplies the exact criterion, including empty images, and the composition law for compatible profiles.
 
 A **projection** \(\pi_J\) retains observations indexed by \(J\). The coordinate-projection law must respect the input and output types. Let \(X_K\) be the space of records indexed by \(K\), and let \(\pi_J^K:X_K\to X_J\) be restriction to \(J\subseteq K\). For \(I\subseteq J\subseteq K\),
 
@@ -149,6 +149,133 @@ because \(F\) entails \(C\). The reconstruction is logical equivalence in this f
 
 The residual convention is not unique outside \(C\): changing a residual's truth values there does not change its conjunction with the common consequence. An inconsistent premise set has no models and classically entails every formula. Operational admission must therefore separately require an appropriate consistent, nonempty interpretation rather than turn vacuous entailment into a recommendation.
 
+### 4.1 Observation classes for relations
+
+An interpretation or transformation can admit several outputs. Replacing those
+outputs by a convenient representative can change what a later operation may
+produce. We therefore compare the full set of output observations before
+composing operations.
+
+Fix sets of states \(X,Y\) and declared observation functions
+\(\Phi_X:X\to O_X\), \(\Phi_Y:Y\to O_Y\), where \(O_X=\Phi_X(X)\) and
+\(O_Y=\Phi_Y(Y)\) are the attained observations. Equality of observations defines
+the profile equivalences. For a relation \(T\subseteq X\times Y\), write
+
+\[
+T(x)=\{y\in Y:T(x,y)\},\qquad
+F_T(x)=\{\Phi_Y(y):y\in T(x)\}\subseteq O_Y.
+\]
+
+Representing a relation by a function into a powerset is an established
+construction; Heunen and Jacobs [4, Section 3.1] give this correspondence with
+ordinary relational composition. We use it here to expose the profile
+obligation, not as a new algebra of nondeterminism.
+
+Call \(T\) **coherent for the two observation profiles** when
+
+\[
+\Phi_X(x)=\Phi_X(x')\ \Longrightarrow\ F_T(x)=F_T(x')
+\quad\text{for all }x,x'\in X. \tag{C}
+\]
+
+The empty set is included. Thus (C) tests both the existence of a modelled
+successful transition and the classes of its possible outputs. In particular,
+\(D_T=\{x:T(x)\ne\varnothing\}\) is a union of input observation classes.
+This domain is not a promise that an implementation terminates: it concerns the
+successful edges present in the declared relation. If a contract's precondition
+admits additional states, their result availability needs a separate
+obligation. A missing edge does not identify whether the cause is refusal,
+unavailable information, a budget limit, failure or nontermination. Distinguishing
+those cases requires explicit outcome observations.
+
+### Proposition 4. Coherent relations descend and compose exactly
+
+There exists a unique function
+
+\[
+\bar F_T:O_X\to\mathcal P(O_Y),\qquad
+F_T=\bar F_T\circ\Phi_X,
+\]
+
+if and only if (C) holds. Here attained observations identify the observational
+quotient without choosing a preferred state representative.
+
+Suppose additionally that \(U\subseteq Y\times Z\) is coherent for exactly the
+same intermediate observation function \(\Phi_Y\) and an output function
+\(\Phi_Z\). With ordinary relational composition, the composite is coherent and
+
+\[
+\bar F_{U\circ T}(a)
+ =\bigcup_{b\in\bar F_T(a)}\bar F_U(b)
+ \quad(a\in O_X). \tag{R}
+\]
+
+**Proof.** If a factorization exists, equal input observations give equal values
+of \(F_T\). Conversely, define \(\bar F_T(a)=F_T(x)\) for any \(x\) with
+\(\Phi_X(x)=a\). Condition (C) makes this independent of the chosen preimage;
+attainment of every \(a\) gives existence and uniqueness. This proves both
+directions, including empty output sets.
+
+For composition and a concrete input \(x\), unfold the successful transitions:
+
+\[
+\begin{aligned}
+F_{U\circ T}(x)
+ &=\bigcup_{y\in T(x)}F_U(y)\\
+ &=\bigcup_{b\in F_T(x)}\bar F_U(b).
+\end{aligned}
+\]
+
+The second equality uses coherence of \(U\), so every representative of the
+same intermediate observation has the same output-observation set. Coherence
+of \(T\) makes the resulting union constant on each input class. It therefore
+factors uniquely and yields (R). Empty unions remain empty. ∎
+
+This result concerns sets of possible successful output observations. It does
+not count paths, retain their probabilities, preserve execution times, or imply
+that every admitted execution succeeds. If every output of \(T\) must have a
+successful continuation through \(U\), require separately
+\(T(D_T)\subseteq D_U\), where \(T(D_T)=\bigcup_{x\in D_T}T(x)\).
+Under that condition a nonempty first-step output has a nonempty composed
+output. The exact successful-path equality (R) itself still holds when some
+branches have no continuation.
+
+The condition has an equivalent query interpretation. For any predicate
+\(B\subseteq O_Y\), the questions “is some successful output observation in
+\(B\)?” and “is there at least one successful output, and are all successful
+output observations in \(B\)?” depend only on \(F_T(x)\). Coherence preserves
+both questions under input representative replacement. Conversely, if all such
+existential questions are unchanged, singleton predicates distinguish any two
+unequal output sets, proving (C). The nonempty clause in the second question
+prevents a relation with no successful output from receiving a positive result
+by vacuous universal quantification.
+
+### Why an existential quotient can add a false path
+
+Let \(X=\{x\}\), \(Y=\{a,b\}\), \(Z=\{0,1\}\). Give \(a\) and \(b\) the same
+intermediate observation, while 0 and 1 have different output observations.
+Let \(T(x)=\{a\}\), \(U(a)=\{0\}\) and \(U(b)=\{1\}\). The concrete chain has
+only output 0. If one instead gives an intermediate class every edge available
+from any of its representatives, the class of \(a,b\) has edges to both output
+classes. Composing these existential quotient relations adds output 1, although
+no concrete successful path from \(x\) reaches it.
+
+This construction is a counterexample to that unrestricted quotient shortcut,
+not to Proposition 4: \(U\) violates (C). It also identifies the needed repair.
+The intermediate profile must retain the distinction on which the next
+operation depends, or representative replacement must be refused for that
+operation. Similarity between \(a\) and \(b\), or a successful check of only one
+representative, does not supply the missing premise.
+
+For the fixed profiles, identity relations, composition and relation union all
+preserve coherence. The identity has output-observation set \(\{a\}\); (R)
+proves closure under composition; and pointwise union proves closure under
+relation union. Associativity and identity laws are inherited from relations.
+These statements do not authorize calling an arbitrary document merge, summary
+or logical conjunction one of those operations. Its transition relation and
+profile obligations must first be specified.
+
+
 ## 5. Transfer between tasks and domains
 
 Transfer is a directed operation. A rule applicable under conditions \(C\) can be used for a target only after those conditions have been mapped and checked. Similar vocabulary is a candidate-generation signal, not a proof that the required relation is preserved.
@@ -181,6 +308,8 @@ The propositions establish the selected composition, preservation, and reconstru
 
 The [executable projections and revision study](../../engineering/studies/executable-projections-and-revision/STUDY.md) reports finite consumer checks for partial extraction and addressed revision. The [dependency closure and package delivery study](../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) reports a fixed dependency graph, preserved artifact payloads, and a historical preliminary delivery decision. These controls concern the stated packages and projections; neither study evaluates every transformation relation or cross-domain transfer proposed here.
 
+The [finite relation and outcome-set controls](../../reviews/relational-semantics-20261114/REVIEW.md) exercise the new quotient criterion and its connection to the set-valued geometry. They compare explicitly supplied finite relations with a separately authored oracle. Their complete finite domains and actual counts are recorded separately from the general proofs and from any model or production evaluation.
+
 The shared [glossary](../../reference/glossary/GLOSSARY.md) defines project terminology. [Semantic objects and context](../semantic-objects-and-context/PAPER.md) supplies the interpretation boundary; [controlled knowledge reuse](../controlled-knowledge-reuse/PAPER.md) applies the preservation argument to previously prepared artifacts.
 
 ## 8. Conclusion
@@ -196,3 +325,8 @@ The resulting method is to identify the property a task needs, state the permitt
 1. Hoare, C. A. R. “An Axiomatic Basis for Computer Programming.” *Communications of the ACM* 12(10), 1969, 576–580, 583. <https://doi.org/10.1145/363235.363259>
 2. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
 3. Bancilhon, F., and Spyratos, N. “Update Semantics of Relational Views.” *ACM Transactions on Database Systems* 6(4), 1981, 557–575. [Original article](https://cs.uwaterloo.ca/~david/cs848s18/constant-complement.pdf).
+4. Heunen, C., and Jacobs, B. *Quantum Logic in Dagger Categories with Kernels*.
+   Author-hosted manuscript, Section 3.1, “The category Rel of sets and relations.”
+   <https://www.cs.ox.ac.uk/people/chris.heunen/publications/2009/dagkercat-qpl/dagkercat.pdf>.
+   Only the standard relation/powerset representation and composition are used;
+   no quantum-logical interpretation is imported.

@@ -1,0 +1,34 @@
+{
+  "schema": "knowledge-contract.local-validation-observations/1",
+  "unit_test_runs": [
+    {
+      "command": "python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow tools.test_reviewed_formal_results tools.test_semantic_relations -v",
+      "pandoc_version": "3.1.11.1",
+      "exit_code": 1,
+      "tests_run": 113,
+      "wall_seconds": 7.649,
+      "raw_log_sha256": "961efdd417e54ac6221f7ad9109a1ac556615ac164f730f0f9aeef1d2363d7ae",
+      "result": "FAILED_ENVIRONMENT",
+      "diagnostic": "15 publication tests failed because the invocation used system Pandoc 3.1.11.1 instead of required 3.1.3; no source changed before the pinned rerun."
+    },
+    {
+      "command": "python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow tools.test_reviewed_formal_results tools.test_semantic_relations -v",
+      "pandoc_version": "3.1.3",
+      "exit_code": 0,
+      "tests_run": 113,
+      "wall_seconds": 14.521,
+      "raw_log_sha256": "99786c94e862c7d0ad9cb8a33b472e6f0d087d561e59be7a2cbdd7237ecc1d15",
+      "result": "PASS",
+      "diagnostic": null
+    }
+  ],
+  "other_checks": {
+    "publication_integrity": "PASS with Pandoc 3.1.3",
+    "sources": "PASS",
+    "requirement_register": "PASS; 349 requirements",
+    "document_names": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "hosted_ci": "not observed in this local record",
+  "limits": "Local validation only; failures and corrected invocation remain distinct. Full CLI logs are development intermediates; their hashes are supplied, not asserted to be public evidence files."
+}

@@ -17,6 +17,8 @@ The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-cont
 
 **Current direction (11 November 2026):** the operator restored engineering capacity. [Active Work](roadmap/EXECUTION_STATUS.md) governs autonomous scientific and engineering activity under existing review, CI, access and deployment gates. New paid experiments or widened permissions still need distinct authorization.
 
+**Priority update (14 November 2026):** the operator prioritizes knowledge algebra, meaning geometry, meaning algebra, meaning theory and agent state. The [five-direction plan](roadmap/PRIORITIES_20261114.md) links each to existing work, executable increments and finite completion criteria. This explicitly authorizes coordinated parallel development instead of the earlier default manuscript sequence.
+
 ## 2. A finite release and an open research programme
 
 A release is a finite selected set of exact documents and explicit limitations. Research can continue indefinitely without keeping that release permanently unfinished. The accepted English baseline is distinct from candidate revisions, runtime implementation, site deployment and index admission. A title-only correction changes bytes but not automatically the scientific argument or its epistemic status.

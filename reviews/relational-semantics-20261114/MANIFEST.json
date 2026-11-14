@@ -1,0 +1,110 @@
+{
+  "schema": "knowledge-contract.relational-semantics-inputs/1",
+  "integration_parent": "d6c3615cca2fe777f20d344f46266bbf89cdcdbd",
+  "original_science_base": "6a6f202f7f70be2ad3aea3369e45409761708596",
+  "scope": "Candidate content inputs; excludes this manifest to avoid a self-reference. GitHub commit identifies the complete tree. No publication decision or runtime authority.",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 17018,
+      "sha256": "94497bc9bbfc1347fa7ce8cfd5f52ac53ce274f5da714678cbc5e97e0810b0ab",
+      "git_blob": "191f6010c8a46b53175e4e6e171b4e0c81f443e5"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 47846,
+      "sha256": "cfe34434d21c821b56df27c4665dbf183ee1256ab054e21b821fe1f5af013bac",
+      "git_blob": "d4642a66aa4bb083a45fd9a463c2bbf10182eeef"
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "bytes": 29598,
+      "sha256": "aca8d45b08f12bb02ca19e90d2dd3e28bba4c7a008bb43434deeaca3c8af91c6",
+      "git_blob": "a81e44acad30aeb325e70f4570cf5e19503f6828"
+    },
+    {
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "bytes": 34848,
+      "sha256": "8298c4d67e83179d178c3fe703f39e5112901ecb4df23cab942f83c2a14e3d73",
+      "git_blob": "27cd0b77bcdd91332afc64e809cc34e53ba6385c"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 15584,
+      "sha256": "fc7d5cfb158c31f46a06c5c55384ece95a5f3e24cea39e99e53ef9081fcc8583",
+      "git_blob": "39af9210f7fffd0eaa001c6bc7ffcc811155f181"
+    },
+    {
+      "path": "roadmap/ROADMAP.ru.md",
+      "bytes": 24090,
+      "sha256": "a4dc731a21c8873f95d296deb94fffa0c0a06682941bea46fecc7f1f13d12622",
+      "git_blob": "0e874a0a1352c5ed50ec0ef4b85dd04ec1f6219f"
+    },
+    {
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "bytes": 23730,
+      "sha256": "33bad85c116cade5ef138c211aaf32adbad21b264e1441a0caf3ce05be66e72f",
+      "git_blob": "4cf8649c8fb9763ba5ed0de318be04d62e72602b"
+    },
+    {
+      "path": "roadmap/EXECUTION_STATUS.md",
+      "bytes": 4782,
+      "sha256": "08bd87dbb9f9816e4677e4ebb32e6420e2e770d42f82c3cf4308345eff9edc2b",
+      "git_blob": "57452a5eaec1881bca6f245aff99984c1d0feb50"
+    },
+    {
+      "path": "roadmap/PRIORITIES_20261114.md",
+      "bytes": 6719,
+      "sha256": "f2c1ebf4da363f5d65dd7291289e25a0f23b5888cf66f65654b2b6aa2fbf6c55",
+      "git_blob": "f9d27ba197c3af2139d94f23f74ae9ae76eb4e45"
+    },
+    {
+      "path": "tools/semantic_relations.py",
+      "bytes": 8663,
+      "sha256": "28f9dfc445782024017409fed802bc8733dc482d4a9c2cc8d0cf07ddfee0e7af",
+      "git_blob": "b11eb96a66a0a0a67e9d3fcc4a14ad1fe3c9498c"
+    },
+    {
+      "path": "tools/test_semantic_relations.py",
+      "bytes": 22352,
+      "sha256": "4f5db4778264007d972121c5699a029cc221b735f5976b5058cf03843801379f",
+      "git_blob": "7076f0a4599058403736b63e5d5e74fce0f91cc4"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/RESULTS.json",
+      "bytes": 3895,
+      "sha256": "e7c88beacb593683e3ca728fe4618d6936bc22457cc3cbb8f62ed00f025b1cdd",
+      "git_blob": "a2080445d643fafd83b15629d27974df2eb71322"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/REVIEW.md",
+      "bytes": 9639,
+      "sha256": "29f86cc8ec7544a865ecca4a16e478022bc7e388f30a9070122c47d999faaa11",
+      "git_blob": "3b3a215eebc42b411b5e653b2b25af3e41e57044"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/REVIEW_PROBES.json",
+      "bytes": 1567,
+      "sha256": "a2d0b4e39318497c88d2c290b7d67ce4a383bcebdf8edcad262a9488b4d69650",
+      "git_blob": "ba6cb7a12b2fd068ca09132478934d7fd8f4b216"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/review_probes.py",
+      "bytes": 4283,
+      "sha256": "873855d6106890a7a8432c1c7da74abb377169bb70c879c03c482839f3046253",
+      "git_blob": "034b3141862cfa1f6dffcb7ae8511593c41efd8f"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/run_finite_oracle.py",
+      "bytes": 2837,
+      "sha256": "5e1300f97d9b1edb201c1c3a3a24c7d21fc131290e1e13bcba553af4718af015",
+      "git_blob": "0f5c97fe9e4e1b35b36700776d0674c5ff26d889"
+    },
+    {
+      "path": "reviews/relational-semantics-20261114/LOCAL_CHECKS.json",
+      "bytes": 1728,
+      "sha256": "cc4e89c2391b11e4228987ca5b99edbf1b0eb6f90c5c1447b13b2b681d8c38b7",
+      "git_blob": "be60b152be3f7a72a079411f85133b2350309b64"
+    }
+  ]
+}

@@ -15,6 +15,8 @@ sources:
   - "Hamming 1950 Codes"
   - "Gardenfors 2000 Conceptual Spaces"
   - "Coecke Sadrzadeh Clark 2010 Meaning"
+  - "Vickers Finite Hausdorff Powerspaces"
+  - "Mio Vignudelli Metric Nondeterminism"
 ---
 
 # Meaning Geometry: Representation Spaces, Distinguishability, and the Limits of Similarity
@@ -23,7 +25,7 @@ sources:
 
 ## Abstract
 
-A representation can be close to another representation while differing on a condition that determines whether it may be used. Conversely, different expressions can agree on every observation required by a particular task. This paper asks what a geometry of meaning representations can establish when its objects, observations, context and comparison rule are explicit. We define an observation profile and derive a weighted pseudometric on its objects, with a metric on the corresponding observational equivalence classes. Conditional propositions describe information loss in representations, refinement and normalization, preservation under transformations, sound distance envelopes for incomplete observations, and bounded change across aligned contexts. Constructed countermodels distinguish threshold proximity from equivalence, symmetric distance from directed entailment, and agreement of unknown markers from established content. A cosine example shows that a commonly used dissimilarity does not automatically satisfy the triangle inequality. The mathematical constructions are elementary and are not claimed as a new universal geometry or a theory of human experience. The contribution is a common, inspectable boundary between comparison, transformation and knowledge admission: similarity can organize candidate search, while validity, applicability and authority remain separate obligations. Exact finite examples accompany the deductions. They do not validate semantic annotations, measure an embedding model or demonstrate production performance.
+A representation can be close to another representation while differing on a condition that determines whether it may be used. Conversely, different expressions can agree on every observation required by a particular task. This paper asks what a geometry of meaning representations can establish when its objects, observations, context and comparison rule are explicit. We define an observation profile and derive a weighted pseudometric on its objects, with a metric on the corresponding observational equivalence classes. Conditional propositions describe information loss in representations, refinement and normalization, preservation under transformations, sound distance envelopes for incomplete observations, and bounded change across aligned contexts. A further proposition bounds composition of finite nonempty outcome sets with the standard Hausdorff metric, while distinguishing equality of alternative sets from equality of individually realized outcomes. Constructed countermodels distinguish threshold proximity from equivalence, symmetric distance from directed entailment, and agreement of unknown markers from established content. A cosine example shows that a commonly used dissimilarity does not automatically satisfy the triangle inequality. The mathematical constructions are elementary and are not claimed as a new universal geometry or a theory of human experience. The contribution is a common, inspectable boundary between comparison, transformation and knowledge admission: similarity can organize candidate search, while validity, applicability and authority remain separate obligations. Exact finite examples accompany the deductions. They do not validate semantic annotations, measure an embedding model or demonstrate production performance.
 
 **Keywords:** semantic representation; observation profile; pseudometric; contextual equivalence; incomplete information; knowledge admission.
 
@@ -237,6 +239,161 @@ An empty completion set is an inconsistency or an unsatisfied modelling conditio
 
 At threshold \(\tau\), the condition \(U\leq\tau\) suffices for every admissible completion to be near, and \(L>\tau\) suffices for every completion to be far. Otherwise these envelopes alone do not settle the comparison. That reporting rule is conservative; it does not assert that a stronger joint analysis could not decide the case.
 
+### 6.1 Distance between sets of possible outcomes
+
+A nondeterministic transformation returns a set of possible observations. A
+single favourable pair of outputs does not describe how that whole set changes.
+Use the observation-class metrics from Proposition 1, after fixing each
+profile and the correspondence at every intermediate interface. The
+[coherent-relation criterion](../constrained-transformations/PAPER.md) is needed
+before an operation can be represented on those classes without selecting a
+convenient representative.
+
+For a metric space \((B,d_B)\), let \(\mathcal P_f^+(B)\) be its nonempty finite
+subsets. Define their **Hausdorff distance** by
+
+\[
+H_B(S,T)=\max\left\{
+ \max_{s\in S}\min_{t\in T}d_B(s,t),
+ \max_{t\in T}\min_{s\in S}d_B(s,t)
+\right\}.
+\]
+
+This is the standard finite Hausdorff construction, not a newly proposed
+semantic distance. Vickers [4, Section 3] treats finite powerspaces and the
+nonexpansiveness of union. Mio and Vignudelli [5, Definitions 16–18] describe the
+nonempty finite metric lifting. The result below specializes that established
+construction to the explicit observation interfaces used here and supplies a
+self-contained finite proof.
+
+On nonempty finite subsets, \(H_B\) is a metric. Nonnegativity, symmetry and
+zero self-distance follow from its definition. If \(H_B(S,T)=0\), every member
+of either set equals a member of the other because all minima are attained,
+so \(S=T\). For the triangle inequality, take \(s\in S\), choose a nearest
+\(t\in T\), then a nearest \(v\in V\). The base triangle inequality gives
+\(d_B(s,v)\leq H_B(S,T)+H_B(T,V)\). Maximizing the directed nearest-neighbour
+bound and repeating from \(V\) to \(S\) proves the Hausdorff triangle inequality.
+Thus no compactness, closure or limit claim is hidden in this finite version.
+
+A small Hausdorff distance means that every possible observation on either side
+has a nearby possible counterpart on the other. It does **not** say that every
+cross-pair is near. In particular, \(H_B(S,S)=0\) even when \(S\) contains mutually
+distant alternatives. This set-level notion is different from the bound for
+all admissible completion pairs in Proposition 6. It preserves a distinction
+between equal sets of unresolved alternatives and established equality of an
+individual unknown outcome.
+
+### Proposition 7. Lipschitz bounds compose for compatible finite outcome maps
+
+Let \((A,d_A),(B,d_B),(C,d_C)\) be observation-class metric spaces. Fix modelled successful
+domains \(D\subseteq A\), \(E\subseteq B\), and functions
+
+\[
+F:D\to\mathcal P_f^+(E),\qquad
+G:E\to\mathcal P_f^+(C).
+\]
+
+If these functions come from partial relations on original objects, their
+quotients must first satisfy the coherent-relation criterion. In particular,
+the modelled successful domain must be a union of input observation classes. This requirement is not a runtime authorization decision. The displayed
+types also require every possible intermediate observation from \(F\) to lie
+in the domain of \(G\). The intermediate metric and interpretation are the
+same at both interfaces.
+
+Assume finite constants \(L_F,L_G\geq0\) satisfy
+
+\[
+H_B(F(a),F(a'))\leq L_Fd_A(a,a')
+\quad(a,a'\in D)
+\]
+
+and
+
+\[
+H_C(G(b),G(b'))\leq L_Gd_B(b,b')
+\quad(b,b'\in E).
+\]
+
+Define composition by collecting all possible second-step observations:
+
+\[
+(G\star F)(a)=\bigcup_{b\in F(a)}G(b).
+\]
+
+It is nonempty and finite, and
+
+\[
+H_C((G\star F)(a),(G\star F)(a'))
+ \leq L_GL_Fd_A(a,a').
+\]
+
+**Proof.** The union is finite because \(F(a)\) and each \(G(b)\) are finite,
+and nonempty because both stages have nonempty values on the indicated
+domains. Choose \(z\in(G\star F)(a)\); then \(z\in G(b)\) for some \(b\in F(a)\).
+A nearest \(b'\in F(a')\) exists, and
+
+\[
+d_B(b,b')\leq H_B(F(a),F(a')).
+\]
+
+A nearest \(z'\in G(b')\) exists. By the Hausdorff bound for \(G\),
+
+\[
+d_C(z,z')\leq H_C(G(b),G(b'))
+ \leq L_Gd_B(b,b')
+ \leq L_GL_Fd_A(a,a').
+\]
+
+Every first-side outcome therefore has a second-side counterpart within the
+claimed bound. The same reasoning with \(a,a'\) interchanged bounds the other
+directed term. Taking their maximum proves the assertion. ∎
+
+For a finite domain with at least two distinct points, the least admissible
+constant is given by the finite maximum
+
+\[
+\operatorname{Lip}(F)
+ =\max_{a\ne a'}\frac{H_B(F(a),F(a'))}{d_A(a,a')}.
+\]
+
+The denominator is positive because these are observation classes, not raw
+objects at pseudometric distance zero. For explicitly represented finite sets
+with exact rational distances, this formula supplies an executable oracle;
+finiteness alone does not make arbitrary real-valued distance data computable.
+For a domain with at most one point set the constant to zero. Proposition 7 then yields
+\(\operatorname{Lip}(G\star F)\leq\operatorname{Lip}(G)\operatorname{Lip}(F)\).
+A finite constant need not be small, and a proved upper bound need not be sharp.
+For singleton-valued maps, Hausdorff distance reduces to ordinary point
+distance. If the original deterministic transformation preserves every declared
+observation with the same weights, Proposition 3 still supplies the stronger
+isometry statement; this extension does not replace it.
+
+The nonempty-value and domain premises are substantive. An absent outcome set
+must not be assigned distance zero to a successful output. Empty or unavailable
+values need a separate reported status; an unavailable observation is not
+necessarily an empty set of possible semantic values. Ordinary relational
+composition describes successful paths but does not certify that all runtime
+branches terminate or reach a result.
+
+For a concrete distance convention shared with the earlier profile, take
+\(M=\{0,1/2,1\}\) with ordinary distance. It is isometric to the observation
+vectors \(00,01,11\) with two equal positive weights. Comparing \(\{0\}\) with
+\(\{0,1\}\), the nearest cross-pair has distance zero but the Hausdorff distance
+is one: the additional possible outcome cannot be hidden by its good
+counterpart. Conversely, the latter set has zero Hausdorff distance from itself
+while two independently realized outcomes can still differ by one. Neither
+set distance answers a permission question or removes a mandatory condition.
+
+A finite checker can enumerate declared relation tables and finite maps,
+compare concrete and quotient composition, and compute these rational
+constants exactly. Its evidence concerns those tables and the implemented
+operations. Completeness of an extracted transition relation, correct semantic
+annotations, the choice of mandatory observations and benefits for an actual
+agent remain separate obligations. A hidden cross-stage condition must be part
+of the declared intermediate state or context; arithmetic cannot repair an
+incomplete transition model.
+
+
 ## 7. Similarity is not equivalence, entailment or permission
 
 Several familiar shortcuts fail even on small exact examples.
@@ -263,6 +420,8 @@ The companion [verification record](../../reviews/meaning-geometry/RESULTS.md) r
 
 The program supplies regression controls for these examples, not a replacement for the proofs, an independent review or a test of learned semantic extraction. A useful empirical study would separately assess observation fidelity, candidate recall, decision errors, costs and sensitivity to profile choice, using a declared baseline and held-out cases. No such model comparison is reported here.
 
+The [relation and outcome-set controls](../../reviews/relational-semantics-20261114/REVIEW.md) extend the earlier checks to explicitly supplied set-valued transformations. Their Boolean-relation and neighbourhood-coverage oracle enumerates the declared finite domains and preserves actual counts and source hashes. These checks do not evaluate semantic extraction or learned embeddings.
+
 ## 9. Limitations
 
 The profile selects rather than discovers the distinctions relevant to a task. Observation functions, alphabets, context alignment and admissible completions are premises whose real-world adequacy requires evidence. Positive weights make the quotient result exact, but do not make the chosen weights psychologically or operationally calibrated. Equality within an answer alphabet can itself require a justified normalization.
@@ -284,3 +443,15 @@ The countermodels show why proximity, equivalence, entailment and permission mus
 1. Hamming, R. W. “Error Detecting and Error Correcting Codes.” _Bell System Technical Journal_ 29(2), 1950, 147–160. <https://doi.org/10.1002/j.1538-7305.1950.tb00463.x>. [Bell Labs publication record](https://www.nokia.com/bell-labs/publications-and-media/publications/error-detecting-and-error-correcting-codes/).
 2. Gärdenfors, P. _Conceptual Spaces: The Geometry of Thought_. MIT Press, 2000. [Author's institutional publication record](https://portal.research.lu.se/en/publications/conceptual-spaces-the-geometry-of-thought/).
 3. Coecke, B., Sadrzadeh, M., and Clark, S. “Mathematical Foundations for a Compositional Distributional Model of Meaning.” 2010. <https://arxiv.org/abs/1003.4394>.
+4. Vickers, S. “Localic Completion of Generalized Metric Spaces II:
+   Powerlocales.” *Journal of Logic & Analysis* 1:11 (2009), 1–48.
+   <https://doi.org/10.4115/jla.2009.1.11>.
+   [Primary article](https://math.hawaii.edu/home/jla/34-124-1-PB.pdf),
+   Section 3, pp. 20–21. Only the finite Hausdorff construction and union
+   nonexpansiveness are used; no localic-completion theorem is claimed here.
+5. Mio, M., and Vignudelli, V. “Monads and Quantitative Equational Theories for
+   Nondeterminism and Probability.” *CONCUR 2020*, LIPIcs 171, Article 28.
+   <https://doi.org/10.4230/LIPIcs.CONCUR.2020.28>.
+   [Primary article](https://drops.dagstuhl.de/storage/00lipics/lipics-vol171-concur2020/LIPIcs.CONCUR.2020.28/LIPIcs.CONCUR.2020.28.pdf),
+   Definitions 16–18, p. 28:7. Only the nonempty finite powerset metric lifting
+   is used; no probabilistic semantics or new monad result is asserted.
