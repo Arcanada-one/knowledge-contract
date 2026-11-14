@@ -2,7 +2,7 @@
 
 The inherited thirty name rows retain source baseline `a0450428704fcd41b411203f2fc88c06c779610b`; Meaning Geometry, originally proposed in PR89, is included in the 31-document source catalogue at `6a6f202f7f70be2ad3aea3369e45409761708596` and retains its research-draft status and scoped review. Titles do not change prior canonical paths, edition 1.1 or protocol versions. Russian and Chinese entries below are title translations only; full body coverage is tracked separately in [Translations](roadmap/TRANSLATIONS.md).
 
-Proposed in PR105: The Agent Situation paper and Context Controls study are new research-draft entries with their own scoped review obligations. The current catalogue has 33 works; this does not change the inherited naming baseline or confer acceptance on the two drafts.
+The candidate catalogue on this head has 33 works: the inherited thirty rows, Meaning Geometry, and the Agent Situation paper and Context Controls study, which are new research-draft entries with their own scoped review obligations. The 33 count is the candidate on this head; it does not change the inherited naming baseline or the 30/31 historical anchors above, and confers no acceptance on the two drafts.
 
 | Document | English title | Русское название | 简体中文标题 | Previous English title |
 | --- | --- | --- | --- | --- |
