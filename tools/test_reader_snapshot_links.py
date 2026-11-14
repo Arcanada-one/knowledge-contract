@@ -6,6 +6,7 @@
 No claim of scientific admission, linguistic review, site serving or KC2 use.
 """
 import json
+import hashlib
 from pathlib import Path
 import unittest
 
@@ -67,6 +68,68 @@ class SnapshotReaderControls(unittest.TestCase):
                 lines[i] = lines[i].replace(phrase.format(n=self.n), phrase.format(n=31), 1)
                 self.assertIn("current_count_must_resolve_live_source",
                     check_reader("\n".join(lines), live, old, self.n, phrase))
+
+
+# An immutable mechanical receipt is not a validation of a successor index.
+REPORT_SOURCE_COMMIT = "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e"
+REPORT_BLOB = "c02b44d69a0cd7b704b10323389a56c563b1b62d"
+
+def report_pointer_problems(study_reader, report_bytes, index):
+    errors = []
+    passages = [p for p in study_reader.split("\n\n")
+                if "Historical validation scope." in p]
+    if len(passages) != 1:
+        return ["missing_or_duplicated_scope_pointer"]
+    passage = passages[0]
+    required = (
+        "preserved mechanical", "validation-report.json", REPORT_BLOB,
+        REPORT_SOURCE_COMMIT, "reports **24 claims**",
+        "**not regenerated**", "**26-claim** candidate index",
+        "describes the pinned source snapshot",
+    )
+    if any(item not in passage for item in required):
+        errors.append("unbound_or_misrepresented_historical_report")
+    actual_blob = hashlib.sha1(b"blob " + str(len(report_bytes)).encode("ascii") +
+                               b"\0" + report_bytes).hexdigest()
+    if actual_blob != REPORT_BLOB:
+        errors.append("report_blob_changed")
+    try:
+        report = json.loads(report_bytes)
+        if type(report.get("claim_count")) is not int or report["claim_count"] != 24:
+            errors.append("report_claim_count_changed")
+        if type(index.get("claim_count")) is not int or index["claim_count"] != 26:
+            errors.append("successor_claim_count_changed")
+    except (ValueError, TypeError, AttributeError):
+        errors.append("invalid_report_or_index")
+    return errors
+
+class HistoricalReportPointerControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.study = (ROOT / "engineering/studies/README.md").read_text(encoding="utf-8")
+        cls.report = (ROOT / "engineering/studies/validation-report.json").read_bytes()
+        cls.index = json.loads((ROOT / "engineering/studies/evidence-index.json")
+                               .read_text(encoding="utf-8"))
+
+    def test_preserved_24_claim_report_is_not_26_claim_candidate(self):
+        self.assertEqual(report_pointer_problems(self.study, self.report, self.index), [])
+
+    def test_pointer_mutants_are_detected(self):
+        changes = (
+            ("reports **24 claims**", "reports **26 claims**"),
+            (REPORT_SOURCE_COMMIT, "0000000000000000000000000000000000000000"),
+            ("**not regenerated**", "**regenerated**"),
+            (REPORT_BLOB, "1111111111111111111111111111111111111111"),
+        )
+        for original, mutant in changes:
+            with self.subTest(mutant=original):
+                changed = self.study.replace(original, mutant, 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertIn("unbound_or_misrepresented_historical_report",
+                              report_pointer_problems(changed, self.report, self.index))
+        changed_index = dict(self.index, claim_count=24)
+        self.assertIn("successor_claim_count_changed",
+                      report_pointer_problems(self.study, self.report, changed_index))
 
 if __name__ == "__main__":
     unittest.main()

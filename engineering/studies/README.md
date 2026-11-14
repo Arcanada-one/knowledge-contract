@@ -6,6 +6,8 @@ sources: none
 
 Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 26 explicit bindings; per-study origin records identify exact evidence bytes.
 
+**Historical validation scope.** The [preserved mechanical `validation-report.json`](validation-report.json) (Git blob `c02b44d69a0cd7b704b10323389a56c563b1b62d`, **present at source `main` commit** `d5e684e201f6d41498c4fbd8c2a3497eed2bb30e`) reports **24 claims**. It was **not regenerated** for this **26-claim** candidate index. Its internal phrase `Current integrated edition` describes the pinned source snapshot, not the current candidate. This report is not independent scientific review, a current 26-claim validation, or native admission.
+
 | Document | Subject |
 | --- | --- |
 | [Contract Checks](contract-profile-conformance/STUDY.md) | Finite contract checks, false trusted-input counterexamples and an equal strong-comparator result. |
