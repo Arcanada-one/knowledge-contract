@@ -1,0 +1,122 @@
+{
+  "clock_domain": "unix-nanoseconds",
+  "history_complete": false,
+  "llm_calls": 0,
+  "model_source_sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+  "not_observed": [
+    "ci",
+    "effect_outcome",
+    "authority"
+  ],
+  "readiness_grants_permission": false,
+  "scope": "kc-source-file-review",
+  "steps": [
+    {
+      "capture_id": "90f1d8dd1ad442cf7ca8b04f9942acc611ff4e1004e3a4735ba938d00ebcdf95",
+      "context": {
+        "budget": 10000,
+        "cost": 2,
+        "generation": 2,
+        "included": [
+          "file:.markdownlint.json",
+          "file:CITATION.cff"
+        ],
+        "omitted": [],
+        "readiness_grants_permission": false,
+        "reasons": [],
+        "required_closure": [
+          "file:.markdownlint.json",
+          "file:CITATION.cff"
+        ],
+        "required_cost": 2,
+        "scope": "kc-source-file-review",
+        "snapshot": {
+          "closure": [
+            "file:.markdownlint.json",
+            "file:CITATION.cff"
+          ],
+          "generation": 2,
+          "model_id": "fixture-model-1",
+          "required": [
+            "file:.markdownlint.json",
+            "file:CITATION.cff"
+          ],
+          "scope": "kc-source-file-review",
+          "versions": {
+            "file:.markdownlint.json": 1,
+            "file:CITATION.cff": 1
+          }
+        },
+        "status": "READY",
+        "values": {
+          "file:.markdownlint.json": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "90f1d8dd1ad442cf7ca8b04f9942acc611ff4e1004e3a4735ba938d00ebcdf95:.markdownlint.json",
+                "key": "file:.markdownlint.json",
+                "observed_at": 1794628462640716801,
+                "received_at": 1794628462640716801,
+                "scope": "kc-source-file-review",
+                "sequence": 1,
+                "source": "local-git-sample",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": {
+                  "blob": "77b58852250d18f3e8b35eeabd648cc4af8f0c19",
+                  "mode": "100644",
+                  "sha256": "c3bda0e0d76403549a63b42519235075b01138cfed6c177b3a9ee0f45a16c054",
+                  "size": 68
+                }
+              }
+            ],
+            "state": "KNOWN",
+            "value": {
+              "blob": "77b58852250d18f3e8b35eeabd648cc4af8f0c19",
+              "mode": "100644",
+              "sha256": "c3bda0e0d76403549a63b42519235075b01138cfed6c177b3a9ee0f45a16c054",
+              "size": 68
+            }
+          },
+          "file:CITATION.cff": {
+            "reasons": [],
+            "sources": [
+              {
+                "dependencies": [],
+                "dependency_pins": null,
+                "event_id": "90f1d8dd1ad442cf7ca8b04f9942acc611ff4e1004e3a4735ba938d00ebcdf95:CITATION.cff",
+                "key": "file:CITATION.cff",
+                "observed_at": 1794628462640716801,
+                "received_at": 1794628462640716801,
+                "scope": "kc-source-file-review",
+                "sequence": 2,
+                "source": "local-git-sample",
+                "state": "KNOWN",
+                "ttl": null,
+                "value": {
+                  "blob": "f322022689b2bf2f80a0009e05a1832f6a3283e6",
+                  "mode": "100644",
+                  "sha256": "575320f4763741aa1ae467a6d91b8d48a3673e5e6a269c09ff6347870fa72fe3",
+                  "size": 835
+                }
+              }
+            ],
+            "state": "KNOWN",
+            "value": {
+              "blob": "f322022689b2bf2f80a0009e05a1832f6a3283e6",
+              "mode": "100644",
+              "sha256": "575320f4763741aa1ae467a6d91b8d48a3673e5e6a269c09ff6347870fa72fe3",
+              "size": 835
+            }
+          }
+        }
+      },
+      "duplicate_capture": false,
+      "events_ingested": 2,
+      "observed_at": 1794628462640716801,
+      "prior_validation": null
+    }
+  ]
+}

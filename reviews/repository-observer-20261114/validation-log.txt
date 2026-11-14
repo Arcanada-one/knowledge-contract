@@ -1,0 +1,151 @@
+Repository observer increment: actual repository validation
+
+[publication]
+command: python3 -B tools/check_publication.py .
+started_at_utc: 2026-11-14T03:59:25.881593+00:00
+finished_at_utc: 2026-11-14T03:59:30.071683+00:00
+exit_code: 0
+PATH_prepend: /workspace/scratch/653b6f7872a9/pandoc-3.1.3/usr/bin
+
+PUBLICATION_CHECK_PASS: catalog, document metadata, Markdown links, evidence references and hashes
+
+[sources]
+command: python3 -B tools/check_sources.py .
+started_at_utc: 2026-11-14T03:59:25.882789+00:00
+finished_at_utc: 2026-11-14T03:59:25.956603+00:00
+exit_code: 1
+PATH_prepend: /workspace/scratch/653b6f7872a9/pandoc-3.1.3/usr/bin
+
+SOURCES_CHECK_FAIL engineering/studies/agent-situation-controls/__pycache__/situation.cpython-312.pyc: no SOURCES.md row and no valid front-matter `sources:` (a non-empty list of registered sources, or `sources: none`)
+
+[cache-cleanup]
+action: remove only untracked generated Python bytecode
+path: engineering/studies/agent-situation-controls/__pycache__/situation.cpython-312.pyc
+started_at_utc: 2026-11-14T04:00:05.146789+00:00
+finished_at_utc: 2026-11-14T04:00:05.147096+00:00
+tracked: false
+source_files_changed: false
+
+[sources-after-cleanup]
+command: python3 -B tools/check_sources.py .
+started_at_utc: 2026-11-14T04:00:05.147314+00:00
+finished_at_utc: 2026-11-14T04:00:05.197638+00:00
+exit_code: 0
+PATH_prepend: /workspace/scratch/653b6f7872a9/pandoc-3.1.3/usr/bin
+
+SOURCES_CHECK_PASS
+
+[requirements]
+command: python3 -B tools/check_requirement_register.py
+started_at_utc: 2026-11-14T03:59:25.919639+00:00
+finished_at_utc: 2026-11-14T03:59:26.025254+00:00
+exit_code: 0
+PATH_prepend: /workspace/scratch/653b6f7872a9/pandoc-3.1.3/usr/bin
+
+REQUIREMENT_REGISTER_PASS requirements=349
+
+[existing-suites]
+command: python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow -v
+started_at_utc: 2026-11-14T03:59:25.878021+00:00
+finished_at_utc: 2026-11-14T03:59:36.174991+00:00
+exit_code: 0
+PATH_prepend: /workspace/scratch/653b6f7872a9/pandoc-3.1.3/usr/bin
+
+test_broken_anchor (tools.test_check_publication.PublicationMutations.test_broken_anchor) ... ok
+test_broken_evidence_pointer (tools.test_check_publication.PublicationMutations.test_broken_evidence_pointer) ... ok
+test_broken_link (tools.test_check_publication.PublicationMutations.test_broken_link) ... ok
+test_changed_evidence_cannot_keep_its_old_provenance (tools.test_check_publication.PublicationMutations.test_changed_evidence_cannot_keep_its_old_provenance) ... ok
+test_duplicate_catalog_entry (tools.test_check_publication.PublicationMutations.test_duplicate_catalog_entry) ... ok
+test_extra_catalog_paper_is_rejected (tools.test_check_publication.PublicationMutations.test_extra_catalog_paper_is_rejected) ... ok
+test_malformed_or_unfinished_edition_is_rejected (tools.test_check_publication.PublicationMutations.test_malformed_or_unfinished_edition_is_rejected) ... ok
+test_missing_catalog_paper_is_rejected (tools.test_check_publication.PublicationMutations.test_missing_catalog_paper_is_rejected) ... ok
+test_missing_metadata (tools.test_check_publication.PublicationMutations.test_missing_metadata) ... ok
+test_new_edition_requires_consistent_document_and_evidence_versions (tools.test_check_publication.PublicationMutations.test_new_edition_requires_consistent_document_and_evidence_versions) ... ok
+test_opaque_numbered_names_cannot_enter_the_current_catalog (tools.test_check_publication.PublicationMutations.test_opaque_numbered_names_cannot_enter_the_current_catalog) ... ok
+test_opaque_numbered_title_is_rejected (tools.test_check_publication.PublicationMutations.test_opaque_numbered_title_is_rejected) ... ok
+test_path_escape (tools.test_check_publication.PublicationMutations.test_path_escape) ... ok
+test_per_document_catalog_edition_cannot_lag_the_publication (tools.test_check_publication.PublicationMutations.test_per_document_catalog_edition_cannot_lag_the_publication) ... ok
+test_unlisted_evidence_cannot_bypass_origin_inventory (tools.test_check_publication.PublicationMutations.test_unlisted_evidence_cannot_bypass_origin_inventory) ... ok
+test_valid_connected_publication (tools.test_check_publication.PublicationMutations.test_valid_connected_publication) ... ok
+test_wrong_main_filename (tools.test_check_publication.PublicationMutations.test_wrong_main_filename) ... ok
+test_bare_scalar_fails (tools.test_check_sources.CheckSourcesTests.test_bare_scalar_fails) ... ok
+test_contiguous_source_rows_pass_shape (tools.test_check_sources.CheckSourcesTests.test_contiguous_source_rows_pass_shape) ... ok
+test_detached_source_row_after_blank_fails (tools.test_check_sources.CheckSourcesTests.test_detached_source_row_after_blank_fails) ... ok
+test_empty_flow_list_fails (tools.test_check_sources.CheckSourcesTests.test_empty_flow_list_fails) ... ok
+test_empty_key_fails (tools.test_check_sources.CheckSourcesTests.test_empty_key_fails) ... ok
+test_empty_scaffold_passes (tools.test_check_sources.CheckSourcesTests.test_empty_scaffold_passes) ... ok
+test_empty_string_fails (tools.test_check_sources.CheckSourcesTests.test_empty_string_fails) ... ok
+test_front_matter_outside_header_is_ignored (tools.test_check_sources.CheckSourcesTests.test_front_matter_outside_header_is_ignored) ... ok
+test_list_of_blank_entries_fails (tools.test_check_sources.CheckSourcesTests.test_list_of_blank_entries_fails) ... ok
+test_missing_register_fails (tools.test_check_sources.CheckSourcesTests.test_missing_register_fails) ... ok
+test_new_publication_roots_require_attribution (tools.test_check_sources.CheckSourcesTests.test_new_publication_roots_require_attribution) ... ok
+test_register_row_covers_any_type (tools.test_check_sources.CheckSourcesTests.test_register_row_covers_any_type) ... ok
+test_register_row_for_other_path_does_not_cover (tools.test_check_sources.CheckSourcesTests.test_register_row_for_other_path_does_not_cover) ... ok
+test_registered_flow_and_block_lists_pass (tools.test_check_sources.CheckSourcesTests.test_registered_flow_and_block_lists_pass) ... ok
+test_sources_none_passes (tools.test_check_sources.CheckSourcesTests.test_sources_none_passes) ... ok
+test_uncovered_paper_fails (tools.test_check_sources.CheckSourcesTests.test_uncovered_paper_fails) ... ok
+test_uncovered_spec_json_fails (tools.test_check_sources.CheckSourcesTests.test_uncovered_spec_json_fails) ... ok
+test_unregistered_list_entry_fails (tools.test_check_sources.CheckSourcesTests.test_unregistered_list_entry_fails) ... ok
+test_a_clean_decision_change_passes_through_the_command (tools.test_check_separation.SeparationTests.test_a_clean_decision_change_passes_through_the_command) ... ok
+test_a_rename_out_of_a_content_directory_is_seen_together_with_a_decision_file (tools.test_check_separation.SeparationTests.test_a_rename_out_of_a_content_directory_is_seen_together_with_a_decision_file) ... ok
+test_decision_files_and_the_table_in_one_change_fail (tools.test_check_separation.SeparationTests.test_decision_files_and_the_table_in_one_change_fail) ... ok
+test_mixed_changes_fail (tools.test_check_separation.SeparationTests.test_mixed_changes_fail) ... ok
+test_names_with_tab_newline_and_quote_stay_whole (tools.test_check_separation.SeparationTests.test_names_with_tab_newline_and_quote_stay_whole) ... ok
+test_new_publication_roots_preserve_decision_separation (tools.test_check_separation.SeparationTests.test_new_publication_roots_preserve_decision_separation) ... ok
+test_non_ascii_paths_are_seen_by_the_command (tools.test_check_separation.SeparationTests.test_non_ascii_paths_are_seen_by_the_command) ... ok
+test_single_area_changes_pass (tools.test_check_separation.SeparationTests.test_single_area_changes_pass) ... ok
+test_allow_listed_bot_without_signoff_passes (tools.test_check_dco.CheckDcoTests.test_allow_listed_bot_without_signoff_passes) ... ok
+test_bot_lookalike_is_rejected (tools.test_check_dco.CheckDcoTests.test_bot_lookalike_is_rejected) ... ok
+test_empty_range_passes (tools.test_check_dco.CheckDcoTests.test_empty_range_passes) ... ok
+test_fake_trailer_without_address_is_rejected (tools.test_check_dco.CheckDcoTests.test_fake_trailer_without_address_is_rejected) ... ok
+test_merge_commit_itself_is_not_checked_but_its_commits_are (tools.test_check_dco.CheckDcoTests.test_merge_commit_itself_is_not_checked_but_its_commits_are) ... ok
+test_one_unsigned_among_signed_is_rejected (tools.test_check_dco.CheckDcoTests.test_one_unsigned_among_signed_is_rejected) ... ok
+test_signed_commit_passes (tools.test_check_dco.CheckDcoTests.test_signed_commit_passes) ... ok
+test_signoff_among_other_trailers_passes (tools.test_check_dco.CheckDcoTests.test_signoff_among_other_trailers_passes) ... ok
+test_signoff_as_subject_only_is_rejected (tools.test_check_dco.CheckDcoTests.test_signoff_as_subject_only_is_rejected) ... ok
+test_signoff_for_someone_else_is_rejected (tools.test_check_dco.CheckDcoTests.test_signoff_for_someone_else_is_rejected) ... ok
+test_signoff_in_body_but_not_in_trailer_block_is_rejected (tools.test_check_dco.CheckDcoTests.test_signoff_in_body_but_not_in_trailer_block_is_rejected) ... ok
+test_signoff_matching_committer_only_passes (tools.test_check_dco.CheckDcoTests.test_signoff_matching_committer_only_passes) ... ok
+test_signoff_name_match_is_case_insensitive (tools.test_check_dco.CheckDcoTests.test_signoff_name_match_is_case_insensitive) ... ok
+test_unsigned_commit_brought_in_by_merge_is_rejected (tools.test_check_dco.CheckDcoTests.test_unsigned_commit_brought_in_by_merge_is_rejected) ... ok
+test_unsigned_commit_is_rejected (tools.test_check_dco.CheckDcoTests.test_unsigned_commit_is_rejected) ... ok
+test_actual_inventory_is_loaded_and_passes_without_skips (tools.test_ci_workflow.C03ReviewInventoryTests.test_actual_inventory_is_loaded_and_passes_without_skips) ... ok
+test_actual_review_inventory_matches_defined_tests (tools.test_ci_workflow.C03ReviewInventoryTests.test_actual_review_inventory_matches_defined_tests) ... ok
+test_empty_load_tests_override_is_not_successful_coverage (tools.test_ci_workflow.C03ReviewInventoryTests.test_empty_load_tests_override_is_not_successful_coverage) ... ok
+test_expected_failure_is_not_a_passing_scientific_case (tools.test_ci_workflow.C03ReviewInventoryTests.test_expected_failure_is_not_a_passing_scientific_case) ... ok
+test_missing_or_duplicate_review_inventory_fails (tools.test_ci_workflow.C03ReviewInventoryTests.test_missing_or_duplicate_review_inventory_fails) ... ok
+test_non_testcase_class_is_not_executable_inventory (tools.test_ci_workflow.C03ReviewInventoryTests.test_non_testcase_class_is_not_executable_inventory) ... ok
+test_removed_test_method_fails_review_inventory (tools.test_ci_workflow.C03ReviewInventoryTests.test_removed_test_method_fails_review_inventory) ... ok
+test_shadowed_class_fails_even_with_ten_definitions (tools.test_ci_workflow.C03ReviewInventoryTests.test_shadowed_class_fails_even_with_ten_definitions) ... ok
+test_shadowed_method_fails_even_with_ten_definitions (tools.test_ci_workflow.C03ReviewInventoryTests.test_shadowed_method_fails_even_with_ten_definitions) ... ok
+test_skipped_method_or_class_is_not_a_passed_inventory (tools.test_ci_workflow.C03ReviewInventoryTests.test_skipped_method_or_class_is_not_a_passed_inventory) ... ok
+test_stale_six_test_review_inventory_fails (tools.test_ci_workflow.C03ReviewInventoryTests.test_stale_six_test_review_inventory_fails) ... ok
+test_unawaited_async_method_is_refused (tools.test_ci_workflow.C03ReviewInventoryTests.test_unawaited_async_method_is_refused) ... ok
+test_commented_command_is_not_execution (tools.test_ci_workflow.C03WorkflowTests.test_commented_command_is_not_execution) ... ok
+test_masked_failure_is_refused (tools.test_ci_workflow.C03WorkflowTests.test_masked_failure_is_refused) ... ok
+test_missing_job_is_refused (tools.test_ci_workflow.C03WorkflowTests.test_missing_job_is_refused) ... ok
+test_omitted_command_is_refused (tools.test_ci_workflow.C03WorkflowTests.test_omitted_command_is_refused) ... ok
+test_printed_command_is_not_execution (tools.test_ci_workflow.C03WorkflowTests.test_printed_command_is_not_execution) ... ok
+test_real_workflow_runs_c03_without_skips (tools.test_ci_workflow.C03WorkflowTests.test_real_workflow_runs_c03_without_skips) ... ok
+test_skipped_job_is_refused (tools.test_ci_workflow.C03WorkflowTests.test_skipped_job_is_refused) ... ok
+test_wrong_module_is_refused (tools.test_ci_workflow.C03WorkflowTests.test_wrong_module_is_refused) ... ok
+test_candidate_export_asserts_v2_with_full_history_and_no_mutation_pass (tools.test_ci_workflow.CiWorkflowTests.test_candidate_export_asserts_v2_with_full_history_and_no_mutation_pass) ... ok
+test_candidate_export_installs_a_pinned_gitleaks_with_a_verified_digest_before_the_exporter_runs (tools.test_ci_workflow.CiWorkflowTests.test_candidate_export_installs_a_pinned_gitleaks_with_a_verified_digest_before_the_exporter_runs) ... ok
+test_corpus_map_validator_runs_with_full_history_and_a_negative_control (tools.test_ci_workflow.CiWorkflowTests.test_corpus_map_validator_runs_with_full_history_and_a_negative_control) ... ok
+test_dco_runs_on_every_pull_request (tools.test_ci_workflow.CiWorkflowTests.test_dco_runs_on_every_pull_request) ... ok
+test_decision_separation_runs_on_every_pull_request_with_full_history (tools.test_ci_workflow.CiWorkflowTests.test_decision_separation_runs_on_every_pull_request_with_full_history) ... ok
+test_every_job_that_runs_the_exporter_checks_out_full_history (tools.test_ci_workflow.CiWorkflowTests.test_every_job_that_runs_the_exporter_checks_out_full_history) ... ok
+test_fork_pr_jobs_have_no_repository_filter (tools.test_ci_workflow.CiWorkflowTests.test_fork_pr_jobs_have_no_repository_filter) ... ok
+test_fork_pr_jobs_use_no_secrets_and_read_only_token (tools.test_ci_workflow.CiWorkflowTests.test_fork_pr_jobs_use_no_secrets_and_read_only_token) ... ok
+test_jobs_exist (tools.test_ci_workflow.CiWorkflowTests.test_jobs_exist) ... ok
+test_licensing_runs_assessed_coverage_oracle_corpus (tools.test_ci_workflow.CiWorkflowTests.test_licensing_runs_assessed_coverage_oracle_corpus) ... ok
+test_licensing_runs_cross_package_overlay_corpus (tools.test_ci_workflow.CiWorkflowTests.test_licensing_runs_cross_package_overlay_corpus) ... ok
+test_licensing_runs_reconcile_workgraph_harness (tools.test_ci_workflow.CiWorkflowTests.test_licensing_runs_reconcile_workgraph_harness) ... ok
+test_private_retention_checker_tests_run_with_the_pinned_schema_validator (tools.test_ci_workflow.CiWorkflowTests.test_private_retention_checker_tests_run_with_the_pinned_schema_validator) ... ok
+test_publication_integrity_runs_retrieval_context_checker_with_pins (tools.test_ci_workflow.CiWorkflowTests.test_publication_integrity_runs_retrieval_context_checker_with_pins) ... ok
+test_security_audit_keeps_its_filter (tools.test_ci_workflow.CiWorkflowTests.test_security_audit_keeps_its_filter) ... ok
+
+----------------------------------------------------------------------
+Ran 93 tests in 10.100s
+
+OK

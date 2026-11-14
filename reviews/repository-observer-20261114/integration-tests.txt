@@ -1,0 +1,16 @@
+test_absent_required_path_blocks_then_actual_committed_creation_recovers (tools.test_repository_observer.RepositoryObserverTests.test_absent_required_path_blocks_then_actual_committed_creation_recovers) ... ok
+test_cli_successor_preserves_previous_ledger_and_replays_in_fresh_process (tools.test_repository_observer.RepositoryObserverTests.test_cli_successor_preserves_previous_ledger_and_replays_in_fresh_process) ... ok
+test_cold_read_is_bound_to_real_commit_blobs_without_unselected_data (tools.test_repository_observer.RepositoryObserverTests.test_cold_read_is_bound_to_real_commit_blobs_without_unselected_data) ... ok
+test_committed_symlink_is_unsupported_and_never_dereferenced (tools.test_repository_observer.RepositoryObserverTests.test_committed_symlink_is_unsupported_and_never_dereferenced) ... ok
+test_different_producers_disagree_without_implicit_last_writer_precedence (tools.test_repository_observer.RepositoryObserverTests.test_different_producers_disagree_without_implicit_last_writer_precedence) ... ok
+test_path_profile_rejects_escape_and_comparison_rejects_scope_mismatch (tools.test_repository_observer.RepositoryObserverTests.test_path_profile_rejects_escape_and_comparison_rejects_scope_mismatch) ... ok
+test_read_only_capture_does_not_execute_configured_clean_filter (tools.test_repository_observer.RepositoryObserverTests.test_read_only_capture_does_not_execute_configured_clean_filter) ... ok
+test_relevant_blob_change_invalidates_but_unrelated_commit_does_not (tools.test_repository_observer.RepositoryObserverTests.test_relevant_blob_change_invalidates_but_unrelated_commit_does_not) ... ok
+test_replay_preserves_observation_times_and_rejects_altered_capture (tools.test_repository_observer.RepositoryObserverTests.test_replay_preserves_observation_times_and_rejects_altered_capture) ... ok
+test_selected_index_reports_staging_without_rebinding_committed_content (tools.test_repository_observer.RepositoryObserverTests.test_selected_index_reports_staging_without_rebinding_committed_content) ... ok
+test_snapshot_after_missed_commit_recovers_latest_without_claiming_complete_history (tools.test_repository_observer.RepositoryObserverTests.test_snapshot_after_missed_commit_recovers_latest_without_claiming_complete_history) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.120s
+
+OK

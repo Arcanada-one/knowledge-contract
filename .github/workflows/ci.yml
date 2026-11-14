@@ -243,6 +243,8 @@ jobs:
           cd "$kc_situation_tmp"
           python3 -B -m unittest discover -s engineering/studies/agent-situation-controls/checks -p test_inventory.py -v
           python3 -B engineering/studies/agent-situation-controls/checks/check_agent_situation.py --evidence "$kc_situation_tmp/finite-run.json"
+      - name: Check the offline repository observation adapter
+        run: python3 -B -m unittest tools.test_repository_observer -v
 
   licensing:
     name: licensing
