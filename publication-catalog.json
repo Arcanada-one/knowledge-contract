@@ -162,6 +162,18 @@
     },
     {
       "type": "specification",
+      "slug": "semantic-bridge",
+      "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "title": "Semantic Bridge: From Source Readings to Checkable Operations",
+      "summary": "A finite supplied-reading profile with complete source binding, typed Boolean observations, retained alternatives, exceptions and separate assessment limits.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "engineering-draft",
+      "short_title": "Semantic Bridge",
+      "subtitle": "From Source Readings to Checkable Operations"
+    },
+    {
+      "type": "specification",
       "slug": "context-package",
       "path": "engineering/specifications/context-package/SPECIFICATION.md",
       "title": "Context Package: Coverage, Dependencies, and Delivery",
@@ -327,6 +339,18 @@
       "short_title": "Editorial Pilot",
       "subtitle": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison",
       "previous_title": "Editing a scientific section with a knowledge toolkit: a masked single-section comparison"
+    },
+    {
+      "type": "study",
+      "slug": "semantic-bridge-conformance",
+      "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "title": "Source Rule Checks: Finite Binding, Alternatives and Operation Composition",
+      "short_title": "Source Rule Checks",
+      "subtitle": "Finite Binding, Alternatives and Operation Composition",
+      "summary": "Actual finite oracle controls and adversarial source-binding checks for the supplied-reading Semantic Bridge profile, with explicit interpretation and authority limits.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "internally-reviewed-finite-evaluation"
     },
     {
       "type": "glossary",

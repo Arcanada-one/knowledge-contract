@@ -1,0 +1,2 @@
+NOTE In this example, a member who has completed training meets the camera-lending condition unless lending is suspended. This describes the example's condition and grants no real-world access.
+RULE lending: (member AND trained) UNLESS suspended

@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.document-names/1",
   "source_commit": "a0450428704fcd41b411203f2fc88c06c779610b",
-  "scope": "All 31 edition-1.1 catalogue documents; localized names are not completed body translations",
+  "scope": "All 33 edition-1.1 catalogue documents; localized names are not completed body translations",
   "columns": [
     "slug",
     "short_en",
@@ -116,6 +116,14 @@
       "归属与表示"
     ],
     [
+      "semantic-bridge",
+      "Semantic Bridge",
+      "Семантический мост",
+      "От прочтений источника к проверяемым операциям",
+      "语义桥接",
+      "从来源解读到可检验操作"
+    ],
+    [
       "context-package",
       "Context Package",
       "Пакет контекста",
@@ -226,6 +234,14 @@
       "Редактирование научного раздела с помощью набора знаний — замаскированное сравнение одного раздела",
       "编辑试验",
       "利用知识工具集编辑科学章节的单章节掩蔽比较"
+    ],
+    [
+      "semantic-bridge-conformance",
+      "Source Rule Checks",
+      "Проверки правил",
+      "Привязка к источнику, альтернативы и композиция операций",
+      "来源规则检验",
+      "来源绑定、备选解读与操作组合"
     ],
     [
       "glossary",

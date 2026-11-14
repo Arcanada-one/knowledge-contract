@@ -4,13 +4,14 @@ sources: none
 
 # Engineering Specifications
 
-Eleven specifications define architectural obligations and bounded implemented profiles. The book-package/2 schema and the observation/change-event exchange subset are executable formats. The remaining architecture requires an explicit implementation profile before two systems can claim wire interoperability. Normative requirements, actual test coverage and historical wire versions remain separate.
+Twelve specifications define architectural obligations and bounded implemented profiles. The book-package/2 schema and the observation/change-event exchange subset are executable formats. The remaining architecture requires an explicit implementation profile before two systems can claim wire interoperability. Normative requirements, actual test coverage and historical wire versions remain separate.
 
 | Document | Subject |
 | --- | --- |
 | [Contract Core](knowledge-contract-core/SPECIFICATION.md) | The nine core groups, first-class constraints, profiles, admission and execution requirements. |
 | [Knowledge Operations](contract-family/SPECIFICATION.md) | Common preconditions, invariants, postconditions, effects and evidence for knowledge operations. |
 | [Semantic Types](semantic-types/SPECIFICATION.md) | Semantic facets, attribution, scoped operators, ambiguous readings and multimodal representations. |
+| [Semantic Bridge](semantic-bridge/SPECIFICATION.md) | Complete source-rule binding, attributed alternatives and finite Boolean computation with explicit unassessed properties. |
 | [Context Package](context-package/SPECIFICATION.md) | Requirements for selected context, coverage, mandatory dependencies, budgets and observed delivery. |
 | [Compiled Knowledge](compiled-artifact-contract/SPECIFICATION.md) | Saved derivatives with exact inputs, recipes, dependency manifests, templates and output evidence. |
 | [Artifact Registry](artifact-registry/SPECIFICATION.md) | Readable artifact names, canonical Markdown formats, identity rules and professional artifact distinctions. |

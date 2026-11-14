@@ -1,0 +1,42 @@
+{
+  "schema": "kc-semantic-bridge/1",
+  "source_sha256": "92446ccf80502171bca71c2412a735afe8d1cc7b000c157dacca1020258e76ef",
+  "source_media_type": "text/plain",
+  "interpretation_set": "alternatives",
+  "observations": {
+    "member": {
+      "referent": "The hypothetical recipient is a member in this example.",
+      "type": "boolean",
+      "state": "known",
+      "value": true
+    },
+    "trained": {
+      "referent": "The hypothetical recipient completed the example training.",
+      "type": "boolean",
+      "state": "known",
+      "value": true
+    },
+    "suspended": {
+      "referent": "Lending is suspended in this hypothetical example.",
+      "type": "boolean",
+      "state": "unknown"
+    }
+  },
+  "readings": [
+    {
+      "id": "lending",
+      "start": 183,
+      "end": 234,
+      "quote": "RULE lending: (member AND trained) UNLESS suspended",
+      "attribution": {
+        "agent": "Original profile example author",
+        "discourse": "hypothetical"
+      },
+      "bindings": {
+        "member": "member",
+        "trained": "trained",
+        "suspended": "suspended"
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Knowledge Contract Arcana
 
-Read [all 31 source-catalogue document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
+Read [all 33 source-catalogue document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
@@ -13,12 +13,14 @@ Publication edition **1.1** contains English scientific and engineering document
 | Section | Contents | Start here |
 | --- | --- | --- |
 | Science | Eight baseline papers and two bounded foundations research drafts (Meaning Bridge, Meaning Geometry): conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
-| Engineering specifications | Eleven specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
-| Engineering studies | Six studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
+| Engineering specifications | Twelve specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
+| Engineering studies | Seven studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
 The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. The [publication catalogue](publication-catalog.json) at source snapshot `6a6f202f` contains 31 reading entries: the 29 baseline documents, Meaning Bridge and Meaning Geometry; both foundations manuscripts retain their research-draft status. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
+
+The current source catalogue adds [Semantic Bridge](engineering/specifications/semantic-bridge/SPECIFICATION.md), and [Source Rule Checks](engineering/studies/semantic-bridge-conformance/STUDY.md), making 33 entries. This bounded engineering draft checks supplied formal readings; source-content inclusion does not establish natural-language fidelity, website delivery, index admission or agent permission.
 
 ## Start with the human-to-computational foundation
 
@@ -30,7 +32,7 @@ The manuscript is a **research draft included in the source catalogue**. Its cat
 
 The scientific papers give explicit models and conditional arguments for preserving meaning, composing context, keeping assessments tied to their subjects, and controlling reuse. The engineering studies report what was actually observed on finite inputs. They preserve false trusted-input acceptances, baseline ties and unmeasured quantities rather than concealing them behind a global success claim.
 
-Four retained public Python procedures reproduce the edition-1.0 examples and checks within their recorded scope. Three separately identified corrected procedures test dependency-closure sizes and implementation mutations, projection against actual source bytes, and every mandatory admission gate with complete cost accounting. The [study correction register](engineering/studies/review-corrections.json) explains the difference. These procedures do not reconstruct missing historical model runs. The [claim–evidence index](engineering/studies/evidence-index.json) links 24 specific claims to records, counterarguments and limitations; the [historical recovery inventory](engineering/studies/historical-recovery-gaps.json) records the exact recovered input and the programs and fixtures still missing.
+Four retained public Python procedures reproduce the edition-1.0 examples and checks within their recorded scope. Three separately identified corrected procedures test dependency-closure sizes and implementation mutations, projection against actual source bytes, and every mandatory admission gate with complete cost accounting. The [study correction register](engineering/studies/review-corrections.json) explains the difference. These procedures do not reconstruct missing historical model runs. The [claim–evidence index](engineering/studies/evidence-index.json) links 27 specific claims to records, counterarguments and limitations; the [historical recovery inventory](engineering/studies/historical-recovery-gaps.json) records the exact recovered input and the programs and fixtures still missing.
 
 This evidence does not establish universal extraction accuracy, general agent superiority, or production readiness of every specified operation. Internal agent review and external peer review are different forms of assessment; review records state which was performed. A complete publication can make a bounded result precise without claiming that every empirical question is settled.
 

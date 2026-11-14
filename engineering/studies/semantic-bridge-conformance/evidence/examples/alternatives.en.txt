@@ -1,0 +1,3 @@
+NOTE Two supplied formal readings of one hypothetical eligibility question; no automatic interpretation is claimed.
+RULE broad: (member OR guest) AND trained
+RULE narrow: member OR (guest AND trained)

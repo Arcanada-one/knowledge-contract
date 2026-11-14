@@ -1,0 +1,125 @@
+{
+  "schema": "kc-semantic-bridge-design-source-pins/1",
+  "declared_source_commit": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "commit_pin_basis": "Parent reported exact source main and supplied its Git tree; this child verified selected local bytes against that tree, not a separate remote commit fetch.",
+  "supplied_tree": "7980b32385ade338d711d137b833b773b5d510f1",
+  "supplied_tree_manifest_sha256": "81d465ee21f877465931aac5f8d286f258277a216cd91d834c6721ef4d98666e",
+  "local_checkout_git_head": "6a6f202f7f70be2ad3aea3369e45409761708596",
+  "local_path": "/workspace/scratch/5cd1d6f67b86/semantic-bridge-work",
+  "source_files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 7462,
+      "git_blob_sha1": "453ffe96a5d22c72a77311636f7553e6711794d4",
+      "sha256": "f7b25c3348dbfb615d54884dd25b2fb455aa293acdf296a55c0b99c43dd81716",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 10318,
+      "git_blob_sha1": "d591378caeb476ee2de9ffec15ea50abd17a239b",
+      "sha256": "1c670942758adbc2d2d8a82f25f2ff48fe2f59d785c9e0d9f9127efd9c5c4fb0",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "publication-catalog.json",
+      "bytes": 19110,
+      "git_blob_sha1": "081dbbc95118c0db54bb92164faa9fbed6206556",
+      "sha256": "006f3c4a5a681a845e8084ad631ea648827c9ec7c64c7cf03d25358f83e6daa0",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "bytes": 40836,
+      "git_blob_sha1": "2421c8092aecf2abe4b6c2dc970b4a1a654f1956",
+      "sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "bytes": 20854,
+      "git_blob_sha1": "58aa9198416ce1520b04e8a4845e5fb622f987bc",
+      "sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "bytes": 7550,
+      "git_blob_sha1": "4ce425cd9bce0a0bcf1bdf7e98300d7da91a2fb4",
+      "sha256": "11e66b5ae19f09cebb06a40616a180d19ecce6bb5166ab749e6b769a7594e206",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "bytes": 8558,
+      "git_blob_sha1": "bda78ccdf61ecb1cf64d26c5a368a7c2bc9efb73",
+      "sha256": "be656317394ac3c934edace66395528ff72e84405618a0a4f2fd24c531a0b628",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "bytes": 9991,
+      "git_blob_sha1": "1fa84488b597a51b6b2a05445c8432557b1b9660",
+      "sha256": "c1d14c1dfdb9373e4fe3304baa3cde18c3b442180c5369be0c7a842db7d95e64",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "bytes": 16212,
+      "git_blob_sha1": "588c6b50cc969f941c9a01d8dabfb893bf5eb651",
+      "sha256": "03d829245434011cc15eb92e2107a5334dde938ba2e701151da0f7244af7f5b3",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "bytes": 8097,
+      "git_blob_sha1": "30ca8d2e5b5dd0e38b30cdb46919f514771a01da",
+      "sha256": "bda66c8c108f62bd266c79c7bda9272c8ddd5be8c940b4349cc77704a6dbd937",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "bytes": 8346,
+      "git_blob_sha1": "669afe8a04861b503a27a6ea25e3153c4630d070",
+      "sha256": "fb929b4c35e1c2d270f989b137bb7dd47dbc108502eb75f7cf32eb529814dd85",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "roadmap/TASKS.md",
+      "bytes": 49275,
+      "git_blob_sha1": "2bf3d651d673b6852ec506c521702051883a6f23",
+      "sha256": "7980abb18db2635dd72a4bc13d591529d3d8b45cd0897310fe8e55450fbaee8f",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "bytes": 23731,
+      "git_blob_sha1": "9593e5343062b2b9763c527f8f267052f1644b8a",
+      "sha256": "53d09d910e8b4ca694cddf6ad53910ae48dd7d4aeadbe9a56109c81a82541f6e",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "roadmap/PRIORITIES_20261114.md",
+      "bytes": 6719,
+      "git_blob_sha1": "f9d27ba197c3af2139d94f23f74ae9ae76eb4e45",
+      "sha256": "f2c1ebf4da363f5d65dd7291289e25a0f23b5888cf66f65654b2b6aa2fbf6c55",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "roadmap/EXECUTION_STATUS.md",
+      "bytes": 4782,
+      "git_blob_sha1": "57452a5eaec1881bca6f245aff99984c1d0feb50",
+      "sha256": "08bd87dbb9f9816e4677e4ebb32e6420e2e770d42f82c3cf4308345eff9edc2b",
+      "matches_supplied_tree": true
+    },
+    {
+      "path": "tools/check_requirement_register.py",
+      "bytes": 11185,
+      "git_blob_sha1": "7a14ee31f7bad1d7d086cf35f5a75ad84a60ba5a",
+      "sha256": "313d72438a8295af06d02ca4c6a527df2a6682fd4106b07046cc251e9c743ef5",
+      "matches_supplied_tree": true
+    }
+  ],
+  "external_primary_sources_added": [],
+  "review_limit": "Internal same-controller design slice; no external independence or empirical result."
+}

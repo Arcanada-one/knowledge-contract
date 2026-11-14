@@ -14,7 +14,7 @@
     "language": "evidence-language-index.json records representation languages and English summary locations.",
     "historical_recovery": "historical-recovery-gaps.json records exact missing identities, a recovered matching schema, and a rejected nonmatching implementation candidate."
   },
-  "claim_count": 24,
+  "claim_count": 27,
   "studies": [
     {
       "name": "contract-profile-conformance",
@@ -45,6 +45,11 @@
       "name": "source-transcription-and-uncertainty",
       "report": "source-transcription-and-uncertainty/STUDY.md",
       "origin": "source-transcription-and-uncertainty/evidence/origin.json"
+    },
+    {
+      "name": "semantic-bridge-conformance",
+      "report": "semantic-bridge-conformance/STUDY.md",
+      "origin": "semantic-bridge-conformance/evidence/origin.json"
     }
   ],
   "claims": [
@@ -917,6 +922,121 @@
         "../../papers/knowledge-utility/PAPER.md"
       ],
       "public_reproduction": "published audit report and public output records; full source-range audit needs original restricted sources"
+    },
+    {
+      "study": "semantic-bridge-conformance/STUDY.md",
+      "claim_kind": "recorded_finite_implementation_observation",
+      "limits": [
+        "Supplied controlled-language readings and supplied factual observations; natural-language fidelity, attribution authenticity, real-world truth and authority are not assessed.",
+        "Separate task authors share controller, model family and host; external independence is not verified.",
+        "Different finite spaces and test methods are not independent empirical trials or causal evidence."
+      ],
+      "scientific_context": [
+        "../../papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "../../papers/semantic-objects-and-context/PAPER.md",
+        "../../papers/constrained-transformations/PAPER.md"
+      ],
+      "public_reproduction": "python3 -B -m unittest tools.test_semantic_bridge tools.test_semantic_bridge_relations -v; tools/run_semantic_bridge_controls.py writes a fresh exact-program receipt",
+      "claim_id": "semantic-bridge-finite-boolean-computation",
+      "statement": "The supplied-reading implementation matches separately structured truth-mask expectations on the two declared complete finite formal families, retaining availability and same-world disagreement.",
+      "model": "Controlled Boolean expressions, exact source units, shared observation identities and all compatible Boolean worlds.",
+      "test_or_argument": "All 256 three-atom truth functions under 64 availability profiles and all 256 ordered two-atom function pairs under 16 profiles.",
+      "evidence": [
+        {
+          "path": "semantic-bridge-conformance/evidence/finite-oracle.json",
+          "json_pointer": "/audit/boolean_space"
+        },
+        {
+          "path": "semantic-bridge-conformance/evidence/finite-oracle.json",
+          "json_pointer": "/audit/alternative_space"
+        }
+      ],
+      "counterexample_or_rival": "Comparing only possible-value sets loses correlation: 984 alternative records have equal sets but same-world disagreement. A direct Boolean checker can implement the same declared finite semantics.",
+      "result": {
+        "single_reading_records": 16384,
+        "alternative_records": 4096,
+        "equal_value_sets_but_disagreeing": 984
+      }
+    },
+    {
+      "study": "semantic-bridge-conformance/STUDY.md",
+      "claim_kind": "recorded_finite_implementation_observation",
+      "limits": [
+        "Supplied controlled-language readings and supplied factual observations; natural-language fidelity, attribution authenticity, real-world truth and authority are not assessed.",
+        "Separate task authors share controller, model family and host; external independence is not verified.",
+        "Different finite spaces and test methods are not independent empirical trials or causal evidence."
+      ],
+      "scientific_context": [
+        "../../papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "../../papers/semantic-objects-and-context/PAPER.md",
+        "../../papers/constrained-transformations/PAPER.md"
+      ],
+      "public_reproduction": "python3 -B -m unittest tools.test_semantic_bridge tools.test_semantic_bridge_relations -v; tools/run_semantic_bridge_controls.py writes a fresh exact-program receipt",
+      "claim_id": "semantic-bridge-source-and-refusal-boundaries",
+      "statement": "The inspected consumer binds complete supplied rule units, refuses incomplete or unsupported required inputs, preserves unassessed properties and returns a structured refusal for the retained oversized-integer decoder failure.",
+      "model": "Plain UTF-8 NOTE/RULE envelope and strict typed JSON packet, with actual local CLI processes.",
+      "test_or_argument": "Sixteen named unit methods, 30 separately authored bounded review probes and four original source/packet CLI illustrations; the original decoder failure and corrected same-input result are retained.",
+      "evidence": [
+        {
+          "path": "semantic-bridge-conformance/evidence/UNITTEST_FINAL.txt"
+        },
+        {
+          "path": "semantic-bridge-conformance/evidence/example-cli-runs.json",
+          "json_pointer": "/runs"
+        },
+        {
+          "path": "../../reviews/semantic-bridge-20261114/non-author/bounded-review-results.json",
+          "json_pointer": "/probe_count"
+        },
+        {
+          "path": "../../reviews/semantic-bridge-20261114/non-author/review-record.json",
+          "json_pointer": "/finding"
+        }
+      ],
+      "counterexample_or_rival": "A correct source hash can bind a clipped prefix that loses UNLESS; whole physical-line selectors and complete inventory reject that input. The initial implementation actually leaked a Python ValueError on a bounded packet; the corrected run does not erase that failure.",
+      "result": {
+        "unit_methods": 16,
+        "separate_review_probes": 30,
+        "original_cli_examples": 4,
+        "resolved_input_error_findings": 1,
+        "semantic_fidelity": "NOT_ASSESSED",
+        "effects_authorized": false
+      }
+    },
+    {
+      "study": "semantic-bridge-conformance/STUDY.md",
+      "claim_kind": "recorded_finite_implementation_observation",
+      "limits": [
+        "Supplied controlled-language readings and supplied factual observations; natural-language fidelity, attribution authenticity, real-world truth and authority are not assessed.",
+        "Separate task authors share controller, model family and host; external independence is not verified.",
+        "Different finite spaces and test methods are not independent empirical trials or causal evidence."
+      ],
+      "scientific_context": [
+        "../../papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "../../papers/semantic-objects-and-context/PAPER.md",
+        "../../papers/constrained-transformations/PAPER.md"
+      ],
+      "public_reproduction": "python3 -B -m unittest tools.test_semantic_bridge tools.test_semantic_bridge_relations -v; tools/run_semantic_bridge_controls.py writes a fresh exact-program receipt",
+      "claim_id": "semantic-bridge-relation-geometry-integration",
+      "statement": "Computed bridge tables obey the declared finite quotient/composition interface in four integration checks; marginal outcome-set equality does not preserve same-world agreement.",
+      "model": "World indices and explicit Boolean carrier labels, sufficient observation quotient, partial successful relations and nonempty finite Hausdorff geometry.",
+      "test_or_argument": "Four actual integration tests, largest carrier eight states; source hashes collected before and after the final run.",
+      "evidence": [
+        {
+          "path": "semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_RUN.json",
+          "json_pointer": "/finite_scope"
+        },
+        {
+          "path": "semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_TESTS.txt"
+        }
+      ],
+      "counterexample_or_rival": "A restricted bridge row 0 can denote true, so local row indices require explicit semantic embedding. A pair of readings has Hausdorff distance zero globally but differs in two common worlds; seven empty composite images are outside the nonempty geometry profile.",
+      "result": {
+        "integration_tests": 4,
+        "maximum_carrier_states": 8,
+        "same_world_differences_with_zero_global_distance": 2,
+        "empty_images_in_partial_composite": 7
+      }
     }
   ]
 }

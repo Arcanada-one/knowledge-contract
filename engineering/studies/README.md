@@ -4,7 +4,7 @@ sources: none
 
 # Engineering Studies and Evidence
 
-Six studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 24 explicit bindings; per-study origin records identify exact evidence bytes.
+Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 27 explicit bindings; per-study origin records identify exact evidence bytes.
 
 | Document | Subject |
 | --- | --- |
@@ -14,6 +14,9 @@ Six studies connect the scientific claims to actual finite checks, counterexampl
 | [Executable Projections](executable-projections-and-revision/STUDY.md) | Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality. |
 | [Reuse Economics](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
 | [Editorial Pilot](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
+| [Source Rule Checks](semantic-bridge-conformance/STUDY.md) | Complete finite Boolean families, source/JSON refusal controls, retained decoder failure and algebra/geometry integration. |
+
+The retained [validation-report.json](validation-report.json) describes the earlier 24-claim snapshot. It is not a validation report for the current 27-claim index; its generating source/procedure remains NOT_VERIFIED. New finite results are bound by the Semantic Bridge study and its own records.
 
 ## Counting and interpretation
 
@@ -25,7 +28,7 @@ Calls, cases, criteria, records, graph subsets, page entries and source families
 
 ## Languages and source access
 
-The retained source prose and most agent reports are in Russian, with English code and field names. The current studies provide English accounts of their design, principal results, failure mechanisms and limitations. They are not a full independently reviewed translation of every source. The [evidence language index](evidence-language-index.json) records the representation, prose language, hash and English summary location for all 47 evidence files, without changing their bytes or origin records.
+The retained source prose and most agent reports are in Russian, with English code and field names. The current studies provide English accounts of their design, principal results, failure mechanisms and limitations. They are not a full independently reviewed translation of every source. The [evidence language index](evidence-language-index.json) records the representation, prose language, hash and English summary location for its historical 47-file evidence snapshot, without changing those bytes or origin records. New Semantic Bridge evidence has its own origin record and explicitly authored source/observation scope.
 
 The [historical recovery inventory](historical-recovery-gaps.json) separates missing synthetic runners and fixtures from restricted source books. A copyright limitation is not used to explain missing project-authored code. Retained reports remain inspectable where full historical replay is unavailable.
 
