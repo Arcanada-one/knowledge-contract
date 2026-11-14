@@ -89,19 +89,32 @@ PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
                   "--require-hashes --no-deps -r tools/requirements-reader-check.txt); "
                   "the rendered-link check cannot run without it")
 
-def rendered_report_links(readme):
-    """hrefs of the links CommonMark actually renders in the unique scope paragraph.
+def rendered_scope_observation(readme):
+    """Return (visible text, rendered hrefs) for one reader-visible scope block.
 
-    Returns None unless exactly one inline block holds the scope marker, so
-    comments, code blocks and inline code (which render no link) cannot count.
+    An inline token's raw content can contain HTML comments; only rendered
+    text and code-inline child tokens count as visible scope/caveat wording.
+    This is a bounded lexical check, not semantic or independent review.
     """
     if MarkdownIt is None:
         raise RuntimeError(PARSER_MISSING)
-    inlines = [t for t in MarkdownIt("commonmark").parse(readme)
-               if t.type == "inline" and SCOPE_MARK in t.content]
-    if len(inlines) != 1:
-        return None
-    return [c.attrGet("href") for c in inlines[0].children or [] if c.type == "link_open"]
+    matches = []
+    for token in MarkdownIt("commonmark").parse(readme):
+        if token.type != "inline":
+            continue
+        children = token.children or []
+        visible = "".join(c.content for c in children
+                          if c.type in ("text", "code_inline"))
+        if SCOPE_MARK in visible:
+            links = [c.attrGet("href") for c in children if c.type == "link_open"]
+            matches.append((visible, links))
+    return matches[0] if len(matches) == 1 else None
+
+
+def rendered_report_links(readme):
+    """Rendered hrefs only when the historical scope marker is visible."""
+    observed = rendered_scope_observation(readme)
+    return None if observed is None else observed[1]
 
 def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDIES_DIR):
     errors = []
@@ -119,6 +132,19 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     )
     if any(item not in passage for item in required):
         errors.append("unbound_or_misrepresented_historical_report")
+    # Raw Markdown can retain exact words inside an invisible HTML comment.
+    # Check that the actual CommonMark reader can see each critical qualifier.
+    observed = rendered_scope_observation(study_reader)
+    required_visible = (
+        SCOPE_MARK, "preserved mechanical", "present at source",
+        "reports 24 claims", "not regenerated", "26-claim candidate index",
+        "The precise source revision and execution procedure",
+        "describes the pinned source snapshot",
+    )
+    if observed is None:
+        errors.append("scope_marker_not_visible")
+    elif any(phrase not in observed[0] for phrase in required_visible):
+        errors.append("scope_caveat_not_visible")
     # The report must be a rendered link (CommonMark parser, not a regex): exactly
     # one link_open whose href is REPORT_NAME, resolving to a file beside the README.
     if rendered_report_links(study_reader) != [REPORT_NAME]:
@@ -256,6 +282,26 @@ class HistoricalReportPointerControls(unittest.TestCase):
         with tempfile.TemporaryDirectory() as empty:
             self.assertIn("report_link_target_missing",
                           report_pointer_problems(self.study, self.report, self.index, empty))
+
+    def test_scope_marker_hidden_in_inline_html_comment_is_refused(self):
+        """The raw scope marker is present but not visible to the reader."""
+        changed = self.study.replace(
+            "**Historical validation scope.**",
+            "Context: <!-- Historical validation scope. -->", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("scope_marker_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_historical_caveats_hidden_in_html_comment_are_refused(self):
+        """A visible report link cannot compensate for invisible limitations."""
+        for phrase in ("**not regenerated**", "reports **24 claims**",
+                       "**26-claim** candidate index"):
+            with self.subTest(hidden=phrase):
+                changed = self.study.replace(phrase, f"<!-- {phrase} -->", 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+                self.assertIn("scope_caveat_not_visible",
+                              report_pointer_problems(changed, self.report, self.index))
 
 if __name__ == "__main__":
     unittest.main()
