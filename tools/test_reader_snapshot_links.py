@@ -8,6 +8,7 @@ No claim of scientific admission, linguistic review, site serving or KC2 use.
 import json
 import hashlib
 import re
+import sys
 import tempfile
 from pathlib import Path
 import unittest
@@ -199,6 +200,19 @@ class HistoricalReportPointerControls(unittest.TestCase):
 
     def test_commonmark_parser_is_installed(self):
         self.assertIsNotNone(MarkdownIt, PARSER_MISSING)
+
+    def test_parser_version_and_origin_are_the_pinned_venv_copy(self):
+        self.assertIsNotNone(MarkdownIt, PARSER_MISSING)
+        import markdown_it
+        import mdurl
+        self.assertEqual(markdown_it.__version__, "4.2.0")
+        if sys.prefix != sys.base_prefix:  # in a venv: no stray system copy
+            prefix = Path(sys.prefix).resolve()
+            for module in (markdown_it, mdurl):
+                with self.subTest(module=module.__name__):
+                    self.assertTrue(
+                        Path(module.__file__).resolve().is_relative_to(prefix),
+                        f"{module.__name__} loaded from {module.__file__}, not {prefix}")
 
     def test_link_in_html_comment_is_refused(self):
         """Only the link markup is wrapped in <!-- -->; it renders no link."""

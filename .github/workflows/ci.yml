@@ -185,9 +185,13 @@ jobs:
           python3 -B tools/check_document_names.py
           python3 -B tools/check_requirement_register.py
       - name: Install pinned CommonMark parser for reader link check
-        run: python3 -m pip install --require-hashes --no-deps -r tools/requirements-reader-check.txt
+        run: |
+          set -euo pipefail
+          python3 -m venv --clear "$RUNNER_TEMP/reader-venv"
+          "$RUNNER_TEMP/reader-venv/bin/python" -m pip install --require-hashes --no-deps -r tools/requirements-reader-check.txt
+          "$RUNNER_TEMP/reader-venv/bin/python" -c "import markdown_it, mdurl; print(markdown_it.__version__, markdown_it.__file__, mdurl.__file__)"
       - name: Reader snapshot links and four-reader adverse controls
-        run: python3 -B -m unittest tools.test_reader_snapshot_links -v
+        run: '"$RUNNER_TEMP/reader-venv/bin/python" -B -m unittest tools.test_reader_snapshot_links -v'
       - name: Recheck formal counterexamples and corrected finite models
         run: python3 -B -m unittest tools.test_reviewed_formal_results -v
       - name: Exact finite relation and outcome-set geometry controls
