@@ -188,7 +188,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m venv --clear "$RUNNER_TEMP/reader-venv"
-          "$RUNNER_TEMP/reader-venv/bin/python" -m pip install --require-hashes --no-deps -r tools/requirements-reader-check.txt
+          "$RUNNER_TEMP/reader-venv/bin/python" -m pip install --only-binary :all: --require-hashes --no-deps -r tools/requirements-reader-check.txt
           "$RUNNER_TEMP/reader-venv/bin/python" -c "import markdown_it, mdurl; print(markdown_it.__version__, markdown_it.__file__, mdurl.__file__)"
       - name: Reader snapshot links and four-reader adverse controls
         run: '"$RUNNER_TEMP/reader-venv/bin/python" -B -m unittest tools.test_reader_snapshot_links -v'

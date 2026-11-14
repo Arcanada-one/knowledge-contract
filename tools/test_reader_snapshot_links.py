@@ -349,5 +349,14 @@ class HistoricalReportPointerControls(unittest.TestCase):
         self.assertIn("scope_raw_html_not_allowed",
                       report_pointer_problems(changed, self.report, self.index))
 
+    def test_any_inline_html_around_caveat_is_refused(self):
+        """Fail closed: even a benign <b> tag around a caveat is raw HTML."""
+        changed = self.study.replace(
+            "**not regenerated**", "<b>**not regenerated**</b>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
 if __name__ == "__main__":
     unittest.main()
