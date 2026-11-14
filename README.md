@@ -1,8 +1,6 @@
 # Knowledge Contract Arcana
 
-Read [all 31 source-catalogue document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
-
-Proposed in PR105: Read [all 33 proposed document names](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md).
+Read the [33 document names in this integration candidate](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
@@ -20,9 +18,7 @@ Publication edition **1.1** contains English scientific and engineering document
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
-The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. The [publication catalogue](publication-catalog.json) at source snapshot `6a6f202f` contains 31 reading entries: the 29 baseline documents, Meaning Bridge and Meaning Geometry; both foundations manuscripts retain their research-draft status. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
-
-Proposed in PR105: Its [publication catalogue](publication-catalog.json) proposes 33 reading entries: the 29 baseline documents, the Meaning Bridge, Meaning Geometry and Agent Situation research drafts, and the Context Controls finite study.
+The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. The [publication catalogue](publication-catalog.json) at source snapshot `6a6f202f` contains 31 reading entries: the 29 baseline documents, Meaning Bridge and Meaning Geometry; both foundations manuscripts retain their research-draft status. On this integration candidate head the catalogue contains 33 reading entries: the 29 baseline documents, the Meaning Bridge, Meaning Geometry and Agent Situation research drafts, and the Context Controls finite study. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
 
 ## Start with the human-to-computational foundation
 
