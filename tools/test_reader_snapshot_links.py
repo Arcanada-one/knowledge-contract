@@ -90,11 +90,11 @@ PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
                   "the rendered-link check cannot run without it")
 
 def rendered_scope_observation(readme):
-    """Return (visible text, rendered hrefs) for one reader-visible scope block.
+    """Return (visible text, hrefs, link labels, has-html) for one scope block.
 
-    An inline token's raw content can contain HTML comments; only rendered
-    text and code-inline child tokens count as visible scope/caveat wording.
-    This is a bounded lexical check, not semantic or independent review.
+    Raw HTML can hide an otherwise visible Markdown link or provenance caveat;
+    this one critical scope paragraph is deliberately restricted to CommonMark
+    non-HTML inline content. This is not general browser-renderer equivalence.
     """
     if MarkdownIt is None:
         raise RuntimeError(PARSER_MISSING)
@@ -106,8 +106,18 @@ def rendered_scope_observation(readme):
         visible = "".join(c.content for c in children
                           if c.type in ("text", "code_inline"))
         if SCOPE_MARK in visible:
-            links = [c.attrGet("href") for c in children if c.type == "link_open"]
-            matches.append((visible, links))
+            links, labels, active = [], [], None
+            for child in children:
+                if child.type == "link_open":
+                    links.append(child.attrGet("href"))
+                    active = []
+                elif child.type == "link_close":
+                    labels.append("".join(active or []))
+                    active = None
+                elif child.type in ("text", "code_inline") and active is not None:
+                    active.append(child.content)
+            has_html = any(child.type == "html_inline" for child in children)
+            matches.append((visible, links, labels, has_html))
     return matches[0] if len(matches) == 1 else None
 
 
@@ -143,8 +153,16 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     )
     if observed is None:
         errors.append("scope_marker_not_visible")
-    elif any(phrase not in observed[0] for phrase in required_visible):
-        errors.append("scope_caveat_not_visible")
+    else:
+        if any(phrase not in observed[0] for phrase in required_visible):
+            errors.append("scope_caveat_not_visible")
+        # CommonMark retains raw HTML as html_inline tokens; an HTML attribute
+        # may hide a link/caveat in the actual browser even when token text exists.
+        if observed[3]:
+            errors.append("scope_raw_html_not_allowed")
+        if (len(observed[1]) != len(observed[2]) or
+                any(not label.strip() for label in observed[2])):
+            errors.append("report_link_label_not_visible")
     # The report must be a rendered link (CommonMark parser, not a regex): exactly
     # one link_open whose href is REPORT_NAME, resolving to a file beside the README.
     if rendered_report_links(study_reader) != [REPORT_NAME]:
@@ -302,6 +320,34 @@ class HistoricalReportPointerControls(unittest.TestCase):
                 self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
                 self.assertIn("scope_caveat_not_visible",
                               report_pointer_problems(changed, self.report, self.index))
+
+    def test_empty_report_link_text_is_refused(self):
+        """A link_open without visible link text is not a usable citation."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(
+            label, "preserved mechanical `validation-report.json`[](validation-report.json)", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("report_link_label_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_hidden_html_caveat_is_refused(self):
+        """Raw HTML can hide a caveat that still exists in CommonMark text."""
+        changed = self.study.replace(
+            "**not regenerated**", "<span hidden>**not regenerated**</span>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_wrapped_in_hidden_html_is_refused(self):
+        """A rendered link_open under hidden raw HTML is not reader-visible."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, "<span hidden>" + label + "</span>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
 
 if __name__ == "__main__":
     unittest.main()
