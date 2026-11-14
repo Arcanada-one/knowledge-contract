@@ -147,7 +147,7 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     required = (
         "preserved mechanical", "validation-report.json", REPORT_BLOB,
         REPORT_SOURCE_COMMIT, "reports **24 claims**",
-        "**not regenerated**", "**26-claim** candidate index",
+        "**not regenerated**", "**29-claim** candidate index",
         "describes the pinned source snapshot",
         "**present at source", "The precise source revision and execution procedure",
     )
@@ -158,7 +158,7 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     observed = rendered_scope_observation(study_reader)
     required_visible = (
         SCOPE_MARK, "preserved mechanical", "present at source",
-        "reports 24 claims", "not regenerated", "26-claim candidate index",
+        "reports 24 claims", "not regenerated", "29-claim candidate index",
         "The precise source revision and execution procedure",
         "describes the pinned source snapshot",
     )
@@ -188,7 +188,7 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
         report = json.loads(report_bytes)
         if type(report.get("claim_count")) is not int or report["claim_count"] != 24:
             errors.append("report_claim_count_changed")
-        if type(index.get("claim_count")) is not int or index["claim_count"] != 26:
+        if type(index.get("claim_count")) is not int or index["claim_count"] != 29:
             errors.append("successor_claim_count_changed")
     except (ValueError, TypeError, AttributeError):
         errors.append("invalid_report_or_index")
@@ -324,7 +324,7 @@ class HistoricalReportPointerControls(unittest.TestCase):
     def test_historical_caveats_hidden_in_html_comment_are_refused(self):
         """A visible report link cannot compensate for invisible limitations."""
         for phrase in ("**not regenerated**", "reports **24 claims**",
-                       "**26-claim** candidate index"):
+                       "**29-claim** candidate index"):
             with self.subTest(hidden=phrase):
                 changed = self.study.replace(phrase, f"<!-- {phrase} -->", 1)
                 self.assertNotEqual(changed, self.study)
