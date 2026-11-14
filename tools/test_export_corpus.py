@@ -714,20 +714,48 @@ class DecisionRouteTests(unittest.TestCase):
         base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                 "decision": f"{DEC}b3.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
         catalogue = json.loads((export.REPO / "publication-catalog.json").read_text())["documents"]
-        # The PR89 catalogue proposes 31 documents. Both research drafts remain excluded from the 29-path export scope.
-        drafts = sorted(d["path"] for d in catalogue if d.get("status") == "research-draft")
-        self.assertEqual(drafts, [
-            "papers/geometry-of-semantic-representations/PAPER.md",
-            "papers/human-meaning-and-computable-knowledge/PAPER.md",
-        ])
-        for path in drafts:
-            with self.subTest(draft=path):
+        # DEC-AUP-0175 fixes these 29 paths independently of the growing reader catalogue.
+        # This list is the non-draft baseline at source d5e684e201f6d41498c4fbd8c2a3497eed2bb30e,
+        # not a derivation from the implementation's SCOPE_PATHS or from current status labels.
+        edition = [
+            'appendices/api-integration/APPENDIX.md',
+            'appendices/source-map/APPENDIX.md',
+            'engineering/specifications/artifact-registry/SPECIFICATION.md',
+            'engineering/specifications/book-package/SPECIFICATION.md',
+            'engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md',
+            'engineering/specifications/compiled-artifact-contract/SPECIFICATION.md',
+            'engineering/specifications/context-package/SPECIFICATION.md',
+            'engineering/specifications/contract-family/SPECIFICATION.md',
+            'engineering/specifications/knowledge-contract-core/SPECIFICATION.md',
+            'engineering/specifications/knowledge-evolution/SPECIFICATION.md',
+            'engineering/specifications/reuse-policy/SPECIFICATION.md',
+            'engineering/specifications/semantic-types/SPECIFICATION.md',
+            'engineering/specifications/status-model/SPECIFICATION.md',
+            'engineering/studies/contract-profile-conformance/STUDY.md',
+            'engineering/studies/dependency-closure-and-package-delivery/STUDY.md',
+            'engineering/studies/editorial-skill-pilot/STUDY.md',
+            'engineering/studies/executable-projections-and-revision/STUDY.md',
+            'engineering/studies/reuse-admission-and-cost-controls/STUDY.md',
+            'engineering/studies/source-transcription-and-uncertainty/STUDY.md',
+            'papers/constrained-transformations/PAPER.md',
+            'papers/controlled-knowledge-reuse/PAPER.md',
+            'papers/evidence-and-falsification/PAPER.md',
+            'papers/interaction-and-memory/PAPER.md',
+            'papers/knowledge-utility/PAPER.md',
+            'papers/retrieval-and-context-composition/PAPER.md',
+            'papers/revision-and-governance/PAPER.md',
+            'papers/semantic-objects-and-context/PAPER.md',
+            'reference/bibliography/BIBLIOGRAPHY.md',
+            'reference/glossary/GLOSSARY.md',
+        ]
+        self.assertEqual(len(edition), 29)
+        catalogue_paths = {d["path"] for d in catalogue}
+        self.assertTrue(set(edition).issubset(catalogue_paths))
+        for path in sorted(catalogue_paths - set(edition)):
+            with self.subTest(unadmitted_catalogue_path=path):
                 self.assertNotIn(path, export.SCOPE_PATHS)
                 with self.assertRaises(export.ExportError):
                     export.validate_row({**base, "path": path})
-        edition = sorted(d["path"] for d in catalogue if d.get("status") != "research-draft")
-        self.assertEqual(len(catalogue), 31)
-        self.assertEqual(len(edition), 29)
         self.assertEqual(len(export.SCOPE_PATHS), 6 + 14 + 29)
         for path in edition:
             with self.subTest(path=path):
