@@ -66,7 +66,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
 | [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; bounded verification may proceed only under the matching task, current authority and actual execution gates. |
 | [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
-| [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
+| [Agent Application](roadmap/TASKS.md#rm-18) | Agent Situation and Context Controls are research-draft artifacts in an Agent Application subprogramme. Finite checks, the draft engineering design, the planned LLM trial and production use have separate evidence boundaries. Advanced retrieval work remains separate from the baseline exact-consumer pilot. |
 | [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
 | [Practical Utility](roadmap/TASKS.md#rm-20) | Six bounded studies are published; no general superiority or universal savings follows. |
 | [Cross-Language Meaning](roadmap/TASKS.md#rm-21) | Body translation drafts and a semantic cross-language benchmark are distinct deliverables. |
@@ -78,6 +78,12 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 <!-- /WORKSTREAM_TABLE -->
 
 A required edge means that the reviewed prerequisite output is needed for dependent acceptance or execution. It does not prohibit exploratory analysis. An advisory link informs work but never becomes a mandatory release gate. Output dependencies must be read by their names, not guessed from a numerical label.
+
+### Agent Situation within Agent Application
+
+The [Agent Situation](papers/agent-situation/PAPER.md) research draft examines initialization, changes of situation and bounded context. The separate [Context Controls](engineering/studies/agent-situation-controls/STUDY.md) research-draft study reports only the finite checks actually executed in its named scope. The [draft engineering design](roadmap/agent-situation/ENGINEERING.md) remains nonnormative, and the [LLM experiment plan](roadmap/agent-situation/EXPERIMENT.md) remains an unexecuted protocol until an authorized run produces its own evidence. These two catalogue additions bring the current reading inventory to 33 works; the earlier pinned counts above retain their historical scope.
+
+This subprogramme belongs to Agent Application and does not add a new roadmap identity. It does not replace that workstream's required outputs or declare its acceptance complete. Its exploratory finite checks do not impose new prerequisites on the baseline exact-consumer pilot. The research question is how an agent can expose the available, missing, changing and task-relevant parts of its situation without treating a compact context as complete knowledge or authority.
 
 ## 5. Practical validation under current authorization and evidence gates
 

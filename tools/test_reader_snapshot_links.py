@@ -1,0 +1,413 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+# SPDX-License-Identifier: Apache-2.0
+"""Source-bound reader references and adversarial cross-locale controls.
+
+No claim of scientific admission, linguistic review, site serving or KC2 use.
+"""
+import json
+import hashlib
+import re
+import sys
+import tempfile
+from pathlib import Path
+import unittest
+
+try:
+    from markdown_it import MarkdownIt
+except ImportError:  # fail closed: tests below must FAIL, never skip
+    MarkdownIt = None
+
+ROOT = Path(__file__).resolve().parents[1]
+PIN = "6a6f202f7f70be2ad3aea3369e45409761708596"
+OLD = f"https://github.com/Arcanada-one/knowledge-contract/blob/{PIN}"
+READERS = {
+    "READING.md": ("DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "contains {n} entries"),
+    "guides/READING.ru.md": ("../DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "содержит {n} записи"),
+    "guides/READING.zh-Hans.md": ("../DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "包含{n}项"),
+    "README.md": ("publication-catalog.json", f"{OLD}/publication-catalog.json", "contains {n} reading entries"),
+}
+
+def check_reader(source, live_path, historic_url, count, current_phrase):
+    lines = source.splitlines()
+    old = [l for l in lines if "31" in l and f"]({historic_url})" in l]
+    now = [l for l in lines if current_phrase.format(n=count) in l and f"]({live_path})" in l]
+    result = []
+    if len(old) != 1:
+        result.append("historic_31_must_resolve_immutable_source")
+    if len(now) != 1:
+        result.append("current_count_must_resolve_live_source")
+    if any("31" in l and f"]({live_path})" in l for l in lines):
+        result.append("historic_31_points_to_mutable_source")
+    return result
+
+class SnapshotReaderControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.n = len(json.loads((ROOT / "publication-catalog.json").read_text(encoding="utf-8"))["documents"])
+        cls.rows = sum(l.startswith("| [") for l in
+            (ROOT / "DOCUMENTS.md").read_text(encoding="utf-8").splitlines())
+        cls.reader_text = {p: (ROOT / p).read_text(encoding="utf-8") for p in READERS}
+
+    def test_live_catalogue_and_four_readers(self):
+        self.assertEqual(self.n, self.rows)
+        self.assertNotEqual(self.n, 31)
+        for path, (live, old, phrase) in READERS.items():
+            with self.subTest(path=path):
+                self.assertEqual(check_reader(self.reader_text[path], live, old, self.n, phrase), [])
+
+    def test_mutable_historical_link_mutant(self):
+        for path, (live, old, phrase) in READERS.items():
+            with self.subTest(path=path):
+                src = self.reader_text[path]
+                changed = src.replace(f"]({old})", f"]({live})", 1)
+                self.assertNotEqual(changed, src)
+                self.assertIn("historic_31_points_to_mutable_source",
+                    check_reader(changed, live, old, self.n, phrase))
+
+    def test_stale_current_count_mutant(self):
+        for path, (live, old, phrase) in READERS.items():
+            with self.subTest(path=path):
+                lines = self.reader_text[path].splitlines()
+                positions = [i for i, line in enumerate(lines)
+                    if phrase.format(n=self.n) in line and f"]({live})" in line]
+                self.assertEqual(len(positions), 1)
+                i = positions[0]
+                lines[i] = lines[i].replace(phrase.format(n=self.n), phrase.format(n=31), 1)
+                self.assertIn("current_count_must_resolve_live_source",
+                    check_reader("\n".join(lines), live, old, self.n, phrase))
+
+
+# An immutable mechanical receipt is not a validation of a successor index.
+REPORT_SOURCE_COMMIT = "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e"
+REPORT_BLOB = "c02b44d69a0cd7b704b10323389a56c563b1b62d"
+
+REPORT_NAME = "validation-report.json"
+# Rendered text of the report link, pinned code point for code point (no strip,
+# no normalisation). Changing the README wording requires changing this value.
+REPORT_LABEL = "preserved mechanical validation-report.json"
+STUDIES_DIR = ROOT / "engineering/studies"
+SCOPE_MARK = "Historical validation scope."
+PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
+                  "--require-hashes --no-deps -r tools/requirements-reader-check.txt); "
+                  "the rendered-link check cannot run without it")
+
+def rendered_scope_observation(readme):
+    """Return (visible text, hrefs, link labels, has-html) for one scope block.
+
+    This reader is restricted to a structural CommonMark subset: no html_block
+    or html_inline token anywhere in the README. An enclosing raw HTML block
+    can hide the scope paragraph even when that paragraph has no inline HTML.
+    Pointer and qualifier checks concern one scope paragraph; contradictory
+    prose elsewhere remains a content-review responsibility. This is not
+    general browser-renderer equivalence.
+    """
+    if MarkdownIt is None:
+        raise RuntimeError(PARSER_MISSING)
+    tokens = MarkdownIt("commonmark").parse(readme)
+    pending, has_html = list(tokens), False
+    while pending:
+        token = pending.pop()
+        has_html |= token.type in ("html_block", "html_inline")
+        pending.extend(token.children or [])
+    matches = []
+    for token in tokens:
+        if token.type != "inline":
+            continue
+        children = token.children or []
+        visible = "".join(c.content for c in children
+                          if c.type in ("text", "code_inline"))
+        if SCOPE_MARK in visible:
+            links, labels, active = [], [], None
+            for child in children:
+                if child.type == "link_open":
+                    links.append(child.attrGet("href"))
+                    active = []
+                elif child.type == "link_close":
+                    labels.append("".join(active or []))
+                    active = None
+                elif child.type in ("text", "code_inline") and active is not None:
+                    active.append(child.content)
+            matches.append((visible, links, labels, has_html))
+    return matches[0] if len(matches) == 1 else None
+
+
+def rendered_report_links(readme):
+    """Rendered hrefs only when the historical scope marker is visible."""
+    observed = rendered_scope_observation(readme)
+    return None if observed is None else observed[1]
+
+def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDIES_DIR):
+    errors = []
+    passages = [p for p in study_reader.split("\n\n")
+                if "Historical validation scope." in p]
+    if len(passages) != 1:
+        return ["missing_or_duplicated_scope_pointer"]
+    passage = passages[0]
+    required = (
+        "preserved mechanical", "validation-report.json", REPORT_BLOB,
+        REPORT_SOURCE_COMMIT, "reports **24 claims**",
+        "**not regenerated**", "**26-claim** candidate index",
+        "describes the pinned source snapshot",
+        "**present at source", "The precise source revision and execution procedure",
+    )
+    if any(item not in passage for item in required):
+        errors.append("unbound_or_misrepresented_historical_report")
+    # Raw Markdown can retain exact words inside an invisible HTML comment.
+    # Check that the actual CommonMark reader can see each critical qualifier.
+    observed = rendered_scope_observation(study_reader)
+    required_visible = (
+        SCOPE_MARK, "preserved mechanical", "present at source",
+        "reports 24 claims", "not regenerated", "26-claim candidate index",
+        "The precise source revision and execution procedure",
+        "describes the pinned source snapshot",
+    )
+    if observed is None:
+        errors.append("scope_marker_not_visible")
+    else:
+        if any(phrase not in observed[0] for phrase in required_visible):
+            errors.append("scope_caveat_not_visible")
+        # The declared README subset excludes both inline and block raw HTML,
+        # including wrappers outside the selected scope paragraph.
+        if observed[3]:
+            errors.append("scope_raw_html_not_allowed")
+        if (len(observed[1]) != len(observed[2]) or
+                any(label != REPORT_LABEL for label in observed[2])):
+            errors.append("report_link_label_not_visible")
+    # The report must be a rendered link (CommonMark parser, not a regex): exactly
+    # one link_open whose href is REPORT_NAME, resolving to a file beside the README.
+    if rendered_report_links(study_reader) != [REPORT_NAME]:
+        errors.append("report_link_destination_not_exact")
+    elif not (Path(studies_dir) / REPORT_NAME).is_file():
+        errors.append("report_link_target_missing")
+    actual_blob = hashlib.sha1(b"blob " + str(len(report_bytes)).encode("ascii") +
+                               b"\0" + report_bytes).hexdigest()
+    if actual_blob != REPORT_BLOB:
+        errors.append("report_blob_changed")
+    try:
+        report = json.loads(report_bytes)
+        if type(report.get("claim_count")) is not int or report["claim_count"] != 24:
+            errors.append("report_claim_count_changed")
+        if type(index.get("claim_count")) is not int or index["claim_count"] != 26:
+            errors.append("successor_claim_count_changed")
+    except (ValueError, TypeError, AttributeError):
+        errors.append("invalid_report_or_index")
+    return errors
+
+class HistoricalReportPointerControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.study = (ROOT / "engineering/studies/README.md").read_text(encoding="utf-8")
+        cls.report = (ROOT / "engineering/studies/validation-report.json").read_bytes()
+        cls.index = json.loads((ROOT / "engineering/studies/evidence-index.json")
+                               .read_text(encoding="utf-8"))
+
+    def test_preserved_24_claim_report_is_not_26_claim_candidate(self):
+        self.assertEqual(report_pointer_problems(self.study, self.report, self.index), [])
+
+    def test_pointer_mutants_are_detected(self):
+        changes = (
+            ("reports **24 claims**", "reports **26 claims**"),
+            (REPORT_SOURCE_COMMIT, "0000000000000000000000000000000000000000"),
+            ("**not regenerated**", "**regenerated**"),
+            ("**present at source", "**produced at source"),
+            (REPORT_BLOB, "1111111111111111111111111111111111111111"),
+        )
+        for original, mutant in changes:
+            with self.subTest(mutant=original):
+                changed = self.study.replace(original, mutant, 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertIn("unbound_or_misrepresented_historical_report",
+                              report_pointer_problems(changed, self.report, self.index))
+        changed_index = dict(self.index, claim_count=24)
+        self.assertIn("successor_claim_count_changed",
+                      report_pointer_problems(self.study, self.report, changed_index))
+    def link_mutant(self, replacement):
+        original = "](validation-report.json)"
+        self.assertEqual(self.study.count(original), 1)
+        return self.study.replace(original, replacement, 1)
+
+    def test_link_destination_nonexistent_target_is_detected(self):
+        """Only the destination changes; the link text stays identical."""
+        changed = self.link_mutant("](nonexistent-report.json)")
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_destination_non_exact_form_is_refused(self):
+        """Rule: the destination must equal `validation-report.json` byte for
+        byte. Prefixes (`./`), fragments (`#x`), queries and other spellings of
+        an existing file are refused, even though they would resolve."""
+        for dest in ("./validation-report.json#x", "./validation-report.json",
+                     "validation-report.json#x", "validation-report.json?x"):
+            with self.subTest(dest=dest):
+                changed = self.link_mutant(f"]({dest})")
+                self.assertIn("report_link_destination_not_exact",
+                              report_pointer_problems(changed, self.report, self.index))
+
+    def test_bare_filename_without_link_is_refused(self):
+        """Only the link is removed; the bare filename text stays in the paragraph."""
+        label = "[preserved mechanical `validation-report.json`]"
+        changed = self.link_mutant("").replace(label, label[1:-1], 1)
+        self.assertNotIn("](validation-report.json)", changed)
+        self.assertIn("`validation-report.json`", changed)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_commonmark_parser_is_installed(self):
+        self.assertIsNotNone(MarkdownIt, PARSER_MISSING)
+
+    def test_parser_version_and_origin_are_the_pinned_venv_copy(self):
+        self.assertIsNotNone(MarkdownIt, PARSER_MISSING)
+        import markdown_it
+        import mdurl
+        self.assertEqual(markdown_it.__version__, "4.2.0")
+        if sys.prefix != sys.base_prefix:  # in a venv: no stray system copy
+            prefix = Path(sys.prefix).resolve()
+            for module in (markdown_it, mdurl):
+                with self.subTest(module=module.__name__):
+                    self.assertTrue(
+                        Path(module.__file__).resolve().is_relative_to(prefix),
+                        f"{module.__name__} loaded from {module.__file__}, not {prefix}")
+
+    def test_link_in_html_comment_is_refused(self):
+        """Only the link markup is wrapped in <!-- -->; it renders no link."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, f"<!-- {label} -->", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def scope_paragraph(self):
+        found = [p for p in self.study.split("\n\n") if SCOPE_MARK in p]
+        self.assertEqual(len(found), 1)
+        return found[0]
+
+    def test_link_in_fenced_code_block_is_refused(self):
+        """Only a code fence is added around the scope paragraph; text is identical."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(para, "```md\n" + para + "\n```", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_in_indented_code_block_is_refused(self):
+        """Only a four-space indent is added to the scope paragraph; text is identical."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(para, "\n".join("    " + l for l in para.split("\n")), 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_in_inline_code_is_refused(self):
+        """Only the link is turned into an inline code span."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, "`[preserved mechanical validation-report.json](validation-report.json)`", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_exact_link_to_missing_file_is_refused(self):
+        """The README is unchanged; the studies directory lacks the report file."""
+        with tempfile.TemporaryDirectory() as empty:
+            self.assertIn("report_link_target_missing",
+                          report_pointer_problems(self.study, self.report, self.index, empty))
+
+    def test_scope_marker_hidden_in_inline_html_comment_is_refused(self):
+        """The raw scope marker is present but not visible to the reader."""
+        changed = self.study.replace(
+            "**Historical validation scope.**",
+            "Context: <!-- Historical validation scope. -->", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("scope_marker_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_historical_caveats_hidden_in_html_comment_are_refused(self):
+        """A visible report link cannot compensate for invisible limitations."""
+        for phrase in ("**not regenerated**", "reports **24 claims**",
+                       "**26-claim** candidate index"):
+            with self.subTest(hidden=phrase):
+                changed = self.study.replace(phrase, f"<!-- {phrase} -->", 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+                self.assertIn("scope_caveat_not_visible",
+                              report_pointer_problems(changed, self.report, self.index))
+
+    def test_empty_report_link_text_is_refused(self):
+        """A link_open without visible link text is not a usable citation."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(
+            label, "preserved mechanical `validation-report.json`[](validation-report.json)", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("report_link_label_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_invisible_report_link_labels_are_refused(self):
+        """Only the link label changes; format and filler characters show nothing."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        for name, text in (("zwsp_literal", "\u200b"), ("zwsp_entity", "&#8203;"),
+                           ("word_joiner", "\u2060"), ("soft_hyphen", "\u00ad"),
+                           ("hangul_filler", "\u3164"), ("braille_blank", "\u2800")):
+            with self.subTest(label=name):
+                changed = self.study.replace(
+                    label, "preserved mechanical `validation-report.json`"
+                    f"[{text}](validation-report.json)", 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+                self.assertIn("report_link_label_not_visible",
+                              report_pointer_problems(changed, self.report, self.index))
+
+    def test_readable_but_different_report_link_label_is_refused(self):
+        """Visible letters are not enough: the label is pinned to the README text."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(
+            label, "preserved mechanical `validation-report.json`[see report](validation-report.json)", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("report_link_label_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_current_readme_report_link_label_is_accepted(self):
+        self.assertNotIn("report_link_label_not_visible",
+                         report_pointer_problems(self.study, self.report, self.index))
+
+    def test_hidden_html_caveat_is_refused(self):
+        """Raw HTML can hide a caveat that still exists in CommonMark text."""
+        changed = self.study.replace(
+            "**not regenerated**", "<span hidden>**not regenerated**</span>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_wrapped_in_hidden_html_is_refused(self):
+        """A rendered link_open under hidden raw HTML is not reader-visible."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, "<span hidden>" + label + "</span>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_any_inline_html_around_caveat_is_refused(self):
+        """Fail closed: even a benign <b> tag around a caveat is raw HTML."""
+        changed = self.study.replace(
+            "**not regenerated**", "<b>**not regenerated**</b>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_enclosing_raw_html_block_is_refused(self):
+        """A block wrapper can hide an unchanged, normally parsed paragraph."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(
+            para, "<div hidden>\n\n" + para + "\n\n</div>", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(changed.count(para), 1)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("scope_raw_html_not_allowed",
+                      report_pointer_problems(changed, self.report, self.index))
+
+if __name__ == "__main__":
+    unittest.main()

@@ -178,3 +178,173 @@ The supplied filename uses “2025,” and the digital input contains 427 physic
 Pavel Valentov. **Knowledge Contract and Meaning Management: earlier publication corpus.** Repository snapshot [b50243b28e9ad7376e28c749a21479ef46ec9d60](https://github.com/Arcanada-one/knowledge-contract/tree/b50243b28e9ad7376e28c749a21479ef46ec9d60).
 
 The [source map](../../appendices/source-map/APPENDIX.md) records the migration from fourteen earlier paper files and ten specifications to the current reading structure. The [engineering evidence index](../../engineering/studies/evidence-index.json) binds individual empirical or analytical claims to their supporting records. Each study describes what can be rerun publicly, what is available only as a retained report, and what remains unmeasured.
+
+## Agent situation, state and bounded context
+
+Targeted reading records assembled on **14 November 2026** for the [Agent Situation research draft](../../papers/agent-situation/PAPER.md) and its [literature note](../../papers/agent-situation/LITERATURE.md). This addition does not revise the older entries' recorded verification dates. The set is a selected primary-source synthesis, not an exhaustive systematic review. Each entry states its intended use and the limit carried into the draft. An inspected project page is not represented as a full-text methods audit. Preprints retain that status; mutable documentation has an access date rather than an invented immutable revision.
+
+Only bibliographic facts, links and original concise paraphrases are included. Third-party works retain their own terms; the project's document licence does not relicense them. In particular, the Sheng et al. preprint retains CC-BY-NC-ND-4.0 and its text, figures and datasets are not redistributed here.
+
+### Endsley 1995
+
+Mica R. Endsley. **Toward a Theory of Situation Awareness in Dynamic Systems.** Human Factors 37(1), 32–64 (1995). [Primary reference](https://doi.org/10.1518/001872095779049543).
+
+**Used for:** Separate perception, comprehension and projection; relevant elements depend on system and goals. **Limit:** Human situation-awareness theory; applying it to LLM state records is our analogy.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://frankritter.com/ist521/papers/endsley95.pdf), accessed 2026-11-14.
+
+### Dey and Abowd 2000
+
+Anind K. Dey; Gregory D. Abowd. **Towards a Better Understanding of Context and Context-Awareness.** CHI 2000 context-awareness workshop; also GIT-GVU-99-22 (1999). [Primary reference](https://sites.cc.gatech.edu/fce/ctk/chiws/Dey.pdf).
+
+**Used for:** Identity, location, activity and time as contextual indices; relevance rather than exhaustive enumeration. **Limit:** The proposed extended startup inventory is not their universal checklist.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://sites.cc.gatech.edu/fce/ctk/chiws/Dey.pdf), accessed 2026-11-14.
+
+### Dey 2001
+
+Anind K. Dey. **Understanding and Using Context.** Personal and Ubiquitous Computing 5(1), 4–7 (2001). [Primary reference](https://doi.org/10.1007/s007790170019).
+
+**Used for:** Context widgets, polling/subscription, history, interpreters and aggregation. **Limit:** Architectural precedent, not evidence that inferred situations are always correct.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://www.cc.gatech.edu/fce/ctk/pubs/PeTe5-1.pdf), accessed 2026-11-14.
+
+### Kaelbling et al. 1998
+
+Leslie Pack Kaelbling; Michael L. Littman; Anthony R. Cassandra. **Planning and Acting in Partially Observable Stochastic Domains.** Artificial Intelligence 101, 99–134 (1998). [Primary reference](https://doi.org/10.1016/S0004-3702(98)00023-X).
+
+**Used for:** Retain decision-relevant uncertainty; belief updates use actions and observations. **Limit:** Sufficiency applies to a correctly computed belief under a specified model, not an arbitrary summary.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://people.csail.mit.edu/lpk/papers/aij98-pomdp.pdf), accessed 2026-11-14.
+
+### Huang et al. 2023
+
+Wenlong Huang et al.. **Inner Monologue: Embodied Reasoning through Planning with Language Models.** CoRL proceedings, PMLR 205, 1769–1782 (2023); preprint 2022. [Primary reference](https://proceedings.mlr.press/v205/huang23c.html).
+
+**Used for:** Feedback-driven replanning after action failure and human task changes. **Limit:** Reported robot domains, detectors, prompts and skills bound the evidence.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://inner-monologue.github.io/), accessed 2026-11-14.
+
+### Ahn et al. 2022
+
+Michael Ahn et al.. **Do As I Can, Not As I Say: Grounding Language in Robotic Affordances.** arXiv:2204.01691v2, 16 August 2022. [Primary reference](https://arxiv.org/abs/2204.01691v2).
+
+**Used for:** Combine task usefulness with current skill feasibility; sponge acquisition example. **Limit:** Feasibility does not establish authorization.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://say-can.github.io/), accessed 2026-11-14.
+
+### Bongard et al. 2006
+
+Josh Bongard; Victor Zykov; Hod Lipson. **Resilient Machines Through Continuous Self-Modeling.** Science 314(5802), 1118–1121 (2006). [Primary reference](https://doi.org/10.1126/science.1133687).
+
+**Used for:** Robot self-model adaptation from actuation and sensation after structural damage. **Limit:** Bounded physical capability modeling, not consciousness or general introspective accuracy.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://meclab.w3.uvm.edu/papers/2006_Science_Bongard.pdf), accessed 2026-11-14.
+
+### ROS REP105
+
+Wim Meeussen. **REP 105: Coordinate Frames for Mobile Platforms.** Official ROS informational REP, created 2010; accessed 2026-11-14. [Primary reference](https://www.ros.org/reps/rep-0105.html).
+
+**Used for:** Local frame can be available while global localization is unknown at startup. **Limit:** Official convention; digital scope analogy is proposed; repository branch is mutable.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://raw.githubusercontent.com/ros-infrastructure/rep/master/rep-0105.rst), accessed 2026-11-14.
+
+### ROS Clock and Time
+
+Tully Foote. **Clock and Time.** Official ROS 2 design document; accessed 2026-11-14. [Primary reference](https://design.ros2.org/articles/clock_and_time.html).
+
+**Used for:** Distinct clock domains, uninitialized time and backward jumps. **Limit:** Documentation date metadata is inconsistent; no inferred publication chronology.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://design.ros2.org/articles/clock_and_time.html), accessed 2026-11-14.
+
+### ROS QoS Jazzy
+
+ROS 2 documentation contributors. **Quality of Service settings.** Official ROS 2 Jazzy documentation; accessed 2026-11-14. [Primary reference](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst).
+
+**Used for:** Separate deadline, lifespan and liveliness; stale request replay can repeat effects. **Limit:** Transport health and freshness policies do not establish semantic truth; mutable branch.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst), accessed 2026-11-14.
+
+### Yao et al. 2023
+
+Shunyu Yao; Jeffrey Zhao; Dian Yu; Nan Du; Izhak Shafran; Karthik Narasimhan; Yuan Cao. **ReAct: Synergizing Reasoning and Acting in Language Models.** ICLR 2023; arXiv:2210.03629v3. [Primary reference](https://arxiv.org/abs/2210.03629v3).
+
+**Used for:** Interleave interaction with external observations and revised decisions. **Limit:** Historical models/tasks; no general freshness or authorization contract.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2210.03629v3), accessed 2026-11-14.
+
+### Park et al. 2023
+
+Joon Sung Park; Joseph C. O'Brien; Carrie J. Cai; Meredith Ringel Morris; Percy Liang; Michael S. Bernstein. **Generative Agents: Interactive Simulacra of Human Behavior.** UIST 2023; arXiv:2304.03442v2. [Primary reference](https://arxiv.org/abs/2304.03442v2).
+
+**Used for:** Memory retrieval, reflection and plan changes in a simulated social environment. **Limit:** Behavioral believability is not factual reliability or authority.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2304.03442v2), accessed 2026-11-14.
+
+### Packer et al. 2024
+
+Charles Packer; Sarah Wooders; Kevin Lin; Vivian Fang; Shishir G. Patil; Ion Stoica; Joseph E. Gonzalez. **MemGPT: Towards LLMs as Operating Systems.** arXiv:2310.08560v2, 12 February 2024; preprint. [Primary reference](https://arxiv.org/abs/2310.08560v2).
+
+**Used for:** Manage a limited main context using external memory and paging. **Limit:** Does not prove semantic preservation or correct supersession of every memory.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2310.08560v2), accessed 2026-11-14.
+
+### Liu et al. 2024
+
+Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang. **Lost in the Middle: How Language Models Use Long Contexts.** TACL 12, 157–173 (2024). [Primary reference](https://aclanthology.org/2024.tacl-1.9/).
+
+**Used for:** Position affects retrieval/use of relevant content in evaluated long-context tasks. **Limit:** Historical model set, not a universal current failure rate.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://aclanthology.org/2024.tacl-1.9.pdf), accessed 2026-11-14.
+
+### Wu et al. 2026
+
+Di Wu; Zixiang Ji; Asmi Kawatkar; Bryan Kwan; Jia-Chen Gu; Nanyun Peng; Kai-Wei Chang. **LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues.** arXiv:2605.12493v1, 12 May 2026; preprint. [Primary reference](https://arxiv.org/abs/2605.12493v1).
+
+**Used for:** Environment-specific state, workflows, gotchas and compact evidence gathering; close prior art. **Limit:** Pre-collected browser trajectories and fixed-reader QA; not live end-to-end task success.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2605.12493v1), accessed 2026-11-14.
+
+### Patel 2026
+
+Vedant Patel. **Supersede: Diagnosing and Training the Memory-Update Gap in LLM Agents.** arXiv:2606.27472v1, 25 June 2026; preprint. [Primary reference](https://arxiv.org/abs/2606.27472v1).
+
+**Used for:** Current-value maintenance under bounded memory should be measured separately from recall. **Limit:** Scale sample n=25; one small-model training run; no general model-size impossibility claim.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2606.27472v1), accessed 2026-11-14.
+
+### Horvitz 1999
+
+Eric Horvitz. **Principles of Mixed-Initiative User Interfaces.** CHI 1999, 159–166. [Primary reference](https://doi.org/10.1145/302979.303030).
+
+**Used for:** Acting, asking and inactivity under uncertain goals and interruption costs. **Limit:** LookOut case study; no calibrated universal LLM utility function.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://erichorvitz.com/chi99horvitz.pdf), accessed 2026-11-14.
+
+### Sheng et al. 2026
+
+Strick Sheng; Ziyue Wang; Liyi Zhou. **When Agents Overtrust Environmental Evidence: An Extensible Agentic Framework for Benchmarking Evidence-Grounding Defects in LLM Agents.** arXiv:2605.08828v2, 12 May 2026; preprint. [Primary reference](https://arxiv.org/abs/2605.08828v2).
+
+**Used for:** Controlled misleading/stale environmental evidence and provenance/freshness/action-guidance failures. **Limit:** Stress-test incidence is not production frequency; narrow case-specific oracle.
+
+**Reading record:** primary text or official/project documentation, as identified by the inspected link; [inspected location](https://arxiv.org/html/2605.08828v2), accessed 2026-11-14.
+
+### Lin et al. 2026
+
+Yin Lin; Elaine Ang; Erkang Zhu; Bolin Ding; Jingren Zhou. **Context as an Environment: Programmatic Context Management for Long-Horizon Agents.** arXiv:2608.21690v1, 21 August 2026; preprint. [Primary reference](https://arxiv.org/abs/2608.21690v1).
+
+**Used for:** Abstract describes a programmable context environment and printed model-facing projections. **Limit:** Abstract inspected only; full-method and performance claims are not used.
+
+**Reading record:** abstract only; [inspected location](https://arxiv.org/abs/2608.21690v1), accessed 2026-11-14.
+
+### Ernst et al. 2026
+
+Johannes Ernst; David Lennart Risch; Peter Lehner; Freek Stulp; Andreas Dömel. **Decoupling what, how, and when for observing decision-making context in autonomous robots.** Frontiers in Robotics and AI 13:1847701, 22 July 2026. DOI [10.3389/frobt.2026.1847701](https://doi.org/10.3389/frobt.2026.1847701).
+
+**Used for:** CoDRA as direct architectural prior art. **Limit:** evaluated robot setting; validity scheduling and broader transfer remain open. See the [reading record](../../papers/agent-situation/LITERATURE.md#ernst-et-al-2026-decoupling-what-how-and-when-for-observing-decision-making-context-in-autonomous-robots) for inspection scope and rights.
+
+### Sumers et al. 2024
+
+Theodore R. Sumers; Shunyu Yao; Karthik Narasimhan; Thomas L. Griffiths. **Cognitive Architectures for Language Agents.** Transactions on Machine Learning Research, 2024; camera-ready [arXiv:2309.02427v3](https://arxiv.org/abs/2309.02427v3), 15 March 2024.
+
+**Used for:** CoALA as direct precedent for the state/projection distinction. **Limit:** no guarantee transferred to the present prototype. See the [reading record](../../papers/agent-situation/LITERATURE.md#sumers-et-al-2024-cognitive-architectures-for-language-agents) for inspection scope and rights.

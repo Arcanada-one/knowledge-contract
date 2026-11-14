@@ -4,7 +4,9 @@ sources: none
 
 # Engineering Studies and Evidence
 
-Six studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 24 explicit bindings; per-study origin records identify exact evidence bytes.
+Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 26 explicit bindings; per-study origin records identify exact evidence bytes.
+
+**Historical validation scope.** The [preserved mechanical `validation-report.json`](validation-report.json) (Git blob `c02b44d69a0cd7b704b10323389a56c563b1b62d`, **present at source `main` commit** `d5e684e201f6d41498c4fbd8c2a3497eed2bb30e`) reports **24 claims**. It was **not regenerated** for this **26-claim** candidate index. The precise source revision and execution procedure that generated the earlier report are **NOT_VERIFIED**. Its internal phrase `Current integrated edition` describes the pinned source snapshot, not the current candidate. This report is not independent scientific review, a current 26-claim validation, or native admission.
 
 | Document | Subject |
 | --- | --- |
@@ -14,6 +16,7 @@ Six studies connect the scientific claims to actual finite checks, counterexampl
 | [Executable Projections](executable-projections-and-revision/STUDY.md) | Finite consumer checks, paired agent tasks, addressed revision and the limits of graph minimality. |
 | [Reuse Economics](reuse-admission-and-cost-controls/STUDY.md) | Executable admission counterexamples and an analytical break-even calculation with explicit costs. |
 | [Editorial Pilot](editorial-skill-pilot/STUDY.md) | One preregistered editorial comparison, hash-pinned retained outputs, masked review and an observed tie. |
+| [Context Controls](agent-situation-controls/STUDY.md) | Authored finite state/projection controls and explicit disabled-guard cases; no LLM or live effects. |
 
 ## Counting and interpretation
 

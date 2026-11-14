@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.document-names/1",
   "source_commit": "a0450428704fcd41b411203f2fc88c06c779610b",
-  "scope": "All 31 edition-1.1 catalogue documents; localized names are not completed body translations",
+  "scope": "All 33 edition-1.1 catalogue documents, including the Agent Situation and Context Controls research-draft additions; localized names are not completed body translations. The source_commit retains the inherited naming baseline, not a source pin for the new works.",
   "columns": [
     "slug",
     "short_en",
@@ -90,6 +90,14 @@
       "Пространства представлений, различимость и пределы сходства",
       "意义几何",
       "表示空间、可区分性与相似性的局限"
+    ],
+    [
+      "agent-situation",
+      "Agent Situation",
+      "Ситуация агента",
+      "Инициализация, изменения и ограниченный контекст",
+      "智能体情境",
+      "初始化、变化与有界语境"
     ],
     [
       "knowledge-contract-core",
@@ -226,6 +234,14 @@
       "Редактирование научного раздела с помощью набора знаний — замаскированное сравнение одного раздела",
       "编辑试验",
       "利用知识工具集编辑科学章节的单章节掩蔽比较"
+    ],
+    [
+      "agent-situation-controls",
+      "Context Controls",
+      "Контроль контекста",
+      "Конечные проверки состояния ситуации и проекции контекста",
+      "语境检验",
+      "情境状态与语境投影的有限检查"
     ],
     [
       "glossary",

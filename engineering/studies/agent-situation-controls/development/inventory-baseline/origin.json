@@ -1,0 +1,25 @@
+{
+  "schema": "knowledge-contract.study-evidence-origin/1",
+  "study": "agent-situation-controls",
+  "scope": "New project-authored finite demonstration and same-controller review. No LLM/production trial or independent acceptance is claimed. Preserved development/v1 files are separately bound by MANIFEST.json.",
+  "files": [
+    {
+      "file": "execution.txt",
+      "representation": "new_authored_finite_demonstration_output",
+      "published_sha256": "4e7b2d00cce486c7b6aa476c3ce0a6db9b99fd910049077cb7f02396e2bc7f76",
+      "size_bytes": 400
+    },
+    {
+      "file": "finite-run.json",
+      "representation": "new_authored_finite_demonstration_output",
+      "published_sha256": "371e895c2e9b2cdca5ead55324e8792524ff1cee1b77f60cb7baa95248a127f7",
+      "size_bytes": 144961
+    },
+    {
+      "file": "internal-review.json",
+      "representation": "new_authored_finite_demonstration_output",
+      "published_sha256": "c2db187a9558ee822f732c1c573a9c7d4350559587487cdc773375c9cb4b585a",
+      "size_bytes": 1126
+    }
+  ]
+}
