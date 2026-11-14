@@ -5,7 +5,10 @@ Status: **author-draft reference demonstration**. This implements the bounded de
 ## Run
 
 ```sh
-python3 /workspace/scratch/aff956949d29/agent-situation-research/prototype/checks/check_agent_situation.py --evidence /workspace/scratch/aff956949d29/agent-situation-research/prototype/evidence/finite-run.json
+KC_SITUATION_RUN="$(mktemp -d)"
+cp -R engineering/studies/agent-situation-controls/. "$KC_SITUATION_RUN/"
+python3 -B "$KC_SITUATION_RUN/checks/check_agent_situation.py" --evidence "$KC_SITUATION_RUN/evidence/finite-run.json"
+python3 -B -m unittest discover -s engineering/studies/agent-situation-controls/checks -p test_inventory.py -v
 ```
 
 Python 3.10 or later; standard library only. The runner writes finite-run.json and execution.txt, records the actual command/runtime, and exits nonzero if an authored control fails or a disabled-guard variant fails to expose the intended error. The JSON contains inputs, full operation outputs, literal expected outcomes, counts, source SHA-256 digests and limitations. The three mutation runs deliberately bypass freshness, mandatory closure and scope checks. These are discriminating authored negative controls, not proof of exhaustive mutation coverage or independent review.
@@ -38,6 +41,16 @@ Python 3.10 or later; standard library only. The runner writes finite-run.json a
 The first run passed 18 controls and detected three mutants, yet a reviewer reproduced a delayed-derivation error: a claim derived from an old premise was bound to the new premise version at receipt and incorrectly became READY. The preserved counterexample records expected NOT_READY and actual READY. This was a real implementation defect missed by the authored suite, not evidence of independent acceptance. The correction requires explicit premise pins and checks their temporal consistency. Added controls cover missing/old/impossible pins, valid delayed matching pins, and modified snapshot rejection. The final evidence reports 21 controls separately from the original 18-control contract.
 
 ## Unimplemented and assurance boundary
+
+### Control inventory correction
+
+A continuation review found that the original runner could silently omit a registered control: removing case 21 left 21 fixtures, but a truncating pairing ran 20 cases and still returned success. It also counted 87 fixture fields although only 84 belonged to executed controls. The original complete 21/21 run remains valid within its stated scope.
+
+The current runner checks an exact correspondence between declared IDs, unique callables and expected fixtures before execution. It counts performed field predicates, binds mutants by control ID and requires the complete executed inventory for success. Nine behavioral registration/accounting checks cover the repaired boundary; all nine, the original 21 controls and three mutants passed. The runtime model and expected outcomes are unchanged.
+
+The original runner is preserved byte for byte in [development/inventory-baseline](development/inventory-baseline/README.md). The original payload manifest and finite/execution reports describe that historical runner. The original origin bytes are archived alongside it; the current origin retains its original entries and adds the successor records. The successor has a separate [receipt](evidence/20261114-inventory-receipt.json) and [review](../../../reviews/agent-situation/20261114-INVENTORY.md). This repair and its tests share a controller/model family; they are not independent scientific acceptance.
+
+### Implementation limits
 
 No live sensors, accounts, tool adapters, network, LLM, effects, grants, token budgeting, durable storage, restart recovery, distributed clock reconciliation, probabilistic confidence calibration, optimal refresh scheduling or general intention scheduler is implemented. Snapshot data and source labels are not cryptographically authenticated and are not an adversarial security boundary. The model is an in-process demonstration with no concurrent writes.
 

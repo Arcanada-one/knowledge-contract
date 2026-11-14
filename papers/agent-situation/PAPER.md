@@ -30,6 +30,8 @@ sources:
   - "Agent Situation — Horvitz 1999"
   - "Agent Situation — Sheng et al. 2026"
   - "Agent Situation — Lin et al. 2026"
+  - "Agent Situation — Ernst et al. 2026"
+  - "Agent Situation — Sumers et al. 2024"
   - "Knowledge Contract project corpus and publication edition"
 ---
 
@@ -65,6 +67,8 @@ Partially observable planning supplies a precise reason to preserve uncertainty.
 
 ### 2.2 Robot capabilities, partial startup and feedback
 
+CoDRA is a close architectural predecessor: a context manager coordinates observers alongside robot execution and retains named values, known/unknown status and observation timestamps. Its centrifuge example makes lid assessment depend on visibility and distance. The evaluation uses a mobile manipulator in laboratory and trade-fair settings; the authors describe quasi-static scenes and leave dynamic observer priorities and explicit validity durations for future work ([Ernst et al., 2026, Sections 3.3 and 5](https://doi.org/10.3389/frobt.2026.1847701)). We adopt the separation of what, how and when to observe; this draft does not claim to originate it or transfer the reported robot gains to LLM agents.
+
 SayCan combines language-based usefulness with skill feasibility in the current situation. Its sponge example distinguishes an appropriate goal from an immediately executable primitive ([Ahn et al., 2022](https://arxiv.org/abs/2204.01691v2)). Inner Monologue feeds scene descriptions, execution feedback and human changes back into planning; the authors demonstrate replanning after failures and interruptions ([Huang et al., 2023](https://proceedings.mlr.press/v205/huang23c.html)). These are concrete precedents for capability observations and outcome-driven updates, within their tested settings.
 
 Self-modeling also has a narrower empirical meaning than an agent declaring who it is. Bongard, Zykov and Lipson report a robot adapting an inferred body model and gait after structural damage ([2006](https://doi.org/10.1126/science.1133687)). In a software agent, an equivalent research question concerns measured tool availability and failure, not consciousness or reliable introspection.
@@ -72,6 +76,8 @@ Self-modeling also has a narrower empirical meaning than an agent declaring who 
 ROS REP 105 permits a local frame while the global map remains unattached until localization is available ([Meeussen, 2010](https://www.ros.org/reps/rep-0105.html)). This is a useful precedent for partial initialization. ROS documentation also distinguishes clock domains and clock jumps, and separates message deadline, lifespan and liveliness ([Clock and Time](https://design.ros2.org/articles/clock_and_time.html); [Jazzy QoS](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst)). Source silence, expired data and an absent real-world object are different states.
 
 ### 2.3 Agent memory and bounded context
+
+CoALA explicitly distinguishes persistent working memory from each LLM input, which is assembled from a subset of that memory, and organizes memory operations and environmental actions into decision cycles ([Sumers et al., 2024, Sections 4.1 and 4.6](https://arxiv.org/html/2309.02427v3)). We adopt this established state/projection distinction. The proposed specialization concerns source-scoped temporal dependencies, applicability and explicit use-time obligations within Knowledge Contract, whose benefit still requires comparison.
 
 ReAct interleaves decisions with external interaction and observations ([Yao et al., 2023](https://arxiv.org/abs/2210.03629v3)). Generative Agents combines memory retrieval, reflection and plan revision in a simulated social setting ([Park et al., 2023](https://arxiv.org/abs/2304.03442v2)). MemGPT explicitly manages limited main context and external memory ([Packer et al., 2024](https://arxiv.org/abs/2310.08560v2)). Thus persistent context, feedback and selective model input are established directions.
 
@@ -142,6 +148,8 @@ A proposed update cycle first validates scope and source, deduplicates events, c
 
 Message receipt, action completion, timer expiry, account changes and source-health changes can all trigger this cycle. Not every trigger requires a language-model call. A heartbeat can update channel health without refreshing an old fact. A task-relevant change can require a new projection without a broad rescan.
 
+Observation preconditions can themselves be dependencies. A measurement may be usable only while its target is visible, identifiable or within the sensor's supported range. Losing that condition does not establish a negative world-state value or refresh a previous observation. CoDRA's centrifuge observers motivate this distinction; its proposed contract treatment here remains an unimplemented adapter obligation, not a new result of the finite study.
+
 | Trigger | Targeted response | Failure to avoid |
 | --- | --- | --- |
 | New message or changed goal | Reconcile task, participants and affected plan dependencies | Treating an obsolete plan as the current instruction |
@@ -204,7 +212,7 @@ These counterexamples limit what a passing finite implementation can establish. 
 
 The companion [Context Controls study](../../engineering/studies/agent-situation-controls/STUDY.md) reports the actually executed authored finite cases and discriminating controls of a small standard-library model. Those results concern its input predicates, state transitions and projection rules. They do not establish an LLM benefit, real permissions, production deployment or independent replication.
 
-The [engineering design](../../roadmap/agent-situation/ENGINEERING.md) separates implemented mechanisms from proposed runtime adapters. The [experiment protocol](../../roadmap/agent-situation/EXPERIMENT.md) is unexecuted and defines a coverage pilot before any confirmatory study. The principal comparator is deterministic typed state with event invalidation and fixed TTLs, retaining the same scope, conflict and mandatory-dependency guards. Weaker transcript and retrieval baselines are informative but cannot alone justify the full proposal.
+The [engineering design](../../roadmap/agent-situation/ENGINEERING.md) separates implemented mechanisms from proposed runtime adapters. The [experiment protocol](../../roadmap/agent-situation/EXPERIMENT.md) is unexecuted and defines a coverage pilot before any confirmatory study. The principal comparator is deterministic typed state with event invalidation and fixed refresh, retaining the same scope, conflict and mandatory-dependency guards. Both typed conditions share the same frozen task-conditioned projector, optional ranking, serialization, validity limits and budgets; only the optional acquisition schedule differs. This contrast can evaluate selective refresh, but cannot attribute a separate benefit to projection. Weaker transcript and retrieval baselines are informative but cannot alone justify the full proposal.
 
 Candidate outcomes include valid task completion, obsolete-value use, mandatory-condition loss, unnecessary refusal, recovery delay, observation/model calls, actually metered tokens and total maintenance cost. Matched-budget baselines share the permitted environment, model, tool availability and evidence budget. The full-history condition is separately labelled as an unequal-cost reference; its larger allowance cannot support an equal-budget efficiency claim. Task families include partial startup, reordered or missing events, changed accounts, invalidated plans, conflicting sources, context overflow and uncertain external outcomes. Condition labels should be masked for discretionary scoring, with an oracle specified separately from the agent.
 
@@ -220,4 +228,4 @@ The present decision is to develop this as a companion research draft within the
 
 ## References and source scope
 
-The [literature matrix](LITERATURE.md) gives bibliographic records, exact inspected editions and individual claim limits for all nineteen external sources. The shared [bibliography](../../reference/bibliography/BIBLIOGRAPHY.md) and [source register](../../SOURCES.md) retain publication-level attribution. External works are linked and paraphrased; their figures, datasets and full texts are not redistributed.
+The [literature matrix](LITERATURE.md) gives bibliographic records, exact inspected editions and individual claim limits for all 21 external sources. The shared [bibliography](../../reference/bibliography/BIBLIOGRAPHY.md) and [source register](../../SOURCES.md) retain publication-level attribution. External works are linked and paraphrased; their figures, datasets and full texts are not redistributed.

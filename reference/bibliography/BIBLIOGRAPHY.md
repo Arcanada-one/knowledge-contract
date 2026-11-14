@@ -336,3 +336,15 @@ Yin Lin; Elaine Ang; Erkang Zhu; Bolin Ding; Jingren Zhou. **Context as an Envir
 **Used for:** Abstract describes a programmable context environment and printed model-facing projections. **Limit:** Abstract inspected only; full-method and performance claims are not used.
 
 **Reading record:** abstract only; [inspected location](https://arxiv.org/abs/2608.21690v1), accessed 2026-11-14.
+
+### Ernst et al. 2026
+
+Johannes Ernst; David Lennart Risch; Peter Lehner; Freek Stulp; Andreas Dömel. **Decoupling what, how, and when for observing decision-making context in autonomous robots.** Frontiers in Robotics and AI 13:1847701, 22 July 2026. DOI [10.3389/frobt.2026.1847701](https://doi.org/10.3389/frobt.2026.1847701).
+
+**Used for:** CoDRA as direct architectural prior art. **Limit:** evaluated robot setting; validity scheduling and broader transfer remain open. See the [reading record](../../papers/agent-situation/LITERATURE.md#ernst-et-al-2026-decoupling-what-how-and-when-for-observing-decision-making-context-in-autonomous-robots) for inspection scope and rights.
+
+### Sumers et al. 2024
+
+Theodore R. Sumers; Shunyu Yao; Karthik Narasimhan; Thomas L. Griffiths. **Cognitive Architectures for Language Agents.** Transactions on Machine Learning Research, 2024; camera-ready [arXiv:2309.02427v3](https://arxiv.org/abs/2309.02427v3), 15 March 2024.
+
+**Used for:** CoALA as direct precedent for the state/projection distinction. **Limit:** no guarantee transferred to the present prototype. See the [reading record](../../papers/agent-situation/LITERATURE.md#sumers-et-al-2024-cognitive-architectures-for-language-agents) for inspection scope and rights.

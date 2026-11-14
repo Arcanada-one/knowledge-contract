@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.study-evidence-origin/1",
   "study": "agent-situation-controls",
-  "scope": "New project-authored finite demonstration and same-controller review. No LLM/production trial or independent acceptance is claimed. Preserved development/v1 files are separately bound by MANIFEST.json.",
+  "scope": "New project-authored finite demonstration and same-controller review. No LLM/production trial or independent acceptance is claimed. Preserved development/v1 files are separately bound by MANIFEST.json. The original three entries are retained unchanged. The dated inventory repair is a separate successor execution; the original origin bytes are archived at ../development/inventory-baseline/origin.json.",
   "files": [
     {
       "file": "execution.txt",
@@ -20,6 +20,30 @@
       "representation": "new_authored_finite_demonstration_output",
       "published_sha256": "c2db187a9558ee822f732c1c573a9c7d4350559587487cdc773375c9cb4b585a",
       "size_bytes": 1126
+    },
+    {
+      "file": "20261114-inventory-execution.txt",
+      "representation": "new_authored_inventory_repair_output",
+      "published_sha256": "0f0f9ee97b6539a57d5475a012b4ff27c9496d09333fb8254f03c97c2c5d36ee",
+      "size_bytes": 372
+    },
+    {
+      "file": "20261114-inventory-receipt.json",
+      "representation": "new_authored_inventory_repair_output",
+      "published_sha256": "d7277042714a098656f72edbf6bae166319f4a7d86bb52fa5cd805abb24355b2",
+      "size_bytes": 3950
+    },
+    {
+      "file": "20261114-inventory-run.json",
+      "representation": "new_authored_inventory_repair_output",
+      "published_sha256": "1cde8ee28e44816d0e72253bc2a28f11d1bc5fb79e056221996211924c44d182",
+      "size_bytes": 149506
+    },
+    {
+      "file": "20261114-inventory-tests.txt",
+      "representation": "new_authored_inventory_repair_output",
+      "published_sha256": "d4e023052afaf5ccbcf042cfee405789e852d8204259bd6cba22378eded2d668",
+      "size_bytes": 1263
     }
   ]
 }

@@ -9,6 +9,8 @@ sources:
   - "Agent Situation — Patel 2026"
   - "Agent Situation — Sheng et al. 2026"
   - "Agent Situation — Lin et al. 2026"
+  - "Agent Situation — Ernst et al. 2026"
+  - "Agent Situation — Sumers et al. 2024"
 license: "CC-BY-4.0"
 ---
 
@@ -36,12 +38,14 @@ All conditions would receive the same task, permitted observation interfaces, ex
 1. **Recency:** the most recent evidence fitting a 4,096-token evidence budget.
 2. **Full history:** all available history, initially capped at 16,384 evidence tokens; an explicitly unequal-cost reference.
 3. **Vector retrieval:** top-ranked raw observations within 4,096 tokens, with a frozen encoder and query construction.
-4. **Deterministic typed state:** scope and source keys, sequence handling, observation-time TTL, conflicts, dependency closure, fixed optional ranking, relevant-event invalidation, and fixed pre-action freshness checks.
-5. **Full proposed condition:** the same guards and store as condition 4, adding task-conditioned projection and selective refresh. The adaptive policy would be specified and frozen before evaluation; it is not implemented merely by naming this condition.
+4. **Deterministic typed state:** scope and source keys, sequence handling, observation-time TTL, conflicts, dependency closure, relevant-event invalidation and fixed pre-action checks. The task-conditioned projector, optional ranking and tie-breaking, serializer, validity limits and budgets are frozen and shared with condition 5. This condition uses a declared fixed refresh schedule.
+5. **Selective refresh:** the same store, guards, projector, effect checks, validity limits and budgets as condition 4, changing only the optional acquisition/refresh schedule. The scheduler and its observable inputs would be specified and frozen before evaluation. It receives no hidden change notifications or future events unavailable to condition 4. Naming this condition does not implement it.
 
 Conditions 1, 3, 4, and 5 would have equal evidence budgets and identical common instructions. Maintenance calls, retrieval, and storage are additional measured costs, not free services. The deterministic comparator retains the important correctness guards; it is not deliberately degraded to produce a favorable result.
 
-Five isolated ablations would remove, one at a time, observation-time freshness, scope binding, conflict retention, required dependency closure, and critical-change invalidation from condition 5. Fixed refresh versus adaptive refresh is already isolated by conditions 4 and 5. Disabled-guard variants remain sandboxed and clearly labelled. Multi-component changes would require a separate condition.
+Five isolated ablations would remove, one at a time, observation-time freshness, scope binding, conflict retention, required dependency closure, and critical-change invalidation from condition 5. Conditions 4 and 5 isolate refresh scheduling only if their common implementation and configurations match on every other declared component. The manifest therefore pins the common code and projector/configuration hashes separately from the two scheduler configurations. A separate benefit from task-conditioned projection is not identified by this contrast and would require its own comparator. Disabled-guard variants remain sandboxed and clearly labelled. Multi-component changes would require a separate condition.
+
+This amendment corrects the initial protocol, which changed optional ranking/projection and refresh together while claiming to isolate refresh. The amendment precedes any LLM outcomes; the proposed 450-run allocation is unchanged. H1 and H3 now concern the scheduler contrast under the common projector. An implementation mismatch blocks that attribution even when both requests fit the same token budget.
 
 ## Stages, sample, and seeds
 
@@ -62,11 +66,11 @@ The initial plan totals 200 core episode-runs, 50 repeated core runs, and 200 ab
 | Scope and revocation | Account switch or revoked fixture permission versus unchanged valid scope |
 | Derived state | Changed critical dependency versus an unrelated update |
 | Projection budget | Required closure one unit over budget versus exact fit |
-| Lost notification | Dropped update with TTL backstop versus delivered update |
+| Lost notification | Dropped update or lost observation eligibility, with TTL/revalidation backstop, versus delivered or newly eligible observation |
 | Proactivity | Irrelevant heartbeat or unnecessary interruption versus relevant deadline/event |
 | Uncertain outcome | Timed-out action without receipt versus a confirmed completion receipt |
 
-The four instances would not cover every subcase exhaustively. Each instantiated subcase would be named in the manifest; uninstantiated cases remain untested. Prototype budget units remain abstract. LLM experiments would tokenize actual serialized context, including metadata, separately.
+The four instances would not cover every subcase exhaustively. Each instantiated subcase would be named in the manifest; uninstantiated cases remain untested. CoDRA motivates a proposed observation-eligibility subcase: a target was observed, then becomes occluded or out of range; prior stored evidence does not become a new observation or establish the negative value. This candidate has not been added to the finite checks or executed. Prototype budget units remain abstract. LLM experiments would tokenize actual serialized context, including metadata, separately.
 
 ## Pairing, oracle, and annotation
 
@@ -104,7 +108,7 @@ Defects discovered after outcomes are visible would receive a dated amendment an
 
 ## Attribution and novelty boundary
 
-Close prior art includes LongMemEval-V2’s environment-specific memory and compact evidence gathering, Supersede’s current-value maintenance, EnvTrustBench’s freshness/provenance and action-guiding evidence tests, and Scroll’s programmatic projections (abstract inspected only). Live action decisions alone therefore do not establish novelty. The proposed contribution is this explicit Knowledge Contract integration and a measured comparison of its maintenance policy against strong alternatives. No “first situation model,” first agent memory, or first proactive assistance claim is supported.
+Close prior art includes CoDRA's separated context observers and scheduling, CoALA's persistent working memory and per-call projections, LongMemEval-V2’s environment-specific memory and compact evidence gathering, Supersede’s current-value maintenance, EnvTrustBench’s freshness/provenance and action-guiding evidence tests, and Scroll’s programmatic projections (abstract inspected only). Live action decisions alone therefore do not establish novelty. The proposed contribution is this explicit Knowledge Contract integration and a measured comparison of its maintenance policy against strong alternatives. No “first situation model,” first agent memory, or first proactive assistance claim is supported.
 
 The [source register](../../SOURCES.md) supplies attribution; the [literature matrix](../../papers/agent-situation/LITERATURE.md) distinguishes established findings from the proposed integration. This protocol is an authored prospective plan, not an external registration or execution receipt.
 

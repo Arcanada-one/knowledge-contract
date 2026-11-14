@@ -16,7 +16,7 @@ sources:
 
 # Context Controls: Finite Checks of Situation State and Context Projection
 
-**Author:** Pavel Valentov · **Publication edition:** 1.1 · **Review state:** author-produced evidence with a bounded same-controller non-author review; independent acceptance NOT_VERIFIED.
+**Author:** Pavel Valentov · **Publication edition:** 1.1 · **Review state:** author-produced evidence with bounded same-controller review and harness repair; independent acceptance NOT_VERIFIED.
 
 ## 1. Question and bounded claim
 
@@ -30,7 +30,7 @@ All observations, expected values and programs in this study were newly authored
 
 The initial [design input](checks/DESIGN_INPUT.md) records eighteen intended control families before implementation in this working session. This chronology is an author record, not an independent preregistration. The implementing agent also wrote the runner and literal [expected outcomes](checks/expected.json). A second agent inspected the paper and code under the same controller/model family, reproduced two defects and rechecked the correction. That separation is useful review, but actual independence remains NOT_VERIFIED.
 
-The [origin manifest](evidence/origin.json) binds the evidence files by exact SHA-256 and byte size. The [payload manifest](MANIFEST.json) identifies the prototype files, including the preserved development version. The actual [finite-run record](evidence/finite-run.json) contains source digests, runtime, command, complete operation traces, expected outcomes, counts and limitations. Its recorded runtime is Python 3.12.14.
+The [origin manifest](evidence/origin.json) binds every current evidence file by exact SHA-256 and byte size. Its original three entries are unchanged; its exact initial bytes are preserved in the [historical origin](development/inventory-baseline/origin.json). The historical [payload manifest](MANIFEST.json) identifies the prototype at that execution, including the preserved development version. The original [finite-run record](evidence/finite-run.json) contains source digests, runtime, command, complete operation traces, expected outcomes, counts and limitations. Its recorded runtime is Python 3.12.14. The historical execution records and payload manifest remain unchanged; the current origin adds the dated successor records. The original runner's exact bytes are also retained in [inventory-baseline](development/inventory-baseline/README.md); the current runner and its successor execution are bound separately by the [inventory repair receipt](evidence/20261114-inventory-receipt.json).
 
 ## 3. Model and execution method
 
@@ -70,6 +70,10 @@ The [review record](../../../reviews/agent-situation/20261114-REVIEW.md) retains
 
 ## 5. Results
 
+A continuation review found a separate defect in the runner's completeness claim: removing only the last registered callable let a truncating pairing execute 20 of 21 fixtures and still report success. It also counted all 87 fixture fields instead of the 84 belonging to executed controls. The complete historical 21/21 execution is not invalidated by this omission probe; the defect concerns what the harness would accept after registration loss. The [inventory review](../../../reviews/agent-situation/20261114-INVENTORY.md) records the isolated probe and correction.
+
+The successor validates a one-to-one correspondence between declared IDs, callable registrations and fixtures before execution, binds negative controls by ID, checks the complete executed inventory and counts actual performed field predicates. Nine behavioral checks cover complete/reordered registration, missing/extra/mismatched/duplicate entries and unperformed-comparison accounting. Neither the situation model nor its literal expected outcomes changed.
+
 | Observation | Actual result | Interpretation |
 | --- | --- | --- |
 | Initial authored suite | 18/18 matched | The initial suite missed a real delayed-derivation defect |
@@ -78,6 +82,9 @@ The [review record](../../../reviews/agent-situation/20261114-REVIEW.md) retains
 | Corrected authored suite | 21/21 matched; 0 failed | Eighteen original controls plus three identified review additions |
 | Corrected disabled guards | 3/3 detected; 0 exceptions | The selected negative controls remain discriminating |
 | Separate internal recheck | 21/21 and 3/3 | Same-controller non-author inspection and execution; independence NOT_VERIFIED |
+| Inventory omission probe | 20/20 reported success against 21 fixtures | A separate harness completeness and accounting defect, preserved as adverse evidence |
+| Inventory repair replay | 21/21; 3/3 mutants; 87 performed field predicates | Same finite model and expected outcomes, with validated registration |
+| Inventory/accounting controls | 9/9 | Separate behavioral checks of the repaired harness; same-controller authorship |
 | LLM/network/effect calls in the model | 0 | No agent-performance or real-world action experiment occurred |
 
 These outcomes establish only the recorded finite predicates. They do not estimate a population failure rate, prove complete correctness, establish the paper's empirical hypothesis or validate a live consumer. There is no measured LLM token cost, monetary saving or production utility result.
@@ -90,6 +97,7 @@ From the repository root, copy the study to a temporary execution directory. The
 KC_SITUATION_RUN="$(mktemp -d)"
 cp -R engineering/studies/agent-situation-controls/. "$KC_SITUATION_RUN/"
 python3 -B "$KC_SITUATION_RUN/checks/check_agent_situation.py" --evidence "$KC_SITUATION_RUN/evidence/finite-run.json"
+python3 -B -m unittest discover -s engineering/studies/agent-situation-controls/checks -p test_inventory.py -v
 ```
 
 Expected terminal summary: `FINITE_CONTROLS_PASS`, 21/21 controls and 3/3 detected disabled guards. Timestamps, runtime strings and command paths may differ on replay; compare declared outcomes and source hashes rather than requiring identical evidence bytes across environments.

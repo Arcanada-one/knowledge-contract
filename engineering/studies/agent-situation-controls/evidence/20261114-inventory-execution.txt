@@ -1,0 +1,4 @@
+python3 /tmp/kc-situation-inventory-successor-i_r0jsuu/study/checks/check_agent_situation.py --evidence /tmp/kc-situation-inventory-successor-i_r0jsuu/study/evidence/finite-run.json
+FINITE_CONTROLS_PASS
+Authored controls: 21/21 (18 declared + 3 review); disabled-guard mutations detected: 3/3.
+Native admission: NOT_VERIFIED; no LLM, network, grant authority, or effects.

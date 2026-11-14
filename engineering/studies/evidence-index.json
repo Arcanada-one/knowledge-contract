@@ -14,7 +14,7 @@
     "language": "evidence-language-index.json records representation languages and English summary locations.",
     "historical_recovery": "historical-recovery-gaps.json records exact missing identities, a recovered matching schema, and a rejected nonmatching implementation candidate."
   },
-  "claim_count": 25,
+  "claim_count": 26,
   "studies": [
     {
       "name": "contract-profile-conformance",
@@ -967,6 +967,44 @@
         "../../papers/retrieval-and-context-composition/PAPER.md"
       ],
       "public_reproduction": "Standard-library runner and exact authored fixtures are distributed; replay from a temporary study copy to preserve retained evidence."
+    },
+    {
+      "claim_id": "situation-control-inventory",
+      "study": "agent-situation-controls/STUDY.md",
+      "statement": "An isolated missing-registration probe exposed a false success in the original runner; the successor replays the unchanged model and fixtures with complete registration and performed-comparison accounting.",
+      "claim_kind": "recorded_observation",
+      "model": "Authored finite single-process situation model; no LLM or real effects.",
+      "test_or_argument": "Original 21 controls, three disabled guards and nine separate behavioral registration/accounting checks; missing-registration probe changes one input to the old runner.",
+      "evidence": [
+        {
+          "path": "agent-situation-controls/development/inventory-baseline/missing-control-run.json",
+          "json_pointer": "/counts"
+        },
+        {
+          "path": "agent-situation-controls/evidence/20261114-inventory-run.json",
+          "json_pointer": "/inventory"
+        },
+        {
+          "path": "agent-situation-controls/evidence/20261114-inventory-receipt.json",
+          "json_pointer": "/unit_controls_executed"
+        }
+      ],
+      "counterexample_or_rival": "The old zip pairing reported success on 20 registered cases against 21 fixtures; complete/reordered positive registration must still pass.",
+      "result": {
+        "situation_controls": "21/21",
+        "selected_mutants": "3/3",
+        "inventory_controls": "9/9",
+        "performed_field_predicates": 87
+      },
+      "limits": [
+        "Same-controller inspection and repair; no independent acceptance.",
+        "Nested fields are not independent samples; inventory checks and mutants have separate denominators.",
+        "Finite chosen controls do not prove complete correctness or LLM performance."
+      ],
+      "scientific_context": [
+        "../../papers/agent-situation/PAPER.md"
+      ],
+      "public_reproduction": "Run the finite harness in a temporary study copy and unittest discover for checks/test_inventory.py, as documented in STUDY.md."
     }
   ],
   "review_scopes": [

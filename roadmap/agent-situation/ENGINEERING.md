@@ -8,6 +8,8 @@ sources:
   - "Agent Situation — Dey 2001"
   - "Agent Situation — ROS Clock and Time"
   - "Agent Situation — ROS QoS Jazzy"
+  - "Agent Situation — Ernst et al. 2026"
+  - "Agent Situation — Sumers et al. 2024"
 ---
 
 # Agent Situation: Draft Engineering Design
@@ -49,6 +51,8 @@ A startup controller loads trusted host metadata, reads the minimal critical sou
 
 An adapter observation carries field/entity identity, scope, producer identity, event identity, producer sequence or revision, value/unknown status, observation time, receipt time, clock domain and declared validity policy. A derived observation additionally carries the actual dependency revisions used to derive it. Binding to the current dependencies at receipt is invalid when derivation happened earlier.
 
+Observation eligibility is a separate adapter concern: a sensor may require visibility and range; an API may require an available authorized read path. CoDRA provides a concrete precedent for observers whose applicability depends on other context. An eligibility failure produces unavailable/unknown evidence, not a false world-state value or a fresh timestamp for the old value. This dependency is proposed for a later adapter; the current finite model does not implement sensor eligibility.
+
 The reducer retains sufficient provenance to explain why a field is current, unknown, stale or conflicted. It compares sequences only within the same producer/scope stream. Duplicate identity with identical content is idempotent; duplicate identity with different content is rejected or explicitly conflicted. Disagreement across independent sources remains visible unless a declared precedence rule resolves it.
 
 Proposed interfaces are conceptual rather than a wire protocol:
@@ -75,6 +79,8 @@ Use four independently tunable frequencies: acquisition, reduction, projection a
 | Unresolved effect | Authoritative reconciliation query | Timeout after a request whose outcome is unknown |
 
 TTL is an accepted age policy, not a promise that the value stays true. The first implementation uses explicit deterministic rules. Adaptive priorities are a later experimental condition and must be frozen before comparison. If deadlines, observation budgets and task requirements conflict, return a visible degraded state rather than silently extending validity.
+
+The planned fixed-versus-selective comparison shares the same task-conditioned projector, ranking, serializer, validity limits, guards and budgets. Only optional acquisition scheduling varies. Record the common implementation hash and separate policy configurations before execution; a simultaneous projector change prevents attributing the outcome to refresh alone.
 
 Event streams can lose, reorder or duplicate messages. A cursor represents processed events, not complete knowledge of the world. Recovery after restart needs a declared snapshot/cursor protocol. A clock jump requires clock-domain-aware invalidation; comparing arbitrary wall-clock timestamps is insufficient.
 

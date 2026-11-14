@@ -24,6 +24,8 @@ sources:
   - "Agent Situation — Horvitz 1999"
   - "Agent Situation — Sheng et al. 2026"
   - "Agent Situation — Lin et al. 2026"
+  - "Agent Situation — Ernst et al. 2026"
+  - "Agent Situation — Sumers et al. 2024"
 ---
 
 # Situation Literature: Primary Sources and Bounded Relevance
@@ -34,7 +36,7 @@ This note supports [Agent Situation: Initialization, Change, and Bounded Context
 
 ## Method and access boundaries
 
-The synthesis uses 19 selected primary-source reading records assembled on 14 November 2026. Each record supplies a named work, edition or version, primary URL, inspected location, retrieval date, intended use and limiting qualification. The integration pass preserves those records' stated access scope. Selection was targeted to the research question: there is no registered systematic-review protocol, exhaustive database search, coverage estimate, publication-bias assessment or quantitative meta-analysis. The number 19 counts records, not independent replications or evidence of completeness.
+The synthesis uses 21 selected primary-source reading records assembled on 14 November 2026. Each record supplies a named work, edition or version, primary URL, inspected location, retrieval date, intended use and limiting qualification. The integration pass preserves those records' stated access scope. Selection was targeted to the research question: there is no registered systematic-review protocol, exhaustive database search, coverage estimate, publication-bias assessment or quantitative meta-analysis. The number 21 counts records, not independent replications or evidence of completeness. A continuation review added CoDRA and CoALA as direct architectural predecessors to the initial 19-record pass.
 
 A primary-paper URL and an inspected URL have different roles. Several inspected locations are official or author-maintained project/documentation pages; their presence is not a claim that every full methods section was read. The Lin et al. Scroll record is **abstract-only**: this note uses the stated programme of a programmable context environment and model-facing projections, and excludes full-method and performance claims. ROS pages and branches are **mutable documentation**, identified by access date; no unobserved immutable snapshot or reliable publication chronology is invented. Records labelled preprint retain that status.
 
@@ -67,6 +69,12 @@ Retain decision-relevant uncertainty; belief updates use actions and observation
 **Recorded source:** Leslie Pack Kaelbling; Michael L. Littman; Anthony R. Cassandra. Artificial Intelligence 101, 99–134 (1998). **Inspected:** [recorded primary or official/project location](https://people.csail.mit.edu/lpk/papers/aij98-pomdp.pdf), 2026-11-14.
 
 ## Observed capability, frames and clocks
+
+### Ernst et al. 2026: Decoupling what, how, and when for observing decision-making context in autonomous robots
+
+CoDRA separates acquisition scheduling from execution through context observers and a manager. Named values retain known/unknown status and observation time; observer eligibility can depend on other context. The experiments use quasi-static scenes, with manually defined variables. Dynamic resource priorities, explicit validity duration and externally disturbed scenes remain future work. Reported robot savings are not evidence of LLM benefit.
+
+**Recorded source:** Johannes Ernst; David Lennart Risch; Peter Lehner; Freek Stulp; Andreas Dömel. Frontiers in Robotics and AI 13, article 1847701, published 22 July 2026. DOI [10.3389/frobt.2026.1847701](https://doi.org/10.3389/frobt.2026.1847701). **Inspected:** [publisher full text](https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2026.1847701/full), Sections 3.1–3.3 and 5 and the centrifuge observer example, 2026-11-14. **Rights:** CC BY 4.0; cited and paraphrased, without reproducing figures or data.
 
 ### Huang et al. 2023: Inner Monologue: Embodied Reasoning through Planning with Language Models
 
@@ -105,6 +113,12 @@ Separate deadline, lifespan and liveliness; stale request replay can repeat effe
 **Recorded source:** ROS 2 documentation contributors. Official ROS 2 Jazzy documentation; accessed 2026-11-14. **Inspected:** [recorded primary or official/project location](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst), 2026-11-14.
 
 ## Interaction, memory and bounded projections
+
+### Sumers et al. 2024: Cognitive Architectures for Language Agents
+
+CoALA treats working memory as persistent state and constructs each LLM input from a subset. Its decision cycle combines internal memory operations and external grounding actions. These are established architectural distinctions adopted here, not a new KC invention. The framework does not establish the performance or correctness of the present prototype.
+
+**Recorded source:** Theodore R. Sumers; Shunyu Yao; Karthik Narasimhan; Thomas L. Griffiths. Transactions on Machine Learning Research, 2024; camera-ready arXiv:2309.02427v3, revised 15 March 2024. **Inspected:** [primary HTML edition](https://arxiv.org/html/2309.02427v3), Sections 4.1 and 4.6, 2026-11-14. **Rights:** CC BY 4.0; original paraphrase only. OpenReview's PDF required browser verification in the continuation pass; the primary arXiv full text supplied the inspected passages.
 
 ### Yao et al. 2023: ReAct: Synergizing Reasoning and Acting in Language Models
 

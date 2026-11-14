@@ -251,9 +251,40 @@ def case21(s):
     return {"damaged": damaged["status"], "original_changed": s.validate(original, 1)["status"],
             "modification_detected": "SNAPSHOT_NOT_ISSUED_OR_MODIFIED" in damaged["reasons"]}
 
-CASES = [case01, case02, case03, case04, case05, case06, case07, case08, case09,
-         case10, case11, case12, case13, case14, case15, case16, case17, case18,
-         case19, case20, case21]
+DECLARED_CONTROL_IDS = tuple(range(1, 22))
+CASES = [(1, case01), (2, case02), (3, case03), (4, case04), (5, case05),
+         (6, case06), (7, case07), (8, case08), (9, case09), (10, case10),
+         (11, case11), (12, case12), (13, case13), (14, case14), (15, case15),
+         (16, case16), (17, case17), (18, case18), (19, case19), (20, case20),
+         (21, case21)]
+
+def validate_inventory(registrations, fixtures):
+    """Return a complete ID-bound inventory, or reject before running controls."""
+    registered = {}
+    for identity, function in registrations:
+        if type(identity) is not int or not callable(function):
+            raise ValueError("control registration requires an integer ID and callable")
+        if identity in registered:
+            raise ValueError("duplicate registered control ID")
+        if any(function is previous for previous in registered.values()):
+            raise ValueError("one callable cannot stand in for two declared controls")
+        registered[identity] = function
+    expected = {}
+    for fixture in fixtures:
+        if (not isinstance(fixture, dict) or type(fixture.get("id")) is not int
+                or not isinstance(fixture.get("description"), str)
+                or not isinstance(fixture.get("expected"), dict)
+                or not fixture["expected"]):
+            raise ValueError("fixture requires an integer ID, description and expected fields")
+        identity = fixture["id"]
+        if identity in expected:
+            raise ValueError("duplicate expected control ID")
+        expected[identity] = fixture
+    declared = set(DECLARED_CONTROL_IDS)
+    if set(registered) != declared or set(expected) != declared:
+        raise ValueError("registrations and fixtures must each cover all 21 declared control IDs exactly")
+    return [(identity, registered[identity], expected[identity])
+            for identity in DECLARED_CONTROL_IDS]
 
 class NoFreshnessGuard(Model):
     def _temporal_state(self, observation, now):
@@ -271,12 +302,20 @@ def run_case(case, expected, model_type=Model):
     scenario = Scenario(model_type)
     try:
         actual = case(scenario)
+        # Evaluate every declared field predicate, rather than count unused fixtures.
+        field_checks = ({key: key in actual and actual[key] == value
+                         for key, value in expected["expected"].items()}
+                        if isinstance(actual, dict) else {})
         return {"id": expected["id"], "description": expected["description"],
                 "expected": expected["expected"], "actual": actual,
-                "passed": actual == expected["expected"], "trace": scenario.trace}
+                "field_checks": field_checks,
+                "passed": (isinstance(actual, dict)
+                           and actual.keys() == expected["expected"].keys()
+                           and all(field_checks.values())), "trace": scenario.trace}
     except Exception as error:
         return {"id": expected["id"], "description": expected["description"],
                 "expected": expected["expected"], "actual": None, "passed": False,
+                "field_checks": {},
                 "error": type(error).__name__ + ": " + str(error), "trace": scenario.trace}
 
 def main():
@@ -284,16 +323,17 @@ def main():
     parser.add_argument("--evidence", type=Path, default=ROOT / "evidence/finite-run.json")
     args = parser.parse_args()
     expected = json.loads((ROOT / "checks/expected.json").read_text())
-    if len(expected) != 21 or [e["id"] for e in expected] != list(range(1, 22)):
-        raise ValueError("expected fixture must enumerate 18 declared and 3 review controls")
-    results = [run_case(case, item) for case, item in zip(CASES, expected)]
+    inventory = validate_inventory(CASES, expected)
+    by_id = {identity: (case, item) for identity, case, item in inventory}
+    results = [run_case(case, item) for _, case, item in inventory]
     mutations = []
-    for name, model_type, index in [
-        ("disabled_freshness_guard", NoFreshnessGuard, 0),
-        ("disabled_dependency_closure", NoDependencyClosure, 10),
-        ("disabled_scope_binding", NoScopeBinding, 9),
+    for name, model_type, identity in [
+        ("disabled_freshness_guard", NoFreshnessGuard, 1),
+        ("disabled_dependency_closure", NoDependencyClosure, 11),
+        ("disabled_scope_binding", NoScopeBinding, 10),
     ]:
-        result = run_case(CASES[index], expected[index], model_type)
+        case, item = by_id[identity]
+        result = run_case(case, item, model_type)
         mutations.append({"mutation": name, "detected": not result["passed"],
                           "completed_without_exception": "error" not in result, "control": result})
     paths = [ROOT / "checks/DESIGN_INPUT.md", ROOT / "situation.py",
@@ -304,6 +344,7 @@ def main():
                 "bytes": len(path.read_bytes())} for path in paths}
     passed = sum(r["passed"] for r in results)
     detected = sum(m["detected"] and m["completed_without_exception"] for m in mutations)
+    complete = [result["id"] for result in results] == list(DECLARED_CONTROL_IDS)
     evidence = {
         "schema": "agent-situation-finite-evidence-v1",
         "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -312,7 +353,7 @@ def main():
         "provenance": {
             "design": "author-designed predeclared finite contract, not independent preregistration",
             "fixtures": "hand-authored expected outcomes",
-            "implementation_and_runner": "same implementing agent",
+            "implementation_and_runner": "original implementation and runner authored together; inventory guard repaired by same-controller reviewer",
             "actual_independence": "NOT_VERIFIED",
             "source_identities_authenticated": False,
             "native_agent_runtime_observed": False,
@@ -325,13 +366,16 @@ def main():
         "counts": {"declared_controls": 18, "review_added_controls": 3, "executed_controls": len(results),
                    "passed_controls": passed, "failed_controls": len(results) - passed,
                    "mutation_controls": len(mutations), "mutations_detected": detected,
-                   "expected_fields_checked": sum(len(e["expected"]) for e in expected)},
-        "result": "FINITE_CONTROLS_PASS" if passed == len(results) and detected == 3 else "FINITE_CONTROLS_FAIL",
+                   "expected_fields_checked": sum(len(r["field_checks"]) for r in results)},
+        "inventory": {"declared_ids": list(DECLARED_CONTROL_IDS),
+                      "executed_ids": [result["id"] for result in results], "complete": complete},
+        "result": "FINITE_CONTROLS_PASS" if complete and passed == len(DECLARED_CONTROL_IDS) and detected == 3 else "FINITE_CONTROLS_FAIL",
         "development_history": {
             "initial_suite": "18/18 passed and 3/3 mutants detected, but missed a material delayed-derivation bug",
             "review": "same-controller non-author inspection; actual independence NOT_VERIFIED",
             "counterexample": "development/v1/delayed-derivation-counterexample.json",
             "correction": "explicit dependency version pins, derivation-time check, and issued-snapshot integrity check",
+            "inventory_correction": "missing registration previously passed after zip truncation; explicit ID bijection now checked before execution",
         },
         "unimplemented": [
             "real sensors, tools, permissions, effects, LLM context/token accounting",
