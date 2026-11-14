@@ -1,0 +1,15 @@
+{
+  "budget": 10000,
+  "paths": [
+    "other.txt",
+    "source.txt"
+  ],
+  "producer": "local-git",
+  "repository_root_digest": "5e4fe31d2e5bfc23565f405c6dcc4c6f6771bc368f7438ad9793cc9d8e39102c",
+  "required_paths": [
+    "source.txt"
+  ],
+  "schema": "repository-session-profile/1",
+  "scope": "session-execution-fixture",
+  "task_id": "local-file-review"
+}

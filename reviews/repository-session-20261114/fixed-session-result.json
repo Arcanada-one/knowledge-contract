@@ -1,0 +1,188 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "profile",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--task-id",
+        "fixed-preflight-review",
+        "--scope",
+        "bounded-fixed-review",
+        "--path",
+        "source.txt",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"profile_digest\": \"a2710e604eff9d888b5a934fd8be4ef60442dc0f90abf4c3c46c1d31ac5f0119\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "start",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--profile",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-1.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"adopted_context_id\": \"d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040\", \"context_id\": \"d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040\", \"observed_at\": 1794648174826475857, \"readiness_grants_permission\": false, \"receipt_id\": \"11bc266e6901ed829bb64758bcb2b3dce85c6e8b9bda42ce7a2b652c80cbb165\", \"result\": \"READY\", \"resume_required\": false, \"sequence\": 1, \"view\": \"OBSERVED_THIS_INVOCATION\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "preflight",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--profile",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-2.json",
+        "--previous",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-1.json"
+      ],
+      "exit_code": 1,
+      "stderr": "",
+      "stdout": "{\"adopted_context_id\": \"d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040\", \"context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"observed_at\": 1794648174997319360, \"readiness_grants_permission\": false, \"receipt_id\": \"1dfae93f11a8473ae95d0787ffd4e8b09519e5338abb52191a3e1847763d7055\", \"result\": \"INVALID\", \"resume_required\": true, \"sequence\": 2, \"view\": \"OBSERVED_THIS_INVOCATION\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "preflight",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--profile",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-3.json",
+        "--previous",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-2.json"
+      ],
+      "exit_code": 1,
+      "stderr": "",
+      "stdout": "{\"adopted_context_id\": \"d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040\", \"context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"observed_at\": 1794648175152367012, \"readiness_grants_permission\": false, \"receipt_id\": \"167f721ddfb3651aea184457d46aeba78fed1b55cdc43e08852dcbbb15feeeb6\", \"result\": \"RESUME_REQUIRED\", \"resume_required\": true, \"sequence\": 3, \"view\": \"OBSERVED_THIS_INVOCATION\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "resume",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--profile",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-4.json",
+        "--previous",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-3.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"adopted_context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"observed_at\": 1794648175300434963, \"readiness_grants_permission\": false, \"receipt_id\": \"e52605badb3d9f3e14db935fb100bca1fc89dc410aba0f4c0be5263a3fe240b3\", \"result\": \"READY\", \"resume_required\": false, \"sequence\": 4, \"view\": \"OBSERVED_THIS_INVOCATION\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "preflight",
+        "--repo",
+        "/tmp/fixed-session-review-c8hlyibw/repo",
+        "--profile",
+        "/tmp/fixed-session-review-c8hlyibw/profile.json",
+        "--output",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-5.json",
+        "--previous",
+        "/tmp/fixed-session-review-c8hlyibw/receipt-4.json"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "{\"adopted_context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"context_id\": \"6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82\", \"observed_at\": 1794648175398648376, \"readiness_grants_permission\": false, \"receipt_id\": \"5e08df3082b9ddc335c05582162b5e85a1745693ba9e7dbc2435a6101b5902f7\", \"result\": \"VALID\", \"resume_required\": false, \"sequence\": 5, \"view\": \"OBSERVED_THIS_INVOCATION\"}\n"
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py",
+        "inspect",
+        "--input",
+        "/tmp/fixed-session-review-c8hlyibw/altered-history.json"
+      ],
+      "exit_code": 2,
+      "stderr": "repository session: predecessor disagrees with retained ledger prefix\n",
+      "stdout": ""
+    }
+  ],
+  "fresh_process_lifecycle": [
+    {
+      "adopted_context_id": "d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040",
+      "context_id": "d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040",
+      "operation": "START",
+      "result": "READY",
+      "resume_required": false,
+      "sequence": 1
+    },
+    {
+      "adopted_context_id": "d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040",
+      "context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "operation": "PREFLIGHT",
+      "result": "INVALID",
+      "resume_required": true,
+      "sequence": 2
+    },
+    {
+      "adopted_context_id": "d06245ea01aede8bc957ecfb36577a975ffc01243408652f243e331dea4a4040",
+      "context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "operation": "PREFLIGHT",
+      "result": "RESUME_REQUIRED",
+      "resume_required": true,
+      "sequence": 3
+    },
+    {
+      "adopted_context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "operation": "RESUME",
+      "result": "READY",
+      "resume_required": false,
+      "sequence": 4
+    },
+    {
+      "adopted_context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "context_id": "6bcad309006df340608614e13b1f56d95f674509a832f861b238795f91a8dc82",
+      "operation": "PREFLIGHT",
+      "result": "VALID",
+      "resume_required": false,
+      "sequence": 5
+    }
+  ],
+  "history_tamper": {
+    "changed_operation_index": 1,
+    "error": "repository session: predecessor disagrees with retained ledger prefix",
+    "exit_code": 2,
+    "final_state_would_be_unchanged_due_to_later_resume": true,
+    "outer_digest_recomputed": true
+  },
+  "limits": "Two narrow behavioral obligations using real Git and new CLI processes; same controller/model family/host; no external independent acceptance or permission claim.",
+  "recorded_at_utc": "2026-11-14T09:22:55.495300+00:00",
+  "result": "PASS",
+  "script_sha256": "309d7a4d248d74f53c221779df218788d45c764cb53909f0a38332ac78a668fe",
+  "source_sha256": {
+    "tools/repository_session.py": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+    "tools/test_repository_session.py": "a42809e3aed52c36dda916c42de05121110726a9df7a23a257abda17bc5f068c"
+  }
+}
