@@ -4,7 +4,7 @@ sources: none
 
 # Engineering Studies and Evidence
 
-Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 24 explicit bindings; per-study origin records identify exact evidence bytes.
+Seven studies connect the scientific claims to actual finite checks, counterexamples, comparisons and analytical results. Each identifies its materials, unit of observation, available reproduction procedure and limits. The machine-readable [claim–evidence index](evidence-index.json) provides 26 explicit bindings; per-study origin records identify exact evidence bytes.
 
 | Document | Subject |
 | --- | --- |

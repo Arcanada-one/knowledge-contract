@@ -50,7 +50,7 @@ Project text retains CC BY 4.0 and code Apache-2.0. Third-party source works ret
 
 ## Evidence traceability
 
-The [claim–evidence index](engineering/studies/evidence-index.json) binds 25 claims to exact records and JSON pointers, with the new author-draft claim separated from the prior review scope. Origin records preserve evidence hashes and explicitly distinguish newly executed public replays from retained historical reports. Corpus-index admission remains governed by its separate [decisions and allowlist](corpus/README.md).
+The [claim–evidence index](engineering/studies/evidence-index.json) binds 26 claims to exact records and JSON pointers, with the new author-draft claim separated from the prior review scope. Origin records preserve evidence hashes and explicitly distinguish newly executed public replays from retained historical reports. Corpus-index admission remains governed by its separate [decisions and allowlist](corpus/README.md).
 
 ## Human-meaning foundations supplement
 
