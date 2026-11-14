@@ -184,6 +184,8 @@ jobs:
           python3 -B -m unittest tools.test_document_names -v
           python3 -B tools/check_document_names.py
           python3 -B tools/check_requirement_register.py
+      - name: Install pinned CommonMark parser for reader link check
+        run: python3 -m pip install --require-hashes --no-deps -r tools/requirements-reader-check.txt
       - name: Reader snapshot links and four-reader adverse controls
         run: python3 -B -m unittest tools.test_reader_snapshot_links -v
       - name: Recheck formal counterexamples and corrected finite models

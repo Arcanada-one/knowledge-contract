@@ -12,6 +12,11 @@ import tempfile
 from pathlib import Path
 import unittest
 
+try:
+    from markdown_it import MarkdownIt
+except ImportError:  # fail closed: tests below must FAIL, never skip
+    MarkdownIt = None
+
 ROOT = Path(__file__).resolve().parents[1]
 PIN = "6a6f202f7f70be2ad3aea3369e45409761708596"
 OLD = f"https://github.com/Arcanada-one/knowledge-contract/blob/{PIN}"
@@ -78,8 +83,24 @@ REPORT_BLOB = "c02b44d69a0cd7b704b10323389a56c563b1b62d"
 
 REPORT_NAME = "validation-report.json"
 STUDIES_DIR = ROOT / "engineering/studies"
-# Inline Markdown link: [text](destination). Destination has no space or ')'.
-LINK = re.compile(r"\[[^\]]*\]\(([^()\s]*)\)")
+SCOPE_MARK = "Historical validation scope."
+PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
+                  "--require-hashes --no-deps -r tools/requirements-reader-check.txt); "
+                  "the rendered-link check cannot run without it")
+
+def rendered_report_links(readme):
+    """hrefs of the links CommonMark actually renders in the unique scope paragraph.
+
+    Returns None unless exactly one inline block holds the scope marker, so
+    comments, code blocks and inline code (which render no link) cannot count.
+    """
+    if MarkdownIt is None:
+        raise RuntimeError(PARSER_MISSING)
+    inlines = [t for t in MarkdownIt("commonmark").parse(readme)
+               if t.type == "inline" and SCOPE_MARK in t.content]
+    if len(inlines) != 1:
+        return None
+    return [c.attrGet("href") for c in inlines[0].children or [] if c.type == "link_open"]
 
 def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDIES_DIR):
     errors = []
@@ -97,9 +118,9 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
     )
     if any(item not in passage for item in required):
         errors.append("unbound_or_misrepresented_historical_report")
-    # The report must be a real link, not just the filename as text: a parsed
-    # destination exactly equal to REPORT_NAME, resolving to a file beside the README.
-    if REPORT_NAME not in LINK.findall(passage):
+    # The report must be a rendered link (CommonMark parser, not a regex): exactly
+    # one link_open whose href is REPORT_NAME, resolving to a file beside the README.
+    if rendered_report_links(study_reader) != [REPORT_NAME]:
         errors.append("report_link_destination_not_exact")
     elif not (Path(studies_dir) / REPORT_NAME).is_file():
         errors.append("report_link_target_missing")
@@ -173,6 +194,46 @@ class HistoricalReportPointerControls(unittest.TestCase):
         changed = self.link_mutant("").replace(label, label[1:-1], 1)
         self.assertNotIn("](validation-report.json)", changed)
         self.assertIn("`validation-report.json`", changed)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_commonmark_parser_is_installed(self):
+        self.assertIsNotNone(MarkdownIt, PARSER_MISSING)
+
+    def test_link_in_html_comment_is_refused(self):
+        """Only the link markup is wrapped in <!-- -->; it renders no link."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, f"<!-- {label} -->", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def scope_paragraph(self):
+        found = [p for p in self.study.split("\n\n") if SCOPE_MARK in p]
+        self.assertEqual(len(found), 1)
+        return found[0]
+
+    def test_link_in_fenced_code_block_is_refused(self):
+        """Only a code fence is added around the scope paragraph; text is identical."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(para, "```md\n" + para + "\n```", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_in_indented_code_block_is_refused(self):
+        """Only a four-space indent is added to the scope paragraph; text is identical."""
+        para = self.scope_paragraph()
+        changed = self.study.replace(para, "\n".join("    " + l for l in para.split("\n")), 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertIn("report_link_destination_not_exact",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_link_in_inline_code_is_refused(self):
+        """Only the link is turned into an inline code span."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(label, "`[preserved mechanical validation-report.json](validation-report.json)`", 1)
+        self.assertNotEqual(changed, self.study)
         self.assertIn("report_link_destination_not_exact",
                       report_pointer_problems(changed, self.report, self.index))
 
