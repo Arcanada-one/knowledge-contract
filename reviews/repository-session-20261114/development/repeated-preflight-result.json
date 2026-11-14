@@ -1,0 +1,42 @@
+{
+  "changed_head": "7346d3cb16567fc9fbf15992806c01b6a07a4f4c",
+  "limits": "Internal same-controller review; local real Git only; no effect or permission exercised.",
+  "model_sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+  "observed_behavior": "A repeated preflight validates the new context even though no resume adopted it.",
+  "observer_sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+  "old_head": "43d85a0cc94f74f9f8fc06a02c96e52ac53ca54d",
+  "recorded_at_utc": "2026-11-14T09:17:53.890375+00:00",
+  "resume_called": false,
+  "session_sha256": "340e69e85d89aa6da363f0a5cf26a3fb7161176e6c9a3aa9cc1506330de5a63f",
+  "steps": [
+    {
+      "context_id": "e0657f35c3281abdcd08b2ee25ddc909358d852e8a7cf2a8f55086dc44c108c6",
+      "operation": "START",
+      "prior_validation": null,
+      "result": "READY",
+      "sequence": 1
+    },
+    {
+      "context_id": "3e47755701aae62f7126376198ff3f1635f6401e0c4f14ce0007b0e59fc14442",
+      "operation": "PREFLIGHT",
+      "prior_validation": {
+        "reasons": [
+          "CRITICAL_GENERATION_CHANGED:file:source.txt"
+        ],
+        "status": "INVALID"
+      },
+      "result": "INVALID",
+      "sequence": 2
+    },
+    {
+      "context_id": "3e47755701aae62f7126376198ff3f1635f6401e0c4f14ce0007b0e59fc14442",
+      "operation": "PREFLIGHT",
+      "prior_validation": {
+        "reasons": [],
+        "status": "VALID"
+      },
+      "result": "VALID",
+      "sequence": 3
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+Repository Session actual local Git/process sample
+2026-11-14T09:24:45.426988+00:00
+Each session CLI call below starts a fresh process. All source edits/commits are temporary fixture operations.
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository init --initial-branch=main
+Initialized empty Git repository in /tmp/kc-session-execution-nllfyvhi/repository/.git/
+
+exit=0
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository config user.name 'Repository Session execution fixture'
+
+exit=0
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository config user.email session-fixture@example.invalid
+
+exit=0
+
+fixture write /tmp/kc-session-execution-nllfyvhi/repository/source.txt bytes=b'Required content A.\n'
+
+fixture write /tmp/kc-session-execution-nllfyvhi/repository/other.txt bytes=b'Unrelated content one.\n'
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository add -- source.txt other.txt
+
+exit=0
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository commit -m 'Initial session fixture'
+[main (root-commit) 5631884] Initial session fixture
+ 2 files changed, 2 insertions(+)
+ create mode 100644 other.txt
+ create mode 100644 source.txt
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py profile --repo /tmp/kc-session-execution-nllfyvhi/repository --task-id local-file-review --scope session-execution-fixture --path source.txt --path other.txt --required-path source.txt --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json
+{"profile_digest": "c77ae802bfc963110772adb1c1a9e045c91dc7f764edf0a8444c830b27bf3d82"}
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py start --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-start.json
+{"adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "observed_at": 1794648285690167302, "readiness_grants_permission": false, "receipt_id": "b15219c8f58e5ed0ae1aa01b7cb6968bc46ee84465b20da1a5ae495c741d7fd7", "result": "READY", "resume_required": false, "sequence": 1, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=0
+
+fixture write /tmp/kc-session-execution-nllfyvhi/repository/other.txt bytes=b'Unrelated content two.\n'
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository add -- other.txt
+
+exit=0
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository commit -m 'Unrelated change'
+[main e904903] Unrelated change
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py resume --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-unrelated-resume.json --previous /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-start.json
+{"adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "observed_at": 1794648285828328407, "readiness_grants_permission": false, "receipt_id": "c6e2fdaf5828fdfe4e490d253d490c56ad437c2346935a714f5c1815bf1305a3", "result": "READY", "resume_required": false, "sequence": 2, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=0
+
+fixture write /tmp/kc-session-execution-nllfyvhi/repository/source.txt bytes=b'Required content B.\n'
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository add -- source.txt
+
+exit=0
+
+$ git -C /tmp/kc-session-execution-nllfyvhi/repository commit -m 'Required change'
+[main d67eb86] Required change
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py preflight --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-preflight-invalid.json --previous /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-unrelated-resume.json
+{"adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "observed_at": 1794648285947613686, "readiness_grants_permission": false, "receipt_id": "4d5d324472329d2cf4fff194fd856a4b14219f00d53f26bf5188dcc3e50a5bf6", "result": "INVALID", "resume_required": true, "sequence": 3, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=1
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py preflight --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-preflight-repeat.json --previous /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-preflight-invalid.json
+{"adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "observed_at": 1794648286116217373, "readiness_grants_permission": false, "receipt_id": "8d8a2c837a3e753bbc671382c5c0e3fee9da7f720bb536fe846e6070acc228d3", "result": "RESUME_REQUIRED", "resume_required": true, "sequence": 4, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=1
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py resume --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-explicit-resume.json --previous /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-preflight-repeat.json
+{"adopted_context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "observed_at": 1794648286224335101, "readiness_grants_permission": false, "receipt_id": "11b808359776cae6712621e37ea2f4d1bb5078a7ff65e0341c2296f344e699bc", "result": "READY", "resume_required": false, "sequence": 5, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py preflight --repo /tmp/kc-session-execution-nllfyvhi/repository --profile /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-profile.json --output /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-preflight-valid.json --previous /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-explicit-resume.json
+{"adopted_context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad", "observed_at": 1794648286346285636, "readiness_grants_permission": false, "receipt_id": "9b3f381fb426edd620126ca04d4d43e4f7497425095e3d4d34eb0e395f258410", "result": "VALID", "resume_required": false, "sequence": 6, "view": "OBSERVED_THIS_INVOCATION"}
+
+exit=0
+
+$ /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/5cd1d6f67b86/agent-state-resume/tools/repository_session.py inspect --input /workspace/scratch/5cd1d6f67b86/agent-state-resume/reviews/repository-session-20261114/sample-start.json
+{"adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "captured_result": "READY", "context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2", "observed_at": 1794648285690167302, "readiness_grants_permission": false, "receipt_id": "b15219c8f58e5ed0ae1aa01b7cb6968bc46ee84465b20da1a5ae495c741d7fd7", "requires_fresh_capture": true, "resume_required": false, "view": "HISTORICAL_ONLY"}
+
+exit=0
+
+SAMPLE_ASSERTIONS_PASS
+[
+  {
+    "operation": "START",
+    "result": "READY",
+    "sequence": 1,
+    "context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "resume_required": false
+  },
+  {
+    "operation": "RESUME",
+    "result": "READY",
+    "sequence": 2,
+    "context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "resume_required": false
+  },
+  {
+    "operation": "PREFLIGHT",
+    "result": "INVALID",
+    "sequence": 3,
+    "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "resume_required": true
+  },
+  {
+    "operation": "PREFLIGHT",
+    "result": "RESUME_REQUIRED",
+    "sequence": 4,
+    "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "adopted_context_id": "fdc3154b27fe626949af165d7a4a7c89e17a02ba4c7bf11be9e1921f795bd0b2",
+    "resume_required": true
+  },
+  {
+    "operation": "RESUME",
+    "result": "READY",
+    "sequence": 5,
+    "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "adopted_context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "resume_required": false
+  },
+  {
+    "operation": "PREFLIGHT",
+    "result": "VALID",
+    "sequence": 6,
+    "context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "adopted_context_id": "992fc6caf34beb4b4e60a3963e8be75209b443dfb007d67b840293f995f5bdad",
+    "resume_required": false
+  }
+]
