@@ -184,6 +184,8 @@ jobs:
           python3 -B -m unittest tools.test_document_names -v
           python3 -B tools/check_document_names.py
           python3 -B tools/check_requirement_register.py
+      - name: Reader snapshot links and four-reader adverse controls
+        run: python3 -B -m unittest tools.test_reader_snapshot_links -v
       - name: Recheck formal counterexamples and corrected finite models
         run: python3 -B -m unittest tools.test_reviewed_formal_results -v
       - name: Exact finite relation and outcome-set geometry controls
