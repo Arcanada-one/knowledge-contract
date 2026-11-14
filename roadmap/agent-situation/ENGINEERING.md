@@ -119,7 +119,7 @@ The existing RM18 prerequisites remain RM14, RM15 and RM17. The table identifies
 
 1. **Authored source draft:** paper, source matrix, ordered inventory and this design. Check whether every borrowed claim has a primary source and every proposed mechanism is labelled.
 2. **Finite reference controls:** replay actual fixtures, preserve development defects and discriminating mutations, and bind the report to exact source hashes. Ask whether an always-refuse or stale-accepting implementation would fail.
-3. **One offline adapter:** choose a repository-state sandbox with synthetic scope and deterministic event traces. Demonstrate cold start, replay, conflict, lost event and unknown outcome without external effects.
+3. **One offline adapter:** choose a repository-state sandbox with synthetic scope and deterministic event traces. Demonstrate cold start, replay, conflict, lost event and unknown outcome without external effects. The [repository observer](REPOSITORY_OBSERVER.md) implements a bounded first slice: actual committed-file capture, replay, conflicts and explicit incomplete-history/unknown-effect limits. It does not observe CI, grant authority or reconcile a real external outcome.
 4. **Exploratory agent pilot:** freeze the policy, task manifest, model, budget and oracle before execution; compare against the strong typed baseline and publish all allocated outcomes.
 5. **Separate review and confirmation:** resolve findings, use new held-out templates and appropriate non-author assessment, then decide whether a normative profile is justified.
 6. **Site delivery:** publish reviewed source and clearly labelled summaries through existing build/review/readback mechanisms. A source PR or local check is not a production receipt.
