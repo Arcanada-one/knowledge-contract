@@ -24,17 +24,17 @@ translation_status: "author-draft"
 
 本文是一组架构要求。互操作性需要具名的表示配置；已实现的交换子集仅限于[观察、变更事件和配置通告](../../../../../engineering/specifications/status-model/SPECIFICATION.md#8-bounded-exchange-profile)，而[书籍包配置](../../../../../engineering/specifications/book-package/SPECIFICATION.md)具有自己的模式。这并不意味着已有完整契约的传输格式或已部署的运行时。
 
-上下文包是在资源预算内，为一个声明用途准备的、版本化的知识、条件与依据选择。它使人能够检查选择了什么、为什么足够或仍不完整、纳入了哪些依赖，以及接收者实际获得什么。
+语境包是在资源预算内，为一个声明用途准备的、版本化的知识、条件与依据选择。它使人能够检查选择了什么、为什么足够或仍不完整、纳入了哪些依赖，以及接收者实际获得什么。
 
-大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。上下文包支持回答、规划或执行阶段，但其本身不是行动授权，也不是预期结果已经发生的证据。覆盖与搜索完整性的形式区别见[检索与上下文组合](../../../../../papers/retrieval-and-context-composition/PAPER.md)。
+大写要求用语遵循 [BCP 14](../../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。语境包支持回答、规划或执行阶段，但其本身不是行动授权，也不是预期结果已经发生的证据。覆盖与搜索完整性的形式区别见[检索与上下文组合](../../../../../papers/retrieval-and-context-composition/PAPER.md)。
 
 ## 2. 必需的包描述 {#2-required-package-description}
 
 **CTX-R001.** 符合规范的包必须（MUST）包含或引用以下内容：自身身份和修订版；任务和要求修订版；目的和接收者；来源及语料快照；所选单元修订版；强制依赖闭包；槽位级覆盖；声明的搜索范围和搜索保证；适用约束；表示与交付要求；资源核算；以及支持其状态的观察。
 
-**CTX-R002.** 每个要求槽位必须（MUST）标识对象、量词、必需条件和支持单元。
+**CTX-R002.** 每个要求槽位必须（MUST）标识所指对象（subject）、量词、必需条件和支持单元。
 
-**CTX-R003.** 联合要求必须（MUST）针对同一个对象和修订版获得支持。
+**CTX-R003.** 联合要求必须（MUST）针对同一个所指对象和修订版获得支持。
 
 关于一个对象的某种性质的证据，加上另一个对象的另一种性质的证据，不能满足关于单个对象的合取要求。
 
@@ -62,7 +62,7 @@ translation_status: "author-draft"
 
 候选集、已组装包和最终输出的覆盖分别评估。
 
-**CTX-R009.** 每份报告必须（MUST）绑定自身所对应的阶段和对象修订版。
+**CTX-R009.** 每份报告必须（MUST）绑定自身所对应的阶段和所指对象修订版。
 
 获得支持的候选集，并不使截断后的包也获得支持；获得支持的包，也不能证明答案正确使用了它。
 
@@ -71,7 +71,7 @@ translation_status: "author-draft"
 | supported | 每个强制槽位均具有所要求的、已确立的支持 |
 | partial | 存在获得支持的部分，并明确列出缺失或未决义务 |
 | unsupported | 在选定程序下，所评估范围没有提供所要求的支持 |
-| conflicted | 实质上不兼容的依据阻止形成一个可准入结论 |
+| conflicted | 实质上不兼容的依据阻止形成一个已获准入的结论 |
 | unknown | 现有观察不能确立覆盖状态 |
 
 搜索保证是独立维度：`candidate_only`、`exhaustive_in_scope` 或 `incomplete_procedure`，采用[规范词元定义](../../../../../engineering/specifications/status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies)。要求两个例子的请求可以在没有穷尽搜索的情况下得到支持。要求全部匹配对象的请求则需要额外的完整性义务。
@@ -116,4 +116,4 @@ translation_status: "author-draft"
 
 ## 8. 兼容性 {#8-compatibility}
 
-历史覆盖字段只有与其对象和语义一起保留时才可导入。缺失的来源快照、预算测量或交付观察仍然是未知的。新的文档版本不会追溯性地把早期示例升级为已经执行的包。术语定义见[术语表](../../../../../reference/glossary/GLOSSARY.md)。
+历史覆盖字段只有与其所指对象和语义一起保留时才可导入。缺失的来源快照、预算测量或交付观察仍然是未知的。新的文档版本不会追溯性地把早期说明性示例升级为已经执行的包。术语定义见[术语表](../../../../../reference/glossary/GLOSSARY.md)。
