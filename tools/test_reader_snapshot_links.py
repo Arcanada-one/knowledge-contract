@@ -83,6 +83,9 @@ REPORT_SOURCE_COMMIT = "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e"
 REPORT_BLOB = "c02b44d69a0cd7b704b10323389a56c563b1b62d"
 
 REPORT_NAME = "validation-report.json"
+# Rendered text of the report link, pinned code point for code point (no strip,
+# no normalisation). Changing the README wording requires changing this value.
+REPORT_LABEL = "preserved mechanical validation-report.json"
 STUDIES_DIR = ROOT / "engineering/studies"
 SCOPE_MARK = "Historical validation scope."
 PARSER_MISSING = ("markdown-it-py==4.2.0 is required (python3 -m pip install "
@@ -169,7 +172,7 @@ def report_pointer_problems(study_reader, report_bytes, index, studies_dir=STUDI
         if observed[3]:
             errors.append("scope_raw_html_not_allowed")
         if (len(observed[1]) != len(observed[2]) or
-                any(not label.strip() for label in observed[2])):
+                any(label != REPORT_LABEL for label in observed[2])):
             errors.append("report_link_label_not_visible")
     # The report must be a rendered link (CommonMark parser, not a regex): exactly
     # one link_open whose href is REPORT_NAME, resolving to a file beside the README.
@@ -338,6 +341,35 @@ class HistoricalReportPointerControls(unittest.TestCase):
         self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
         self.assertIn("report_link_label_not_visible",
                       report_pointer_problems(changed, self.report, self.index))
+
+    def test_invisible_report_link_labels_are_refused(self):
+        """Only the link label changes; format and filler characters show nothing."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        for name, text in (("zwsp_literal", "\u200b"), ("zwsp_entity", "&#8203;"),
+                           ("word_joiner", "\u2060"), ("soft_hyphen", "\u00ad"),
+                           ("hangul_filler", "\u3164"), ("braille_blank", "\u2800")):
+            with self.subTest(label=name):
+                changed = self.study.replace(
+                    label, "preserved mechanical `validation-report.json`"
+                    f"[{text}](validation-report.json)", 1)
+                self.assertNotEqual(changed, self.study)
+                self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+                self.assertIn("report_link_label_not_visible",
+                              report_pointer_problems(changed, self.report, self.index))
+
+    def test_readable_but_different_report_link_label_is_refused(self):
+        """Visible letters are not enough: the label is pinned to the README text."""
+        label = "[preserved mechanical `validation-report.json`](validation-report.json)"
+        changed = self.study.replace(
+            label, "preserved mechanical `validation-report.json`[see report](validation-report.json)", 1)
+        self.assertNotEqual(changed, self.study)
+        self.assertEqual(rendered_report_links(changed), [REPORT_NAME])
+        self.assertIn("report_link_label_not_visible",
+                      report_pointer_problems(changed, self.report, self.index))
+
+    def test_current_readme_report_link_label_is_accepted(self):
+        self.assertNotIn("report_link_label_not_visible",
+                         report_pointer_problems(self.study, self.report, self.index))
 
     def test_hidden_html_caveat_is_refused(self):
         """Raw HTML can hide a caveat that still exists in CommonMark text."""
