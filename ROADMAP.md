@@ -2,7 +2,7 @@
 title: "Knowledge Roadmap: Publications, Research and Practical Validation"
 sources: none
 status: repository-editorial-proposal
-updated: 2026-11-08
+updated: 2026-11-14
 ---
 
 # Knowledge Roadmap: Publications, Research and Practical Validation
@@ -13,7 +13,7 @@ updated: 2026-11-08
 
 This is the complete reading map of the current agreed publication and research programme, not a claim that every future question has been anticipated. It covers the English corpus, readable naming, Russian and Simplified Chinese editions, primary-source assessment, the foundations sequence, evidence recovery and practical validation. Muneral remains the execution authority; these files define outputs and acceptance criteria, not a second task system.
 
-The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The current source `main` at `0892eeb1` contains 31 documents, including the Meaning Geometry research draft; the historical 30-document baseline remains pinned. Meaning Bridge also remains `research-draft`. Site PR33 merged `f4b0eab1` and deployed the 31-document reader; neither site delivery nor source merge proves index admission.
+The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The source snapshot checked on 14 November, [6a6f202f](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596), contains 31 documents, including the Meaning Geometry research draft already integrated at `0892eeb1`; the historical 30-document baseline remains pinned. Meaning Bridge also remains `research-draft`. Site PR33 merged `f4b0eab1` and deployed the 31-document reader; neither site delivery nor source merge proves index admission. The two additional documents proposed in PR105 are outside this pinned inventory; a later integration requires a new source snapshot and denominator.
 
 **Current direction (11 November 2026):** the operator restored engineering capacity. [Active Work](roadmap/EXECUTION_STATUS.md) governs autonomous scientific and engineering activity under existing review, CI, access and deployment gates. New paid experiments or widened permissions still need distinct authorization.
 
@@ -27,8 +27,8 @@ Default foundations preparation proceeds through Meaning Bridge, Semantic Bridge
 
 | Workstream | Current artifact boundary | Next output | Acceptance boundary |
 | --- | --- | --- | --- |
-| Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 31 proposed documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
-| Russian and Chinese Editions | PR76 at `9723b478` has 25 author-draft bodies per language; four overlap main; six missing per language from the current 31 | Author the remaining 12 bodies, then assess all 62 locale slots; count historical 30 separately; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
+| Clear Names | The 31-document source snapshot at `6a6f202f` | Short names plus explanatory subtitles in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
+| Russian and Chinese Editions | Source `6a6f202f` contains 26 body files per language, 52 of 62 slots; five are absent per language. The sidecar contains eight entries with recorded agent reviews, a separate count. | Author the remaining ten body files, then assess all 62 slots; preserve the historical PR76 checkpoint and count ancillary public text separately | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review; file presence is not native review or website delivery |
 | Source Audit | Historical bibliography screening is not full primary reading | Read sources supporting actual current claims and document novelty boundaries | Exact cited basis, explicit unavailable material, no borrowed claim presented as original |
 | Semantic Bridge | Separate specification not yet complete | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
 | Transformation Algebra | Existing conditional paper, incomplete planned extension | Extend that same paper with typed profiles and countermodels | Precise assumptions and reconstruction limits; no parallel competing article |
