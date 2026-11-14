@@ -57,6 +57,9 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Fetch retained corpus-map source outside branch history
+        # Full branch history does not include this immutable F01 source pin.
+        run: git fetch --no-tags origin 61d674244f70002e20506b387b210fd584074ad2
       - name: Translation coverage reporter unit tests (source-pinned, read-only)
         run: python3 -B -m unittest tools.test_report_translation_coverage -v
       - name: Corpus map validator controls

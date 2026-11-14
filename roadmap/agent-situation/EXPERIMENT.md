@@ -21,7 +21,7 @@ license: "CC-BY-4.0"
 The study would ask whether explicit situation maintenance improves decisions under changing evidence, and whether adaptive maintenance adds value beyond a strong deterministic implementation.
 
 | Hypothesis | Proposed comparison and falsifier |
-|---|---|
+| --- | --- |
 | H1: Adaptive maintenance improves supported task success | Full condition versus deterministic typed state; no improvement, or a harmful cost/error tradeoff, contradicts the operational hypothesis |
 | H2: Typed maintenance reduces obsolete or unsupported action proposals | Typed conditions versus matched recency and vector retrieval; equal or worse error rates fail to support it |
 | H3: Selective refresh reduces unnecessary work without increasing missed critical changes | Adaptive versus fixed refresh; excess missed changes or no cost improvement contradicts it |
@@ -54,7 +54,7 @@ Proposed generator seeds are `1101,1102` for development and `2101,2102,2103,210
 The initial plan totals 200 core episode-runs, 50 repeated core runs, and 200 ablation runs: **450 proposed episode-runs**, not 450 independent tasks. Each run would allow at most eight decision calls and two maintenance calls. Execution awaits a frozen model revision, priced monetary ceiling, and explicit experiment budget; this document authorizes no expenditure.
 
 | Family | Adverse case and paired positive control |
-|---|---|
+| --- | --- |
 | Cold start | Missing prerequisite or grant versus valid discoverable evidence |
 | Time and replay | Stale replay, future timestamp, or backward clock versus a genuine fresh observation |
 | Event ordering | Delayed lower sequence or inconsistent duplicate versus ordered/idempotent delivery |

@@ -99,7 +99,6 @@ These entries identify the primary bibliographic records and abstracts read for 
 | Agent Situation — Sheng et al. 2026 | Strick Sheng; Ziyue Wang; Liyi Zhou | <https://arxiv.org/abs/2605.08828v2> | CC-BY-NC-ND-4.0; citation and original factual synthesis only; no third-party content redistributed | Controlled misleading/stale environmental evidence and provenance/freshness/action-guidance failures. Boundary: Stress-test incidence is not production frequency; narrow case-specific oracle. | `papers/agent-situation/PAPER.md`; `papers/agent-situation/LITERATURE.md`; `reference/bibliography/BIBLIOGRAPHY.md` |
 | Agent Situation — Lin et al. 2026 | Yin Lin; Elaine Ang; Erkang Zhu; Bolin Ding; Jingren Zhou | <https://arxiv.org/abs/2608.21690v1> | Original source terms; links and original factual synthesis only; no third-party content redistributed | Abstract-only inspection; full-method and performance claims excluded. Abstract describes a programmable context environment and printed model-facing projections. Boundary: Abstract inspected only; full-method and performance claims are not used. | `papers/agent-situation/PAPER.md`; `papers/agent-situation/LITERATURE.md`; `reference/bibliography/BIBLIOGRAPHY.md` |
 
-
 ## Agent Situation finite demonstration
 
 These newly authored finite records and programs preserve the initial missed defect and the corrected run. They are not a historical LLM benchmark, external review or runtime admission.
