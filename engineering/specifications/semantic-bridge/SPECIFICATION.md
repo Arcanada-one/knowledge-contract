@@ -183,7 +183,7 @@ This profile supplies no partial admission mode. A consumer wanting to evaluate 
 
 ## 8. Worked original examples
 
-The following examples are newly authored illustrations of the profile, not recovered historical observations or measured extraction results. English, Russian and Simplified Chinese prose exercise different UTF-8 byte positions around an explicitly controlled rule. Their translations are illustrative author drafts; the analyzer verifies no cross-language fidelity. In each source, the prose occupies a line prefixed by `NOTE `.
+The following examples are newly authored illustrations of the profile, not recovered historical observations or measured extraction results. English, Russian and Simplified Chinese prose exercise different UTF-8 byte positions around an explicitly controlled rule. Their translations are illustrative author drafts; the analyzer verifies no cross-language fidelity. In each source, the prose occupies a line prefixed by `NOTE` followed by a space.
 
 | Language | Surrounding prose, outside the formal fragment |
 | --- | --- |
