@@ -86,6 +86,7 @@ def report_pointer_problems(study_reader, report_bytes, index):
         REPORT_SOURCE_COMMIT, "reports **24 claims**",
         "**not regenerated**", "**26-claim** candidate index",
         "describes the pinned source snapshot",
+        "**present at source", "The precise source revision and execution procedure",
     )
     if any(item not in passage for item in required):
         errors.append("unbound_or_misrepresented_historical_report")
@@ -119,6 +120,7 @@ class HistoricalReportPointerControls(unittest.TestCase):
             ("reports **24 claims**", "reports **26 claims**"),
             (REPORT_SOURCE_COMMIT, "0000000000000000000000000000000000000000"),
             ("**not regenerated**", "**regenerated**"),
+            ("**present at source", "**produced at source"),
             (REPORT_BLOB, "1111111111111111111111111111111111111111"),
         )
         for original, mutant in changes:
