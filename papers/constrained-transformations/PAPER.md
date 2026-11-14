@@ -275,7 +275,6 @@ These statements do not authorize calling an arbitrary document merge, summary
 or logical conjunction one of those operations. Its transition relation and
 profile obligations must first be specified.
 
-
 ## 5. Transfer between tasks and domains
 
 Transfer is a directed operation. A rule applicable under conditions \(C\) can be used for a target only after those conditions have been mapped and checked. Similar vocabulary is a candidate-generation signal, not a proof that the required relation is preserved.

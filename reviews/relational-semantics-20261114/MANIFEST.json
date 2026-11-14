@@ -18,15 +18,15 @@
     },
     {
       "path": "papers/constrained-transformations/PAPER.md",
-      "bytes": 29598,
-      "sha256": "aca8d45b08f12bb02ca19e90d2dd3e28bba4c7a008bb43434deeaca3c8af91c6",
-      "git_blob": "a81e44acad30aeb325e70f4570cf5e19503f6828"
+      "bytes": 29597,
+      "sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
+      "git_blob": "5735b0322327b1d8ea28cb6c13a78c702bb94b07"
     },
     {
       "path": "papers/geometry-of-semantic-representations/PAPER.md",
-      "bytes": 34848,
-      "sha256": "8298c4d67e83179d178c3fe703f39e5112901ecb4df23cab942f83c2a14e3d73",
-      "git_blob": "27cd0b77bcdd91332afc64e809cc34e53ba6385c"
+      "bytes": 34847,
+      "sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
+      "git_blob": "ae74a2b7dfb768a2447622680635540c4a658387"
     },
     {
       "path": "ROADMAP.md",
@@ -42,9 +42,9 @@
     },
     {
       "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
-      "bytes": 23730,
-      "sha256": "33bad85c116cade5ef138c211aaf32adbad21b264e1441a0caf3ce05be66e72f",
-      "git_blob": "4cf8649c8fb9763ba5ed0de318be04d62e72602b"
+      "bytes": 23731,
+      "sha256": "53d09d910e8b4ca694cddf6ad53910ae48dd7d4aeadbe9a56109c81a82541f6e",
+      "git_blob": "9593e5343062b2b9763c527f8f267052f1644b8a"
     },
     {
       "path": "roadmap/EXECUTION_STATUS.md",
@@ -102,9 +102,9 @@
     },
     {
       "path": "reviews/relational-semantics-20261114/LOCAL_CHECKS.json",
-      "bytes": 1728,
-      "sha256": "cc4e89c2391b11e4228987ca5b99edbf1b0eb6f90c5c1447b13b2b681d8c38b7",
-      "git_blob": "be60b152be3f7a72a079411f85133b2350309b64"
+      "bytes": 2973,
+      "sha256": "dc81fc40964287250aaee095a3ebecb52906d08c3bae331470c538048f1069e4",
+      "git_blob": "31513fa9b31e3ad464afb99334c6dd3420434992"
     }
   ]
 }

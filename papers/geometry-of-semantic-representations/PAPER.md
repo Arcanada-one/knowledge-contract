@@ -393,7 +393,6 @@ agent remain separate obligations. A hidden cross-stage condition must be part
 of the declared intermediate state or context; arithmetic cannot repair an
 incomplete transition model.
 
-
 ## 7. Similarity is not equivalence, entailment or permission
 
 Several familiar shortcuts fail even on small exact examples.
@@ -444,13 +443,13 @@ The countermodels show why proximity, equivalence, entailment and permission mus
 2. Gärdenfors, P. _Conceptual Spaces: The Geometry of Thought_. MIT Press, 2000. [Author's institutional publication record](https://portal.research.lu.se/en/publications/conceptual-spaces-the-geometry-of-thought/).
 3. Coecke, B., Sadrzadeh, M., and Clark, S. “Mathematical Foundations for a Compositional Distributional Model of Meaning.” 2010. <https://arxiv.org/abs/1003.4394>.
 4. Vickers, S. “Localic Completion of Generalized Metric Spaces II:
-   Powerlocales.” *Journal of Logic & Analysis* 1:11 (2009), 1–48.
+   Powerlocales.” _Journal of Logic & Analysis_ 1:11 (2009), 1–48.
    <https://doi.org/10.4115/jla.2009.1.11>.
    [Primary article](https://math.hawaii.edu/home/jla/34-124-1-PB.pdf),
    Section 3, pp. 20–21. Only the finite Hausdorff construction and union
    nonexpansiveness are used; no localic-completion theorem is claimed here.
 5. Mio, M., and Vignudelli, V. “Monads and Quantitative Equational Theories for
-   Nondeterminism and Probability.” *CONCUR 2020*, LIPIcs 171, Article 28.
+   Nondeterminism and Probability.” _CONCUR 2020_, LIPIcs 171, Article 28.
    <https://doi.org/10.4230/LIPIcs.CONCUR.2020.28>.
    [Primary article](https://drops.dagstuhl.de/storage/00lipics/lipics-vol171-concur2020/LIPIcs.CONCUR.2020.28/LIPIcs.CONCUR.2020.28.pdf),
    Definitions 16–18, p. 28:7. Only the nonempty finite powerset metric lifting
