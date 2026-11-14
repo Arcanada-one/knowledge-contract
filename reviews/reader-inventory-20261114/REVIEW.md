@@ -62,6 +62,20 @@ Local checks used Python 3 and the pinned Pandoc 3.1.3 renderer. The first sourc
 | Changed-path scope and `git diff --check` | PASS: only the named reader/provenance files and the three new inventory/review files changed; no whitespace error. |
 | Offline Markdown lint attempt | NOT_RUN: `markdownlint-cli2@0.24.0` was not in the npm cache (`ENOTCACHED`). No Markdown-lint success is claimed. |
 
-Hosted CI, including Markdown lint, must be checked at the eventual submitted revision; no result from another head is transferred here.
+The first hosted CI result and its bounded follow-up are recorded below. The result at the next submitted revision must be checked directly; no result from another head is transferred here.
 
 After applying the three internal-review corrections, one publication gate with Pandoc 3.1.3 passed, and `git diff --check` passed. The earlier broader checks retain their stated scope. A review by another agent under the same controller remains internal. No fresh full-body translation review, external peer review, native-speaker review, website build, visual acceptance, deployment or index check is claimed.
+
+## First hosted CI failure and retained-history follow-up
+
+[PR106](https://github.com/Arcanada-one/knowledge-contract/pull/106) was submitted at `b6b8f45023bfd6e35f0623bd6a263f5f94770767`. Its [corpus-map job](https://github.com/Arcanada-one/knowledge-contract/actions/runs/43553772801/job/132321888032) failed while running the unchanged `tools/verify_corpus_map.py --repo .`: structural validation was true with no structural errors, but the F01 source object at `61d674244f70002e20506b387b210fd584074ad2:papers/human-meaning-and-computable-knowledge/PAPER.md` was absent and the retained-map blob could not be confirmed. All other listed source-object checks were true. This was an actual first hosted failure, not a successful run or a change to the translation counts.
+
+The local Git graph confirms that this F01 commit is outside the ancestry of source `6a6f202f`; the other six source commits are ancestors. A full branch-history checkout therefore need not contain F01. The same missing-history case had already been repaired in [PR105's workflow at dec63e46](https://github.com/Arcanada-one/knowledge-contract/blob/dec63e4631d1b02e7b22bbc2e780c41cd6a7bfd7/.github/workflows/ci.yml). That existing fix was absent from main and from the main-based PR106. This follow-up reuses its exact step, rather than claiming a newly discovered validator defect:
+
+```sh
+git fetch --no-tags origin 61d674244f70002e20506b387b210fd584074ad2
+```
+
+The step runs immediately after the `corpus-map` job's full-history checkout. No map, source pin, expected retained blob, validator, projection or refusal condition changes. The retained F01 map still has to match `f67ae8f491cb82a72703de9a2143b3620f5b9291` through the original validator. The source-history repair changes only `.github/workflows/ci.yml` and this review record relative to the first PR106 submission; the other fifteen submitted files remain unchanged.
+
+A local control used the real repository objects and a disposable Git remote whose only advertised branch was main. Its fresh, non-shallow clone reproduced the exact F01 source-object and retained-blob failure. Executing the fetch command extracted from the edited workflow made both the unchanged /1 map and /2 inventory candidate pass their original source-object checks. A separate input with a deliberately wrong retained blob still failed with exit 1. HEAD and tracked worktree state were unchanged by the fetch. The 35 existing CI-workflow tests also passed. This is a local file-transport check; the follow-up's GitHub fetch and complete hosted CI still require observation at its own new head. The inventory and earlier editorial review were not rerun or upgraded by this repair.
