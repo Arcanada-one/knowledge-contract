@@ -2574,6 +2574,114 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "SBR-R001",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A conformance statement MUST identify this profile, its immutable implementation revision and the checks actually performed, without promoting the result to full Semantic Types or Knowledge Contract conformance.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SBR-R002",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "2. Operation boundary and responsibilities",
+      "text": "The operation MUST preserve the distinction between checked structure and supplied semantic or factual assumptions, as required by KOP-R015 and STA-R003.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R003",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "3. Source identity and complete rule units",
+      "text": "Every controlled rule unit in the supplied source MUST correspond to exactly one supplied reading with the same identifier and complete byte selector.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R004",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "3. Source identity and complete rule units",
+      "text": "The operation MUST reject a source digest mismatch, an out-of-range or nonintegral selector, a selector that cuts a UTF-8 character or physical rule line, a mismatched quote, duplicate unit identity, a missing unit, or an extra reading.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_complete_rule_unit_prevents_dropping_exception_with_valid_source_hash"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R005",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4. Typed packet and retained readings",
+      "text": "The complete packet-ingestion and analysis operation MUST reject duplicate member names at every depth, unknown record members, non-finite number tokens, invalid Unicode and type substitutions such as a Boolean used as a byte offset.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::PublicConsumerTests.test_strict_json_and_fresh_process_cli_preserve_negative_results",
+        "tools/test_semantic_bridge.py::PublicConsumerTests.test_bounded_packet_with_huge_integer_returns_structured_cli_error"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R006",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4.2 Reading records",
+      "text": "Bindings MUST cover all and only the local atoms used by the expression, and shared observation identities MUST remain correlated throughout evaluation.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FormalSemanticsTests.test_aliases_share_an_observation_and_disagreement_is_pointwise"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R007",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4.2 Reading records",
+      "text": "An implementation MUST retain every supplied reading and its attribution and bindings; a required reading that cannot be supported blocks complete evaluation of the interpretation set.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R008",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "5. Controlled expression language",
+      "text": "Parsing MUST consume the whole expression and preserve the grammar's operator scopes, without ignoring an unrecognized prefix, suffix or required construct.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FormalSemanticsTests.test_scope_precedence_and_explicit_unless_convention"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R009",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "6. Possible-world semantics and protected observations",
+      "text": "The operation MUST enumerate every admitted world, evaluate every retained reading under the same observation assignment and report disagreement using same-world comparison.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_three_atom_truth_functions_against_all_evidence_profiles",
+        "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_two_atom_alternative_pairs_use_one_shared_world_grid"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R010",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "7. Results, uncertainty and losses",
+      "text": "An output MUST NOT represent `NOT_ASSESSED` as `pass`, equate computed `TRUE` with current permission, or issue an evaluated truth after any required reading fails validation.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R011",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "9. Finite acceptance profile",
+      "text": "The suite MUST exercise these obligations and preserve adverse outcomes rather than changing the declared expected result to fit the implementation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",

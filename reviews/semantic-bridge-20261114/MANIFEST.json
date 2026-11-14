@@ -1,0 +1,444 @@
+{
+  "schema": "kc-semantic-bridge-source-increment/1",
+  "recorded_at_utc": "2026-11-14T19:21:21.733689+00:00",
+  "base_commit": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "base_tree": "7980b32385ade338d711d137b833b773b5d510f1",
+  "scope": "Bounded content change; not a publication decision, corpus allowlist, runtime admission or deployment.",
+  "program_review": "reviews/semantic-bridge-20261114/non-author/review-record.json",
+  "editorial_review": "reviews/semantic-bridge-20261114/EDITORIAL_REVIEW.json",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "git_blob": "6f91a97d6d696dd4381b78222b7bfb5b9cc7ee97",
+      "sha256": "c767956b3738d0743e919a86c415ef49dbfff68ee922591762b72e9ba610d84f",
+      "bytes": 860
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "d4f06f3386ccae135db0440cf272f975d1b12ac5",
+      "sha256": "c68a3cb3f91330033dbaf5986f7b131a5b8b4782a07bfc5775166217d776bd32",
+      "bytes": 17202
+    },
+    {
+      "path": "DOCUMENTS.md",
+      "git_blob": "d3cbe7a9fe40f501196b730cc813d8e70ae6015a",
+      "sha256": "874e6eb21b939873617620385c0c97e53052260e2bc37d00ef17ef188282571a",
+      "bytes": 14184
+    },
+    {
+      "path": "README.md",
+      "git_blob": "c5ab84f82ec218502052d09441602d1d3d7d1eb7",
+      "sha256": "1a9df1ac3c981c69a5f21b4d43e8e4b729b3536307a17c3bfc3495f5bcf1cb25",
+      "bytes": 10728
+    },
+    {
+      "path": "REUSE.toml",
+      "git_blob": "fb0863535d38e48168ee1bccfdfa39044606f801",
+      "sha256": "0054b665898ce4bf7a9c2ed83e85b776910cb5eb2078e55b78a4b1f23f5281b4",
+      "bytes": 1101
+    },
+    {
+      "path": "SOURCES.md",
+      "git_blob": "4379918ebbb4aaf73308833e81ad7c525d136b5d",
+      "sha256": "b43c4e4d71da00e2ea4d576b5e42aebce18f9a7da84ec7ba8d198e70d947e49f",
+      "bytes": 52051
+    },
+    {
+      "path": "engineering/README.md",
+      "git_blob": "fadd4be605b9ab6aae717134de1dcf17ab0597de",
+      "sha256": "e73eaae974c44c38a3deeab5b9e13a8480cf090250983ce7787039a01061617e",
+      "bytes": 1059
+    },
+    {
+      "path": "engineering/specifications/README.md",
+      "git_blob": "f947fed7461253dd394febe5be8fb2d83410a998",
+      "sha256": "fe600b0150c0760b7b051b5c267d6c8cf87bbdefc407a346998a70ad0e3a760a",
+      "bytes": 2812
+    },
+    {
+      "path": "engineering/specifications/requirements.json",
+      "git_blob": "3dbd3c1889ad431fed64993648e0a1aaa00fe406",
+      "sha256": "da4b3f5052915410b3f934c25a6f02e9142f8ade53bc841547b9591b221a53a0",
+      "bytes": 172079
+    },
+    {
+      "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "git_blob": "e190fe811342829d2d3b951634e64eb36a251bab",
+      "sha256": "531e5f4c41dd93f1efc93e1010336e72b18e60415741d4fb2c3f1a9ac5a2af62",
+      "bytes": 28776
+    },
+    {
+      "path": "engineering/studies/README.md",
+      "git_blob": "705b1ac7ea4b5ac354019272494a4b242f9dcd28",
+      "sha256": "82a2ba3d9e11832e96f6926df1cdc2dede377e70468815014aa00d10a0faf62d",
+      "bytes": 6234
+    },
+    {
+      "path": "engineering/studies/evidence-index.json",
+      "git_blob": "6bafc09d5f903f36768535ee6c49204e8d180461",
+      "sha256": "25c9e9c28183357a4b6a9a352b545d560f12f22b6f667bb9281add72c23b6722",
+      "bytes": 56051
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "git_blob": "a08166d551ca43c7e2e203d9408604ec43bd4799",
+      "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+      "bytes": 13259
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_RUN.json",
+      "git_blob": "35ca7cddabb0ebddae0e88211d64677d40ee855d",
+      "sha256": "adca468d82cf8e09947b9d2fd5201ea0dadac52c63a7e075324ae67ba2f2907f",
+      "bytes": 3161
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_RUN.unbound.json",
+      "git_blob": "6b4923f1a9f65bb8941570d95f857b41fcbeb5b3",
+      "sha256": "63027d2eb15fb7e04aaac160cc26d58840e962b2f53406845883829bf4cef1b0",
+      "bytes": 2201
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_TESTS.initial.txt",
+      "git_blob": "a381d92e34c4ba7ad2b149f13f98b31f872d3dee",
+      "sha256": "58c4e597839a0f97898d71dd9e9ed1be1d16d3abe41268dfe5d0d875dba6dd28",
+      "bytes": 976
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/RELATIONS_INTEGRATION_TESTS.txt",
+      "git_blob": "a381d92e34c4ba7ad2b149f13f98b31f872d3dee",
+      "sha256": "58c4e597839a0f97898d71dd9e9ed1be1d16d3abe41268dfe5d0d875dba6dd28",
+      "bytes": 976
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/UNITTEST_FINAL.txt",
+      "git_blob": "9c4ff2e9e999c7c3f61863862269508557f56fc6",
+      "sha256": "b350d116a3c16d98188cf651671f2c067e9af8a509221f9c81b9769b7fe099c9",
+      "bytes": 3112
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/example-cli-runs.json",
+      "git_blob": "05fe282e610d6f79fff817f281b525a077b3a561",
+      "sha256": "a4a9e569cd5b4f8a174122723b53c10eecb1af2fe69ed8840ce01ad9e5639b3c",
+      "bytes": 13871
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/alternatives.en.packet.json",
+      "git_blob": "5bb375d1d23232f05cf9745a78d7a93801caf960",
+      "sha256": "93897fcfb079c5b2d2223d42281f3f842e69d9c8dabee7de206f3c3f28919d44",
+      "bytes": 1442
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/alternatives.en.txt",
+      "git_blob": "7fd586add76c0343d88316759c4d177ea46e5d49",
+      "sha256": "56f6af007a5da28b959417fff11117ca95cb086a4c59fb135b5cba586a251649",
+      "bytes": 201
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.en.packet.json",
+      "git_blob": "c1df98438b227e89f93494f1ef9d4ce9c066e97b",
+      "sha256": "b9ed4e4a61eb1f70760be5c7948944cfd5a5e3005a1389fef6bae009d46bbd96",
+      "bytes": 1120
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.en.txt",
+      "git_blob": "16dae9290aa225128820fc955008936b9fe3a980",
+      "sha256": "61acf67002a39c0a20446729a98eaff1595abc5be1a2cea2121c6d191072d3da",
+      "bytes": 246
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.ru.packet.json",
+      "git_blob": "3b79808a4fb1f6c0017ba8b9fbd3456c2a4e5fc1",
+      "sha256": "2fa8cd357c9d04c5b72497dd5732dbaf52abf74a163e5ed4394e34543c63a34b",
+      "bytes": 1120
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.ru.txt",
+      "git_blob": "3bc386d0cc6990bf3531a85bc3a31934e7b42614",
+      "sha256": "4256f72ea9f20f6db8c9ace96647ebccd5bfeba86faa9897f6890811f81aab28",
+      "bytes": 373
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.zh-Hans.packet.json",
+      "git_blob": "35bf5b8f9a282427d297b4c7884765ebb974cf6f",
+      "sha256": "6810561ad72f4c9b5b14cdbbf6027c5d855a76c71e51ba59eeb81525a016bdc8",
+      "bytes": 1120
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/examples/lending.zh-Hans.txt",
+      "git_blob": "7d1dd60b356b9ef5ab5f1ef354781c920516d81f",
+      "sha256": "92446ccf80502171bca71c2412a735afe8d1cc7b000c157dacca1020258e76ef",
+      "bytes": 235
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/finite-oracle.json",
+      "git_blob": "6bc602f0e5a802e628cdbb1773eaba5086945bf8",
+      "sha256": "cb2ba5da934521eed676482b6abfd3f864e52ff85b3a7501b17bbbe31071499d",
+      "bytes": 19276
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/evidence/origin.json",
+      "git_blob": "3d473f82d94ea5bcd6477bd4afdb62dc69ba50b0",
+      "sha256": "cf8e05b083f373f964cd67326d6bb95fb674f4b5cb680c124e16fc5bdd6d9f4c",
+      "bytes": 4792
+    },
+    {
+      "path": "publication-catalog.json",
+      "git_blob": "6ffbde8ae7a85ef6721ce3b525e6fc1a0c7517aa",
+      "sha256": "c78b06a1040d25a3aecf201034a610892fe3898c270c5d4e6825147b2584c792",
+      "bytes": 20372
+    },
+    {
+      "path": "reference/document-naming/names.json",
+      "git_blob": "5c2fd123eaccd7ec128ba7fd6a89bcd72a35c31d",
+      "sha256": "b5afec6c902f150445cce4b3bcb4e689c2eb98c95f2259c32726dca409b573d1",
+      "bytes": 10297
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/DESIGN_REVIEW.md",
+      "git_blob": "ab0c304411655ded1c8e9e2d4ac98b061256e696",
+      "sha256": "563840b6a7de80d6e8c65dcf6ab24e7deb43d80cd6e3c841281bec38b8e11970",
+      "bytes": 10927
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/EDITORIAL_REVIEW.json",
+      "git_blob": "0126972dec552bd2cc679feb445878801ae53862",
+      "sha256": "6e3dc08c7964c0fb353a9ee6f905014e5e70f161144e5a1b9c06fb7d79c5be1b",
+      "bytes": 3546
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/EDITORIAL_REVIEW.md",
+      "git_blob": "d284d9a75952727007f8bff4e00cbce32bf9fbe0",
+      "sha256": "a61799a8989e05c32b0e1304b589ab3caf66d9b768f0b8adc6884fd2cc6b7a7a",
+      "bytes": 2677
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/LOCAL_CHECKS.json",
+      "git_blob": "18a91822baf6923e039611e7ce5ec63982e27fdf",
+      "sha256": "92d35c9966fd483386761f21dc472dbe51b87aa5bba7c287adb3bad853654939",
+      "bytes": 4457
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/LOCAL_TESTS.txt",
+      "git_blob": "3bed74b5169bed7157980bc810c19be4c88108b5",
+      "sha256": "eac4f08e816678fedaaba574450ea865e3a1621e826ff712a6790bcf83b4875d",
+      "bytes": 23468
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/ORACLE_ACCEPTANCE.md",
+      "git_blob": "8a1e7b88a43ad322488dd77978bb1c4b553f4a28",
+      "sha256": "9488f871559103f9123430c0c8da2b6d79d252c41663fa836f14c33d891b09c6",
+      "bytes": 17152
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/RELATIONS_INTEGRATION.md",
+      "git_blob": "a226a23d2edf65e18417906fd9e36e25f225c4e9",
+      "sha256": "e124e1a6842613a6e73e1d7a475c0687baa3ef76f6988ce57c9e57abf5f698ad",
+      "bytes": 5723
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/REVIEW.md",
+      "git_blob": "6b4a69517fc2431e9a39ec8e92da40fa2eb2bf84",
+      "sha256": "6110bcebac5cad144ddec02b7b36dba9b8e443c66badcbaf7367984ac58a241c",
+      "bytes": 4921
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/SOURCE_PINS.json",
+      "git_blob": "fe47a4ce5fc222e2de5e4b6144fc07b223acf23c",
+      "sha256": "80563afa8c8cd1262361668b4895b7fb3784c359e6bb05eb24868c94b46e08da",
+      "bytes": 5268
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/STATE_STATUS.json",
+      "git_blob": "79a7f285aabfdea736fcbccf31bed7e67a5b7bfe",
+      "sha256": "f74b251e5e3ee1253bc4a5b88af2a75e1994d41552e7c034753a29ae1478169c",
+      "bytes": 7984
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/STATE_STATUS.md",
+      "git_blob": "771caa2baaf237b1532b63e2b26ce89c7ab47375",
+      "sha256": "a62cb174b4fe6fd41b3089e67d2b883483243518b9a69f47186e2fb37de943a2",
+      "bytes": 5645
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/history/SCOPE.txt",
+      "git_blob": "22bab268936a07c99e2b58696e1944f67cf4eee7",
+      "sha256": "08faf9d31b3833f3ec73611c8a4727c359e869beb2ad2f5b87a2cf3c00f5c99c",
+      "bytes": 427
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/history/finite-controls-before-ingestion-expansion.json",
+      "git_blob": "3bfbffcc567fbf26569a74b9924ab6b750687d41",
+      "sha256": "66e009a4ae6a73e994a6efb1d5d685e4e431d4183ca35a35e01b46690d80f2a0",
+      "bytes": 19276
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/history/finite-controls-initial.json",
+      "git_blob": "a9d67ff4b18cf840ec9159d06770ce46734e6671",
+      "sha256": "4f623c74ce55769a276a3d93f02747bc5e10f42456533ffb2df91839b6744002",
+      "bytes": 19275
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/history/unittest-successor.txt",
+      "git_blob": "268cdb73ce79a262b1a6e2dbbf9902e3716b63d3",
+      "sha256": "7e6e0101a8f3623ba5bf2def7af35d103faf11b2faeaa0c0329fcb07e4a94625",
+      "bytes": 3112
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/REVIEW.md",
+      "git_blob": "f55b53a06c9936a8eb6c006c60661fd9f72eeb72",
+      "sha256": "c27e7795142804fcb6de581aa54aa562a6ae771966f1d11ed44a837d39f39bd6",
+      "bytes": 4831
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/SPECIFICATION_reviewed.md",
+      "git_blob": "74def3748591927d8e24a0d2c566f9582350ee4a",
+      "sha256": "fba25935adf19b69a2070039c175b315cbd8e874fa48a090ea1459f4b3741d0a",
+      "bytes": 28559
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/bounded-review-results.json",
+      "git_blob": "9b06bd4d11efd21d1d83682bb8513ec12c914d21",
+      "sha256": "5f73d902ead2e97c28356fd08eb952ac7f3f153c7ae91a6e4f358ad57993874c",
+      "bytes": 27960
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/duplicate_nested_escaped.json",
+      "git_blob": "149e5b64c5d2c014875c5f27c507e7cca5051ce4",
+      "sha256": "59a8b563dc0c6295c78decdf13b6f17954e1fcbad5d921d9159f1c7c5e6ce874",
+      "bytes": 52
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/duplicate_root.json",
+      "git_blob": "efb9ec841b6a90a521f959ef6657d4f8de55d990",
+      "sha256": "d38245cfdb5d2239d67fe2a719312768b668a6928d8d97d04fbce83215e50b44",
+      "bytes": 13
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/malformed_json.json",
+      "git_blob": "4bed7862e3249356feec5fdc791d3d528a35bec4",
+      "sha256": "7e3eb5fc8da3096692ed52e9ff2a99e4f5bcb43640259131f8ab783a7723862a",
+      "bytes": 10
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/nonfinite_nan.json",
+      "git_blob": "2ac6c505d64f1d2b9153cd1a33eb989d469343ef",
+      "sha256": "159f99e03ec6dfb7edcad87bac613ac97a235493ad8b79b33cfa4002fb4477f8",
+      "bytes": 13
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_at_byte_limit.json",
+      "git_blob": "64f4787a6836e19ea69b1a67349a6d2acf8eb294",
+      "sha256": "bb46186d58cec37c9da6b433ed9529354ac17b74b4dc125dd45259e5b4d1eda2",
+      "bytes": 131072
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_over_byte_limit.json",
+      "git_blob": "8374aab19cf540b77b7b82829634bbafb236df33",
+      "sha256": "9e81c1060aef6a7f457208dbfdd0e4d2a06d58df601d0c9ce3d473a790c21337",
+      "bytes": 131073
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/integer-bound-source.txt",
+      "git_blob": "c0c2e4c77de47510f1df2f2a8df4c2d6bd834799",
+      "sha256": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+      "bytes": 13
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/oversized-integer-packet.json",
+      "git_blob": "1b77f074752e8d4bcbac5f212c968105d7d1ed8e",
+      "sha256": "0cff5ea97278cb2f6c920485644270cd4b2bbec7dabdf43fe362503d870132fb",
+      "bytes": 5341
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/oversized-integer-result.json",
+      "git_blob": "50c5540fa33c78bae4b551bf16ed8b5484ea57af",
+      "sha256": "4acba885ab70f288c315c27c4e832c5c2c9330d2f1862b9b01bea8ded002956f",
+      "bytes": 1822
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/oversized-integer-successor-result.json",
+      "git_blob": "2039d56a91d644cd66bddffd2a004331b837b4c0",
+      "sha256": "4db256af0c0ff552e6ce185ab2c877b6478c020c28c9cea9f69f3512d2fdde05",
+      "bytes": 711
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/review-record.json",
+      "git_blob": "2ba5377d6d11fd62e82d3d1b8f000f8180317673",
+      "sha256": "85f4370ce5ed1fa588b9b1da992eba771ea3e1d34a97e8a164480543fc099673",
+      "bytes": 3276
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/review_checks.py",
+      "git_blob": "6c0d1207ca90fc2258dd5b9705a9bb7a77bb9fbb",
+      "sha256": "8a6ccfcfc855431be5766eeabc0bfc510fa6be3a8b210ca8b7d6de51c84fddfd",
+      "bytes": 9522
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/semantic_bridge_reviewed.py",
+      "git_blob": "b523946a1aa5913fd5903b2e3476698653cf685d",
+      "sha256": "395fd92911688cc688b01405b001bf03a4d786811e4bef47604235db98cf46f3",
+      "bytes": 18242
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/non-author/semantic_bridge_successor.py",
+      "git_blob": "dfa1eed2cde404e74254cbbf388a66f3e73b87d6",
+      "sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+      "bytes": 18256
+    },
+    {
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "git_blob": "aeb34ead5419b6165ca85b91bc3a38808be964c7",
+      "sha256": "4b1f1492f0a245b6c11b74a1194dababb7e2760c90c4c861cdd8ec300b625373",
+      "bytes": 23967
+    },
+    {
+      "path": "roadmap/PRIORITIES_20261114.md",
+      "git_blob": "55e4a08bad575d349fe1bdcf9c57098594ec9a7b",
+      "sha256": "1332183481bb3faef393cb1c1fe0611eb857e1aaea75071b361830cfe2a25c45",
+      "bytes": 7589
+    },
+    {
+      "path": "roadmap/TASKS.md",
+      "git_blob": "10824e1add2645a38bcc500f12b7ae40b8b1774a",
+      "sha256": "146913a560c70a8934f6f541b54f980b1c650d6f20cbd0551a4aaef5a841989f",
+      "bytes": 49770
+    },
+    {
+      "path": "tools/check_publication.py",
+      "git_blob": "2c22e822067b5533d59d4c5e3b5253a75dbd26ef",
+      "sha256": "a82cf409dddc3f51fffe31d935c37bf2140d0456b6601fd5f0428d0b235f0570",
+      "bytes": 20792
+    },
+    {
+      "path": "tools/check_requirement_register.py",
+      "git_blob": "9b62a59d2fb7a62e1dc4df2fd8caf1f7537e4d75",
+      "sha256": "94917faa748d60d6af9b62b213aa19235fa55fb1b3b6f3aea8a760ac80a45ed0",
+      "bytes": 13073
+    },
+    {
+      "path": "tools/run_semantic_bridge_controls.py",
+      "git_blob": "2698036d90a68282097481683cbf968fd2c8cfef",
+      "sha256": "e3a9ec77bcb67eca2492efbe64a45ea961c2a6dc1ce29c9f49a41fac5cccd8d0",
+      "bytes": 2958
+    },
+    {
+      "path": "tools/semantic_bridge.py",
+      "git_blob": "dfa1eed2cde404e74254cbbf388a66f3e73b87d6",
+      "sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+      "bytes": 18256
+    },
+    {
+      "path": "tools/test_semantic_bridge.py",
+      "git_blob": "08c1c6a5cf193e754ff8aad0a92ddcd376bb6c4d",
+      "sha256": "e45c9707cc31ed8147dc939d345eafea9c6819e630ee21f34ec0526b4afc755e",
+      "bytes": 30956
+    },
+    {
+      "path": "tools/test_semantic_bridge_relations.py",
+      "git_blob": "a30e372c07fe23994ae53edfaee675fc961b4ead",
+      "sha256": "96b4bea7d525baf6cbb48ba0c0981c73f2979457c1dc78bae1fc3cce6a34d1d4",
+      "bytes": 11835
+    }
+  ],
+  "self_reference_note": "This manifest excludes its own bytes; the enclosing Git commit/tree identify the complete increment."
+}

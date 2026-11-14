@@ -1,0 +1,58 @@
+{
+  "schema": "kc-semantic-bridge/1",
+  "source_sha256": "56f6af007a5da28b959417fff11117ca95cb086a4c59fb135b5cba586a251649",
+  "source_media_type": "text/plain",
+  "interpretation_set": "alternatives",
+  "observations": {
+    "member": {
+      "referent": "The hypothetical recipient is a member.",
+      "type": "boolean",
+      "state": "known",
+      "value": true
+    },
+    "guest": {
+      "referent": "The hypothetical recipient is a guest.",
+      "type": "boolean",
+      "state": "known",
+      "value": false
+    },
+    "trained": {
+      "referent": "The hypothetical recipient completed training.",
+      "type": "boolean",
+      "state": "known",
+      "value": false
+    }
+  },
+  "readings": [
+    {
+      "id": "broad",
+      "start": 116,
+      "end": 157,
+      "quote": "RULE broad: (member OR guest) AND trained",
+      "attribution": {
+        "agent": "Original profile example author",
+        "discourse": "hypothetical"
+      },
+      "bindings": {
+        "member": "member",
+        "guest": "guest",
+        "trained": "trained"
+      }
+    },
+    {
+      "id": "narrow",
+      "start": 158,
+      "end": 200,
+      "quote": "RULE narrow: member OR (guest AND trained)",
+      "attribution": {
+        "agent": "Original profile example author",
+        "discourse": "hypothetical"
+      },
+      "bindings": {
+        "member": "member",
+        "guest": "guest",
+        "trained": "trained"
+      }
+    }
+  ]
+}

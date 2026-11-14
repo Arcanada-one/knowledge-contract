@@ -188,6 +188,8 @@ jobs:
         run: python3 -B -m unittest tools.test_reviewed_formal_results -v
       - name: Exact finite relation and outcome-set geometry controls
         run: python3 -B -m unittest tools.test_semantic_relations -v
+      - name: Semantic Bridge complete finite oracle and source-binding controls
+        run: python3 -B -m unittest tools.test_semantic_bridge tools.test_semantic_bridge_relations -v
       - name: Retrieval-context checker controls
         run: python3 -B -m unittest tools.test_verify_retrieval_context -v
       - name: Pin and run retrieval-context checker

@@ -1,0 +1,146 @@
+{
+  "schema": "kc-semantic-bridge-local-checks/1",
+  "recorded_at_utc": "2026-11-14T19:19:36.098973+00:00",
+  "base_commit": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "unit_suite": {
+    "command": "PATH=<pinned-pandoc-3.1.3>:$PATH python3 -B -m unittest tools.test_check_publication tools.test_check_sources tools.test_check_separation tools.test_check_dco tools.test_ci_workflow tools.test_document_names tools.test_reviewed_formal_results tools.test_semantic_relations tools.test_semantic_bridge tools.test_semantic_bridge_relations -v",
+    "tests_run": 156,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "result": "PASS",
+    "raw_log": "LOCAL_TESTS.txt",
+    "raw_log_sha256": "eac4f08e816678fedaaba574450ea865e3a1621e826ff712a6790bcf83b4875d"
+  },
+  "program_identity_note": "Implementation and new test modules were frozen by their owners before this combined run; the finite, CLI, integration and non-author receipts supply their own exact program identities. Current working files are not claimed to equal the base commit.",
+  "initial_gate_run": {
+    "checked_at": "2026-11-14T19:16:45.758995+00:00",
+    "results": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_publication.py",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "PUBLICATION_CHECK_PASS: catalog, document metadata, Markdown links, evidence references and hashes\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_sources.py",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "SOURCES_CHECK_PASS\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_requirement_register.py"
+        ],
+        "exit_code": 0,
+        "stdout": "REQUIREMENT_REGISTER_PASS requirements=360\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_document_names.py"
+        ],
+        "exit_code": 0,
+        "stdout": "DOCUMENT_NAMING_PASS: names, catalogue, front matter, H1 and readable roadmap identity\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "remaining_gate_note": "Final listed local gates completed; hosted candidate CI is a separately observed result.",
+  "external_independence": "NOT_VERIFIED",
+  "paid_model_experiment": "NOT_RUN",
+  "cost": "NOT_MEASURED",
+  "final_gate_run": {
+    "checked_at": "2026-11-14T19:20:09.167775+00:00",
+    "results": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_publication.py",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "PUBLICATION_CHECK_PASS: catalog, document metadata, Markdown links, evidence references and hashes\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_sources.py",
+          "."
+        ],
+        "exit_code": 0,
+        "stdout": "SOURCES_CHECK_PASS\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_requirement_register.py"
+        ],
+        "exit_code": 0,
+        "stdout": "REQUIREMENT_REGISTER_PASS requirements=360\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_document_names.py"
+        ],
+        "exit_code": 0,
+        "stdout": "DOCUMENT_NAMING_PASS: names, catalogue, front matter, H1 and readable roadmap identity\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "staged_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "intentional_byte_fixtures": "Two new exact-size JSON packet fixtures contain legal trailing whitespace. Their bytes were preserved and exact paths use whitespace=-blank-at-eol, matching the existing repository convention for retained literal inputs. The first staged check detected those intentional bytes before the attributes were added."
+  }
+}

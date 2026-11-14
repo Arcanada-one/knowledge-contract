@@ -1,0 +1,29 @@
+{
+  "schema": "kc-semantic-bridge-presentation-repair/1",
+  "recorded_at_utc": "2026-11-14T19:25:56.918532+00:00",
+  "initial_candidate_commit": "7148deefda97b97a991aad5cdd115f73e985d57a",
+  "initial_candidate_tree": "1a68d0d67525183707f3ddac73b74f20592340c4",
+  "initial_manifest": "MANIFEST.json",
+  "initial_manifest_scope": "The unchanged initial manifest binds the first published candidate above. This addendum records the subsequent presentation-only delta; it is not a new execution of the finite controls.",
+  "findings": [
+    {
+      "job": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43631778824/job/132559760743",
+      "finding": "Markdown MD038 rejects a trailing space inside an inline code span.",
+      "repair": "The canonical example now says NOTE followed by a space; grammar, requirement clauses, implementation and evidence are unchanged.",
+      "canonical_spec_before_sha256": "531e5f4c41dd93f1efc93e1010336e72b18e60415741d4fb2c3f1a9ac5a2af62",
+      "canonical_spec_after_sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078"
+    },
+    {
+      "job": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43631778824/job/132559760863",
+      "finding": "The retained original specification draft has relative canonical links that do not resolve from its archive directory. It is a raw review subject, not another publication document.",
+      "repair": "Store the exact unchanged original bytes with a .md.txt suffix so publication Markdown consumers do not misinterpret its original-location links.",
+      "original_review_record_name": "SPECIFICATION_reviewed.md",
+      "retained_path": "reviews/semantic-bridge-20261114/non-author/SPECIFICATION_reviewed.md.txt",
+      "sha256": "fba25935adf19b69a2070039c175b315cbd8e874fa48a090ea1459f4b3741d0a",
+      "byte_identity_preserved": true
+    }
+  ],
+  "unchanged_implementation_sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+  "scientific_claims_changed": false,
+  "prior_receipts_rewritten": false
+}
