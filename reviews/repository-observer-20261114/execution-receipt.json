@@ -1,0 +1,261 @@
+{
+  "claims_not_established": [
+    "atomic repository snapshot or complete intervening history",
+    "unstaged working-tree state",
+    "authenticity of a self-consistent imported receipt",
+    "current remote repository or CI state",
+    "real effect outcome or action authority",
+    "hostile-repository or Git-binary sandbox security",
+    "LLM quality, latency or cost benefit",
+    "production readiness or external independent acceptance"
+  ],
+  "created_at_utc": "2026-11-14T03:58:06.131436+00:00",
+  "implementation_files": {
+    "engineering/studies/agent-situation-controls/situation.py": {
+      "bytes": 14501,
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+    },
+    "tools/repository_observer.py": {
+      "bytes": 20125,
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba"
+    },
+    "tools/retained/repository_observer_filter/probe_configured_filter.py": {
+      "bytes": 3137,
+      "sha256": "a5ae823e750fac8229fa70ce5f48021daa33de5ff32b6a1210c75f86437b4429"
+    },
+    "tools/retained/repository_observer_filter/repository_observer_before_filter_fix.py": {
+      "bytes": 19946,
+      "sha256": "ab8724b9d026a1f24e8a908d57b62e829eb3b1f34e6147226ad41fa5e8dcae02"
+    },
+    "tools/test_repository_observer.py": {
+      "bytes": 14657,
+      "sha256": "6f57ea3ef038dfdce986641ca7710bc70547d9ebfcae7bed687c9fff678734cf"
+    }
+  },
+  "integration_test_execution": {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tools.test_repository_observer",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+    "exit_code": 0,
+    "finished_at_utc": "2026-11-14T03:54:23.997390+00:00",
+    "log": "reviews/repository-observer-20261114/integration-tests.txt",
+    "methods_run": 11,
+    "mocked_git_or_model": false,
+    "reported_elapsed_seconds": 1.12,
+    "result": "PASS",
+    "started_at_utc": "2026-11-14T03:54:22.741051+00:00"
+  },
+  "provenance": {
+    "authorization_scope": "Read-only observation of CITATION.cff and .markdownlint.json in the authorized local public-repository clone; evidence output is outside that observed clone.",
+    "implementation_checkout_description": "Uncommitted increment over the prepared PR105 tree. The local Git HEAD is an older commit and is not presented as the research-base commit.",
+    "implementation_checkout_local_git_head": "535c557a1c6bf90e156a17ca6d340a5c6dcd0a1f",
+    "repository": "Arcanada-one/knowledge-contract",
+    "research_base_commit": "dec63e4631d1b02e7b22bbc2e780c41cd6a7bfd7",
+    "research_base_pull_request": 105,
+    "research_base_tree": "d8b769c143bbf4252d580d6418f03545c6090b84",
+    "sample_source_checkout": "/workspace/scratch/5cd1d6f67b86/repository-observer-source-6a6f202f",
+    "sample_source_commit": "6a6f202f7f70be2ad3aea3369e45409761708596",
+    "sample_source_description": "Explicitly selected public repository files in an isolated local clone of roadmap-reconcile; detached exact commit; no remote access during capture or replay."
+  },
+  "receipt_scope": "Hashes bind implementation and already-existing execution evidence, not this receipt, the subsequent validation log, or its prose review. Historical pre-fix JSON is copied exactly; no exploratory manual probe is counted.",
+  "record_kind": "metadata-of-actual-local-executions",
+  "retained_evidence_files": {
+    "reviews/repository-observer-20261114/integration-tests.txt": {
+      "bytes": 2359,
+      "sha256": "1a9b2a133bdd5c0ded1f5f37f1c902c984afe6422a5dd3f77badec9338cf89f2"
+    },
+    "reviews/repository-observer-20261114/pre-fix-filter-probe.json": {
+      "bytes": 4299,
+      "sha256": "a684d93c37cf5b024b3c94ebd4294ca8382362db972fe45e4ff77f5ddb80c249"
+    },
+    "reviews/repository-observer-20261114/sample-execution.txt": {
+      "bytes": 6535,
+      "sha256": "2cb4bcae3ae619d877803d182b91821dac55528fcd0955c65738b85219cfff2f"
+    },
+    "reviews/repository-observer-20261114/sample-ledger.json": {
+      "bytes": 14492,
+      "sha256": "61ec7273c19d83265af5b1063cc182aa030231e3284bedce500eabd5dd47cf78"
+    },
+    "reviews/repository-observer-20261114/sample-replay.json": {
+      "bytes": 4053,
+      "sha256": "326344d64a6d876bcfbf6f09fc429bba731a9471bd5d131e9269899915002209"
+    }
+  },
+  "review": {
+    "external_independent_acceptance": "NOT_VERIFIED",
+    "module_author": "/root",
+    "reviewer": "/root/research_review",
+    "same_controller": true,
+    "same_model_family_and_host": true,
+    "test_author": "/root/research_review"
+  },
+  "runtime": {
+    "git": "git version 2.52.0",
+    "python": "3.12.14"
+  },
+  "sample_execution": {
+    "capture_id": "90f1d8dd1ad442cf7ca8b04f9942acc611ff4e1004e3a4735ba938d00ebcdf95",
+    "capture_status": "OK",
+    "clock_domain": "unix-nanoseconds",
+    "commands": [
+      {
+        "argv": [
+          "git",
+          "clone",
+          "--local",
+          "--no-hardlinks",
+          "--no-checkout",
+          "/workspace/scratch/5cd1d6f67b86/roadmap-reconcile",
+          "/workspace/scratch/5cd1d6f67b86/repository-observer-source-6a6f202f"
+        ],
+        "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+        "exit_code": 0,
+        "finished_at_utc": "2026-11-14T03:54:22.267450+00:00",
+        "started_at_utc": "2026-11-14T03:54:22.111032+00:00"
+      },
+      {
+        "argv": [
+          "git",
+          "-C",
+          "/workspace/scratch/5cd1d6f67b86/repository-observer-source-6a6f202f",
+          "checkout",
+          "--detach",
+          "6a6f202f7f70be2ad3aea3369e45409761708596"
+        ],
+        "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+        "exit_code": 0,
+        "finished_at_utc": "2026-11-14T03:54:22.533056+00:00",
+        "started_at_utc": "2026-11-14T03:54:22.267473+00:00"
+      },
+      {
+        "argv": [
+          "git",
+          "-C",
+          "/workspace/scratch/5cd1d6f67b86/repository-observer-source-6a6f202f",
+          "rev-parse",
+          "HEAD"
+        ],
+        "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+        "exit_code": 0,
+        "finished_at_utc": "2026-11-14T03:54:22.535781+00:00",
+        "started_at_utc": "2026-11-14T03:54:22.533082+00:00"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter/tools/repository_observer.py",
+          "observe",
+          "--repo",
+          "/workspace/scratch/5cd1d6f67b86/repository-observer-source-6a6f202f",
+          "--scope",
+          "kc-source-file-review",
+          "--producer",
+          "local-git-sample",
+          "--path",
+          "CITATION.cff",
+          "--path",
+          ".markdownlint.json",
+          "--output",
+          "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter/reviews/repository-observer-20261114/sample-ledger.json"
+        ],
+        "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+        "exit_code": 0,
+        "finished_at_utc": "2026-11-14T03:54:22.649019+00:00",
+        "started_at_utc": "2026-11-14T03:54:22.535971+00:00"
+      },
+      {
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+          "-B",
+          "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter/tools/repository_observer.py",
+          "replay",
+          "--input",
+          "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter/reviews/repository-observer-20261114/sample-ledger.json",
+          "--path",
+          "CITATION.cff",
+          "--path",
+          ".markdownlint.json"
+        ],
+        "cwd": "/workspace/scratch/5cd1d6f67b86/agent-situation-adapter",
+        "exit_code": 0,
+        "finished_at_utc": "2026-11-14T03:54:22.739815+00:00",
+        "started_at_utc": "2026-11-14T03:54:22.649043+00:00"
+      }
+    ],
+    "fresh_process_replay": true,
+    "head_end": "6a6f202f7f70be2ad3aea3369e45409761708596",
+    "head_start": "6a6f202f7f70be2ad3aea3369e45409761708596",
+    "ledger_count": 1,
+    "log": "reviews/repository-observer-20261114/sample-execution.txt",
+    "observed_at": 1794628462640716801,
+    "replay_context_status": "READY",
+    "replay_events_ingested": 2,
+    "replay_model_id_note": "The model allocates a process-local identifier. Its spelling is not a stable cross-process identity or an execution count.",
+    "selected_files": {
+      ".markdownlint.json": {
+        "blob": "77b58852250d18f3e8b35eeabd648cc4af8f0c19",
+        "mode": "100644",
+        "sha256": "c3bda0e0d76403549a63b42519235075b01138cfed6c177b3a9ee0f45a16c054",
+        "size": 68,
+        "state": "PRESENT"
+      },
+      "CITATION.cff": {
+        "blob": "f322022689b2bf2f80a0009e05a1832f6a3283e6",
+        "mode": "100644",
+        "sha256": "575320f4763741aa1ae467a6d91b8d48a3673e5e6a269c09ff6347870fa72fe3",
+        "size": 835,
+        "state": "PRESENT"
+      }
+    }
+  },
+  "schema": "kc-repository-observer-execution/1",
+  "unchanged_publication_boundaries": {
+    "engineering/studies/evidence-index.json": {
+      "bytes": 55128,
+      "sha256": "3f243ce0bd55cf869a50429b09b2ff0f0ec6c05558285a250eb7731c63a91c2a"
+    },
+    "publication-catalog.json": {
+      "bytes": 20227,
+      "sha256": "b912f183ba25ce67be37849f6571f39c4c465bbbacfb494afbd0726208206f4e"
+    }
+  },
+  "unchanged_research_study": {
+    "file_count": 27,
+    "sha256_by_path": {
+      "engineering/studies/agent-situation-controls/MANIFEST.json": "ba34fedd3c2be26d22f8b6a39e7e350a1d1fdfacbad164e7993d3d3b7241a548",
+      "engineering/studies/agent-situation-controls/README.md": "116b86fc2a4111c159e5554fa733887233b422cc2d41a9910c61d56c611ed780",
+      "engineering/studies/agent-situation-controls/STUDY.md": "41b6fbf4392fa27be2269ccbfb73b1e9049aa9cb7784c7b295960e8336366e05",
+      "engineering/studies/agent-situation-controls/checks/DESIGN_INPUT.md": "dc5187687398441ffa0d0011234e19471d94c84c1859683d5bb423aabba9403e",
+      "engineering/studies/agent-situation-controls/checks/check_agent_situation.py": "8028976d977e4933a4bf7297be2777b729177926cd0a961a3a40f935deb79bb9",
+      "engineering/studies/agent-situation-controls/checks/expected.json": "97dc4a0bd07d826e2d208514570c519dd3c015f1883a933b3cf91451b7ccfb28",
+      "engineering/studies/agent-situation-controls/checks/test_inventory.py": "57d8353b9e9d03dce433a6f85ef3f0980a0ba105c487273f8855f2268d0f3610",
+      "engineering/studies/agent-situation-controls/development/inventory-baseline/README.md": "26f2fe74111d3e8c4e84c2d7db6acb218edd2a195403a8e9d8fc99a038c149b0",
+      "engineering/studies/agent-situation-controls/development/inventory-baseline/check_agent_situation.py": "b77eda085d9335f585a227fdfb4dc99d1abcca6590f52318d01c97922b324fdd",
+      "engineering/studies/agent-situation-controls/development/inventory-baseline/missing-control-run.json": "c3b8819ab639f89bbab4403dfbb14a7228019d3f34bb0cd16d569ddf0af9857d",
+      "engineering/studies/agent-situation-controls/development/inventory-baseline/origin.json": "480a390cd1d4448b52b33f037e9914eace7254c6add484f1913c489347a63acb",
+      "engineering/studies/agent-situation-controls/development/v1/README.md": "54f11354613d784f1c559258928c0ecb393b62061bd63f6de2e26596f6b759bc",
+      "engineering/studies/agent-situation-controls/development/v1/checks/check_agent_situation.py": "ac57d0d4d10427ba4a06c4cb95ce25b0cda89b51700d66e3cb928438427e39ac",
+      "engineering/studies/agent-situation-controls/development/v1/checks/expected.json": "f650a04a4d8e662bdfc8221063d6c9b678036d0d93074ab7f727f8a2221f0cfa",
+      "engineering/studies/agent-situation-controls/development/v1/delayed-derivation-counterexample.json": "2897ec642e1402429b9f533e6a67c10890e2ced6d6a0d785f8e422b5da9447f7",
+      "engineering/studies/agent-situation-controls/development/v1/evidence/execution.txt": "b804a3fe77a5e7d28378b2dffe5a49c57810e0cff5b7dce974b7ee5ca6b3366a",
+      "engineering/studies/agent-situation-controls/development/v1/evidence/finite-run.json": "263ea2958d15b138baa39d9648cd904558d08829731766db806ad73d68747859",
+      "engineering/studies/agent-situation-controls/development/v1/situation.py": "ea9b0a95c729fdbb1491336b928c87356d68ccc8cf8149119a8c248cf9ad8019",
+      "engineering/studies/agent-situation-controls/evidence/20261114-inventory-execution.txt": "0f0f9ee97b6539a57d5475a012b4ff27c9496d09333fb8254f03c97c2c5d36ee",
+      "engineering/studies/agent-situation-controls/evidence/20261114-inventory-receipt.json": "d7277042714a098656f72edbf6bae166319f4a7d86bb52fa5cd805abb24355b2",
+      "engineering/studies/agent-situation-controls/evidence/20261114-inventory-run.json": "1cde8ee28e44816d0e72253bc2a28f11d1bc5fb79e056221996211924c44d182",
+      "engineering/studies/agent-situation-controls/evidence/20261114-inventory-tests.txt": "d4e023052afaf5ccbcf042cfee405789e852d8204259bd6cba22378eded2d668",
+      "engineering/studies/agent-situation-controls/evidence/execution.txt": "4e7b2d00cce486c7b6aa476c3ce0a6db9b99fd910049077cb7f02396e2bc7f76",
+      "engineering/studies/agent-situation-controls/evidence/finite-run.json": "371e895c2e9b2cdca5ead55324e8792524ff1cee1b77f60cb7baa95248a127f7",
+      "engineering/studies/agent-situation-controls/evidence/internal-review.json": "c2db187a9558ee822f732c1c573a9c7d4350559587487cdc773375c9cb4b585a",
+      "engineering/studies/agent-situation-controls/evidence/origin.json": "0d80708727698cef5a1390b8ca76495ea8e6f26d3d7ff05bdece0f4ed095cd76",
+      "engineering/studies/agent-situation-controls/situation.py": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+    }
+  }
+}
