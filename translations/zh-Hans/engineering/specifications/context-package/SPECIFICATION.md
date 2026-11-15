@@ -1,20 +1,19 @@
 ---
 name: "context-package"
-title: "上下文包：覆盖、依赖与交付"
+title: "语境包：覆盖、依赖与交付"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "对选定上下文、覆盖、强制依赖、预算和已观察交付的要求。"
+description: "对所选语境、覆盖、强制依赖、预算和已观察交付的要求。"
 translation_of: "engineering/specifications/context-package/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "274c7fb2a72e6a832b397b29c399e2d2f2607dfc"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "30ca8d2e5b5dd0e38b30cdb46919f514771a01da"
 translation_status: "author-draft"
 ---
 
-# 上下文包：覆盖、依赖与交付 {#context-packages-coverage-dependencies-and-delivery}
-
+# 语境包：覆盖、依赖与交付 {#context-packages-coverage-dependencies-and-delivery}
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

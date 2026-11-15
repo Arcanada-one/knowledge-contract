@@ -1,20 +1,19 @@
 ---
 name: "artifact-registry"
-title: "Реестр артефактов, понятные названия и форматы документов"
+title: "Реестр артефактов: Понятные названия и форматы документов"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Понятные названия артефактов, канонические форматы Markdown, правила идентичности и различия профессиональных артефактов."
+description: "Понятные названия артефактов, канонические форматы Markdown, правила идентичности и различия между профессиональными артефактами."
 translation_of: "engineering/specifications/artifact-registry/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "1fe5680e0c0e9925191fea0d187f76d915625804"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "669afe8a04861b503a27a6ea25e3153c4630d070"
 translation_status: "author-draft"
 ---
 
-# Реестр артефактов, понятные названия и форматы документов {#artifact-registry-readable-names-and-document-formats}
-
+# Реестр артефактов: Понятные названия и форматы документов {#artifact-registry-readable-names-and-document-formats}
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

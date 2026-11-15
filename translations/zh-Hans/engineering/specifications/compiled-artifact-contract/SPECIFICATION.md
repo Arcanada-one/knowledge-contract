@@ -1,20 +1,19 @@
 ---
 name: "compiled-artifact-contract"
-title: "编译知识制品与可复现派生"
+title: "编译知识：制品与可复现推导"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "保存的派生结果，包含精确输入、配方、依赖清单、模板和输出证据。"
+description: "保存的派生制品，附有精确输入、生成配方、依赖清单、模板与输出证据。"
 translation_of: "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "feef304cc65842e6ed9851fa9278ff30602c4a3d"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "b977d470b52dcd514e176d29e71214048e9f86da"
 translation_status: "author-draft"
 ---
 
-# 编译知识制品与可复现派生 {#compiled-knowledge-artifacts-and-reproducible-derivation}
-
+# 编译知识：制品与可复现推导 {#compiled-knowledge-artifacts-and-reproducible-derivation}
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

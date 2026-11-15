@@ -1,20 +1,19 @@
 ---
 name: "status-model"
-title: "评估、执行与发布状态"
+title: "状态模型：评估、执行与发布状态"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "彼此独立的评估、执行、效果、时效性、发布和审查状态。"
+description: "分别记录评估、执行、效果、时效、发布与审查状态。"
 translation_of: "engineering/specifications/status-model/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "4d3f405149c10b7e2bee6988c575bd82cae28b8b"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "588c6b50cc969f941c9a01d8dabfb893bf5eb651"
 translation_status: "author-draft"
 ---
 
-# 评估、执行与发布状态 {#assessment-execution-and-publication-states}
-
+# 状态模型：评估、执行与发布状态 {#assessment-execution-and-publication-states}
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

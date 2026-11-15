@@ -1,6 +1,6 @@
 ---
 name: "knowledge-evolution"
-title: "Эволюция знаний и версионируемые правила"
+title: "Эволюция знаний: Версионируемые правила"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -8,13 +8,12 @@ language: "ru"
 license: "CC-BY-4.0"
 description: "Версионируемые правила создания, принятие, анализ влияния, повторная оценка, миграция и согласованная публикация."
 translation_of: "engineering/specifications/knowledge-evolution/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "3e87cf3c9d1e891e435e21f646a838e625c45511"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "b210aed38bf3278c8bc7df993e5f3b2b1e33c6fc"
 translation_status: "author-draft"
 ---
 
-# Эволюция знаний и версионируемые правила {#knowledge-evolution-and-versioned-rules}
-
+# Эволюция знаний: Версионируемые правила {#knowledge-evolution-and-versioned-rules}
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

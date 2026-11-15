@@ -1,20 +1,19 @@
 ---
 name: "knowledge-contract-core"
-title: "知识契约：核心模型与准入要求"
+title: "契约核心：核心模型与准入要求"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "九个核心分组、作为一等义务的约束、配置，以及准入和执行要求。"
+description: "九个核心分组、作为独立要素的约束、配置规范，以及准入和执行要求。"
 translation_of: "engineering/specifications/knowledge-contract-core/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "cf7a034a2ebe1fea7d4e0505258b0eff21b02178"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "1fa84488b597a51b6b2a05445c8432557b1b9660"
 translation_status: "author-draft"
 ---
 
-# 知识契约：核心模型与准入要求 {#knowledge-contract-core-model-and-admission-requirements}
-
+# 契约核心：核心模型与准入要求 {#knowledge-contract-core-model-and-admission-requirements}
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

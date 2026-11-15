@@ -1,20 +1,19 @@
 ---
 name: "semantic-objects-and-context"
-title: "语义对象、上下文与适用条件"
+title: "意义与语境：语义对象、语境与适用条件"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "对来源解释、上下文、强制依赖和适用条件的形式化论述。"
+description: "对来源解释、语境、强制依赖关系和适用条件的形式化说明。"
 translation_of: "papers/semantic-objects-and-context/PAPER.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "7f8ff0bbf965275e17fb8b8ee664972b2a4bd89e"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "58aa9198416ce1520b04e8a4845e5fb622f987bc"
 translation_status: "author-draft"
 ---
 
-# 语义对象、上下文与适用条件 {#semantic-objects-context-and-conditions-of-applicability}
-
+# 意义与语境：语义对象、语境与适用条件 {#semantic-objects-context-and-conditions-of-applicability}
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
 ## 摘要 {#abstract}
@@ -101,7 +100,7 @@ e_r(o,q,s)\in\{\mathsf{pass},\mathsf{fail},\mathsf{unknown},\mathsf{not\_applica
 \iff \forall r\in R(q),\ \operatorname{Discharged}_r(o,q,s).
 \]
 
-这个定义采用与[状态模型（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md)相同的四个评估值。它不把未知视为通过，也不允许没有依据的豁免。它同样不把无法确认适用性等同于证明内容为假。一个关于相关日期而尚未得到回答的问题，可能阻止当前建议的提出，同时让底层陈述保持未决。
+这个定义采用与[状态模型（英文原文）](../../../../engineering/specifications/status-model/SPECIFICATION.md)相同的四个评估值。它不把未知视为通过，也不允许没有依据的豁免。它同样不把无法确认适用性等同于证明内容为假。一个关于相关日期而尚未得到回答的问题，可能阻止当前建议的提出，同时让底层陈述保持未决。
 
 确认的可靠程度取决于已声明条件、评估和豁免规则的完整性与正确性。如果 \(R(q)=\varnothing\)，上述全称量化在空集上真空成立；这并不能确立该请求没有实质义务。因此，若要用这样的确认来支持具有实际后果的使用，就必须另行论证要求集合覆盖了该用途。
 
@@ -128,13 +127,13 @@ C_0=\mathit{Roots},\qquad
 C_{n+1}=C_n\cup\{v:\exists u\in C_n,(u,v)\in D_q\}.
 \]
 
-该序列会到达不动点 \(C^*\)，它是包含 \(\mathit{Roots}\) 的最小 \(D_q\)-闭合集合。
+该序列会到达不动点 \(C^*\)，即最小的 \(D_q\)-闭合集合，其中包含 \(\mathit{Roots}\)。
 
-**证明。** 该序列单调递增，且包含于有限集合 \(V\) 中，因此只能发生有限次严格增加。按构造，其不动点是闭合的。对于任何包含 \(\mathit{Roots}\) 的闭合集合 \(S\)，归纳可得每个 \(n\) 都满足 \(C_n\subseteq S\)。因此 \(C^*\subseteq S\)。∎
+**证明。** 该序列单调递增，且包含于有限集合 \(V\) 中，因此只能发生有限次严格增加。按构造，其不动点是闭合的。对于任意闭合集合 \(S\)，若它包含 \(\mathit{Roots}\)，则归纳可得 \(C_n\subseteq S\)，对每个 \(n\) 均成立。因此 \(C^*\subseteq S\)。∎
 
-环不会使这一集合论结果失效。[经过测试的工程配置（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md)拒绝环；因此，它的可执行证据覆盖的是无环配置，而此处的有环情形由证明支持。遗漏的边会使“计算出的闭包意味着语义完整”这一解释失效：即使闭包计算完全正确，它仍然可能遗漏未记录的例外。
+环不会使这一集合论结果失效。[经过测试的工程配置（英文原文）](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)拒绝环；因此，它的可执行证据覆盖的是无环配置，而此处的有环情形由证明支持。遗漏的边会使“计算出的闭包意味着语义完整”这一解释失效：即使闭包计算完全正确，它仍然可能遗漏未记录的例外。
 
-“最小”是相对于已声明的顶点和边而言的。[投影研究中的反例（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality)表明，即使实体闭包最小，共用的限定条件中仍可能携带不必要的主张。该命题既不确立主张层面的最小性，也不确立最小令牌预算。
+“最小”是相对于已声明的顶点和边而言的。[投影研究中的反例（英文原文）](../../../../engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality)表明，即使实体闭包最小，共用的限定条件中仍可能携带不必要的主张。该命题既不确立主张层面的最小性，也不确立最小令牌预算。
 
 ### 命题3. 强化强制要求会缩小经确认的适用范围 {#proposition-3-mandatory-strengthening-narrows-certified-applicability}
 
@@ -180,9 +179,9 @@ C_{n+1}=C_n\cup\{v:\exists u\in C_n,(u,v)\in D_q\}.
 
 ## 7. 与已发表工程工作的联系 {#7-connections-to-the-published-engineering-work}
 
-[来源转录与不确定性研究（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/STUDY.md)展示了可复现的投影如何遗漏已记录的不确定性，并报告了保留该字段的修正。该研究没有评估多种解释，也没有评估来源定位符的正确性。这些提取义务仍未由已发表的研究测试。[依赖闭包与包交付研究（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md)把固定图闭包与历史交付检查区分开来；它并不能确立图中包含了每一项语义依赖。
+[来源转录与不确定性研究（英文原文）](../../../../engineering/studies/source-transcription-and-uncertainty/STUDY.md)展示了可复现的投影如何遗漏已记录的不确定性，并报告了保留该字段的修正。该研究没有评估多种解释，也没有评估来源定位符的正确性。这些提取义务仍未由已发表的研究测试。[依赖闭包与包交付研究（英文原文）](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)把固定图闭包与历史交付检查区分开来；它并不能确立图中包含了每一项语义依赖。
 
-项目共用的定义汇集于[术语表（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md)。接下来的科学研究方向是[受约束变换（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md)以及[检索与上下文组合（英文原文）](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md)，它们使用本文定义的适用性与依赖义务。
+项目共用的定义汇集于[术语表（英文原文）](../../../../reference/glossary/GLOSSARY.md)。接下来的科学研究方向是[受约束变换（英文原文）](../../../../papers/constrained-transformations/PAPER.md)以及[检索与上下文组合（英文原文）](../../../../papers/retrieval-and-context-composition/PAPER.md)，它们使用本文定义的适用性与依赖义务。
 
 ## 8. 结论 {#8-conclusion}
 

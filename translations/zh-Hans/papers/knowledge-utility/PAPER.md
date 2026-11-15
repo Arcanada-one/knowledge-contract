@@ -6,15 +6,14 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "相对于任务的收益、完整的资源核算、比较基线以及因果推断的局限。"
+description: "相对于任务的收益、完整的资源核算、比较基线以及因果推断的边界。"
 translation_of: "papers/knowledge-utility/PAPER.md"
-source_commit: "0892eeb150acae9df5e5d498902c7b5e04ce1871"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
 source_git_blob: "c5c661cf1a636b674ebc0be6ffcde95127be4f2f"
 translation_status: "author-draft"
 ---
 
 # 知识效用：资源核算与生命周期决策 {#knowledge-utility-resource-accounting-and-lifecycle-decisions}
-
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 摘要 {#abstract}
@@ -118,7 +117,7 @@ V_{\mathrm{set}}(\varnothing)=V_{\mathrm{set}}(\{a\})=V_{\mathrm{set}}(\{b\})=0,
 
 \[
 B+Nc_{\mathrm{hit}}<NG,
-\quad\text{等价于}\quad
+\quad\text{equivalently}\quad
 N(G-c_{\mathrm{hit}})>B.
 \]
 

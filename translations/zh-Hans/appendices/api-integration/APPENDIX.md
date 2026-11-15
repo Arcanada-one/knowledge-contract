@@ -6,24 +6,23 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "已公布的读取接口、任务契约交付要求，以及仓库、阅读界面和索引之间的一致性。"
+description: "已发布的读取接口、任务契约交付要求，以及代码库、阅读站点与索引之间的一致性。"
 translation_of: "appendices/api-integration/APPENDIX.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "3f3c5e19093df1f5c1b0ff6b4c8b191a0a7c1de8"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "a978fb5916377c5e883269a702f5520239921df8"
 translation_status: "author-draft"
 ---
 
 # 发布接口：API 集成与发布一致性 {#api-integration-and-publication-consistency}
-
 **出版版本：** 1.1 · **接口清单日期：** 2026年11月4日
 
 ## 1. 目的 {#1-purpose}
 
 仓库发布知识与规范。网站呈现选定的不可变出版物。服务暴露机器接口。这些是相互关联、但具有不同版本与证据的产品。网站构建成功并不能确立服务已部署、搜索索引已更新，或完整的任务专属知识契约已获准入。
 
-本附录规定这些边界之间的联系。[核心规范——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/knowledge-contract-core/SPECIFICATION.md)提供就绪契约的义务；[上下文包规范——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/context-package/SPECIFICATION.md)提供组合与交付要求。
+本附录规定这些边界之间的联系。[核心规范——英文原文](../../../../engineering/specifications/knowledge-contract-core/SPECIFICATION.md)提供就绪契约的义务；[上下文包规范——英文原文](../../../../engineering/specifications/context-package/SPECIFICATION.md)提供组合与交付要求。
 
-第3至第7节采用 [BCP 14——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#requirement-language)定义要求。第2节是已记载读取接口的资料性清单，不声称任务契约服务或下述回执配置已经部署。要求标识符在本附录中保持稳定。
+第3至第7节采用 [BCP 14——英文原文](../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)定义要求。第2节是已记载读取接口的资料性清单，不声称任务契约服务或下述回执配置已经部署。要求标识符在本附录中保持稳定。
 
 **API-R001.** 符合性声明必须（MUST）指明实现的配置、实现的精确修订版和已评估的要求；公布这些要求并不能确立符合性。
 
@@ -49,7 +48,7 @@ translation_status: "author-draft"
 
 **API-R004.** **响应与结果。** 响应必须（MUST）标识精确的契约与表示版本、选定的知识修订版、来源与依据、强制依赖闭包、覆盖情况、遗漏或未解决的义务、适用约束、评估，以及决策的信任边界。
 
-**API-R005.** 操作结果必须（MUST）是 **`success`, `partial`, `refused`, `failed`, `unresolved`** 之一，含义遵循[状态模型——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies)。
+**API-R005.** 操作结果必须（MUST）是 **`success`, `partial`, `refused`, `failed`, `unresolved`** 之一，含义遵循[状态模型——英文原文](../../../../engineering/specifications/status-model/SPECIFICATION.md#3-canonical-dimension-vocabularies)。
 
 **API-R006.** `ready` 是可用性或生命周期状态，绝不能（MUST NOT）替代操作结果标记。
 
@@ -124,7 +123,7 @@ API返回一个“current”标签，本身并不能证明它与出版物相匹�
 
 ### 发布回执配置 {#release-receipt-profile}
 
-**API-R018.** **回执。** 符合 **`KCIndexReleaseReceipt/v1`** 的门槛记录必须（MUST）满足[回执JSON Schema](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/appendices/api-integration/index-release-receipt.schema.json)及本文的语义检查。
+**API-R018.** **回执。** 符合 **`KCIndexReleaseReceipt/v1`** 的门槛记录必须（MUST）满足[回执JSON Schema](../../../../appendices/api-integration/index-release-receipt.schema.json)及本文的语义检查。
 
 这是本出版物新增的操作者记录交换配置，不是现有服务已输出该记录的证据。本附录没有提供生产环境回执，也不声称发生了新的部署或索引运行。
 
@@ -189,4 +188,4 @@ API返回一个“current”标签，本身并不能证明它与出版物相匹�
 
 对于没有经过该套件检验的接口，本文不声称存在成功结果。
 
-关于这些检查的证据性解释，请参见[证据与证伪](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md)、[受控复用](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md)，以及[工程研究](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md)的英文原文。
+关于这些检查的证据性解释，请参见[证据与证伪](../../../../papers/evidence-and-falsification/PAPER.md)、[受控复用](../../../../papers/controlled-knowledge-reuse/PAPER.md)，以及[工程研究](../../../../engineering/studies/README.md)的英文原文。

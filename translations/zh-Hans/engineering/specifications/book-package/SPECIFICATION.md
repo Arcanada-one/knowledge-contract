@@ -6,15 +6,14 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "具体的书籍包模式、可逆转换修订日志、语义层、权利边界和合成符合性检查。"
+description: "具体的书籍包模式、可逆转换账本、语义层、权利边界与合成一致性检查。"
 translation_of: "engineering/specifications/book-package/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "f82c0b23c7f51949bb0127d8795d357e16229a4a"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "48bab48f703f9ccf8af1c62a30264407de3c4b7c"
 translation_status: "author-draft"
 ---
 
 # 书籍包：来源身份、语义层与验证 {#book-packages-source-identity-semantic-layers-and-validation}
-
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 | 实现组件 | 范围 |

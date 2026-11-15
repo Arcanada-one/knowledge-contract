@@ -1,41 +1,40 @@
 ---
 name: "editorial-skill-pilot"
-title: "编辑试验：利用知识工具集编辑科学章节的单章节掩蔽比较"
+title: "编辑试验：借助知识工具包编辑科学章节的单章节掩蔽比较"
 artifact: "engineering-study"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "一次预先登记的编辑比较、精确的初始输出、掩蔽条件审查，以及观察到的平局。"
+description: "一次预注册的编辑比较、精确的初始输出、掩蔽评审与观察到的平局。"
 study_type: "paired-editorial-process-pilot"
 source_review_state: "internally-reviewed"
 translation_of: "engineering/studies/editorial-skill-pilot/STUDY.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "b5a86d5d99be9d0036308539bdafc2233c6a863e"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "30bb778287cf903aa5c727d86f86ae812e1b58da"
 translation_status: "author-draft"
 ---
 
-# 编辑试验：利用知识工具集编辑科学章节的单章节掩蔽比较 {#editing-a-scientific-section-with-a-knowledge-toolkit-a-masked-single-section-comparison}
-
+# 编辑试验：借助知识工具包编辑科学章节的单章节掩蔽比较 {#editing-a-scientific-section-with-a-knowledge-toolkit-a-masked-single-section-comparison}
 ## 摘要 {#abstract}
 
 两个智能体编辑了同一个804词的俄文科学章节。两者都收到共同任务说明、共享上下文、来源章节、受保护主张登记表和评分规则。辅助条件额外使用包含技能与流程方案蓝图的编辑工具集。共享检查表含十九项受保护主张，其中包括八项概念区分，以及精确字面量。另一个智能体在条件揭示之前审查了匿名化输出。两个版本都符合所提供的主张检查表，通过编辑验收门槛，并获得十分中的八分；偏好结果为平局。技术审计发现，辅助版本的修改与已声明规则及来源范围之间存在机械上一致的追踪链，但某些规则对具体编辑的支持不够具体。该试验在一个真实章节上展示了可运行的编辑与可追溯流程。它没有确立在缺少所提供辅助条件时仍能保留含义，没有确立写作质量优于共享结构化任务说明，没有确立单项技能的因果效果，也没有确立文本的科学有效性。
 
 ## 问题与范围 {#question-and-scope}
 
-用户的实际问题是：新创建的写作技能和方案蓝图，能否引导智能体完成真实出版任务并保留含义。选定的研究单元是项目引言中完整的工作定义章节：按空白字符分隔计数为804词，包含四个小节和一张含八项区分的表。输入为俄文，因此本试验不评估英文翻译质量。工具集派生自Maxim Ilyakhov与Lyudmila Sarycheva的《Пиши, сокращай》；[书目与输入身份说明——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#editorial-input)标识作品及所提供的表示，而不重新分发它。
+用户的实际问题是：新创建的写作技能和方案蓝图，能否引导智能体完成真实出版任务并保留含义。选定的研究单元是项目引言中完整的工作定义章节：按空白字符分隔计数为804词，包含四个小节和一张含八项区分的表。输入为俄文，因此本试验不评估英文翻译质量。工具集派生自Maxim Ilyakhov与Lyudmila Sarycheva的《Пиши, сокращай》；[书目与输入身份说明——英文原文](../../../../../reference/bibliography/BIBLIOGRAPHY.md#editorial-input)标识作品及所提供的表示，而不重新分发它。
 
-试验区分编辑质量与底层科学内容的真实性。编辑者可以改善指代、段落结构与句子清晰度，却不因此确立某项形式化主张的正确性。相关科学框架见[受约束变换](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md)、[证据与证伪](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md)和[知识效用](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/knowledge-utility/PAPER.md)的英文原文。
+试验区分编辑质量与底层科学内容的真实性。编辑者可以改善指代、段落结构与句子清晰度，却不因此确立某项形式化主张的正确性。相关科学框架见[受约束变换](../../../../../papers/constrained-transformations/PAPER.md)、[证据与证伪](../../../../../papers/evidence-and-falsification/PAPER.md)和[知识效用](../../../../../papers/knowledge-utility/PAPER.md)的英文原文。
 
-精确的[来源章节](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/source-section.txt)、[共享上下文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/source-context.txt)、[共同任务说明](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/common-editorial-brief.txt)与[原始协议](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/original-pilot-protocol.txt)作为历史文本记录保留。其中的内部路径与术语描述原始实验；本报告提供当前出版物的导航。
+精确的[来源章节](../../../../../engineering/studies/editorial-skill-pilot/evidence/source-section.txt)、[共享上下文](../../../../../engineering/studies/editorial-skill-pilot/evidence/source-context.txt)、[共同任务说明](../../../../../engineering/studies/editorial-skill-pilot/evidence/common-editorial-brief.txt)与[原始协议](../../../../../engineering/studies/editorial-skill-pilot/evidence/original-pilot-protocol.txt)作为历史文本记录保留。其中的内部路径与术语描述原始实验；本报告提供当前出版物的导航。
 
 ## 设计与预先登记 {#design-and-preregistration}
 
-[预先登记记录](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/editorial-preregistration.json)早于编辑智能体的工作。它固定输入，标识两个条件，规定每个条件保留一个首次完成的响应，并要求在书面评估结束之前隐藏条件标签。[受保护主张登记表](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/protected-claims.json)包含十九项主张、受保护标题与锚点、链接目标、数字、版本和37个精确字面量。“首次响应”状态由编辑者自己声明：最终字节由哈希固定，但没有独立完整的事件日志来核验这一状态、登记前的重读情况，或自审后是否未再修改。
+[预先登记记录](../../../../../engineering/studies/editorial-skill-pilot/evidence/editorial-preregistration.json)早于编辑智能体的工作。它固定输入，标识两个条件，规定每个条件保留一个首次完成的响应，并要求在书面评估结束之前隐藏条件标签。[受保护主张登记表](../../../../../engineering/studies/editorial-skill-pilot/evidence/protected-claims.json)包含十九项主张、受保护标题与锚点、链接目标、数字、版本和37个精确字面量。“首次响应”状态由编辑者自己声明：最终字节由哈希固定，但没有独立完整的事件日志来核验这一状态、登记前的重读情况，或自审后是否未再修改。
 
 两个智能体在新的任务上下文中收到精确章节、共同任务说明、共享上下文与受保护主张登记表。任务说明披露完整评分过程，包括五个维度及0、1、2分的含义。基线在不阅读工具集的情况下编辑；辅助条件额外使用可读布局包、五项声明已应用的技能，以及编辑既有文本的流程方案蓝图。登记表本身就是结构化的义务说明。因此，比较考察的是相对于共同结构化任务说明，额外工具集与编译器路径的作用，而不是“只有任务说明”的条件与契约之间的比较。保留计数衡量对所提供检查表的遵从，而非发现或在无辅助情况下保留未明示含义的能力。
 
-首次响应保存之后，另一个智能体收到来源与标为alpha、beta的两个版本，但没有收到编辑日志或条件映射。它给出[掩蔽条件审查](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/masked-editorial-review.json)。后续[标签揭示记录](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/condition-label-reveal.json)将alpha记为基线、beta记为工具集辅助，并说明审查在揭示之前完成。这是条件标签的掩蔽，不是审查者无法从风格差异推测方法的证明。所有角色都在同一智能体环境中工作；没有独立的人类编辑评审组。
+首次响应保存之后，另一个智能体收到来源与标为alpha、beta的两个版本，但没有收到编辑日志或条件映射。它给出[掩蔽条件审查](../../../../../engineering/studies/editorial-skill-pilot/evidence/masked-editorial-review.json)。后续[标签揭示记录](../../../../../engineering/studies/editorial-skill-pilot/evidence/condition-label-reveal.json)将alpha记为基线、beta记为工具集辅助，并说明审查在揭示之前完成。这是条件标签的掩蔽，不是审查者无法从风格差异推测方法的证明。所有角色都在同一智能体环境中工作；没有独立的人类编辑评审组。
 
 ## 保留响应的结果 {#results-on-the-retained-responses}
 
@@ -54,7 +53,7 @@ translation_status: "author-draft"
 | 按空白字符分隔的词数 | 830 | 820 |
 | 编辑决策 | 在声明范围内接受 | 在声明范围内接受 |
 
-报告附有[比较结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json)、精确的[基线响应](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/baseline-edit.txt)和[辅助响应](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/skill-assisted-edit.txt)。原始[机械检查](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/editorial-mechanical-checks.json)验证哈希、字面量存在和文档结构。语义保留计数与风格评分来自记录中的智能体审查，而不是机械检查器。
+报告附有[比较结果](../../../../../engineering/studies/editorial-skill-pilot/evidence/editorial-comparison-results.json)、精确的[基线响应](../../../../../engineering/studies/editorial-skill-pilot/evidence/baseline-edit.txt)和[辅助响应](../../../../../engineering/studies/editorial-skill-pilot/evidence/skill-assisted-edit.txt)。原始[机械检查](../../../../../engineering/studies/editorial-skill-pilot/evidence/editorial-mechanical-checks.json)验证哈希、字面量存在和文档结构。语义保留计数与风格评分来自记录中的智能体审查，而不是机械检查器。
 
 八项区分已经包含在十九项主张内，并不是额外八项独立义务。两个评分向量均为 `(2, 2, 2, 1, 1)`：前三个维度达到上限，而0–2尺度较粗。某个维度上小于一个评分步长的差异，无法被该工具分辨。总分相等是此评分规则下的结果，不是写作质量完全相同的证据。
 
@@ -83,7 +82,7 @@ translation_status: "author-draft"
 
 辅助路径依次经历任务说明、请求、编译后的知识契约、拟议编辑、审查和登记。声明应用了五项技能：定义编辑任务、精确改写、保留数字与条件、组织句子与段落，以及结合来源追踪审查结果。强制依赖使十二项技能和108条记录得到交付。其余七项技能没有仅因为被加载就算作已应用。
 
-单独的[技术审计](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/editorial-trace-audit.json)记录十二组实质修改、二十项修改依据和七项流程依据。它检查了49个唯一输入／输出定位符和24个唯一来源范围。引文、字符偏移、UTF-8偏移与行绑定相符，全部被修改的非空白字符均被记录的追踪链覆盖。它也检查请求、输入、契约、选定上下文、输出、评估与回执绑定之间的一致性。审计阅读了十五个来源片段，覆盖九项被引规则。对于精确性规则K10，明确代词指代属于对一般原则的编辑应用，而不是图书中独立规定的方法。追踪链在机械层面一致，但某些修改仅有一般规则支持。没有进行PDF视觉核验，来源OCR问题K02/F02与K03/F03仍然开放。
+单独的[技术审计](../../../../../engineering/studies/editorial-skill-pilot/evidence/editorial-trace-audit.json)记录十二组实质修改、二十项修改依据和七项流程依据。它检查了49个唯一输入／输出定位符和24个唯一来源范围。引文、字符偏移、UTF-8偏移与行绑定相符，全部被修改的非空白字符均被记录的追踪链覆盖。它也检查请求、输入、契约、选定上下文、输出、评估与回执绑定之间的一致性。审计阅读了十五个来源片段，覆盖九项被引规则。对于精确性规则K10，明确代词指代属于对一般原则的编辑应用，而不是图书中独立规定的方法。追踪链在机械层面一致，但某些修改仅有一般规则支持。没有进行PDF视觉核验，来源OCR问题K02/F02与K03/F03仍然开放。
 
 这些观察确立了该条具体追踪链的一致性与可检查性。它们并未揭示编辑者的每个内部行动，也不能证明某条被引规则导致了某种措辞选择。被编辑的科学章节是项目自己的文本，在此完整分发。私有第三方来源是支撑工具集规则的写作指南；其被引范围和私有的来源派生工具集不重新分发。公开审计以固定的来源身份报告这些规则—来源检查，而不提供指南本身。
 
@@ -91,23 +90,23 @@ translation_status: "author-draft"
 
 一种竞争解释是，共同任务说明、上下文、明确检查表和已披露评分规则已经提供了该章节需要的内容。另一种解释是，基线模型可能通过既往训练已知一般编辑方法或类似原则；实验没有测量或排除这种接触。原始协议明确避免假设模型缺乏一般编辑知识。这两种解释都与观察到的平局相容。后续有用的测试应包括共同任务说明中没有的项目特定规则、留出的任务集，以及区分能力更强的评估或成对偏好评估。当前结果不证明工具集无用，但也不能支持优越性主张。
 
-第二种反驳意见是，看似完整的追踪链可能伴随错误编辑。机械相等、字面量存在和一致回执并不确立含义保留。[包交付研究——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md)给出明确反例：受保护的数字字符串仍然保留，但句子的含义被否定。这里由编辑审查处理这一不同的问题，范围限于一个章节和一位审查者的判断。
+第二种反驳意见是，看似完整的追踪链可能伴随错误编辑。机械相等、字面量存在和一致回执并不确立含义保留。[包交付研究——英文原文](../../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)给出明确反例：受保护的数字字符串仍然保留，但句子的含义被否定。这里由编辑审查处理这一不同的问题，范围限于一个章节和一位审查者的判断。
 
-第三项边界涉及术语。试验时，编辑者记录了工作项实体两种拼写之间的歧义，没有默默判定它们表示不同事物。作者随后澄清，这些拼写指向同一个实体。当前[术语表——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md)采用该决定。冻结的试验输入和评分保留其历史字节；不会追溯改写成仿佛澄清早于实验发生。
+第三项边界涉及术语。试验时，编辑者记录了工作项实体两种拼写之间的歧义，没有默默判定它们表示不同事物。作者随后澄清，这些拼写指向同一个实体。当前[术语表——英文原文](../../../../../reference/glossary/GLOSSARY.md)采用该决定。冻结的试验输入和评分保留其历史字节；不会追溯改写成仿佛澄清早于实验发生。
 
-研究只有一个章节，每个条件保留一个响应，且均由各编辑者声明为首次完成。评分是定性规则判断，而非经校准的总体测量。试验没有记录令牌用量、成本或延迟，没有单独识别每项技能、方案蓝图或外围编译器的贡献。没有使用原生命令行客户端。这项编辑工作也没有重新验证底层科学主张及全部被引文献。预先登记工作与事后工作之间的区分，以及掩蔽标签与已验证评判者之间的区分，见[方法论参考文献——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods)。
+研究只有一个章节，每个条件保留一个响应，且均由各编辑者声明为首次完成。评分是定性规则判断，而非经校准的总体测量。试验没有记录令牌用量、成本或延迟，没有单独识别每项技能、方案蓝图或外围编译器的贡献。没有使用原生命令行客户端。这项编辑工作也没有重新验证底层科学主张及全部被引文献。预先登记工作与事后工作之间的区分，以及掩蔽标签与已验证评判者之间的区分，见[方法论参考文献——英文原文](../../../../../reference/bibliography/BIBLIOGRAPHY.md#evaluation-methods)。
 
 ## 公开记录检查 {#public-record-checks}
 
-所提供的[重放检查器](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py)针对冻结的来源哈希、原始响应哈希、精确字面量、标题、锚点顺序和链接目标，重新检查保留的公开文本：
+所提供的[重放检查器](../../../../../engineering/studies/editorial-skill-pilot/evidence/replay_editorial_checks.py)针对冻结的来源哈希、原始响应哈希、精确字面量、标题、锚点顺序和链接目标，重新检查保留的公开文本：
 
 ```bash
 python3 evidence/replay_editorial_checks.py
 ```
 
-[保存的检查结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json)确认这些机械属性。它有意不计算语义保真度，也不复现八分评分。完整的模型运行时身份及私有工具集的完整来源闭包并未提供，因此执行这个检查器不构成新的智能体试验。[origin.json](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/evidence/origin.json)固定所分发的记录，并区分原始数据与新生成的检查结果。
+[保存的检查结果](../../../../../engineering/studies/editorial-skill-pilot/evidence/public-editorial-record-check.json)确认这些机械属性。它有意不计算语义保真度，也不复现八分评分。完整的模型运行时身份及私有工具集的完整来源闭包并未提供，因此执行这个检查器不构成新的智能体试验。[origin.json](../../../../../engineering/studies/editorial-skill-pilot/evidence/origin.json)固定所分发的记录，并区分原始数据与新生成的检查结果。
 
-来源章节、上下文、任务说明、协议、编辑结果与实质审查文字均为俄文；JSON字段名主要为英文。在英文原文中，上面对两个条件、六项考察问题和审计限定的描述，是被引俄文段落的英文摘要，并非完整且经过独立审查的翻译。[证据语言索引](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-language-index.json)标识每个文件，不改写其冻结字节。
+来源章节、上下文、任务说明、协议、编辑结果与实质审查文字均为俄文；JSON字段名主要为英文。在英文原文中，上面对两个条件、六项考察问题和审计限定的描述，是被引俄文段落的英文摘要，并非完整且经过独立审查的翻译。[证据语言索引](../../../../../engineering/studies/evidence-language-index.json)标识每个文件，不改写其冻结字节。
 
 ## 结论 {#conclusion}
 

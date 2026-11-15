@@ -6,15 +6,14 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "从早期语料的迁移、不可变历史、证据溯源与明确的协议兼容性边界。"
+description: "从早期语料的迁移、不可变历史、证据来源以及保持不变的协议版本。"
 translation_of: "appendices/source-map/APPENDIX.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "668c939f1f43b9e61800cbb8f2b5ac07e18a49ef"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "3b78793325980dbd8a04f3390f01d3ffdc31d863"
 translation_status: "author-draft"
 ---
 
 # 来源历史：来源映射、早期版本与协议兼容性 {#source-map-earlier-editions-and-protocol-compatibility}
-
 **出版版本：** 1.1 · **来源审计日期：** 2026年11月4日
 
 ## 1. 本版改变了什么 {#1-what-this-edition-changes}
@@ -33,20 +32,20 @@ translation_status: "author-draft"
 
 | 早期手稿 | 当前科学材料归属 | 分离到工程部分的材料 |
 | --- | --- | --- |
-| 引言 | [语义对象与上下文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/semantic-objects-and-context/PAPER.md) | [出版物清单](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/publication-catalog.json)和[API接口边界](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/appendices/api-integration/APPENDIX.md#2-documented-public-interface)；任何清单都不能确立实现符合性 |
-| 语义对象与提取 | [语义对象与上下文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/semantic-objects-and-context/PAPER.md) | [来源转录与不确定性](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/STUDY.md) |
-| 上下文与适用性 | [语义对象与上下文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/semantic-objects-and-context/PAPER.md) | [已声明依赖图与有限交付检查](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md) |
-| 变换与迁移 | [受约束变换](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/constrained-transformations/PAPER.md) | [可执行投影与修订](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md) |
-| 查询、检索与覆盖 | [检索与上下文组合](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md) | [覆盖与交付要求](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/context-package/SPECIFICATION.md)；不声称已开展有限的检索性能研究 |
-| 预算约束下的上下文组合 | [检索与上下文组合](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/retrieval-and-context-composition/PAPER.md) | [交付记录数与故障控制](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/dependency-closure-and-package-delivery/STUDY.md#delivered-record-counts-and-fault-controls)；这里计数的是图记录，不是测得的令牌或字节成本 |
-| 对话与学习 | [交互与记忆](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/interaction-and-memory/PAPER.md) | [操作与任务绑定](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/contract-family/SPECIFICATION.md#2-common-contract-record)以及[定向修订案例](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md#targeted-revision-and-a-strong-alternative)；没有纵向对话或学习研究 |
-| 推理与证据 | [证据与证伪](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md) | [检查器的信任边界与反例](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/contract-profile-conformance/STUDY.md#counterexamples-and-the-comparator) |
-| 文档与记忆 | [交互与记忆](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/interaction-and-memory/PAPER.md) | [可读投影审计](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/source-transcription-and-uncertainty/STUDY.md)以及[单章节编辑试验](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/editorial-skill-pilot/STUDY.md) |
-| 工作、角色、技能与知识契约 | [受控知识复用](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md)和[修订与治理](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md) | [核心](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/knowledge-contract-core/SPECIFICATION.md)、[制品登记](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/artifact-registry/SPECIFICATION.md)和[配置符合性](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/contract-profile-conformance/STUDY.md) |
-| 修订与准则 | [修订与治理](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/revision-and-governance/PAPER.md) | [版本化规则要求](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/knowledge-evolution/SPECIFICATION.md)和[范围有限的可寻址修订观察](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/executable-projections-and-revision/STUDY.md#targeted-revision-and-a-strong-alternative) |
-| 评估与证伪 | [证据与证伪](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/evidence-and-falsification/PAPER.md) | [主张—证据索引](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-index.json)、[普通案例与边界案例的分开计数](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/README.md#counting-and-interpretation)，以及[比较基线的平局结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/contract-profile-conformance/STUDY.md#counterexamples-and-the-comparator) |
-| 编译、缓存与复用 | [受控知识复用](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/controlled-knowledge-reuse/PAPER.md) | [编译制品要求](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/compiled-artifact-contract/SPECIFICATION.md)、[失效处理](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md)和[复用政策](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/reuse-policy/SPECIFICATION.md)；没有针对已部署系统的代际或幂等性实验 |
-| 知识效用与资源经济性 | [知识效用](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/papers/knowledge-utility/PAPER.md) | [合成准入检查与分析性成本](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/reuse-admission-and-cost-controls/STUDY.md)；没有测得的生产环境成本收益 |
+| 引言 | [语义对象与上下文](../../../../papers/semantic-objects-and-context/PAPER.md) | [出版物清单](../../../../publication-catalog.json)和[API接口边界](../../../../appendices/api-integration/APPENDIX.md#2-documented-public-interface)；任何清单都不能确立实现符合性 |
+| 语义对象与提取 | [语义对象与上下文](../../../../papers/semantic-objects-and-context/PAPER.md) | [来源转录与不确定性](../../../../engineering/studies/source-transcription-and-uncertainty/STUDY.md) |
+| 上下文与适用性 | [语义对象与上下文](../../../../papers/semantic-objects-and-context/PAPER.md) | [已声明依赖图与有限交付检查](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md) |
+| 变换与迁移 | [受约束变换](../../../../papers/constrained-transformations/PAPER.md) | [可执行投影与修订](../../../../engineering/studies/executable-projections-and-revision/STUDY.md) |
+| 查询、检索与覆盖 | [检索与上下文组合](../../../../papers/retrieval-and-context-composition/PAPER.md) | [覆盖与交付要求](../../../../engineering/specifications/context-package/SPECIFICATION.md)；不声称已开展有限的检索性能研究 |
+| 预算约束下的上下文组合 | [检索与上下文组合](../../../../papers/retrieval-and-context-composition/PAPER.md) | [交付记录数与故障控制](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md#delivered-record-counts-and-fault-controls)；这里计数的是图记录，不是测得的令牌或字节成本 |
+| 对话与学习 | [交互与记忆](../../../../papers/interaction-and-memory/PAPER.md) | [操作与任务绑定](../../../../engineering/specifications/contract-family/SPECIFICATION.md#2-common-contract-record)以及[定向修订案例](../../../../engineering/studies/executable-projections-and-revision/STUDY.md#targeted-revision-and-a-strong-alternative)；没有纵向对话或学习研究 |
+| 推理与证据 | [证据与证伪](../../../../papers/evidence-and-falsification/PAPER.md) | [检查器的信任边界与反例](../../../../engineering/studies/contract-profile-conformance/STUDY.md#counterexamples-and-the-comparator) |
+| 文档与记忆 | [交互与记忆](../../../../papers/interaction-and-memory/PAPER.md) | [可读投影审计](../../../../engineering/studies/source-transcription-and-uncertainty/STUDY.md)以及[单章节编辑试验](../../../../engineering/studies/editorial-skill-pilot/STUDY.md) |
+| 工作、角色、技能与知识契约 | [受控知识复用](../../../../papers/controlled-knowledge-reuse/PAPER.md)和[修订与治理](../../../../papers/revision-and-governance/PAPER.md) | [核心](../../../../engineering/specifications/knowledge-contract-core/SPECIFICATION.md)、[制品登记](../../../../engineering/specifications/artifact-registry/SPECIFICATION.md)和[配置符合性](../../../../engineering/studies/contract-profile-conformance/STUDY.md) |
+| 修订与准则 | [修订与治理](../../../../papers/revision-and-governance/PAPER.md) | [版本化规则要求](../../../../engineering/specifications/knowledge-evolution/SPECIFICATION.md)和[范围有限的可寻址修订观察](../../../../engineering/studies/executable-projections-and-revision/STUDY.md#targeted-revision-and-a-strong-alternative) |
+| 评估与证伪 | [证据与证伪](../../../../papers/evidence-and-falsification/PAPER.md) | [主张—证据索引](../../../../engineering/studies/evidence-index.json)、[普通案例与边界案例的分开计数](../../../../engineering/studies/README.md#counting-and-interpretation)，以及[比较基线的平局结果](../../../../engineering/studies/contract-profile-conformance/STUDY.md#counterexamples-and-the-comparator) |
+| 编译、缓存与复用 | [受控知识复用](../../../../papers/controlled-knowledge-reuse/PAPER.md) | [编译制品要求](../../../../engineering/specifications/compiled-artifact-contract/SPECIFICATION.md)、[失效处理](../../../../engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md)和[复用政策](../../../../engineering/specifications/reuse-policy/SPECIFICATION.md)；没有针对已部署系统的代际或幂等性实验 |
+| 知识效用与资源经济性 | [知识效用](../../../../papers/knowledge-utility/PAPER.md) | [合成准入检查与分析性成本](../../../../engineering/studies/reuse-admission-and-cost-controls/STUDY.md)；没有测得的生产环境成本收益 |
 
 早期版本的数字文件名仅作为兼容链接保留。它们指向当前科学材料归属，以及对应的精确早期英文和俄文文本。合并按主题进行，不会悄悄把未经检验的历史提案转换成已证明的主张。未得到当前论证或证据支持的历史主张仍是历史提案，可在来源快照中查阅。
 
@@ -56,26 +55,26 @@ translation_status: "author-draft"
 
 | 早期主题 | 当前规范——英文原文 |
 | --- | --- |
-| Knowledge Contract v3 | [核心模型与准入](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/knowledge-contract-core/SPECIFICATION.md) |
-| 契约族 | [知识操作](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/contract-family/SPECIFICATION.md) |
-| 语义类型 | [语义类型与表示](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/semantic-types/SPECIFICATION.md) |
-| 上下文包 | [覆盖、依赖与交付](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/context-package/SPECIFICATION.md) |
-| 编译制品契约 | [编译制品与派生](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/compiled-artifact-contract/SPECIFICATION.md) |
-| 制品登记 | [可读名称与文档格式](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/artifact-registry/SPECIFICATION.md) |
-| 状态模型 | [评估、执行与发布状态](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/status-model/SPECIFICATION.md) |
-| 缓存身份与失效处理 | [身份与失效处理](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md) |
-| 复用政策 | [时间、权限与结果](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/reuse-policy/SPECIFICATION.md) |
-| 知识演化契约 | [版本化规则](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/knowledge-evolution/SPECIFICATION.md) |
+| Knowledge Contract v3 | [核心模型与准入](../../../../engineering/specifications/knowledge-contract-core/SPECIFICATION.md) |
+| 契约族 | [知识操作](../../../../engineering/specifications/contract-family/SPECIFICATION.md) |
+| 语义类型 | [语义类型与表示](../../../../engineering/specifications/semantic-types/SPECIFICATION.md) |
+| 上下文包 | [覆盖、依赖与交付](../../../../engineering/specifications/context-package/SPECIFICATION.md) |
+| 编译制品契约 | [编译制品与派生](../../../../engineering/specifications/compiled-artifact-contract/SPECIFICATION.md) |
+| 制品登记 | [可读名称与文档格式](../../../../engineering/specifications/artifact-registry/SPECIFICATION.md) |
+| 状态模型 | [评估、执行与发布状态](../../../../engineering/specifications/status-model/SPECIFICATION.md) |
+| 缓存身份与失效处理 | [身份与失效处理](../../../../engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md) |
+| 复用政策 | [时间、权限与结果](../../../../engineering/specifications/reuse-policy/SPECIFICATION.md) |
+| 知识演化契约 | [版本化规则](../../../../engineering/specifications/knowledge-evolution/SPECIFICATION.md) |
 
-新增的[图书包规范——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/specifications/book-package/SPECIFICATION.md)源于上游修订版 [570f76b6d9a189295c3229254821c30748383965](https://github.com/Arcanada-one/knowledge-contract/tree/570f76b6d9a189295c3229254821c30748383965) 中加入的模式、验证器与合成测试样例。1.0版保留了这些上游字节。当前修正定义了不向后兼容的 **`book-package/2`** 配置和 **`KCBook*/v2`** 记录：审查结果绑定到实际审查对象、范围与准则；权利分类约束许可和导出的可接受方式；就绪状态遵循完整的已声明状态规则。这是明确的格式变更，而不是对历史 `v1` 记录的隐式重新解释。
+新增的[图书包规范——英文原文](../../../../engineering/specifications/book-package/SPECIFICATION.md)源于上游修订版 [570f76b6d9a189295c3229254821c30748383965](https://github.com/Arcanada-one/knowledge-contract/tree/570f76b6d9a189295c3229254821c30748383965) 中加入的模式、验证器与合成测试样例。1.0版保留了这些上游字节。当前修正定义了不向后兼容的 **`book-package/2`** 配置和 **`KCBook*/v2`** 记录：审查结果绑定到实际审查对象、范围与准则；权利分类约束许可和导出的可接受方式；就绪状态遵循完整的已声明状态规则。这是明确的格式变更，而不是对历史 `v1` 记录的隐式重新解释。
 
 最后经过审查的 `v1` 实现仍可在 [ed2e188c89a1a50a187f3d55bf32baab54c87f7e](https://github.com/Arcanada-one/knowledge-contract/tree/ed2e188c89a1a50a187f3d55bf32baab54c87f7e) 查阅。使用方必须（MUST）标明其接受的配置版本与模式版本。转换到 `v2` 需要一条具有新身份的记录，以及所有缺失的评估证据；重命名模式标记绝不能（MUST NOT）把旧审查、权利断言或状态变成新确立的事实。发布这些文档不会自动重新评估，也不会改变语料准入。
 
-工程研究包含实际领域材料，包括历史上的烹饪、导航与电气示例。它们区分了可公开重放的程序、可检查的保留报告，以及不可获得的第三方来源语料。[证据索引——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/engineering/studies/evidence-index.json)记录每项主张的支持依据与限制；仅有导航链接并不是经验论证。
+工程研究包含实际领域材料，包括历史上的烹饪、导航与电气示例。它们区分了可公开重放的程序、可检查的保留报告，以及不可获得的第三方来源语料。[证据索引——英文原文](../../../../engineering/studies/evidence-index.json)记录每项主张的支持依据与限制；仅有导航链接并不是经验论证。
 
 ## 4. 协议兼容性 {#4-protocol-compatibility}
 
-出版版本 **1.0** 标识最初接受审查的文档集合；当前出版物的版本在其目录与元数据中声明。二者都不是经过重命名的运行时协议。历史记录需要的下列标识符予以保留。以大写关键词表示的要求遵循 [BCP 14——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
+出版版本 **1.0** 标识最初接受审查的文档集合；当前出版物的版本在其目录与元数据中声明。二者都不是经过重命名的运行时协议。历史记录需要的下列标识符予以保留。以大写关键词表示的要求遵循 [BCP 14——英文原文](../../../../reference/bibliography/BIBLIOGRAPHY.md#requirement-language)。
 
 | 标识符 | 实际范围 | 兼容性说明 |
 | --- | --- | --- |
@@ -98,12 +97,12 @@ translation_status: "author-draft"
 
 本仓库不重新分发第三方图书、页面图像或OCR语料。当前论证是自足的；可公开运行的示例使用原创合成数据或仅含元数据的图。来源访问受限会限制相应历史实验的独立复现，研究会在受影响的主张处明确说明这一限制。
 
-项目文本仍采用 [CC BY 4.0](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/LICENSE)，代码仍采用 [Apache-2.0](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/LICENSE-CODE)。当前[来源登记表——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/SOURCES.md)用具名的原始文献及明确的文档覆盖关系，替代了新版本此前笼统的来源描述。
+项目文本仍采用 [CC BY 4.0](../../../../LICENSE)，代码仍采用 [Apache-2.0](../../../../LICENSE-CODE)。当前[来源登记表——英文原文](../../../../SOURCES.md)用具名的原始文献及明确的文档覆盖关系，替代了新版本此前笼统的来源描述。
 
 ## 6. 阅读与引用 {#6-reading-and-citation}
 
-引用论文时，应注明人类可读的标题、作者、出版版本和不可变修订版；确有已发布DOI时，也可以引用该DOI。本版不会虚构DOI。论证应引用论文，要求应引用规范，观察应引用研究或精确证据记录。[术语表——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reference/glossary/GLOSSARY.md)统一解释共用术语，避免在每篇文章中重复完整定义。
+引用论文时，应注明人类可读的标题、作者、出版版本和不可变修订版；确有已发布DOI时，也可以引用该DOI。本版不会虚构DOI。论证应引用论文，要求应引用规范，观察应引用研究或精确证据记录。[术语表——英文原文](../../../../reference/glossary/GLOSSARY.md)统一解释共用术语，避免在每篇文章中重复完整定义。
 
 ## 7. 内部审查与验证 {#7-internal-review-and-verification}
 
-[出版物审查——英文原文](https://github.com/Arcanada-one/knowledge-contract/blob/a0450428704fcd41b411203f2fc88c06c779610b/reviews/publication-integrity/REVIEW.md)记录实际的科学与证据审查、精确输入身份、集成修正、本地检查，以及未执行的发布检查。它区分内部内容验收、外部同行评审，以及仓库、网站和语料准入的独立结果。
+[出版物审查——英文原文](../../../../reviews/publication-integrity/REVIEW.md)记录实际的科学与证据审查、精确输入身份、集成修正、本地检查，以及未执行的发布检查。它区分内部内容验收、外部同行评审，以及仓库、网站和语料准入的独立结果。

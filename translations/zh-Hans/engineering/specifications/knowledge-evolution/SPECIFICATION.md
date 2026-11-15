@@ -1,20 +1,19 @@
 ---
 name: "knowledge-evolution"
-title: "知识演化与版本化规则"
+title: "知识演化：版本化规则"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "版本化创建规则、采纳、影响分析、重新评估、迁移和协调发布。"
+description: "版本化创建规则、采纳、影响分析、重新评估、迁移与一致发布。"
 translation_of: "engineering/specifications/knowledge-evolution/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "3e87cf3c9d1e891e435e21f646a838e625c45511"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "b210aed38bf3278c8bc7df993e5f3b2b1e33c6fc"
 translation_status: "author-draft"
 ---
 
-# 知识演化与版本化规则 {#knowledge-evolution-and-versioned-rules}
-
+# 知识演化：版本化规则 {#knowledge-evolution-and-versioned-rules}
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

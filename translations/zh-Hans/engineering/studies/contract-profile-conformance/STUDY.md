@@ -1,6 +1,6 @@
 ---
 name: "contract-profile-conformance"
-title: "契约检验：契约配置的有限符合性检验、信任边界与强简单基线"
+title: "契约检验：有限一致性、信任边界与强简单基线"
 short_title: "契约检验"
 subtitle: "契约配置的有限符合性检验、信任边界与强简单基线"
 artifact: "engineering-study"
@@ -8,17 +8,16 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "有限契约检验、虚假受信任输入的反例，以及与强基线相同的结果。"
+description: "有限契约检查、错误可信输入的反例，以及与强基线持平的结果。"
 study_type: "finite-implementation-evaluation"
 translation_of: "engineering/studies/contract-profile-conformance/STUDY.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "c258efb990cc38c48dee21141af1ceec1791e388"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "4953657794994509de28e5bec3ae31bf5eaf8852"
 source_review_state: "internally-reviewed"
 translation_status: "author-draft"
 ---
 
-# 契约检验：契约配置的有限符合性检验、信任边界与强简单基线 {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
-
+# 契约检验：有限一致性、信任边界与强简单基线 {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
 ## 摘要 {#abstract}
 
 本研究考察知识契约的一个有限实现是否遵循其声明的结构规则和应用规则。实现作者的开发测试样例与 35 个预期常规结果中的 35 个一致；这属于回归检验证据。另一套控制测试在未查看实现的情况下独立编制，但仍处于同一次研究会话中，与 26 个预期结果中的 26 个一致。这些结果针对的是已经完成解释的 JSON 实例。该实现还接受了两个作者输入和四个控制输入，而这些输入中被信任的标注是刻意虚构的。此类接受暴露了信任边界，不计入常规结果的总数。随后构建的强简单表单检查器，在其作者已经知道输入和预期结果之后，在全部九个共同场景上与已记录的知识契约决策一致。这说明直接检查器能够编码所检验的义务；它既未确立泛化能力，也未确立更复杂表示的优势。完整的留存结果记录随本报告提供。

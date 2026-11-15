@@ -8,16 +8,15 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "在明确观察与损失条件下，对知识进行有条件的保留、复合与重建。"
+description: "在明确的观察与损失条件下，讨论知识的有条件保留、组合与重建。"
 translation_of: "papers/constrained-transformations/PAPER.md"
-source_commit: "d0b2c18ca16c0b78bb0f93c075b826f4555f20e5"
-source_git_blob: "74848f099e49c87c562497168d4b17bb0f0287ab"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "c03df8bff7a04345e9ff09c2a0fea506be1ed13c"
 source_review_state: "proposed-editorial-revision"
 translation_status: "author-draft"
 ---
 
 # 知识变换：受约束的变换与知识迁移的边界 {#constrained-transformations-and-the-limits-of-knowledge-transfer}
-
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
 ## 摘要 {#abstract}
@@ -58,8 +57,6 @@ T\subseteq X\times Y.
 P(x)\land T(x,y)\Rightarrow p_X(x)=p_Y(y).
 \]
 
-保留条件对可准入转移作全称要求：当一个输入具有多个可能输出时，关系中的每个输出都必须满足条件。一个成功的抽样输出不能确立其他可能输出也保留该观察。
-
 观察是针对任务选择的。它们可以包括数值、指称对象、条件、归属或未解决的不确定性。两个未知观察相等，只保留了所记录的不确定性，并不确立那个未知命题。选择观察函数并证明其适当性，本身也是义务：方程不会自行发现任务所需的语义特征。
 
 并非所有变换都要求相等。投影可以只保留声明的观察子集；推理可以依据规则，从输入前提确立输出命题。契约必须说明要求哪一种关系。把所有关系都称为“等价”，会抹去保留信息与推导后承之间的区别。
@@ -76,7 +73,7 @@ P(x)\land T(x,y)\Rightarrow p_X(x)=p_Y(y).
 
 ### 命题2. 共同受保护观察在有限链条中得到保留 {#proposition-2-a-shared-protected-observation-survives-a-finite-chain}
 
-设 \(n\geq1\)，且对于 \(1\leq i\leq n\)，有 \(T_i\subseteq X_{i-1}\times X_i\)。每一步满足 \(\{P_i\}T_i\{Q_i\}\)，并且在 \(P_i\) 成立时保留观察 \(p_i^-:X_{i-1}\to O\)、\(p_i^+:X_i\to O\)。在每个连接处要求
+设 \(n\geq1\)，且 \(T_i\subseteq X_{i-1}\times X_i\)，其中 \(1\leq i\leq n\)。每一步满足 \(\{P_i\}T_i\{Q_i\}\)，并保留观察 \(p_i^-:X_{i-1}\to O\)、\(p_i^+:X_i\to O\)，条件是 \(P_i\) 成立。在每个连接处要求
 
 \[
 Q_i(x)\Rightarrow P_{i+1}(x),
@@ -85,7 +82,7 @@ Q_i(x)\Rightarrow p_i^+(x)=p_{i+1}^-(x),
 \quad 1\leq i<n.
 \]
 
-对于任何从 \(P_1(x_0)\) 开始的成功链条 \(T_i(x_{i-1},x_i)\)，这些条件蕴涵
+对于任何成功链条 \(T_i(x_{i-1},x_i)\)，若它从 \(P_1(x_0)\) 开始，这些条件蕴涵
 
 \[
 p_1^-(x_0)=p_n^+(x_n).
@@ -93,7 +90,7 @@ p_1^-(x_0)=p_n^+(x_n).
 
 **证明。** 第一步的部分正确性给出 \(Q_1(x_1)\)。第一个连接条件提供 \(P_2(x_1)\)；归纳得到此后每一步的前置和后置条件。因此，每一步都在实际转移上保留其观察。第二个连接条件在各中间状态上，把前一步的输出观察与后一步的输入观察相等起来。依次代入这些步骤内部和步骤之间的等式，就得到所示的端点等式。∎
 
-这两个连接要求对该论证都不可缺少。在 \(\{0,1\}\) 上取两个恒等转移；第一步的两个接口都使用恒等观察，第二步的两个接口都使用布尔取反。每一步保留各自的观察，而状态链为 \(x\to x\to x\)。然而，初始观察是 \(x\)，最终观察是 \(1-x\)：观察函数在中间接口上不一致。另取第一个转移为前置条件不受限制的恒等转移，第二个转移把两个输入都映射为 \(1\)，但其前置条件为 \(x=1\)。若所有观察函数均为恒等函数，两个局部契约都在各自可准入输入上保留观察。然而，复合路径 \(0\to0\to1\) 仍改变观察，因为第二步的前置条件没有满足。
+这两个连接要求对该论证都不可缺少。在 \(\{0,1\}\) 上取两个恒等转移；第一步的两个接口都使用恒等观察，第二步的两个接口都使用布尔取反。每一步保留各自的观察，但链条从 \(x\) 开始，以 \(1-x\) 结束；其观察衔接条件不成立。另取第一个转移为前置条件不受限制的恒等转移，第二个转移把两个输入都映射为 \(1\)，但其前置条件为 \(x=1\)。若所有观察函数均为恒等函数，两个局部契约都在各自可准入输入上保留观察。然而，复合路径 \(0\to0\to1\) 仍改变观察，因为第二步的前置条件没有满足。
 
 共同观察要求是实质性的。如果一个操作保留数值却丢弃其解释，另一个操作只保留剩余文本，那么链条并未保留带单位的量。对不同性质作出的局部声明，不能合并成更强的端到端主张。
 
@@ -124,7 +121,7 @@ x\sim_p x'\iff p(x)=p(x').
 
 ### 命题3. 非单射变换不能具有左逆 {#proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse}
 
-设 \(f:X\to Y\) 把两个不同输入 \(x_1\ne x_2\) 映射到同一输出。不存在函数 \(g:Y\to X\)，使所有 \(x\in X\) 都满足 \(g(f(x))=x\)。
+设 \(f:X\to Y\) 把两个不同输入 \(x_1\ne x_2\) 映射到同一输出。不存在函数 \(g:Y\to X\) 满足 \(g(f(x))=x\) 对所有 \(x\in X\) 均成立。
 
 **证明。** 这样的函数会要求同一个值 \(g(f(x_1))=g(f(x_2))\) 同时等于两个不同输入。∎
 
@@ -182,9 +179,9 @@ C(x)\Rightarrow P(x).
 
 ## 7. 与已发表工程工作的联系 {#7-connections-to-the-published-engineering-work}
 
-[可执行投影与修订研究](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/executable-projections-and-revision/STUDY.md)报告了针对部分提取与定址修订的有限消费者检查。[依赖闭包与包交付研究](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/dependency-closure-and-package-delivery/STUDY.md)报告固定依赖图、保留的制品载荷，以及一个历史预先交付决定。这些控制针对指定包与投影；两项研究都没有评估本文提出的每种变换关系或跨领域迁移。链接指向英文来源。
+[可执行投影与修订研究](../../../../engineering/studies/executable-projections-and-revision/STUDY.md)报告了针对部分提取与定址修订的有限消费者检查。[依赖闭包与包交付研究](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)报告固定依赖图、保留的制品载荷，以及一个历史预先交付决定。这些控制针对指定包与投影；两项研究都没有评估本文提出的每种变换关系或跨领域迁移。链接指向英文来源。
 
-共同[术语表](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/reference/glossary/GLOSSARY.md)定义项目术语。[语义对象与语境](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/papers/semantic-objects-and-context/PAPER.md)提供解释边界；[受控知识复用](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/papers/controlled-knowledge-reuse/PAPER.md)把保留论证应用于先前准备的制品。
+共同[术语表](../../../../reference/glossary/GLOSSARY.md)定义项目术语。[语义对象与语境](../../../../papers/semantic-objects-and-context/PAPER.md)提供解释边界；[受控知识复用](../../../../papers/controlled-knowledge-reuse/PAPER.md)把保留论证应用于先前准备的制品。
 
 ## 8. 结论 {#8-conclusion}
 
