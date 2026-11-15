@@ -7,3 +7,5 @@ reviews/publication-integrity/science-review.md whitespace=-blank-at-eol
 # These exact-size JSON inputs deliberately pad with legal trailing JSON whitespace.
 reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_at_byte_limit.json whitespace=-blank-at-eol
 reviews/semantic-bridge-20261114/non-author/input-fixtures/packet_over_byte_limit.json whitespace=-blank-at-eol
+# Retain the reviewed baseline model's exact bytes, including its final blank line.
+reviews/repository-rule-consumer-20261115/non-author/baseline/engineering/studies/agent-situation-controls/situation.py whitespace=-blank-at-eof

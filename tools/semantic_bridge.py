@@ -84,9 +84,11 @@ def _read_bounded(path, limit):
     return data
 
 
-def read_packet(path):
-    """Read bounded JSON, refusing duplicate keys before interpreting any field."""
-    raw = _read_bounded(path, MAX_PACKET_BYTES)
+def parse_packet_bytes(raw):
+    """Decode exact bounded bytes with the same strict policy as the file CLI."""
+    _require(type(raw) is bytes, "packet_type", "packet must be exact bytes")
+    _require(len(raw) <= MAX_PACKET_BYTES, "input_size_bound",
+             "input exceeds the declared byte bound", "UNSUPPORTED")
     try:
         return json.loads(raw.decode("utf-8"), object_pairs_hook=_pairs,
                           parse_constant=_constant)
@@ -94,6 +96,11 @@ def read_packet(path):
         raise
     except (ValueError, RecursionError) as error:
         raise BridgeError("malformed_json", "packet is not supported well-formed UTF-8 JSON") from error
+
+
+def read_packet(path):
+    """Read bounded JSON, refusing duplicate keys before interpreting any field."""
+    return parse_packet_bytes(_read_bounded(path, MAX_PACKET_BYTES))
 
 
 class _Parser:

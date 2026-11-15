@@ -1,0 +1,1 @@
+PUBLICATION_CHECK_PASS: catalog, document metadata, Markdown links, evidence references and hashes

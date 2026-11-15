@@ -1,0 +1,651 @@
+{
+  "schema": "repository-rule-source-increment/1",
+  "base_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "base_tree": "34ba36d05a0768a3a86c056dfe74da26b2341bfc",
+  "files_excluding_this_manifest": [
+    {
+      "path": ".gitattributes",
+      "bytes": 1089,
+      "sha256": "7e654e95c692ad0c8144047d7e5d5a01fda0424037219ab59537d55d3cefba37",
+      "git_blob": "739947d61fb1b7b2e0a995e28ace45e87e0b1afe"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 19074,
+      "sha256": "12b9ea708c825284947fd14ccfdcb698bf4f514d55db70ccb83e4dff14d6e05d",
+      "git_blob": "f50a7a59b2baf5498a93987d27f0f155f7ff65b5"
+    },
+    {
+      "path": "REUSE.toml",
+      "bytes": 1154,
+      "sha256": "3d8287a6f2ed68834ee5b9e1e4a812e2c6ed2494bb904cdf40114a4d01b6568c",
+      "git_blob": "d9b5b83ec06ec6122d0b0ddf0f88d51cbfc3cb4a"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 80397,
+      "sha256": "30f2e2e3d6cb5fdf9c411e78474aa2fadbe268978ac75b8843977652de252af5",
+      "git_blob": "7d7107e4a5c801049d2f9dab0ae738d596448207"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/CONSUMER_CASES.json",
+      "bytes": 7443,
+      "sha256": "c1b5b7fd0016c68da0ca0403e28cf6e2e2a85d6414596705abf61485fa105e69",
+      "git_blob": "77230761b406027e52ba6db76d6a72171faeae83"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/CONSUMER_DESIGN.md",
+      "bytes": 8029,
+      "sha256": "3ead066f75ba881ebc906f25637b23948d13b59fc5e2ab85931a844060a859da",
+      "git_blob": "210a2320f5879baa03a59588aa818ac5c53bb048"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/CONSUMER_REVIEW.json",
+      "bytes": 3414,
+      "sha256": "8a06b23956f00f8716d06ce30621a33174461f1a9b90dba844478fae1b9ed173",
+      "git_blob": "9e3b343afcdb932588c9d1b961c4f5803485830d"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/CONSUMER_REVIEW.md",
+      "bytes": 3007,
+      "sha256": "cb1de37b0cc1eda6b3aeef5ca8447669abb8ea845721628b6ed8c9b26e0ffdf8",
+      "git_blob": "628e11b6dec329c3e66826482889cd3b5520bd6b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/LOCAL_VALIDATION.json",
+      "bytes": 1779,
+      "sha256": "870f8ffc06eaf38e6591ec4c7926d37bb271847c9410bf86d010edfe182a1c87",
+      "git_blob": "f7755bcc28c1f2d403309141fbdfa5f8224a2917"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/REVIEW.md",
+      "bytes": 6468,
+      "sha256": "f473e4300b82eb3062fe0e944c1226460392385d9a309e833cd5df6eb6b10413",
+      "git_blob": "257808016ca7e46703a99a557c258c6717701bed"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/consumer-tests/RUN.json",
+      "bytes": 2238,
+      "sha256": "45fe2a0494e6bab45f2fb8c8b3e5efa472a3739b579bccbe961ca5188f0ed06d",
+      "git_blob": "e27c1905ae5da916695e619d540645aedecbc76c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/consumer-tests/stderr.txt",
+      "bytes": 2169,
+      "sha256": "816cb06f9f1bdc490655e8c205c9d57a9921eaa7ca48c3fd7e850bb26bb4b1ae",
+      "git_blob": "82fcbabf93ead81076c6581acd68de9b230cc8ec"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/consumer-tests/stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/01-start.json",
+      "bytes": 18657,
+      "sha256": "fee94f7f9357ef09f621abc46e018496d1759d3b7314eec345f05a2d99dfa799",
+      "git_blob": "e7868bec6fc7c448aeb88c27408cdff703aa5d70"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/01-start.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/01-start.stdout.txt",
+      "bytes": 209,
+      "sha256": "5f1f36d8446bd1a8a3781418adc19fed5e8c34c40c042e5d6f324bbf6988ecca",
+      "git_blob": "eb65d77b633711641924352d016c67ea7773dfa5"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/02-evaluate-unknown.json",
+      "bytes": 36204,
+      "sha256": "64ff79472d99d4a0ce910ec1e65efd5064c31c2b284d66898f3cbae4c9c4e84f",
+      "git_blob": "7e86dd45b93ec9abf62ee17d3462b2c55b30f1b6"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/02-evaluate-unknown.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/02-evaluate-unknown.stdout.txt",
+      "bytes": 211,
+      "sha256": "eb13d813e360e71a80f1d8ea71c0915c23e91b56d84ee96a89cf380d522e6984",
+      "git_blob": "e1c2099c4501ed0662fad6058b3090c6c95de23b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/RUN.json",
+      "bytes": 5827,
+      "sha256": "103043008c8cbe13daa5d13e629d27fadbe2c9ba9d24d423bffe36e39e7b2ffa",
+      "git_blob": "d5fe057cfec551669e82d2d2b124cd898559885d"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/fixture-git-commands.json",
+      "bytes": 1314,
+      "sha256": "6640c58312ca2f561c696bb46c5fd052c34ca2ae5cf3c8ba453ac3308ae559af",
+      "git_blob": "5e099c42624daf29a02d87d62dc7dcdc15ad44bc"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/inputs/packet.json",
+      "bytes": 615,
+      "sha256": "e2dcd4394aefbb6f8a4166bbf97744796b430445adad3ae7ee6b5f46eb6dc678",
+      "git_blob": "f9908b624557d0c9aab5552b0e578a05a50cb8bb"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/inputs/source.txt",
+      "bytes": 83,
+      "sha256": "d08a3a0ba334ae1b344a7fd9a8a83e98f345cba81151dd962c2e808ec87f679d",
+      "git_blob": "54c53f9864ef33ad3424e490620d7fd884d2e06f"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/planned-cases.json",
+      "bytes": 3164,
+      "sha256": "3de106eda6e0dacbaf76a708b3e2d1796fec74d86b7c87898972e17823778189",
+      "git_blob": "735aaf9c9b094c709ae4209dfdb713f0a5f2595c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/initial-fixture-run/runner_before_fixture_fix.py",
+      "bytes": 11445,
+      "sha256": "1277aab87f1f38745a109037fbb6fe6b95929c76484bb35c32a0a91a11705e34",
+      "git_blob": "4d8b8d247ce40e6da010fbd1f04d5781ac799af8"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/development/unit-tests-wrong-pandoc.txt",
+      "bytes": 30879,
+      "sha256": "3dc3d17e4a8bd77d2ad161d0074c8f94381829596ab27ca904a36a8fe8272ebd",
+      "git_blob": "602b1a55c94a55d7b265e8d9e98078310d9bd5b6"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/01-start.json",
+      "bytes": 19065,
+      "sha256": "3904f4cd7422c65dce19a34e28cfc39e842919063b84440f07ee6c97bca9bf01",
+      "git_blob": "ef6813975a205ad0748fce33a56bc7fbabd04be4"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/01-start.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/01-start.stdout.txt",
+      "bytes": 209,
+      "sha256": "372c91e12dcb4bb825752fe18460763e9cd4c9fd1c5292c9a6f6ec1192ec584f",
+      "git_blob": "139e342315852ce4d65cdee52b02b72a2ddadd36"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/02-evaluate-unknown.json",
+      "bytes": 38787,
+      "sha256": "820a58b63c553368b38f4abac7a77eea373934d41e217fc1b19822290efbd9b5",
+      "git_blob": "d2dcb9d96b932c627e543913a3d1bbe29dee4c17"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/02-evaluate-unknown.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/02-evaluate-unknown.stdout.txt",
+      "bytes": 213,
+      "sha256": "cb1fdc56b8783306091211e1992d868bc699db2850c9a165bdec216a2d69ca53",
+      "git_blob": "0c80ccc11e65f5862f8f14dd58806a245451e911"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/03-ignore-uncommitted-decoys.json",
+      "bytes": 54503,
+      "sha256": "23482f8f6593ee0f385346e5e8c06a4dc8a449450d91fdef13f0dd5e7be2cf1f",
+      "git_blob": "b0914c8619358837561586f6bf687ddff616caff"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/03-ignore-uncommitted-decoys.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/03-ignore-uncommitted-decoys.stdout.txt",
+      "bytes": 213,
+      "sha256": "9c3af87f019483b1fc00ecc9f0de3bd206c09b3e84efe40e68cd2d2f06114b13",
+      "git_blob": "8d0631719251f7d5b15a7a347e7776636293e65f"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/04-packet-change-blocked.json",
+      "bytes": 67150,
+      "sha256": "8b7ad1e07891136d5fb079b6b6eff6ccde0db7848d0e873e8f8faa2ba819cab6",
+      "git_blob": "1010582d0dc6c51707543f6b64f04c0abfdb6d3d"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/04-packet-change-blocked.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/04-packet-change-blocked.stdout.txt",
+      "bytes": 213,
+      "sha256": "e07fc5394221fc7e3e84332941e8b1fa7b204025be1145a5a1c96d658cad2ccb",
+      "git_blob": "6084a835c0dc68199e73f887d253546def059628"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/05-repeat-requires-resume.json",
+      "bytes": 82841,
+      "sha256": "d41c952ee5da3d3aea40189c64f98dbd273bb7283803c2326da969a9d632c95d",
+      "git_blob": "42234d7073cb0433ae1f0b13455518375bfaa543"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/05-repeat-requires-resume.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/05-repeat-requires-resume.stdout.txt",
+      "bytes": 221,
+      "sha256": "2d99b33ac413015246dfbc7e5e2638e1fccb335e33dd43151385a64312d6b7bf",
+      "git_blob": "38ed5e7c4e7669932751be5f83edbe1cab2cb116"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/06-explicit-resume.json",
+      "bytes": 98570,
+      "sha256": "a51513b56b79c6a95e17875ff93d827c54d80ab4ecda7984e79a7fd459a32d70",
+      "git_blob": "f7573e66e1a125e3299578699428aa7ff348941c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/06-explicit-resume.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/06-explicit-resume.stdout.txt",
+      "bytes": 209,
+      "sha256": "990748e24f003b9e2b221a3ce330336557dd5381aaab7e2cc68dfc9f20af3c65",
+      "git_blob": "293c476accf4b317a8e38f05d137da2770e3bc93"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/07-evaluate-true.json",
+      "bytes": 117383,
+      "sha256": "40edf2b921d51d7d7d8f8aec0ffdbb49c3269498564eb6bf8a161542de37ede8",
+      "git_blob": "97b9c07ad56044ee7152ac7a7271c1164e345eed"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/07-evaluate-true.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/07-evaluate-true.stdout.txt",
+      "bytes": 213,
+      "sha256": "5ebeafd6bc348c7fd7cb67e86d5c94e03bc55edacfd84a0bac72d76ed9f21839",
+      "git_blob": "2ab0a2be85287909bcbd71ea2d5e47f510cb26e4"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/08-unrelated-commit-preserves-context.json",
+      "bytes": 133131,
+      "sha256": "7e268644261408bd9a4572453da8af426c3ec485e055c910079c3e0a3fa2e26a",
+      "git_blob": "aae534bb9c9801d04541853fd52413ae696db426"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/08-unrelated-commit-preserves-context.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/08-unrelated-commit-preserves-context.stdout.txt",
+      "bytes": 213,
+      "sha256": "2e4092d5df8cba660e0ef70d5c5045382e7f626911b6ebbff2e791cb32df1a9b",
+      "git_blob": "76f488c2a19be6424921918211bc4fc1176da1b2"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/09-source-change-blocked.json",
+      "bytes": 145654,
+      "sha256": "55aeeb279a73f83b42f9e2a845c82b38982b7d47e5411daf4bb57359d36d9e38",
+      "git_blob": "babaf30314d916990bff340eadde002eeb62a103"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/09-source-change-blocked.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/09-source-change-blocked.stdout.txt",
+      "bytes": 213,
+      "sha256": "ea8a44820d84fb1559419ccb9b4d0dea2234ca3a39353276d4541e21d005f87d",
+      "git_blob": "d5e14768b76c6881bc6b379a649bf8e13c1fec9a"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/10-resume-unsupported-source.json",
+      "bytes": 160985,
+      "sha256": "33061ff72d947a72ee42bdcb6a85a69c869f0193b884d944b8a2d8feb3c4cd89",
+      "git_blob": "caf4a0cfbbaccd2b93313e13c425cd3de7496763"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/10-resume-unsupported-source.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/10-resume-unsupported-source.stdout.txt",
+      "bytes": 210,
+      "sha256": "2f9aff1a99d963b8e5a22c3d793541b4507b839aad4acae239c44adc0d7f2284",
+      "git_blob": "75478068b29459771cd3f0bd2187848247e0529b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/11-unsupported-is-not-truth.json",
+      "bytes": 177943,
+      "sha256": "c6f19c63101c6ef035cf374adf337d55942429bd054d1ba16274714c2fb3fc9c",
+      "git_blob": "b2c85851538cc614bfc803a8ff8397ab49849317"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/11-unsupported-is-not-truth.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/11-unsupported-is-not-truth.stdout.txt",
+      "bytes": 216,
+      "sha256": "fa31826e9e73c7b3cde2cdd2c93b5ad3ca31324f7715711520e3222ec7ab0942",
+      "git_blob": "22ca20c818c9e5701e507175134968a2e5b5c54d"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/12-inspect-is-historical.json",
+      "bytes": 387,
+      "sha256": "bdae7af93c2f74d5b32b0c2052520baab1da72baa9e5ae52792a70bd4f023255",
+      "git_blob": "c471e7737804a266d4d0d629597c467a153c7a5c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/12-inspect-is-historical.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/12-inspect-is-historical.stdout.txt",
+      "bytes": 369,
+      "sha256": "4df1c80ba36f2bba034af9ca3f77ed3710dd3369e6d14e00d554dcff40309158",
+      "git_blob": "67778f1b1694a97927b55837e9bdecfceb09a480"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/RUN.json",
+      "bytes": 17799,
+      "sha256": "ebdcc1a16dcbd51f9cb305ea29b0e8c4bbc1c3140a4a6547b73e3771e3910baf",
+      "git_blob": "e9bf0f86a843db06ad74038a3e7cf3d478c71e56"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/fixture-git-commands.json",
+      "bytes": 2878,
+      "sha256": "5d9d275bc67d31c534e24cb77ff5e3cc99015fcc41419ed4164d15772ee879ec",
+      "git_blob": "78e3ba2ea36abbc9d4d9c32f3d9ea73edde83753"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/lab-run/planned-cases.json",
+      "bytes": 3164,
+      "sha256": "3de106eda6e0dacbaf76a708b3e2d1796fec74d86b7c87898972e17823778189",
+      "git_blob": "735aaf9c9b094c709ae4209dfdb713f0a5f2595c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/EXPECTATIONS.md",
+      "bytes": 1713,
+      "sha256": "0bae01b04816aa9e17c16a0c7e8e583d6e4b9189d6c237d416357ac7219886d1",
+      "git_blob": "5d4d4d79f20e403c4e8b0946275ae455521df081"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/PACKET_RESULT.json",
+      "bytes": 1169,
+      "sha256": "5c2d473dbeea4958c30d627b028d44dff1b84a6e82cb48062e7455ad87fc737b",
+      "git_blob": "c8fdd0732af6bb159c648324447ad5b4e6e07f35"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/REVIEW.json",
+      "bytes": 1841,
+      "sha256": "42410d88c7a80f64c9fe6606484ec437067d3083d6619748e17e4bb0af0fe364",
+      "git_blob": "4a5513b97624fe9d1780606aab4f068f45e74011"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/REVIEW.md",
+      "bytes": 8022,
+      "sha256": "7add495eae63d1bd356d93b06f722529bc6cbe1ff553488d9b1fb6477e2b28dd",
+      "git_blob": "37815936bf8d9466bc442430ab36d7b42f8199e0"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/engineering/studies/agent-situation-controls/situation.py",
+      "bytes": 14501,
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "git_blob": "2b103e39c01c81d674f58ddb70146b1d3cc7dfd3"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/source-manifest.json",
+      "bytes": 802,
+      "sha256": "d6831733c422330e4f9a5bf68e175527bcfdad62b6292d08e74c8e5a8d48e15c",
+      "git_blob": "c942b7ad6cff104b292430813dd1a571e073c300"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/tools/repository_observer.py",
+      "bytes": 20125,
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "git_blob": "e6139467aaa055a4ff9e9c4c43a2cb6de2afd0cb"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/tools/repository_rule_consumer.py",
+      "bytes": 11960,
+      "sha256": "11a1f99f3a1866ca59278f0b0d1d602b09a2afba025d656addfce0a5a7a8962f",
+      "git_blob": "8ee7e86c04d5d5397837269aad359297ce71f319"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/tools/repository_session.py",
+      "bytes": 19109,
+      "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+      "git_blob": "654b254b90c1a7d228c54e9c7cd99bf4afcade25"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/baseline/tools/semantic_bridge.py",
+      "bytes": 18600,
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "git_blob": "0160a46c0cdf673289734d7eaf6108fba4fa9467"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/RESULT.json",
+      "bytes": 1108,
+      "sha256": "c0aa36330f7e32ebf0830298b47ea3c124ac09e2396604d71bab52a495f19fb8",
+      "git_blob": "216fc09b74196ee82b59cd77912cf5288efd423a"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/actual-seed-start.json",
+      "bytes": 18039,
+      "sha256": "984dc23366db34c27427eb39d13151db30e0fd0daaa0d3a3961e262c66c63844",
+      "git_blob": "91326c55f8bfff6cf45b0e1ca13fd12c86a67c5a"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/expectations.json",
+      "bytes": 316,
+      "sha256": "ee41c8b164d9b93613b58e1d9d22554a19042b2a95727f61b3a8946cc1e27873",
+      "git_blob": "d387d8b31ebbfb9afab897c93bbffcb40daa8d38"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/false_sequence_with_33_entries.json",
+      "bytes": 491953,
+      "sha256": "6cb51fae0965d4a0a6137214abb4769b7a6f229a8cd558d1bee7a6bc7d7caf6e",
+      "git_blob": "845216d59a8c4252727599fad1e3ca7967f2cf1b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/over_33.json",
+      "bytes": 491954,
+      "sha256": "33d4da39587186c8b12f1700e82ccaf914c1f07a76eafe137d7004e99ab60e98",
+      "git_blob": "43fc4f15907a3a52c741f064c65c0f5a4e901784"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/post-fix-cap/valid_32.json",
+      "bytes": 477233,
+      "sha256": "d5b6ff06531df19ebb43565a571962884ee13fc7fdb35ea3187910f2d402c37b",
+      "git_blob": "d80f2db47a718b2d0e40580de3f09763b253459b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/RESULT.json",
+      "bytes": 1122,
+      "sha256": "49791408e03d7429ae655ef1b4e78344297c9d6a7cb106c35361d10c10d10d4b",
+      "git_blob": "ced98ab3047147b2e040dc3a0b1326a706145ba5"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/actual-seed-start.json",
+      "bytes": 18039,
+      "sha256": "6aea8c5db4debdf32ba5ffec86eac4735ba72aa488ee6d859a96327c694cca80",
+      "git_blob": "b4d5114458f10f4269342bdf28e38a1a88c1c8ad"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/expectations.json",
+      "bytes": 316,
+      "sha256": "ee41c8b164d9b93613b58e1d9d22554a19042b2a95727f61b3a8946cc1e27873",
+      "git_blob": "d387d8b31ebbfb9afab897c93bbffcb40daa8d38"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/false_sequence_with_33_entries.json",
+      "bytes": 491953,
+      "sha256": "bbf2fda8f6fa1a0a3f5770b99aad02f9b3f9f58aa58b9f48ca6d6e986c17a167",
+      "git_blob": "75934d0764650ca138006c5989558c2429ae70ab"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/over_33.json",
+      "bytes": 491954,
+      "sha256": "e48b19dfbe5b190048d28d1721c9a36849416eab9a9d6ba91884ed74ba4bc2ad",
+      "git_blob": "07aa38a3ab4a16e568d0e45fcc9b307664655abd"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/pre-fix-cap/valid_32.json",
+      "bytes": 477233,
+      "sha256": "27f0b2188c2f48f69c0bb242ce3514d348c83bf3acd1f75318267721a73a5dd5",
+      "git_blob": "1155021c3722b6527c01de9cc538b87f98939522"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/probe_capture_bound.py",
+      "bytes": 7166,
+      "sha256": "9f0757fde0d8ec91e41235ec194e39bf0946115d6b73846bd516452f86d35463",
+      "git_blob": "0b2be01d404a470b42a02b08061bcc7da9f9470e"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/probe_packet_bytes.py",
+      "bytes": 1673,
+      "sha256": "9c34078d8228c022ebe7dbcaee41990af8ab031fff3a616cd59dee19cc214185",
+      "git_blob": "6b159fd749cc08b0ebac7dbb355d9500477436dd"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/successor/tools/fixtures/repository-rule-lab/cases.json",
+      "bytes": 2324,
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "git_blob": "b402aaa011ae7e7d1b54044c8bfe205f7bf08dc6"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/successor/tools/repository_rule_consumer.py",
+      "bytes": 12483,
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "git_blob": "d5f8b600d68cb206469d2e8a905dc732f0d8183b"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/successor/tools/run_repository_rule_lab.py",
+      "bytes": 11567,
+      "sha256": "657935f1dbd49fde4eb74c5e85639a06220d6af8c239e07d96112c328ebbc831",
+      "git_blob": "afcf6adf24b633c89e6d079b4c975de902c2fcd0"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/successor/tools/semantic_bridge.py",
+      "bytes": 18600,
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "git_blob": "0160a46c0cdf673289734d7eaf6108fba4fa9467"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/non-author/successor/tools/test_repository_rule_lab.py",
+      "bytes": 1921,
+      "sha256": "3c26f3c3406b66ff7b69be06b2ac607777d893b890fc109a738cc267bafeabab",
+      "git_blob": "c6716831e1fcdb9909723f7d39174d842a8f087c"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/publication.txt",
+      "bytes": 99,
+      "sha256": "15b409a781947d6b8f82267121450a5cd78cce669329405ce99d5f1433f2ec4e",
+      "git_blob": "05d63657f5d680fa1c0655d4c13a375e993ab462"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/requirements.txt",
+      "bytes": 43,
+      "sha256": "22abbae77c9045710ab425e39d1082728d7a31236b6e1ffdb7f021be273cb261",
+      "git_blob": "5abaf69e932daad95725ee5cf8ff1d4da10c1603"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/sources.txt",
+      "bytes": 19,
+      "sha256": "3ed6ef2d986594efc2cc7400482e39cc4e9357586422b1d0ee7953fe2f4f734a",
+      "git_blob": "f43b6b54c7c36831b49159aec796ecbb73a92f8e"
+    },
+    {
+      "path": "reviews/repository-rule-consumer-20261115/unit-tests.txt",
+      "bytes": 19227,
+      "sha256": "535656652124772c9e2c0502b9f50162133c1cc962ddfd71099276b273bbdb97",
+      "git_blob": "53968bc33ebb2656852e01a580c33826924aa9cc"
+    },
+    {
+      "path": "roadmap/PRIORITIES_20261114.md",
+      "bytes": 8028,
+      "sha256": "38fc91752854267518cc664f4b0542a9c5643ec60c872081dfb4e416c43a1aaa",
+      "git_blob": "c9a3e955872e38f85dd9a001c2883ab765f179ae"
+    },
+    {
+      "path": "roadmap/TASKS.md",
+      "bytes": 52220,
+      "sha256": "f496303a9c410eca0619b464f454a491f3d80c848b583e74c3b92bca5f5aa68a",
+      "git_blob": "374cd6b8d646df96225e4dd842d3a1849ec422d3"
+    },
+    {
+      "path": "roadmap/agent-situation/RULE_CONSUMER.md",
+      "bytes": 10270,
+      "sha256": "3802f755a4c1cf341b9a29589385bf42f1c248d354012e677044c75e8d08d5b5",
+      "git_blob": "9e99044958af0d8daa96de00cb59961a2436923d"
+    },
+    {
+      "path": "tools/fixtures/repository-rule-lab/cases.json",
+      "bytes": 2324,
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "git_blob": "b402aaa011ae7e7d1b54044c8bfe205f7bf08dc6"
+    },
+    {
+      "path": "tools/repository_rule_consumer.py",
+      "bytes": 12483,
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "git_blob": "d5f8b600d68cb206469d2e8a905dc732f0d8183b"
+    },
+    {
+      "path": "tools/run_repository_rule_lab.py",
+      "bytes": 11567,
+      "sha256": "657935f1dbd49fde4eb74c5e85639a06220d6af8c239e07d96112c328ebbc831",
+      "git_blob": "afcf6adf24b633c89e6d079b4c975de902c2fcd0"
+    },
+    {
+      "path": "tools/semantic_bridge.py",
+      "bytes": 18600,
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "git_blob": "0160a46c0cdf673289734d7eaf6108fba4fa9467"
+    },
+    {
+      "path": "tools/test_repository_rule_consumer.py",
+      "bytes": 24497,
+      "sha256": "ef79a53cbd61c1417a831337b21aa1544e697424e64f9f187f22510cb29be3c9",
+      "git_blob": "8dec5ad4b6d362621204933a7894756b6890abf4"
+    },
+    {
+      "path": "tools/test_repository_rule_lab.py",
+      "bytes": 1921,
+      "sha256": "3c26f3c3406b66ff7b69be06b2ac607777d893b890fc109a738cc267bafeabab",
+      "git_blob": "c6716831e1fcdb9909723f7d39174d842a8f087c"
+    }
+  ],
+  "historical_records_unchanged": true,
+  "claims": "Bounded offline code and observed finite results; no independent scientific acceptance, live runtime, native admission or deployment."
+}

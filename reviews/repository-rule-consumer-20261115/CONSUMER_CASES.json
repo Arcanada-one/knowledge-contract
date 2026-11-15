@@ -1,0 +1,186 @@
+{
+  "schema": "repository-rule-consumer-prospective-cases/1",
+  "created_at": "2026-11-15T08:15:12.731166+00:00",
+  "status": "PROSPECTIVE_EXPECTATIONS_NOT_EXECUTION_RESULTS",
+  "source_main": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "authorship_scope": "non-author design and tests; same controller, host and model family",
+  "oracle": "Literal Boolean outcomes and existing Session adoption contract; not consumer-derived expected outputs",
+  "paths": {
+    "source": "rules/source.txt",
+    "packet": "rules/packet.json",
+    "unrelated": "notes/unrelated.txt"
+  },
+  "fixture": {
+    "source_utf8": "NOTE Original offline consumer fixture; supplied conditions, no real permission.\nRULE lending: member UNLESS suspended\n",
+    "source_sha256": "04a1547312afbdecfc9ea6ad5f11ba290860585816a6f9663ec7c00c2aa24e7b",
+    "packet": {
+      "schema": "kc-semantic-bridge/1",
+      "source_sha256": "04a1547312afbdecfc9ea6ad5f11ba290860585816a6f9663ec7c00c2aa24e7b",
+      "source_media_type": "text/plain",
+      "interpretation_set": "alternatives",
+      "observations": {
+        "member": {
+          "referent": "supplied membership condition",
+          "type": "boolean",
+          "state": "known",
+          "value": true
+        },
+        "suspended": {
+          "referent": "supplied suspension condition",
+          "type": "boolean",
+          "state": "known",
+          "value": false
+        }
+      },
+      "readings": [
+        {
+          "id": "lending",
+          "start": 81,
+          "end": 118,
+          "quote": "RULE lending: member UNLESS suspended",
+          "attribution": {
+            "agent": "authored offline fixture",
+            "discourse": "hypothetical"
+          },
+          "bindings": {
+            "member": "member",
+            "suspended": "suspended"
+          }
+        }
+      ]
+    }
+  },
+  "cases": [
+    {
+      "test": "test_cold_start_and_valid_evaluate_bind_both_committed_inputs",
+      "setup_sequence": "START -> EVALUATE",
+      "expected": [
+        "START READY, analysis/bindings null",
+        "one new capture at EVALUATE; Session VALID",
+        "EVALUATED TRUE, one world, bits 1",
+        "both raw-byte/Git identities match recorded blobs and adopted dependencies",
+        "effects false, no LLM, unknown authority/effects/CI retained"
+      ]
+    },
+    {
+      "test": "test_unrelated_commit_keeps_adopted_context",
+      "setup_sequence": "START -> unrelated committed edit -> EVALUATE",
+      "expected": [
+        "HEAD differs, required blob identities and context stay equal",
+        "EVALUATED TRUE, Session VALID"
+      ]
+    },
+    {
+      "test": "test_dirty_pair_is_not_calculation_input",
+      "setup_sequence": "START A -> uncommitted internally consistent source+packet B -> EVALUATE",
+      "expected": [
+        "standalone path CLI on B produces FALSE",
+        "consumer still EVALUATED TRUE from committed A",
+        "captured bytes are exactly A, not B; working tree NOT_OBSERVED"
+      ]
+    },
+    {
+      "test": "test_each_required_file_invalidates_then_explicit_resume",
+      "setup_sequence": "source-only and packet-only committed changes in separate subcases",
+      "expected": [
+        "changed required file gives candidate READY but Session INVALID; consumer BLOCKED",
+        "second EVALUATE is RESUME_REQUIRED; new analysis null",
+        "repair pair if source-only changed; explicit RESUME READY with null analysis",
+        "EVALUATE after resume gives TRUE for repaired source subcase and FALSE for packet subcase"
+      ]
+    },
+    {
+      "test": "test_missing_packet_latches_across_persisted_cli_chain",
+      "setup_sequence": "START -> committed deletion -> EVALUATE -> restore -> EVALUATE -> RESUME -> EVALUATE",
+      "expected": [
+        "missing packet produces Session NOT_READY and consumer BLOCKED",
+        "published blocked bundle survives fresh CLI process",
+        "restored file gives RESUME_REQUIRED, no new analysis",
+        "explicit RESUME then EVALUATE returns TRUE"
+      ]
+    },
+    {
+      "test": "test_unknown_and_withheld_remain_distinct",
+      "setup_sequence": "two supplied suspension availability states",
+      "expected": [
+        "each EVALUATED UNDETERMINED; 2 worlds and possible_values [false,true]",
+        "table bits 10 and state exactly unknown or withheld",
+        "no real-world truth, fidelity or authority assessment"
+      ]
+    },
+    {
+      "test": "test_unsupported_invalid_and_duplicate_packet_are_not_success",
+      "setup_sequence": "XOR rule; mismatched source hash; recursively duplicate value member",
+      "expected": [
+        "file preflight remains VALID for each present pair",
+        "formal statuses UNSUPPORTED, INVALID, INVALID respectively",
+        "no truth field or grant; duplicate packet uses the same strict byte decoder"
+      ]
+    },
+    {
+      "test": "test_closed_paths_root_and_scope",
+      "setup_sequence": "same path; non-normalized/outside path; empty scope; foreign local root; only one required dependency",
+      "expected": [
+        "invalid profile rejected",
+        "foreign repository address cannot advance bundle",
+        "a valid Session selecting both but requiring only source cannot be promoted to this two-required consumer profile"
+      ]
+    },
+    {
+      "test": "test_resealed_analysis_and_binding_forgery_rejected",
+      "setup_sequence": "alter retained truth and raw identity while recomputing outer receipt digest",
+      "expected": [
+        "historical validation rejects false retained analysis",
+        "historical validation rejects false input binding",
+        "unauthenticated whole-chain rewriting remains outside claim"
+      ]
+    },
+    {
+      "test": "test_crossprocess_inspect_and_exclusive_publication",
+      "setup_sequence": "fresh CLI start/evaluate/inspect and publication failures",
+      "expected": [
+        "inspect without Git available is HISTORICAL_ONLY and requires fresh capture",
+        "existing output and predecessor bytes preserved",
+        "output inside observed repository rejected",
+        "simulated os.link refusal leaves no destination and no success; not a process-crash observation"
+      ]
+    },
+    {
+      "test": "test_source_and_packet_byte_bounds_remain_explicit",
+      "setup_sequence": "one source and one packet above the existing declared byte limit",
+      "expected": [
+        "stable present files give Session VALID",
+        "Bridge status UNSUPPORTED with source_size_bound or input_size_bound",
+        "no successful truth computation; context readiness is separate"
+      ]
+    },
+    {
+      "test": "test_capture_limit_does_not_truncate_or_reset",
+      "setup_sequence": "32 actual captures followed by proposed 33rd advance",
+      "expected": [
+        "32nd complete bundle validates and retains all captures",
+        "33rd rejected before acquisition; no history truncation/reset",
+        "predecessor remains unchanged"
+      ]
+    }
+  ],
+  "case_count": 12,
+  "limits": {
+    "max_captures": 32,
+    "bundle_bytes": 33554432,
+    "source_bytes": 65536,
+    "packet_bytes": 131072
+  },
+  "not_claimed": [
+    "external independence",
+    "natural-language fidelity",
+    "authenticated producer",
+    "unique global history",
+    "complete attempt history",
+    "exactly-once execution",
+    "power-loss durability",
+    "current authority",
+    "paid-model experiment",
+    "native laboratory admission"
+  ]
+}

@@ -1,0 +1,2 @@
+NOTE Offline laboratory fixture.
+RULE lending: member AND trained UNLESS suspended

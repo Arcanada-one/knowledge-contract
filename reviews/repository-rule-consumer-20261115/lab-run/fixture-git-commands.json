@@ -1,0 +1,147 @@
+[
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "init",
+      "--initial-branch=main"
+    ],
+    "returncode": 0,
+    "stdout": "Initialized empty Git repository in /workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "config",
+      "user.name",
+      "Knowledge Contract offline fixture"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "config",
+      "user.email",
+      "fixture@example.invalid"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "add",
+      "--",
+      "source.txt",
+      "packet.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "commit",
+      "-m",
+      "Initial synthetic inputs"
+    ],
+    "returncode": 0,
+    "stdout": "[main (root-commit) c295977] Initial synthetic inputs\n 2 files changed, 3 insertions(+)\n create mode 100644 packet.json\n create mode 100644 source.txt\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "add",
+      "--",
+      "source.txt",
+      "packet.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "commit",
+      "-m",
+      "Change required observation packet"
+    ],
+    "returncode": 0,
+    "stdout": "[main f5d7642] Change required observation packet\n 1 file changed, 1 insertion(+), 1 deletion(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "add",
+      "--",
+      "unrelated.txt"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "commit",
+      "-m",
+      "Unrelated fixture change"
+    ],
+    "returncode": 0,
+    "stdout": "[main 3dc9bb0] Unrelated fixture change\n 1 file changed, 1 insertion(+)\n create mode 100644 unrelated.txt\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "add",
+      "--",
+      "source.txt",
+      "packet.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "commit",
+      "-m",
+      "Change source to unsupported grammar"
+    ],
+    "returncode": 0,
+    "stdout": "[main f15a042] Change source to unsupported grammar\n 2 files changed, 3 insertions(+), 3 deletions(-)\n",
+    "stderr": ""
+  }
+]
