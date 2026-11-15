@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Ядро контракта: Основная модель и требования допуска {#knowledge-contract-core-model-and-admission-requirements}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

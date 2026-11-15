@@ -165,4 +165,3 @@ W=(i,g,R,C,O,A),
 ## 参考文献 {#references}
 
 1. W3C. *PROV-DM: The PROV Data Model*. W3C Recommendation, 2013. <https://www.w3.org/TR/prov-dm/>
-

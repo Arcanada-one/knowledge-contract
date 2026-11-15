@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 契约核心：核心模型与准入要求 {#knowledge-contract-core-model-and-admission-requirements}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

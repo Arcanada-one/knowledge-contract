@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Редакции знаний: Идентичность версий и принятие норм {#knowledge-revision-version-identity-and-the-adoption-of-norms}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## Аннотация {#abstract}

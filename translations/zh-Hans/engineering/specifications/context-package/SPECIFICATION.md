@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 语境包：覆盖、依赖与交付 {#context-packages-coverage-dependencies-and-delivery}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

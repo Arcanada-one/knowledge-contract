@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 发布接口：API 集成与发布一致性 {#api-integration-and-publication-consistency}
+
 **出版版本：** 1.1 · **接口清单日期：** 2026年11月4日
 
 ## 1. 目的 {#1-purpose}

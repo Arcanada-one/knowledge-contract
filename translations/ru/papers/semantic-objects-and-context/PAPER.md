@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Смысл и контекст: Смысловые объекты, контекст и условия применимости {#semantic-objects-context-and-conditions-of-applicability}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## Аннотация {#abstract}

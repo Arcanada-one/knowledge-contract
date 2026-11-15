@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 知识修订：版本身份与规范采纳 {#knowledge-revision-version-identity-and-the-adoption-of-norms}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 摘要 {#abstract}

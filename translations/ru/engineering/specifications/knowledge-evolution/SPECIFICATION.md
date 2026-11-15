@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Эволюция знаний: Версионируемые правила {#knowledge-evolution-and-versioned-rules}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

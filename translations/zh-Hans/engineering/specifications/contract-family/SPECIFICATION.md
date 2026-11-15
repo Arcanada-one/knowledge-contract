@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 知识操作：前置条件、结果与变换义务 {#contracts-for-knowledge-operations}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

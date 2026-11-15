@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Книжные пакеты: Идентичность источника, семантические слои и проверка {#book-packages-source-identity-semantic-layers-and-validation}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 | Компонент реализации | Область |

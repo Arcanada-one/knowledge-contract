@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Операции со знаниями: Предусловия, результаты и обязательства преобразования {#contracts-for-knowledge-operations}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

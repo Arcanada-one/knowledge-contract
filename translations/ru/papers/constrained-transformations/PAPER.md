@@ -17,6 +17,7 @@ translation_status: "author-draft"
 ---
 
 # Преобразования знаний: Преобразования с ограничениями и пределы переноса знаний {#constrained-transformations-and-the-limits-of-knowledge-transfer}
+
 **Автор:** Pavel Valentov · **Издание публикации:** 1.1
 
 ## Аннотация {#abstract}

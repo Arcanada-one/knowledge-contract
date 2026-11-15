@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 意义与语境：语义对象、语境与适用条件 {#semantic-objects-context-and-conditions-of-applicability}
+
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
 ## 摘要 {#abstract}

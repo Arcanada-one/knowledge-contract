@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 状态模型：评估、执行与发布状态 {#assessment-execution-and-publication-states}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

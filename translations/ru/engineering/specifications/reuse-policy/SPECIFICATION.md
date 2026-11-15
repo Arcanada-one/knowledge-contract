@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Политика повторного использования: Время, полномочия и результаты решений {#reuse-policy-time-authorization-and-decision-outcomes}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

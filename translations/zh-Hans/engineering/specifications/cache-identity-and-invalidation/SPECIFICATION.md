@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 缓存有效性：缓存身份、依赖跟踪与失效 {#cache-identity-dependency-tracking-and-invalidation}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}
