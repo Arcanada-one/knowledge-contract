@@ -340,7 +340,7 @@ jobs:
 
   security-audit:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-    uses: Arcanada-one/datarim/.github/workflows/reusable-security-audit.yml@5a204199acd5b708ea63d99f6d642848f532bead
+    uses: Arcanada-one/datarim/.github/workflows/reusable-security-audit.yml@b248ceb8a4c750c249c7e833ee153c7eb19ff60c
     with:
       stack: framework
       datarim_ref: 5a204199acd5b708ea63d99f6d642848f532bead
