@@ -17,6 +17,7 @@ translation_status: "author-draft"
 ---
 
 # 语境组装：资源约束下的检索、覆盖与语境组合 {#retrieval-coverage-and-context-composition-under-resource-limits}
+
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
 ## 摘要 {#abstract}

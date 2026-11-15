@@ -17,6 +17,7 @@ translation_status: "author-draft"
 ---
 
 # Сборка контекста: Поиск, покрытие и композиция контекста при ограниченных ресурсах {#retrieval-coverage-and-context-composition-under-resource-limits}
+
 **Автор:** Pavel Valentov · **Издание публикации:** 1.1
 
 ## Аннотация {#abstract}

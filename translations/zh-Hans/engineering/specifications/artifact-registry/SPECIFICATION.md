@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 制品登记册：可读名称与文档格式 {#artifact-registry-readable-names-and-document-formats}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 知识演化：版本化规则 {#knowledge-evolution-and-versioned-rules}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

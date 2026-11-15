@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 编译知识：制品与可复现推导 {#compiled-knowledge-artifacts-and-reproducible-derivation}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

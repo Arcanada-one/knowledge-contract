@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 知识效用：资源核算与生命周期决策 {#knowledge-utility-resource-accounting-and-lifecycle-decisions}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 摘要 {#abstract}

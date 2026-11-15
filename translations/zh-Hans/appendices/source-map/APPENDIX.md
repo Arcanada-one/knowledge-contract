@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 来源历史：来源映射、早期版本与协议兼容性 {#source-map-earlier-editions-and-protocol-compatibility}
+
 **出版版本：** 1.1 · **来源审计日期：** 2026年11月4日
 
 ## 1. 本版改变了什么 {#1-what-this-edition-changes}

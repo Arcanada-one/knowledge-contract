@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Модель состояний: Оценка, исполнение и публикация {#assessment-execution-and-publication-states}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

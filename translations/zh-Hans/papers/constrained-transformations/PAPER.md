@@ -17,6 +17,7 @@ translation_status: "author-draft"
 ---
 
 # 知识变换：受约束的变换与知识迁移的边界 {#constrained-transformations-and-the-limits-of-knowledge-transfer}
+
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
 ## 摘要 {#abstract}

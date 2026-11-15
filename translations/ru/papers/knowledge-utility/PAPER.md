@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Полезность знаний: Учёт ресурсов и решения о жизненном цикле {#knowledge-utility-resource-accounting-and-lifecycle-decisions}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## Аннотация {#abstract}

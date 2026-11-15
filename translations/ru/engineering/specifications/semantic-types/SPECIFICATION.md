@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Семантические типы: Атрибуция и представления {#semantic-types-attribution-and-representations}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

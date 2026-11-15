@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Реестр артефактов: Понятные названия и форматы документов {#artifact-registry-readable-names-and-document-formats}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

@@ -334,4 +334,3 @@ E=m\land t\land k\land\neg s.
 6. Miles, A., and Bechhofer, S. (eds.). *SKOS Simple Knowledge Organization System Reference*. W3C Recommendation, 18 August 2009. <https://www.w3.org/TR/2009/REC-skos-reference-20090818/>.
 7. Hitzler, P., Krötzsch, M., Parsia, B., Patel-Schneider, P. F., and Rudolph, S. (eds.). *OWL 2 Web Ontology Language Primer*, second edition. W3C Recommendation, 11 December 2012. <https://www.w3.org/TR/2012/REC-owl2-primer-20121211/>.
 8. Bender, E. M., and Koller, A. “Climbing towards NLU: On Meaning, Form, and Understanding in the Age of Data.” *Proceedings of ACL*, 2020, 5185–5198. <https://doi.org/10.18653/v1/2020.acl-main.463>. [Первичная публикация](https://aclanthology.org/2020.acl-main.463/).
-

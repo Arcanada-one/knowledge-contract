@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 语义类型：归属标注与表示 {#semantic-types-attribution-and-representations}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

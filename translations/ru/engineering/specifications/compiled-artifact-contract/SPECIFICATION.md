@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Скомпилированные знания: Артефакты и воспроизводимое получение {#compiled-knowledge-artifacts-and-reproducible-derivation}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

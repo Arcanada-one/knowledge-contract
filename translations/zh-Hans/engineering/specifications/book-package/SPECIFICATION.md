@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 书籍包：来源身份、语义层与验证 {#book-packages-source-identity-semantic-layers-and-validation}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 | 实现组件 | 范围 |

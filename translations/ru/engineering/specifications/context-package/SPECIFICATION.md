@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Пакет контекста: Покрытие, зависимости и доставка {#context-packages-coverage-dependencies-and-delivery}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}

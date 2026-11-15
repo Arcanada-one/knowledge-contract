@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # История источников: Карта источников, прежние издания и совместимость протоколов {#source-map-earlier-editions-and-protocol-compatibility}
+
 **Издание публикации:** 1.1 · **Дата аудита источников:** 4 ноября 2026 года
 
 ## 1. Что меняет это издание {#1-what-this-edition-changes}

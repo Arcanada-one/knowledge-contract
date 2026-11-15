@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # 复用策略：时间、授权与决策结果 {#reuse-policy-time-authorization-and-decision-outcomes}
+
 **作者：**Pavel Valentov · **出版版本：**1.1
 
 ## 1. 目的与符合性 {#1-purpose-and-conformance}

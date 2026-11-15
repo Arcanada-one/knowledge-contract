@@ -14,6 +14,7 @@ translation_status: "author-draft"
 ---
 
 # Актуальность кеша: Идентичность кеша, отслеживание зависимостей и инвалидизация {#cache-identity-dependency-tracking-and-invalidation}
+
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
 ## 1. Назначение и соответствие {#1-purpose-and-conformance}
