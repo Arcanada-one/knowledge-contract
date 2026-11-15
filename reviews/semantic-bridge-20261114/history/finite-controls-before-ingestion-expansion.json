@@ -1,0 +1,565 @@
+{
+  "schema": "knowledge-contract.semantic-bridge-controls/1",
+  "checkout_head": "d5e684e201f6d41498c4fbd8c2a3497eed2bb30e",
+  "source_identity_note": "The checkout head is not the identity of uncommitted candidate files; program hashes below bind this run.",
+  "programs": {
+    "tools/semantic_bridge.py": {
+      "sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+      "bytes": 18256
+    },
+    "tools/test_semantic_bridge.py": {
+      "sha256": "30eb9d5a12e68af25841668be7b9d783706ebaf897ecd12c795c4a8d5ab8c548",
+      "bytes": 28962
+    },
+    "tools/run_semantic_bridge_controls.py": {
+      "sha256": "e3a9ec77bcb67eca2492efbe64a45ea961c2a6dc1ce29c9f49a41fac5cccd8d0",
+      "bytes": 2958
+    }
+  },
+  "runtime": "3.12.14",
+  "started_at": "2026-11-14T19:09:39.034456+00:00",
+  "completed_at": "2026-11-14T19:09:42.788185+00:00",
+  "elapsed_seconds": 3.753714,
+  "audit": {
+    "boolean_space": {
+      "result": "pass",
+      "observed_counts": {
+        "completed_world_evaluations": 55296,
+        "evaluation_records": 16384,
+        "source_expressions": 256,
+        "truth_false": 2952,
+        "truth_true": 2952,
+        "truth_undetermined": 10480
+      },
+      "evidence_profiles": 64,
+      "distinct_compatible_world_sets": 27,
+      "space": "all 256 three-atom Boolean functions as canonical DNF; all 4^3 supplied availability/value records",
+      "limits": "Finite formal evaluation, not all accepted ASTs, source interpretation or independent empirical trials."
+    },
+    "alternative_space": {
+      "result": "pass",
+      "observed_counts": {
+        "completed_world_reading_evaluations": 18432,
+        "equal_value_sets_but_disagreeing": 984,
+        "evaluation_records": 4096,
+        "ordered_reading_pairs": 256,
+        "same_world_agreement": 1088,
+        "same_world_disagreement": 3008
+      },
+      "space": "all ordered pairs of two-atom truth functions; all 4^2 availability/value records",
+      "limits": "Explicit supplied alternatives; no claim that all human readings were discovered."
+    },
+    "original_examples": {
+      "result": "pass",
+      "examples": [
+        {
+          "language": "en",
+          "source_utf8": "NOTE Original test notice: membership, training and a check are required; suspension is an exception. Borrowing gives no copying authority.\nRULE r1: m AND t AND k UNLESS s\n",
+          "source_sha256": "3f935faffe73293a74e2d4983ad990a63c910957a25c459338ffc05bef177d51",
+          "packet": {
+            "schema": "kc-semantic-bridge/1",
+            "source_sha256": "3f935faffe73293a74e2d4983ad990a63c910957a25c459338ffc05bef177d51",
+            "source_media_type": "text/plain",
+            "interpretation_set": "alternatives",
+            "observations": {
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              }
+            },
+            "readings": [
+              {
+                "id": "r1",
+                "start": 140,
+                "end": 171,
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                }
+              }
+            ]
+          },
+          "report": {
+            "schema": "kc-semantic-bridge-report/1",
+            "status": "EVALUATED",
+            "errors": [],
+            "effects_authorized": false,
+            "source_binding": "VERIFIED",
+            "controlled_parsing": "VERIFIED",
+            "source_semantic_fidelity": "NOT_ASSESSED",
+            "attribution_authenticity": "NOT_ASSESSED",
+            "real_world_truth": "NOT_ASSESSED",
+            "current_authority": "NOT_ASSESSED",
+            "source_sha256": "3f935faffe73293a74e2d4983ad990a63c910957a25c459338ffc05bef177d51",
+            "reading_ids": [
+              "r1"
+            ],
+            "note_line_count": 1,
+            "observation_ids": [
+              "o_k",
+              "o_m",
+              "o_s",
+              "o_t"
+            ],
+            "observations": {
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              }
+            },
+            "world_assignments": [
+              {
+                "o_k": true,
+                "o_m": true,
+                "o_s": false,
+                "o_t": true
+              }
+            ],
+            "valuation_count": 1,
+            "readings": [
+              {
+                "id": "r1",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                },
+                "span": {
+                  "start": 140,
+                  "end": 171
+                },
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "ast": {
+                  "op": "unless",
+                  "left": {
+                    "op": "and",
+                    "left": {
+                      "op": "and",
+                      "left": {
+                        "op": "atom",
+                        "name": "m"
+                      },
+                      "right": {
+                        "op": "atom",
+                        "name": "t"
+                      }
+                    },
+                    "right": {
+                      "op": "atom",
+                      "name": "k"
+                    }
+                  },
+                  "right": {
+                    "op": "atom",
+                    "name": "s"
+                  }
+                },
+                "table_bits": "1",
+                "possible_values": [
+                  true
+                ]
+              }
+            ],
+            "possible_values": [
+              true
+            ],
+            "truth": "TRUE",
+            "reading_disagreement": false
+          },
+          "language_scope": "Original prose wrapper and byte binding; translation fidelity not assessed."
+        },
+        {
+          "language": "ru",
+          "source_utf8": "NOTE Авторский тестовый пример: нужны членство, обучение и проверка; приостановка — исключение. Выдача не даёт права копировать файлы.\nRULE r1: m AND t AND k UNLESS s\n",
+          "source_sha256": "08486b2d732c5580c6a027994173ebcaf8ba3c8e64b4bea81c27ed4ecfdcc7df",
+          "packet": {
+            "schema": "kc-semantic-bridge/1",
+            "source_sha256": "08486b2d732c5580c6a027994173ebcaf8ba3c8e64b4bea81c27ed4ecfdcc7df",
+            "source_media_type": "text/plain",
+            "interpretation_set": "alternatives",
+            "observations": {
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              }
+            },
+            "readings": [
+              {
+                "id": "r1",
+                "start": 244,
+                "end": 275,
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                }
+              }
+            ]
+          },
+          "report": {
+            "schema": "kc-semantic-bridge-report/1",
+            "status": "EVALUATED",
+            "errors": [],
+            "effects_authorized": false,
+            "source_binding": "VERIFIED",
+            "controlled_parsing": "VERIFIED",
+            "source_semantic_fidelity": "NOT_ASSESSED",
+            "attribution_authenticity": "NOT_ASSESSED",
+            "real_world_truth": "NOT_ASSESSED",
+            "current_authority": "NOT_ASSESSED",
+            "source_sha256": "08486b2d732c5580c6a027994173ebcaf8ba3c8e64b4bea81c27ed4ecfdcc7df",
+            "reading_ids": [
+              "r1"
+            ],
+            "note_line_count": 1,
+            "observation_ids": [
+              "o_k",
+              "o_m",
+              "o_s",
+              "o_t"
+            ],
+            "observations": {
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              }
+            },
+            "world_assignments": [
+              {
+                "o_k": true,
+                "o_m": true,
+                "o_s": false,
+                "o_t": true
+              }
+            ],
+            "valuation_count": 1,
+            "readings": [
+              {
+                "id": "r1",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                },
+                "span": {
+                  "start": 244,
+                  "end": 275
+                },
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "ast": {
+                  "op": "unless",
+                  "left": {
+                    "op": "and",
+                    "left": {
+                      "op": "and",
+                      "left": {
+                        "op": "atom",
+                        "name": "m"
+                      },
+                      "right": {
+                        "op": "atom",
+                        "name": "t"
+                      }
+                    },
+                    "right": {
+                      "op": "atom",
+                      "name": "k"
+                    }
+                  },
+                  "right": {
+                    "op": "atom",
+                    "name": "s"
+                  }
+                },
+                "table_bits": "1",
+                "possible_values": [
+                  true
+                ]
+              }
+            ],
+            "possible_values": [
+              true
+            ],
+            "truth": "TRUE",
+            "reading_disagreement": false
+          },
+          "language_scope": "Original prose wrapper and byte binding; translation fidelity not assessed."
+        },
+        {
+          "language": "zh",
+          "source_utf8": "NOTE 原创测试示例：需要成员资格、培训和检查；暂停借用属于例外。借用不授予复制文件的权限。\nRULE r1: m AND t AND k UNLESS s\n",
+          "source_sha256": "0a4ce1feb40c9d7ed13d5f436a854e8b43e7d22035e3ef11ced2f19f58cea820",
+          "packet": {
+            "schema": "kc-semantic-bridge/1",
+            "source_sha256": "0a4ce1feb40c9d7ed13d5f436a854e8b43e7d22035e3ef11ced2f19f58cea820",
+            "source_media_type": "text/plain",
+            "interpretation_set": "alternatives",
+            "observations": {
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              }
+            },
+            "readings": [
+              {
+                "id": "r1",
+                "start": 132,
+                "end": 163,
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                }
+              }
+            ]
+          },
+          "report": {
+            "schema": "kc-semantic-bridge-report/1",
+            "status": "EVALUATED",
+            "errors": [],
+            "effects_authorized": false,
+            "source_binding": "VERIFIED",
+            "controlled_parsing": "VERIFIED",
+            "source_semantic_fidelity": "NOT_ASSESSED",
+            "attribution_authenticity": "NOT_ASSESSED",
+            "real_world_truth": "NOT_ASSESSED",
+            "current_authority": "NOT_ASSESSED",
+            "source_sha256": "0a4ce1feb40c9d7ed13d5f436a854e8b43e7d22035e3ef11ced2f19f58cea820",
+            "reading_ids": [
+              "r1"
+            ],
+            "note_line_count": 1,
+            "observation_ids": [
+              "o_k",
+              "o_m",
+              "o_s",
+              "o_t"
+            ],
+            "observations": {
+              "o_k": {
+                "referent": "synthetic observation k",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_m": {
+                "referent": "synthetic observation m",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              },
+              "o_s": {
+                "referent": "synthetic observation s",
+                "type": "boolean",
+                "state": "known",
+                "value": false
+              },
+              "o_t": {
+                "referent": "synthetic observation t",
+                "type": "boolean",
+                "state": "known",
+                "value": true
+              }
+            },
+            "world_assignments": [
+              {
+                "o_k": true,
+                "o_m": true,
+                "o_s": false,
+                "o_t": true
+              }
+            ],
+            "valuation_count": 1,
+            "readings": [
+              {
+                "id": "r1",
+                "attribution": {
+                  "agent": "fixture_annotator_1",
+                  "discourse": "asserted"
+                },
+                "bindings": {
+                  "k": "o_k",
+                  "m": "o_m",
+                  "s": "o_s",
+                  "t": "o_t"
+                },
+                "span": {
+                  "start": 132,
+                  "end": 163
+                },
+                "quote": "RULE r1: m AND t AND k UNLESS s",
+                "ast": {
+                  "op": "unless",
+                  "left": {
+                    "op": "and",
+                    "left": {
+                      "op": "and",
+                      "left": {
+                        "op": "atom",
+                        "name": "m"
+                      },
+                      "right": {
+                        "op": "atom",
+                        "name": "t"
+                      }
+                    },
+                    "right": {
+                      "op": "atom",
+                      "name": "k"
+                    }
+                  },
+                  "right": {
+                    "op": "atom",
+                    "name": "s"
+                  }
+                },
+                "table_bits": "1",
+                "possible_values": [
+                  true
+                ]
+              }
+            ],
+            "possible_values": [
+              true
+            ],
+            "truth": "TRUE",
+            "reading_disagreement": false
+          },
+          "language_scope": "Original prose wrapper and byte binding; translation fidelity not assessed."
+        }
+      ]
+    },
+    "independence": "Separately authored truth-mask oracle; same controller/model family/host; not external review."
+  },
+  "effects_authorized": false,
+  "limits": "Complete declared finite formal families, original fixture bytes and public API checks. Unit-boundary/CLI tests have their own execution log. No natural-language fidelity, translation review, real-world truth, grant authentication, external independence or LLM performance is established."
+}

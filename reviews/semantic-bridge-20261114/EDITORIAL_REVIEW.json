@@ -1,0 +1,64 @@
+{
+  "schema": "kc-semantic-bridge-editorial-review/1",
+  "recorded_at_utc": "2026-11-14T19:18:41.496346+00:00",
+  "reviewer": "/root/research_review",
+  "review_kind": "internal_technical",
+  "verdict": "PASS within the two specified editorial findings; both closed",
+  "subjects": [
+    {
+      "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "bytes": 28776,
+      "sha256": "531e5f4c41dd93f1efc93e1010336e72b18e60415741d4fb2c3f1a9ac5a2af62"
+    },
+    {
+      "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "bytes": 13259,
+      "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612"
+    },
+    {
+      "path": "reviews/semantic-bridge-20261114/REVIEW.md",
+      "bytes": 4921,
+      "sha256": "6110bcebac5cad144ddec02b7b36dba9b8e443c66badcbaf7367984ac58a241c"
+    }
+  ],
+  "method": "Read only the corrected acceptance row and related study/root-review paragraphs; compare their statements with the previously reviewed actual receipts. Hash exact current document bytes. No new execution or test run.",
+  "findings": [
+    {
+      "finding": "downstream_admission_scope",
+      "disposition": "closed",
+      "prior_issue": "The acceptance table implied an exercised downstream authorization consumer; actual checks retained unknown authority without implementing admission.",
+      "observed_correction": "The table now says unassessed authority cannot discharge a downstream current-authorization criterion and explicitly states that downstream admission is not implemented. The study and root review separately disclose this later clarification.",
+      "affected_paths": [
+        "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+        "engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "reviews/semantic-bridge-20261114/REVIEW.md"
+      ]
+    },
+    {
+      "finding": "initial_integration_run_provenance",
+      "disposition": "closed",
+      "prior_issue": "The study asserted that the initial run preceded the implementation correction although no pre-run source hash was retained.",
+      "observed_correction": "The study now records post-run hashes collected during concurrent implementation work, keeps the initial run unbound and identifies the fresh before/after-hash run as the usable receipt.",
+      "affected_paths": [
+        "engineering/studies/semantic-bridge-conformance/STUDY.md"
+      ]
+    }
+  ],
+  "prior_review_scope": "The preceding read-only review checked mask counters, four CLI examples versus three oracle examples, relation/world interface limits, retained ValueError and successor results, and the open broader SEM-R015 obligations. This closing record adds no new runtime evidence.",
+  "authorship": {
+    "reviewer_authored_original_specification_draft": true,
+    "reviewer_authored_integration_tests": true,
+    "reviewer_authored_root_study": false,
+    "reviewer_authored_implementation": false
+  },
+  "same_controller_model_family_and_host": true,
+  "external_independence": "NOT_VERIFIED",
+  "new_computations_or_tests": false,
+  "implementation_edits": "NONE",
+  "remote_writes": "NONE",
+  "limits": [
+    "Exact-document editorial closure only; no whole-program correctness or external review claim.",
+    "Metadata, origin inventory, evidence-index, roadmap, hosted CI, merge, deployment and admission were outside this closing review.",
+    "General language fidelity, richer attribution, required media and downstream authority remain outside the bounded implemented profile."
+  ]
+}

@@ -66,7 +66,7 @@ Include related work and a precise contribution statement. Verify primary litera
 
 ### Semantic Bridge. The bounded semantic bridge
 
-**Proposed target:** `engineering/specifications/semantic-bridge/SPECIFICATION.md`.
+**Canonical target:** [Semantic Bridge](../engineering/specifications/semantic-bridge/SPECIFICATION.md). The first finite supplied-reading profile and its [actual source-rule study](../engineering/studies/semantic-bridge-conformance/STUDY.md) are implemented; the wider requirements below remain the work-package scope.
 
 **Question:** Which explicit steps connect an interpretation to a computable object and an artifact suitable for a stated task?
 

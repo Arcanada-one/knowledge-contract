@@ -21,6 +21,7 @@ PREFIXES = {
     "cache-identity-and-invalidation": "CCH", "reuse-policy": "RUS", "knowledge-evolution": "EVO", "book-package": "BPK", "pipeline": "PIP",
     "location-registry": "LOC", "private-artifact-registry": "PAR",
     "private-retention-readback": "RET",
+    "semantic-bridge": "SBR",
 }
 NORMATIVE = re.compile(r"\b(?:MUST|SHALL|SHOULD|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b")
 ID = re.compile(r"^\*\*([A-Z]+-R[0-9]{3,})\.\*\*\s+", re.S)
@@ -97,6 +98,19 @@ def test_references(prefix, text):
         "API": [
             (("gate record conforming",), "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_all_2187_check_state_and_decision_combinations"),
             (("Receipt validation MUST reject omitted checks",), "tools/test_index_release_receipt.py::IndexReceiptSchemaTests.test_each_required_check_cannot_be_omitted"),
+        ],
+        "SBR": [
+            (("checked structure",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"),
+            (("Every controlled rule unit",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"),
+            (("source digest mismatch",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_complete_rule_unit_prevents_dropping_exception_with_valid_source_hash"),
+            (("duplicate member names",), "tools/test_semantic_bridge.py::PublicConsumerTests.test_strict_json_and_fresh_process_cli_preserve_negative_results"),
+            (("duplicate member names",), "tools/test_semantic_bridge.py::PublicConsumerTests.test_bounded_packet_with_huge_integer_returns_structured_cli_error"),
+            (("Bindings MUST",), "tools/test_semantic_bridge.py::FormalSemanticsTests.test_aliases_share_an_observation_and_disagreement_is_pointwise"),
+            (("retain every supplied reading",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"),
+            (("Parsing MUST",), "tools/test_semantic_bridge.py::FormalSemanticsTests.test_scope_precedence_and_explicit_unless_convention"),
+            (("enumerate every admitted world",), "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_three_atom_truth_functions_against_all_evidence_profiles"),
+            (("enumerate every admitted world",), "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_two_atom_alternative_pairs_use_one_shared_world_grid"),
+            (("NOT_ASSESSED",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"),
         ],
         "RET": [
             (("MUST name the authorized store contour",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_valid_fixtures"),
