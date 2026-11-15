@@ -19,7 +19,7 @@ import subprocess
 import sys
 from urllib.parse import unquote, urlsplit
 
-EXPECTED_COUNTS = {"paper": 11, "specification": 12, "study": 8, "glossary": 1, "bibliography": 1, "appendix": 2}
+EXPECTED_COUNTS = {"paper": 11, "specification": 13, "study": 8, "glossary": 1, "bibliography": 1, "appendix": 2}
 KINDS = {
     "paper": ("papers", "PAPER.md", "scientific-paper"),
     "specification": ("engineering/specifications", "SPECIFICATION.md", "engineering-specification"),

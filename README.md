@@ -1,6 +1,6 @@
 # Knowledge Contract Arcana
 
-Read the [35 document names in this integration candidate](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
+Read the [36 document names in this integration candidate](DOCUMENTS.md), the [complete roadmap](ROADMAP.md), the [Russian roadmap](roadmap/ROADMAP.ru.md), and the [naming canon](reference/document-naming/NAMING.md). Short names precede explanatory subtitles; established paths and historical revisions remain stable. [Active Work](roadmap/EXECUTION_STATUS.md) records the 11 November resumption under existing gates; publication, execution and indexing remain distinct.
 
 **Formal foundations, engineering specifications, and evidence for using knowledge under explicit conditions.**
 
@@ -13,16 +13,18 @@ Publication edition **1.1** contains English scientific and engineering document
 | Section | Contents | Start here |
 | --- | --- | --- |
 | Science | Eight baseline papers and three bounded research drafts (Meaning Bridge, Meaning Geometry, Agent Situation): conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
-| Engineering specifications | Twelve specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
+| Engineering specifications | Thirteen specifications defining obligations and conformance boundaries, including the Semantic Verification research draft | [Specifications](engineering/specifications/README.md) |
 | Engineering studies | Eight studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
 The [website](https://contract.place/) is the reading surface. This repository provides the source, evidence and history. The [publication catalogue at source snapshot `6a6f202f7f70be2ad3aea3369e45409761708596`](https://github.com/Arcanada-one/knowledge-contract/blob/6a6f202f7f70be2ad3aea3369e45409761708596/publication-catalog.json) contains 31 reading entries: the 29 baseline documents, Meaning Bridge and Meaning Geometry; both foundations manuscripts retain their research-draft status.
 
-On this integration candidate head the [current catalogue](publication-catalog.json) contains 35 reading entries: the 29 baseline documents, the Meaning Bridge, Meaning Geometry and Agent Situation research drafts, the Context Controls finite study, the Semantic Bridge specification and the Source Rule Checks study. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
+On this integration candidate head the [current catalogue](publication-catalog.json) contains 36 reading entries: the 29 baseline documents, the Meaning Bridge, Meaning Geometry and Agent Situation research drafts, the Context Controls finite study, the Semantic Bridge specification, the Source Rule Checks study and the Semantic Verification research-draft specification. Meaning Geometry entered source main at `0892eeb1`, and site PR33 was deployed from `f4b0eab1`; source integration and site delivery are not index admission. Short files at earlier addresses preserve citation continuity. The full earlier Russian manuscripts remain available at the immutable revisions in the [Source History](appendices/source-map/APPENDIX.md).
 
-The two newest entries are [Semantic Bridge](engineering/specifications/semantic-bridge/SPECIFICATION.md) and [Source Rule Checks](engineering/studies/semantic-bridge-conformance/STUDY.md). This bounded engineering draft checks supplied formal readings; source-content inclusion does not establish natural-language fidelity, website delivery, index admission or agent permission.
+The bounded engineering entries [Semantic Bridge](engineering/specifications/semantic-bridge/SPECIFICATION.md) and [Source Rule Checks](engineering/studies/semantic-bridge-conformance/STUDY.md) check supplied formal readings; source-content inclusion does not establish natural-language fidelity, website delivery, index admission or agent permission.
+
+The new [Semantic Verification](engineering/specifications/semantic-verification/SPECIFICATION.md) research draft specifies claim-bound verification packets and a finite assessment-transfer profile. Its preparation does not complete the full verification work package or establish implementation conformance; whole-specification review and release gates remain separate.
 
 ## Start with the human-to-computational foundation
 

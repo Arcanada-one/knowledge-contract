@@ -1,0 +1,18 @@
+{
+  "record_kind": "actual local execution of the canonical finite reference checker",
+  "observed_utc": "2026-11-15T11:37:55.107222+00:00",
+  "repository_baseline_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "working_directory_role": "repository root",
+  "command": [
+    "python3",
+    "-B",
+    "tools/check_semantic_verification_fibrewise.py"
+  ],
+  "observed_exit_code": 0,
+  "stderr": "",
+  "stdout_path": "reviews/semantic-verification-20261115/evidence/final-reference-result.json",
+  "stdout_sha256": "389bf6a34e9460ad986970d358aa777db6112ff3ecb5e1d443b70424ff32fd05",
+  "checker_path": "tools/check_semantic_verification_fibrewise.py",
+  "checker_sha256": "6f591ea3c179f3fddc687f0b8adb358d79c4d74e18bd2760c113d3d73d448188",
+  "interpretation": "A new execution of relocated bytes; historical receipts are unchanged. Runtime paths inside raw output describe the observed environment, not portable replay commands."
+}

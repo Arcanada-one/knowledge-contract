@@ -1,7 +1,7 @@
 {
   "schema": "knowledge-contract.document-names/1",
   "source_commit": "a0450428704fcd41b411203f2fc88c06c779610b",
-  "scope": "All 35 edition-1.1 catalogue documents, including the Agent Situation and Context Controls research-draft additions and the Semantic Bridge specification and Source Rule Checks study; localized names are not completed body translations. The source_commit retains the inherited naming baseline, not a source pin for the new works.",
+  "scope": "All 36 edition-1.1 catalogue documents, including the Agent Situation and Context Controls research-draft additions, the Semantic Bridge specification and Source Rule Checks study, and the Semantic Verification research-draft specification; localized names are not completed body translations. The source_commit retains the inherited naming baseline, not a source pin for the new works.",
   "columns": [
     "slug",
     "short_en",
@@ -130,6 +130,14 @@
       "От прочтений источника к проверяемым операциям",
       "语义桥接",
       "从来源解读到可检验操作"
+    ],
+    [
+      "semantic-verification",
+      "Semantic Verification",
+      "Проверка смысла",
+      "Утверждения, проверки и свидетельства",
+      "语义验证",
+      "断言、检验与证据"
     ],
     [
       "context-package",

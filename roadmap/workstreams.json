@@ -1,6 +1,6 @@
 {
   "schema": "knowledge-contract.roadmap-workstreams/1",
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "baseline_commit": "a0450428704fcd41b411203f2fc88c06c779610b",
   "execution_authority": "Muneral",
   "execution_state": "not_reconciled_in_this_editorial_pass",
@@ -13,7 +13,7 @@
     ["RM-04", "Workgraph Reconciliation", "Сверка задач", "Previously reported bindings are not a fresh Muneral reconciliation.", "Сопоставить определения направлений с существующими задачами и зависимостями Muneral без дубликатов.", "У каждого направления есть подтверждённая привязка либо явно названный пробел; доставка письма не превращается в состояние задачи."],
     ["RM-05", "Meaning Bridge", "Мост смысла", "The complete foundations introduction is in the catalogue with research-draft status.", "Согласовать существующую вводную работу с картой утверждений, глоссарием и замечаниями по области применимости.", "Путь от выражения до допустимого применения объяснён на примере; предпосылки, альтернативы и ограничения видимы; статус исследовательского черновика не повышен автоматически."],
     ["RM-06", "Source Audit", "Проверка источников", "PR67 contains historical bibliography triage; triage is not full reading of all primary sources.", "Проверить первоисточники для действительно используемых определений и выводов; сформулировать границы новизны.", "Заимствования имеют точные основания; неподтверждённые заявления о первенстве удалены; недоступные источники не реконструированы как авторитетные."],
-    ["RM-07", "Semantic Bridge", "Семантический мост", "A separate bounded conversion specification remains planned.", "Подготовить спецификацию перехода от текста и контекста к типизированным знаниям, альтернативам и учёту потерь.", "У каждой операции есть область определения, защищаемые различия и явный отказ при неподдерживаемом смысле; схема не объявлена полным извлечением семантики."],
+    ["RM-07", "Semantic Bridge", "Семантический мост", "The bounded Semantic Bridge engineering draft is in source main; broader review and runtime evidence remain separate.", "Подготовить спецификацию перехода от текста и контекста к типизированным знаниям, альтернативам и учёту потерь.", "У каждой операции есть область определения, защищаемые различия и явный отказ при неподдерживаемом смысле; схема не объявлена полным извлечением семантики."],
     ["RM-08", "Transformation Algebra", "Алгебра преобразований", "The transformation paper has conditional results; the planned algebra extension is not thereby complete.", "Расширить существующую статью профилями операций, законами, областями определения и явными контрпримерами.", "Каждая операция имеет типы, предпосылки, положительный и отрицательный пример; существование обратной функции не подменяет исполняемый декодер."],
     ["RM-09", "Meaning Cases", "Смысловые примеры", "Analytic and synthetic examples exist; a new independent benchmark is not established.", "Составить версионируемый набор практических примеров с единицами, исключениями, отрицаниями, получателями и остаточной информацией.", "Есть покрытие явлений и независимые эталоны с допустимыми альтернативами; обучающие и проверочные примеры разделены."],
     ["RM-10", "Falsification Register", "Реестр опровержений", "Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed.", "Зафиксировать для каждого существенного утверждения предпосылки, попытки опровержения и правило пересмотра.", "Контрпример к положению удовлетворяет его предпосылкам; нарушение предпосылки или ошибка реализации классифицируются отдельно."],
@@ -35,10 +35,10 @@
   ],
   "foundations": [
     ["F01", "Meaning Bridge", "Мост смысла", "existing research draft", "papers/human-meaning-and-computable-knowledge/PAPER.md"],
-    ["F02", "Semantic Bridge", "Семантический мост", "new specification planned", null],
+    ["F02", "Semantic Bridge", "Семантический мост", "bounded engineering draft in source main; broader review and runtime evidence remain separate", "engineering/specifications/semantic-bridge/SPECIFICATION.md"],
     ["F03", "Transformation Algebra", "Алгебра преобразований", "extension planned; not a competing paper", "papers/constrained-transformations/PAPER.md"],
     ["F04", "Semantic Geometry", "Геометрия смысла", "existing research draft; full review pending", "papers/geometry-of-semantic-representations/PAPER.md"],
-    ["F05", "Semantic Verification", "Проверка смысла", "new specification planned", null],
+    ["F05", "Semantic Verification", "Проверка смысла", "research draft prepared; whole-specification review pending", "engineering/specifications/semantic-verification/SPECIFICATION.md"],
     ["F06", "Meaning Controls", "Проверки смысловых операций", "new study planned; actual results only", null]
   ]
 }
