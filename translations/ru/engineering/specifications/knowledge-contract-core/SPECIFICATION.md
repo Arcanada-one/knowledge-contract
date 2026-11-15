@@ -1,19 +1,19 @@
 ---
 name: "knowledge-contract-core"
-title: "Контракт знаний: базовая модель и требования к допуску"
+title: "Ядро контракта: Основная модель и требования допуска"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Девять базовых групп, ограничения как самостоятельные обязательства, профили, требования к допуску и исполнению."
+description: "Девять основных групп, явные ограничения, профили, требования допуска и исполнения."
 translation_of: "engineering/specifications/knowledge-contract-core/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "cf7a034a2ebe1fea7d4e0505258b0eff21b02178"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "1fa84488b597a51b6b2a05445c8432557b1b9660"
 translation_status: "author-draft"
 ---
 
-# Контракт знаний: базовая модель и требования к допуску {#knowledge-contract-core-model-and-admission-requirements}
+# Ядро контракта: Основная модель и требования допуска {#knowledge-contract-core-model-and-admission-requirements}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

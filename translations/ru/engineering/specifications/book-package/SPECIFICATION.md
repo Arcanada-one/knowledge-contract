@@ -1,19 +1,19 @@
 ---
 name: "book-package"
-title: "Книжные пакеты: идентичность источника, семантические слои и валидация"
+title: "Книжные пакеты: Идентичность источника, семантические слои и проверка"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Конкретная схема книжного пакета, журнал обратимых исправлений, семантические слои, границы прав и синтетические проверки соответствия."
+description: "Конкретная схема книжного пакета, обратимый журнал преобразования, семантические слои, границы прав и синтетические проверки соответствия."
 translation_of: "engineering/specifications/book-package/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "f82c0b23c7f51949bb0127d8795d357e16229a4a"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "48bab48f703f9ccf8af1c62a30264407de3c4b7c"
 translation_status: "author-draft"
 ---
 
-# Книжные пакеты: идентичность источника, семантические слои и валидация {#book-packages-source-identity-semantic-layers-and-validation}
+# Книжные пакеты: Идентичность источника, семантические слои и проверка {#book-packages-source-identity-semantic-layers-and-validation}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

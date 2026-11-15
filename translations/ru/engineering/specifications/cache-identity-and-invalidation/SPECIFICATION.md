@@ -1,19 +1,19 @@
 ---
 name: "cache-identity-and-invalidation"
-title: "Идентичность кеша, отслеживание зависимостей и пересмотр пригодности"
+title: "Актуальность кеша: Идентичность кеша, отслеживание зависимостей и инвалидизация"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Идентичность содержимого, сборки и поиска, изменения зависимостей, защищённая публикация и выдача."
+description: "Идентичность содержания, сборки и поиска, изменения зависимостей и публикация и выдача с обязательными проверками."
 translation_of: "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "5baf49b55ac70a831a6a52c7ad49c433232a911b"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "f86687f19d5a8608793145f08962b0d19761e828"
 translation_status: "author-draft"
 ---
 
-# Идентичность кеша, отслеживание зависимостей и пересмотр пригодности {#cache-identity-dependency-tracking-and-invalidation}
+# Актуальность кеша: Идентичность кеша, отслеживание зависимостей и инвалидизация {#cache-identity-dependency-tracking-and-invalidation}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 
