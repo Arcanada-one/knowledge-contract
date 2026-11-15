@@ -14,7 +14,7 @@ Publication edition **1.1** contains English scientific and engineering document
 | --- | --- | --- |
 | Science | Eight baseline papers and three bounded research drafts (Meaning Bridge, Meaning Geometry, Agent Situation): conditional results, proofs, counterexamples and limits | [Scientific papers](papers/README.md) |
 | Engineering specifications | Twelve specifications defining obligations and conformance boundaries | [Specifications](engineering/specifications/README.md) |
-| Engineering studies | Seven studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
+| Engineering studies | Eight studies with actual results, adverse cases and public reproduction procedures | [Studies and evidence](engineering/studies/README.md) |
 | Reference | Preferred terms, Russian and Simplified Chinese equivalents, and primary sources | [Shared Vocabulary](reference/glossary/GLOSSARY.md) · [Research Foundations](reference/bibliography/BIBLIOGRAPHY.md) |
 | Appendices | Source migration, earlier editions, protocol compatibility and API integration | [Appendices](appendices/README.md) |
 
