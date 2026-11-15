@@ -4,6 +4,3030 @@
   "edition": "1.1",
   "renditions": [
     {
+      "work": "human-meaning-and-computable-knowledge",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "sha256": "47357c670ccd3a68c01e701abe8aa4eca55a8296786f09bb8bd5ddfa33008e87",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-the-problem-keeping-the-distinction-that-matters",
+          "rendition": "1-the-problem-keeping-the-distinction-that-matters"
+        },
+        {
+          "source": "2-related-foundations-and-the-boundary-of-this-contribution",
+          "rendition": "2-related-foundations-and-the-boundary-of-this-contribution"
+        },
+        {
+          "source": "21-communication-intention-and-formal-representation",
+          "rendition": "21-communication-intention-and-formal-representation"
+        },
+        {
+          "source": "22-abstraction-and-correctness",
+          "rendition": "22-abstraction-and-correctness"
+        },
+        {
+          "source": "23-knowledge-organization-and-provenance",
+          "rendition": "23-knowledge-organization-and-provenance"
+        },
+        {
+          "source": "3-what-is-meant-by-meaning-in-this-framework",
+          "rendition": "3-what-is-meant-by-meaning-in-this-framework"
+        },
+        {
+          "source": "31-working-distinctions-not-a-complete-psychology",
+          "rendition": "31-working-distinctions-not-a-complete-psychology"
+        },
+        {
+          "source": "32-from-a-human-abstraction-to-an-operational-criterion",
+          "rendition": "32-from-a-human-abstraction-to-an-operational-criterion"
+        },
+        {
+          "source": "33-truth-endorsement-and-use",
+          "rendition": "33-truth-endorsement-and-use"
+        },
+        {
+          "source": "4-a-bounded-semantic-bridge",
+          "rendition": "4-a-bounded-semantic-bridge"
+        },
+        {
+          "source": "41-source-and-interpretation",
+          "rendition": "41-source-and-interpretation"
+        },
+        {
+          "source": "42-representation-profile-and-protected-observations",
+          "rendition": "42-representation-profile-and-protected-observations"
+        },
+        {
+          "source": "43-one-bridge-record-several-kinds-of-evidence",
+          "rendition": "43-one-bridge-record-several-kinds-of-evidence"
+        },
+        {
+          "source": "5-what-preservation-can-establish",
+          "rendition": "5-what-preservation-can-establish"
+        },
+        {
+          "source": "proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions",
+          "rendition": "proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions"
+        },
+        {
+          "source": "51-more-demanding-uses-need-stronger-preservation",
+          "rendition": "51-more-demanding-uses-need-stronger-preservation"
+        },
+        {
+          "source": "52-uncertainty-and-conservative-answers",
+          "rendition": "52-uncertainty-and-conservative-answers"
+        },
+        {
+          "source": "53-computation-and-termination-are-separate-obligations",
+          "rendition": "53-computation-and-termination-are-separate-obligations"
+        },
+        {
+          "source": "6-algebra-and-geometry-have-different-jobs",
+          "rendition": "6-algebra-and-geometry-have-different-jobs"
+        },
+        {
+          "source": "7-a-worked-rule-from-expression-to-bounded-use",
+          "rendition": "7-a-worked-rule-from-expression-to-bounded-use"
+        },
+        {
+          "source": "71-fix-the-reading-before-evaluating-it",
+          "rendition": "71-fix-the-reading-before-evaluating-it"
+        },
+        {
+          "source": "72-preserve-unknown-facts-rather-than-assigning-convenient-values",
+          "rendition": "72-preserve-unknown-facts-rather-than-assigning-convenient-values"
+        },
+        {
+          "source": "73-turn-the-interpretation-into-an-artifact-without-changing-its-status",
+          "rendition": "73-turn-the-interpretation-into-an-artifact-without-changing-its-status"
+        },
+        {
+          "source": "74-store-retrieve-and-reassess",
+          "rendition": "74-store-retrieve-and-reassess"
+        },
+        {
+          "source": "8-integration-with-the-scientific-and-engineering-corpus",
+          "rendition": "8-integration-with-the-scientific-and-engineering-corpus"
+        },
+        {
+          "source": "9-what-would-challenge-the-framework",
+          "rendition": "9-what-would-challenge-the-framework"
+        },
+        {
+          "source": "10-limitations-and-unresolved-questions",
+          "rendition": "10-limitations-and-unresolved-questions"
+        },
+        {
+          "source": "11-conclusion",
+          "rendition": "11-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "human-meaning-and-computable-knowledge",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/human-meaning-and-computable-knowledge/PAPER.md",
+        "sha256": "ae27ba67dd33797a34d3984d2523e74cc1e7d48df1df8a8feef3c9e1eb8e8083",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-the-problem-keeping-the-distinction-that-matters",
+          "rendition": "1-the-problem-keeping-the-distinction-that-matters"
+        },
+        {
+          "source": "2-related-foundations-and-the-boundary-of-this-contribution",
+          "rendition": "2-related-foundations-and-the-boundary-of-this-contribution"
+        },
+        {
+          "source": "21-communication-intention-and-formal-representation",
+          "rendition": "21-communication-intention-and-formal-representation"
+        },
+        {
+          "source": "22-abstraction-and-correctness",
+          "rendition": "22-abstraction-and-correctness"
+        },
+        {
+          "source": "23-knowledge-organization-and-provenance",
+          "rendition": "23-knowledge-organization-and-provenance"
+        },
+        {
+          "source": "3-what-is-meant-by-meaning-in-this-framework",
+          "rendition": "3-what-is-meant-by-meaning-in-this-framework"
+        },
+        {
+          "source": "31-working-distinctions-not-a-complete-psychology",
+          "rendition": "31-working-distinctions-not-a-complete-psychology"
+        },
+        {
+          "source": "32-from-a-human-abstraction-to-an-operational-criterion",
+          "rendition": "32-from-a-human-abstraction-to-an-operational-criterion"
+        },
+        {
+          "source": "33-truth-endorsement-and-use",
+          "rendition": "33-truth-endorsement-and-use"
+        },
+        {
+          "source": "4-a-bounded-semantic-bridge",
+          "rendition": "4-a-bounded-semantic-bridge"
+        },
+        {
+          "source": "41-source-and-interpretation",
+          "rendition": "41-source-and-interpretation"
+        },
+        {
+          "source": "42-representation-profile-and-protected-observations",
+          "rendition": "42-representation-profile-and-protected-observations"
+        },
+        {
+          "source": "43-one-bridge-record-several-kinds-of-evidence",
+          "rendition": "43-one-bridge-record-several-kinds-of-evidence"
+        },
+        {
+          "source": "5-what-preservation-can-establish",
+          "rendition": "5-what-preservation-can-establish"
+        },
+        {
+          "source": "proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions",
+          "rendition": "proposition-1-exact-adequacy-is-equivalent-to-preserving-the-required-distinctions"
+        },
+        {
+          "source": "51-more-demanding-uses-need-stronger-preservation",
+          "rendition": "51-more-demanding-uses-need-stronger-preservation"
+        },
+        {
+          "source": "52-uncertainty-and-conservative-answers",
+          "rendition": "52-uncertainty-and-conservative-answers"
+        },
+        {
+          "source": "53-computation-and-termination-are-separate-obligations",
+          "rendition": "53-computation-and-termination-are-separate-obligations"
+        },
+        {
+          "source": "6-algebra-and-geometry-have-different-jobs",
+          "rendition": "6-algebra-and-geometry-have-different-jobs"
+        },
+        {
+          "source": "7-a-worked-rule-from-expression-to-bounded-use",
+          "rendition": "7-a-worked-rule-from-expression-to-bounded-use"
+        },
+        {
+          "source": "71-fix-the-reading-before-evaluating-it",
+          "rendition": "71-fix-the-reading-before-evaluating-it"
+        },
+        {
+          "source": "72-preserve-unknown-facts-rather-than-assigning-convenient-values",
+          "rendition": "72-preserve-unknown-facts-rather-than-assigning-convenient-values"
+        },
+        {
+          "source": "73-turn-the-interpretation-into-an-artifact-without-changing-its-status",
+          "rendition": "73-turn-the-interpretation-into-an-artifact-without-changing-its-status"
+        },
+        {
+          "source": "74-store-retrieve-and-reassess",
+          "rendition": "74-store-retrieve-and-reassess"
+        },
+        {
+          "source": "8-integration-with-the-scientific-and-engineering-corpus",
+          "rendition": "8-integration-with-the-scientific-and-engineering-corpus"
+        },
+        {
+          "source": "9-what-would-challenge-the-framework",
+          "rendition": "9-what-would-challenge-the-framework"
+        },
+        {
+          "source": "10-limitations-and-unresolved-questions",
+          "rendition": "10-limitations-and-unresolved-questions"
+        },
+        {
+          "source": "11-conclusion",
+          "rendition": "11-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "semantic-objects-and-context",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/semantic-objects-and-context/PAPER.md",
+        "sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/semantic-objects-and-context/PAPER.md",
+        "sha256": "30edb4d5d75cd1b7966bc700fd6ba4a04e142b7c2fc13007e7ec57039bcdada8",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-contribution",
+          "rendition": "1-research-question-and-contribution"
+        },
+        {
+          "source": "2-objects-interpretations-and-grounds",
+          "rendition": "2-objects-interpretations-and-grounds"
+        },
+        {
+          "source": "3-context-and-applicability",
+          "rendition": "3-context-and-applicability"
+        },
+        {
+          "source": "4-conditional-results",
+          "rendition": "4-conditional-results"
+        },
+        {
+          "source": "proposition-1-fidelity-cannot-discriminate-indistinguishable-worlds",
+          "rendition": "proposition-1-fidelity-cannot-discriminate-indistinguishable-worlds"
+        },
+        {
+          "source": "proposition-2-least-required-closure-exists-on-a-finite-graph",
+          "rendition": "proposition-2-least-required-closure-exists-on-a-finite-graph"
+        },
+        {
+          "source": "proposition-3-mandatory-strengthening-narrows-certified-applicability",
+          "rendition": "proposition-3-mandatory-strengthening-narrows-certified-applicability"
+        },
+        {
+          "source": "proposition-4-additional-readings-narrow-common-consequences",
+          "rendition": "proposition-4-additional-readings-narrow-common-consequences"
+        },
+        {
+          "source": "proposition-5-a-complete-backward-slice-preserves-selected-deterministic-outputs",
+          "rendition": "proposition-5-a-complete-backward-slice-preserves-selected-deterministic-outputs"
+        },
+        {
+          "source": "5-granularity-identity-and-delivery",
+          "rendition": "5-granularity-identity-and-delivery"
+        },
+        {
+          "source": "6-falsification-and-scope-of-evidence",
+          "rendition": "6-falsification-and-scope-of-evidence"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "semantic-objects-and-context",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/semantic-objects-and-context/PAPER.md",
+        "sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/semantic-objects-and-context/PAPER.md",
+        "sha256": "ab4d1965964db1f42f3c874d597bc21fae6af7816ffa149965e52422ac9b5502",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-contribution",
+          "rendition": "1-research-question-and-contribution"
+        },
+        {
+          "source": "2-objects-interpretations-and-grounds",
+          "rendition": "2-objects-interpretations-and-grounds"
+        },
+        {
+          "source": "3-context-and-applicability",
+          "rendition": "3-context-and-applicability"
+        },
+        {
+          "source": "4-conditional-results",
+          "rendition": "4-conditional-results"
+        },
+        {
+          "source": "proposition-1-fidelity-cannot-discriminate-indistinguishable-worlds",
+          "rendition": "proposition-1-fidelity-cannot-discriminate-indistinguishable-worlds"
+        },
+        {
+          "source": "proposition-2-least-required-closure-exists-on-a-finite-graph",
+          "rendition": "proposition-2-least-required-closure-exists-on-a-finite-graph"
+        },
+        {
+          "source": "proposition-3-mandatory-strengthening-narrows-certified-applicability",
+          "rendition": "proposition-3-mandatory-strengthening-narrows-certified-applicability"
+        },
+        {
+          "source": "proposition-4-additional-readings-narrow-common-consequences",
+          "rendition": "proposition-4-additional-readings-narrow-common-consequences"
+        },
+        {
+          "source": "proposition-5-a-complete-backward-slice-preserves-selected-deterministic-outputs",
+          "rendition": "proposition-5-a-complete-backward-slice-preserves-selected-deterministic-outputs"
+        },
+        {
+          "source": "5-granularity-identity-and-delivery",
+          "rendition": "5-granularity-identity-and-delivery"
+        },
+        {
+          "source": "6-falsification-and-scope-of-evidence",
+          "rendition": "6-falsification-and-scope-of-evidence"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "constrained-transformations",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/constrained-transformations/PAPER.md",
+        "sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/constrained-transformations/PAPER.md",
+        "sha256": "846dd1b3f1f5cbfd1a3dfb55a2abc02a1b6bd6b440c32c3228b409f97ed1f229",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-relation-to-prior-work",
+          "rendition": "1-research-question-and-relation-to-prior-work"
+        },
+        {
+          "source": "2-a-transformation-model",
+          "rendition": "2-a-transformation-model"
+        },
+        {
+          "source": "3-composition-and-preservation",
+          "rendition": "3-composition-and-preservation"
+        },
+        {
+          "source": "proposition-1-compatible-partial-correctness-contracts-compose",
+          "rendition": "proposition-1-compatible-partial-correctness-contracts-compose"
+        },
+        {
+          "source": "proposition-2-a-shared-protected-observation-survives-a-finite-chain",
+          "rendition": "proposition-2-a-shared-protected-observation-survives-a-finite-chain"
+        },
+        {
+          "source": "4-equivalence-projection-and-residual-information",
+          "rendition": "4-equivalence-projection-and-residual-information"
+        },
+        {
+          "source": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse",
+          "rendition": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse"
+        },
+        {
+          "source": "5-transfer-between-tasks-and-domains",
+          "rendition": "5-transfer-between-tasks-and-domains"
+        },
+        {
+          "source": "6-records-implementation-and-tests",
+          "rendition": "6-records-implementation-and-tests"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "constrained-transformations",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/constrained-transformations/PAPER.md",
+        "sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/constrained-transformations/PAPER.md",
+        "sha256": "f7181fa652712e31f5137793023b415bdf1391966ac1acead40b253203a05b50",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-relation-to-prior-work",
+          "rendition": "1-research-question-and-relation-to-prior-work"
+        },
+        {
+          "source": "2-a-transformation-model",
+          "rendition": "2-a-transformation-model"
+        },
+        {
+          "source": "3-composition-and-preservation",
+          "rendition": "3-composition-and-preservation"
+        },
+        {
+          "source": "proposition-1-compatible-partial-correctness-contracts-compose",
+          "rendition": "proposition-1-compatible-partial-correctness-contracts-compose"
+        },
+        {
+          "source": "proposition-2-a-shared-protected-observation-survives-a-finite-chain",
+          "rendition": "proposition-2-a-shared-protected-observation-survives-a-finite-chain"
+        },
+        {
+          "source": "4-equivalence-projection-and-residual-information",
+          "rendition": "4-equivalence-projection-and-residual-information"
+        },
+        {
+          "source": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse",
+          "rendition": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse"
+        },
+        {
+          "source": "5-transfer-between-tasks-and-domains",
+          "rendition": "5-transfer-between-tasks-and-domains"
+        },
+        {
+          "source": "6-records-implementation-and-tests",
+          "rendition": "6-records-implementation-and-tests"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "retrieval-and-context-composition",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/retrieval-and-context-composition/PAPER.md",
+        "sha256": "a27a209c419480f2eb3c80e826c0da507fece1c1c66045d5c34d647656c3c2a9",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/retrieval-and-context-composition/PAPER.md",
+        "sha256": "728541a0bb65bdeb4f73baa2437eb1aaa5635ca402972e71332388416378b1a0",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-the-question-between-retrieval-and-answering",
+          "rendition": "1-the-question-between-retrieval-and-answering"
+        },
+        {
+          "source": "2-query-scope-and-coverage",
+          "rendition": "2-query-scope-and-coverage"
+        },
+        {
+          "source": "3-composition-with-joint-grounds-and-dependencies",
+          "rendition": "3-composition-with-joint-grounds-and-dependencies"
+        },
+        {
+          "source": "4-exactness-and-special-case-guarantees",
+          "rendition": "4-exactness-and-special-case-guarantees"
+        },
+        {
+          "source": "proposition-1-complete-finite-selection-gives-a-scoped-optimum",
+          "rendition": "proposition-1-complete-finite-selection-gives-a-scoped-optimum"
+        },
+        {
+          "source": "proposition-2-a-restricted-composition-problem-contains-set-cover",
+          "rendition": "proposition-2-a-restricted-composition-problem-contains-set-cover"
+        },
+        {
+          "source": "proposition-3-the-cardinality-greedy-bound-requires-submodularity",
+          "rendition": "proposition-3-the-cardinality-greedy-bound-requires-submodularity"
+        },
+        {
+          "source": "5-counterexamples-to-convenient-assumptions",
+          "rendition": "5-counterexamples-to-convenient-assumptions"
+        },
+        {
+          "source": "6-stopping-and-measurement",
+          "rendition": "6-stopping-and-measurement"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "retrieval-and-context-composition",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/retrieval-and-context-composition/PAPER.md",
+        "sha256": "a27a209c419480f2eb3c80e826c0da507fece1c1c66045d5c34d647656c3c2a9",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/retrieval-and-context-composition/PAPER.md",
+        "sha256": "62f5eca8e6b9c848a640882102e1ce3d49c9e0390fb7556b9a983e86fd7c36a8",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-the-question-between-retrieval-and-answering",
+          "rendition": "1-the-question-between-retrieval-and-answering"
+        },
+        {
+          "source": "2-query-scope-and-coverage",
+          "rendition": "2-query-scope-and-coverage"
+        },
+        {
+          "source": "3-composition-with-joint-grounds-and-dependencies",
+          "rendition": "3-composition-with-joint-grounds-and-dependencies"
+        },
+        {
+          "source": "4-exactness-and-special-case-guarantees",
+          "rendition": "4-exactness-and-special-case-guarantees"
+        },
+        {
+          "source": "proposition-1-complete-finite-selection-gives-a-scoped-optimum",
+          "rendition": "proposition-1-complete-finite-selection-gives-a-scoped-optimum"
+        },
+        {
+          "source": "proposition-2-a-restricted-composition-problem-contains-set-cover",
+          "rendition": "proposition-2-a-restricted-composition-problem-contains-set-cover"
+        },
+        {
+          "source": "proposition-3-the-cardinality-greedy-bound-requires-submodularity",
+          "rendition": "proposition-3-the-cardinality-greedy-bound-requires-submodularity"
+        },
+        {
+          "source": "5-counterexamples-to-convenient-assumptions",
+          "rendition": "5-counterexamples-to-convenient-assumptions"
+        },
+        {
+          "source": "6-stopping-and-measurement",
+          "rendition": "6-stopping-and-measurement"
+        },
+        {
+          "source": "7-connections-to-the-published-engineering-work",
+          "rendition": "7-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "interaction-and-memory",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/interaction-and-memory/PAPER.md",
+        "sha256": "0520e78d445bdf9b5febe0f8f8d218526c9352f8f9729219788b58beeb5dccdf",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/interaction-and-memory/PAPER.md",
+        "sha256": "80d902a672f87991694dadff8e4f1e0a683dc0bff1e9d635be33eff552881c5e",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "2-messages-acts-and-work",
+          "rendition": "2-messages-acts-and-work"
+        },
+        {
+          "source": "3-context-and-memory-layers",
+          "rendition": "3-context-and-memory-layers"
+        },
+        {
+          "source": "4-documents-as-evaluated-outputs",
+          "rendition": "4-documents-as-evaluated-outputs"
+        },
+        {
+          "source": "5-conditional-transition-properties",
+          "rendition": "5-conditional-transition-properties"
+        },
+        {
+          "source": "proposition-1-generation-admission-prevents-a-specified-stale-update",
+          "rendition": "proposition-1-generation-admission-prevents-a-specified-stale-update"
+        },
+        {
+          "source": "proposition-2-recorded-duplicate-events-need-not-duplicate-effects",
+          "rendition": "proposition-2-recorded-duplicate-events-need-not-duplicate-effects"
+        },
+        {
+          "source": "dependency-directed-reassessment",
+          "rendition": "dependency-directed-reassessment"
+        },
+        {
+          "source": "proposition-3-a-narrow-update-preserves-independent-state-components",
+          "rendition": "proposition-3-a-narrow-update-preserves-independent-state-components"
+        },
+        {
+          "source": "6-learning-correction-and-counterexamples",
+          "rendition": "6-learning-correction-and-counterexamples"
+        },
+        {
+          "source": "constructed-transition-boundary-cases",
+          "rendition": "constructed-transition-boundary-cases"
+        },
+        {
+          "source": "7-evidence-and-limits",
+          "rendition": "7-evidence-and-limits"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "interaction-and-memory",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/interaction-and-memory/PAPER.md",
+        "sha256": "0520e78d445bdf9b5febe0f8f8d218526c9352f8f9729219788b58beeb5dccdf",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/interaction-and-memory/PAPER.md",
+        "sha256": "d27b1a48cc30340e19c625046eb349c42826efea0d1083e71ba1dd8f02296c4c",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "2-messages-acts-and-work",
+          "rendition": "2-messages-acts-and-work"
+        },
+        {
+          "source": "3-context-and-memory-layers",
+          "rendition": "3-context-and-memory-layers"
+        },
+        {
+          "source": "4-documents-as-evaluated-outputs",
+          "rendition": "4-documents-as-evaluated-outputs"
+        },
+        {
+          "source": "5-conditional-transition-properties",
+          "rendition": "5-conditional-transition-properties"
+        },
+        {
+          "source": "proposition-1-generation-admission-prevents-a-specified-stale-update",
+          "rendition": "proposition-1-generation-admission-prevents-a-specified-stale-update"
+        },
+        {
+          "source": "proposition-2-recorded-duplicate-events-need-not-duplicate-effects",
+          "rendition": "proposition-2-recorded-duplicate-events-need-not-duplicate-effects"
+        },
+        {
+          "source": "dependency-directed-reassessment",
+          "rendition": "dependency-directed-reassessment"
+        },
+        {
+          "source": "proposition-3-a-narrow-update-preserves-independent-state-components",
+          "rendition": "proposition-3-a-narrow-update-preserves-independent-state-components"
+        },
+        {
+          "source": "6-learning-correction-and-counterexamples",
+          "rendition": "6-learning-correction-and-counterexamples"
+        },
+        {
+          "source": "constructed-transition-boundary-cases",
+          "rendition": "constructed-transition-boundary-cases"
+        },
+        {
+          "source": "7-evidence-and-limits",
+          "rendition": "7-evidence-and-limits"
+        },
+        {
+          "source": "8-conclusion",
+          "rendition": "8-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "evidence-and-falsification",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/evidence-and-falsification/PAPER.md",
+        "sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/evidence-and-falsification/PAPER.md",
+        "sha256": "1c46244a4dc80444aa3f603e71d28c0ea6eab1177a9297d06d019b6ea734834c",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-evidential-distinctions",
+          "rendition": "1-research-question-and-evidential-distinctions"
+        },
+        {
+          "source": "2-claims-and-independent-assessment-axes",
+          "rendition": "2-claims-and-independent-assessment-axes"
+        },
+        {
+          "source": "3-justification-graphs-and-conditional-soundness",
+          "rendition": "3-justification-graphs-and-conditional-soundness"
+        },
+        {
+          "source": "proposition-1-sound-rules-preserve-true-premises-in-a-finite-derivation",
+          "rendition": "proposition-1-sound-rules-preserve-true-premises-in-a-finite-derivation"
+        },
+        {
+          "source": "proposition-2-a-countermodel-refutes-a-universal-claim-within-its-scope",
+          "rendition": "proposition-2-a-countermodel-refutes-a-universal-claim-within-its-scope"
+        },
+        {
+          "source": "4-what-different-checks-establish",
+          "rendition": "4-what-different-checks-establish"
+        },
+        {
+          "source": "5-a-falsification-protocol",
+          "rendition": "5-a-falsification-protocol"
+        },
+        {
+          "source": "6-comparators-analysis-and-stopping",
+          "rendition": "6-comparators-analysis-and-stopping"
+        },
+        {
+          "source": "7-the-evidential-status-of-this-research-program",
+          "rendition": "7-the-evidential-status-of-this-research-program"
+        },
+        {
+          "source": "8-scope-and-shared-definitions",
+          "rendition": "8-scope-and-shared-definitions"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "evidence-and-falsification",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/evidence-and-falsification/PAPER.md",
+        "sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/evidence-and-falsification/PAPER.md",
+        "sha256": "a9bf75fe28fad01f675ed3138acc3451967295b2e0812881b34e1e4c107deada",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-evidential-distinctions",
+          "rendition": "1-research-question-and-evidential-distinctions"
+        },
+        {
+          "source": "2-claims-and-independent-assessment-axes",
+          "rendition": "2-claims-and-independent-assessment-axes"
+        },
+        {
+          "source": "3-justification-graphs-and-conditional-soundness",
+          "rendition": "3-justification-graphs-and-conditional-soundness"
+        },
+        {
+          "source": "proposition-1-sound-rules-preserve-true-premises-in-a-finite-derivation",
+          "rendition": "proposition-1-sound-rules-preserve-true-premises-in-a-finite-derivation"
+        },
+        {
+          "source": "proposition-2-a-countermodel-refutes-a-universal-claim-within-its-scope",
+          "rendition": "proposition-2-a-countermodel-refutes-a-universal-claim-within-its-scope"
+        },
+        {
+          "source": "4-what-different-checks-establish",
+          "rendition": "4-what-different-checks-establish"
+        },
+        {
+          "source": "5-a-falsification-protocol",
+          "rendition": "5-a-falsification-protocol"
+        },
+        {
+          "source": "6-comparators-analysis-and-stopping",
+          "rendition": "6-comparators-analysis-and-stopping"
+        },
+        {
+          "source": "7-the-evidential-status-of-this-research-program",
+          "rendition": "7-the-evidential-status-of-this-research-program"
+        },
+        {
+          "source": "8-scope-and-shared-definitions",
+          "rendition": "8-scope-and-shared-definitions"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "revision-and-governance",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/revision-and-governance/PAPER.md",
+        "sha256": "65d5702b24da7ca93e9eb6c89bd26e3e23ff3e76dac0c847e1f6d21cc2bd924e",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/revision-and-governance/PAPER.md",
+        "sha256": "7a0999a5f5ae8e0d62980d123f263549d91b7eea1e277b5be83bf2987b3dda96",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "11-method-and-contribution-boundary",
+          "rendition": "11-method-and-contribution-boundary"
+        },
+        {
+          "source": "2-five-different-objects-of-change",
+          "rendition": "2-five-different-objects-of-change"
+        },
+        {
+          "source": "3-revision-operations-and-their-grounds",
+          "rendition": "3-revision-operations-and-their-grounds"
+        },
+        {
+          "source": "31-a-scoped-transfer-obligation",
+          "rendition": "31-a-scoped-transfer-obligation"
+        },
+        {
+          "source": "4-conditional-properties",
+          "rendition": "4-conditional-properties"
+        },
+        {
+          "source": "proposition-1-pinned-references-preserve-historical-selection",
+          "rendition": "proposition-1-pinned-references-preserve-historical-selection"
+        },
+        {
+          "source": "proposition-2-checks-transfer-through-preserved-complete-inputs",
+          "rendition": "proposition-2-checks-transfer-through-preserved-complete-inputs"
+        },
+        {
+          "source": "proposition-3-complete-dependencies-identify-candidates-for-reassessment",
+          "rendition": "proposition-3-complete-dependencies-identify-candidates-for-reassessment"
+        },
+        {
+          "source": "proposition-4-adoption-is-not-a-truth-preserving-inference-rule",
+          "rendition": "proposition-4-adoption-is-not-a-truth-preserving-inference-rule"
+        },
+        {
+          "source": "5-authority-and-normative-admission",
+          "rendition": "5-authority-and-normative-admission"
+        },
+        {
+          "source": "6-historical-reproduction-and-current-use",
+          "rendition": "6-historical-reproduction-and-current-use"
+        },
+        {
+          "source": "61-constructed-revision-sequence",
+          "rendition": "61-constructed-revision-sequence"
+        },
+        {
+          "source": "7-falsification-and-evidence-boundary",
+          "rendition": "7-falsification-and-evidence-boundary"
+        },
+        {
+          "source": "71-what-a-useful-test-must-distinguish",
+          "rendition": "71-what-a-useful-test-must-distinguish"
+        },
+        {
+          "source": "8-connections-to-the-published-engineering-work",
+          "rendition": "8-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "revision-and-governance",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/revision-and-governance/PAPER.md",
+        "sha256": "65d5702b24da7ca93e9eb6c89bd26e3e23ff3e76dac0c847e1f6d21cc2bd924e",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/revision-and-governance/PAPER.md",
+        "sha256": "1d9bb28b616bb2fb77f3ce5b92ca86f924b76b9e278e3311a08282883b8f1944",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "11-method-and-contribution-boundary",
+          "rendition": "11-method-and-contribution-boundary"
+        },
+        {
+          "source": "2-five-different-objects-of-change",
+          "rendition": "2-five-different-objects-of-change"
+        },
+        {
+          "source": "3-revision-operations-and-their-grounds",
+          "rendition": "3-revision-operations-and-their-grounds"
+        },
+        {
+          "source": "31-a-scoped-transfer-obligation",
+          "rendition": "31-a-scoped-transfer-obligation"
+        },
+        {
+          "source": "4-conditional-properties",
+          "rendition": "4-conditional-properties"
+        },
+        {
+          "source": "proposition-1-pinned-references-preserve-historical-selection",
+          "rendition": "proposition-1-pinned-references-preserve-historical-selection"
+        },
+        {
+          "source": "proposition-2-checks-transfer-through-preserved-complete-inputs",
+          "rendition": "proposition-2-checks-transfer-through-preserved-complete-inputs"
+        },
+        {
+          "source": "proposition-3-complete-dependencies-identify-candidates-for-reassessment",
+          "rendition": "proposition-3-complete-dependencies-identify-candidates-for-reassessment"
+        },
+        {
+          "source": "proposition-4-adoption-is-not-a-truth-preserving-inference-rule",
+          "rendition": "proposition-4-adoption-is-not-a-truth-preserving-inference-rule"
+        },
+        {
+          "source": "5-authority-and-normative-admission",
+          "rendition": "5-authority-and-normative-admission"
+        },
+        {
+          "source": "6-historical-reproduction-and-current-use",
+          "rendition": "6-historical-reproduction-and-current-use"
+        },
+        {
+          "source": "61-constructed-revision-sequence",
+          "rendition": "61-constructed-revision-sequence"
+        },
+        {
+          "source": "7-falsification-and-evidence-boundary",
+          "rendition": "7-falsification-and-evidence-boundary"
+        },
+        {
+          "source": "71-what-a-useful-test-must-distinguish",
+          "rendition": "71-what-a-useful-test-must-distinguish"
+        },
+        {
+          "source": "8-connections-to-the-published-engineering-work",
+          "rendition": "8-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "controlled-knowledge-reuse",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/controlled-knowledge-reuse/PAPER.md",
+        "sha256": "9a0cd4e2029534effa500286685a40f05ceaa781a27bd7b276697647474e83dc",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/controlled-knowledge-reuse/PAPER.md",
+        "sha256": "d4c1b3236c5e9a5b81b6f830cf84c9cbc9b66612c9b89e87016528e47ab768e9",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-relation-to-caching",
+          "rendition": "1-research-question-and-relation-to-caching"
+        },
+        {
+          "source": "2-contracts-and-their-professional-specialization",
+          "rendition": "2-contracts-and-their-professional-specialization"
+        },
+        {
+          "source": "3-preparation-and-the-reuse-relation",
+          "rendition": "3-preparation-and-the-reuse-relation"
+        },
+        {
+          "source": "4-conditional-preservation-theorem",
+          "rendition": "4-conditional-preservation-theorem"
+        },
+        {
+          "source": "5-dependencies-and-scope-counterexamples",
+          "rendition": "5-dependencies-and-scope-counterexamples"
+        },
+        {
+          "source": "6-state-time-and-delivery",
+          "rendition": "6-state-time-and-delivery"
+        },
+        {
+          "source": "7-economic-and-practical-limits",
+          "rendition": "7-economic-and-practical-limits"
+        },
+        {
+          "source": "8-connections-to-the-published-engineering-work",
+          "rendition": "8-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "controlled-knowledge-reuse",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/controlled-knowledge-reuse/PAPER.md",
+        "sha256": "9a0cd4e2029534effa500286685a40f05ceaa781a27bd7b276697647474e83dc",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/controlled-knowledge-reuse/PAPER.md",
+        "sha256": "9ad69c8aa3aa0c28f9311c8fcc2e251c456c3c64143433d535a0258c647af887",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question-and-relation-to-caching",
+          "rendition": "1-research-question-and-relation-to-caching"
+        },
+        {
+          "source": "2-contracts-and-their-professional-specialization",
+          "rendition": "2-contracts-and-their-professional-specialization"
+        },
+        {
+          "source": "3-preparation-and-the-reuse-relation",
+          "rendition": "3-preparation-and-the-reuse-relation"
+        },
+        {
+          "source": "4-conditional-preservation-theorem",
+          "rendition": "4-conditional-preservation-theorem"
+        },
+        {
+          "source": "5-dependencies-and-scope-counterexamples",
+          "rendition": "5-dependencies-and-scope-counterexamples"
+        },
+        {
+          "source": "6-state-time-and-delivery",
+          "rendition": "6-state-time-and-delivery"
+        },
+        {
+          "source": "7-economic-and-practical-limits",
+          "rendition": "7-economic-and-practical-limits"
+        },
+        {
+          "source": "8-connections-to-the-published-engineering-work",
+          "rendition": "8-connections-to-the-published-engineering-work"
+        },
+        {
+          "source": "9-conclusion",
+          "rendition": "9-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-utility",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/knowledge-utility/PAPER.md",
+        "sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/knowledge-utility/PAPER.md",
+        "sha256": "98e36c0acc00c00404c76e92cf7d537574865207beb3046b9c1ee1b1937e7e86",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "2-conditional-utility-and-outcome-vectors",
+          "rendition": "2-conditional-utility-and-outcome-vectors"
+        },
+        {
+          "source": "3-resource-accounting",
+          "rendition": "3-resource-accounting"
+        },
+        {
+          "source": "proposition-1-conservative-shared-cost-allocation-prevents-creation-of-cost",
+          "rendition": "proposition-1"
+        },
+        {
+          "source": "4-contribution-and-causal-attribution",
+          "rendition": "4-contribution-and-causal-attribution"
+        },
+        {
+          "source": "5-complementarity-duplication-and-exposure",
+          "rendition": "5-complementarity-duplication-and-exposure"
+        },
+        {
+          "source": "6-reuse-economics-and-lifecycle-decisions",
+          "rendition": "6-reuse-economics-and-lifecycle-decisions"
+        },
+        {
+          "source": "proposition-2-a-simple-reuse-policy-has-a-conditional-break-even-point",
+          "rendition": "proposition-2"
+        },
+        {
+          "source": "7-evaluation-and-falsification",
+          "rendition": "7-evaluation-and-falsification"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-utility",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/knowledge-utility/PAPER.md",
+        "sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/knowledge-utility/PAPER.md",
+        "sha256": "de23ebecbe45c4b23608f367bf6885be7fdfb8c6ab69eea0dced444e03745727",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-research-question",
+          "rendition": "1-research-question"
+        },
+        {
+          "source": "2-conditional-utility-and-outcome-vectors",
+          "rendition": "2-conditional-utility-and-outcome-vectors"
+        },
+        {
+          "source": "3-resource-accounting",
+          "rendition": "3-resource-accounting"
+        },
+        {
+          "source": "proposition-1-conservative-shared-cost-allocation-prevents-creation-of-cost",
+          "rendition": "proposition-1"
+        },
+        {
+          "source": "4-contribution-and-causal-attribution",
+          "rendition": "4-contribution-and-causal-attribution"
+        },
+        {
+          "source": "5-complementarity-duplication-and-exposure",
+          "rendition": "5-complementarity-duplication-and-exposure"
+        },
+        {
+          "source": "6-reuse-economics-and-lifecycle-decisions",
+          "rendition": "6-reuse-economics-and-lifecycle-decisions"
+        },
+        {
+          "source": "proposition-2-a-simple-reuse-policy-has-a-conditional-break-even-point",
+          "rendition": "proposition-2"
+        },
+        {
+          "source": "7-evaluation-and-falsification",
+          "rendition": "7-evaluation-and-falsification"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "geometry-of-semantic-representations",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/geometry-of-semantic-representations/PAPER.md",
+        "sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/geometry-of-semantic-representations/PAPER.md",
+        "sha256": "78501e1cf0b2c11ee87355c2a13df6c3fb6040ccebeb8ada915b1e5597a86ee1",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-question-method-and-contribution",
+          "rendition": "1-question-method-and-contribution"
+        },
+        {
+          "source": "2-related-approaches-and-the-scope-of-the-construction",
+          "rendition": "2-related-approaches-and-the-scope-of-the-construction"
+        },
+        {
+          "source": "3-observation-profiles-and-equivalence",
+          "rendition": "3-observation-profiles-and-equivalence"
+        },
+        {
+          "source": "proposition-1-observation-distance-is-a-pseudometric-and-induces-a-quotient-metric",
+          "rendition": "proposition-1-observation-distance-is-a-pseudometric-and-induces-a-quotient-metric"
+        },
+        {
+          "source": "4-representation-loss-and-transformations",
+          "rendition": "4-representation-loss-and-transformations"
+        },
+        {
+          "source": "proposition-2-recoverability-requires-agreement-on-representation-fibres",
+          "rendition": "proposition-2-recoverability-requires-agreement-on-representation-fibres"
+        },
+        {
+          "source": "proposition-3-observation-preserving-transformations-are-isometries-on-admitted-classes",
+          "rendition": "proposition-3-observation-preserving-transformations-are-isometries-on-admitted-classes"
+        },
+        {
+          "source": "5-changing-the-observations-and-the-context",
+          "rendition": "5-changing-the-observations-and-the-context"
+        },
+        {
+          "source": "proposition-4-restriction-and-refinement-have-different-normalization-effects",
+          "rendition": "proposition-4-restriction-and-refinement-have-different-normalization-effects"
+        },
+        {
+          "source": "proposition-5-aligned-context-changes-bound-distance-changes",
+          "rendition": "proposition-5-aligned-context-changes-bound-distance-changes"
+        },
+        {
+          "source": "6-incomplete-observations-and-conservative-distance-envelopes",
+          "rendition": "6-incomplete-observations-and-conservative-distance-envelopes"
+        },
+        {
+          "source": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability",
+          "rendition": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability"
+        },
+        {
+          "source": "7-similarity-is-not-equivalence-entailment-or-permission",
+          "rendition": "7-similarity-is-not-equivalence-entailment-or-permission"
+        },
+        {
+          "source": "8-interface-to-knowledge-contract-and-evaluation",
+          "rendition": "8-interface-to-knowledge-contract-and-evaluation"
+        },
+        {
+          "source": "9-limitations",
+          "rendition": "9-limitations"
+        },
+        {
+          "source": "10-conclusion",
+          "rendition": "10-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "geometry-of-semantic-representations",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/geometry-of-semantic-representations/PAPER.md",
+        "sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/geometry-of-semantic-representations/PAPER.md",
+        "sha256": "cebe59eef118dcb4f474f2af06f4e1c862939ef88a24cad386cbb0bf2686c022",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-question-method-and-contribution",
+          "rendition": "1-question-method-and-contribution"
+        },
+        {
+          "source": "2-related-approaches-and-the-scope-of-the-construction",
+          "rendition": "2-related-approaches-and-the-scope-of-the-construction"
+        },
+        {
+          "source": "3-observation-profiles-and-equivalence",
+          "rendition": "3-observation-profiles-and-equivalence"
+        },
+        {
+          "source": "proposition-1-observation-distance-is-a-pseudometric-and-induces-a-quotient-metric",
+          "rendition": "proposition-1-observation-distance-is-a-pseudometric-and-induces-a-quotient-metric"
+        },
+        {
+          "source": "4-representation-loss-and-transformations",
+          "rendition": "4-representation-loss-and-transformations"
+        },
+        {
+          "source": "proposition-2-recoverability-requires-agreement-on-representation-fibres",
+          "rendition": "proposition-2-recoverability-requires-agreement-on-representation-fibres"
+        },
+        {
+          "source": "proposition-3-observation-preserving-transformations-are-isometries-on-admitted-classes",
+          "rendition": "proposition-3-observation-preserving-transformations-are-isometries-on-admitted-classes"
+        },
+        {
+          "source": "5-changing-the-observations-and-the-context",
+          "rendition": "5-changing-the-observations-and-the-context"
+        },
+        {
+          "source": "proposition-4-restriction-and-refinement-have-different-normalization-effects",
+          "rendition": "proposition-4-restriction-and-refinement-have-different-normalization-effects"
+        },
+        {
+          "source": "proposition-5-aligned-context-changes-bound-distance-changes",
+          "rendition": "proposition-5-aligned-context-changes-bound-distance-changes"
+        },
+        {
+          "source": "6-incomplete-observations-and-conservative-distance-envelopes",
+          "rendition": "6-incomplete-observations-and-conservative-distance-envelopes"
+        },
+        {
+          "source": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability",
+          "rendition": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability"
+        },
+        {
+          "source": "7-similarity-is-not-equivalence-entailment-or-permission",
+          "rendition": "7-similarity-is-not-equivalence-entailment-or-permission"
+        },
+        {
+          "source": "8-interface-to-knowledge-contract-and-evaluation",
+          "rendition": "8-interface-to-knowledge-contract-and-evaluation"
+        },
+        {
+          "source": "9-limitations",
+          "rendition": "9-limitations"
+        },
+        {
+          "source": "10-conclusion",
+          "rendition": "10-conclusion"
+        },
+        {
+          "source": "references",
+          "rendition": "references"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-contract-core",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "sha256": "c1d14c1dfdb9373e4fe3304baa3cde18c3b442180c5369be0c7a842db7d95e64",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "sha256": "33d2de2f544e523b10d79476efa8ac7e9ff2cde39c678e914edd48594b502bc0",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-core-model",
+          "rendition": "2-core-model"
+        },
+        {
+          "source": "3-constraints-are-first-class-obligations",
+          "rendition": "3-constraints-are-first-class-obligations"
+        },
+        {
+          "source": "4-profiles-and-compatibility",
+          "rendition": "4-profiles-and-compatibility"
+        },
+        {
+          "source": "5-admission-and-execution",
+          "rendition": "5-admission-and-execution"
+        },
+        {
+          "source": "6-migration-and-failure-handling",
+          "rendition": "6-migration-and-failure-handling"
+        },
+        {
+          "source": "7-acceptance-cases-and-evidence",
+          "rendition": "7-acceptance-cases-and-evidence"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-contract-core",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "sha256": "c1d14c1dfdb9373e4fe3304baa3cde18c3b442180c5369be0c7a842db7d95e64",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+        "sha256": "bbd7e380a46ff0aebae240851e94b7af2ac34143fbe783b5e5416054c3634e26",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-core-model",
+          "rendition": "2-core-model"
+        },
+        {
+          "source": "3-constraints-are-first-class-obligations",
+          "rendition": "3-constraints-are-first-class-obligations"
+        },
+        {
+          "source": "4-profiles-and-compatibility",
+          "rendition": "4-profiles-and-compatibility"
+        },
+        {
+          "source": "5-admission-and-execution",
+          "rendition": "5-admission-and-execution"
+        },
+        {
+          "source": "6-migration-and-failure-handling",
+          "rendition": "6-migration-and-failure-handling"
+        },
+        {
+          "source": "7-acceptance-cases-and-evidence",
+          "rendition": "7-acceptance-cases-and-evidence"
+        }
+      ]
+    },
+    {
+      "work": "contract-family",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+        "sha256": "be656317394ac3c934edace66395528ff72e84405618a0a4f2fd24c531a0b628",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/contract-family/SPECIFICATION.md",
+        "sha256": "125faa97d0f547c5e28150caf19a67599b0ff72ba2ebd2c12a6df37f27459373",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-common-contract-record",
+          "rendition": "2-common-contract-record"
+        },
+        {
+          "source": "3-operation-families",
+          "rendition": "3-operation-families"
+        },
+        {
+          "source": "4-composition",
+          "rendition": "4-composition"
+        },
+        {
+          "source": "5-outcomes-and-evidence",
+          "rendition": "5-outcomes-and-evidence"
+        },
+        {
+          "source": "6-acceptance-cases",
+          "rendition": "6-acceptance-cases"
+        },
+        {
+          "source": "7-representation-and-evolution",
+          "rendition": "7-representation-and-evolution"
+        }
+      ]
+    },
+    {
+      "work": "contract-family",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+        "sha256": "be656317394ac3c934edace66395528ff72e84405618a0a4f2fd24c531a0b628",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/contract-family/SPECIFICATION.md",
+        "sha256": "82c4d38375c603836bbff5d23546c0d3593af46af11574fb2514dbd3c4c600b0",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-common-contract-record",
+          "rendition": "2-common-contract-record"
+        },
+        {
+          "source": "3-operation-families",
+          "rendition": "3-operation-families"
+        },
+        {
+          "source": "4-composition",
+          "rendition": "4-composition"
+        },
+        {
+          "source": "5-outcomes-and-evidence",
+          "rendition": "5-outcomes-and-evidence"
+        },
+        {
+          "source": "6-acceptance-cases",
+          "rendition": "6-acceptance-cases"
+        },
+        {
+          "source": "7-representation-and-evolution",
+          "rendition": "7-representation-and-evolution"
+        }
+      ]
+    },
+    {
+      "work": "semantic-types",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+        "sha256": "11e66b5ae19f09cebb06a40616a180d19ecce6bb5166ab749e6b769a7594e206",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/semantic-types/SPECIFICATION.md",
+        "sha256": "406ccba75700b5f5232ea4b2f5b7a0d79a527faee340a20e225a1c3d2820c6c1",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-independent-semantic-dimensions",
+          "rendition": "2-independent-semantic-dimensions"
+        },
+        {
+          "source": "3-identity-granularity-and-relations",
+          "rendition": "3-identity-granularity-and-relations"
+        },
+        {
+          "source": "4-scope-and-ambiguity",
+          "rendition": "4-scope-and-ambiguity"
+        },
+        {
+          "source": "5-multimodal-content-and-delivery",
+          "rendition": "5-multimodal-content-and-delivery"
+        },
+        {
+          "source": "6-validation-obligations",
+          "rendition": "6-validation-obligations"
+        },
+        {
+          "source": "7-evidence-and-interoperability",
+          "rendition": "7-evidence-and-interoperability"
+        }
+      ]
+    },
+    {
+      "work": "semantic-types",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+        "sha256": "11e66b5ae19f09cebb06a40616a180d19ecce6bb5166ab749e6b769a7594e206",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/semantic-types/SPECIFICATION.md",
+        "sha256": "922bda2a4063935e557544b40575c4ce5748093a47f440bf13346ed7d33a4496",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-independent-semantic-dimensions",
+          "rendition": "2-independent-semantic-dimensions"
+        },
+        {
+          "source": "3-identity-granularity-and-relations",
+          "rendition": "3-identity-granularity-and-relations"
+        },
+        {
+          "source": "4-scope-and-ambiguity",
+          "rendition": "4-scope-and-ambiguity"
+        },
+        {
+          "source": "5-multimodal-content-and-delivery",
+          "rendition": "5-multimodal-content-and-delivery"
+        },
+        {
+          "source": "6-validation-obligations",
+          "rendition": "6-validation-obligations"
+        },
+        {
+          "source": "7-evidence-and-interoperability",
+          "rendition": "7-evidence-and-interoperability"
+        }
+      ]
+    },
+    {
+      "work": "context-package",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/context-package/SPECIFICATION.md",
+        "sha256": "bda66c8c108f62bd266c79c7bda9272c8ddd5be8c940b4349cc77704a6dbd937",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/context-package/SPECIFICATION.md",
+        "sha256": "395e1a7d732cb791f8102101bacef95c6c3d3dc4bfe4f5f18d7c85f46a419d3a",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-required-package-description",
+          "rendition": "2-required-package-description"
+        },
+        {
+          "source": "3-selection-and-closure",
+          "rendition": "3-selection-and-closure"
+        },
+        {
+          "source": "4-coverage-and-assurance",
+          "rendition": "4-coverage-and-assurance"
+        },
+        {
+          "source": "5-budget-and-projection",
+          "rendition": "5-budget-and-projection"
+        },
+        {
+          "source": "6-delivery-and-receipt",
+          "rendition": "6-delivery-and-receipt"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-compatibility",
+          "rendition": "8-compatibility"
+        }
+      ]
+    },
+    {
+      "work": "context-package",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/context-package/SPECIFICATION.md",
+        "sha256": "bda66c8c108f62bd266c79c7bda9272c8ddd5be8c940b4349cc77704a6dbd937",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/context-package/SPECIFICATION.md",
+        "sha256": "1ecda435fe9183c66904e654a181f7b9617e82d9d314c98f7d270b05e2058c47",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-required-package-description",
+          "rendition": "2-required-package-description"
+        },
+        {
+          "source": "3-selection-and-closure",
+          "rendition": "3-selection-and-closure"
+        },
+        {
+          "source": "4-coverage-and-assurance",
+          "rendition": "4-coverage-and-assurance"
+        },
+        {
+          "source": "5-budget-and-projection",
+          "rendition": "5-budget-and-projection"
+        },
+        {
+          "source": "6-delivery-and-receipt",
+          "rendition": "6-delivery-and-receipt"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-compatibility",
+          "rendition": "8-compatibility"
+        }
+      ]
+    },
+    {
+      "work": "compiled-artifact-contract",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "sha256": "bc2e26c2af159eeee54892294157c383324ad17c0121826ab9c07bde11e7c6ec",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "sha256": "1b96adf4d2416df5ede54a4646ef1d10d1386dcfed3395c665d2bebb7dde233e",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-result-kinds-and-minimum-information",
+          "rendition": "2-result-kinds-and-minimum-information"
+        },
+        {
+          "source": "3-artifact-and-build-records",
+          "rendition": "3-artifact-and-build-records"
+        },
+        {
+          "source": "4-dependency-manifest",
+          "rendition": "4-dependency-manifest"
+        },
+        {
+          "source": "5-templates-and-instances",
+          "rendition": "5-templates-and-instances"
+        },
+        {
+          "source": "6-evidence-and-publication-boundary",
+          "rendition": "6-evidence-and-publication-boundary"
+        },
+        {
+          "source": "7-acceptance-cases-and-limits",
+          "rendition": "7-acceptance-cases-and-limits"
+        },
+        {
+          "source": "8-compatibility-and-migration",
+          "rendition": "8-compatibility-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "compiled-artifact-contract",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "sha256": "bc2e26c2af159eeee54892294157c383324ad17c0121826ab9c07bde11e7c6ec",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+        "sha256": "b41d24dbaf2fd0e35b234ab18dacd978b58b4c2ac451eb54b1aa2b7aa73dc2ff",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-result-kinds-and-minimum-information",
+          "rendition": "2-result-kinds-and-minimum-information"
+        },
+        {
+          "source": "3-artifact-and-build-records",
+          "rendition": "3-artifact-and-build-records"
+        },
+        {
+          "source": "4-dependency-manifest",
+          "rendition": "4-dependency-manifest"
+        },
+        {
+          "source": "5-templates-and-instances",
+          "rendition": "5-templates-and-instances"
+        },
+        {
+          "source": "6-evidence-and-publication-boundary",
+          "rendition": "6-evidence-and-publication-boundary"
+        },
+        {
+          "source": "7-acceptance-cases-and-limits",
+          "rendition": "7-acceptance-cases-and-limits"
+        },
+        {
+          "source": "8-compatibility-and-migration",
+          "rendition": "8-compatibility-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "artifact-registry",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+        "sha256": "fb929b4c35e1c2d270f989b137bb7dd47dbc108502eb75f7cf32eb529814dd85",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/artifact-registry/SPECIFICATION.md",
+        "sha256": "8a8d5c71fe30097ddd8dd7b98b98967e245daa25e973da342a8a909a141dfa8f",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-names-identity-and-revisions",
+          "rendition": "2-names-identity-and-revisions"
+        },
+        {
+          "source": "3-publication-formats",
+          "rendition": "3-publication-formats"
+        },
+        {
+          "source": "4-constraints-and-professional-artifacts",
+          "rendition": "4-constraints-and-professional-artifacts"
+        },
+        {
+          "source": "5-registry-obligations",
+          "rendition": "5-registry-obligations"
+        },
+        {
+          "source": "6-acceptance-and-migration",
+          "rendition": "6-acceptance-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "artifact-registry",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+        "sha256": "fb929b4c35e1c2d270f989b137bb7dd47dbc108502eb75f7cf32eb529814dd85",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/artifact-registry/SPECIFICATION.md",
+        "sha256": "c588ccb02996590214285a71e5baa11aad5da157f07bedca26fdc46df860c673",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-names-identity-and-revisions",
+          "rendition": "2-names-identity-and-revisions"
+        },
+        {
+          "source": "3-publication-formats",
+          "rendition": "3-publication-formats"
+        },
+        {
+          "source": "4-constraints-and-professional-artifacts",
+          "rendition": "4-constraints-and-professional-artifacts"
+        },
+        {
+          "source": "5-registry-obligations",
+          "rendition": "5-registry-obligations"
+        },
+        {
+          "source": "6-acceptance-and-migration",
+          "rendition": "6-acceptance-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "status-model",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/status-model/SPECIFICATION.md",
+        "sha256": "03d829245434011cc15eb92e2107a5334dde938ba2e701151da0f7244af7f5b3",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/status-model/SPECIFICATION.md",
+        "sha256": "27e011b48dee7f64104a907a89b3ae399ba9dbe3f1de596d373bf2b95c4ccc10",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-observation-record",
+          "rendition": "2-observation-record"
+        },
+        {
+          "source": "3-canonical-dimension-vocabularies",
+          "rendition": "3-canonical-dimension-vocabularies"
+        },
+        {
+          "source": "4-transition-rules",
+          "rendition": "4-transition-rules"
+        },
+        {
+          "source": "execution-phase",
+          "rendition": "execution-phase"
+        },
+        {
+          "source": "artifact-lifecycle",
+          "rendition": "artifact-lifecycle"
+        },
+        {
+          "source": "freshness-and-eligibility-projections",
+          "rendition": "freshness-and-eligibility-projections"
+        },
+        {
+          "source": "5-scientific-and-editorial-status",
+          "rendition": "5-scientific-and-editorial-status"
+        },
+        {
+          "source": "6-user-facing-projections",
+          "rendition": "6-user-facing-projections"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-bounded-exchange-profile",
+          "rendition": "8-bounded-exchange-profile"
+        }
+      ]
+    },
+    {
+      "work": "status-model",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/status-model/SPECIFICATION.md",
+        "sha256": "03d829245434011cc15eb92e2107a5334dde938ba2e701151da0f7244af7f5b3",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/status-model/SPECIFICATION.md",
+        "sha256": "28117be97ce2ed8690f844a05dad0e192f3bc09d2e36836f2a8fa4a0901ac280",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-observation-record",
+          "rendition": "2-observation-record"
+        },
+        {
+          "source": "3-canonical-dimension-vocabularies",
+          "rendition": "3-canonical-dimension-vocabularies"
+        },
+        {
+          "source": "4-transition-rules",
+          "rendition": "4-transition-rules"
+        },
+        {
+          "source": "execution-phase",
+          "rendition": "execution-phase"
+        },
+        {
+          "source": "artifact-lifecycle",
+          "rendition": "artifact-lifecycle"
+        },
+        {
+          "source": "freshness-and-eligibility-projections",
+          "rendition": "freshness-and-eligibility-projections"
+        },
+        {
+          "source": "5-scientific-and-editorial-status",
+          "rendition": "5-scientific-and-editorial-status"
+        },
+        {
+          "source": "6-user-facing-projections",
+          "rendition": "6-user-facing-projections"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-bounded-exchange-profile",
+          "rendition": "8-bounded-exchange-profile"
+        }
+      ]
+    },
+    {
+      "work": "cache-identity-and-invalidation",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "sha256": "23705ace38ebdfb295adf11f97ffc9168d8e2410a12046fc793536c282c9b01c",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "sha256": "2c44b7fc4c821d3076b22fda3f5cf72dc644597017fe2b0e19bd49b0ca144c32",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-identity-layers",
+          "rendition": "2-identity-layers"
+        },
+        {
+          "source": "3-dependency-tracking",
+          "rendition": "3-dependency-tracking"
+        },
+        {
+          "source": "4-change-events-and-ordering",
+          "rendition": "4-change-events-and-ordering"
+        },
+        {
+          "source": "5-guarded-publication-and-serving",
+          "rendition": "5-guarded-publication-and-serving"
+        },
+        {
+          "source": "6-storage-recovery-and-observability",
+          "rendition": "6-storage-recovery-and-observability"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
+        }
+      ]
+    },
+    {
+      "work": "cache-identity-and-invalidation",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "sha256": "23705ace38ebdfb295adf11f97ffc9168d8e2410a12046fc793536c282c9b01c",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+        "sha256": "79c2b503b49120d14a06b6d78d3db3725c12f5a0b4eb636911724a98bae90302",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-identity-layers",
+          "rendition": "2-identity-layers"
+        },
+        {
+          "source": "3-dependency-tracking",
+          "rendition": "3-dependency-tracking"
+        },
+        {
+          "source": "4-change-events-and-ordering",
+          "rendition": "4-change-events-and-ordering"
+        },
+        {
+          "source": "5-guarded-publication-and-serving",
+          "rendition": "5-guarded-publication-and-serving"
+        },
+        {
+          "source": "6-storage-recovery-and-observability",
+          "rendition": "6-storage-recovery-and-observability"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
+        }
+      ]
+    },
+    {
+      "work": "reuse-policy",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "sha256": "59e5e632074efcf2392fccfebf391d7c129c730049b398cd0c82463f4a8d677b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "sha256": "616efb30a53f96bb732f0ded2f5fcad7607c40e9cfe0b5b0f332f513c7511a33",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-admission-before-timing",
+          "rendition": "2-admission-before-timing"
+        },
+        {
+          "source": "3-temporal-modes",
+          "rendition": "3-temporal-modes"
+        },
+        {
+          "source": "4-time-model-and-deadlines",
+          "rendition": "4-time-model-and-deadlines"
+        },
+        {
+          "source": "5-decision-outcomes",
+          "rendition": "5-decision-outcomes"
+        },
+        {
+          "source": "6-cost-retention-and-measurement",
+          "rendition": "6-cost-retention-and-measurement"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-compatibility",
+          "rendition": "8-compatibility"
+        }
+      ]
+    },
+    {
+      "work": "reuse-policy",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "sha256": "59e5e632074efcf2392fccfebf391d7c129c730049b398cd0c82463f4a8d677b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/reuse-policy/SPECIFICATION.md",
+        "sha256": "a3c754f30b306e6ba047ed5de392e4c8c09dc21475399995122ab8a2aa582590",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-admission-before-timing",
+          "rendition": "2-admission-before-timing"
+        },
+        {
+          "source": "3-temporal-modes",
+          "rendition": "3-temporal-modes"
+        },
+        {
+          "source": "4-time-model-and-deadlines",
+          "rendition": "4-time-model-and-deadlines"
+        },
+        {
+          "source": "5-decision-outcomes",
+          "rendition": "5-decision-outcomes"
+        },
+        {
+          "source": "6-cost-retention-and-measurement",
+          "rendition": "6-cost-retention-and-measurement"
+        },
+        {
+          "source": "7-acceptance-and-evidence",
+          "rendition": "7-acceptance-and-evidence"
+        },
+        {
+          "source": "8-compatibility",
+          "rendition": "8-compatibility"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-evolution",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "sha256": "a9ee0fcdba6e4c99ed9b887f9c22d57d54089529d9d7bf294e67ea78e7f73bf9",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "sha256": "d719871097eb32ef8506e09ce5d2f03a2f4d24736e50e63a4d756650c307e471",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-creation-basis",
+          "rendition": "2-creation-basis"
+        },
+        {
+          "source": "3-change-proposal-and-adoption",
+          "rendition": "3-change-proposal-and-adoption"
+        },
+        {
+          "source": "4-impact-analysis-and-reassessment",
+          "rendition": "4-impact-analysis-and-reassessment"
+        },
+        {
+          "source": "5-migration",
+          "rendition": "5-migration"
+        },
+        {
+          "source": "6-visibility-and-rollback",
+          "rendition": "6-visibility-and-rollback"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
+        },
+        {
+          "source": "8-publication-and-implementation-versions",
+          "rendition": "8-publication-and-implementation-versions"
+        }
+      ]
+    },
+    {
+      "work": "knowledge-evolution",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "sha256": "a9ee0fcdba6e4c99ed9b887f9c22d57d54089529d9d7bf294e67ea78e7f73bf9",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+        "sha256": "89cf374d5ffb26f914960cb665c8e3cc97a9e882e63a16cc0ef3912bf12609cc",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-creation-basis",
+          "rendition": "2-creation-basis"
+        },
+        {
+          "source": "3-change-proposal-and-adoption",
+          "rendition": "3-change-proposal-and-adoption"
+        },
+        {
+          "source": "4-impact-analysis-and-reassessment",
+          "rendition": "4-impact-analysis-and-reassessment"
+        },
+        {
+          "source": "5-migration",
+          "rendition": "5-migration"
+        },
+        {
+          "source": "6-visibility-and-rollback",
+          "rendition": "6-visibility-and-rollback"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
+        },
+        {
+          "source": "8-publication-and-implementation-versions",
+          "rendition": "8-publication-and-implementation-versions"
+        }
+      ]
+    },
+    {
+      "work": "book-package",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/book-package/SPECIFICATION.md",
+        "sha256": "8c5bdb45f4a47ed66e402dafac1b666da5849c0c78154934a5d868c1451f186b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/book-package/SPECIFICATION.md",
+        "sha256": "809edf4f9e10bc76e7ca59026da15f5849bd3d0fb2a0310fe99d5a210662c35f",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-validation-boundary",
+          "rendition": "1-purpose-and-validation-boundary"
+        },
+        {
+          "source": "2-layout-and-reversible-edits",
+          "rendition": "2-layout-and-reversible-edits"
+        },
+        {
+          "source": "3-identity-and-integrity-observations",
+          "rendition": "3-identity-and-integrity-observations"
+        },
+        {
+          "source": "4-semantic-objects-and-facets",
+          "rendition": "4-semantic-objects-and-facets"
+        },
+        {
+          "source": "5-relations",
+          "rendition": "5-relations"
+        },
+        {
+          "source": "6-evidence-anchors-and-source-formats",
+          "rendition": "6-evidence-anchors-and-source-formats"
+        },
+        {
+          "source": "7-attribution-and-safe-rendering",
+          "rendition": "7-attribution-and-safe-rendering"
+        },
+        {
+          "source": "8-quality-observations-and-readiness",
+          "rendition": "8-quality-observations-and-readiness"
+        },
+        {
+          "source": "total-package-status-decision-table",
+          "rendition": "total-package-status-decision-table"
+        },
+        {
+          "source": "9-correction-impact-and-reassessment",
+          "rendition": "9-correction-impact-and-reassessment"
+        },
+        {
+          "source": "10-rights-and-publication-layers",
+          "rendition": "10-rights-and-publication-layers"
+        },
+        {
+          "source": "11-candidate-export-and-admission-runtime",
+          "rendition": "11-candidate-export-and-admission-runtime"
+        },
+        {
+          "source": "12-validation-and-evidence-limits",
+          "rendition": "12-validation-and-evidence-limits"
+        },
+        {
+          "source": "13-compatibility-and-migration",
+          "rendition": "13-compatibility-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "book-package",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/book-package/SPECIFICATION.md",
+        "sha256": "8c5bdb45f4a47ed66e402dafac1b666da5849c0c78154934a5d868c1451f186b",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/book-package/SPECIFICATION.md",
+        "sha256": "031340819cb4a66f43eb192bca0d6cf4ca238fd00d830e56426a624275704959",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-validation-boundary",
+          "rendition": "1-purpose-and-validation-boundary"
+        },
+        {
+          "source": "2-layout-and-reversible-edits",
+          "rendition": "2-layout-and-reversible-edits"
+        },
+        {
+          "source": "3-identity-and-integrity-observations",
+          "rendition": "3-identity-and-integrity-observations"
+        },
+        {
+          "source": "4-semantic-objects-and-facets",
+          "rendition": "4-semantic-objects-and-facets"
+        },
+        {
+          "source": "5-relations",
+          "rendition": "5-relations"
+        },
+        {
+          "source": "6-evidence-anchors-and-source-formats",
+          "rendition": "6-evidence-anchors-and-source-formats"
+        },
+        {
+          "source": "7-attribution-and-safe-rendering",
+          "rendition": "7-attribution-and-safe-rendering"
+        },
+        {
+          "source": "8-quality-observations-and-readiness",
+          "rendition": "8-quality-observations-and-readiness"
+        },
+        {
+          "source": "total-package-status-decision-table",
+          "rendition": "total-package-status-decision-table"
+        },
+        {
+          "source": "9-correction-impact-and-reassessment",
+          "rendition": "9-correction-impact-and-reassessment"
+        },
+        {
+          "source": "10-rights-and-publication-layers",
+          "rendition": "10-rights-and-publication-layers"
+        },
+        {
+          "source": "11-candidate-export-and-admission-runtime",
+          "rendition": "11-candidate-export-and-admission-runtime"
+        },
+        {
+          "source": "12-validation-and-evidence-limits",
+          "rendition": "12-validation-and-evidence-limits"
+        },
+        {
+          "source": "13-compatibility-and-migration",
+          "rendition": "13-compatibility-and-migration"
+        }
+      ]
+    },
+    {
+      "work": "contract-profile-conformance",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+        "sha256": "4fe837348b21e730a191c276381647d31af51914a239bd47f2a27ddf7551cd5d",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/contract-profile-conformance/STUDY.md",
+        "sha256": "f6a6b3bc9f41561fb16291e17419e30b6868f2cdc466767c3686ce9545c1aacd",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-model",
+          "rendition": "question-and-model"
+        },
+        {
+          "source": "design-and-unit-of-observation",
+          "rendition": "design-and-unit-of-observation"
+        },
+        {
+          "source": "results",
+          "rendition": "results"
+        },
+        {
+          "source": "counterexamples-and-the-comparator",
+          "rendition": "counterexamples-and-the-comparator"
+        },
+        {
+          "source": "claim-test-counterexample-and-limit",
+          "rendition": "claim-test-counterexample-and-limit"
+        },
+        {
+          "source": "reproduction-and-evidence-boundaries",
+          "rendition": "reproduction-and-evidence-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "contract-profile-conformance",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/contract-profile-conformance/STUDY.md",
+        "sha256": "4fe837348b21e730a191c276381647d31af51914a239bd47f2a27ddf7551cd5d",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/contract-profile-conformance/STUDY.md",
+        "sha256": "0d70ae777f484ecb832b40599793f5f036385371d59ebfa19cf67675f49370c0",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-model",
+          "rendition": "question-and-model"
+        },
+        {
+          "source": "design-and-unit-of-observation",
+          "rendition": "design-and-unit-of-observation"
+        },
+        {
+          "source": "results",
+          "rendition": "results"
+        },
+        {
+          "source": "counterexamples-and-the-comparator",
+          "rendition": "counterexamples-and-the-comparator"
+        },
+        {
+          "source": "claim-test-counterexample-and-limit",
+          "rendition": "claim-test-counterexample-and-limit"
+        },
+        {
+          "source": "reproduction-and-evidence-boundaries",
+          "rendition": "reproduction-and-evidence-boundaries"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
       "work": "dependency-closure-and-package-delivery",
       "language": "ru",
       "script": "Cyrl",
@@ -198,6 +3222,184 @@
         {
           "source": "conclusion",
           "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "fa8dce6bfa9a2e030d756c661f39cbd30e7ffa876aee4c79348c013500610845",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate set including this exact Uncertainty ru blob 8aaa8dae18a2014be6495c479e85a3e114538420 (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Uncertainty ru formula order was already source-faithful; Agent-Brain comment 6751312234 explicitly left this blob unrevisited.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "8aaa8dae18a2014be6495c479e85a3e114538420"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T16:09:39Z",
+        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (anchors later covered by 6744010479), (4) link-depth/anchor delta review 6744010479 binding this exact Uncertainty ru blob; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
+          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
+        }
+      ]
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+        "sha256": "a2c89965f33702a079234f59f6a9791b8c6d0ca03cf8255c719a500e5d1756fb",
+        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
+      },
+      "review": {
+        "reviewer": {
+          "identity": "Agent-Brain",
+          "kind": "agent",
+          "independent_of_author": true,
+          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
+        },
+        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob c03b338155e4ff4e5300829f1a1bbb596357733e). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
+        "reviewed": {
+          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
+          "rendition_blob": "9a94c63085287f59f42df75014844801f1ffca1e"
+        },
+        "scope": {
+          "coverage": "full",
+          "sections": [
+            "abstract",
+            "question-and-source-scope",
+            "audit-and-transformation-method",
+            "preserving-uncertainty-as-a-testable-obligation",
+            "domain-specific-consequences",
+            "trace-defects-and-later-integration",
+            "public-illustration-and-retained-evidence",
+            "limits-and-conclusion"
+          ],
+          "claims": [],
+          "proofs": []
+        },
+        "corrections": [],
+        "reviewed_at": "2026-11-09T21:00:00Z",
+        "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
+        "evidence": {
+          "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
+          "blob": "c03b338155e4ff4e5300829f1a1bbb596357733e"
+        }
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-source-scope",
+          "rendition": "question-and-source-scope"
+        },
+        {
+          "source": "audit-and-transformation-method",
+          "rendition": "audit-and-transformation-method"
+        },
+        {
+          "source": "preserving-uncertainty-as-a-testable-obligation",
+          "rendition": "preserving-uncertainty-as-a-testable-obligation"
+        },
+        {
+          "source": "domain-specific-consequences",
+          "rendition": "domain-specific-consequences"
+        },
+        {
+          "source": "trace-defects-and-later-integration",
+          "rendition": "trace-defects-and-later-integration"
+        },
+        {
+          "source": "public-illustration-and-retained-evidence",
+          "rendition": "public-illustration-and-retained-evidence"
+        },
+        {
+          "source": "limits-and-conclusion",
+          "rendition": "limits-and-conclusion"
         }
       ]
     },
@@ -410,184 +3612,6 @@
       ]
     },
     {
-      "work": "source-transcription-and-uncertainty",
-      "language": "ru",
-      "script": "Cyrl",
-      "counts_as_independent_source": false,
-      "author": {
-        "identity": "KC-Brain"
-      },
-      "source": {
-        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
-        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
-        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
-        "language": "en"
-      },
-      "rendition": {
-        "path": "translations/ru/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
-        "sha256": "fa8dce6bfa9a2e030d756c661f39cbd30e7ffa876aee4c79348c013500610845",
-        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
-      },
-      "review": {
-        "reviewer": {
-          "identity": "Agent-Brain",
-          "kind": "agent",
-          "independent_of_author": true,
-          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
-        },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate set including this exact Uncertainty ru blob 8aaa8dae18a2014be6495c479e85a3e114538420 (146 changed hrefs keep the same canonical target and fragment; text otherwise byte-identical except removal of four duplicate legacy anchor preambles). The four reviews are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73), authored by KC-Brain as a provenance record, not as an Agent-Brain signature. Uncertainty ru formula order was already source-faithful; Agent-Brain comment 6751312234 explicitly left this blob unrevisited.",
-        "reviewed": {
-          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
-          "rendition_blob": "8aaa8dae18a2014be6495c479e85a3e114538420"
-        },
-        "scope": {
-          "coverage": "full",
-          "sections": [
-            "abstract",
-            "question-and-source-scope",
-            "audit-and-transformation-method",
-            "preserving-uncertainty-as-a-testable-obligation",
-            "domain-specific-consequences",
-            "trace-defects-and-later-integration",
-            "public-illustration-and-retained-evidence",
-            "limits-and-conclusion"
-          ],
-          "claims": [],
-          "proofs": []
-        },
-        "corrections": [],
-        "reviewed_at": "2026-11-09T16:09:39Z",
-        "limitations": "COMPOSITE: (1) full fidelity review 6735134008 against the earlier English blob, (2) current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical, (3) first link/pin delta review 6742099993 (anchors later covered by 6744010479), (4) link-depth/anchor delta review 6744010479 binding this exact Uncertainty ru blob; no one re-reviewed the complete translation against the newer source as a single fresh full pass; not native-speaker, external or scientific-truth certification.",
-        "evidence": {
-          "path": "reviews/renditions/k8-composite-exact-blob-evidence-20261109.md",
-          "blob": "eb689d2b5eaf40cd124fdec27d4fe312867d2d73"
-        }
-      },
-      "sections": [
-        {
-          "source": "abstract",
-          "rendition": "abstract"
-        },
-        {
-          "source": "question-and-source-scope",
-          "rendition": "question-and-source-scope"
-        },
-        {
-          "source": "audit-and-transformation-method",
-          "rendition": "audit-and-transformation-method"
-        },
-        {
-          "source": "preserving-uncertainty-as-a-testable-obligation",
-          "rendition": "preserving-uncertainty-as-a-testable-obligation"
-        },
-        {
-          "source": "domain-specific-consequences",
-          "rendition": "domain-specific-consequences"
-        },
-        {
-          "source": "trace-defects-and-later-integration",
-          "rendition": "trace-defects-and-later-integration"
-        },
-        {
-          "source": "public-illustration-and-retained-evidence",
-          "rendition": "public-illustration-and-retained-evidence"
-        },
-        {
-          "source": "limits-and-conclusion",
-          "rendition": "limits-and-conclusion"
-        }
-      ]
-    },
-    {
-      "work": "source-transcription-and-uncertainty",
-      "language": "zh-Hans",
-      "script": "Hans",
-      "counts_as_independent_source": false,
-      "author": {
-        "identity": "KC-Brain"
-      },
-      "source": {
-        "path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
-        "sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
-        "revision": "e96fe08344997af24b2408e6ecdf3d97019c91ca",
-        "language": "en"
-      },
-      "rendition": {
-        "path": "translations/zh-Hans/engineering/studies/source-transcription-and-uncertainty/STUDY.md",
-        "sha256": "a2c89965f33702a079234f59f6a9791b8c6d0ca03cf8255c719a500e5d1756fb",
-        "revision": "64aa36781f92b1b1a376613f847c82e098720b1d"
-      },
-      "review": {
-        "reviewer": {
-          "identity": "Agent-Brain",
-          "kind": "agent",
-          "independent_of_author": true,
-          "independence_basis": "Pavel Valentov is the scientific author and rightsholder; KC-Brain (AI) drafted the translation; Agent-Brain (AI) independently reviewed; no human native-speaker or external peer review."
-        },
-        "method": "COMPOSITE: (1) Agent-Brain full fidelity review 6735134008 against the earlier English blob; (2) Agent-Brain current-English title/anchor delta review 6739674011 with the body from ## Abstract to EOF byte-identical; (3) Agent-Brain first link/pin delta review 6742099993 (the four that received CHANGES_REQUIRED there are covered for anchors by 6744010479); (4) Agent-Brain link-depth/anchor delta review 6744010479 of the then-current eight-candidate predecessors; (5) Agent-Brain formula-order exact-blob delta review 6751312234 (SCOPED FIDELITY PASS) for this exact author-revised rendition blob at PR76 head fc9c8ddcd625afc87e2dd59660397f041d049e96 against English snapshot 2b5bcff544fea5d1752ff009933e4ce0305dad8b. Reviews (1)-(4) are recorded in reviews/renditions/k8-composite-exact-blob-evidence-20261109.md (blob eb689d2b5eaf40cd124fdec27d4fe312867d2d73); the author-side formula-order correction ledger is reviews/renditions/k8-ordered-math-author-delta-20261109.md (blob c03b338155e4ff4e5300829f1a1bbb596357733e). KC-Brain authored both records as provenance, not as an Agent-Brain signature.",
-        "reviewed": {
-          "source_blob": "8ca885fc3f144d89e95e4813868fd953450f1f71",
-          "rendition_blob": "9a94c63085287f59f42df75014844801f1ffca1e"
-        },
-        "scope": {
-          "coverage": "full",
-          "sections": [
-            "abstract",
-            "question-and-source-scope",
-            "audit-and-transformation-method",
-            "preserving-uncertainty-as-a-testable-obligation",
-            "domain-specific-consequences",
-            "trace-defects-and-later-integration",
-            "public-illustration-and-retained-evidence",
-            "limits-and-conclusion"
-          ],
-          "claims": [],
-          "proofs": []
-        },
-        "corrections": [],
-        "reviewed_at": "2026-11-09T21:00:00Z",
-        "limitations": "COMPOSITE: (1)-(4) earlier full/title/link/anchor reviews as for the first K8 admission chain, plus (5) scoped formula-order delta review 6751312234 of this exact revised blob only; 6751312234 is not a fresh full-manuscript proof, native four-file Pandoc run, or external/native-speaker certification; not scientific-truth certification.",
-        "evidence": {
-          "path": "reviews/renditions/k8-ordered-math-author-delta-20261109.md",
-          "blob": "c03b338155e4ff4e5300829f1a1bbb596357733e"
-        }
-      },
-      "sections": [
-        {
-          "source": "abstract",
-          "rendition": "abstract"
-        },
-        {
-          "source": "question-and-source-scope",
-          "rendition": "question-and-source-scope"
-        },
-        {
-          "source": "audit-and-transformation-method",
-          "rendition": "audit-and-transformation-method"
-        },
-        {
-          "source": "preserving-uncertainty-as-a-testable-obligation",
-          "rendition": "preserving-uncertainty-as-a-testable-obligation"
-        },
-        {
-          "source": "domain-specific-consequences",
-          "rendition": "domain-specific-consequences"
-        },
-        {
-          "source": "trace-defects-and-later-integration",
-          "rendition": "trace-defects-and-later-integration"
-        },
-        {
-          "source": "public-illustration-and-retained-evidence",
-          "rendition": "public-illustration-and-retained-evidence"
-        },
-        {
-          "source": "limits-and-conclusion",
-          "rendition": "limits-and-conclusion"
-        }
-      ]
-    },
-    {
       "work": "reuse-admission-and-cost-controls",
       "language": "ru",
       "script": "Cyrl",
@@ -772,6 +3796,642 @@
         {
           "source": "conclusion",
           "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "editorial-skill-pilot",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "sha256": "55007345eee18a00662d94d9ed7b2515584c6c480d2386d9bd7b5148b34e95d6",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/editorial-skill-pilot/STUDY.md",
+        "sha256": "40c8e416bcf69d4d215a531552c6f23a67ae231f2f29d80449c0d988127bfdae",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-scope",
+          "rendition": "question-and-scope"
+        },
+        {
+          "source": "design-and-preregistration",
+          "rendition": "design-and-preregistration"
+        },
+        {
+          "source": "results-on-the-retained-responses",
+          "rendition": "results-on-the-retained-responses"
+        },
+        {
+          "source": "what-the-edits-changed",
+          "rendition": "what-the-edits-changed"
+        },
+        {
+          "source": "skill-use-and-technical-trace",
+          "rendition": "skill-use-and-technical-trace"
+        },
+        {
+          "source": "counterarguments-and-boundaries",
+          "rendition": "counterarguments-and-boundaries"
+        },
+        {
+          "source": "public-record-checks",
+          "rendition": "public-record-checks"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "editorial-skill-pilot",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+        "sha256": "55007345eee18a00662d94d9ed7b2515584c6c480d2386d9bd7b5148b34e95d6",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/editorial-skill-pilot/STUDY.md",
+        "sha256": "f80d6acf658f5f04a0745a92762cd3a78dc8134fea8145b0598674f0caf46bfd",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "question-and-scope",
+          "rendition": "question-and-scope"
+        },
+        {
+          "source": "design-and-preregistration",
+          "rendition": "design-and-preregistration"
+        },
+        {
+          "source": "results-on-the-retained-responses",
+          "rendition": "results-on-the-retained-responses"
+        },
+        {
+          "source": "what-the-edits-changed",
+          "rendition": "what-the-edits-changed"
+        },
+        {
+          "source": "skill-use-and-technical-trace",
+          "rendition": "skill-use-and-technical-trace"
+        },
+        {
+          "source": "counterarguments-and-boundaries",
+          "rendition": "counterarguments-and-boundaries"
+        },
+        {
+          "source": "public-record-checks",
+          "rendition": "public-record-checks"
+        },
+        {
+          "source": "conclusion",
+          "rendition": "conclusion"
+        }
+      ]
+    },
+    {
+      "work": "glossary",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "reference/glossary/GLOSSARY.md",
+        "sha256": "e70b48641a6a64331827546627a874bf7ae28f7820c8c18e90b5aaf71108c3e4",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/reference/glossary/GLOSSARY.md",
+        "sha256": "40111e4cd3e680abeeb05cbaaa895fc925f15455146faf904b50b49120185671",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "knowledge-and-its-representation",
+          "rendition": "knowledge-and-its-representation"
+        },
+        {
+          "source": "requirements-work-and-agency",
+          "rendition": "requirements-work-and-agency"
+        },
+        {
+          "source": "retrieval-composition-and-reuse",
+          "rendition": "retrieval-composition-and-reuse"
+        },
+        {
+          "source": "evidence-versions-and-review",
+          "rendition": "evidence-versions-and-review"
+        },
+        {
+          "source": "scoped-mathematical-notation",
+          "rendition": "scoped-mathematical-notation"
+        },
+        {
+          "source": "editorial-rules-for-terminology",
+          "rendition": "editorial-rules-for-terminology"
+        },
+        {
+          "source": "multilingual-terminology-policy",
+          "rendition": "multilingual-terminology-policy"
+        }
+      ]
+    },
+    {
+      "work": "glossary",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "reference/glossary/GLOSSARY.md",
+        "sha256": "e70b48641a6a64331827546627a874bf7ae28f7820c8c18e90b5aaf71108c3e4",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/reference/glossary/GLOSSARY.md",
+        "sha256": "a9461bdcb954cb5225b5ace96f82f60f913746c6b41dd8771038d25f2fb33d03",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "knowledge-and-its-representation",
+          "rendition": "knowledge-and-its-representation"
+        },
+        {
+          "source": "requirements-work-and-agency",
+          "rendition": "requirements-work-and-agency"
+        },
+        {
+          "source": "retrieval-composition-and-reuse",
+          "rendition": "retrieval-composition-and-reuse"
+        },
+        {
+          "source": "evidence-versions-and-review",
+          "rendition": "evidence-versions-and-review"
+        },
+        {
+          "source": "scoped-mathematical-notation",
+          "rendition": "scoped-mathematical-notation"
+        },
+        {
+          "source": "editorial-rules-for-terminology",
+          "rendition": "editorial-rules-for-terminology"
+        },
+        {
+          "source": "multilingual-terminology-policy",
+          "rendition": "multilingual-terminology-policy"
+        }
+      ]
+    },
+    {
+      "work": "bibliography",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "reference/bibliography/BIBLIOGRAPHY.md",
+        "sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/reference/bibliography/BIBLIOGRAPHY.md",
+        "sha256": "74953d2e391b182ff3d85eab08aefdcf99191102613ceb53254b26a96340b320",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "provenance",
+          "rendition": "provenance"
+        },
+        {
+          "source": "skos",
+          "rendition": "skos"
+        },
+        {
+          "source": "partial-correctness",
+          "rendition": "partial-correctness"
+        },
+        {
+          "source": "submodular-maximization",
+          "rendition": "submodular-maximization"
+        },
+        {
+          "source": "retrieval-augmented-generation",
+          "rendition": "retrieval-augmented-generation"
+        },
+        {
+          "source": "computational-complexity",
+          "rendition": "computational-complexity"
+        },
+        {
+          "source": "program-slicing",
+          "rendition": "program-slicing"
+        },
+        {
+          "source": "truth-maintenance",
+          "rendition": "truth-maintenance"
+        },
+        {
+          "source": "build-systems",
+          "rendition": "build-systems"
+        },
+        {
+          "source": "views-and-complements",
+          "rendition": "views-and-complements"
+        },
+        {
+          "source": "theory-change",
+          "rendition": "theory-change"
+        },
+        {
+          "source": "causal-inference",
+          "rendition": "causal-inference"
+        },
+        {
+          "source": "http-caching",
+          "rendition": "http-caching"
+        },
+        {
+          "source": "stale-http-responses",
+          "rendition": "stale-http-responses"
+        },
+        {
+          "source": "requirement-language",
+          "rendition": "requirement-language"
+        },
+        {
+          "source": "json-exchange-and-schemas",
+          "rendition": "json-exchange-and-schemas"
+        },
+        {
+          "source": "agent-artifact-formats",
+          "rendition": "agent-artifact-formats"
+        },
+        {
+          "source": "evaluation-methods",
+          "rendition": "evaluation-methods"
+        },
+        {
+          "source": "experimental-source-books",
+          "rendition": "experimental-source-books"
+        },
+        {
+          "source": "editorial-input",
+          "rendition": "editorial-input"
+        },
+        {
+          "source": "project-sources-and-evidence",
+          "rendition": "project-sources-and-evidence"
+        }
+      ]
+    },
+    {
+      "work": "bibliography",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "reference/bibliography/BIBLIOGRAPHY.md",
+        "sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md",
+        "sha256": "255b331c64e2de77a2e99d00ada0a599ff2b3acf413ba2544a968822133a6ea6",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "provenance",
+          "rendition": "provenance"
+        },
+        {
+          "source": "skos",
+          "rendition": "skos"
+        },
+        {
+          "source": "partial-correctness",
+          "rendition": "partial-correctness"
+        },
+        {
+          "source": "submodular-maximization",
+          "rendition": "submodular-maximization"
+        },
+        {
+          "source": "retrieval-augmented-generation",
+          "rendition": "retrieval-augmented-generation"
+        },
+        {
+          "source": "computational-complexity",
+          "rendition": "computational-complexity"
+        },
+        {
+          "source": "program-slicing",
+          "rendition": "program-slicing"
+        },
+        {
+          "source": "truth-maintenance",
+          "rendition": "truth-maintenance"
+        },
+        {
+          "source": "build-systems",
+          "rendition": "build-systems"
+        },
+        {
+          "source": "views-and-complements",
+          "rendition": "views-and-complements"
+        },
+        {
+          "source": "theory-change",
+          "rendition": "theory-change"
+        },
+        {
+          "source": "causal-inference",
+          "rendition": "causal-inference"
+        },
+        {
+          "source": "http-caching",
+          "rendition": "http-caching"
+        },
+        {
+          "source": "stale-http-responses",
+          "rendition": "stale-http-responses"
+        },
+        {
+          "source": "requirement-language",
+          "rendition": "requirement-language"
+        },
+        {
+          "source": "json-exchange-and-schemas",
+          "rendition": "json-exchange-and-schemas"
+        },
+        {
+          "source": "agent-artifact-formats",
+          "rendition": "agent-artifact-formats"
+        },
+        {
+          "source": "evaluation-methods",
+          "rendition": "evaluation-methods"
+        },
+        {
+          "source": "experimental-source-books",
+          "rendition": "experimental-source-books"
+        },
+        {
+          "source": "editorial-input",
+          "rendition": "editorial-input"
+        },
+        {
+          "source": "project-sources-and-evidence",
+          "rendition": "project-sources-and-evidence"
+        }
+      ]
+    },
+    {
+      "work": "source-map",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "appendices/source-map/APPENDIX.md",
+        "sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/appendices/source-map/APPENDIX.md",
+        "sha256": "ef60b6d1732ef35cd65c7854e01b18a2e515de2ea81fe75a5fa23290d0a271dd",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-what-this-edition-changes",
+          "rendition": "1-what-this-edition-changes"
+        },
+        {
+          "source": "2-scientific-crosswalk",
+          "rendition": "2-scientific-crosswalk"
+        },
+        {
+          "source": "3-engineering-crosswalk",
+          "rendition": "3-engineering-crosswalk"
+        },
+        {
+          "source": "4-protocol-compatibility",
+          "rendition": "4-protocol-compatibility"
+        },
+        {
+          "source": "5-provenance-and-rights",
+          "rendition": "5-provenance-and-rights"
+        },
+        {
+          "source": "6-reading-and-citation",
+          "rendition": "6-reading-and-citation"
+        },
+        {
+          "source": "7-internal-review-and-verification",
+          "rendition": "7-internal-review-and-verification"
+        }
+      ]
+    },
+    {
+      "work": "source-map",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "appendices/source-map/APPENDIX.md",
+        "sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/appendices/source-map/APPENDIX.md",
+        "sha256": "78d9fef1fc39086455766110593884fa5b29f99ebdf527647487c4b8432a2631",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-what-this-edition-changes",
+          "rendition": "1-what-this-edition-changes"
+        },
+        {
+          "source": "2-scientific-crosswalk",
+          "rendition": "2-scientific-crosswalk"
+        },
+        {
+          "source": "3-engineering-crosswalk",
+          "rendition": "3-engineering-crosswalk"
+        },
+        {
+          "source": "4-protocol-compatibility",
+          "rendition": "4-protocol-compatibility"
+        },
+        {
+          "source": "5-provenance-and-rights",
+          "rendition": "5-provenance-and-rights"
+        },
+        {
+          "source": "6-reading-and-citation",
+          "rendition": "6-reading-and-citation"
+        },
+        {
+          "source": "7-internal-review-and-verification",
+          "rendition": "7-internal-review-and-verification"
+        }
+      ]
+    },
+    {
+      "work": "api-integration",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "appendices/api-integration/APPENDIX.md",
+        "sha256": "7e0035ba7caeb56fca41d8442877e19ef8a2d557b1324e4d1d3a78e1d0440e7f",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/appendices/api-integration/APPENDIX.md",
+        "sha256": "1415bf93746de886c6e9fe717e8e960db1c563e0b925d22847177a106869f8f7",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose",
+          "rendition": "1-purpose"
+        },
+        {
+          "source": "2-documented-public-interface",
+          "rendition": "2-documented-public-interface"
+        },
+        {
+          "source": "3-contract-delivery-requirements",
+          "rendition": "3-contract-delivery-requirements"
+        },
+        {
+          "source": "4-three-manifests",
+          "rendition": "4-three-manifests"
+        },
+        {
+          "source": "5-observed-mismatch-and-release-gate",
+          "rendition": "5-observed-mismatch-and-release-gate"
+        },
+        {
+          "source": "release-receipt-profile",
+          "rendition": "release-receipt-profile"
+        },
+        {
+          "source": "6-client-presentation",
+          "rendition": "6-client-presentation"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
+        }
+      ]
+    },
+    {
+      "work": "api-integration",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "appendices/api-integration/APPENDIX.md",
+        "sha256": "7e0035ba7caeb56fca41d8442877e19ef8a2d557b1324e4d1d3a78e1d0440e7f",
+        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/appendices/api-integration/APPENDIX.md",
+        "sha256": "38b3f59f82424824ea25e74c3fce6a554a7d10d3746cb8221b22b54ec4213d71",
+        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+      },
+      "sections": [
+        {
+          "source": "1-purpose",
+          "rendition": "1-purpose"
+        },
+        {
+          "source": "2-documented-public-interface",
+          "rendition": "2-documented-public-interface"
+        },
+        {
+          "source": "3-contract-delivery-requirements",
+          "rendition": "3-contract-delivery-requirements"
+        },
+        {
+          "source": "4-three-manifests",
+          "rendition": "4-three-manifests"
+        },
+        {
+          "source": "5-observed-mismatch-and-release-gate",
+          "rendition": "5-observed-mismatch-and-release-gate"
+        },
+        {
+          "source": "release-receipt-profile",
+          "rendition": "release-receipt-profile"
+        },
+        {
+          "source": "6-client-presentation",
+          "rendition": "6-client-presentation"
+        },
+        {
+          "source": "7-acceptance-cases",
+          "rendition": "7-acceptance-cases"
         }
       ]
     }
