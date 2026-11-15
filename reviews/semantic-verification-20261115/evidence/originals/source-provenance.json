@@ -1,0 +1,58 @@
+{
+  "recovery_status": "reported hourly candidate bytes unavailable; local reconstruction",
+  "reported_candidate_directory": "/mnt/data/kc_f05_readonly_candidate",
+  "observation": "/mnt/data does not exist in this runtime; no reported candidate filenames found under the working directory",
+  "baseline_repository": "Arcanada-one/arcanada-workspace",
+  "baseline_head": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+  "sources": [
+    {
+      "path": "documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/continuous-improvement/HOW_TO.md",
+      "commit": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+      "encoding": "utf-8",
+      "sha": "b9cbc4695e1bd6fd63204d17be4652c2ae66ab01",
+      "display_url": "https://github.com/Arcanada-one/arcanada-workspace/blob/efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4/documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/continuous-improvement/HOW_TO.md",
+      "display_title": "HOW_TO.md"
+    },
+    {
+      "path": "documentation/plans/knowledge-collective-live-lab/roles/README.md",
+      "commit": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+      "encoding": "utf-8",
+      "sha": "fb09830bb856abfaa920e28cf9a697aab9b039d2",
+      "display_url": "https://github.com/Arcanada-one/arcanada-workspace/blob/efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4/documentation/plans/knowledge-collective-live-lab/roles/README.md",
+      "display_title": "README.md"
+    },
+    {
+      "path": "documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/meaning-graph/VERDICT_TRANSFER.md",
+      "commit": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+      "encoding": "utf-8",
+      "sha": "f202a82726632ebd6f91567502695d5832dbcb6d",
+      "display_url": "https://github.com/Arcanada-one/arcanada-workspace/blob/efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4/documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/meaning-graph/VERDICT_TRANSFER.md",
+      "display_title": "VERDICT_TRANSFER.md"
+    },
+    {
+      "path": "documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/meaning-graph/check_verdict_transfer.py",
+      "commit": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+      "encoding": "utf-8",
+      "sha": "f04270337910b3c07b21722c132f8e97c5afbb7e",
+      "display_url": "https://github.com/Arcanada-one/arcanada-workspace/blob/efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4/documentation/plans/knowledge-collective-live-lab/roles/KC-Brain/topics/meaning-graph/check_verdict_transfer.py",
+      "display_title": "check_verdict_transfer.py"
+    },
+    {
+      "path": "AGENTS.md",
+      "commit": "efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4",
+      "encoding": "utf-8",
+      "sha": "1fd0b20c42bb4baac3f2e267f778a378e100b860",
+      "display_url": "https://github.com/Arcanada-one/arcanada-workspace/blob/efc5765d1b057b3c4328e3ff0aaf95f1eeaed8f4/AGENTS.md",
+      "display_title": "AGENTS.md"
+    },
+    {
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "encoding": "utf-8",
+      "sha": "ae74a2b7dfb768a2447622680635540c4a658387",
+      "display_url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/papers/geometry-of-semantic-representations/PAPER.md",
+      "display_title": "PAPER.md"
+    }
+  ],
+  "authority": "authorized local reconstruction and review preparation; no remote mutations; native KC2 admission not verified"
+}

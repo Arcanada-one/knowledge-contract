@@ -111,7 +111,7 @@ Develop exact countermodels and bounded deductions. Model-specific reliability, 
 
 ### Semantic Verification. Verification contracts
 
-**Proposed target:** `engineering/specifications/semantic-verification/SPECIFICATION.md`.
+**Canonical target:** [Semantic Verification](../engineering/specifications/semantic-verification/SPECIFICATION.md). A scoped research draft now supplies the packet methodology and one finite assessment-transfer profile. Whole-specification review, broader implementation evidence and the covered work packages remain open.
 
 **Question:** What exactly does a check establish, and how is a claim traced to supporting evidence?
 

@@ -22,6 +22,7 @@ PREFIXES = {
     "location-registry": "LOC", "private-artifact-registry": "PAR",
     "private-retention-readback": "RET",
     "semantic-bridge": "SBR",
+    "semantic-verification": "SVR",
 }
 NORMATIVE = re.compile(r"\b(?:MUST|SHALL|SHOULD|MAY|REQUIRED|RECOMMENDED|OPTIONAL)\b")
 ID = re.compile(r"^\*\*([A-Z]+-R[0-9]{3,})\.\*\*\s+", re.S)
@@ -111,6 +112,9 @@ def test_references(prefix, text):
             (("enumerate every admitted world",), "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_three_atom_truth_functions_against_all_evidence_profiles"),
             (("enumerate every admitted world",), "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_two_atom_alternative_pairs_use_one_shared_world_grid"),
             (("NOT_ASSESSED",), "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"),
+        ],
+        "SVR": [
+            (("use every supplied situation", "A reported obstruction"), "tools/check_semantic_verification_fibrewise.py::run_checks"),
         ],
         "RET": [
             (("MUST name the authorized store contour",), "tools/test_private_retention_readback.py::TestPrivateRetentionReadbackChecker.test_valid_fixtures"),

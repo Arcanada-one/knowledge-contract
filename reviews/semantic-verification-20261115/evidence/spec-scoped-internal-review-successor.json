@@ -1,0 +1,51 @@
+{
+  "schema": "kc-brain-f05-spec-scoped-internal-review/1",
+  "observed_utc": "2026-11-15T11:35:43.515302+00:00",
+  "reviewer": "/root/f05_partial",
+  "subject": {
+    "path": "/workspace/scratch/50c29b6b4f6f/continuation_roadmap/F05_SPECIFICATION_DRAFT.md",
+    "intended_repository_path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+    "sha256": "44106256dac25956c0bb49436644944481eee442eb579c2c8e6883a90d662eef",
+    "bytes": 28847
+  },
+  "verdict": "pass_within_review_scope",
+  "predecessor_review": {
+    "path": "spec-scoped-internal-review.json",
+    "sha256": "806a73a8440c34ba7961d9bcbbcdbbfae454331ed4c957328526557ee6720c5a",
+    "subject_sha256": "bb3dfb2e21a3ad03548a74eb58864c2922040cb2c48fb5145a2542972b2afc1f",
+    "preserved_unchanged": true
+  },
+  "scope": [
+    "Previously reviewed Section 7 and relevant Section 8 unchanged except two appended Section 7.3 paragraphs",
+    "New Section 7.3 actual-consumer-use protocol: effective input, same-call output, observer scope, oracle-distinguishable decoy, matched positive and separate recovery"
+  ],
+  "method": [
+    "Direct reading of the exact two-paragraph addition",
+    "Removed precisely the added Section 7.3 paragraphs in memory and reproduced the predecessor subject SHA256, establishing that other bytes are unchanged",
+    "Checked that the protocol does not promote adjacent input/output records into proof of actual derivation or conflate permission with formal computation"
+  ],
+  "findings": [],
+  "assessed_delta": {
+    "effective_input_boundary": "Explicit; earlier retrieval hash alone is insufficient",
+    "binding": "Consumer revision, entry point, attempt and same call identified",
+    "observer_scope": "Trust assumptions and attestation limits retained",
+    "adverse_control": "Oracle-distinguishable decoy at actual evaluation boundary, earlier retrieval record fixed; consumer answer cannot serve as its own oracle",
+    "positive_control": "Applicable matched-input case required",
+    "revision": "Old observation retained; new effective input and explicit recovery separately captured",
+    "claim_limit": "Named consumer and boundary only; permission and revocation remain separate"
+  },
+  "execution_claim": "No actual consumer experiment performed in this review; assessment concerns the proposed protocol text only",
+  "independence": {
+    "reviewer_authored_spec_or_added_paragraphs": false,
+    "reviewer_authored_underlying_reconstructed_checker_and_note": true,
+    "shared_controller_and_filesystem": true,
+    "external_scientific_acceptance": false
+  },
+  "limits": [
+    "Not whole-F05 conformance review or production consumer certification",
+    "Not an external semantic acceptance or native KC2 admission",
+    "The finite checker does not execute this real-consumer protocol",
+    "Canonical integration, citations, registry, CI and later source changes retain separate verification obligations"
+  ],
+  "remote_writes": []
+}

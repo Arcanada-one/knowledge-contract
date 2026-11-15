@@ -1,0 +1,81 @@
+{
+  "schema": "kc-brain-f05-spec-scoped-internal-review/1",
+  "observed_utc": "2026-11-15T11:26:51.088117+00:00",
+  "reviewer": "/root/f05_partial",
+  "subject": {
+    "path": "/workspace/scratch/50c29b6b4f6f/continuation_roadmap/F05_SPECIFICATION_DRAFT.md",
+    "intended_repository_path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+    "sha256": "bb3dfb2e21a3ad03548a74eb58864c2922040cb2c48fb5145a2542972b2afc1f",
+    "bytes": 27525
+  },
+  "verdict": "pass_within_review_scope",
+  "scope": [
+    "Section 7 factorization reuse and greatest partial domain",
+    "Section 7 diagnostic/assessment distinction and application boundary",
+    "Section 7 analytic 4096 profile, 102400 candidate-map and 8192 query inventories",
+    "Section 8 ambiguous, singleton unknown/inapplicability, unattained, domain-extension, refinement and mutated-diagnostic rows"
+  ],
+  "method": [
+    "Direct reading and elementary proof review against Meaning Geometry Proposition 2 at KC a5b3618034256f14f389c2c7de8da409c7c5310c, blob ae74a2b7dfb768a2447622680635540c4a658387",
+    "Manual enumeration by observation fibre-size shapes 4, 1+3 and 2+2",
+    "Comparison with frozen reconstructed reference implementation and its actual retained output",
+    "Reread changed source after each requested correction; final exact-byte hash check"
+  ],
+  "findings": [
+    {
+      "id": "F05-SPEC-ORACLE-SUPPORT",
+      "first_subject_sha256": "80db48c12bb5edcc450441f21ea8d352c20c22e71062834e49dc1d671cf7d4ce",
+      "finding": "The partial-map oracle description did not explicitly exclude assignment at an unattained alphabet label. Statewise agreement alone would leave arbitrary assignments there and defeat greatest-map uniqueness on the two-label alphabet.",
+      "resolution": "Section 7.4 explicitly requires undefined at every unattained label and pointwise agreement wherever defined, then compares with the unique greatest accepted partial map.",
+      "status": "resolved"
+    },
+    {
+      "id": "F05-SPEC-REFINEMENT-CONTROL",
+      "first_subject_sha256": "80db48c12bb5edcc450441f21ea8d352c20c22e71062834e49dc1d671cf7d4ce",
+      "finding": "The irrelevant-refinement row described only relabeling, while the executable control introduces extra distinctions that still leave pass/fail states together.",
+      "resolution": "Section 8 now distinguishes a refinement separating every conflicting pair in the queried fibre from one retaining such a pair.",
+      "status": "resolved"
+    },
+    {
+      "id": "F05-SPEC-OBSTRUCTION-CONDITION",
+      "first_subject_sha256": "2d398fddd26d709fc3eb503803ef34e861d5898dd4b6d063188977f21f8ec508",
+      "finding": "SVR-R019 could be read as requiring every diagnostic outcome to retain a collision witness, including determined or unattained queries.",
+      "resolution": "SVR-R019 now applies explicitly to a reported obstruction.",
+      "status": "resolved"
+    }
+  ],
+  "verified_counts": {
+    "profile_total": 4096,
+    "globally_factorable": 232,
+    "non_global_with_determined_fibre": 2496,
+    "no_determined_fibre": 1368,
+    "oracle_candidates_per_profile": 25,
+    "oracle_candidate_total": 102400,
+    "queries": 8192,
+    "determined_queries": 2952,
+    "ambiguous_queries": 4728,
+    "unattained_queries": 512
+  },
+  "reference_implementation": {
+    "path": "continuation_f05/check_fibrewise_transfer.py",
+    "sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+    "result_sha256": "494ea5414d1adaf4cec64691a430e168da82dee9ddeaf650ecac11be0c5cdd39",
+    "status": "local reconstruction, not recovered hourly bytes"
+  },
+  "independence": {
+    "spec_author": "/root/roadmap_read",
+    "reviewer_authored_spec": false,
+    "reviewer_authored_underlying_reconstructed_checker_and_note": true,
+    "shared_controller_and_filesystem": true,
+    "external_scientific_acceptance": false
+  },
+  "limits": [
+    "Not a review of whole-F05 conformance or all 27 requirements",
+    "Not a protected oracle, native KC2 admission, publication acceptance or external peer review",
+    "No new run of production code or evidence of actual consumer use",
+    "No evidence of real-world carrier completeness, source authenticity, authority or empirical success rates",
+    "Canonical integration, references, requirement register, CI, evidence index and any translations require their own checks",
+    "Later source edits require a new or explicitly scoped successor review; this verdict does not automatically transfer to changed bytes"
+  ],
+  "remote_writes": []
+}

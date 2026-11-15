@@ -196,6 +196,9 @@ jobs:
         run: python3 -B -m unittest tools.test_reviewed_formal_results -v
       - name: Exact finite relation and outcome-set geometry controls
         run: python3 -B -m unittest tools.test_semantic_relations -v
+      - name: Semantic Verification finite transfer reference controls
+        # Bounded model regression; not whole-specification conformance or runtime evidence.
+        run: python3 -B tools/check_semantic_verification_fibrewise.py
       - name: Semantic Bridge complete finite oracle and source-binding controls
         run: python3 -B -m unittest tools.test_semantic_bridge tools.test_semantic_bridge_relations -v
       - name: Retrieval-context checker controls
