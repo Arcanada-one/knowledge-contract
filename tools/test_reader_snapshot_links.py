@@ -23,15 +23,25 @@ PIN = "6a6f202f7f70be2ad3aea3369e45409761708596"
 OLD = f"https://github.com/Arcanada-one/knowledge-contract/blob/{PIN}"
 READERS = {
     "READING.md": ("DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "contains {n} entries"),
-    "guides/READING.ru.md": ("../DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "содержит {n} записи"),
+    "guides/READING.ru.md": ("../DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "содержит {n} {ru}"),
     "guides/READING.zh-Hans.md": ("../DOCUMENTS.md", f"{OLD}/DOCUMENTS.md", "包含{n}项"),
     "README.md": ("publication-catalog.json", f"{OLD}/publication-catalog.json", "contains {n} reading entries"),
 }
 
+def render(phrase, n):
+    if n % 10 == 1 and n % 100 != 11:
+        ru = "запись"
+    elif 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14:
+        ru = "записи"
+    else:
+        ru = "записей"
+    return phrase.format(n=n, ru=ru)
+
+
 def check_reader(source, live_path, historic_url, count, current_phrase):
     lines = source.splitlines()
     old = [l for l in lines if "31" in l and f"]({historic_url})" in l]
-    now = [l for l in lines if current_phrase.format(n=count) in l and f"]({live_path})" in l]
+    now = [l for l in lines if render(current_phrase, count) in l and f"]({live_path})" in l]
     result = []
     if len(old) != 1:
         result.append("historic_31_must_resolve_immutable_source")
@@ -70,10 +80,10 @@ class SnapshotReaderControls(unittest.TestCase):
             with self.subTest(path=path):
                 lines = self.reader_text[path].splitlines()
                 positions = [i for i, line in enumerate(lines)
-                    if phrase.format(n=self.n) in line and f"]({live})" in line]
+                    if render(phrase, self.n) in line and f"]({live})" in line]
                 self.assertEqual(len(positions), 1)
                 i = positions[0]
-                lines[i] = lines[i].replace(phrase.format(n=self.n), phrase.format(n=31), 1)
+                lines[i] = lines[i].replace(render(phrase, self.n), render(phrase, 31), 1)
                 self.assertIn("current_count_must_resolve_live_source",
                     check_reader("\n".join(lines), live, old, self.n, phrase))
 
