@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "repository": "Arcanada-one/knowledge-contract",
-  "source_revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+  "source_revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
   "review_state": "unreviewed",
   "documents": [
     {
@@ -68,7 +68,7 @@
     },
     {
       "path": "papers/geometry-of-semantic-representations/PAPER.md",
-      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
       "annotations": [
         {
           "math_index": 24,

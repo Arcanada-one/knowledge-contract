@@ -461,14 +461,14 @@
       },
       "source": {
         "path": "papers/constrained-transformations/PAPER.md",
-        "sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/papers/constrained-transformations/PAPER.md",
-        "sha256": "162e971b19e3d307e2f543e0902f820c54eb0e2c289841adf4e564694475bfb0",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "a6816e7cebc5348ccaef053ad97c77527d2097cb6dbb7ed42fed7149b69bf0cb",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -502,6 +502,18 @@
         {
           "source": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse",
           "rendition": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse"
+        },
+        {
+          "source": "41-observation-classes-for-relations",
+          "rendition": "41-observation-classes-for-relations"
+        },
+        {
+          "source": "proposition-4-coherent-relations-descend-and-compose-exactly",
+          "rendition": "proposition-4-coherent-relations-descend-and-compose-exactly"
+        },
+        {
+          "source": "why-an-existential-quotient-can-add-a-false-path",
+          "rendition": "why-an-existential-quotient-can-add-a-false-path"
         },
         {
           "source": "5-transfer-between-tasks-and-domains",
@@ -535,14 +547,14 @@
       },
       "source": {
         "path": "papers/constrained-transformations/PAPER.md",
-        "sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/papers/constrained-transformations/PAPER.md",
-        "sha256": "b9faa06aba3b9b02aa1611841a27323107b110137136e87df45c62e6daa6d939",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "06e964f3bc8930af06c3431010b9038adb4e09b0ee3a11efe7ada0832bef0b6a",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -576,6 +588,18 @@
         {
           "source": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse",
           "rendition": "proposition-3-a-noninjective-transformation-cannot-have-a-left-inverse"
+        },
+        {
+          "source": "41-observation-classes-for-relations",
+          "rendition": "41-observation-classes-for-relations"
+        },
+        {
+          "source": "proposition-4-coherent-relations-descend-and-compose-exactly",
+          "rendition": "proposition-4-coherent-relations-descend-and-compose-exactly"
+        },
+        {
+          "source": "why-an-existential-quotient-can-add-a-false-path",
+          "rendition": "why-an-existential-quotient-can-add-a-false-path"
         },
         {
           "source": "5-transfer-between-tasks-and-domains",
@@ -921,14 +945,14 @@
       },
       "source": {
         "path": "papers/evidence-and-falsification/PAPER.md",
-        "sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/papers/evidence-and-falsification/PAPER.md",
-        "sha256": "1c46244a4dc80444aa3f603e71d28c0ea6eab1177a9297d06d019b6ea734834c",
-        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+        "sha256": "5a06a89889645c019c63d3f2e56665b91244bf1a445ab8bbbac8605260f47edd",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -995,14 +1019,14 @@
       },
       "source": {
         "path": "papers/evidence-and-falsification/PAPER.md",
-        "sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/papers/evidence-and-falsification/PAPER.md",
-        "sha256": "a9bf75fe28fad01f675ed3138acc3451967295b2e0812881b34e1e4c107deada",
-        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+        "sha256": "8932afc1b0bbfd2f371491eb126a77a6153d25ea07c722a5772f5aff256de732",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -1529,14 +1553,14 @@
       },
       "source": {
         "path": "papers/geometry-of-semantic-representations/PAPER.md",
-        "sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/papers/geometry-of-semantic-representations/PAPER.md",
-        "sha256": "78501e1cf0b2c11ee87355c2a13df6c3fb6040ccebeb8ada915b1e5597a86ee1",
-        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+        "sha256": "e84e11c1351ef04a473feef742c47e31ae468527c75d400a99937c046911a75d",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -1590,6 +1614,14 @@
         {
           "source": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability",
           "rendition": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability"
+        },
+        {
+          "source": "61-distance-between-sets-of-possible-outcomes",
+          "rendition": "61-distance-between-sets-of-possible-outcomes"
+        },
+        {
+          "source": "proposition-7-lipschitz-bounds-compose-for-compatible-finite-outcome-maps",
+          "rendition": "proposition-7-lipschitz-bounds-compose-for-compatible-finite-outcome-maps"
         },
         {
           "source": "7-similarity-is-not-equivalence-entailment-or-permission",
@@ -1623,14 +1655,14 @@
       },
       "source": {
         "path": "papers/geometry-of-semantic-representations/PAPER.md",
-        "sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/papers/geometry-of-semantic-representations/PAPER.md",
-        "sha256": "cebe59eef118dcb4f474f2af06f4e1c862939ef88a24cad386cbb0bf2686c022",
-        "revision": "8bd12f48ca54f1215440437bfe11900ae156e29e"
+        "sha256": "2678dbee0a6cb08101656183301297250b405b90ec0017881984f1dc1568b8a0",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -1684,6 +1716,14 @@
         {
           "source": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability",
           "rendition": "proposition-6-coordinate-envelopes-are-sound-with-conditional-attainability"
+        },
+        {
+          "source": "61-distance-between-sets-of-possible-outcomes",
+          "rendition": "61-distance-between-sets-of-possible-outcomes"
+        },
+        {
+          "source": "proposition-7-lipschitz-bounds-compose-for-compatible-finite-outcome-maps",
+          "rendition": "proposition-7-lipschitz-bounds-compose-for-compatible-finite-outcome-maps"
         },
         {
           "source": "7-similarity-is-not-equivalence-entailment-or-permission",
@@ -4025,14 +4065,14 @@
       },
       "source": {
         "path": "reference/bibliography/BIBLIOGRAPHY.md",
-        "sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/reference/bibliography/BIBLIOGRAPHY.md",
-        "sha256": "caaab4e2b747047f0a109923f7d3cb7e779aa50d3f0ba23dcb515cfcd576b071",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "45109fd612970d15f786639874f6d145172f2b0ccf0986050c5d76281374ca8f",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -4046,6 +4086,14 @@
         {
           "source": "partial-correctness",
           "rendition": "partial-correctness"
+        },
+        {
+          "source": "vacuity-in-temporal-model-checking",
+          "rendition": "vacuity-in-temporal-model-checking"
+        },
+        {
+          "source": "mutation-of-formal-specifications",
+          "rendition": "mutation-of-formal-specifications"
         },
         {
           "source": "submodular-maximization",
@@ -4118,6 +4166,94 @@
         {
           "source": "project-sources-and-evidence",
           "rendition": "project-sources-and-evidence"
+        },
+        {
+          "source": "agent-situation-state-and-bounded-context",
+          "rendition": "agent-situation-state-and-bounded-context"
+        },
+        {
+          "source": "endsley-1995",
+          "rendition": "endsley-1995"
+        },
+        {
+          "source": "dey-and-abowd-2000",
+          "rendition": "dey-and-abowd-2000"
+        },
+        {
+          "source": "dey-2001",
+          "rendition": "dey-2001"
+        },
+        {
+          "source": "kaelbling-et-al-1998",
+          "rendition": "kaelbling-et-al-1998"
+        },
+        {
+          "source": "huang-et-al-2023",
+          "rendition": "huang-et-al-2023"
+        },
+        {
+          "source": "ahn-et-al-2022",
+          "rendition": "ahn-et-al-2022"
+        },
+        {
+          "source": "bongard-et-al-2006",
+          "rendition": "bongard-et-al-2006"
+        },
+        {
+          "source": "ros-rep105",
+          "rendition": "ros-rep105"
+        },
+        {
+          "source": "ros-clock-and-time",
+          "rendition": "ros-clock-and-time"
+        },
+        {
+          "source": "ros-qos-jazzy",
+          "rendition": "ros-qos-jazzy"
+        },
+        {
+          "source": "yao-et-al-2023",
+          "rendition": "yao-et-al-2023"
+        },
+        {
+          "source": "park-et-al-2023",
+          "rendition": "park-et-al-2023"
+        },
+        {
+          "source": "packer-et-al-2024",
+          "rendition": "packer-et-al-2024"
+        },
+        {
+          "source": "liu-et-al-2024",
+          "rendition": "liu-et-al-2024"
+        },
+        {
+          "source": "wu-et-al-2026",
+          "rendition": "wu-et-al-2026"
+        },
+        {
+          "source": "patel-2026",
+          "rendition": "patel-2026"
+        },
+        {
+          "source": "horvitz-1999",
+          "rendition": "horvitz-1999"
+        },
+        {
+          "source": "sheng-et-al-2026",
+          "rendition": "sheng-et-al-2026"
+        },
+        {
+          "source": "lin-et-al-2026",
+          "rendition": "lin-et-al-2026"
+        },
+        {
+          "source": "ernst-et-al-2026",
+          "rendition": "ernst-et-al-2026"
+        },
+        {
+          "source": "sumers-et-al-2024",
+          "rendition": "sumers-et-al-2024"
         }
       ]
     },
@@ -4131,14 +4267,14 @@
       },
       "source": {
         "path": "reference/bibliography/BIBLIOGRAPHY.md",
-        "sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/reference/bibliography/BIBLIOGRAPHY.md",
-        "sha256": "3273b5fdfcec727b2380b632a95fdf0d9aa6196ace4ff9b32d87154daf3a9b9b",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "9b6e76d68342b700909a6c2f7be559554b0afc0a47e12a266c9f0934291fcbc6",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -4152,6 +4288,14 @@
         {
           "source": "partial-correctness",
           "rendition": "partial-correctness"
+        },
+        {
+          "source": "vacuity-in-temporal-model-checking",
+          "rendition": "vacuity-in-temporal-model-checking"
+        },
+        {
+          "source": "mutation-of-formal-specifications",
+          "rendition": "mutation-of-formal-specifications"
         },
         {
           "source": "submodular-maximization",
@@ -4224,6 +4368,94 @@
         {
           "source": "project-sources-and-evidence",
           "rendition": "project-sources-and-evidence"
+        },
+        {
+          "source": "agent-situation-state-and-bounded-context",
+          "rendition": "agent-situation-state-and-bounded-context"
+        },
+        {
+          "source": "endsley-1995",
+          "rendition": "endsley-1995"
+        },
+        {
+          "source": "dey-and-abowd-2000",
+          "rendition": "dey-and-abowd-2000"
+        },
+        {
+          "source": "dey-2001",
+          "rendition": "dey-2001"
+        },
+        {
+          "source": "kaelbling-et-al-1998",
+          "rendition": "kaelbling-et-al-1998"
+        },
+        {
+          "source": "huang-et-al-2023",
+          "rendition": "huang-et-al-2023"
+        },
+        {
+          "source": "ahn-et-al-2022",
+          "rendition": "ahn-et-al-2022"
+        },
+        {
+          "source": "bongard-et-al-2006",
+          "rendition": "bongard-et-al-2006"
+        },
+        {
+          "source": "ros-rep105",
+          "rendition": "ros-rep105"
+        },
+        {
+          "source": "ros-clock-and-time",
+          "rendition": "ros-clock-and-time"
+        },
+        {
+          "source": "ros-qos-jazzy",
+          "rendition": "ros-qos-jazzy"
+        },
+        {
+          "source": "yao-et-al-2023",
+          "rendition": "yao-et-al-2023"
+        },
+        {
+          "source": "park-et-al-2023",
+          "rendition": "park-et-al-2023"
+        },
+        {
+          "source": "packer-et-al-2024",
+          "rendition": "packer-et-al-2024"
+        },
+        {
+          "source": "liu-et-al-2024",
+          "rendition": "liu-et-al-2024"
+        },
+        {
+          "source": "wu-et-al-2026",
+          "rendition": "wu-et-al-2026"
+        },
+        {
+          "source": "patel-2026",
+          "rendition": "patel-2026"
+        },
+        {
+          "source": "horvitz-1999",
+          "rendition": "horvitz-1999"
+        },
+        {
+          "source": "sheng-et-al-2026",
+          "rendition": "sheng-et-al-2026"
+        },
+        {
+          "source": "lin-et-al-2026",
+          "rendition": "lin-et-al-2026"
+        },
+        {
+          "source": "ernst-et-al-2026",
+          "rendition": "ernst-et-al-2026"
+        },
+        {
+          "source": "sumers-et-al-2024",
+          "rendition": "sumers-et-al-2024"
         }
       ]
     },
@@ -4237,14 +4469,14 @@
       },
       "source": {
         "path": "appendices/source-map/APPENDIX.md",
-        "sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/ru/appendices/source-map/APPENDIX.md",
-        "sha256": "4fc1d379262ab16bc5c94948e8643b1cf241072cd6d3aa823f2202bdef62a9c8",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "cf6406f3e8b31636b290c9100f7e330fcc1b6ad3206f59cddb560964db0d42e0",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -4274,6 +4506,10 @@
         {
           "source": "7-internal-review-and-verification",
           "rendition": "7-internal-review-and-verification"
+        },
+        {
+          "source": "8-semantic-verification-research-draft",
+          "rendition": "8-semantic-verification-research-draft"
         }
       ]
     },
@@ -4287,14 +4523,14 @@
       },
       "source": {
         "path": "appendices/source-map/APPENDIX.md",
-        "sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
-        "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+        "sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
         "language": "en"
       },
       "rendition": {
         "path": "translations/zh-Hans/appendices/source-map/APPENDIX.md",
-        "sha256": "bd5a11679f1de1ca9554ddb0d111ec518ed24c51633b6a95bff078efd1ab5827",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "c73d28f07d626edc15c92bc9a3a5ac8a466bd7728263f598aebeca963b911588",
+        "revision": "7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524"
       },
       "sections": [
         {
@@ -4324,6 +4560,10 @@
         {
           "source": "7-internal-review-and-verification",
           "rendition": "7-internal-review-and-verification"
+        },
+        {
+          "source": "8-semantic-verification-research-draft",
+          "rendition": "8-semantic-verification-research-draft"
         }
       ]
     },
