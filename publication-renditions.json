@@ -4534,6 +4534,106 @@
           "rendition": "7-limits-and-next-research-step"
         }
       ]
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "3d34dd95336a7b5521b7dbd93c36842570f7c1ac5b7f987bc522af7de67cf9eb",
+        "revision": "a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78"
+      },
+      "sections": [
+        {
+          "source": "question-and-result",
+          "rendition": "question-and-result"
+        },
+        {
+          "source": "materials-operation-and-assumptions",
+          "rendition": "materials-operation-and-assumptions"
+        },
+        {
+          "source": "independent-expected-result-method",
+          "rendition": "independent-expected-result-method"
+        },
+        {
+          "source": "original-source-examples-and-actual-cli-use",
+          "rendition": "original-source-examples-and-actual-cli-use"
+        },
+        {
+          "source": "connection-to-algebra-and-geometry",
+          "rendition": "connection-to-algebra-and-geometry"
+        },
+        {
+          "source": "resolved-input-failure-and-review-boundary",
+          "rendition": "resolved-input-failure-and-review-boundary"
+        },
+        {
+          "source": "reproduction-and-interpretation",
+          "rendition": "reproduction-and-interpretation"
+        }
+      ]
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "e41a8120e39c788ccfc775fd80cad86592944349586c0fcadd6ecc48f5cf3c3b",
+        "revision": "a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78"
+      },
+      "sections": [
+        {
+          "source": "question-and-result",
+          "rendition": "question-and-result"
+        },
+        {
+          "source": "materials-operation-and-assumptions",
+          "rendition": "materials-operation-and-assumptions"
+        },
+        {
+          "source": "independent-expected-result-method",
+          "rendition": "independent-expected-result-method"
+        },
+        {
+          "source": "original-source-examples-and-actual-cli-use",
+          "rendition": "original-source-examples-and-actual-cli-use"
+        },
+        {
+          "source": "connection-to-algebra-and-geometry",
+          "rendition": "connection-to-algebra-and-geometry"
+        },
+        {
+          "source": "resolved-input-failure-and-review-boundary",
+          "rendition": "resolved-input-failure-and-review-boundary"
+        },
+        {
+          "source": "reproduction-and-interpretation",
+          "rendition": "reproduction-and-interpretation"
+        }
+      ]
     }
   ]
 }
