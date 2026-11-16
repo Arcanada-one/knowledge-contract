@@ -8,8 +8,8 @@ language: "zh-Hans"
 license: "CC-BY-4.0"
 description: "明确列出的原始来源，以及各来源在当前版本中的具体概念或技术作用。"
 translation_of: "reference/bibliography/BIBLIOGRAPHY.md"
-source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
-source_git_blob: "9307e961502f00a391695250c368dabb418abf2b"
+source_commit: "8c7cd3bc1247998cb9554c568da26949da31b749"
+source_git_blob: "c85714c536f349f184a828716307b65c991574fe"
 translation_status: "author-draft"
 ---
 
@@ -36,6 +36,18 @@ Alistair Miles、Sean Bechhofer，编。**SKOS Simple Knowledge Organization Sys
 C. A. R. Hoare. **An Axiomatic Basis for Computer Programming.** *Communications of the ACM* 12(10)，1969，576–580、583。[DOI: 10.1145/363235.363259](https://doi.org/10.1145/363235.363259)。[作者所在机构的书目](https://www.cs.ox.ac.uk/people/publications/title/Tony.Hoare.html)。
 
 用于通过前置条件、后置条件和推理规则对程序进行推理这一既有思想。变换论文将条件性保留推理应用于其明确界定的关系。论文中的组合论证并未被表述为替代程序逻辑的新方法，也不是终止性证明。
+
+## 时序模型检验中的空泛性 {#vacuity-in-temporal-model-checking}
+
+Ilan Beer、Shoham Ben-David、Cindy Eisner、Yoav Rodeh. **Efficient Detection of Vacuity in Temporal Model Checking.** *Formal Methods in System Design* 18(2)，2001，141–163。[DOI](https://doi.org/10.1023/A:1008779610539)。[作者所在机构的出版摘要](https://d3ccyth396mz21.cloudfront.net/publications/efficient-detection-of-vacuity-in-temporal-model-checking)。
+
+仅在[证据与证伪论文——英文原文](../../../../papers/evidence-and-falsification/PAPER.md)中用作范围明确的方法论比较：空泛性分析和非平凡见证可以揭示某些时序规范的平凡满足。2026年11月7日查阅的是**官方摘要**，而非全文。它不证明本文的一般领域或测试覆盖标准，不意味着已实现空泛性检查器，也不认证KC的运行时行为。
+
+## 形式规范的变异 {#mutation-of-formal-specifications}
+
+Paul E. Black、Vadim Okun、Yaacov Yesha. **Mutation Operators for Specifications.** *Proceedings of ASE 2000*，81–88。[DOI](https://doi.org/10.1109/ASE.2000.873653)。[NIST出版记录及作者摘要](https://www.nist.gov/publications/mutation-operators-specifications)。
+
+仅用于在[证据与证伪论文——英文原文](../../../../papers/evidence-and-falsification/PAPER.md)中将规范变异标识为既有的**测试生成方法**。2026年11月7日查阅的是**NIST作者摘要**，而非全文。知识契约的构造示例没有实现这些变异算子，也没有测得的变异得分、覆盖保证或已报告的实验优势。
 
 ## 次模最大化 {#submodular-maximization}
 
@@ -164,3 +176,173 @@ Maxim Ilyakhov、Lyudmila Sarycheva。**Пиши, сокращай: Как со�
 Pavel Valentov. **Knowledge Contract and Meaning Management: earlier publication corpus.** 仓库快照 [b50243b28e9ad7376e28c749a21479ef46ec9d60](https://github.com/Arcanada-one/knowledge-contract/tree/b50243b28e9ad7376e28c749a21479ef46ec9d60)。
 
 [来源映射——英文原文](../../../../appendices/source-map/APPENDIX.md)记录从十四个早期论文文件和十份规范到当前阅读结构的迁移。[工程证据索引](../../../../engineering/studies/evidence-index.json)将单项经验或分析性主张绑定到支持记录。每项研究说明哪些内容可公开重跑，哪些仅能作为保留报告查阅，以及哪些仍未测量。
+
+## 智能体情境、状态与有界上下文 {#agent-situation-state-and-bounded-context}
+
+以下定向阅读记录于**2026年11月14日**为[Agent Situation研究草案——英文原文](../../../../papers/agent-situation/PAPER.md)及其[文献说明——英文原文](../../../../papers/agent-situation/LITERATURE.md)整理。这一补充不修改较早条目已记录的核验日期。本组条目是对所选原始来源的综合，并非穷尽性的系统综述。每条记录说明预期用途及带入草案的限制。查阅项目页面不会被表述为对全文方法的审计。预印本仍保留该状态；可变文档记录访问日期，而不会虚构不可变修订。
+
+这里只包含书目事实、链接和原创的简短转述。第三方作品保留其自身条款；项目文档许可不会重新许可这些作品。特别是，Sheng等人的预印本仍采用CC-BY-NC-ND-4.0，其正文、图示和数据集不会在此重新分发。
+
+### Endsley 1995 {#endsley-1995}
+
+Mica R. Endsley. **Toward a Theory of Situation Awareness in Dynamic Systems.** Human Factors 37(1), 32–64 (1995). [原始来源](https://doi.org/10.1518/001872095779049543).
+
+**用途：**区分感知、理解与预测；相关要素取决于系统和目标。**限制：**这是人的情境意识理论；将其用于LLM状态记录是我们的类比。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://frankritter.com/ist521/papers/endsley95.pdf)，访问于2026年11月14日。
+
+### Dey与Abowd，2000 {#dey-and-abowd-2000}
+
+Anind K. Dey; Gregory D. Abowd. **Towards a Better Understanding of Context and Context-Awareness.** CHI 2000上下文感知研讨会；亦见GIT-GVU-99-22（1999）。 [原始来源](https://sites.cc.gatech.edu/fce/ctk/chiws/Dey.pdf).
+
+**用途：**将身份、位置、活动和时间作为上下文索引；重视相关性而非穷尽枚举。**限制：**所提出的扩展启动清单并不是他们的通用检查表。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://sites.cc.gatech.edu/fce/ctk/chiws/Dey.pdf)，访问于2026年11月14日。
+
+### Dey 2001 {#dey-2001}
+
+Anind K. Dey. **Understanding and Using Context.** Personal and Ubiquitous Computing 5(1), 4–7 (2001). [原始来源](https://doi.org/10.1007/s007790170019).
+
+**用途：**上下文组件、轮询与订阅、历史、解释器和聚合。**限制：**这是架构先例，不是所推断情境始终正确的证据。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://www.cc.gatech.edu/fce/ctk/pubs/PeTe5-1.pdf)，访问于2026年11月14日。
+
+### Kaelbling 等， 1998 {#kaelbling-et-al-1998}
+
+Leslie Pack Kaelbling; Michael L. Littman; Anthony R. Cassandra. **Planning and Acting in Partially Observable Stochastic Domains.** Artificial Intelligence 101, 99–134 (1998). [原始来源](https://doi.org/10.1016/S0004-3702(98)00023-X).
+
+**用途：**保留与决策相关的不确定性；信念更新使用动作和观测。**限制：**充分性适用于指定模型下正确计算的信念状态，而非任意摘要。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://people.csail.mit.edu/lpk/papers/aij98-pomdp.pdf)，访问于2026年11月14日。
+
+### Huang 等， 2023 {#huang-et-al-2023}
+
+Wenlong Huang 等。 **Inner Monologue: Embodied Reasoning through Planning with Language Models.** CoRL会议论文集，PMLR 205，1769–1782（2023）；2022年预印本。 [原始来源](https://proceedings.mlr.press/v205/huang23c.html).
+
+**用途：**在动作失败和人类改变任务后，依据反馈重新规划。**限制：**证据受所报告的机器人领域、检测器、提示和技能约束。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://inner-monologue.github.io/)，访问于2026年11月14日。
+
+### Ahn 等， 2022 {#ahn-et-al-2022}
+
+Michael Ahn 等。 **Do As I Can, Not As I Say: Grounding Language in Robotic Affordances.** arXiv:2204.01691v2, 2022年8月16日. [原始来源](https://arxiv.org/abs/2204.01691v2).
+
+**用途：**结合任务效用与技能当前的可执行性；以获取海绵为例。**限制：**可执行性并不确立授权。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://say-can.github.io/)，访问于2026年11月14日。
+
+### Bongard 等， 2006 {#bongard-et-al-2006}
+
+Josh Bongard; Victor Zykov; Hod Lipson. **Resilient Machines Through Continuous Self-Modeling.** Science 314(5802), 1118–1121 (2006). [原始来源](https://doi.org/10.1126/science.1133687).
+
+**用途：**结构损伤后，根据执行器动作和感知调整机器人的自我模型。**限制：**这是有界的物理能力建模，不是意识或普遍准确的内省。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://meclab.w3.uvm.edu/papers/2006_Science_Bongard.pdf)，访问于2026年11月14日。
+
+### ROS REP105 {#ros-rep105}
+
+Wim Meeussen. **REP 105: Coordinate Frames for Mobile Platforms.** ROS官方信息性REP，创建于2010年；访问于2026年11月14日。 [原始来源](https://www.ros.org/reps/rep-0105.html).
+
+**用途：**启动时，全局定位尚未知，局部坐标系仍可能可用。**限制：**这是官方约定；数字作用域类比由我们提出；仓库分支可变。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://raw.githubusercontent.com/ros-infrastructure/rep/master/rep-0105.rst)，访问于2026年11月14日。
+
+### ROS时钟与时间 {#ros-clock-and-time}
+
+Tully Foote. **Clock and Time.** ROS 2官方设计文档；访问于2026年11月14日。 [原始来源](https://design.ros2.org/articles/clock_and_time.html).
+
+**用途：**区分时钟域、未初始化时间和向后跳变。**限制：**文档日期元数据不一致；不据此推断发表时间顺序。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://design.ros2.org/articles/clock_and_time.html)，访问于2026年11月14日。
+
+### ROS QoS Jazzy {#ros-qos-jazzy}
+
+ROS 2文档贡献者。 **Quality of Service settings.** ROS 2 Jazzy官方文档；访问于2026年11月14日。 [原始来源](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst).
+
+**用途：**区分截止期限、存活期与活跃性；重放过期请求可能重复产生效果。**限制：**传输健康状态和时效性策略不能确立语义真实性；分支可变。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Intermediate/About-Quality-of-Service-Settings.rst)，访问于2026年11月14日。
+
+### Yao 等， 2023 {#yao-et-al-2023}
+
+Shunyu Yao; Jeffrey Zhao; Dian Yu; Nan Du; Izhak Shafran; Karthik Narasimhan; Yuan Cao. **ReAct: Synergizing Reasoning and Acting in Language Models.** ICLR 2023; arXiv:2210.03629v3. [原始来源](https://arxiv.org/abs/2210.03629v3).
+
+**用途：**将交互、外部观测和修订后的决策交替进行。**限制：**涉及历史模型和任务；没有通用的时效性或授权契约。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2210.03629v3)，访问于2026年11月14日。
+
+### Park 等， 2023 {#park-et-al-2023}
+
+Joon Sung Park; Joseph C. O'Brien; Carrie J. Cai; Meredith Ringel Morris; Percy Liang; Michael S. Bernstein. **Generative Agents: Interactive Simulacra of Human Behavior.** UIST 2023; arXiv:2304.03442v2. [原始来源](https://arxiv.org/abs/2304.03442v2).
+
+**用途：**在模拟社会环境中检索记忆、反思并改变计划。**限制：**行为可信不等于事实可靠或具备权限。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2304.03442v2)，访问于2026年11月14日。
+
+### Packer 等， 2024 {#packer-et-al-2024}
+
+Charles Packer; Sarah Wooders; Kevin Lin; Vivian Fang; Shishir G. Patil; Ion Stoica; Joseph E. Gonzalez. **MemGPT: Towards LLMs as Operating Systems.** arXiv:2310.08560v2, 2024年2月12日；预印本。 [原始来源](https://arxiv.org/abs/2310.08560v2).
+
+**用途：**利用外部记忆和分页管理有限的主上下文。**限制：**没有证明语义保留或每条记忆都被正确替代。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2310.08560v2)，访问于2026年11月14日。
+
+### Liu 等， 2024 {#liu-et-al-2024}
+
+Nelson F. Liu; Kevin Lin; John Hewitt; Ashwin Paranjape; Michele Bevilacqua; Fabio Petroni; Percy Liang. **Lost in the Middle: How Language Models Use Long Contexts.** TACL 12, 157–173 (2024). [原始来源](https://aclanthology.org/2024.tacl-1.9/).
+
+**用途：**在被评估的长上下文任务中，位置会影响相关内容的检索和使用。**限制：**这是历史模型集合的结果，不是通用的当前失败率。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://aclanthology.org/2024.tacl-1.9.pdf)，访问于2026年11月14日。
+
+### Wu 等， 2026 {#wu-et-al-2026}
+
+Di Wu; Zixiang Ji; Asmi Kawatkar; Bryan Kwan; Jia-Chen Gu; Nanyun Peng; Kai-Wei Chang. **LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues.** arXiv:2605.12493v1, 2026年5月12日；预印本。 [原始来源](https://arxiv.org/abs/2605.12493v1).
+
+**用途：**针对特定环境的状态、工作流程、易错点和紧凑的证据收集；这是密切相关的先行工作。**限制：**使用预先收集的浏览器轨迹和固定阅读模块的问答；并非实时端到端任务成功。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2605.12493v1)，访问于2026年11月14日。
+
+### Patel 2026 {#patel-2026}
+
+Vedant Patel. **Supersede: Diagnosing and Training the Memory-Update Gap in LLM Agents.** arXiv:2606.27472v1, 2026年6月25日；预印本。 [原始来源](https://arxiv.org/abs/2606.27472v1).
+
+**用途：**在有界记忆中维护当前值，应与回忆能力分开测量。**限制：**规模实验样本n=25；仅有一次小模型训练；不提出关于模型规模的一般不可能性主张。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2606.27472v1)，访问于2026年11月14日。
+
+### Horvitz 1999 {#horvitz-1999}
+
+Eric Horvitz. **Principles of Mixed-Initiative User Interfaces.** CHI 1999, 159–166. [原始来源](https://doi.org/10.1145/302979.303030).
+
+**用途：**在目标不确定且存在打断成本时，选择行动、询问或不行动。**限制：**这是LookOut案例研究；没有经过校准的通用LLM效用函数。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://erichorvitz.com/chi99horvitz.pdf)，访问于2026年11月14日。
+
+### Sheng 等， 2026 {#sheng-et-al-2026}
+
+Strick Sheng; Ziyue Wang; Liyi Zhou. **When Agents Overtrust Environmental Evidence: An Extensible Agentic Framework for Benchmarking Evidence-Grounding Defects in LLM Agents.** arXiv:2605.08828v2, 2026年5月12日；预印本。 [原始来源](https://arxiv.org/abs/2605.08828v2).
+
+**用途：**受控的误导性或过期环境证据，以及溯源、时效性和行动指引方面的缺陷。**限制：**压力测试中的发生率不等于生产频率；判定基准范围狭窄且针对具体案例。
+
+**阅读记录：**原始文本或官方／项目文档，具体以所查阅链接为准；[查阅位置](https://arxiv.org/html/2605.08828v2)，访问于2026年11月14日。
+
+### Lin 等， 2026 {#lin-et-al-2026}
+
+Yin Lin; Elaine Ang; Erkang Zhu; Bolin Ding; Jingren Zhou. **Context as an Environment: Programmatic Context Management for Long-Horizon Agents.** arXiv:2608.21690v1, 2026年8月21日；预印本。 [原始来源](https://arxiv.org/abs/2608.21690v1).
+
+**用途：**摘要描述了可编程上下文环境和向模型输出的投影。**限制：**仅查阅摘要；不使用关于完整方法或性能的主张。
+
+**阅读记录：**仅摘要；[查阅位置](https://arxiv.org/abs/2608.21690v1)，访问于2026年11月14日。
+
+### Ernst 等， 2026 {#ernst-et-al-2026}
+
+Johannes Ernst; David Lennart Risch; Peter Lehner; Freek Stulp; Andreas Dömel. **Decoupling what, how, and when for observing decision-making context in autonomous robots.** Frontiers in Robotics and AI 13:1847701, 2026年7月22日。 DOI [10.3389/frobt.2026.1847701](https://doi.org/10.3389/frobt.2026.1847701).
+
+**用途：**将CoDRA作为直接的架构先例。**限制：**证据来自被评估的机器人环境；有效性调度和更广泛的迁移仍未解决。查阅范围与权利见[阅读记录——英文原文](../../../../papers/agent-situation/LITERATURE.md#ernst-et-al-2026-decoupling-what-how-and-when-for-observing-decision-making-context-in-autonomous-robots)。
+
+### Sumers 等， 2024 {#sumers-et-al-2024}
+
+Theodore R. Sumers; Shunyu Yao; Karthik Narasimhan; Thomas L. Griffiths. **Cognitive Architectures for Language Agents.** Transactions on Machine Learning Research, 2024; 定稿版 [arXiv:2309.02427v3](https://arxiv.org/abs/2309.02427v3), 2024年3月15日。
+
+**用途：**将CoALA作为区分状态与投影的直接先例。**限制：**没有把任何保证移用于当前原型。查阅范围与权利见[阅读记录——英文原文](../../../../papers/agent-situation/LITERATURE.md#sumers-et-al-2024-cognitive-architectures-for-language-agents)。

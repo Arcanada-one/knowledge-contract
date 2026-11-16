@@ -15,9 +15,11 @@ sources:
   - "Hamming 1950 Codes"
   - "Gardenfors 2000 Conceptual Spaces"
   - "Coecke Sadrzadeh Clark 2010 Meaning"
+  - "Vickers Finite Hausdorff Powerspaces"
+  - "Mio Vignudelli Metric Nondeterminism"
 translation_of: "papers/geometry-of-semantic-representations/PAPER.md"
-source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
-source_git_blob: "077c13ad7e8d47646cd04ed2bdbeadceef48f9e3"
+source_commit: "8c7cd3bc1247998cb9554c568da26949da31b749"
+source_git_blob: "ae74a2b7dfb768a2447622680635540c4a658387"
 translation_status: "author-draft"
 ---
 
@@ -27,7 +29,7 @@ translation_status: "author-draft"
 
 ## 摘要 {#abstract}
 
-一种表示可能与另一种表示很接近，却在决定其是否可以使用的条件上存在差异。反过来，不同表达也可能在某项任务所要求的每个观测上完全一致。本文探讨：当对象、观测、上下文和比较规则都被明确给出时，意义表示的几何能够确立什么。我们定义观测配置，并在其对象上导出加权伪度量，同时在相应的观测等价类上得到度量。条件性命题描述表示中的信息损失、细化与归一化、变换下的保持性、不完整观测下可靠的距离包络，以及对齐上下文之间有界的变化。构造的反模型区分了阈值邻近与等价、对称距离与有向蕴含，以及未知标记的一致与已确立的内容。一个余弦例子说明，常用的不相似度并不自动满足三角不等式。这些数学构造是初等的，并不宣称提出新的普遍几何或人类经验理论。本文的贡献是在比较、变换和知识准入之间建立一个共同且可检查的边界：相似性可以组织候选检索，而有效性、适用性和权限仍是各自独立的义务。推导附有精确的有限例子。这些例子不验证语义标注，不测量嵌入模型，也不展示生产环境性能。
+一种表示可能与另一种表示很接近，却在决定其是否可以使用的条件上存在差异。反过来，不同表达也可能在某项任务所要求的每个观测上完全一致。本文探讨：当对象、观测、上下文和比较规则都被明确给出时，意义表示的几何能够确立什么。我们定义观测配置，并在其对象上导出加权伪度量，同时在相应的观测等价类上得到度量。条件性命题描述表示中的信息损失、细化与归一化、变换下的保持性、不完整观测下可靠的距离包络，以及对齐上下文之间有界的变化。另一个命题利用标准 Hausdorff 度量，为有限非空结果集的复合给出界，同时区分备选结果集合相等与各次实际实现的结果相等。构造的反模型区分了阈值邻近与等价、对称距离与有向蕴含，以及未知标记的一致与已确立的内容。一个余弦例子说明，常用的不相似度并不自动满足三角不等式。这些数学构造是初等的，并不宣称提出新的普遍几何或人类经验理论。本文的贡献是在比较、变换和知识准入之间建立一个共同且可检查的边界：相似性可以组织候选检索，而有效性、适用性和权限仍是各自独立的义务。推导附有精确的有限例子。这些例子不验证语义标注，不测量嵌入模型，也不展示生产环境性能。
 
 **关键词：** 语义表示；观测配置；伪度量；上下文等价；不完整信息；知识准入。
 
@@ -241,6 +243,143 @@ L(x,y)\leq d(u,v)\leq U(x,y).
 
 在阈值 \(\tau\) 下，条件 \(U\leq\tau\) 足以保证每个允许补全都邻近，而条件 \(L>\tau\) 足以保证每个补全都远离。否则，仅凭这些包络无法确定比较结论。这一报告规则是保守的；它并不声称更强的联合分析也不能判定该情况。
 
+### 6.1 可能结果集合之间的距离 {#61-distance-between-sets-of-possible-outcomes}
+
+非确定性变换返回一组可能的观测。单独一对有利的输出不能描述整个集合
+如何变化。在固定每个配置以及各个中间接口上的对应关系之后，使用命题1
+给出的观测类上的度量。只有先满足
+[关系相容性判据](../constrained-transformations/PAPER.md)，
+才能将操作表示在这些类上，而不必挑选一个方便的代表元。
+
+对于度量空间 \((B,d_B)\)，令 \(\mathcal P_f^+(B)\) 为其非空有限子集的集合。
+定义这些子集之间的 **Hausdorff 距离**为
+
+\[
+H_B(S,T)=\max\left\{
+ \max_{s\in S}\min_{t\in T}d_B(s,t),
+ \max_{t\in T}\min_{s\in S}d_B(s,t)
+\right\}.
+\]
+
+这是标准的有限 Hausdorff 构造，而不是新提出的语义距离。
+Vickers [4，第3节] 讨论有限幂空间以及并运算的非扩张性。
+Mio 和 Vignudelli [5，定义16–18] 描述将度量提升到非空有限子集上的构造。
+以下结果将这一已有构造应用于本文明确给出的观测接口，并提供一个自足的
+有限情形证明。
+
+在非空有限子集上，\(H_B\) 是一个度量。非负性、对称性以及自身距离为零
+直接来自定义。如果 \(H_B(S,T)=0\)，由于所有最小值都能达到，任一集合中的
+每个成员都与另一集合中的某个成员相等，因此 \(S=T\)。对于三角不等式，
+取 \(s\in S\)，选择最近的 \(t\in T\)，再选择最近的 \(v\in V\)。
+基础度量的三角不等式给出 \(d_B(s,v)\leq H_B(S,T)+H_B(T,V)\)。
+对有向最近邻距离界取最大值，再从 \(V\) 到 \(S\) 重复这一论证，
+即可证明 Hausdorff 三角不等式。因此，这一有限版本不暗含任何关于紧致性、
+闭性或极限的主张。
+
+较小的 Hausdorff 距离意味着，任一侧的每个可能观测都能在另一侧找到一个
+邻近的可能对应项。它**并不**意味着从两侧各取一个元素所形成的每一对都邻近。
+特别地，\(H_B(S,S)=0\)；即使 \(S\) 包含彼此相距很远的备选项，也仍然如此。
+这一集合层面的概念不同于命题6对所有允许补全对给出的界。
+它保留了两者之间的区分：尚未确定的备选项集合相等，与单个未知结果的
+相等已经得到确立。
+
+### 命题7. 相容的有限结果集映射的 Lipschitz 界可随复合而组合 {#proposition-7-lipschitz-bounds-compose-for-compatible-finite-outcome-maps}
+
+令 \((A,d_A),(B,d_B),(C,d_C)\) 为观测类构成的度量空间。
+固定建模的成功定义域 \(D\subseteq A\)、\(E\subseteq B\)，以及函数
+
+\[
+F:D\to\mathcal P_f^+(E),\qquad
+G:E\to\mathcal P_f^+(C).
+\]
+
+如果这些函数来自原始对象上的部分关系，则其商关系必须先满足关系相容性
+判据。特别地，建模的成功定义域必须是输入观测类的并。
+这一要求不是运行时授权决策。所列出的类型还要求，\(F\) 的每个可能中间
+观测都位于 \(G\) 的定义域内。两个接口上的中间度量与解释必须相同。
+
+假设有限常数 \(L_F,L_G\geq0\) 满足
+
+\[
+H_B(F(a),F(a'))\leq L_Fd_A(a,a')
+\quad(a,a'\in D)
+\]
+
+以及
+
+\[
+H_C(G(b),G(b'))\leq L_Gd_B(b,b')
+\quad(b,b'\in E).
+\]
+
+通过收集第二步所有可能的观测来定义复合：
+
+\[
+(G\star F)(a)=\bigcup_{b\in F(a)}G(b).
+\]
+
+所得集合非空且有限，并且
+
+\[
+H_C((G\star F)(a),(G\star F)(a'))
+ \leq L_GL_Fd_A(a,a').
+\]
+
+**证明。** 由于 \(F(a)\) 及每个 \(G(b)\) 都有限，所得并集也是有限的；
+由于两个阶段在所指明的定义域上均有非空值，该并集也非空。
+取 \(z\in(G\star F)(a)\)；这意味着 \(z\in G(b)\) 对某个 \(b\in F(a)\) 成立。
+最近的 \(b'\in F(a')\) 存在，并且
+
+\[
+d_B(b,b')\leq H_B(F(a),F(a')).
+\]
+
+最近的 \(z'\in G(b')\) 也存在。由 \(G\) 的 Hausdorff 界，
+
+\[
+d_C(z,z')\leq H_C(G(b),G(b'))
+ \leq L_Gd_B(b,b')
+ \leq L_GL_Fd_A(a,a').
+\]
+
+因此，第一侧的每个结果都在第二侧有一个距离不超过所述界的对应结果。
+交换 \(a,a'\) 后用同样的推理，可为另一个有向项给出界。
+取这两项的最大值即证明结论。∎
+
+对于至少包含两个不同点的有限定义域，最小的允许常数由下列有限最大值给出：
+
+\[
+\operatorname{Lip}(F)
+ =\max_{a\ne a'}\frac{H_B(F(a),F(a'))}{d_A(a,a')}.
+\]
+
+分母为正，因为这里讨论的是观测类，而不是伪度量距离为零的原始对象。
+对于明确表示的有限集合，若距离是精确的有理数，这一公式就提供了可执行的
+校验预言机；仅有有限性并不能使任意实数值距离数据变得可计算。
+对于至多包含一个点的定义域，将该常数设为零。于是，命题7给出
+\(\operatorname{Lip}(G\star F)\leq\operatorname{Lip}(G)\operatorname{Lip}(F)\)。
+有限常数未必很小，已证明的上界也未必是紧的。对于取单元素集合为值的映射，
+Hausdorff 距离退化为普通的点间距离。如果原始确定性变换以相同权重保持
+每个已声明的观测，命题3仍然给出更强的等距结论；这一扩展并不取代它。
+
+非空值与定义域的前提具有实质意义。不能把缺失的结果集与成功输出之间的
+距离赋为零。空值或不可获得的值需要另行报告状态；不可获得的观测并不
+必然是可能语义值的空集。通常的关系复合描述成功路径，却不认证所有运行时
+分支都会终止或达到某个结果。
+
+作为与前面配置共用的具体距离约定，取 \(M=\{0,1/2,1\}\) 并使用普通距离。
+它与采用两个相等正权重的观测向量 \(00,01,11\) 等距。
+比较 \(\{0\}\) 与 \(\{0,1\}\) 时，两侧元素所组成的最近一对距离为零，
+但 Hausdorff 距离为一：新增的可能结果不能被其有利的对应项掩盖。
+反过来，后一个集合到自身的 Hausdorff 距离为零，而两次独立实现的结果
+仍然可能相差一。这两个集合距离值都不回答许可问题，也不消除任何强制条件。
+
+有限检查器可以枚举已声明的关系表和有限映射，比较原始对象上的复合与
+商上的复合，并精确计算这些有理常数。它提供的证据涉及这些表及已实现的
+操作。提取出的迁移关系是否完整、语义标注是否正确、如何选择强制观测，
+以及是否对实际代理有益，仍是各自独立的义务。隐藏的跨阶段条件必须纳入
+已声明的中间状态或上下文；算术无法修复不完整的迁移模型。
+
 ## 7. 相似性不是等价、蕴含或许可 {#7-similarity-is-not-equivalence-entailment-or-permission}
 
 若干常见的简化捷径，即使在小型精确例子上也会失效。
@@ -267,6 +406,8 @@ L(x,y)\leq d(u,v)\leq U(x,y).
 
 该程序为这些例子提供回归控制，而不是取代证明、提供独立审查或测试学习得到的语义提取。一个有用的经验研究应分别评估观测忠实性、候选召回、决策错误、成本以及对配置选择的敏感性，并使用已声明的基线与留出案例。本文没有报告这样的模型比较。
 
+[关系与结果集检查](../../../../reviews/relational-semantics-20261114/REVIEW.md)将先前的检查扩展到明确给出的集合值变换。其基于布尔关系与邻域覆盖的校验预言机枚举已声明的有限定义域，并保留实际计数与源文件哈希值。这些检查不评估语义提取或学习得到的嵌入。
+
 ## 9. 局限 {#9-limitations}
 
 配置选择而非发现与任务相关的区别。观测函数、字母表、上下文对齐和允许补全都是前提，其现实适切性需要证据。正权重使商集上的结果精确成立，却不意味着所选权重已经过心理学或操作层面的校准。答案字母表内部的相等，本身也可能需要有根据的归一化。
@@ -288,3 +429,15 @@ L(x,y)\leq d(u,v)\leq U(x,y).
 1. Hamming, R. W. “Error Detecting and Error Correcting Codes.” _Bell System Technical Journal_ 29(2), 1950, 147–160. <https://doi.org/10.1002/j.1538-7305.1950.tb00463.x>. [Bell Labs 出版记录](https://www.nokia.com/bell-labs/publications-and-media/publications/error-detecting-and-error-correcting-codes/)。
 2. Gärdenfors, P. _Conceptual Spaces: The Geometry of Thought_. MIT Press, 2000. [作者所在机构的出版记录](https://portal.research.lu.se/en/publications/conceptual-spaces-the-geometry-of-thought/)。
 3. Coecke, B., Sadrzadeh, M., and Clark, S. “Mathematical Foundations for a Compositional Distributional Model of Meaning.” 2010. <https://arxiv.org/abs/1003.4394>.
+4. Vickers, S. “Localic Completion of Generalized Metric Spaces II:
+   Powerlocales.” _Journal of Logic & Analysis_ 1:11 (2009), 1–48.
+   <https://doi.org/10.4115/jla.2009.1.11>.
+   [原始论文](https://math.hawaii.edu/home/jla/34-124-1-PB.pdf)，
+   第3节，第20–21页。这里只使用有限 Hausdorff 构造与并运算的非扩张性；
+   不主张 locale 理论中的任何完备化定理。
+5. Mio, M., and Vignudelli, V. “Monads and Quantitative Equational Theories for
+   Nondeterminism and Probability.” _CONCUR 2020_, LIPIcs 171, Article 28.
+   <https://doi.org/10.4230/LIPIcs.CONCUR.2020.28>.
+   [原始论文](https://drops.dagstuhl.de/storage/00lipics/lipics-vol171-concur2020/LIPIcs.CONCUR.2020.28/LIPIcs.CONCUR.2020.28.pdf)，
+   定义16–18，第28:7页。这里只使用将度量提升到非空有限子集上的构造；
+   不主张概率语义或任何新的单子结果。
