@@ -4891,8 +4891,8 @@
       },
       "rendition": {
         "path": "translations/ru/papers/agent-situation/PAPER.md",
-        "sha256": "aace3a61cb4d211e20d5359d90c0975d0d1e8d8c79a6d8a465ed88cc32a271da",
-        "revision": "386bfa099215ea54d45ddbacda425bebaf42cdc4"
+        "sha256": "326d65ee09771b979a6ca1d2ef4639d175ebbacf2a1018d1a0a221c16e28abe7",
+        "revision": "98ae7046baf8dba41d77c7e1728f1321b2b71cf0"
       },
       "sections": [
         {
@@ -4981,8 +4981,8 @@
       },
       "rendition": {
         "path": "translations/zh-Hans/papers/agent-situation/PAPER.md",
-        "sha256": "092dbc4c61f6fea0799c2a6152e629b5c1b5fb21697cf1a48f2aa12ef4aedca3",
-        "revision": "386bfa099215ea54d45ddbacda425bebaf42cdc4"
+        "sha256": "d55c2c04c6e1a78297c6be281e10b93076e4bb5a5cc35a8c02bd4c0c07645dbe",
+        "revision": "98ae7046baf8dba41d77c7e1728f1321b2b71cf0"
       },
       "sections": [
         {
