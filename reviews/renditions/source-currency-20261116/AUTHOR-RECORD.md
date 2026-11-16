@@ -91,12 +91,12 @@ The first full rendition compilation at
 `5827cd29b7833b4b4e4a1d1736effb81c76f36fa` then exposed a separate real
 presentation failure: `FORMULA_LOCALIZATION_COVERAGE` for Knowledge
 Transformations. Its new displayed formula contains the nonempty MathML text
-`for all ` at math index 89, mtext index 1. A source-math inventory of all 36
+`"for all "` at math index 89, mtext index 1. A source-math inventory of all 36
 English documents found this to be the only missing descriptor; the four
 existing descriptors covered their eight other nonempty text annotations.
 
-The repair adds one source-bound annotation with Russian `для всех ` and
-Simplified Chinese `对于任意 `, preserving the universal quantifier over
+The repair adds one source-bound annotation with Russian `"для всех "` and
+Simplified Chinese `"对于任意 "`, preserving the universal quantifier over
 all pairs and the boundary spaces. Its TeX digest is
 `88fee1d40bf85f7c9c453d05f191dd2d5cb869e05ecc5852ea7c244320b20b35`.
 The formula descriptor source revision is updated to the current English
@@ -168,6 +168,16 @@ digests. This is one separate regression, outside the 45 current control groups;
 the workflow invokes it before removing the historical worktree. Neither the
 historical script nor its result is rewritten. A local run alone is not
 hosted-execution evidence; the corresponding job must be read separately.
+
+Hosted run [43947421265, job 133580658772](https://github.com/Arcanada-one/knowledge-contract/actions/runs/43947421265/job/133580658772)
+executed these commands successfully for head
+`12e5ebbca2db4a607c00ac76cff992023639b905`. Its actual checkout was
+`d185ec87f583c7d69fe2d13b61e281f471b6ba2b`; the job printed the 45-group
+PASS, the exact historical wrong-code AssertionError and the optimized-mode
+refusal. The first general CI failed only the Markdown rule for three code
+spans depicting significant trailing spaces in this record. Those examples
+are now quoted as strings without changing their values. Final-head checks
+and tree correspondence are recorded in the PR conversation after execution.
 
 Local publication metadata/navigation/evidence checks, document naming and the
 387-identity requirement register passed. The three relevant existing unittest
