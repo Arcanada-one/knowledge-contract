@@ -141,7 +141,9 @@ adverse cases. The byte/ancestry and consumer populations are:
 | Missing work/language bodies | 4 | 4 |
 | Historical review objects | 8 | 8 |
 
-All 58 other register entries and their target files are unchanged. The full
+At the first source-currency checkpoint, all 58 other register entries and
+their target files were unchanged. The subsequent bounded review follow-up
+below changes two of those bodies and preserves the other 56. The full
 metadata sidecar and the eight review presentation entries remain unchanged;
 only the review descriptor's register revision/digest are rebound. The eight
 historical review objects preserve their identities and scope. Compiled states
@@ -190,6 +192,60 @@ status allowlist predates the current catalogue, and the separately prepared
 status-support patch remains its own release input. No branch merge, site
 release, deployed-page probe or corpus-admission decision is supplied here.
 
+### Bounded Agent Situation review and applied follow-up
+
+The source-currency checkpoint at
+`7ccf6b8b3ffa8a4e9f956f9c463465b8d923bfc0` subsequently passed all 13 check
+runs across three workflows. The actual [rendition job 133584125515](https://github.com/Arcanada-one/knowledge-contract/actions/runs/43948421577/job/133584125515)
+checked out `5e12ac31eefb69fd4310ffde5a29bb5930427502`; its full Git tree
+`33ca1bedeef5444122f76917a2c0f1247895eb75` is identical to that author head.
+The raw log confirms the 45 adverse groups, the separate historical wrong-code
+replay and optimized-Python refusal. These are the checks of that checkpoint,
+not advance evidence for the later editorial changes.
+
+Before closing the increment, the author read DEUS-Arcana's [bounded review](https://github.com/Arcanada-one/knowledge-contract/pull/124#issuecomment-6927161787)
+of the earlier Agent Situation bodies at b00. The reviewer reported a different
+session and memory, Russian-native reading and Chinese meaning competence
+without a Chinese style verdict. Six selected meaning points passed in both
+languages: negation, unknown versus false, receipt versus completion, abstract
+versus token budgets, revision comparison versus authority, and declared graph
+closure versus completeness. The review sampled 24 sentences and compared
+block structure; it explicitly did not run the producer or catalogue checkers
+and did not grant full-paper linguistic or scientific acceptance.
+
+The two small findings were addressed in the existing draft:
+
+- F1: the six Chinese state-table rows now retain all 20 English state-name
+  occurrences in plain parentheses, in the source order. No additional state
+  is invented, and no code span is added.
+- F2: the Russian rendering of intrusive now uses
+  «приводить к лишнему вмешательству», preserving interference beyond privacy.
+
+The exact two-body commit is
+`98ae7046baf8dba41d77c7e1728f1321b2b71cf0`. Apart from these seven source-line
+edits, both prior bodies are byte-identical. The source fields, section maps,
+research-draft and author-draft statuses are unchanged. The new registry at
+`9477642d255c5c2e859220113a7c0c36eda15bdf` changes only their two rendition
+digests and content revisions; all 66 other entries from the 7cc checkpoint
+are unchanged. The review descriptor was then rebound to that existing
+registry, preserving its eight entries.
+
+The [follow-up consumer result](review-followup-result.json) records the actual
+committed input `62df906a7de2ff74ec41be6a6cfaf83080f4fc35` and checker digest
+`fcc99776375bbdb7695ec03b140e8c88a60d8b6525263f82301a1f74e3a2f4e7`.
+It separates ten source-delta updates from two editorial repairs, preserves
+56 other b00 entries and bodies, and passes the same 45 adverse groups and
+full consumer. The [unchanged Agent Situation validator result](agent-situation-followup-result.json)
+separately passes its 15 existing adverse controls on the two repaired bodies.
+These populations are not combined into a new scientific experiment.
+
+The first producer receipt and all historical c135 material retain their
+original bytes. The follow-up adds separate receipts. Its final-head hosted
+checks and tree correspondence are recorded in the PR conversation. DEUS's
+bounded verdict remains attached to the earlier bodies and sampled meanings;
+it is not promoted to a review of the new head, the ten other refreshed
+translations, or a complete multilingual release. No new review object is added.
+
 ## Idea and next use
 
 Source freshness is an input relationship, and the actual reader adds further
@@ -201,8 +257,9 @@ input. Passing a separate source-currency classification model would not have
 completed those steps.
 
 The next content increment is the four remaining Semantic Bridge and Semantic
-Verification bodies. DEUS's separate language review remains necessary for
-the current new drafts. KC-SWE's existing site integration should consume the
+Verification bodies. The ten refreshed bodies still need separate language
+review; Agent Situation retains only the bounded earlier review described
+above. KC-SWE's existing site integration should consume the
 exact source candidate, preserve the 36-work/72-metadata inventory, exercise
 the status-support change, and supply its own release and served-page evidence.
 Agent-SWE's real-use work and F05 execution qualification remain separate from

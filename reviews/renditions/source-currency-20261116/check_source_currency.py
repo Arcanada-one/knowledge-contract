@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Pavel Valentov and Knowledge Contract Arcana contributors
 # SPDX-License-Identifier: Apache-2.0
-"""Check the ten source-currency repairs against the real pinned site consumer.
+"""Check ten source-currency repairs and two scoped editorial follow-ups.
 
 This is a bounded producer check of committed repository bytes, actual Pandoc
 ASTs and rendered rendition records. It grants no translation review, scientific
@@ -37,6 +37,8 @@ WORKS = {
     "source-map": "appendices/source-map/APPENDIX.md",
 }
 UPDATED = {(work, language) for work in WORKS for language in LANGUAGES}
+EDITORIAL = {("agent-situation", language) for language in LANGUAGES}
+EDITORIAL_CONTENT = "98ae7046baf8dba41d77c7e1728f1321b2b71cf0"
 ADDED_FORMULA_DOCUMENT = {
     "path": WORKS["constrained-transformations"],
     "source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
@@ -287,10 +289,10 @@ def inventory(root, current, modules):
     require([key(e) for e in entries] == [key(e) for e in baseline_entries], "RENDITION_ORDER_OR_KEYS")
     previous = {key(e): e for e in baseline_entries}
     changed = {key(e) for e in entries if e != previous[key(e)]}
-    require(changed == UPDATED, "UPDATED_PAIR_SET", repr(sorted(changed)))
+    require(changed == UPDATED | EDITORIAL, "UPDATED_PAIR_SET", repr(sorted(changed)))
     fragments, old_fragments = entry_bytes(raw, "renditions"), entry_bytes(baseline_raw, "renditions")
     for index, entry in enumerate(entries):
-        if key(entry) not in UPDATED:
+        if key(entry) not in UPDATED | EDITORIAL:
             require(fragments[index] == old_fragments[index], "UNCHANGED_ENTRY_BYTES", repr(key(entry)))
     reviews = {key(e): e["review"] for e in entries if "review" in e}
     old_reviews = {key(e): e["review"] for e in baseline_entries if "review" in e}
@@ -302,6 +304,8 @@ def inventory(root, current, modules):
     ancestor(root, BASELINE, content_revision)
     ancestor(root, ENGLISH, content_revision)
     ancestor(root, content_revision, current)
+    ancestor(root, BASELINE, EDITORIAL_CONTENT)
+    ancestor(root, EDITORIAL_CONTENT, current)
     for entry in entries:
         identity = key(entry)
         old = previous[identity]
@@ -321,6 +325,16 @@ def inventory(root, current, modules):
             require(entry["source"]["revision"] == ENGLISH, "UPDATED_SOURCE_REVISION", repr(identity))
             require(target == at(root, content_revision, entry["rendition"]["path"]), "CONTENT_REVISION_BYTES")
             require(target != at(root, BASELINE, entry["rendition"]["path"]), "BODY_NOT_UPDATED", repr(identity))
+        elif identity in EDITORIAL:
+            require("review" not in entry and "review" not in old, "UNEARNED_EDITORIAL_REVIEW", repr(identity))
+            require({k: v for k, v in entry.items() if k != "rendition"} ==
+                    {k: v for k, v in old.items() if k != "rendition"},
+                    "EDITORIAL_ENTRY_SCOPE", repr(identity))
+            require(entry["source"] == old["source"], "EDITORIAL_SOURCE_CHANGED", repr(identity))
+            require(entry["rendition"]["path"] == old["rendition"]["path"], "EDITORIAL_TARGET_PATH", repr(identity))
+            require(entry["rendition"]["revision"] == EDITORIAL_CONTENT, "EDITORIAL_CONTENT_REVISION", repr(identity))
+            require(target == at(root, EDITORIAL_CONTENT, entry["rendition"]["path"]), "EDITORIAL_CONTENT_BYTES", repr(identity))
+            require(target != at(root, BASELINE, entry["rendition"]["path"]), "EDITORIAL_BODY_NOT_UPDATED", repr(identity))
         else:
             require(target == at(root, BASELINE, entry["rendition"]["path"]), "UNCHANGED_BODY_CHANGED", repr(identity))
     expected = {(work, language) for work in by_work for language in LANGUAGES}
@@ -557,7 +571,7 @@ def main():
         require(compiled is not None and len(compiled.entries) == 72, "COMPILED_INVENTORY")
         states = Counter(entry["state"] for entry in compiled.entries)
         require(states["missing"] == 4 and states["stale"] == 0, "COMPILED_SOURCE_CURRENCY", repr(states))
-        for work, language in sorted(UPDATED):
+        for work, language in sorted(UPDATED | EDITORIAL):
             record = compiled.for_work(work)[language]
             require(record["state"] == "unreviewed" and record["review"] is None and bool(record.get("html")),
                     "COMPILED_UPDATED_BODY", work + "/" + language)
@@ -570,7 +584,9 @@ def main():
         "baseline_revision": BASELINE, "english_revision": ENGLISH, "publication_revision": current,
         "content_revision_from_ten_entries": content_revision, "site_revision": SITE, "pandoc": pandoc,
         "checker_sha256": sha256(Path(__file__).read_bytes()).hexdigest(), "site_script_sha256": checker_hashes,
-        "rendition_entries": 68, "unchanged_entries": 58, "updated_pairs": 10,
+        "rendition_entries": 68, "unchanged_entries": 56, "updated_pairs": 10,
+        "editorial_pairs": 2, "editorial_work_language_pairs": [list(pair) for pair in sorted(EDITORIAL)],
+        "editorial_content_revision": EDITORIAL_CONTENT,
         "current_source_mismatches": 0, "missing_pairs": [list(pair) for pair in sorted(MISSING)],
         "metadata_records": len(metadata["provenance"]["entries"]), "metadata_bytes_unchanged": True,
         "historical_review_objects_unchanged": 8, "compiled_states": dict(sorted(states.items())),
