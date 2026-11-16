@@ -1,0 +1,338 @@
+diff --git a/build.mjs b/build.mjs
+index ed617319..dbeb181d 100644
+--- a/build.mjs
++++ b/build.mjs
+@@ -91,6 +91,15 @@ if(data.programme){
+   fs.writeFileSync(path.join(out,'programme.json'),JSON.stringify({kind:'programme-provenance',pin:prog.pin,routes:prog.routes,foundation_card_rule:prog.foundation_card_rule,pages:Object.fromEntries(Object.entries(prog.pages).map(([l,p])=>[l,{path:p.path,title:p.title,source_sha256:p.source_sha256,blob:p.blob,foundations:p.foundations}]))},null,2)+'\n');
+ }
+ const base='https://contract.place';
++const publicationStatusDescriptions={
++  'research-draft':'research draft, not an accepted paper',
++  'engineering-draft':'engineering draft, not an accepted specification or implementation-conformance claim',
++  'internally-reviewed-finite-evaluation':'internally reviewed finite evaluation, limited to its stated cases and assumptions; not independent scientific acceptance, general correctness or production validation'
++};
++function publicationStatusDescription(status){
++  if(!Object.hasOwn(publicationStatusDescriptions,status))throw new Error('Catalogue status has no description: '+status);
++  return publicationStatusDescriptions[status];
++}
+ const lines=['# Knowledge Contract Arcana','',
+ 'Publication edition '+manifest.edition+'. Source commit '+manifest.commit+'.',
+ 'Complete English documents with an English, Russian and Chinese interface. The Chinese interface has not received native editorial review.','',
+@@ -108,7 +117,7 @@ const lines=['# Knowledge Contract Arcana','',
+ '- Repository: https://github.com/Arcanada-one/knowledge-contract',
+ '- Arcanada ecosystem: https://arcanada.ai','',
+ '## Publication documents','',
+-...documents.map(d=>'- ['+d.title+']('+base+d.route+'): '+d.type+(d.status?' ('+d.status.replace('-',' ')+', not an accepted paper)':'')+'.'),'',
++...documents.map(d=>'- ['+d.title+']('+base+d.route+'): '+d.type+(d.status?' ('+publicationStatusDescription(d.status)+')':'')+'.'),'',
+ '## Scope and access','',
+ 'Scientific papers state assumptions, conditional results and counterexamples. Engineering specifications define requirements. Studies retain finite observations and their limitations. Publication is not runtime admission.',
+ 'The public read API at https://api.contract.place exposes search, related and fetch. An MCP endpoint is documented at https://api.contract.place/mcp. API results may belong to a different source snapshot. Task-specific contract delivery has separate requirements in the API appendix.','',
+diff --git a/scripts/build_publication.py b/scripts/build_publication.py
+index d899952a..26c48783 100644
+--- a/scripts/build_publication.py
++++ b/scripts/build_publication.py
+@@ -30,7 +30,7 @@ PANDOC_VERSION = "3.1.3"
+ CC = "https://creativecommons.org/licenses/by/4.0/"
+ APACHE = "https://www.apache.org/licenses/LICENSE-2.0"
+ # Catalogue status values the site knows how to label. An unknown status stops the build (never silently shown as accepted).
+-STATUSES = {"research-draft"}
++STATUSES = {"research-draft", "engineering-draft", "internally-reviewed-finite-evaluation"}
+ KINDS = {
+     "paper": ("Scientific paper", "/en/science/", "Science"),
+     "specification": ("Engineering specification", "/en/engineering/specifications/", "Specifications"),
+diff --git a/scripts/programme.py b/scripts/programme.py
+index a60c7991..2d4db6fb 100644
+--- a/scripts/programme.py
++++ b/scripts/programme.py
+@@ -20,6 +20,8 @@ LOCALES = ("en", "ru", "zh-Hans")
+ # Keep in sync with publication_checks.STATUS_LABELS (UI chrome only).
+ STATUS_LABELS = {
+     "research-draft": {"en": "Research draft", "ru": "Исследовательский черновик", "zh-Hans": "研究草稿"},
++    "engineering-draft": {"en": "Engineering draft", "ru": "Инженерный черновик", "zh-Hans": "工程草案"},
++    "internally-reviewed-finite-evaluation": {"en": "Internally reviewed finite evaluation", "ru": "Конечная оценка с внутренней рецензией", "zh-Hans": "经过内部审查的有限评估"},
+ }
+ SOURCES = {
+     "en": "PROGRAMME.md",
+diff --git a/scripts/publication_checks.py b/scripts/publication_checks.py
+index f0836102..454ebf44 100644
+--- a/scripts/publication_checks.py
++++ b/scripts/publication_checks.py
+@@ -63,6 +63,8 @@ def check_site(output: Path) -> int:
+ # Expected public labels for catalogue statuses, independent of the site code that renders them.
+ STATUS_LABELS = {
+     "research-draft": {"en": "Research draft", "ru": "Исследовательский черновик", "zh-Hans": "研究草稿"},
++    "engineering-draft": {"en": "Engineering draft", "ru": "Инженерный черновик", "zh-Hans": "工程草案"},
++    "internally-reviewed-finite-evaluation": {"en": "Internally reviewed finite evaluation", "ru": "Конечная оценка с внутренней рецензией", "zh-Hans": "经过内部审查的有限评估"},
+ }
+ LOCALES = ("en", "ru", "zh-Hans")
+ 
+diff --git a/scripts/test_build.py b/scripts/test_build.py
+index eec058aa..2ebd62a8 100644
+--- a/scripts/test_build.py
++++ b/scripts/test_build.py
+@@ -37,6 +37,39 @@ class PublicationBuild(unittest.TestCase):
+     def tearDown(self):
+         self.temp.cleanup()
+ 
++    def commit_catalogue(self, documents):
++        (self.source / "publication-catalog.json").write_text(json.dumps({
++            "schema_version": 1, "edition": "1.0", "documents": documents,
++        }))
++        run(["git", "add", "."], cwd=self.source)
++        run(["git", "-c", "user.name=Publication build test", "-c", "user.email=build@example.invalid",
++             "commit", "--quiet", "-m", "Catalogue status fixture"], cwd=self.source)
++        self.manifest["commit"] = run(["git", "rev-parse", "HEAD"], cwd=self.source).strip()
++        self.manifest_path.write_text(json.dumps(self.manifest))
++
++    def test_source_statuses_are_preserved_without_acceptance_inference(self):
++        self.doc["status"] = "research-draft"
++        self.target["status"] = "engineering-draft"
++        study = {"type": "study", "slug": "finite-checks", "title": "Finite checks",
++                 "path": "engineering/studies/finite-checks/STUDY.md",
++                 "status": "internally-reviewed-finite-evaluation"}
++        path = self.source / study["path"]
++        path.parent.mkdir(parents=True)
++        path.write_text("# Finite checks\n\nInternal review of stated cases only.\n")
++        self.commit_catalogue([self.doc, self.target, study])
++        _, documents = load_inputs(self.source, self.manifest_path)
++        self.assertEqual([(d["type"], d["status"]) for d in documents], [
++            ("paper", "research-draft"),
++            ("specification", "engineering-draft"),
++            ("study", "internally-reviewed-finite-evaluation"),
++        ])
++
++    def test_unknown_catalogue_status_stops_the_build(self):
++        self.doc["status"] = "accepted-ish"
++        self.commit_catalogue([self.doc, self.target])
++        with self.assertRaisesRegex(ValueError, "Unknown catalogue status"):
++            load_inputs(self.source, self.manifest_path)
++
+     def test_actual_markdown_tables_math_links_and_footnotes(self):
+         manifest, documents = load_inputs(self.source, self.manifest_path)
+         renderer = Renderer(self.source, self.root / "public", manifest, documents)
+@@ -92,6 +125,74 @@ class PublicationBuild(unittest.TestCase):
+ 
+ 
+ 
++class PublicationStatusFixtures(unittest.TestCase):
++    """Synthetic status boundaries, independent of the currently pinned inventory."""
++
++    # Expected public wording is deliberately independent of the renderer maps.
++    labels = {
++        "research-draft": ("Research draft", "Исследовательский черновик", "研究草稿"),
++        "engineering-draft": ("Engineering draft", "Инженерный черновик", "工程草案"),
++        "internally-reviewed-finite-evaluation": (
++            "Internally reviewed finite evaluation", "Конечная оценка с внутренней рецензией", "经过内部审查的有限评估"),
++    }
++
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.out = Path(self.temp.name)
++
++    def record_and_pages(self, status):
++        record = {"id": "status-example", "title": "Status example", "route": "/en/science/status-example/", "status": status}
++        pages = []
++        for locale, label in zip(LOCALES, self.labels[status]):
++            path = self.out / locale / "science/status-example/index.html"
++            path.parent.mkdir(parents=True, exist_ok=True)
++            stop = "。" if locale == "zh-Hans" else "."
++            path.write_text(f'<h1>Status example</h1><span class="status-badge">{label}</span>'
++                            f'<p class="draft-notice" role="note"><strong>{label}{stop}</strong></p>', encoding="utf-8")
++            pages.append(path)
++        return record, pages
++
++    def test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused(self):
++        for status in self.labels:
++            with self.subTest(status=status):
++                record, pages = self.record_and_pages(status)
++                self.assertEqual(check_status_labels(self.out, [record]), 3)
++                for path, label in zip(pages, self.labels[status]):
++                    original = path.read_text(encoding="utf-8")
++                    for replacement in ("", '<span class="status-badge">Accepted</span>'):
++                        path.write_text(original.replace(f'<span class="status-badge">{label}</span>', replacement), encoding="utf-8")
++                        with self.assertRaisesRegex(ValueError, "without the label"):
++                            check_status_labels(self.out, [record])
++                        path.write_text(original, encoding="utf-8")
++
++    def test_new_status_readers_still_require_a_notice(self):
++        for status in self.labels:
++            record, pages = self.record_and_pages(status)
++            self.assertEqual(check_status_labels(self.out, [record]), 3)
++            for path in pages:
++                original = path.read_text(encoding="utf-8")
++                path.write_text(original.replace('class="draft-notice"', 'class="other"'), encoding="utf-8")
++                with self.assertRaisesRegex(ValueError, "no draft notice"):
++                    check_status_labels(self.out, [record])
++                path.write_text(original, encoding="utf-8")
++
++    def test_programme_and_roadmap_keep_exact_statuses_in_each_locale(self):
++        from programme import localize_and_badge_links, roadmap_linked_status
++        for status, labels in self.labels.items():
++            record, _ = self.record_and_pages(status)
++            source = f'<p>Stated cases only: <a href="{record["route"]}">source</a>.</p>'
++            for locale, label in zip(LOCALES, labels):
++                with self.subTest(status=status, locale=locale):
++                    badge = f'<span class="status-badge">{label}</span>'
++                    programme = localize_and_badge_links(source, [record], locale)
++                    localized = source.replace("/en/", f"/{locale}/")
++                    self.assertEqual(programme.replace(" " + badge, ""), localized)
++                    linked = roadmap_linked_status(source, [record], locale)
++                    self.assertIn(badge, linked)
++                    self.assertIn(f'href="/{locale}/science/status-example/"', linked)
++
++
+ class CatalogueStatusLabels(unittest.TestCase):
+     """A document with a catalogue status (research-draft) must be labelled on every page that shows it."""
+ 
+@@ -167,21 +268,5 @@ class CatalogueStatusLabels(unittest.TestCase):
+         with self.assertRaisesRegex(ValueError, "without a public label"):
+             check_status_labels(self.out, records)
+ 
+-    def test_unknown_catalogue_status_stops_the_build(self):
+-        case = PublicationBuild("test_wrong_pin_rejected")
+-        case.setUp()
+-        try:
+-            case.doc["status"] = "accepted-ish"
+-            (case.source / "publication-catalog.json").write_text(json.dumps({"schema_version": 1, "edition": "1.0", "documents": [case.doc, case.target]}))
+-            run(["git", "add", "."], cwd=case.source)
+-            run(["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid", "commit", "--quiet", "-m", "status"], cwd=case.source)
+-            case.manifest["commit"] = run(["git", "rev-parse", "HEAD"], cwd=case.source).strip()
+-            case.manifest_path.write_text(json.dumps(case.manifest))
+-            with self.assertRaisesRegex(ValueError, "Unknown catalogue status"):
+-                load_inputs(case.source, case.manifest_path)
+-        finally:
+-            case.tearDown()
+-
+-
+ if __name__ == "__main__":
+     unittest.main()
+diff --git a/scripts/test_ui_localization.js b/scripts/test_ui_localization.js
+index 1da3352e..47d67454 100644
+--- a/scripts/test_ui_localization.js
++++ b/scripts/test_ui_localization.js
+@@ -35,6 +35,103 @@ function route(lang, bare, hash = '') {
+ }
+ function headings(html) {return [...html.matchAll(/<h([23])\b[^>]*\bid="([^"]+)"[^>]*>/g)].map(m => ({level: m[1], id: m[2]}));}
+ 
++// Source publication status is separate from a rendition's review state.
++// Expected wording is literal test data, not read back from the UI maps.
++const publicationStatuses = [
++  {status: 'research-draft', kind: 'paper',
++    labels: ['Research draft', 'Исследовательский черновик', '研究草稿'],
++    notes: ['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.', 'Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.', '这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。']},
++  {status: 'engineering-draft', kind: 'spec',
++    labels: ['Engineering draft', 'Инженерный черновик', '工程草案'],
++    notes: ['This is an engineering draft. It is available for reading and review; it is not an accepted specification and does not establish that an implementation conforms or is ready for production.', 'Это инженерный черновик. Он доступен для чтения и рецензирования; он не является принятой спецификацией и не подтверждает соответствия реализации или её готовности к производственному применению.', '这是工程草案，供阅读与审查；它不是已接受的规范，也不证明实现符合规范或已具备生产可用性。']},
++  {status: 'internally-reviewed-finite-evaluation', kind: 'study',
++    labels: ['Internally reviewed finite evaluation', 'Конечная оценка с внутренней рецензией', '经过内部审查的有限评估'],
++    notes: ['This reports finite checks with internal review. Its findings apply only to the stated cases and assumptions; this status does not establish independent scientific acceptance, general correctness or production validation.', 'Здесь представлены конечные проверки с внутренней рецензией. Результаты относятся только к указанным случаям и предпосылкам; этот статус не означает независимой научной приёмки, общей корректности или проверки в производственной эксплуатации.', '本文报告经过内部审查的有限检查。结果仅适用于所述案例和假设；此状态不表示已获得独立科学验收、普遍正确性证明或生产环境验证。']}
++];
++let publicationStatusCases = 0;
++for (const test of publicationStatuses) for (const [index, lang] of langs.entries()) {
++  check('publication status reader and discovery ' + test.status + '/' + lang, () => {
++    const record = data.records.find(r => r.kind === test.kind && (test.status !== 'research-draft' || r.status === test.status));
++    assert.ok(record, 'fixture kind exists in the pinned catalogue');
++    const prior = record.status, hadStatus = Object.hasOwn(record, 'status'), renditions = JSON.stringify(record.renditions);
++    try {
++      record.status = test.status;
++      route(lang, context.recordPath(record)); context.render();
++      const badge = '<span class="status-badge">' + test.labels[index] + '</span>';
++      const note = '<p class="draft-notice" role="note"><strong>' + test.labels[index] + (lang === 'zh-Hans' ? '。' : '.') + '</strong>' + (lang === 'zh-Hans' ? '' : ' ') + test.notes[index] + '</p>';
++      assert.equal(context.statusLabel(record), test.labels[index]);
++      assert.equal(context.statusNote(record), note);
++      assert.ok(elements['#main'].innerHTML.includes(badge));
++      assert.ok(elements['#main'].innerHTML.includes(note));
++      assert.equal(context.document.title, context.recordTitle(record) + ' (' + test.labels[index] + ') — contract.place');
++      assert.ok(context.paperCard(record).includes(badge));
++      assert.ok(context.publicationList([record.kind], 'docs', 'engineeringIntro').includes(badge));
++      assert.ok(context.repository().includes(badge));
++      const found = context.searchItems(record.id).find(r => r.path === context.recordPath(record));
++      assert.ok(found); assert.equal(found.badge, badge);
++      assert.ok(context.roadmapLinkedStatus('<a href="' + record.route + '">source</a>').includes(badge));
++      assert.equal(JSON.stringify(record.renditions), renditions, 'publication status must not promote rendition review');
++      if (test.status === 'internally-reviewed-finite-evaluation') {
++        assert.doesNotMatch(note, /accepted paper|принятая статья|已接受的论文/);
++      }
++      publicationStatusCases++;
++    } finally {if (hadStatus) record.status = prior; else delete record.status;}
++  });
++}
++for (const lang of langs) check('unmarked and unknown publication status ' + lang, () => {
++  const record = data.records.find(r => r.kind === 'study'), prior = record.status, hadStatus = Object.hasOwn(record, 'status');
++  try {
++    delete record.status; route(lang, context.recordPath(record));
++    assert.equal(context.statusLabel(record), ''); assert.equal(context.statusBadge(record), ''); assert.equal(context.statusNote(record), '');
++    record.status = 'accepted-ish';
++    assert.throws(() => context.render(), /Catalogue status has no label: accepted-ish/);
++    assert.throws(() => context.searchItems(record.id), /Catalogue status has no label: accepted-ish/);
++  } finally {if (hadStatus) record.status = prior; else delete record.status;}
++});
++check('status-bearing records remain outside the accepted-paper count', () => {
++  const accepted = data.records.filter(r => r.kind === 'paper' && !r.status);
++  assert.ok(accepted.length >= 8, 'home fixture retains enough unmarked papers for its highest selected index');
++  const record = accepted[0], prior = record.status, hadStatus = Object.hasOwn(record, 'status');
++  try {
++    route('en', '');
++    for (const {status} of publicationStatuses) {
++      record.status = status;
++      assert.ok(context.home().includes('href="/en/research/"><strong>' + (accepted.length - 1) + '</strong>'));
++    }
++  } finally {if (hadStatus) record.status = prior; else delete record.status;}
++});
++
++// Execute the actual llms.txt emission block with fixture documents and captured
++// output. This bounded consumer check does not invoke the full native build.
++function llmsText(documents) {
++  const build = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
++  const emit = "fs.writeFileSync(path.join(out,'llms.txt'),lines.join('\\n'));";
++  const start = build.indexOf("const base='https://contract.place';"), end = build.indexOf(emit, start);
++  assert.ok(start >= 0 && end > start, 'actual llms.txt consumer block is present');
++  const writes = new Map();
++  vm.runInNewContext(build.slice(start, end + emit.length), {documents, manifest: data.publication, path, out: 'fixture-output',
++    fs: {writeFileSync(file, text) {writes.set(file, text);}}});
++  assert.equal(writes.size, 1);
++  return writes.get(path.join('fixture-output', 'llms.txt'));
++}
++check('machine-readable descriptions retain distinct bounded publication statuses', () => {
++  const documents = publicationStatuses.map(({status, kind}) => ({title: status, type: kind === 'spec' ? 'specification' : kind, route: '/en/fixture/' + status + '/', status}));
++  documents.push({title: 'Unmarked', type: 'paper', route: '/en/fixture/unmarked/'});
++  const text = llmsText(documents), lines = text.split('\n');
++  const research = lines.find(line => line.startsWith('- [research-draft]'));
++  assert.ok(research.endsWith(': paper (research draft, not an accepted paper).'));
++  const engineering = lines.find(line => line.startsWith('- [engineering-draft]'));
++  assert.ok(engineering.endsWith(': specification (engineering draft, not an accepted specification or implementation-conformance claim).'));
++  const finite = lines.find(line => line.startsWith('- [internally-reviewed-finite-evaluation]'));
++  assert.ok(finite.endsWith(': study (internally reviewed finite evaluation, limited to its stated cases and assumptions; not independent scientific acceptance, general correctness or production validation).'));
++  assert.doesNotMatch(finite, /accepted paper|research draft/);
++  assert.ok(lines.includes('- [Unmarked](https://contract.place/en/fixture/unmarked/): paper.'));
++});
++check('machine-readable descriptions refuse unknown publication status', () => {
++  assert.throws(() => llmsText([{title: 'Unknown', type: 'study', route: '/en/fixture/unknown/', status: 'accepted-ish'}]), /Catalogue status has no description: accepted-ish/);
++});
++assert.equal(publicationStatusCases, 9, 'two new statuses plus unchanged research-draft, each in three languages');
++
+ for (const lang of langs) {
+   route(lang, 'about'); context.render();
+   check('about and footer labels ' + lang, () => {
+diff --git a/src/site/app.js b/src/site/app.js
+index 84db3e57..18795903 100644
+--- a/src/site/app.js
++++ b/src/site/app.js
+@@ -228,8 +228,14 @@ Object.assign(words,{
+ });
+ function recordPath(r){return r.route.replace(/^\/en\//,'').replace(/\/$/,'');}
+ function recordLabel(r){return t({paper:'papers',spec:'specs',study:'studies',glossary:'reference',bibliography:'reference',appendix:'appendices'}[r.kind]);}
+-const statusLabels={'research-draft':['Research draft','Исследовательский черновик','研究草稿']};
+-const statusNotes={'research-draft':['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.','Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.','这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。']};
++const statusLabels={'research-draft':['Research draft','Исследовательский черновик','研究草稿'],
++  "engineering-draft":["Engineering draft", "Инженерный черновик", "工程草案"],
++  "internally-reviewed-finite-evaluation":["Internally reviewed finite evaluation", "Конечная оценка с внутренней рецензией", "经过内部审查的有限评估"]
++};
++const statusNotes={'research-draft':['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.','Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.','这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。'],
++  "engineering-draft":["This is an engineering draft. It is available for reading and review; it is not an accepted specification and does not establish that an implementation conforms or is ready for production.", "Это инженерный черновик. Он доступен для чтения и рецензирования; он не является принятой спецификацией и не подтверждает соответствия реализации или её готовности к производственному применению.", "这是工程草案，供阅读与审查；它不是已接受的规范，也不证明实现符合规范或已具备生产可用性。"],
++  "internally-reviewed-finite-evaluation":["This reports finite checks with internal review. Its findings apply only to the stated cases and assumptions; this status does not establish independent scientific acceptance, general correctness or production validation.", "Здесь представлены конечные проверки с внутренней рецензией. Результаты относятся только к указанным случаям и предпосылкам; этот статус не означает независимой научной приёмки, общей корректности или проверки в производственной эксплуатации.", "本文报告经过内部审查的有限检查。结果仅适用于所述案例和假设；此状态不表示已获得独立科学验收、普遍正确性证明或生产环境验证。"]
++};
+ function statusOf(r){if(!r.status)return '';if(!statusLabels[r.status])throw new Error('Catalogue status has no label: '+r.status);return r.status;}
+ function statusLabel(r){const s=statusOf(r);return s?statusLabels[s][langs.indexOf(locale)]:'';}
+ function statusBadge(r){const l=statusLabel(r);return l?`<span class="status-badge">${esc(l)}</span>`:'';}
