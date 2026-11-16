@@ -1,6 +1,6 @@
 ---
 name: "contract-profile-conformance"
-title: "Проверки контрактов: Профили контрактов, конечные проверки соответствия, границы доверия и сильный простой вариант сравнения"
+title: "Проверки контрактов: Конечное соответствие, границы доверия и сильный простой базовый вариант"
 short_title: "Проверки контрактов"
 subtitle: "Профили контрактов, конечные проверки соответствия, границы доверия и сильный простой вариант сравнения"
 artifact: "engineering-study"
@@ -8,16 +8,16 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Конечные проверки контрактов, контрпримеры с ложными доверенными входными данными и равный результат сильного варианта сравнения."
+description: "Конечные проверки контрактов, контрпримеры с ложными доверенными входами и равный результат сильного базового варианта."
 study_type: "finite-implementation-evaluation"
 translation_of: "engineering/studies/contract-profile-conformance/STUDY.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "c258efb990cc38c48dee21141af1ceec1791e388"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "4953657794994509de28e5bec3ae31bf5eaf8852"
 source_review_state: "internally-reviewed"
 translation_status: "author-draft"
 ---
 
-# Проверки контрактов: Профили контрактов, конечные проверки соответствия, границы доверия и сильный простой вариант сравнения {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
+# Проверки контрактов: Конечное соответствие, границы доверия и сильный простой базовый вариант {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
 
 ## Аннотация {#abstract}
 

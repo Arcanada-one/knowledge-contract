@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "repository": "Arcanada-one/knowledge-contract",
+  "source_revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+  "review_state": "unreviewed",
+  "documents": [
+    {
+      "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "source_sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+      "annotations": [
+        {
+          "math_index": 15,
+          "math_type": "DisplayMath",
+          "tex_sha256": "0424127ef69f8e4fcc7c13f6565d643530aa4c0aa1b305e75ed86afdd4752a35",
+          "mtext_index": 1,
+          "source_text": "for every ",
+          "translations": {
+            "ru": "для каждого ",
+            "zh-Hans": "对于每个 "
+          }
+        },
+        {
+          "math_index": 23,
+          "math_type": "DisplayMath",
+          "tex_sha256": "0e6779e0d1aa6afc9add2118224c62f150e633908776733ddd17482b8eeb8fa6",
+          "mtext_index": 1,
+          "source_text": "for all ",
+          "translations": {
+            "ru": "для всех ",
+            "zh-Hans": "对于任意 "
+          }
+        }
+      ]
+    },
+    {
+      "path": "papers/semantic-objects-and-context/PAPER.md",
+      "source_sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+      "annotations": [
+        {
+          "math_index": 10,
+          "math_type": "DisplayMath",
+          "tex_sha256": "c4d3245937bd4de05b796c3f47ecf19a797738fe7e08528235ae3f617f64dacc",
+          "mtext_index": 1,
+          "source_text": "and",
+          "translations": {
+            "ru": "и",
+            "zh-Hans": "与"
+          }
+        }
+      ]
+    },
+    {
+      "path": "papers/knowledge-utility/PAPER.md",
+      "source_sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+      "annotations": [
+        {
+          "math_index": 40,
+          "math_type": "DisplayMath",
+          "tex_sha256": "1f75905e2794e7379bdd78d48628c6e1ea8f2585029fc77c873c9b16025d0433",
+          "mtext_index": 1,
+          "source_text": "equivalently",
+          "translations": {
+            "ru": "эквивалентно",
+            "zh-Hans": "等价于"
+          }
+        }
+      ]
+    },
+    {
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "annotations": [
+        {
+          "math_index": 24,
+          "math_type": "DisplayMath",
+          "tex_sha256": "b39dd30b2e3b7df85c130957f0c5848b1557053a60ceccde3cb8bc8d4fed27ff",
+          "mtext_index": 1,
+          "source_text": "for all ",
+          "translations": {
+            "ru": "для всех ",
+            "zh-Hans": "对于任意 "
+          }
+        },
+        {
+          "math_index": 29,
+          "math_type": "DisplayMath",
+          "tex_sha256": "e5b37e90a9a45157a0d4688d08ae51d87e92572fc4a47ddbab2afd2247537ac1",
+          "mtext_index": 1,
+          "source_text": "for every ",
+          "translations": {
+            "ru": "для любых ",
+            "zh-Hans": "对于任意 "
+          }
+        },
+        {
+          "math_index": 30,
+          "math_type": "DisplayMath",
+          "tex_sha256": "9de47ef2ded83abd3400ad8c0e15d52e5fb662539ec1b5afd77553b0ab3814ed",
+          "mtext_index": 1,
+          "source_text": "for ",
+          "translations": {
+            "ru": "для ",
+            "zh-Hans": "对于 "
+          }
+        },
+        {
+          "math_index": 64,
+          "math_type": "DisplayMath",
+          "tex_sha256": "f62b107b955b9d8aa466ac4941520d4020f115d31d9896facd68b2ca4566957f",
+          "mtext_index": 1,
+          "source_text": "the two answer sets are not the same singleton",
+          "translations": {
+            "ru": "два множества ответов не являются одним и тем же одноэлементным множеством",
+            "zh-Hans": "两个答案集合并非同一个单元素集合"
+          }
+        }
+      ]
+    }
+  ]
+}

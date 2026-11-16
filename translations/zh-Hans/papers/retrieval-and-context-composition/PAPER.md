@@ -1,6 +1,6 @@
 ---
 name: "retrieval-and-context-composition"
-title: "语境组装：资源限制下的检索、需求覆盖与语境组合"
+title: "语境组装：资源约束下的检索、覆盖与语境组合"
 short_title: "语境组装"
 subtitle: "资源限制下的检索、需求覆盖与语境组合"
 artifact: "scientific-paper"
@@ -10,13 +10,13 @@ language: "zh-Hans"
 license: "CC-BY-4.0"
 description: "检索覆盖、有限语境选择、依赖闭包以及贪心组合的边界。"
 translation_of: "papers/retrieval-and-context-composition/PAPER.md"
-source_commit: "d0b2c18ca16c0b78bb0f93c075b826f4555f20e5"
-source_git_blob: "35f8f2480f7399f3d87e4123b78c81f407e6f843"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "0555ac10d3f7978ce7210263ea07cdf037770b12"
 source_review_state: "proposed-editorial-revision"
 translation_status: "author-draft"
 ---
 
-# 语境组装：资源限制下的检索、需求覆盖与语境组合 {#retrieval-coverage-and-context-composition-under-resource-limits}
+# 语境组装：资源约束下的检索、覆盖与语境组合 {#retrieval-coverage-and-context-composition-under-resource-limits}
 
 **作者：** Pavel Valentov · **出版版本：** 1.1
 
@@ -73,7 +73,7 @@ translation_status: "author-draft"
 \ \land\ \operatorname{Valid}(G,r).
 \]
 
-有效性谓词包括相关解释与适用性检查。所有被组合的组，都在同一固定要求修订版、来源快照和解释语境下评估。来自不相容快照的分别有效评估，并不确立共同支持。列出一个组，不证明其成员支持该要求。在经验性使用中，这一判断需要经过独立评估的证据，或一个可靠且受系统支持的规则。
+有效性谓词包括相关解释与适用性检查。列出一个组，不证明其成员支持该要求。在经验性使用中，这一判断需要经过独立评估的证据，或一个可靠且受系统支持的规则。
 
 组合决策 \(z\) 包括所选内容、允许的变换、顺序、模态和交付形式。其实际表示为 \(\operatorname{Render}(z)\)，成本由声明的 \(c\) 给出。可行性要求强制支持、所有其他准入条件，以及
 
@@ -89,7 +89,7 @@ c(\operatorname{Render}(z))\leq B.
 
 成本不必在片段之间可加。两个选定对象可以共享一个依赖，因此把各自闭包大小相加会重复计算该依赖。反过来，交付格式也可能引入标题、重复图例或固定开销。相关核算对象是交付的表示，而不是未格式化的片段。
 
-最小图闭包也相对于所选粒度而言。[投影研究（英文来源）](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality)在共享限定内部发现了额外断言，即使它们的专属节点不在所选闭包中。因此，最小实体集合并不必然在断言层面最小，也不必然具有最低交付成本。
+最小图闭包也相对于所选粒度而言。[投影研究（英文来源）](../../../../engineering/studies/executable-projections-and-revision/STUDY.md#counterexample-to-claim-level-minimality)在共享限定内部发现了额外断言，即使它们的专属节点不在所选闭包中。因此，最小实体集合并不必然在断言层面最小，也不必然具有最低交付成本。
 
 ## 4. 精确性与特例保证 {#4-exactness-and-special-case-guarantees}
 
@@ -103,7 +103,7 @@ c(\operatorname{Render}(z))\leq B.
 
 ### 命题2. 一个受限组合问题包含集合覆盖问题 {#proposition-2-a-restricted-composition-problem-contains-set-cover}
 
-考虑单位成本的独立包，没有变换或依赖，并要求用不超过 \(k\) 个包覆盖每项义务。在这一受限实例中，每个包以其声明的单位成本完整交付，因此候选支持与交付支持一致。给定全集 \(U\) 和子集 \(F_1,\ldots,F_n\) 的集合覆盖实例，为 \(U\) 中每个元素创建一项要求，为每个 \(F_i\) 创建一个包，恰好支持其中对应的要求。该构造是多项式的；所选包覆盖全部要求，当且仅当其对应子集覆盖 \(U\)。
+考虑单位成本的独立包，没有变换或依赖，并要求用不超过 \(k\) 个包覆盖每项义务。给定全集 \(U\) 和子集 \(F_1,\ldots,F_n\) 的集合覆盖实例，为 \(U\) 中每个元素创建一项要求，为每个 \(F_i\) 创建一个包，恰好支持其中对应的要求。该构造是多项式的；所选包覆盖全部要求，当且仅当其对应子集覆盖 \(U\)。
 
 这一归约把集合覆盖已知的组合困难性 [2] 迁移到该特例。它不意味着每个实际查询都困难，不意味着提取本身已被形式化解决，也不意味着某种启发式具有特定近似比。
 
@@ -152,9 +152,9 @@ c(\operatorname{Render}(z))\leq B.
 
 ## 7. 与已发表工程工作的联系 {#7-connections-to-the-published-engineering-work}
 
-[依赖闭包与包交付研究](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/dependency-closure-and-package-delivery/STUDY.md)提供了对全部依赖均必需的固定图所做的穷举闭包检查，以及历史布局和预先交付检查。其根子集枚举不是预算约束下的组合优化器。这些历史研究没有评估备选支持组或资源受限选择。随英文来源修订提供的[有限验证说明](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/reviews/retrieval-context/REVIEW.md)增加了新编写的抽象案例，以及针对明确选择与交付边界的可复现检查器。它不是历史重放、语义提取评估或生产选择研究，不提供语言模型或端到端检索方法的实测比较。[投影研究](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/executable-projections-and-revision/STUDY.md)提供了另一个针对断言级最小性的反例。[契约配置符合性研究](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/engineering/studies/contract-profile-conformance/STUDY.md)涉及结构验证，而结构验证必须与语义充分性区分。链接指向英文来源及保留记录；其早先检查不被当作本译文或新编辑澄清的验收。
+[依赖闭包与包交付研究](../../../../engineering/studies/dependency-closure-and-package-delivery/STUDY.md)提供了对全部依赖均必需的固定图所做的穷举闭包检查，以及历史布局和预先交付检查。其根子集枚举不是预算约束下的组合优化器。这些历史研究没有评估备选支持组或资源受限选择。随英文来源修订提供的[有限验证说明](../../../../reviews/retrieval-context/REVIEW.md)增加了新编写的抽象案例，以及针对明确选择与交付边界的可复现检查器。它不是历史重放、语义提取评估或生产选择研究，不提供语言模型或端到端检索方法的实测比较。[投影研究](../../../../engineering/studies/executable-projections-and-revision/STUDY.md)提供了另一个针对断言级最小性的反例。[契约配置符合性研究](../../../../engineering/studies/contract-profile-conformance/STUDY.md)涉及结构验证，而结构验证必须与语义充分性区分。链接指向英文来源及保留记录；其早先检查不被当作本译文或新编辑澄清的验收。
 
-[术语表](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/reference/glossary/GLOSSARY.md)给出共同术语。[证据与证伪](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/papers/evidence-and-falsification/PAPER.md)规定评估义务；[知识效用](https://github.com/Arcanada-one/knowledge-contract/blob/d0b2c18ca16c0b78bb0f93c075b826f4555f20e5/papers/knowledge-utility/PAPER.md)解释为什么组合目标必须陈述基线、核算期和资源核算。
+[术语表](../../../../reference/glossary/GLOSSARY.md)给出共同术语。[证据与证伪](../../../../papers/evidence-and-falsification/PAPER.md)规定评估义务；[知识效用](../../../../papers/knowledge-utility/PAPER.md)解释为什么组合目标必须陈述基线、核算期和资源核算。
 
 ## 8. 结论 {#8-conclusion}
 

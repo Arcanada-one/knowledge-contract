@@ -714,10 +714,11 @@ class DecisionRouteTests(unittest.TestCase):
         base = {"source_commit": "a" * 40, "path": "", "sha256": "b" * 64, "rights_holder": HOLDER, "license": "CC-BY-4.0",
                 "decision": f"{DEC}b3.jsonl@{'c' * 40}#{'d' * 64}", "status": "current", "supersedes": "none", "status_decision": "none"}
         catalogue = json.loads((export.REPO / "publication-catalog.json").read_text())["documents"]
-        # All four research drafts remain excluded
+        # Every explicitly listed research draft remains excluded
         # from the unchanged 29-path edition export scope; catalogue inclusion grants no admission.
         drafts = sorted(d["path"] for d in catalogue if d.get("status") == "research-draft")
         self.assertEqual(drafts, [
+            "engineering/specifications/semantic-verification/SPECIFICATION.md",
             "engineering/studies/agent-situation-controls/STUDY.md",
             "papers/agent-situation/PAPER.md",
             "papers/geometry-of-semantic-representations/PAPER.md",

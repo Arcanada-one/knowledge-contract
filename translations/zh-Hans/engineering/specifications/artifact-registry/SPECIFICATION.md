@@ -1,19 +1,19 @@
 ---
 name: "artifact-registry"
-title: "制品登记、可读名称与文档格式"
+title: "制品登记册：可读名称与文档格式"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "可读制品名称、规范 Markdown 格式、身份规则及专业制品的区别。"
+description: "可读的制品名称、规范 Markdown 格式、身份规则与专业制品类型之间的区别。"
 translation_of: "engineering/specifications/artifact-registry/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "1fe5680e0c0e9925191fea0d187f76d915625804"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "669afe8a04861b503a27a6ea25e3153c4630d070"
 translation_status: "author-draft"
 ---
 
-# 制品登记、可读名称与文档格式 {#artifact-registry-readable-names-and-document-formats}
+# 制品登记册：可读名称与文档格式 {#artifact-registry-readable-names-and-document-formats}
 
 **作者：**Pavel Valentov · **出版版本：**1.1
 

@@ -25,7 +25,7 @@ Knowledge Contract connects knowledge to the conditions under which it can be in
 
 The [historical 31-work document register](https://github.com/Arcanada-one/knowledge-contract/blob/6a6f202f7f70be2ad3aea3369e45409761708596/DOCUMENTS.md) records snapshot `6a6f202f7f70be2ad3aea3369e45409761708596`: ten scientific papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. Meaning Bridge and Meaning Geometry retain their research-draft status; a catalogue entry is not a claim of external peer review or production readiness.
 
-The [current integration-candidate document register](DOCUMENTS.md) contains 35 entries, including the Agent Situation research draft and Context Controls finite study. These two candidate entries do not establish independent scientific acceptance, translations, production deployment or KC2 admission.
+The [current integration-candidate document register](DOCUMENTS.md) contains 36 entries, including the Agent Situation research draft, Context Controls finite study and the [Semantic Verification research-draft specification](engineering/specifications/semantic-verification/SPECIFICATION.md). These candidate entries do not establish independent scientific acceptance, translations, production deployment or KC2 admission.
 
 ## Read, inspect and obtain the source
 

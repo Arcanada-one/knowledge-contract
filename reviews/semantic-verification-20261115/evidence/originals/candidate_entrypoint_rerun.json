@@ -1,0 +1,84 @@
+{
+  "schema": "kc-brain-fibrewise-transfer-finite-check/1",
+  "provenance": "reconstructed from reported claim and pinned existing factorization criterion; hourly bytes unavailable",
+  "scope": "all 2^4 observation maps and all 4^4 stipulated assessment maps on four labeled states",
+  "declared_profiles": 4096,
+  "executed_profiles": 4096,
+  "unexecuted_profiles": 0,
+  "globally_factorable_profiles": 232,
+  "non_global_with_at_least_one_determined_fibre": 2496,
+  "profiles_without_any_determined_fibre": 1368,
+  "observation_queries": 8192,
+  "observation_query_outcomes": {
+    "determined_in_model": 2952,
+    "refused_ambiguous": 4728,
+    "refused_unattained": 512
+  },
+  "partial_map_candidates_checked": 102400,
+  "oracle": "enumerate all 5^2 partial maps; check support and statewise agreement; verify unique greatest map",
+  "first_partial_example": {
+    "profile": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "verdicts": [
+      "pass",
+      "pass",
+      "fail",
+      "pass"
+    ],
+    "maximal_partial_map": [
+      null,
+      "pass"
+    ]
+  },
+  "separate_controls": {
+    "canonical_label_preservations": 4,
+    "distinction_pairs": 3,
+    "partial_without_global_model": 1,
+    "relevant_and_irrelevant_refinement_models": 2,
+    "domain_extension_countermodel": 1,
+    "unattained_observation_case": 1,
+    "rejected_input_shapes": 13
+  },
+  "actual_claim": "finite agreement of full-fibre diagnostic with independent partial-map enumeration; every obstruction checked",
+  "controller_independence": "same controller and shared inputs; structural oracle independence only",
+  "runtime_authorized": false,
+  "effects_authorized": false,
+  "exclusions": [
+    "new theorem or priority claim",
+    "empirical frequency or success rate",
+    "coverage beyond the declared finite carrier",
+    "justification of supplied assessments",
+    "source authentication or exact target identity",
+    "current permission",
+    "production checker execution",
+    "native KC2 admission",
+    "independent semantic or language acceptance"
+  ],
+  "execution": {
+    "observed_utc": "2026-11-15T11:24:30.166641+00:00",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -B /workspace/scratch/50c29b6b4f6f/continuation_f05/check_fibrewise_transfer.py",
+    "working_directory": "/workspace/scratch/50c29b6b4f6f",
+    "script_sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+    "assertions_enabled": true
+  },
+  "first_value_mutant_control": {
+    "mutation": "replace fibrewise_transfer in memory with first-representative selection",
+    "procedure": "execute unchanged run_checks() and retain its original failure",
+    "result": "killed",
+    "observed_failure": "AssertionError(('oracle disagreement', (0, 0, 0, 0), ('pass', 'pass', 'pass', 'fail'), 0, {'outcome': 'determined_in_model', 'assessment': 'pass', 'fibre': (0, 1, 2, 3), 'witness': None}, (None, None)))",
+    "original_diagnostic_restored": true
+  },
+  "optimized_mode_control": {
+    "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3 -O -B /workspace/scratch/50c29b6b4f6f/continuation_f05/check_fibrewise_transfer.py",
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "Refused: optimized Python disables required assertions.\n",
+    "result": "refused_before_finite_run_or_receipt"
+  }
+}

@@ -1,19 +1,19 @@
 ---
 name: "status-model"
-title: "Состояния оценки, исполнения и публикации"
+title: "Модель состояний: Оценка, исполнение и публикация"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Независимые состояния оценки, исполнения, эффекта, временной актуальности, публикации и рецензирования."
+description: "Независимые состояния оценки, исполнения, эффекта, актуальности, публикации и рецензии."
 translation_of: "engineering/specifications/status-model/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "4d3f405149c10b7e2bee6988c575bd82cae28b8b"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "588c6b50cc969f941c9a01d8dabfb893bf5eb651"
 translation_status: "author-draft"
 ---
 
-# Состояния оценки, исполнения и публикации {#assessment-execution-and-publication-states}
+# Модель состояний: Оценка, исполнение и публикация {#assessment-execution-and-publication-states}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

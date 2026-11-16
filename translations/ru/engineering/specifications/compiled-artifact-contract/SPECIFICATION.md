@@ -1,19 +1,19 @@
 ---
 name: "compiled-artifact-contract"
-title: "Скомпилированные артефакты знаний и воспроизводимое получение"
+title: "Скомпилированные знания: Артефакты и воспроизводимое получение"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Сохранённые производные результаты с точными входами, рецептами, манифестами зависимостей, шаблонами и свидетельствами о выходе."
+description: "Сохранённые производные артефакты с точными входами, рецептами, манифестами зависимостей, шаблонами и свидетельствами результата."
 translation_of: "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "feef304cc65842e6ed9851fa9278ff30602c4a3d"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "b977d470b52dcd514e176d29e71214048e9f86da"
 translation_status: "author-draft"
 ---
 
-# Скомпилированные артефакты знаний и воспроизводимое получение {#compiled-knowledge-artifacts-and-reproducible-derivation}
+# Скомпилированные знания: Артефакты и воспроизводимое получение {#compiled-knowledge-artifacts-and-reproducible-derivation}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

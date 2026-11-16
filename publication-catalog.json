@@ -186,6 +186,18 @@
     },
     {
       "type": "specification",
+      "slug": "semantic-verification",
+      "path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "title": "Semantic Verification: Claims, Checks and Evidence",
+      "short_title": "Semantic Verification",
+      "subtitle": "Claims, Checks and Evidence",
+      "summary": "Research-draft verification packets that distinguish proofs, finite models, implementation tests and other evidence, with a bounded assessment-transfer profile.",
+      "language": "en",
+      "edition": "1.1",
+      "status": "research-draft"
+    },
+    {
+      "type": "specification",
       "slug": "context-package",
       "path": "engineering/specifications/context-package/SPECIFICATION.md",
       "title": "Context Package: Coverage, Dependencies, and Delivery",
