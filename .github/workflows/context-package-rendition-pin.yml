@@ -49,8 +49,36 @@ jobs:
           set -euo pipefail
           python3 -B reviews/renditions/agent-situation-20261116/producer_validate.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc
-      - name: Compile seventy-two metadata records and check eight metadata and two pin refusals
+      - name: Replay historical c135 metadata and pin controls at b00
         run: |
           set -euo pipefail
-          python3 -B reviews/renditions/agent-situation-20261116/check_catalogue_metadata.py \
-            --repository . --site-repository _rendition-site-checker
+          kc_c135_revision=b00b42fb5ca4f32ca443812c980c13d4d5d53d81
+          kc_c135_worktree="$RUNNER_TEMP/kc-c135-baseline"
+          git fetch --no-tags origin "$kc_c135_revision"
+          git worktree add --detach "$kc_c135_worktree" "$kc_c135_revision"
+          trap 'git worktree remove "$kc_c135_worktree"' EXIT
+          python3 -B \
+            "$kc_c135_worktree/reviews/renditions/agent-situation-20261116/check_catalogue_metadata.py" \
+            --repository "$kc_c135_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker"
+          python3 -I -B reviews/renditions/source-currency-20261116/check_historical_pin_regression.py \
+            --repository "$kc_c135_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker"
+      - name: Compile current metadata and all renditions with ten source updates
+        run: |
+          set -euo pipefail
+          python3 -I -B reviews/renditions/source-currency-20261116/check_source_currency.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc
+      - name: Reject optimized Python for the assertion-based pinned consumer
+        run: |
+          set -euo pipefail
+          set +e
+          python3 -I -O -B reviews/renditions/source-currency-20261116/check_source_currency.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc \
+            > "$RUNNER_TEMP/source-currency-optimized.log" 2>&1
+          kc_currency_optimized_status=$?
+          set -e
+          cat "$RUNNER_TEMP/source-currency-optimized.log"
+          test "$kc_currency_optimized_status" -eq 2
+          python3 -B -c "from pathlib import Path; import sys; sys.exit(0 if 'optimized Python is unsupported' in Path(sys.argv[1]).read_text() else 1)" \
+            "$RUNNER_TEMP/source-currency-optimized.log"

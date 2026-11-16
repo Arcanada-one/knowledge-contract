@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "historical_revision": "b00b42fb5ca4f32ca443812c980c13d4d5d53d81",
+  "historical_checker_sha256": "e10bc19a5d6187ab30e594974c19d57e0713e001e0f89b3f8bb840900367174c",
+  "mutant_sha256": "cd27f107b44370b5e63436395e61dae266949ad7e1963ca902b11667e42e3b33",
+  "mutation": "only target PIN_CODES value: RENDITION_REVISION_PIN -> RENDITION_RENDITION_PIN",
+  "observed": "AssertionError: RENDITION_RENDITION_PIN",
+  "verified_call_chain": [
+    "historical c135 adverse rendition pin",
+    "verify_pin",
+    "fail",
+    "RenditionError.__init__"
+  ],
+  "scope": "one historical code-regression replay; no current source-currency or semantic acceptance"
+}
