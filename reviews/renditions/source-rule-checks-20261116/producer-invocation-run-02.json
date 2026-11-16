@@ -1,0 +1,41 @@
+{
+  "kind": "actual-workflow-style-invocation-after-fix",
+  "command": [
+    "python3",
+    "-B",
+    "reviews/renditions/source-rule-checks-20261116/producer_validate.py",
+    "--repository",
+    ".",
+    "--site-repository",
+    "/workspace/scratch/50c29b6b4f6f/c127_site52",
+    "--pandoc",
+    "pandoc"
+  ],
+  "cwd": "/workspace/scratch/50c29b6b4f6f/c130_translation_work",
+  "workflow_invocation_difference": "The already pinned local site checkout is c127_site52 instead of the CI checkout directory _rendition-site-checker; all other CLI arguments match the named workflow call.",
+  "pandoc_available_on_PATH": "/workspace/scratch/50c29b6b4f6f/c124_translation/pandoc-deb/usr/bin/pandoc",
+  "program_sha256": "476b16b084ec558784b126e2f7c6ae06f49c80b1cb80e5063a1cf4b360b56237",
+  "exit_code": 0,
+  "stdout_file": "producer-result-run-02.json",
+  "stdout_sha256": "8c8c373121d2d393447fb951197d7833ad620d4c4ce27f8ad2bc8f6100354bf4",
+  "stderr_file": "producer-run-02.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "historical_run01_sha256": "8c8c373121d2d393447fb951197d7833ad620d4c4ce27f8ad2bc8f6100354bf4",
+  "invocation_controls": [
+    {
+      "selector": "c130-pandoc-does-not-exist",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "{\"result\": \"AUTHOR_CHECK_REFUSED\", \"code\": \"PANDOC_EXECUTABLE\"}\n",
+      "expected_refusal_detected": true
+    },
+    {
+      "selector": "/workspace/scratch/50c29b6b4f6f/c130_translation_work/c130-pandoc-does-not-exist",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "{\"result\": \"AUTHOR_CHECK_REFUSED\", \"code\": \"PANDOC_EXECUTABLE\"}\n",
+      "expected_refusal_detected": true
+    }
+  ],
+  "scope": "Invocation controls are separate from the fifteen rendition adverse controls. No scientific trial or independent review."
+}
