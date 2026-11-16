@@ -1,0 +1,191 @@
+{
+  "result": "AUTHOR_STRUCTURE_AND_BINDING_PASS",
+  "pandoc": "pandoc 3.1.3",
+  "parser": "build_publication.parse_markdown",
+  "source": {
+    "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+    "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+    "revision": "8c7cd3bc1247998cb9554c568da26949da31b749"
+  },
+  "source_blob": "a08166d551ca43c7e2e203d9408604ec43bd4799",
+  "source_review_state": "internally-reviewed; external independence not verified",
+  "repository_head": "1d2ba019c3b9c423422c1d6a6fe0ab14fe49404a",
+  "site_checker_commit": "d3d17929f209612669f38db6a735d46bc9ec309c",
+  "checker_hashes": {
+    "renditions.py": "dca34612d0714cc40dc9001f2953a7c1f0b73af7a47ae2feb6b38d48d85c5d2f",
+    "rendition_preamble.py": "163434ad6ba70de4773e4b672915b838b0b005bddc130f33fd08c4851bd7d073",
+    "build_publication.py": "20ffe44a5d873bef16750a2eeca8fa0cd4dc4a7af62c01f2e55410da8a0e87e5"
+  },
+  "expected_counts": {
+    "sections": 7,
+    "blocks": 35,
+    "table_rows": [
+      5,
+      5
+    ],
+    "table_cells": [
+      [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      [
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    ],
+    "code_objects": 34,
+    "math_objects": 0,
+    "references": 19,
+    "distinct_references": 18,
+    "notes": 0
+  },
+  "source_digest_negative": {
+    "mutation": "wrong-source-digest",
+    "refusal": "RENDITION_SOURCE_PIN"
+  },
+  "targets": [
+    {
+      "language": "ru",
+      "path": "translations/ru/engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "bytes": 27258,
+      "sha256": "3d34dd95336a7b5521b7dbd93c36842570f7c1ac5b7f987bc522af7de67cf9eb",
+      "counts": {
+        "sections": 7,
+        "blocks": 35,
+        "table_rows": [
+          5,
+          5
+        ],
+        "table_cells": [
+          [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        ],
+        "code_objects": 34,
+        "math_objects": 0,
+        "references": 19,
+        "distinct_references": 18,
+        "notes": 0
+      },
+      "adverse_controls": [
+        {
+          "mutation": "missing-section",
+          "refusal": "RENDITION_SECTION_UNRESOLVED"
+        },
+        {
+          "mutation": "missing-reference",
+          "refusal": "RENDITION_REFERENCE_DROPPED"
+        },
+        {
+          "mutation": "missing-table-row",
+          "refusal": "TABLE_SHAPE"
+        },
+        {
+          "mutation": "changed-command",
+          "refusal": "RENDITION_CODE_CHANGED"
+        },
+        {
+          "mutation": "changed-result-16384-to-16385",
+          "refusal": "NUMBERS_PER_BLOCK"
+        },
+        {
+          "mutation": "wrong-source-commit",
+          "refusal": "METADATA_SOURCE_COMMIT"
+        },
+        {
+          "mutation": "invented-review",
+          "refusal": "METADATA_REVIEW_STATE"
+        }
+      ]
+    },
+    {
+      "language": "zh-Hans",
+      "path": "translations/zh-Hans/engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "bytes": 14033,
+      "sha256": "e41a8120e39c788ccfc775fd80cad86592944349586c0fcadd6ecc48f5cf3c3b",
+      "counts": {
+        "sections": 7,
+        "blocks": 35,
+        "table_rows": [
+          5,
+          5
+        ],
+        "table_cells": [
+          [
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          [
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        ],
+        "code_objects": 34,
+        "math_objects": 0,
+        "references": 19,
+        "distinct_references": 18,
+        "notes": 0
+      },
+      "adverse_controls": [
+        {
+          "mutation": "missing-section",
+          "refusal": "RENDITION_SECTION_UNRESOLVED"
+        },
+        {
+          "mutation": "missing-reference",
+          "refusal": "RENDITION_REFERENCE_DROPPED"
+        },
+        {
+          "mutation": "missing-table-row",
+          "refusal": "TABLE_SHAPE"
+        },
+        {
+          "mutation": "changed-command",
+          "refusal": "RENDITION_CODE_CHANGED"
+        },
+        {
+          "mutation": "changed-result-16384-to-16385",
+          "refusal": "NUMBERS_PER_BLOCK"
+        },
+        {
+          "mutation": "wrong-source-commit",
+          "refusal": "METADATA_SOURCE_COMMIT"
+        },
+        {
+          "mutation": "invented-review",
+          "refusal": "METADATA_REVIEW_STATE"
+        }
+      ]
+    }
+  ],
+  "negative_controls_detected": 15,
+  "limits": [
+    "Producer structural parity is not semantic equivalence or independent review.",
+    "Digit tokens preserve multiplicity per block/cell, not order or written numerals; comma/space thousands grouping is normalized.",
+    "Source evidence counts are translated, not rerun as new scientific tests.",
+    "No rendition registration, review admission, site build, deployment, index result or native KC2 authority."
+  ]
+}
