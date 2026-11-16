@@ -171,6 +171,16 @@
       "refusal": "LOCALIZATION_INVALID: duplicate work/language entry"
     }
   ],
+  "pin_refusal_observations": [
+    {
+      "case": "wrong-source-pin-bytes",
+      "code": "RENDITION_SOURCE_PIN"
+    },
+    {
+      "case": "wrong-rendition-pin-bytes",
+      "code": "RENDITION_REVISION_PIN"
+    }
+  ],
   "result": "PASS",
   "scope": "producer metadata integration only; manuscript fidelity, review, native admission and serving NOT_VERIFIED"
 }

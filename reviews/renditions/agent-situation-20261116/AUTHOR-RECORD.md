@@ -131,6 +131,18 @@ successful full test run. A later source-check invocation from the scratch
 parent directory failed to locate the script; invoking it from the repository
 directory succeeded.
 
+### Typed pin-refusal correction during producer review
+
+A same-controller review of the new inventory check found that deriving the
+target pin error code from the field name produced `RENDITION_RENDITION_PIN`,
+which the pinned consumer does not define. The successful 68-entry path could
+not expose this mistake. The corrected check uses the consumer's explicit
+`RENDITION_SOURCE_PIN` and `RENDITION_REVISION_PIN` codes. Two additional adverse
+cases corrupt the claimed source and target digests against real Git bytes and
+require their exact typed refusals. Reinstating the original wrong target code
+is detected as `AssertionError: RENDITION_RENDITION_PIN`; it is not counted as a
+valid refusal. The eight metadata refusals remain a separate population.
+
 ## Remaining release boundaries
 
 The cumulative candidate has 68 body files out of 72 catalogue-language slots.

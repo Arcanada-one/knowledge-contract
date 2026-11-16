@@ -27,6 +27,7 @@ CHECKERS = {
 }
 NEW_WORKS = {"agent-situation", "semantic-bridge", "semantic-verification",
              "agent-situation-controls", "semantic-bridge-conformance"}
+PIN_CODES = {"source": "RENDITION_SOURCE_PIN", "rendition": "RENDITION_REVISION_PIN"}
 
 
 def require(condition, reason):
@@ -108,7 +109,7 @@ def main():
     for entry in entries:
         for label in ("source", "rendition"):
             rendition.verify_pin(repo, manifest, entry["work"] + ":" + label,
-                                 entry[label], "RENDITION_" + label.upper() + "_PIN")
+                                 entry[label], PIN_CODES[label])
         require(hashlib.sha256((repo / entry["rendition"]["path"]).read_bytes()).hexdigest() ==
                 entry["rendition"]["sha256"], "RENDITION_CURRENT_BYTES")
         if entry["source"]["sha256"] != after[entry["work"]]["sha256"]:
@@ -119,6 +120,21 @@ def main():
     missing = sorted({(work, lang) for work in after for lang in ("ru", "zh-Hans")} -
                      {(e["work"], e["language"]) for e in entries})
     require(len(missing) == 4, "MISSING_RENDITION_POPULATION")
+
+    # Exercise each typed failure on real Git bytes. Constructing the target
+    # code from its field name used to produce an unsupported code and an
+    # AssertionError; successful pins alone could not expose that defect.
+    pin_observations = []
+    for label, expected in (("source", "RENDITION_SOURCE_PIN"),
+                            ("rendition", "RENDITION_REVISION_PIN")):
+        bad_pin = dict(entries[-1][label], sha256="0" * 64)
+        try:
+            rendition.verify_pin(repo, manifest, "adverse:" + label, bad_pin, PIN_CODES[label])
+        except rendition.RenditionError as error:
+            require(error.code == expected, "UNEXPECTED_PIN_REFUSAL:" + label)
+            pin_observations.append({"case": "wrong-" + label + "-pin-bytes", "code": error.code})
+        else:
+            raise ValueError("PIN_COUNTEREXAMPLE_ACCEPTED:" + label)
 
     # Inject only the sidecar bytes into the real consumer. Git ancestry and all
     # English source reads stay real; the working tree is never rewritten.
@@ -177,7 +193,8 @@ def main():
             "missing_work_language_pairs": missing,
             "scope": "byte/ancestry inventory; no renewed linguistic or scientific acceptance",
         },
-        "refusal_observations": observations, "result": "PASS",
+        "refusal_observations": observations, "pin_refusal_observations": pin_observations,
+        "result": "PASS",
         "scope": "producer metadata integration only; manuscript fidelity, review, native admission and serving NOT_VERIFIED",
     }, ensure_ascii=False, indent=2))
 
