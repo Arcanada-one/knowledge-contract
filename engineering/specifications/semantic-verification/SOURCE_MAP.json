@@ -1,0 +1,160 @@
+{
+  "record_type": "semantic-verification-source-map/1",
+  "status": "research-draft-source-map",
+  "repository": "Arcanada-one/knowledge-contract",
+  "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "scope": "Source and section mapping for the prepared Semantic Verification specification; not an evidence-index successor, task state or scientific acceptance record.",
+  "sources": [
+    {
+      "path": "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "aeb34ead5419b6165ca85b91bc3a38808be964c7",
+      "section": "Semantic Verification entry; F06 protocol boundary",
+      "use": "Existing target, required packet fields, six evidence methods and acceptance obligations.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/roadmap/FOUNDATIONS_RELEASE_PLAN.md"
+    },
+    {
+      "path": "roadmap/EXPERIMENTS.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "68829640a0f0649fb726a03a0bdce76d5fdb408f",
+      "section": "Sections 1, 4, 5",
+      "use": "Claim and intervention design; graph-root and Boolean-function denominator identities; resource and stopping discipline.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/roadmap/EXPERIMENTS.md"
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "6215a213f7d6c35c28348cdb6d3f56f7831172f3",
+      "section": "Sections 2–5",
+      "use": "Assessment axes, inference boundaries, counterexample premises, shared-oracle failures and evidence methods.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/papers/evidence-and-falsification/PAPER.md"
+    },
+    {
+      "path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "588c6b50cc969f941c9a01d8dabfb893bf5eb651",
+      "section": "STA-R001–R004; canonical dimensions",
+      "use": "Existing assessment and observation vocabularies; missing evidence and inapplicability distinction.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/engineering/specifications/status-model/SPECIFICATION.md"
+    },
+    {
+      "path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "bda78ccdf61ecb1cf64d26c5a368a7c2bc9efb73",
+      "section": "KOP-R013–R015",
+      "use": "Operation evidence bindings, explicit inheritance premise and supplied-versus-independent observations.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/engineering/specifications/contract-family/SPECIFICATION.md"
+    },
+    {
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "ae74a2b7dfb768a2447622680635540c4a658387",
+      "section": "Section 4, Proposition 2",
+      "use": "Existing global factorization criterion; Section7.2 applies it fibrewise as an elementary corollary.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/papers/geometry-of-semantic-representations/PAPER.md"
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "5735b0322327b1d8ea28cb6c13a78c702bb94b07",
+      "section": "Section 4.1, Proposition 4",
+      "use": "Coherence and factorization of full output-observation sets; related construction, not a new nondeterminism theorem.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/papers/constrained-transformations/PAPER.md"
+    },
+    {
+      "path": "papers/revision-and-governance/PAPER.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "c183b7f939811387ce7ae26c486d59c0b1f5a9ee",
+      "section": "Section 3 and Proposition 2",
+      "use": "Deterministic check transfer through complete preserved inputs, with checker soundness separate.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/papers/revision-and-governance/PAPER.md"
+    },
+    {
+      "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "d2ce70c2c8722e73473bfdd9b14043e459cc8b85",
+      "section": "Sections 6–9; SBR-R009–R011",
+      "use": "Same-world formal evaluation and distinct unassessed truth, fidelity and authority axes.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/engineering/specifications/semantic-bridge/SPECIFICATION.md"
+    },
+    {
+      "path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "42294151076e662129a8716ea13a29dc2f967ec9",
+      "section": "Root-subset enumeration and public replay scope",
+      "use": "The different 2^12 count for subsets of one frozen twelve-root graph, with its own retained evidence.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/engineering/studies/dependency-closure-and-package-delivery/STUDY.md"
+    },
+    {
+      "path": "engineering/studies/evidence-index.json",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "26a02bed609d901ed336faad9597f29dd47bfb32",
+      "section": "Existing study and claim records",
+      "use": "Reused evidence authority; no new indexed study claim is created by this specification.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/engineering/studies/evidence-index.json"
+    },
+    {
+      "path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+      "git_blob": "c85714c536f349f184a828716307b65c991574fe",
+      "section": "Requirement language",
+      "use": "Existing primary BCP14 attribution for normative language; no new external-source reading claimed.",
+      "url": "https://github.com/Arcanada-one/knowledge-contract/blob/a5b3618034256f14f389c2c7de8da409c7c5310c/reference/bibliography/BIBLIOGRAPHY.md"
+    }
+  ],
+  "contributions": [
+    {
+      "section": "3–6",
+      "kind": "engineering-methodology-proposal",
+      "basis": [
+        "roadmap/FOUNDATIONS_RELEASE_PLAN.md",
+        "papers/evidence-and-falsification/PAPER.md",
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "engineering/specifications/contract-family/SPECIFICATION.md"
+      ],
+      "limit": "Specifies preparation and assessment obligations; no general verifier or all-method implementation conformance is claimed."
+    },
+    {
+      "section": "7.1",
+      "kind": "reuse-of-existing-result",
+      "basis": [
+        "papers/geometry-of-semantic-representations/PAPER.md",
+        "papers/constrained-transformations/PAPER.md",
+        "papers/revision-and-governance/PAPER.md"
+      ],
+      "limit": "No new factorization theorem or independent proof validation is claimed."
+    },
+    {
+      "section": "7.2–7.4",
+      "kind": "elementary-corollary-and-calculated-finite-inventory",
+      "basis": [
+        "papers/geometry-of-semantic-representations/PAPER.md"
+      ],
+      "limit": "Maximal partial recovery is within the declared model; calculation and actual checker execution remain distinct. Real target bindings, trust, criterion and complete model domain need separate evidence."
+    },
+    {
+      "section": "8–9",
+      "kind": "proposed-conformance-and-compatibility-requirements",
+      "basis": [
+        "engineering/specifications/status-model/SPECIFICATION.md",
+        "engineering/specifications/contract-family/SPECIFICATION.md",
+        "papers/evidence-and-falsification/PAPER.md"
+      ],
+      "limit": "Acceptance cases are requirements for a claimed profile, not observations that all were executed."
+    }
+  ],
+  "reference_implementation": {
+    "path": "tools/check_semantic_verification_fibrewise.py",
+    "scope": "Finite supplied tuples and declared four-assessment values; diagnostic implementation and reference controls only.",
+    "requirements": [
+      "SVR-R018",
+      "SVR-R019"
+    ],
+    "entry_points": [
+      "fibrewise_transfer",
+      "run_checks"
+    ],
+    "whole_specification_conformance": "not_established"
+  },
+  "review_boundary": "Exact reviewed source, method and shared-controller limitations remain in separately scoped review records; this ledger grants no review status."
+}

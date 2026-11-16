@@ -1,19 +1,19 @@
 ---
 name: "revision-and-governance"
-title: "知识修订、版本身份与规范采纳"
+title: "知识修订：版本身份与规范采纳"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "区分内容、评估与规范采纳的不同身份，并明确修订和发布决策。"
+description: "分别标识内容、评估与规范采纳，并明确记录修订和发布决定。"
 translation_of: "papers/revision-and-governance/PAPER.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "c433591c6e87eb0791c4932c41c4f7538114e628"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "c183b7f939811387ce7ae26c486d59c0b1f5a9ee"
 translation_status: "author-draft"
 ---
 
-# 知识修订、版本身份与规范采纳 {#knowledge-revision-version-identity-and-the-adoption-of-norms}
+# 知识修订：版本身份与规范采纳 {#knowledge-revision-version-identity-and-the-adoption-of-norms}
 
 **作者：**Pavel Valentov · **出版版本：**1.1
 

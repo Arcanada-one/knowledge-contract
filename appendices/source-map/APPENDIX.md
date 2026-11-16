@@ -107,3 +107,9 @@ Cite a paper by its human-readable title, author, publication edition and immuta
 ## 7. Internal review and verification
 
 The [publication review](../../reviews/publication-integrity/REVIEW.md) records the actual scientific and evidence reviews, exact input identities, integration corrections, local checks and unperformed release checks. It distinguishes internal content acceptance from external peer review and from the separate repository, website and corpus-admission outcomes.
+
+## 8. Semantic Verification research draft
+
+[Semantic Verification](../../engineering/specifications/semantic-verification/SPECIFICATION.md) adds a scoped methodology for claim-bound verification packets. Its source basis is the existing corpus at [a5b3618034256f14f389c2c7de8da409c7c5310c](https://github.com/Arcanada-one/knowledge-contract/tree/a5b3618034256f14f389c2c7de8da409c7c5310c), including the assessment-transfer premise in Knowledge Revision and the factorization result in Meaning Geometry. The partial-recovery profile is an elementary application of that result, not a new theorem.
+
+The document remains a research draft. Its inclusion does not complete the covered verification work packages, create an implementation or alter the 29-claim evidence index. Retained source, review and study records keep their original identities and scopes.

@@ -1,19 +1,19 @@
 ---
 name: "revision-and-governance"
-title: "Пересмотр знаний, идентичность версий и принятие норм"
+title: "Редакции знаний: Идентичность версий и принятие норм"
 artifact: "scientific-paper"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "ru"
 license: "CC-BY-4.0"
-description: "Разграничение идентичности содержания, оценки и принятия норм, с явными решениями о пересмотре и публикации."
+description: "Раздельная идентичность содержания, оценки и нормативного принятия при явных решениях о редакции и публикации."
 translation_of: "papers/revision-and-governance/PAPER.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "c433591c6e87eb0791c4932c41c4f7538114e628"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "c183b7f939811387ce7ae26c486d59c0b1f5a9ee"
 translation_status: "author-draft"
 ---
 
-# Пересмотр знаний, идентичность версий и принятие норм {#knowledge-revision-version-identity-and-the-adoption-of-norms}
+# Редакции знаний: Идентичность версий и принятие норм {#knowledge-revision-version-identity-and-the-adoption-of-norms}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

@@ -2574,6 +2574,334 @@
       "verification_scope": "implementation-specific evidence required"
     },
     {
+      "id": "SBR-R001",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A conformance statement MUST identify this profile, its immutable implementation revision and the checks actually performed, without promoting the result to full Semantic Types or Knowledge Contract conformance.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SBR-R002",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "2. Operation boundary and responsibilities",
+      "text": "The operation MUST preserve the distinction between checked structure and supplied semantic or factual assumptions, as required by KOP-R015 and STA-R003.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R003",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "3. Source identity and complete rule units",
+      "text": "Every controlled rule unit in the supplied source MUST correspond to exactly one supplied reading with the same identifier and complete byte selector.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R004",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "3. Source identity and complete rule units",
+      "text": "The operation MUST reject a source digest mismatch, an out-of-range or nonintegral selector, a selector that cuts a UTF-8 character or physical rule line, a mismatched quote, duplicate unit identity, a missing unit, or an extra reading.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_complete_rule_unit_prevents_dropping_exception_with_valid_source_hash"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R005",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4. Typed packet and retained readings",
+      "text": "The complete packet-ingestion and analysis operation MUST reject duplicate member names at every depth, unknown record members, non-finite number tokens, invalid Unicode and type substitutions such as a Boolean used as a byte offset.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::PublicConsumerTests.test_strict_json_and_fresh_process_cli_preserve_negative_results",
+        "tools/test_semantic_bridge.py::PublicConsumerTests.test_bounded_packet_with_huge_integer_returns_structured_cli_error"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R006",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4.2 Reading records",
+      "text": "Bindings MUST cover all and only the local atoms used by the expression, and shared observation identities MUST remain correlated throughout evaluation.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FormalSemanticsTests.test_aliases_share_an_observation_and_disagreement_is_pointwise"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R007",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "4.2 Reading records",
+      "text": "An implementation MUST retain every supplied reading and its attribution and bindings; a required reading that cannot be supported blocks complete evaluation of the interpretation set.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_all_rule_units_are_retained_and_output_order_follows_source"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R008",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "5. Controlled expression language",
+      "text": "Parsing MUST consume the whole expression and preserve the grammar's operator scopes, without ignoring an unrecognized prefix, suffix or required construct.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FormalSemanticsTests.test_scope_precedence_and_explicit_unless_convention"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R009",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "6. Possible-world semantics and protected observations",
+      "text": "The operation MUST enumerate every admitted world, evaluate every retained reading under the same observation assignment and report disagreement using same-world comparison.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_three_atom_truth_functions_against_all_evidence_profiles",
+        "tools/test_semantic_bridge.py::FiniteSemanticOracleTests.test_all_two_atom_alternative_pairs_use_one_shared_world_grid"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R010",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "7. Results, uncertainty and losses",
+      "text": "An output MUST NOT represent `NOT_ASSESSED` as `pass`, equate computed `TRUE` with current permission, or issue an evaluated truth after any required reading fails validation.",
+      "automated_test_references": [
+        "tools/test_semantic_bridge.py::SourceAndReadingBoundaryTests.test_raw_note_data_does_not_become_a_rule_or_agent_permission"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SBR-R011",
+      "document": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "section": "9. Finite acceptance profile",
+      "text": "The suite MUST exercise these obligations and preserve adverse outcomes rather than changing the declared expected result to fit the implementation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R001",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "1. Purpose and conformance",
+      "text": "A conformance claim MUST identify the requirements, representation\nprofile, exact implementation revision and evaluated scope to which it applies.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R002",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "2. Claims, subjects and assessment dimensions",
+      "text": "Each packet MUST bind one identified claim or an explicitly\nenumerated claim set to immutable subject and criterion revisions, stated\nquantifiers, assumptions, scope and intended conclusions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R003",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "2. Claims, subjects and assessment dimensions",
+      "text": "A packet covering several properties MUST retain their individual\nresults, grounds and limits, and MUST declare any aggregate decision rule.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R004",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "3. Verification packet",
+      "text": "The packet MUST supply the observation bindings required by\nSTA-R002 and KOP-R013, and MUST distinguish supplied assertions from\nindependently observed conditions as required by STA-R003 and KOP-R015.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R005",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "3. Verification packet",
+      "text": "An unavailable mandatory observation MUST remain explicitly\nunresolved with a reason; its absence MUST NOT be converted to a positive\nassessment or an inapplicability exemption.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R006",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "3. Verification packet",
+      "text": "Every evidence reference used to support an assessment MUST\nidentify the relevant record, immutable content identity and location within\nthat record sufficiently to reconstruct the stated inference.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R007",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "4. Preparation and assessment procedure",
+      "text": "A packet MUST preserve the evaluated claim and procedure revisions,\nthe expected outcomes and all material deviations; a post-result change MUST\ncreate an identified successor rather than overwrite the earlier evaluation.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R008",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "4. Preparation and assessment procedure",
+      "text": "The oracle description MUST disclose shared inputs, algorithms,\nannotations and other dependencies that could make agreement repeat one error.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R009",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "4. Preparation and assessment procedure",
+      "text": "A claimed theorem counterexample MUST satisfy every stated\npremise and violate the conclusion; a premise-breaking case MUST be classified\nas a boundary case or implementation test.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R010",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "4. Preparation and assessment procedure",
+      "text": "When usefulness or successful admission is part of the claim,\nthe evaluation MUST include an applicable positive control as well as the\nrelevant adverse controls.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R011",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "4. Preparation and assessment procedure",
+      "text": "Original inputs, outputs, failed cases, comparator ties and\nunresolved observations MUST remain traceable when a correction or new run is\nreported.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R012",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "5. Evidence methods and their limits",
+      "text": "The packet MUST identify which of these methods actually supports\neach conclusion and MUST distinguish imported production code, a standalone\nreference model and a proposed unexecuted procedure.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R013",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "5. Evidence methods and their limits",
+      "text": "Empirical and comparative protocols MUST identify their units of\nobservation, sampling or case-selection rule, comparator, measures, uncertainty\ninterpretation, authorized resource bounds and stopping conditions.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R014",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "6. Finite verification passports",
+      "text": "A finite passport MUST record the carrier, generator, bounds and\ncardinality derivation, and MUST keep calculated, planned, attempted, completed,\nrefused and unexecuted counts distinguishable.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R015",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "6. Finite verification passports",
+      "text": "A finite passport MUST identify vacuous cases, duplicate or\ncorrelated configurations, and any quotienting or sampling used to reduce the\nspace.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R016",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "6. Finite verification passports",
+      "text": "A finite execution claim MUST report the actual stopping rule,\nresources and observed completion, and MUST NOT substitute the calculated\ncardinality for an executed-case count.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R017",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "7.2 Maximal partial recovery",
+      "text": "A transfer application MUST identify the fixed claim, assessment\nrule, situation domain and retained observations, and MUST establish the\npremise permitting inheritance required by KOP-R014.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R018",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "7.2 Maximal partial recovery",
+      "text": "A finite diagnostic claiming exact partial recovery MUST preserve\nall stated assessment distinctions, use every supplied situation in the\nqueried fibre, and refuse an ambiguous or unattained query.",
+      "automated_test_references": [
+        "tools/check_semantic_verification_fibrewise.py::run_checks"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SVR-R019",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "7.2 Maximal partial recovery",
+      "text": "A reported obstruction MUST retain at least two in-domain\nsituations with equal retained observations and different assessment values.",
+      "automated_test_references": [
+        "tools/check_semantic_verification_fibrewise.py::run_checks"
+      ],
+      "verification_scope": "finite regression examples; not a conformance certificate"
+    },
+    {
+      "id": "SVR-R020",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "7.3 Diagnostic results and application evidence",
+      "text": "The diagnostic result MUST remain distinct from the assessment\nvalue and from the evidence that the real target satisfies the model's\nbindings, trust assumptions and criterion.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R021",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "7.3 Diagnostic results and application evidence",
+      "text": "A real-use inheritance claim MUST establish the relevant\nsource-to-target observation equality and application conditions; a modeled\nfactorization alone MUST NOT be reported as a fresh observation of the target.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R022",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "8. Failure behavior and acceptance cases",
+      "text": "A representation profile MUST distinguish malformed input,\nunsupported representation, absent required evidence, resource exhaustion and\na substantive negative assessment, using the existing status dimensions\nwithout silently collapsing their meanings.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R023",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "8. Failure behavior and acceptance cases",
+      "text": "A result produced after an incomplete procedure MUST identify the\nunexecuted scope and stopping reason and MUST NOT claim exhaustive coverage.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R024",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "8. Failure behavior and acceptance cases",
+      "text": "A conformance packet MUST identify which acceptance cases below\nwere executed, their exact expected and observed outcomes, and any cases\noutside its claimed profile.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R025",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "9. Review, revisions and compatibility",
+      "text": "A review record MUST identify the exact subject bytes, review\nmethod, reviewer access and material shared dependencies; it MUST distinguish\nself-review, same-program rerun, separately structured review, independent\nreproduction and external peer review.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R026",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "9. Review, revisions and compatibility",
+      "text": "A changed claim, criterion, observation profile or material\napplication domain MUST receive an identified successor assessment, preserving\nthe earlier record and the scope it actually supported.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
+      "id": "SVR-R027",
+      "document": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "section": "9. Review, revisions and compatibility",
+      "text": "An adapter to a pre-existing observation or exchange profile MUST\ndeclare its field and vocabulary mapping, loss and unresolved obligations;\npublishing this specification MUST NOT be represented as deployment of that\nadapter.",
+      "automated_test_references": [],
+      "verification_scope": "implementation-specific evidence required"
+    },
+    {
       "id": "API-R001",
       "document": "appendices/api-integration/APPENDIX.md",
       "section": "1. Purpose",

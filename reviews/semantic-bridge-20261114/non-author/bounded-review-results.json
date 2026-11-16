@@ -1,0 +1,880 @@
+{
+  "reviewed_module_sha256": "0b049720da90a0b53f190bc720b78f9bbf4bf9940313c4c65cb699d2ae5a0d6a",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "probes": [
+    {
+      "name": "unicode_crlf_full_unit",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "f205581caec21f77f361f2df3cc0b5cd8e58c3eb3e297541ebdc2d2b949f0726",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+        "reading_ids": [
+          "r"
+        ],
+        "note_line_count": 1,
+        "observation_ids": [
+          "p",
+          "q"
+        ],
+        "observations": {
+          "p": {
+            "referent": "supplied condition",
+            "type": "boolean",
+            "state": "known",
+            "value": true
+          },
+          "q": {
+            "referent": "supplied condition",
+            "type": "boolean",
+            "state": "known",
+            "value": false
+          }
+        },
+        "world_assignments": [
+          {
+            "p": true,
+            "q": false
+          }
+        ],
+        "valuation_count": 1,
+        "readings": [
+          {
+            "id": "r",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {
+              "p": "p",
+              "q": "q"
+            },
+            "span": {
+              "start": 30,
+              "end": 48
+            },
+            "quote": "RULE r: p UNLESS q",
+            "ast": {
+              "op": "unless",
+              "left": {
+                "op": "atom",
+                "name": "p"
+              },
+              "right": {
+                "op": "atom",
+                "name": "q"
+              }
+            },
+            "table_bits": "1",
+            "possible_values": [
+              true
+            ]
+          }
+        ],
+        "possible_values": [
+          true
+        ],
+        "truth": "TRUE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "clipped_exception",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "9dcc452b2bd5270f747cb594d10dbd3369b934880367d73d7336eb05e5eb818a",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "whole_unit_required",
+            "message": "selector must bind the entire physical RULE line"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+        "reading_ids": [
+          "r"
+        ]
+      }
+    },
+    {
+      "name": "changed_source_digest",
+      "source_sha256": "ed9318ce2f7d664f7874e08aae52092469b7ea347ffe3a2c183243c3830e1cc2",
+      "packet_sha256": "f205581caec21f77f361f2df3cc0b5cd8e58c3eb3e297541ebdc2d2b949f0726",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "source_digest_mismatch",
+            "message": "packet is not bound to the supplied source bytes"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "ed9318ce2f7d664f7874e08aae52092469b7ea347ffe3a2c183243c3830e1cc2"
+      }
+    },
+    {
+      "name": "wrong_quote",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "55504356c432f63eddbdbed7d067c02575f3026066645d524c91edc8134cb15c",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "quote_mismatch",
+            "message": "quote must equal the complete selected UTF-8 RULE line"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+        "reading_ids": [
+          "r"
+        ]
+      }
+    },
+    {
+      "name": "boolean_byte_offset",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "8061869a29ac04de0f648737ec337671dad7f92615b82d30487032f89f6088e5",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "whole_unit_required",
+            "message": "selector must bind the entire physical RULE line"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+        "reading_ids": [
+          "r"
+        ]
+      }
+    },
+    {
+      "name": "unknown_reading_member",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "176df1095159020c4e32494dd66d29a99b4ccbb54d467f4cf5e98f14c2932dcd",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "invalid_fields",
+            "message": "reading has missing, extra or unsupported fields"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99"
+      }
+    },
+    {
+      "name": "unpaired_unicode_surrogate",
+      "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99",
+      "packet_sha256": "39b4a7eece77e08d438b80bba302ee378de00578f17f730f1ec21cea434f7423",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "invalid_utf8",
+            "message": "declared referent is not valid Unicode text"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "456984a023b864551228b94458d71221f44458cf69f3e2315e474ad13072fa99"
+      }
+    },
+    {
+      "name": "alternatives_same_world_source_order",
+      "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df",
+      "packet_sha256": "30756457cc6c4562d959c944514713188cad90f2f8c08a4b77321455b7e06de3",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df",
+        "reading_ids": [
+          "a",
+          "b"
+        ],
+        "note_line_count": 0,
+        "observation_ids": [
+          "x"
+        ],
+        "observations": {
+          "x": {
+            "referent": "supplied condition",
+            "type": "boolean",
+            "state": "unknown"
+          }
+        },
+        "world_assignments": [
+          {
+            "x": false
+          },
+          {
+            "x": true
+          }
+        ],
+        "valuation_count": 2,
+        "readings": [
+          {
+            "id": "a",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {
+              "p": "x"
+            },
+            "span": {
+              "start": 0,
+              "end": 9
+            },
+            "quote": "RULE a: p",
+            "ast": {
+              "op": "atom",
+              "name": "p"
+            },
+            "table_bits": "01",
+            "possible_values": [
+              false,
+              true
+            ]
+          },
+          {
+            "id": "b",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {
+              "p": "x"
+            },
+            "span": {
+              "start": 10,
+              "end": 23
+            },
+            "quote": "RULE b: NOT p",
+            "ast": {
+              "op": "not",
+              "arg": {
+                "op": "atom",
+                "name": "p"
+              }
+            },
+            "table_bits": "10",
+            "possible_values": [
+              false,
+              true
+            ]
+          }
+        ],
+        "possible_values": [
+          false,
+          true
+        ],
+        "truth": "UNDETERMINED",
+        "reading_disagreement": true
+      }
+    },
+    {
+      "name": "missing_rule_reading",
+      "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df",
+      "packet_sha256": "a83815079dd495976b41adfa938721ee74810ed41c5db80fde60529570ee961f",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "incomplete_rule_inventory",
+            "message": "every source RULE unit must be retained exactly once"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df"
+      }
+    },
+    {
+      "name": "duplicate_reading",
+      "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df",
+      "packet_sha256": "6bf488c2c9ca13254547ac1ecab995b77ae8213125b8cbf04456aa45cbc7ad5f",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "duplicate_reading",
+            "message": "reading identity is repeated"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df"
+      }
+    },
+    {
+      "name": "extra_reading",
+      "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df",
+      "packet_sha256": "2daaa853780567ab4b869a77fee33210603b725ab26c67029ae194c56b79f0e6",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "incomplete_rule_inventory",
+            "message": "every source RULE unit must be retained exactly once"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "ac09419cbf7f111488884b4b5505ab648acb38296351d9bc707f7b741323c6df"
+      }
+    },
+    {
+      "name": "duplicate_source_rule",
+      "source_sha256": "42a782d1d1f6af145b98fa156aaf49a44b57c8169bd12a3e1df7e3ab40e8f2cf",
+      "packet_sha256": "30756457cc6c4562d959c944514713188cad90f2f8c08a4b77321455b7e06de3",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "INVALID",
+        "errors": [
+          {
+            "code": "duplicate_rule_unit",
+            "message": "RULE identifiers must be unique"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED"
+      }
+    },
+    {
+      "name": "required_unsupported_alternative",
+      "source_sha256": "5b1c6954ce9aede6243ba3d0b3396d40e61608009630ae29f682807025c24596",
+      "packet_sha256": "7ed53b2720c7f86231e7749a11bce862ecad2bd700714d4d6e6cada7fed3ce72",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "UNSUPPORTED",
+        "errors": [
+          {
+            "code": "unsupported_token",
+            "message": "expression contains syntax outside the controlled grammar",
+            "reading_id": "b"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "5b1c6954ce9aede6243ba3d0b3396d40e61608009630ae29f682807025c24596",
+        "reading_ids": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "name": "correlation_unknown",
+      "source_sha256": "c27ee129cfb1d4496bda9bb1fd6edb6043171d096296f3a0749fa1988d668a08",
+      "packet_sha256": "18a3a633b5bc07c196fc1a0ebd7e0f5acc77a82e667877384d3308dd2ebe3325",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "c27ee129cfb1d4496bda9bb1fd6edb6043171d096296f3a0749fa1988d668a08",
+        "reading_ids": [
+          "alias"
+        ],
+        "note_line_count": 0,
+        "observation_ids": [
+          "x"
+        ],
+        "observations": {
+          "x": {
+            "referent": "supplied condition",
+            "type": "boolean",
+            "state": "unknown"
+          }
+        },
+        "world_assignments": [
+          {
+            "x": false
+          },
+          {
+            "x": true
+          }
+        ],
+        "valuation_count": 2,
+        "readings": [
+          {
+            "id": "alias",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {
+              "p": "x",
+              "q": "x"
+            },
+            "span": {
+              "start": 0,
+              "end": 23
+            },
+            "quote": "RULE alias: p AND NOT q",
+            "ast": {
+              "op": "and",
+              "left": {
+                "op": "atom",
+                "name": "p"
+              },
+              "right": {
+                "op": "not",
+                "arg": {
+                  "op": "atom",
+                  "name": "q"
+                }
+              }
+            },
+            "table_bits": "00",
+            "possible_values": [
+              false
+            ]
+          }
+        ],
+        "possible_values": [
+          false
+        ],
+        "truth": "FALSE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "correlation_withheld",
+      "source_sha256": "c27ee129cfb1d4496bda9bb1fd6edb6043171d096296f3a0749fa1988d668a08",
+      "packet_sha256": "50790c108d1c9613284a3b3bf56419c22aa5552e0ca550f2f972c850ac2e24a5",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "c27ee129cfb1d4496bda9bb1fd6edb6043171d096296f3a0749fa1988d668a08",
+        "reading_ids": [
+          "alias"
+        ],
+        "note_line_count": 0,
+        "observation_ids": [
+          "x"
+        ],
+        "observations": {
+          "x": {
+            "referent": "supplied condition",
+            "type": "boolean",
+            "state": "withheld"
+          }
+        },
+        "world_assignments": [
+          {
+            "x": false
+          },
+          {
+            "x": true
+          }
+        ],
+        "valuation_count": 2,
+        "readings": [
+          {
+            "id": "alias",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {
+              "p": "x",
+              "q": "x"
+            },
+            "span": {
+              "start": 0,
+              "end": 23
+            },
+            "quote": "RULE alias: p AND NOT q",
+            "ast": {
+              "op": "and",
+              "left": {
+                "op": "atom",
+                "name": "p"
+              },
+              "right": {
+                "op": "not",
+                "arg": {
+                  "op": "atom",
+                  "name": "q"
+                }
+              }
+            },
+            "table_bits": "00",
+            "possible_values": [
+              false
+            ]
+          }
+        ],
+        "possible_values": [
+          false
+        ],
+        "truth": "FALSE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "duplicate_root",
+      "raw_sha256": "d38245cfdb5d2239d67fe2a719312768b668a6928d8d97d04fbce83215e50b44",
+      "bytes": 13,
+      "error_code": "duplicate_json_member",
+      "status": "INVALID"
+    },
+    {
+      "name": "duplicate_nested_escaped",
+      "raw_sha256": "59a8b563dc0c6295c78decdf13b6f17954e1fcbad5d921d9159f1c7c5e6ce874",
+      "bytes": 52,
+      "error_code": "duplicate_json_member",
+      "status": "INVALID"
+    },
+    {
+      "name": "nonfinite_nan",
+      "raw_sha256": "159f99e03ec6dfb7edcad87bac613ac97a235493ad8b79b33cfa4002fb4477f8",
+      "bytes": 13,
+      "error_code": "nonfinite_json",
+      "status": "INVALID"
+    },
+    {
+      "name": "malformed_json",
+      "raw_sha256": "7e3eb5fc8da3096692ed52e9ff2a99e4f5bcb43640259131f8ab783a7723862a",
+      "bytes": 10,
+      "error_code": "malformed_json",
+      "status": "INVALID"
+    },
+    {
+      "name": "constant_empty_observation_domain",
+      "source_sha256": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+      "packet_sha256": "d92d010eaa3a664722c978dee44d64bae4ff736e4f931ff5a3680b1954644876",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+        "reading_ids": [
+          "r"
+        ],
+        "note_line_count": 0,
+        "observation_ids": [],
+        "observations": {},
+        "world_assignments": [
+          {}
+        ],
+        "valuation_count": 1,
+        "readings": [
+          {
+            "id": "r",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {},
+            "span": {
+              "start": 0,
+              "end": 12
+            },
+            "quote": "RULE r: TRUE",
+            "ast": {
+              "op": "const",
+              "value": true
+            },
+            "table_bits": "1",
+            "possible_values": [
+              true
+            ]
+          }
+        ],
+        "possible_values": [
+          true
+        ],
+        "truth": "TRUE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "packet_at_byte_limit",
+      "source_sha256": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+      "packet_sha256": "d92d010eaa3a664722c978dee44d64bae4ff736e4f931ff5a3680b1954644876",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "86042ee907501614c08d79cc7fa25982fce113b0ff293a1ce05ea375c58f1411",
+        "reading_ids": [
+          "r"
+        ],
+        "note_line_count": 0,
+        "observation_ids": [],
+        "observations": {},
+        "world_assignments": [
+          {}
+        ],
+        "valuation_count": 1,
+        "readings": [
+          {
+            "id": "r",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {},
+            "span": {
+              "start": 0,
+              "end": 12
+            },
+            "quote": "RULE r: TRUE",
+            "ast": {
+              "op": "const",
+              "value": true
+            },
+            "table_bits": "1",
+            "possible_values": [
+              true
+            ]
+          }
+        ],
+        "possible_values": [
+          true
+        ],
+        "truth": "TRUE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "packet_over_byte_limit",
+      "raw_sha256": "9e81c1060aef6a7f457208dbfdd0e4d2a06d58df601d0c9ce3d473a790c21337",
+      "bytes": 131073,
+      "error_code": "input_size_bound",
+      "status": "UNSUPPORTED"
+    },
+    {
+      "name": "source_at_byte_limit",
+      "source_sha256": "05bceaf7cd3d28c1e37ba8c68698e57c413ba6e5fad304684a7da9667ec71b99",
+      "packet_sha256": "b654f3c93572467556c170e98a2401bb2a48846dcebefbc9e422c284f279b49e",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "EVALUATED",
+        "errors": [],
+        "effects_authorized": false,
+        "source_binding": "VERIFIED",
+        "controlled_parsing": "VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED",
+        "source_sha256": "05bceaf7cd3d28c1e37ba8c68698e57c413ba6e5fad304684a7da9667ec71b99",
+        "reading_ids": [
+          "r"
+        ],
+        "note_line_count": 1,
+        "observation_ids": [],
+        "observations": {},
+        "world_assignments": [
+          {}
+        ],
+        "valuation_count": 1,
+        "readings": [
+          {
+            "id": "r",
+            "attribution": {
+              "agent": "review fixture",
+              "discourse": "hypothetical"
+            },
+            "bindings": {},
+            "span": {
+              "start": 65523,
+              "end": 65535
+            },
+            "quote": "RULE r: TRUE",
+            "ast": {
+              "op": "const",
+              "value": true
+            },
+            "table_bits": "1",
+            "possible_values": [
+              true
+            ]
+          }
+        ],
+        "possible_values": [
+          true
+        ],
+        "truth": "TRUE",
+        "reading_disagreement": false
+      }
+    },
+    {
+      "name": "source_over_byte_limit",
+      "source_sha256": "3041bbadf88549949edbf41871a9fd1a19dcbe3113a79a4c0834f3b2e8ee0b7b",
+      "packet_sha256": "b654f3c93572467556c170e98a2401bb2a48846dcebefbc9e422c284f279b49e",
+      "report": {
+        "schema": "kc-semantic-bridge-report/1",
+        "status": "UNSUPPORTED",
+        "errors": [
+          {
+            "code": "source_size_bound",
+            "message": "source exceeds the declared byte bound"
+          }
+        ],
+        "effects_authorized": false,
+        "source_binding": "NOT_VERIFIED",
+        "controlled_parsing": "NOT_VERIFIED",
+        "source_semantic_fidelity": "NOT_ASSESSED",
+        "attribution_authenticity": "NOT_ASSESSED",
+        "real_world_truth": "NOT_ASSESSED",
+        "current_authority": "NOT_ASSESSED"
+      }
+    },
+    {
+      "name": "depth_at_16",
+      "expression_sha256": "ce2ecd0bd8463956ab9e1589fa328fb3c8d963b7e5faaa71a828f65a194bb531",
+      "compiled": true
+    },
+    {
+      "name": "depth_over_16",
+      "expression_sha256": "ed9096520c2502f9ceee46b7f4a9c88f34d6e00167b4857a16f318725f20478a",
+      "error_code": "depth_bound"
+    },
+    {
+      "name": "nodes_at_128",
+      "expression_sha256": "8f3f11ff7023c80d16ff738abd0954972517de2458fa41ed4ad602d6072208b2",
+      "compiled": true
+    },
+    {
+      "name": "nodes_over_128",
+      "expression_sha256": "654136ce36cd3c9bd7027b8e4a8f7f5b83ca0dfdde05c40671bde98808b05079",
+      "error_code": "node_bound"
+    },
+    {
+      "name": "chars_at_4096",
+      "expression_sha256": "d20bebbcd4f2f8b9a8a11ab8185260583afad85ed7f9343200105c105f4964af",
+      "compiled": true
+    },
+    {
+      "name": "chars_over_4096",
+      "expression_sha256": "96fda3ba98d5762dd44f1800300578e8aa3565e792ad461ca952b5d9c2f03e08",
+      "error_code": "expression_bound"
+    }
+  ],
+  "probe_count": 30,
+  "outcome": "PASS",
+  "scope": "bounded separately authored input/status checks; no exhaustive arithmetic or external scientific claim"
+}

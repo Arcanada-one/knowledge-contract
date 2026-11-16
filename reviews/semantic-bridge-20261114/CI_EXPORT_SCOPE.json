@@ -1,0 +1,27 @@
+{
+  "schema": "kc-semantic-bridge-export-boundary-readback/1",
+  "recorded_at_utc": "2026-11-14T19:28:54.617054+00:00",
+  "failed_job": "https://github.com/Arcanada-one/knowledge-contract/actions/runs/43631778824/job/132559760645",
+  "initial_observation": "91 exporter tests ran; one failed because the reader catalogue grew from31 to33. The test classified every non-research-draft entry as part of the29-path export baseline.",
+  "repair": "The test now pins the29 paths from the exact pre-increment source catalogue at d5e684e201f6d41498c4fbd8c2a3497eed2bb30e. It requires their continued presence and acceptance; every other current catalogue path must remain outside SCOPE_PATHS and refuse validation regardless of status label.",
+  "test_source_sha256": "3c25ee1bfb6f2c386da2e61cdcd64f9b84bb7bf145999ed70af9400fa282957b",
+  "exporter_sha256": "74c9e97a5800a9b9007abf5c50702bd35e49c93c843fdff3294c9f071314e2ef",
+  "exporter_unchanged_from_base": true,
+  "allowlist_or_decision_changes": false,
+  "actual_targeted_run": {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tools.test_export_corpus.DecisionRouteTests.test_the_29_edition_documents_are_in_scope_and_nothing_near_them_is",
+      "tools.test_export_corpus.DecisionRouteTests.test_the_fourteen_english_paper_entry_pages_are_in_scope_and_nothing_near_them_is",
+      "-v"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_the_29_edition_documents_are_in_scope_and_nothing_near_them_is (tools.test_export_corpus.DecisionRouteTests.test_the_29_edition_documents_are_in_scope_and_nothing_near_them_is) ... ok\ntest_the_fourteen_english_paper_entry_pages_are_in_scope_and_nothing_near_them_is (tools.test_export_corpus.DecisionRouteTests.test_the_fourteen_english_paper_entry_pages_are_in_scope_and_nothing_near_them_is) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.004s\n\nOK\n",
+    "tests": 2
+  },
+  "scope": "Path-scope test correction only; no new publication decision, allowlist entry or export is performed."
+}

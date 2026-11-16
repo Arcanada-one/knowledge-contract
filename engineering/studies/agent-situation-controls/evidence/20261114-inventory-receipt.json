@@ -1,0 +1,137 @@
+{
+  "actual_independence": "NOT_VERIFIED",
+  "archive": {
+    "path": "development/inventory-baseline/check_agent_situation.py",
+    "sha256": "b77eda085d9335f585a227fdfb4dc99d1abcca6590f52318d01c97922b324fdd"
+  },
+  "baseline_commit": "535c557a1c6bf90e156a17ca6d340a5c6dcd0a1f",
+  "counts": {
+    "declared_controls": 18,
+    "executed_controls": 21,
+    "expected_fields_checked": 87,
+    "failed_controls": 0,
+    "mutation_controls": 3,
+    "mutations_detected": 3,
+    "passed_controls": 21,
+    "review_added_controls": 3
+  },
+  "current_sources": {
+    "checks/check_agent_situation.py": {
+      "bytes": 20874,
+      "sha256": "8028976d977e4933a4bf7297be2777b729177926cd0a961a3a40f935deb79bb9"
+    },
+    "checks/expected.json": {
+      "bytes": 6772,
+      "sha256": "97dc4a0bd07d826e2d208514570c519dd3c015f1883a933b3cf91451b7ccfb28"
+    },
+    "checks/test_inventory.py": {
+      "bytes": 3174,
+      "sha256": "57d8353b9e9d03dce433a6f85ef3f0980a0ba105c487273f8855f2268d0f3610"
+    },
+    "situation.py": {
+      "bytes": 14501,
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+    }
+  },
+  "historical_evidence_unchanged": {
+    "MANIFEST.json": "ba34fedd3c2be26d22f8b6a39e7e350a1d1fdfacbad164e7993d3d3b7241a548",
+    "development/inventory-baseline/origin.json": "480a390cd1d4448b52b33f037e9914eace7254c6add484f1913c489347a63acb",
+    "evidence/execution.txt": "4e7b2d00cce486c7b6aa476c3ce0a6db9b99fd910049077cb7f02396e2bc7f76",
+    "evidence/finite-run.json": "371e895c2e9b2cdca5ead55324e8792524ff1cee1b77f60cb7baa95248a127f7"
+  },
+  "integration_note": "The original origin record was byte-identical at execution and is archived byte-for-byte under development/inventory-baseline/origin.json. The current evidence/origin.json extends its unchanged original three entries with successor records to preserve full publication inventory coverage.",
+  "inventory": {
+    "complete": true,
+    "declared_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "executed_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ]
+  },
+  "kind": "same-controller-inventory-repair-receipt",
+  "limits": [
+    "finite authored evidence only",
+    "guard tests and repair share an author/controller",
+    "three disabled guards are not exhaustive mutation coverage",
+    "no LLM/network/external effects or empirical performance evaluation"
+  ],
+  "reviewer": "/root/engineering_protocol",
+  "runner_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/tmp/kc-situation-inventory-successor-i_r0jsuu/study/checks/check_agent_situation.py",
+    "--evidence",
+    "/tmp/kc-situation-inventory-successor-i_r0jsuu/study/evidence/finite-run.json"
+  ],
+  "runner_exit_code": 0,
+  "runtime_model_changed": false,
+  "successor_evidence": {
+    "evidence/20261114-inventory-execution.txt": {
+      "bytes": 372,
+      "sha256": "0f0f9ee97b6539a57d5475a012b4ff27c9496d09333fb8254f03c97c2c5d36ee"
+    },
+    "evidence/20261114-inventory-run.json": {
+      "bytes": 149506,
+      "sha256": "1cde8ee28e44816d0e72253bc2a28f11d1bc5fb79e056221996211924c44d182"
+    },
+    "evidence/20261114-inventory-tests.txt": {
+      "bytes": 1263,
+      "sha256": "d4e023052afaf5ccbcf042cfee405789e852d8204259bd6cba22378eded2d668"
+    }
+  },
+  "unit_command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "engineering/studies/agent-situation-controls/checks",
+    "-p",
+    "test_inventory.py",
+    "-v"
+  ],
+  "unit_controls_executed": 9,
+  "unit_exit_code": 0
+}

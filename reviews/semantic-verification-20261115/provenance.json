@@ -1,0 +1,244 @@
+{
+  "record_kind": "scoped finite-reference integration provenance",
+  "version": 1,
+  "prepared_utc": "2026-11-15T11:43:37.848603+00:00",
+  "repository": "Arcanada-one/knowledge-contract",
+  "repository_baseline_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "status": "locally executed and internally reviewed reference preparation; not an accepted study or whole-specification conformance assessment",
+  "hourly_candidate": {
+    "original_bytes_recovered": false,
+    "reported_directory": "/mnt/data/kc_f05_readonly_candidate",
+    "observed_limit": "/mnt/data absent in preparation runtime",
+    "disposition": "new candidate transparently reconstructed from reported claim and pinned existing criterion; matching counts do not authenticate missing artifacts"
+  },
+  "mathematical_source": {
+    "author": "Pavel Valentov",
+    "title": "Meaning Geometry: Representation Spaces, Distinguishability, and the Limits of Similarity",
+    "edition": "1.1",
+    "status": "research-draft",
+    "repository": "Arcanada-one/knowledge-contract",
+    "commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+    "path": "papers/geometry-of-semantic-representations/PAPER.md",
+    "blob": "ae74a2b7dfb768a2447622680635540c4a658387",
+    "section": "Proposition 2",
+    "use": "existing factorization criterion; elementary partial-domain corollary, no new theorem claim"
+  },
+  "checker_successor": {
+    "path": "tools/check_semantic_verification_fibrewise.py",
+    "sha256": "6f591ea3c179f3fddc687f0b8adb358d79c4d74e18bd2760c113d3d73d448188",
+    "predecessor_sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+    "change": "module docstring only: repository-relative command, provenance and bounded reference role",
+    "non_docstring_source_bytes_identical": true,
+    "non_docstring_bytes_sha256": "56c261c5b080ff91a8a38daa5bad0f835c3b2b2758d8f1f544b1ba725770808b"
+  },
+  "reviewer_successor": {
+    "path": "reviews/semantic-verification-20261115/review_fibrewise_reference.py",
+    "sha256": "8926cb9bb54dd53f3bd371a2ba48c3897b7e42c1c09ca87bbb798479f6088e1b",
+    "predecessor_decoded_sha256": "e526e91d917e454b10e4b530abcc28379a9db31182cfc507e7192addcc9de3ec",
+    "change": "portable paths and source pin; stdout-only ordinary replay with nested entrypoint receipt",
+    "all_function_definitions_AST_identical": true,
+    "unchanged_function_names": [
+      "digest",
+      "require",
+      "require_decision",
+      "reviewer_oracle"
+    ],
+    "oracle_relation": "separately structured graph-union oracle; does not call candidate oracle or run_checks for expected outcomes"
+  },
+  "replay": {
+    "working_directory": "repository root",
+    "commands": [
+      [
+        "python3",
+        "-B",
+        "tools/check_semantic_verification_fibrewise.py"
+      ],
+      [
+        "python3",
+        "-B",
+        "reviews/semantic-verification-20261115/review_fibrewise_reference.py"
+      ]
+    ],
+    "receipt_policy": "emit new JSON to stdout; do not overwrite retained evidence; actual runtime absolute paths in raw records are historical environment observations"
+  },
+  "observed_results": {
+    "reference_exit_code": 0,
+    "profiles": 4096,
+    "profile_categories": {
+      "global": 232,
+      "partial_only": 2496,
+      "none": 1368
+    },
+    "partial_map_candidates": 102400,
+    "queries": 8192,
+    "query_categories": {
+      "determined": 2952,
+      "ambiguous": 4728,
+      "unattained": 512
+    },
+    "invalid_input_refusals": 13,
+    "first_value_mutant": "killed",
+    "optimized_python_exit_code": 2,
+    "same_controller_algorithm_review": "PASS for the declared mathematical corollary and pinned finite reference checker only"
+  },
+  "independence": {
+    "checker_author": "f05_partial agent context",
+    "algorithm_reviewer": "ci_acceptance agent context",
+    "shared_controller": true,
+    "shared_filesystem": true,
+    "shared_stipulated_model_and_status_alphabet": true,
+    "protected_oracle": false,
+    "external_scientific_acceptance": false
+  },
+  "scope_limits": [
+    "The checker implements only the finite fibrewise reference profile, not the verification-packet specification as a whole",
+    "No canonical indexed study or Meaning Controls completion is claimed",
+    "No real-world carrier completeness, source authenticity, actual consumption, current authority, native KC2 admission or empirical success rate is established",
+    "The specification text review is separately scoped and bound to its own subject hashes",
+    "Publication checks, catalogue/register integration, external review and remote delivery remain distinct operations"
+  ],
+  "original_artifacts": [
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/F05-FIBREWISE-TRANSFER-CANDIDATE.md",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "7973c754308447d7f5d45cf8d1c12df6ab963f991ab031bbd966daa050b20dc2",
+      "decoded_original_sha256": "7973c754308447d7f5d45cf8d1c12df6ab963f991ab031bbd966daa050b20dc2",
+      "decoded_original_bytes": 12542
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/check_fibrewise_transfer.py",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+      "decoded_original_sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+      "decoded_original_bytes": 14686
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/fibrewise-transfer-result.json",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "494ea5414d1adaf4cec64691a430e168da82dee9ddeaf650ecac11be0c5cdd39",
+      "decoded_original_sha256": "494ea5414d1adaf4cec64691a430e168da82dee9ddeaf650ecac11be0c5cdd39",
+      "decoded_original_bytes": 3441
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/source-provenance.json",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "b4d78d59a2de600371420dae6aa0f3ace30a0dadc3b00b66d5a46bdd1bd58624",
+      "decoded_original_sha256": "b4d78d59a2de600371420dae6aa0f3ace30a0dadc3b00b66d5a46bdd1bd58624",
+      "decoded_original_bytes": 3474
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/review_f05_partial.py.gz",
+      "encoding": "gzip of exact original bytes",
+      "stored_sha256": "11e97773cbce9e634052bcfaa29bde228bec161fad1559f8425d962ec18c7a44",
+      "decoded_original_sha256": "e526e91d917e454b10e4b530abcc28379a9db31182cfc507e7192addcc9de3ec",
+      "decoded_original_bytes": 13257
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/internal_review.json",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "2aebc8f50c2d039aedf818ffeafd924b654ab3e85270c9ba164899c37b2e7d1e",
+      "decoded_original_sha256": "2aebc8f50c2d039aedf818ffeafd924b654ab3e85270c9ba164899c37b2e7d1e",
+      "decoded_original_bytes": 6080
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/candidate_entrypoint_rerun.json",
+      "encoding": "exact original UTF-8 bytes",
+      "stored_sha256": "2229bd397d6b72c546ead3d1b4f0c8a5b52f28e903bc22d20511b28930fd80d0",
+      "decoded_original_sha256": "2229bd397d6b72c546ead3d1b4f0c8a5b52f28e903bc22d20511b28930fd80d0",
+      "decoded_original_bytes": 3507
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/check_semantic_verification_fibrewise.py",
+      "sha256": "6f591ea3c179f3fddc687f0b8adb358d79c4d74e18bd2760c113d3d73d448188",
+      "bytes": 14929
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/REVIEW.md",
+      "sha256": "aa811d30a63921b12bd8d8379d280a9d768b089863b871f251b2172bd0c535e9",
+      "bytes": 8742
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/canonical-internal-review.json",
+      "sha256": "de2209ae316e613146e0400f7e09fc09f51b3708101bbc52c55044b1bd4e7cc6",
+      "bytes": 9955
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/final-reference-result.json",
+      "sha256": "389bf6a34e9460ad986970d358aa777db6112ff3ecb5e1d443b70424ff32fd05",
+      "bytes": 3445
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/final-reference-run.json",
+      "sha256": "bb1249986176c3c9a2ff6cffce733abd7069fea7e8de84aafdb390bf968d4516",
+      "bytes": 936
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/F05-FIBREWISE-TRANSFER-CANDIDATE.md",
+      "sha256": "7973c754308447d7f5d45cf8d1c12df6ab963f991ab031bbd966daa050b20dc2",
+      "bytes": 12542
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/candidate_entrypoint_rerun.json",
+      "sha256": "2229bd397d6b72c546ead3d1b4f0c8a5b52f28e903bc22d20511b28930fd80d0",
+      "bytes": 3507
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/check_fibrewise_transfer.py",
+      "sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b",
+      "bytes": 14686
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/fibrewise-transfer-result.json",
+      "sha256": "494ea5414d1adaf4cec64691a430e168da82dee9ddeaf650ecac11be0c5cdd39",
+      "bytes": 3441
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/internal_review.json",
+      "sha256": "2aebc8f50c2d039aedf818ffeafd924b654ab3e85270c9ba164899c37b2e7d1e",
+      "bytes": 6080
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/review_f05_partial.py.gz",
+      "sha256": "11e97773cbce9e634052bcfaa29bde228bec161fad1559f8425d962ec18c7a44",
+      "bytes": 4718
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/originals/source-provenance.json",
+      "sha256": "b4d78d59a2de600371420dae6aa0f3ace30a0dadc3b00b66d5a46bdd1bd58624",
+      "bytes": 3474
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/spec-integration-readback.json",
+      "sha256": "7c71e0482cd2892c3894abf072e5c0bc0cd74f33e63cb09d132c61a8416e2bf7",
+      "bytes": 3174
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/spec-scoped-internal-review-successor.json",
+      "sha256": "7e9ffe89796bb86fdaa2419c2848ad7a02d465c2b54e169a9b3f351e9fe528af",
+      "bytes": 2969
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/evidence/spec-scoped-internal-review.json",
+      "sha256": "806a73a8440c34ba7961d9bcbbcdbbfae454331ed4c957328526557ee6720c5a",
+      "bytes": 4552
+    },
+    {
+      "path": "reviews/semantic-verification-20261115/review_fibrewise_reference.py",
+      "sha256": "8926cb9bb54dd53f3bd371a2ba48c3897b7e42c1c09ca87bbb798479f6088e1b",
+      "bytes": 13703
+    }
+  ],
+  "manifest_hash_boundary": "This manifest excludes its own digest. Its exact digest is recorded by the delivery record or repository identity.",
+  "previous_manifest_sha256": "d063e0ebe5f110081d786eb276f1f9e4213c7c9eed8aa969abd68d9a5963163d",
+  "specification_integration_readback": {
+    "receipt_path": "reviews/semantic-verification-20261115/evidence/spec-integration-readback.json",
+    "receipt_sha256": "7c71e0482cd2892c3894abf072e5c0bc0cd74f33e63cb09d132c61a8416e2bf7",
+    "integrated_spec_sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+    "predecessor_spec_sha256": "44106256dac25956c0bb49436644944481eee442eb579c2c8e6883a90d662eef",
+    "sole_change": "Section10 local source-inventory link",
+    "sections_7_and_8_byte_identical": true,
+    "acceptance_scope": "Exact integration delta plus unchanged previously reviewed portions; not whole-specification acceptance"
+  }
+}

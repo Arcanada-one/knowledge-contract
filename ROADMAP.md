@@ -2,7 +2,7 @@
 title: "Knowledge Roadmap: Publications, Research and Practical Validation"
 sources: none
 status: repository-editorial-proposal
-updated: 2026-11-08
+updated: 2026-11-14
 ---
 
 # Knowledge Roadmap: Publications, Research and Practical Validation
@@ -13,9 +13,11 @@ updated: 2026-11-08
 
 This is the complete reading map of the current agreed publication and research programme, not a claim that every future question has been anticipated. It covers the English corpus, readable naming, Russian and Simplified Chinese editions, primary-source assessment, the foundations sequence, evidence recovery and practical validation. Muneral remains the execution authority; these files define outputs and acceptance criteria, not a second task system.
 
-The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The current source `main` at `0892eeb1` contains 31 documents, including the Meaning Geometry research draft; the historical 30-document baseline remains pinned. Meaning Bridge also remains `research-draft`. Site PR33 merged `f4b0eab1` and deployed the 31-document reader; neither site delivery nor source merge proves index admission.
+The source baseline is [a0450428](https://github.com/Arcanada-one/knowledge-contract/tree/a0450428704fcd41b411203f2fc88c06c779610b), publication edition 1.1. The historical accepted catalogue at this source baseline contains 30 documents: nine papers, eleven specifications, six studies, a glossary, a bibliography and two appendices. The source snapshot checked on 14 November, [6a6f202f](https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596), contains 31 documents, including the Meaning Geometry research draft already integrated at `0892eeb1`; the historical 30-document baseline remains pinned. Meaning Bridge also remains `research-draft`. Site PR33 merged `f4b0eab1` and deployed the 31-document reader; neither site delivery nor source merge proves index admission. The two additional documents proposed in PR105 are outside this pinned inventory; a later integration requires a new source snapshot and denominator.
 
 **Current direction (11 November 2026):** the operator restored engineering capacity. [Active Work](roadmap/EXECUTION_STATUS.md) governs autonomous scientific and engineering activity under existing review, CI, access and deployment gates. New paid experiments or widened permissions still need distinct authorization.
+
+**Priority update (14 November 2026):** the operator prioritizes knowledge algebra, meaning geometry, meaning algebra, meaning theory and agent state. The [five-direction plan](roadmap/PRIORITIES_20261114.md) links each to existing work, executable increments and finite completion criteria. This explicitly authorizes coordinated parallel development instead of the earlier default manuscript sequence.
 
 ## 2. A finite release and an open research programme
 
@@ -27,13 +29,13 @@ Default foundations preparation proceeds through Meaning Bridge, Semantic Bridge
 
 | Workstream | Current artifact boundary | Next output | Acceptance boundary |
 | --- | --- | --- | --- |
-| Clear Names | This editorial proposal | Short names plus explanatory subtitles for all 31 proposed documents in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
-| Russian and Chinese Editions | PR76 at `9723b478` has 25 author-draft bodies per language; four overlap main; six missing per language from the current 31 | Author the remaining 12 bodies, then assess all 62 locale slots; count historical 30 separately; inventory ancillary public text | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review |
+| Clear Names | The 31-document source snapshot at `6a6f202f` | Short names plus explanatory subtitles in English, Russian and Chinese; coherent source headers and catalogue | Unique accurate names, stable paths, explicit old-title mapping, unchanged scientific bodies |
+| Russian and Chinese Editions | Source `6a6f202f` contains 26 body files per language, 52 of 62 slots; five are absent per language. The sidecar contains eight entries with recorded agent reviews, a separate count. | Author the remaining ten body files, then assess all 62 slots; preserve the historical PR76 checkpoint and count ancillary public text separately | Exact-source bindings, full sections, formulas, numbers, negations, tables and links; separately scoped fidelity review; file presence is not native review or website delivery |
 | Source Audit | Historical bibliography screening is not full primary reading | Read sources supporting actual current claims and document novelty boundaries | Exact cited basis, explicit unavailable material, no borrowed claim presented as original |
-| Semantic Bridge | Separate specification not yet complete | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
+| [Semantic Bridge](engineering/specifications/semantic-bridge/SPECIFICATION.md) | Bounded engineering draft in source main; broader review and runtime evidence remain separate | Define supported representations, protected observations, alternatives, loss and refusal | Bounded domains and interpretable positive/adverse cases |
 | Transformation Algebra | Existing conditional paper, incomplete planned extension | Extend that same paper with typed profiles and countermodels | Precise assumptions and reconstruction limits; no parallel competing article |
 | Semantic Geometry | Research draft in source main `0892eeb1` and deployed site `f4b0eab1`; index admission remains separate | Maintain bounded representations, distance/similarity, context and failures | No inference of truth, equivalence or authority from proximity alone |
-| Semantic Verification | Separate specification planned | Link claims, assumptions, exact versions, methods and observed outcomes | Proof, model check, implementation test and empirical comparison remain separate |
+| [Semantic Verification](engineering/specifications/semantic-verification/SPECIFICATION.md) | Research draft prepared; whole-specification review pending | Link claims, assumptions, exact versions, methods and observed outcomes | Proof, model check, implementation test and empirical comparison remain separate |
 | Meaning Controls | New study planned | Derive examples now; report runs only when actually executed | Rights-cleared inputs, declared oracles, denominators, failures and limitations |
 | Open Review | Existing contribution rules | Clear public guidance for humans and agents to submit version-specific objections | A reproducible objection can change or retract a claim; agreement count is not evidence |
 
@@ -53,7 +55,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Workgraph Reconciliation](roadmap/TASKS.md#rm-04) | Previously reported bindings are not a fresh Muneral reconciliation. |
 | [Meaning Bridge](roadmap/TASKS.md#rm-05) | The complete foundations introduction is in the catalogue with research-draft status. |
 | [Source Audit](roadmap/TASKS.md#rm-06) | PR67 contains historical bibliography triage; triage is not full reading of all primary sources. |
-| [Semantic Bridge](roadmap/TASKS.md#rm-07) | A separate bounded conversion specification remains planned. |
+| [Semantic Bridge](roadmap/TASKS.md#rm-07) | The bounded [Semantic Bridge](engineering/specifications/semantic-bridge/SPECIFICATION.md) engineering draft is in source main; broader review and runtime evidence remain separate. |
 | [Transformation Algebra](roadmap/TASKS.md#rm-08) | The transformation paper has conditional results; the planned algebra extension is not thereby complete. |
 | [Meaning Cases](roadmap/TASKS.md#rm-09) | Analytic and synthetic examples exist; a new independent benchmark is not established. |
 | [Falsification Register](roadmap/TASKS.md#rm-10) | Scoped reviews and counterexamples exist; no complete project-wide falsification register is claimed. |
@@ -64,7 +66,7 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 | [Theory Traceability](roadmap/TASKS.md#rm-15) | The published claim-evidence index is bounded; a complete theory-to-live-code matrix remains open. |
 | [Runtime Conformance](roadmap/TASKS.md#rm-16) | No all-system production conformance verdict; bounded verification may proceed only under the matching task, current authority and actual execution gates. |
 | [Extraction Fidelity](roadmap/TASKS.md#rm-17) | The transcription study does not measure unrestricted semantic extraction accuracy. |
-| [Agent Application](roadmap/TASKS.md#rm-18) | Advanced retrieval work is separate from the baseline exact-consumer pilot. |
+| [Agent Application](roadmap/TASKS.md#rm-18) | Agent Situation and Context Controls are research-draft artifacts in an Agent Application subprogramme. Finite checks, the draft engineering design, the planned LLM trial and production use have separate evidence boundaries. Advanced retrieval work remains separate from the baseline exact-consumer pilot. |
 | [Current Authority](roadmap/TASKS.md#rm-19) | Policies and candidate controls are not proof of a live authorization boundary. |
 | [Practical Utility](roadmap/TASKS.md#rm-20) | Six bounded studies are published; no general superiority or universal savings follows. |
 | [Cross-Language Meaning](roadmap/TASKS.md#rm-21) | Body translation drafts and a semantic cross-language benchmark are distinct deliverables. |
@@ -76,6 +78,12 @@ The [workstream register](roadmap/workstreams.json) names all 25 existing direct
 <!-- /WORKSTREAM_TABLE -->
 
 A required edge means that the reviewed prerequisite output is needed for dependent acceptance or execution. It does not prohibit exploratory analysis. An advisory link informs work but never becomes a mandatory release gate. Output dependencies must be read by their names, not guessed from a numerical label.
+
+### Agent Situation within Agent Application
+
+The [Agent Situation](papers/agent-situation/PAPER.md) research draft examines initialization, changes of situation and bounded context. The separate [Context Controls](engineering/studies/agent-situation-controls/STUDY.md) research-draft study reports only the finite checks actually executed in its named scope. The [draft engineering design](roadmap/agent-situation/ENGINEERING.md) remains nonnormative, and the [LLM experiment plan](roadmap/agent-situation/EXPERIMENT.md) remains an unexecuted protocol until an authorized run produces its own evidence. The current candidate reading inventory contains 36 works, also including Semantic Bridge, Source Rule Checks and the Semantic Verification research-draft specification; the earlier pinned counts above retain their historical scope.
+
+This subprogramme belongs to Agent Application and does not add a new roadmap identity. It does not replace that workstream's required outputs or declare its acceptance complete. Its exploratory finite checks do not impose new prerequisites on the baseline exact-consumer pilot. The research question is how an agent can expose the available, missing, changing and task-relevant parts of its situation without treating a compact context as complete knowledge or authority.
 
 ## 5. Practical validation under current authorization and evidence gates
 

@@ -1,0 +1,111 @@
+{
+  "actual_independence": "NOT_VERIFIED",
+  "counts": {
+    "declared_controls": 18,
+    "executed_controls": 21,
+    "expected_fields_checked": 87,
+    "failed_controls": 0,
+    "mutation_controls": 3,
+    "mutations_detected": 3,
+    "passed_controls": 21,
+    "review_added_controls": 3
+  },
+  "files": [
+    {
+      "bytes": 14501,
+      "git_blob_sha1": "2b103e39c01c81d674f58ddb70146b1d3cc7dfd3",
+      "path": "situation.py",
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+    },
+    {
+      "bytes": 6356,
+      "git_blob_sha1": "6274a305c7fe02ebc82fe1dfb1e867d12dd14d03",
+      "path": "README.md",
+      "sha256": "2093042114a29b6e41c52fc27f65b33b6a2ae3a4e132232052bcf10bf6b3d968"
+    },
+    {
+      "bytes": 4574,
+      "git_blob_sha1": "4e2a99151af0881e58e57d2aaad997d7756055a0",
+      "path": "checks/DESIGN_INPUT.md",
+      "sha256": "dc5187687398441ffa0d0011234e19471d94c84c1859683d5bb423aabba9403e"
+    },
+    {
+      "bytes": 18175,
+      "git_blob_sha1": "dde64d9bdb71b9e9674d32e83951777a545b8a04",
+      "path": "checks/check_agent_situation.py",
+      "sha256": "b77eda085d9335f585a227fdfb4dc99d1abcca6590f52318d01c97922b324fdd"
+    },
+    {
+      "bytes": 6772,
+      "git_blob_sha1": "82c6c9bde4f18344a715055d8ec56ff4bf008929",
+      "path": "checks/expected.json",
+      "sha256": "97dc4a0bd07d826e2d208514570c519dd3c015f1883a933b3cf91451b7ccfb28"
+    },
+    {
+      "bytes": 144961,
+      "git_blob_sha1": "faa6673e6ec855e03356cd81ca957c2ea2e8c2aa",
+      "path": "evidence/finite-run.json",
+      "sha256": "371e895c2e9b2cdca5ead55324e8792524ff1cee1b77f60cb7baa95248a127f7"
+    },
+    {
+      "bytes": 400,
+      "git_blob_sha1": "15a73ddb3d04feb69b54860eab10d2d158df7b9e",
+      "path": "evidence/execution.txt",
+      "sha256": "4e7b2d00cce486c7b6aa476c3ce0a6db9b99fd910049077cb7f02396e2bc7f76"
+    },
+    {
+      "bytes": 1126,
+      "git_blob_sha1": "584d90271e94d199f99e8c3ba403c21a4b24b17c",
+      "path": "evidence/internal-review.json",
+      "sha256": "c2db187a9558ee822f732c1c573a9c7d4350559587487cdc773375c9cb4b585a"
+    },
+    {
+      "bytes": 12615,
+      "git_blob_sha1": "0d06475c7b18e5cff9cbba64b89026ac9ead35e1",
+      "path": "development/v1/situation.py",
+      "sha256": "ea9b0a95c729fdbb1491336b928c87356d68ccc8cf8149119a8c248cf9ad8019"
+    },
+    {
+      "bytes": 4850,
+      "git_blob_sha1": "e2daf20549eb1631d090f43fddd52f2a85caa0aa",
+      "path": "development/v1/README.md",
+      "sha256": "54f11354613d784f1c559258928c0ecb393b62061bd63f6de2e26596f6b759bc"
+    },
+    {
+      "bytes": 15756,
+      "git_blob_sha1": "86ead64a890847b1101c4edbcbeadd09849f8e6b",
+      "path": "development/v1/checks/check_agent_situation.py",
+      "sha256": "ac57d0d4d10427ba4a06c4cb95ce25b0cda89b51700d66e3cb928438427e39ac"
+    },
+    {
+      "bytes": 5699,
+      "git_blob_sha1": "f9cf204844d015dbc4ec080d61a53b5db7ee9b40",
+      "path": "development/v1/checks/expected.json",
+      "sha256": "f650a04a4d8e662bdfc8221063d6c9b678036d0d93074ab7f727f8a2221f0cfa"
+    },
+    {
+      "bytes": 115028,
+      "git_blob_sha1": "968fe05f72f60615c14b79d912a5d94914a78f32",
+      "path": "development/v1/evidence/finite-run.json",
+      "sha256": "263ea2958d15b138baa39d9648cd904558d08829731766db806ad73d68747859"
+    },
+    {
+      "bytes": 375,
+      "git_blob_sha1": "033b3a9240d9ef0289843ca2fabeba4f8f4a513e",
+      "path": "development/v1/evidence/execution.txt",
+      "sha256": "b804a3fe77a5e7d28378b2dffe5a49c57810e0cff5b7dce974b7ee5ca6b3366a"
+    },
+    {
+      "bytes": 2771,
+      "git_blob_sha1": "bec3aadf3f987b20aa14de1d7133f966708ac1a7",
+      "path": "development/v1/delayed-derivation-counterexample.json",
+      "sha256": "2897ec642e1402429b9f533e6a67c10890e2ced6d6a0d785f8e422b5da9447f7"
+    }
+  ],
+  "manifest_excludes_itself": true,
+  "native_admission": "NOT_VERIFIED",
+  "recorded_at_utc": "2026-11-14T02:31:01.885901+00:00",
+  "result": "FINITE_CONTROLS_PASS",
+  "schema": "agent-situation-prototype-manifest-v1",
+  "status": "author-draft finite reference model"
+}

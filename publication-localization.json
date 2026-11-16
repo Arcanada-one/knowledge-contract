@@ -1,0 +1,569 @@
+{
+  "schema_version": 1,
+  "kind": "arcanada-publication-localization",
+  "source": {
+    "catalog": "publication-catalog.json",
+    "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+    "sha256": "006f3c4a5a681a845e8084ad631ea648827c9ec7c64c7cf03d25358f83e6daa0"
+  },
+  "entries": [
+    {
+      "work": "human-meaning-and-computable-knowledge",
+      "language": "ru",
+      "source_path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "source_sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+      "title": "Смысловой мост: От человеческого смысла к знаниям, управляемым контрактом",
+      "summary": "Ограниченная модель сохранения значимых для задачи различий между человеческими выражениями, формальными представлениями, артефактами знаний и разрешённым использованием агентом.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "human-meaning-and-computable-knowledge",
+      "language": "zh-Hans",
+      "source_path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "source_sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+      "title": "意义桥梁：从人类意义到契约约束的知识",
+      "summary": "一种有明确适用范围的基础模型，用于保留人类表达、形式表示、知识制品与代理获授权使用之间对任务重要的区别。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-objects-and-context",
+      "language": "ru",
+      "source_path": "papers/semantic-objects-and-context/PAPER.md",
+      "source_sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+      "title": "Смысл и контекст: Смысловые объекты, контекст и условия применимости",
+      "summary": "Формальная модель интерпретаций источника, контекста, обязательных зависимостей и условий применимости.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-objects-and-context",
+      "language": "zh-Hans",
+      "source_path": "papers/semantic-objects-and-context/PAPER.md",
+      "source_sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+      "title": "意义与语境：语义对象、语境与适用条件",
+      "summary": "对来源解释、语境、强制依赖关系和适用条件的形式化说明。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "constrained-transformations",
+      "language": "ru",
+      "source_path": "papers/constrained-transformations/PAPER.md",
+      "source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+      "title": "Преобразования знаний: Преобразования с ограничениями и пределы переноса знаний",
+      "summary": "Условное сохранение, композиция и восстановление знаний при явно заданных наблюдениях и потерях.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "constrained-transformations",
+      "language": "zh-Hans",
+      "source_path": "papers/constrained-transformations/PAPER.md",
+      "source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+      "title": "知识变换：受约束的变换与知识迁移的边界",
+      "summary": "在明确的观察与损失条件下，讨论知识的有条件保留、组合与重建。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "retrieval-and-context-composition",
+      "language": "ru",
+      "source_path": "papers/retrieval-and-context-composition/PAPER.md",
+      "source_sha256": "a27a209c419480f2eb3c80e826c0da507fece1c1c66045d5c34d647656c3c2a9",
+      "title": "Сборка контекста: Поиск, покрытие и композиция контекста при ограниченных ресурсах",
+      "summary": "Покрытие поиском, конечный отбор контекста, замыкание зависимостей и пределы жадной композиции.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "retrieval-and-context-composition",
+      "language": "zh-Hans",
+      "source_path": "papers/retrieval-and-context-composition/PAPER.md",
+      "source_sha256": "a27a209c419480f2eb3c80e826c0da507fece1c1c66045d5c34d647656c3c2a9",
+      "title": "语境组装：资源约束下的检索、覆盖与语境组合",
+      "summary": "检索覆盖、有限语境选择、依赖闭包以及贪心组合的边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "interaction-and-memory",
+      "language": "ru",
+      "source_path": "papers/interaction-and-memory/PAPER.md",
+      "source_sha256": "0520e78d445bdf9b5febe0f8f8d218526c9352f8f9729219788b58beeb5dccdf",
+      "title": "Взаимодействие и память: Диалог, документы и память с явными границами редакций",
+      "summary": "Версионируемые требования, ветви диалога, память и свидетельства обучения во взаимодействии с агентом.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "interaction-and-memory",
+      "language": "zh-Hans",
+      "source_path": "papers/interaction-and-memory/PAPER.md",
+      "source_sha256": "0520e78d445bdf9b5febe0f8f8d218526c9352f8f9729219788b58beeb5dccdf",
+      "title": "交互与记忆：具有明确修订边界的交互、文档与记忆",
+      "summary": "代理交互中的版本化要求、对话分支、记忆与学习证据。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "evidence-and-falsification",
+      "language": "ru",
+      "source_path": "papers/evidence-and-falsification/PAPER.md",
+      "source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+      "title": "Свидетельства и опровержение: Свидетельства, рассуждение и опровержение в системах знаний",
+      "summary": "Какие разные выводы поддерживают утверждения, доказательства, конечные проверки, контрпримеры и сравнительные оценки.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "evidence-and-falsification",
+      "language": "zh-Hans",
+      "source_path": "papers/evidence-and-falsification/PAPER.md",
+      "source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+      "title": "证据与证伪：知识系统中的证据、推理与证伪",
+      "summary": "说明主张、证明、有限测试、反例与比较评估分别能够支持哪些结论。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "revision-and-governance",
+      "language": "ru",
+      "source_path": "papers/revision-and-governance/PAPER.md",
+      "source_sha256": "65d5702b24da7ca93e9eb6c89bd26e3e23ff3e76dac0c847e1f6d21cc2bd924e",
+      "title": "Редакции знаний: Идентичность версий и принятие норм",
+      "summary": "Раздельная идентичность содержания, оценки и нормативного принятия при явных решениях о редакции и публикации.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "revision-and-governance",
+      "language": "zh-Hans",
+      "source_path": "papers/revision-and-governance/PAPER.md",
+      "source_sha256": "65d5702b24da7ca93e9eb6c89bd26e3e23ff3e76dac0c847e1f6d21cc2bd924e",
+      "title": "知识修订：版本身份与规范采纳",
+      "summary": "分别标识内容、评估与规范采纳，并明确记录修订和发布决定。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "controlled-knowledge-reuse",
+      "language": "ru",
+      "source_path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "source_sha256": "9a0cd4e2029534effa500286685a40f05ceaa781a27bd7b276697647474e83dc",
+      "title": "Повторное использование знаний: Контракты знаний и допуск подготовленных знаний",
+      "summary": "Условия, при которых сохранённые знания могут поддерживать новую задачу, нового получателя или новое исполнение.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "controlled-knowledge-reuse",
+      "language": "zh-Hans",
+      "source_path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "source_sha256": "9a0cd4e2029534effa500286685a40f05ceaa781a27bd7b276697647474e83dc",
+      "title": "知识复用：知识契约与预备知识的准入",
+      "summary": "已保存知识能够支持新任务、新接收者或新执行的条件。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-utility",
+      "language": "ru",
+      "source_path": "papers/knowledge-utility/PAPER.md",
+      "source_sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+      "title": "Полезность знаний: Учёт ресурсов и решения о жизненном цикле",
+      "summary": "Польза относительно задачи, полный учёт ресурсов, базовые условия сравнения и границы причинных выводов.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-utility",
+      "language": "zh-Hans",
+      "source_path": "papers/knowledge-utility/PAPER.md",
+      "source_sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+      "title": "知识效用：资源核算与生命周期决策",
+      "summary": "相对于任务的收益、完整的资源核算、比较基线以及因果推断的边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "geometry-of-semantic-representations",
+      "language": "ru",
+      "source_path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "title": "Геометрия смысла: Пространства представлений, различимость и пределы сходства",
+      "summary": "Пространства наблюдений относительно задачи, метрики на фактор-пространствах, границы при неполных наблюдениях и пределы сходства для использования знаний.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "geometry-of-semantic-representations",
+      "language": "zh-Hans",
+      "source_path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "title": "意义几何：表示空间、可区分性与相似性的界限",
+      "summary": "相对于任务的观察空间、商度量、不完整观察下的界，以及知识使用中相似性的适用边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-contract-core",
+      "language": "ru",
+      "source_path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "source_sha256": "c1d14c1dfdb9373e4fe3304baa3cde18c3b442180c5369be0c7a842db7d95e64",
+      "title": "Ядро контракта: Основная модель и требования допуска",
+      "summary": "Девять основных групп, явные ограничения, профили, требования допуска и исполнения.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-contract-core",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/knowledge-contract-core/SPECIFICATION.md",
+      "source_sha256": "c1d14c1dfdb9373e4fe3304baa3cde18c3b442180c5369be0c7a842db7d95e64",
+      "title": "契约核心：核心模型与准入要求",
+      "summary": "九个核心分组、作为独立要素的约束、配置规范，以及准入和执行要求。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "contract-family",
+      "language": "ru",
+      "source_path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "source_sha256": "be656317394ac3c934edace66395528ff72e84405618a0a4f2fd24c531a0b628",
+      "title": "Операции со знаниями: Предусловия, результаты и обязательства преобразования",
+      "summary": "Общие предусловия, инварианты, постусловия, эффекты и свидетельства для операций со знаниями.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "contract-family",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/contract-family/SPECIFICATION.md",
+      "source_sha256": "be656317394ac3c934edace66395528ff72e84405618a0a4f2fd24c531a0b628",
+      "title": "知识操作：前置条件、结果与变换义务",
+      "summary": "知识操作共有的前置条件、不变量、后置条件、效果与证据。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-types",
+      "language": "ru",
+      "source_path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "source_sha256": "11e66b5ae19f09cebb06a40616a180d19ecce6bb5166ab749e6b769a7594e206",
+      "title": "Семантические типы: Атрибуция и представления",
+      "summary": "Семантические аспекты, атрибуция, операторы с явной областью действия, неоднозначные прочтения и мультимодальные представления.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-types",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/semantic-types/SPECIFICATION.md",
+      "source_sha256": "11e66b5ae19f09cebb06a40616a180d19ecce6bb5166ab749e6b769a7594e206",
+      "title": "语义类型：归属标注与表示",
+      "summary": "语义侧面、归属标注、带有明确作用域的算子、歧义解读与多模态表示。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "context-package",
+      "language": "ru",
+      "source_path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "source_sha256": "bda66c8c108f62bd266c79c7bda9272c8ddd5be8c940b4349cc77704a6dbd937",
+      "title": "Пакет контекста: Покрытие, зависимости и доставка",
+      "summary": "Требования к выбранному контексту, покрытию, обязательным зависимостям, бюджетам и наблюдаемой доставке.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "context-package",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/context-package/SPECIFICATION.md",
+      "source_sha256": "bda66c8c108f62bd266c79c7bda9272c8ddd5be8c940b4349cc77704a6dbd937",
+      "title": "语境包：覆盖、依赖与交付",
+      "summary": "对所选语境、覆盖、强制依赖、预算和已观察交付的要求。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "compiled-artifact-contract",
+      "language": "ru",
+      "source_path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "source_sha256": "bc2e26c2af159eeee54892294157c383324ad17c0121826ab9c07bde11e7c6ec",
+      "title": "Скомпилированные знания: Артефакты и воспроизводимое получение",
+      "summary": "Сохранённые производные артефакты с точными входами, рецептами, манифестами зависимостей, шаблонами и свидетельствами результата.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "compiled-artifact-contract",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/compiled-artifact-contract/SPECIFICATION.md",
+      "source_sha256": "bc2e26c2af159eeee54892294157c383324ad17c0121826ab9c07bde11e7c6ec",
+      "title": "编译知识：制品与可复现推导",
+      "summary": "保存的派生制品，附有精确输入、生成配方、依赖清单、模板与输出证据。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "artifact-registry",
+      "language": "ru",
+      "source_path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "source_sha256": "fb929b4c35e1c2d270f989b137bb7dd47dbc108502eb75f7cf32eb529814dd85",
+      "title": "Реестр артефактов: Понятные названия и форматы документов",
+      "summary": "Понятные названия артефактов, канонические форматы Markdown, правила идентичности и различия между профессиональными артефактами.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "artifact-registry",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/artifact-registry/SPECIFICATION.md",
+      "source_sha256": "fb929b4c35e1c2d270f989b137bb7dd47dbc108502eb75f7cf32eb529814dd85",
+      "title": "制品登记册：可读名称与文档格式",
+      "summary": "可读的制品名称、规范 Markdown 格式、身份规则与专业制品类型之间的区别。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "status-model",
+      "language": "ru",
+      "source_path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "source_sha256": "03d829245434011cc15eb92e2107a5334dde938ba2e701151da0f7244af7f5b3",
+      "title": "Модель состояний: Оценка, исполнение и публикация",
+      "summary": "Независимые состояния оценки, исполнения, эффекта, актуальности, публикации и рецензии.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "status-model",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/status-model/SPECIFICATION.md",
+      "source_sha256": "03d829245434011cc15eb92e2107a5334dde938ba2e701151da0f7244af7f5b3",
+      "title": "状态模型：评估、执行与发布状态",
+      "summary": "分别记录评估、执行、效果、时效、发布与审查状态。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "cache-identity-and-invalidation",
+      "language": "ru",
+      "source_path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "source_sha256": "23705ace38ebdfb295adf11f97ffc9168d8e2410a12046fc793536c282c9b01c",
+      "title": "Актуальность кеша: Идентичность кеша, отслеживание зависимостей и инвалидизация",
+      "summary": "Идентичность содержания, сборки и поиска, изменения зависимостей и публикация и выдача с обязательными проверками.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "cache-identity-and-invalidation",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md",
+      "source_sha256": "23705ace38ebdfb295adf11f97ffc9168d8e2410a12046fc793536c282c9b01c",
+      "title": "缓存有效性：缓存身份、依赖跟踪与失效",
+      "summary": "内容、构建与查找身份，依赖变化，以及受检查约束的发布和提供。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "reuse-policy",
+      "language": "ru",
+      "source_path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "source_sha256": "59e5e632074efcf2392fccfebf391d7c129c730049b398cd0c82463f4a8d677b",
+      "title": "Политика повторного использования: Время, полномочия и результаты решений",
+      "summary": "Временные режимы, консервативные сроки, полномочия, результаты решений и границы сохранения данных.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "reuse-policy",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/reuse-policy/SPECIFICATION.md",
+      "source_sha256": "59e5e632074efcf2392fccfebf391d7c129c730049b398cd0c82463f4a8d677b",
+      "title": "复用策略：时间、授权与决策结果",
+      "summary": "时间模式、保守期限、授权、决策结果与保留边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-evolution",
+      "language": "ru",
+      "source_path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "source_sha256": "a9ee0fcdba6e4c99ed9b887f9c22d57d54089529d9d7bf294e67ea78e7f73bf9",
+      "title": "Эволюция знаний: Версионируемые правила",
+      "summary": "Версионируемые правила создания, принятие, анализ влияния, повторная оценка, миграция и согласованная публикация.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "knowledge-evolution",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/knowledge-evolution/SPECIFICATION.md",
+      "source_sha256": "a9ee0fcdba6e4c99ed9b887f9c22d57d54089529d9d7bf294e67ea78e7f73bf9",
+      "title": "知识演化：版本化规则",
+      "summary": "版本化创建规则、采纳、影响分析、重新评估、迁移与一致发布。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "book-package",
+      "language": "ru",
+      "source_path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "source_sha256": "8c5bdb45f4a47ed66e402dafac1b666da5849c0c78154934a5d868c1451f186b",
+      "title": "Книжные пакеты: Идентичность источника, семантические слои и проверка",
+      "summary": "Конкретная схема книжного пакета, обратимый журнал преобразования, семантические слои, границы прав и синтетические проверки соответствия.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "book-package",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/book-package/SPECIFICATION.md",
+      "source_sha256": "8c5bdb45f4a47ed66e402dafac1b666da5849c0c78154934a5d868c1451f186b",
+      "title": "书籍包：来源身份、语义层与验证",
+      "summary": "具体的书籍包模式、可逆转换账本、语义层、权利边界与合成一致性检查。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "contract-profile-conformance",
+      "language": "ru",
+      "source_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "source_sha256": "4fe837348b21e730a191c276381647d31af51914a239bd47f2a27ddf7551cd5d",
+      "title": "Проверки контрактов: Конечное соответствие, границы доверия и сильный простой базовый вариант",
+      "summary": "Конечные проверки контрактов, контрпримеры с ложными доверенными входами и равный результат сильного базового варианта.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "contract-profile-conformance",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/contract-profile-conformance/STUDY.md",
+      "source_sha256": "4fe837348b21e730a191c276381647d31af51914a239bd47f2a27ddf7551cd5d",
+      "title": "契约检验：有限一致性、信任边界与强简单基线",
+      "summary": "有限契约检查、错误可信输入的反例，以及与强基线持平的结果。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "ru",
+      "source_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "source_sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+      "title": "Замыкание зависимостей: Понятная структура артефактов и воспроизведение закреплённого пакета",
+      "summary": "Исторические свидетельства по пакету и открытое исчерпывающее воспроизведение конечного графа зависимостей.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "dependency-closure-and-package-delivery",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/dependency-closure-and-package-delivery/STUDY.md",
+      "source_sha256": "5edb3262dc193a32fd2a577d8a887e939d80e9386e36afc542514446dd2672ce",
+      "title": "依赖闭包：可读制品布局与固定版本包的重放",
+      "summary": "历史包证据与对有限依赖图的公开穷举重放。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "ru",
+      "source_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "source_sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+      "title": "Сохранение неопределённости: Воспроизводимая транскрипция не равна сохранению неопределённости",
+      "summary": "Сохранённые сгенерированные описания, потерянная неопределённость и воспроизводимый синтетический контрпример проекции.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "source-transcription-and-uncertainty",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/source-transcription-and-uncertainty/STUDY.md",
+      "source_sha256": "3278cca0cdbb752dc70b73809c5218019584e0a0e832f4e170c339c7d327710a",
+      "title": "不确定性保留：可复现的转录不等于保留不确定性",
+      "summary": "保留的生成描述、丢失的不确定性与可复现的合成投影反例。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "ru",
+      "source_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "source_sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+      "title": "Исполняемые проекции: Адресуемые редакции и пределы минимальности графа",
+      "summary": "Конечные проверки потребителя, парные задачи агентов, адресуемая редакция и пределы минимальности графа.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "executable-projections-and-revision",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/executable-projections-and-revision/STUDY.md",
+      "source_sha256": "77a4bcd95428f40ab0faa33fcda50ebb6c85ed10efa738ed30bb05fc66197255",
+      "title": "可执行投影：可寻址修订与图最小性的边界",
+      "summary": "有限消费者检查、成对代理任务、可寻址修订与图最小性的边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "ru",
+      "source_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "source_sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+      "title": "Экономика повторного использования: Контролируемое повторное использование, контрпримеры допуска и стоимость попадания в кеш",
+      "summary": "Исполняемые контрпримеры допуска и аналитический расчёт безубыточности с явным учётом затрат.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "reuse-admission-and-cost-controls",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/reuse-admission-and-cost-controls/STUDY.md",
+      "source_sha256": "dc4bba37e36d4b6825131f4c8a9fca4bdf398e27c024e094a29cf66a21d80e13",
+      "title": "复用经济性：受控复用中的准入反例与缓存命中的成本",
+      "summary": "可执行的准入反例，以及明确列明成本的解析盈亏平衡计算。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "editorial-skill-pilot",
+      "language": "ru",
+      "source_path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "source_sha256": "55007345eee18a00662d94d9ed7b2515584c6c480d2386d9bd7b5148b34e95d6",
+      "title": "Редакторский пилот: Редактирование научного раздела с набором знаний — сравнение одного раздела со скрытыми условиями",
+      "summary": "Одно заранее зарегистрированное редакторское сравнение, точные первоначальные результаты, рецензия со скрытыми условиями и наблюдаемая ничья.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "editorial-skill-pilot",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/editorial-skill-pilot/STUDY.md",
+      "source_sha256": "55007345eee18a00662d94d9ed7b2515584c6c480d2386d9bd7b5148b34e95d6",
+      "title": "编辑试验：借助知识工具包编辑科学章节的单章节掩蔽比较",
+      "summary": "一次预注册的编辑比较、精确的初始输出、掩蔽评审与观察到的平局。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "glossary",
+      "language": "ru",
+      "source_path": "reference/glossary/GLOSSARY.md",
+      "source_sha256": "e70b48641a6a64331827546627a874bf7ae28f7820c8c18e90b5aaf71108c3e4",
+      "title": "Общий словарь: Глоссарий контракта знаний",
+      "summary": "Общие английские определения, русские и китайские эквиваленты, технические написания и различия между близкими понятиями.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "glossary",
+      "language": "zh-Hans",
+      "source_path": "reference/glossary/GLOSSARY.md",
+      "source_sha256": "e70b48641a6a64331827546627a874bf7ae28f7820c8c18e90b5aaf71108c3e4",
+      "title": "共享词汇：知识契约术语表",
+      "summary": "统一的英文定义、俄语和简体中文对应词、技术拼写与相关概念之间的区别。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "bibliography",
+      "language": "ru",
+      "source_path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+      "title": "Исследовательские основания: Первичная литература и связанные работы",
+      "summary": "Названные первичные источники и точная концептуальная или техническая роль каждого из них в текущем издании.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "bibliography",
+      "language": "zh-Hans",
+      "source_path": "reference/bibliography/BIBLIOGRAPHY.md",
+      "source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+      "title": "研究基础：原始文献与相关工作",
+      "summary": "明确列出的原始来源，以及各来源在当前版本中的具体概念或技术作用。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "source-map",
+      "language": "ru",
+      "source_path": "appendices/source-map/APPENDIX.md",
+      "source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+      "title": "История источников: Карта источников, прежние издания и совместимость протоколов",
+      "summary": "Переход от прежнего корпуса, неизменяемая история, происхождение свидетельств и неизменные версии протоколов.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "source-map",
+      "language": "zh-Hans",
+      "source_path": "appendices/source-map/APPENDIX.md",
+      "source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+      "title": "来源历史：来源映射、早期版本与协议兼容性",
+      "summary": "从早期语料的迁移、不可变历史、证据来源以及保持不变的协议版本。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "api-integration",
+      "language": "ru",
+      "source_path": "appendices/api-integration/APPENDIX.md",
+      "source_sha256": "7e0035ba7caeb56fca41d8442877e19ef8a2d557b1324e4d1d3a78e1d0440e7f",
+      "title": "Интерфейсы публикации: Интеграция API и согласованность публикации",
+      "summary": "Опубликованные интерфейсы чтения, требования доставки контракта задачи и согласованность репозитория, читательского сайта и индекса.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "api-integration",
+      "language": "zh-Hans",
+      "source_path": "appendices/api-integration/APPENDIX.md",
+      "source_sha256": "7e0035ba7caeb56fca41d8442877e19ef8a2d557b1324e4d1d3a78e1d0440e7f",
+      "title": "发布接口：API 集成与发布一致性",
+      "summary": "已发布的读取接口、任务契约交付要求，以及代码库、阅读站点与索引之间的一致性。",
+      "status": "unreviewed"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: "contract-family"
-title: "Контракты операций со знаниями"
+title: "Операции со знаниями: Предусловия, результаты и обязательства преобразования"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
@@ -8,12 +8,12 @@ language: "ru"
 license: "CC-BY-4.0"
 description: "Общие предусловия, инварианты, постусловия, эффекты и свидетельства для операций со знаниями."
 translation_of: "engineering/specifications/contract-family/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "6f01949b7d8b0f8037d536964d9a047608f4f711"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "bda78ccdf61ecb1cf64d26c5a368a7c2bc9efb73"
 translation_status: "author-draft"
 ---
 
-# Контракты операций со знаниями {#contracts-for-knowledge-operations}
+# Операции со знаниями: Предусловия, результаты и обязательства преобразования {#contracts-for-knowledge-operations}
 
 **Автор:** Павел Валентов · **Издание публикации:** 1.1
 

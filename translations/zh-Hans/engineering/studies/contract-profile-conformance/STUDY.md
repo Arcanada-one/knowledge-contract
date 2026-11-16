@@ -1,6 +1,6 @@
 ---
 name: "contract-profile-conformance"
-title: "契约检验：契约配置的有限符合性检验、信任边界与强简单基线"
+title: "契约检验：有限一致性、信任边界与强简单基线"
 short_title: "契约检验"
 subtitle: "契约配置的有限符合性检验、信任边界与强简单基线"
 artifact: "engineering-study"
@@ -8,16 +8,16 @@ edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "有限契约检验、虚假受信任输入的反例，以及与强基线相同的结果。"
+description: "有限契约检查、错误可信输入的反例，以及与强基线持平的结果。"
 study_type: "finite-implementation-evaluation"
 translation_of: "engineering/studies/contract-profile-conformance/STUDY.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "c258efb990cc38c48dee21141af1ceec1791e388"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "4953657794994509de28e5bec3ae31bf5eaf8852"
 source_review_state: "internally-reviewed"
 translation_status: "author-draft"
 ---
 
-# 契约检验：契约配置的有限符合性检验、信任边界与强简单基线 {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
+# 契约检验：有限一致性、信任边界与强简单基线 {#contract-profiles-finite-conformance-trust-boundaries-and-a-strong-simple-comparator}
 
 ## 摘要 {#abstract}
 

@@ -1,0 +1,186 @@
+{
+  "record_kind": "repository-session-execution/1",
+  "recorded_at_utc": "2026-11-14T09:25:39.181127+00:00",
+  "base_revision": "880d4ea059e8110a81a37348c4cd17075f881780",
+  "baseline_blobs_verified": 1576,
+  "implemented_source_sha256": {
+    "tools/repository_session.py": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+    "tools/test_repository_session.py": "a42809e3aed52c36dda916c42de05121110726a9df7a23a257abda17bc5f068c"
+  },
+  "unchanged_dependency_sha256": {
+    "tools/repository_observer.py": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+    "tools/test_repository_observer.py": "6f57ea3ef038dfdce986641ca7710bc70547d9ebfcae7bed687c9fff678734cf",
+    "engineering/studies/agent-situation-controls/situation.py": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1"
+  },
+  "retained_code_sha256": {
+    "tools/retained/repository_session_preflight/repository_session_before_preflight_review.py": "340e69e85d89aa6da363f0a5cf26a3fb7161176e6c9a3aa9cc1506330de5a63f",
+    "tools/retained/repository_session_preflight/reproduce_preflight_baseline.py": "6cdb71bd51620ef185f4c4c8af3271a083a595952397403e197cac92b43deb25",
+    "tools/retained/repository_session_preflight/probe_fixed_session.py": "309d7a4d248d74f53c221779df218788d45c764cb53909f0a38332ac78a668fe"
+  },
+  "evidence_sha256": {
+    "reviews/repository-session-20261114/sample-unrelated-resume.json": "4bfc1f4c0d66551d8401ce5f9c46ec9e56ae6491388c96ce929ad373fa46c5dd",
+    "reviews/repository-session-20261114/sample-explicit-resume.json": "458a245f880fdc0304ba1ba653654ca408644e467930232ef0c5e3c05fc25889",
+    "reviews/repository-session-20261114/sample-preflight-repeat.json": "d2f8d23ffc395aeedde0ae5cf8f2b0b89cea0f0fd5fe148e349e2a579efb98f1",
+    "reviews/repository-session-20261114/sample-execution.txt": "b2cb1ace5433a4382d1acc71c5aef2bb5a6e95668183faecec71c85ed0064a41",
+    "reviews/repository-session-20261114/sample-preflight-valid.json": "cc2b990d1fc88899e25522d4f76671dd622b42df773f8d6e53f9885e050ad4d7",
+    "reviews/repository-session-20261114/fixed-session-result.json": "284bff65c3cc11d0af29fc81bd2b6ac43dff50f1078c608d08f4ad450a4e92e0",
+    "reviews/repository-session-20261114/sample-start.json": "5c3b94fdbaa0a799a4d636a144f3e9211b89096aa00aeacb21f5f2a5a6b7ca64",
+    "reviews/repository-session-20261114/fixed-session-receipts.json": "fb12f439d65e8911ee4474deb31eef4da2ebbd5aead7d698466c8e357a00fb8c",
+    "reviews/repository-session-20261114/integration-tests.txt": "ca50fe8e22a4b3e4fcfb4de70ffe99d820d4d3459b0ddcbe9b8d65807ff49370",
+    "reviews/repository-session-20261114/sample-profile.json": "b137519cd925e9d699eecd095eb9a481c0a8c2c3fb2d6a1cd87414de8f876e16",
+    "reviews/repository-session-20261114/sample-preflight-invalid.json": "5d2444bb9f76646437254969cdb42309126759536e5686000b0226e4d50104dd",
+    "reviews/repository-session-20261114/development/retained-baseline-rerun.json": "b1c563f2d2cd081bd9893e015e9174813839368083b9769400f29c5b9e7d8e2f",
+    "reviews/repository-session-20261114/development/repeated-preflight-result.json": "d02e14866a61af5610230685ad5ecda0ebb31e1d8c1c8c3cd40f32f300571f9d",
+    "reviews/repository-session-20261114/development/actual-receipts-before-preflight-fix.json": "c46d9390e4850c3588b7434f5418a9ecba3ed72651d0ca6c3498bb9b05a65995",
+    "reviews/repository-session-20261114/validation-log.txt": "b6958993c34d839139fabbde64e5b460f490b606ae40482230520365d732ee83"
+  },
+  "test_execution": {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tools.test_repository_session",
+      "tools.test_repository_observer",
+      "-v"
+    ],
+    "started_at_utc": "2026-11-14T09:25:36.016456+00:00",
+    "exit_code": 0,
+    "tests_run": 25,
+    "session_tests": 14,
+    "unchanged_observer_tests": 11,
+    "reported_seconds": 2.939,
+    "log": "integration-tests.txt"
+  },
+  "actual_process_sample": {
+    "kind": "actual temporary local Git execution; authored fixture contents",
+    "captures": 6,
+    "fresh_cli_process_per_capture": true,
+    "results": [
+      "READY",
+      "READY",
+      "INVALID",
+      "RESUME_REQUIRED",
+      "READY",
+      "VALID"
+    ],
+    "historical_inspection_performed": true,
+    "predecessors_preserved": true,
+    "log": "sample-execution.txt"
+  },
+  "non_author_review": {
+    "reviewer": "/root/research_review",
+    "scope": "successor lifecycle and operation/anchor tamper rejection",
+    "author_of_changed_bytes": false,
+    "same_controller_model_family_host": true,
+    "finding": "repeated preflight silently adopted new context",
+    "disposition": "resolved on exact implemented source hashes; no further blocker in bounded scope",
+    "full_suite_rerun_by_reviewer": false,
+    "independent_scientific_acceptance": "NOT_VERIFIED"
+  },
+  "repository_gates": {
+    "status": "PASS after correcting renderer environment",
+    "initial_environment": "system pandoc 3.1.11.1, rejected by pinned 3.1.3 gate",
+    "initial_commands": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_publication.py",
+          "."
+        ],
+        "exit_code": 1
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_sources.py",
+          "."
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_requirement_register.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tools.test_check_publication",
+          "tools.test_check_sources",
+          "tools.test_check_separation",
+          "tools.test_check_dco",
+          "tools.test_ci_workflow",
+          "-v"
+        ],
+        "exit_code": 1
+      }
+    ],
+    "correction": "Only command PATH selected the already available Pandoc 3.1.3 binary; no source/evidence repair used to manufacture a passing result.",
+    "final_pandoc_version": "3.1.3",
+    "final_commands": [
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_publication.py",
+          "."
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_sources.py",
+          "."
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "tools/check_requirement_register.py"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "python3",
+          "-B",
+          "-m",
+          "unittest",
+          "tools.test_check_publication",
+          "tools.test_check_sources",
+          "tools.test_check_separation",
+          "tools.test_check_dco",
+          "tools.test_ci_workflow",
+          "-v"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "existing_suite_tests": 93,
+    "existing_suite_reported_seconds": 10.726,
+    "requirement_count": 349,
+    "git_diff_check": "PASS",
+    "hosted_ci": "NOT_RUN; normal publication-integrity workflow now invokes tools.test_repository_session",
+    "log": "validation-log.txt"
+  },
+  "limits": [
+    "No LLM calls or external effects.",
+    "Readiness is file identity at capture time, not authority or an atomic future effect.",
+    "Checksums and root digests do not authenticate producers or complete history.",
+    "Abstract model budget; no token, cost, latency or performance benefit measured.",
+    "Source release, native admission and deployment require their own decisions and readback."
+  ]
+}

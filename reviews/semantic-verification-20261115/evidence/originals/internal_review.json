@@ -1,0 +1,214 @@
+{
+  "schema": "kc-brain-f05-partial-internal-review/1",
+  "observed_utc": "2026-11-15T11:24:30.175680+00:00",
+  "reviewer": "ci_acceptance subagent, non-author role, same controller",
+  "verdict": "PASS for the declared mathematical corollary and finite candidate only",
+  "source": {
+    "path": "/workspace/scratch/50c29b6b4f6f/continuation_f05/check_fibrewise_transfer.py",
+    "sha256": "a53e6d61468aa9013d80a6a0b1a63c996a3d38f35a6199dc673e85d7fe3fb99b"
+  },
+  "note": {
+    "path": "/workspace/scratch/50c29b6b4f6f/continuation_f05/F05-FIBREWISE-TRANSFER-CANDIDATE.md",
+    "sha256": "7973c754308447d7f5d45cf8d1c12df6ab963f991ab031bbd966daa050b20dc2"
+  },
+  "review_script_sha256": "e526e91d917e454b10e4b530abcc28379a9db31182cfc507e7192addcc9de3ec",
+  "independent_review_method": "all25 partial-map graphs per profile; pointwise soundness; greatest graph by union; no candidate oracle/run_checks used",
+  "executed_profiles": 4096,
+  "partial_map_candidates_checked": 102400,
+  "sound_partial_maps_total": 7272,
+  "profile_categories": {
+    "global": 232,
+    "none": 1368,
+    "partial_only": 2496
+  },
+  "closed_form_rows": {
+    "4": {
+      "global": 8,
+      "partial_only": 0,
+      "none": 504
+    },
+    "1+3": {
+      "global": 128,
+      "partial_only": 1920,
+      "none": 0
+    },
+    "2+2": {
+      "global": 96,
+      "partial_only": 576,
+      "none": 864
+    }
+  },
+  "observation_query_outcomes": {
+    "determined_in_model": 2952,
+    "refused_unattained": 512,
+    "refused_ambiguous": 4728
+  },
+  "query_count": 8192,
+  "first_value_mutant": {
+    "result": "killed",
+    "counterexample": {
+      "profile": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "assessments": [
+        "pass",
+        "pass",
+        "pass",
+        "fail"
+      ],
+      "query": 0,
+      "greatest_map": {},
+      "observed_failure": "AssertionError(('wrong diagnostic', (0, 0, 0, 0), ('pass', 'pass', 'pass', 'fail'), 0, {}, {'outcome': 'determined_in_model', 'assessment': 'pass', 'fibre': (0, 1, 2, 3), 'witness': None}))"
+    }
+  },
+  "auxiliary_cases": [
+    {
+      "kind": "generalized_label_preservation",
+      "label": "pass"
+    },
+    {
+      "kind": "generalized_label_preservation",
+      "label": "fail"
+    },
+    {
+      "kind": "generalized_label_preservation",
+      "label": "unknown"
+    },
+    {
+      "kind": "generalized_label_preservation",
+      "label": "not_applicable"
+    },
+    {
+      "kind": "generalized_five_state_partial_model",
+      "query": 7
+    },
+    {
+      "kind": "generalized_five_state_partial_model",
+      "query": 13
+    },
+    {
+      "kind": "generalized_five_state_partial_model",
+      "query": 42
+    },
+    {
+      "kind": "generalized_five_state_partial_model",
+      "query": 99
+    },
+    {
+      "kind": "relevant_domain_extension",
+      "before": {
+        "outcome": "determined_in_model",
+        "assessment": "pass",
+        "fibre": [
+          0
+        ],
+        "witness": null
+      },
+      "after": {
+        "outcome": "refused_ambiguous",
+        "assessment": null,
+        "fibre": [
+          0,
+          1
+        ],
+        "witness": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "kind": "other_fibre_domain_extension",
+      "unchanged_result": {
+        "outcome": "determined_in_model",
+        "assessment": "pass",
+        "fibre": [
+          0
+        ],
+        "witness": null
+      }
+    },
+    {
+      "kind": "refinement_controls",
+      "relevant": [
+        {
+          "outcome": "determined_in_model",
+          "assessment": "pass",
+          "fibre": [
+            0,
+            2
+          ],
+          "witness": null
+        },
+        {
+          "outcome": "determined_in_model",
+          "assessment": "fail",
+          "fibre": [
+            1,
+            3
+          ],
+          "witness": null
+        }
+      ],
+      "irrelevant": [
+        {
+          "outcome": "refused_ambiguous",
+          "assessment": null,
+          "fibre": [
+            0,
+            1
+          ],
+          "witness": [
+            0,
+            1
+          ]
+        },
+        {
+          "outcome": "refused_ambiguous",
+          "assessment": null,
+          "fibre": [
+            2,
+            3
+          ],
+          "witness": [
+            2,
+            3
+          ]
+        }
+      ]
+    }
+  ],
+  "malformed_inputs_rejected": 13,
+  "optimized_mode": {
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "Refused: optimized Python disables required assertions.\n"
+  },
+  "advertised_entrypoint": {
+    "exit_code": 0,
+    "receipt_path": "/workspace/scratch/50c29b6b4f6f/continuation_ci/f05_review/candidate_entrypoint_rerun.json",
+    "receipt_sha256": "2229bd397d6b72c546ead3d1b4f0c8a5b52f28e903bc22d20511b28930fd80d0"
+  },
+  "scope_notes": [
+    "Generalized labels7/13/42/99 and five-state examples are auxiliary; exhaustive claim remains four states and observation labels0/1.",
+    "Refinement and other-fibre change examples establish only model-relative invariance/refusal, not runtime consumption or target-closure evidence.",
+    "Candidate oracle is specific to two observation labels; it is not a general oracle for every supported diagnostic input.",
+    "The public observation diagnostic accepts finite explicit complete tuples; live coverage of actual fibres is not established.",
+    "No remote source mutation; original candidate receipt was not overwritten.",
+    "Relocation/header edits in a future canonical file need a new hash and receipt; this review does not cover unobserved edits."
+  ],
+  "not_verified": [
+    "external scientific or controller independence",
+    "truth or availability of supplied assessment labels",
+    "real target, source authentication, whole relevant fibre coverage",
+    "actual consumption, native KC2 admission, production runtime authorization",
+    "locale acceptance, source merge, deployment or improved outcomes"
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41"
+  }
+}

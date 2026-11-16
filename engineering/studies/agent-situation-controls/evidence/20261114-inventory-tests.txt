@@ -1,0 +1,14 @@
+test_complete_inventory_binds_by_id_despite_order (test_inventory.InventoryTests.test_complete_inventory_binds_by_id_despite_order) ... ok
+test_duplicate_callable_cannot_replace_another_control (test_inventory.InventoryTests.test_duplicate_callable_cannot_replace_another_control) ... ok
+test_duplicate_fixture_id_is_rejected (test_inventory.InventoryTests.test_duplicate_fixture_id_is_rejected) ... ok
+test_duplicate_registered_id_is_rejected (test_inventory.InventoryTests.test_duplicate_registered_id_is_rejected) ... ok
+test_extra_registration_is_rejected (test_inventory.InventoryTests.test_extra_registration_is_rejected) ... ok
+test_failed_execution_counts_no_unperformed_field_checks (test_inventory.InventoryTests.test_failed_execution_counts_no_unperformed_field_checks) ... ok
+test_mismatched_registration_id_is_rejected (test_inventory.InventoryTests.test_mismatched_registration_id_is_rejected) ... ok
+test_missing_fixture_is_rejected (test_inventory.InventoryTests.test_missing_fixture_is_rejected) ... ok
+test_missing_registration_stops_main_before_evidence (test_inventory.InventoryTests.test_missing_registration_stops_main_before_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.004s
+
+OK

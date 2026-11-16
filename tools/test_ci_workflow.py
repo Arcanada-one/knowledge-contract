@@ -77,6 +77,9 @@ class CiWorkflowTests(unittest.TestCase):
     def test_corpus_map_validator_runs_with_full_history_and_a_negative_control(self):
         job = self.jobs["corpus-map"]
         self.assertIn("fetch-depth: 0", job)
+        retained_fetch = "git fetch --no-tags origin 61d674244f70002e20506b387b210fd584074ad2"
+        self.assertIn(retained_fetch, job)
+        self.assertLess(job.index(retained_fetch), job.index("tools/verify_corpus_map.py --repo ."))
         self.assertIn("python3 -B -m unittest tools.test_verify_corpus_map -v", job)
         self.assertIn("python3 -B -m unittest tools.test_project_corpus_map -v", job)
         self.assertIn("tools/verify_corpus_map.py --repo .", job)

@@ -1,0 +1,38 @@
+{
+  "source_ref": "6a6f202f7f70be2ad3aea3369e45409761708596",
+  "source_documents": 31,
+  "present_files": 52,
+  "target_slots": 62,
+  "missing_files": 10,
+  "source_catalogue_blob": "081dbbc95118c0db54bb92164faa9fbed6206556",
+  "rendition_sidecar_blob": "9a594f32dca0f6b5fa9587de4287ac1c930e9d72",
+  "rendition_entries_with_recorded_agent_reviews": 8,
+  "missing_works": [
+    {
+      "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+      "title": "Meaning Bridge"
+    },
+    {
+      "path": "papers/interaction-and-memory/PAPER.md",
+      "title": "Interaction and Memory"
+    },
+    {
+      "path": "papers/evidence-and-falsification/PAPER.md",
+      "title": "Evidence and Falsification"
+    },
+    {
+      "path": "papers/controlled-knowledge-reuse/PAPER.md",
+      "title": "Knowledge Reuse"
+    },
+    {
+      "path": "papers/geometry-of-semantic-representations/PAPER.md",
+      "title": "Meaning Geometry"
+    }
+  ],
+  "report_sha256": "492eaa5b12367fe65a1c5471eb98f34a199107a0e53b00ebfbb1caac1557502e",
+  "repeat_report_identical": true,
+  "historical_table_bytes_unchanged": true,
+  "historical_report_reproduced": true,
+  "historical_proposal_paths_in_current_source": true,
+  "scope": "File presence and recorded review metadata only; not body fidelity, native review, rendition admission, website delivery or indexing."
+}

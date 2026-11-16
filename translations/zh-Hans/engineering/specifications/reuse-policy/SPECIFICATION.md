@@ -1,19 +1,19 @@
 ---
 name: "reuse-policy"
-title: "复用政策：时间、授权与决策结果"
+title: "复用策略：时间、授权与决策结果"
 artifact: "engineering-specification"
 edition: "1.1"
 author: "Pavel Valentov"
 language: "zh-Hans"
 license: "CC-BY-4.0"
-description: "时间模式、保守截止时间、授权、决策结果与保留边界。"
+description: "时间模式、保守期限、授权、决策结果与保留边界。"
 translation_of: "engineering/specifications/reuse-policy/SPECIFICATION.md"
-source_commit: "a0450428704fcd41b411203f2fc88c06c779610b"
-source_git_blob: "8bc1c4c0d7ca720dd2213411a2b2821eccbc446a"
+source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
+source_git_blob: "032ec520115d42adf655f3b77298b321c0357ca7"
 translation_status: "author-draft"
 ---
 
-# 复用政策：时间、授权与决策结果 {#reuse-policy-time-authorization-and-decision-outcomes}
+# 复用策略：时间、授权与决策结果 {#reuse-policy-time-authorization-and-decision-outcomes}
 
 **作者：**Pavel Valentov · **出版版本：**1.1
 

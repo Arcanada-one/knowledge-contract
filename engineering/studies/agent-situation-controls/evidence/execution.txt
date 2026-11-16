@@ -1,0 +1,4 @@
+python3 /workspace/scratch/aff956949d29/agent-situation-research/prototype/checks/check_agent_situation.py --evidence /workspace/scratch/aff956949d29/agent-situation-research/prototype/evidence/finite-run.json
+FINITE_CONTROLS_PASS
+Authored controls: 21/21 (18 declared + 3 review); disabled-guard mutations detected: 3/3.
+Native admission: NOT_VERIFIED; no LLM, network, grant authority, or effects.

@@ -4,6 +4,9 @@
   // Canonical publication documents, navigation and compatibility links are linted.
   "ignores": [
     "corpus/publication-decisions/receipts/**",
-    "engineering/studies/*/evidence/**"
+    "engineering/studies/*/evidence/**",
+    // Exact prototype source snapshots bound by MANIFEST.json and run digests.
+    "engineering/studies/agent-situation-controls/README.md",
+    "engineering/studies/agent-situation-controls/development/v1/README.md"
   ]
 }

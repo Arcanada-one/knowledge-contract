@@ -1,0 +1,59 @@
+{
+  "record_kind": "exact-file integration readback and scoped review successor",
+  "version": 1,
+  "observed_utc": "2026-11-15T11:43:24.357959+00:00",
+  "reviewer": "f05_partial agent context, same controller as preparation",
+  "subject": {
+    "repository_path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+    "sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+    "bytes": 28830
+  },
+  "verdict": "pass for the explicitly examined integration delta and unchanged previously reviewed scope",
+  "predecessor": {
+    "subject_sha256": "44106256dac25956c0bb49436644944481eee442eb579c2c8e6883a90d662eef",
+    "review_path": "reviews/semantic-verification-20261115/evidence/spec-scoped-internal-review-successor.json",
+    "review_sha256": "7e9ffe89796bb86fdaa2419c2848ad7a02d465c2b54e169a9b3f351e9fe528af",
+    "receipt_preserved_unchanged": true
+  },
+  "observed_delta": {
+    "section": "10",
+    "old_text": "The source inventory accompanying repository integration records their exact\nblobs and the sections used.",
+    "new_text": "The [source inventory](SOURCE_MAP.json) records their exact blobs and the\nsections used.",
+    "sole_byte_change_verified": true
+  },
+  "scope_readback": {
+    "sections": "7 and 8",
+    "byte_identical_to_predecessor": true,
+    "scoped_bytes_sha256": "127dd4476b73761e18cdb3d7c7536a8c2b735250a12a694d6d9c80d425b4359f"
+  },
+  "linked_source_inventory": {
+    "repository_path": "engineering/specifications/semantic-verification/SOURCE_MAP.json",
+    "sha256": "5ebc9ec93ca71d77d0b12abfb7fe0b842f8ba29932a7ee8c0a523457f5d9355d",
+    "parsed_as_JSON": true,
+    "source_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+    "listed_sources": 12,
+    "all_listed_blob_ids_match_baseline_Git_tree": true,
+    "all_section_identifiers_present": true,
+    "scope_limit": "Structural source-pin and link-target check only; the complete interpretation and claim-to-source mapping are not independently re-reviewed here"
+  },
+  "procedure": [
+    "Read exact integrated specification and retained predecessor draft from disk",
+    "Verified both expected complete-file SHA256 values",
+    "Replaced the single predeclared Section10 sentence in memory and matched all integrated bytes",
+    "Compared complete Sections7 and8 byte for byte",
+    "Resolved the new local source-inventory link, parsed its JSON and checked every listed blob id against the pinned baseline Git tree"
+  ],
+  "independence": {
+    "reviewer_authored_spec_or_Section10_link_edit": false,
+    "reviewer_authored_underlying_reconstructed_checker_and_note": true,
+    "shared_controller_and_filesystem": true,
+    "external_scientific_acceptance": false
+  },
+  "limits": [
+    "No automatic transfer of whole-document acceptance is claimed",
+    "The prior review remains bound to4410; this new receipt explicitly binds the integrated8e80 bytes and identifies unchanged scoped content",
+    "No new mathematical, code, consumer-execution or whole-F05 conformance claim",
+    "Catalogue, full requirement register, publication gates, external review and runtime admission remain separate"
+  ],
+  "remote_writes": []
+}
