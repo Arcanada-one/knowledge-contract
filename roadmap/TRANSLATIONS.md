@@ -9,6 +9,67 @@ updated: 2026-11-16
 
 This inventory separates files integrated into the source branch, historical proposal coverage, missing authoring, fidelity review and actual website delivery. File presence is not a new semantic acceptance or a complete-translation verdict.
 
+## Latest measured rendition source snapshot — 16 November 2026
+
+The latest author-prepared source-currency witness for
+[PR #124](https://github.com/Arcanada-one/knowledge-contract/pull/124)
+is the [actual whole-consumer result](../reviews/renditions/source-currency-20261116/review-followup-result.json)
+produced from English source revision `8c7cd3bc1247998cb9554c568da26949da31b749`
+and the ten-body content revision `7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524`.
+It supersedes the *source-skew count* in the earlier Agent Situation snapshot
+below. That older snapshot and its review receipts remain historical evidence.
+
+The current source **candidate** has **36 English works**, **72 RU/zh-Hans
+title/summary cards**, and **68 registered translated bodies** (34 per target
+language). All 68 source bindings match the current English bytes in the
+checked repository tree: **zero older-source bindings**. Four target bodies
+remain absent: Semantic Bridge and Semantic Verification in both languages.
+Eight historical rendition review records remain unchanged; the remaining
+60 registered bodies are not thereby independently reviewed.
+
+Ten manuscripts were revised against the actual newer English source, and
+two Agent Situation editorial findings were repaired. Neither these source
+edits nor passing producer checks imply independent linguistic acceptance,
+index admission, a 36-work website release, or production readback.
+
+The following machine-readable witness is checked against the exact local
+catalogue, card metadata, body/source digests and retained whole-consumer
+result; it is **not** a semantic or publishing verdict.
+
+<!-- CURRENT-RENDITION-INVENTORY:BEGIN -->
+```json
+{
+  "catalogue_works": 36,
+  "metadata_cards": 72,
+  "registered_bodies": 68,
+  "source_mismatches": 0,
+  "missing_pairs": [
+    [
+      "semantic-bridge",
+      "ru"
+    ],
+    [
+      "semantic-bridge",
+      "zh-Hans"
+    ],
+    [
+      "semantic-verification",
+      "ru"
+    ],
+    [
+      "semantic-verification",
+      "zh-Hans"
+    ]
+  ],
+  "historical_review_entries": 8
+}
+```
+<!-- CURRENT-RENDITION-INVENTORY:END -->
+
+The site's existing 31-work release, frozen PR104 review, current-head
+DEUS review and KC-SWE 36-work build have distinct gates. Counts lower in
+this file describe dated source snapshots, not this latest candidate.
+
 ## Source and candidate snapshots checked on 16 November
 
 ### Agent Situation continuation

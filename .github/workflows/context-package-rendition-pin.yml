@@ -49,6 +49,8 @@ jobs:
           set -euo pipefail
           python3 -B reviews/renditions/agent-situation-20261116/producer_validate.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc
+      - name: Check latest rendition inventory and four negative variants
+        run: python3 -I -B tools/check_translation_roadmap_currency.py --root . --self-test
       - name: Replay historical c135 metadata and pin controls at b00
         run: |
           set -euo pipefail
