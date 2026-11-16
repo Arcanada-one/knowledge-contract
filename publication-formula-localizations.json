@@ -115,6 +115,23 @@
           }
         }
       ]
+    },
+    {
+      "path": "papers/constrained-transformations/PAPER.md",
+      "source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
+      "annotations": [
+        {
+          "math_index": 89,
+          "math_type": "DisplayMath",
+          "tex_sha256": "88fee1d40bf85f7c9c453d05f191dd2d5cb869e05ecc5852ea7c244320b20b35",
+          "mtext_index": 1,
+          "source_text": "for all ",
+          "translations": {
+            "ru": "для всех ",
+            "zh-Hans": "对于任意 "
+          }
+        }
+      ]
     }
   ]
 }
