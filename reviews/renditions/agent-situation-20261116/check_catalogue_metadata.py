@@ -2,8 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 """Replay the actual catalogue-localization consumer on a pinned source update.
 
-Checks metadata only. A successful result does not admit a manuscript, preserve
-an old rendition's source currency, build a site, or establish serving.
+Checks metadata and retained byte/ancestry inventory only. A successful result
+does not admit a manuscript, refresh an old rendition's source currency, build
+a site, or establish serving.
 """
 from __future__ import annotations
 
@@ -92,6 +93,33 @@ def main():
     require(set(positive["records"]) == set(after), "COMPILED_WORK_POPULATION")
     require(sum(len(v) for v in positive["records"].values()) == 72, "COMPILED_LOCALE_POPULATION")
 
+    # Registration, source currency and review are separate inventories. Retain
+    # every old entry; a metadata rebind must not refresh an old body or review.
+    rendition = importlib.import_module("renditions")
+    registry = json.loads((repo / "publication-renditions.json").read_bytes())
+    entries = rendition.validate_sidecar(registry, {"edition": catalog["edition"]})
+    old_entries = json.loads(git(repo, "show", BASE + ":publication-renditions.json"))["renditions"]
+    require(len(old_entries) == 66 and len(entries) == 68 and entries[:66] == old_entries,
+            "RETAINED_RENDITION_ENTRIES_CHANGED")
+    require({(e["work"], e["language"]) for e in entries[66:]} ==
+            {("agent-situation", "ru"), ("agent-situation", "zh-Hans")}, "NEW_RENDITION_POPULATION")
+    require(all("review" not in e for e in entries[66:]), "NEW_RENDITION_REVIEW_INVENTED")
+    changed_source = []
+    for entry in entries:
+        for label in ("source", "rendition"):
+            rendition.verify_pin(repo, manifest, entry["work"] + ":" + label,
+                                 entry[label], "RENDITION_" + label.upper() + "_PIN")
+        require(hashlib.sha256((repo / entry["rendition"]["path"]).read_bytes()).hexdigest() ==
+                entry["rendition"]["sha256"], "RENDITION_CURRENT_BYTES")
+        if entry["source"]["sha256"] != after[entry["work"]]["sha256"]:
+            changed_source.append({"work": entry["work"], "language": entry["language"],
+                                   "retained_source_sha256": entry["source"]["sha256"],
+                                   "current_source_sha256": after[entry["work"]]["sha256"]})
+    require(len(changed_source) == 10, "SOURCE_CURRENCY_POPULATION")
+    missing = sorted({(work, lang) for work in after for lang in ("ru", "zh-Hans")} -
+                     {(e["work"], e["language"]) for e in entries})
+    require(len(missing) == 4, "MISSING_RENDITION_POPULATION")
+
     # Inject only the sidecar bytes into the real consumer. Git ancestry and all
     # English source reads stay real; the working tree is never rewritten.
     original_read = Path.read_bytes
@@ -141,6 +169,14 @@ def main():
         "metadata_sha256": hashlib.sha256(raw).hexdigest(), "english_works": 36,
         "compiled_metadata_entries": 72, "new_metadata_entries": 10,
         "historical_prose_records_preserved": 62, "metadata_source_rebindings": rebound,
+        "rendition_inventory": {
+            "registered_bodies": 68, "retained_previous_entries": 66,
+            "historical_review_objects_preserved": sum("review" in e for e in old_entries),
+            "body_pins_and_current_bytes_verified": 68,
+            "source_digest_matches_current": 58, "source_digest_differs": changed_source,
+            "missing_work_language_pairs": missing,
+            "scope": "byte/ancestry inventory; no renewed linguistic or scientific acceptance",
+        },
         "refusal_observations": observations, "result": "PASS",
         "scope": "producer metadata integration only; manuscript fidelity, review, native admission and serving NOT_VERIFIED",
     }, ensure_ascii=False, indent=2))

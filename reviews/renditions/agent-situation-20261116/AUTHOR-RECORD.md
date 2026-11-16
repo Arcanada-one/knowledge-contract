@@ -29,9 +29,13 @@ existing review. The canonical English source is main
 | [Russian](../../../translations/ru/papers/agent-situation/PAPER.md) | `aace3a61cb4d211e20d5359d90c0975d0d1e8d8c79a6d8a465ed88cc32a271da` | `9cdbb6eecda7cb5e4891a6c67042545d778c8a7e` |
 | [Simplified Chinese](../../../translations/zh-Hans/papers/agent-situation/PAPER.md) | `092dbc4c61f6fea0799c2a6152e629b5c1b5fb21697cf1a48f2aa12ef4aedca3` | `ff08de59ebd9a948546a84449001b5f43fa42f8e` |
 
-The exact content commit and sidecar bindings are recorded in the subsequent
-integration section after remote content readback. Until then these are
-prepared bytes, not files asserted to exist at the parent commit.
+Content commit `386bfa099215ea54d45ddbacda425bebaf42cdc4` contains both bodies
+and the prepared checks/patch. Its complete Git tree
+`600b6e216db1a189ca46f712da51321f90d45354` matches the local content tree;
+all 19 uploaded blob identities matched, and both decoded UTF-8 bodies were
+read back from that commit and compared in full. The successor sidecar binds
+the two bodies to this existing content commit, not to a predicted revision.
+It appends 17 exact H2/H3 section pairs per language and no review objects.
 
 ## Improvement applied
 
@@ -93,6 +97,13 @@ metadata source hashes are rebound for five existing works whose English
 bytes changed while their catalogue descriptions stayed identical. This
 metadata-only rebinding does not refresh the corresponding manuscript
 renditions or their review records.
+
+The [registered-body inventory](source-currency.json) separately verifies all
+68 source/rendition revision pins and current target bytes through the actual
+sidecar validator and Git ancestry checks. All 66 prior entries, including
+eight historical review objects, are unchanged. Of the 68 source digests, 58
+match current English bytes and ten differ; this is not a 58-body semantic
+acceptance. The four missing work/language pairs remain explicitly listed.
 
 The [consumer replay](check_catalogue_metadata.py) compiles all 72 metadata
 records and rejects eight specific defective sidecars through the unchanged

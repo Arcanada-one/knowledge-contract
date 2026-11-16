@@ -49,6 +49,94 @@
       "language": "zh-Hans"
     }
   ],
+  "rendition_inventory": {
+    "registered_bodies": 68,
+    "retained_previous_entries": 66,
+    "historical_review_objects_preserved": 8,
+    "body_pins_and_current_bytes_verified": 68,
+    "source_digest_matches_current": 58,
+    "source_digest_differs": [
+      {
+        "work": "constrained-transformations",
+        "language": "ru",
+        "retained_source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+        "current_source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432"
+      },
+      {
+        "work": "constrained-transformations",
+        "language": "zh-Hans",
+        "retained_source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+        "current_source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432"
+      },
+      {
+        "work": "evidence-and-falsification",
+        "language": "ru",
+        "retained_source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+        "current_source_sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9"
+      },
+      {
+        "work": "evidence-and-falsification",
+        "language": "zh-Hans",
+        "retained_source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+        "current_source_sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9"
+      },
+      {
+        "work": "geometry-of-semantic-representations",
+        "language": "ru",
+        "retained_source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+        "current_source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70"
+      },
+      {
+        "work": "geometry-of-semantic-representations",
+        "language": "zh-Hans",
+        "retained_source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+        "current_source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70"
+      },
+      {
+        "work": "bibliography",
+        "language": "ru",
+        "retained_source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+        "current_source_sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72"
+      },
+      {
+        "work": "bibliography",
+        "language": "zh-Hans",
+        "retained_source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+        "current_source_sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72"
+      },
+      {
+        "work": "source-map",
+        "language": "ru",
+        "retained_source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+        "current_source_sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631"
+      },
+      {
+        "work": "source-map",
+        "language": "zh-Hans",
+        "retained_source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+        "current_source_sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631"
+      }
+    ],
+    "missing_work_language_pairs": [
+      [
+        "semantic-bridge",
+        "ru"
+      ],
+      [
+        "semantic-bridge",
+        "zh-Hans"
+      ],
+      [
+        "semantic-verification",
+        "ru"
+      ],
+      [
+        "semantic-verification",
+        "zh-Hans"
+      ]
+    ],
+    "scope": "byte/ancestry inventory; no renewed linguistic or scientific acceptance"
+  },
   "refusal_observations": [
     {
       "case": "original-31-work-sidecar",

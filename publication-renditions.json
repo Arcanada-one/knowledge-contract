@@ -4634,6 +4634,186 @@
           "rendition": "reproduction-and-interpretation"
         }
       ]
+    },
+    {
+      "work": "agent-situation",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/agent-situation/PAPER.md",
+        "sha256": "f04471d2b66bbb0d2ac64e41325bbd9367fd2f5d49f40bb90235beae2ff81677",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/papers/agent-situation/PAPER.md",
+        "sha256": "aace3a61cb4d211e20d5359d90c0975d0d1e8d8c79a6d8a465ed88cc32a271da",
+        "revision": "386bfa099215ea54d45ddbacda425bebaf42cdc4"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-question-method-and-contribution",
+          "rendition": "1-question-method-and-contribution"
+        },
+        {
+          "source": "2-foundations-and-nearest-prior-work",
+          "rendition": "2-foundations-and-nearest-prior-work"
+        },
+        {
+          "source": "21-situation-and-uncertainty",
+          "rendition": "21-situation-and-uncertainty"
+        },
+        {
+          "source": "22-robot-capabilities-partial-startup-and-feedback",
+          "rendition": "22-robot-capabilities-partial-startup-and-feedback"
+        },
+        {
+          "source": "23-agent-memory-and-bounded-context",
+          "rendition": "23-agent-memory-and-bounded-context"
+        },
+        {
+          "source": "3-objects-and-state-distinctions",
+          "rendition": "3-objects-and-state-distinctions"
+        },
+        {
+          "source": "4-initialization-as-bounded-readiness",
+          "rendition": "4-initialization-as-bounded-readiness"
+        },
+        {
+          "source": "5-change-refresh-and-candidate-intentions",
+          "rendition": "5-change-refresh-and-candidate-intentions"
+        },
+        {
+          "source": "51-reconcile-observations-before-recomputing-everything",
+          "rendition": "51-reconcile-observations-before-recomputing-everything"
+        },
+        {
+          "source": "52-refresh-is-an-allocation-problem",
+          "rendition": "52-refresh-is-an-allocation-problem"
+        },
+        {
+          "source": "53-proactivity-remains-a-separate-decision",
+          "rendition": "53-proactivity-remains-a-separate-decision"
+        },
+        {
+          "source": "6-bounded-model-facing-context",
+          "rendition": "6-bounded-model-facing-context"
+        },
+        {
+          "source": "7-conditional-properties-and-counterexamples",
+          "rendition": "7-conditional-properties-and-counterexamples"
+        },
+        {
+          "source": "8-evaluation-programme-and-evidence-boundary",
+          "rendition": "8-evaluation-programme-and-evidence-boundary"
+        },
+        {
+          "source": "9-limitations-and-development-decision",
+          "rendition": "9-limitations-and-development-decision"
+        },
+        {
+          "source": "references-and-source-scope",
+          "rendition": "references-and-source-scope"
+        }
+      ]
+    },
+    {
+      "work": "agent-situation",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "papers/agent-situation/PAPER.md",
+        "sha256": "f04471d2b66bbb0d2ac64e41325bbd9367fd2f5d49f40bb90235beae2ff81677",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/papers/agent-situation/PAPER.md",
+        "sha256": "092dbc4c61f6fea0799c2a6152e629b5c1b5fb21697cf1a48f2aa12ef4aedca3",
+        "revision": "386bfa099215ea54d45ddbacda425bebaf42cdc4"
+      },
+      "sections": [
+        {
+          "source": "abstract",
+          "rendition": "abstract"
+        },
+        {
+          "source": "1-question-method-and-contribution",
+          "rendition": "1-question-method-and-contribution"
+        },
+        {
+          "source": "2-foundations-and-nearest-prior-work",
+          "rendition": "2-foundations-and-nearest-prior-work"
+        },
+        {
+          "source": "21-situation-and-uncertainty",
+          "rendition": "21-situation-and-uncertainty"
+        },
+        {
+          "source": "22-robot-capabilities-partial-startup-and-feedback",
+          "rendition": "22-robot-capabilities-partial-startup-and-feedback"
+        },
+        {
+          "source": "23-agent-memory-and-bounded-context",
+          "rendition": "23-agent-memory-and-bounded-context"
+        },
+        {
+          "source": "3-objects-and-state-distinctions",
+          "rendition": "3-objects-and-state-distinctions"
+        },
+        {
+          "source": "4-initialization-as-bounded-readiness",
+          "rendition": "4-initialization-as-bounded-readiness"
+        },
+        {
+          "source": "5-change-refresh-and-candidate-intentions",
+          "rendition": "5-change-refresh-and-candidate-intentions"
+        },
+        {
+          "source": "51-reconcile-observations-before-recomputing-everything",
+          "rendition": "51-reconcile-observations-before-recomputing-everything"
+        },
+        {
+          "source": "52-refresh-is-an-allocation-problem",
+          "rendition": "52-refresh-is-an-allocation-problem"
+        },
+        {
+          "source": "53-proactivity-remains-a-separate-decision",
+          "rendition": "53-proactivity-remains-a-separate-decision"
+        },
+        {
+          "source": "6-bounded-model-facing-context",
+          "rendition": "6-bounded-model-facing-context"
+        },
+        {
+          "source": "7-conditional-properties-and-counterexamples",
+          "rendition": "7-conditional-properties-and-counterexamples"
+        },
+        {
+          "source": "8-evaluation-programme-and-evidence-boundary",
+          "rendition": "8-evaluation-programme-and-evidence-boundary"
+        },
+        {
+          "source": "9-limitations-and-development-decision",
+          "rendition": "9-limitations-and-development-decision"
+        },
+        {
+          "source": "references-and-source-scope",
+          "rendition": "references-and-source-scope"
+        }
+      ]
     }
   ]
 }
