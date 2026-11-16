@@ -1,0 +1,56 @@
+{
+  "review_kind": "bounded-nonauthor-code-review/1",
+  "reviewer": "/root/mailbox_status",
+  "external_independence": "NOT_VERIFIED; same controller/workspace",
+  "verdict": "PASS_WITH_DECLARED_SCOPE",
+  "finding": "RC-01: reject capture count/inventory before digest/replay",
+  "finding_status": "CLOSED",
+  "candidate_files": [
+    {
+      "path": "tools/repository_rule_consumer.py",
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "bytes": 12483
+    },
+    {
+      "path": "tools/semantic_bridge.py",
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "bytes": 18600
+    },
+    {
+      "path": "tools/run_repository_rule_lab.py",
+      "sha256": "657935f1dbd49fde4eb74c5e85639a06220d6af8c239e07d96112c328ebbc831",
+      "bytes": 11567
+    },
+    {
+      "path": "tools/fixtures/repository-rule-lab/cases.json",
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "bytes": 2324
+    },
+    {
+      "path": "tools/test_repository_rule_lab.py",
+      "sha256": "3c26f3c3406b66ff7b69be06b2ac607777d893b890fc109a738cc267bafeabab",
+      "bytes": 1921
+    }
+  ],
+  "executed_evidence": [
+    "pre-fix-cap/RESULT.json",
+    "post-fix-cap/RESULT.json",
+    "PACKET_RESULT.json"
+  ],
+  "not_executed_by_reviewer": [
+    "full lifecycle suite",
+    "full runner",
+    "native service",
+    "live website",
+    "hosted CI",
+    "independent empirical episode"
+  ],
+  "preserved_limits": [
+    "structural hashes do not authenticate producers or complete history",
+    "historical inspection is not currentness",
+    "no authority or external effect",
+    "32MiB bound applies to serialized CLI input/output",
+    "no directory-fsync or power-loss durability proof",
+    "no unique global history or exactly-once execution"
+  ]
+}

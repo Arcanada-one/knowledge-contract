@@ -1,0 +1,37 @@
+{
+  "schema": "repository-rule-consumer-test-run/1",
+  "started_at": "2026-11-15T08:17:28.971355+00:00",
+  "finished_at": "2026-11-15T08:17:32.863510+00:00",
+  "duration_seconds": 3.891752247999875,
+  "source_baseline_commit": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tools.test_repository_rule_consumer",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/5cd1d6f67b86/nov15-lab-work",
+  "exit_code": 0,
+  "before_sha256": {
+    "tools/repository_rule_consumer.py": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+    "tools/semantic_bridge.py": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+    "tools/repository_session.py": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+    "tools/repository_observer.py": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+    "engineering/studies/agent-situation-controls/situation.py": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+    "tools/test_repository_rule_consumer.py": "ef79a53cbd61c1417a831337b21aa1544e697424e64f9f187f22510cb29be3c9"
+  },
+  "after_sha256": {
+    "tools/repository_rule_consumer.py": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+    "tools/semantic_bridge.py": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+    "tools/repository_session.py": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+    "tools/repository_observer.py": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+    "engineering/studies/agent-situation-controls/situation.py": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+    "tools/test_repository_rule_consumer.py": "ef79a53cbd61c1417a831337b21aa1544e697424e64f9f187f22510cb29be3c9"
+  },
+  "source_hashes_stable": true,
+  "independence": "same controller, host and model family; test author differs from implementation author",
+  "design_sha256": "3ead066f75ba881ebc906f25637b23948d13b59fc5e2ab85931a844060a859da",
+  "prospective_cases_sha256": "c1b5b7fd0016c68da0ca0403e28cf6e2e2a85d6414596705abf61485fa105e69"
+}

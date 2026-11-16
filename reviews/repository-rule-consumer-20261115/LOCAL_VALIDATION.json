@@ -1,0 +1,73 @@
+{
+  "schema": "repository-rule-local-validation/1",
+  "source_base": "a5b3618034256f14f389c2c7de8da409c7c5310c",
+  "gates": [
+    {
+      "name": "publication",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_publication.py",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "publication.txt"
+    },
+    {
+      "name": "sources",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_sources.py",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "sources.txt"
+    },
+    {
+      "name": "requirements",
+      "command": [
+        "python3",
+        "-B",
+        "tools/check_requirement_register.py"
+      ],
+      "exit_code": 0,
+      "log": "requirements.txt"
+    }
+  ],
+  "unit_tests": {
+    "count": 127,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "tools.test_check_publication",
+      "tools.test_check_sources",
+      "tools.test_check_separation",
+      "tools.test_check_dco",
+      "tools.test_ci_workflow",
+      "tools.test_semantic_bridge",
+      "tools.test_semantic_bridge_relations",
+      "tools.test_repository_rule_consumer",
+      "tools.test_repository_rule_lab",
+      "-v"
+    ],
+    "exit_code": 0,
+    "pandoc": "3.1.3",
+    "log": "unit-tests.txt"
+  },
+  "initial_environment_failure": {
+    "pandoc": "3.1.11.1",
+    "failed_methods": 15,
+    "reason": "Publication tests require pinned Pandoc3.1.3; no code change was needed.",
+    "log": "development/unit-tests-wrong-pandoc.txt"
+  },
+  "hosted_execution": "NOT_YET_OBSERVED",
+  "external_independence": "NOT_VERIFIED",
+  "llm_experiment": "NOT_EXECUTED",
+  "cost": "NOT_MEASURED"
+}

@@ -1,0 +1,1 @@
+{"effects_authorized": false, "receipt_id": "ee602d4f483fbdfec695c0ef3ffcc90036b29029bc4f6bc99b0f2bae205877e1", "result": "BLOCKED", "sequence": 5, "session_result": "RESUME_REQUIRED", "view": "OBSERVED_THIS_INVOCATION"}

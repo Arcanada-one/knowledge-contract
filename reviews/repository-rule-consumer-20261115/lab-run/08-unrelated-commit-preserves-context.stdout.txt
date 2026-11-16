@@ -1,0 +1,1 @@
+{"effects_authorized": false, "receipt_id": "8999f73061d39c31e4e52a6c38c8b23addc4959710ba9aba21f05b524dddc05d", "result": "EVALUATED", "sequence": 8, "session_result": "VALID", "view": "OBSERVED_THIS_INVOCATION"}

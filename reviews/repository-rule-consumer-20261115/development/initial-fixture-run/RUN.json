@@ -1,0 +1,173 @@
+{
+  "schema": "repository-rule-lab-run/1",
+  "started_at": "2026-11-15T08:14:44.711661+00:00",
+  "completed_at": "2026-11-15T08:14:44.964201+00:00",
+  "elapsed_seconds": 0.252543,
+  "python": "3.12.14",
+  "programs_before": {
+    "tools/repository_rule_consumer.py": {
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "bytes": 12483
+    },
+    "tools/semantic_bridge.py": {
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "bytes": 18600
+    },
+    "tools/repository_session.py": {
+      "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+      "bytes": 19109
+    },
+    "tools/repository_observer.py": {
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "bytes": 20125
+    },
+    "engineering/studies/agent-situation-controls/situation.py": {
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "bytes": 14501
+    },
+    "tools/run_repository_rule_lab.py": {
+      "sha256": "1277aab87f1f38745a109037fbb6fe6b95929c76484bb35c32a0a91a11705e34",
+      "bytes": 11445
+    },
+    "tools/fixtures/repository-rule-lab/cases.json": {
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "bytes": 2324
+    }
+  },
+  "programs_after": {
+    "tools/repository_rule_consumer.py": {
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "bytes": 12483
+    },
+    "tools/semantic_bridge.py": {
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "bytes": 18600
+    },
+    "tools/repository_session.py": {
+      "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+      "bytes": 19109
+    },
+    "tools/repository_observer.py": {
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "bytes": 20125
+    },
+    "engineering/studies/agent-situation-controls/situation.py": {
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "bytes": 14501
+    },
+    "tools/run_repository_rule_lab.py": {
+      "sha256": "1277aab87f1f38745a109037fbb6fe6b95929c76484bb35c32a0a91a11705e34",
+      "bytes": 11445
+    },
+    "tools/fixtures/repository-rule-lab/cases.json": {
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "bytes": 2324
+    }
+  },
+  "programs_unchanged": true,
+  "planned": 12,
+  "executed": 2,
+  "passed": 1,
+  "not_executed": [
+    "ignore-uncommitted-decoys",
+    "packet-change-blocked",
+    "repeat-requires-resume",
+    "explicit-resume",
+    "evaluate-true",
+    "unrelated-commit-preserves-context",
+    "source-change-blocked",
+    "resume-unsupported-source",
+    "unsupported-is-not-truth",
+    "inspect-is-historical"
+  ],
+  "complete": false,
+  "failure": {
+    "class": "RuntimeError",
+    "message": "case differs from its predeclared expected result: evaluate-unknown"
+  },
+  "cases": [
+    {
+      "id": "start",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "start",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/01-start.json",
+        "--source-path",
+        "source.txt",
+        "--packet-path",
+        "packet.json",
+        "--task-id",
+        "offline-rule-lifecycle",
+        "--scope",
+        "two-committed-inputs"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output": "01-start.json",
+      "stdout": "01-start.stdout.txt",
+      "stderr": "01-start.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "fee94f7f9357ef09f621abc46e018496d1759d3b7314eec345f05a2d99dfa799",
+        "bytes": 18657
+      },
+      "passed": true
+    },
+    {
+      "id": "evaluate-unknown",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/02-evaluate-unknown.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/01-start.json"
+      ],
+      "exit_code": 2,
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      },
+      "output": "02-evaluate-unknown.json",
+      "stdout": "02-evaluate-unknown.stdout.txt",
+      "stderr": "02-evaluate-unknown.stderr.txt",
+      "observed": {
+        "exit_code": 2,
+        "result": "INVALID",
+        "session_result": "VALID",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "64ff79472d99d4a0ce910ec1e65efd5064c31c2b284d66898f3cbae4c9c4e84f",
+        "bytes": 36204
+      },
+      "passed": false
+    }
+  ],
+  "result": "FAIL",
+  "llm_calls": 0,
+  "cost": "NOT_MEASURED",
+  "effects_authorized": false,
+  "limits": "One authored offline lifecycle, not independent episodes or an LLM trial. Internal replay does not authenticate the producer. Committed files only; working tree, continuous history, native admission and authority are not established."
+}

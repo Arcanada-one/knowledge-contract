@@ -1,0 +1,17 @@
+test_capture_limit_does_not_truncate_or_reset (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_capture_limit_does_not_truncate_or_reset) ... ok
+test_closed_paths_root_and_scope (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_closed_paths_root_and_scope) ... ok
+test_cold_start_and_valid_evaluate_bind_both_committed_inputs (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_cold_start_and_valid_evaluate_bind_both_committed_inputs) ... ok
+test_crossprocess_inspect_and_exclusive_publication (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_crossprocess_inspect_and_exclusive_publication) ... ok
+test_dirty_pair_is_not_calculation_input (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_dirty_pair_is_not_calculation_input) ... ok
+test_each_required_file_invalidates_then_explicit_resume (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_each_required_file_invalidates_then_explicit_resume) ... ok
+test_missing_packet_latches_across_persisted_cli_chain (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_missing_packet_latches_across_persisted_cli_chain) ... ok
+test_resealed_analysis_and_binding_forgery_rejected (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_resealed_analysis_and_binding_forgery_rejected) ... ok
+test_source_and_packet_byte_bounds_remain_explicit (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_source_and_packet_byte_bounds_remain_explicit) ... ok
+test_unknown_and_withheld_remain_distinct (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_unknown_and_withheld_remain_distinct) ... ok
+test_unrelated_commit_keeps_adopted_context (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_unrelated_commit_keeps_adopted_context) ... ok
+test_unsupported_invalid_and_duplicate_packet_are_not_success (tools.test_repository_rule_consumer.RepositoryRuleConsumerTests.test_unsupported_invalid_and_duplicate_packet_are_not_success) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 3.742s
+
+OK
