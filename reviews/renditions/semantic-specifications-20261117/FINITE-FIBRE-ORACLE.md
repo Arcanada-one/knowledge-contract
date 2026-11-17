@@ -143,3 +143,58 @@ independent reviewer, authenticated real observation or deployed consumer
 oracle. It cannot establish soundness of arbitrary source evidence, reviewer
 independence, real agent behavior or native KC2 admission. Seek a non-author
 source-rule review on the exact final head before merging; cost NOT_MEASURED.
+
+## Defined-output grade histogram — c150 author-side candidate
+
+The existing finite check confirms the total of 7,272 admissible partial maps, but
+an aggregate is insufficient to distinguish a change in how many observation
+outputs are defined. For an explicit additional necessary invariant, define
+(N_r) as the number of accepted (observation profile, assessment profile,
+partial-map) triples having exactly (r) defined outputs, with (n=4)
+situations, (m=2) observation labels and (q=4) assessment values.
+
+Choose which (r) labels are defined and their (q^r) values. Each situation
+can select one of those (r) labels with its prescribed assessment, or any
+of the remaining (m-r) labels with any of (q) assessments. Inclusion-exclusion
+ensures every defined label is attained:
+
+[
+N_r = \binom{m}{r} q^r \sum_{j=0}^{r} (-1)^j \binom{r}{j}
+      \big((m-r)q+r-j\big)^n.
+]
+
+At ((n,m,q)=(4,2,4)), the independently derived histogram is
+**(N_0=4096,;N_1=2952,;N_2=224)**. Their sum is 7,272. This
+is a count over profile/map pairs, not a claim about distinct mathematical
+functions or agent evaluations. It is compatible with the 232 globally
+determinate profiles: eight of those have one unattained label, while 224 have
+both labels attained and constant.
+
+The checker computes this finite formula without calling its candidate
+membership predicate and separately counts the actually accepted outputs by
+grade. It demands equality and preserves the default JSON bytes, so earlier
+recorded executions are not silently refreshed. The existing Rendition step
+continues its full correct-path normal/optimized execution and retained-output
+comparison. An additional hosted negative case
+`--expect-two-defined 225` must refuse with exit 3 and
+`FINITE_FIBRE_REFUSED: two-defined partial-map grade mismatch`
+in both modes.
+
+**Local adverse demonstration:** a deliberately incorrect predicate can
+replace the accepted two-defined map `(0,1)` with the rejected one-defined
+map `(2,undefined)` only in profile observations `(0,0,0,1)`,
+assessments `(0,0,0,1)`. The total 7,272 is unchanged, while the
+histogram becomes `4096/2953/223`. This is a separate local probe,
+not a newly deployed mutant or a claim that the site has this defect.
+Conversely, the existing swapped-fibre mutant preserves even the per-profile
+grades, so **this histogram is also insufficient alone**. Exact source-value
+membership remains mandatory.
+
+**Scope and rollback:** this is a method/checker/workflow regression bound to
+Semantic Verification §7.4, not a new normative clause. EN/RU/zh-Hans manuscript
+bodies, catalogue, sidecars, review states, previous evidence receipts and
+production source/roadmap pins are unchanged. Revert this exact three-file
+increment on the existing PR if its checks fail, keeping historic evidence.
+Both computations share the stipulated model and author/controller;
+independent semantic review and native KC2 admission are NOT_VERIFIED.
+Cost NOT_MEASURED.

@@ -126,6 +126,23 @@ def closed_form_partial_maps():
     return terms, sum(terms)
 
 
+def closed_form_by_defined_grade():
+    """Count accepted maps by their number of defined observation outputs.
+
+    Choose r labels to define; choose one assessment value for each; use
+    inclusion-exclusion to require every defined label be attained. Other
+    labels remain undefined and allow all assessment values.
+    """
+    n, m, q = 4, len(LABELS), 4
+    return {
+        r: comb(m, r) * q ** r * sum(
+            (-1) ** j * comb(r, j) * ((m - r) * q + r - j) ** n
+            for j in range(r + 1)
+        )
+        for r in range(m + 1)
+    }
+
+
 def check_swapped_symmetries(truth_tables, candidates):
     """Compare complete directly evaluated tables, not a symmetry shortcut.
 
@@ -195,10 +212,11 @@ def check_swapped_symmetries(truth_tables, candidates):
     }
 
 
-def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_test="correct"):
+def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_test="correct",\n        expected_two_defined=224):
     class_by_shape = defaultdict(Counter)
     query_counts = Counter()
     accepted_counts = Counter()
+    accepted_by_grade = Counter()
     divergences = {k: {"false_accept": 0, "false_reject": 0, "accepted_count": 0, "first_witness": None}
                    for k in ("accept_all", "refuse_all", "allow_unattained", "skip_last_situation",
                              "cyclic_value_shift", "swapped_constant_fibres")}
@@ -233,6 +251,7 @@ def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_
                 correct_decisions.append(ok)
                 if ok:
                     accepted.append(candidate)
+                    accepted_by_grade[sum(value != UNDEFINED for value in candidate)] += 1
                 for name, counts in divergences.items():
                     bad = wrong_valid(candidate, obs, values, name)
                     if name == "swapped_constant_fibres":
@@ -264,6 +283,16 @@ def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_
     require(dict(query_counts) == EXPECTED_QUERIES, "§7.4 query cardinality mismatch")
     closed_form_terms, symbolic_total = closed_form_partial_maps()
     enumerated_total = sum(size * profiles for size, profiles in accepted_counts.items())
+    symbolic_grade = closed_form_by_defined_grade()
+    require(symbolic_grade == {0: 4096, 1: 2952, 2: 224},
+            f"§7.4 symbolic defined-output grades mismatch: {symbolic_grade}")
+    actual_grade = {grade: accepted_by_grade[grade] for grade in range(len(LABELS) + 1)}
+    require(actual_grade == symbolic_grade,
+            f"defined-output grade distribution mismatch: {actual_grade} != {symbolic_grade}")
+    require(sum(symbolic_grade.values()) == symbolic_total,
+            "defined-output grade sum differs from fibre-size aggregate")
+    require(symbolic_grade[2] == expected_two_defined,
+            f"two-defined partial-map grade mismatch: {symbolic_grade[2]} != {expected_two_defined}")
     require(symbolic_total == expected_accepted,
             f"closed-form accepted partial-map cardinality mismatch: {symbolic_total} != {expected_accepted}")
     require(enumerated_total == symbolic_total,
@@ -310,12 +339,12 @@ if __name__ == "__main__":
     parser.add_argument("--expect-determined", type=int, default=2952)
     parser.add_argument("--expect-accepted", type=int, default=7272)
     parser.add_argument("--expect-swapped-false-accept", type=int, default=504)
-    parser.add_argument("--source-under-test", choices=("correct", "swapped_constant_fibres",
+    parser.add_argument("--expect-two-defined", type=int, default=224)\n    parser.add_argument("--source-under-test", choices=("correct", "swapped_constant_fibres",
                                                          "cyclic_value_shift"), default="correct")
     args = parser.parse_args()
     EXPECTED_QUERIES["determined"] = args.expect_determined
     try:
-        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept, args.source_under_test),
+        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept, args.source_under_test,\n                            args.expect_two_defined),
                          ensure_ascii=False, sort_keys=True, indent=2))
     except ValueError as exc:
         print(f"FINITE_FIBRE_REFUSED: {exc}", file=sys.stderr)

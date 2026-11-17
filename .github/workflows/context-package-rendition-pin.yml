@@ -169,6 +169,19 @@ jobs:
           test "$swap_optimized_rc" -eq 3
           grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-normal.log"
           grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-optimized.log"
+          # A wrong count for the two-defined grade must be refused in both
+          # standard and optimized Python; default output must stay unchanged.
+          set +e
+          python3 -I -B "$oracle" --expect-two-defined 225 > "$RUNNER_TEMP/fibre-grade-negative-normal.log" 2>&1
+          grade_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-two-defined 225 > "$RUNNER_TEMP/fibre-grade-negative-optimized.log" 2>&1
+          grade_optimized_rc=$?
+          set -e
+          test "$grade_normal_rc" -eq 3
+          test "$grade_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: two-defined partial-map grade mismatch' "$RUNNER_TEMP/fibre-grade-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: two-defined partial-map grade mismatch' "$RUNNER_TEMP/fibre-grade-negative-optimized.log"
+          echo FINITE_DEFINED_GRADE_PASS
           # Source-tether: a per-fibre constructive model must reject cardinality-
           # preserving value mistakes even when they pass aggregate/symmetry checks.
           for variant in swapped_constant_fibres cyclic_value_shift; do
