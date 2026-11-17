@@ -26,6 +26,14 @@ In the stipulated model `2^4 × 4^4 = 4096` profiles; each has two queried obser
 
 [check_finite_partial_map.py](check_finite_partial_map.py) is a **derivative** of the retained local c143 candidate, originally SHA-256 `3f756a1db019c7ec495c5668858630ce369be0d8993674e1e2db33c88313b8ea`; the new interface adds deliberate expected-count tampering with explicit exit 3. It is not represented as the original artifact. The existing rendition workflow runs the new source both normally and with `-O`, checks outputs and four mutant counts, then demands exit 3 and the exact mismatch message after injecting 2953.
 
+## Independent aggregate count — c145 successor
+
+A bounded cross-check now derives the allowed-map population without calling the candidate membership predicate. With `q=4` values and a fibre containing `k` situations, sum over all `q^k` valuation assignments: every assignment admits the undefined partial map, while the `q` constant assignments admit one additional defined value. Hence the summed weight is `F(0)=1` for an unattained fibre and `F(k)=q^k+q` for `k>0`.
+
+For two observation labels and four situations, distribute positions between the two fibres with binomial multiplicity. The symbolic population is `Σ_{k=0}^4 binom(4,k)F(k)F(4−k) = 260+2176+2400+2176+260 = 7272`. The implemented checker computes this expression separately from enumerated valid candidates and requires both populations to agree with the declared expected total. The `--expect-accepted 7273` counterexample must exit 3 with `FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch` under both regular and optimized Python. Preserve the earlier wrong-query 2953 control and four original algorithm mutations; this is additional falsification, not a replacement.
+
+This checks only the explicitly stipulated `4×2×4` finite model; the closed form assumes independent valuation choices across disjoint fibres and makes no claim about uncertain, correlated or real agent observations. Its arithmetic is an author-side derivation, not a separate scientific reviewer or native KC2 admission. Exact source and rollback boundaries above remain unchanged. Current downstream site release and live index are separate.
+
 ## Surfaces, rollback, limits
 
 English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The only changed surfaces are this method, its executable test and the existing workflow. A separately reviewed revert of these files restores the original behavior. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.
