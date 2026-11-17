@@ -2,73 +2,68 @@
 title: "Russian and Chinese Editions: Coverage and Remaining Work"
 sources: none
 status: source-pinned-file-inventory
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 # Russian and Chinese Editions: Coverage and Remaining Work
 
 This inventory separates files integrated into the source branch, historical proposal coverage, missing authoring, fidelity review and actual website delivery. File presence is not a new semantic acceptance or a complete-translation verdict.
 
-## Latest measured rendition source snapshot — 16 November 2026
+## Complete-body candidate — 17 November 2026
 
-The latest author-prepared source-currency witness for
-[PR #124](https://github.com/Arcanada-one/knowledge-contract/pull/124)
-is the [actual whole-consumer result](../reviews/renditions/source-currency-20261116/review-followup-result.json)
-produced from English source revision `8c7cd3bc1247998cb9554c568da26949da31b749`
-and the ten-body content revision `7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524`.
-It supersedes the *source-skew count* in the earlier Agent Situation snapshot
-below. That older snapshot and its review receipts remain historical evidence.
+The next source candidate in [PR #124](https://github.com/Arcanada-one/knowledge-contract/pull/124)
+adds full Semantic Bridge and Semantic Verification renditions in Russian and
+Simplified Chinese, against English source `8c7cd3bc1247998cb9554c568da26949da31b749`.
+The intended population is **36 English works**, **72 localized title/summary
+cards**, and **72 registered translated bodies**, 36 per target language.
+The [actual consumer result](../reviews/renditions/semantic-specifications-20261117/producer-result.json)
+records its tested publication and content revisions, complete-body states,
+source currency and adverse controls. The [author record](../reviews/renditions/semantic-specifications-20261117/AUTHOR-RECORD.md)
+names the exact scope and the remaining release checks.
 
-The current source **candidate** has **36 English works**, **72 RU/zh-Hans
-title/summary cards**, and **68 registered translated bodies** (34 per target
-language). All 68 source bindings match the current English bytes in the
-checked repository tree: **zero older-source bindings**. Four target bodies
-remain absent: Semantic Bridge and Semantic Verification in both languages.
-Eight historical rendition review records remain unchanged; the remaining
-60 registered bodies are not thereby independently reviewed.
+All 68 previous rendition entries and their body files are retained byte for
+byte. Eight historical review objects keep their original source, subject and
+scope. The four new bodies are author drafts without independent review;
+64 registered bodies in the combined candidate remain unreviewed. Complete
+registration and structural parity do not establish prose equivalence or an
+independent linguistic acceptance.
 
-Ten manuscripts were revised against the actual newer English source, and
-two Agent Situation editorial findings were repaired. Neither these source
-edits nor passing producer checks imply independent linguistic acceptance,
-index admission, a 36-work website release, or production readback.
-
-The following machine-readable witness is checked against the exact local
-catalogue, card metadata, body/source digests and retained whole-consumer
-result; it is **not** a semantic or publishing verdict.
+The following witness is checked against the actual catalogue, metadata,
+body/source digests and pinned reader consumer. It does not certify a site
+release, indexing, native admission or a benefit to a production consumer.
 
 <!-- CURRENT-RENDITION-INVENTORY:BEGIN -->
 ```json
 {
   "catalogue_works": 36,
   "metadata_cards": 72,
-  "registered_bodies": 68,
+  "registered_bodies": 72,
   "source_mismatches": 0,
-  "missing_pairs": [
-    [
-      "semantic-bridge",
-      "ru"
-    ],
-    [
-      "semantic-bridge",
-      "zh-Hans"
-    ],
-    [
-      "semantic-verification",
-      "ru"
-    ],
-    [
-      "semantic-verification",
-      "zh-Hans"
-    ]
-  ],
+  "missing_pairs": [],
   "historical_review_entries": 8
 }
 ```
 <!-- CURRENT-RENDITION-INVENTORY:END -->
 
-The site's existing 31-work release, frozen PR104 review, current-head
-DEUS review and KC-SWE 36-work build have distinct gates. Counts lower in
-this file describe dated source snapshots, not this latest candidate.
+The current site release still has its own 31-work source pin. Frozen PR104,
+this complete 36-work candidate, per-language review, the full site build and
+observed delivery remain distinct gates. The entries below retain their dated
+populations and results.
+
+## Historical 68-body source-currency snapshot — 16 November 2026
+
+At `18684f073285a4fa20f299518bd8a3d75b0c76d6`, the
+[whole-consumer result](../reviews/renditions/source-currency-20261116/review-followup-result.json)
+used English source `8c7cd3bc1247998cb9554c568da26949da31b749`
+and ten-body content revision `7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524`.
+It had 36 works, 72 localized cards and 68 bodies, with zero older-source
+bindings. Semantic Bridge and Semantic Verification lacked both target bodies.
+Eight historical reviews were retained and the other 60 bodies were unreviewed.
+Ten manuscripts had been brought to the newer source and two Agent Situation
+editorial findings had been repaired. The check and its receipt are unchanged;
+CI replays them at their own 68-body input rather than replacing their numbers
+with those of this successor. This snapshot superseded the ten-source-skew
+count in the earlier Agent Situation record below, without changing that record.
 
 ## Source and candidate snapshots checked on 16 November
 

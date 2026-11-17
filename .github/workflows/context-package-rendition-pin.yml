@@ -49,8 +49,6 @@ jobs:
           set -euo pipefail
           python3 -B reviews/renditions/agent-situation-20261116/producer_validate.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc
-      - name: Check current rendition inventory, card source bindings and ten negative variants
-        run: python3 -I -B tools/check_translation_roadmap_currency.py --root . --self-test
       - name: Replay historical c135 metadata and pin controls at b00
         run: |
           set -euo pipefail
@@ -66,16 +64,30 @@ jobs:
           python3 -I -B reviews/renditions/source-currency-20261116/check_historical_pin_regression.py \
             --repository "$kc_c135_worktree" \
             --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker"
-      - name: Compile current metadata and all renditions with ten source updates
+      - name: Replay the historical 68-body source and roadmap checks at their exact input
         run: |
           set -euo pipefail
-          python3 -I -B reviews/renditions/source-currency-20261116/check_source_currency.py \
-            --repository . --site-repository _rendition-site-checker --pandoc pandoc
+          kc_68_revision=18684f073285a4fa20f299518bd8a3d75b0c76d6
+          kc_68_worktree="$RUNNER_TEMP/kc-68-body-baseline"
+          git fetch --no-tags origin "$kc_68_revision"
+          git worktree add --detach "$kc_68_worktree" "$kc_68_revision"
+          trap 'git worktree remove "$kc_68_worktree"' EXIT
+          python3 -I -B "$kc_68_worktree/tools/check_translation_roadmap_currency.py" \
+            --root "$kc_68_worktree" --self-test
+          python3 -I -B "$kc_68_worktree/reviews/renditions/source-currency-20261116/check_source_currency.py" \
+            --repository "$kc_68_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker" --pandoc pandoc
+      - name: Compile all 72 bodies and check the four complete semantic specifications
+        run: |
+          set -euo pipefail
+          python3 -I -B reviews/renditions/semantic-specifications-20261117/check_complete_renditions.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc \
+            --check-retained-result
       - name: Reject optimized Python for the assertion-based pinned consumer
         run: |
           set -euo pipefail
           set +e
-          python3 -I -O -B reviews/renditions/source-currency-20261116/check_source_currency.py \
+          python3 -I -O -B reviews/renditions/semantic-specifications-20261117/check_complete_renditions.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc \
             > "$RUNNER_TEMP/source-currency-optimized.log" 2>&1
           kc_currency_optimized_status=$?
