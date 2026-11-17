@@ -74,6 +74,31 @@ def verify_bindings_and_reviews(docs, bodies, baseline):
     if len(prior) != 8 or len(current) != 8 or current != prior:
         raise ValueError('HISTORICAL_REVIEW_OBJECT_CHANGED')
 
+def verify_card_source_bindings(root, docs, cards):
+    """Bind each localized card to this work's actual English source bytes.
+
+    Metadata counts and review states alone cannot identify a wrong-work
+    source pointer or an old/forged source digest. This check establishes
+    byte identity only, not translation fidelity or review.
+    """
+    by_slug = {d['slug']: d['path'] for d in docs}
+    if len(by_slug) != len(docs):
+        raise ValueError('DUPLICATE_SLUG')
+    source_sha = {}
+    for work, source in by_slug.items():
+        path = Path(source)
+        if path.is_absolute() or '..' in path.parts:
+            raise ValueError('CATALOG_SOURCE_PATH_ESCAPE: ' + repr(work))
+        source_sha[work] = hashlib.sha256((root/path).read_bytes()).hexdigest()
+    for entry in cards:
+        work, lang = entry['work'], entry['language']
+        expected_path = by_slug.get(work)
+        if expected_path is None or entry.get('source_path') != expected_path:
+            raise ValueError('CARD_SOURCE_PATH_NOT_CATALOG: ' + repr((work,lang)))
+        if entry.get('source_sha256') != source_sha[work]:
+            raise ValueError('CARD_SOURCE_DIGEST_MISMATCH: ' + repr((work,lang)))
+
+
 def verify_card_review_state(cards):
     """Candidate-specific boundary: no metadata card has been reviewed here.
 
@@ -93,6 +118,7 @@ def structural_negatives(root):
     verify_bindings_and_reviews(docs, entries, baseline)
     cards = parse((root/'publication-localization.json').read_text('utf-8'))['entries']
     verify_card_review_state(cards)
+    verify_card_source_bindings(root, docs, cards)
     source_mutant = copy.deepcopy(entries)
     source_mutant[0]['source']['path'] = 'papers/semantic-objects-and-context/PAPER.md'
     review_mutant = copy.deepcopy(entries)
@@ -126,6 +152,22 @@ def structural_negatives(root):
             caught += 1
         else:
             raise RuntimeError('CARD_STATUS_MUTANT_NOT_CAUGHT: ' + name)
+    for name, field, value, expected in (
+        ('wrong-card-source-path', 'source_path', docs[1]['path'],
+         'CARD_SOURCE_PATH_NOT_CATALOG:'),
+        ('forged-card-source-digest', 'source_sha256', '0'*64,
+         'CARD_SOURCE_DIGEST_MISMATCH:'),
+    ):
+        forged = copy.deepcopy(cards)
+        forged[0][field] = value
+        try:
+            verify_card_source_bindings(root, docs, forged)
+        except ValueError as error:
+            if not str(error).startswith(expected):
+                raise
+            caught += 1
+        else:
+            raise RuntimeError('CARD_SOURCE_MUTANT_NOT_CAUGHT: ' + name)
     return caught
 
 def inventory(root):
@@ -134,6 +176,7 @@ def inventory(root):
     sidecar = parse((root/'publication-renditions.json').read_text('utf-8'))
     docs, cards, bodies = catalog['documents'], meta['entries'], sidecar['renditions']
     verify_card_review_state(cards)
+    verify_card_source_bindings(root, docs, cards)
     verify_bindings_and_reviews(docs, bodies, baseline_renditions(root))
     slugs = [d['slug'] for d in docs]
     if len(slugs) != len(set(slugs)):
