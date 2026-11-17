@@ -90,7 +90,7 @@ jobs:
           python3 -I -B "$oracle" > "$RUNNER_TEMP/fibre-normal.json"
           python3 -I -O -B "$oracle" > "$RUNNER_TEMP/fibre-optimized.json"
           cmp "$RUNNER_TEMP/fibre-normal.json" "$RUNNER_TEMP/fibre-optimized.json"
-          python3 -I -B -c 'import json,sys; d=json.load(open(sys.argv[1])); m=d["mutants"]; want={"accept_all":95128,"allow_unattained":2080,"skip_last_situation":3672}; ok=(d["counts"]=={"profiles":4096,"partial_map_candidates":102400,"label_queries":8192} and d["diagnostic_queries"]=={"determined":2952,"ambiguous":4728,"unattained":512} and all(m[k]["false_accept"]==n for k,n in want.items()) and m["refuse_all"]["false_reject"]==7272); sys.exit(0 if ok else 1)' "$RUNNER_TEMP/fibre-normal.json"
+          python3 -I -B -c 'import json,sys; d=json.load(open(sys.argv[1])); m=d["mutants"]; want={"accept_all":95128,"allow_unattained":2080,"skip_last_situation":3672}; ok=(d["counts"]=={"profiles":4096,"partial_map_candidates":102400,"label_queries":8192} and d["diagnostic_queries"]=={"determined":2952,"ambiguous":4728,"unattained":512} and all(m[k]["false_accept"]==n for k,n in want.items()) and m["refuse_all"]["false_reject"]==7272 and d["accepted_partial_maps_closed_form"]=={"partition_terms":[260,2176,2400,2176,260],"symbolic_total":7272,"enumerated_total":7272}); sys.exit(0 if ok else 1)' "$RUNNER_TEMP/fibre-normal.json"
           set +e
           python3 -I -B "$oracle" --expect-determined 2953 > "$RUNNER_TEMP/fibre-negative-normal.log" 2>&1
           normal_rc=$?
@@ -101,6 +101,16 @@ jobs:
           test "$optimized_rc" -eq 3
           grep -F 'FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch' "$RUNNER_TEMP/fibre-negative-normal.log"
           grep -F 'FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch' "$RUNNER_TEMP/fibre-negative-optimized.log"
+          set +e
+          python3 -I -B "$oracle" --expect-accepted 7273 > "$RUNNER_TEMP/fibre-aggregate-negative-normal.log" 2>&1
+          aggregate_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-accepted 7273 > "$RUNNER_TEMP/fibre-aggregate-negative-optimized.log" 2>&1
+          aggregate_optimized_rc=$?
+          set -e
+          test "$aggregate_normal_rc" -eq 3
+          test "$aggregate_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-optimized.log"
       - name: Reject optimized Python for the assertion-based pinned consumer
         run: |
           set -euo pipefail
