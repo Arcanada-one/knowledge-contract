@@ -148,23 +148,23 @@ source-rule review on the exact final head before merging; cost NOT_MEASURED.
 
 The existing finite check confirms the total of 7,272 admissible partial maps, but
 an aggregate is insufficient to distinguish a change in how many observation
-outputs are defined. For an explicit additional necessary invariant, define
-(N_r) as the number of accepted (observation profile, assessment profile,
-partial-map) triples having exactly (r) defined outputs, with (n=4)
-situations, (m=2) observation labels and (q=4) assessment values.
+outputs are defined. For an additional necessary invariant, define \(N_r\)
+as the number of accepted (observation profile, assessment profile, partial-map)
+triples having exactly \(r\) defined outputs, with \(n=4\) situations,
+\(m=2\) observation labels and \(q=4\) assessment values.
 
-Choose which (r) labels are defined and their (q^r) values. Each situation
-can select one of those (r) labels with its prescribed assessment, or any
-of the remaining (m-r) labels with any of (q) assessments. Inclusion-exclusion
-ensures every defined label is attained:
+Choose which \(r\) labels are defined and their \(q^r\) values. Each situation
+can select one of those \(r\) labels with its prescribed assessment, or any
+of the remaining \(m-r\) labels with any of \(q\) assessments.
+Inclusion-exclusion ensures every defined label is attained:
 
-[
+\[
 N_r = \binom{m}{r} q^r \sum_{j=0}^{r} (-1)^j \binom{r}{j}
       \big((m-r)q+r-j\big)^n.
-]
+\]
 
-At ((n,m,q)=(4,2,4)), the independently derived histogram is
-**(N_0=4096,;N_1=2952,;N_2=224)**. Their sum is 7,272. This
+At \((n,m,q)=(4,2,4)\), the derived histogram is
+**\(N_0=4096,\;N_1=2952,\;N_2=224\)**. Their sum is 7,272. This
 is a count over profile/map pairs, not a claim about distinct mathematical
 functions or agent evaluations. It is compatible with the 232 globally
 determinate profiles: eight of those have one unattained label, while 224 have
