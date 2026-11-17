@@ -101,7 +101,6 @@ the translated specifications, independent DEUS acceptance or native admission.
 
 English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The changed surfaces are this method, its executable test, the existing workflow, new reconstruction receipts and their SOURCES registration. A separately reviewed follow-up revert restores the prior checker behavior while preserving historical evidence. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.
 
-
 ## Pointwise constructive source tether — c149 candidate
 
 The independent count and equivariance checks above can both pass for the
