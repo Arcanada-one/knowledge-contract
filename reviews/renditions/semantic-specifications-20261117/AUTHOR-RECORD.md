@@ -107,6 +107,14 @@ reference. They check refusal reasons, not merely nonzero exits. Optimized
 Python is refused with exit 2 because the pinned external consumer uses
 assertions. Structural checks cannot determine natural-language equivalence.
 
+The first complete-consumer invocation at `a26edba7395faf7d0041307094b8fc473151eabd`
+failed with `COMPILED_BODY_EMPTY` after its exact pair/state checks had passed.
+The new checker had inspected the provenance inventory, whose entries omit
+rendered HTML, instead of the consumer's separate `for_work()` reader surface.
+The [original refusal](initial-checker-refusal.json) is retained. The repair
+checks every actual reader body through `for_work(work)[language]`; no source,
+translation, registry or historical review was altered to satisfy the checker.
+
 The workflow replays the earlier 68-body source-currency and roadmap checks
 at their immutable input `18684f073285a4fa20f299518bd8a3d75b0c76d6`. The
 c135 metadata/pin replay stays at its original `b00b42fb5ca4f32ca443812c980c13d4d5d53d81`.

@@ -225,8 +225,11 @@ def main():
         exact_pairs(compiled.entries, expected)
         states = Counter(e["state"] for e in compiled.entries)
         require(states == {"reviewed": 8, "unreviewed": 64}, "COMPILED_STATES", repr(states))
-        for entry in compiled.entries:
-            require(bool(entry.get("html")), "COMPILED_BODY_EMPTY", repr(key(entry)))
+        # entries is the provenance inventory; reader HTML is held separately
+        # by for_work(). Inspect the consumer's actual rendered-body surface.
+        for work, language in sorted(expected):
+            record = compiled.for_work(work)[language]
+            require(bool(record.get("html")), "COMPILED_BODY_EMPTY", repr((work, language)))
         presentation = {"formula": renderer.formula_localizations.provenance(),
                         "review": renderer.review_localizations.provenance()}
         require(all(presentation.values()), "PRESENTATION_NOT_EXECUTED")
