@@ -36,6 +36,16 @@ def require(yes, context):
         raise ValueError(context)
 
 
+def constructive_allowed(obs, values):
+    """Build allowed outputs per observation fibre without calling a validity predicate."""
+    choices = []
+    for label in LABELS:
+        attained_values = {values[i] for i, observed in enumerate(obs) if observed == label}
+        choices.append((UNDEFINED, next(iter(attained_values))) if len(attained_values) == 1
+                       else (UNDEFINED,))
+    return frozenset(product(*choices))
+
+
 def correct_valid(candidate, obs, values):
     """Sound partial maps must be undefined off p(S), and agree where defined."""
     for label, mapped in enumerate(candidate):
@@ -185,7 +195,7 @@ def check_swapped_symmetries(truth_tables, candidates):
     }
 
 
-def run(expected_accepted=7272, expected_swapped_false_accept=504):
+def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_test="correct"):
     class_by_shape = defaultdict(Counter)
     query_counts = Counter()
     accepted_counts = Counter()
@@ -207,12 +217,19 @@ def run(expected_accepted=7272, expected_swapped_false_accept=504):
             oracle_max = tuple(next(iter(f)) if len(f) == 1 else UNDEFINED for f in fibres)
             for f in fibres:
                 query_counts["unattained" if len(f) == 0 else "determined" if len(f) == 1 else "ambiguous"] += 1
+            constructed = constructive_allowed(obs, values)
+            require(oracle_max in constructed, "constructive maximal-map mismatch")
             accepted = []
             correct_decisions = []
             swapped_decisions = []
             for candidate in candidates:
                 candidate_tests += 1
                 ok = correct_valid(candidate, obs, values)
+                subject_decision = (ok if source_under_test == "correct"
+                                    else wrong_valid(candidate, obs, values, source_under_test))
+                require(subject_decision == (candidate in constructed),
+                        f"constructive exact-map mismatch: {source_under_test} "
+                        f"observations={obs} assessments={values} map={candidate}")
                 correct_decisions.append(ok)
                 if ok:
                     accepted.append(candidate)
@@ -293,10 +310,12 @@ if __name__ == "__main__":
     parser.add_argument("--expect-determined", type=int, default=2952)
     parser.add_argument("--expect-accepted", type=int, default=7272)
     parser.add_argument("--expect-swapped-false-accept", type=int, default=504)
+    parser.add_argument("--source-under-test", choices=("correct", "swapped_constant_fibres",
+                                                         "cyclic_value_shift"), default="correct")
     args = parser.parse_args()
     EXPECTED_QUERIES["determined"] = args.expect_determined
     try:
-        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept),
+        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept, args.source_under_test),
                          ensure_ascii=False, sort_keys=True, indent=2))
     except ValueError as exc:
         print(f"FINITE_FIBRE_REFUSED: {exc}", file=sys.stderr)

@@ -169,6 +169,21 @@ jobs:
           test "$swap_optimized_rc" -eq 3
           grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-normal.log"
           grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-optimized.log"
+          # Source-tether: a per-fibre constructive model must reject cardinality-
+          # preserving value mistakes even when they pass aggregate/symmetry checks.
+          for variant in swapped_constant_fibres cyclic_value_shift; do
+            set +e
+            python3 -I -B "$oracle" --source-under-test "$variant" > "$RUNNER_TEMP/tether-$variant-normal.log" 2>&1
+            tether_normal_rc=$?
+            python3 -I -O -B "$oracle" --source-under-test "$variant" > "$RUNNER_TEMP/tether-$variant-optimized.log" 2>&1
+            tether_optimized_rc=$?
+            set -e
+            test "$tether_normal_rc" -eq 3
+            test "$tether_optimized_rc" -eq 3
+            grep -F 'FINITE_FIBRE_REFUSED: constructive exact-map mismatch:' "$RUNNER_TEMP/tether-$variant-normal.log"
+            grep -F 'FINITE_FIBRE_REFUSED: constructive exact-map mismatch:' "$RUNNER_TEMP/tether-$variant-optimized.log"
+          done
+          echo FINITE_CONSTRUCTIVE_SOURCE_TETHER_PASS
       - name: Reject optimized Python for the assertion-based pinned consumer
         run: |
           set -euo pipefail

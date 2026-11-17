@@ -100,3 +100,47 @@ the translated specifications, independent DEUS acceptance or native admission.
 ## Surfaces, rollback, limits
 
 English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The changed surfaces are this method, its executable test, the existing workflow, new reconstruction receipts and their SOURCES registration. A separately reviewed follow-up revert restores the prior checker behavior while preserving historical evidence. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.
+
+
+## Pointwise constructive source tether — c149 candidate
+
+The independent count and equivariance checks above can both pass for the
+`swapped_constant_fibres` adversary. For a stronger check grounded in
+[Semantic Verification §7.4](../../../engineering/specifications/semantic-verification/SPECIFICATION.md),
+construct the set of permissible outputs **before** calling the candidate
+membership predicate. For each observation label, if its fibre is attained
+and has exactly one distinct assessment value `v`, its allowed outputs are
+`{undefined, v}`; otherwise only `{undefined}` is allowed. Take the
+Cartesian product of those sets. This specifies the exact decisions for all
+25 candidates, not only the number accepted. Unattained fibres remain
+undefined and ambiguous fibres cannot silently receive a value.
+
+The existing checker now requires, on all 4,096 profiles and 102,400
+profile/candidate pairs, that the direct source predicate and this independently
+constructed permitted-map set agree pointwise. The constructed set also
+contains the previously derived maximal map. No historical result.json or
+EXECUTION.json is altered: the default correct-path JSON remains byte-identical.
+The workflow additionally executes `--source-under-test swapped_constant_fibres`
+and `--source-under-test cyclic_value_shift` in ordinary and optimized Python.
+Each *must* exit 3 with `constructive exact-map mismatch`; these are real
+executable guard-falsification controls, not an unsupported claim that the
+mutants are deployed. The earlier 2953/7273/505 refusals remain.
+
+**Pre-change scope:** PR124 `78bbbd40faeb62e9800e6fe13f5641f8e4a9ac2d`;
+the accepted-cardinality, equivariance and two-sided divergence evidence
+was real but lacked a separate, constructive exact-membership comparator.
+**Goal:** catch any future change to the direct source predicate that violates
+the stipulated §7.4 rule while preserving its superficial counts. **Adverse
+controls:** both value-shift and fibre-swap must be rejected using the same
+comparison that admits the correct predicate. **Affected consumers:** this
+checker and its existing hosted rendition step only. Scientific source, all
+EN/RU/zh-Hans bodies, catalogue, review states, published site, stored receipts,
+parent PR104 and native agent permissions do not change. **Rollback:** revert
+this three-file method/checker/workflow increment on the existing PR branch;
+retained earlier evidence stays unchanged.
+
+This is a second formulation by the same author/controller, not an
+independent reviewer, authenticated real observation or deployed consumer
+oracle. It cannot establish soundness of arbitrary source evidence, reviewer
+independence, real agent behavior or native KC2 admission. Seek a non-author
+source-rule review on the exact final head before merging; cost NOT_MEASURED.
