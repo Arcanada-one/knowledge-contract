@@ -6,11 +6,14 @@ fidelity, independent review, deployment or native admission.
 """
 from __future__ import annotations
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
 
+BASELINE = 'b00b42fb5ca4f32ca443812c980c13d4d5d53d81'
 BEGIN = '<!-- CURRENT-RENDITION-INVENTORY:BEGIN -->'
 END = '<!-- CURRENT-RENDITION-INVENTORY:END -->'
 KEYS = {'catalogue_works', 'metadata_cards', 'registered_bodies',
@@ -43,11 +46,66 @@ def witness(md):
         raise ValueError('WITNESS_FIELDS')
     return obj
 
+def baseline_renditions(root):
+    """Read immutable pre-update review objects from actual Git history."""
+    completed = subprocess.run(
+        ['git', '-C', str(root), 'show', BASELINE + ':publication-renditions.json'],
+        capture_output=True, check=False)
+    if completed.returncode:
+        raise ValueError('HISTORICAL_BASELINE_UNAVAILABLE')
+    return parse(completed.stdout.decode('utf-8'))['renditions']
+
+def verify_bindings_and_reviews(docs, bodies, baseline):
+    by_slug = {d['slug']: d['path'] for d in docs}
+    if len(by_slug) != len(docs):
+        raise ValueError('DUPLICATE_SLUG')
+    for entry in bodies:
+        key = (entry['work'], entry['language'])
+        path = by_slug.get(entry['work'])
+        if path is None or entry['source']['path'] != path:
+            raise ValueError('SOURCE_PATH_NOT_CATALOG: ' + repr(key))
+        target = 'translations/' + entry['language'] + '/' + path
+        if entry['rendition']['path'] != target:
+            raise ValueError('RENDITION_PATH_NOT_CATALOG: ' + repr(key))
+    def reviews(entries):
+        return {(e['work'], e['language']): e['review']
+                for e in entries if 'review' in e}
+    prior, current = reviews(baseline), reviews(bodies)
+    if len(prior) != 8 or len(current) != 8 or current != prior:
+        raise ValueError('HISTORICAL_REVIEW_OBJECT_CHANGED')
+
+def structural_negatives(root):
+    """Execute two in-memory identity mutants, not changed count fields."""
+    docs = parse((root/'publication-catalog.json').read_text('utf-8'))['documents']
+    entries = parse((root/'publication-renditions.json').read_text('utf-8'))['renditions']
+    baseline = baseline_renditions(root)
+    verify_bindings_and_reviews(docs, entries, baseline)
+    source_mutant = copy.deepcopy(entries)
+    source_mutant[0]['source']['path'] = 'papers/semantic-objects-and-context/PAPER.md'
+    review_mutant = copy.deepcopy(entries)
+    reviewed = next(e for e in review_mutant if 'review' in e)
+    reviewed['review']['limitations'] += ' (unauthorised historical revision)'
+    caught = 0
+    for name, mutated, code in (
+        ('source-path-swap', source_mutant, 'SOURCE_PATH_NOT_CATALOG'),
+        ('review-object-edit', review_mutant, 'HISTORICAL_REVIEW_OBJECT_CHANGED'),
+    ):
+        try:
+            verify_bindings_and_reviews(docs, mutated, baseline)
+        except ValueError as error:
+            if not str(error).startswith(code):
+                raise
+            caught += 1
+        else:
+            raise RuntimeError('STRUCTURAL_MUTANT_NOT_CAUGHT: ' + name)
+    return caught
+
 def inventory(root):
     catalog = parse((root/'publication-catalog.json').read_text('utf-8'))
     meta = parse((root/'publication-localization.json').read_text('utf-8'))
     sidecar = parse((root/'publication-renditions.json').read_text('utf-8'))
     docs, cards, bodies = catalog['documents'], meta['entries'], sidecar['renditions']
+    verify_bindings_and_reviews(docs, bodies, baseline_renditions(root))
     slugs = [d['slug'] for d in docs]
     if len(slugs) != len(set(slugs)):
         raise ValueError('DUPLICATE_SLUG')
@@ -124,7 +182,7 @@ def main():
     actual=inventory(root)
     match(witness((root/'roadmap/TRANSLATIONS.md').read_text('utf-8')),actual)
     receipt_match(root,actual)
-    detected=negatives(actual) if args.self_test else 0
+    detected=(negatives(actual) + structural_negatives(root)) if args.self_test else 0
     print(json.dumps({'result':'PASS','inventory':actual,'mutants_caught':detected},sort_keys=True))
 
 if __name__ == '__main__':
