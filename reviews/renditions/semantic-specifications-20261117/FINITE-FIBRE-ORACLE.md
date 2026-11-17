@@ -6,6 +6,7 @@ status: research-draft
 license: Apache-2.0
 sources:
   - "Finite transfer partial-map method (c144)"
+  - "Swapped-fibre reconstruction and execution (17 November 2026)"
 ---
 
 # Finite Fibre Oracle: Bounded Partial-Map Refusal
@@ -44,6 +45,58 @@ The existing finite checker now includes `cyclic_value_shift` as an actual decis
 
 **Method lesson:** a matching inventory cardinality does not establish correctness of value assignments. Include a cardinality-preserving adversary, positive exact-value witnesses and two-sided decision divergence. This bounded lesson does not establish source/target semantic translation equivalence, actual permissions, deployed use or native KC2 admission. Revert only the new method/checker/workflow increment if required; never rewrite retained receipts.
 
+## Symmetry-preserving wrong-fibre adversary — new c148 reconstruction
+
+Cardinality is not the only necessary-but-insufficient control. A deliberately
+wrong predicate can also commute with every renaming of assessment values and
+with exchange of the two observation labels. This successor reconstructs the
+counterexample described in the [c148 record](https://github.com/Arcanada-one/knowledge-contract/pull/124#issuecomment-6953592470).
+The original c148 local script and output were unavailable in this session.
+The changed checker and the [new execution record](swapped-fibre-reconstruction/EXECUTION.json)
+are new artifacts; they do not authenticate or replay those unavailable bytes.
+
+When both observation fibres are attained, each has a constant assessment, and
+their assessments differ, the adversary checks each defined partial-map output
+against the *other* fibre's value. On every other profile it uses the original
+predicate. Undefined outputs remain allowed. The minimal retained witness is
+observations `(0,0,0,1)` and assessments `(0,0,0,1)`: the correct predicate accepts
+`(0,1)` and rejects `(1,0)`, while the swapped-fibre predicate does the reverse.
+
+There are `2^4 - 2 = 14` observation assignments with both labels attained, and
+`4 × 3 = 12` ways to choose two different constant assessment values. Thus
+`14 × 12 = 168` profiles are affected. Each predicate accepts four partial maps
+on each affected profile, but the only shared map is `(undefined,undefined)`.
+The resulting disagreements are therefore `168 × 3 = 504` false acceptances
+and the same number of false rejections. On the other 3,928 profiles the
+predicates agree. Their accepted-map cardinalities agree on all 4,096 profiles
+and sum to 7,272 for each predicate. This derivation is separate from candidate
+enumeration; it assumes exactly the stipulated finite model.
+
+The executable control builds truth tables by actually evaluating both
+predicates for all 102,400 candidates. It then checks 2,457,600
+profile/candidate/value-permutation comparisons (all 24 value permutations)
+and 102,400 observation-label-exchange comparisons against those evaluated
+tables. Each comparison checks both predicates; these are not additional
+independent samples or agent runs. The undefined sentinel stays fixed under
+value renaming, and exchanging observation labels also exchanges the two
+candidate output positions. This checks the two generating symmetry actions
+separately. It does not claim to enumerate all 48 combined actions.
+
+All existing five mutants and the 2953/7273 adverse expectations remain in
+place. `--expect-swapped-false-accept 505` must explicitly refuse with exit 3 in
+both ordinary and optimized Python; correct runs must produce identical JSON.
+The current result is retained in [result.json](swapped-fibre-reconstruction/result.json).
+The existing rendition workflow executes these cases and reads their concrete
+outputs; a workflow success without this step would not satisfy this contract.
+
+**Method lesson:** counts and symmetry checks can expose some defects, but do
+not determine the correct assessment attached to each observation. Preserve
+positive exact-value witnesses, their adverse counterparts and pointwise
+comparison to the source rule. The correct oracle is not refuted by this
+constructed wrong algorithm. This is a bounded regression example, not a new
+general theorem, evidence of a real consumer failure, a fidelity verdict for
+the translated specifications, independent DEUS acceptance or native admission.
+
 ## Surfaces, rollback, limits
 
-English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The only changed surfaces are this method, its executable test and the existing workflow. A separately reviewed revert of these files restores the original behavior. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.
+English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The changed surfaces are this method, its executable test, the existing workflow, new reconstruction receipts and their SOURCES registration. A separately reviewed follow-up revert restores the prior checker behavior while preserving historical evidence. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.

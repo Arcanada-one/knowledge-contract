@@ -83,14 +83,62 @@ jobs:
           python3 -I -B reviews/renditions/semantic-specifications-20261117/check_complete_renditions.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc \
             --check-retained-result
-      - name: Reproduce finite transfer model and optimized-runtime refusal
+      - name: Reproduce finite transfer values and equivariant-adversary refusal
         run: |
           set -euo pipefail
           oracle=reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py
           python3 -I -B "$oracle" > "$RUNNER_TEMP/fibre-normal.json"
           python3 -I -O -B "$oracle" > "$RUNNER_TEMP/fibre-optimized.json"
           cmp "$RUNNER_TEMP/fibre-normal.json" "$RUNNER_TEMP/fibre-optimized.json"
-          python3 -I -B -c 'import json,sys; d=json.load(open(sys.argv[1])); m=d["mutants"]; want={"accept_all":95128,"allow_unattained":2080,"skip_last_situation":3672,"cyclic_value_shift":3176}; ok=(d["counts"]=={"profiles":4096,"partial_map_candidates":102400,"label_queries":8192} and d["diagnostic_queries"]=={"determined":2952,"ambiguous":4728,"unattained":512} and all(m[k]["false_accept"]==n for k,n in want.items()) and m["refuse_all"]["false_reject"]==7272 and m["cyclic_value_shift"]["false_reject"]==3176 and m["cyclic_value_shift"]["accepted_count"]==7272 and d["accepted_partial_maps_closed_form"]=={"partition_terms":[260,2176,2400,2176,260],"symbolic_total":7272,"enumerated_total":7272}); sys.exit(0 if ok else 1)' "$RUNNER_TEMP/fibre-normal.json"
+          cmp "$RUNNER_TEMP/fibre-normal.json" reviews/renditions/semantic-specifications-20261117/swapped-fibre-reconstruction/result.json
+          python3 -I -B - "$RUNNER_TEMP/fibre-normal.json" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              result = json.load(handle)
+          mutants = result["mutants"]
+          controls = result["swapped_fibre_controls"]
+          expected_false_accepts = {
+              "accept_all": 95128,
+              "allow_unattained": 2080,
+              "skip_last_situation": 3672,
+              "cyclic_value_shift": 3176,
+              "swapped_constant_fibres": 504,
+          }
+          checks = [
+              result["counts"] == {"profiles": 4096, "partial_map_candidates": 102400, "label_queries": 8192},
+              result["diagnostic_queries"] == {"determined": 2952, "ambiguous": 4728, "unattained": 512},
+              all(mutants[name]["false_accept"] == count for name, count in expected_false_accepts.items()),
+              mutants["refuse_all"]["false_reject"] == 7272,
+              mutants["cyclic_value_shift"]["false_reject"] == 3176,
+              mutants["cyclic_value_shift"]["accepted_count"] == 7272,
+              mutants["swapped_constant_fibres"]["false_reject"] == 504,
+              mutants["swapped_constant_fibres"]["accepted_count"] == 7272,
+              result["accepted_partial_maps_closed_form"] == {
+                  "partition_terms": [260, 2176, 2400, 2176, 260],
+                  "symbolic_total": 7272,
+                  "enumerated_total": 7272,
+              },
+              controls["affected_profiles"] == 168,
+              controls["profiles_with_equal_accepted_count"] == 4096,
+              controls["value_renaming_decisions"] == 2457600,
+              controls["observation_label_exchange_decisions"] == 102400,
+              controls["assessment_value_permutations"] == 24,
+              controls["value_renaming_mismatches"] == {"correct": 0, "swapped_constant_fibres": 0},
+              controls["observation_label_exchange_mismatches"] == {"correct": 0, "swapped_constant_fibres": 0},
+              controls["minimal_witness"] == {
+                  "observations": [0, 0, 0, 1], "assessments": [0, 0, 0, 1],
+                  "correct_map": [0, 1], "swapped_map": [1, 0],
+                  "correct_accepts_correct_map": True, "mutant_accepts_correct_map": False,
+                  "correct_accepts_swapped_map": False, "mutant_accepts_swapped_map": True,
+              },
+          ]
+          if not all(checks):
+              raise SystemExit("FINITE_FIBRE_CI_RESULT_MISMATCH")
+          print("FINITE_FIBRE_AND_EQUIVARIANCE_PASS")
+          print(json.dumps({"swapped_fibre_controls": controls,
+                            "swapped_mutant": mutants["swapped_constant_fibres"]}, sort_keys=True))
+          PY
           set +e
           python3 -I -B "$oracle" --expect-determined 2953 > "$RUNNER_TEMP/fibre-negative-normal.log" 2>&1
           normal_rc=$?
@@ -111,6 +159,16 @@ jobs:
           test "$aggregate_optimized_rc" -eq 3
           grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-normal.log"
           grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-optimized.log"
+          set +e
+          python3 -I -B "$oracle" --expect-swapped-false-accept 505 > "$RUNNER_TEMP/fibre-swap-negative-normal.log" 2>&1
+          swap_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-swapped-false-accept 505 > "$RUNNER_TEMP/fibre-swap-negative-optimized.log" 2>&1
+          swap_optimized_rc=$?
+          set -e
+          test "$swap_normal_rc" -eq 3
+          test "$swap_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-optimized.log"
       - name: Reject optimized Python for the assertion-based pinned consumer
         run: |
           set -euo pipefail

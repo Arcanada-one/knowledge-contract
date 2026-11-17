@@ -1,0 +1,245 @@
+{
+  "accepted_partial_map_count_distribution": {
+    "1": 1368,
+    "2": 2504,
+    "4": 224
+  },
+  "accepted_partial_maps_closed_form": {
+    "enumerated_total": 7272,
+    "partition_terms": [
+      260,
+      2176,
+      2400,
+      2176,
+      260
+    ],
+    "symbolic_total": 7272
+  },
+  "by_observation_shape": {
+    "1 and 3": {
+      "global": 128,
+      "partial_only": 1920
+    },
+    "2 and 2": {
+      "global": 96,
+      "none": 864,
+      "partial_only": 576
+    },
+    "4": {
+      "global": 8,
+      "none": 504
+    }
+  },
+  "cost": "NOT_MEASURED",
+  "counts": {
+    "label_queries": 8192,
+    "partial_map_candidates": 102400,
+    "profiles": 4096
+  },
+  "decision": "LOCAL_REPRODUCED_NOT_ADMITTED",
+  "diagnostic_queries": {
+    "ambiguous": 4728,
+    "determined": 2952,
+    "unattained": 512
+  },
+  "independent_role_review": "NOT_VERIFIED",
+  "mutants": {
+    "accept_all": {
+      "accepted_count": 102400,
+      "false_accept": 95128,
+      "false_reject": 0,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "correct": false,
+        "mutant": true,
+        "observations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "partial_map": [
+          0,
+          0
+        ]
+      }
+    },
+    "allow_unattained": {
+      "accepted_count": 9352,
+      "false_accept": 2080,
+      "false_reject": 0,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "correct": false,
+        "mutant": true,
+        "observations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "partial_map": [
+          0,
+          0
+        ]
+      }
+    },
+    "cyclic_value_shift": {
+      "accepted_count": 7272,
+      "false_accept": 3176,
+      "false_reject": 3176,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "correct": true,
+        "mutant": false,
+        "observations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "partial_map": [
+          0,
+          -1
+        ]
+      }
+    },
+    "refuse_all": {
+      "accepted_count": 0,
+      "false_accept": 0,
+      "false_reject": 7272,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "correct": true,
+        "mutant": false,
+        "observations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "partial_map": [
+          0,
+          -1
+        ]
+      }
+    },
+    "skip_last_situation": {
+      "accepted_count": 10944,
+      "false_accept": 3672,
+      "false_reject": 0,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "correct": false,
+        "mutant": true,
+        "observations": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "partial_map": [
+          0,
+          -1
+        ]
+      }
+    },
+    "swapped_constant_fibres": {
+      "accepted_count": 7272,
+      "false_accept": 504,
+      "false_reject": 504,
+      "first_witness": {
+        "assessments": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "correct": true,
+        "mutant": false,
+        "observations": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "partial_map": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "runtime_authorized": false,
+  "scope": "Finite stipulated model: 4 situations × 2 observation labels × 4 assessment values",
+  "swapped_fibre_controls": {
+    "affected_profiles": 168,
+    "affected_profiles_closed_form": 168,
+    "assessment_value_permutations": 24,
+    "decision_count_unit": "Transformed candidate comparisons per predicate; two predicates checked",
+    "execution": "Complete directly evaluated truth tables; each case compares both predicates",
+    "minimal_witness": {
+      "assessments": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "correct_accepts_correct_map": true,
+      "correct_accepts_swapped_map": false,
+      "correct_map": [
+        0,
+        1
+      ],
+      "mutant_accepts_correct_map": false,
+      "mutant_accepts_swapped_map": true,
+      "observations": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "swapped_map": [
+        1,
+        0
+      ]
+    },
+    "observation_label_exchange_decisions": 102400,
+    "observation_label_exchange_mismatches": {
+      "correct": 0,
+      "swapped_constant_fibres": 0
+    },
+    "profiles_with_equal_accepted_count": 4096,
+    "provenance": "New reconstruction from c148 description; not an original-program replay",
+    "value_renaming_decisions": 2457600,
+    "value_renaming_mismatches": {
+      "correct": 0,
+      "swapped_constant_fibres": 0
+    }
+  }
+}
