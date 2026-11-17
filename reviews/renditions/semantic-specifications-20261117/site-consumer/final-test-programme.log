@@ -1,0 +1,28 @@
+test_english_fallback_is_not_labelled_translation (__main__.ProgrammePageTests.test_english_fallback_is_not_labelled_translation) ... ok
+test_foundation_cards_equal_source_text (__main__.ProgrammePageTests.test_foundation_cards_equal_source_text) ... ok
+test_generated_pin_or_guide_identity_cannot_replace_manifest_authority (__main__.ProgrammePageTests.test_generated_pin_or_guide_identity_cannot_replace_manifest_authority) ... ok
+test_language_switch_and_hreflang (__main__.ProgrammePageTests.test_language_switch_and_hreflang) ... ok
+test_nav_link_in_all_locales (__main__.ProgrammePageTests.test_nav_link_in_all_locales) ... ok
+test_rendered_programme_has_no_raw_markdown_and_card_links_resolve (__main__.ProgrammePageTests.test_rendered_programme_has_no_raw_markdown_and_card_links_resolve)
+Fails on ad6adce: cards showed labels only / or raw Markdown, without resolved anchors. ... FAIL
+test_three_programme_pages_exist_with_pin (__main__.ProgrammePageTests.test_three_programme_pages_exist_with_pin) ... ok
+test_changed_guide_byte_without_repin_fails (__main__.ProgrammeSourceTests.test_changed_guide_byte_without_repin_fails)
+Negative control: mutated guide bytes must not verify against the pin blob. ... ok
+test_extract_foundations_rule (__main__.ProgrammeSourceTests.test_extract_foundations_rule) ... ok
+test_rm01_compatibility_anchor_resolves (__main__.RoadmapCompatAnchorTests.test_rm01_compatibility_anchor_resolves) ... ok
+
+======================================================================
+FAIL: test_rendered_programme_has_no_raw_markdown_and_card_links_resolve (__main__.ProgrammePageTests.test_rendered_programme_has_no_raw_markdown_and_card_links_resolve)
+Fails on ad6adce: cards showed labels only / or raw Markdown, without resolved anchors.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_programme.py", line 215, in test_rendered_programme_has_no_raw_markdown_and_card_links_resolve
+    self.assert_href_resolves(href, published_routes)
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_programme.py", line 239, in assert_href_resolves
+    self.assertTrue(href.startswith(prefix), f"unexpected external href {href}")
+AssertionError: False is not true : unexpected external href https://github.com/Arcanada-one/knowledge-contract/tree/6a6f202f7f70be2ad3aea3369e45409761708596
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.441s
+
+FAILED (failures=1)

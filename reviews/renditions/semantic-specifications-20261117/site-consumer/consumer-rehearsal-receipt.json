@@ -1,0 +1,311 @@
+{
+  "schema": "kc-downstream-consumer-rehearsal/v1",
+  "scope": "same-controller producer rehearsal of site base plus isolated input overlay; not installed release, independent review, merge, deployment or index admission",
+  "finished_at_utc": "2026-11-17T08:23:31.366058+00:00",
+  "inputs": {
+    "site_base": "4475115ae03fc904aff3c7010ff298865bcbed44",
+    "source_pin": "6eec88097cf5255543c792e53c92f75c0d483728",
+    "roadmap_pin": "55e279c43dc9bcf8732467a32661c2ac4b7cf920",
+    "original_status_patch_sha256": "1864016dd6ca50a30b724ec6530fc35483db17bca47762f528333e3b64db51f6",
+    "successor_patch_sha256": "8f07e0919ab142d1bda27e230a2bea48a4d7e46829ac3de0b65bffe0c891de8d",
+    "successor_patch_bytes": 86767,
+    "input_file_count": 17,
+    "python": "Python 3.12.14",
+    "node": "v24.22.1",
+    "pandoc": "3.1.3",
+    "pandoc_binary_sha256": "5a953bcbcdc7c36fcb0c263fbb09db8c7b84cfa9ca58e48e321d7edf857a7ee7",
+    "clean_checkouts": {
+      "source": {
+        "head": "6eec88097cf5255543c792e53c92f75c0d483728",
+        "working_tree_status": ""
+      },
+      "roadmap": {
+        "head": "55e279c43dc9bcf8732467a32661c2ac4b7cf920",
+        "working_tree_status": ""
+      }
+    }
+  },
+  "original_patch_plus_pin": {
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/build_publication.py",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "pandoc_directory": "/workspace/scratch/50c29b6b4f6f/c124_translation/pandoc-3.1.3/bin",
+    "started_utc": "2026-11-17T07:41:27.914178+00:00",
+    "finished_utc": "2026-11-17T07:42:18.064561+00:00",
+    "elapsed_seconds": 50.15038767599981,
+    "exit_code": 1,
+    "log": "build-patch-and-pin.log"
+  },
+  "final_full_generation": {
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/build_publication.py",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "started_utc": "2026-11-17T08:05:03.818654+00:00",
+    "finished_utc": "2026-11-17T08:06:16.543144+00:00",
+    "elapsed_seconds": 72.72449321600016,
+    "exit_code": 0,
+    "log": "build-bound-identities.log"
+  },
+  "final_validation": [
+    {
+      "name": "final-links",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_links.py",
+        "public"
+      ],
+      "started_utc": "2026-11-17T08:07:29.458405+00:00",
+      "finished_utc": "2026-11-17T08:07:30.222529+00:00",
+      "exit_code": 0,
+      "log": "final-links.log",
+      "log_sha256": "9eba5d76c664a262aac211673e1294cd0630afb944240b1ee40edbce1087f16e"
+    },
+    {
+      "name": "final-papers",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_papers.py",
+        "public"
+      ],
+      "started_utc": "2026-11-17T08:07:29.459177+00:00",
+      "finished_utc": "2026-11-17T08:07:30.416783+00:00",
+      "exit_code": 0,
+      "log": "final-papers.log",
+      "log_sha256": "8ea9ee475e892f0bba00d931d813a7f613bbafe7346695ab4ced7cabfa896d22"
+    },
+    {
+      "name": "final-publication",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_publication.py"
+      ],
+      "started_utc": "2026-11-17T08:07:29.457833+00:00",
+      "finished_utc": "2026-11-17T08:07:33.298493+00:00",
+      "exit_code": 0,
+      "log": "final-publication.log",
+      "log_sha256": "bad49026fab9aef60706d0da2ff4c078aec179d108ed1deeb9e11da2f0150aba"
+    },
+    {
+      "name": "final-test-localization",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_localization.py",
+        "-v"
+      ],
+      "started_utc": "2026-11-17T08:07:33.298550+00:00",
+      "finished_utc": "2026-11-17T08:07:35.034711+00:00",
+      "exit_code": 0,
+      "log": "final-test-localization.log",
+      "log_sha256": "ced5095f04a7a6e40f6626b5587a710acc60fd1d11b052d167f047d17d95fc5c"
+    },
+    {
+      "name": "final-test-build",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_build.py",
+        "-v"
+      ],
+      "started_utc": "2026-11-17T08:07:30.222622+00:00",
+      "finished_utc": "2026-11-17T08:07:41.409799+00:00",
+      "exit_code": 0,
+      "log": "final-test-build.log",
+      "log_sha256": "63161df3d20c4918a6d9115bd75dd8b5bb4eeb2e8694c8de659079f00e05dca1"
+    },
+    {
+      "name": "final-localization",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_localization.py",
+        "public",
+        "--source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+        "--roadmap-source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+      ],
+      "started_utc": "2026-11-17T08:07:29.458075+00:00",
+      "finished_utc": "2026-11-17T08:07:51.016446+00:00",
+      "exit_code": 0,
+      "log": "final-localization.log",
+      "log_sha256": "58d7008b88dc974b34923e057149819e27dd3f4217a97174df91335fd65da879"
+    },
+    {
+      "name": "reconciled-test-programme",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_programme.py",
+        "-v"
+      ],
+      "started_utc": "2026-11-17T08:14:44.134801+00:00",
+      "finished_utc": "2026-11-17T08:14:44.650429+00:00",
+      "exit_code": 0,
+      "log": "reconciled-test-programme.log",
+      "log_sha256": "f9844a41dd165d02e4b1382713ff22bcd3eba3e677da4cbce27ed6294d728820"
+    },
+    {
+      "name": "reconciled-test-roadmap",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_roadmap.py",
+        "-v"
+      ],
+      "started_utc": "2026-11-17T08:14:44.135246+00:00",
+      "finished_utc": "2026-11-17T08:16:05.876526+00:00",
+      "exit_code": 0,
+      "log": "reconciled-test-roadmap.log",
+      "log_sha256": "dd6d2a33b55d9a997b15d984e6733502e96641807ee572f7381258e85947c669"
+    },
+    {
+      "name": "final-bound-ui",
+      "argv": [
+        "node",
+        "scripts/test_ui_localization.js"
+      ],
+      "started_utc": "2026-11-17T08:18:21.223557+00:00",
+      "finished_utc": "2026-11-17T08:18:23.711393+00:00",
+      "exit_code": 0,
+      "log": "final-bound-ui.log",
+      "log_sha256": "039f72bfdface71c56fd039e89558895e4034604fe8fd3d0074c1cff3c52821a"
+    },
+    {
+      "name": "final-roadmap",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_roadmap.py",
+        "public",
+        "--source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+      "started_utc": "2026-11-17T08:21:27.317509+00:00",
+      "finished_utc": "2026-11-17T08:21:32.925155+00:00",
+      "elapsed_seconds": 5.607650956000725,
+      "exit_code": 0,
+      "log": "final-roadmap.log",
+      "log_sha256": "2c1e363c30330eddc58ee90c0dbbad9673d03bc294e2d185463c993fb0421b4e",
+      "pandoc_directory": "/workspace/scratch/50c29b6b4f6f/c124_translation/pandoc-3.1.3/bin"
+    }
+  ],
+  "actual_output_mutation_control": {
+    "file": "actual-status-control.json",
+    "script": "check_actual_status_binding.py",
+    "script_sha256": "89deb8db08e9eab3f4651559239a5524185ca09f2cb13af37bf1cb675bda8fd6",
+    "positive_pages": 3,
+    "mutants_refused": 3,
+    "record_sha256": "6ec57d3a3ae5770c47652ab2153622374fc5b043d3ee7a4ac749cbddd6f9a2a8"
+  },
+  "output_inventory": {
+    "source_commit": "6eec88097cf5255543c792e53c92f75c0d483728",
+    "works": 36,
+    "types": {
+      "paper": 11,
+      "specification": 13,
+      "study": 8,
+      "glossary": 1,
+      "bibliography": 1,
+      "appendix": 2
+    },
+    "renditions": 72,
+    "rendition_states": {
+      "unreviewed": 64,
+      "reviewed": 8
+    },
+    "locales": {
+      "ru": 36,
+      "zh-Hans": 36
+    },
+    "canonical_reader_routes": 108,
+    "html_files": 354,
+    "index_html_routes": 353,
+    "feeds": {
+      "en/journal/rss.xml": 10,
+      "en/journal/atom.xml": 10,
+      "ru/journal/rss.xml": 10,
+      "ru/journal/atom.xml": 10,
+      "zh-Hans/journal/rss.xml": 10,
+      "zh-Hans/journal/atom.xml": 10
+    }
+  },
+  "generated_output": {
+    "files": 403,
+    "file": "generated-output-digests.json",
+    "canonical_record_encoding": "json.dumps(list,sort_keys=True,separators=(comma,colon)) UTF-8",
+    "canonical_sha256": "ab0f9bb02913bbbcfadeb5d82b5ea87416cfa3bd5d0eaeff194acc2eeac76645"
+  },
+  "first_failures_preserved": [
+    "setup.json",
+    "build-patch-and-pin.json",
+    "build-patch-and-pin.log",
+    "direct-gates.json",
+    "gate-publication.log",
+    "bound-status-focused-tests-first-import-failure.json",
+    "focused-python-first-import-failure.log",
+    "final-validation.json",
+    "final-test-programme.log",
+    "final-test-roadmap.log",
+    "gate-roadmap-first.json",
+    "gate-roadmap-first.log"
+  ],
+  "key_boundaries": [
+    "Original seven-file patch is unchanged; successor adds reader integration, exact work binding, inventory reconciliation and concrete test expectation fixes.",
+    "Actual Geometry fragment link uses current source; the separate historical roadmap Geometry link stays at revision55 because source hashes differ.",
+    "Programme historical tree link6a6f is preserved and checked against source declaration and ancestor/object existence.",
+    "Reader source and rendition bodies are unchanged; notices and summaries are presentation around them.",
+    "No authored manuscript edit, external write, source acceptance, site merge, hosted run or deployment was performed by this rehearsal.",
+    "The final standalone roadmap gate reconciles the same exact manuscript inventory without changing roadmap content, source revision, source hash mapping or planned states."
+  ],
+  "post_generation_input_changes": [
+    {
+      "path": "scripts/check_roadmap.py",
+      "sha256": "d994261a67039e6b27eca9c27960d67c20f10e3e61ddc708671ef3ef6065aa0a",
+      "change": "Replaced the old count-only 31-document condition with the existing exact 36-work identity validator for both catalogue and publication; kept the prohibition of roadmap data in manuscript publication.",
+      "rendering_effect": "none: standalone validation only; no renderer, generated file, source or roadmap pin changed after the successful full generation",
+      "validated_by": "final-roadmap.json",
+      "first_refusal": "gate-roadmap-first.json"
+    },
+    {
+      "path": "scripts/test_programme.py",
+      "sha256": "dbcc6654f401d65fad3a2dca38e5a3d6df66941573c83bc268c66881bab46991",
+      "change": "Test-only expectation correction: distinguish source-declared immutable historical GitHub URLs from generated source-pin fallback links; preserve the declared URL and verify its revision/path.",
+      "rendering_effect": "none: test expectations and fixtures only; renderer, generated bytes, manuscripts and source/roadmap pins unchanged",
+      "validated_by": "reconciled-test-programme.log"
+    },
+    {
+      "path": "scripts/test_roadmap.py",
+      "sha256": "143226fe42c280c9c5284e22880b49cb7bce7367d7618b8d444efc09c98938a0",
+      "change": "Test-only expectation correction: require the immutable roadmap-pin link when source hashes differ, retain exact source-prose validation, and preserve current-link positive and mutation controls using an explicit synthetic fixture.",
+      "rendering_effect": "none: test expectations and fixtures only; renderer, generated bytes, manuscripts and source/roadmap pins unchanged",
+      "validated_by": "reconciled-test-roadmap.log"
+    }
+  ],
+  "first_roadmap_invocation_note": "The root first refusal used system PATH and emitted only the old 31-document guard failure. Its original invocation_note claiming this precedes Markdown rendering is not supported by check_roadmap.py: source_tokens/Pandoc calls precede this late provenance guard. The successful corrected replay explicitly used the tested Pandoc 3.1.3 directory.",
+  "patch_bindings_sha256": "e10c5da5b974b7fc743e9c43f89cfef4a3683375f1a3c9ac2dfd9b4286d2950b",
+  "metadata_correction": {
+    "corrected_at_utc": "2026-11-17T08:25:16.523362+00:00",
+    "previous_receipt": "consumer-rehearsal-receipt-before-metadata-correction.json",
+    "previous_receipt_sha256": "d6edd127f3b46862b78f848202a8f7554367dc77de49778ef2367238a20056bc",
+    "correction": "The post-generation input-change list previously omitted test_programme.py and test_roadmap.py. Both test-only files were amended after the 08:06 full generation and passed their recorded 08:14 validation runs. This metadata correction adds their paths and digests; no code, tests, patch, generated files or pins changed."
+  }
+}

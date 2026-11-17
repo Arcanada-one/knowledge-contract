@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/check_publication.py", line 20, in <module>
+    assert Counter(d['type'] for d in published['documents']) == {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Publication inventory is incomplete

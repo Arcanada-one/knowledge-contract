@@ -1,0 +1,163 @@
+test_actual_markdown_tables_math_links_and_footnotes (__main__.PublicationBuild.test_actual_markdown_tables_math_links_and_footnotes) ... ok
+test_dirty_source_rejected (__main__.PublicationBuild.test_dirty_source_rejected) ... ok
+test_executable_markdown_and_remote_embeds_rejected (__main__.PublicationBuild.test_executable_markdown_and_remote_embeds_rejected) ... ok
+test_missing_or_escaping_link_rejected (__main__.PublicationBuild.test_missing_or_escaping_link_rejected) ... ok
+test_source_statuses_are_preserved_without_acceptance_inference (__main__.PublicationBuild.test_source_statuses_are_preserved_without_acceptance_inference) ... ok
+test_table_presentation_preserves_csp_and_alignment (__main__.PublicationBuild.test_table_presentation_preserves_csp_and_alignment) ... ok
+test_unknown_catalogue_status_stops_the_build (__main__.PublicationBuild.test_unknown_catalogue_status_stops_the_build) ... ok
+test_wrong_pin_rejected (__main__.PublicationBuild.test_wrong_pin_rejected) ... ok
+test_external_and_ordinary_urls_do_not_infer_catalogue_status (__main__.PublicationStatusFixtures.test_external_and_ordinary_urls_do_not_infer_catalogue_status) ... ok
+test_fragment_query_binding_cannot_be_satisfied_by_same_status_owner (__main__.PublicationStatusFixtures.test_fragment_query_binding_cannot_be_satisfied_by_same_status_owner) ... ok
+test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused (__main__.PublicationStatusFixtures.test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused) ... ok
+test_new_status_readers_still_require_a_notice (__main__.PublicationStatusFixtures.test_new_status_readers_still_require_a_notice) ... ok
+test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) ... 
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='en') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='ru') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='zh-Hans') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='en') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='ru') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='zh-Hans') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='en') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='ru') ... ERROR
+  test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='zh-Hans') ... ERROR
+test_complete_work_identity_set_and_same_count_substitutions (__main__.PublicationInventoryTests.test_complete_work_identity_set_and_same_count_substitutions) ... ok
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='en')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='ru')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='research-draft', locale='zh-Hans')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='en')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='ru')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='engineering-draft', locale='zh-Hans')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='en')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='ru')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+======================================================================
+ERROR: test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) (status='internally-reviewed-finite-evaluation', locale='zh-Hans')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_build.py", line 188, in test_programme_and_roadmap_keep_exact_statuses_in_each_locale
+    programme = localize_and_badge_links(source, [record], locale)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 368, in localize_and_badge_links
+    badge = publication_status_badge(doc, locale)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/programme.py", line 314, in publication_status_badge
+    identity = escape(status_work_id(doc), quote=True)
+               ^^^^^^
+NameError: name 'escape' is not defined
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.336s
+
+FAILED (errors=9)

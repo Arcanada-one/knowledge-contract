@@ -1,0 +1,1614 @@
+[
+  {
+    "path": "public/404.html",
+    "sha256": "ee5cbdf45bba3e12d8402a039a4cb16444c2270c75aa039f9955450e21926696"
+  },
+  {
+    "path": "public/ATTRIBUTION-source.md",
+    "sha256": "fbd6e39de558f5d87a9713e58f611bd46960457e172bd77e15e2e5dcceefe951"
+  },
+  {
+    "path": "public/LICENSE-content.txt",
+    "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  {
+    "path": "public/NOTICE-content.txt",
+    "sha256": "653f267f17b7dbaa7c8d9dd7de68f6388aeddcd6946ce3bc65e581c20466e1bb"
+  },
+  {
+    "path": "public/analytics.js",
+    "sha256": "02e3d1270e7612fd65bc2f922dc6db3029c1f63fa956d5eedac1777e64ad5a96"
+  },
+  {
+    "path": "public/app.js",
+    "sha256": "2a1015cabdc3f07e2306c9c9ac68a521d692162441a0858ec8fe9b43f3e0d5b7"
+  },
+  {
+    "path": "public/appendices/api-integration/index.html",
+    "sha256": "2940fda759d6062ad48c3f95df58a34d74f72a158399eb4c75bd81e10ada540a"
+  },
+  {
+    "path": "public/appendices/index.html",
+    "sha256": "9599a2f41f9c998d669e2f07d3972e0e8e9b2257e8807c99cba4adc13f6a626f"
+  },
+  {
+    "path": "public/appendices/source-map/index.html",
+    "sha256": "868f9e2dbb30a86a102b399f2c983994f612bf4b0ca3404aa5f450c7f8a00d75"
+  },
+  {
+    "path": "public/assets/Manrope-OFL.txt",
+    "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  {
+    "path": "public/assets/Manrope-Variable.ttf",
+    "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+  },
+  {
+    "path": "public/assets/SourceSans3-LICENSE.md",
+    "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328"
+  },
+  {
+    "path": "public/assets/SourceSans3-Regular.woff2",
+    "sha256": "53492fb3a0def77354f166a55d09b63a10855e91c206c7620a81cf56e97f8ec3"
+  },
+  {
+    "path": "public/assets/SourceSerif4-LICENSE.md",
+    "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464"
+  },
+  {
+    "path": "public/assets/SourceSerif4-Regular.woff2",
+    "sha256": "6b053e98f0838afe81f3e784727be4583a7c13bb42f198dc5202ecffee0aaee0"
+  },
+  {
+    "path": "public/assets/architecture-original.jpg",
+    "sha256": "025b473c06d3cf978153bd1380c24578c9fb21f1277d3246bcdda8f70fcf2ae1"
+  },
+  {
+    "path": "public/assets/favicon.svg",
+    "sha256": "4b297a87a0c85085b53a4dafbfdbd366c6299d46e1ee31dd558e7d371afa7722"
+  },
+  {
+    "path": "public/assets/knowledge-dialogue.webp",
+    "sha256": "3eae15b8c440d5cbdde267ca2321397a1686c120dbf6f71469b0bad0b3a856bf"
+  },
+  {
+    "path": "public/assets/knowledge-landscape.webp",
+    "sha256": "e51c6c8de95df83b56b79657ae77a5ce23533190a4255a2b1de751cf081305e8"
+  },
+  {
+    "path": "public/assets/knowledge-prism.webp",
+    "sha256": "4d77d3c315df64eb5850ff5b6ecfca5f3cd298472af62add9de772ec54cc8f5e"
+  },
+  {
+    "path": "public/assets/knowledge-v2-original.jpg",
+    "sha256": "ae44b2403eb7a90b20786a34a1021f75428a2f0ddcb245c993fe0943d1d701a0"
+  },
+  {
+    "path": "public/assets/mark-dark.svg",
+    "sha256": "d806083475ffc5040f4b3650c722ee819677541a1ceeacff08a29f673a2564c2"
+  },
+  {
+    "path": "public/assets/mark.svg",
+    "sha256": "2c2adfc75f1aee9feccbe50c9f0601d375612e16bbb92be6fe21dc45ab909b83"
+  },
+  {
+    "path": "public/content-provenance.json",
+    "sha256": "12f0e6d04d2fd11c642ff94e7f7822c5e78b20350dcc28ca196177c4a979d2fe"
+  },
+  {
+    "path": "public/content.js",
+    "sha256": "cb74ad494a3e6c0a92df9520a7d826b39b5133e3ae4fa183bd1dbaf4575c22f1"
+  },
+  {
+    "path": "public/en/about/index.html",
+    "sha256": "7c69c1f11d99e411bb2961c0717db2265fca754609230d15dbb867f53d8f6cb9"
+  },
+  {
+    "path": "public/en/appendices/api-integration/index.html",
+    "sha256": "5b553b2a84db5a5a1f5844fc4440d5c572753a83f15af4b84ac47fa3afcc8cf9"
+  },
+  {
+    "path": "public/en/appendices/index.html",
+    "sha256": "e5b22ceadd5452a431767faa6ae6e5c00f007494b6a1169bf3a82291c6237c58"
+  },
+  {
+    "path": "public/en/appendices/source-map/index.html",
+    "sha256": "2a57d237ac794d2c5f7872571df24dd06686306616204fc1c28ff326ad8cf156"
+  },
+  {
+    "path": "public/en/books/index.html",
+    "sha256": "52d4045a8fd2079fd40eb56678ccb2236646f1b3195faa196a8249e3e5b62767"
+  },
+  {
+    "path": "public/en/docs/artifact-registry/index.html",
+    "sha256": "63ada402c015f72da448d9b70def0f754c1cdbc49b3cb5be09f27e4b08284487"
+  },
+  {
+    "path": "public/en/docs/availability/index.html",
+    "sha256": "14b4f33bfe7f3dec1e37e71e097634aa526570b0827aacd930b110e55a7d44bd"
+  },
+  {
+    "path": "public/en/docs/cache-identity-and-invalidation/index.html",
+    "sha256": "bc06494e88b362f62093c5ad58e9f4e0e9db4ef403561e655681fcac7846a92f"
+  },
+  {
+    "path": "public/en/docs/compiled-artifact-contract/index.html",
+    "sha256": "c63e3f1c5e158b8c6d623aec2a0e34a5c98ef9119662c08a5dce44a95c7978f0"
+  },
+  {
+    "path": "public/en/docs/context-package/index.html",
+    "sha256": "418af2d5ee90e87b268c9772750112fbc2347bbb52e28c8b1ef816578acf595b"
+  },
+  {
+    "path": "public/en/docs/contract-family/index.html",
+    "sha256": "00649a01517286a3af281a14743dee34ceac6e775039d20d0f27033f03626523"
+  },
+  {
+    "path": "public/en/docs/index.html",
+    "sha256": "e8978b563f22d952cfefff8b152491b66987644aaa1b16e695bca9a357d3a230"
+  },
+  {
+    "path": "public/en/docs/knowledge-contract-v3/index.html",
+    "sha256": "76275882cdaa3ae1566b2bdb7c897febb4ae6f4c38cc56c6c77c6fd476a5c7cf"
+  },
+  {
+    "path": "public/en/docs/knowledge-evolution-contract/index.html",
+    "sha256": "92d34be0aaae2ed12cef34d97ce54119070e289138ac57a098b42a36450ead7a"
+  },
+  {
+    "path": "public/en/docs/model/index.html",
+    "sha256": "c8a79131d3e9d9334a54f4d33635d369f4be162ddbedc12dcce1134d06f19d25"
+  },
+  {
+    "path": "public/en/docs/reuse-policy/index.html",
+    "sha256": "9c735ca7d41ea8f2bc24ff34fb68456ac474aa6db7d5a6256a66cafe8e121401"
+  },
+  {
+    "path": "public/en/docs/semantic-types/index.html",
+    "sha256": "ffdcb84974ea5053ac81ce40188f2ce510e21cab872bf7e0c51eb2b9b7a4df7d"
+  },
+  {
+    "path": "public/en/docs/status-model/index.html",
+    "sha256": "2040fb070c99d596e567257be0ab629528f5da7c447ea277cab1167dc05d96a2"
+  },
+  {
+    "path": "public/en/engineering/index.html",
+    "sha256": "c97975742dcc1b2007b9f65313163ba54e2b5a125db64dea40707d41ed781c82"
+  },
+  {
+    "path": "public/en/engineering/specifications/artifact-registry/index.html",
+    "sha256": "b36a6527e3ff5f48f73def695c0b2693463250766b6cb4c4c4cea71ad8192225"
+  },
+  {
+    "path": "public/en/engineering/specifications/book-package/index.html",
+    "sha256": "453fda4600eaca1a7d8cfa4b906f19254ab643de5c241ec6841a8e1b85cbe93f"
+  },
+  {
+    "path": "public/en/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "sha256": "54f0e23a25df12a61435373023e7e4b6e2f897ac22fd867e190c8cccc176e1f1"
+  },
+  {
+    "path": "public/en/engineering/specifications/compiled-artifact-contract/index.html",
+    "sha256": "79e4af685a43f31a16aab35dcca220f45085feddcba13bd63c10a3bbc6ba48c5"
+  },
+  {
+    "path": "public/en/engineering/specifications/context-package/index.html",
+    "sha256": "4a8f2377023c7f1922ad98c837daca32035d607f4267b47dd083911ea438e293"
+  },
+  {
+    "path": "public/en/engineering/specifications/contract-family/index.html",
+    "sha256": "40e569c7e8ce4a2a18acff3a985a25535a29a24a92993ede26680f27f73945f3"
+  },
+  {
+    "path": "public/en/engineering/specifications/index.html",
+    "sha256": "429b8898945949740cc78a5341a8e0a1f8023a0fff6ca7485871ece03f71a983"
+  },
+  {
+    "path": "public/en/engineering/specifications/knowledge-contract-core/index.html",
+    "sha256": "ec89200ff27ddb00f387749c7c13c5a88a1359a15d714d973cc6ab08aaf7b5eb"
+  },
+  {
+    "path": "public/en/engineering/specifications/knowledge-evolution/index.html",
+    "sha256": "3bd364832bdb722523b9e780e4a0e069212bfbd3e2fa5b46a14648089c7da790"
+  },
+  {
+    "path": "public/en/engineering/specifications/reuse-policy/index.html",
+    "sha256": "26ceee68695b212067bcd5d0a162bf44e0fbd44b5b0189cf9b57eca26b5d8053"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-bridge/index.html",
+    "sha256": "5275bb2a2e6c6eb064bf5b1a69e614bec21d367c5e0b8c62782d4f44c859d992"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-types/index.html",
+    "sha256": "7483bb074f8f498f598d4750b4f9dba141f889e3d7aca51d41a0f5904e3e57d8"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-verification/index.html",
+    "sha256": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a"
+  },
+  {
+    "path": "public/en/engineering/specifications/status-model/index.html",
+    "sha256": "4076fd0994544fb62ee4d0ffdc4879d1e7693e556891551c00c818cf7fa76aa3"
+  },
+  {
+    "path": "public/en/engineering/studies/agent-situation-controls/index.html",
+    "sha256": "c6f2a8a3e74df9986bf7e9799d6f3b389029cf25e15a35e39b1404e633c14534"
+  },
+  {
+    "path": "public/en/engineering/studies/contract-profile-conformance/index.html",
+    "sha256": "b1ffefdc0f1e125b753d5f6cbc0143ebf65fdf1f8defb5f87a1df0cb47d19555"
+  },
+  {
+    "path": "public/en/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "sha256": "60316a70eb16e6462083887573b4145bbec9badd3cba117a4b1d3ce127bd9718"
+  },
+  {
+    "path": "public/en/engineering/studies/editorial-skill-pilot/index.html",
+    "sha256": "468955e1b44304a31185327fd41e813f1127eba828c1b9f88e6c21c74c782bed"
+  },
+  {
+    "path": "public/en/engineering/studies/executable-projections-and-revision/index.html",
+    "sha256": "be73afb6629e81d7563292599e7aa0064fc759c215f64e2c1290c5d187353319"
+  },
+  {
+    "path": "public/en/engineering/studies/index.html",
+    "sha256": "a0ae560c14b2aadfbc2d33ee055e77217f619c918663e61df59fbd8d6a3c7ee0"
+  },
+  {
+    "path": "public/en/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "sha256": "84b2b13ddd9b61169a80d649d4fc5d686849e1349133cb1007546e3f2fc8d053"
+  },
+  {
+    "path": "public/en/engineering/studies/semantic-bridge-conformance/index.html",
+    "sha256": "2f7d5ee28a529030c957062e57600761ab7413f85e79e09f6dd92f151ee09cd3"
+  },
+  {
+    "path": "public/en/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "sha256": "d82839ae6062d0366e81614ea452be5931de02dbe04170fc9b6963cae1861000"
+  },
+  {
+    "path": "public/en/index.html",
+    "sha256": "d7050014278da63315a58efd5df945cfc23480a5ec0af7f419a7653dcdfeaaf9"
+  },
+  {
+    "path": "public/en/journal/agent-situation-2026-11-14/index.html",
+    "sha256": "9035da4dfe5f0be292ca5560a93137ab7ae7fbfcee3993f4c981f688957fabf0"
+  },
+  {
+    "path": "public/en/journal/atom.xml",
+    "sha256": "20b022624b08ea39c7f9ed259bf9c0f55d582c7de84347c7c7f40df1f0874e18"
+  },
+  {
+    "path": "public/en/journal/building-a-place/index.html",
+    "sha256": "f7e30fd7662a1593272c8e24fc7fde17784aeb91acedd3522f49b86322879576"
+  },
+  {
+    "path": "public/en/journal/control-for-topic-2026-11-12/index.html",
+    "sha256": "4b31ad0866aaa9afc79ab5b0693d0019ed5a75f64bb38f2c464227121a84d2f2"
+  },
+  {
+    "path": "public/en/journal/dora-gaps-agents-2026-11-14/index.html",
+    "sha256": "cdf05c3ddcf716bc5dad232259271ec2787bf56f73f97726a98a004fbd223201"
+  },
+  {
+    "path": "public/en/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "sha256": "a261c34b0fa512b77ba6420b20437e022aa99fb33b62fe87c87900e2ffd3f0d9"
+  },
+  {
+    "path": "public/en/journal/index.html",
+    "sha256": "e58d9727ca12de1967569f075ccdf85a754934d8ec749ca39e1b8a2aafeb531d"
+  },
+  {
+    "path": "public/en/journal/knowledge-contract-architecture/index.html",
+    "sha256": "b9cbbc856ce75f4c510da94c7ca4e5c271859135f144d74afb7372a8a400c020"
+  },
+  {
+    "path": "public/en/journal/knowledge-contract-v2/index.html",
+    "sha256": "f69d0f5fa7e3bfe14e32674466df3fcbde4f27a807e6695d1cf4f0b90013f7ec"
+  },
+  {
+    "path": "public/en/journal/lesson-without-evidence-2026-11-11/index.html",
+    "sha256": "6a31e79cae4c435200463ce1ed4619bb3e4d2867da333a7f7be828f14f74005f"
+  },
+  {
+    "path": "public/en/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "sha256": "789d9924fdb43294043072350f08986f36a891366061b79397c70f02412152e7"
+  },
+  {
+    "path": "public/en/journal/rss.xml",
+    "sha256": "8642d08bd67166ec92a075e728c82481079565d370d4fb9b1e8707692177c4f4"
+  },
+  {
+    "path": "public/en/journal/rule-after-restart-2026-11-15/index.html",
+    "sha256": "e2967dbcfc2f5c738289befb1ff06d6be3cf48404ce58b53573655a76fb5fabb"
+  },
+  {
+    "path": "public/en/journal/source-rule-checks-2026-11-15/index.html",
+    "sha256": "4b4384c639a9dad22b904b6cdd6016add4888fea1a690631d2a96cdb7c300b2d"
+  },
+  {
+    "path": "public/en/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "sha256": "32ca26ceaef997302e8df65e2687a2038cf0aacdff3f2988d96f4ad14f871db4"
+  },
+  {
+    "path": "public/en/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "sha256": "94f7e4bb5cba79fd3cb1c007aaaa9b3999aac8cd74225666afca546aeab707b7"
+  },
+  {
+    "path": "public/en/lab/knowledge-journey/index.html",
+    "sha256": "4290204db60e3aa2f0653adbe2969969cc202a8ebbd848a0e7c9738e65be4bfa"
+  },
+  {
+    "path": "public/en/programme/index.html",
+    "sha256": "7a1961c671c7094f86c569c16966e210417a3f365f5590263564d3d96f8948fe"
+  },
+  {
+    "path": "public/en/reference/bibliography/index.html",
+    "sha256": "50ec456a5526e951e0a0cbf055b21b8de060e846432261a49116402e734a7870"
+  },
+  {
+    "path": "public/en/reference/glossary/index.html",
+    "sha256": "7f7719afc41160291b81ec576cd3486822983653c85720a6862dc9e8db01edcf"
+  },
+  {
+    "path": "public/en/reference/index.html",
+    "sha256": "2421c368445b87efba58b78977b5e44c839f90744cfc5429d4a7842faf0ff3d3"
+  },
+  {
+    "path": "public/en/references/index.html",
+    "sha256": "4302923bb03ee85acf924def86907ca089f2660f5b6c261b55e8b454ba8c4721"
+  },
+  {
+    "path": "public/en/repository/index.html",
+    "sha256": "aea40aeafb310b20a55c54c500f573df79d0942ff156fb7c9b9940e967af56cf"
+  },
+  {
+    "path": "public/en/research/anthropic/index.html",
+    "sha256": "6f84999a88dc8335a932646672a92fbe1959ff19f2e4889c9434aba4061b9462"
+  },
+  {
+    "path": "public/en/research/deepmind/index.html",
+    "sha256": "309e4a171ea940a6a2f417083c25d51e74bc24a5595edbd8de0baf88d2a39e1d"
+  },
+  {
+    "path": "public/en/research/hugging-face/index.html",
+    "sha256": "70da8fd43b3cfef7ab402a6ae671f404c201e923fdc52983ff540d371a4ae805"
+  },
+  {
+    "path": "public/en/research/index.html",
+    "sha256": "fff51e594cd7c638db0c9c14cf0f21181ac7c1f6f8377f6903850eb4a9155012"
+  },
+  {
+    "path": "public/en/research/mcp/index.html",
+    "sha256": "07db077d9cb27389b60af61bdd5acb6886cbf9bc45ec9bca6f7d20a256c5ac18"
+  },
+  {
+    "path": "public/en/research/p00/index.html",
+    "sha256": "935a766950afba7435cab81188cd993eef362111d2ee623bc06b065cbcc02107"
+  },
+  {
+    "path": "public/en/research/p01/index.html",
+    "sha256": "6de8808c42b5cd3ad75641b0cd6f63ffb9a64c76f3710d99a939a20c69380591"
+  },
+  {
+    "path": "public/en/research/p02/index.html",
+    "sha256": "52a10304fc2bbdb9323964456cc3c87bfc52c4dffcb40c039bd1ba69f8c5b13d"
+  },
+  {
+    "path": "public/en/research/p03/index.html",
+    "sha256": "12212ee6b357a6281e287f516ec07aaaa0803f012d8338efe9103afd59a499c2"
+  },
+  {
+    "path": "public/en/research/p04/index.html",
+    "sha256": "8bb0d1208ca07bbba6e9d7b3cc9278b97e877312655c505f814a072e001ff2b6"
+  },
+  {
+    "path": "public/en/research/p05/index.html",
+    "sha256": "b43d60effdec0b7a4ca41d1125e28e25dde8753b18e2c274886954407678224b"
+  },
+  {
+    "path": "public/en/research/p06/index.html",
+    "sha256": "908cb18ce8a878d3bfe960ac773e3df7bb7fb2597c47b0d9da681a468e3fc949"
+  },
+  {
+    "path": "public/en/research/p07/index.html",
+    "sha256": "714db9e884e0b00b493e5eb680ebf14ff5d41d5b9aa7c2be6d6374b06c32a28e"
+  },
+  {
+    "path": "public/en/research/p08/index.html",
+    "sha256": "2d091f0d74a6372cd7307760fe4f230b30588a4bb91e7f601e6e3aef1498ee10"
+  },
+  {
+    "path": "public/en/research/p09/index.html",
+    "sha256": "27c0524336db791831a3f37a047c129ef6e4227811d9504f97e66ba5f259f5ff"
+  },
+  {
+    "path": "public/en/research/p10/index.html",
+    "sha256": "d7a1c2c479082d065ab3c167371201cb508e72540f2a6ba9224c1c06910f4685"
+  },
+  {
+    "path": "public/en/research/p11/index.html",
+    "sha256": "b1631d75b76145bc680d8eec0098c1e0f7f4c974b7b2512b588c42ced0bfc5e2"
+  },
+  {
+    "path": "public/en/research/p12/index.html",
+    "sha256": "207d4ef853e80f8d52d73e7bcb6ebdf18a36739a983f7d29276a35f0d9fc1594"
+  },
+  {
+    "path": "public/en/research/p13/index.html",
+    "sha256": "235c328dfc42b284ec300621fe2251dd8a469f4ba95940bf06ff7ce0ac4dd47f"
+  },
+  {
+    "path": "public/en/research/stripe/index.html",
+    "sha256": "a203a992c02e5012ebd83b14b72c76904fb4262a2112303cceba343bd762e479"
+  },
+  {
+    "path": "public/en/research/supabase/index.html",
+    "sha256": "880462ed5adad42ee7ecd7a678e827feec3328ea1d9efccb393c6f7b3f60f9ff"
+  },
+  {
+    "path": "public/en/roadmap/index.html",
+    "sha256": "a0b4f730bee093582fccf6dcd5c5b6dac33f2989c5cf49849ecbd2ccccb4c355"
+  },
+  {
+    "path": "public/en/science/agent-situation/index.html",
+    "sha256": "9cb7e43b77fb2ed9ef26dff7a0de663b4f5a25b65bf0632f099f04275db1e816"
+  },
+  {
+    "path": "public/en/science/constrained-transformations/index.html",
+    "sha256": "497b798cd977fed35db29e70d2a4462979b4e83223521a1e6205b35f5a182d63"
+  },
+  {
+    "path": "public/en/science/controlled-knowledge-reuse/index.html",
+    "sha256": "645c3c3b2f145fcd9d32755b7396dc380380c609757c74a0613355425f228a56"
+  },
+  {
+    "path": "public/en/science/evidence-and-falsification/index.html",
+    "sha256": "37586571449b4df1b2083a0788bb02c33ca2c494bfa16e4cd2da254e3de61163"
+  },
+  {
+    "path": "public/en/science/geometry-of-semantic-representations/index.html",
+    "sha256": "185a6c78bd773506520221ad7149e3e428be64fe64399aff2006ca83c8f003eb"
+  },
+  {
+    "path": "public/en/science/human-meaning-and-computable-knowledge/index.html",
+    "sha256": "fe6998f07eac95d615da947b4de75425775d1c0d24c5853daba4a08cd56f7dba"
+  },
+  {
+    "path": "public/en/science/index.html",
+    "sha256": "648aa476be5dca9031d53525a81041d74f8c846fa338b1ada7725e8962c0ebe4"
+  },
+  {
+    "path": "public/en/science/interaction-and-memory/index.html",
+    "sha256": "a852e3b5bb8a8a3ab7112b8a0fa3654965a536c832808e0e1355adafb1850d2c"
+  },
+  {
+    "path": "public/en/science/knowledge-utility/index.html",
+    "sha256": "7aec85f226d6ffaa03f911315b50bae932595dcf87ad1f43baef83f14c742041"
+  },
+  {
+    "path": "public/en/science/retrieval-and-context-composition/index.html",
+    "sha256": "bf7153e7da3b6fc2ca4f705fc45f7c972aea060824c8925aad049e06def6d754"
+  },
+  {
+    "path": "public/en/science/revision-and-governance/index.html",
+    "sha256": "96a9b9b33ac404ece1b56a92cc76d2187faecec56bb3f7b5b6bc5440d8e6132c"
+  },
+  {
+    "path": "public/en/science/semantic-objects-and-context/index.html",
+    "sha256": "714539932563515562324d586a0637c404e5cbf7f0b1a279cef695c687d9c258"
+  },
+  {
+    "path": "public/en/search/index.html",
+    "sha256": "32bf39d55e5e60b4570e0038102db4b43f9d4bf356b080dd096cc019d7db83a7"
+  },
+  {
+    "path": "public/en/wiki/index.html",
+    "sha256": "5873e48fb27d6f7cc12af6054eeaf6c9b478384c93abda224ae408815737bda0"
+  },
+  {
+    "path": "public/en/wiki/knowledge-contract/index.html",
+    "sha256": "70481e832c8ac45fee013921266f74a64ebbd570fa723c4a48757123e59a9013"
+  },
+  {
+    "path": "public/en/wiki/provenance/index.html",
+    "sha256": "421927c30669d7791b8d914359798f44c3c92faad78d40c1b9a28da6911cea71"
+  },
+  {
+    "path": "public/en/wiki/versioned-knowledge/index.html",
+    "sha256": "be7636c62f09bf21db2847621dfdd89b4ee46feb3fdc114218b432f62cca937c"
+  },
+  {
+    "path": "public/engineering/index.html",
+    "sha256": "ff70b716e4fe3684981294a0f5dcefc376a63b2f80318ca1239a5c7f66dfce9f"
+  },
+  {
+    "path": "public/engineering/specifications/artifact-registry/index.html",
+    "sha256": "77c25795ddecd5ae86f316faa8763e30817facf83854aa660eddc436af1c564b"
+  },
+  {
+    "path": "public/engineering/specifications/book-package/index.html",
+    "sha256": "fbcb5120917188d14e4bb12de48995ae3f18d331084f9a4c2859588af8157291"
+  },
+  {
+    "path": "public/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "sha256": "930c422a02ddeb318eacf92e01042249e4330c31bb4aced8b71ef8dd691cb75f"
+  },
+  {
+    "path": "public/engineering/specifications/compiled-artifact-contract/index.html",
+    "sha256": "50764698fe70356bdb1a49a2854f7d9c0809fbf8cbc770f9775110c7153f9ad7"
+  },
+  {
+    "path": "public/engineering/specifications/context-package/index.html",
+    "sha256": "f24a2cabd2f3856b3f3cfe4fe26f47f5421101a2852d160cca4759b502f7ea80"
+  },
+  {
+    "path": "public/engineering/specifications/contract-family/index.html",
+    "sha256": "5b7a7b65e6ff3525e485b753e10cf14578d4a4fc66a98310eb06d7feaef00032"
+  },
+  {
+    "path": "public/engineering/specifications/index.html",
+    "sha256": "43f03e5665086d12449df732e00d98b05658120283a27ec9913908c5fe517af2"
+  },
+  {
+    "path": "public/engineering/specifications/knowledge-contract-core/index.html",
+    "sha256": "e449cb224acd198e180cd8a2f754dac7a34a6737477ff222db858c62a91c3897"
+  },
+  {
+    "path": "public/engineering/specifications/knowledge-evolution/index.html",
+    "sha256": "c4ccbac5b5cf715081d7b6c69edbc2dfa92f3337e4faec88e994d5e10d5c5b3e"
+  },
+  {
+    "path": "public/engineering/specifications/reuse-policy/index.html",
+    "sha256": "7f65be29f8bd75a5a7e8e2b7f078c94a59ce37ffe4434d48a58c7f6bb1b34784"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-bridge/index.html",
+    "sha256": "a0c51f37afdeb303c4f3b4180a25141ddb531c2e12ffa8eafcd70fda1072461c"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-types/index.html",
+    "sha256": "0ae4897cdbe0626063d8f85c4ffb16d1f87a2f4f7e99a54a147a057a31f56279"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-verification/index.html",
+    "sha256": "f874c730d42c5866d514473c08f99a5f2c24e8fa3e837b8064b3f7c648148d4b"
+  },
+  {
+    "path": "public/engineering/specifications/status-model/index.html",
+    "sha256": "0165019710ad83254fa4d93f3473a7162a03e6f3b9c1acc55af2e2af910fe473"
+  },
+  {
+    "path": "public/engineering/studies/agent-situation-controls/index.html",
+    "sha256": "021637319f8c744d472f63013c525a2989f09e723bf1108d8f306fef01902438"
+  },
+  {
+    "path": "public/engineering/studies/contract-profile-conformance/index.html",
+    "sha256": "1eba367fe058c0882683402bd1274b4f97bf987e388b3ff16154a4a1929bd60b"
+  },
+  {
+    "path": "public/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "sha256": "a49cd7556adebc9f9d60a47670a44251bc11b26be61a6595f1283dda48cf45cf"
+  },
+  {
+    "path": "public/engineering/studies/editorial-skill-pilot/index.html",
+    "sha256": "1c3d7a9e84dd1db3e330f2b677ced5940e8bfbb4e38cb29502e9abb0ef6f28da"
+  },
+  {
+    "path": "public/engineering/studies/executable-projections-and-revision/index.html",
+    "sha256": "a13d0dfb5adad5722c050635ce87ba95659dfc5c319c41c58ccf776738b386f7"
+  },
+  {
+    "path": "public/engineering/studies/index.html",
+    "sha256": "18711297808e606a469cd184aa8b2054e3eca65e04ad9256c39458bbd1807bdb"
+  },
+  {
+    "path": "public/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "sha256": "aab43e7ef30256357958ba9fb242848a07c922617cf925ad9e64d3291b908624"
+  },
+  {
+    "path": "public/engineering/studies/semantic-bridge-conformance/index.html",
+    "sha256": "756a6ddb99b51a5f78e7205a6eec5856f895934e30959285a1e9a3077c981220"
+  },
+  {
+    "path": "public/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "sha256": "80df3fd43c1508a0ae4d36678a1d1355dee94f3fbc27be9d130b5c09f454938c"
+  },
+  {
+    "path": "public/favicon.svg",
+    "sha256": "4b297a87a0c85085b53a4dafbfdbd366c6299d46e1ee31dd558e7d371afa7722"
+  },
+  {
+    "path": "public/index.html",
+    "sha256": "1961561ef97b31d510b787848e8c07639cc16bac6f03bc39028d6329fb14f36d"
+  },
+  {
+    "path": "public/lab/ACCESS-CONTRACTS-LICENSE",
+    "sha256": "be74508501f0ea6bbb2537d71d53e40266ad3bcffbfdc75428ed5b67244f9fea"
+  },
+  {
+    "path": "public/lab/OBSERVATION-PROVENANCE.json",
+    "sha256": "53b7b1805ba9aec1e4a05f99ca8e1d0a3f76e16ecb206efa802057a4b7063fb3"
+  },
+  {
+    "path": "public/lab/access-contracts.46ab74e.js",
+    "sha256": "5380a710a0f07cb2b996431b41a196079fcfd4e80c9a92744d44d6ec81fa93ac"
+  },
+  {
+    "path": "public/lab/knowledge-journey-observation.css",
+    "sha256": "34ce415ffbc8185eb6c59334a5c102cc9a6baecb49abe514031be8f35b350bf8"
+  },
+  {
+    "path": "public/lab/knowledge-journey-observation.js",
+    "sha256": "c9c659889c9ede874fbf7721459cf3dea8a99327bec6ea06f21114eef1f131fb"
+  },
+  {
+    "path": "public/lab/observation-inspector.87457463.js",
+    "sha256": "87457463074ec4d95c4fb0f424761809ddf0f616d9a4c1478485ceaf50174176"
+  },
+  {
+    "path": "public/lab/package.json",
+    "sha256": "89c47db7851f89caec72da4f215ebc21cf1e294aeef3b45d2583562d846ab035"
+  },
+  {
+    "path": "public/lab/retained-object-reader.js",
+    "sha256": "20867919f6858595221f42a116952e520d905a836c8e3b0e2e5071ff916ff9ca"
+  },
+  {
+    "path": "public/llms.txt",
+    "sha256": "4592044c676c6e9697af04713d34ddcfae69c848eb5dc553b486a4673a14a6a6"
+  },
+  {
+    "path": "public/programme.json",
+    "sha256": "01417f413f6277983d8b125fb223c8dc866c3588d582f7fe32c2683cc9f5787c"
+  },
+  {
+    "path": "public/publication.json",
+    "sha256": "44f4837dab6bd271928be4c3f02907a3ef19b843adac994090094df763fca476"
+  },
+  {
+    "path": "public/reference/bibliography/index.html",
+    "sha256": "8e45e8f1f339ed3c654bb4cc169c3808ea058c999a557600f9fed2370b2538e6"
+  },
+  {
+    "path": "public/reference/glossary/index.html",
+    "sha256": "e07b658584449b18cd8e32b9c769f9f15fb89ffe803f31304319413a19357ad4"
+  },
+  {
+    "path": "public/reference/index.html",
+    "sha256": "32a02e7ca8722512f4e64d0075bb717c63ed5fc32ae7da5ac324768df8837101"
+  },
+  {
+    "path": "public/renditions.css",
+    "sha256": "a35758b83bbde0b439381aef1d9f13d46f1f1e0c6a7acad51e1c40229ef9201a"
+  },
+  {
+    "path": "public/renditions.js",
+    "sha256": "4e06292a1cdf2f59205b48a92a3246345777175424d576324d15017282887c61"
+  },
+  {
+    "path": "public/roadmap.json",
+    "sha256": "1fd18a4998fe824c82d00786678fc77aa707c68930eeeafb00180db6f604ee39"
+  },
+  {
+    "path": "public/robots.txt",
+    "sha256": "b93259d2d1498bddf15ef38fcd92fa9f8be1909c391d946627f7ba31a4b31a42"
+  },
+  {
+    "path": "public/ru/about/index.html",
+    "sha256": "990c2b0b4832b7885a7b3e7dffdcf54a02ac4c00f96b9358785a281f902119bd"
+  },
+  {
+    "path": "public/ru/appendices/api-integration/index.html",
+    "sha256": "3900619b9974f617f942ea0e91f641b4ea578ab6df821e2804f575d2d6c06b8f"
+  },
+  {
+    "path": "public/ru/appendices/index.html",
+    "sha256": "f0a35641cb9f893752b74d2641f50405b4bed26a52693c04c4a1d0a9045833eb"
+  },
+  {
+    "path": "public/ru/appendices/source-map/index.html",
+    "sha256": "c3c8a87981591d3627c2cbf939ef386b5d527ba2f73758baf6404456d0a31fc7"
+  },
+  {
+    "path": "public/ru/books/index.html",
+    "sha256": "dc583c19730c16fa36b3ab3fde85fd4cf1d90b385e9990e859e20b36b9df6baf"
+  },
+  {
+    "path": "public/ru/docs/artifact-registry/index.html",
+    "sha256": "93dea2771e274b3586df261badd656233166506746172160e07343a1c1cec957"
+  },
+  {
+    "path": "public/ru/docs/availability/index.html",
+    "sha256": "7cf36e58b3019d188efb6fdc379c9f1280768813749792d53a4371d5923fe646"
+  },
+  {
+    "path": "public/ru/docs/cache-identity-and-invalidation/index.html",
+    "sha256": "81e37f009e533395a1d3eff7a6f45ffbde1b441adb2185cabc108b3f2775e691"
+  },
+  {
+    "path": "public/ru/docs/compiled-artifact-contract/index.html",
+    "sha256": "77e5ba86038d58d60d655ce59e6058ea2ff5f9b2a6a0460c097d7a8e83e569c9"
+  },
+  {
+    "path": "public/ru/docs/context-package/index.html",
+    "sha256": "d95a89b4840506faaac73082c223250cffb5c1a33440d1133577e495f1deca8c"
+  },
+  {
+    "path": "public/ru/docs/contract-family/index.html",
+    "sha256": "140cdceeefecf50c02df715d59a3ebed43d24c60f46caaf733a8a06fc2143fea"
+  },
+  {
+    "path": "public/ru/docs/index.html",
+    "sha256": "c683efdb73b966f8ebf8a3038d9cefa910c1e321498bf31c9936a8e0505dc17f"
+  },
+  {
+    "path": "public/ru/docs/knowledge-contract-v3/index.html",
+    "sha256": "582ecafa16a0021d03951ae4a766f4412f9950dab9efb96fc94797b78bd0873d"
+  },
+  {
+    "path": "public/ru/docs/knowledge-evolution-contract/index.html",
+    "sha256": "c33285df93a9cde8b5b0779d5a367813c4b5134d93abea28986df7c093cc59f3"
+  },
+  {
+    "path": "public/ru/docs/model/index.html",
+    "sha256": "3586d4fff50c992af5ef7ed17b68ce9d465eb2179b5bb03e90690e6da1c3e725"
+  },
+  {
+    "path": "public/ru/docs/reuse-policy/index.html",
+    "sha256": "7f901e49614cafbc63290b463f1fb980f98fdd261d6cec30e94d57c54510021f"
+  },
+  {
+    "path": "public/ru/docs/semantic-types/index.html",
+    "sha256": "4e5b6f8c4de8e764b443e82731c89147f57e2520f9072f39a265e1fb9ec22906"
+  },
+  {
+    "path": "public/ru/docs/status-model/index.html",
+    "sha256": "e1ece8ff29b0bc1bc98c9855b76239fd980a3297b3d8faa160ab8140b3834475"
+  },
+  {
+    "path": "public/ru/engineering/index.html",
+    "sha256": "aa42d650d38e3f5b97899ad087f3c348cba640ddda2aed3cbc94abe839a568be"
+  },
+  {
+    "path": "public/ru/engineering/specifications/artifact-registry/index.html",
+    "sha256": "4d73a713c2c6d4740eaf1f74738843c7084ca0ec0a7f8988db47b46ee4c8f104"
+  },
+  {
+    "path": "public/ru/engineering/specifications/book-package/index.html",
+    "sha256": "a77f0bb0303b616309a891f2cdbb54533b5cd71935c6679b194c8cc8ef0c3881"
+  },
+  {
+    "path": "public/ru/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "sha256": "3a0b88dad719ae16a68ddaffd23ee69f70db320781eaed0b1ce96a2542bd5dad"
+  },
+  {
+    "path": "public/ru/engineering/specifications/compiled-artifact-contract/index.html",
+    "sha256": "896f65969fe28ab1382229aafb702dc64ef338dd47af95cb107b14384e06c11d"
+  },
+  {
+    "path": "public/ru/engineering/specifications/context-package/index.html",
+    "sha256": "099fabb82ac13865a536b7578ae25b0799b131f0df7b6c5b7ed59a414cefbcce"
+  },
+  {
+    "path": "public/ru/engineering/specifications/contract-family/index.html",
+    "sha256": "5dbb63cfa0c6f84c115c773645edf7676832af9a2c0ff2f1a06086acbc983f96"
+  },
+  {
+    "path": "public/ru/engineering/specifications/index.html",
+    "sha256": "52beab172577a5dd07e0bbc8c49831808034e7d37f266d392552223af987be51"
+  },
+  {
+    "path": "public/ru/engineering/specifications/knowledge-contract-core/index.html",
+    "sha256": "2096b3f20ab7329b1220570da9abf76cca2843ad1a3fc3d3d7a6153a21234667"
+  },
+  {
+    "path": "public/ru/engineering/specifications/knowledge-evolution/index.html",
+    "sha256": "f9deda514754916d5b8d49b983a257e58e73264fce31ffffb5d957ff0c504ca4"
+  },
+  {
+    "path": "public/ru/engineering/specifications/reuse-policy/index.html",
+    "sha256": "3d1f242815d1afb991829624b13c948324441424bfc8714430bef0f19a38ea09"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-bridge/index.html",
+    "sha256": "04b77556f7a0f07c272c805b836d270e3291d7817599ab549dddfb67ca49422a"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-types/index.html",
+    "sha256": "844bc56c6bdd5ebe22662bf9001b2c8d8d54d99c6b464311a4d08a37ba996498"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-verification/index.html",
+    "sha256": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659"
+  },
+  {
+    "path": "public/ru/engineering/specifications/status-model/index.html",
+    "sha256": "6877bc686572f5ed11ab9ae7a2599a267c998695427b198af2ce43500faf08ff"
+  },
+  {
+    "path": "public/ru/engineering/studies/agent-situation-controls/index.html",
+    "sha256": "3f7b0e856e19d02560fa4bd989d691472edcd9d6d44dd5e3df31497d8e0b8a82"
+  },
+  {
+    "path": "public/ru/engineering/studies/contract-profile-conformance/index.html",
+    "sha256": "f899393b029ce90027c56553048e3b3cba0cf79bc7bc04cfa7da19352f96cae1"
+  },
+  {
+    "path": "public/ru/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "sha256": "004a9814b462e1c8a727e0c2983c422644e5fd684f1c93aeb52b4ec880a3f411"
+  },
+  {
+    "path": "public/ru/engineering/studies/editorial-skill-pilot/index.html",
+    "sha256": "6f083160a6c5581325167ff0f21cc248acd8d3f6ce634bb46f6ca486ece41543"
+  },
+  {
+    "path": "public/ru/engineering/studies/executable-projections-and-revision/index.html",
+    "sha256": "dcbe49bbcf81386fd49e7cdcf3fd0bc4af1364be95a584568705d702613370fb"
+  },
+  {
+    "path": "public/ru/engineering/studies/index.html",
+    "sha256": "1ccaa92f10308360c1a22eee5e04b0dcd610ec729e6843141017f6eb42eece39"
+  },
+  {
+    "path": "public/ru/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "sha256": "608d9c293e7a54dfbb8adc75b6b470ae9b1c23413563918522be61b4de52f02d"
+  },
+  {
+    "path": "public/ru/engineering/studies/semantic-bridge-conformance/index.html",
+    "sha256": "c14fd264889e648392e5cd901581223bf66ccf46fb426dfde920c588707860b3"
+  },
+  {
+    "path": "public/ru/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "sha256": "302a4adca3ddfcb6a23a0007001c24cf52be811d48cc025ca490fc8626946be0"
+  },
+  {
+    "path": "public/ru/index.html",
+    "sha256": "420d2efece990299fe171f605403d6f884c4f26c006cb99f718130e3d4cf36ae"
+  },
+  {
+    "path": "public/ru/journal/agent-situation-2026-11-14/index.html",
+    "sha256": "8fc30d8532bcfe699b1fc5bd46b2127622b3b2ee2eb46407dae2bfe9c685b279"
+  },
+  {
+    "path": "public/ru/journal/atom.xml",
+    "sha256": "e2f6fc44b93b36942113cf5b2a1022aedb850f8b1dfe400e539a27c5faca509c"
+  },
+  {
+    "path": "public/ru/journal/building-a-place/index.html",
+    "sha256": "702243d359ff5322db58bca9f8639d854c73e93d0070933f8c471bcffe801af2"
+  },
+  {
+    "path": "public/ru/journal/control-for-topic-2026-11-12/index.html",
+    "sha256": "d6964746f73b1af619f2e43a196857a9ed9f627964419bea3ebec767c0921f24"
+  },
+  {
+    "path": "public/ru/journal/dora-gaps-agents-2026-11-14/index.html",
+    "sha256": "a77036eaf6e603b5159921376a1e86f0e169a77c3db32ab20b3b7ce490d22044"
+  },
+  {
+    "path": "public/ru/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "sha256": "048af4a7ca9ba2eea61f19f982be4efa2d5130556896cade94bca24b2852045e"
+  },
+  {
+    "path": "public/ru/journal/index.html",
+    "sha256": "2a72805134f0c518378be6e1a7d4903790d746a419dfd42fe8049f18e2abfb50"
+  },
+  {
+    "path": "public/ru/journal/knowledge-contract-architecture/index.html",
+    "sha256": "56cb85893c0a5ef29be78bb45e895a3aecee726c89751fef0cc75b13f189ed6c"
+  },
+  {
+    "path": "public/ru/journal/knowledge-contract-v2/index.html",
+    "sha256": "7a4c7a41ae48abbae04c311e3ee30c3dd07e54574730d166e1edfa47387466a4"
+  },
+  {
+    "path": "public/ru/journal/lesson-without-evidence-2026-11-11/index.html",
+    "sha256": "f42907c2957be533409d182bf476c54e8b8dfa44868da7ceb49a5fca51a3b849"
+  },
+  {
+    "path": "public/ru/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "sha256": "fc1f1944654487f6f11a37b0a6cbb6b0a874941501326338c339a514122deafc"
+  },
+  {
+    "path": "public/ru/journal/rss.xml",
+    "sha256": "2fcf97fa9f022771e15303e9c93b5167df999b81422ac451cbe2b011f88735a8"
+  },
+  {
+    "path": "public/ru/journal/rule-after-restart-2026-11-15/index.html",
+    "sha256": "03b02333d946820287c47d7dd34bd0002889c0bf8c32bfad9eee9eb40682fc75"
+  },
+  {
+    "path": "public/ru/journal/source-rule-checks-2026-11-15/index.html",
+    "sha256": "43ab00b1c8f05b137a5183a91bb1ee154adc277807dda0bcb14a914df40fdd90"
+  },
+  {
+    "path": "public/ru/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "sha256": "38918da2ed8569bbf1cc357d53072ae3271882b8eae3bdf6202a69ce73e85914"
+  },
+  {
+    "path": "public/ru/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "sha256": "941b8a04753c00c6f6a169f05ad55341c100d075da1fd35832c7f39227dff277"
+  },
+  {
+    "path": "public/ru/lab/knowledge-journey/index.html",
+    "sha256": "3f2d4d8029cd4d40f5087762d0a2f2faf99c93e4fd244e1d5992fc2af3ef227f"
+  },
+  {
+    "path": "public/ru/programme/index.html",
+    "sha256": "a9055030105860a24d73bd310851fb3ca8781aec70c673749795b82afb55b75f"
+  },
+  {
+    "path": "public/ru/reference/bibliography/index.html",
+    "sha256": "40eb0470c5626583986ea7a1d218847a4686fcd67718e133ffb1797910897a3a"
+  },
+  {
+    "path": "public/ru/reference/glossary/index.html",
+    "sha256": "70d33b48d9771de1669df1490653f0e13713c12eefb409651ba451c29bd8c888"
+  },
+  {
+    "path": "public/ru/reference/index.html",
+    "sha256": "6c1f65b06ac02272bf6ffd570c7769ba8ec7976648c352465afb29b0cee25785"
+  },
+  {
+    "path": "public/ru/references/index.html",
+    "sha256": "1a186eee3e6305eb201ff5d8981a3e33ce8a48ef71b17a9812c617b384494426"
+  },
+  {
+    "path": "public/ru/repository/index.html",
+    "sha256": "eca9b28cf37e5a88ff004c1cc11d96d011fbdd387b3212fa393ea64b81b2122a"
+  },
+  {
+    "path": "public/ru/research/anthropic/index.html",
+    "sha256": "b8b47b57c60fa1436fe0912b033b9aebe05aff1e4f275731341d419390f76f9e"
+  },
+  {
+    "path": "public/ru/research/deepmind/index.html",
+    "sha256": "5b97c9b7f74e32db915149a345aad34df0857fec45662f6cf769886c44fc9524"
+  },
+  {
+    "path": "public/ru/research/hugging-face/index.html",
+    "sha256": "c7567d73b35c3e76557d294479e7949972cfcfd2c5ddd2383ca7228093d5eafe"
+  },
+  {
+    "path": "public/ru/research/index.html",
+    "sha256": "1ab18bd09453c9aaf62f1648a79022e16c71c3e17dc39532bf178c9bcbda164c"
+  },
+  {
+    "path": "public/ru/research/mcp/index.html",
+    "sha256": "25784a0e8db2bfaf4d0d604ab5e90d0206e5a54c4cf2e6ce49256f8715471dbd"
+  },
+  {
+    "path": "public/ru/research/p00/index.html",
+    "sha256": "f8a3844cd59bee2fde634eb068144e38f1e663d504bc2dbc85adf96111a9c7ae"
+  },
+  {
+    "path": "public/ru/research/p01/index.html",
+    "sha256": "3adcda3b2047c814545f9e142e9d0dd7d93d5c27f76f333c8cb799695002b3b8"
+  },
+  {
+    "path": "public/ru/research/p02/index.html",
+    "sha256": "c28b9212a528136de60ef46e40fcda6abefc865efaa7316c0de612609f5b9d4a"
+  },
+  {
+    "path": "public/ru/research/p03/index.html",
+    "sha256": "970bb6fcdada98a2331896bc1c9b99eb4cc476b9c298cecf5d3ff61ade61efe9"
+  },
+  {
+    "path": "public/ru/research/p04/index.html",
+    "sha256": "0e59ed127671d172ac212cc54687364b13b9aa2727691e021ada1491c4da43c9"
+  },
+  {
+    "path": "public/ru/research/p05/index.html",
+    "sha256": "b373d4d2fcd3a4c767aea87d02dd0df08a26cfe69dcbbb864a7727b615a0e38b"
+  },
+  {
+    "path": "public/ru/research/p06/index.html",
+    "sha256": "0ec16f15b42516b458ba4abe3bb3de99d394830f0a1e85a3aa19b05c697f7ba5"
+  },
+  {
+    "path": "public/ru/research/p07/index.html",
+    "sha256": "4a8d7ec8a3c9963aaec71d94f23d391c3ea98302548a3526ebc845b05b814955"
+  },
+  {
+    "path": "public/ru/research/p08/index.html",
+    "sha256": "723f5da54911673c661cc64299415b3ef32ea1f92068a02d284f1855f493b7e9"
+  },
+  {
+    "path": "public/ru/research/p09/index.html",
+    "sha256": "fb379c9484488aa60e9bf9af645ab97a66dda7ccd5de3a8fa9c79b8ccaba898e"
+  },
+  {
+    "path": "public/ru/research/p10/index.html",
+    "sha256": "5227fc635f79d35e9733d0a1ac2c00af68a0ceb7650e27c7cfdd94e8e81df640"
+  },
+  {
+    "path": "public/ru/research/p11/index.html",
+    "sha256": "5d2aa596447959d67d00de39509d19ea254c560db3f03b71edea183710d1a4d9"
+  },
+  {
+    "path": "public/ru/research/p12/index.html",
+    "sha256": "69b152a5b284014a21748163dc3613d64db00c51bf64fcb21e4ab772e4ddf28a"
+  },
+  {
+    "path": "public/ru/research/p13/index.html",
+    "sha256": "1248bdb45e81f74514bd01f3b2316a4fd5060a1cb11a1a202676aae901715800"
+  },
+  {
+    "path": "public/ru/research/stripe/index.html",
+    "sha256": "2c12cfa8c32a8291f443a029f00eb1247bd00051edd6510e80d2321be301bbd8"
+  },
+  {
+    "path": "public/ru/research/supabase/index.html",
+    "sha256": "632366e20f475d137a57d89ad396017ef0c3bad4dfc150e56ca59c6f408a9f54"
+  },
+  {
+    "path": "public/ru/roadmap/index.html",
+    "sha256": "5a429157928f5a9a4cc485c68f6dff76b7b9e9eb57116f5e57e75c62a8b21b1f"
+  },
+  {
+    "path": "public/ru/science/agent-situation/index.html",
+    "sha256": "c068fd0fea72138a8f949655bb76c47c9ede2c5ed5bf9319ccb67602eb43ba34"
+  },
+  {
+    "path": "public/ru/science/constrained-transformations/index.html",
+    "sha256": "d3713aba1496ca5fbfd55623470eee5470bdb563428e5701388295f5cfe197a2"
+  },
+  {
+    "path": "public/ru/science/controlled-knowledge-reuse/index.html",
+    "sha256": "b67205a496eeaaa64c1e6f517ccb10e26f2438824b5a8ab743c1ee39f1c9d0bf"
+  },
+  {
+    "path": "public/ru/science/evidence-and-falsification/index.html",
+    "sha256": "337dea1820804e938c8c0c180ee47e61a8f58d406a8f0cbc1797d30a340840c3"
+  },
+  {
+    "path": "public/ru/science/geometry-of-semantic-representations/index.html",
+    "sha256": "e2030475dadf7091a38346c9176018356300dda09f7dedf20674c02527f31eef"
+  },
+  {
+    "path": "public/ru/science/human-meaning-and-computable-knowledge/index.html",
+    "sha256": "43029a09d06b2f598517bf214d39a60ebde1e464defb0c42ae6acb296d52f92d"
+  },
+  {
+    "path": "public/ru/science/index.html",
+    "sha256": "51ce584ff66b567d67ae27d4b3378a0459d93b6945d3aa64ad94b2cf04aea069"
+  },
+  {
+    "path": "public/ru/science/interaction-and-memory/index.html",
+    "sha256": "c5da6ec554d32c527c25af1f42e124d5a0bef2bc829535fb5594359328607fd5"
+  },
+  {
+    "path": "public/ru/science/knowledge-utility/index.html",
+    "sha256": "6e0a3e18c3468e2b4a85b75e68de1b55c6906d468f076a36028f5f14d4591956"
+  },
+  {
+    "path": "public/ru/science/retrieval-and-context-composition/index.html",
+    "sha256": "6c5b2f5b6779922f68aaded0d8a5af7a7947343ad8e5c72515945bbe3c93dc8c"
+  },
+  {
+    "path": "public/ru/science/revision-and-governance/index.html",
+    "sha256": "37a0caaba5ff7788789572aeb3baab1c59a6ee97f4c9cc07a32aea1380128daa"
+  },
+  {
+    "path": "public/ru/science/semantic-objects-and-context/index.html",
+    "sha256": "064f31453cde01c92d05e41f2ea7633a82c9c6ac7913e38fec2e52afded8b6da"
+  },
+  {
+    "path": "public/ru/search/index.html",
+    "sha256": "9b53b6c3f622d224346c2d72eb0f2e1943bb72debb80d69d0d55cf8f7d07291e"
+  },
+  {
+    "path": "public/ru/wiki/index.html",
+    "sha256": "6f02e5c682bbbed8faef731eb218e90152635bd61ebe9db6c784990dc1f4f09e"
+  },
+  {
+    "path": "public/ru/wiki/knowledge-contract/index.html",
+    "sha256": "7594f208fe3910f7977b840d217c7f27d8f4a92b2d58c9f66623e229bc840a5b"
+  },
+  {
+    "path": "public/ru/wiki/provenance/index.html",
+    "sha256": "b6d209d807f07bacd9fe7ec92d2aec7c0215280f47f8f5814130e96bde63214f"
+  },
+  {
+    "path": "public/ru/wiki/versioned-knowledge/index.html",
+    "sha256": "6cbf65b38a15c85ce3e780abe27d25845163386964a00445eed6a5d679f07833"
+  },
+  {
+    "path": "public/science/agent-situation/index.html",
+    "sha256": "8b3abe8d151b799e9a4992fcc39c21a278e9fa9f3f924933918ded2e929bc441"
+  },
+  {
+    "path": "public/science/constrained-transformations/index.html",
+    "sha256": "670571902b94d2ab89422a370e48c42ae99a6eda766ae00dedbc84f067939b6b"
+  },
+  {
+    "path": "public/science/controlled-knowledge-reuse/index.html",
+    "sha256": "17c47b5f13a7fc2c61088e9f3843e0fec2703eaa4d5f4fc1250e6a9f6cb93d67"
+  },
+  {
+    "path": "public/science/evidence-and-falsification/index.html",
+    "sha256": "a1814bb24523d2343cfdc4ef84e32ab894519d692b28523d21cace6e04b9cd21"
+  },
+  {
+    "path": "public/science/geometry-of-semantic-representations/index.html",
+    "sha256": "e83516b1d36d0216f18bb67cb08faa2ce9098d674df1cdc54718c40cc22f7ff7"
+  },
+  {
+    "path": "public/science/human-meaning-and-computable-knowledge/index.html",
+    "sha256": "03da0e3bb6d8a16c697a81a58dc7d35dd0ce18af00d2992beb80628695e7e045"
+  },
+  {
+    "path": "public/science/index.html",
+    "sha256": "73e9a7581f0d123794bcdc2b55a751a6014b07615b7a8539939a59ef2d3787ad"
+  },
+  {
+    "path": "public/science/interaction-and-memory/index.html",
+    "sha256": "034d871b136b7ac1824ae97065a8b5ef2e0d37bd03fbd669a3ceea82cf2ccf31"
+  },
+  {
+    "path": "public/science/knowledge-utility/index.html",
+    "sha256": "af6ca4f15c3bbb85c76cce6517d7bfdc035d56400f8c739f5e10118a12febe54"
+  },
+  {
+    "path": "public/science/retrieval-and-context-composition/index.html",
+    "sha256": "d2564ebf6f2b832cdfb7924bcbea8879873b73fd3be21572f22c04c9cb52a624"
+  },
+  {
+    "path": "public/science/revision-and-governance/index.html",
+    "sha256": "71027bcfbed3e2a7efda18eb77ccb8682804d29363fd2987548d4f66d742d136"
+  },
+  {
+    "path": "public/science/semantic-objects-and-context/index.html",
+    "sha256": "40927943d0e9ada06ed374d5ed216d5971c8e40bdad78011a4dd10af3a12caab"
+  },
+  {
+    "path": "public/search.js",
+    "sha256": "dc4406ba8cff86d05f8ea4167c5c98ba6f0610c1d63851da020b335495527c56"
+  },
+  {
+    "path": "public/search/index.html",
+    "sha256": "181d40815ccc3c76965065bd183b3fe0ff5c80fd09869236a2a5de5b83ba3c14"
+  },
+  {
+    "path": "public/sitemap.xml",
+    "sha256": "21a24b1626bb37f746103c8d8b11ebe8038560f707f9cdf052896fc248f1c6ae"
+  },
+  {
+    "path": "public/style.css",
+    "sha256": "5f87eadb230971281cf76fa6c27e545362f132baccb03013cccde1f1bd43cc83"
+  },
+  {
+    "path": "public/theme.js",
+    "sha256": "fbf6f88c25b0a8e49ffc2d4b9012d76e3e1d631df97b5b6a11574b091a63f9ac"
+  },
+  {
+    "path": "public/zh-Hans/about/index.html",
+    "sha256": "f112621c5bc3ccbbb0d62884486150162f2c83a74bd815b38c2c40370bb22db4"
+  },
+  {
+    "path": "public/zh-Hans/appendices/api-integration/index.html",
+    "sha256": "4431fc07dbdcaf9f9d97a345e36cbf4f087a9d471431355373ddf0907403aca8"
+  },
+  {
+    "path": "public/zh-Hans/appendices/index.html",
+    "sha256": "d41443f5b39229e453120fe033d6dba53eb3a3bf270a1a291e15f0ab7204d56c"
+  },
+  {
+    "path": "public/zh-Hans/appendices/source-map/index.html",
+    "sha256": "cc04bc5c4c0c555e5f778bdedc757a4f23990076c51ead3b760fdf17a083d3bb"
+  },
+  {
+    "path": "public/zh-Hans/books/index.html",
+    "sha256": "61601614fa020cbc951d664da5cc4e237b47f0d0f2f47c20ea400388069ae458"
+  },
+  {
+    "path": "public/zh-Hans/docs/artifact-registry/index.html",
+    "sha256": "f62b2ec7ba12a099f4031f99bb0bdfebe04d809617dad02660f4fa873d1a1662"
+  },
+  {
+    "path": "public/zh-Hans/docs/availability/index.html",
+    "sha256": "8be804ca0df803df79e9c04f123bf26266b8bceb214c2d385a30401765919e27"
+  },
+  {
+    "path": "public/zh-Hans/docs/cache-identity-and-invalidation/index.html",
+    "sha256": "e2a9778522886f2149fba9ed1245c005b57bb3009c3c575f07d9b352277ea217"
+  },
+  {
+    "path": "public/zh-Hans/docs/compiled-artifact-contract/index.html",
+    "sha256": "02e61ee5b826749452e3478c62ad38155e2069d4631fe25f2386755713d43738"
+  },
+  {
+    "path": "public/zh-Hans/docs/context-package/index.html",
+    "sha256": "729d093ddcbaee9a9eff3f31a8ef132d55a83b72e3437a5083c36ead21e0d7b3"
+  },
+  {
+    "path": "public/zh-Hans/docs/contract-family/index.html",
+    "sha256": "3526c548abf87a65487bd9eff68a26acaaa41f0383015285ee8327a233c301d6"
+  },
+  {
+    "path": "public/zh-Hans/docs/index.html",
+    "sha256": "29e3cb90eaa888071758ce17ca6084c43cb874db2f7acb2f8f561ae2ab4cda8d"
+  },
+  {
+    "path": "public/zh-Hans/docs/knowledge-contract-v3/index.html",
+    "sha256": "592ae512b6df9cceed68270619f74a8bb2c5a63cc383d62616c9bbb0be638eff"
+  },
+  {
+    "path": "public/zh-Hans/docs/knowledge-evolution-contract/index.html",
+    "sha256": "0179d857208a69fda83df3cd68d5838250bf30f89c0f97a4f8b901a15956a457"
+  },
+  {
+    "path": "public/zh-Hans/docs/model/index.html",
+    "sha256": "38425cfcc2005074d8b506059b6308d37b9bac35f51e87ebdbae678931d09366"
+  },
+  {
+    "path": "public/zh-Hans/docs/reuse-policy/index.html",
+    "sha256": "652cfda4b5889249d6598f77890d92e1b02f95f315b6b4eb32bc02546f24eb98"
+  },
+  {
+    "path": "public/zh-Hans/docs/semantic-types/index.html",
+    "sha256": "67de358f9f329cae8117bb04adcfda4480e82b127ad32d7b6537eadea834f16e"
+  },
+  {
+    "path": "public/zh-Hans/docs/status-model/index.html",
+    "sha256": "ec57af7ec2a30190b298fe6387c7ff611411ce93fc4bb4afe38f1ce7674871c8"
+  },
+  {
+    "path": "public/zh-Hans/engineering/index.html",
+    "sha256": "f5ec4b4313cb032cfc865c19558303f22641966d6238c06e2f4f3789d36da77a"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/artifact-registry/index.html",
+    "sha256": "da987e7d67beab9b0d4a92dc563c6e77e52e4f975e0656c04c0a0897f8e2b0bf"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/book-package/index.html",
+    "sha256": "9a3ff4f2a99dc4d8e5ed11fd7b4244d04ad5677a74e90ca92fc51ccd377bb056"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "sha256": "53d913c03bcf0736bdb43510a628a420f7c2c68836d18bcab5be6a1bd638a04e"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/compiled-artifact-contract/index.html",
+    "sha256": "8d7c5c0944d621eca274ad6994e3d78ae095cab8456d5a91080a2a80c62e272c"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/context-package/index.html",
+    "sha256": "63f03d5e4ccc2c0efa305c81852ce14992cb9498742db53337ca6a93697518e3"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/contract-family/index.html",
+    "sha256": "19e61ac5c23d7f6b429300e47e58d8374db2981b8d3844761d1c2a3400fcb0ce"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/index.html",
+    "sha256": "ff7b31109a45e6e251298aeb850e190dc0e66e20067f6d83447f678df3542dd4"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/knowledge-contract-core/index.html",
+    "sha256": "116762515857fc4c8cb1f0d263669688bd81d4d5141655202ce2115bd7f73169"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/knowledge-evolution/index.html",
+    "sha256": "d6b07b9de2157f45ab488dc6d4b90c25595147d527000ff4a85205bafbcca72b"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/reuse-policy/index.html",
+    "sha256": "37cf937695d4a6f39e249bf508ab2b3f1a4af3295f4b9a68b255eee699849eb1"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-bridge/index.html",
+    "sha256": "ebe121caf1ff5d7c32b24bb74e56519d1ff8e58b4fd5329e44f52e12003d692c"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-types/index.html",
+    "sha256": "cfd778a8cd8159a64a69c59525012ad1337b2d51197220db93231b6de9d0e62b"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-verification/index.html",
+    "sha256": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/status-model/index.html",
+    "sha256": "bbc889d3a110488f3d6d1ab5096bd3b6e3dff5c71fd7d602f2c96efd07552b9b"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/agent-situation-controls/index.html",
+    "sha256": "db537201189b2a1e3ded0f0fa1bd1c60fcb794a250a0638d4e1fa1cdc58e106a"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/contract-profile-conformance/index.html",
+    "sha256": "2968ef891f8ae4ce17131c2da10b5e4d4b29c7afe69b0b34a0b86a2ff13337a8"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "sha256": "9270b01063e827cd62d70869f2ba096817826289a6dc08e8bebe8ba9243400af"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/editorial-skill-pilot/index.html",
+    "sha256": "a8f717f0f54e59a9c010b9d866e1e55406dc8a7d015d108639e172d3d9862b8a"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/executable-projections-and-revision/index.html",
+    "sha256": "e89e7bffbaf0bdb1c5643bb9b2f3d62a25848665008ea29fa6369c4416a22161"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/index.html",
+    "sha256": "671d5bb95afa53e52201855ce305e5cd3044ce1efa39a99e1f36c06d74994f46"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "sha256": "148f065077abc9bd000c4678b7d399f0c8342a907c4c6386357b029870b5f1e9"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/semantic-bridge-conformance/index.html",
+    "sha256": "42e5cc82bb41ab7789b6eae0421dde79585fd1c633968401910d0f725acf0720"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "sha256": "023b46fd487efd3a0b0b8cf7a3e1346146b16936be75093fcbd4fac03c02a94a"
+  },
+  {
+    "path": "public/zh-Hans/index.html",
+    "sha256": "4f9fdb85b28f2ff37033b5ed07d968cb5121dfb7f4e0d83d03183df6df937352"
+  },
+  {
+    "path": "public/zh-Hans/journal/agent-situation-2026-11-14/index.html",
+    "sha256": "2693b376400adac922975f0f2d68141230d9dadf834c9d14ecc17638555b4a30"
+  },
+  {
+    "path": "public/zh-Hans/journal/atom.xml",
+    "sha256": "9e8ae4cad19ad80ab8369bc54df51c2a0913d3ed7b775fd4ce1dc1f5e8db2634"
+  },
+  {
+    "path": "public/zh-Hans/journal/building-a-place/index.html",
+    "sha256": "c21daab5c6a73321e23dbad865d6fe49a91d9890ae4c365c2ddeb7c0363faf51"
+  },
+  {
+    "path": "public/zh-Hans/journal/control-for-topic-2026-11-12/index.html",
+    "sha256": "4480fb9f01ad617940734684e6ea80e65a4ff67d04ad5e5d033b986ed0621d08"
+  },
+  {
+    "path": "public/zh-Hans/journal/dora-gaps-agents-2026-11-14/index.html",
+    "sha256": "6d5c3a0ff28d380f5fac208f312c7b30ec3a6114ac910b01902237151cdd8b79"
+  },
+  {
+    "path": "public/zh-Hans/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "sha256": "959545365012ccc3359634d5622096b5aa4ce6b6e71bf2c9aebf0f5f4d792ca2"
+  },
+  {
+    "path": "public/zh-Hans/journal/index.html",
+    "sha256": "213561f248967215bddf6dc712a86c54d3b206cf5f4047c69af02b957e671e76"
+  },
+  {
+    "path": "public/zh-Hans/journal/knowledge-contract-architecture/index.html",
+    "sha256": "c181c48e3e9b9344d51a70c946271e6b92cd472cc62ac40c1a927ccfcc264d5f"
+  },
+  {
+    "path": "public/zh-Hans/journal/knowledge-contract-v2/index.html",
+    "sha256": "3e647ff38a84d792d19c906d267baa0ebef0583ad5208f16408d93f5ff10ff53"
+  },
+  {
+    "path": "public/zh-Hans/journal/lesson-without-evidence-2026-11-11/index.html",
+    "sha256": "2bf25e005169745b5b4b4bbf30fd4718062a4e72a9db8a3232d011c7ba03f05b"
+  },
+  {
+    "path": "public/zh-Hans/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "sha256": "402a61bb3623e3a8b31fd1039e3b59a7b9d108127903921531fd809363f3dd39"
+  },
+  {
+    "path": "public/zh-Hans/journal/rss.xml",
+    "sha256": "262a2daef18997ee709e085656b18aa8224446bcb9b854790ae2269aaa9a0a3e"
+  },
+  {
+    "path": "public/zh-Hans/journal/rule-after-restart-2026-11-15/index.html",
+    "sha256": "ba9fd7b45dedd6c1147a26f5836b492a74966e8296c3c0cb9fbcc6603ebe1ea3"
+  },
+  {
+    "path": "public/zh-Hans/journal/source-rule-checks-2026-11-15/index.html",
+    "sha256": "6510e4045126a834edd4ff63213be90b351f7fae95ea26c401256b809db0589f"
+  },
+  {
+    "path": "public/zh-Hans/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "sha256": "381c9c14eab10a81ed879db3fecf638ee666b3d9a047e5e25b93a49117b4db44"
+  },
+  {
+    "path": "public/zh-Hans/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "sha256": "e8f1bcc7586de6fd0606029fff56ba3c052a6b62db28110445e946badc0b917e"
+  },
+  {
+    "path": "public/zh-Hans/lab/knowledge-journey/index.html",
+    "sha256": "eecd1c64e1802e9d27a31fd3caa86fb24776b2d7c264740551bbc32596f43dce"
+  },
+  {
+    "path": "public/zh-Hans/programme/index.html",
+    "sha256": "399dd12bc4872b1195b0aacaa569ff6176d3163b0030df236005518d7956e322"
+  },
+  {
+    "path": "public/zh-Hans/reference/bibliography/index.html",
+    "sha256": "6f1c7b9144bad663a984319890d175a1a8ac3f00e06e0da64c5a981730f16805"
+  },
+  {
+    "path": "public/zh-Hans/reference/glossary/index.html",
+    "sha256": "9281f7bf444a7f6d213a0a256d3eb8f7e63b91bd9cf0a906ee178a29913b1a74"
+  },
+  {
+    "path": "public/zh-Hans/reference/index.html",
+    "sha256": "afdc5ea0aa399fedafa4b88b48eca3b113f2d48e6b7ecb761a5ef33d8af7b926"
+  },
+  {
+    "path": "public/zh-Hans/references/index.html",
+    "sha256": "5b3234ec82a4e26cc736fb44fc020fa079067fbadc3012e01e7f18da2c6bd12a"
+  },
+  {
+    "path": "public/zh-Hans/repository/index.html",
+    "sha256": "1367797604d424055ea8cc22324f05eafe6f3501364c2f15c543ebddcfd5fcfc"
+  },
+  {
+    "path": "public/zh-Hans/research/anthropic/index.html",
+    "sha256": "376683539ea9e32774e520c1e04e03a38a49b5c0fd25fc427e7dba884a08a881"
+  },
+  {
+    "path": "public/zh-Hans/research/deepmind/index.html",
+    "sha256": "bf5f830b25a3d63a240b1c08c4dd248f43d59b5c4f3a089e7714461291b44cb6"
+  },
+  {
+    "path": "public/zh-Hans/research/hugging-face/index.html",
+    "sha256": "5ec1d9f514d1e1441d2457c05c67931b6ee307438e270a3b81cf77aac31e6d43"
+  },
+  {
+    "path": "public/zh-Hans/research/index.html",
+    "sha256": "82f87a018013d9bf686f6fc302390d00e7bef714bca23e0a04f90ae46bffef51"
+  },
+  {
+    "path": "public/zh-Hans/research/mcp/index.html",
+    "sha256": "87e88baad867ac20eeda4913aea36cc36905318b78f62ff2f841c1d7be2ed8d3"
+  },
+  {
+    "path": "public/zh-Hans/research/p00/index.html",
+    "sha256": "391ba431b8ebf731573d17c9ea3534cbd3bbece07f8dc9db653a97ea6a6985ce"
+  },
+  {
+    "path": "public/zh-Hans/research/p01/index.html",
+    "sha256": "c124690f7926f15b07dc86c03c11009e047b611597b0d51d93f990e068f95a76"
+  },
+  {
+    "path": "public/zh-Hans/research/p02/index.html",
+    "sha256": "3f12e0799867547f36d74dc0b07aeea41613772ac1cfc7aa1594ce16d91e3d8b"
+  },
+  {
+    "path": "public/zh-Hans/research/p03/index.html",
+    "sha256": "a8833c8ea223bbb44953969543979b1c4345df2c52e6656a465eb97d3ef16075"
+  },
+  {
+    "path": "public/zh-Hans/research/p04/index.html",
+    "sha256": "6c3726326e7d0669e2fa4341b641ce1906c16a08afcb490cd46376dd3cacb012"
+  },
+  {
+    "path": "public/zh-Hans/research/p05/index.html",
+    "sha256": "d7681b6517326bcee8e021dbd05972d116e5964bf442d1af60858530896ce3b6"
+  },
+  {
+    "path": "public/zh-Hans/research/p06/index.html",
+    "sha256": "0541040f607fa2f448721a51e27d12369c2181ca613c08cc1bd904ab9dc6d0ce"
+  },
+  {
+    "path": "public/zh-Hans/research/p07/index.html",
+    "sha256": "d1d7d5a8b342eb946a98f0337d0d231f7e469e742e510d35469d27cb825fcdd7"
+  },
+  {
+    "path": "public/zh-Hans/research/p08/index.html",
+    "sha256": "55133c6072f31cca837e5f38957ca47443cddfb149145184cc1d4ce8cf0f00fb"
+  },
+  {
+    "path": "public/zh-Hans/research/p09/index.html",
+    "sha256": "75191b6da49119cca7326f2e0f82f26b814d2f528bda1d5a4cc9c3f7fa0fe5b1"
+  },
+  {
+    "path": "public/zh-Hans/research/p10/index.html",
+    "sha256": "b93b7012bbc1cd268bb341fb2bbae5b32a7c73e745b8acc9004f8cbc71d0875f"
+  },
+  {
+    "path": "public/zh-Hans/research/p11/index.html",
+    "sha256": "9c51711ecb1c51450a279f979aaf2ff2abde9763d82075be89e1029d049bbb5c"
+  },
+  {
+    "path": "public/zh-Hans/research/p12/index.html",
+    "sha256": "4635e2b68a8b7360874043e36b8c451fa6c2a60e972cfa47463e909bafb41f42"
+  },
+  {
+    "path": "public/zh-Hans/research/p13/index.html",
+    "sha256": "3674e2873ce6b8cc650ffa0056c0cf8202e46205caea3dade0e5ce80580dfed2"
+  },
+  {
+    "path": "public/zh-Hans/research/stripe/index.html",
+    "sha256": "79493af60b67b6597a32caf3b90cbe1a1c1b45e38550f66d6fc494429629c41b"
+  },
+  {
+    "path": "public/zh-Hans/research/supabase/index.html",
+    "sha256": "1327e72da9f77eff7b105fd0bf0db8bd313152ee0d721fda8c0f212d4cc6d876"
+  },
+  {
+    "path": "public/zh-Hans/roadmap/index.html",
+    "sha256": "3d7866eb9aa2ce5545a2ba168a2f7e9ac306b61cc3a745facd7eea16f1a5820e"
+  },
+  {
+    "path": "public/zh-Hans/science/agent-situation/index.html",
+    "sha256": "523d1ef8aad5bd579a55b5f618a49989824f7e9abce77b4f8f81cecf6b612bd7"
+  },
+  {
+    "path": "public/zh-Hans/science/constrained-transformations/index.html",
+    "sha256": "2ee5a24bfa9b52d5bca9dac36f26800e32ce287ff43c387c67958d9a5d45bb6c"
+  },
+  {
+    "path": "public/zh-Hans/science/controlled-knowledge-reuse/index.html",
+    "sha256": "955c130277898a3e34956e6c180038a0ec6f1ec75062efdf462081e475964e74"
+  },
+  {
+    "path": "public/zh-Hans/science/evidence-and-falsification/index.html",
+    "sha256": "ee63516e19308d7afa782a1dc75d470c2c3423742920e54d1545b8d0d7cbb2a4"
+  },
+  {
+    "path": "public/zh-Hans/science/geometry-of-semantic-representations/index.html",
+    "sha256": "766ab082facf3e7ec7e9df404a6796728b255baeb79894f7b4438ff2d60bfcf0"
+  },
+  {
+    "path": "public/zh-Hans/science/human-meaning-and-computable-knowledge/index.html",
+    "sha256": "300cab1f0eb8e07ac3e83b0936e26f8efeb23a9b8d67ea7e1be33df9cb7e4076"
+  },
+  {
+    "path": "public/zh-Hans/science/index.html",
+    "sha256": "04ab451b3d961eafb2f8bc34c4472847981dade44a1f5425401a4d27335beea5"
+  },
+  {
+    "path": "public/zh-Hans/science/interaction-and-memory/index.html",
+    "sha256": "7fa9f779c97e70af5e9610e4c9081ba7be7a78bcc6a9d273c160c4ab05d7cca0"
+  },
+  {
+    "path": "public/zh-Hans/science/knowledge-utility/index.html",
+    "sha256": "bb938d7d790d61c2722dda3b2094545f19b0eeb05741bd422cd6834dde4bda44"
+  },
+  {
+    "path": "public/zh-Hans/science/retrieval-and-context-composition/index.html",
+    "sha256": "603c6f8c84051ce2b92c8576bfeabbae40c9777282ff0f78bdb0575f760efe43"
+  },
+  {
+    "path": "public/zh-Hans/science/revision-and-governance/index.html",
+    "sha256": "0c88956a8281362e93da8b10d332a16344bbee1b9776450ee8ec0e62614bdbed"
+  },
+  {
+    "path": "public/zh-Hans/science/semantic-objects-and-context/index.html",
+    "sha256": "35c4f2b859e104e3097b18a45a8c4d214b056a581a3008c309ff5146fcb6b5b5"
+  },
+  {
+    "path": "public/zh-Hans/search/index.html",
+    "sha256": "4187e6dd885860ca69804115ba8bbacfbab920d6353ab2312b87350045e87476"
+  },
+  {
+    "path": "public/zh-Hans/wiki/index.html",
+    "sha256": "ebc63e92a9d53e0ad7bd2aed63cbf60ae3d73ef96d8567dc49bfd570a52ec679"
+  },
+  {
+    "path": "public/zh-Hans/wiki/knowledge-contract/index.html",
+    "sha256": "a56bee1f64da0781e3242277f9835e9ef2194e02fd88424e0e1a6928d00eebcb"
+  },
+  {
+    "path": "public/zh-Hans/wiki/provenance/index.html",
+    "sha256": "89f212f39ceb16dc1e52ad67d467133c6fcc9acbbf8b5f8e1c8658e070557e6e"
+  },
+  {
+    "path": "public/zh-Hans/wiki/versioned-knowledge/index.html",
+    "sha256": "6409ae0c9afcf984de73590250ac416c2ce9085cb1db40b6abbf200feb278301"
+  },
+  {
+    "path": "src/content/catalog.json",
+    "sha256": "7afb5ee14f4c8b6d1a9387fab1e58847330bc491c1c7e94a1dfa15d9f63886ac"
+  },
+  {
+    "path": "src/site/content-provenance.json",
+    "sha256": "12f0e6d04d2fd11c642ff94e7f7822c5e78b20350dcc28ca196177c4a979d2fe"
+  }
+]

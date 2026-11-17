@@ -191,6 +191,12 @@ support patch is still a proposal until that consumer verifies and adopts it.
 
 ## Reuse lesson and rollback
 
+The separately retained [complete-corpus site rehearsal](SITE-INTEGRATION.md)
+now supplies a concrete downstream overlay and actual-page adverse controls.
+It closes the producer integration gap without changing translation review
+states or establishing deployment. The earlier seven-file proposal and its
+receipts remain unchanged.
+
 The checked change illustrates two obligations for a full translation: exact
 structure must survive, and prose must preserve which object a qualifier
 modifies. A count/anchor/formula check would not detect the three Russian

@@ -1,0 +1,47 @@
+[
+  {
+    "name": "publication",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_publication.py"
+    ],
+    "started_utc": "2026-11-17T07:48:37.270951+00:00",
+    "finished_utc": "2026-11-17T07:48:37.420717+00:00",
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/check_publication.py\", line 20, in <module>\n    assert Counter(d['type'] for d in published['documents']) == {\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Publication inventory is incomplete\n"
+  },
+  {
+    "name": "localization",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_localization.py",
+      "public",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "started_utc": "2026-11-17T07:48:37.271330+00:00",
+    "finished_utc": "2026-11-17T07:48:56.643558+00:00",
+    "exit_code": 0,
+    "stdout": "Localization PASS: {\"actual_html_routes\": 354, \"article_pages\": 6, \"baseline_routes\": 322, \"journal_pages\": 30, \"localized_review_fields\": 24, \"programme_pages\": 3, \"reader_pages\": 108, \"roadmap_cards\": 75, \"roadmap_fields\": 453, \"roadmap_pages\": 3}\n",
+    "stderr": ""
+  },
+  {
+    "name": "links",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_links.py",
+      "public"
+    ],
+    "started_utc": "2026-11-17T07:48:37.271672+00:00",
+    "finished_utc": "2026-11-17T07:48:37.850759+00:00",
+    "exit_code": 0,
+    "stdout": "internal links OK (22203 checked, 449 external URLs not fetched)\n",
+    "stderr": ""
+  }
+]

@@ -96,3 +96,48 @@ jobs:
           test "$kc_currency_optimized_status" -eq 2
           python3 -B -c "from pathlib import Path; import sys; sys.exit(0 if 'optimized Python is unsupported' in Path(sys.argv[1]).read_text() else 1)" \
             "$RUNNER_TEMP/source-currency-optimized.log"
+      - name: Read the exact full-site consumer
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Arcanada-one/contract-place-site
+          ref: 4475115ae03fc904aff3c7010ff298865bcbed44
+          path: _complete-site-consumer
+          persist-credentials: false
+      - name: Install the tested site runtime
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+      - name: Rehearse the 36-work site consumer with its retained source and proposed patch
+        run: |
+          set -euo pipefail
+          kc72_source_revision=6eec88097cf5255543c792e53c92f75c0d483728
+          kc72_roadmap_revision=55e279c43dc9bcf8732467a32661c2ac4b7cf920
+          kc72_source_worktree="$RUNNER_TEMP/kc72-consumer-source"
+          kc72_roadmap_worktree="$RUNNER_TEMP/kc72-consumer-roadmap"
+          kc72_site="$GITHUB_WORKSPACE/_complete-site-consumer"
+          kc72_patch="$GITHUB_WORKSPACE/reviews/renditions/semantic-specifications-20261117/site-consumer/site-36x72-consumer-successor.patch"
+          echo "8f07e0919ab142d1bda27e230a2bea48a4d7e46829ac3de0b65bffe0c891de8d  $kc72_patch" | sha256sum -c -
+          test "$(git -C "$kc72_site" rev-parse HEAD)" = 4475115ae03fc904aff3c7010ff298865bcbed44
+          git -C "$kc72_site" apply --check "$kc72_patch"
+          git -C "$kc72_site" apply "$kc72_patch"
+          git fetch --no-tags origin "$kc72_source_revision" "$kc72_roadmap_revision"
+          git worktree add --detach "$kc72_source_worktree" "$kc72_source_revision"
+          git worktree add --detach "$kc72_roadmap_worktree" "$kc72_roadmap_revision"
+          trap 'git -C "$GITHUB_WORKSPACE" worktree remove "$kc72_source_worktree"; git -C "$GITHUB_WORKSPACE" worktree remove "$kc72_roadmap_worktree"' EXIT
+          cd "$kc72_site"
+          test "$(node --version)" = v24.22.1
+          python3 -B scripts/build_publication.py \
+            --source-dir "$kc72_source_worktree" --roadmap-source-dir "$kc72_roadmap_worktree"
+          python3 -B "$GITHUB_WORKSPACE/reviews/renditions/semantic-specifications-20261117/site-consumer/check_actual_status_binding.py" \
+            --site-dir "$kc72_site"
+          node scripts/test_ui_localization.js
+          python3 -B scripts/test_build.py
+          python3 -B scripts/test_localization.py
+          ROADMAP_SOURCE_DIR="$kc72_roadmap_worktree" python3 -B scripts/test_roadmap.py
+          PROGRAMME_SOURCE_DIR="$kc72_source_worktree" python3 -B scripts/test_programme.py
+          python3 -B scripts/check_publication.py
+          python3 -B scripts/check_papers.py public
+          python3 -B scripts/check_links.py public
+          python3 -B scripts/check_roadmap.py public --source-dir "$kc72_roadmap_worktree"
+          python3 -B scripts/check_localization.py public \
+            --source-dir "$kc72_source_worktree" --roadmap-source-dir "$kc72_roadmap_worktree"

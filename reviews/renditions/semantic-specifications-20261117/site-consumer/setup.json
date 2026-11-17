@@ -1,0 +1,183 @@
+[
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--no-hardlinks",
+      "--no-checkout",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/site",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site"
+    ],
+    "cwd": null,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "4475115ae03fc904aff3c7010ff298865bcbed44"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Warning: you are leaving 1 commit behind, not connected to\nany of your branches:\n\n  713c887 journal: daily briefing 2026-11-17, reasoning-cache-break-even (en, ru, zh-Hans)\n\nIf you want to keep it by creating a new branch, this may be a good time\nto do so with:\n\n git branch <new-branch-name> 713c887\n\nHEAD is now at 4475115 journal: daily briefing 2026-11-17, reasoning-cache-break-even (en, ru, zh-Hans) (#60)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--no-hardlinks",
+      "--no-checkout",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/source",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source"
+    ],
+    "cwd": null,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "6eec88097cf5255543c792e53c92f75c0d483728"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "HEAD is now at 6eec880 docs: retain complete rendition checks and bounded live site audit\n"
+  },
+  {
+    "argv": [
+      "git",
+      "worktree",
+      "add",
+      "--detach",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap",
+      "55e279c43dc9bcf8732467a32661c2ac4b7cf920"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "exit_code": 128,
+    "stdout": "",
+    "stderr": "Preparing worktree (detached HEAD 55e279c)\nerror: unable to read sha1 file of .gitattributes (1d4b3dd77583eb763727574e9ef7bb4c91d82501)\nerror: unable to read sha1 file of .github/workflows/ci.yml (634867d84c03face362e4990101901f9a8c3871b)\nerror: unable to read sha1 file of .markdownlint-cli2.jsonc (6288d2bb38f55029fd93b5bb35a0d7f179ccf5e8)\nerror: unable to read sha1 file of DOCUMENTS.md (c496ef68e5dfdd45f4a37fe75efd5894fdd98722)\nerror: unable to read sha1 file of PROGRAMME.md (d83f5c6b136bcbe51fee557c0ff7ba30e3b32801)\nerror: unable to read sha1 file of READING.md (2251f55331c447339579d6b60bcc01ff2362efbc)\nerror: unable to read sha1 file of README.md (e90b018338b543d5e637b158b514cc4a1719b738)\nerror: unable to read sha1 file of REUSE.toml (ffdb93bc7b1846e523acaaa1776222f430d04d2d)\nerror: unable to read sha1 file of ROADMAP.md (ded9a33964bcfc1d5185019a5baccbac9fcb6b46)\nerror: unable to read sha1 file of SOURCES.md (20954a2678fb77fb0c76e4ddc21a73a3f2b9b823)\nerror: unable to read sha1 file of cases/candidate-export-gate.md (e34d003a14eb85c9851292e51e4cdfb6b1edfce6)\nerror: unable to read sha1 file of engineering/README.md (09edb8d2d2671b08a4ceb16de6ee45aa2eb211d9)\nerror: unable to read sha1 file of engineering/specifications/README.md (2faad45d06f84d070258b9cd52b1e1cc67c3df08)\nerror: unable to read sha1 file of engineering/specifications/pipeline/SPECIFICATION.md (52922448f3cbd7082b16c9d667b9fe8d586dfa10)\nerror: unable to read sha1 file of engineering/specifications/requirements.json (50de20540e5106e43454dd9f0cf00e5f22d6929b)\nerror: unable to read sha1 file of engineering/studies/README.md (7f868cf989c2c8d8182778f34bf321460f030d8b)\nerror: unable to read sha1 file of engineering/studies/evidence-index.json (6032f8f32331f7c93a8f50402eccdcc494ffc840)\nerror: unable to read sha1 file of guides/READING.ru.md (4003ea22519b08e3513f824779f97bea072a898e)\nerror: unable to read sha1 file of guides/READING.zh-Hans.md (f2d57903efd20681ef5adaacb6cff29884f3df27)\nerror: unable to read sha1 file of guides/programme.ru.md (00000f6995932bef5111b8fc31b82c3140eafdd8)\nerror: unable to read sha1 file of guides/programme.zh-Hans.md (4f72ef0c5e718f8ad012709ee6d6ee69920550eb)\nerror: unable to read sha1 file of papers/README.md (457a410a1dbe0a7b373fd29af7ddbd8982224cba)\nerror: unable to read sha1 file of publication-catalog.json (081dbbc95118c0db54bb92164faa9fbed6206556)\nerror: unable to read sha1 file of publication-localization.json (bd51b320ece1f98bdf181f563f01082c1b6df05f)\nerror: unable to read sha1 file of publication-renditions.json (a9e68a58c1db08961d781b4ca185f9aa44f31e18)\nerror: unable to read sha1 file of reference/document-naming/names.json (e893cfbb9696b76ca465c9a06a16a838a04e0529)\nerror: unable to read sha1 file of reference/foundations/CORPUS_MAP.md (c693870e7b473c2d3824349556dd12c5bd1a0ca8)\nerror: unable to read sha1 file of roadmap/EXECUTION_STATUS.md (8f3569eccfa0aa46f8c5274c7fea8749a6769e7f)\nerror: unable to read sha1 file of roadmap/FOUNDATIONS_RELEASE_PLAN.md (1d6af9375596b9293e7499b571ce493900dda2e1)\nerror: unable to read sha1 file of roadmap/ROADMAP.ru.md (3db122fe6e688f940288912fd104f92d2448f65e)\nerror: unable to read sha1 file of roadmap/TASKS.md (0d1c55ea0c32b409409d2d91a1fd3144f451cf0b)\nerror: unable to read sha1 file of roadmap/TRANSLATIONS.md (9f2d439bb09554ea2e61daf5bddcb6b14d60f7ca)\nerror: unable to read sha1 file of roadmap/workstreams.json (b9d0ea7416cf38d55e40745e4b4123a7521b2ac6)\nerror: unable to read sha1 file of schemas/README.md (db3b6db1a55da91ce6ebba1875d074d110f9e8a8)\nerror: unable to read sha1 file of tools/README.md (74784800c6cc207861ce2625e172bd67315513c0)\nerror: unable to read sha1 file of tools/check_publication.py (d21d853306e2360f3c944c64af7b68e5391c491e)\nerror: unable to read sha1 file of tools/check_requirement_register.py (04132d1954758a854390f08f385aedd22d06e559)\nerror: unable to read sha1 file of tools/check_sources.py (c00b1875be89b46fbdb91525faa8ed2469f5699b)\nerror: unable to read sha1 file of tools/export_corpus.py (1b3943af8cf0b4044b7ed5e13733226649db0cb3)\nerror: unable to read sha1 file of tools/test_check_publication.py (1db1c33d2c2591a024d00a9d90ad4b94139e6016)\nerror: unable to read sha1 file of tools/test_check_sources.py (6e4066a4649793922e4fadc08f60fd0cd2ac03c8)\nerror: unable to read sha1 file of tools/test_ci_workflow.py (349b4f743e9c0b4cdfc2289dfe2e9963bcea5a6e)\nerror: unable to read sha1 file of tools/test_export_corpus.py (d646fbf81fce1042bd8266373694c9c1478246a2)\nerror: unable to read sha1 file of tools/test_project_corpus_map.py (989d1fb0186194cdd46197b3910c211576da1d28)\nerror: unable to read sha1 file of translations/ru/engineering/specifications/context-package/SPECIFICATION.md (0b0e2ef3e11124a0a32347926f9cbba6037850a9)\nerror: unable to read sha1 file of translations/zh-Hans/engineering/specifications/context-package/SPECIFICATION.md (e2649b4f7277205e097980c59bab1d87d03d4f73)\nfatal: Could not reset index file to revision 'HEAD'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--no-hardlinks",
+      "--no-checkout",
+      "/workspace/scratch/50c29b6b4f6f/c124_translation/integration",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": null,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "55e279c43dc9bcf8732467a32661c2ac4b7cf920"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "HEAD is now at 55e279c Bind whitespace-corrected rendition bytes to their exact source commit\n"
+  },
+  {
+    "argv": [
+      "git",
+      "apply",
+      "--check",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source/reviews/renditions/agent-situation-20261116/site-status-support.patch"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "apply",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source/reviews/renditions/agent-situation-20261116/site-status-support.patch"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "exit_code": 0,
+    "stdout": "4475115ae03fc904aff3c7010ff298865bcbed44\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "exit_code": 0,
+    "stdout": "6eec88097cf5255543c792e53c92f75c0d483728\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap",
+    "exit_code": 0,
+    "stdout": "55e279c43dc9bcf8732467a32661c2ac4b7cf920\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "exit_code": 0,
+    "stdout": "build.mjs\npublication-manifest.json\nscripts/build_publication.py\nscripts/programme.py\nscripts/publication_checks.py\nscripts/test_build.py\nscripts/test_ui_localization.js\nsrc/site/app.js\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

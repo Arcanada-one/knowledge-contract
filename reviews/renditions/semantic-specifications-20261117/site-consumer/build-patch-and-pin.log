@@ -1,0 +1,11 @@
+Generated daily Journal RSS and Atom for en, ru and zh-Hans.
+Prerendered 309 localized routes, root and 404; sitemap 135 URLs.
+en/appendices/source-map/index.html: shows semantic-verification (research-draft) without the label 'Research draft'
+en/engineering/studies/semantic-bridge-conformance/index.html: shows semantic-bridge (engineering-draft) without the label 'Engineering draft'
+en/reference/bibliography/index.html: shows agent-situation (research-draft) without the label 'Research draft'
+ru/appendices/source-map/index.html: shows semantic-verification (research-draft) without the label 'Исследовательский черновик'
+ru/engineering/studies/semantic-bridge-conformance/index.html: shows semantic-bridge (engineering-draft) without the label 'Инженерный черновик'
+ru/reference/bibliography/index.html: shows agent-situation (research-draft) without the label 'Исследовательский черновик'
+zh-Hans/appendices/source-map/index.html: shows semantic-verification (research-draft) without the label '研究草稿'
+zh-Hans/engineering/studies/semantic-bridge-conformance/index.html: shows semantic-bridge (engineering-draft) without the label '工程草案'
+zh-Hans/reference/bibliography/index.html: shows agent-situation (research-draft) without the label '研究草稿'
