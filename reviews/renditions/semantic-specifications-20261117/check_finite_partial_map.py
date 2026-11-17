@@ -13,6 +13,7 @@ No project evaluator is imported. This is NOT native admission / full scientific
 """
 from collections import Counter, defaultdict
 from itertools import product
+from math import comb
 import argparse
 import json
 import sys
@@ -82,7 +83,18 @@ def classify_fibres(obs, values):
     return "none"
 
 
-def run():
+def closed_form_partial_maps():
+    """Independent fibre-size count; no candidate membership predicate is called."""
+    def fibre_weight(size):
+        # All q^size valuations allow the undefined map; q constants allow one more.
+        return 1 if size == 0 else 4 ** size + 4
+
+    terms = [comb(4, k) * fibre_weight(k) * fibre_weight(4 - k)
+             for k in range(5)]
+    return terms, sum(terms)
+
+
+def run(expected_accepted=7272):
     class_by_shape = defaultdict(Counter)
     query_counts = Counter()
     accepted_counts = Counter()
@@ -126,6 +138,12 @@ def run():
         got = tuple(class_by_shape[shape][name] for name in ("global", "partial_only", "none"))
         require(got == triplet, f"{shape} classification: {got} != {triplet}")
     require(dict(query_counts) == EXPECTED_QUERIES, "§7.4 query cardinality mismatch")
+    closed_form_terms, symbolic_total = closed_form_partial_maps()
+    enumerated_total = sum(size * profiles for size, profiles in accepted_counts.items())
+    require(symbolic_total == expected_accepted,
+            f"closed-form accepted partial-map cardinality mismatch: {symbolic_total} != {expected_accepted}")
+    require(enumerated_total == symbolic_total,
+            f"enumerated accepted partial-map cardinality mismatch: {enumerated_total} != {symbolic_total}")
     for name, x in divergences.items():
         require(x["false_accept"] + x["false_reject"] > 0, f"Mutation survived: {name}")
     return {
@@ -134,6 +152,11 @@ def run():
         "by_observation_shape": {s: dict(v) for s, v in sorted(class_by_shape.items())},
         "diagnostic_queries": dict(query_counts),
         "accepted_partial_map_count_distribution": dict(sorted(accepted_counts.items())),
+        "accepted_partial_maps_closed_form": {
+            "partition_terms": closed_form_terms,
+            "symbolic_total": symbolic_total,
+            "enumerated_total": enumerated_total,
+        },
         "mutants": divergences,
         "decision": "LOCAL_REPRODUCED_NOT_ADMITTED",
         "independent_role_review": "NOT_VERIFIED",
@@ -145,10 +168,11 @@ def run():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--expect-determined", type=int, default=2952)
+    parser.add_argument("--expect-accepted", type=int, default=7272)
     args = parser.parse_args()
     EXPECTED_QUERIES["determined"] = args.expect_determined
     try:
-        print(json.dumps(run(), ensure_ascii=False, sort_keys=True, indent=2))
+        print(json.dumps(run(args.expect_accepted), ensure_ascii=False, sort_keys=True, indent=2))
     except ValueError as exc:
         print(f"FINITE_FIBRE_REFUSED: {exc}", file=sys.stderr)
         sys.exit(3)
