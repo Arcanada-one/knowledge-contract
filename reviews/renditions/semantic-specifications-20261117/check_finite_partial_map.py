@@ -54,6 +54,17 @@ def wrong_valid(candidate, obs, values, variant):
     if variant == "allow_unattained":
         return all(mapped == UNDEFINED or all(values[i] == mapped for i, a in enumerate(obs) if a == label)
                    for label, mapped in enumerate(candidate))
+    if variant == "cyclic_value_shift":
+        # Deliberately wrong answer values: a bijection keeps the aggregate
+        # accepted-map count unchanged while changing exact membership.
+        for label, mapped in enumerate(candidate):
+            situated = [i for i, a in enumerate(obs) if a == label]
+            if not situated:
+                if mapped != UNDEFINED:
+                    return False
+            elif mapped != UNDEFINED and any(mapped != (values[i] + 1) % 4 for i in situated):
+                return False
+        return True
     if variant == "skip_last_situation":
         # Isolate the last-situation omission while preserving the unattained-label rule.
         for label, mapped in enumerate(candidate):
@@ -98,8 +109,8 @@ def run(expected_accepted=7272):
     class_by_shape = defaultdict(Counter)
     query_counts = Counter()
     accepted_counts = Counter()
-    divergences = {k: {"false_accept": 0, "false_reject": 0, "first_witness": None}
-                   for k in ("accept_all", "refuse_all", "allow_unattained", "skip_last_situation")}
+    divergences = {k: {"false_accept": 0, "false_reject": 0, "accepted_count": 0, "first_witness": None}
+                   for k in ("accept_all", "refuse_all", "allow_unattained", "skip_last_situation", "cyclic_value_shift")}
     maps_tested = 0
     candidate_tests = 0
     for obs in product(LABELS, repeat=4):
@@ -119,6 +130,8 @@ def run(expected_accepted=7272):
                     accepted.append(candidate)
                 for name, counts in divergences.items():
                     bad = wrong_valid(candidate, obs, values, name)
+                    if bad:
+                        counts["accepted_count"] += 1
                     if bad != ok:
                         counts["false_accept" if bad else "false_reject"] += 1
                         if counts["first_witness"] is None:

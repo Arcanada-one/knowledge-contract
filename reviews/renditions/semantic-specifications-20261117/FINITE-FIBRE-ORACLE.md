@@ -34,6 +34,16 @@ For two observation labels and four situations, distribute positions between the
 
 This checks only the explicitly stipulated `4×2×4` finite model; the closed form assumes independent valuation choices across disjoint fibres and makes no claim about uncertain, correlated or real agent observations. Its arithmetic is an author-side derivation, not a separate scientific reviewer or native KC2 admission. Exact source and rollback boundaries above remain unchanged. Current downstream site release and live index are separate.
 
+## Cardinality-preserving wrong-value adversary — c146
+
+The c145 closed-form check verifies **how many** partial maps are admissible, not which assessment value a defined map returns. A cyclic permutation of all four model values in every attained fibre (`x -> (x+1) mod 4`) is a concrete adversary: it preserves the count of accepted candidates per profile and the total **7,272**, yet changes exact membership. On the stipulated 4,096 profiles × 25 candidates, the wrong-value predicate accepts 7,272 and differs from the correct predicate in **3,176 false acceptances and 3,176 false rejections**.
+
+Minimal refuter: with observations `(0,0,0,0)` and assessments `(0,0,0,0)`, the partial map `(0,undefined)` is correct but the cyclic-shift mutant rejects it; `(1,undefined)` is incorrect but the mutant accepts it. The prior aggregate formula, candidate count and profile classification cannot distinguish these two oracles. The existing exact-value `correct_valid` comparison can, provided the mutant is actually executed.
+
+The existing finite checker now includes `cyclic_value_shift` as an actual decision mutant and records `accepted_count` for each mutant. The rendition workflow requires its accepted count **7,272**, false accepts **3,176** and false rejects **3,176**, in addition to all prior positive counts and negative 2953/7273 controls. Run the same JSON under ordinary and optimized Python and compare bytes. The separately written local control was executed in both modes (Python SHA-256 `b3ce2809b7f2e5c3d347df3def579cee94578517bda5f606e9f442f3633a6bab`; result SHA-256 `d39683603227345f2a92cdcf10f34f017cdd1b288bb4cc6ce7019f25fc53a583`), but remains a same-controller methodological check, not an independent role review.
+
+**Method lesson:** a matching inventory cardinality does not establish correctness of value assignments. Include a cardinality-preserving adversary, positive exact-value witnesses and two-sided decision divergence. This bounded lesson does not establish source/target semantic translation equivalence, actual permissions, deployed use or native KC2 admission. Revert only the new method/checker/workflow increment if required; never rewrite retained receipts.
+
 ## Surfaces, rollback, limits
 
 English Semantic Verification and RU/zh-Hans renditions, scientific registry, catalogue, review states, historical receipts, published site and source/roadmap pins **are not modified**. The only changed surfaces are this method, its executable test and the existing workflow. A separately reviewed revert of these files restores the original behavior. Same-controller producer testing is not independent DEUS review. Actual GitHub job log, PR-head versus merge-ref tree and later reuse must be evaluated separately. Cost NOT_MEASURED.
