@@ -5,8 +5,7 @@ language: en
 status: research-draft
 license: Apache-2.0
 sources:
-  - "Semantic Verification §7.2–7.4, source revision 8c7cd3bc1247998cb9554c568da26949da31b749"
-  - "KC-Brain local c143 candidate, SHA-256 3f756a1db019c7ec495c5668858630ce369be0d8993674e1e2db33c88313b8ea"
+  - "Finite transfer partial-map method (c144)"
 ---
 
 # Finite Fibre Oracle: Bounded Partial-Map Refusal
