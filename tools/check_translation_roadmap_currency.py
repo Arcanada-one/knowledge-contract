@@ -74,12 +74,25 @@ def verify_bindings_and_reviews(docs, bodies, baseline):
     if len(prior) != 8 or len(current) != 8 or current != prior:
         raise ValueError('HISTORICAL_REVIEW_OBJECT_CHANGED')
 
+def verify_card_review_state(cards):
+    """Candidate-specific boundary: no metadata card has been reviewed here.
+
+    This is not a universal rejection of future reviewed states. New evidence,
+    a new review criterion and a revised dated witness are required first.
+    """
+    for entry in cards:
+        if entry.get('status') != 'unreviewed':
+            raise ValueError('CARD_REVIEW_STATE_NOT_ADMITTED: ' +
+                             repr((entry.get('work'), entry.get('language'))))
+
 def structural_negatives(root):
-    """Execute two in-memory identity mutants, not changed count fields."""
+    """Execute four in-memory identity/state mutants, not changed count fields."""
     docs = parse((root/'publication-catalog.json').read_text('utf-8'))['documents']
     entries = parse((root/'publication-renditions.json').read_text('utf-8'))['renditions']
     baseline = baseline_renditions(root)
     verify_bindings_and_reviews(docs, entries, baseline)
+    cards = parse((root/'publication-localization.json').read_text('utf-8'))['entries']
+    verify_card_review_state(cards)
     source_mutant = copy.deepcopy(entries)
     source_mutant[0]['source']['path'] = 'papers/semantic-objects-and-context/PAPER.md'
     review_mutant = copy.deepcopy(entries)
@@ -98,6 +111,21 @@ def structural_negatives(root):
             caught += 1
         else:
             raise RuntimeError('STRUCTURAL_MUTANT_NOT_CAUGHT: ' + name)
+    for name, mutation in (('forged-card-review', 'reviewed'),
+                           ('absent-card-review-status', None)):
+        forged = copy.deepcopy(cards)
+        if mutation is None:
+            forged[0].pop('status')
+        else:
+            forged[0]['status'] = mutation
+        try:
+            verify_card_review_state(forged)
+        except ValueError as error:
+            if not str(error).startswith('CARD_REVIEW_STATE_NOT_ADMITTED:'):
+                raise
+            caught += 1
+        else:
+            raise RuntimeError('CARD_STATUS_MUTANT_NOT_CAUGHT: ' + name)
     return caught
 
 def inventory(root):
@@ -105,6 +133,7 @@ def inventory(root):
     meta = parse((root/'publication-localization.json').read_text('utf-8'))
     sidecar = parse((root/'publication-renditions.json').read_text('utf-8'))
     docs, cards, bodies = catalog['documents'], meta['entries'], sidecar['renditions']
+    verify_card_review_state(cards)
     verify_bindings_and_reviews(docs, bodies, baseline_renditions(root))
     slugs = [d['slug'] for d in docs]
     if len(slugs) != len(set(slugs)):
