@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "result": "PASS",
+  "baseline_revision": "18684f073285a4fa20f299518bd8a3d75b0c76d6",
+  "english_revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+  "publication_revision": "356779208ce7669234e494cf67a15aa08ae33aa6",
+  "content_revision": "2627326cd0ac05f843bcc654dc550298bfec6b78",
+  "site_revision": "d3d17929f209612669f38db6a735d46bc9ec309c",
+  "pandoc": "pandoc 3.1.3",
+  "scope": "author structural checks and actual complete rendition consumer",
+  "checker_sha256": "66c214072a70e8933f6183a542c28ca72bcf6691d96a9abec54fb60eab439938",
+  "site_script_sha256": {
+    "scripts/attribution/test_attribution_cardinality.py": "4f1e66ddced197e8e813cdab27cd09c409c559ff2b62b984e70b094c1255899a",
+    "scripts/build_journal.py": "462c19310125a62cbb78521ccba61e76d839c79636233fc7190c428e9efa40c3",
+    "scripts/build_publication.py": "20ffe44a5d873bef16750a2eeca8fa0cd4dc4a7af62c01f2e55410da8a0e87e5",
+    "scripts/catalogue_localization.py": "c706733199081cbe9d2781db783ab867d28c95a0f748cb0490b93cce3ac786fe",
+    "scripts/check_attribution.py": "333651eb26bc0b6a66320c98e243fe74e56f67296fa17b4c69ee81f4a53259b0",
+    "scripts/check_hygiene.py": "c844b5d2562027fc3cda04ec4ba240b83b4b9e0336a35eb25302b0ab723edc70",
+    "scripts/check_links.py": "62dc777fb83b20e4f72221d0c32b81629aba0b079e53d1865fdea859a4532b6d",
+    "scripts/check_localization.py": "f4488f73f5af2010b19c6d786d12914fb58b513ccba37b94fe65342cfee1d407",
+    "scripts/check_page.py": "30e26872fb8c6028a0f61c605601057a138382c1b9142f17402e851535903a0c",
+    "scripts/check_papers.py": "490c276e41468ba78d054cd54a721e7f4fe7898036ac4223e6501d55a0943a86",
+    "scripts/check_pre_contrast.py": "8dc5daa02f02a0c4091a6887ebf032fd943690e4649e75d8870a1914ed317ead",
+    "scripts/check_publication.py": "5f069c9e23a6bdde350d8a222546ece28e13279e58eeb13e16e2f9e6a0af924e",
+    "scripts/check_reviewed_preamble.py": "552e0f252b61c836ad628c09a144976e4f82bb498424171323faff2e1b2d8d73",
+    "scripts/check_roadmap.py": "4667a52b44b962264ae1755e17d45a500c5dba439409bd9c9954f920c77fc6d5",
+    "scripts/formula_localization.py": "b41d4497cf58ef976294c6ec896020f3c3cbd7e378a42d550fd7d5299583adf4",
+    "scripts/programme.py": "849e3ae701aefd99fa93345e8e4c01dcceab1cc1eda487a2e3108869a3037aac",
+    "scripts/publication_catalog.py": "8ba527d98735c8768265430f47152272e4b6817dc403e28d06f02cd6ef03d18c",
+    "scripts/publication_checks.py": "926887739e360905185b206099d9d73fe6a5e22827b4f3631ae0b34a763b812c",
+    "scripts/readback_served.py": "c8ebd9ab1e48c3145134ee8d343ed5850390d4882e0152b02852c105a8fa9b9d",
+    "scripts/rendition_preamble.py": "163434ad6ba70de4773e4b672915b838b0b005bddc130f33fd08c4851bd7d073",
+    "scripts/renditions.py": "dca34612d0714cc40dc9001f2953a7c1f0b73af7a47ae2feb6b38d48d85c5d2f",
+    "scripts/renditions_dry_run.py": "7c5e68dcee0da68eff91df5628cab9765f818e354c28302e7a6ca570c3855070",
+    "scripts/review_localization.py": "4f002f1616999274a26548a9aea5af060a6ba13f91bfe87f58d21249beb128c6",
+    "scripts/roadmap.py": "6e6100a4bdf783530ac461772aa4802decfa67de9dc2f9b97116ea10f9a6f39f",
+    "scripts/roadmap_localization.py": "f98ee6c851a64abe2f36ef66ba86c67797e98a9a7ceec0abede9c00486347911",
+    "scripts/roadmap_names.py": "3ebeff7dd429c306b441f0b387ecfd39f28d8a0dc53db0e932e8d56fd9c68380",
+    "scripts/test_build.py": "eefe434b5934114e3eaf4098450524c2669e63259e3a8a54702f8f5899220f81",
+    "scripts/test_catalogue_localization.py": "c8a667555a30fa2c04d0824f58b8f0de0bbcb7e5431439534ae61f5140c4effa",
+    "scripts/test_check_attribution.py": "9479032aa76440e4bb9bdbdcb03572a48367c11e5b215266927097bedadc99bf",
+    "scripts/test_formula_localization.py": "5d681b074468f6b92010fdda487c3a64faa132f8d4a7f136d8e52b8b411827d7",
+    "scripts/test_journal.py": "8286c08477bdd20e6d003a6c38a9a4436ab27d6bfb9390623a0b5a19216cf5e3",
+    "scripts/test_localization.py": "20b80b1bfc1fb8761b07acfe6fa90d667cbad098532b89a23983bd1652e24824",
+    "scripts/test_programme.py": "a7580ff57630d5402a1430b6f1fa26b7c027f3bb67b020dfba3199d7ca3c9e6a",
+    "scripts/test_readback.py": "a7d7cd50c7087ada297f28232dcaa2449f27c9f3a7c7dea85bdaf135ed4bc7c1",
+    "scripts/test_rendition_preamble.py": "75939336ff797d86efef818f3ebfe744a7a2d3302d5bc376ff5780dd91c180ca",
+    "scripts/test_renditions.py": "3fea6b8ef5489f685ab64a2b616b557d8ab649027b1d46854014e537b270e501",
+    "scripts/test_review_localization.py": "8514bbd60d8397caa3626268346595660964b4690df74c50b895b9ed329c33a9",
+    "scripts/test_roadmap.py": "5313487f151d7476a19e1ab94ae51709a8bd9b726d778fa0627bbbae3658aa1b",
+    "scripts/test_roadmap_display_names.py": "757e4e736d29f34e179ea25b9474a0cddbfea3c1a848ae6fc64813201184c625",
+    "scripts/test_roadmap_localization.py": "0e798542c2ab8abd65bc553b8352836a949e2fe20a693dcabc5c74dafe78f6b9",
+    "scripts/test_roadmap_names.py": "952352fc604dd49fc8183ce464f11268834d01d406046183c4770ed639d265a7"
+  },
+  "catalogue_works": 36,
+  "metadata_records": 72,
+  "rendition_entries": 72,
+  "retained_entries": 68,
+  "missing_pairs": [],
+  "current_source_mismatches": 0,
+  "historical_review_objects_unchanged": 8,
+  "historical_producer_files_unchanged": 64,
+  "compiled_states": {
+    "unreviewed": 64,
+    "reviewed": 8
+  },
+  "bodies": [
+    {
+      "work": "semantic-bridge",
+      "language": "ru",
+      "source_sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+      "rendition_sha256": "2c89b7fb8bc9268f2a9b8e8320683c226e89c8a9d14af211cdbb3d0e1b0fdb9a",
+      "sections": 12,
+      "blocks": 90,
+      "math_objects": 18,
+      "code_objects": 125,
+      "references": 7
+    },
+    {
+      "work": "semantic-bridge",
+      "language": "zh-Hans",
+      "source_sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+      "rendition_sha256": "427a0151bcdd05cae3ae8992e97055565936af3009e1545c5c90ceb756cf95ef",
+      "sections": 12,
+      "blocks": 90,
+      "math_objects": 18,
+      "code_objects": 125,
+      "references": 7
+    },
+    {
+      "work": "semantic-verification",
+      "language": "ru",
+      "source_sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+      "rendition_sha256": "5bc9f168f509561f2ac419c5200178aab4366d9845c4c800a75a6cc81119c3b4",
+      "sections": 14,
+      "blocks": 97,
+      "math_objects": 34,
+      "code_objects": 18,
+      "references": 12
+    },
+    {
+      "work": "semantic-verification",
+      "language": "zh-Hans",
+      "source_sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+      "rendition_sha256": "313ba227379be707db14ae231967f8b9d797c1193c7e90e52270facc4f4c59f6",
+      "sections": 14,
+      "blocks": 97,
+      "math_objects": 34,
+      "code_objects": 18,
+      "references": 12
+    }
+  ],
+  "adverse_controls_detected": 30,
+  "adverse_controls": [
+    {
+      "name": "semantic-bridge/ru: corrupt source digest",
+      "refusal": "RENDITION_SOURCE_PIN"
+    },
+    {
+      "name": "semantic-bridge/ru: corrupt rendition digest",
+      "refusal": "RENDITION_REVISION_PIN"
+    },
+    {
+      "name": "semantic-bridge/ru: source bytes no longer match pinned body",
+      "state": "stale"
+    },
+    {
+      "name": "semantic-bridge/ru: alter Header",
+      "refusal": "RENDITION_SECTION_UNRESOLVED"
+    },
+    {
+      "name": "semantic-bridge/ru: alter Math",
+      "refusal": "RENDITION_FORMULA_CHANGED"
+    },
+    {
+      "name": "semantic-bridge/ru: alter Code",
+      "refusal": "RENDITION_CODE_CHANGED"
+    },
+    {
+      "name": "semantic-bridge/ru: alter Link",
+      "refusal": "RENDITION_REFERENCE_DROPPED"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: corrupt source digest",
+      "refusal": "RENDITION_SOURCE_PIN"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: corrupt rendition digest",
+      "refusal": "RENDITION_REVISION_PIN"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: source bytes no longer match pinned body",
+      "state": "stale"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: alter Header",
+      "refusal": "RENDITION_SECTION_UNRESOLVED"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: alter Math",
+      "refusal": "RENDITION_FORMULA_CHANGED"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: alter Code",
+      "refusal": "RENDITION_CODE_CHANGED"
+    },
+    {
+      "name": "semantic-bridge/zh-Hans: alter Link",
+      "refusal": "RENDITION_REFERENCE_DROPPED"
+    },
+    {
+      "name": "semantic-verification/ru: corrupt source digest",
+      "refusal": "RENDITION_SOURCE_PIN"
+    },
+    {
+      "name": "semantic-verification/ru: corrupt rendition digest",
+      "refusal": "RENDITION_REVISION_PIN"
+    },
+    {
+      "name": "semantic-verification/ru: source bytes no longer match pinned body",
+      "state": "stale"
+    },
+    {
+      "name": "semantic-verification/ru: alter Header",
+      "refusal": "RENDITION_SECTION_UNRESOLVED"
+    },
+    {
+      "name": "semantic-verification/ru: alter Math",
+      "refusal": "RENDITION_FORMULA_CHANGED"
+    },
+    {
+      "name": "semantic-verification/ru: alter Code",
+      "refusal": "RENDITION_CODE_CHANGED"
+    },
+    {
+      "name": "semantic-verification/ru: alter Link",
+      "refusal": "RENDITION_REFERENCE_DROPPED"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: corrupt source digest",
+      "refusal": "RENDITION_SOURCE_PIN"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: corrupt rendition digest",
+      "refusal": "RENDITION_REVISION_PIN"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: source bytes no longer match pinned body",
+      "state": "stale"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: alter Header",
+      "refusal": "RENDITION_SECTION_UNRESOLVED"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: alter Math",
+      "refusal": "RENDITION_FORMULA_CHANGED"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: alter Code",
+      "refusal": "RENDITION_CODE_CHANGED"
+    },
+    {
+      "name": "semantic-verification/zh-Hans: alter Link",
+      "refusal": "RENDITION_REFERENCE_DROPPED"
+    },
+    {
+      "name": "omit final body",
+      "refusal": "BODY_PAIR_COVERAGE"
+    },
+    {
+      "name": "replace body with existing pair",
+      "refusal": "BODY_PAIR_COVERAGE"
+    }
+  ],
+  "actual_presentation": {
+    "formula": {
+      "schema_version": 1,
+      "path": "publication-formula-localizations.json",
+      "sha256": "7e9af900a3b5ac91c7fbb42fd9956cf240257338b67909cc15aff30f2667e253",
+      "repository": "Arcanada-one/knowledge-contract",
+      "source_revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+      "review_state": "unreviewed",
+      "documents": [
+        {
+          "path": "papers/human-meaning-and-computable-knowledge/PAPER.md",
+          "source_sha256": "56f19fd3af7c3020e8a444fd897c02a11bfc0be664cb3e12f863ee3cc988929b",
+          "annotations": [
+            {
+              "math_index": 15,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for every ",
+              "tex_sha256": "0424127ef69f8e4fcc7c13f6565d643530aa4c0aa1b305e75ed86afdd4752a35"
+            },
+            {
+              "math_index": 23,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for all ",
+              "tex_sha256": "0e6779e0d1aa6afc9add2118224c62f150e633908776733ddd17482b8eeb8fa6"
+            }
+          ]
+        },
+        {
+          "path": "papers/semantic-objects-and-context/PAPER.md",
+          "source_sha256": "209c38501027c37abe73e264422c0e11c225fda8180c60fb2c6ae39cad1ce2f1",
+          "annotations": [
+            {
+              "math_index": 10,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "and",
+              "tex_sha256": "c4d3245937bd4de05b796c3f47ecf19a797738fe7e08528235ae3f617f64dacc"
+            }
+          ]
+        },
+        {
+          "path": "papers/knowledge-utility/PAPER.md",
+          "source_sha256": "51cf7e4e0005989fb8cc669bed699e72629644a02ea8bd06393fb0f588c148c7",
+          "annotations": [
+            {
+              "math_index": 40,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "equivalently",
+              "tex_sha256": "1f75905e2794e7379bdd78d48628c6e1ea8f2585029fc77c873c9b16025d0433"
+            }
+          ]
+        },
+        {
+          "path": "papers/geometry-of-semantic-representations/PAPER.md",
+          "source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
+          "annotations": [
+            {
+              "math_index": 24,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for all ",
+              "tex_sha256": "b39dd30b2e3b7df85c130957f0c5848b1557053a60ceccde3cb8bc8d4fed27ff"
+            },
+            {
+              "math_index": 29,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for every ",
+              "tex_sha256": "e5b37e90a9a45157a0d4688d08ae51d87e92572fc4a47ddbab2afd2247537ac1"
+            },
+            {
+              "math_index": 30,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for ",
+              "tex_sha256": "9de47ef2ded83abd3400ad8c0e15d52e5fb662539ec1b5afd77553b0ab3814ed"
+            },
+            {
+              "math_index": 64,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "the two answer sets are not the same singleton",
+              "tex_sha256": "f62b107b955b9d8aa466ac4941520d4020f115d31d9896facd68b2ca4566957f"
+            }
+          ]
+        },
+        {
+          "path": "papers/constrained-transformations/PAPER.md",
+          "source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
+          "annotations": [
+            {
+              "math_index": 89,
+              "math_type": "DisplayMath",
+              "mtext_index": 1,
+              "source_text": "for all ",
+              "tex_sha256": "88fee1d40bf85f7c9c453d05f191dd2d5cb869e05ecc5852ea7c244320b20b35"
+            }
+          ]
+        }
+      ],
+      "scope": "visible formula prose only; canonical TeX and source math parity unchanged; no independent review"
+    },
+    "review": {
+      "schema_version": 1,
+      "repository": "Arcanada-one/knowledge-contract",
+      "review_state": "unreviewed",
+      "source": {
+        "path": "publication-review-localizations.json",
+        "sha256": "1f86b8897081a194d73e7405e6175e4044a58619e26f1a874664afabce9d6236",
+        "revision": "356779208ce7669234e494cf67a15aa08ae33aa6",
+        "sidecar_path": "publication-renditions.json",
+        "sidecar_sha256": "61d6084d1e4b2eebc8b07aa14dad352feb174a612dd61426512c4eaafeccad97",
+        "sidecar_revision": "8dae5ed3c9283de07102dac95c79037abb4642da"
+      },
+      "entries": [
+        {
+          "work": "dependency-closure-and-package-delivery",
+          "language": "ru",
+          "review_sha256": "e95dcb5a2ede6c65e3f0d5fd7dc269a4f70cd867dae0dfc0dead46b53044be3b"
+        },
+        {
+          "work": "dependency-closure-and-package-delivery",
+          "language": "zh-Hans",
+          "review_sha256": "5f72b6a55745935393866d08c895f543d813e9d4a7821b732e6170209e707dc8"
+        },
+        {
+          "work": "source-transcription-and-uncertainty",
+          "language": "ru",
+          "review_sha256": "b492e92038c8d30c97be5c85e530fd1c88ee73b6960238d5ede79ae18e97925e"
+        },
+        {
+          "work": "source-transcription-and-uncertainty",
+          "language": "zh-Hans",
+          "review_sha256": "88f54de96246eeb5f042760630223dd61e8303fb91b397bcbbdb51234474bf70"
+        },
+        {
+          "work": "executable-projections-and-revision",
+          "language": "ru",
+          "review_sha256": "8808d4c89cc14f303b627a41ed7af4a0c5504f57a3b3326046414752493c691f"
+        },
+        {
+          "work": "executable-projections-and-revision",
+          "language": "zh-Hans",
+          "review_sha256": "63693efab1cb380de0a640e8e25c7b1d744aa0ba4bb1e05a22e5756297ecd655"
+        },
+        {
+          "work": "reuse-admission-and-cost-controls",
+          "language": "ru",
+          "review_sha256": "4c67a0f0747a62fa5333855555155fa61948c3e898a8ef015d42f4d7ba27b15f"
+        },
+        {
+          "work": "reuse-admission-and-cost-controls",
+          "language": "zh-Hans",
+          "review_sha256": "d9723d8b2466df0ce9d7ff9ca0e5070b07b04bb519e6f2df4a5b054a3e0eb20c"
+        }
+      ],
+      "scope": "translated explanations only; original review, identity, scope and verdict unchanged; no new review"
+    }
+  },
+  "limitations": [
+    "Structural parity does not prove prose equivalence or independent semantic acceptance.",
+    "This runs the reader consumer, not the full site compiler or deployment.",
+    "Historical reviews retain their own scope; four new manuscripts remain unreviewed."
+  ]
+}

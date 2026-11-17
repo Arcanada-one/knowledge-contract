@@ -95,8 +95,9 @@ The checker compiles all 72 real rendition records, including localized
 presentation, and checks exact work/language identity, current English source
 bytes, source/target commits and ancestry, metadata language, source IDs,
 section mapping, paragraph/list/table-cell boundaries, ordered math/code and
-canonical references. The intended result is eight historically reviewed and
-64 unreviewed nonempty bodies, with zero missing or stale pairs. No new review
+canonical references. The observed result at `356779208ce7669234e494cf67a15aa08ae33aa6` is eight
+historically reviewed and 64 unreviewed nonempty bodies, with zero missing or
+stale pairs; all 30 adverse controls were detected. No new review
 is manufactured. The new works have no visible formula prose requiring a new
 formula-localization descriptor.
 
@@ -122,6 +123,45 @@ Those test populations and historical receipts are not rewritten to 72.
 The new complete-body consumer is a separately named workflow step. Hosted
 execution is only established by its actual new-head job log and checkout,
 reported separately in PR124; a workflow declaration alone is not execution.
+
+The local existing publication, source-declaration and 387-identity requirement
+checks passed, as did 93 existing publication/source/separation/DCO/workflow
+unit tests. The earlier 68-body consumer and its 45 adverse-control groups
+passed at the immutable baseline, alongside that baseline's ten roadmap
+adverse controls. Its first invocation encountered a Git object-fetch HTTP 503;
+one retry of the same exact input succeeded. The first general publication
+invocation selected system Pandoc 3.1.11.1 and correctly refused it; the explicit
+3.1.3 invocation passed. Neither invocation failure is counted as a successful
+test or evidence about translation meaning.
+
+## Separately observed public site
+
+The [bounded browser record](public-site-browser-audit.json) records the actual
+64 linked page paths visited in English, Russian and Simplified Chinese:
+192 distinct HTML URLs. Each had the expected HTML language, a nonempty main
+body, title and first heading, with no unresolved literal in-page fragment
+links found by the DOM check. All 31 currently published work readers were
+included in all three languages, with matching heading and MathML counts.
+This is a linked-page structural observation, not a review of every sentence,
+every generated compatibility route, mobile layout or an atomic release.
+
+On Semantic Objects and Context, switching EN to RU to zh-Hans preserved the
+selected `#3-context-and-applicability` section and a real target. Titles,
+descriptions and bodies changed language; the unreviewed RU/zh-Hans pages kept
+`noindex,follow` and did not gain a false canonical translation claim.
+
+The observation spanned the site's PR60 release. The Chinese Journal first
+showed nine daily issues; an explicit reload then showed ten and the latest
+article, matching the other languages. This is retained as a changing/cached
+page observation, not reported as a persistent missing Chinese translation.
+The new CPU-ARC article was observed in all three languages. Its scoped
+scientific wording findings and the README's eight/24 versus ten/30 drift are
+recorded in the existing [site PR60 discussion](https://github.com/Arcanada-one/contract-place-site/pull/60#issuecomment-6941483162).
+That comment was posted after PR60 merged; it is a post-publication correction
+request, not evidence that a pre-release gate blocked the published version.
+
+The site's retained source has 31 works and 62 translated bodies. This new
+36-work/72-body source candidate was not deployed by the browser observation.
 
 ## Impact, review and release boundary
 
