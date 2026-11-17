@@ -1,0 +1,775 @@
+{
+  "scope": "actual generated-page copies; old static status checker only; no browser or independent acceptance",
+  "site_head": "4475115ae03fc904aff3c7010ff298865bcbed44",
+  "source_commit": "6eec88097cf5255543c792e53c92f75c0d483728",
+  "checker_sha256": "2286fc07f01c2e89d274c10df977a7e00e1959f4d9a02807146c44187ce1e30b",
+  "actual_baseline_labelled_pages": 123,
+  "inputs": {
+    "en/programme/index.html": "7a1961c671c7094f86c569c16966e210417a3f365f5590263564d3d96f8948fe",
+    "en/roadmap/index.html": "a0b4f730bee093582fccf6dcd5c5b6dac33f2989c5cf49849ecbd2ccccb4c355",
+    "en/engineering/specifications/semantic-verification/index.html": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a",
+    "ru/programme/index.html": "a9055030105860a24d73bd310851fb3ca8781aec70c673749795b82afb55b75f",
+    "ru/roadmap/index.html": "5a429157928f5a9a4cc485c68f6dff76b7b9e9eb57116f5e57e75c62a8b21b1f",
+    "ru/engineering/specifications/semantic-verification/index.html": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659",
+    "zh-Hans/programme/index.html": "399dd12bc4872b1195b0aacaa569ff6176d3163b0030df236005518d7956e322",
+    "zh-Hans/roadmap/index.html": "3d7866eb9aa2ce5545a2ba168a2f7e9ac306b61cc3a745facd7eea16f1a5820e",
+    "zh-Hans/engineering/specifications/semantic-verification/index.html": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9"
+  },
+  "cases": [
+    {
+      "locale": "en",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "7a1961c671c7094f86c569c16966e210417a3f365f5590263564d3d96f8948fe",
+      "path": "cases/en_unchanged/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "fe0c82e2327acbb31d355f5b29cb7556cbf1a421795a7f9cf93397a1c62f8da9",
+      "path": "cases/en_inherited_lang/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "89e61ac63206e137f67f119d1fa5c89e680da4624d99fdf3d163433b3643985c",
+      "path": "cases/en_wrong_lang/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "309d087f6a5efa2a07d504ac5ea5b868781cd30a8b09ccbb826fc565f502951e",
+      "path": "cases/en_empty_lang/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "e63493f7dd951db411d9584923cfcde3e07dc83f4a2751931b19f45cc6e096ea",
+      "path": "cases/en_hidden_badge/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "457f02ac1ee56d225c8fabf6b9f28eda1cc68245099045f0eda668a42cb2ec0a",
+      "path": "cases/en_aria_hidden_owner/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "8274dcf5a2627cf43ae0dcccf5db3cb0cf92875dbafd7df39b1191684f22bffd",
+      "path": "cases/en_inert_owner/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "bee0c069d472ed1c0a00ad16b99c00f40a656429be19da8b2bf4fb651cc30a11",
+      "path": "cases/en_display_none_owner/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "99dd2d40f1c7c07ad3a399a2d130eb20e15ee8efe38a7b54dbf8a6c42888a648",
+      "path": "cases/en_visibility_hidden_badge/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "83ef64375d80fe560b55d28232f606aed80a0c5542c7d8e4ad290dea86ea7ad7",
+      "path": "cases/en_content_visibility_hidden_owner/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "d40d5f7b2b71e0e985a5d96fd2917763a9f37de53a38dbf266bb08366ae22fd8",
+      "path": "cases/en_partial_duplicate/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "3e12772bb15f6a16dd2367d7defddf50008eda3f0f704ade675a2c5743bfcde6",
+      "path": "cases/en_all_to_footer/en/programme/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "a0b4f730bee093582fccf6dcd5c5b6dac33f2989c5cf49849ecbd2ccccb4c355",
+      "path": "cases/en_roadmap/en/roadmap/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a",
+      "path": "cases/en_engineering_specifications_semantic-verification/en/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "632e4a8aad394b360631658aa3497dddf20e4a0ead7371c743f3bca4067b48f1",
+      "path": "cases/en_reader_inherited_lang/en/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "a81f4d2978d5a13c892799807484bbc214b048c3892c3d8e753c58e8a5e1a1f7",
+      "path": "cases/en_reader_wrong_lang/en/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "23defa4d51fc78f082070dee469ac5c4f9bb3a2e9aa470e755bd33e50bf94281",
+      "path": "cases/en_reader_hidden_badge/en/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "en",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "3f81dc6194435755a3b84a8fc1989052d0d08184b11444f198a01ee9b1ec28b9",
+      "path": "cases/en_reader_group_to_footer/en/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "a9055030105860a24d73bd310851fb3ca8781aec70c673749795b82afb55b75f",
+      "path": "cases/ru_unchanged/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "64dd3ebb1184a2b110c7797a89ef080a89a179150e37480b2845e57a4bead5ac",
+      "path": "cases/ru_inherited_lang/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "95ed56ef8ef06b46e99a672570ec6e31758dca92b633d0809101d17841d1de39",
+      "path": "cases/ru_wrong_lang/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "79aa1d17009f5e25d34f9a19c577f865b6252489b515bf409f4c5be454f5f8e9",
+      "path": "cases/ru_empty_lang/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "89376d255960c7831920786a826f42f7a704114762161a0698704fc17131ecb2",
+      "path": "cases/ru_hidden_badge/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "39e7f6131e5f05fe9d3ec274cc8951c40ad44edb202fec12484aa3b6a6cbb6b2",
+      "path": "cases/ru_aria_hidden_owner/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "e3364eb8f7d0a3114455d1214dd06f39eb7df96e3f550298778b05e1bb616c14",
+      "path": "cases/ru_inert_owner/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "3db36cb7abcb84178bed0db79707a193482b907184577895a812f3660cd8faea",
+      "path": "cases/ru_display_none_owner/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "63c105faaafba8575256d675c69a53ae83031ce151761d2ce91e13bead5dd398",
+      "path": "cases/ru_visibility_hidden_badge/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "93f469666e88902b1cbc8febb45235544f72c43cb095cd579575bf6deeee66aa",
+      "path": "cases/ru_content_visibility_hidden_owner/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "4c032d25b11c4828b6ade6c5ec9e72ac575eb893022e8f5b9924906baf81fda8",
+      "path": "cases/ru_partial_duplicate/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "3f7b651af17243c5e840ed6cef82dbbf144198ad115e07b5c5651ef449a46e40",
+      "path": "cases/ru_all_to_footer/ru/programme/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "5a429157928f5a9a4cc485c68f6dff76b7b9e9eb57116f5e57e75c62a8b21b1f",
+      "path": "cases/ru_roadmap/ru/roadmap/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659",
+      "path": "cases/ru_engineering_specifications_semantic-verification/ru/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "8ca635f4ee1e0623c6db933df9793f81e240bc847f2546012d68077767e0c4f4",
+      "path": "cases/ru_reader_inherited_lang/ru/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "245cfa9ed24fd0b4dbc4e2e0d13c8961eee70f65a2221b49c6c001b35a338d1e",
+      "path": "cases/ru_reader_wrong_lang/ru/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "33dafc0da3ba27a04f211b88eb962fb7f265a0b36caa122a68d8fe0051b3077b",
+      "path": "cases/ru_reader_hidden_badge/ru/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "ru",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "ab71b16d47e01f44f776b8a17739994f4032b8d50de2ecb1620754467a96923c",
+      "path": "cases/ru_reader_group_to_footer/ru/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "399dd12bc4872b1195b0aacaa569ff6176d3163b0030df236005518d7956e322",
+      "path": "cases/zh-Hans_unchanged/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "a9e38f0ee53cee38b5f987482c1470bd4e77217afdabe390e3a621e1dcc11aa3",
+      "path": "cases/zh-Hans_inherited_lang/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "5a5e17077c6fed37d0facf07d0af7ad419aee8c7a53826723cc194a40494d09b",
+      "path": "cases/zh-Hans_wrong_lang/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "152b1ecc27707eeba34d5f0038cbfbbf8865ae58abb56c02f6cfb270c3f48207",
+      "path": "cases/zh-Hans_empty_lang/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "f526ac013d8e3bbb3f83e334e3393a756faa832b6a500e2b45eb2c9ba6048102",
+      "path": "cases/zh-Hans_hidden_badge/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "1f37a4558c8ede2d404349b8686dcfa4833957e2df5bcfb4b2742de7a47a6f78",
+      "path": "cases/zh-Hans_aria_hidden_owner/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "40a814f23102513667d14c7eabce1447599ff9376ba8e81952a3876e30f0922d",
+      "path": "cases/zh-Hans_inert_owner/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "7042eb1b0cefbd960c56a5534a35f30318b047ed9d77278a26e50221272c0153",
+      "path": "cases/zh-Hans_display_none_owner/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "1511539ac5b0a33ba35309dd52a1f3236996eb19c73b0e82b58a687e02295c28",
+      "path": "cases/zh-Hans_visibility_hidden_badge/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "bb670abd90bcd6b821db9b2226a47eba879083fb4ccd6ba3e1671918212dd0cf",
+      "path": "cases/zh-Hans_content_visibility_hidden_owner/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "29172f1d525d1dbf61d6a2f675dc6e3224e1eb431ce13239a906fd2b21254ef1",
+      "path": "cases/zh-Hans_partial_duplicate/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "360f63ead507eedacb7e90f1c11204cd95f312c9e5809572393e6c0a0cfa6684",
+      "path": "cases/zh-Hans_all_to_footer/zh-Hans/programme/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "3d7866eb9aa2ce5545a2ba168a2f7e9ac306b61cc3a745facd7eea16f1a5820e",
+      "path": "cases/zh-Hans_roadmap/zh-Hans/roadmap/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9",
+      "path": "cases/zh-Hans_engineering_specifications_semantic-verification/zh-Hans/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "4bc18eae2aa996f7615de789b5a6bbca6e48f4a10962822d74fa68624652a0fd",
+      "path": "cases/zh-Hans_reader_inherited_lang/zh-Hans/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "a3c7bb27deda578fdacf11b0d454ad032cc2f94e4b2c9db15891c99fddcbf9dd",
+      "path": "cases/zh-Hans_reader_wrong_lang/zh-Hans/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "23f14f4db2b50a7a992d9f52be805acccbf5ed48bc444513842eb51ae6243b90",
+      "path": "cases/zh-Hans_reader_hidden_badge/zh-Hans/engineering/specifications/semantic-verification/index.html"
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "702f26ccb769cdf1fdca87c0cc035429f38ab89990b68b6965775b42fe409ca6",
+      "path": "cases/zh-Hans_reader_group_to_footer/zh-Hans/engineering/specifications/semantic-verification/index.html"
+    }
+  ],
+  "structures": {
+    "en/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      }
+    ],
+    "en/roadmap": [],
+    "en/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      }
+    ],
+    "ru/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      }
+    ],
+    "ru/roadmap": [],
+    "ru/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      }
+    ],
+    "zh-Hans/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      }
+    ],
+    "zh-Hans/roadmap": [],
+    "zh-Hans/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      }
+    ]
+  },
+  "unavailable_controls": [
+    {
+      "locale": "en",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "The actual generated roadmap has no suitable pair of labelled fields. Do not fabricate an actual-page test."
+    },
+    {
+      "locale": "ru",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "The actual generated roadmap has no suitable pair of labelled fields. Do not fabricate an actual-page test."
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "The actual generated roadmap has no suitable pair of labelled fields. Do not fabricate an actual-page test."
+    }
+  ],
+  "counts": {
+    "cases": 54,
+    "old_accepted": 54,
+    "conditions": {
+      "valid_baseline": 9,
+      "valid_inherited_language": 6,
+      "wrong_explicit_language": 6,
+      "unknown_explicit_language": 3,
+      "explicit_hidden_attribute": 6,
+      "explicit_accessibility_exclusion": 3,
+      "explicit_inert_subtree": 3,
+      "inline_display_none": 3,
+      "inline_visibility_hidden": 3,
+      "inline_content_visibility_hidden": 3,
+      "missing_one_direct_link_badge": 3,
+      "all_local_work_badges_misplaced": 3,
+      "reader_group_loses_its_status": 3
+    }
+  }
+}

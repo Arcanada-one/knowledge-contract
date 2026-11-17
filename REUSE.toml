@@ -12,9 +12,16 @@ SPDX-License-Identifier = "CC-BY-4.0"
 
 # Code, schemas, tools, CI and configuration.
 [[annotations]]
-path = ["tools/**", "schemas/**", "engineering/studies/**/*.py", "engineering/studies/contract-profile-conformance/historical-recovery/contract-synthesis-0.1.schema.json", "appendices/**/*.schema.json", ".github/**", "reviews/semantic-bridge-20261114/non-author/*.py", "reviews/semantic-verification-20261115/**/*.py", "reviews/semantic-verification-20261115/**/*.py.gz", "reviews/renditions/context-controls-20261116/*.py", "reviews/renditions/source-rule-checks-20261116/*.py", ".gitignore", ".gitattributes", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
+path = ["tools/**", "schemas/**", "engineering/studies/**/*.py", "engineering/studies/contract-profile-conformance/historical-recovery/contract-synthesis-0.1.schema.json", "appendices/**/*.schema.json", ".github/**", "reviews/semantic-bridge-20261114/non-author/*.py", "reviews/semantic-verification-20261115/**/*.py", "reviews/semantic-verification-20261115/**/*.py.gz", "reviews/renditions/context-controls-20261116/*.py", "reviews/renditions/source-rule-checks-20261116/*.py", "reviews/renditions/source-currency-20261116/*.py", ".gitignore", ".gitattributes", ".markdownlint.json", "REUSE.toml", "CITATION.cff"]
 precedence = "override"
 SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
 SPDX-License-Identifier = "Apache-2.0"
 
 # Root LICENSE and LICENSE-CODE are the unmodified official texts; REUSE ignores LICENSE* files.
+
+# Agent Situation rendition checks and the prepared downstream code patch.
+[[annotations]]
+path = ["reviews/renditions/agent-situation-20261116/*.py", "reviews/renditions/agent-situation-20261116/*.patch"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Pavel Valentov and Knowledge Contract Arcana contributors"
+SPDX-License-Identifier = "Apache-2.0"

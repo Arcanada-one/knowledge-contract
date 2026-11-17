@@ -1,0 +1,47 @@
+{
+  "works": 36,
+  "types": {
+    "paper": 11,
+    "specification": 13,
+    "study": 8,
+    "glossary": 1,
+    "bibliography": 1,
+    "appendix": 2
+  },
+  "renditions": 72,
+  "rendition_states": {
+    "unreviewed": 64,
+    "reviewed": 8
+  },
+  "canonical_reader_routes": 108,
+  "html_files": 354,
+  "index_routes": 353,
+  "daily_issues": 10,
+  "daily_pages": 30,
+  "feeds": {
+    "public/en/journal/rss.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    },
+    "public/en/journal/atom.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    },
+    "public/ru/journal/rss.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    },
+    "public/ru/journal/atom.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    },
+    "public/zh-Hans/journal/rss.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    },
+    "public/zh-Hans/journal/atom.xml": {
+      "entries": 10,
+      "r4_title_present": true
+    }
+  }
+}

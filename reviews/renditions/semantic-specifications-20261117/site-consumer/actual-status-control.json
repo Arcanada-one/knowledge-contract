@@ -1,0 +1,40 @@
+{
+  "schema": "kc-actual-status-binding-control/v1",
+  "scope": "same-controller actual generated-page counterexamples; no release or review admission",
+  "checked_at_utc": "2026-11-17T08:16:20.557412+00:00",
+  "positive_pages": 3,
+  "mutants_refused": 3,
+  "checker_sha256": "2286fc07f01c2e89d274c10df977a7e00e1959f4d9a02807146c44187ce1e30b",
+  "cases": [
+    {
+      "locale": "en",
+      "route": "/en/engineering/specifications/semantic-verification/",
+      "original_sha256": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a",
+      "mutant_sha256": "f73366155d40acad509c9ca5d7a7db4da00c19879b2ac5fea4695725d8882309",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "en/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work"
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/engineering/specifications/semantic-verification/",
+      "original_sha256": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659",
+      "mutant_sha256": "dfb4dccf06cbe3d918a02cdcf2513a01597aa76e686a07ddc74fa2684569b817",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "ru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work"
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-Hans/engineering/specifications/semantic-verification/",
+      "original_sha256": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9",
+      "mutant_sha256": "2224c45cc4cfdd0ca66e6d40cec5c6c12e09ceee9e0838d58d41daff05097106",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "zh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work"
+    }
+  ]
+}

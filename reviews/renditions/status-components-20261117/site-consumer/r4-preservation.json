@@ -1,0 +1,34 @@
+[
+  {
+    "path": "src/content/journal/manifest.json",
+    "exact_base_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+    "before_overlay_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+    "after_build_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+    "unchanged": true,
+    "after_final_validation_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c"
+  },
+  {
+    "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/en.md",
+    "exact_base_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+    "before_overlay_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+    "after_build_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+    "unchanged": true,
+    "after_final_validation_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596"
+  },
+  {
+    "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/ru.md",
+    "exact_base_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+    "before_overlay_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+    "after_build_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+    "unchanged": true,
+    "after_final_validation_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78"
+  },
+  {
+    "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/zh-Hans.md",
+    "exact_base_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+    "before_overlay_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+    "after_build_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+    "unchanged": true,
+    "after_final_validation_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a"
+  }
+]

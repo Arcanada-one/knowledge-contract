@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "scripts/build_publication.py",
+    "--source-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "--roadmap-source-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+  ],
+  "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+  "pandoc_directory": "/workspace/scratch/50c29b6b4f6f/c124_translation/pandoc-3.1.3/bin",
+  "started_utc": "2026-11-17T07:41:27.914178+00:00",
+  "finished_utc": "2026-11-17T07:42:18.064561+00:00",
+  "elapsed_seconds": 50.15038767599981,
+  "exit_code": 1,
+  "log": "build-patch-and-pin.log"
+}

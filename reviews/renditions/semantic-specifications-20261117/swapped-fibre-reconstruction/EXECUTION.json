@@ -1,0 +1,223 @@
+{
+  "acceptance": {
+    "cost": "NOT_MEASURED",
+    "hosted_execution_of_this_increment": "NOT_YET_OBSERVED_AT_RECORD_CREATION",
+    "independent_role_review": "NOT_VERIFIED",
+    "native_admission": "NOT_VERIFIED",
+    "production_effect": "NOT_VERIFIED",
+    "runtime_authorized": false,
+    "same_controller_producer_checks": "PASS"
+  },
+  "actual_workflow_step": {
+    "completed_at": "2026-11-17T16:27:41.547499+00:00",
+    "exit_code": 0,
+    "name": "Reproduce finite transfer values and equivariant-adversary refusal",
+    "result_matches_individual_run": true,
+    "script_sha256": "b7ded334e9628214dab643966c73f44262539dd9d99b541678630f9ff4b31cd1",
+    "shell": [
+      "bash",
+      "-euo",
+      "pipefail",
+      "-c"
+    ],
+    "started_at": "2026-11-17T16:27:35.373999+00:00",
+    "stderr_utf8": "",
+    "stdout_utf8": "FINITE_FIBRE_AND_EQUIVARIANCE_PASS\n{\"swapped_fibre_controls\": {\"affected_profiles\": 168, \"affected_profiles_closed_form\": 168, \"assessment_value_permutations\": 24, \"decision_count_unit\": \"Transformed candidate comparisons per predicate; two predicates checked\", \"execution\": \"Complete directly evaluated truth tables; each case compares both predicates\", \"minimal_witness\": {\"assessments\": [0, 0, 0, 1], \"correct_accepts_correct_map\": true, \"correct_accepts_swapped_map\": false, \"correct_map\": [0, 1], \"mutant_accepts_correct_map\": false, \"mutant_accepts_swapped_map\": true, \"observations\": [0, 0, 0, 1], \"swapped_map\": [1, 0]}, \"observation_label_exchange_decisions\": 102400, \"observation_label_exchange_mismatches\": {\"correct\": 0, \"swapped_constant_fibres\": 0}, \"profiles_with_equal_accepted_count\": 4096, \"provenance\": \"New reconstruction from c148 description; not an original-program replay\", \"value_renaming_decisions\": 2457600, \"value_renaming_mismatches\": {\"correct\": 0, \"swapped_constant_fibres\": 0}}, \"swapped_mutant\": {\"accepted_count\": 7272, \"false_accept\": 504, \"false_reject\": 504, \"first_witness\": {\"assessments\": [0, 0, 0, 1], \"correct\": true, \"mutant\": false, \"observations\": [0, 0, 0, 1], \"partial_map\": [0, 1]}}}\nFINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch\nFINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch\nFINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch: 7272 != 7273\nFINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch: 7272 != 7273\nFINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505\nFINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505\n"
+  },
+  "baseline_commit": "79aa0b41210cf16dd2cf92c7c8db9829afa524e4",
+  "checker_file": "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+  "checker_git_blob": "b8ce8afc17313d8b3e67263f58311bd85ab56c2a",
+  "checker_sha256": "c1a6e792e2428c66abef3a904240fcdccdc7bcffe210f5470dda5bfc3cc6751d",
+  "derivation": {
+    "affected_profiles": 168,
+    "false_accepts_per_affected_profile": 3,
+    "false_rejects_per_affected_profile": 3,
+    "only_shared_candidate": [
+      -1,
+      -1
+    ],
+    "ordered_distinct_assessment_pairs": 12,
+    "surjective_observation_maps": 14
+  },
+  "git_version": "git version 2.52.0",
+  "individual_runs": [
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py"
+      ],
+      "completed_at": "2026-11-17T16:27:30.479223+00:00",
+      "duration_seconds": 0.884011,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "label": "ordinary",
+      "started_at": "2026-11-17T16:27:29.595222+00:00",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_utf8": "",
+      "stdout_file": "result.json",
+      "stdout_sha256": "668fa809508bacaa19710e5e5e9255c5a64fd730f1100948f0f5d965a1af2eb4"
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-determined",
+        "2953"
+      ],
+      "completed_at": "2026-11-17T16:27:31.203061+00:00",
+      "duration_seconds": 0.723506,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "ordinary-expect-determined",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch",
+      "started_at": "2026-11-17T16:27:30.479570+00:00",
+      "stderr_sha256": "4b6cd401219d070b5994aaa8a8c0a538e4df03333ff274cad2f3c70bd3845f5a",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-accepted",
+        "7273"
+      ],
+      "completed_at": "2026-11-17T16:27:31.808923+00:00",
+      "duration_seconds": 0.60584,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "ordinary-expect-accepted",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch",
+      "started_at": "2026-11-17T16:27:31.203115+00:00",
+      "stderr_sha256": "08897fdd75aa6809a7b476213d806b60a8339b27e24066c153893a9f0c1031d8",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch: 7272 != 7273\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-swapped-false-accept",
+        "505"
+      ],
+      "completed_at": "2026-11-17T16:27:32.407269+00:00",
+      "duration_seconds": 0.597917,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "ordinary-expect-swapped-false-accept",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505",
+      "started_at": "2026-11-17T16:27:31.809388+00:00",
+      "stderr_sha256": "077c02b5ebd79ef9f2ce8dd37115c49afe0fbe847178975f75222e2a5f055ba5",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "-O",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py"
+      ],
+      "completed_at": "2026-11-17T16:27:33.339481+00:00",
+      "duration_seconds": 0.932117,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "label": "optimized",
+      "started_at": "2026-11-17T16:27:32.407382+00:00",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_utf8": "",
+      "stdout_file": "result.json",
+      "stdout_sha256": "668fa809508bacaa19710e5e5e9255c5a64fd730f1100948f0f5d965a1af2eb4"
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "-O",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-determined",
+        "2953"
+      ],
+      "completed_at": "2026-11-17T16:27:33.943940+00:00",
+      "duration_seconds": 0.604422,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "optimized-expect-determined",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch",
+      "started_at": "2026-11-17T16:27:33.339539+00:00",
+      "stderr_sha256": "4b6cd401219d070b5994aaa8a8c0a538e4df03333ff274cad2f3c70bd3845f5a",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "-O",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-accepted",
+        "7273"
+      ],
+      "completed_at": "2026-11-17T16:27:34.574614+00:00",
+      "duration_seconds": 0.630637,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "optimized-expect-accepted",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch",
+      "started_at": "2026-11-17T16:27:33.943995+00:00",
+      "stderr_sha256": "08897fdd75aa6809a7b476213d806b60a8339b27e24066c153893a9f0c1031d8",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch: 7272 != 7273\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "-I",
+        "-B",
+        "-O",
+        "reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py",
+        "--expect-swapped-false-accept",
+        "505"
+      ],
+      "completed_at": "2026-11-17T16:27:35.368041+00:00",
+      "duration_seconds": 0.7934,
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "label": "optimized-expect-swapped-false-accept",
+      "required_refusal_marker": "FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505",
+      "started_at": "2026-11-17T16:27:34.574662+00:00",
+      "stderr_sha256": "077c02b5ebd79ef9f2ce8dd37115c49afe0fbe847178975f75222e2a5f055ba5",
+      "stderr_utf8": "FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch: 504 != 505\n",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_utf8": ""
+    }
+  ],
+  "ordinary_optimized_stdout_identical": true,
+  "prechange_contract": "https://github.com/Arcanada-one/knowledge-contract/pull/124#issuecomment-6953978731",
+  "provenance": "New reconstruction from the public c148 model and counterexample; original local program/output unavailable and not authenticated or replayed",
+  "python_version": "3.12.14",
+  "record_type": "author-side-finite-reconstruction-execution",
+  "record_version": 1,
+  "result_bytes": 4869,
+  "result_sha256": "668fa809508bacaa19710e5e5e9255c5a64fd730f1100948f0f5d965a1af2eb4",
+  "source_contract_blob": "54832c601597779ea6cef0dd99aa188f27645e9f",
+  "source_contract_revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+  "workflow_file": ".github/workflows/context-package-rendition-pin.yml",
+  "workflow_sha256": "e1140129098948edf5f29d5acfde8354df760984eaa2818925a6885365742290"
+}

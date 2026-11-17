@@ -1,0 +1,40 @@
+{
+  "schema": "kc-actual-status-binding-control/v1",
+  "scope": "same-controller actual generated-page counterexamples; no release or review admission",
+  "checked_at_utc": "2026-11-17T11:06:24.668320+00:00",
+  "positive_pages": 3,
+  "mutants_refused": 3,
+  "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+  "cases": [
+    {
+      "locale": "en",
+      "route": "/en/engineering/specifications/semantic-verification/",
+      "original_sha256": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045",
+      "mutant_sha256": "2442285acbb0565cb63c1f9cc958299192c00a50284bbec76425c0e6528ca37b",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "en/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its reader references component with the page language and exposed status text\nen/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text"
+    },
+    {
+      "locale": "ru",
+      "route": "/ru/engineering/specifications/semantic-verification/",
+      "original_sha256": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341",
+      "mutant_sha256": "2aef2e4d11918612a690f321842d26ccb7bb7df59ad60f4b2864fdf1081e0697",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "ru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its reader references component with the page language and exposed status text\nru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text"
+    },
+    {
+      "locale": "zh-Hans",
+      "route": "/zh-Hans/engineering/specifications/semantic-verification/",
+      "original_sha256": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3",
+      "mutant_sha256": "654088e4161d58db20556b092b8f7e55ba1f6de1134e911e73e60391dcc5b119",
+      "target_wrappers_removed": 1,
+      "own_same_status_badge_preserved": true,
+      "fragment_link_preserved": true,
+      "refusal": "zh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its reader references component with the page language and exposed status text\nzh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text"
+    }
+  ]
+}

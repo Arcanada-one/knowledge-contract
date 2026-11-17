@@ -1,0 +1,20 @@
+test_external_and_ordinary_urls_do_not_infer_catalogue_status (test_build.PublicationStatusFixtures.test_external_and_ordinary_urls_do_not_infer_catalogue_status) ... ok
+test_fragment_query_binding_cannot_be_satisfied_by_same_status_owner (test_build.PublicationStatusFixtures.test_fragment_query_binding_cannot_be_satisfied_by_same_status_owner) ... ok
+test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused (test_build.PublicationStatusFixtures.test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused) ... ok
+test_new_status_readers_still_require_a_notice (test_build.PublicationStatusFixtures.test_new_status_readers_still_require_a_notice) ... ok
+test_programme_and_roadmap_keep_exact_statuses_in_each_locale (test_build.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) ... ok
+test_card_row_and_contained_link_components_cannot_mask_each_other (test_build.StatusComponentWitnessFixtures.test_card_row_and_contained_link_components_cannot_mask_each_other) ... ok
+test_current_reader_language_chip_uses_the_required_header_witness (test_build.StatusComponentWitnessFixtures.test_current_reader_language_chip_uses_the_required_header_witness) ... ok
+test_direct_occurrences_cannot_borrow_another_badge_or_a_footer (test_build.StatusComponentWitnessFixtures.test_direct_occurrences_cannot_borrow_another_badge_or_a_footer) ... ok
+test_explicit_exclusions_do_not_supply_a_required_badge (test_build.StatusComponentWitnessFixtures.test_explicit_exclusions_do_not_supply_a_required_badge) ... ok
+test_language_inherits_but_explicit_unknown_or_wrong_language_does_not (test_build.StatusComponentWitnessFixtures.test_language_inherits_but_explicit_unknown_or_wrong_language_does_not) ... ok
+test_literal_inline_visibility_obeys_nearest_override (test_build.StatusComponentWitnessFixtures.test_literal_inline_visibility_obeys_nearest_override) ... ok
+test_reader_raw_links_use_a_deduplicated_summary_in_the_matching_aside (test_build.StatusComponentWitnessFixtures.test_reader_raw_links_use_a_deduplicated_summary_in_the_matching_aside) ... ok
+test_reading_header_cannot_borrow_its_own_sibling_badge (test_build.StatusComponentWitnessFixtures.test_reading_header_cannot_borrow_its_own_sibling_badge) ... ok
+test_roadmap_deduplicates_within_each_field_but_not_between_fields (test_build.StatusComponentWitnessFixtures.test_roadmap_deduplicates_within_each_field_but_not_between_fields) ... ok
+test_complete_work_identity_set_and_same_count_substitutions (test_build.PublicationInventoryTests.test_complete_work_identity_set_and_same_count_substitutions) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.076s
+
+OK

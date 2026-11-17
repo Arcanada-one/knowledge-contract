@@ -1,0 +1,71 @@
+test_pinned_source_compiles (__main__.RealSource.test_pinned_source_compiles) ... ok
+test_js_roadmap_card_status_line_placement_and_lang (__main__.RenderControl.test_js_roadmap_card_status_line_placement_and_lang) ... FAIL
+test_locale_aware_status_checks_still_reject_wrong_prose_title_and_language (__main__.RenderControl.test_locale_aware_status_checks_still_reject_wrong_prose_title_and_language) ... FAIL
+test_prerendered_rm12_status_line_placement_and_lang (__main__.RenderControl.test_prerendered_rm12_status_line_placement_and_lang) ... FAIL
+test_card_prose_draft_link_gets_status_badge_in_each_locale (__main__.RoadmapCompiler.test_card_prose_draft_link_gets_status_badge_in_each_locale)
+Linked-status line is last child inside the field <dd>; Gap prose stays contiguous for check_roadmap. ... ok
+test_card_prose_link_without_status_has_no_badge (__main__.RoadmapCompiler.test_card_prose_link_without_status_has_no_badge) ... ok
+test_card_with_unexpected_field_rejected (__main__.RoadmapCompiler.test_card_with_unexpected_field_rejected) ... ok
+test_changed_dependency_rejected (__main__.RoadmapCompiler.test_changed_dependency_rejected) ... ok
+test_changed_priority_and_owner_rejected (__main__.RoadmapCompiler.test_changed_priority_and_owner_rejected) ... ok
+test_colon_label_cannot_bypass_the_field_set (__main__.RoadmapCompiler.test_colon_label_cannot_bypass_the_field_set) ... ok
+test_cycle_rejected_with_diagnostic (__main__.RoadmapCompiler.test_cycle_rejected_with_diagnostic) ... ok
+test_dangling_required_edge_rejected (__main__.RoadmapCompiler.test_dangling_required_edge_rejected) ... ok
+test_dates_are_not_published (__main__.RoadmapCompiler.test_dates_are_not_published) ... ok
+test_duplicate_task_rejected (__main__.RoadmapCompiler.test_duplicate_task_rejected) ... ok
+test_edit_after_pin_changes_the_hash (__main__.RoadmapCompiler.test_edit_after_pin_changes_the_hash) ... ok
+test_execution_bindings_accepts_only_the_known_value (__main__.RoadmapCompiler.test_execution_bindings_accepts_only_the_known_value) ... ok
+test_file_list_must_be_exact (__main__.RoadmapCompiler.test_file_list_must_be_exact) ... ok
+test_internal_host_and_mailbox_names_rejected (__main__.RoadmapCompiler.test_internal_host_and_mailbox_names_rejected) ... ok
+test_introduction_is_taken_from_the_source (__main__.RoadmapCompiler.test_introduction_is_taken_from_the_source) ... ok
+test_manuscript_link_uses_site_route_only_for_identical_bytes (__main__.RoadmapCompiler.test_manuscript_link_uses_site_route_only_for_identical_bytes) ... ok
+test_missing_graph_node_rejected (__main__.RoadmapCompiler.test_missing_graph_node_rejected) ... ok
+test_missing_link_target_rejected (__main__.RoadmapCompiler.test_missing_link_target_rejected) ... ok
+test_missing_task_rejected (__main__.RoadmapCompiler.test_missing_task_rejected) ... ok
+test_non_planned_status_without_evidence_rejected (__main__.RoadmapCompiler.test_non_planned_status_without_evidence_rejected) ... ok
+test_optional_scope_separation_field_only_after_work (__main__.RoadmapCompiler.test_optional_scope_separation_field_only_after_work) ... ok
+test_pin_must_be_a_full_commit (__main__.RoadmapCompiler.test_pin_must_be_a_full_commit) ... ok
+test_private_identifiers_rejected (__main__.RoadmapCompiler.test_private_identifiers_rejected) ... ok
+test_raw_html_and_images_rejected (__main__.RoadmapCompiler.test_raw_html_and_images_rejected) ... ok
+test_scope_separation_allowed_only_on_rm18 (__main__.RoadmapCompiler.test_scope_separation_allowed_only_on_rm18) ... ok
+test_self_dependency_and_bad_advisory_rejected (__main__.RoadmapCompiler.test_self_dependency_and_bad_advisory_rejected) ... ok
+test_source_at_another_commit_rejected (__main__.RoadmapCompiler.test_source_at_another_commit_rejected) ... ok
+test_stale_pin_hash_mismatch_rejected (__main__.RoadmapCompiler.test_stale_pin_hash_mismatch_rejected) ... ok
+test_tasks_preamble_is_kept_for_rendering (__main__.RoadmapCompiler.test_tasks_preamble_is_kept_for_rendering) ... ok
+test_text_between_header_and_first_field_rejected (__main__.RoadmapCompiler.test_text_between_header_and_first_field_rejected) ... ok
+test_uncommitted_source_rejected (__main__.RoadmapCompiler.test_uncommitted_source_rejected) ... ok
+test_unknown_top_level_key_rejected (__main__.RoadmapCompiler.test_unknown_top_level_key_rejected) ... ok
+test_valid_roadmap_compiles_as_planned_work (__main__.RoadmapCompiler.test_valid_roadmap_compiles_as_planned_work) ... ok
+
+======================================================================
+FAIL: test_js_roadmap_card_status_line_placement_and_lang (__main__.RenderControl.test_js_roadmap_card_status_line_placement_and_lang)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_roadmap.py", line 682, in test_js_roadmap_card_status_line_placement_and_lang
+    assert_linked_status_card(
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_roadmap.py", line 105, in assert_linked_status_card
+    test.assertEqual(len(status_nodes), 1, "exactly one status line per linked draft target expected on this card")
+AssertionError: 0 != 1 : exactly one status line per linked draft target expected on this card
+
+======================================================================
+FAIL: test_locale_aware_status_checks_still_reject_wrong_prose_title_and_language (__main__.RenderControl.test_locale_aware_status_checks_still_reject_wrong_prose_title_and_language)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_roadmap.py", line 718, in test_locale_aware_status_checks_still_reject_wrong_prose_title_and_language
+    self.assertIn(title_link, card)
+AssertionError: '<a href="/ru/science/geometry-of-semantic-representations/" lang="ru">Геометрия смысла: Пространства представлений, различимость и пределы сходства</a>' not found in '<article class="roadmap-card" id="rm-12" data-task-id="RM-12" aria-labelledby="rm-12-title"><h3 id="rm-12-title"><a class="rm-name" href="#rm-12" lang="ru">Геометрия смысла</a> <span class="rm-subtitle" lang="ru">Разработать профиль геометрии смысла</span></h3><div class="metadata"><span>Приоритет: Далее</span><span>Ответственный: <span lang="ru">KC-Brain</span></span><span class="rm-status">Статус: Запланировано</span></div><dl class="roadmap-relations"><div><dt>Требует</dt><dd><a href="#rm-01"><span lang="ru">Карта утверждений</span></a>, <a href="#rm-06"><span lang="ru">Проверка источников</span></a>, <a href="#rm-07"><span lang="ru">Семантический мост</span></a></dd></div><div><dt>Нужна для</dt><dd><a href="#rm-13"><span lang="ru">Проверка геометрии</span></a>, <a href="#rm-14"><span lang="ru">Гибридный поиск</span></a>, <a href="#rm-21"><span lang="ru">Межъязыковой смысл</span></a></dd></div><div><dt>Получает информацию от <small>(информирует, не блокирует)</small></dt><dd><a href="#rm-08"><span lang="ru">Алгебра преобразований</span></a></dd></div></dl><dl class="roadmap-fields" lang="ru"><div><dt>Пробел</dt><dd class="source-body prose"><p><em>Наблюдение артефакта (8 ноября 2026).</em> Самостоятельная актуальная рукопись по геометрии остаётся запланированной.</p>\n<p><em>Текущее наблюдение источника (11 ноября 2026).</em> <a href="https://github.com/Arcanada-one/knowledge-contract/blob/55e279c43dc9bcf8732467a32661c2ac4b7cf920/papers/geometry-of-semantic-representations/PAPER.md">Рукопись «Геометрия смысла»</a> теперь присутствует в исходном <code>main</code> на <code>0892eeb1</code> со статусом <code>research-draft</code> (blob статьи <code>077c13ad7e8d47646cd04ed2bdbeadceef48f9e3</code>). Утверждение выше от 8 ноября сохранено как датированная история, а не как текущее заявление об отсутствующем файле. Завершение черновика F04 не устанавливает независимую рецензию всего пакета, результаты геометрии на отложенных данных или приёмку выпуска.</p>\n<p><em>Исходный пробел (6 ноября 2026).</em> Исторические геометрические аргументы существуют, но текущий явный и проверенный геометрический профиль не установлен.</p>\n</dd></div><div><dt>Работа</dt><dd class="source-body prose"><p>Задать, что представляют точки и области, отображение вложения и его версию, размерности, обусловленность контекстом, сходство или расстояние, топологию при её использовании и заявляемые инварианты. Утверждать аксиомы метрики только после доказательства или проверки для выбранного определения; разделять псевдометрику, сходство и направленное логическое следование. Определить потери информации и пределы обратной интерпретации.</p>\n</dd></div><div><dt>Результаты</dt><dd class="source-body prose"><p>Исследовательский документ по геометрии с точными определениями, кандидатными утверждениями, контрмоделями и планом оценки.</p>\n</dd></div><div><dt>Приёмка</dt><dd class="source-body prose"><p>Ни один геометрический термин не декоративен: у каждого есть носитель, операция и предполагаемое применение. Сходство само по себе никогда не предоставляет истинность, эквивалентность или полномочия; никакое вложение не представлено как полный человеческий смысл.</p>\n</dd></div><div><dt>Опровергающая проверка</dt><dd class="source-body prose"><p>Построить нетранзитивность порога, коллизии, смену нормы и зависящие от контекста перестановки ближайших соседей; противоречие сужает или отвергает затронутое утверждение.</p>\n</dd></div><div><dt>Граница начала</dt><dd class="source-body prose"><p>Анализ следует непосредственно разрешённой области работ; приёмка зависимых результатов требует названных проверенных выходов. Разрешённые инженерные работы ограниченного объёма могут продолжаться в рамках текущей ответственности в Muneral и применимых требований рецензии, CI и доступа; само описание задачи не предоставляет полномочий на выпуск.</p>\n</dd></div></dl></article>'
+
+======================================================================
+FAIL: test_prerendered_rm12_status_line_placement_and_lang (__main__.RenderControl.test_prerendered_rm12_status_line_placement_and_lang)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_roadmap.py", line 657, in test_prerendered_rm12_status_line_placement_and_lang
+    assert_linked_status_card(
+  File "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/scripts/test_roadmap.py", line 105, in assert_linked_status_card
+    test.assertEqual(len(status_nodes), 1, "exactly one status line per linked draft target expected on this card")
+AssertionError: 0 != 1 : exactly one status line per linked draft target expected on this card
+
+----------------------------------------------------------------------
+Ran 37 tests in 81.932s
+
+FAILED (failures=3)

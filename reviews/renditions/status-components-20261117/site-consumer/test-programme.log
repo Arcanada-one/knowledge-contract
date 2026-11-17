@@ -1,0 +1,18 @@
+test_english_fallback_is_not_labelled_translation (__main__.ProgrammePageTests.test_english_fallback_is_not_labelled_translation) ... ok
+test_foundation_cards_equal_source_text (__main__.ProgrammePageTests.test_foundation_cards_equal_source_text) ... ok
+test_generated_pin_or_guide_identity_cannot_replace_manifest_authority (__main__.ProgrammePageTests.test_generated_pin_or_guide_identity_cannot_replace_manifest_authority) ... ok
+test_language_switch_and_hreflang (__main__.ProgrammePageTests.test_language_switch_and_hreflang) ... ok
+test_nav_link_in_all_locales (__main__.ProgrammePageTests.test_nav_link_in_all_locales) ... ok
+test_rendered_programme_has_no_raw_markdown_and_card_links_resolve (__main__.ProgrammePageTests.test_rendered_programme_has_no_raw_markdown_and_card_links_resolve)
+Fails on ad6adce: cards showed labels only / or raw Markdown, without resolved anchors. ... ok
+test_three_programme_pages_exist_with_pin (__main__.ProgrammePageTests.test_three_programme_pages_exist_with_pin) ... ok
+test_undeclared_or_mutable_historical_urls_are_refused (__main__.ProgrammePageTests.test_undeclared_or_mutable_historical_urls_are_refused) ... ok
+test_changed_guide_byte_without_repin_fails (__main__.ProgrammeSourceTests.test_changed_guide_byte_without_repin_fails)
+Negative control: mutated guide bytes must not verify against the pin blob. ... ok
+test_extract_foundations_rule (__main__.ProgrammeSourceTests.test_extract_foundations_rule) ... ok
+test_rm01_compatibility_anchor_resolves (__main__.RoadmapCompatAnchorTests.test_rm01_compatibility_anchor_resolves) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.305s
+
+OK

@@ -1,0 +1,943 @@
+{
+  "scope": "actual generated-page copies; selected static status checker only; no browser or independent acceptance",
+  "inventory": "actual54",
+  "probe_sha256": "f12f09fac9dfb50abf25af26ddf3f625c1ea46af311381f774f145180de61987",
+  "site_directory": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+  "site_head": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+  "source_commit": "6eec88097cf5255543c792e53c92f75c0d483728",
+  "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+  "actual_baseline_labelled_pages": 123,
+  "inputs": {
+    "en/programme/index.html": "10a069e2799851371258666a99198cd4b4f0e68043704b4e736cd1d4c5741283",
+    "en/roadmap/index.html": "24be465aa1f6cdb2321816caca8a1fd093e8cb9fa2978f1c09eaa3eb04016019",
+    "en/engineering/specifications/semantic-verification/index.html": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045",
+    "ru/programme/index.html": "c59b49725b5862cc8efdb0760ec9d4b54defd05ae5f4765c5c54e7ac5186bece",
+    "ru/roadmap/index.html": "a39730bc902690376748496fff76aa4f5deb455ccbfc8d0972b38ba15fce9ab5",
+    "ru/engineering/specifications/semantic-verification/index.html": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341",
+    "zh-Hans/programme/index.html": "09abb12893d4a7bc0be27d6e0ea66f84f2ce67eed7eb0feb0ea56db9fdc9a82c",
+    "zh-Hans/roadmap/index.html": "46434d424ef9971d8e63c42ead4d8d567a22fa302c9228ee1e8b6ecc949afa39",
+    "zh-Hans/engineering/specifications/semantic-verification/index.html": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3"
+  },
+  "cases": [
+    {
+      "locale": "en",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "10a069e2799851371258666a99198cd4b4f0e68043704b4e736cd1d4c5741283",
+      "path": "cases/en_unchanged/en/programme/index.html",
+      "case_id": "en::unchanged",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "17bfc386a0374478c854adc158edd42e48f0adf1af51f44595dc4a731afdac99",
+      "path": "cases/en_inherited_lang/en/programme/index.html",
+      "case_id": "en::inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "9162075b3d74abc054cba83598b2474c393db76cfb81946fc0756c602955cf97",
+      "path": "cases/en_wrong_lang/en/programme/index.html",
+      "case_id": "en::wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "a1bb98667bddda65034d306f873750cacba031bcc37f0d83a9b869348df796d5",
+      "path": "cases/en_empty_lang/en/programme/index.html",
+      "case_id": "en::empty_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "8eeaeb9fdb82e44ce2b976699833004cf7e079a3df9220ebb58aeeedb0e13b49",
+      "path": "cases/en_hidden_badge/en/programme/index.html",
+      "case_id": "en::hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "2aefc3ad26e2e5bcf39563629d533f957250fb85b92581b22944a317d9353176",
+      "path": "cases/en_aria_hidden_owner/en/programme/index.html",
+      "case_id": "en::aria_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "11dd33780bbaae93dc7b6d6787ded26ad72f54c730d76264ca49f1651719f15a",
+      "path": "cases/en_inert_owner/en/programme/index.html",
+      "case_id": "en::inert_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "88569b7324d386a61ac8c51fdca68cd882a32e7f0c239054638ea8e57f758aa7",
+      "path": "cases/en_display_none_owner/en/programme/index.html",
+      "case_id": "en::display_none_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "8eb9428b0fb68b88046b858fc17b8595566eee7948fb00a30096ced9e76be943",
+      "path": "cases/en_visibility_hidden_badge/en/programme/index.html",
+      "case_id": "en::visibility_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "bf436a82207ad34c75652b2b30788868264f49e48e5a0c24b1e045f697335fcd",
+      "path": "cases/en_content_visibility_hidden_owner/en/programme/index.html",
+      "case_id": "en::content_visibility_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "651d90cdbdb3145f7f90dcbdf445fa4bafb73718e715a3b80467a103776793fd",
+      "path": "cases/en_partial_duplicate/en/programme/index.html",
+      "case_id": "en::partial_duplicate",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text\nen/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text\nen/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "b8398b0cc51615f0f4f3caac264a9b204ea9ef4215aef63a040e23fb8bda8e4d",
+      "path": "cases/en_all_to_footer/en/programme/index.html",
+      "case_id": "en::all_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "24be465aa1f6cdb2321816caca8a1fd093e8cb9fa2978f1c09eaa3eb04016019",
+      "path": "cases/en_roadmap/en/roadmap/index.html",
+      "case_id": "en::unchanged_roadmap",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045",
+      "path": "cases/en_engineering_specifications_semantic-verification/en/engineering/specifications/semantic-verification/index.html",
+      "case_id": "en::unchanged_engineering/specifications/semantic-verification",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "e10213bcf5ef67b7d630a62b2ff52fe8dbfb4ea2195bc9510d72b10d1f3ebd05",
+      "path": "cases/en_reader_inherited_lang/en/engineering/specifications/semantic-verification/index.html",
+      "case_id": "en::reader_inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its reader references component with the page language and exposed status text\nen/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "b237f39dd4a236cf4a96f2f7c7e8d743ff075b916a9659016b4d79b10c0b9b1d",
+      "path": "cases/en_reader_wrong_lang/en/engineering/specifications/semantic-verification/index.html",
+      "case_id": "en::reader_wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its reader references component with the page language and exposed status text\nen/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "11102df603fe037c8005942bca2ab2fb674df2e3664a09690977f5abddc40732",
+      "path": "cases/en_reader_hidden_badge/en/engineering/specifications/semantic-verification/index.html",
+      "case_id": "en::reader_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "en",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "en/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its reader references component with the page language and exposed status text\nen/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Research draft' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "659729108f6242aa0f2addf859df543498af96eafddbcabb388ed5429695d5e6",
+      "path": "cases/en_reader_group_to_footer/en/engineering/specifications/semantic-verification/index.html",
+      "case_id": "en::reader_group_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "c59b49725b5862cc8efdb0760ec9d4b54defd05ae5f4765c5c54e7ac5186bece",
+      "path": "cases/ru_unchanged/ru/programme/index.html",
+      "case_id": "ru::unchanged",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "c068355da801d58b7db9f2c8ce4f49e999f2e36bb38775425f0b28105139ee7d",
+      "path": "cases/ru_inherited_lang/ru/programme/index.html",
+      "case_id": "ru::inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "cbbd93e2363732d354e76acfe22c480de871c9a696e812b96f7108ccb221d651",
+      "path": "cases/ru_wrong_lang/ru/programme/index.html",
+      "case_id": "ru::wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "40bce4267d9276cd2e3b1d52063fdaa602dc5610a7ef7a7e0afa0783a8127358",
+      "path": "cases/ru_empty_lang/ru/programme/index.html",
+      "case_id": "ru::empty_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "7babdbb1713f53a501a57f8ced4cb47ff0da9c9a017c305c31e06733d58bca2d",
+      "path": "cases/ru_hidden_badge/ru/programme/index.html",
+      "case_id": "ru::hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "ee21c0f559f348d51ec1e57cc368dbb476f8a690325dc3cb4d7e7b8cf1915981",
+      "path": "cases/ru_aria_hidden_owner/ru/programme/index.html",
+      "case_id": "ru::aria_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "ee7b7376848247683a33a9135bea7d0130b086c4854cadc111a9a7ee71a58820",
+      "path": "cases/ru_inert_owner/ru/programme/index.html",
+      "case_id": "ru::inert_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "803291922190ad2d415b2781288b7e9e8728a49227f6a2db63a826dd69ab4f42",
+      "path": "cases/ru_display_none_owner/ru/programme/index.html",
+      "case_id": "ru::display_none_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "8b30d33c1b15d5100f6ccd83a40423fe6de0f84b3b5d59a45bc5a12d3895d678",
+      "path": "cases/ru_visibility_hidden_badge/ru/programme/index.html",
+      "case_id": "ru::visibility_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "3e6fcc5e02e252c6852c2de961f916f30ffbdaf8fc8ad087669f883e29c299f0",
+      "path": "cases/ru_content_visibility_hidden_owner/ru/programme/index.html",
+      "case_id": "ru::content_visibility_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "83b531bbbced3800f0ed3058652cbd8069c98e71f9b5a6dd1e56a5cc1517628e",
+      "path": "cases/ru_partial_duplicate/ru/programme/index.html",
+      "case_id": "ru::partial_duplicate",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text\nru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text\nru/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "aac79c9406661846b8ef9d0aa4b45d63bed72884a071bad189daa0e9710fa15f",
+      "path": "cases/ru_all_to_footer/ru/programme/index.html",
+      "case_id": "ru::all_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "a39730bc902690376748496fff76aa4f5deb455ccbfc8d0972b38ba15fce9ab5",
+      "path": "cases/ru_roadmap/ru/roadmap/index.html",
+      "case_id": "ru::unchanged_roadmap",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341",
+      "path": "cases/ru_engineering_specifications_semantic-verification/ru/engineering/specifications/semantic-verification/index.html",
+      "case_id": "ru::unchanged_engineering/specifications/semantic-verification",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "3948c5657a988c998aeb0dd428c19736f175fcf282096c79e2e5350d1d5f9163",
+      "path": "cases/ru_reader_inherited_lang/ru/engineering/specifications/semantic-verification/index.html",
+      "case_id": "ru::reader_inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its reader references component with the page language and exposed status text\nru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "bacf70e13bec3d4cda9d63c9b33a59a71cf52fe53e7b2bde5510b58f1a2b7227",
+      "path": "cases/ru_reader_wrong_lang/ru/engineering/specifications/semantic-verification/index.html",
+      "case_id": "ru::reader_wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its reader references component with the page language and exposed status text\nru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "13113785130555d77ee1def66f859ee92c268103f7f74a49aea849a50993fa0f",
+      "path": "cases/ru_reader_hidden_badge/ru/engineering/specifications/semantic-verification/index.html",
+      "case_id": "ru::reader_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "ru",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "ru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its reader references component with the page language and exposed status text\nru/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label 'Исследовательский черновик' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "392a368ca7870e2d67b7ae104c3c945b567efcbfbad5f17145a397677fd43c9c",
+      "path": "cases/ru_reader_group_to_footer/ru/engineering/specifications/semantic-verification/index.html",
+      "case_id": "ru::reader_group_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "09abb12893d4a7bc0be27d6e0ea66f84f2ce67eed7eb0feb0ea56db9fdc9a82c",
+      "path": "cases/zh-Hans_unchanged/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::unchanged",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "1b5d878547f13de467528125aaec2a61af1b204b130b62c82a51c1c7325864ac",
+      "path": "cases/zh-Hans_inherited_lang/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "e14b4817164ee8feacf0adbbc94a69e987d9f61848c0eb75956829016ec0778b",
+      "path": "cases/zh-Hans_wrong_lang/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "empty_lang",
+      "condition": "unknown_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "c83357eaeb6e010d47f98f1cb54a2d0f2e8cf1873d61cea2e13687a13fb09867",
+      "path": "cases/zh-Hans_empty_lang/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::empty_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "6249190502f9fb16c9e49f9190082ac61e616eb6897ee515f9213e8c50b239c4",
+      "path": "cases/zh-Hans_hidden_badge/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "aria_hidden_owner",
+      "condition": "explicit_accessibility_exclusion",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "f595d9b6c35013b0a30157ea13743a0f82e19ce80b6ae668f86de91490e09476",
+      "path": "cases/zh-Hans_aria_hidden_owner/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::aria_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "inert_owner",
+      "condition": "explicit_inert_subtree",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "fbd95d4b79bdf56aee1dc5ab9b5785386b529113967e40cc47795a67175a3b5a",
+      "path": "cases/zh-Hans_inert_owner/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::inert_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "display_none_owner",
+      "condition": "inline_display_none",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "97634c560b8cfb0ce0a34be987014f0bcfbe9cb1c66782907307fbc63818ed3a",
+      "path": "cases/zh-Hans_display_none_owner/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::display_none_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "visibility_hidden_badge",
+      "condition": "inline_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "57ef23666cf22af6c2455e9b9e71bf2e6d29ea8e4e3f88205595a2441a3705f7",
+      "path": "cases/zh-Hans_visibility_hidden_badge/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::visibility_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "content_visibility_hidden_owner",
+      "condition": "inline_content_visibility_hidden",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "593eed8af7a7a53354af8f3eaa6adc200229d57004e7e8ff4bc9a12ce111983a",
+      "path": "cases/zh-Hans_content_visibility_hidden_owner/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::content_visibility_hidden_owner",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "partial_duplicate",
+      "condition": "missing_one_direct_link_badge",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "13c53159efd5b71d9af05b9494f64999cf910867b6551f7aae1a52b48a2754e7",
+      "path": "cases/zh-Hans_partial_duplicate/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::partial_duplicate",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "all_to_footer",
+      "condition": "all_local_work_badges_misplaced",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text\nzh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text\nzh-Hans/programme/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "1ce8a46a5283f76415af6991e7c87b0caa3f7b0d8a1f4de5a76367a1d206eb1f",
+      "path": "cases/zh-Hans_all_to_footer/zh-Hans/programme/index.html",
+      "case_id": "zh-Hans::all_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged_roadmap",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 0,
+      "error": null,
+      "input_sha256": "46434d424ef9971d8e63c42ead4d8d567a22fa302c9228ee1e8b6ecc949afa39",
+      "path": "cases/zh-Hans_roadmap/zh-Hans/roadmap/index.html",
+      "case_id": "zh-Hans::unchanged_roadmap",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "unchanged_engineering/specifications/semantic-verification",
+      "condition": "valid_baseline",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3",
+      "path": "cases/zh-Hans_engineering_specifications_semantic-verification/zh-Hans/engineering/specifications/semantic-verification/index.html",
+      "case_id": "zh-Hans::unchanged_engineering/specifications/semantic-verification",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_inherited_lang",
+      "condition": "valid_inherited_language",
+      "accepted": true,
+      "labelled_pages": 1,
+      "error": null,
+      "input_sha256": "8aa852e209e61f75df70634b6b747f5d373de3eb0353285a03db5145c26f7f3f",
+      "path": "cases/zh-Hans_reader_inherited_lang/zh-Hans/engineering/specifications/semantic-verification/index.html",
+      "case_id": "zh-Hans::reader_inherited_lang",
+      "expected_acceptance": true,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_wrong_lang",
+      "condition": "wrong_explicit_language",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its reader references component with the page language and exposed status text\nzh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "cd1bc41c022a2ea39797862c6ffe607bce9e51242a0f7ce30adb5df7052f224b",
+      "path": "cases/zh-Hans_reader_wrong_lang/zh-Hans/engineering/specifications/semantic-verification/index.html",
+      "case_id": "zh-Hans::reader_wrong_lang",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_hidden_badge",
+      "condition": "explicit_hidden_attribute",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its reader references component with the page language and exposed status text\nzh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "62cddb1b8d480ca7fae9c82f00a56e951a8fd4122d847dd588b9e761f96d3e6e",
+      "path": "cases/zh-Hans_reader_hidden_badge/zh-Hans/engineering/specifications/semantic-verification/index.html",
+      "case_id": "zh-Hans::reader_hidden_badge",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "reader_group_to_footer",
+      "condition": "reader_group_loses_its_status",
+      "accepted": false,
+      "labelled_pages": null,
+      "error": "zh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its reader references component with the page language and exposed status text\nzh-Hans/engineering/specifications/semantic-verification/index.html: shows geometry-of-semantic-representations (research-draft) without the label '研究草稿' bound to that work in its direct link component with the page language and exposed status text",
+      "input_sha256": "e645853dfcec790408d0332310d63781d44a28471b1a410b70ca5c4b7c609cf2",
+      "path": "cases/zh-Hans_reader_group_to_footer/zh-Hans/engineering/specifications/semantic-verification/index.html",
+      "case_id": "zh-Hans::reader_group_to_footer",
+      "expected_acceptance": false,
+      "matches_declared_decision": true
+    }
+  ],
+  "structures": {
+    "en/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      }
+    ],
+    "en/roadmap": [],
+    "en/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "en",
+        "html": "<span lang=\"en\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Research draft</span></span>"
+      }
+    ],
+    "ru/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      }
+    ],
+    "ru/roadmap": [],
+    "ru/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "ru",
+        "html": "<span lang=\"ru\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">Исследовательский черновик</span></span>"
+      }
+    ],
+    "zh-Hans/programme": [
+      {
+        "path": [
+          "span",
+          "p",
+          "article.foundation-card",
+          "div.foundation-grid",
+          "section.programme-foundations",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "p",
+          "div.source-body.prose",
+          "article",
+          "div.source-reading",
+          "div.container.source-record.publication-record.programme-page",
+          "main"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      },
+      {
+        "path": [
+          "span",
+          "td",
+          "tr.odd",
+          "tbody",
+          "table",
+          "div.source-body.prose",
+          "article"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      }
+    ],
+    "zh-Hans/roadmap": [],
+    "zh-Hans/engineering/specifications/semantic-verification": [
+      {
+        "path": [
+          "span",
+          "p.rm-linked-status",
+          "aside.article-aside",
+          "div.source-reading",
+          "div.container.source-record.publication-record",
+          "main",
+          "body"
+        ],
+        "effective_language": "zh-Hans",
+        "html": "<span lang=\"zh-Hans\" data-work-status=\"geometry-of-semantic-representations\"><span class=\"status-badge\">研究草稿</span></span>"
+      }
+    ]
+  },
+  "unavailable_controls": [
+    {
+      "locale": "en",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    },
+    {
+      "locale": "ru",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    }
+  ],
+  "counts": {
+    "cases": 54,
+    "checker_accepted": 15,
+    "matched_decisions": 54,
+    "expected_positive_cases": 15,
+    "expected_negative_cases": 39,
+    "conditions": {
+      "valid_baseline": 9,
+      "valid_inherited_language": 6,
+      "wrong_explicit_language": 6,
+      "unknown_explicit_language": 3,
+      "explicit_hidden_attribute": 6,
+      "explicit_accessibility_exclusion": 3,
+      "explicit_inert_subtree": 3,
+      "inline_display_none": 3,
+      "inline_visibility_hidden": 3,
+      "inline_content_visibility_hidden": 3,
+      "missing_one_direct_link_badge": 3,
+      "all_local_work_badges_misplaced": 3,
+      "reader_group_loses_its_status": 3
+    }
+  }
+}

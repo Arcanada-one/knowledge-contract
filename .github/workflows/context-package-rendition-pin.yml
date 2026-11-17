@@ -44,3 +44,217 @@ jobs:
           set -euo pipefail
           python3 -B reviews/renditions/source-rule-checks-20261116/producer_validate.py \
             --repository . --site-repository _rendition-site-checker --pandoc pandoc
+      - name: Check both Agent Situation bodies and all fifteen adverse controls
+        run: |
+          set -euo pipefail
+          python3 -B reviews/renditions/agent-situation-20261116/producer_validate.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc
+      - name: Replay historical c135 metadata and pin controls at b00
+        run: |
+          set -euo pipefail
+          kc_c135_revision=b00b42fb5ca4f32ca443812c980c13d4d5d53d81
+          kc_c135_worktree="$RUNNER_TEMP/kc-c135-baseline"
+          git fetch --no-tags origin "$kc_c135_revision"
+          git worktree add --detach "$kc_c135_worktree" "$kc_c135_revision"
+          trap 'git worktree remove "$kc_c135_worktree"' EXIT
+          python3 -B \
+            "$kc_c135_worktree/reviews/renditions/agent-situation-20261116/check_catalogue_metadata.py" \
+            --repository "$kc_c135_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker"
+          python3 -I -B reviews/renditions/source-currency-20261116/check_historical_pin_regression.py \
+            --repository "$kc_c135_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker"
+      - name: Replay the historical 68-body source and roadmap checks at their exact input
+        run: |
+          set -euo pipefail
+          kc_68_revision=18684f073285a4fa20f299518bd8a3d75b0c76d6
+          kc_68_worktree="$RUNNER_TEMP/kc-68-body-baseline"
+          git fetch --no-tags origin "$kc_68_revision"
+          git worktree add --detach "$kc_68_worktree" "$kc_68_revision"
+          trap 'git worktree remove "$kc_68_worktree"' EXIT
+          python3 -I -B "$kc_68_worktree/tools/check_translation_roadmap_currency.py" \
+            --root "$kc_68_worktree" --self-test
+          python3 -I -B "$kc_68_worktree/reviews/renditions/source-currency-20261116/check_source_currency.py" \
+            --repository "$kc_68_worktree" \
+            --site-repository "$GITHUB_WORKSPACE/_rendition-site-checker" --pandoc pandoc
+      - name: Compile all 72 bodies and check the four complete semantic specifications
+        run: |
+          set -euo pipefail
+          python3 -I -B reviews/renditions/semantic-specifications-20261117/check_complete_renditions.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc \
+            --check-retained-result
+      - name: Reproduce finite transfer values and equivariant-adversary refusal
+        run: |
+          set -euo pipefail
+          oracle=reviews/renditions/semantic-specifications-20261117/check_finite_partial_map.py
+          python3 -I -B "$oracle" > "$RUNNER_TEMP/fibre-normal.json"
+          python3 -I -O -B "$oracle" > "$RUNNER_TEMP/fibre-optimized.json"
+          cmp "$RUNNER_TEMP/fibre-normal.json" "$RUNNER_TEMP/fibre-optimized.json"
+          cmp "$RUNNER_TEMP/fibre-normal.json" reviews/renditions/semantic-specifications-20261117/swapped-fibre-reconstruction/result.json
+          python3 -I -B - "$RUNNER_TEMP/fibre-normal.json" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              result = json.load(handle)
+          mutants = result["mutants"]
+          controls = result["swapped_fibre_controls"]
+          expected_false_accepts = {
+              "accept_all": 95128,
+              "allow_unattained": 2080,
+              "skip_last_situation": 3672,
+              "cyclic_value_shift": 3176,
+              "swapped_constant_fibres": 504,
+          }
+          checks = [
+              result["counts"] == {"profiles": 4096, "partial_map_candidates": 102400, "label_queries": 8192},
+              result["diagnostic_queries"] == {"determined": 2952, "ambiguous": 4728, "unattained": 512},
+              all(mutants[name]["false_accept"] == count for name, count in expected_false_accepts.items()),
+              mutants["refuse_all"]["false_reject"] == 7272,
+              mutants["cyclic_value_shift"]["false_reject"] == 3176,
+              mutants["cyclic_value_shift"]["accepted_count"] == 7272,
+              mutants["swapped_constant_fibres"]["false_reject"] == 504,
+              mutants["swapped_constant_fibres"]["accepted_count"] == 7272,
+              result["accepted_partial_maps_closed_form"] == {
+                  "partition_terms": [260, 2176, 2400, 2176, 260],
+                  "symbolic_total": 7272,
+                  "enumerated_total": 7272,
+              },
+              controls["affected_profiles"] == 168,
+              controls["profiles_with_equal_accepted_count"] == 4096,
+              controls["value_renaming_decisions"] == 2457600,
+              controls["observation_label_exchange_decisions"] == 102400,
+              controls["assessment_value_permutations"] == 24,
+              controls["value_renaming_mismatches"] == {"correct": 0, "swapped_constant_fibres": 0},
+              controls["observation_label_exchange_mismatches"] == {"correct": 0, "swapped_constant_fibres": 0},
+              controls["minimal_witness"] == {
+                  "observations": [0, 0, 0, 1], "assessments": [0, 0, 0, 1],
+                  "correct_map": [0, 1], "swapped_map": [1, 0],
+                  "correct_accepts_correct_map": True, "mutant_accepts_correct_map": False,
+                  "correct_accepts_swapped_map": False, "mutant_accepts_swapped_map": True,
+              },
+          ]
+          if not all(checks):
+              raise SystemExit("FINITE_FIBRE_CI_RESULT_MISMATCH")
+          print("FINITE_FIBRE_AND_EQUIVARIANCE_PASS")
+          print(json.dumps({"swapped_fibre_controls": controls,
+                            "swapped_mutant": mutants["swapped_constant_fibres"]}, sort_keys=True))
+          PY
+          set +e
+          python3 -I -B "$oracle" --expect-determined 2953 > "$RUNNER_TEMP/fibre-negative-normal.log" 2>&1
+          normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-determined 2953 > "$RUNNER_TEMP/fibre-negative-optimized.log" 2>&1
+          optimized_rc=$?
+          set -e
+          test "$normal_rc" -eq 3
+          test "$optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch' "$RUNNER_TEMP/fibre-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: §7.4 query cardinality mismatch' "$RUNNER_TEMP/fibre-negative-optimized.log"
+          set +e
+          python3 -I -B "$oracle" --expect-accepted 7273 > "$RUNNER_TEMP/fibre-aggregate-negative-normal.log" 2>&1
+          aggregate_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-accepted 7273 > "$RUNNER_TEMP/fibre-aggregate-negative-optimized.log" 2>&1
+          aggregate_optimized_rc=$?
+          set -e
+          test "$aggregate_normal_rc" -eq 3
+          test "$aggregate_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: closed-form accepted partial-map cardinality mismatch' "$RUNNER_TEMP/fibre-aggregate-negative-optimized.log"
+          set +e
+          python3 -I -B "$oracle" --expect-swapped-false-accept 505 > "$RUNNER_TEMP/fibre-swap-negative-normal.log" 2>&1
+          swap_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-swapped-false-accept 505 > "$RUNNER_TEMP/fibre-swap-negative-optimized.log" 2>&1
+          swap_optimized_rc=$?
+          set -e
+          test "$swap_normal_rc" -eq 3
+          test "$swap_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: swapped-fibre false-accept count mismatch' "$RUNNER_TEMP/fibre-swap-negative-optimized.log"
+          # A wrong count for the two-defined grade must be refused in both
+          # standard and optimized Python; default output must stay unchanged.
+          set +e
+          python3 -I -B "$oracle" --expect-two-defined 225 > "$RUNNER_TEMP/fibre-grade-negative-normal.log" 2>&1
+          grade_normal_rc=$?
+          python3 -I -O -B "$oracle" --expect-two-defined 225 > "$RUNNER_TEMP/fibre-grade-negative-optimized.log" 2>&1
+          grade_optimized_rc=$?
+          set -e
+          test "$grade_normal_rc" -eq 3
+          test "$grade_optimized_rc" -eq 3
+          grep -F 'FINITE_FIBRE_REFUSED: two-defined partial-map grade mismatch' "$RUNNER_TEMP/fibre-grade-negative-normal.log"
+          grep -F 'FINITE_FIBRE_REFUSED: two-defined partial-map grade mismatch' "$RUNNER_TEMP/fibre-grade-negative-optimized.log"
+          echo FINITE_DEFINED_GRADE_PASS
+          # Source-tether: a per-fibre constructive model must reject cardinality-
+          # preserving value mistakes even when they pass aggregate/symmetry checks.
+          for variant in swapped_constant_fibres cyclic_value_shift; do
+            set +e
+            python3 -I -B "$oracle" --source-under-test "$variant" > "$RUNNER_TEMP/tether-$variant-normal.log" 2>&1
+            tether_normal_rc=$?
+            python3 -I -O -B "$oracle" --source-under-test "$variant" > "$RUNNER_TEMP/tether-$variant-optimized.log" 2>&1
+            tether_optimized_rc=$?
+            set -e
+            test "$tether_normal_rc" -eq 3
+            test "$tether_optimized_rc" -eq 3
+            grep -F 'FINITE_FIBRE_REFUSED: constructive exact-map mismatch:' "$RUNNER_TEMP/tether-$variant-normal.log"
+            grep -F 'FINITE_FIBRE_REFUSED: constructive exact-map mismatch:' "$RUNNER_TEMP/tether-$variant-optimized.log"
+          done
+          echo FINITE_CONSTRUCTIVE_SOURCE_TETHER_PASS
+      - name: Reject optimized Python for the assertion-based pinned consumer
+        run: |
+          set -euo pipefail
+          set +e
+          python3 -I -O -B reviews/renditions/semantic-specifications-20261117/check_complete_renditions.py \
+            --repository . --site-repository _rendition-site-checker --pandoc pandoc \
+            > "$RUNNER_TEMP/source-currency-optimized.log" 2>&1
+          kc_currency_optimized_status=$?
+          set -e
+          cat "$RUNNER_TEMP/source-currency-optimized.log"
+          test "$kc_currency_optimized_status" -eq 2
+          python3 -B -c "from pathlib import Path; import sys; sys.exit(0 if 'optimized Python is unsupported' in Path(sys.argv[1]).read_text() else 1)" \
+            "$RUNNER_TEMP/source-currency-optimized.log"
+      - name: Read the exact full-site consumer
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Arcanada-one/contract-place-site
+          ref: 5ff661bb6c894a44b3b6b1591d543c4830bc9180
+          path: _complete-site-consumer
+          persist-credentials: false
+      - name: Install the tested site runtime
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.1'
+      - name: Rehearse the 36-work site consumer and scoped status witnesses
+        run: |
+          set -euo pipefail
+          kc72_source_revision=6eec88097cf5255543c792e53c92f75c0d483728
+          kc72_roadmap_revision=55e279c43dc9bcf8732467a32661c2ac4b7cf920
+          kc72_source_worktree="$RUNNER_TEMP/kc72-consumer-source"
+          kc72_roadmap_worktree="$RUNNER_TEMP/kc72-consumer-roadmap"
+          kc72_site="$GITHUB_WORKSPACE/_complete-site-consumer"
+          kc72_patch="$GITHUB_WORKSPACE/reviews/renditions/status-components-20261117/site-consumer/site-36x72-component-status.patch"
+          echo "b140bb2ce697b95c5f7e693086bb04216613e58043ec35284e85590afb226db1  $kc72_patch" | sha256sum -c -
+          test "$(git -C "$kc72_site" rev-parse HEAD)" = 5ff661bb6c894a44b3b6b1591d543c4830bc9180
+          git -C "$kc72_site" apply --check "$kc72_patch"
+          git -C "$kc72_site" apply "$kc72_patch"
+          git fetch --no-tags origin "$kc72_source_revision" "$kc72_roadmap_revision"
+          git worktree add --detach "$kc72_source_worktree" "$kc72_source_revision"
+          git worktree add --detach "$kc72_roadmap_worktree" "$kc72_roadmap_revision"
+          trap 'git -C "$GITHUB_WORKSPACE" worktree remove "$kc72_source_worktree"; git -C "$GITHUB_WORKSPACE" worktree remove "$kc72_roadmap_worktree"' EXIT
+          cd "$kc72_site"
+          test "$(node --version)" = v24.22.1
+          python3 -B scripts/build_publication.py \
+            --source-dir "$kc72_source_worktree" --roadmap-source-dir "$kc72_roadmap_worktree"
+          python3 -B "$GITHUB_WORKSPACE/reviews/renditions/semantic-specifications-20261117/site-consumer/check_actual_status_binding.py" \
+            --site-dir "$kc72_site"
+          python3 -B "$GITHUB_WORKSPACE/reviews/renditions/status-components-20261117/actual-pages/badge_actual_page_probe.py" \
+            --site-dir "$kc72_site" --output-dir "$RUNNER_TEMP/kc-status-components54" --expect-fixed
+          node scripts/test_ui_localization.js
+          python3 -B scripts/test_build.py
+          python3 -B scripts/test_localization.py
+          python3 -B scripts/test_journal.py
+          ROADMAP_SOURCE_DIR="$kc72_roadmap_worktree" python3 -B scripts/test_roadmap.py
+          PROGRAMME_SOURCE_DIR="$kc72_source_worktree" python3 -B scripts/test_programme.py
+          python3 -B scripts/check_publication.py
+          python3 -B scripts/check_papers.py public
+          python3 -B scripts/check_links.py public
+          python3 -B scripts/check_roadmap.py public --source-dir "$kc72_roadmap_worktree"
+          python3 -B scripts/check_localization.py public \
+            --source-dir "$kc72_source_worktree" --roadmap-source-dir "$kc72_roadmap_worktree"

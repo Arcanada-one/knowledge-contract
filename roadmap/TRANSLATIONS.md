@@ -2,14 +2,98 @@
 title: "Russian and Chinese Editions: Coverage and Remaining Work"
 sources: none
 status: source-pinned-file-inventory
-updated: 2026-11-16
+updated: 2026-11-17
 ---
 
 # Russian and Chinese Editions: Coverage and Remaining Work
 
 This inventory separates files integrated into the source branch, historical proposal coverage, missing authoring, fidelity review and actual website delivery. File presence is not a new semantic acceptance or a complete-translation verdict.
 
+## Complete-body candidate — 17 November 2026
+
+The next source candidate in [PR #124](https://github.com/Arcanada-one/knowledge-contract/pull/124)
+adds full Semantic Bridge and Semantic Verification renditions in Russian and
+Simplified Chinese, against English source `8c7cd3bc1247998cb9554c568da26949da31b749`.
+The intended population is **36 English works**, **72 localized title/summary
+cards**, and **72 registered translated bodies**, 36 per target language.
+The [actual consumer result](../reviews/renditions/semantic-specifications-20261117/producer-result.json)
+records its tested publication and content revisions, complete-body states,
+source currency and adverse controls. The [author record](../reviews/renditions/semantic-specifications-20261117/AUTHOR-RECORD.md)
+names the exact scope and the remaining release checks.
+
+All 68 previous rendition entries and their body files are retained byte for
+byte. Eight historical review objects keep their original source, subject and
+scope. The four new bodies are author drafts without independent review;
+64 registered bodies in the combined candidate remain unreviewed. Complete
+registration and structural parity do not establish prose equivalence or an
+independent linguistic acceptance.
+
+The following witness is checked against the actual catalogue, metadata,
+body/source digests and pinned reader consumer. It does not certify a site
+release, indexing, native admission or a benefit to a production consumer.
+
+<!-- CURRENT-RENDITION-INVENTORY:BEGIN -->
+```json
+{
+  "catalogue_works": 36,
+  "metadata_cards": 72,
+  "registered_bodies": 72,
+  "source_mismatches": 0,
+  "missing_pairs": [],
+  "historical_review_entries": 8
+}
+```
+<!-- CURRENT-RENDITION-INVENTORY:END -->
+
+The current site release still has its own 31-work source pin. Frozen PR104,
+this complete 36-work candidate, per-language review, the full site build and
+observed delivery remain distinct gates. The entries below retain their dated
+populations and results.
+
+## Historical 68-body source-currency snapshot — 16 November 2026
+
+At `18684f073285a4fa20f299518bd8a3d75b0c76d6`, the
+[whole-consumer result](../reviews/renditions/source-currency-20261116/review-followup-result.json)
+used English source `8c7cd3bc1247998cb9554c568da26949da31b749`
+and ten-body content revision `7020a5d9bd0cba850c1b3bbdcb1fad5ce4775524`.
+It had 36 works, 72 localized cards and 68 bodies, with zero older-source
+bindings. Semantic Bridge and Semantic Verification lacked both target bodies.
+Eight historical reviews were retained and the other 60 bodies were unreviewed.
+Ten manuscripts had been brought to the newer source and two Agent Situation
+editorial findings had been repaired. The check and its receipt are unchanged;
+CI replays them at their own 68-body input rather than replacing their numbers
+with those of this successor. This snapshot superseded the ten-source-skew
+count in the earlier Agent Situation record below, without changing that record.
+
 ## Source and candidate snapshots checked on 16 November
+
+### Agent Situation continuation
+
+The separately prepared continuation at content commit
+`386bfa099215ea54d45ddbacda425bebaf42cdc4` adds full Agent Situation bodies in
+Russian and Simplified Chinese on top of frozen PR104 head `89382a5f`.
+The [exact-ref inventory](../reviews/renditions/agent-situation-20261116/coverage-snapshot.json)
+therefore contains **68 of 72 body files**, or **34 per language**, for the
+unchanged 36-work English catalogue. The four still-missing body slots belong
+to Semantic Bridge and Semantic Verification in both target languages.
+
+The [source-currency inventory](../reviews/renditions/agent-situation-20261116/source-currency.json)
+separately identifies ten retained rendition records bound to earlier English
+bytes. Their fidelity to the changed sources requires its own comparison;
+updating a hash is not that comparison. All 66 previous records and eight
+historical review objects are preserved. The two new records remain unreviewed.
+
+The same continuation repairs the actual catalogue metadata consumer: **72
+localized title/summary records** compile, including ten additions and ten
+metadata-only source rebindings with all 62 older prose/status records unchanged.
+This does not mean 72 complete or accepted translations. The
+[author record](../reviews/renditions/agent-situation-20261116/AUTHOR-RECORD.md)
+retains the original consumer failure, structural/metadata controls, downstream
+status-support patch and remaining site-release requirements. No publication
+pin, corpus admission, generated site or deployed page is changed by this source
+candidate. The earlier snapshots below remain historical observations.
+
+### Context Controls and Source Rule Checks checkpoint
 
 The source catalogue at main `8c7cd3bc1247998cb9554c568da26949da31b749` contains **36 English works** and **31 complete-body paths per target language**, or **62 of 72 work-language slots**. The existing rendition PR104 at `1d2ba019c3b9c423422c1d6a6fe0ab14fe49404a` adds Context Controls in both languages, reaching **64 of 72**. The new content commit `a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78` adds Source Rule Checks in Russian and Simplified Chinese, reaching **66 of 72**, or **33 body files per language**. These are cumulative candidate counts, not 66 independently reviewed or publicly served translations.
 

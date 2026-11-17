@@ -1,0 +1,23 @@
+test_control_built_site_is_labelled_everywhere_in_three_languages (__main__.CatalogueStatusLabels.test_control_built_site_is_labelled_everywhere_in_three_languages) ... ok
+test_label_on_a_page_that_does_not_show_the_document_fails (__main__.CatalogueStatusLabels.test_label_on_a_page_that_does_not_show_the_document_fails) ... ok
+test_missing_draft_notice_fails (__main__.CatalogueStatusLabels.test_missing_draft_notice_fails) ... ok
+test_status_without_public_label_fails (__main__.CatalogueStatusLabels.test_status_without_public_label_fails) ... ok
+test_unlabelled_listing_fails (__main__.CatalogueStatusLabels.test_unlabelled_listing_fails) ... ok
+test_unlabelled_reading_page_fails_in_every_language (__main__.CatalogueStatusLabels.test_unlabelled_reading_page_fails_in_every_language) ... ok
+test_zh_hans_notice_lead_ends_with_chinese_full_stop (__main__.CatalogueStatusLabels.test_zh_hans_notice_lead_ends_with_chinese_full_stop) ... ok
+test_actual_markdown_tables_math_links_and_footnotes (__main__.PublicationBuild.test_actual_markdown_tables_math_links_and_footnotes) ... ok
+test_dirty_source_rejected (__main__.PublicationBuild.test_dirty_source_rejected) ... ok
+test_executable_markdown_and_remote_embeds_rejected (__main__.PublicationBuild.test_executable_markdown_and_remote_embeds_rejected) ... ok
+test_missing_or_escaping_link_rejected (__main__.PublicationBuild.test_missing_or_escaping_link_rejected) ... ok
+test_source_statuses_are_preserved_without_acceptance_inference (__main__.PublicationBuild.test_source_statuses_are_preserved_without_acceptance_inference) ... ok
+test_table_presentation_preserves_csp_and_alignment (__main__.PublicationBuild.test_table_presentation_preserves_csp_and_alignment) ... ok
+test_unknown_catalogue_status_stops_the_build (__main__.PublicationBuild.test_unknown_catalogue_status_stops_the_build) ... ok
+test_wrong_pin_rejected (__main__.PublicationBuild.test_wrong_pin_rejected) ... ok
+test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused (__main__.PublicationStatusFixtures.test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused) ... ok
+test_new_status_readers_still_require_a_notice (__main__.PublicationStatusFixtures.test_new_status_readers_still_require_a_notice) ... ok
+test_programme_and_roadmap_keep_exact_statuses_in_each_locale (__main__.PublicationStatusFixtures.test_programme_and_roadmap_keep_exact_statuses_in_each_locale) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 2.013s
+
+OK

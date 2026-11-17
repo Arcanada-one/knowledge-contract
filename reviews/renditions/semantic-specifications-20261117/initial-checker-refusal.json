@@ -1,0 +1,12 @@
+{
+  "publication_revision": "a26edba7395faf7d0041307094b8fc473151eabd",
+  "exit_code": 1,
+  "observed_stderr": {
+    "result": "FAIL",
+    "reason": "COMPILED_BODY_EMPTY: ('agent-situation', 'ru')"
+  },
+  "classification": "producer checker read the provenance inventory instead of the separate rendered-body surface",
+  "repair": "Inspect compiled.for_work(work)[language][html] for every intended work-language pair. Preserve exact pair/state checks over compiled.entries.",
+  "body_or_registry_changed": false,
+  "independent_review": "NOT_VERIFIED"
+}

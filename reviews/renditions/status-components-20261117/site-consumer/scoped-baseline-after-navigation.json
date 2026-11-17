@@ -1,0 +1,10 @@
+{
+  "name": "new_scoped_checker_prior_generated_baseline_after_navigation",
+  "source_pages": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site/public",
+  "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+  "started_utc": "2026-11-17T11:03:03.708019+00:00",
+  "labelled_pages": 123,
+  "result": "PASS",
+  "finished_utc": "2026-11-17T11:03:04.712339+00:00",
+  "elapsed_seconds": 1.0044508360006148
+}

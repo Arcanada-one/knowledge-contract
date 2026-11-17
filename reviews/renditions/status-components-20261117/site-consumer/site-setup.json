@@ -1,0 +1,38 @@
+[
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--shared",
+      "--no-checkout",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/site",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/workspace/scratch/50c29b6b4f6f/manual_20261117b/site'...\ndone.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "https://github.com/Arcanada-one/contract-place-site.git",
+      "5ff661bb6c894a44b3b6b1591d543c4830bc9180"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/Arcanada-one/contract-place-site\n * branch            5ff661bb6c894a44b3b6b1591d543c4830bc9180 -> FETCH_HEAD\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "5ff661bb6c894a44b3b6b1591d543c4830bc9180"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "Warning: you are leaving 1 commit behind, not connected to\nany of your branches:\n\n  713c887 journal: daily briefing 2026-11-17, reasoning-cache-break-even (en, ru, zh-Hans)\n\nIf you want to keep it by creating a new branch, this may be a good time\nto do so with:\n\n git branch <new-branch-name> 713c887\n\nHEAD is now at 5ff661b journal: correct 2026-11-17 issue to manuscript revision r4 (#61)\n"
+  }
+]

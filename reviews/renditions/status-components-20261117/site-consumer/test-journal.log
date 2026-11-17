@@ -1,0 +1,15 @@
+test_ast_oracle_emphasis_and_relative_link_labels (__main__.JournalTests.test_ast_oracle_emphasis_and_relative_link_labels) ... ok
+test_ast_oracle_refuses_changed_or_deleted_table_cell_despite_repeated_values (__main__.JournalTests.test_ast_oracle_refuses_changed_or_deleted_table_cell_despite_repeated_values) ... ok
+test_compile_binds_manifest (__main__.JournalTests.test_compile_binds_manifest) ... ok
+test_journal_content_cache_identity (__main__.JournalTests.test_journal_content_cache_identity)
+Journal edits change the catalog cache key without changing the source pin. ... ok
+test_native_compiled_journal_tables_preserve_semantics_without_inline_style (__main__.JournalTests.test_native_compiled_journal_tables_preserve_semantics_without_inline_style) ... ok
+test_native_journal_unsupported_table_css_is_refused (__main__.JournalTests.test_native_journal_unsupported_table_css_is_refused) ... ok
+test_pin_2026_11_11_hash_regressions (__main__.JournalTests.test_pin_2026_11_11_hash_regressions)
+Fixed digests for the live 2026-11-11 issue — regression pin, not the generic check. ... ok
+test_rendered_locale_pages_for_every_issue (__main__.JournalTests.test_rendered_locale_pages_for_every_issue) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 11.469s
+
+OK

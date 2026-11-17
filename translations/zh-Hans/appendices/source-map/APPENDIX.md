@@ -8,8 +8,8 @@ language: "zh-Hans"
 license: "CC-BY-4.0"
 description: "从早期语料的迁移、不可变历史、证据来源以及保持不变的协议版本。"
 translation_of: "appendices/source-map/APPENDIX.md"
-source_commit: "161a01afb1b756adf059ea2e1cbdd0dca29d83a2"
-source_git_blob: "3b78793325980dbd8a04f3390f01d3ffdc31d863"
+source_commit: "8c7cd3bc1247998cb9554c568da26949da31b749"
+source_git_blob: "d521c193b187e6cb0b4364702ec7bbbb8539b818"
 translation_status: "author-draft"
 ---
 
@@ -107,3 +107,9 @@ translation_status: "author-draft"
 ## 7. 内部审查与验证 {#7-internal-review-and-verification}
 
 [出版物审查——英文原文](../../../../reviews/publication-integrity/REVIEW.md)记录实际的科学与证据审查、精确输入身份、集成修正、本地检查，以及未执行的发布检查。它区分内部内容验收、外部同行评审，以及仓库、网站和语料准入的独立结果。
+
+## 8. Semantic Verification研究草案 {#8-semantic-verification-research-draft}
+
+[语义验证——英文原文](../../../../engineering/specifications/semantic-verification/SPECIFICATION.md)为绑定到具体主张的验证包增加了一种范围明确的方法论。其来源基础是修订版[a5b3618034256f14f389c2c7de8da409c7c5310c](https://github.com/Arcanada-one/knowledge-contract/tree/a5b3618034256f14f389c2c7de8da409c7c5310c)中的既有语料，包括Knowledge Revision中的评估迁移前提和Meaning Geometry中的因子分解结果。部分恢复配置是该结果的初等应用，并非新定理。
+
+该文档仍是研究草案。将其纳入并不意味着已完成它所涵盖的验证工作包、已创建实现，或已更改包含29项主张的证据索引。保留的来源、审查和研究记录仍保持原有身份与范围。

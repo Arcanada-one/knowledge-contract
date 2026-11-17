@@ -1,0 +1,20 @@
+{
+  "name": "actual54-fixed",
+  "argv": [
+    "python3",
+    "-B",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/badge_actual_page_probe.py",
+    "--site-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "--output-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/fixed-candidate",
+    "--expect-fixed"
+  ],
+  "probe_sha256": "f12f09fac9dfb50abf25af26ddf3f625c1ea46af311381f774f145180de61987",
+  "started_utc": "2026-11-17T11:06:06.358382+00:00",
+  "finished_utc": "2026-11-17T11:06:08.538176+00:00",
+  "elapsed_seconds": 2.179800156998681,
+  "exit_code": 0,
+  "log": "actual54-fixed.log",
+  "log_sha256": "664a329b3ea9e1193839fc1f3532072b342ac27441430bec73c88f4625d74e9d"
+}

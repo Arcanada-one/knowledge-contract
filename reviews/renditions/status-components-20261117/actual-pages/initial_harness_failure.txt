@@ -1,0 +1,10 @@
+First local probe invocation failed before running the per-page cases:
+TypeError: 'int' object is not callable at start=self.offset().
+The helper had named a method offset, colliding with HTMLParser's integer
+offset attribute. Renamed the helper to absolute_pos. This is a producer
+harness failure, not a finding about the site or status checker.
+
+Second invocation reached a failed probe precondition: the actual generated
+roadmap pages have no work-status badges, so the proposed two-labelled-field
+mutation cannot be drawn from these pages. The resulting unavailable control
+is now reported explicitly rather than inventing labels in the baseline.

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python3",
+    "-B",
+    "scripts/build_publication.py",
+    "--source-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+    "--roadmap-source-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+  ],
+  "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+  "started_utc": "2026-11-17T08:05:03.818654+00:00",
+  "finished_utc": "2026-11-17T08:06:16.543144+00:00",
+  "elapsed_seconds": 72.72449321600016,
+  "exit_code": 0,
+  "log": "build-bound-identities.log"
+}

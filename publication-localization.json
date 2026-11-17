@@ -3,8 +3,8 @@
   "kind": "arcanada-publication-localization",
   "source": {
     "catalog": "publication-catalog.json",
-    "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
-    "sha256": "006f3c4a5a681a845e8084ad631ea648827c9ec7c64c7cf03d25358f83e6daa0"
+    "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+    "sha256": "0902a1b33c1e19a7ee2a88e6cf0b8c833a3b8130f575eacb13bb32024466e4b6"
   },
   "entries": [
     {
@@ -47,7 +47,7 @@
       "work": "constrained-transformations",
       "language": "ru",
       "source_path": "papers/constrained-transformations/PAPER.md",
-      "source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+      "source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
       "title": "Преобразования знаний: Преобразования с ограничениями и пределы переноса знаний",
       "summary": "Условное сохранение, композиция и восстановление знаний при явно заданных наблюдениях и потерях.",
       "status": "unreviewed"
@@ -56,7 +56,7 @@
       "work": "constrained-transformations",
       "language": "zh-Hans",
       "source_path": "papers/constrained-transformations/PAPER.md",
-      "source_sha256": "2768654f21960a5e4e4c46d3bdef8fcb75ad91309f745e29f0e2227af3a568af",
+      "source_sha256": "954101bf1c0f540648862b1ead5a8c6324817283e9e87284c81bbb1a19aed432",
       "title": "知识变换：受约束的变换与知识迁移的边界",
       "summary": "在明确的观察与损失条件下，讨论知识的有条件保留、组合与重建。",
       "status": "unreviewed"
@@ -101,7 +101,7 @@
       "work": "evidence-and-falsification",
       "language": "ru",
       "source_path": "papers/evidence-and-falsification/PAPER.md",
-      "source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+      "source_sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9",
       "title": "Свидетельства и опровержение: Свидетельства, рассуждение и опровержение в системах знаний",
       "summary": "Какие разные выводы поддерживают утверждения, доказательства, конечные проверки, контрпримеры и сравнительные оценки.",
       "status": "unreviewed"
@@ -110,7 +110,7 @@
       "work": "evidence-and-falsification",
       "language": "zh-Hans",
       "source_path": "papers/evidence-and-falsification/PAPER.md",
-      "source_sha256": "11001602b7af6761765c50c50092d576da0295361caf2c2ee5aa0f7ae746c6e5",
+      "source_sha256": "fcc9f1067d256d1eb43b0c5bfe054e8ddfb5665dfa29a978e36247c254a38ca9",
       "title": "证据与证伪：知识系统中的证据、推理与证伪",
       "summary": "说明主张、证明、有限测试、反例与比较评估分别能够支持哪些结论。",
       "status": "unreviewed"
@@ -173,7 +173,7 @@
       "work": "geometry-of-semantic-representations",
       "language": "ru",
       "source_path": "papers/geometry-of-semantic-representations/PAPER.md",
-      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
       "title": "Геометрия смысла: Пространства представлений, различимость и пределы сходства",
       "summary": "Пространства наблюдений относительно задачи, метрики на фактор-пространствах, границы при неполных наблюдениях и пределы сходства для использования знаний.",
       "status": "unreviewed"
@@ -182,7 +182,7 @@
       "work": "geometry-of-semantic-representations",
       "language": "zh-Hans",
       "source_path": "papers/geometry-of-semantic-representations/PAPER.md",
-      "source_sha256": "9462dc29258c66a907f6f2852c2d8f56fd59443658da8474f67bc52a78ee57aa",
+      "source_sha256": "d6833494550f82321df97e814898b3e00651ee07d3a9b2cbf44f5235a7941a70",
       "title": "意义几何：表示空间、可区分性与相似性的界限",
       "summary": "相对于任务的观察空间、商度量、不完整观察下的界，以及知识使用中相似性的适用边界。",
       "status": "unreviewed"
@@ -515,7 +515,7 @@
       "work": "bibliography",
       "language": "ru",
       "source_path": "reference/bibliography/BIBLIOGRAPHY.md",
-      "source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+      "source_sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72",
       "title": "Исследовательские основания: Первичная литература и связанные работы",
       "summary": "Названные первичные источники и точная концептуальная или техническая роль каждого из них в текущем издании.",
       "status": "unreviewed"
@@ -524,7 +524,7 @@
       "work": "bibliography",
       "language": "zh-Hans",
       "source_path": "reference/bibliography/BIBLIOGRAPHY.md",
-      "source_sha256": "736c06f1e8fcbde7c059159728aff47e94f9bcb5f6b1832fa76a72f817526337",
+      "source_sha256": "2e9d3c8c54b49d1a85459ff5ba3193ef88c311f751a1bd62999973a5beb25b72",
       "title": "研究基础：原始文献与相关工作",
       "summary": "明确列出的原始来源，以及各来源在当前版本中的具体概念或技术作用。",
       "status": "unreviewed"
@@ -533,7 +533,7 @@
       "work": "source-map",
       "language": "ru",
       "source_path": "appendices/source-map/APPENDIX.md",
-      "source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+      "source_sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631",
       "title": "История источников: Карта источников, прежние издания и совместимость протоколов",
       "summary": "Переход от прежнего корпуса, неизменяемая история, происхождение свидетельств и неизменные версии протоколов.",
       "status": "unreviewed"
@@ -542,7 +542,7 @@
       "work": "source-map",
       "language": "zh-Hans",
       "source_path": "appendices/source-map/APPENDIX.md",
-      "source_sha256": "69881f2d806097d66a308d4518c08016bf6ad62dd7bc2fe921bb293cca4a1949",
+      "source_sha256": "f6a8ae8fa77bc57ca69eeb3399923c04de5b68f3c17e1bd7e5dc51fe49f07631",
       "title": "来源历史：来源映射、早期版本与协议兼容性",
       "summary": "从早期语料的迁移、不可变历史、证据来源以及保持不变的协议版本。",
       "status": "unreviewed"
@@ -563,6 +563,96 @@
       "source_sha256": "7e0035ba7caeb56fca41d8442877e19ef8a2d557b1324e4d1d3a78e1d0440e7f",
       "title": "发布接口：API 集成与发布一致性",
       "summary": "已发布的读取接口、任务契约交付要求，以及代码库、阅读站点与索引之间的一致性。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "agent-situation",
+      "language": "ru",
+      "source_path": "papers/agent-situation/PAPER.md",
+      "source_sha256": "f04471d2b66bbb0d2ac64e41325bbd9367fd2f5d49f40bb90235beae2ff81677",
+      "title": "Ситуация агента: Инициализация, изменения и ограниченный контекст",
+      "summary": "Исследовательский черновик о явно заданных ситуациях агента, инициализации, изменениях с учётом версий и ограниченной задачей проекции контекста.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "agent-situation",
+      "language": "zh-Hans",
+      "source_path": "papers/agent-situation/PAPER.md",
+      "source_sha256": "f04471d2b66bbb0d2ac64e41325bbd9367fd2f5d49f40bb90235beae2ff81677",
+      "title": "智能体情境：初始化、变化与有界上下文",
+      "summary": "一篇研究草稿，探讨显式的智能体情境、初始化、对版本修订敏感的变化处理，以及受任务范围约束的上下文投影。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-bridge",
+      "language": "ru",
+      "source_path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "source_sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+      "title": "Семантический мост: От прочтений источника к проверяемым операциям",
+      "summary": "Конечный профиль для заданных прочтений с полной привязкой к источнику, типизированными булевыми наблюдениями, сохранением альтернатив и исключений и отдельно указанными ограничениями оценки.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-bridge",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+      "source_sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+      "title": "语义桥接：从来源解读到可检查的操作",
+      "summary": "面向显式给定解读的有限配置，具有完整来源绑定、带类型的布尔观察、保留的备选解读与例外，以及单独列明的评估边界。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-verification",
+      "language": "ru",
+      "source_path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "source_sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+      "title": "Семантическая проверка: Утверждения, проверки и свидетельства",
+      "summary": "Пакеты проверки на стадии исследовательского черновика, различающие доказательства, конечные модели, тесты реализации и другие свидетельства, с ограниченным профилем переноса оценок.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-verification",
+      "language": "zh-Hans",
+      "source_path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+      "source_sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+      "title": "语义验证：主张、检查与证据",
+      "summary": "处于研究草稿阶段的验证包，区分证明、有限模型、实现测试及其他证据，并提供作用范围受限的评估迁移配置。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "agent-situation-controls",
+      "language": "ru",
+      "source_path": "engineering/studies/agent-situation-controls/STUDY.md",
+      "source_sha256": "41b6fbf4392fa27be2269ccbfb73b1e9049aa9cb7784c7b295960e8336366e05",
+      "title": "Проверки контекста: Конечные проверки состояния ситуации и проекции контекста",
+      "summary": "Исследовательский черновик отчёта об ограниченных конечных проверках состояния ситуации и проекции контекста, отдельно от запланированного эксперимента с LLM.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "agent-situation-controls",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/agent-situation-controls/STUDY.md",
+      "source_sha256": "41b6fbf4392fa27be2269ccbfb73b1e9049aa9cb7784c7b295960e8336366e05",
+      "title": "上下文检查：情境状态与上下文投影的有限检查",
+      "summary": "关于情境状态与上下文投影的有界有限检查的研究草稿报告，与计划中的 LLM 试验分开。",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "ru",
+      "source_path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "source_sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+      "title": "Проверки правил: Привязка к источнику, альтернативы и композиция операций в конечной модели",
+      "summary": "Фактически выполненные конечные проверки по оракулу и проверки привязки к источнику на специально подобранных некорректных входах для профиля «Семантический мост» с заданными прочтениями, с явно указанными ограничениями интерпретации и полномочий.",
+      "status": "unreviewed"
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "zh-Hans",
+      "source_path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+      "source_sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+      "title": "来源规则检验：有限模型中的来源绑定、备选解读与操作组合",
+      "summary": "针对采用给定解读的语义桥接配置，实际执行有限判定基准对照检查和对抗性来源绑定检查，并明确标示解读与权限的限制。",
       "status": "unreviewed"
     }
   ]

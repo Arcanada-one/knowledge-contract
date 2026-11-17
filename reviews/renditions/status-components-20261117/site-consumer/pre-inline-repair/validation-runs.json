@@ -1,0 +1,198 @@
+[
+  {
+    "name": "links",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_links.py",
+      "public"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:06.364790+00:00",
+    "finished_utc": "2026-11-17T11:06:07.165727+00:00",
+    "elapsed_seconds": 0.800949436999872,
+    "exit_code": 0,
+    "log": "links.log",
+    "log_sha256": "9eba5d76c664a262aac211673e1294cd0630afb944240b1ee40edbce1087f16e"
+  },
+  {
+    "name": "papers",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_papers.py",
+      "public"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:06.365193+00:00",
+    "finished_utc": "2026-11-17T11:06:07.314735+00:00",
+    "elapsed_seconds": 0.9495536049998918,
+    "exit_code": 0,
+    "log": "papers.log",
+    "log_sha256": "8ea9ee475e892f0bba00d931d813a7f613bbafe7346695ab4ced7cabfa896d22"
+  },
+  {
+    "name": "publication",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_publication.py"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:06.363975+00:00",
+    "finished_utc": "2026-11-17T11:06:10.350729+00:00",
+    "elapsed_seconds": 3.986764729001152,
+    "exit_code": 0,
+    "log": "publication.log",
+    "log_sha256": "bad49026fab9aef60706d0da2ff4c078aec179d108ed1deeb9e11da2f0150aba"
+  },
+  {
+    "name": "test-programme",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_programme.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:10.350816+00:00",
+    "finished_utc": "2026-11-17T11:06:10.761652+00:00",
+    "elapsed_seconds": 0.4108546909992583,
+    "exit_code": 0,
+    "log": "test-programme.log",
+    "log_sha256": "661edc15febdac9369517a14933e9ef86368a762bf72bd24911d213939acbb00"
+  },
+  {
+    "name": "roadmap",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_roadmap.py",
+      "public",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:07.165847+00:00",
+    "finished_utc": "2026-11-17T11:06:13.339040+00:00",
+    "elapsed_seconds": 6.173208344000159,
+    "exit_code": 0,
+    "log": "roadmap.log",
+    "log_sha256": "2c1e363c30330eddc58ee90c0dbbad9673d03bc294e2d185463c993fb0421b4e"
+  },
+  {
+    "name": "test-localization",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_localization.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:13.339136+00:00",
+    "finished_utc": "2026-11-17T11:06:15.051507+00:00",
+    "elapsed_seconds": 1.7123855909994745,
+    "exit_code": 0,
+    "log": "test-localization.log",
+    "log_sha256": "1e04099c80486a126e044758599404641570d3d2be821dff35da493b98d6a3ce"
+  },
+  {
+    "name": "test-ui",
+    "argv": [
+      "node",
+      "scripts/test_ui_localization.js"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:15.051614+00:00",
+    "finished_utc": "2026-11-17T11:06:17.446899+00:00",
+    "elapsed_seconds": 2.3952008630003547,
+    "exit_code": 0,
+    "log": "test-ui.log",
+    "log_sha256": "039f72bfdface71c56fd039e89558895e4034604fe8fd3d0074c1cff3c52821a"
+  },
+  {
+    "name": "test-build",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_build.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:07.314841+00:00",
+    "finished_utc": "2026-11-17T11:06:24.483862+00:00",
+    "elapsed_seconds": 17.1690367780011,
+    "exit_code": 0,
+    "log": "test-build.log",
+    "log_sha256": "06f1fff11c07d687d3548728e6f256e1f53b0011b55499118a93790d53328857"
+  },
+  {
+    "name": "previous-actual-missing-status",
+    "argv": [
+      "python3",
+      "-B",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/evidence/check_actual_status_binding.py",
+      "--site-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:24.483956+00:00",
+    "finished_utc": "2026-11-17T11:06:24.691884+00:00",
+    "elapsed_seconds": 0.20794317800027784,
+    "exit_code": 0,
+    "log": "previous-actual-missing-status.log",
+    "log_sha256": "4fe1d23228a1e15032d3f9a3dce040e9a6d079870fac4041b820ea7a1c0e1e65"
+  },
+  {
+    "name": "test-journal",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_journal.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:17.446995+00:00",
+    "finished_utc": "2026-11-17T11:06:29.034160+00:00",
+    "elapsed_seconds": 11.587179506999746,
+    "exit_code": 0,
+    "log": "test-journal.log",
+    "log_sha256": "a21a732dff7539aae6a1fd86df8a4838b749af4b0d4d10ad8862b6396c48f794"
+  },
+  {
+    "name": "localization",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_localization.py",
+      "public",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:06.364396+00:00",
+    "finished_utc": "2026-11-17T11:06:31.207000+00:00",
+    "elapsed_seconds": 24.842613254000753,
+    "exit_code": 0,
+    "log": "localization.log",
+    "log_sha256": "58d7008b88dc974b34923e057149819e27dd3f4217a97174df91335fd65da879"
+  },
+  {
+    "name": "test-roadmap",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_roadmap.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:06:10.761763+00:00",
+    "finished_utc": "2026-11-17T11:07:41.457847+00:00",
+    "elapsed_seconds": 90.69609912899978,
+    "exit_code": 0,
+    "log": "test-roadmap.log",
+    "log_sha256": "a6433a164feca4b12019013b606920aeca3843e97ed0e51ad8373759ba505002"
+  }
+]
