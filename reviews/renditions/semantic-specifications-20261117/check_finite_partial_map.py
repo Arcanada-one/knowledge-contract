@@ -212,7 +212,8 @@ def check_swapped_symmetries(truth_tables, candidates):
     }
 
 
-def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_test="correct",\n        expected_two_defined=224):
+def run(expected_accepted=7272, expected_swapped_false_accept=504, source_under_test="correct",
+        expected_two_defined=224):
     class_by_shape = defaultdict(Counter)
     query_counts = Counter()
     accepted_counts = Counter()
@@ -339,12 +340,14 @@ if __name__ == "__main__":
     parser.add_argument("--expect-determined", type=int, default=2952)
     parser.add_argument("--expect-accepted", type=int, default=7272)
     parser.add_argument("--expect-swapped-false-accept", type=int, default=504)
-    parser.add_argument("--expect-two-defined", type=int, default=224)\n    parser.add_argument("--source-under-test", choices=("correct", "swapped_constant_fibres",
+    parser.add_argument("--expect-two-defined", type=int, default=224)
+    parser.add_argument("--source-under-test", choices=("correct", "swapped_constant_fibres",
                                                          "cyclic_value_shift"), default="correct")
     args = parser.parse_args()
     EXPECTED_QUERIES["determined"] = args.expect_determined
     try:
-        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept, args.source_under_test,\n                            args.expect_two_defined),
+        print(json.dumps(run(args.expect_accepted, args.expect_swapped_false_accept, args.source_under_test,
+                            args.expect_two_defined),
                          ensure_ascii=False, sort_keys=True, indent=2))
     except ValueError as exc:
         print(f"FINITE_FIBRE_REFUSED: {exc}", file=sys.stderr)
