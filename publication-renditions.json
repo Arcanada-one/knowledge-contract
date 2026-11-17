@@ -5054,6 +5054,302 @@
           "rendition": "references-and-source-scope"
         }
       ]
+    },
+    {
+      "work": "semantic-bridge",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+        "sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/semantic-bridge/SPECIFICATION.md",
+        "sha256": "2c89b7fb8bc9268f2a9b8e8320683c226e89c8a9d14af211cdbb3d0e1b0fdb9a",
+        "revision": "2627326cd0ac05f843bcc654dc550298bfec6b78"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-operation-boundary-and-responsibilities",
+          "rendition": "2-operation-boundary-and-responsibilities"
+        },
+        {
+          "source": "3-source-identity-and-complete-rule-units",
+          "rendition": "3-source-identity-and-complete-rule-units"
+        },
+        {
+          "source": "4-typed-packet-and-retained-readings",
+          "rendition": "4-typed-packet-and-retained-readings"
+        },
+        {
+          "source": "41-observations-and-referents",
+          "rendition": "41-observations-and-referents"
+        },
+        {
+          "source": "42-reading-records",
+          "rendition": "42-reading-records"
+        },
+        {
+          "source": "5-controlled-expression-language",
+          "rendition": "5-controlled-expression-language"
+        },
+        {
+          "source": "6-possible-world-semantics-and-protected-observations",
+          "rendition": "6-possible-world-semantics-and-protected-observations"
+        },
+        {
+          "source": "7-results-uncertainty-and-losses",
+          "rendition": "7-results-uncertainty-and-losses"
+        },
+        {
+          "source": "8-worked-original-examples",
+          "rendition": "8-worked-original-examples"
+        },
+        {
+          "source": "9-finite-acceptance-profile",
+          "rendition": "9-finite-acceptance-profile"
+        },
+        {
+          "source": "10-composition-with-artifacts-and-future-profiles",
+          "rendition": "10-composition-with-artifacts-and-future-profiles"
+        }
+      ]
+    },
+    {
+      "work": "semantic-bridge",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-bridge/SPECIFICATION.md",
+        "sha256": "14806b95faf96be7e737b3e35f546ecc6da84fceb0e651966a786deba0b03078",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/semantic-bridge/SPECIFICATION.md",
+        "sha256": "427a0151bcdd05cae3ae8992e97055565936af3009e1545c5c90ceb756cf95ef",
+        "revision": "2627326cd0ac05f843bcc654dc550298bfec6b78"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-operation-boundary-and-responsibilities",
+          "rendition": "2-operation-boundary-and-responsibilities"
+        },
+        {
+          "source": "3-source-identity-and-complete-rule-units",
+          "rendition": "3-source-identity-and-complete-rule-units"
+        },
+        {
+          "source": "4-typed-packet-and-retained-readings",
+          "rendition": "4-typed-packet-and-retained-readings"
+        },
+        {
+          "source": "41-observations-and-referents",
+          "rendition": "41-observations-and-referents"
+        },
+        {
+          "source": "42-reading-records",
+          "rendition": "42-reading-records"
+        },
+        {
+          "source": "5-controlled-expression-language",
+          "rendition": "5-controlled-expression-language"
+        },
+        {
+          "source": "6-possible-world-semantics-and-protected-observations",
+          "rendition": "6-possible-world-semantics-and-protected-observations"
+        },
+        {
+          "source": "7-results-uncertainty-and-losses",
+          "rendition": "7-results-uncertainty-and-losses"
+        },
+        {
+          "source": "8-worked-original-examples",
+          "rendition": "8-worked-original-examples"
+        },
+        {
+          "source": "9-finite-acceptance-profile",
+          "rendition": "9-finite-acceptance-profile"
+        },
+        {
+          "source": "10-composition-with-artifacts-and-future-profiles",
+          "rendition": "10-composition-with-artifacts-and-future-profiles"
+        }
+      ]
+    },
+    {
+      "work": "semantic-verification",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+        "sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/specifications/semantic-verification/SPECIFICATION.md",
+        "sha256": "5bc9f168f509561f2ac419c5200178aab4366d9845c4c800a75a6cc81119c3b4",
+        "revision": "2627326cd0ac05f843bcc654dc550298bfec6b78"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-claims-subjects-and-assessment-dimensions",
+          "rendition": "2-claims-subjects-and-assessment-dimensions"
+        },
+        {
+          "source": "3-verification-packet",
+          "rendition": "3-verification-packet"
+        },
+        {
+          "source": "4-preparation-and-assessment-procedure",
+          "rendition": "4-preparation-and-assessment-procedure"
+        },
+        {
+          "source": "5-evidence-methods-and-their-limits",
+          "rendition": "5-evidence-methods-and-their-limits"
+        },
+        {
+          "source": "6-finite-verification-passports",
+          "rendition": "6-finite-verification-passports"
+        },
+        {
+          "source": "7-bounded-profile-assessment-transfer",
+          "rendition": "7-bounded-profile-assessment-transfer"
+        },
+        {
+          "source": "71-fixed-assessment-and-retained-observations",
+          "rendition": "71-fixed-assessment-and-retained-observations"
+        },
+        {
+          "source": "72-maximal-partial-recovery",
+          "rendition": "72-maximal-partial-recovery"
+        },
+        {
+          "source": "73-diagnostic-results-and-application-evidence",
+          "rendition": "73-diagnostic-results-and-application-evidence"
+        },
+        {
+          "source": "74-calculated-inventory-for-the-four-situation-profile",
+          "rendition": "74-calculated-inventory-for-the-four-situation-profile"
+        },
+        {
+          "source": "8-failure-behavior-and-acceptance-cases",
+          "rendition": "8-failure-behavior-and-acceptance-cases"
+        },
+        {
+          "source": "9-review-revisions-and-compatibility",
+          "rendition": "9-review-revisions-and-compatibility"
+        },
+        {
+          "source": "10-sources-and-contribution-boundary",
+          "rendition": "10-sources-and-contribution-boundary"
+        }
+      ]
+    },
+    {
+      "work": "semantic-verification",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/specifications/semantic-verification/SPECIFICATION.md",
+        "sha256": "8e80af19426b676f45bdc4efd0fcd6e8d1073cf963246c40c431aaf296c97db4",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/specifications/semantic-verification/SPECIFICATION.md",
+        "sha256": "313ba227379be707db14ae231967f8b9d797c1193c7e90e52270facc4f4c59f6",
+        "revision": "2627326cd0ac05f843bcc654dc550298bfec6b78"
+      },
+      "sections": [
+        {
+          "source": "1-purpose-and-conformance",
+          "rendition": "1-purpose-and-conformance"
+        },
+        {
+          "source": "2-claims-subjects-and-assessment-dimensions",
+          "rendition": "2-claims-subjects-and-assessment-dimensions"
+        },
+        {
+          "source": "3-verification-packet",
+          "rendition": "3-verification-packet"
+        },
+        {
+          "source": "4-preparation-and-assessment-procedure",
+          "rendition": "4-preparation-and-assessment-procedure"
+        },
+        {
+          "source": "5-evidence-methods-and-their-limits",
+          "rendition": "5-evidence-methods-and-their-limits"
+        },
+        {
+          "source": "6-finite-verification-passports",
+          "rendition": "6-finite-verification-passports"
+        },
+        {
+          "source": "7-bounded-profile-assessment-transfer",
+          "rendition": "7-bounded-profile-assessment-transfer"
+        },
+        {
+          "source": "71-fixed-assessment-and-retained-observations",
+          "rendition": "71-fixed-assessment-and-retained-observations"
+        },
+        {
+          "source": "72-maximal-partial-recovery",
+          "rendition": "72-maximal-partial-recovery"
+        },
+        {
+          "source": "73-diagnostic-results-and-application-evidence",
+          "rendition": "73-diagnostic-results-and-application-evidence"
+        },
+        {
+          "source": "74-calculated-inventory-for-the-four-situation-profile",
+          "rendition": "74-calculated-inventory-for-the-four-situation-profile"
+        },
+        {
+          "source": "8-failure-behavior-and-acceptance-cases",
+          "rendition": "8-failure-behavior-and-acceptance-cases"
+        },
+        {
+          "source": "9-review-revisions-and-compatibility",
+          "rendition": "9-review-revisions-and-compatibility"
+        },
+        {
+          "source": "10-sources-and-contribution-boundary",
+          "rendition": "10-sources-and-contribution-boundary"
+        }
+      ]
     }
   ]
 }
