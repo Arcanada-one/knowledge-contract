@@ -1,0 +1,43 @@
+[
+  {
+    "name": "focused-status-tests",
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "test_build.PublicationStatusFixtures",
+      "test_build.StatusComponentWitnessFixtures",
+      "test_build.PublicationInventoryTests",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site/scripts",
+    "started_utc": "2026-11-17T11:03:44.953833+00:00",
+    "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+    "finished_utc": "2026-11-17T11:03:45.107653+00:00",
+    "elapsed_seconds": 0.15367385200079298,
+    "exit_code": 0,
+    "log": "focused-status-tests.log",
+    "log_sha256": "3bca1f55473bdca9908fb6671ab79095fbc130fbf40b10bb664ac3e8898b3f91"
+  },
+  {
+    "name": "full-generation",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/build_publication.py",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:03:45.108007+00:00",
+    "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+    "finished_utc": "2026-11-17T11:04:59.223017+00:00",
+    "elapsed_seconds": 74.11495563400058,
+    "exit_code": 0,
+    "log": "full-generation.log",
+    "log_sha256": "33ac5bd63e21b09d41ff3200ede3390780e8c8913d0f1e859020eb957092ea56"
+  }
+]

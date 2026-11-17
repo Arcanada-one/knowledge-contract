@@ -1,0 +1,67 @@
+{
+  "scope": "actual generated-page copies; selected static status checker only; no browser or independent acceptance",
+  "inventory": "actual54",
+  "probe_sha256": "f12f09fac9dfb50abf25af26ddf3f625c1ea46af311381f774f145180de61987",
+  "site_directory": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+  "site_head": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+  "source_commit": "6eec88097cf5255543c792e53c92f75c0d483728",
+  "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+  "actual_baseline_labelled_pages": 123,
+  "inputs": {
+    "en/programme/index.html": "10a069e2799851371258666a99198cd4b4f0e68043704b4e736cd1d4c5741283",
+    "en/roadmap/index.html": "24be465aa1f6cdb2321816caca8a1fd093e8cb9fa2978f1c09eaa3eb04016019",
+    "en/engineering/specifications/semantic-verification/index.html": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045",
+    "ru/programme/index.html": "c59b49725b5862cc8efdb0760ec9d4b54defd05ae5f4765c5c54e7ac5186bece",
+    "ru/roadmap/index.html": "a39730bc902690376748496fff76aa4f5deb455ccbfc8d0972b38ba15fce9ab5",
+    "ru/engineering/specifications/semantic-verification/index.html": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341",
+    "zh-Hans/programme/index.html": "09abb12893d4a7bc0be27d6e0ea66f84f2ce67eed7eb0feb0ea56db9fdc9a82c",
+    "zh-Hans/roadmap/index.html": "46434d424ef9971d8e63c42ead4d8d567a22fa302c9228ee1e8b6ecc949afa39",
+    "zh-Hans/engineering/specifications/semantic-verification/index.html": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3"
+  },
+  "unavailable_controls": [
+    {
+      "locale": "en",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    },
+    {
+      "locale": "ru",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    },
+    {
+      "locale": "zh-Hans",
+      "case": "roadmap_other_field_does_not_cover",
+      "actual_work_badges": 0,
+      "all_work_badges": 0,
+      "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+    }
+  ],
+  "counts": {
+    "cases": 54,
+    "checker_accepted": 15,
+    "matched_decisions": 54,
+    "expected_positive_cases": 15,
+    "expected_negative_cases": 39,
+    "conditions": {
+      "valid_baseline": 9,
+      "valid_inherited_language": 6,
+      "wrong_explicit_language": 6,
+      "unknown_explicit_language": 3,
+      "explicit_hidden_attribute": 6,
+      "explicit_accessibility_exclusion": 3,
+      "explicit_inert_subtree": 3,
+      "inline_display_none": 3,
+      "inline_visibility_hidden": 3,
+      "inline_content_visibility_hidden": 3,
+      "missing_one_direct_link_badge": 3,
+      "all_local_work_badges_misplaced": 3,
+      "reader_group_loses_its_status": 3
+    }
+  }
+}
+case_results [('en', 'unchanged', True), ('en', 'inherited_lang', True), ('en', 'wrong_lang', False), ('en', 'empty_lang', False), ('en', 'hidden_badge', False), ('en', 'aria_hidden_owner', False), ('en', 'inert_owner', False), ('en', 'display_none_owner', False), ('en', 'visibility_hidden_badge', False), ('en', 'content_visibility_hidden_owner', False), ('en', 'partial_duplicate', False), ('en', 'all_to_footer', False), ('en', 'unchanged_roadmap', True), ('en', 'unchanged_engineering/specifications/semantic-verification', True), ('en', 'reader_inherited_lang', True), ('en', 'reader_wrong_lang', False), ('en', 'reader_hidden_badge', False), ('en', 'reader_group_to_footer', False), ('ru', 'unchanged', True), ('ru', 'inherited_lang', True), ('ru', 'wrong_lang', False), ('ru', 'empty_lang', False), ('ru', 'hidden_badge', False), ('ru', 'aria_hidden_owner', False), ('ru', 'inert_owner', False), ('ru', 'display_none_owner', False), ('ru', 'visibility_hidden_badge', False), ('ru', 'content_visibility_hidden_owner', False), ('ru', 'partial_duplicate', False), ('ru', 'all_to_footer', False), ('ru', 'unchanged_roadmap', True), ('ru', 'unchanged_engineering/specifications/semantic-verification', True), ('ru', 'reader_inherited_lang', True), ('ru', 'reader_wrong_lang', False), ('ru', 'reader_hidden_badge', False), ('ru', 'reader_group_to_footer', False), ('zh-Hans', 'unchanged', True), ('zh-Hans', 'inherited_lang', True), ('zh-Hans', 'wrong_lang', False), ('zh-Hans', 'empty_lang', False), ('zh-Hans', 'hidden_badge', False), ('zh-Hans', 'aria_hidden_owner', False), ('zh-Hans', 'inert_owner', False), ('zh-Hans', 'display_none_owner', False), ('zh-Hans', 'visibility_hidden_badge', False), ('zh-Hans', 'content_visibility_hidden_owner', False), ('zh-Hans', 'partial_duplicate', False), ('zh-Hans', 'all_to_footer', False), ('zh-Hans', 'unchanged_roadmap', True), ('zh-Hans', 'unchanged_engineering/specifications/semantic-verification', True), ('zh-Hans', 'reader_inherited_lang', True), ('zh-Hans', 'reader_wrong_lang', False), ('zh-Hans', 'reader_hidden_badge', False), ('zh-Hans', 'reader_group_to_footer', False)]

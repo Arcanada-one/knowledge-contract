@@ -1,0 +1,21 @@
+{
+  "site_base": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+  "overlay_sha256": "8f07e0919ab142d1bda27e230a2bea48a4d7e46829ac3de0b65bffe0c891de8d",
+  "original_apply_check": {
+    "exit_code": 1,
+    "stderr": "error: patch failed: README.md:21\nerror: README.md: patch does not apply\n"
+  },
+  "reconciliation": "Applied previous input-only overlay except README; old overlay candidate README already includes the newly merged ten/30 statement, and was copied as the reconciled candidate. No Journal source or manifest changed.",
+  "journal_inputs_before": {
+    "src/content/journal/manifest.json": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/en.md": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/ru.md": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/zh-Hans.md": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a"
+  },
+  "journal_inputs_after": {
+    "src/content/journal/manifest.json": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/en.md": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/ru.md": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+    "src/content/journal/2026-11-17-reasoning-cache-break-even/zh-Hans.md": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a"
+  }
+}

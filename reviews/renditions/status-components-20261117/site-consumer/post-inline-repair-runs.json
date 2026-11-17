@@ -1,0 +1,130 @@
+[
+  {
+    "name": "post-inline-repair-links",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_links.py",
+      "public"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:23.672019+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:24.409409+00:00",
+    "elapsed_seconds": 0.7363538879999396,
+    "exit_code": 0,
+    "log": "post-inline-repair-links.log",
+    "log_sha256": "9eba5d76c664a262aac211673e1294cd0630afb944240b1ee40edbce1087f16e"
+  },
+  {
+    "name": "post-inline-repair-papers",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_papers.py",
+      "public"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:23.672422+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:24.569832+00:00",
+    "elapsed_seconds": 0.8969382949999272,
+    "exit_code": 0,
+    "log": "post-inline-repair-papers.log",
+    "log_sha256": "8ea9ee475e892f0bba00d931d813a7f613bbafe7346695ab4ced7cabfa896d22"
+  },
+  {
+    "name": "post-inline-repair-publication",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_publication.py"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:23.670859+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:27.581360+00:00",
+    "elapsed_seconds": 3.9101588359990274,
+    "exit_code": 0,
+    "log": "post-inline-repair-publication.log",
+    "log_sha256": "bad49026fab9aef60706d0da2ff4c078aec179d108ed1deeb9e11da2f0150aba"
+  },
+  {
+    "name": "post-inline-repair-actual54",
+    "argv": [
+      "python3",
+      "-B",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/badge_actual_page_probe.py",
+      "--site-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "--output-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/fixed-candidate-final",
+      "--expect-fixed"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:27.581745+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:29.495661+00:00",
+    "elapsed_seconds": 1.9102131019990338,
+    "exit_code": 0,
+    "log": "post-inline-repair-actual54.log",
+    "log_sha256": "9e71a5c1911edd506de99a24dc93679d51ed5015e629474bbb17db5c8d7d7cbd"
+  },
+  {
+    "name": "post-inline-repair-roadmap",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_roadmap.py",
+      "public",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:24.409532+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:30.347126+00:00",
+    "elapsed_seconds": 5.937386023999352,
+    "exit_code": 0,
+    "log": "post-inline-repair-roadmap.log",
+    "log_sha256": "2c1e363c30330eddc58ee90c0dbbad9673d03bc294e2d185463c993fb0421b4e"
+  },
+  {
+    "name": "post-inline-repair-test-build",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_build.py",
+      "-v"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:24.569992+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:38.707718+00:00",
+    "elapsed_seconds": 14.137416575000316,
+    "exit_code": 0,
+    "log": "post-inline-repair-test-build.log",
+    "log_sha256": "1241a3f36a1d0ec00931e932c539f0c3985e4727d1047a543309df7dacfb36fd"
+  },
+  {
+    "name": "post-inline-repair-localization",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/check_localization.py",
+      "public",
+      "--source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+      "--roadmap-source-dir",
+      "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+    ],
+    "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+    "started_utc": "2026-11-17T11:13:23.671217+00:00",
+    "checker_sha256": "72e1ceb100b7482c6655d5bde13d335601022f4aadf9d4c992654bf6b7369e97",
+    "finished_utc": "2026-11-17T11:13:44.810043+00:00",
+    "elapsed_seconds": 21.138314892999915,
+    "exit_code": 0,
+    "log": "post-inline-repair-localization.log",
+    "log_sha256": "58d7008b88dc974b34923e057149819e27dd3f4217a97174df91335fd65da879"
+  }
+]

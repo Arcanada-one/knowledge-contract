@@ -1,0 +1,1419 @@
+diff --git a/README.md b/README.md
+index 82a598b..d955508 100644
+--- a/README.md
++++ b/README.md
+@@ -1,8 +1,8 @@
+ # Knowledge Contract Arcana publication site
+ 
+-The source for [contract.place](https://contract.place). The pinned edition **1.1** reading catalogue contains **31 works**: ten scientific papers (eight baseline papers and two foundations research drafts), eleven engineering specifications, six engineering studies, a glossary, a bibliography and two appendices. Scientific arguments, normative requirements and observations have separate reading paths and explicit cross-references. This edition incorporates corrections to the published 1.0 corpus; its source review record distinguishes resolved findings from the remaining historical recovery gap. The later 36-work inventory on the knowledge repository's `main` is a separate snapshot; this release retains the pinned 31-work catalogue.
++The source for [contract.place](https://contract.place). The candidate pinned edition **1.1** reading catalogue contains **36 works**: eleven scientific papers (eight baseline papers and three research drafts), thirteen engineering specifications, eight engineering studies, a glossary, a bibliography and two appendices. Scientific arguments, normative requirements and observations have separate reading paths and explicit cross-references. Source pin `6eec88097cf5255543c792e53c92f75c0d483728` is an integration candidate; this README does not establish acceptance or deployment. The 16 November site release at `2e280d3e64a9e38e44bf808cb1d54311b5fc47eb` used knowledge pin `39e4054830d9cb05bc0432d25f7320cb8a97f054` with 31 works and 62 renditions; those remain historical release counts.
+ 
+-The interface retains the project's design, local fonts and illustrations in English, Russian and Simplified Chinese. English remains the canonical source language. Every pinned work has a Russian and Simplified Chinese body rendition: **62 renditions across 93 reader pages**, with eight historical reviewed renditions preserved byte for byte and 54 visible unreviewed renditions carrying an explicit notice. Source-bound localized titles and summaries have their own unreviewed status. Earlier Russian texts remain traceable through the source-map appendix and pinned history. Automated coverage and author-side checks do not establish native-speaker or external editorial review. The [15 November localization audit](docs/localization-audit-2026-11-15.md) records coverage, controls and the separate release/readback status.
++The interface retains the project's design, local fonts and illustrations in English, Russian and Simplified Chinese. English remains the canonical source language. Every pinned work has a Russian and Simplified Chinese body rendition: **72 renditions across 108 reader pages**, with eight historical reviewed renditions preserved byte for byte and 64 visible unreviewed renditions carrying an explicit notice. Source-bound localized titles and summaries have their own unreviewed status. Earlier Russian texts remain traceable through the source-map appendix and pinned history. Automated coverage and author-side checks do not establish native-speaker or external editorial review. The [15 November localization audit](docs/localization-audit-2026-11-15.md) records coverage, controls and the separate release/readback status.
+ 
+ ## Reading structure
+ 
+@@ -21,7 +21,7 @@ Full manuscripts are present in built HTML. Pandoc preserves equations as MathML
+ 
+ ## Source identity and generated data
+ 
+-`publication-manifest.json` pins the knowledge repository to an exact 40-character commit. Its `publication-catalog.json` is authoritative for the 31 catalogued works. The source repository's `publication-localization.json` binds localized titles and summaries separately from the body records in `publication-renditions.json`; see [catalogue localization](docs/catalogue-localization.md). Source-owned `publication-formula-localizations.json` separately binds visible prose inside formulas; the renderer retains canonical TeX and mathematical structure and records an unreviewed presentation scope. `publication-review-localizations.json` separately translates historical review explanations while preserving the original records and their scope. The compiler generates text, routes, metadata and source hashes in `src/content/catalog.json` and `src/site/content-provenance.json`; journal material and design remain in this repository.
++`publication-manifest.json` pins the knowledge repository to an exact 40-character commit. Its `publication-catalog.json` is authoritative for the 36 catalogued works. The source repository's `publication-localization.json` binds localized titles and summaries separately from the body records in `publication-renditions.json`; see [catalogue localization](docs/catalogue-localization.md). Source-owned `publication-formula-localizations.json` separately binds visible prose inside formulas; the renderer retains canonical TeX and mathematical structure and records an unreviewed presentation scope. `publication-review-localizations.json` separately translates historical review explanations while preserving the original records and their scope. The compiler generates text, routes, metadata and source hashes in `src/content/catalog.json` and `src/site/content-provenance.json`; journal material and design remain in this repository.
+ 
+ Daily journal issues live under `src/content/journal/`: three language Markdown files per issue plus `manifest.json` digests. The ten dated issues provide 30 localized journal pages at `/{en,ru,zh-Hans}/journal/<slug>/` and appear on the journal index newest first. Local search includes these issues. The legacy `/journal/building-a-place/` route stays noindex; its retained project note is localized. See AGENTS.md “Daily journal issue”.
+ 
+@@ -72,7 +72,7 @@ Edit the interface in `src/site/app.js`, CSS in `src/site/style.css` and assets
+ 
+ `/en/roadmap/`, `/ru/roadmap/` and `/zh-Hans/roadmap/` show the Knowledge Contract research roadmap as **planned work**: 25 task cards (`#rm-01` … `#rm-25`) per language, priority bands, required and advisory dependencies as text tables, and links to the versioned sources. The overview, introduction, names and task fields are localized: 75 rendered cards and 453 rendered fields across the three pages. Russian and Chinese translations visibly remain unreviewed. Every task retains its planned status and the source's dated observations; the page does not claim synchronized execution state or live progress.
+ 
+-The roadmap has its own pin, `roadmap-manifest.json`: repository, a full 40-character commit and the SHA-256 of each source file (`ROADMAP.md`, `roadmap/TASKS.md`, `roadmap/dependencies.json`, the linked `roadmap/EXPERIMENTS.md` and `roadmap/FOUNDATIONS_RELEASE_PLAN.md` (linked at the pin, not rendered), and `roadmap/SITE_DELIVERY.md`, from which only the public introduction is taken). Localization additionally pins `roadmap/localizations.json`, both `roadmap/ROADMAP.full.<locale>.md` overviews and both `roadmap/TASKS.<locale>.json` payloads. It is independent of `publication-manifest.json`; the page shows both commits and states that they are separate. `scripts/roadmap.py` refuses a pin that is not a full commit, a checkout at another commit or with uncommitted changes, a hash mismatch, a missing or duplicate task, any disagreement between a card and `dependencies.json` (priority, owner, required outputs), a dangling or cyclic edge, any task state other than planned, and private identifiers. `scripts/roadmap_localization.py` separately binds translations to unchanged historical and current source bytes, preserves dates, numbers, links, code and mathematics, and rejects translated state/authority injection. Compilation happens before any generated file is written. Known limit: the compiler checks structured state (task fields, `dependencies.json` keys, the one accepted `execution_bindings` value, dates), but it does not scan the free prose of card fields or of `ROADMAP.md` for status words such as "completed" or "active"; that text is published as written by the content owner, who reviews it. The TASKS.md preamble before the first card is rendered above the cards, and any unexpected text between a card header and its first field is refused. The roadmap is separate from the 31-work reading catalogue, and `public/roadmap.json` records its provenance.
++The roadmap has its own pin, `roadmap-manifest.json`: repository, a full 40-character commit and the SHA-256 of each source file (`ROADMAP.md`, `roadmap/TASKS.md`, `roadmap/dependencies.json`, the linked `roadmap/EXPERIMENTS.md` and `roadmap/FOUNDATIONS_RELEASE_PLAN.md` (linked at the pin, not rendered), and `roadmap/SITE_DELIVERY.md`, from which only the public introduction is taken). Localization additionally pins `roadmap/localizations.json`, both `roadmap/ROADMAP.full.<locale>.md` overviews and both `roadmap/TASKS.<locale>.json` payloads. It is independent of `publication-manifest.json`; the page shows both commits and states that they are separate. `scripts/roadmap.py` refuses a pin that is not a full commit, a checkout at another commit or with uncommitted changes, a hash mismatch, a missing or duplicate task, any disagreement between a card and `dependencies.json` (priority, owner, required outputs), a dangling or cyclic edge, any task state other than planned, and private identifiers. `scripts/roadmap_localization.py` separately binds translations to unchanged historical and current source bytes, preserves dates, numbers, links, code and mathematics, and rejects translated state/authority injection. Compilation happens before any generated file is written. Known limit: the compiler checks structured state (task fields, `dependencies.json` keys, the one accepted `execution_bindings` value, dates), but it does not scan the free prose of card fields or of `ROADMAP.md` for status words such as "completed" or "active"; that text is published as written by the content owner, who reviews it. The TASKS.md preamble before the first card is rendered above the cards, and any unexpected text between a card header and its first field is refused. The roadmap is separate from the 36-work reading catalogue, and `public/roadmap.json` records its provenance.
+ 
+ ## Search and API
+ 
+diff --git a/build.mjs b/build.mjs
+index 7bab386..312cb9d 100644
+--- a/build.mjs
++++ b/build.mjs
+@@ -93,6 +93,15 @@ if(data.programme){
+   fs.writeFileSync(path.join(out,'programme.json'),JSON.stringify({kind:'programme-provenance',pin:prog.pin,routes:prog.routes,foundation_card_rule:prog.foundation_card_rule,pages:Object.fromEntries(Object.entries(prog.pages).map(([l,p])=>[l,{path:p.path,title:p.title,source_sha256:p.source_sha256,blob:p.blob,foundations:p.foundations}]))},null,2)+'\n');
+ }
+ const base='https://contract.place';
++const publicationStatusDescriptions={
++  'research-draft':'research draft, not an accepted paper',
++  'engineering-draft':'engineering draft, not an accepted specification or implementation-conformance claim',
++  'internally-reviewed-finite-evaluation':'internally reviewed finite evaluation, limited to its stated cases and assumptions; not independent scientific acceptance, general correctness or production validation'
++};
++function publicationStatusDescription(status){
++  if(!Object.hasOwn(publicationStatusDescriptions,status))throw new Error('Catalogue status has no description: '+status);
++  return publicationStatusDescriptions[status];
++}
+ const lines=['# Knowledge Contract Arcana','',
+ 'Publication edition '+manifest.edition+'. Source commit '+manifest.commit+'.',
+ 'Complete English documents with an English, Russian and Chinese interface. The Chinese interface has not received native editorial review.','',
+@@ -110,7 +119,7 @@ const lines=['# Knowledge Contract Arcana','',
+ '- Repository: https://github.com/Arcanada-one/knowledge-contract',
+ '- Arcanada ecosystem: https://arcanada.ai','',
+ '## Publication documents','',
+-...documents.map(d=>'- ['+d.title+']('+base+d.route+'): '+d.type+(d.status?' ('+d.status.replace('-',' ')+', not an accepted paper)':'')+'.'),'',
++...documents.map(d=>'- ['+d.title+']('+base+d.route+'): '+d.type+(d.status?' ('+publicationStatusDescription(d.status)+')':'')+'.'),'',
+ '## Scope and access','',
+ 'Scientific papers state assumptions, conditional results and counterexamples. Engineering specifications define requirements. Studies retain finite observations and their limitations. Publication is not runtime admission.',
+ 'The public read API at https://api.contract.place exposes search, related and fetch. An MCP endpoint is documented at https://api.contract.place/mcp. API results may belong to a different source snapshot. Task-specific contract delivery has separate requirements in the API appendix.','',
+diff --git a/publication-manifest.json b/publication-manifest.json
+index daabdd3..c6a6ac8 100644
+--- a/publication-manifest.json
++++ b/publication-manifest.json
+@@ -2,6 +2,6 @@
+   "schema_version": 1,
+   "edition": "1.1",
+   "repository": "Arcanada-one/knowledge-contract",
+-  "commit": "39e4054830d9cb05bc0432d25f7320cb8a97f054",
++  "commit": "6eec88097cf5255543c792e53c92f75c0d483728",
+   "catalog": "publication-catalog.json"
+ }
+diff --git a/scripts/build_publication.py b/scripts/build_publication.py
+index d899952..26c4878 100644
+--- a/scripts/build_publication.py
++++ b/scripts/build_publication.py
+@@ -30,7 +30,7 @@ PANDOC_VERSION = "3.1.3"
+ CC = "https://creativecommons.org/licenses/by/4.0/"
+ APACHE = "https://www.apache.org/licenses/LICENSE-2.0"
+ # Catalogue status values the site knows how to label. An unknown status stops the build (never silently shown as accepted).
+-STATUSES = {"research-draft"}
++STATUSES = {"research-draft", "engineering-draft", "internally-reviewed-finite-evaluation"}
+ KINDS = {
+     "paper": ("Scientific paper", "/en/science/", "Science"),
+     "specification": ("Engineering specification", "/en/engineering/specifications/", "Specifications"),
+diff --git a/scripts/check_localization.py b/scripts/check_localization.py
+index e6158be..84525e3 100644
+--- a/scripts/check_localization.py
++++ b/scripts/check_localization.py
+@@ -287,12 +287,12 @@ class Audit:
+             if first:
+                 root.children.remove(first)
+         expected = normalized(root.text())
+-        # Programme decoration adds exactly one space and a plain status span
++        # Programme decoration adds exactly one space and a work-bound status span
+         # after selected links. Remove that whole addition for source-text
+         # comparison, including its space (Chinese source text may be adjacent).
+         # Actual compiled→DOM comparison still requires the badge unchanged.
+         if ignore_status_badges:
+-            compiled_html = re.sub(r' <span class="status-badge">[^<>]*</span>', "", compiled_html)
++            compiled_html = re.sub(r' <span lang="(?:en|ru|zh-Hans)" data-work-status="[a-z0-9-]+"><span class="status-badge">[^<>]*</span></span>', "", compiled_html)
+         actual = normalized(Document(compiled_html).root.text())
+         self.require(bool(expected) and expected == actual, "SOURCE_BODY", where,
+                      "compiled text differs from source Markdown (excluding first H1 and added status badges)")
+diff --git a/scripts/check_papers.py b/scripts/check_papers.py
+index 937c2c5..4287c4f 100644
+--- a/scripts/check_papers.py
++++ b/scripts/check_papers.py
+@@ -6,6 +6,7 @@ Usage: check_papers.py <public-dir> [--tree <file>]
+           repository must point at a path in the list.
+ """
+ import json
++from publication_inventory import check_inventory
+ import re
+ import sys
+ from html.parser import HTMLParser
+@@ -107,8 +108,7 @@ def main(argv):
+     root = Path(argv[1])
+     catalog = json.loads((root / 'content.js').read_text().split('=', 1)[1].strip().rstrip(';'))
+     records = catalog['records']
+-    if len(records) != 31:
+-        raise SystemExit('Expected the 31 canonical documents of edition 1.1')
++    check_inventory(records, slug_key='id')
+     # Primary references are approved by the canonical source. A rendered page
+     # must preserve those exact URLs; it may not invent a different external host.
+     approved = set()
+diff --git a/scripts/check_publication.py b/scripts/check_publication.py
+index 421121e..9094256 100644
+--- a/scripts/check_publication.py
++++ b/scripts/check_publication.py
+@@ -2,7 +2,7 @@
+ # SPDX-FileCopyrightText: 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+ # SPDX-License-Identifier: Apache-2.0
+ """Verify complete article text, source pins, translated UI and compatibility."""
+-from collections import Counter
++from publication_inventory import check_inventory
+ from hashlib import sha256
+ import json
+ from pathlib import Path
+@@ -17,17 +17,15 @@ catalog = json.loads((ROOT / 'src/content/catalog.json').read_text())
+ assert not published.get('preview')
+ for key in ('schema_version', 'commit', 'edition', 'repository', 'catalog'):
+     assert published[key] == manifest[key] == catalog['publication'][key], key
+-assert Counter(d['type'] for d in published['documents']) == {
+-    'paper': 10, 'specification': 11, 'study': 6, 'glossary': 1,
+-    'bibliography': 1, 'appendix': 2,
+-}, 'Publication inventory is incomplete'
++check_inventory(published['documents'])
++check_inventory(catalog['records'], slug_key='id')
+ provenance = json.loads((ROOT / 'src/site/content-provenance.json').read_text())
+ # Language renditions (K8): an output built from a fixture sidecar is never a publication.
+ renditions_source = (provenance.get('renditions') or {}).get('renditions_source')
+ assert catalog.get('renditions_source') == renditions_source, 'catalogue and provenance disagree on the renditions source'
+ assert (published.get('renditions') or {}).get('source') == renditions_source, 'publication.json and provenance disagree on the renditions source'
+ records = {r['route']: r for r in catalog['records']}
+-assert len(records) == 31
++assert len(records) == 36
+ equations = 0
+ for doc in published['documents']:
+     record = records[doc['route']]
+@@ -71,4 +69,4 @@ count = check_site(public)
+ labelled = check_status_labels(public, catalog['records'])
+ rendition_pages = check_renditions(public, catalog['records'], renditions_source)
+ assert all(d.get('status') == records[d['route']].get('status') for d in published['documents']), 'publication.json status differs from the catalogue'
+-print(f'Publication checks OK: 31 full documents / 93 localized reading pages, {equations} original MathML expressions, {count} pages, {labelled} pages carry a catalogue-status label; {rendition_pages} rendition pages checked; exact body and source bindings.')
++print(f'Publication checks OK: 36 full documents / 108 localized reading pages, {equations} original MathML expressions, {count} pages, {labelled} pages carry a catalogue-status label; {rendition_pages} rendition pages checked; exact body and source bindings.')
+diff --git a/scripts/check_roadmap.py b/scripts/check_roadmap.py
+index afb2ce6..2206de0 100644
+--- a/scripts/check_roadmap.py
++++ b/scripts/check_roadmap.py
+@@ -21,6 +21,7 @@ import re
+ 
+ import roadmap
+ import roadmap_localization
++from publication_inventory import check_inventory
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ LOCALES = {"en": "Planned", "ru": "Запланировано", "zh-Hans": "计划中"}
+@@ -331,7 +332,8 @@ def main() -> None:
+     if 'class="publication-paths"' not in home or 'href="/en/roadmap/"' not in home.split('class="publication-paths"', 1)[1].split("</section>", 1)[0]:
+         errors.append("en/index.html: the project overview does not link to the roadmap")
+ 
+-    # Provenance: roadmap.json, catalogue and manifests agree; the manuscript publication is unchanged.
++    # Provenance: roadmap.json, catalogue and manifests agree; roadmap tasks
++    # remain separate from the exact adopted manuscript inventory.
+     prov = json.loads((public / "roadmap.json").read_text())
+     if prov["roadmap_pin"]["commit"] != pin["commit"] or prov["manuscript_pin"]["commit"] != manuscript["commit"]:
+         errors.append("roadmap.json pins differ from the manifests")
+@@ -344,8 +346,13 @@ def main() -> None:
+         errors.append("roadmap.json tasks must be RM-01..RM-25, all planned")
+     catalog = json.loads((ROOT / "src/content/catalog.json").read_text())
+     publication = json.loads((public / "publication.json").read_text())
+-    if len(catalog["records"]) != 31 or len(publication["documents"]) != 31 or "roadmap" in publication:
+-        errors.append("the 31-document publication changed")
++    try:
++        check_inventory(catalog["records"], slug_key="id")
++        check_inventory(publication["documents"])
++    except ValueError as error:
++        errors.append(str(error))
++    if "roadmap" in publication:
++        errors.append("roadmap data entered the manuscript publication")
+     if catalog["publication"]["commit"] != manuscript["commit"] or publication["commit"] != manuscript["commit"]:
+         errors.append("the manuscript pin changed")
+     if any("roadmap" in d["route"] or d["slug"].startswith("rm-") for d in publication["documents"]):
+diff --git a/scripts/programme.py b/scripts/programme.py
+index a60c799..cc3fd51 100644
+--- a/scripts/programme.py
++++ b/scripts/programme.py
+@@ -9,6 +9,7 @@ from __future__ import annotations
+ 
+ from hashlib import sha256
+ import json
++from html import escape
+ from pathlib import Path
+ import re
+ 
+@@ -20,6 +21,8 @@ LOCALES = ("en", "ru", "zh-Hans")
+ # Keep in sync with publication_checks.STATUS_LABELS (UI chrome only).
+ STATUS_LABELS = {
+     "research-draft": {"en": "Research draft", "ru": "Исследовательский черновик", "zh-Hans": "研究草稿"},
++    "engineering-draft": {"en": "Engineering draft", "ru": "Инженерный черновик", "zh-Hans": "工程草案"},
++    "internally-reviewed-finite-evaluation": {"en": "Internally reviewed finite evaluation", "ru": "Конечная оценка с внутренней рецензией", "zh-Hans": "经过内部审查的有限评估"},
+ }
+ SOURCES = {
+     "en": "PROGRAMME.md",
+@@ -266,7 +269,8 @@ def localize_catalogue_links(html: str, documents: list[dict], locale: str) -> s
+         en_route = doc["route"]
+         local_route = en_route.replace("/en/", f"/{locale}/", 1)
+         if locale != "en":
+-            html = html.replace(f'href="{en_route}"', f'href="{local_route}"')
++            for suffix in ('"', "#", "?"):
++                html = html.replace(f'href="{en_route}{suffix}', f'href="{local_route}{suffix}')
+     return html
+ 
+ 
+@@ -299,6 +303,20 @@ def linked_status_title_lang(doc: dict, locale: str) -> str:
+     return "en"
+ 
+ 
++def status_work_id(doc: dict) -> str:
++    identity = doc.get("id") or doc.get("slug")
++    if not isinstance(identity, str) or not identity:
++        raise ValueError("A publication-status badge requires a canonical work identity")
++    return identity
++
++
++def publication_status_badge(doc: dict, locale: str) -> str:
++    label = STATUS_LABELS[doc["status"]][locale]
++    identity = escape(status_work_id(doc), quote=True)
++    return (f'<span lang="{locale}" data-work-status="{identity}">'
++            f'<span class="status-badge">{label}</span></span>')
++
++
+ def roadmap_linked_status(html: str, documents: list[dict], locale: str) -> str:
+     """Last child inside a roadmap field <dd>: catalogue link + badge per draft linked in that field.
+ 
+@@ -315,13 +333,13 @@ def roadmap_linked_status(html: str, documents: list[dict], locale: str) -> str:
+     items: list[str] = []
+     seen: set[str] = set()
+     for match in re.finditer(r'<a\b[^>]*\bhref="([^"]+)"[^>]*>(.*?)</a>', localized, re.S):
+-        doc = by_href.get(match.group(1))
++        doc = by_href.get(re.split(r"[?#]", match.group(1), maxsplit=1)[0])
+         if not doc:
+             continue
+         status = doc.get("status")
+         if not status or status not in STATUS_LABELS:
+             continue
+-        doc_id = doc.get("id") or match.group(1)
++        doc_id = status_work_id(doc)
+         if doc_id in seen:
+             continue
+         seen.add(doc_id)
+@@ -332,7 +350,7 @@ def roadmap_linked_status(html: str, documents: list[dict], locale: str) -> str:
+         # lang on a wrapper keeps <span class="status-badge">{label}</span> intact for check_status_labels.
+         items.append(
+             f'<a href="{local_route}" lang="{title_lang}">{escape(text)}</a> '
+-            f'<span lang="{locale}"><span class="status-badge">{label}</span></span>'
++            + publication_status_badge(doc, locale)
+         )
+     if not items:
+         return ""
+@@ -348,9 +366,9 @@ def localize_and_badge_links(html: str, documents: list[dict], locale: str) -> s
+         if not status or status not in STATUS_LABELS:
+             continue
+         label = STATUS_LABELS[status][locale]
+-        badge = f'<span class="status-badge">{label}</span>'
+-        pattern = re.compile(rf'(href="{re.escape(local_route)}"[^>]*>.*?</a>)(?!\s*<span class="status-badge">)')
+-        html = pattern.sub(rf'\1 {badge}', html)
++        badge = publication_status_badge(doc, locale)
++        pattern = re.compile(rf'(href="{re.escape(local_route)}(?:[?#][^"]*)?"[^>]*>.*?</a>)(?!\s*<span\b[^>]*data-work-status=)')
++        html = pattern.sub(lambda match: match.group(1) + ' ' + badge, html)
+     return html
+ 
+ 
+diff --git a/scripts/publication_checks.py b/scripts/publication_checks.py
+index f083610..e8fc869 100644
+--- a/scripts/publication_checks.py
++++ b/scripts/publication_checks.py
+@@ -63,43 +63,312 @@ def check_site(output: Path) -> int:
+ # Expected public labels for catalogue statuses, independent of the site code that renders them.
+ STATUS_LABELS = {
+     "research-draft": {"en": "Research draft", "ru": "Исследовательский черновик", "zh-Hans": "研究草稿"},
++    "engineering-draft": {"en": "Engineering draft", "ru": "Инженерный черновик", "zh-Hans": "工程草案"},
++    "internally-reviewed-finite-evaluation": {"en": "Internally reviewed finite evaluation", "ru": "Конечная оценка с внутренней рецензией", "zh-Hans": "经过内部审查的有限评估"},
+ }
+ LOCALES = ("en", "ru", "zh-Hans")
+ 
+ 
++class StatusElement:
++    """Small structural tree for the site's emitted status components, not a browser DOM."""
++
++    def __init__(self, tag, attrs, parent=None):
++        self.tag, self.attrs, self.parent = tag, attrs, parent
++        self.children = []
++
++    def has_class(self, name):
++        return name in (self.attrs.get("class") or "").split()
++
++    def ancestors(self):
++        node = self
++        while node is not None:
++            yield node
++            node = node.parent
++
++    def nearest(self, predicate):
++        return next((node for node in self.ancestors() if predicate(node)), None)
++
++    def contains(self, other):
++        return any(node is self for node in other.ancestors())
++
++    def text_nodes(self):
++        for child in self.children:
++            if isinstance(child, str):
++                yield self, child
++            else:
++                yield from child.text_nodes()
++
++    def text(self):
++        return "".join(text for _, text in self.text_nodes())
++
++
++def effective_status_language(node):
++    # An absent lang inherits; lang="" explicitly makes the language unknown.
++    for ancestor in node.ancestors():
++        if "lang" in ancestor.attrs:
++            return (ancestor.attrs["lang"] or "").strip().casefold()
++    return ""
++
++
++def inline_status_style(node):
++    """Read only literal inline declarations relevant to this bounded witness check.
++
++    Stylesheets, selector matching, CSS variables and arbitrary computed visual
++    effects are outside this check. An inline !important declaration wins over
++    a later non-important declaration of the same supported property.
++    """
++    import re
++    style = re.sub(r"/\*.*?\*/", "", node.attrs.get("style") or "", flags=re.S)
++    values = {}
++    for declaration in style.split(";"):
++        name, separator, value = declaration.partition(":")
++        name = name.strip().casefold()
++        if not separator or name not in {"display", "visibility", "content-visibility"}:
++            continue
++        important = bool(re.search(r"!\s*important\s*$", value, re.I))
++        value = re.sub(r"!\s*important\s*$", "", value, flags=re.I).strip().casefold()
++        if name not in values or important or not values[name][1]:
++            values[name] = (value, important)
++    return {name: value for name, (value, _) in values.items()}
++
++
++def status_text_exposed(node):
++    """Whether explicit HTML/inline exclusions permit this status witness.
++
++    aria-hidden is an accessibility exclusion, not a claim of visual hiding.
++    Excluded redundant badges may coexist with a usable badge in the required
++    component. This is not an accessible-name or assistive-technology solver.
++    """
++    visibility = None
++    for ancestor in node.ancestors():
++        attrs = ancestor.attrs
++        if ("hidden" in attrs or "inert" in attrs or ancestor.tag == "template"
++                or (attrs.get("aria-hidden") or "").strip().casefold() == "true"):
++            return False
++        style = inline_status_style(ancestor)
++        if style.get("display") == "none" or style.get("content-visibility") == "hidden":
++            return False
++        if visibility is None and style.get("visibility") in {"visible", "hidden", "collapse"}:
++            visibility = style["visibility"]
++    return visibility not in {"hidden", "collapse"}
++
++
++class StatusBadgeBindings(HTMLParser):
++    """Read work bindings together with their actual renderer component and ancestry."""
++    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
++
++    def __init__(self, html: str):
++        super().__init__(convert_charrefs=True)
++        self.root = StatusElement("#document", {})
++        self.stack = [self.root]
++        self.nodes = []
++        self.links = []
++        self.badge_nodes = []
++        self.link_paths = set()
++        self.feed(html)
++        self.close()
++        self.active = [node for node in self.stack if node.has_class("status-badge")]
++        self.badges = [(self.badge_work(node), node.text()) for node in self.badge_nodes]
++
++    @staticmethod
++    def link_path(node):
++        href = node.attrs.get("href") or ""
++        return urlsplit(href).path if href.startswith("/") and not href.startswith("//") else None
++
++    @staticmethod
++    def badge_work(node):
++        parent = node.parent
++        owners = [a for a in node.ancestors() if "data-work-status" in a.attrs]
++        return (parent.attrs.get("data-work-status")
++                if node.tag == "span" and parent is not None and parent.tag == "span"
++                and len(owners) == 1 and owners[0] is parent else None)
++
++    @staticmethod
++    def usable(node, locale):
++        text_nodes = [parent for parent, text in node.text_nodes() if text.strip()]
++        return bool(text_nodes) and all(
++            effective_status_language(part) == locale.casefold() and status_text_exposed(part)
++            for part in [node, *text_nodes]
++        )
++
++    def handle_starttag(self, tag, attributes):
++        attrs = dict(attributes)
++        node = StatusElement(tag, attrs, self.stack[-1])
++        self.stack[-1].children.append(node)
++        self.nodes.append(node)
++        if tag == "a":
++            self.links.append(node)
++            path = self.link_path(node)
++            if path is not None:
++                self.link_paths.add(path)
++        if "status-badge" in (attrs.get("class") or "").split():
++            self.badge_nodes.append(node)
++        if tag not in self.VOID:
++            self.stack.append(node)
++
++    def handle_startendtag(self, tag, attributes):
++        self.handle_starttag(tag, attributes)
++        if tag not in self.VOID:
++            self.handle_endtag(tag)
++
++    def handle_data(self, value):
++        self.stack[-1].children.append(value)
++
++    def handle_endtag(self, tag):
++        index = next((i for i in range(len(self.stack) - 1, 0, -1) if self.stack[i].tag == tag), None)
++        if index is None:
++            return
++        del self.stack[index:]
++
++    def adjacent_badges(self, link):
++        """The emitted link's following badge run, allowing a redundant excluded copy."""
++        siblings = link.parent.children
++        found = []
++        for sibling in siblings[siblings.index(link) + 1:]:
++            if isinstance(sibling, str):
++                if sibling.strip():
++                    break
++                continue
++            if sibling.tag != "span" or "data-work-status" not in sibling.attrs:
++                break
++            found.extend(node for node in self.badge_nodes if node.parent is sibling)
++        return found
++
++    @staticmethod
++    def reader_container(node):
++        return node.nearest(lambda n: n.has_class("publication-record") and not n.has_class("programme-page"))
++
++    @staticmethod
++    def current_locale_navigation(link, locale):
++        # The global language picker repeats the current reader's own route.
++        # Its status obligation is the separately checked reading-page header,
++        # not an extra badge on the language button itself.
++        return (link.has_class("locale-chip") and link.attrs.get("data-locale") == locale
++                and link.attrs.get("aria-current") == "page"
++                and link.parent is not None and link.parent.has_class("locale-flags")
++                and link.nearest(lambda n: n.tag == "header" and n.attrs.get("id") == "header") is not None)
++
++    def link_component(self, link):
++        # A summary's own link always needs its adjacent badge. The original
++        # prose links below deliberately use per-work grouped summaries.
++        if link.nearest(lambda n: n.has_class("rm-linked-status")) is not None:
++            return "direct link", link
++        field = link.nearest(lambda n: n.tag == "dd" and n.nearest(lambda a: a.has_class("roadmap-fields")) is not None)
++        if field is not None:
++            return "roadmap field", field
++        card = link.nearest(lambda n: n.has_class("paper-card"))
++        if card is not None:
++            return "paper card", card
++        if link.has_class("spec-row") or link.has_class("dialog-result"):
++            return "linked record", link
++        row = link.nearest(lambda n: n.tag == "tr" and n.nearest(lambda a: a.has_class("repository-table")) is not None)
++        if row is not None:
++            return "repository row", row
++        reader = self.reader_container(link)
++        if reader is not None:
++            if link.nearest(lambda n: n.has_class("article-aside")) is not None:
++                return "reader sibling", link
++            if link.nearest(lambda n: n.has_class("source-body")) is not None:
++                return "reader references", reader
++        # Programme links (including foundation cards and tables) are emitted
++        # with an adjacent badge for every occurrence; no page-wide fallback.
++        return "direct link", link
++
++    def summary_badges(self, scope, kind, route):
++        found = []
++        for link in self.links:
++            if self.link_path(link) != route:
++                continue
++            summary = link.nearest(lambda n: n.has_class("rm-linked-status"))
++            if summary is None:
++                continue
++            if kind == "roadmap field":
++                same_component = summary.parent is scope
++            else:
++                same_component = (summary.parent is not None and summary.parent.has_class("article-aside")
++                                  and self.reader_container(summary) is scope)
++            if same_component:
++                found.extend(self.adjacent_badges(link))
++        return found
++
++    def component_badges(self, kind, scope, route):
++        if kind == "direct link":
++            return self.adjacent_badges(scope)
++        if kind in {"reader references", "roadmap field"}:
++            return self.summary_badges(scope, kind, route)
++        if scope is None:
++            return []
++        if kind == "paper card":
++            owner = lambda n: n.has_class("paper-card")
++        elif kind == "repository row":
++            owner = lambda n: n.tag == "tr"
++        elif kind == "reading-page header":
++            owner = lambda n: n.has_class("page-head")
++        else:
++            owner = lambda n: n.tag == "a"
++        return [node for node in self.badge_nodes if node.nearest(owner) is scope]
++
++
+ def check_status_labels(output: Path, records: list[dict]) -> int:
+-    """Every page that shows a document with a catalogue status must carry its label; no page may carry a label for
+-    a document it does not show. Raises ValueError listing the failures; returns the number of labelled pages."""
++    """Require a usable work-bound badge in each renderer's stated component.
++
++    This validates emitted HTML structure, effective lang and explicit hiding
++    attributes/supported inline styles, not arbitrary CSS or AT equivalence.
++    """
+     import re
+     errors = []
+     unknown = sorted({r["status"] for r in records if r.get("status")} - set(STATUS_LABELS))
+     if unknown:
+         raise ValueError(f"Catalogue status without a public label: {unknown}")
+-    drafts = [r for r in records if r.get("status")]
+-    badge = re.compile(r'<span class="status-badge">([^<]*)</span>')
++    drafts = {r["id"]: r for r in records if r.get("status")}
+     labelled = 0
+     for locale in LOCALES:
+         for page in sorted((output / locale).rglob("index.html")):
+             html = page.read_text(encoding="utf-8")
+             rel = page.relative_to(output).as_posix()
++            parsed = StatusBadgeBindings(html)
+             shown = set()
+-            for record in drafts:
++            requirements = {}
++            for work, record in drafts.items():
+                 route = record["route"].replace("/en/", f"/{locale}/", 1)
+-                label = STATUS_LABELS[record["status"]][locale]
+                 is_own = rel == route.strip("/") + "/index.html"
+-                links = html.count(f'href="{route}"')
+-                if is_own or links:
+-                    shown.add(label)
+-                    if f'<span class="status-badge">{label}</span>' not in html:
+-                        errors.append(f"{rel}: shows {record['id']} ({record['status']}) without the label {label!r}")
++                if is_own:
++                    shown.add(work)
++                    heads = [node for node in parsed.nodes if node.has_class("page-head")
++                             and node.parent is not None and node.parent.has_class("publication-record")
++                             and not node.parent.has_class("programme-page")]
++                    header = heads[0] if len(heads) == 1 else None
++                    requirements[("reading-page header", header, work)] = route
++                for link in parsed.links:
++                    if parsed.link_path(link) == route:
++                        shown.add(work)
++                        if is_own and parsed.current_locale_navigation(link, locale):
++                            continue
++                        kind, scope = parsed.link_component(link)
++                        requirements[(kind, scope, work)] = route
+                 if is_own and 'class="draft-notice"' not in html:
+-                    errors.append(f"{rel}: reading page of {record['id']} has no draft notice")
++                    errors.append(f"{rel}: reading page of {work} has no draft notice")
++            for (kind, scope, work), route in requirements.items():
++                record = drafts[work]
++                label = STATUS_LABELS[record["status"]][locale]
++                candidates = parsed.component_badges(kind, scope, route)
++                if not any(parsed.badge_work(node) == work and node.text() == label
++                           and parsed.usable(node, locale) for node in candidates):
++                    errors.append(f"{rel}: shows {work} ({record['status']}) without the label {label!r} bound to that work in its {kind} component with the page language and exposed status text")
+             for lead in re.findall(r'<p class="draft-notice"[^>]*><strong>([^<]*)</strong>', html):
+                 if locale == "zh-Hans" and not lead.endswith("。"):
+                     errors.append(f"{rel}: zh-Hans notice lead {lead!r} must end with the Chinese full stop 。, not an ASCII '.'")
+-            extra = [text for text in badge.findall(html) if text not in shown]
+-            if extra:
+-                errors.append(f"{rel}: status label {sorted(set(extra))} on a page that shows no such document")
++            for work, text in parsed.badges:
++                if work is None:
++                    errors.append(f"{rel}: unbound status label {text!r}; shows no such document identity")
++                elif work not in drafts:
++                    errors.append(f"{rel}: unknown or unmarked work in status binding {work!r}")
++                elif work not in shown:
++                    errors.append(f"{rel}: status label for {work!r} on a page that shows no such document")
++                elif text != STATUS_LABELS[drafts[work]["status"]][locale]:
++                    errors.append(f"{rel}: wrong localized status label {text!r} for work {work!r}")
++            if parsed.active:
++                errors.append(f"{rel}: unclosed status badge")
+             labelled += bool(shown)
+     if errors:
+         raise ValueError("\n".join(errors))
+diff --git a/scripts/publication_inventory.py b/scripts/publication_inventory.py
+new file mode 100644
+index 0000000..a86f255
+--- /dev/null
++++ b/scripts/publication_inventory.py
+@@ -0,0 +1,67 @@
++# SPDX-FileCopyrightText: 2026 Pavel Valentov and Knowledge Contract Arcana contributors
++# SPDX-License-Identifier: Apache-2.0
++"""Exact reading inventory for the source-6eec8809 integration candidate.
++
++The list is independent of generated output. Counts alone cannot establish that
++all expected works survived source adoption or that their identities agree.
++"""
++from collections import Counter
++
++EXPECTED_COUNT = 36
++EXPECTED_TYPE_COUNTS = {
++    "paper": 11, "specification": 13, "study": 8,
++    "glossary": 1, "bibliography": 1, "appendix": 2,
++}
++# type, logical work id, canonical source path, canonical English reading route
++EXPECTED_WORKS = (
++    ('paper', 'human-meaning-and-computable-knowledge', 'papers/human-meaning-and-computable-knowledge/PAPER.md', '/en/science/human-meaning-and-computable-knowledge/'),
++    ('paper', 'semantic-objects-and-context', 'papers/semantic-objects-and-context/PAPER.md', '/en/science/semantic-objects-and-context/'),
++    ('paper', 'constrained-transformations', 'papers/constrained-transformations/PAPER.md', '/en/science/constrained-transformations/'),
++    ('paper', 'retrieval-and-context-composition', 'papers/retrieval-and-context-composition/PAPER.md', '/en/science/retrieval-and-context-composition/'),
++    ('paper', 'interaction-and-memory', 'papers/interaction-and-memory/PAPER.md', '/en/science/interaction-and-memory/'),
++    ('paper', 'evidence-and-falsification', 'papers/evidence-and-falsification/PAPER.md', '/en/science/evidence-and-falsification/'),
++    ('paper', 'revision-and-governance', 'papers/revision-and-governance/PAPER.md', '/en/science/revision-and-governance/'),
++    ('paper', 'controlled-knowledge-reuse', 'papers/controlled-knowledge-reuse/PAPER.md', '/en/science/controlled-knowledge-reuse/'),
++    ('paper', 'knowledge-utility', 'papers/knowledge-utility/PAPER.md', '/en/science/knowledge-utility/'),
++    ('paper', 'geometry-of-semantic-representations', 'papers/geometry-of-semantic-representations/PAPER.md', '/en/science/geometry-of-semantic-representations/'),
++    ('paper', 'agent-situation', 'papers/agent-situation/PAPER.md', '/en/science/agent-situation/'),
++    ('specification', 'knowledge-contract-core', 'engineering/specifications/knowledge-contract-core/SPECIFICATION.md', '/en/engineering/specifications/knowledge-contract-core/'),
++    ('specification', 'contract-family', 'engineering/specifications/contract-family/SPECIFICATION.md', '/en/engineering/specifications/contract-family/'),
++    ('specification', 'semantic-types', 'engineering/specifications/semantic-types/SPECIFICATION.md', '/en/engineering/specifications/semantic-types/'),
++    ('specification', 'semantic-bridge', 'engineering/specifications/semantic-bridge/SPECIFICATION.md', '/en/engineering/specifications/semantic-bridge/'),
++    ('specification', 'semantic-verification', 'engineering/specifications/semantic-verification/SPECIFICATION.md', '/en/engineering/specifications/semantic-verification/'),
++    ('specification', 'context-package', 'engineering/specifications/context-package/SPECIFICATION.md', '/en/engineering/specifications/context-package/'),
++    ('specification', 'compiled-artifact-contract', 'engineering/specifications/compiled-artifact-contract/SPECIFICATION.md', '/en/engineering/specifications/compiled-artifact-contract/'),
++    ('specification', 'artifact-registry', 'engineering/specifications/artifact-registry/SPECIFICATION.md', '/en/engineering/specifications/artifact-registry/'),
++    ('specification', 'status-model', 'engineering/specifications/status-model/SPECIFICATION.md', '/en/engineering/specifications/status-model/'),
++    ('specification', 'cache-identity-and-invalidation', 'engineering/specifications/cache-identity-and-invalidation/SPECIFICATION.md', '/en/engineering/specifications/cache-identity-and-invalidation/'),
++    ('specification', 'reuse-policy', 'engineering/specifications/reuse-policy/SPECIFICATION.md', '/en/engineering/specifications/reuse-policy/'),
++    ('specification', 'knowledge-evolution', 'engineering/specifications/knowledge-evolution/SPECIFICATION.md', '/en/engineering/specifications/knowledge-evolution/'),
++    ('specification', 'book-package', 'engineering/specifications/book-package/SPECIFICATION.md', '/en/engineering/specifications/book-package/'),
++    ('study', 'contract-profile-conformance', 'engineering/studies/contract-profile-conformance/STUDY.md', '/en/engineering/studies/contract-profile-conformance/'),
++    ('study', 'dependency-closure-and-package-delivery', 'engineering/studies/dependency-closure-and-package-delivery/STUDY.md', '/en/engineering/studies/dependency-closure-and-package-delivery/'),
++    ('study', 'source-transcription-and-uncertainty', 'engineering/studies/source-transcription-and-uncertainty/STUDY.md', '/en/engineering/studies/source-transcription-and-uncertainty/'),
++    ('study', 'executable-projections-and-revision', 'engineering/studies/executable-projections-and-revision/STUDY.md', '/en/engineering/studies/executable-projections-and-revision/'),
++    ('study', 'reuse-admission-and-cost-controls', 'engineering/studies/reuse-admission-and-cost-controls/STUDY.md', '/en/engineering/studies/reuse-admission-and-cost-controls/'),
++    ('study', 'editorial-skill-pilot', 'engineering/studies/editorial-skill-pilot/STUDY.md', '/en/engineering/studies/editorial-skill-pilot/'),
++    ('study', 'agent-situation-controls', 'engineering/studies/agent-situation-controls/STUDY.md', '/en/engineering/studies/agent-situation-controls/'),
++    ('study', 'semantic-bridge-conformance', 'engineering/studies/semantic-bridge-conformance/STUDY.md', '/en/engineering/studies/semantic-bridge-conformance/'),
++    ('glossary', 'glossary', 'reference/glossary/GLOSSARY.md', '/en/reference/glossary/'),
++    ('bibliography', 'bibliography', 'reference/bibliography/BIBLIOGRAPHY.md', '/en/reference/bibliography/'),
++    ('appendix', 'source-map', 'appendices/source-map/APPENDIX.md', '/en/appendices/source-map/'),
++    ('appendix', 'api-integration', 'appendices/api-integration/APPENDIX.md', '/en/appendices/api-integration/'),
++)
++
++
++def check_inventory(documents, *, slug_key="slug"):
++    try:
++        actual = [(d["type"], d[slug_key], d["path"], d["route"]) for d in documents]
++    except (KeyError, TypeError) as error:
++        raise ValueError(f"Publication inventory has an incomplete work identity: {error}") from error
++    if len(actual) != EXPECTED_COUNT or Counter(row[0] for row in actual) != EXPECTED_TYPE_COUNTS:
++        raise ValueError("Expected exactly 36 canonical works with type counts 11/13/8/1/1/2")
++    expected, observed = Counter(EXPECTED_WORKS), Counter(actual)
++    if observed != expected:
++        missing = sorted((expected - observed).elements())
++        unexpected = sorted((observed - expected).elements())
++        raise ValueError(f"Publication work identities differ: missing={missing}; unexpected={unexpected}")
+diff --git a/scripts/test_build.py b/scripts/test_build.py
+index eec058a..0b24ae5 100644
+--- a/scripts/test_build.py
++++ b/scripts/test_build.py
+@@ -37,6 +37,39 @@ class PublicationBuild(unittest.TestCase):
+     def tearDown(self):
+         self.temp.cleanup()
+ 
++    def commit_catalogue(self, documents):
++        (self.source / "publication-catalog.json").write_text(json.dumps({
++            "schema_version": 1, "edition": "1.0", "documents": documents,
++        }))
++        run(["git", "add", "."], cwd=self.source)
++        run(["git", "-c", "user.name=Publication build test", "-c", "user.email=build@example.invalid",
++             "commit", "--quiet", "-m", "Catalogue status fixture"], cwd=self.source)
++        self.manifest["commit"] = run(["git", "rev-parse", "HEAD"], cwd=self.source).strip()
++        self.manifest_path.write_text(json.dumps(self.manifest))
++
++    def test_source_statuses_are_preserved_without_acceptance_inference(self):
++        self.doc["status"] = "research-draft"
++        self.target["status"] = "engineering-draft"
++        study = {"type": "study", "slug": "finite-checks", "title": "Finite checks",
++                 "path": "engineering/studies/finite-checks/STUDY.md",
++                 "status": "internally-reviewed-finite-evaluation"}
++        path = self.source / study["path"]
++        path.parent.mkdir(parents=True)
++        path.write_text("# Finite checks\n\nInternal review of stated cases only.\n")
++        self.commit_catalogue([self.doc, self.target, study])
++        _, documents = load_inputs(self.source, self.manifest_path)
++        self.assertEqual([(d["type"], d["status"]) for d in documents], [
++            ("paper", "research-draft"),
++            ("specification", "engineering-draft"),
++            ("study", "internally-reviewed-finite-evaluation"),
++        ])
++
++    def test_unknown_catalogue_status_stops_the_build(self):
++        self.doc["status"] = "accepted-ish"
++        self.commit_catalogue([self.doc, self.target])
++        with self.assertRaisesRegex(ValueError, "Unknown catalogue status"):
++            load_inputs(self.source, self.manifest_path)
++
+     def test_actual_markdown_tables_math_links_and_footnotes(self):
+         manifest, documents = load_inputs(self.source, self.manifest_path)
+         renderer = Renderer(self.source, self.root / "public", manifest, documents)
+@@ -92,6 +125,256 @@ class PublicationBuild(unittest.TestCase):
+ 
+ 
+ 
++class PublicationStatusFixtures(unittest.TestCase):
++    """Synthetic status boundaries, independent of the currently pinned inventory."""
++
++    # Expected public wording is deliberately independent of the renderer maps.
++    labels = {
++        "research-draft": ("Research draft", "Исследовательский черновик", "研究草稿"),
++        "engineering-draft": ("Engineering draft", "Инженерный черновик", "工程草案"),
++        "internally-reviewed-finite-evaluation": (
++            "Internally reviewed finite evaluation", "Конечная оценка с внутренней рецензией", "经过内部审查的有限评估"),
++    }
++
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.out = Path(self.temp.name)
++
++    def record_and_pages(self, status):
++        record = {"id": "status-example", "title": "Status example", "route": "/en/science/status-example/", "status": status}
++        pages = []
++        for locale, label in zip(LOCALES, self.labels[status]):
++            path = self.out / locale / "science/status-example/index.html"
++            path.parent.mkdir(parents=True, exist_ok=True)
++            stop = "。" if locale == "zh-Hans" else "."
++            path.write_text(f'<div class="publication-record"><div class="page-head"><h1>Status example</h1><span lang="{locale}" data-work-status="status-example"><span class="status-badge">{label}</span></span>'
++                            f'<p class="draft-notice" role="note"><strong>{label}{stop}</strong></p></div></div>', encoding="utf-8")
++            pages.append(path)
++        return record, pages
++
++    def test_known_labels_in_all_locales_and_missing_or_wrong_labels_refused(self):
++        for status in self.labels:
++            with self.subTest(status=status):
++                record, pages = self.record_and_pages(status)
++                self.assertEqual(check_status_labels(self.out, [record]), 3)
++                for path, label in zip(pages, self.labels[status]):
++                    original = path.read_text(encoding="utf-8")
++                    for replacement in ("", '<span class="status-badge">Accepted</span>'):
++                        path.write_text(original.replace(f'<span class="status-badge">{label}</span>', replacement), encoding="utf-8")
++                        with self.assertRaisesRegex(ValueError, "without the label"):
++                            check_status_labels(self.out, [record])
++                        path.write_text(original, encoding="utf-8")
++
++    def test_new_status_readers_still_require_a_notice(self):
++        for status in self.labels:
++            record, pages = self.record_and_pages(status)
++            self.assertEqual(check_status_labels(self.out, [record]), 3)
++            for path in pages:
++                original = path.read_text(encoding="utf-8")
++                path.write_text(original.replace('class="draft-notice"', 'class="other"'), encoding="utf-8")
++                with self.assertRaisesRegex(ValueError, "no draft notice"):
++                    check_status_labels(self.out, [record])
++                path.write_text(original, encoding="utf-8")
++
++    def test_programme_and_roadmap_keep_exact_statuses_in_each_locale(self):
++        from programme import localize_and_badge_links, roadmap_linked_status
++        for status, labels in self.labels.items():
++            record, _ = self.record_and_pages(status)
++            source = f'<p>Stated cases only: <a href="{record["route"]}">source</a>.</p>'
++            for locale, label in zip(LOCALES, labels):
++                with self.subTest(status=status, locale=locale):
++                    badge = f'<span lang="{locale}" data-work-status="status-example"><span class="status-badge">{label}</span></span>'
++                    programme = localize_and_badge_links(source, [record], locale)
++                    localized = source.replace("/en/", f"/{locale}/")
++                    self.assertEqual(programme.replace(" " + badge, ""), localized)
++                    self.assertEqual(localize_and_badge_links(programme, [record], locale), programme)
++                    linked = roadmap_linked_status(source, [record], locale)
++                    self.assertIn(badge, linked)
++                    self.assertIn(f'href="/{locale}/science/status-example/"', linked)
++
++
++    def test_fragment_query_binding_cannot_be_satisfied_by_same_status_owner(self):
++        owner = {"id": "owner", "route": "/en/science/owner/", "status": "research-draft"}
++        linked = {"id": "linked", "route": "/en/science/linked/", "status": "research-draft"}
++        for suffix in ("#section", "?view=reader", "?view=reader#section"):
++            pages = []
++            for locale, label in zip(LOCALES, self.labels["research-draft"]):
++                page = self.out / locale / "science/owner/index.html"
++                page.parent.mkdir(parents=True, exist_ok=True)
++                badge = lambda work: f'<span lang="{locale}" data-work-status="{work}"><span class="status-badge">{label}</span></span>'
++                text = f'<div class="publication-record"><div class="page-head"><h1>Owner</h1>{badge("owner")}<p class="draft-notice">scope</p></div><p><a href="/{locale}/science/linked/{suffix}">linked work</a>{badge("linked")}</p></div>'
++                page.write_text(text)
++                pages.append((page, text, badge("linked"), badge("owner")))
++            self.assertEqual(check_status_labels(self.out, [owner, linked]), 3)
++            for page, text, target_badge, own_badge in pages:
++                page.write_text(text.replace(target_badge, ""))
++                self.assertIn(own_badge, page.read_text())
++                with self.assertRaisesRegex(ValueError, "shows linked .* without the label"):
++                    check_status_labels(self.out, [owner, linked])
++                page.write_text(text.replace('data-work-status="linked"', 'data-work-status="unknown"'))
++                with self.assertRaisesRegex(ValueError, "unknown or unmarked work"):
++                    check_status_labels(self.out, [owner, linked])
++                page.write_text(text)
++
++    def test_external_and_ordinary_urls_do_not_infer_catalogue_status(self):
++        record = {"id": "linked", "route": "/en/science/linked/", "status": "research-draft"}
++        for locale in LOCALES:
++            page = self.out / locale / "about/index.html"
++            page.parent.mkdir(parents=True, exist_ok=True)
++            page.write_text(f'<h1>Sources</h1><a href="https://example.invalid/{locale}/science/linked/#x">external</a><a href="//example.invalid/{locale}/science/linked/?x">network</a><a href="/{locale}/science/ordinary/#x">ordinary</a>')
++        self.assertEqual(check_status_labels(self.out, [record]), 0)
++
++
++class StatusComponentWitnessFixtures(unittest.TestCase):
++    """Renderer-specific counterexamples; no page-global or universal-adjacency oracle."""
++
++    def setUp(self):
++        self.temp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temp.cleanup)
++        self.out = Path(self.temp.name)
++        self.work = {"id": "linked", "route": "/en/science/linked/", "status": "research-draft"}
++
++    def badge(self, locale, attrs=None, work="linked", inner=""):
++        attrs = f'lang="{locale}"' if attrs is None else attrs
++        label = STATUS_LABELS["research-draft"][locale]
++        return f'<span {attrs} data-work-status="{work}"><span class="status-badge"{inner}>{label}</span></span>'
++
++    def link(self, locale, attrs="", suffix=""):
++        return f'<a href="/{locale}/science/linked/{suffix}"{attrs}>Linked work</a>'
++
++    def write(self, locale, body, route="about"):
++        page = self.out / locale / route / "index.html"
++        page.parent.mkdir(parents=True, exist_ok=True)
++        page.write_text(f'<html lang="{locale}"><body>{body}</body></html>')
++        return page
++
++    def check(self, locale, body, *, accepted=True, records=None, route="about"):
++        self.write(locale, body, route)
++        if accepted:
++            self.assertGreaterEqual(check_status_labels(self.out, records or [self.work]), 1)
++        else:
++            with self.assertRaisesRegex(ValueError, "without the label"):
++                check_status_labels(self.out, records or [self.work])
++        # Keep every case independent, including the other language paths.
++        shutil.rmtree(self.out / locale)
++
++    def test_direct_occurrences_cannot_borrow_another_badge_or_a_footer(self):
++        for locale in LOCALES:
++            link, badge = self.link(locale), self.badge(locale)
++            self.check(locale, f'<div class="programme-page"><p>{link} {badge}</p><p>{link} {badge}</p></div>')
++            self.check(locale, f'<div class="programme-page"><p>{link}</p><p>{link} {badge}</p></div>', accepted=False)
++            self.check(locale, f'<div class="programme-page"><p>{link}</p><p>{link}</p></div><footer>{badge}</footer>', accepted=False)
++
++    def test_language_inherits_but_explicit_unknown_or_wrong_language_does_not(self):
++        for locale in LOCALES:
++            link = self.link(locale)
++            self.check(locale, f'<p>{link} {self.badge(locale, attrs="")}</p>')
++            self.check(locale, f'<div lang="xx"><p>{link} {self.badge(locale)}</p></div>')
++            for attrs in ('lang="xx"', 'lang=""'):
++                self.check(locale, f'<p>{link} {self.badge(locale, attrs=attrs)}</p>', accepted=False)
++            self.check(locale, f'<div lang="xx"><p>{link} {self.badge(locale, attrs="")}</p></div>', accepted=False)
++
++    def test_explicit_exclusions_do_not_supply_a_required_badge(self):
++        exclusions = ('hidden', 'hidden="false"', 'aria-hidden="true"', 'inert',
++                      'style="display:none"', 'style="DISPLAY: none !important; display: inline"',
++                      'style="visibility:hidden"', 'style="content-visibility:hidden"')
++        for locale in LOCALES:
++            link = self.link(locale)
++            for attrs in exclusions:
++                with self.subTest(locale=locale, attrs=attrs):
++                    badge = self.badge(locale, attrs=f'lang="{locale}" {attrs}')
++                    self.check(locale, f'<p>{link} {badge}</p>', accepted=False)
++                    # A redundant excluded copy is permitted when this same
++                    # direct component still has an exposed, correct witness.
++                    self.check(locale, f'<p>{link} {badge} {self.badge(locale)}</p>')
++            self.check(locale, f'<div aria-hidden="true"><p>{link} {self.badge(locale)}</p></div>', accepted=False)
++            self.check(locale, f'<p>{link} {self.badge(locale, inner=" hidden")}</p>', accepted=False)
++
++    def test_literal_inline_visibility_obeys_nearest_override(self):
++        for locale in LOCALES:
++            link = self.link(locale)
++            visible = self.badge(locale, attrs=f'lang="{locale}" style="visibility:visible"')
++            self.check(locale, f'<div style="visibility:hidden"><p>{link} {visible}</p></div>')
++            self.check(locale, f'<div style="display:none"><p>{link} {visible}</p></div>', accepted=False)
++            restored = self.badge(locale, attrs=f'lang="{locale}" style="display:none;display:inline"')
++            self.check(locale, f'<p>{link} {restored}</p>')
++
++    def test_reader_raw_links_use_a_deduplicated_summary_in_the_matching_aside(self):
++        for locale in LOCALES:
++            link = self.link(locale, suffix="#section")
++            summary = f'<p class="rm-linked-status">{self.link(locale)} {self.badge(locale)}</p>'
++            body = f'<div class="publication-record"><div class="source-body">{link} {link}</div><aside class="article-aside">{{summary}}</aside></div>'
++            self.check(locale, body.replace("{summary}", summary))
++            self.check(locale, body.replace("{summary}", "") + f'<footer>{summary}</footer>', accepted=False)
++            # A correctly badged sibling link does not replace the separately
++            # required summary of references in the manuscript body.
++            sibling = self.link(locale).replace('</a>', self.badge(locale) + '</a>')
++            self.check(locale, body.replace("{summary}", sibling), accepted=False)
++
++    def test_reading_header_cannot_borrow_its_own_sibling_badge(self):
++        owner = {"id": "owner", "route": "/en/science/owner/", "status": "research-draft"}
++        for locale in LOCALES:
++            badge = self.badge(locale, work="owner")
++            sibling = f'<a href="/{locale}/science/owner/">Owner{badge}</a>'
++            body = '<div class="publication-record"><div class="page-head"><h1>Owner</h1>{badge}<p class="draft-notice">scope</p></div><aside class="article-aside">' + sibling + '</aside></div>'
++            self.check(locale, body.replace("{badge}", badge), records=[owner], route="science/owner")
++            self.check(locale, body.replace("{badge}", ""), records=[owner], route="science/owner", accepted=False)
++            hidden = self.badge(locale, work="owner", attrs=f'lang="{locale}" aria-hidden="true"')
++            self.check(locale, body.replace("{badge}", hidden + badge), records=[owner], route="science/owner")
++
++    def test_current_reader_language_chip_uses_the_required_header_witness(self):
++        owner = {"id": "owner", "route": "/en/science/owner/", "status": "research-draft"}
++        for locale in LOCALES:
++            chip = f'<nav class="locale-flags"><a class="locale-chip" data-locale="{locale}" aria-current="page" href="/{locale}/science/owner/">Language</a></nav>'
++            header = '<div class="publication-record"><div class="page-head"><h1>Owner</h1>{badge}<p class="draft-notice">scope</p></div></div>'
++            badge = self.badge(locale, work="owner")
++            self.check(locale, '<header id="header">' + chip + '</header>' + header.replace('{badge}', badge), records=[owner], route="science/owner")
++            self.check(locale, '<header id="header">' + chip + '</header>' + header.replace('{badge}', ''), records=[owner], route="science/owner", accepted=False)
++            self.check(locale, '<footer>' + chip + '</footer>' + header.replace('{badge}', badge), records=[owner], route="science/owner", accepted=False)
++
++    def test_roadmap_deduplicates_within_each_field_but_not_between_fields(self):
++        for locale in LOCALES:
++            link = self.link(locale, suffix="?view=reader#section")
++            summary = f'<p class="rm-linked-status">{self.link(locale)} {self.badge(locale)}</p>'
++            self.check(locale, f'<dl class="roadmap-fields"><dd>{link} {link}{summary}</dd></dl>')
++            self.check(locale, f'<dl class="roadmap-fields"><dd>{link}</dd><dd>{summary}</dd></dl>', accepted=False)
++            self.check(locale, f'<dl class="roadmap-fields"><dd>{link}{summary}</dd><dd>{link}</dd></dl>', accepted=False)
++            self.check(locale, f'<dl class="roadmap-fields"><dd>{link}{summary}</dd><dd>{link}{summary}</dd></dl>')
++
++    def test_card_row_and_contained_link_components_cannot_mask_each_other(self):
++        for locale in LOCALES:
++            link, badge = self.link(locale), self.badge(locale)
++            templates = (
++                ('', '<article class="paper-card">' + link + '<div class="metadata">{badge}</div>' + link + '</article>', ''),
++                ('<div class="repository-table"><table>', '<tr><td>' + link + '</td><td>{badge}</td></tr>', '</table></div>'),
++                ('', self.link(locale, attrs=' class="spec-row"').replace('</a>', '{badge}</a>'), ''),
++                ('', self.link(locale, attrs=' class="dialog-result"').replace('</a>', '<small>{badge}</small></a>'), ''),
++            )
++            for prefix, template, suffix in templates:
++                self.check(locale, prefix + template.replace('{badge}', badge) * 2 + suffix)
++                self.check(locale, prefix + template.replace('{badge}', '') + template.replace('{badge}', badge) + suffix, accepted=False)
++
++
++class PublicationInventoryTests(unittest.TestCase):
++    def test_complete_work_identity_set_and_same_count_substitutions(self):
++        from copy import deepcopy
++        from publication_inventory import EXPECTED_WORKS, check_inventory
++        documents = [dict(zip(("type", "slug", "path", "route"), row)) for row in EXPECTED_WORKS]
++        check_inventory(documents)
++        check_inventory([dict(d, id=d["slug"]) for d in documents], slug_key="id")
++        mutants = {"missing": documents[:-1], "duplicate": documents[:-1] + [documents[0]]}
++        for field, replacement in (("slug", "unregistered"), ("path", "papers/unregistered/PAPER.md"), ("route", "/en/science/unregistered/"), ("type", "study")):
++            changed = deepcopy(documents); changed[0][field] = replacement; mutants[field] = changed
++        changed = deepcopy(documents)
++        other = next(i for i, d in enumerate(changed) if d["type"] == "specification")
++        changed[0]["type"], changed[other]["type"] = changed[other]["type"], changed[0]["type"]
++        mutants["same_count_type_swap"] = changed
++        for name, mutant in mutants.items():
++            with self.subTest(name=name), self.assertRaises(ValueError):
++                check_inventory(mutant)
++
++
+ class CatalogueStatusLabels(unittest.TestCase):
+     """A document with a catalogue status (research-draft) must be labelled on every page that shows it."""
+ 
+@@ -162,26 +445,26 @@ class CatalogueStatusLabels(unittest.TestCase):
+         with self.assertRaisesRegex(ValueError, "shows no such document"):
+             check_status_labels(self.out, self.records)
+ 
++    def test_real_owner_badge_does_not_mask_linked_geometry_status(self):
++        owner = next(r for r in self.records if r["id"] == "semantic-verification")
++        target = next(r for r in self.records if r["id"] == "geometry-of-semantic-representations")
++        for locale in LOCALES:
++            path = self.page(locale, owner["route"])
++            original = path.read_text()
++            label = STATUS_LABELS[target["status"]][locale]
++            target_badge = f'<span lang="{locale}" data-work-status="{target["id"]}"><span class="status-badge">{label}</span></span>'
++            self.assertEqual(original.count(target_badge), 1)
++            mutated = original.replace(target_badge, "")
++            self.assertIn(f'data-work-status="{owner["id"]}"', mutated)
++            path.write_text(mutated)
++            with self.assertRaisesRegex(ValueError, "shows geometry-of-semantic-representations .* without the label"):
++                check_status_labels(self.out, self.records)
++            path.write_text(original)
++
+     def test_status_without_public_label_fails(self):
+         records = [dict(self.record, status="accepted-ish")]
+         with self.assertRaisesRegex(ValueError, "without a public label"):
+             check_status_labels(self.out, records)
+ 
+-    def test_unknown_catalogue_status_stops_the_build(self):
+-        case = PublicationBuild("test_wrong_pin_rejected")
+-        case.setUp()
+-        try:
+-            case.doc["status"] = "accepted-ish"
+-            (case.source / "publication-catalog.json").write_text(json.dumps({"schema_version": 1, "edition": "1.0", "documents": [case.doc, case.target]}))
+-            run(["git", "add", "."], cwd=case.source)
+-            run(["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid", "commit", "--quiet", "-m", "status"], cwd=case.source)
+-            case.manifest["commit"] = run(["git", "rev-parse", "HEAD"], cwd=case.source).strip()
+-            case.manifest_path.write_text(json.dumps(case.manifest))
+-            with self.assertRaisesRegex(ValueError, "Unknown catalogue status"):
+-                load_inputs(case.source, case.manifest_path)
+-        finally:
+-            case.tearDown()
+-
+-
+ if __name__ == "__main__":
+     unittest.main()
+diff --git a/scripts/test_localization.py b/scripts/test_localization.py
+index d0b3208..24247a5 100644
+--- a/scripts/test_localization.py
++++ b/scripts/test_localization.py
+@@ -172,7 +172,7 @@ class ReaderControls(unittest.TestCase):
+     def test_programme_badge_projection_preserves_chinese_adjacency(self):
+         result = Audit(self.public)
+         source = "# 指南\n\n从[意义桥梁](paper.md)发展；这不是普遍理解理论。\n"
+-        compiled = '<p>从<a href="/zh-Hans/science/example/">意义桥梁</a> <span class="status-badge">研究草稿</span>发展；这不是普遍理解理论。</p>'
++        compiled = '<p>从<a href="/zh-Hans/science/example/">意义桥梁</a> <span lang="zh-Hans" data-work-status="example"><span class="status-badge">研究草稿</span></span>发展；这不是普遍理解理论。</p>'
+         result.source_body(source, compiled, "positive", ignore_status_badges=True)
+         self.assertEqual(result.errors, [])
+         result.source_body(source, compiled.replace("这不是", "这是"), "negative", ignore_status_badges=True)
+diff --git a/scripts/test_programme.py b/scripts/test_programme.py
+index 2fd5954..d427b39 100644
+--- a/scripts/test_programme.py
++++ b/scripts/test_programme.py
+@@ -235,11 +235,30 @@ class ProgrammePageTests(unittest.TestCase):
+                 f"site route missing for {href}",
+             )
+             return
++        # A source-declared immutable historical link is not a generated pin fallback.
++        declared = {target for relative in SOURCES.values()
++                    for _, target in MARKDOWN_LINK.findall((SOURCE_ROOT / relative).read_text())}
++        if href in declared:
++            historical = re.fullmatch(re.escape(GITHUB) + r"/(tree|blob)/([0-9a-f]{40})(?:/([^?#]+))?(?:[?#].*)?", href)
++            self.assertIsNotNone(historical, f"historical source URL is not immutable: {href}")
++            _, revision, relative = historical.groups()
++            ancestor = subprocess.run(["git", "merge-base", "--is-ancestor", revision, self.pin], cwd=SOURCE_ROOT)
++            self.assertEqual(ancestor.returncode, 0, "historical revision must belong to the selected source history")
++            target = revision + (":" + unquote(relative) if relative else "^{tree}")
++            exists = subprocess.run(["git", "cat-file", "-e", target], cwd=SOURCE_ROOT)
++            self.assertEqual(exists.returncode, 0, "declared historical target must exist at its exact revision")
++            return
+         prefix = f"{GITHUB}/blob/{self.pin}/"
+         self.assertTrue(href.startswith(prefix), f"unexpected external href {href}")
+         rel = unquote(href[len(prefix):].split("#", 1)[0].split("?", 1)[0])
+         self.assertTrue((SOURCE_ROOT / rel).exists(), f"GitHub blob target missing at pin: {rel}")
+ 
++    def test_undeclared_or_mutable_historical_urls_are_refused(self):
++        for href in (f"{GITHUB}/tree/main", f"{GITHUB}/tree/" + "0" * 40,
++                     "https://example.invalid/tree/6a6f202f7f70be2ad3aea3369e45409761708596"):
++            with self.subTest(href=href), self.assertRaises(AssertionError):
++                self.assert_href_resolves(href, set())
++
+     def test_english_fallback_is_not_labelled_translation(self):
+         for locale in LOCALES:
+             html = (PUBLIC / locale / "programme/index.html").read_text(encoding="utf-8")
+diff --git a/scripts/test_roadmap.py b/scripts/test_roadmap.py
+index c46ffb5..16c774c 100644
+--- a/scripts/test_roadmap.py
++++ b/scripts/test_roadmap.py
+@@ -101,6 +101,8 @@ def assert_linked_status_card(
+     status_nodes = [n for n in walk(tree.root) if "rm-linked-status" in class_of(n).split()]
+     if not expect_status:
+         test.assertEqual(status_nodes, [], "unexpected rm-linked-status line")
++        if expected_prose:
++            test.assertIn('<dd class="source-body prose">' + expected_prose + "</dd>", html, "historical source prose must stay exact")
+         return
+     test.assertEqual(len(status_nodes), 1, "exactly one status line per linked draft target expected on this card")
+     status = status_nodes[0]
+@@ -524,7 +526,7 @@ class RoadmapCompiler(unittest.TestCase):
+             self.assertIn(f'href="/{locale}/science/draft/"', body)
+             self.assertNotIn("status-badge", body)
+             self.assertIn('class="rm-linked-status"', status_line)
+-            self.assertIn(f'<span lang="{locale}"><span class="status-badge">{label}</span></span>', status_line)
++            self.assertIn(f'<span lang="{locale}" data-work-status="{documents[0]["id"]}"><span class="status-badge">{label}</span></span>', status_line)
+             title_lang = linked_status_title_lang(documents[0], locale)
+             self.assertIn(
+                 f'<a href="/{locale}/science/draft/" lang="{title_lang}">{expected_titles[locale]}</a>',
+@@ -615,12 +617,28 @@ class RenderControl(unittest.TestCase):
+             r for r in cls.corpus["records"] if r.get("id") == "geometry-of-semantic-representations"
+         )
+ 
++    def current_geometry_is_linkable(self):
++        source = Path(os.environ.get("ROADMAP_SOURCE_DIR", str(ROOT / "_roadmap-source"))).resolve()
++        pin = json.loads((ROOT / "roadmap-manifest.json").read_text())["commit"]
++        self.assertEqual(self.corpus["roadmap"]["pin"]["commit"], pin)
++        head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=source, capture_output=True, text=True, check=True).stdout.strip()
++        self.assertEqual(head, pin)
++        historical_digest = sha256((source / self.geometry["path"]).read_bytes()).hexdigest()
++        return historical_digest == self.geometry["source_sha256"]
++
++    def historical_geometry_url(self):
++        pin = json.loads((ROOT / "roadmap-manifest.json").read_text())["commit"]
++        return f"https://github.com/Arcanada-one/knowledge-contract/blob/{pin}/{self.geometry['path']}"
++
+     def expected_prose(self, locale):
+         from programme import localize_catalogue_links
+ 
+         view = self.corpus["roadmap"].get("translations", {}).get(locale, self.corpus["roadmap"])
+         task = next(t for t in view["tasks"] if t["id"] == "RM-12")
+         gap_html = next(f["html"] for f in task["fields"] if f["key"] == "gap")
++        if not self.current_geometry_is_linkable():
++            self.assertIn('href="' + self.historical_geometry_url() + '"', gap_html)
++            self.assertNotIn('href="' + self.geometry["route"] + '"', gap_html)
+         return localize_catalogue_links(gap_html, self.corpus["records"], locale)
+ 
+     def expected_title(self, locale):
+@@ -659,7 +677,7 @@ class RenderControl(unittest.TestCase):
+                 card,
+                 locale=locale,
+                 expected_prose=self.expected_prose(locale),
+-                expect_status=True,
++                expect_status=self.current_geometry_is_linkable(),
+                 title_lang=self.expected_title_language(locale),
+                 badge_lang=locale,
+                 title_text=self.expected_title(locale),
+@@ -684,7 +702,7 @@ class RenderControl(unittest.TestCase):
+                 card,
+                 locale=locale,
+                 expected_prose=self.expected_prose(locale),
+-                expect_status=True,
++                expect_status=self.current_geometry_is_linkable(),
+                 title_lang=self.expected_title_language(locale),
+                 badge_lang=locale,
+                 title_text=self.expected_title(locale),
+@@ -711,6 +729,20 @@ class RenderControl(unittest.TestCase):
+         locale = "ru"
+         card = extract_article((self.public / locale / "roadmap/index.html").read_text(encoding="utf-8"), "rm-12")
+         prose = self.expected_prose(locale)
++        if not self.current_geometry_is_linkable():
++            # Explicitly synthetic current-link fixture for the existing positive
++            # title/language mutation controls. The actual pinned card stays historical.
++            source_url = self.historical_geometry_url()
++            route = self.geometry["route"]
++            overlay = ("\nfor(const view of [corpus.roadmap,...Object.values(corpus.roadmap.translations||{})]) {"
++                       "const task=view.tasks.find(t=>t.id==='RM-12');"
++                       "const gap=task.fields.find(f=>f.key==='gap');"
++                       "gap.html=gap.html.split(" + json.dumps(source_url) + ").join(" + json.dumps(route) + ");}\n")
++            with tempfile.TemporaryDirectory() as directory:
++                app = Path(directory) / "app-fixture.js"
++                app.write_text(self.app_js.read_text() + overlay)
++                card = self.render_js_card(locale, app)
++            prose = prose.replace(source_url, route.replace("/en/", f"/{locale}/", 1))
+         title = escape(self.expected_title(locale), quote=True)
+         title_lang = self.expected_title_language(locale)
+         route = self.geometry["route"].replace("/en/", f"/{locale}/", 1)
+@@ -720,7 +752,7 @@ class RenderControl(unittest.TestCase):
+             "prose": card.replace(prose, "<p>Unexpected replacement prose.</p>\n", 1),
+             "title": card.replace(title_link, f'<a href="{route}" lang="{title_lang}">Incorrect catalogue title</a>', 1),
+             "title-language": card.replace(title_link, title_link.replace(f'lang="{title_lang}"', 'lang="invalid"'), 1),
+-            "badge-language": card.replace(f'<span lang="{locale}"><span class="status-badge">', '<span lang="invalid"><span class="status-badge">', 1),
++            "badge-language": card.replace(f'<span lang="{locale}" data-work-status="{self.geometry["id"]}">', f'<span lang="invalid" data-work-status="{self.geometry["id"]}">', 1),
+         }
+         for defect, mutated in variants.items():
+             with self.subTest(defect=defect):
+diff --git a/scripts/test_ui_localization.js b/scripts/test_ui_localization.js
+index 3c2d9de..38dc0f5 100644
+--- a/scripts/test_ui_localization.js
++++ b/scripts/test_ui_localization.js
+@@ -35,6 +35,154 @@ function route(lang, bare, hash = '') {
+ }
+ function headings(html) {return [...html.matchAll(/<h([23])\b[^>]*\bid="([^"]+)"[^>]*>/g)].map(m => ({level: m[1], id: m[2]}));}
+ 
++// Source publication status is separate from a rendition's review state.
++// Expected wording is literal test data, not read back from the UI maps.
++const publicationStatuses = [
++  {status: 'research-draft', kind: 'paper',
++    labels: ['Research draft', 'Исследовательский черновик', '研究草稿'],
++    notes: ['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.', 'Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.', '这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。']},
++  {status: 'engineering-draft', kind: 'spec',
++    labels: ['Engineering draft', 'Инженерный черновик', '工程草案'],
++    notes: ['This is an engineering draft. It is available for reading and review; it is not an accepted specification and does not establish that an implementation conforms or is ready for production.', 'Это инженерный черновик. Он доступен для чтения и рецензирования; он не является принятой спецификацией и не подтверждает соответствия реализации или её готовности к производственному применению.', '这是工程草案，供阅读与审查；它不是已接受的规范，也不证明实现符合规范或已具备生产可用性。']},
++  {status: 'internally-reviewed-finite-evaluation', kind: 'study',
++    labels: ['Internally reviewed finite evaluation', 'Конечная оценка с внутренней рецензией', '经过内部审查的有限评估'],
++    notes: ['This reports finite checks with internal review. Its findings apply only to the stated cases and assumptions; this status does not establish independent scientific acceptance, general correctness or production validation.', 'Здесь представлены конечные проверки с внутренней рецензией. Результаты относятся только к указанным случаям и предпосылкам; этот статус не означает независимой научной приёмки, общей корректности или проверки в производственной эксплуатации.', '本文报告经过内部审查的有限检查。结果仅适用于所述案例和假设；此状态不表示已获得独立科学验收、普遍正确性证明或生产环境验证。']}
++];
++let publicationStatusCases = 0;
++for (const test of publicationStatuses) for (const [index, lang] of langs.entries()) {
++  check('publication status reader and discovery ' + test.status + '/' + lang, () => {
++    const record = data.records.find(r => r.kind === test.kind && (test.status !== 'research-draft' || r.status === test.status));
++    assert.ok(record, 'fixture kind exists in the pinned catalogue');
++    const prior = record.status, hadStatus = Object.hasOwn(record, 'status'), renditions = JSON.stringify(record.renditions);
++    try {
++      record.status = test.status;
++      route(lang, context.recordPath(record)); context.render();
++      const badge = '<span class="status-badge">' + test.labels[index] + '</span>';
++      const note = '<p class="draft-notice" role="note"><strong>' + test.labels[index] + (lang === 'zh-Hans' ? '。' : '.') + '</strong>' + (lang === 'zh-Hans' ? '' : ' ') + test.notes[index] + '</p>';
++      assert.equal(context.statusLabel(record), test.labels[index]);
++      assert.equal(context.statusNote(record), note);
++      assert.ok(elements['#main'].innerHTML.includes(badge));
++      assert.ok(elements['#main'].innerHTML.includes(note));
++      assert.equal(context.document.title, context.recordTitle(record) + ' (' + test.labels[index] + ') — contract.place');
++      assert.ok(context.paperCard(record).includes(badge));
++      assert.ok(context.publicationList([record.kind], 'docs', 'engineeringIntro').includes(badge));
++      assert.ok(context.repository().includes(badge));
++      const found = context.searchItems(record.id).find(r => r.path === context.recordPath(record));
++      assert.ok(found); assert.equal(found.badge, '<span lang="' + lang + '" data-work-status="' + record.id + '">' + badge + '</span>');
++      assert.ok(context.roadmapLinkedStatus('<a href="' + record.route + '">source</a>').includes(badge));
++      assert.equal(JSON.stringify(record.renditions), renditions, 'publication status must not promote rendition review');
++      if (test.status === 'internally-reviewed-finite-evaluation') {
++        assert.doesNotMatch(note, /accepted paper|принятая статья|已接受的论文/);
++      }
++      publicationStatusCases++;
++    } finally {if (hadStatus) record.status = prior; else delete record.status;}
++  });
++}
++for (const lang of langs) check('unmarked and unknown publication status ' + lang, () => {
++  const record = data.records.find(r => r.kind === 'study'), prior = record.status, hadStatus = Object.hasOwn(record, 'status');
++  try {
++    delete record.status; route(lang, context.recordPath(record));
++    assert.equal(context.statusLabel(record), ''); assert.equal(context.statusBadge(record), ''); assert.equal(context.statusNote(record), '');
++    record.status = 'accepted-ish';
++    assert.throws(() => context.render(), /Catalogue status has no label: accepted-ish/);
++    assert.throws(() => context.searchItems(record.id), /Catalogue status has no label: accepted-ish/);
++  } finally {if (hadStatus) record.status = prior; else delete record.status;}
++});
++check('status-bearing records remain outside the accepted-paper count', () => {
++  const accepted = data.records.filter(r => r.kind === 'paper' && !r.status);
++  assert.ok(accepted.length >= 8, 'home fixture retains enough unmarked papers for its highest selected index');
++  const record = accepted[0], prior = record.status, hadStatus = Object.hasOwn(record, 'status');
++  try {
++    route('en', '');
++    for (const {status} of publicationStatuses) {
++      record.status = status;
++      assert.ok(context.home().includes('href="/en/research/"><strong>' + (accepted.length - 1) + '</strong>'));
++    }
++  } finally {if (hadStatus) record.status = prior; else delete record.status;}
++});
++
++// Execute the actual llms.txt emission block with fixture documents and captured
++// output. This bounded consumer check does not invoke the full native build.
++function llmsText(documents) {
++  const build = fs.readFileSync(path.join(root, 'build.mjs'), 'utf8');
++  const emit = "fs.writeFileSync(path.join(out,'llms.txt'),lines.join('\\n'));";
++  const start = build.indexOf("const base='https://contract.place';"), end = build.indexOf(emit, start);
++  assert.ok(start >= 0 && end > start, 'actual llms.txt consumer block is present');
++  const writes = new Map();
++  vm.runInNewContext(build.slice(start, end + emit.length), {documents, manifest: data.publication, path, out: 'fixture-output',
++    fs: {writeFileSync(file, text) {writes.set(file, text);}}});
++  assert.equal(writes.size, 1);
++  return writes.get(path.join('fixture-output', 'llms.txt'));
++}
++check('machine-readable descriptions retain distinct bounded publication statuses', () => {
++  const documents = publicationStatuses.map(({status, kind}) => ({title: status, type: kind === 'spec' ? 'specification' : kind, route: '/en/fixture/' + status + '/', status}));
++  documents.push({title: 'Unmarked', type: 'paper', route: '/en/fixture/unmarked/'});
++  const text = llmsText(documents), lines = text.split('\n');
++  const research = lines.find(line => line.startsWith('- [research-draft]'));
++  assert.ok(research.endsWith(': paper (research draft, not an accepted paper).'));
++  const engineering = lines.find(line => line.startsWith('- [engineering-draft]'));
++  assert.ok(engineering.endsWith(': specification (engineering draft, not an accepted specification or implementation-conformance claim).'));
++  const finite = lines.find(line => line.startsWith('- [internally-reviewed-finite-evaluation]'));
++  assert.ok(finite.endsWith(': study (internally reviewed finite evaluation, limited to its stated cases and assumptions; not independent scientific acceptance, general correctness or production validation).'));
++  assert.doesNotMatch(finite, /accepted paper|research draft/);
++  assert.ok(lines.includes('- [Unmarked](https://contract.place/en/fixture/unmarked/): paper.'));
++});
++check('machine-readable descriptions refuse unknown publication status', () => {
++  assert.throws(() => llmsText([{title: 'Unknown', type: 'study', route: '/en/fixture/unknown/', status: 'accepted-ish'}]), /Catalogue status has no description: accepted-ish/);
++});
++assert.equal(publicationStatusCases, 9, 'two new statuses plus unchanged research-draft, each in three languages');
++
++// Real cross-family manuscript links exposed by the 36-work source adoption.
++// The status presentation stays outside the exact canonical/rendition body.
++const readerStatusCases = [
++  ['source-map', 'semantic-verification', ['Research draft', 'Исследовательский черновик', '研究草稿']],
++  ['semantic-bridge-conformance', 'semantic-bridge', ['Engineering draft', 'Инженерный черновик', '工程草案']],
++  ['bibliography', 'agent-situation', ['Research draft', 'Исследовательский черновик', '研究草稿']],
++  ['semantic-verification', 'geometry-of-semantic-representations', ['Research draft', 'Исследовательский черновик', '研究草稿'], '#proposition-2-recoverability-requires-agreement-on-representation-fibres'],
++];
++for (const [sourceId, targetId, labels, suffix = ''] of readerStatusCases) for (const [index, lang] of langs.entries()) {
++  check('reader linked status ' + sourceId + '/' + targetId + '/' + lang, () => {
++    const source = data.records.find(r => r.id === sourceId), target = data.records.find(r => r.id === targetId);
++    assert.ok(source && target, 'exact candidate contains the cross-family records');
++    assert.ok(source.html.includes('href="' + target.route + suffix + '"'), 'canonical body contains the observed link');
++    route(lang, context.recordPath(source));
++    const html = context.sourceRecord(source);
++    assert.ok(html.includes('<div class="source-body prose" lang="en">' + source.html + '</div><section class="document-citation"'), 'canonical body and rendition placement boundary remain exact');
++    const linked = html.match(/<p class="rm-linked-status">[\s\S]*?<\/p>/);
++    assert.ok(linked, 'reader exposes linked-work statuses');
++    assert.ok(linked[0].includes('href="' + target.route.replace('/en/', '/' + lang + '/') + '"'));
++    assert.ok(linked[0].includes('<span class="status-badge">' + labels[index] + '</span>'));
++    assert.ok(linked[0].includes('data-work-status="' + targetId + '"'));
++  });
++}
++for (const lang of langs) check('reader fragment/query identity and per-work deduplication ' + lang, () => {
++  const first = data.records.find(r => r.id === 'geometry-of-semantic-representations');
++  const second = data.records.find(r => r.id === 'agent-situation');
++  const ordinary = data.records.find(r => r.id === 'semantic-objects-and-context');
++  const body = '<p><a href="' + first.route + '#first">one</a> <a href="' + first.route + '?view=reader#second">repeat</a> <a href="' + second.route + '#third">different work, same status</a> <a href="https://example.invalid' + first.route + '#fake">external</a> <a href="' + ordinary.route + '?view=reader">ordinary</a></p>';
++  route(lang, context.recordPath(ordinary));
++  const html = context.sourceRecord({...ordinary, html: body});
++  assert.ok(html.includes('<div class="source-body prose" lang="en">' + body + '</div><section class="document-citation"'));
++  const linked = html.match(/<p class="rm-linked-status">[\s\S]*?<\/p>/)[0];
++  assert.equal((linked.match(/data-work-status=/g) || []).length, 2);
++  for (const target of [first, second]) {
++    assert.equal(linked.split('data-work-status="' + target.id + '"').length - 1, 1);
++    assert.ok(linked.includes('href="' + target.route.replace('/en/', '/' + lang + '/') + '"'));
++  }
++  assert.ok(!linked.includes('example.invalid'));
++  assert.ok(!linked.includes('data-work-status="' + ordinary.id + '"'));
++});
++for (const lang of langs) check('ordinary reader link has no invented status ' + lang, () => {
++  const ordinary = data.records.find(r => r.id === 'semantic-objects-and-context');
++  assert.ok(ordinary && !ordinary.status);
++  const body = '<p><a href="' + ordinary.route + '">Ordinary source link</a>.</p>';
++  const fixture = {...ordinary, html: body};
++  route(lang, context.recordPath(fixture));
++  const html = context.sourceRecord(fixture);
++  assert.ok(html.includes('<div class="source-body prose" lang="en">' + body + '</div><section class="document-citation"'));
++  assert.ok(!html.includes('class="rm-linked-status"'), 'ordinary links do not create a status panel');
++});
++
+ for (const lang of langs) {
+   route(lang, 'about'); context.render();
+   check('about and footer labels ' + lang, () => {
+diff --git a/src/site/app.js b/src/site/app.js
+index a8d127e..6e4411b 100644
+--- a/src/site/app.js
++++ b/src/site/app.js
+@@ -252,17 +252,23 @@ Object.assign(words,{
+ });
+ function recordPath(r){return r.route.replace(/^\/en\//,'').replace(/\/$/,'');}
+ function recordLabel(r){return t({paper:'papers',spec:'specs',study:'studies',glossary:'reference',bibliography:'reference',appendix:'appendices'}[r.kind]);}
+-const statusLabels={'research-draft':['Research draft','Исследовательский черновик','研究草稿']};
+-const statusNotes={'research-draft':['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.','Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.','这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。']};
++const statusLabels={'research-draft':['Research draft','Исследовательский черновик','研究草稿'],
++  "engineering-draft":["Engineering draft", "Инженерный черновик", "工程草案"],
++  "internally-reviewed-finite-evaluation":["Internally reviewed finite evaluation", "Конечная оценка с внутренней рецензией", "经过内部审查的有限评估"]
++};
++const statusNotes={'research-draft':['This is a research draft. It is published for reading and critique and is not presented as an accepted paper or as an established result.','Это исследовательский черновик. Он опубликован для чтения и обсуждения и не представлен как принятая статья или установленный результат.','这是研究草稿。它仅供阅读和讨论，不作为已接受的论文或既定结果呈现。'],
++  "engineering-draft":["This is an engineering draft. It is available for reading and review; it is not an accepted specification and does not establish that an implementation conforms or is ready for production.", "Это инженерный черновик. Он доступен для чтения и рецензирования; он не является принятой спецификацией и не подтверждает соответствия реализации или её готовности к производственному применению.", "这是工程草案，供阅读与审查；它不是已接受的规范，也不证明实现符合规范或已具备生产可用性。"],
++  "internally-reviewed-finite-evaluation":["This reports finite checks with internal review. Its findings apply only to the stated cases and assumptions; this status does not establish independent scientific acceptance, general correctness or production validation.", "Здесь представлены конечные проверки с внутренней рецензией. Результаты относятся только к указанным случаям и предпосылкам; этот статус не означает независимой научной приёмки, общей корректности или проверки в производственной эксплуатации.", "本文报告经过内部审查的有限检查。结果仅适用于所述案例和假设；此状态不表示已获得独立科学验收、普遍正确性证明或生产环境验证。"]
++};
+ function statusOf(r){if(!r.status)return '';if(!statusLabels[r.status])throw new Error('Catalogue status has no label: '+r.status);return r.status;}
+ function statusLabel(r){const s=statusOf(r);return s?statusLabels[s][langs.indexOf(locale)]:'';}
+-function statusBadge(r){const l=statusLabel(r);return l?`<span class="status-badge">${esc(l)}</span>`:'';}
++function statusBadge(r){const l=statusLabel(r);return l?`<span lang="${locale}" data-work-status="${esc(r.id)}"><span class="status-badge">${esc(l)}</span></span>`:'';}
+ function statusNote(r){const s=statusOf(r);return s?`<p class="draft-notice" role="note"><strong>${esc(statusLabel(r))}${locale==='zh-Hans'?'。':'.'}</strong>${locale==='zh-Hans'?'':' '}${esc(statusNotes[s][langs.indexOf(locale)])}</p>`:'';}
+ /* Page-locale catalogue hrefs only — roadmap Gap prose must stay a contiguous source-token match. */
+ function localizeCatalogueLinks(html){
+   for(const r of corpus.records){
+     const enRoute=r.route,localRoute=enRoute.replace('/en/',`/${locale}/`);
+-    if(locale!=='en')html=html.split(`href="${enRoute}"`).join(`href="${localRoute}"`);
++    if(locale!=='en')for(const suffix of ['"','#','?'])html=html.split(`href="${enRoute}${suffix}`).join(`href="${localRoute}${suffix}`);
+   }
+   return html;
+ }
+@@ -281,7 +287,7 @@ function linkedStatusTitleLang(r){
+   const english=catalogueTitleForLocale(r,'en');
+   return (localized&&localized!==english)?locale:'en';
+ }
+-/* Last child inside a roadmap field <dd>: one catalogue link + badge per draft linked in that field (source order). */
++/* Reader sidebar and roadmap field: one catalogue link + badge per status-bearing work linked in the body (source order). */
+ function roadmapLinkedStatus(html){
+   const localized=localizeCatalogueLinks(html);
+   const byHref=new Map();
+@@ -293,14 +299,15 @@ function roadmapLinkedStatus(html){
+   const re=/<a\b[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/g;
+   let m;
+   while((m=re.exec(localized))){
+-    const r=byHref.get(m[1]);if(!r)continue;
++    const canonicalPath=m[1].split(/[?#]/,1)[0];
++    const r=byHref.get(canonicalPath);if(!r)continue;
+     const label=statusLabel(r);if(!label||seen.has(r.id))continue;
+     seen.add(r.id);
+     const text=linkedStatusLabel(r);
+     const titleLang=linkedStatusTitleLang(r);
+     const localRoute=r.route.replace('/en/',`/${locale}/`);
+     /* lang wrapper keeps <span class="status-badge">{label}</span> intact for check_status_labels. */
+-    items.push(`<a href="${localRoute}" lang="${titleLang}">${esc(text)}</a> <span lang="${locale}"><span class="status-badge">${esc(label)}</span></span>`);
++    items.push(`<a href="${localRoute}" lang="${titleLang}">${esc(text)}</a> ${statusBadge(r)}`);
+   }
+   return items.length?`<p class="rm-linked-status">${items.join(' ')}</p>`:'';
+ }
+@@ -400,7 +407,7 @@ function sourceRecord(r){
+ const family=recordPath(r).split('/').slice(0,-1).join('/'),familyLabel=recordLabel(r),siblings=corpus.records.filter(s=>s.kind===r.kind);
+ const cited='Pavel Valentov. '+r.title+'. Knowledge Contract Arcana, edition '+corpus.publication.edition+'.';
+ return `<div class="container source-record publication-record"><div class="page-head"><nav class="breadcrumb" aria-label="${t('breadcrumb')}">${link('',t('home'),'','')}<span>/</span>${link(family,familyLabel,'','')}</nav><div class="metadata"><span>${familyLabel}</span><span>${t('publicationEdition')} ${esc(corpus.publication.edition)}</span>${statusBadge(r)}</div><h1 id="${esc(r.title_id)}" lang="en">${esc(r.title)}</h1><p class="lead" lang="${recordSummaryLanguage(r)}">${esc(recordSummary(r))}</p><div class="provenance metadata"><span>Pavel Valentov</span><span>CC BY 4.0</span><span>${t('englishText')}</span></div><div class="actions"><a class="text-link" href="${r.source}" target="_blank" rel="noopener">${t('fullSource')}${icon('external')}</a><a class="text-link" href="${r.history}" target="_blank" rel="noopener">${t('history')}${icon('external')}</a></div><p class="reading-language-note">${t('readingNotice')}</p>${statusNote(r)}</div>
+-<div class="source-reading"><article><div class="source-body prose" lang="en">${r.html}</div><section class="document-citation" aria-label="${t('citation')}"><h2>${t('citation')}</h2><p><span lang="en">${esc(cited)}</span> <a href="https://contract.place${r.route}">https://contract.place${r.route}</a>. ${t('sourceRevision')} <code>${r.revision}</code>.</p><p>${t('sourceCredit')}</p></section></article><aside class="article-aside"><details class="reader-contents" open><summary>${t('contents')}</summary><nav aria-label="${t('contents')}">${r.toc.map(h=>`<a class="toc-level-${h.level}" href="#${esc(h.id)}" lang="en">${esc(h.title)}</a>`).join('')}</nav></details><hr><strong>${familyLabel}</strong>${siblings.map(s=>`<a href="${url(recordPath(s))}"${s.id===r.id?' aria-current="page"':''} lang="${recordTitleLanguage(s)}">${esc(recordTitle(s))}${statusBadge(s)}</a>`).join('')}<hr>${link('reference/glossary',t('reference'),'','')}${link('appendices/source-map',t('sourceMap'),'','')}</aside></div></div>`;
++<div class="source-reading"><article><div class="source-body prose" lang="en">${r.html}</div><section class="document-citation" aria-label="${t('citation')}"><h2>${t('citation')}</h2><p><span lang="en">${esc(cited)}</span> <a href="https://contract.place${r.route}">https://contract.place${r.route}</a>. ${t('sourceRevision')} <code>${r.revision}</code>.</p><p>${t('sourceCredit')}</p></section></article><aside class="article-aside"><details class="reader-contents" open><summary>${t('contents')}</summary><nav aria-label="${t('contents')}">${r.toc.map(h=>`<a class="toc-level-${h.level}" href="#${esc(h.id)}" lang="en">${esc(h.title)}</a>`).join('')}</nav></details>${roadmapLinkedStatus(r.html)}<hr><strong>${familyLabel}</strong>${siblings.map(s=>`<a href="${url(recordPath(s))}"${s.id===r.id?' aria-current="page"':''} lang="${recordTitleLanguage(s)}">${esc(recordTitle(s))}${statusBadge(s)}</a>`).join('')}<hr>${link('reference/glossary',t('reference'),'','')}${link('appendices/source-map',t('sourceMap'),'','')}</aside></div></div>`;
+ }
+ function compatibilityPage(path){
+ const record=corpus.records.find(r=>recordPath(r)===corpus.aliases[path]);

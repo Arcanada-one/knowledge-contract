@@ -1,0 +1,92 @@
+{
+  "observed_at_utc": "2026-11-17T10:52:26.706181+00:00",
+  "site_main": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+  "primary_retained_sha256": "e1d8715e2e169ffd639d8e4f1b2933e6505c6413f0c7644d01175308bddaf453",
+  "fresh_web_primary_lookup": "DisabledError; retained exact v1 primary re-read",
+  "source_rendering_checks": [
+    {
+      "locale": "en",
+      "source_blob": "5d02d2cfaf68c48a7b7690bd8bc7e18bc442c959",
+      "source_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+      "html_blob": "4c9f1ba1df35bd405cb790a5e925ae455eb08206",
+      "html_sha256": "a176773af7acca9c7eef8207723155875157ce86647f0ed91d1fdcb1d3233156",
+      "checks": {
+        "manifest_sha": true,
+        "title_in_h1": true,
+        "description_exact": true,
+        "price_paragraph_exact": true,
+        "generated_sha_equals_deploy_normalized": true
+      },
+      "readback_line": "2026-11-17T09:19:51.1138083Z IDENTICAL /en/journal/reasoning-cache-break-even-2026-11-17/ status=200 raw_sha256=ff50fa7621ec1d36624269388bf4355153d89f64d6ee87438f2c3a82b9071465 norm_sha256=a176773af7acca9c7eef8207723155875157ce86647f0ed91d1fdcb1d3233156 stripped=1 variant=bare"
+    },
+    {
+      "locale": "ru",
+      "source_blob": "980a7f6aa405a6dca02a7a012ce68b3293448702",
+      "source_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+      "html_blob": "716cd1133a72785a2c2c56f13fde1ba273418762",
+      "html_sha256": "a091f2481a10ca4214a68626ea12f40e82a6fa7e1312eed335e226f8709ea8b1",
+      "checks": {
+        "manifest_sha": true,
+        "title_in_h1": true,
+        "description_exact": true,
+        "price_paragraph_exact": true,
+        "generated_sha_equals_deploy_normalized": true
+      },
+      "readback_line": "2026-11-17T09:19:51.1467970Z IDENTICAL /ru/journal/reasoning-cache-break-even-2026-11-17/ status=200 raw_sha256=70849f8943dfa709404f7691520b1247bc208b4e4222c2cb2cf9c53202d929d5 norm_sha256=a091f2481a10ca4214a68626ea12f40e82a6fa7e1312eed335e226f8709ea8b1 stripped=1 variant=bare"
+    },
+    {
+      "locale": "zh-Hans",
+      "source_blob": "51107bb586a2f4e378bb6a4adc444f5886a23f3e",
+      "source_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+      "html_blob": "14971c79ae0c209fcd06490a2873bfae25595299",
+      "html_sha256": "60d81ad2a0fa810ac63affaeee0646a9b5e8dfaf21991e9820284ef5cded62e8",
+      "checks": {
+        "manifest_sha": true,
+        "title_in_h1": true,
+        "description_exact": true,
+        "price_paragraph_exact": true,
+        "generated_sha_equals_deploy_normalized": true
+      },
+      "readback_line": "2026-11-17T09:19:51.1762068Z IDENTICAL /zh-Hans/journal/reasoning-cache-break-even-2026-11-17/ status=200 raw_sha256=304c7364a490a676a5aee46468f14c135e7dfbb925025116b2115eb979b70fcd norm_sha256=60d81ad2a0fa810ac63affaeee0646a9b5e8dfaf21991e9820284ef5cded62e8 stripped=1 variant=bare"
+    }
+  ],
+  "scope": "source-bound r4 wording/served-output follow-up, same controller; no independent native review or experiment reproduction",
+  "record_kind": "derived narrow follow-up; primary excerpts omitted, source identities and actual comparisons retained",
+  "derived_from_sha256": "86b635ef148d24cd54de33713b8891aa8dab21c173dc0b84a369d168c60e1fa2",
+  "root_source_readback": [
+    {
+      "locale": "en",
+      "source_url": "https://github.com/Arcanada-one/contract-place-site/blob/5ff661bb6c894a44b3b6b1591d543c4830bc9180/src/content/journal/2026-11-17-reasoning-cache-break-even/en.md",
+      "git_blob": "5d02d2cfaf68c48a7b7690bd8bc7e18bc442c959",
+      "sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+      "bytes": 7866,
+      "match": true
+    },
+    {
+      "locale": "ru",
+      "source_url": "https://github.com/Arcanada-one/contract-place-site/blob/5ff661bb6c894a44b3b6b1591d543c4830bc9180/src/content/journal/2026-11-17-reasoning-cache-break-even/ru.md",
+      "git_blob": "980a7f6aa405a6dca02a7a012ce68b3293448702",
+      "sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+      "bytes": 14052,
+      "match": true
+    },
+    {
+      "locale": "zh-Hans",
+      "source_url": "https://github.com/Arcanada-one/contract-place-site/blob/5ff661bb6c894a44b3b6b1591d543c4830bc9180/src/content/journal/2026-11-17-reasoning-cache-break-even/zh-Hans.md",
+      "git_blob": "51107bb586a2f4e378bb6a4adc444f5886a23f3e",
+      "sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+      "bytes": 7369,
+      "match": true
+    }
+  ],
+  "original_findings": "https://github.com/Arcanada-one/contract-place-site/pull/60#issuecomment-6941483162",
+  "scoped_disposition": "https://github.com/Arcanada-one/contract-place-site/pull/61#issuecomment-6946098799",
+  "primary_url": "https://arxiv.org/html/2611.09891v1",
+  "primary_sections_rechecked": [
+    "2.2.4",
+    "3.4",
+    "3.5",
+    "3.6"
+  ],
+  "review_boundary": "Findings-owner post-publication check; proposed wording came from this controller. Not independent whole-article or pre-merge acceptance."
+}

@@ -1,0 +1,478 @@
+{
+  "schema": "kc-scoped-site-status-rehearsal/v1",
+  "finished_at_utc": "2026-11-17T11:09:57.429254+00:00",
+  "scope": "same-controller producer rehearsal of site base plus isolated overlay; no source adoption, release, independent review, browser/computed-visibility or AT-equivalence claim",
+  "inputs": {
+    "site_base": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+    "source_pin": "6eec88097cf5255543c792e53c92f75c0d483728",
+    "roadmap_pin": "55e279c43dc9bcf8732467a32661c2ac4b7cf920",
+    "prior_overlay_sha256": "8f07e0919ab142d1bda27e230a2bea48a4d7e46829ac3de0b65bffe0c891de8d",
+    "successor_patch": "site-36x72-component-status.patch",
+    "successor_patch_bytes": 104921,
+    "successor_patch_sha256": "fd7a6e3e1f5dce55cf200f5e3d99b98c097e2ab8d19183a98ae4338fab0c666d",
+    "input_file_count": 17,
+    "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+    "toolchain": {
+      "python": "Python 3.12.14",
+      "node": "v24.22.1",
+      "pandoc": "3.1.3",
+      "pandoc_binary_sha256": "5a953bcbcdc7c36fcb0c263fbb09db8c7b84cfa9ca58e48e321d7edf857a7ee7"
+    },
+    "clean_source_checkouts": {
+      "source": {
+        "head": "6eec88097cf5255543c792e53c92f75c0d483728",
+        "status": ""
+      },
+      "roadmap": {
+        "head": "55e279c43dc9bcf8732467a32661c2ac4b7cf920",
+        "status": ""
+      }
+    }
+  },
+  "component_contract": {
+    "adjacent_per_link": "programme links and grouped summary entries",
+    "contained_per_component": [
+      "paper card",
+      "repository row",
+      "specification row",
+      "search result link",
+      "reader sibling link",
+      "own reading-page header"
+    ],
+    "deduplicated_per_work": [
+      "same roadmap dd field",
+      "same reader article-aside reference summary"
+    ],
+    "navigation_exception": "only the current own reader locale-chip in header#header/nav.locale-flags, with a separately mandatory unique own page-head badge",
+    "usable_status_witness": "correct work and localized text; effective inherited lang equals page locale; required witness is not under hidden, aria-hidden=true, inert, template, literal inline display:none or content-visibility:hidden, or effective literal visibility:hidden/collapse",
+    "redundancy": "an excluded duplicate does not invalidate a usable same-work witness in the same required component",
+    "limits": "static emitted HTML and named literal inline properties only; no arbitrary stylesheet, CSS variable, layout, accessible-name or AT-equivalence analysis"
+  },
+  "modified_inputs_since_prior_overlay": [
+    {
+      "path": "scripts/publication_checks.py",
+      "previous_sha256": "2286fc07f01c2e89d274c10df977a7e00e1959f4d9a02807146c44187ce1e30b",
+      "current_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa"
+    },
+    {
+      "path": "scripts/test_build.py",
+      "previous_sha256": "5893ecd9037a2e03408851c7d9dddeda0bbbe57edfda76bf423348f2ee57e448",
+      "current_sha256": "0959224bf60d9b279fd5b6696d83c8533634d24625b988953d9c3c699d6eb006"
+    }
+  ],
+  "post_generation_input_changes": [],
+  "generation_runs": [
+    {
+      "name": "focused-status-tests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "test_build.PublicationStatusFixtures",
+        "test_build.StatusComponentWitnessFixtures",
+        "test_build.PublicationInventoryTests",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site/scripts",
+      "started_utc": "2026-11-17T11:03:44.953833+00:00",
+      "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+      "finished_utc": "2026-11-17T11:03:45.107653+00:00",
+      "elapsed_seconds": 0.15367385200079298,
+      "exit_code": 0,
+      "log": "focused-status-tests.log",
+      "log_sha256": "3bca1f55473bdca9908fb6671ab79095fbc130fbf40b10bb664ac3e8898b3f91"
+    },
+    {
+      "name": "full-generation",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/build_publication.py",
+        "--source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+        "--roadmap-source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:03:45.108007+00:00",
+      "checker_sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+      "finished_utc": "2026-11-17T11:04:59.223017+00:00",
+      "elapsed_seconds": 74.11495563400058,
+      "exit_code": 0,
+      "log": "full-generation.log",
+      "log_sha256": "33ac5bd63e21b09d41ff3200ede3390780e8c8913d0f1e859020eb957092ea56"
+    }
+  ],
+  "validation_runs": [
+    {
+      "name": "links",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_links.py",
+        "public"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:06.364790+00:00",
+      "finished_utc": "2026-11-17T11:06:07.165727+00:00",
+      "elapsed_seconds": 0.800949436999872,
+      "exit_code": 0,
+      "log": "links.log",
+      "log_sha256": "9eba5d76c664a262aac211673e1294cd0630afb944240b1ee40edbce1087f16e"
+    },
+    {
+      "name": "papers",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_papers.py",
+        "public"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:06.365193+00:00",
+      "finished_utc": "2026-11-17T11:06:07.314735+00:00",
+      "elapsed_seconds": 0.9495536049998918,
+      "exit_code": 0,
+      "log": "papers.log",
+      "log_sha256": "8ea9ee475e892f0bba00d931d813a7f613bbafe7346695ab4ced7cabfa896d22"
+    },
+    {
+      "name": "publication",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_publication.py"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:06.363975+00:00",
+      "finished_utc": "2026-11-17T11:06:10.350729+00:00",
+      "elapsed_seconds": 3.986764729001152,
+      "exit_code": 0,
+      "log": "publication.log",
+      "log_sha256": "bad49026fab9aef60706d0da2ff4c078aec179d108ed1deeb9e11da2f0150aba"
+    },
+    {
+      "name": "test-programme",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_programme.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:10.350816+00:00",
+      "finished_utc": "2026-11-17T11:06:10.761652+00:00",
+      "elapsed_seconds": 0.4108546909992583,
+      "exit_code": 0,
+      "log": "test-programme.log",
+      "log_sha256": "661edc15febdac9369517a14933e9ef86368a762bf72bd24911d213939acbb00"
+    },
+    {
+      "name": "roadmap",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_roadmap.py",
+        "public",
+        "--source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:07.165847+00:00",
+      "finished_utc": "2026-11-17T11:06:13.339040+00:00",
+      "elapsed_seconds": 6.173208344000159,
+      "exit_code": 0,
+      "log": "roadmap.log",
+      "log_sha256": "2c1e363c30330eddc58ee90c0dbbad9673d03bc294e2d185463c993fb0421b4e"
+    },
+    {
+      "name": "test-localization",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_localization.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:13.339136+00:00",
+      "finished_utc": "2026-11-17T11:06:15.051507+00:00",
+      "elapsed_seconds": 1.7123855909994745,
+      "exit_code": 0,
+      "log": "test-localization.log",
+      "log_sha256": "1e04099c80486a126e044758599404641570d3d2be821dff35da493b98d6a3ce"
+    },
+    {
+      "name": "test-ui",
+      "argv": [
+        "node",
+        "scripts/test_ui_localization.js"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:15.051614+00:00",
+      "finished_utc": "2026-11-17T11:06:17.446899+00:00",
+      "elapsed_seconds": 2.3952008630003547,
+      "exit_code": 0,
+      "log": "test-ui.log",
+      "log_sha256": "039f72bfdface71c56fd039e89558895e4034604fe8fd3d0074c1cff3c52821a"
+    },
+    {
+      "name": "test-build",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_build.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:07.314841+00:00",
+      "finished_utc": "2026-11-17T11:06:24.483862+00:00",
+      "elapsed_seconds": 17.1690367780011,
+      "exit_code": 0,
+      "log": "test-build.log",
+      "log_sha256": "06f1fff11c07d687d3548728e6f256e1f53b0011b55499118a93790d53328857"
+    },
+    {
+      "name": "previous-actual-missing-status",
+      "argv": [
+        "python3",
+        "-B",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/evidence/check_actual_status_binding.py",
+        "--site-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:24.483956+00:00",
+      "finished_utc": "2026-11-17T11:06:24.691884+00:00",
+      "elapsed_seconds": 0.20794317800027784,
+      "exit_code": 0,
+      "log": "previous-actual-missing-status.log",
+      "log_sha256": "4fe1d23228a1e15032d3f9a3dce040e9a6d079870fac4041b820ea7a1c0e1e65"
+    },
+    {
+      "name": "test-journal",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_journal.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:17.446995+00:00",
+      "finished_utc": "2026-11-17T11:06:29.034160+00:00",
+      "elapsed_seconds": 11.587179506999746,
+      "exit_code": 0,
+      "log": "test-journal.log",
+      "log_sha256": "a21a732dff7539aae6a1fd86df8a4838b749af4b0d4d10ad8862b6396c48f794"
+    },
+    {
+      "name": "localization",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/check_localization.py",
+        "public",
+        "--source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/source",
+        "--roadmap-source-dir",
+        "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/roadmap"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:06.364396+00:00",
+      "finished_utc": "2026-11-17T11:06:31.207000+00:00",
+      "elapsed_seconds": 24.842613254000753,
+      "exit_code": 0,
+      "log": "localization.log",
+      "log_sha256": "58d7008b88dc974b34923e057149819e27dd3f4217a97174df91335fd65da879"
+    },
+    {
+      "name": "test-roadmap",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_roadmap.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/50c29b6b4f6f/manual_20261117b/site",
+      "started_utc": "2026-11-17T11:06:10.761763+00:00",
+      "finished_utc": "2026-11-17T11:07:41.457847+00:00",
+      "elapsed_seconds": 90.69609912899978,
+      "exit_code": 0,
+      "log": "test-roadmap.log",
+      "log_sha256": "a6433a164feca4b12019013b606920aeca3843e97ed0e51ad8373759ba505002"
+    }
+  ],
+  "actual54": {
+    "run_receipt": "actual54-fixed-run.json",
+    "result": "actual54-result.json",
+    "result_sha256": "8714a70d833f1c4c54c7f112730a3f42b5ebbf5bb1f51eb7c889b58e2adc6f95",
+    "script": "badge_actual_page_probe.py",
+    "script_sha256": "f12f09fac9dfb50abf25af26ddf3f625c1ea46af311381f774f145180de61987",
+    "counts": {
+      "cases": 54,
+      "checker_accepted": 15,
+      "matched_decisions": 54,
+      "expected_positive_cases": 15,
+      "expected_negative_cases": 39,
+      "conditions": {
+        "valid_baseline": 9,
+        "valid_inherited_language": 6,
+        "wrong_explicit_language": 6,
+        "unknown_explicit_language": 3,
+        "explicit_hidden_attribute": 6,
+        "explicit_accessibility_exclusion": 3,
+        "explicit_inert_subtree": 3,
+        "inline_display_none": 3,
+        "inline_visibility_hidden": 3,
+        "inline_content_visibility_hidden": 3,
+        "missing_one_direct_link_badge": 3,
+        "all_local_work_badges_misplaced": 3,
+        "reader_group_loses_its_status": 3
+      }
+    },
+    "input_pages": {
+      "en/programme/index.html": "10a069e2799851371258666a99198cd4b4f0e68043704b4e736cd1d4c5741283",
+      "en/roadmap/index.html": "24be465aa1f6cdb2321816caca8a1fd093e8cb9fa2978f1c09eaa3eb04016019",
+      "en/engineering/specifications/semantic-verification/index.html": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045",
+      "ru/programme/index.html": "c59b49725b5862cc8efdb0760ec9d4b54defd05ae5f4765c5c54e7ac5186bece",
+      "ru/roadmap/index.html": "a39730bc902690376748496fff76aa4f5deb455ccbfc8d0972b38ba15fce9ab5",
+      "ru/engineering/specifications/semantic-verification/index.html": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341",
+      "zh-Hans/programme/index.html": "09abb12893d4a7bc0be27d6e0ea66f84f2ce67eed7eb0feb0ea56db9fdc9a82c",
+      "zh-Hans/roadmap/index.html": "46434d424ef9971d8e63c42ead4d8d567a22fa302c9228ee1e8b6ecc949afa39",
+      "zh-Hans/engineering/specifications/semantic-verification/index.html": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3"
+    },
+    "roadmap_mutation_limit": [
+      {
+        "locale": "en",
+        "case": "roadmap_other_field_does_not_cover",
+        "actual_work_badges": 0,
+        "all_work_badges": 0,
+        "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+      },
+      {
+        "locale": "ru",
+        "case": "roadmap_other_field_does_not_cover",
+        "actual_work_badges": 0,
+        "all_work_badges": 0,
+        "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+      },
+      {
+        "locale": "zh-Hans",
+        "case": "roadmap_other_field_does_not_cover",
+        "actual_work_badges": 0,
+        "all_work_badges": 0,
+        "reason": "Not in the frozen actual54 inventory: original generated roadmap had no labelled fields. Test grouped-field design in a separately labelled renderer fixture."
+      }
+    ]
+  },
+  "preserved_actual_missing_badge_control": {
+    "file": "previous-actual-missing-status.json",
+    "sha256": "4fe1d23228a1e15032d3f9a3dce040e9a6d079870fac4041b820ea7a1c0e1e65",
+    "positive_pages": 3,
+    "mutants_refused": 3
+  },
+  "suite_counts": {
+    "test_build": 31,
+    "test_programme": 11,
+    "test_roadmap": 37,
+    "test_localization": 20,
+    "test_journal": 8,
+    "ui_cases": 752
+  },
+  "output_inventory": {
+    "works": 36,
+    "types": {
+      "paper": 11,
+      "specification": 13,
+      "study": 8,
+      "glossary": 1,
+      "bibliography": 1,
+      "appendix": 2
+    },
+    "renditions": 72,
+    "rendition_states": {
+      "unreviewed": 64,
+      "reviewed": 8
+    },
+    "canonical_reader_routes": 108,
+    "html_files": 354,
+    "index_routes": 353,
+    "daily_issues": 10,
+    "daily_pages": 30,
+    "feeds": {
+      "public/en/journal/rss.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      },
+      "public/en/journal/atom.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      },
+      "public/ru/journal/rss.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      },
+      "public/ru/journal/atom.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      },
+      "public/zh-Hans/journal/rss.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      },
+      "public/zh-Hans/journal/atom.xml": {
+        "entries": 10,
+        "r4_title_present": true
+      }
+    }
+  },
+  "generated_output": {
+    "files": 403,
+    "file": "generated-output-digests.json",
+    "canonical_record_sha256": "119fdeb65037b4f0c9aeefff2a922e06c35c433de7a3b25795fba9e0b320226b"
+  },
+  "r4_source_preservation": [
+    {
+      "path": "src/content/journal/manifest.json",
+      "exact_base_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+      "before_overlay_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+      "after_build_sha256": "781958e2a4c4ce1a75255ea0dcdd77533f965538a149eac2e97af6893834d70c",
+      "unchanged": true
+    },
+    {
+      "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/en.md",
+      "exact_base_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+      "before_overlay_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+      "after_build_sha256": "7baab294d8f03d00542ca1278721fbac6b20c463f82248231be25b2e8e77c596",
+      "unchanged": true
+    },
+    {
+      "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/ru.md",
+      "exact_base_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+      "before_overlay_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+      "after_build_sha256": "e1a821126e25ef0b284175ae4a7d494a13e81a12e6eff1bdf3c783cade53fb78",
+      "unchanged": true
+    },
+    {
+      "path": "src/content/journal/2026-11-17-reasoning-cache-break-even/zh-Hans.md",
+      "exact_base_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+      "before_overlay_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+      "after_build_sha256": "dcb696147ada43e8a2fd93e32a6991240e3425743ac0e3d6eef638137c47ba1a",
+      "unchanged": true
+    }
+  ],
+  "first_refusals_preserved": [
+    "overlay-reconciliation.json",
+    "first-scoped-baseline.json"
+  ],
+  "first_refusal_disposition": "Old patch README hunk already present in r4 base was reconciled without changing journal source. First scoped checker correctly exposed an omitted navigation producer case; its overly strict 21 current-language-chip obligations were narrowed to the exact own-reader navigation context, while own-header requirements remain enforced.",
+  "patch_bindings": "site-component-status-patch-bindings.json",
+  "patch_bindings_sha256": "1c8a302900958e039569968f6ab9bc310feca81f3fc710b19ab75a339d0fae34",
+  "apply_check": {
+    "base": "5ff661bb6c894a44b3b6b1591d543c4830bc9180",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "clean_checkout_status": ""
+  }
+}

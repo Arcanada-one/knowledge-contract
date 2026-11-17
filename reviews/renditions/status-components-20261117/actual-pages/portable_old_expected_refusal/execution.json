@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "scope": "same portable script against retained old actual-page inputs",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/badge_actual_page_probe.py",
+    "--site-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117/consumer72-probe/site",
+    "--output-dir",
+    "/workspace/scratch/50c29b6b4f6f/manual_20261117b/probes/portable_old_expected_refusal",
+    "--expect-fixed"
+  ],
+  "started_utc": "2026-11-17T11:02:56.832237+00:00",
+  "completed_utc": "2026-11-17T11:02:58.406090+00:00",
+  "expected_exit": 1,
+  "actual_exit": 1,
+  "exit_matches": true,
+  "probe_sha256": "f12f09fac9dfb50abf25af26ddf3f625c1ea46af311381f774f145180de61987",
+  "before": {
+    "scripts/publication_checks.py": "2286fc07f01c2e89d274c10df977a7e00e1959f4d9a02807146c44187ce1e30b",
+    "src/content/catalog.json": "7afb5ee14f4c8b6d1a9387fab1e58847330bc491c1c7e94a1dfa15d9f63886ac",
+    "publication-manifest.json": "8c5c163ef9a3d240db72a82fe1e4f1fadc6c9ce9ff6ffe9dabbb664f47db586e",
+    "public/en/programme/index.html": "7a1961c671c7094f86c569c16966e210417a3f365f5590263564d3d96f8948fe",
+    "public/en/roadmap/index.html": "a0b4f730bee093582fccf6dcd5c5b6dac33f2989c5cf49849ecbd2ccccb4c355",
+    "public/en/engineering/specifications/semantic-verification/index.html": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a",
+    "public/ru/programme/index.html": "a9055030105860a24d73bd310851fb3ca8781aec70c673749795b82afb55b75f",
+    "public/ru/roadmap/index.html": "5a429157928f5a9a4cc485c68f6dff76b7b9e9eb57116f5e57e75c62a8b21b1f",
+    "public/ru/engineering/specifications/semantic-verification/index.html": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659",
+    "public/zh-Hans/programme/index.html": "399dd12bc4872b1195b0aacaa569ff6176d3163b0030df236005518d7956e322",
+    "public/zh-Hans/roadmap/index.html": "3d7866eb9aa2ce5545a2ba168a2f7e9ac306b61cc3a745facd7eea16f1a5820e",
+    "public/zh-Hans/engineering/specifications/semantic-verification/index.html": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9"
+  },
+  "after": {
+    "scripts/publication_checks.py": "2286fc07f01c2e89d274c10df977a7e00e1959f4d9a02807146c44187ce1e30b",
+    "src/content/catalog.json": "7afb5ee14f4c8b6d1a9387fab1e58847330bc491c1c7e94a1dfa15d9f63886ac",
+    "publication-manifest.json": "8c5c163ef9a3d240db72a82fe1e4f1fadc6c9ce9ff6ffe9dabbb664f47db586e",
+    "public/en/programme/index.html": "7a1961c671c7094f86c569c16966e210417a3f365f5590263564d3d96f8948fe",
+    "public/en/roadmap/index.html": "a0b4f730bee093582fccf6dcd5c5b6dac33f2989c5cf49849ecbd2ccccb4c355",
+    "public/en/engineering/specifications/semantic-verification/index.html": "e66631af2205a19ee02578a2462d3951b68e5be0ec203c48a667ec21bc7ca79a",
+    "public/ru/programme/index.html": "a9055030105860a24d73bd310851fb3ca8781aec70c673749795b82afb55b75f",
+    "public/ru/roadmap/index.html": "5a429157928f5a9a4cc485c68f6dff76b7b9e9eb57116f5e57e75c62a8b21b1f",
+    "public/ru/engineering/specifications/semantic-verification/index.html": "d9e743587b2005daa97b48d67902b3bec70b86a722c6ceec3378f79b47ec7659",
+    "public/zh-Hans/programme/index.html": "399dd12bc4872b1195b0aacaa569ff6176d3163b0030df236005518d7956e322",
+    "public/zh-Hans/roadmap/index.html": "3d7866eb9aa2ce5545a2ba168a2f7e9ac306b61cc3a745facd7eea16f1a5820e",
+    "public/zh-Hans/engineering/specifications/semantic-verification/index.html": "61beec74ccee31ed29700b551c06ba5b0c4ef990572665717d11640558b3feb9"
+  },
+  "inputs_unchanged": true,
+  "frozen54_case_inputs_and_outcomes_match": true,
+  "receipt_sha256": "50e0091abf0a2aa49e2dd1b470c78c5d72e4b4b84ba30c717350551c73b414bf",
+  "counts": {
+    "cases": 54,
+    "checker_accepted": 54,
+    "matched_decisions": 15,
+    "expected_positive_cases": 15,
+    "expected_negative_cases": 39,
+    "conditions": {
+      "valid_baseline": 9,
+      "valid_inherited_language": 6,
+      "wrong_explicit_language": 6,
+      "unknown_explicit_language": 3,
+      "explicit_hidden_attribute": 6,
+      "explicit_accessibility_exclusion": 3,
+      "explicit_inert_subtree": 3,
+      "inline_display_none": 3,
+      "inline_visibility_hidden": 3,
+      "inline_content_visibility_hidden": 3,
+      "missing_one_direct_link_badge": 3,
+      "all_local_work_badges_misplaced": 3,
+      "reader_group_loses_its_status": 3
+    }
+  }
+}

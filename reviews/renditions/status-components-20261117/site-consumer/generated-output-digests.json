@@ -1,0 +1,2017 @@
+[
+  {
+    "path": "public/404.html",
+    "bytes": 10389,
+    "sha256": "4b712c24641119ea5339675df823ba37de40a5e013050a73fc4dcfff2dc42f42"
+  },
+  {
+    "path": "public/ATTRIBUTION-source.md",
+    "bytes": 2069,
+    "sha256": "fbd6e39de558f5d87a9713e58f611bd46960457e172bd77e15e2e5dcceefe951"
+  },
+  {
+    "path": "public/LICENSE-content.txt",
+    "bytes": 18657,
+    "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+  },
+  {
+    "path": "public/NOTICE-content.txt",
+    "bytes": 642,
+    "sha256": "653f267f17b7dbaa7c8d9dd7de68f6388aeddcd6946ce3bc65e581c20466e1bb"
+  },
+  {
+    "path": "public/analytics.js",
+    "bytes": 6202,
+    "sha256": "02e3d1270e7612fd65bc2f922dc6db3029c1f63fa956d5eedac1777e64ad5a96"
+  },
+  {
+    "path": "public/app.js",
+    "bytes": 157093,
+    "sha256": "2a1015cabdc3f07e2306c9c9ac68a521d692162441a0858ec8fe9b43f3e0d5b7"
+  },
+  {
+    "path": "public/appendices/api-integration/index.html",
+    "bytes": 10974,
+    "sha256": "0beedda5795d3123ae2b9ee178e5b0aada4e330295aa52e52e60366040af9f37"
+  },
+  {
+    "path": "public/appendices/index.html",
+    "bytes": 10615,
+    "sha256": "7978ea641f787d18a4a9ab372d1d81bf26e593dcf6956c478969e750244e5c14"
+  },
+  {
+    "path": "public/appendices/source-map/index.html",
+    "bytes": 10989,
+    "sha256": "cb41ad8cd7665b5803c849392e2dc0644da70eefddefe5cbc1c4dcbb6174e3bc"
+  },
+  {
+    "path": "public/assets/Manrope-OFL.txt",
+    "bytes": 4387,
+    "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  {
+    "path": "public/assets/Manrope-Variable.ttf",
+    "bytes": 164700,
+    "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+  },
+  {
+    "path": "public/assets/SourceSans3-LICENSE.md",
+    "bytes": 4486,
+    "sha256": "56af9b9c6715597e458284a474dc118a50a4150e9d547c70f7b4a33c3e6a9328"
+  },
+  {
+    "path": "public/assets/SourceSans3-Regular.woff2",
+    "bytes": 109632,
+    "sha256": "53492fb3a0def77354f166a55d09b63a10855e91c206c7620a81cf56e97f8ec3"
+  },
+  {
+    "path": "public/assets/SourceSerif4-LICENSE.md",
+    "bytes": 4491,
+    "sha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464"
+  },
+  {
+    "path": "public/assets/SourceSerif4-Regular.woff2",
+    "bytes": 76260,
+    "sha256": "6b053e98f0838afe81f3e784727be4583a7c13bb42f198dc5202ecffee0aaee0"
+  },
+  {
+    "path": "public/assets/architecture-original.jpg",
+    "bytes": 74390,
+    "sha256": "025b473c06d3cf978153bd1380c24578c9fb21f1277d3246bcdda8f70fcf2ae1"
+  },
+  {
+    "path": "public/assets/favicon.svg",
+    "bytes": 382,
+    "sha256": "4b297a87a0c85085b53a4dafbfdbd366c6299d46e1ee31dd558e7d371afa7722"
+  },
+  {
+    "path": "public/assets/knowledge-dialogue.webp",
+    "bytes": 93886,
+    "sha256": "3eae15b8c440d5cbdde267ca2321397a1686c120dbf6f71469b0bad0b3a856bf"
+  },
+  {
+    "path": "public/assets/knowledge-landscape.webp",
+    "bytes": 188850,
+    "sha256": "e51c6c8de95df83b56b79657ae77a5ce23533190a4255a2b1de751cf081305e8"
+  },
+  {
+    "path": "public/assets/knowledge-prism.webp",
+    "bytes": 220598,
+    "sha256": "4d77d3c315df64eb5850ff5b6ecfca5f3cd298472af62add9de772ec54cc8f5e"
+  },
+  {
+    "path": "public/assets/knowledge-v2-original.jpg",
+    "bytes": 42010,
+    "sha256": "ae44b2403eb7a90b20786a34a1021f75428a2f0ddcb245c993fe0943d1d701a0"
+  },
+  {
+    "path": "public/assets/mark-dark.svg",
+    "bytes": 555,
+    "sha256": "d806083475ffc5040f4b3650c722ee819677541a1ceeacff08a29f673a2564c2"
+  },
+  {
+    "path": "public/assets/mark.svg",
+    "bytes": 555,
+    "sha256": "2c2adfc75f1aee9feccbe50c9f0601d375612e16bbb92be6fe21dc45ab909b83"
+  },
+  {
+    "path": "public/content-provenance.json",
+    "bytes": 193854,
+    "sha256": "12f0e6d04d2fd11c642ff94e7f7822c5e78b20350dcc28ca196177c4a979d2fe"
+  },
+  {
+    "path": "public/content.js",
+    "bytes": 4764076,
+    "sha256": "2835be64c8da913c732a0fa92faa80313f44bf1fd3847f94aa5bfe3774ef4e50"
+  },
+  {
+    "path": "public/en/about/index.html",
+    "bytes": 12830,
+    "sha256": "6598d42a338d597050c45a632c8ac0a318d2770499fd52a9a57b570ae08e5dbe"
+  },
+  {
+    "path": "public/en/appendices/api-integration/index.html",
+    "bytes": 33296,
+    "sha256": "58bf65660711693820c8e5a882d5853494d9f9b424baeead62907b6c5d8a7fd7"
+  },
+  {
+    "path": "public/en/appendices/index.html",
+    "bytes": 11654,
+    "sha256": "3b85ea33b0aaa5a5d537a07eba8d4b74fc149cf1cdcfd7b07c19de8d20b0da8d"
+  },
+  {
+    "path": "public/en/appendices/source-map/index.html",
+    "bytes": 33950,
+    "sha256": "4d391b39a55b168344da03a745536b4d17cdafc5ec06e2bd20489024622cbdb6"
+  },
+  {
+    "path": "public/en/books/index.html",
+    "bytes": 11358,
+    "sha256": "3c57e497bcf603753fd93cd262ca5c15ca6bd5f0631c1a44a4daf95b36be0168"
+  },
+  {
+    "path": "public/en/docs/artifact-registry/index.html",
+    "bytes": 10705,
+    "sha256": "ef6c27e0e1143d7e95ac855b830edea50dbe064a4668882baec9f01a40b5b2c5"
+  },
+  {
+    "path": "public/en/docs/availability/index.html",
+    "bytes": 12079,
+    "sha256": "47ceb2f08051e2e819cee3d6f068d2995d1ee7f2cbeb29b846214d435f3a4b0a"
+  },
+  {
+    "path": "public/en/docs/cache-identity-and-invalidation/index.html",
+    "bytes": 10774,
+    "sha256": "1d07108644579e58f34d49e8f9ee2945dcaa1a92743e2fa6c6f0272fb8b4003c"
+  },
+  {
+    "path": "public/en/docs/compiled-artifact-contract/index.html",
+    "bytes": 10744,
+    "sha256": "f6bfc7fa0ea0678d450761127a2616111f95100514f419ce5a85dee9ab9b5986"
+  },
+  {
+    "path": "public/en/docs/context-package/index.html",
+    "bytes": 10686,
+    "sha256": "eef3cd1a7a181efc1d826b08f1445ef9067817f8b8dff3793c0e660cbc959881"
+  },
+  {
+    "path": "public/en/docs/contract-family/index.html",
+    "bytes": 10705,
+    "sha256": "8a5327b922677f260d7465126e5b871e3a072c63f52bdf7ab2fd6072661f8767"
+  },
+  {
+    "path": "public/en/docs/index.html",
+    "bytes": 11392,
+    "sha256": "7a97062a5613efc393cb581f45362e8042ee9fc522172a121922c55db07e712c"
+  },
+  {
+    "path": "public/en/docs/knowledge-contract-v3/index.html",
+    "bytes": 10714,
+    "sha256": "803cbd65b27c9fc03be3e549fcba79f12d66d644070eb38e7a622ba832a44049"
+  },
+  {
+    "path": "public/en/docs/knowledge-evolution-contract/index.html",
+    "bytes": 10719,
+    "sha256": "28ba79a1f5e5a64df4210112d9f3e73f9039561294ac92bc460179aadec1c7aa"
+  },
+  {
+    "path": "public/en/docs/model/index.html",
+    "bytes": 10666,
+    "sha256": "44bc1992d6415e4b55fd6ed09976a668741d50b007e07f33426f3127ad6aeeeb"
+  },
+  {
+    "path": "public/en/docs/reuse-policy/index.html",
+    "bytes": 10673,
+    "sha256": "43f603e9efec6b535fa23f3e45b6a9126e4373b6eb1b75f8bf1e66c631475f03"
+  },
+  {
+    "path": "public/en/docs/semantic-types/index.html",
+    "bytes": 10674,
+    "sha256": "fd24c18ee19928850d1f7025b37aad8745a08fb7d6e5acd63b993fcae10c0f50"
+  },
+  {
+    "path": "public/en/docs/status-model/index.html",
+    "bytes": 10662,
+    "sha256": "3e774a834e3a0fdd0767e987d91a3f82a7735fd2ced11e235ce7cb619f37dff2"
+  },
+  {
+    "path": "public/en/engineering/index.html",
+    "bytes": 11455,
+    "sha256": "95b2afd3652b609a75cd6f55420a4aff7f684bfeee410558b71f64bff6273ad6"
+  },
+  {
+    "path": "public/en/engineering/specifications/artifact-registry/index.html",
+    "bytes": 26044,
+    "sha256": "884442f9fb4bbbd9a47039a62db65dc1918bc244604490cf34ad82426ba1a0fb"
+  },
+  {
+    "path": "public/en/engineering/specifications/book-package/index.html",
+    "bytes": 46115,
+    "sha256": "6d80dbbfda910f233effdee95f4bde06ceba0a9c4b1ed39aa80d63c5651e0a48"
+  },
+  {
+    "path": "public/en/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "bytes": 30796,
+    "sha256": "baebc92b94dad63ea47afe20e15f58b6019fd4462c30434332acc31b5c266c47"
+  },
+  {
+    "path": "public/en/engineering/specifications/compiled-artifact-contract/index.html",
+    "bytes": 25232,
+    "sha256": "5d73b0402b6e79209192e24d5dcd48ff0ced6e98d9b698d4a6e22119b798b157"
+  },
+  {
+    "path": "public/en/engineering/specifications/context-package/index.html",
+    "bytes": 25152,
+    "sha256": "efe40d23e5102c9907701e0135c817fc79f59432b7551b54793b8ddfa1ff4c65"
+  },
+  {
+    "path": "public/en/engineering/specifications/contract-family/index.html",
+    "bytes": 26276,
+    "sha256": "4223db674b3edec4132fc82c02e2f674601c2bc31eafff10032ff50c8778924b"
+  },
+  {
+    "path": "public/en/engineering/specifications/index.html",
+    "bytes": 19165,
+    "sha256": "02d1ab026f6e2cf00b2588f4c1cd35fd72c3b75b08b4fa0ef1f5c914b44e5954"
+  },
+  {
+    "path": "public/en/engineering/specifications/knowledge-contract-core/index.html",
+    "bytes": 27649,
+    "sha256": "8efbb22b4fce886ecf45aa38c452a564d6bddb7712a1b8452197c60a3661ca92"
+  },
+  {
+    "path": "public/en/engineering/specifications/knowledge-evolution/index.html",
+    "bytes": 25072,
+    "sha256": "6c33e85b86e450d5a3fe5d6e3605dabe0ddfca1c71ba5c1d92f8777778b64dcf"
+  },
+  {
+    "path": "public/en/engineering/specifications/reuse-policy/index.html",
+    "bytes": 26382,
+    "sha256": "2c67483d3c8a623017418c334c9b31fcad14e117b60d2beb716d3a662225af97"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-bridge/index.html",
+    "bytes": 56004,
+    "sha256": "d963a0c763538af17dd5396a55345a4ad357a9f3d619fc5bc5258c47d8eb5fc6"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-types/index.html",
+    "bytes": 24608,
+    "sha256": "8f849d116145599b6d934b08cb0f9b87f112c3d54fc71c76414978eac50a5da3"
+  },
+  {
+    "path": "public/en/engineering/specifications/semantic-verification/index.html",
+    "bytes": 63397,
+    "sha256": "62d0c8c185f536fb8b97f69e420e7dad6030c9339837d712a4819cbe1ada6045"
+  },
+  {
+    "path": "public/en/engineering/specifications/status-model/index.html",
+    "bytes": 39010,
+    "sha256": "736c72f60abc88c3e85d019533f1405bce3b6a5ffea1862d8ad74881fa8f99c1"
+  },
+  {
+    "path": "public/en/engineering/studies/agent-situation-controls/index.html",
+    "bytes": 32171,
+    "sha256": "2b90fbccc86b49d0c4743ecfe2fde1a6688904aeb699bdf4b562f330efa052d4"
+  },
+  {
+    "path": "public/en/engineering/studies/contract-profile-conformance/index.html",
+    "bytes": 35118,
+    "sha256": "07d09bc5a6d614dc6569e8c0869649ed6164874e74e76464931006b65a7cb2a2"
+  },
+  {
+    "path": "public/en/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "bytes": 38314,
+    "sha256": "b88f66b30b404e98f4237f1925e511f2a63d8295d393cd497494b3e9196c3d16"
+  },
+  {
+    "path": "public/en/engineering/studies/editorial-skill-pilot/index.html",
+    "bytes": 36822,
+    "sha256": "e327527f13dfdbf05b48790ed8b9bc26fc676ff02095caeb40afaa71ceab1d2c"
+  },
+  {
+    "path": "public/en/engineering/studies/executable-projections-and-revision/index.html",
+    "bytes": 38001,
+    "sha256": "35829e9e94f628d545d407a43cdf15a395f36174c4eb49ddd80945baf702af69"
+  },
+  {
+    "path": "public/en/engineering/studies/index.html",
+    "bytes": 16121,
+    "sha256": "632e071356ca296bd2d8f7f5badbbb118d69f7724d1131aa0cabfde558e583b0"
+  },
+  {
+    "path": "public/en/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "bytes": 47392,
+    "sha256": "bb7ca25c8e15f0af9a935adecacebc7de80e770a15dde68824fcf80f95bd17ca"
+  },
+  {
+    "path": "public/en/engineering/studies/semantic-bridge-conformance/index.html",
+    "bytes": 33744,
+    "sha256": "ad4f8241ce7cce2b5450c769e60a92f5189260793e3b0dd45f0e6a590a0de1b9"
+  },
+  {
+    "path": "public/en/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "bytes": 34582,
+    "sha256": "3a84fa9bbc30f1beabb2e43cd81c98a844e855ced71f956af87e7ce32c93f58f"
+  },
+  {
+    "path": "public/en/index.html",
+    "bytes": 21179,
+    "sha256": "5f3edc1b50b5a6be36010997b3a5c895b1169a381c8a19cd75f49ffaac2987cd"
+  },
+  {
+    "path": "public/en/journal/agent-situation-2026-11-14/index.html",
+    "bytes": 17493,
+    "sha256": "91615495b5f447761d9874ebb437d29808a4336cbb1fd55bdee349ce36319851"
+  },
+  {
+    "path": "public/en/journal/atom.xml",
+    "bytes": 88370,
+    "sha256": "aecb41bf75fe97b671eb1fd56a6d7b2661ce4d33300dd5be9306014c44845bf5"
+  },
+  {
+    "path": "public/en/journal/building-a-place/index.html",
+    "bytes": 11777,
+    "sha256": "8f50f7638673bc5420d1a9782c0176cee8ecd027e29a912436d7c1c8a90a3790"
+  },
+  {
+    "path": "public/en/journal/control-for-topic-2026-11-12/index.html",
+    "bytes": 17313,
+    "sha256": "000f277a5425f52ba642af58dbca6779e7c9c333817758106ae2b30d6055ec97"
+  },
+  {
+    "path": "public/en/journal/dora-gaps-agents-2026-11-14/index.html",
+    "bytes": 24167,
+    "sha256": "49f23850329940c885acf9ac5d4032e81e493b4dd33a78799cdc01aec25b2c21"
+  },
+  {
+    "path": "public/en/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "bytes": 20209,
+    "sha256": "b9cd6b502186249fd4094d40ea2ee0afba558584df28412642f3b6105dc8d729"
+  },
+  {
+    "path": "public/en/journal/index.html",
+    "bytes": 21401,
+    "sha256": "b857e449718ef5dbd862df6d94ddc3739dcaaf7904fef9961bdec15227d534c7"
+  },
+  {
+    "path": "public/en/journal/knowledge-contract-architecture/index.html",
+    "bytes": 14651,
+    "sha256": "5f08791bbdd9f70167947538f7356b11601dd69d093f53558ea607e6c7bed7a8"
+  },
+  {
+    "path": "public/en/journal/knowledge-contract-v2/index.html",
+    "bytes": 19473,
+    "sha256": "34d3e8319020ed98e216f67bfc819f03d56a805a0a92cc3bfca7206a23788d50"
+  },
+  {
+    "path": "public/en/journal/lesson-without-evidence-2026-11-11/index.html",
+    "bytes": 19368,
+    "sha256": "c55d11634d4834cc1a36e1471318f25f17d075b3f2ccccc80b6c7ce5289393af"
+  },
+  {
+    "path": "public/en/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "bytes": 20750,
+    "sha256": "69132ebbadf8928d1ca3f6b2e3b4c965ebe21e9d6992914c8478e5bb263376a5"
+  },
+  {
+    "path": "public/en/journal/rss.xml",
+    "bytes": 87853,
+    "sha256": "7c9330705abfd5f48b0d386287414af4083f4fae1ee75692101a6baeb2ded140"
+  },
+  {
+    "path": "public/en/journal/rule-after-restart-2026-11-15/index.html",
+    "bytes": 18638,
+    "sha256": "ba237201e96a1d16390f531b9066ac61f0b1235441187f3aee1c157193d251bf"
+  },
+  {
+    "path": "public/en/journal/source-rule-checks-2026-11-15/index.html",
+    "bytes": 18725,
+    "sha256": "7be788b95d20fb14e62f4047990b9c4d61daebb110c9e334e408318ca8b0337c"
+  },
+  {
+    "path": "public/en/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "bytes": 26140,
+    "sha256": "943f9984d66a4d8e5031be750ebe6c4331b6f81fc0547b335fa18b4d274b63ea"
+  },
+  {
+    "path": "public/en/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "bytes": 18789,
+    "sha256": "bf0a46b7a0cb9e7480c5dbdb461abf7ad35c2c552fb30dea0e3dc0e05c76bc15"
+  },
+  {
+    "path": "public/en/lab/knowledge-journey/index.html",
+    "bytes": 12535,
+    "sha256": "0456a47f8c173fa73154fb71a383e065fc29719e8bb4056b234d2bb1e45d7d91"
+  },
+  {
+    "path": "public/en/programme/index.html",
+    "bytes": 37011,
+    "sha256": "10a069e2799851371258666a99198cd4b4f0e68043704b4e736cd1d4c5741283"
+  },
+  {
+    "path": "public/en/reference/bibliography/index.html",
+    "bytes": 57292,
+    "sha256": "463d040eb59e05587295e3829b960a0cf36c862e43ab837203ebf12d1ddae8e5"
+  },
+  {
+    "path": "public/en/reference/glossary/index.html",
+    "bytes": 52759,
+    "sha256": "5375494159962498f28fee3216e27d4091915c9236dbd1217035035ac0fdb65c"
+  },
+  {
+    "path": "public/en/reference/index.html",
+    "bytes": 11612,
+    "sha256": "fe781c2c2cc9c6d6e80cac116e6df8919a05af0398151be053b04d3abef8c425"
+  },
+  {
+    "path": "public/en/references/index.html",
+    "bytes": 11984,
+    "sha256": "2d39b878d1d7c6bde6e6d55c228d6e68be212ef73c58fcbdb192e207354d70cd"
+  },
+  {
+    "path": "public/en/repository/index.html",
+    "bytes": 25697,
+    "sha256": "c21777b17e3299f067b1c637df29754cc0916266194ab3c912010aa05e324b4a"
+  },
+  {
+    "path": "public/en/research/anthropic/index.html",
+    "bytes": 11214,
+    "sha256": "8ff8c87ae50ed1c028adba1f288bd92cf322b14ceeee6684c3410f1c96657b74"
+  },
+  {
+    "path": "public/en/research/deepmind/index.html",
+    "bytes": 11233,
+    "sha256": "30957d0e454ffe09a9d0627605123d5c44c5a7eaf8102b30a67749980d2b1e93"
+  },
+  {
+    "path": "public/en/research/hugging-face/index.html",
+    "bytes": 11206,
+    "sha256": "a47832e90240156779ffbd816d051aa89cf680660a887d5e8b6cc1282de5024f"
+  },
+  {
+    "path": "public/en/research/index.html",
+    "bytes": 22457,
+    "sha256": "58853f61003517f2295fa1e095d65250b5d884edc2d7349a0a6f558fe2b0b872"
+  },
+  {
+    "path": "public/en/research/mcp/index.html",
+    "bytes": 11273,
+    "sha256": "1eff5dd8e829fc32735d59c05157f874c9217f3fa82ba57b19fc608bbce8cc16"
+  },
+  {
+    "path": "public/en/research/p00/index.html",
+    "bytes": 10703,
+    "sha256": "751564dd9be5bf75d1fd01eb13f13209ffbf4b95a779af3b60a92c2dcbde0c13"
+  },
+  {
+    "path": "public/en/research/p01/index.html",
+    "bytes": 10703,
+    "sha256": "f413b80c868eaef35a836a22a008815db0d72fef5c1e97e6dd2e9acd4f7733d6"
+  },
+  {
+    "path": "public/en/research/p02/index.html",
+    "bytes": 10703,
+    "sha256": "fb4e3fd721f4041b70798f2c094fb680169e22aa45ebe04520feac8ea66cb799"
+  },
+  {
+    "path": "public/en/research/p03/index.html",
+    "bytes": 10715,
+    "sha256": "0d215e22bb43ac2b7fb0cfd8189ffee91e28c51477bfdb73e910c407cf31a2a2"
+  },
+  {
+    "path": "public/en/research/p04/index.html",
+    "bytes": 10710,
+    "sha256": "968a58b0a942d76c6a98f73ccf1a6b9d6cfb8bb3927661555933e069c44a4214"
+  },
+  {
+    "path": "public/en/research/p05/index.html",
+    "bytes": 10710,
+    "sha256": "c1d93c93370eef7108ecbeaee1ec0c1de075ed12d7854fcf50f96d2ece3d66c7"
+  },
+  {
+    "path": "public/en/research/p06/index.html",
+    "bytes": 10693,
+    "sha256": "1f05954cd87e8505e4b18f63a3510664e4ea102b1603e7f02a99fecb4e570662"
+  },
+  {
+    "path": "public/en/research/p07/index.html",
+    "bytes": 10708,
+    "sha256": "d67c7cba0edae75c3d7135a06191b5f72d58983c5fee3ab3c0f3ac458680e975"
+  },
+  {
+    "path": "public/en/research/p08/index.html",
+    "bytes": 10693,
+    "sha256": "a079bc96e6605ea0380551758bfadd5bead966f6dc07f5be7afe2d4353107e11"
+  },
+  {
+    "path": "public/en/research/p09/index.html",
+    "bytes": 10679,
+    "sha256": "c3f4acdd48822adccbe2d4da7485ee333647fc3ef2199510c9cb6169ebe0f29b"
+  },
+  {
+    "path": "public/en/research/p10/index.html",
+    "bytes": 10686,
+    "sha256": "5e4aa8a3b4b027185b56545f7763f052f142d7bae1bc933cc1adbe423f9b4eaf"
+  },
+  {
+    "path": "public/en/research/p11/index.html",
+    "bytes": 10708,
+    "sha256": "e06eaa4544da4107bbf7121bc358bf782b8016278b08a6a314508fc88542d1af"
+  },
+  {
+    "path": "public/en/research/p12/index.html",
+    "bytes": 10679,
+    "sha256": "1220cfe8f6ed88338dcb3ba481c49d597880c88fe8cd2c7aa560db64b6fb8e02"
+  },
+  {
+    "path": "public/en/research/p13/index.html",
+    "bytes": 10662,
+    "sha256": "372a2940de44103c8ae69e89976eae5d68c44521ea46a0f1f9396e6f97e655fe"
+  },
+  {
+    "path": "public/en/research/stripe/index.html",
+    "bytes": 11184,
+    "sha256": "3030e0d8b6bdcfbf1ec99ffafd26ce5167bfb986347a52c6b122effec051ce90"
+  },
+  {
+    "path": "public/en/research/supabase/index.html",
+    "bytes": 11164,
+    "sha256": "c3aff707843ba4c36426416c36485a37b76ddfbde2ea735c3305013f2790dcb0"
+  },
+  {
+    "path": "public/en/roadmap/index.html",
+    "bytes": 128244,
+    "sha256": "24be465aa1f6cdb2321816caca8a1fd093e8cb9fa2978f1c09eaa3eb04016019"
+  },
+  {
+    "path": "public/en/science/agent-situation/index.html",
+    "bytes": 57304,
+    "sha256": "f5a623c727efda39bae126e48588cc6455b272231afe3ce9015049c4f1e3c146"
+  },
+  {
+    "path": "public/en/science/constrained-transformations/index.html",
+    "bytes": 87871,
+    "sha256": "a5d0e81492fe49ba4c2b13a2813ea5251a2d4ff268f6564e1ccb85b9626b3e59"
+  },
+  {
+    "path": "public/en/science/controlled-knowledge-reuse/index.html",
+    "bytes": 55473,
+    "sha256": "e26dfce072506ee2a1dc15f202db964799519db186cf1f8dcf799c905805187c"
+  },
+  {
+    "path": "public/en/science/evidence-and-falsification/index.html",
+    "bytes": 46347,
+    "sha256": "aff4a8bec4a9e8fc22cbb2600957c289005d5aa8e71240f5a96db76956740545"
+  },
+  {
+    "path": "public/en/science/geometry-of-semantic-representations/index.html",
+    "bytes": 104722,
+    "sha256": "095c09914934f024f1197e40c0d24a4ab77c211f23b845e995e4b736a9433e45"
+  },
+  {
+    "path": "public/en/science/human-meaning-and-computable-knowledge/index.html",
+    "bytes": 74772,
+    "sha256": "244c5268814f513a1f7cf97e07ab27c78be26b8acc25f789c8ae1dda074e193a"
+  },
+  {
+    "path": "public/en/science/index.html",
+    "bytes": 22429,
+    "sha256": "eb7853dd0854bcbc8734c14daed3b70e0b1584f1e1720fe556a178d5a55055e0"
+  },
+  {
+    "path": "public/en/science/interaction-and-memory/index.html",
+    "bytes": 42325,
+    "sha256": "c0d1b7541805b15a80807b03be3eadb9efbd17014045a28f7512149b6f21e677"
+  },
+  {
+    "path": "public/en/science/knowledge-utility/index.html",
+    "bytes": 45477,
+    "sha256": "967bf6f969cc20a2dd6d16faa4352bb5b785550cc4232d33bf6331ffdc38de5a"
+  },
+  {
+    "path": "public/en/science/retrieval-and-context-composition/index.html",
+    "bytes": 52865,
+    "sha256": "9cc8794a975600bbd777ffecee910389aae61031afff56e85d6fec409c0185a6"
+  },
+  {
+    "path": "public/en/science/revision-and-governance/index.html",
+    "bytes": 42526,
+    "sha256": "ebd3ad68a82eba12e86f11775d256a76a89eb862504268f825af17af2ebec015"
+  },
+  {
+    "path": "public/en/science/semantic-objects-and-context/index.html",
+    "bytes": 52418,
+    "sha256": "9336085c69007dc6220afe9863f72854cbbffaa469f8fc0270712dd6871a9cb3"
+  },
+  {
+    "path": "public/en/search/index.html",
+    "bytes": 23055,
+    "sha256": "d1624ce4db4b1315252f2a37be1bcaea533a1ff1a9093b2b6312fdbcf1e916bc"
+  },
+  {
+    "path": "public/en/wiki/index.html",
+    "bytes": 11567,
+    "sha256": "6b1349e0d81cc4fa997c42788cdb3cb3504a4dc5763ca8d18df5a1951b621827"
+  },
+  {
+    "path": "public/en/wiki/knowledge-contract/index.html",
+    "bytes": 10705,
+    "sha256": "c86956483639669195c53f023661ed20b2dbc01e6728f3caa14d9e13f8128e20"
+  },
+  {
+    "path": "public/en/wiki/provenance/index.html",
+    "bytes": 10693,
+    "sha256": "8a79897ba59241c5da0582dbb7688d6858d71d3373dd20b5040522a666d71bc2"
+  },
+  {
+    "path": "public/en/wiki/versioned-knowledge/index.html",
+    "bytes": 10703,
+    "sha256": "f598ccc63c9a4e2b80f6cc1bed4d50ce348df889446584d3d5d860fce99796b4"
+  },
+  {
+    "path": "public/engineering/index.html",
+    "bytes": 10622,
+    "sha256": "7652aee4698c26a38763a20e94bd539ef5af5f4098238905c9357483e7283223"
+  },
+  {
+    "path": "public/engineering/specifications/artifact-registry/index.html",
+    "bytes": 11074,
+    "sha256": "2eb73544931222c016422ba8c1a05fd6eef21800b52895e70971b9f2f650faa0"
+  },
+  {
+    "path": "public/engineering/specifications/book-package/index.html",
+    "bytes": 11070,
+    "sha256": "681657cc59de8c8e3f3b1e60ccfced4e415f57b07267422fa6dafea49ba9f258"
+  },
+  {
+    "path": "public/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "bytes": 11238,
+    "sha256": "71d138c0f07ff14f9403adbeb38d371419bfb791079bcb0edc8e7f750152616c"
+  },
+  {
+    "path": "public/engineering/specifications/compiled-artifact-contract/index.html",
+    "bytes": 11145,
+    "sha256": "96f48b21669531d7ad27fe5544a3e24134af8ad49874eb4a2cf984cf12287494"
+  },
+  {
+    "path": "public/engineering/specifications/context-package/index.html",
+    "bytes": 11034,
+    "sha256": "21a6a1cdf5701a644bf416b325f4d0f2f91464e2bb226e298252bf4520450c81"
+  },
+  {
+    "path": "public/engineering/specifications/contract-family/index.html",
+    "bytes": 11123,
+    "sha256": "0768db3914d4ecd6ca6c3dddf46337060f1e294f90f9cd5887e5af761af56755"
+  },
+  {
+    "path": "public/engineering/specifications/index.html",
+    "bytes": 10727,
+    "sha256": "9db9fec078e60ce3ff6f3d33d785d7637d928a90ac50e43ebd9ba05dc4382f10"
+  },
+  {
+    "path": "public/engineering/specifications/knowledge-contract-core/index.html",
+    "bytes": 11101,
+    "sha256": "7f043416fe5ab818247d464efb653422dd8e1f91cd4573394c49042172b59f10"
+  },
+  {
+    "path": "public/engineering/specifications/knowledge-evolution/index.html",
+    "bytes": 11022,
+    "sha256": "ec7424f6da3fd2356db41b6b477cb614268a996a442abf8801e129bc0d59501d"
+  },
+  {
+    "path": "public/engineering/specifications/reuse-policy/index.html",
+    "bytes": 11071,
+    "sha256": "b35790e13eca44388d252e3d680aec30bf501bdc2b1ad95d6a371e937b33b35b"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-bridge/index.html",
+    "bytes": 11090,
+    "sha256": "0e4bf80fc17b9d37f2ad69be0ed4ab03bfa1cd006c957c512cb77ed7c032fd3b"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-types/index.html",
+    "bytes": 11015,
+    "sha256": "81df8855541fe77599d82e44cf2a268f7a6e7eb6e5045ded1c047d77ef223118"
+  },
+  {
+    "path": "public/engineering/specifications/semantic-verification/index.html",
+    "bytes": 11100,
+    "sha256": "da3c24cb9ad9808d9c8c908f1af12f9938cde7cb22368b3d901597815868d964"
+  },
+  {
+    "path": "public/engineering/specifications/status-model/index.html",
+    "bytes": 11028,
+    "sha256": "0c68ac464bb611e8b7479f208902f67124db8de4fed0475e60d2a43ba19cd9f5"
+  },
+  {
+    "path": "public/engineering/studies/agent-situation-controls/index.html",
+    "bytes": 11149,
+    "sha256": "ffef943de1a2c61b2699f6a5e878614d937e1dbb37361f8108347b3d9214c5dc"
+  },
+  {
+    "path": "public/engineering/studies/contract-profile-conformance/index.html",
+    "bytes": 11218,
+    "sha256": "901b61e4fc1e4296f8611e45783e1793894a393671b54db23a30e3b1200153a4"
+  },
+  {
+    "path": "public/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "bytes": 11281,
+    "sha256": "84aad0894d98e93d3e4f57acc5354aea0d07056ada68c1d870f08c6982e3ddd5"
+  },
+  {
+    "path": "public/engineering/studies/editorial-skill-pilot/index.html",
+    "bytes": 11251,
+    "sha256": "4773cd492186f5d5b9bfdd4b54c35b5754809bb0b5cbf6cbc14ff24fe283a82c"
+  },
+  {
+    "path": "public/engineering/studies/executable-projections-and-revision/index.html",
+    "bytes": 11216,
+    "sha256": "fed1ba3ebec7d952a3af9eb83637b0799e260022c192654382d1d9f3cc8f10d2"
+  },
+  {
+    "path": "public/engineering/studies/index.html",
+    "bytes": 10678,
+    "sha256": "0fc6a14ceea6338ae2cc6589a6a186a54ab0629fd7c08533b96e5a5ecfd9a08d"
+  },
+  {
+    "path": "public/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "bytes": 11325,
+    "sha256": "373c629c9e1a3edcd67aa729a43355c1ef7de4c9815ea8b337c05104609bd053"
+  },
+  {
+    "path": "public/engineering/studies/semantic-bridge-conformance/index.html",
+    "bytes": 11213,
+    "sha256": "81ceca64cdde81c5f42d503cf5c13e6335c68e873bc2bc05bb84b7ff1fc5a114"
+  },
+  {
+    "path": "public/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "bytes": 11285,
+    "sha256": "3a7178f0969b4f06d4dfac03ae694a656cf9d4b191ffc6f78c8f9983bf05af07"
+  },
+  {
+    "path": "public/favicon.svg",
+    "bytes": 382,
+    "sha256": "4b297a87a0c85085b53a4dafbfdbd366c6299d46e1ee31dd558e7d371afa7722"
+  },
+  {
+    "path": "public/index.html",
+    "bytes": 21173,
+    "sha256": "90c0c5c5fa9abe02403e45fedbeecfdd6d107b11508001e5c41689161b9f6e52"
+  },
+  {
+    "path": "public/lab/ACCESS-CONTRACTS-LICENSE",
+    "bytes": 1065,
+    "sha256": "be74508501f0ea6bbb2537d71d53e40266ad3bcffbfdc75428ed5b67244f9fea"
+  },
+  {
+    "path": "public/lab/OBSERVATION-PROVENANCE.json",
+    "bytes": 2667,
+    "sha256": "53b7b1805ba9aec1e4a05f99ca8e1d0a3f76e16ecb206efa802057a4b7063fb3"
+  },
+  {
+    "path": "public/lab/access-contracts.46ab74e.js",
+    "bytes": 198297,
+    "sha256": "5380a710a0f07cb2b996431b41a196079fcfd4e80c9a92744d44d6ec81fa93ac"
+  },
+  {
+    "path": "public/lab/knowledge-journey-observation.css",
+    "bytes": 905,
+    "sha256": "34ce415ffbc8185eb6c59334a5c102cc9a6baecb49abe514031be8f35b350bf8"
+  },
+  {
+    "path": "public/lab/knowledge-journey-observation.js",
+    "bytes": 8764,
+    "sha256": "c9c659889c9ede874fbf7721459cf3dea8a99327bec6ea06f21114eef1f131fb"
+  },
+  {
+    "path": "public/lab/observation-inspector.87457463.js",
+    "bytes": 21139,
+    "sha256": "87457463074ec4d95c4fb0f424761809ddf0f616d9a4c1478485ceaf50174176"
+  },
+  {
+    "path": "public/lab/package.json",
+    "bytes": 33,
+    "sha256": "89c47db7851f89caec72da4f215ebc21cf1e294aeef3b45d2583562d846ab035"
+  },
+  {
+    "path": "public/lab/retained-object-reader.js",
+    "bytes": 21158,
+    "sha256": "20867919f6858595221f42a116952e520d905a836c8e3b0e2e5071ff916ff9ca"
+  },
+  {
+    "path": "public/llms.txt",
+    "bytes": 8012,
+    "sha256": "4592044c676c6e9697af04713d34ddcfae69c848eb5dc553b486a4673a14a6a6"
+  },
+  {
+    "path": "public/programme.json",
+    "bytes": 18317,
+    "sha256": "01417f413f6277983d8b125fb223c8dc866c3588d582f7fe32c2683cc9f5787c"
+  },
+  {
+    "path": "public/publication.json",
+    "bytes": 77345,
+    "sha256": "44f4837dab6bd271928be4c3f02907a3ef19b843adac994090094df763fca476"
+  },
+  {
+    "path": "public/reference/bibliography/index.html",
+    "bytes": 10942,
+    "sha256": "62748c8dbd615e4a7ed8bf4a5b3e4b210ba430b22d09d5c97c6985c414a09f11"
+  },
+  {
+    "path": "public/reference/glossary/index.html",
+    "bytes": 10845,
+    "sha256": "7717fb52a30421c3d5486675993c58c9bae266d01855360c8b8492d12888ec9f"
+  },
+  {
+    "path": "public/reference/index.html",
+    "bytes": 10608,
+    "sha256": "aeb08c767fe02df0fded66edc197fab5b45dce4b5cdaaa786d839097b20a2f99"
+  },
+  {
+    "path": "public/renditions.css",
+    "bytes": 694,
+    "sha256": "a35758b83bbde0b439381aef1d9f13d46f1f1e0c6a7acad51e1c40229ef9201a"
+  },
+  {
+    "path": "public/renditions.js",
+    "bytes": 15870,
+    "sha256": "4e06292a1cdf2f59205b48a92a3246345777175424d576324d15017282887c61"
+  },
+  {
+    "path": "public/roadmap.json",
+    "bytes": 7655,
+    "sha256": "1fd18a4998fe824c82d00786678fc77aa707c68930eeeafb00180db6f604ee39"
+  },
+  {
+    "path": "public/robots.txt",
+    "bytes": 67,
+    "sha256": "b93259d2d1498bddf15ef38fcd92fa9f8be1909c391d946627f7ba31a4b31a42"
+  },
+  {
+    "path": "public/ru/about/index.html",
+    "bytes": 15038,
+    "sha256": "5d7b4c22c46d324051114709ee9feee75d1f9b02696e497b55cf4a949ff29031"
+  },
+  {
+    "path": "public/ru/appendices/api-integration/index.html",
+    "bytes": 50813,
+    "sha256": "27f82aa32ead19908eca73d79fa1e23c73662e27832ec2fa5f906a6f6ed5b8a9"
+  },
+  {
+    "path": "public/ru/appendices/index.html",
+    "bytes": 12900,
+    "sha256": "f32aaff5deebfb0cdc6903f669a4309aa6218a2969403e8638cf78f685435efb"
+  },
+  {
+    "path": "public/ru/appendices/source-map/index.html",
+    "bytes": 52164,
+    "sha256": "385cfda50ecaeabb674cd2e15e3a1490ded350dfadf248dd4c40a9b3468c9b41"
+  },
+  {
+    "path": "public/ru/books/index.html",
+    "bytes": 12527,
+    "sha256": "785ff98cb3fb57961dce4e42a86ec43c2d16f275876b40c6e5051a80c4ecc3ac"
+  },
+  {
+    "path": "public/ru/docs/artifact-registry/index.html",
+    "bytes": 11804,
+    "sha256": "82807a8d8f3d61c36af6da1ed3ab9c1ea1fb22ba709889809b876641a6803a3b"
+  },
+  {
+    "path": "public/ru/docs/availability/index.html",
+    "bytes": 13435,
+    "sha256": "6f1fb7b37839404cea99c44cfa644366390bb3673da91076d332e6c18afcfa9e"
+  },
+  {
+    "path": "public/ru/docs/cache-identity-and-invalidation/index.html",
+    "bytes": 11893,
+    "sha256": "a2178b50ff095d4ce0ea1bf1733478138dfaddd521e2bef0f9a0b3066b3a11a0"
+  },
+  {
+    "path": "public/ru/docs/compiled-artifact-contract/index.html",
+    "bytes": 11867,
+    "sha256": "cd6b71636c7be0a2025e85f816f318895d163438ea04d7412169cf39f80bba1d"
+  },
+  {
+    "path": "public/ru/docs/context-package/index.html",
+    "bytes": 11737,
+    "sha256": "65ee9d9f5039347e7f31eb8755f91df94e57540c461c70a68bfa7bd2f75d185f"
+  },
+  {
+    "path": "public/ru/docs/contract-family/index.html",
+    "bytes": 11767,
+    "sha256": "effdffe0f3dced09a2cf07544405b57d29c86458c9ee0cc5ce710bd05aa03e77"
+  },
+  {
+    "path": "public/ru/docs/index.html",
+    "bytes": 12667,
+    "sha256": "710a13d8acdbcdfb8689666181711251a12752275c10dab7f281dacce1cae9e6"
+  },
+  {
+    "path": "public/ru/docs/knowledge-contract-v3/index.html",
+    "bytes": 11736,
+    "sha256": "53bc8e468b740536b167b70e3777177c658c38d36ccd8f2cde0a0e27bdf09ba0"
+  },
+  {
+    "path": "public/ru/docs/knowledge-evolution-contract/index.html",
+    "bytes": 11783,
+    "sha256": "79092883ac9b3d711155d1c0e995f94471aa8d12633a49a38c733ae973b33f58"
+  },
+  {
+    "path": "public/ru/docs/model/index.html",
+    "bytes": 11688,
+    "sha256": "234de5059d823bdf3988d916a3ae8fd691a21f7d90bdef801ba53680afd34f75"
+  },
+  {
+    "path": "public/ru/docs/reuse-policy/index.html",
+    "bytes": 11758,
+    "sha256": "68206255fce92241aae9a68c28f705d7685480d80669d526a65de272ea62e0f6"
+  },
+  {
+    "path": "public/ru/docs/semantic-types/index.html",
+    "bytes": 11770,
+    "sha256": "c963e4390054696f4d7ca2454e0b50bd1dc2033e2ac8aa41007edbd8aad47e82"
+  },
+  {
+    "path": "public/ru/docs/status-model/index.html",
+    "bytes": 11689,
+    "sha256": "f533dd895fd982095a389fa4bfdb31d6ccfa790c9cc4212eb01304a47f666fd9"
+  },
+  {
+    "path": "public/ru/engineering/index.html",
+    "bytes": 12730,
+    "sha256": "d4dce7fbbd11c93a4042dcf069485a87ddfba9129f3df97dc47db3cbdee26920"
+  },
+  {
+    "path": "public/ru/engineering/specifications/artifact-registry/index.html",
+    "bytes": 38085,
+    "sha256": "3d8d83c54e036ef61c0e5f7fd57620f9f06911af4f56861bff673c09ad727efc"
+  },
+  {
+    "path": "public/ru/engineering/specifications/book-package/index.html",
+    "bytes": 70590,
+    "sha256": "8a7a1ac9ef573749e212c7779bd5babf94a35dcde2aceba678aaf203077a9431"
+  },
+  {
+    "path": "public/ru/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "bytes": 48204,
+    "sha256": "e2a90dd74072e847fd97a79e8a8acdd8e8814cb0069383720b1faf8924d1b3d3"
+  },
+  {
+    "path": "public/ru/engineering/specifications/compiled-artifact-contract/index.html",
+    "bytes": 37949,
+    "sha256": "d03e422ae0a89d06e381e709752b96a1483e2ea68bae2afca6b90f3b1a034fc7"
+  },
+  {
+    "path": "public/ru/engineering/specifications/context-package/index.html",
+    "bytes": 37058,
+    "sha256": "09c182625e7d30d5ffe5e28e1f77872db42fdbe1f9816dbc48f7b6299e99dd43"
+  },
+  {
+    "path": "public/ru/engineering/specifications/contract-family/index.html",
+    "bytes": 38283,
+    "sha256": "1c48dfd8fdaf4dff761d3e8f7010197da2cc57dda9ce5e8bb7f5e75bbadb2c0c"
+  },
+  {
+    "path": "public/ru/engineering/specifications/index.html",
+    "bytes": 22958,
+    "sha256": "b4f1ebc966eb70271ea6ebe081ca1ffcff24c970f5ffdad95971abd6315a9750"
+  },
+  {
+    "path": "public/ru/engineering/specifications/knowledge-contract-core/index.html",
+    "bytes": 42037,
+    "sha256": "e6be613b2cc897204658f2e286745997cecdcf32eecb70de9e958cec10b3b6e7"
+  },
+  {
+    "path": "public/ru/engineering/specifications/knowledge-evolution/index.html",
+    "bytes": 36933,
+    "sha256": "8425e92e4634621613a971d87cdcf5b9cfaffcaea002d7820f52bb1f93f82afd"
+  },
+  {
+    "path": "public/ru/engineering/specifications/reuse-policy/index.html",
+    "bytes": 39267,
+    "sha256": "37074ddf65085b574f9e32acf886735a298c5c913a13a786b6eeb21f1fc52fbd"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-bridge/index.html",
+    "bytes": 88159,
+    "sha256": "0681751e02c3ea11b46ee8f02744c1dd5801b2643f3581eb0cc96bbc71d07689"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-types/index.html",
+    "bytes": 36609,
+    "sha256": "2807a1b4041b1a02f0678e658bc61c04feb396e5f50e861c79aa2fe20c3fb27c"
+  },
+  {
+    "path": "public/ru/engineering/specifications/semantic-verification/index.html",
+    "bytes": 97653,
+    "sha256": "dfec2cb6bc4881afb52cd4c48e06431069013acd0afbbf53b296c609e3e1d341"
+  },
+  {
+    "path": "public/ru/engineering/specifications/status-model/index.html",
+    "bytes": 57047,
+    "sha256": "487a187f78b4db7920bcb011b4d7a4ec19ae8a8331861f05d00cc1ed3cb8d1b1"
+  },
+  {
+    "path": "public/ru/engineering/studies/agent-situation-controls/index.html",
+    "bytes": 50387,
+    "sha256": "c30fa679bbb2a0e3da34a00062410aac71af5a86ddb3a429eb25d24d2f9dc444"
+  },
+  {
+    "path": "public/ru/engineering/studies/contract-profile-conformance/index.html",
+    "bytes": 53283,
+    "sha256": "ce63952ee345a213acaf1775102078ff5c2d5a1d11d75524bdc1de978b41c10f"
+  },
+  {
+    "path": "public/ru/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "bytes": 70355,
+    "sha256": "b90ab2db7c851e0a6c686d74dbfcf6fdf8edf65d98dea97d4d653529dcef9f4a"
+  },
+  {
+    "path": "public/ru/engineering/studies/editorial-skill-pilot/index.html",
+    "bytes": 56851,
+    "sha256": "57993e6cb5de0ae1219d3f8f8287cba2dbde3741ef7295627be97ba656c6bf36"
+  },
+  {
+    "path": "public/ru/engineering/studies/executable-projections-and-revision/index.html",
+    "bytes": 72528,
+    "sha256": "9a225df475b9bc621b9f283d964efcfa4d6c27b6df2258700d77693c3c193d95"
+  },
+  {
+    "path": "public/ru/engineering/studies/index.html",
+    "bytes": 19425,
+    "sha256": "c9d432c9c62a2d0805a1c1c2b7368cc85e24974ea3fac57abbdf99fced1f2ad8"
+  },
+  {
+    "path": "public/ru/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "bytes": 79075,
+    "sha256": "7e7a23eb70d6b00dce3b46be7b65eefd8e30d388cffa315c870b74eaf0bbfb2a"
+  },
+  {
+    "path": "public/ru/engineering/studies/semantic-bridge-conformance/index.html",
+    "bytes": 52075,
+    "sha256": "1287456f1da7bdca809f8e103d13e90007f476304b13ad4e33976b76366933fa"
+  },
+  {
+    "path": "public/ru/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "bytes": 63633,
+    "sha256": "477a67060a317152cd7c799cf97a8f8f4c1cd3def63ddc8dc9fa1d00b2602b90"
+  },
+  {
+    "path": "public/ru/index.html",
+    "bytes": 25418,
+    "sha256": "b833337a94e8f96237ffb38b98e0a6cb86e23699cb5ba60bc2cd6bad75b3df05"
+  },
+  {
+    "path": "public/ru/journal/agent-situation-2026-11-14/index.html",
+    "bytes": 24232,
+    "sha256": "8e0fed374fb173e4edb4123311e967d347a736163a056c32eade4e63ec2761aa"
+  },
+  {
+    "path": "public/ru/journal/atom.xml",
+    "bytes": 146938,
+    "sha256": "5ae4b70308e4a1816e84ab67a25858f069f88b095eb7f2a9c6b44586d7deaeba"
+  },
+  {
+    "path": "public/ru/journal/building-a-place/index.html",
+    "bytes": 13729,
+    "sha256": "9635481f0a5dd74c39ae25554b58669b241d3a11e21038a329903a4b01b26407"
+  },
+  {
+    "path": "public/ru/journal/control-for-topic-2026-11-12/index.html",
+    "bytes": 22353,
+    "sha256": "0e2eaea5c8eb3edaeabcfd3f7769fd38b72d132c9b34071bae30dac80dcf8f98"
+  },
+  {
+    "path": "public/ru/journal/dora-gaps-agents-2026-11-14/index.html",
+    "bytes": 33356,
+    "sha256": "449608aff8aa19546b91b4111cb0d16a88f8e303a277fca2a2032d18874c6eb0"
+  },
+  {
+    "path": "public/ru/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "bytes": 28168,
+    "sha256": "51f1623f5faa689ba1baea282a52df68c2fdae05f144c85845c578c98cee9916"
+  },
+  {
+    "path": "public/ru/journal/index.html",
+    "bytes": 27487,
+    "sha256": "4298ab780d6bec8fe6702c2ddaaf4a1ae977b900af8fbf1900450bbd51d7d2b5"
+  },
+  {
+    "path": "public/ru/journal/knowledge-contract-architecture/index.html",
+    "bytes": 17838,
+    "sha256": "a180174789d5e6844f0d2de967a80eb60a61eb090675c66953223312ad1bfb23"
+  },
+  {
+    "path": "public/ru/journal/knowledge-contract-v2/index.html",
+    "bytes": 28513,
+    "sha256": "20746bfa3c1acd00e6745bbec0778a974545e2d55542f314c7210ff6a9877179"
+  },
+  {
+    "path": "public/ru/journal/lesson-without-evidence-2026-11-11/index.html",
+    "bytes": 25147,
+    "sha256": "d9942c1b8e99e4ea346702e3a271ef4df6541e83426acf6c45e0e4fbccfc4e20"
+  },
+  {
+    "path": "public/ru/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "bytes": 28698,
+    "sha256": "12d3c0906b6ed75d2faf4c3bb6be5773b9cf2fa066bf09858b81d775742c792d"
+  },
+  {
+    "path": "public/ru/journal/rss.xml",
+    "bytes": 146421,
+    "sha256": "97a7cf2b15661f8df0933d774360f1c030ff319fd0e528658109adb80a67fe7d"
+  },
+  {
+    "path": "public/ru/journal/rule-after-restart-2026-11-15/index.html",
+    "bytes": 24382,
+    "sha256": "984439f975e0d8254faf4611a009620741e5e85ce3d2bb767e11e0b6eb622b0f"
+  },
+  {
+    "path": "public/ru/journal/source-rule-checks-2026-11-15/index.html",
+    "bytes": 24325,
+    "sha256": "9cb466641fa40a93314973d23bf1edf8b8d9b0feb75ec3fa159050b9321e4394"
+  },
+  {
+    "path": "public/ru/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "bytes": 36544,
+    "sha256": "7692c7353fb0e814bb6a539fc3bb13f4da316cf0e28b70efd9f36e822ec7393f"
+  },
+  {
+    "path": "public/ru/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "bytes": 24991,
+    "sha256": "9af61c72c768ce56c7934d12e66445ffe3f60656d9971bbcead3f7dbf37d852d"
+  },
+  {
+    "path": "public/ru/lab/knowledge-journey/index.html",
+    "bytes": 14010,
+    "sha256": "028ba9334a8b1f5d2f8cf3de2a2746e90c8759d676a8b5bc01b8b99456f1ccff"
+  },
+  {
+    "path": "public/ru/programme/index.html",
+    "bytes": 45694,
+    "sha256": "c59b49725b5862cc8efdb0760ec9d4b54defd05ae5f4765c5c54e7ac5186bece"
+  },
+  {
+    "path": "public/ru/reference/bibliography/index.html",
+    "bytes": 86964,
+    "sha256": "f276acdc361139ff864c04dd48da3b1960d60e4531049f4758e573434943f11a"
+  },
+  {
+    "path": "public/ru/reference/glossary/index.html",
+    "bytes": 78533,
+    "sha256": "351d20963ea84a858653427edcc76fa24ba0efcc120e8620a3474e4ad6746d9e"
+  },
+  {
+    "path": "public/ru/reference/index.html",
+    "bytes": 12920,
+    "sha256": "bbc3190d3e64edb4ae6ac15bbb83e320085ccc9bc413162489bf52c2ae7ae03d"
+  },
+  {
+    "path": "public/ru/references/index.html",
+    "bytes": 13079,
+    "sha256": "2586bf246a21b416303a8914a47f9b0edb24fd60e88048b9085ad9c85ef41be5"
+  },
+  {
+    "path": "public/ru/repository/index.html",
+    "bytes": 29874,
+    "sha256": "9568aa69b9e7a78a948e7b8dc0bfb217f7a83d690e3b6b5f1c241e393d80a702"
+  },
+  {
+    "path": "public/ru/research/anthropic/index.html",
+    "bytes": 12270,
+    "sha256": "4507a004c219471f0a775d39caacfa16d8952d575a77ed771ce56d4e11b0259c"
+  },
+  {
+    "path": "public/ru/research/deepmind/index.html",
+    "bytes": 12241,
+    "sha256": "3840e91dffb41cb07fd3c5f25c916646552f0abfc551a817ab486922aaf99661"
+  },
+  {
+    "path": "public/ru/research/hugging-face/index.html",
+    "bytes": 12188,
+    "sha256": "5a5bf8e0c33c2c68a52af9996a64df1ce08ccdf6f7f278f8d22d743a2b1c1307"
+  },
+  {
+    "path": "public/ru/research/index.html",
+    "bytes": 26946,
+    "sha256": "e523fd7b1b4a6d5fdcef37f0bd4494431a8d7403e3c2438e65119e5651ef3751"
+  },
+  {
+    "path": "public/ru/research/mcp/index.html",
+    "bytes": 12283,
+    "sha256": "938628d859ddf677d372b26db3b6541d7b54d3aa3faedd531ea07a0b0a1ccbfd"
+  },
+  {
+    "path": "public/ru/research/p00/index.html",
+    "bytes": 11755,
+    "sha256": "70b1537da04543db6af1cdb9830326c3cf56a449dc1007c16d40b72eef1cb9db"
+  },
+  {
+    "path": "public/ru/research/p01/index.html",
+    "bytes": 11755,
+    "sha256": "2977d580c63875986e6acd422ff891511e2778fb7de6cf2e54226f5963118b50"
+  },
+  {
+    "path": "public/ru/research/p02/index.html",
+    "bytes": 11755,
+    "sha256": "488df8ff93124db99db62a3a7274c012ec6550781b7d75bf6c62e732002b3a7a"
+  },
+  {
+    "path": "public/ru/research/p03/index.html",
+    "bytes": 11761,
+    "sha256": "bf6b76263487acadb0ae625dca639c9753b7a5276fe12ce6fa0704c894873660"
+  },
+  {
+    "path": "public/ru/research/p04/index.html",
+    "bytes": 11775,
+    "sha256": "b4cfe83ca8753275f0324cd75d0b282ba99bb6fbf7ce71a933d0dffaee750055"
+  },
+  {
+    "path": "public/ru/research/p05/index.html",
+    "bytes": 11775,
+    "sha256": "2b32d03a0a4cf483f21260dac17ad39f785c1cda48e6ad843d0772420ed7d9e1"
+  },
+  {
+    "path": "public/ru/research/p06/index.html",
+    "bytes": 11759,
+    "sha256": "ed6112994a725dc0658e3a424fce71cc6e8d729f2c5270e3ebe39423b6e3faf9"
+  },
+  {
+    "path": "public/ru/research/p07/index.html",
+    "bytes": 11817,
+    "sha256": "623ff7ec661e593b60d5d0d4aed355ed1a8b01e4ae9808fcb0de56197064cdfb"
+  },
+  {
+    "path": "public/ru/research/p08/index.html",
+    "bytes": 11759,
+    "sha256": "a559e0b9a6c7782b8e0a769e33bfb32d4eedf398d74dea5a9a37791803a18b85"
+  },
+  {
+    "path": "public/ru/research/p09/index.html",
+    "bytes": 11788,
+    "sha256": "93fd5a3905e15660cd586a95d48c88fc04ecd2024430507699d72df92731d55f"
+  },
+  {
+    "path": "public/ru/research/p10/index.html",
+    "bytes": 11727,
+    "sha256": "524f8e47df699799a20ca604b34df818d80bb56f476ce23cfa2683b222280dea"
+  },
+  {
+    "path": "public/ru/research/p11/index.html",
+    "bytes": 11817,
+    "sha256": "6775c9d9597b6432e1c4cd3655275b8beaf11b93340d2adfe0d6b034559aa1df"
+  },
+  {
+    "path": "public/ru/research/p12/index.html",
+    "bytes": 11788,
+    "sha256": "6d4ac822a8ba4ee66ac6b6d034b53dd00db6e0b9f3a216d1e592f2ccd3f42a23"
+  },
+  {
+    "path": "public/ru/research/p13/index.html",
+    "bytes": 11717,
+    "sha256": "07384b0a5d9d2d0cffc2d2d0297366ccd7177d8a6ec1afc72b72441786748fe2"
+  },
+  {
+    "path": "public/ru/research/stripe/index.html",
+    "bytes": 12238,
+    "sha256": "386135013a26833966dfb2313d5fff0e60324ff31305352f2f850cfffb55466c"
+  },
+  {
+    "path": "public/ru/research/supabase/index.html",
+    "bytes": 12204,
+    "sha256": "d05f42007c8f08ceed1a1859b88060489c2fb1e2f62051dc0b0fd385c8361fb1"
+  },
+  {
+    "path": "public/ru/roadmap/index.html",
+    "bytes": 202106,
+    "sha256": "a39730bc902690376748496fff76aa4f5deb455ccbfc8d0972b38ba15fce9ab5"
+  },
+  {
+    "path": "public/ru/science/agent-situation/index.html",
+    "bytes": 95323,
+    "sha256": "e00475236fdef0898412a9f4cce621d3cbf059646f4ebda711bb1acbb2c50190"
+  },
+  {
+    "path": "public/ru/science/constrained-transformations/index.html",
+    "bytes": 118335,
+    "sha256": "9c3b6b117bda381f9ddc4ae592c08426ad6a991261ce87695317e9978c6eb30a"
+  },
+  {
+    "path": "public/ru/science/controlled-knowledge-reuse/index.html",
+    "bytes": 78835,
+    "sha256": "0284e8abdb6c6ab1c4926843ac62555c94822394424316d4c1663ff3ce12f39e"
+  },
+  {
+    "path": "public/ru/science/evidence-and-falsification/index.html",
+    "bytes": 74088,
+    "sha256": "27c44a7189887c82687e35f6607ef0f1e639d4e40ccc6fc15b2e0327a52822da"
+  },
+  {
+    "path": "public/ru/science/geometry-of-semantic-representations/index.html",
+    "bytes": 142615,
+    "sha256": "c6ddf597aa497ef9f2247240472959fd2d3aac385210d63f930e034a3eea589f"
+  },
+  {
+    "path": "public/ru/science/human-meaning-and-computable-knowledge/index.html",
+    "bytes": 117289,
+    "sha256": "32da79c44504d88d702a0b5e27d98093f789b4db29b05b91f0b4e5e3d1766a3a"
+  },
+  {
+    "path": "public/ru/science/index.html",
+    "bytes": 26918,
+    "sha256": "2354ea58ea0cae7c9dacc669a6d324de738d93e622cfeb6cf64b8dc96f5e1e9a"
+  },
+  {
+    "path": "public/ru/science/interaction-and-memory/index.html",
+    "bytes": 70091,
+    "sha256": "03197cc4a15a4736c3c41e985932328808dfcd463693dc3361f035257129ea3e"
+  },
+  {
+    "path": "public/ru/science/knowledge-utility/index.html",
+    "bytes": 65033,
+    "sha256": "accf0168aeb9d2c1f2fd9e67c657d6c05f8b4a4e05c001f58340f9158efdf4e1"
+  },
+  {
+    "path": "public/ru/science/retrieval-and-context-composition/index.html",
+    "bytes": 79647,
+    "sha256": "575b14c2100e9088a44248c0bc5ec2a969ebd65831dabbd7fa90d32e929e0183"
+  },
+  {
+    "path": "public/ru/science/revision-and-governance/index.html",
+    "bytes": 69063,
+    "sha256": "6baaa010ac7aec0d881c9b81f2059af046b7661c323c2dfb31f2076cbc605088"
+  },
+  {
+    "path": "public/ru/science/semantic-objects-and-context/index.html",
+    "bytes": 77267,
+    "sha256": "6c8664b1da8e82fcb678d9420d5e7e8f02aae23921591e160b71e3449928e1ee"
+  },
+  {
+    "path": "public/ru/search/index.html",
+    "bytes": 28529,
+    "sha256": "80191abf021871685569cca13f27fd60285e4a0a2246cdccebb2d96f26401a58"
+  },
+  {
+    "path": "public/ru/wiki/index.html",
+    "bytes": 12875,
+    "sha256": "b427892a3e002c592bb6470119c66ad5874befb0f88416ee0a22223662efaa49"
+  },
+  {
+    "path": "public/ru/wiki/knowledge-contract/index.html",
+    "bytes": 11727,
+    "sha256": "611f016d879b5eeee13d34651cfd1a590225565134de4148f1afd754840fd47a"
+  },
+  {
+    "path": "public/ru/wiki/provenance/index.html",
+    "bytes": 11745,
+    "sha256": "72ea9fc8b7e323cb5395222185a8fd5ade332cda96561b54dbc59e268e69b981"
+  },
+  {
+    "path": "public/ru/wiki/versioned-knowledge/index.html",
+    "bytes": 11744,
+    "sha256": "cc5d7a9c15fdc2da4e46889778759a466a85c952366e05b1f96b8bf8accbb969"
+  },
+  {
+    "path": "public/science/agent-situation/index.html",
+    "bytes": 10957,
+    "sha256": "efd33959c5f54a3d4b4829ba1be4eb7ecbbc0b89eb5711b28cbcf27855fb0de9"
+  },
+  {
+    "path": "public/science/constrained-transformations/index.html",
+    "bytes": 11102,
+    "sha256": "bb5a911caf5092cf2ab5607fdd698e388e51be5d40c49f34669c37d7b714dca9"
+  },
+  {
+    "path": "public/science/controlled-knowledge-reuse/index.html",
+    "bytes": 11074,
+    "sha256": "3e4dee0c56c57f85f0fc6a8a9cb5738c7f564014e0aa8839bfaa5ba1adbcfc57"
+  },
+  {
+    "path": "public/science/evidence-and-falsification/index.html",
+    "bytes": 11112,
+    "sha256": "dcce35b0016342d845fd0dabb2047b3e4dfe222a16bfcb4596207113132ecce9"
+  },
+  {
+    "path": "public/science/geometry-of-semantic-representations/index.html",
+    "bytes": 11165,
+    "sha256": "cefa6ebdef533916ce8682baef2b8d6ce8b232be6efe892dedf6ba79eab6b46a"
+  },
+  {
+    "path": "public/science/human-meaning-and-computable-knowledge/index.html",
+    "bytes": 11137,
+    "sha256": "1a2aff35e99123b6970447d47cead262c77a4f2d0d2908f8d78ca2d9cc13de97"
+  },
+  {
+    "path": "public/science/index.html",
+    "bytes": 10594,
+    "sha256": "e2bd7bcaf6f14b997f59c6c67ae08cd9d39f728b400719dacf8dce4a70adfb1e"
+  },
+  {
+    "path": "public/science/interaction-and-memory/index.html",
+    "bytes": 11077,
+    "sha256": "b10d773455c8f0767fa4a39cd09d896eda38f1d4057bd9428e6af01039246721"
+  },
+  {
+    "path": "public/science/knowledge-utility/index.html",
+    "bytes": 10956,
+    "sha256": "4102608d1ca900a59903751d819c0a3fec4c95938745d055a48da15f9185a621"
+  },
+  {
+    "path": "public/science/retrieval-and-context-composition/index.html",
+    "bytes": 11147,
+    "sha256": "284408b3e0ef8cd855f9eb3f328ae28b77ecb9c91c6a0c695089d510e9ff9886"
+  },
+  {
+    "path": "public/science/revision-and-governance/index.html",
+    "bytes": 10978,
+    "sha256": "b16a17c90173f800bb2f746dab53b71d82d136559204de10f7fbc13507aabb41"
+  },
+  {
+    "path": "public/science/semantic-objects-and-context/index.html",
+    "bytes": 11070,
+    "sha256": "b34af372683f1d2d658c192ccb610216bff3029e4716e14b3864a9599dc8597f"
+  },
+  {
+    "path": "public/search.js",
+    "bytes": 19361,
+    "sha256": "dc4406ba8cff86d05f8ea4167c5c98ba6f0610c1d63851da020b335495527c56"
+  },
+  {
+    "path": "public/search/index.html",
+    "bytes": 10587,
+    "sha256": "22d3e59a9bca2f45075d47530e976fdd5605071aacc592b3a9d37ce0f272b715"
+  },
+  {
+    "path": "public/sitemap.xml",
+    "bytes": 15014,
+    "sha256": "21a24b1626bb37f746103c8d8b11ebe8038560f707f9cdf052896fc248f1c6ae"
+  },
+  {
+    "path": "public/style.css",
+    "bytes": 60264,
+    "sha256": "5f87eadb230971281cf76fa6c27e545362f132baccb03013cccde1f1bd43cc83"
+  },
+  {
+    "path": "public/theme.js",
+    "bytes": 202,
+    "sha256": "fbf6f88c25b0a8e49ffc2d4b9012d76e3e1d631df97b5b6a11574b091a63f9ac"
+  },
+  {
+    "path": "public/zh-Hans/about/index.html",
+    "bytes": 12789,
+    "sha256": "dfa8c19fc0c8b95028012d26b18599619057660beb3e5a4e35da9c827d038ef9"
+  },
+  {
+    "path": "public/zh-Hans/appendices/api-integration/index.html",
+    "bytes": 34736,
+    "sha256": "0a3acd3c0f5ef24900dcee6642bb241dc5d70bd5a8ba44fc70459cbe2b670d1d"
+  },
+  {
+    "path": "public/zh-Hans/appendices/index.html",
+    "bytes": 11701,
+    "sha256": "c33e509428be594a86f2e5849aabe00ff0ddd4ffb874208a299dbc0bf747f074"
+  },
+  {
+    "path": "public/zh-Hans/appendices/source-map/index.html",
+    "bytes": 37471,
+    "sha256": "e438314386b8f1f174a7cdd14a4c641bed818288853a71f866af8fabd52b7155"
+  },
+  {
+    "path": "public/zh-Hans/books/index.html",
+    "bytes": 11457,
+    "sha256": "f6d102168d9f7ee3fe293bde8fe6232d646953282f60f83b24c5310334b9af13"
+  },
+  {
+    "path": "public/zh-Hans/docs/artifact-registry/index.html",
+    "bytes": 10790,
+    "sha256": "4696b8e72944ede48d0cf34b7ed7bfb2329c7bc819912e983db7747bbc4c2437"
+  },
+  {
+    "path": "public/zh-Hans/docs/availability/index.html",
+    "bytes": 12098,
+    "sha256": "88076493b75333b930631e74b368c0ab788eb4508e9250805dc5c82474597862"
+  },
+  {
+    "path": "public/zh-Hans/docs/cache-identity-and-invalidation/index.html",
+    "bytes": 10859,
+    "sha256": "927f9c26336307079661026064999190633a3398fe9fb50ddaf65f211ff644d0"
+  },
+  {
+    "path": "public/zh-Hans/docs/compiled-artifact-contract/index.html",
+    "bytes": 10828,
+    "sha256": "fe3db2c33dd60f2483fa9dc7a381724fff4b17e3204d6a27605a30ac0cc40ce2"
+  },
+  {
+    "path": "public/zh-Hans/docs/context-package/index.html",
+    "bytes": 10749,
+    "sha256": "41901f06dbcae563e8ec19b3f6a1daff865fbb8936c15f5a4b4b87199391207c"
+  },
+  {
+    "path": "public/zh-Hans/docs/contract-family/index.html",
+    "bytes": 10767,
+    "sha256": "ae5bcbcf1b885ab38dfcbffd93f8a0ef3109d195a3ef8599dcfe77dec83f7f1b"
+  },
+  {
+    "path": "public/zh-Hans/docs/index.html",
+    "bytes": 11409,
+    "sha256": "9e067d3d8d851c54485d0bf119bc12ee9f238edec6232536d1db6fe4796cb081"
+  },
+  {
+    "path": "public/zh-Hans/docs/knowledge-contract-v3/index.html",
+    "bytes": 10807,
+    "sha256": "1e7b9c718254cbfd6ada8de658e289eb4759250f55c9ba0e4e071eab837352e4"
+  },
+  {
+    "path": "public/zh-Hans/docs/knowledge-evolution-contract/index.html",
+    "bytes": 10799,
+    "sha256": "f828efa2a02f6ec9a041b485d46807c998d8e3b36b4d93e1005e904a1428275f"
+  },
+  {
+    "path": "public/zh-Hans/docs/model/index.html",
+    "bytes": 10759,
+    "sha256": "8b3e34e485680169213dc6bae1d6e97fee2f900cf1f4521f9a39ae495a935b41"
+  },
+  {
+    "path": "public/zh-Hans/docs/reuse-policy/index.html",
+    "bytes": 10734,
+    "sha256": "5bdbae9285ca884b2e56cf9cac1d09c6f594b07b7e60b1e29b114623d98f8456"
+  },
+  {
+    "path": "public/zh-Hans/docs/semantic-types/index.html",
+    "bytes": 10762,
+    "sha256": "36d75f8c7a45987bbb5e517cfdd539a8ee51b9aa7e04e270c121f8a085e33249"
+  },
+  {
+    "path": "public/zh-Hans/docs/status-model/index.html",
+    "bytes": 10737,
+    "sha256": "47ea873097a632438466169cc5b75c1b64a40a9007740d6357e4dd6454cf28f1"
+  },
+  {
+    "path": "public/zh-Hans/engineering/index.html",
+    "bytes": 11472,
+    "sha256": "52ebb7909e6e03906211d70404cc6b218af3de7f8a7df4a4ed41be0cb2741d8b"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/artifact-registry/index.html",
+    "bytes": 28025,
+    "sha256": "5f6e584081e51781bd08545a3382b8707cebe7685233e149d218a276025afc16"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/book-package/index.html",
+    "bytes": 47790,
+    "sha256": "7ad13e6826e7a9085ed41a954b13d48cb1bdc2e601c00593cc6a2a28c8189d82"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/cache-identity-and-invalidation/index.html",
+    "bytes": 32429,
+    "sha256": "bf3c3ab8c32e6e9471e750f09db1affc3aeed22f3ed3395cc18ffdb68b02fd3c"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/compiled-artifact-contract/index.html",
+    "bytes": 27556,
+    "sha256": "d8273cdc96217f77bc9c49c3d6b10a2d7876a7d28f19764c03429863f08a6c1f"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/context-package/index.html",
+    "bytes": 27223,
+    "sha256": "f16b271b84aa6497b0c857a777b1ad9a4f09016c90a3354fec7c9b8d0d04b328"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/contract-family/index.html",
+    "bytes": 27975,
+    "sha256": "a1173c00485649e0248b59df9b98855f85f9e1c8af10490f7604bf9efa37a826"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/index.html",
+    "bytes": 18856,
+    "sha256": "f15843183c1a4caf58fb61c94b9a30093796c61f8911b5be3668fb3a1250970d"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/knowledge-contract-core/index.html",
+    "bytes": 29401,
+    "sha256": "f1800d92a5e9872fedc15446e9c6b57f027ccdab51c41d6d79fec75af0c523d9"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/knowledge-evolution/index.html",
+    "bytes": 26947,
+    "sha256": "c8d98fdecd8ce4d70dda14206a108a4b45f3179c92958a5b04fe50f2f8f8ec2a"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/reuse-policy/index.html",
+    "bytes": 28383,
+    "sha256": "a876a2432921026db54c65989097763cf62e499373f1e97dc30f085358ae27a8"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-bridge/index.html",
+    "bytes": 56442,
+    "sha256": "ec6a99a6b8649a7c87c5c6a2a1da87eee7e0be9a876501d247acb0846ecaac4a"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-types/index.html",
+    "bytes": 26617,
+    "sha256": "44a8972faebcbc530ef0609d5024e5e255356db6dc9e4a51c856d44d6fdb58d0"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/semantic-verification/index.html",
+    "bytes": 63585,
+    "sha256": "9c7e95e5d1c437d8b399b105b9f6af9bda93838248f52861c7c16c119dba2eb3"
+  },
+  {
+    "path": "public/zh-Hans/engineering/specifications/status-model/index.html",
+    "bytes": 40911,
+    "sha256": "c7bb0306a47a86af6403a1146b2e51b2feb5a032c2bce2792c6337c668fc513c"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/agent-situation-controls/index.html",
+    "bytes": 33823,
+    "sha256": "11848f6dc512690957eefccb88790722026f744f9e6926c8aad0e0e78b3396af"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/contract-profile-conformance/index.html",
+    "bytes": 35924,
+    "sha256": "2e6b63c25cb93e3c6ca61cbdc2ecfb80658b068f2bc855b967f4cf37c367e3a2"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/dependency-closure-and-package-delivery/index.html",
+    "bytes": 49916,
+    "sha256": "782739c7ae80fe20e2bb1f38d47d0d9fa435fc15cf86ada2656550109beebace"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/editorial-skill-pilot/index.html",
+    "bytes": 37356,
+    "sha256": "0a11211b0251df7e016e4f06a5fdff45c3f1ce4d245fba567b8861ea1f57a965"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/executable-projections-and-revision/index.html",
+    "bytes": 49107,
+    "sha256": "3a76af412c32b609c3cd2a0b1116a6365f76ded99bb2b349e62a5442e6c60c7e"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/index.html",
+    "bytes": 15985,
+    "sha256": "5f945fa13ee04ecf56410d7757f408f8624ff64c83850a4e8f5141cf05e7949b"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/reuse-admission-and-cost-controls/index.html",
+    "bytes": 57094,
+    "sha256": "192dec4183afae97f8abd58e14838a3e9cf0d0a512dbed89bd769e1a8c72c74c"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/semantic-bridge-conformance/index.html",
+    "bytes": 35793,
+    "sha256": "09dfe40ed5bea43e5d2ca0bcbc4c31ab560af7d3b290d059ec2196acf41a3006"
+  },
+  {
+    "path": "public/zh-Hans/engineering/studies/source-transcription-and-uncertainty/index.html",
+    "bytes": 44128,
+    "sha256": "498ccd291f7c071d4402c6f182f619087133a6913a6d0c6ab30bbbaf3fc5c86e"
+  },
+  {
+    "path": "public/zh-Hans/index.html",
+    "bytes": 20703,
+    "sha256": "e34c79de8b4d11c5cd39600d5afa906e11059c42563784f48e82869c52b15d94"
+  },
+  {
+    "path": "public/zh-Hans/journal/agent-situation-2026-11-14/index.html",
+    "bytes": 17669,
+    "sha256": "5047f116c963247adb188471a59f4655698fcf0a93a4ecbe11c4fe5bbefbeabf"
+  },
+  {
+    "path": "public/zh-Hans/journal/atom.xml",
+    "bytes": 84091,
+    "sha256": "7018be693d58d60c18d970766d30526053462d7d3457e03e73f4347e26855730"
+  },
+  {
+    "path": "public/zh-Hans/journal/building-a-place/index.html",
+    "bytes": 11718,
+    "sha256": "0d9c58d9c85869f18054e482c90c370dc8534c45d82a5f986c086c4775327228"
+  },
+  {
+    "path": "public/zh-Hans/journal/control-for-topic-2026-11-12/index.html",
+    "bytes": 17168,
+    "sha256": "bda8d79ef696d1224be5b30a8ba166e8fd8100e58432ccd2865b880b6848c1ba"
+  },
+  {
+    "path": "public/zh-Hans/journal/dora-gaps-agents-2026-11-14/index.html",
+    "bytes": 23671,
+    "sha256": "0147e01639e3c87c98b168e4c33eb5de836d269bc9867274f22787679a1c7d28"
+  },
+  {
+    "path": "public/zh-Hans/journal/execution-provenance-retrieval-2026-11-16/index.html",
+    "bytes": 19853,
+    "sha256": "571af9feba3f0d21f01c174220bca295d36c582e328036b19df1c5d8a11685f5"
+  },
+  {
+    "path": "public/zh-Hans/journal/index.html",
+    "bytes": 21195,
+    "sha256": "bdb914af5e8929ff36c99a6f04b2bd1fe33a7031a508f42e4235b60ba590ff22"
+  },
+  {
+    "path": "public/zh-Hans/journal/knowledge-contract-architecture/index.html",
+    "bytes": 14369,
+    "sha256": "865b18b5f2c0aa5faae9bd8aadda85885deb6c6eeb00a49409b822f67f65f67c"
+  },
+  {
+    "path": "public/zh-Hans/journal/knowledge-contract-v2/index.html",
+    "bytes": 19176,
+    "sha256": "fae84c26843c3238c4edf037789d15e0a00093e04b4204dd9115555bcffee532"
+  },
+  {
+    "path": "public/zh-Hans/journal/lesson-without-evidence-2026-11-11/index.html",
+    "bytes": 19187,
+    "sha256": "f0116695d34faf08339963bf19866143f165a2b12489dcdd573f9ed6418619cd"
+  },
+  {
+    "path": "public/zh-Hans/journal/reasoning-cache-break-even-2026-11-17/index.html",
+    "bytes": 20314,
+    "sha256": "0748383aeca6ed9227b92d6dedd9d098964298c80b0357cc98971b01e2347b99"
+  },
+  {
+    "path": "public/zh-Hans/journal/rss.xml",
+    "bytes": 83569,
+    "sha256": "38f244cdae8b1f5f3636559e9b06178d242b3553f45517a39a6ca29f040e0fcf"
+  },
+  {
+    "path": "public/zh-Hans/journal/rule-after-restart-2026-11-15/index.html",
+    "bytes": 18310,
+    "sha256": "a8601947c402582286c10dc230947eb20c31f53a0bef06fbd2ecfcc54e779ade"
+  },
+  {
+    "path": "public/zh-Hans/journal/source-rule-checks-2026-11-15/index.html",
+    "bytes": 18538,
+    "sha256": "a99331b365389d3a4c01f309e28f733ae0f302980acbd083622de08432707e4d"
+  },
+  {
+    "path": "public/zh-Hans/journal/tech-diplomacy-agent-contracts-2026-11-16/index.html",
+    "bytes": 25030,
+    "sha256": "676daa59fc6464cad1a90a3ebf6d9067d7153f7e9035c888692eef43350db2b6"
+  },
+  {
+    "path": "public/zh-Hans/journal/verdict-is-not-a-test-2026-11-13/index.html",
+    "bytes": 18813,
+    "sha256": "5d5f36d65c1c79ed9905269868d87ede420124aa65917ecbbe9c746243e5a66d"
+  },
+  {
+    "path": "public/zh-Hans/lab/knowledge-journey/index.html",
+    "bytes": 12578,
+    "sha256": "8d49c99864f61ae4c3bd7523ddac90cb21c2f303045fd8a8b1e2dcf3c5fd5965"
+  },
+  {
+    "path": "public/zh-Hans/programme/index.html",
+    "bytes": 31851,
+    "sha256": "09abb12893d4a7bc0be27d6e0ea66f84f2ce67eed7eb0feb0ea56db9fdc9a82c"
+  },
+  {
+    "path": "public/zh-Hans/reference/bibliography/index.html",
+    "bytes": 59697,
+    "sha256": "ad7723a0c1bf2f71d4e4a1897a91ee155f4d92b1ce641deabd743b721e7aa14c"
+  },
+  {
+    "path": "public/zh-Hans/reference/glossary/index.html",
+    "bytes": 52494,
+    "sha256": "daf0922c9e7a809ff6f14a4ccce25d149f7c1ed4675ce867c111f4e260b4e451"
+  },
+  {
+    "path": "public/zh-Hans/reference/index.html",
+    "bytes": 11691,
+    "sha256": "b71b2bbfe03b596818a885bb98df42f24a04c72391c7d9781908b742a0cc0d01"
+  },
+  {
+    "path": "public/zh-Hans/references/index.html",
+    "bytes": 11963,
+    "sha256": "d68d1a050d70d327ecbbf62409c1c034201eea6d3fb8416c2acdab02ab582dc6"
+  },
+  {
+    "path": "public/zh-Hans/repository/index.html",
+    "bytes": 25304,
+    "sha256": "92c2bcdf83eb3ee6b6d97764214e1087d5774726b69986892e549d09dd547915"
+  },
+  {
+    "path": "public/zh-Hans/research/anthropic/index.html",
+    "bytes": 11250,
+    "sha256": "29f696041c3f6cc183facdbc571f5327eafcc43568957c5a327551458c6856d4"
+  },
+  {
+    "path": "public/zh-Hans/research/deepmind/index.html",
+    "bytes": 11263,
+    "sha256": "4b2a8732c4a66e7ef5430e4e5eb632c63470cbf2935bc3ec762bf6e453c93645"
+  },
+  {
+    "path": "public/zh-Hans/research/hugging-face/index.html",
+    "bytes": 11226,
+    "sha256": "1a421fbb1da043396358795c961e93f74597f383f8ce4f6af6754acb8035f904"
+  },
+  {
+    "path": "public/zh-Hans/research/index.html",
+    "bytes": 21897,
+    "sha256": "577671b9bba66ace292a3b79ed06022963e1639df18f241e20b657bb9716b461"
+  },
+  {
+    "path": "public/zh-Hans/research/mcp/index.html",
+    "bytes": 11261,
+    "sha256": "74d9d7c16a205e9641d017b9e2b24ba2c77ef9f592454052867318f0d77e10de"
+  },
+  {
+    "path": "public/zh-Hans/research/p00/index.html",
+    "bytes": 10753,
+    "sha256": "381605aae22956fad2277ece4458cc91b8037f70a38800592b6445ed5656592a"
+  },
+  {
+    "path": "public/zh-Hans/research/p01/index.html",
+    "bytes": 10753,
+    "sha256": "1a84b95a467d407f202c3ce0e2bea48292fd718673cc05c2dd4fa179375f43c4"
+  },
+  {
+    "path": "public/zh-Hans/research/p02/index.html",
+    "bytes": 10753,
+    "sha256": "4871160f8fd7b6a8810ce13972ae9d8b4a53e301c8af3b2af08a4f19c176683f"
+  },
+  {
+    "path": "public/zh-Hans/research/p03/index.html",
+    "bytes": 10763,
+    "sha256": "2854df1a0f9e57db5fbf69d3cc274d9b132c777c290ed9aaa587233c1c641517"
+  },
+  {
+    "path": "public/zh-Hans/research/p04/index.html",
+    "bytes": 10769,
+    "sha256": "93c2f4e21a51e9faa15d5364e4dfc2fa4da0b90237e9d6cca076d836240dfd09"
+  },
+  {
+    "path": "public/zh-Hans/research/p05/index.html",
+    "bytes": 10769,
+    "sha256": "a9f0b92f70a19aef1788ee27998c7487718958de65f982eac14f07c1a6f91dbc"
+  },
+  {
+    "path": "public/zh-Hans/research/p06/index.html",
+    "bytes": 10750,
+    "sha256": "f95af98a59244004ec9728aa8cf114c641b49b7a5e2812d5e6ddcd82ee89b1b4"
+  },
+  {
+    "path": "public/zh-Hans/research/p07/index.html",
+    "bytes": 10767,
+    "sha256": "54605085319224bef4db3175d50860c81e4affc0e54625d49c654109954aac37"
+  },
+  {
+    "path": "public/zh-Hans/research/p08/index.html",
+    "bytes": 10750,
+    "sha256": "21f57e5e8133307621bd29f363a816a789c429295aac0d8fe5b7e79a41f29b16"
+  },
+  {
+    "path": "public/zh-Hans/research/p09/index.html",
+    "bytes": 10740,
+    "sha256": "2bd52508d642fce58fd9713cf5b53a66aa28dec24f8d764aa51d9db24fef22aa"
+  },
+  {
+    "path": "public/zh-Hans/research/p10/index.html",
+    "bytes": 10734,
+    "sha256": "1389a5cb798f5565a8ad2ac7b6cbaf7a2ae00f2437840072a6bfee003893339b"
+  },
+  {
+    "path": "public/zh-Hans/research/p11/index.html",
+    "bytes": 10767,
+    "sha256": "0e9a3a41e501a1654c4d5035179f33e32e6d378521fa5c537b5b11feaf0e7e27"
+  },
+  {
+    "path": "public/zh-Hans/research/p12/index.html",
+    "bytes": 10740,
+    "sha256": "f27f627ce16001ce443a3c4fa8d4306e12f9d726e2742db0e658f96adc43e0f0"
+  },
+  {
+    "path": "public/zh-Hans/research/p13/index.html",
+    "bytes": 10737,
+    "sha256": "56e89be0d64e9ae9709f950c1dbdbc385f713de6cc75d077250094c6e902937b"
+  },
+  {
+    "path": "public/zh-Hans/research/stripe/index.html",
+    "bytes": 11208,
+    "sha256": "46aaeb7950d8a8c7670d75fc091d4066e39d4097d5fb45971ec8a1ef64fb0a9d"
+  },
+  {
+    "path": "public/zh-Hans/research/supabase/index.html",
+    "bytes": 11148,
+    "sha256": "f15b5816c40f2c1bbdf5c4352308c7e9b03bdb9ab9c6010c8c065806692e564a"
+  },
+  {
+    "path": "public/zh-Hans/roadmap/index.html",
+    "bytes": 123921,
+    "sha256": "46434d424ef9971d8e63c42ead4d8d567a22fa302c9228ee1e8b6ecc949afa39"
+  },
+  {
+    "path": "public/zh-Hans/science/agent-situation/index.html",
+    "bytes": 58535,
+    "sha256": "67d928a73e416d0eefc993084eb76867ca30ebdd03dbaaf1fcb2fede5cde2ffe"
+  },
+  {
+    "path": "public/zh-Hans/science/constrained-transformations/index.html",
+    "bytes": 86546,
+    "sha256": "60ed3a1e2ec9837a82143d144c431ead95c08f9aefe3a3dd3e1d83252ab82a84"
+  },
+  {
+    "path": "public/zh-Hans/science/controlled-knowledge-reuse/index.html",
+    "bytes": 54994,
+    "sha256": "89eb11669a9863484dbdaa0d367685d7b1f4ed5ba011b4706103394d1e339af5"
+  },
+  {
+    "path": "public/zh-Hans/science/evidence-and-falsification/index.html",
+    "bytes": 45364,
+    "sha256": "30f8061111ea1efe7a5e3859e1691b2d0a9d659992c0e49b179744fc608e01b6"
+  },
+  {
+    "path": "public/zh-Hans/science/geometry-of-semantic-representations/index.html",
+    "bytes": 104447,
+    "sha256": "fe649c7205016d16cfe9aff25b963875817e0dc3b10bb14507676df872c70c87"
+  },
+  {
+    "path": "public/zh-Hans/science/human-meaning-and-computable-knowledge/index.html",
+    "bytes": 73822,
+    "sha256": "6bf7b61bb82af4e3a9a5d050bc1ed239db16bb15f64fa27d14f7318747391cde"
+  },
+  {
+    "path": "public/zh-Hans/science/index.html",
+    "bytes": 21869,
+    "sha256": "85231e44d52d2280ddb9b5331d6dc95ffbdb4cd8fc9718083fa54ded69127a25"
+  },
+  {
+    "path": "public/zh-Hans/science/interaction-and-memory/index.html",
+    "bytes": 42120,
+    "sha256": "7d1ca218965b49c879b3b7b408e34ffe04d93f67c8f750c2e1a983201a4e5ac1"
+  },
+  {
+    "path": "public/zh-Hans/science/knowledge-utility/index.html",
+    "bytes": 46612,
+    "sha256": "76adfeaba39642cb6be891488fe53fb4c177661c435ce5806f479176d25cfb87"
+  },
+  {
+    "path": "public/zh-Hans/science/retrieval-and-context-composition/index.html",
+    "bytes": 52466,
+    "sha256": "bbbc98db2575c8ccb05d6e1069e1494a4c58880d4034c80af5059d1d4e23e98b"
+  },
+  {
+    "path": "public/zh-Hans/science/revision-and-governance/index.html",
+    "bytes": 43656,
+    "sha256": "68d51e4fa5356e5b19ffed6ecd35580e2360535f80308cdff487a359bf61f894"
+  },
+  {
+    "path": "public/zh-Hans/science/semantic-objects-and-context/index.html",
+    "bytes": 53378,
+    "sha256": "4deb76a871f73018436da1912390c2fa5f98764ef469578049ee84435ad4d50e"
+  },
+  {
+    "path": "public/zh-Hans/search/index.html",
+    "bytes": 22587,
+    "sha256": "00c1563344625214b050662fa5ef3adfb911ae40d75acef7a4cc29a74c1cdd4d"
+  },
+  {
+    "path": "public/zh-Hans/wiki/index.html",
+    "bytes": 11646,
+    "sha256": "c16d148ca69bf0715193441d472c4b68db26fcbbf9b2af12bcb184380ddf392a"
+  },
+  {
+    "path": "public/zh-Hans/wiki/knowledge-contract/index.html",
+    "bytes": 10798,
+    "sha256": "ff88e615764e036e22aa75874f08c54ed1cbd5af7c5e3fb6d58b5184b347b5e0"
+  },
+  {
+    "path": "public/zh-Hans/wiki/provenance/index.html",
+    "bytes": 10743,
+    "sha256": "6a69525a1d308fa49db3e462229f3b1ecde1c54864ddace28489d4c945227e27"
+  },
+  {
+    "path": "public/zh-Hans/wiki/versioned-knowledge/index.html",
+    "bytes": 10751,
+    "sha256": "8df0986613b5e4095a44a4197ed1ebbc8cb138e4f946d296dff479acca442908"
+  },
+  {
+    "path": "src/content/catalog.json",
+    "bytes": 5021960,
+    "sha256": "cbc075577ac4a79a7086adf07a41f3edc9418a2388c920cb06e1164ba106f756"
+  },
+  {
+    "path": "src/site/content-provenance.json",
+    "bytes": 193854,
+    "sha256": "12f0e6d04d2fd11c642ff94e7f7822c5e78b20350dcc28ca196177c4a979d2fe"
+  }
+]

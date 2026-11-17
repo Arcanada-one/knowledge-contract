@@ -1,0 +1,26 @@
+[
+  {
+    "path": "site-36x72-component-status.patch",
+    "sha256": "fd7a6e3e1f5dce55cf200f5e3d99b98c097e2ab8d19183a98ae4338fab0c666d"
+  },
+  {
+    "path": "site-component-status-patch-bindings.json",
+    "sha256": "1c8a302900958e039569968f6ab9bc310feca81f3fc710b19ab75a339d0fae34"
+  },
+  {
+    "path": "site-component-status-receipt.json",
+    "sha256": "692ff6f0cdc95827ac83d6019bb7b4af90c213b1f6b630aa53eefff7d153f89a"
+  },
+  {
+    "path": "actual54-result.json",
+    "sha256": "8714a70d833f1c4c54c7f112730a3f42b5ebbf5bb1f51eb7c889b58e2adc6f95"
+  },
+  {
+    "path": "actual54-fixed-run.json",
+    "sha256": "db30b334db7417f009101b2c1e92a92df39f48cb7dbcd2a31feee79f02b3e0b6"
+  },
+  {
+    "path": "validation-runs.json",
+    "sha256": "0219fba145a78f6fa929259363c8083eaa8f7227a9a4ce8069569cdabc479fc6"
+  }
+]

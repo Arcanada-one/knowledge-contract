@@ -1,0 +1,25 @@
+test_actual_missing_paragraph_refused (__main__.ReaderControls.test_actual_missing_paragraph_refused) ... ok
+test_actual_wrong_body_language_refused (__main__.ReaderControls.test_actual_wrong_body_language_refused) ... ok
+test_compiled_and_actual_english_fallback_still_refused (__main__.ReaderControls.test_compiled_and_actual_english_fallback_still_refused) ... ok
+test_declared_draft_title_suffix_does_not_allow_arbitrary_status (__main__.ReaderControls.test_declared_draft_title_suffix_does_not_allow_arbitrary_status) ... ok
+test_hidden_translation_refused (__main__.ReaderControls.test_hidden_translation_refused) ... ok
+test_missing_body_is_not_replaced_by_source_file_count (__main__.ReaderControls.test_missing_body_is_not_replaced_by_source_file_count) ... ok
+test_missing_metadata_field_refused (__main__.ReaderControls.test_missing_metadata_field_refused) ... ok
+test_missing_registered_work_is_not_hidden_by_duplicate_count (__main__.ReaderControls.test_missing_registered_work_is_not_hidden_by_duplicate_count) ... ok
+test_old_html_cannot_mask_work_removed_from_both_catalogues (__main__.ReaderControls.test_old_html_cannot_mask_work_removed_from_both_catalogues) ... ok
+test_positive_multiple_works_and_mixed_review_states (__main__.ReaderControls.test_positive_multiple_works_and_mixed_review_states) ... ok
+test_programme_badge_projection_preserves_chinese_adjacency (__main__.ReaderControls.test_programme_badge_projection_preserves_chinese_adjacency) ... ok
+test_route_replacement_does_not_preserve_inventory (__main__.ReaderControls.test_route_replacement_does_not_preserve_inventory) ... ok
+test_source_to_compiled_omission_refused_even_if_dom_matches (__main__.ReaderControls.test_source_to_compiled_omission_refused_even_if_dom_matches) ... ok
+test_unreviewed_canonical_promotion_refused (__main__.ReaderControls.test_unreviewed_canonical_promotion_refused) ... ok
+test_wrong_locale_head_and_description_refused (__main__.ReaderControls.test_wrong_locale_head_and_description_refused) ... ok
+test_changed_actual_field_language_refused (__main__.RoadmapControls.test_changed_actual_field_language_refused) ... ok
+test_field_omission_in_source_text_projection_refused (__main__.RoadmapControls.test_field_omission_in_source_text_projection_refused) ... ok
+test_missing_task_refused_against_dependency_identity (__main__.RoadmapControls.test_missing_task_refused_against_dependency_identity) ... ok
+test_removed_compiled_field_refused_against_source_json (__main__.RoadmapControls.test_removed_compiled_field_refused_against_source_json) ... ok
+test_source_json_and_actual_all_fields_positive (__main__.RoadmapControls.test_source_json_and_actual_all_fields_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.578s
+
+OK

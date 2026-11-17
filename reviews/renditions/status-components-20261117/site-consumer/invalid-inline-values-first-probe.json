@@ -1,0 +1,44 @@
+{
+  "schema": "kc-status-invalid-inline-literal-probe/v1",
+  "observed_at_utc": "2026-11-17T11:10:48.740475+00:00",
+  "execution": "fresh repeat of the previously reported three expressions against an immutable in-memory snapshot of the old checker",
+  "scope": "Same-controller producer QA. Three direct function calls on synthetic StatusElement span nodes; no full-site build, rendered-page mutation, browser observation, independent review or release admission. Source files unchanged.",
+  "checker": {
+    "path": "scripts/publication_checks.py",
+    "git_blob": "e8fc8691d7a48ab8a0b38bc919cc9bc700fd756a",
+    "sha256": "053a7da861b9ab1daf025751f4244018f112d2e7ff116de1650b64f38bc21aaa",
+    "bytes": 32340
+  },
+  "cases": [
+    {
+      "input_style": "display:none;display:not-a-display-value",
+      "parsed_inline_style": {
+        "display": "not-a-display-value"
+      },
+      "actual_status_text_exposed": true,
+      "expected_status_text_exposed": false
+    },
+    {
+      "input_style": "visibility:hidden;visibility:not-a-visibility-value",
+      "parsed_inline_style": {
+        "visibility": "not-a-visibility-value"
+      },
+      "actual_status_text_exposed": true,
+      "expected_status_text_exposed": false
+    },
+    {
+      "input_style": "content-visibility:hidden;content-visibility:not-a-value",
+      "parsed_inline_style": {
+        "content-visibility": "not-a-value"
+      },
+      "actual_status_text_exposed": true,
+      "expected_status_text_exposed": false
+    }
+  ],
+  "expected_basis": {
+    "url": "https://www.w3.org/TR/css-syntax-3/#css-declaration",
+    "rule": "A declaration whose value does not match the property syntax is invalid and must be ignored; the preceding valid hiding declaration therefore remains effective."
+  },
+  "actual_exposed_count": 3,
+  "expected_hidden_count": 3
+}
