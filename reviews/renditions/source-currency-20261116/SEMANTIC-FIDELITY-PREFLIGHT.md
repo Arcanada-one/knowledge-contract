@@ -1,3 +1,9 @@
+---
+title: "Semantic Bridge and Semantic Verification: RU and zh-Hans Fidelity Preflight"
+sources: none
+status: author-assistance-unreviewed
+---
+
 # Semantic Bridge and Semantic Verification: RU / zh-Hans fidelity preflight
 
 **Status:** KC-Brain author-assistance / reviewer candidate, 2026-11-17. **Not** a complete translation, independent linguistic review, scientific acceptance, site release or admission. Four full-text language pairs remain missing. Do not register this file as a rendition or alter their missing states.
