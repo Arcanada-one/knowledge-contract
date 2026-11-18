@@ -1,6 +1,6 @@
 # Review Protocol: Source Discovery, Claim Appraisal, and Transfer
 
-**Coordinated Work · research programme v0.1**
+Coordinated Work · research programme v0.1
 
 This protocol develops a scoping review and an evidence map for organizational decisions supported by agents. It separates finding a record, establishing its identity, reading a work, evaluating a claim, and transferring that claim to an organizational setting. The present protocol follows an exploratory search; it is not a preregistration of searches already performed.
 

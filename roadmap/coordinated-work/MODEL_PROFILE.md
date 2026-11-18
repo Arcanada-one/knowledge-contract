@@ -1,6 +1,6 @@
 # Decision Profile: Organizational Knowledge and Admissible Actions
 
-**Coordinated Work · research programme v0.1**
+Coordinated Work · research programme v0.1
 
 This document proposes a domain profile over [Agent Situation](../../papers/agent-situation/PAPER.md). It preserves the existing general treatment of identity, environment, time, changing context, and authority. Domain concepts require mappings to current KC entities and versioned compatibility conditions; the following vocabulary does not create native artifact kinds.
 
@@ -9,7 +9,7 @@ This document proposes a domain profile over [Agent Situation](../../papers/agen
 A situation is described along multiple facets. They preserve distinct questions without assuming statistical independence. Unknown values and extensions are allowed. Industry alone does not determine process topology, and a job title does not establish an individual's capability.
 
 | Facet | Initial distinctions |
-|---|---|
+| --- | --- |
 | 1. Scale | Organization network, company, department, site, process, operation, Work Item |
 | 2. Purpose | Delivery, service, support, development, governance, assurance, research |
 | 3. Work regime | Flow, batch, continuous process, project, service queue, professional or creative work, mixed regime |
@@ -69,7 +69,7 @@ The intersection is a familiar conservative construction, not claimed as new mat
 ## Twelve knowledge packages
 
 | Package | Required content and principal checks |
-|---|---|
+| --- | --- |
 | Objectives and obligations | Recipient of the outcome, deadlines, quality, priorities; authoritative source and current version |
 | Work map | Inputs, outputs, routes, dependencies, queues; process boundaries and cross-department links |
 | Demand | Requests, completed service, unserved potential, forecast; period, censoring, scenario, uncertainty |

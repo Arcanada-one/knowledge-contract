@@ -1,6 +1,6 @@
 # Experiments: Hypotheses, Comparators, and Evidence Levels
 
-**Coordinated Work · research programme v0.1**
+Coordinated Work · research programme v0.1
 
 This plan distinguishes mathematical claims, implementation checks, model validity, agent performance, and organizational effects. Each experiment must identify which level it can support. A reproducible result from a deliberately simplified model cannot establish that the model represents a company.
 
@@ -9,7 +9,7 @@ This plan distinguishes mathematical claims, implementation checks, model validi
 Operational definitions, primary metrics, acceptable tradeoffs, and rejection rules must be registered before confirmatory comparisons. The following are starting hypotheses; their outcome is unknown.
 
 | Hypothesis | Comparison and observation | Evidence against the claim or its scope |
-|---|---|---|
+| --- | --- | --- |
 | 1. The domain profile improves admissibility | Strong ordinary RAG versus the profile, with matched information and budgets | No reliable improvement, or improvement explained by extra context alone |
 | 2. Cross-process dependencies reduce local harm | Local-KPI policy versus a policy using connected-process objectives | Overall service, quality, or accepted output worsens under the declared tradeoffs |
 | 3. Knowledge invalidation reduces stale decisions | Same profile with and without invalidation | Stale-action frequency does not improve; separately assess update cost and false blocks |
@@ -50,7 +50,7 @@ The [probe README](probes/README.md) describes the reproduction commands and fil
 The model is a deterministic three-stage fluid line with one homogeneous good, zero initial inventories, constant inputs, unlimited buffers, and zero transit lag. Nominal processing capacity, availability, and work content are distinct. Supply is an availability ceiling. Demand is potential need / maximum customer acceptance per period; its unserved portion is measured but does not become a customer-order backlog. Admission limits are supplied by the experimenter, not selected by an agent or optimizer.
 
 | Case | Material per period | Admission limit per period | Nominal capacities | Potential demand per period | Shipped to customer per period | End-of-run inventory or total unserved potential |
-|---|---:|---:|---|---:|---:|---|
+| --- | ---: | ---: | --- | ---: | ---: | --- |
 | Admit 80 | 80 | 80 | 100 / 60 / 90 | 70 | 60 | WIP 200; unserved 100 |
 | Admit 60 | 80 | 60 | 100 / 60 / 90 | 70 | 60 | WIP 0; unserved 100 |
 | Expand stages 1 and 3 | 80 | 80 | 160 / 60 / 180 | 70 | 60 | WIP 200; unserved 100 |

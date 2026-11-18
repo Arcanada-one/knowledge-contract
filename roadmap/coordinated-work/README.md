@@ -1,6 +1,6 @@
 # Coordinated Work: Organizational Needs, Competencies, and Resource-Constrained Agent Decisions
 
-**Research programme v0.1 · 18 November 2026**
+Research programme v0.1 · 18 November 2026
 
 This programme investigates the knowledge an agent needs to make justified recommendations about organizational work: which needs should be served, which processes constrain the outcome, which competencies and resources are required, and how an intervention affects connected activities. Its proposed theoretical direction is a theory of coordinated organizational work. Establishing a new theory requires a distinct contribution, evaluation, and review beyond this programme.
 
@@ -31,7 +31,7 @@ The target is a family of models with declared applicability. Quality includes c
 The [corpus manifest](corpus/corpus_manifest.json) records:
 
 | Measure | Recorded value |
-|---|---:|
+| --- | ---: |
 | Input bibliographic rows | 1,177 |
 | Core records checked against primary scientific or official pages | 157 |
 | Candidates extracted from two review bibliographies | 1,019 |
@@ -50,7 +50,7 @@ The numerical [flow probe](probes/README.md) has executed revision 2: 10 scenari
 The following 16 sections are potential papers. Each requires an independently useful question, result, evidence, and limitations; the final partition should follow the review rather than a publication quota.
 
 | Potential paper | Main question | Engineering companion |
-|---|---|---|
+| --- | --- | --- |
 | Research map | What is known, and which gap remains testable? | Search, screening, corpus, and claim map |
 | Organizational needs | How is a gap defined relative to an objective, conditions, and time? | Faceted need representation |
 | Networks of work | Which dependencies connect tasks and departments? | Typed process graph |

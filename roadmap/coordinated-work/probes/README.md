@@ -36,7 +36,7 @@ Nominal capacity `c` is processing work per period. Availability `a` and work co
 All cases run for 10 periods. Inventories and unserved potential are end-of-run totals.
 
 | Case | Shipped per period | Internal WIP | Finished goods | Unserved potential |
-|---|---:|---:|---:|---:|
+| --- | ---: | ---: | ---: | ---: |
 | Base local release 80 | 60 | 200 | 0 | 100 |
 | Base gated release 60 | 60 | 0 | 0 | 100 |
 | Increase non-bottleneck capacities | 60 | 200 | 0 | 100 |
@@ -67,3 +67,7 @@ This bound assumes the model conditions above. Its attainability does not genera
 - `README.ru.md`: longer Russian explanation for the accompanying research dossier.
 
 Next studies require explicit service times and finite buffers, uncertain arrivals and processing, multiple products, shared resources, customer-backlog dynamics, independent data, and predefined decision-quality criteria. Agent experiments must separately evaluate actual agent choices from supplied knowledge artifacts.
+
+## Historical formatting
+
+The retained revision-1 README is byte-pinned in its snapshot manifest. Its local Markdown configuration follows the upstream [configuration guidance](https://github.com/DavidAnson/markdownlint-cli2#configuration), inherits the root rules and exempts only table-separator spacing (MD060), preserving the original bytes. All other lint rules and the numerical/snapshot checks remain applicable. Current documents use the required table spacing.

@@ -123,4 +123,3 @@ The later site handoff uses the accepted source SHA, not a mutable branch name. 
 The catalogue, canonical documents, [claim-evidence index](engineering/studies/evidence-index.json), [historical recovery gaps](engineering/studies/historical-recovery-gaps.json), [foundations map](reference/foundations/README.md), existing roadmap definitions and exact linked PRs support the artifact inventory. This is an author-maintained editorial projection, not a fresh audit of all Muneral statuses. Report discrepancies rather than fabricating IDs or silently closing tasks.
 
 Preserve negative results, comparator ties, unknowns and draft labels. Separate author checks from Agent-Brain's recorded review and from external human peer review. Any claimed completion must identify its subject, exact revision, evidence and limits. Future research is not an unbounded blocker to publishing a precise limited result.
-
