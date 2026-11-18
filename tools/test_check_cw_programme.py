@@ -301,6 +301,25 @@ class ProgrammeControls(unittest.TestCase):
         actual = {c["paper_id"]: c["claim_scope"] for c in self.graph["paper_release_contracts"]}
         self.assertEqual(actual, checker.PAPER_CLAIM_SCOPES)
 
+    def test_all_16_scope_pins_refuse_case_and_outer_whitespace_aliases(self):
+        # Exact source identity must not silently become strip/casefold equality.
+        for paper_id, pinned in checker.PAPER_CLAIM_SCOPES.items():
+            for mutation, changed in (
+                ("case", pinned.swapcase()),
+                ("outer_whitespace", " " + pinned + " "),
+            ):
+                with self.subTest(paper_id=paper_id, mutation=mutation):
+                    self.assertNotEqual(changed, pinned)
+                    graph = deepcopy(self.graph)
+                    contract = next(c for c in graph["paper_release_contracts"]
+                                    if c["paper_id"] == paper_id)
+                    contract["claim_scope"] = changed
+                    with self.assertRaisesRegex(
+                        checker.InvalidProgramme,
+                        "paper release claim scope changed without reviewed revision: " + paper_id,
+                    ):
+                        checker.validate(graph, *self.arguments[1:])
+
     def test_unknown_field_effect_alias_cannot_bypass_claim_class_guard(self):
         contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
         contract["claim_class"] = "proven_benefit"
