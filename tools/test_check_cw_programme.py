@@ -93,6 +93,10 @@ class ProgrammeControls(unittest.TestCase):
 
     def test_actual_old_domain_serialization_reintroduced(self):
         self.add_dependency("CW-H03", "CW-H02")
+        # Keep the altered provenance ledger coherent, so this test reaches
+        # the independent forbidden-serialization condition.
+        revisions = self.task("CW-H03")["dependency_revisions"]
+        revisions["removed"] = [e for e in revisions["removed"] if e["task_id"] != "CW-H02"]
         self.refresh_metrics()
         self.reject("domain stands serialized")
 
@@ -108,6 +112,10 @@ class ProgrammeControls(unittest.TestCase):
 
     def test_field_gate_removed(self):
         self.task("CW-H08")["dependencies"] = [d for d in self.task("CW-H08")["dependencies"] if d["task_id"] != "CW-N29"]
+        # This mutation tests the H08 protected gate, not the separate
+        # frozen-source dependency revision ledger.
+        revision = self.task("CW-H08")["dependency_revisions"]
+        revision["added"] = [e for e in revision["added"] if e["task_id"] != "CW-N29"]
         self.refresh_metrics()
         self.reject("required evidence gate removed")
 
