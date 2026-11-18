@@ -290,6 +290,35 @@ class ProgrammeControls(unittest.TestCase):
                 with self.assertRaisesRegex(checker.InvalidProgramme, "not upstream: " + paper_id + "/CW-H08"):
                     checker.validate_release_instances(self.graph, instances)
 
+    def test_transitive_generic_ancestor_cannot_replace_p01_direct_evidence_gate(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P01")
+        manuscript = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I03")
+        manuscript["dependencies"] = [edge for edge in manuscript["dependencies"]
+                                      if edge["node_id"] != "CW-A01"]
+        # A01 is still upstream through I01/A08/A07/A06/A02, but the
+        # paper-specific requires_evidence edge was deliberately removed.
+        with self.assertRaisesRegex(checker.InvalidProgramme,
+                                    "required direct release evidence edge missing or mistyped: CW-P01/CW-A01"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_retyped_p01_evidence_gate_cannot_pass_as_generic_dependency(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P01")
+        manuscript = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I03")
+        next(edge for edge in manuscript["dependencies"] if edge["node_id"] == "CW-A01")["type"] = "depends_on"
+        with self.assertRaisesRegex(checker.InvalidProgramme,
+                                    "required direct release evidence edge missing or mistyped: CW-P01/CW-A01"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_p16_direct_template_overlap_is_still_a_valid_release_gate(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P16")
+        manuscript = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I03")
+        edge = next(e for e in manuscript["dependencies"] if e["node_id"] == "CW-I02")
+        self.assertEqual((edge["type"], edge["consumes"]), ("depends_on", ["CW-I02.O1"]))
+        self.assertEqual(checker.validate_release_instances(self.graph, instances)["contracts"], 16)
+
     def test_coverage_link_cannot_replace_required_paper_gate(self):
         contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P13")
         contract["required_gates"] = [g for g in contract["required_gates"] if g["task_id"] != "CW-H08"]

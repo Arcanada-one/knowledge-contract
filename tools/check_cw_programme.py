@@ -248,6 +248,22 @@ def validate_release_instances(graph, instances):
                     f"required paper gate is not upstream: {paper_id}/{gate['task_id']}")
             require(gate["task_id"] in ancestors[instance["release_target_id"]],
                     f"required paper gate does not reach publication: {paper_id}/{gate['task_id']}")
+    # Upstream reachability alone cannot prove that this paper instantiated
+    # its own typed evidence edge. A generic path through another work package
+    # can remain after a required direct gate is removed. Preserve the one
+    # existing template dependency (P16/I02) as an explicitly checked overlap.
+    for instance in instances:
+        paper_id = instance["paper_id"]
+        template_inputs = {edge["task_id"] for edge in tasks["CW-I03"]["dependencies"]}
+        manuscript_edges = nodes[paper_id + ".I03"]["dependencies"]
+        for gate in contracts[paper_id]["required_gates"]:
+            required_type = "depends_on" if gate["task_id"] in template_inputs else "requires_evidence"
+            matches = [edge for edge in manuscript_edges
+                       if edge.get("node_id") == gate["task_id"]
+                       and edge.get("type") == required_type
+                       and edge.get("consumes") == gate["consumes"]]
+            require(len(matches) == 1,
+                    f"required direct release evidence edge missing or mistyped: {paper_id}/{gate['task_id']}")
     return {**metrics, "validated_release_stage_nodes": len(nodes),
             "evidence_acceptance": "NOT_VERIFIED", "native_registration": "NOT_VERIFIED"}
 
