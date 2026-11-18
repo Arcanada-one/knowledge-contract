@@ -445,6 +445,12 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(set(boundary["additional_steps"]) <= {f"N{n:02}" for n in range(1, 33)},
                 f"boundary additional steps invalid: {boundary['id']}")
     for paper in papers:
+        # Source-table position and stable paper identity are a single frozen
+        # mapping. Swapping both the source index and prose must not allow
+        # a different paper to borrow an internally consistent source row.
+        require(type(paper.get("source_index")) is int
+                and paper["id"] == f"CW-P{paper['source_index']:02d}",
+                f"paper frozen source identity mismatch: {paper['id']}")
         require(paper["mapped_task_ids"] and set(paper["mapped_task_ids"]) <= set(by_id), "paper task coverage incomplete")
         require([paper[k] for k in ("source_title", "source_main_question", "source_engineering_companion")]
                 == original_papers[paper["source_index"] - 1], "source paper boundary altered")
@@ -452,6 +458,9 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(set(paper["release_template_task_ids"]) == {f"CW-I{n:02}" for n in range(3, 9)}, "paper release gates incomplete")
     require({p["source_index"] for p in papers} == set(range(1, 17)), "source16 paper coverage mismatch")
     for hypothesis in hypotheses:
+        require(type(hypothesis.get("source_number")) is int
+                and hypothesis["id"] == f"CW-HYP{hypothesis['source_number']:02d}",
+                f"hypothesis frozen source identity mismatch: {hypothesis['id']}")
         require(hypothesis["mapped_task_ids"] and set(hypothesis["mapped_task_ids"]) <= set(by_id), "hypothesis task coverage incomplete")
         require([hypothesis[k] for k in ("source_statement", "source_comparison", "source_refutation")]
                 == original_hypotheses[hypothesis["source_number"] - 1],

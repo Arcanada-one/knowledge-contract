@@ -224,7 +224,27 @@ class ProgrammeControls(unittest.TestCase):
     def test_paper_identity_swapped_without_changing_membership(self):
         a, b = self.graph["papers"][:2]
         a["source_index"], b["source_index"] = b["source_index"], a["source_index"]
+        self.reject("paper frozen source identity mismatch")
+
+    def test_paper_source_text_mismatch_still_reaches_source_boundary_check(self):
+        # Preserve the old textual-provenance refusal as a separate oracle.
+        self.graph["papers"][0]["source_main_question"] = "synthetic unrelated question"
         self.reject("source paper boundary altered")
+
+    def test_full_paper_source_row_swap_cannot_relabel_paper_identity(self):
+        a, b = self.graph["papers"][:2]
+        for field in ("source_index", "source_title", "source_main_question",
+                      "source_engineering_companion"):
+            a[field], b[field] = b[field], a[field]
+        # Each record still matches some real frozen row, but the paper IDs
+        # must not silently point to the other manuscript.
+        self.reject("paper frozen source identity mismatch")
+
+    def test_full_hypothesis_source_row_swap_cannot_relabel_hypothesis(self):
+        a, b = self.graph["hypotheses"][:2]
+        for field in ("source_number", "source_statement", "source_comparison", "source_refutation"):
+            a[field], b[field] = b[field], a[field]
+        self.reject("hypothesis frozen source identity mismatch")
 
     def test_hypothesis_refutation_erased(self):
         self.graph["hypotheses"][0]["source_refutation"] = "Always succeeds"
