@@ -368,7 +368,13 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(task["epic_id"] in epic_by_id and key in epic_by_id[task["epic_id"]]["task_ids"], "epic relation mismatch")
         require(task["evidence_required"] and task["negative_controls"], f"unfalsifiable output contract: {key}")
         require(task["outputs"], f"missing output: {key}")
-        for output in task["outputs"]:
+        for output_number, output in enumerate(task["outputs"], start=1):
+            # An artifact identity must be bound to its producing Work Item.
+            # Uniqueness and matching the consumer references are insufficient:
+            # coordinated relabeling could otherwise silently assign an output
+            # to a different (or nonexistent) owner.
+            require(output.get("id") == f"{key}.O{output_number}",
+                    f"output owner identity mismatch: {key}")
             require(output["id"] not in outputs, "duplicate output identity")
             require(output["created"] is False, "future output claimed as created")
             path = Path(output["proposed_path"])
