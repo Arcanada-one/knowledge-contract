@@ -34,6 +34,29 @@ PAPER_CLAIM_CLASSES = {
     "CW-P16": "evidence_lifecycle",
 }
 
+# Provisional, author-declared release claim prose pinned to an exact source
+# revision. Equality detects an unreviewed edit; it does NOT establish truth,
+# evidence acceptance, rights, translated fidelity, or publishability.
+# Deliberate scope changes require a separately reviewed release revision.
+PAPER_CLAIM_SCOPES = {
+    "CW-P01": "Reviewed research map with appraised primary sources and explicit unresolved gaps.",
+    "CW-P02": "Representation of organizational needs and obligations; no measured organizational benefit is claimed.",
+    "CW-P03": "Typed work dependencies and concurrent resource semantics under stated assumptions.",
+    "CW-P04": "Resource types, units and conditional admissibility; no unrestricted universal resource law.",
+    "CW-P05": "Task-specific capability, competency evidence and team conditions; occupation titles do not establish individual ability.",
+    "CW-P06": "System performance and local-metric counterexamples in declared validated comparisons, not field effects.",
+    "CW-P07": "Flow and release-policy comparisons within the validated manufacturing model and declared operating region.",
+    "CW-P08": "Qualification-aware staffing and scheduling comparisons in the declared service model.",
+    "CW-P09": "Measured organizational effects of hiring, training or automation under the evaluated bounded intervention.",
+    "CW-P10": "Time-respecting forecast and uncertainty backtests; prediction quality is separate from intervention effects.",
+    "CW-P11": "Organizational knowledge prerequisites and bounded context; effectiveness requires separately scoped comparative evidence.",
+    "CW-P12": "Conditional admissibility and verifiable decision records under explicit assumptions, not unconditional future safety.",
+    "CW-P13": "Causal effects under an identified bounded field design with observed interventions and stated interference limits.",
+    "CW-P14": "Conditional stability results and finite operational criteria within declared models; no universal field guarantee.",
+    "CW-P15": "Held-out cross-organization transfer of observed intervention outcomes with independent reproduction and explicit transport limits.",
+    "CW-P16": "Versioned knowledge revision, contradiction handling and evidence invalidation; no automatic runtime authority.",
+}
+
 
 class InvalidProgramme(ValueError):
     """The proposal cannot support the claimed structural result."""
@@ -134,6 +157,8 @@ def validate_release_contracts(graph):
                 "paper release contract promoted to accepted artifact")
         require(isinstance(contract.get("claim_scope"), str) and contract["claim_scope"].strip(),
                 "paper release claim scope missing")
+        require(contract.get("claim_scope") == PAPER_CLAIM_SCOPES[key],
+                f"paper release claim scope changed without reviewed revision: {key}")
         require(contract.get("narrower_scope_policy") == "separate_reviewed_contract_no_effect_claim",
                 "narrower claims require a separate reviewed release contract")
         required = set(papers[key]["mapped_task_ids"])

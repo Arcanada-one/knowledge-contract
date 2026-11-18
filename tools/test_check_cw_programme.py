@@ -285,6 +285,22 @@ class ProgrammeControls(unittest.TestCase):
         contract["claim_scope"] = "Unrestricted universal organizational productivity effect."
         self.reject("paper release claim class changed without reviewed revision: CW-P01")
 
+    def test_p02_scope_escalation_refused_with_unchanged_class(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
+        self.assertEqual(contract["claim_class"], "domain_model")
+        contract["claim_scope"] = "Certified causal productivity increase of 99% in all workplaces."
+        self.reject("paper release claim scope changed without reviewed revision: CW-P02")
+
+    def test_p01_scope_escalation_refused_with_unchanged_class(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P01")
+        self.assertEqual(contract["claim_class"], "review")
+        contract["claim_scope"] = "This literature review proves universal real-world profit gains."
+        self.reject("paper release claim scope changed without reviewed revision: CW-P01")
+
+    def test_all_16_declared_scope_pins_match_frozen_graph(self):
+        actual = {c["paper_id"]: c["claim_scope"] for c in self.graph["paper_release_contracts"]}
+        self.assertEqual(actual, checker.PAPER_CLAIM_SCOPES)
+
     def test_unknown_field_effect_alias_cannot_bypass_claim_class_guard(self):
         contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
         contract["claim_class"] = "proven_benefit"
