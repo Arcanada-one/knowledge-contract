@@ -29,7 +29,12 @@ class ProgrammeControls(unittest.TestCase):
             checker.validate(self.graph, *self.arguments[1:])
 
     def add_dependency(self, child, parent):
-        self.task(child)["dependencies"].append({"task_id": parent, "consumes": [parent + ".O1"], "reason": "negative control"})
+        task = self.task(child)
+        task["dependencies"].append({"task_id": parent, "consumes": [parent + ".O1"], "reason": "negative control"})
+        # Semantic mutants must have a coherent ledger so they reach the
+        # independent rule they are intended to test.
+        if task["origin"] == "addition":
+            task["dependency_revisions"]["added"].append({"task_id": parent, "reason": "negative control"})
 
     def test_full_proposal_preserves_baseline_and_covers_papers_hypotheses(self):
         result = checker.validate(*self.arguments)
@@ -73,6 +78,64 @@ class ProgrammeControls(unittest.TestCase):
     def test_missing_general_dependency_revision_reason_is_refused(self):
         self.task("CW-A03")["dependency_revision_reason"] = ""
         self.reject("blank dependency revision rationale")
+
+    def test_all_addition_removed_ledgers_refuse_phantom_edges(self):
+        # Includes the independent reviewer's exact root-package counterexample.
+        for number in range(1, 33):
+            key = f"CW-N{number:02}"
+            with self.subTest(task=key):
+                self.graph = deepcopy(self.arguments[0])
+                self.task(key)["dependency_revisions"]["removed"] = [
+                    {"task_id": "CW-ZZ99", "reason": "independent reviewer counterexample"}]
+                self.reject(f"revision removed differs from frozen-to-proposed edge delta: {key}")
+
+    def test_all_addition_added_ledgers_match_actual_dependencies(self):
+        for number in range(1, 33):
+            key = f"CW-N{number:02}"
+            with self.subTest(task=key):
+                self.graph = deepcopy(self.arguments[0])
+                entries = self.task(key)["dependency_revisions"]["added"]
+                if entries:
+                    entries.pop()
+                else:
+                    entries.append({"task_id": "CW-ZZ99", "reason": "phantom prerequisite"})
+                self.reject(f"revision added differs from frozen-to-proposed edge delta: {key}")
+
+    def test_addition_forged_added_edge_is_refused(self):
+        self.task("CW-N28")["dependency_revisions"]["added"][-1]["task_id"] = "CW-I04"
+        self.reject("revision added differs from frozen-to-proposed edge delta: CW-N28")
+
+    def test_addition_duplicate_added_edge_is_refused(self):
+        entries = self.task("CW-N02")["dependency_revisions"]["added"]
+        entries.append(deepcopy(entries[0]))
+        self.reject("duplicate revision added edge: CW-N02")
+
+    def test_addition_blank_edge_reason_is_refused(self):
+        self.task("CW-N02")["dependency_revisions"]["added"][0]["reason"] = "   "
+        self.reject("revision added edge lacks identity or reason: CW-N02")
+
+    def test_addition_malformed_ledger_is_refused(self):
+        for value in (None, {}, {"removed": [], "added": [], "proposal_corrections": {}},
+                      {"removed": {}, "added": []}, {"removed": [], "added": {}}):
+            with self.subTest(value=value):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-N01")["dependency_revisions"] = value
+                self.reject("ledger missing or malformed|revision (removed|added) must be an array")
+
+    def test_addition_blank_general_revision_reason_is_refused(self):
+        self.task("CW-N01")["dependency_revision_reason"] = ""
+        self.reject("blank dependency revision rationale: CW-N01")
+
+    def test_unknown_origin_cannot_bypass_revision_validation(self):
+        self.task("CW-N01")["origin"] = "unchecked"
+        self.reject("unknown task origin: CW-N01")
+
+    def test_addition_cannot_forge_a_frozen_source_baseline(self):
+        for field, value in (("source_step_id", "A01"), ("source_dependencies", ["A01"])):
+            with self.subTest(field=field):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-N01")[field] = value
+                self.reject("addition claims a frozen source baseline: CW-N01")
 
     def test_incomplete_epic_membership(self):
         self.graph["epics"][0]["task_ids"].pop()
@@ -125,6 +188,8 @@ class ProgrammeControls(unittest.TestCase):
                 self.graph = deepcopy(self.arguments[0])
                 validity = self.task("CW-N18")
                 validity["dependencies"] = [d for d in validity["dependencies"] if d["task_id"] != domain]
+                revision = validity["dependency_revisions"]
+                revision["added"] = [d for d in revision["added"] if d["task_id"] != domain]
                 self.refresh_metrics()
                 self.reject("required evidence gate removed: CW-N18")
 
@@ -272,6 +337,7 @@ class ProgrammeControls(unittest.TestCase):
     def test_reproduction_cannot_wait_for_target_publication_package(self):
         task = self.task("CW-N28")
         task["dependencies"][-1].update(task_id="CW-I04", consumes=["CW-I04.O1"])
+        task["dependency_revisions"]["added"][-1]["task_id"] = "CW-I04"
         self.refresh_metrics()
         self.reject("reproduction must use a frozen evaluation package")
 

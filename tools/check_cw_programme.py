@@ -305,6 +305,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
             require(not path.is_absolute() and ".." not in path.parts, "unsafe proposed output path")
             outputs[output["id"]] = key
         dependencies[key] = [d["task_id"] for d in task["dependencies"]]
+        require(task.get("origin") in {"imported", "addition"}, f"unknown task origin: {key}")
         if task["origin"] == "imported":
             source_id = task["source_step_id"]
             require(source_id in source and source_id not in imported, "source row missing or duplicated")
@@ -315,32 +316,37 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
                 require(task[target_key] == original[original_key], f"source provenance rewritten: {key}/{target_key}")
             require(task["source_acceptance"] == task["acceptance_criteria"][0]["text"], "source acceptance lost")
             require(task["source_blob"] == graph["source"]["step_blob"], "task source blob changed")
-            # Revision ledger is a provenance claim, not a substitute for the
-            # executable dependency graph. Reconcile it with the frozen source
-            # and the actual proposed edges before trusting release decisions.
             original_edges = {"CW-" + edge for edge in original["dependencies"]}
-            proposed_edges = set(dependencies[key])
-            revision = task.get("dependency_revisions")
-            require(isinstance(revision, dict) and set(revision) == {"removed", "added"},
-                    f"dependency revision ledger missing or malformed: {key}")
-            for direction, expected_edges in (("removed", original_edges - proposed_edges),
-                                               ("added", proposed_edges - original_edges)):
-                entries = revision[direction]
-                require(isinstance(entries, list), f"revision {direction} must be an array: {key}")
-                ids = []
-                for entry in entries:
-                    require(isinstance(entry, dict)
-                            and isinstance(entry.get("task_id"), str) and entry["task_id"].strip()
-                            and isinstance(entry.get("reason"), str) and entry["reason"].strip(),
-                            f"revision {direction} edge lacks identity or reason: {key}")
-                    ids.append(entry["task_id"])
-                require(len(ids) == len(set(ids)), f"duplicate revision {direction} edge: {key}")
-                require(set(ids) == expected_edges,
-                        f"revision {direction} differs from frozen-to-proposed edge delta: {key}")
-            require(isinstance(task.get("dependency_revision_reason"), str)
-                    and task["dependency_revision_reason"].strip(),
-                    f"blank dependency revision rationale: {key}")
             imported[source_id] = key
+        else:
+            require(task.get("source_step_id") is None and task.get("source_dependencies") == [],
+                    f"addition claims a frozen source baseline: {key}")
+            original_edges = set()
+        # Every ledger describes the frozen-to-proposed delta. Additions have
+        # no frozen source edges, so removed is empty and added is the complete
+        # current prerequisite set. Historical proposal corrections live in
+        # the source-pinned decision record, not inside this active ledger.
+        proposed_edges = set(dependencies[key])
+        revision = task.get("dependency_revisions")
+        require(isinstance(revision, dict) and set(revision) == {"removed", "added"},
+                f"dependency revision ledger missing or malformed: {key}")
+        for direction, expected_edges in (("removed", original_edges - proposed_edges),
+                                           ("added", proposed_edges - original_edges)):
+            entries = revision[direction]
+            require(isinstance(entries, list), f"revision {direction} must be an array: {key}")
+            ids = []
+            for entry in entries:
+                require(isinstance(entry, dict)
+                        and isinstance(entry.get("task_id"), str) and entry["task_id"].strip()
+                        and isinstance(entry.get("reason"), str) and entry["reason"].strip(),
+                        f"revision {direction} edge lacks identity or reason: {key}")
+                ids.append(entry["task_id"])
+            require(len(ids) == len(set(ids)), f"duplicate revision {direction} edge: {key}")
+            require(set(ids) == expected_edges,
+                    f"revision {direction} differs from frozen-to-proposed edge delta: {key}")
+        require(isinstance(task.get("dependency_revision_reason"), str)
+                and task["dependency_revision_reason"].strip(),
+                f"blank dependency revision rationale: {key}")
     require(set(imported) == expected_source, "imported source72 coverage incomplete")
     require(graph["coverage"]["source_step_to_task"] == imported, "source crosswalk differs from task contracts")
     for task in tasks:

@@ -10,6 +10,23 @@ A blocking edge means that the child consumes a named, versioned output from the
 
 The frozen source graph has 72 work packages, 78 edges and a longest chain of 64 nodes. The proposal has 104 work packages, 247 edges and a longest chain of 17 nodes. Among the imported 72 packages, 41 source edges are removed from the proposed blocking relation and 131 artifact-based edges are added. These counts describe graph structure, not elapsed time or a predicted speed improvement. Actual execution also depends on task size, owner acceptance, capacity, authority and data availability.
 
+## Active revision ledgers and preserved proposal history
+
+Every one of the 104 packages uses the same checked ledger rule. For an imported package, `removed` and `added` are exactly the differences between the frozen 72-step source prerequisites and its current proposed prerequisites. For an addition there is no frozen source step: `source_step_id` is null, `source_dependencies` is empty, `removed` is empty and `added` is exactly the current prerequisite set. Duplicate entries, missing or extra edges, blank reasons, malformed ledgers and unknown origins are refused. This ledger describes provenance; actual scheduling still uses `dependencies` and its consumed outputs.
+
+The independent review of `57377756d81d8eb49e6c7174bd9ec75edfcbb625` accepted the imported-row checks but found that the 32 addition ledgers were outside validation. Its counterexample added a fictitious `CW-ZZ99` removed edge to root package N01. The correction applies the rule to both origins and normalizes the addition ledgers without changing any runnable prerequisite, acceptance criterion or paper release contract.
+
+Four earlier proposal corrections had been embedded as a separate `proposal_corrections` field inside active ledgers. Those historical notes remain available verbatim in the [immutable pre-correction graph](https://github.com/Arcanada-one/knowledge-contract/blob/57377756d81d8eb49e6c7174bd9ec75edfcbb625/roadmap/coordinated-work/plan/execution-graph.json). Their meaning is retained here separately from the normalized current delta:
+
+| Package | Earlier proposal edge removed | Earlier proposal edge added | Retained reason |
+| --- | --- | --- | --- |
+| N07 | N06 | None | A reviewed announcement may disclose pending native registration; N08 still requires both N06 and N07. |
+| N28 | I04 | N16 | Independent reproduction consumes frozen evaluation and data inputs before the target paper's final package exists. |
+| N30 | H01 | None | Define claim-specific release rules early; each confirmatory empirical claim retains its own registration gate. |
+| N32 | I08 | N10 | Correction policy also covers drafts and consumes evidence-lineage and learning-review semantics. |
+
+N28's previous active `added` list still named I04 although its runnable prerequisites had already become H06 and N16. The normalized ledger now records H06 and N16 with their current consumed-output rationales. The immutable earlier graph records that inconsistency rather than silently rewriting its history. These proposal changes are not native task events or evidence that any research work was executed.
+
 ## Revision-rationale classes
 
 | Class | Representative work | Decision and retained gate |
@@ -75,7 +92,7 @@ The publication and hypothesis maps are coverage proposals rather than evidence 
 
 ## What the checker establishes
 
-`tools/check_cw_programme.py` verifies source preservation, global identity uniqueness, membership, numbered contracts, internally consistent boundary mappings, valid consumed outputs, acyclicity, exact topology metrics and selected mandatory evidence gates. It rejects duplicate JSON keys, non-finite decoded numbers and invalid Unicode, including escaped lone surrogates.
+`tools/check_cw_programme.py` verifies source preservation, all 104 dependency revision ledgers, global identity uniqueness, membership, numbered contracts, internally consistent boundary mappings, valid consumed outputs, acyclicity, exact topology metrics and selected mandatory evidence gates. It rejects duplicate JSON keys, non-finite decoded numbers and invalid Unicode, including escaped lone surrogates.
 
 Its negative controls include reintroduced domain serialization, premature model-validity approval, removal of field prerequisites, contradictory coverage maps, invented execution state, missing root acceptance criteria and malformed input. Valid multilingual text and valid Unicode surrogate pairs remain accepted.
 

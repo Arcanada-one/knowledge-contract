@@ -8436,14 +8436,7 @@
             "task_id": "CW-N05",
             "reason": "Uses Repository and roadmap announcement integration to define, constrain or evaluate Published three-language launch receipt."
           }
-        ],
-        "proposal_corrections": {
-          "removed": [
-            "CW-N06"
-          ],
-          "added": [],
-          "reason": "The source-reviewed trilingual announcement can publish while actual Muneral registration remains explicitly pending. N08 still consumes both N06 and N07, so the complete launch epic cannot close without registration readback."
-        }
+        ]
       }
     },
     {
@@ -10525,22 +10518,13 @@
         "added": [
           {
             "task_id": "CW-H06",
-            "reason": "Uses Mechanism ablations and uncertainty report to define, constrain or evaluate Held-out transfer and external reproduction study."
+            "reason": "Consumes the frozen prepublication executable, configuration, seeds and raw-result bundle from controlled comparisons and ablations. Bind independent executor and assessor before reproducing; this package is available before the target paper release."
           },
           {
-            "task_id": "CW-I04",
-            "reason": "Uses Frozen reproducibility package per artifact to define, constrain or evaluate Held-out transfer and external reproduction study."
+            "task_id": "CW-N16",
+            "reason": "Consumes versioned eligible datasets and held-out split manifests, with exact source, environment and model bindings joined to the H06 executable/configuration/seed/raw-result bundle before independent reproduction."
           }
-        ],
-        "proposal_corrections": {
-          "removed": [
-            "CW-I04"
-          ],
-          "added": [
-            "CW-N16"
-          ],
-          "reason": "External reproduction uses existing evaluation/data packages H06 and N16, frozen before independent execution. It must not wait for I04 of the paper whose release requires the reproduction result."
-        }
+        ]
       }
     },
     {
@@ -10742,14 +10726,7 @@
             "task_id": "CW-N09",
             "reason": "Uses Early discriminating prior-art matrix to define, constrain or evaluate Claim-specific artifact release contracts."
           }
-        ],
-        "proposal_corrections": {
-          "removed": [
-            "CW-H01"
-          ],
-          "added": [],
-          "reason": "Define the claim-specific release matrix before empirical registration. The matrix requires H01 and its study-specific receipts for confirmatory empirical claims, while review/formal claims retain appropriate independent evidence gates."
-        }
+        ]
       }
     },
     {
@@ -10929,16 +10906,7 @@
             "task_id": "CW-N10",
             "reason": "Uses Evidence lineage and identity profile reusing KC to define Correction, withdrawal and invalidation maintenance."
           }
-        ],
-        "proposal_corrections": {
-          "removed": [
-            "CW-I08"
-          ],
-          "added": [
-            "CW-N10"
-          ],
-          "reason": "Define correction and invalidation policy as soon as evidence-lineage and learning-review semantics exist, including draft artifacts. Applying corrections to already published/indexed artifacts still uses their own release and readback gates."
-        }
+        ]
       }
     }
   ],
