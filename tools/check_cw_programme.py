@@ -19,6 +19,21 @@ ROOT = Path(__file__).resolve().parents[1]
 PLAN = Path("roadmap/coordinated-work/plan")
 ROLES = {"KC-Brain", "KC-SWE", "Agent-Brain", "Agent-SWE", "DEUS-Arcana", "Research-Arcana"}
 
+# Provisional authored claim classes. Changing one requires an explicit reviewed
+# release-boundary revision; a graph-only edit must not silently promote a
+# domain-model or literature-review paper into an empirical field-effect claim.
+# This pins the *class*, not the truth or independent acceptance of the prose.
+PAPER_CLAIM_CLASSES = {
+    "CW-P01": "review", "CW-P02": "domain_model", "CW-P03": "domain_model",
+    "CW-P04": "resource_semantics", "CW-P05": "capability_model",
+    "CW-P06": "simulation_comparison", "CW-P07": "simulation_comparison",
+    "CW-P08": "simulation_comparison", "CW-P09": "organizational_effect",
+    "CW-P10": "forecast_backtest", "CW-P11": "decision_profile",
+    "CW-P12": "conditional_admissibility", "CW-P13": "organizational_effect",
+    "CW-P14": "conditional_control", "CW-P15": "organizational_transfer",
+    "CW-P16": "evidence_lifecycle",
+}
+
 
 class InvalidProgramme(ValueError):
     """The proposal cannot support the claimed structural result."""
@@ -113,6 +128,8 @@ def validate_release_contracts(graph):
         key = contract.get("paper_id")
         require(key in papers and key not in seen, "duplicate or unknown paper release contract")
         seen.add(key)
+        require(contract.get("claim_class") == PAPER_CLAIM_CLASSES[key],
+                f"paper release claim class changed without reviewed revision: {key}")
         require(contract.get("status") == "proposed" and contract.get("external_artifact_id") is None,
                 "paper release contract promoted to accepted artifact")
         require(isinstance(contract.get("claim_scope"), str) and contract["claim_scope"].strip(),

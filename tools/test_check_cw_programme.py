@@ -272,6 +272,24 @@ class ProgrammeControls(unittest.TestCase):
         self.assertEqual(result["native_release_instances_created"], 0)
         self.assertEqual(result["evidence_acceptance"], "NOT_VERIFIED")
 
+    def test_domain_model_cannot_silently_escalate_to_organizational_effect(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
+        self.assertNotIn("CW-H08", {g["task_id"] for g in contract["required_gates"]})
+        contract["claim_class"] = "organizational_effect"
+        contract["claim_scope"] = "Measured organizational productivity improvement."
+        self.reject("paper release claim class changed without reviewed revision: CW-P02")
+
+    def test_review_paper_cannot_silently_claim_organizational_effect(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P01")
+        contract["claim_class"] = "organizational_effect"
+        contract["claim_scope"] = "Unrestricted universal organizational productivity effect."
+        self.reject("paper release claim class changed without reviewed revision: CW-P01")
+
+    def test_unknown_field_effect_alias_cannot_bypass_claim_class_guard(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
+        contract["claim_class"] = "proven_benefit"
+        self.reject("paper release claim class changed without reviewed revision: CW-P02")
+
     def test_p13_release_without_h08_is_refused(self):
         instances = self.release_instances()
         release = next(r for r in instances if r["paper_id"] == "CW-P13")
