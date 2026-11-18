@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Meaningful adverse controls for source coverage and proposal graph semantics."""
 from copy import deepcopy
+import json
 import unicodedata
 import unittest
 
@@ -57,8 +58,9 @@ class ProgrammeControls(unittest.TestCase):
                 self.reject("source identity drift from frozen reference")
 
     def test_source_pin_rejects_boolean_aliases_and_unknown_fields(self):
-        # Python True == 1 must not masquerade as the original PR or task count.
+        # Python numeric equality must not replace the frozen reference types.
         for field, forged in (("pull_request", True), ("source_task_count", True),
+                              ("pull_request", 125.0), ("source_task_count", 72.0),
                               ("pull_request", 126), ("source_task_count", 73)):
             with self.subTest(source_field=field, forged=forged):
                 self.graph = deepcopy(self.arguments[0])
@@ -70,6 +72,24 @@ class ProgrammeControls(unittest.TestCase):
         self.graph = deepcopy(self.arguments[0])
         del self.graph["source"]["branch"]
         self.reject("source identity drift from frozen reference")
+
+    def test_frozen_source_blob_refuses_coordinated_baseline_rewrite(self):
+        # A digest matching mutable local bytes is not the original Git object.
+        # Keep source metadata/topology coherent while rewriting one frozen title.
+        baseline = deepcopy(self.arguments[1])
+        row = next(row for row in baseline if row["id"] == "A01")
+        row["title"] += " [synthetic rewritten baseline]"
+        self.task("CW-A01")["title"] = row["title"]
+        raw = (json.dumps(baseline, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+        forged_blob = checker.git_blob(raw)
+        self.assertNotEqual(forged_blob, self.arguments[0]["source"]["step_blob"])
+        self.graph["source"]["step_blob"] = forged_blob
+        imported = [task for task in self.graph["tasks"] if task["origin"] == "imported"]
+        self.assertEqual(len(imported), 72)
+        for task in imported:
+            task["source_blob"] = forged_blob
+        with self.assertRaisesRegex(checker.InvalidProgramme, "source identity drift from frozen reference"):
+            checker.validate(self.graph, baseline, raw, *self.arguments[3:])
 
     def test_coordinated_output_relabel_is_refused_even_when_all_consumers_follow(self):
         owner = "CW-A01"

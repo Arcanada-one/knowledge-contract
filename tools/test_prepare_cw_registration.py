@@ -92,6 +92,10 @@ class RegistrationControls(unittest.TestCase):
         return M.verify_readback(self.graph, DIGEST, SOURCE, self.bindings, self.snapshot)
 
     def test_unbound_graph_produces_templates_not_registration_claim(self):
+        # Generic imported/synthetic mode does not promise full CW output fields.
+        for task in self.graph["tasks"]:
+            self.assertNotIn("proposed_path", task["outputs"][0])
+            self.assertNotIn("created", task["outputs"][0])
         plan = M.prepare(self.graph, DIGEST)
         self.assertEqual(plan["actual_uuid_bindings_supplied"], 0)
         self.assertEqual(len(plan["create_requests"]), 4)
@@ -291,6 +295,73 @@ class PaperReleasePreparationControls(unittest.TestCase):
         scope = next(r["text"] for r in plan["required_native_scope_records"] if r["proposal_id"] == "CW-I03")
         self.assertIn("CW-P13", scope)
         self.assertIn("CW-H08", scope)
+
+    def test_registrar_refuses_coordinated_output_owner_relabel(self):
+        first = next(t for t in self.graph["tasks"] if t["id"] == "CW-A01")
+        original = first["outputs"][0]["id"]
+        forged = "CW-OTHER-PAPER.O999"
+        first["outputs"][0]["id"] = forged
+        rewritten = 0
+        for task in self.graph["tasks"]:
+            for edge in task["dependencies"]:
+                for index, consumed in enumerate(edge["consumes"]):
+                    if consumed == original:
+                        edge["consumes"][index] = forged
+                        rewritten += 1
+        for contract in self.graph["paper_release_contracts"]:
+            for gate in contract["required_gates"]:
+                for index, consumed in enumerate(gate["consumes"]):
+                    if consumed == original:
+                        gate["consumes"][index] = forged
+                        rewritten += 1
+        self.assertGreater(rewritten, 0, "must retain coherent actual consumers")
+        with self.assertRaisesRegex(M.Invalid, "output owner identity mismatch: CW-A01"):
+            M.prepare(self.graph, self.digest, SOURCE)
+
+    def test_registrar_refuses_duplicate_proposed_output_paths(self):
+        baseline = copy.deepcopy(self.graph)
+        destination = next(t for t in baseline["tasks"] if t["id"] == "CW-A01")["outputs"][0]["proposed_path"]
+        for duplicate in (destination, "./" + destination):
+            with self.subTest(proposed_path=duplicate):
+                self.graph = copy.deepcopy(baseline)
+                second = next(t for t in self.graph["tasks"] if t["id"] == "CW-A02")
+                second["outputs"][0]["proposed_path"] = duplicate
+                with self.assertRaisesRegex(M.Invalid, "duplicate proposed output path: CW-A02/CW-A02.O1"):
+                    M.prepare(self.graph, self.digest, SOURCE)
+
+    def test_registrar_refuses_unsafe_full_programme_output_path(self):
+        first = next(t for t in self.graph["tasks"] if t["id"] == "CW-A01")
+        for unsafe in ("/tmp/output.md", "../output.md"):
+            with self.subTest(proposed_path=unsafe):
+                first["outputs"][0]["proposed_path"] = unsafe
+                with self.assertRaisesRegex(M.Invalid, "unsafe proposed output path"):
+                    M.prepare(self.graph, self.digest, SOURCE)
+
+    def test_registrar_refuses_full_programme_output_claimed_created(self):
+        first = next(t for t in self.graph["tasks"] if t["id"] == "CW-A01")
+        first["outputs"][0]["created"] = True
+        with self.assertRaisesRegex(M.Invalid, "future output claimed as created"):
+            M.prepare(self.graph, self.digest, SOURCE)
+
+    def test_registrar_refuses_incomplete_full_programme_output_fields(self):
+        baseline = copy.deepcopy(self.graph)
+        for field, value, message in (
+                ("created", None, "future output claimed as created"),
+                ("proposed_path", None, "unsafe proposed output path"),
+                ("proposed_path", 7, "unsafe proposed output path"),
+                ("record", 7, "CW-A01: output record must be an object")):
+            with self.subTest(field=field, value=value):
+                self.graph = copy.deepcopy(baseline)
+                outputs = next(t for t in self.graph["tasks"] if t["id"] == "CW-A01")["outputs"]
+                output = outputs[0]
+                if field == "record":
+                    outputs[0] = value
+                elif value is None:
+                    del output[field]
+                else:
+                    output[field] = value
+                with self.assertRaisesRegex(M.Invalid, message):
+                    M.prepare(self.graph, self.digest, SOURCE)
 
     def test_registrar_refuses_p13_instance_without_field_gate(self):
         releases = M.programme_checker.instantiate_release_instances(self.graph)
