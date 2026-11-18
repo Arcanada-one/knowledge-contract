@@ -97,6 +97,60 @@ class ProgrammeControls(unittest.TestCase):
         self.task("CW-A01")["outputs"][0]["id"] = "CW-A01.O0"
         self.reject("output owner identity mismatch: CW-A01")
 
+    def test_two_output_owners_cannot_share_the_same_proposed_path(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        self.task("CW-A02")["outputs"][0]["proposed_path"] = first
+        self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_lexically_equivalent_output_paths_cannot_alias(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        self.task("CW-A02")["outputs"][0]["proposed_path"] = "./" + first
+        self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_repeated_separators_and_dot_components_cannot_alias_an_output(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        for alias in (first.replace("/", "//", 1), first.replace("/", "/./", 1), first + "/"):
+            with self.subTest(path=alias):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A02")["outputs"][0]["proposed_path"] = alias
+                self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_output_file_directory_overlap_is_refused_in_either_order(self):
+        for paths in (("results/a.md", "results/a.md/child.md"),
+                      ("results/a.md/child.md", "results/a.md")):
+            with self.subTest(paths=paths):
+                self.graph = deepcopy(self.arguments[0])
+                for key, path in zip(("CW-A01", "CW-A02"), paths):
+                    self.task(key)["outputs"][0]["proposed_path"] = path
+                self.reject("overlapping proposed output paths: CW-A02/CW-A02.O1")
+
+    def test_output_destinations_require_safe_relative_file_paths(self):
+        for path in (None, 0, "", ".", "   ", "/absolute.md", "../escape.md",
+                     "results/../escape.md", "results\\name.md", "C:relative.md",
+                     "results/nu\x00l.md", "results/new\nline.md", "results/del\x7f.md"):
+            with self.subTest(path=path):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A01")["outputs"][0]["proposed_path"] = path
+                self.reject("unsafe proposed output path")
+
+    def test_unique_paths_still_require_canonical_spelling(self):
+        for path in ("./results/new.md", "results//new.md", "results/./new.md", "results/new.md/"):
+            with self.subTest(path=path):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A01")["outputs"][0]["proposed_path"] = path
+                self.reject("noncanonical proposed output path")
+
+    def test_distinct_output_paths_allow_shared_parents_and_character_prefixes(self):
+        for paths in (("results/a.md", "results/a.md-extra"),
+                      ("results/one/a.md", "results/two/a.md"),
+                      ("different-root/a.md", "results/a.md")):
+            with self.subTest(paths=paths):
+                self.graph = deepcopy(self.arguments[0])
+                for key, path in zip(("CW-A01", "CW-A02"), paths):
+                    self.task(key)["outputs"][0]["proposed_path"] = path
+                result = checker.validate(self.graph, *self.arguments[1:])
+                self.assertEqual(result["work_packages"], 104)
+
     def test_actual_epic_and_source_task_identifier_collision(self):
         self.graph["epics"][1]["id"] = "CW-E01"
         self.reject("identifier collision")

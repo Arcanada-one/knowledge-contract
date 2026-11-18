@@ -12,7 +12,7 @@ from collections import Counter, deque
 import hashlib
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -368,6 +368,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     require(set(assigned) == set(by_id) and set(assigned.values()) == {1}, "epic membership is incomplete or duplicated")
 
     outputs = {}
+    output_paths = {}
     imported = {}
     dependencies = {}
     for row in [graph] + epics + tasks:
@@ -397,8 +398,26 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
                     f"output owner identity mismatch: {key}")
             require(output["id"] not in outputs, "duplicate output identity")
             require(output["created"] is False, "future output claimed as created")
-            path = Path(output["proposed_path"])
-            require(not path.is_absolute() and ".." not in path.parts, "unsafe proposed output path")
+            # Proposed destinations are repository-relative POSIX file paths,
+            # independent of the host running this structural validator.
+            raw_path = output["proposed_path"]
+            require(isinstance(raw_path, str) and raw_path and raw_path == raw_path.strip()
+                    and not any(c in raw_path for c in ("\\", ":"))
+                    and not any(ord(c) < 32 or ord(c) == 127 for c in raw_path),
+                    "unsafe proposed output path")
+            path = PurePosixPath(raw_path)
+            require(path.parts and not path.is_absolute() and ".." not in path.parts,
+                    "unsafe proposed output path")
+            require(path not in output_paths,
+                    f"duplicate proposed output path: {key}/{output['id']}")
+            require(raw_path == path.as_posix(), "noncanonical proposed output path")
+            # All outputs are files: neither may occupy a directory needed by
+            # the other, regardless of traversal order. This is lexical only;
+            # an eventual writer must separately check its actual filesystem.
+            require(not any(previous in path.parents or path in previous.parents
+                            for previous in output_paths),
+                    f"overlapping proposed output paths: {key}/{output['id']}")
+            output_paths[path] = output["id"]
             outputs[output["id"]] = key
         dependencies[key] = [d["task_id"] for d in task["dependencies"]]
         require(task.get("origin") in {"imported", "addition"}, f"unknown task origin: {key}")
