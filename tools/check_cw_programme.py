@@ -449,6 +449,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         # mapping. Swapping both the source index and prose must not allow
         # a different paper to borrow an internally consistent source row.
         require(type(paper.get("source_index")) is int
+                and 1 <= paper["source_index"] <= len(original_papers)
                 and paper["id"] == f"CW-P{paper['source_index']:02d}",
                 f"paper frozen source identity mismatch: {paper['id']}")
         require(paper["mapped_task_ids"] and set(paper["mapped_task_ids"]) <= set(by_id), "paper task coverage incomplete")
@@ -459,6 +460,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     require({p["source_index"] for p in papers} == set(range(1, 17)), "source16 paper coverage mismatch")
     for hypothesis in hypotheses:
         require(type(hypothesis.get("source_number")) is int
+                and 1 <= hypothesis["source_number"] <= len(original_hypotheses)
                 and hypothesis["id"] == f"CW-HYP{hypothesis['source_number']:02d}",
                 f"hypothesis frozen source identity mismatch: {hypothesis['id']}")
         require(hypothesis["mapped_task_ids"] and set(hypothesis["mapped_task_ids"]) <= set(by_id), "hypothesis task coverage incomplete")

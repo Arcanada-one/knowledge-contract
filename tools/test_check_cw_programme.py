@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Meaningful adverse controls for source coverage and proposal graph semantics."""
 from copy import deepcopy
+import unicodedata
 import unittest
 
 from tools import check_cw_programme as checker
@@ -245,6 +246,37 @@ class ProgrammeControls(unittest.TestCase):
         for field in ("source_number", "source_statement", "source_comparison", "source_refutation"):
             a[field], b[field] = b[field], a[field]
         self.reject("hypothesis frozen source identity mismatch")
+
+    def test_out_of_range_paper_source_row_is_typed_refusal(self):
+        for number in (0, 17):
+            with self.subTest(source_index=number):
+                self.graph = deepcopy(self.arguments[0])
+                paper = self.graph["papers"][0]
+                paper.update(id=f"CW-P{number:02d}", source_index=number)
+                self.reject("paper frozen source identity mismatch")
+
+    def test_out_of_range_hypothesis_source_row_is_typed_refusal(self):
+        for number in (0, 13):
+            with self.subTest(source_number=number):
+                self.graph = deepcopy(self.arguments[0])
+                hypothesis = self.graph["hypotheses"][0]
+                hypothesis.update(id=f"CW-HYP{number:02d}", source_number=number)
+                self.reject("hypothesis frozen source identity mismatch")
+
+    def test_all_16_claim_scopes_refuse_nfkc_compatibility_aliases(self):
+        # Kill a future NFKC-before-equality mutant, not a semantic claim.
+        for paper_id, pinned in checker.PAPER_CLAIM_SCOPES.items():
+            with self.subTest(paper_id=paper_id):
+                index = next(i for i, ch in enumerate(pinned) if "A" <= ch <= "Z" or "a" <= ch <= "z")
+                alias = pinned[:index] + chr(ord(pinned[index]) + 0xFEE0) + pinned[index + 1:]
+                self.assertNotEqual(alias, pinned)
+                self.assertEqual(unicodedata.normalize("NFKC", alias), pinned)
+                graph = deepcopy(self.graph)
+                contract = next(c for c in graph["paper_release_contracts"] if c["paper_id"] == paper_id)
+                contract["claim_scope"] = alias
+                with self.assertRaisesRegex(checker.InvalidProgramme,
+                                            "paper release claim scope changed without reviewed revision: " + paper_id):
+                    checker.validate(graph, *self.arguments[1:])
 
     def test_hypothesis_refutation_erased(self):
         self.graph["hypotheses"][0]["source_refutation"] = "Always succeeds"
