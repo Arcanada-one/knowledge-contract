@@ -1,0 +1,1444 @@
+{
+  "probe": "three_stage_fluid_v1",
+  "classification": "mathematical illustration; finite regression; not agent evaluation or empirical validation",
+  "input_sha256": "5badb549e0e821a8ea680f0767e635b164ae40e816a9d0107a1eba5298ab5fe3",
+  "units": {
+    "time": "period; arbitrary fixed duration",
+    "material_and_output": "good item units",
+    "stage_capacity": "processing work units per period",
+    "work_content": "processing work units per good item",
+    "availability": "dimensionless fraction"
+  },
+  "results": [
+    {
+      "case_id": "base_local",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        90
+      ],
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 20,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 60
+        },
+        {
+          "period": 2,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 40,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 120
+        },
+        {
+          "period": 3,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 60,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 4,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 80,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 5,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 100,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 6,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 120,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 7,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 140,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 8,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 160,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 9,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 180,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 540
+        },
+        {
+          "period": 10,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 200,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 600
+        }
+      ]
+    },
+    {
+      "case_id": "base_gated",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        90
+      ],
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 200
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 60
+        },
+        {
+          "period": 2,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 120
+        },
+        {
+          "period": 3,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 4,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 5,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 6,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 7,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 8,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 9,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 540
+        },
+        {
+          "period": 10,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 20,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 600
+        }
+      ]
+    },
+    {
+      "case_id": "non_bottleneck_boost",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        160,
+        60,
+        180
+      ],
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 20,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 60
+        },
+        {
+          "period": 2,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 40,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 120
+        },
+        {
+          "period": 3,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 60,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 4,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 80,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 5,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 100,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 6,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 120,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 7,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 140,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 8,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 160,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 9,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 180,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 540
+        },
+        {
+          "period": 10,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 0,
+          "buffer_12_end": 200,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 600
+        }
+      ]
+    },
+    {
+      "case_id": "bottleneck_boost",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        85,
+        90
+      ],
+      "totals": {
+        "admitted": 700,
+        "stage_2_processed": 700,
+        "stage_3_processed": 700,
+        "shipped": 700,
+        "unused_supply": 100
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 70
+        },
+        {
+          "period": 2,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 140
+        },
+        {
+          "period": 3,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 210
+        },
+        {
+          "period": 4,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 280
+        },
+        {
+          "period": 5,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 350
+        },
+        {
+          "period": 6,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 7,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 490
+        },
+        {
+          "period": 8,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 560
+        },
+        {
+          "period": 9,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 630
+        },
+        {
+          "period": 10,
+          "admitted": 70,
+          "stage_2_processed": 70,
+          "stage_3_processed": 70,
+          "shipped": 70,
+          "unused_supply": 10,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 700
+        }
+      ]
+    },
+    {
+      "case_id": "input_limited",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        85,
+        90
+      ],
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 800,
+        "stage_3_processed": 800,
+        "shipped": 800,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 80
+        },
+        {
+          "period": 2,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 160
+        },
+        {
+          "period": 3,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 4,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 320
+        },
+        {
+          "period": 5,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 400
+        },
+        {
+          "period": 6,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 7,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 560
+        },
+        {
+          "period": 8,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 640
+        },
+        {
+          "period": 9,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 720
+        },
+        {
+          "period": 10,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 80,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 800
+        }
+      ]
+    },
+    {
+      "case_id": "demand_excess_local",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        85,
+        90
+      ],
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 800,
+        "stage_3_processed": 800,
+        "shipped": 500,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 300
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 30,
+          "cumulative_shipped": 50
+        },
+        {
+          "period": 2,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 60,
+          "cumulative_shipped": 100
+        },
+        {
+          "period": 3,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 90,
+          "cumulative_shipped": 150
+        },
+        {
+          "period": 4,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 120,
+          "cumulative_shipped": 200
+        },
+        {
+          "period": 5,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 150,
+          "cumulative_shipped": 250
+        },
+        {
+          "period": 6,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 180,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 7,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 210,
+          "cumulative_shipped": 350
+        },
+        {
+          "period": 8,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 240,
+          "cumulative_shipped": 400
+        },
+        {
+          "period": 9,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 270,
+          "cumulative_shipped": 450
+        },
+        {
+          "period": 10,
+          "admitted": 80,
+          "stage_2_processed": 80,
+          "stage_3_processed": 80,
+          "shipped": 50,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 300,
+          "cumulative_shipped": 500
+        }
+      ]
+    },
+    {
+      "case_id": "downstream_bottleneck",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        45
+      ],
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 450,
+        "shipped": 450,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 150,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 20,
+          "buffer_23_end": 15,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 45
+        },
+        {
+          "period": 2,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 40,
+          "buffer_23_end": 30,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 90
+        },
+        {
+          "period": 3,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 60,
+          "buffer_23_end": 45,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 135
+        },
+        {
+          "period": 4,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 80,
+          "buffer_23_end": 60,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 5,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 100,
+          "buffer_23_end": 75,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 225
+        },
+        {
+          "period": 6,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 120,
+          "buffer_23_end": 90,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 270
+        },
+        {
+          "period": 7,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 140,
+          "buffer_23_end": 105,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 315
+        },
+        {
+          "period": 8,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 160,
+          "buffer_23_end": 120,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 9,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 180,
+          "buffer_23_end": 135,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 405
+        },
+        {
+          "period": 10,
+          "admitted": 80,
+          "stage_2_processed": 60,
+          "stage_3_processed": 45,
+          "shipped": 45,
+          "unused_supply": 0,
+          "buffer_12_end": 200,
+          "buffer_23_end": 150,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 450
+        }
+      ]
+    },
+    {
+      "case_id": "setup_loss",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        90
+      ],
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 400
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 60
+        },
+        {
+          "period": 2,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 120
+        },
+        {
+          "period": 3,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 4,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 5,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 6,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 7,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 8,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 9,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 540
+        },
+        {
+          "period": 10,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 600
+        }
+      ]
+    },
+    {
+      "case_id": "rework_overhead",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        90
+      ],
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 400
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 60
+        },
+        {
+          "period": 2,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 120
+        },
+        {
+          "period": 3,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 180
+        },
+        {
+          "period": 4,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 240
+        },
+        {
+          "period": 5,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 300
+        },
+        {
+          "period": 6,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 360
+        },
+        {
+          "period": 7,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 420
+        },
+        {
+          "period": 8,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 480
+        },
+        {
+          "period": 9,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 540
+        },
+        {
+          "period": 10,
+          "admitted": 60,
+          "stage_2_processed": 60,
+          "stage_3_processed": 60,
+          "shipped": 60,
+          "unused_supply": 40,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 600
+        }
+      ]
+    },
+    {
+      "case_id": "no_material",
+      "horizon_periods": 10,
+      "effective_good_unit_capacity_per_period": [
+        100,
+        60,
+        90
+      ],
+      "totals": {
+        "admitted": 0,
+        "stage_2_processed": 0,
+        "stage_3_processed": 0,
+        "shipped": 0,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "series": [
+        {
+          "period": 1,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 2,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 3,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 4,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 5,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 6,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 7,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 8,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 9,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        },
+        {
+          "period": 10,
+          "admitted": 0,
+          "stage_2_processed": 0,
+          "stage_3_processed": 0,
+          "shipped": 0,
+          "unused_supply": 0,
+          "buffer_12_end": 0,
+          "buffer_23_end": 0,
+          "finished_goods_end": 0,
+          "cumulative_shipped": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,852 @@
+{
+  "scope": "Workforce, competencies, staffing, human factors, human–AI work",
+  "count": 44,
+  "generated_on": "2026-11-18",
+  "counting_rule": "Distinct works/reference resources; preprint and journal versions not counted twice. Evidence level indicates material inspected, not methodological quality.",
+  "sources": [
+    {
+      "id": "WF-001",
+      "title": "The O*NET Content Model",
+      "authors": [
+        "National Center for O*NET Development"
+      ],
+      "year": null,
+      "doi": null,
+      "url": "https://www.onetcenter.org/content.html",
+      "family": "classification",
+      "source_type": "official_reference",
+      "evidence_level": "full_text",
+      "relevance": "Разделение worker, job и market; модель требований, задач, контекста и опыта.",
+      "web_ref": "turn244187693view2",
+      "notes": "Ознакомление с открытой моделью, не проверка валидности каждого показателя.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-002",
+      "title": "O*NET 31.0 Database",
+      "authors": [
+        "National Center for O*NET Development"
+      ],
+      "year": null,
+      "doi": null,
+      "url": "https://www.onetcenter.org/database.html",
+      "family": "classification",
+      "source_type": "dataset",
+      "evidence_level": "metadata",
+      "relevance": "Машиночитаемые данные о профессиях, знаниях, задачах и контексте; источник versioned snapshots.",
+      "web_ref": "turn407317151search0",
+      "notes": "Версия 31.0 наблюдалась на странице 2026-11-18; дату выпуска отдельно не проверяли.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-003",
+      "title": "Two pillar structure of ESCO",
+      "authors": [
+        "European Commission"
+      ],
+      "year": null,
+      "doi": null,
+      "url": "https://esco.ec.europa.eu/en/about-esco/escopedia/escopedia/two-pillar-structure-esco",
+      "family": "classification",
+      "source_type": "official_reference",
+      "evidence_level": "full_text",
+      "relevance": "Связи профессий с обязательными/необязательными знаниями и навыками; ESCO не разделяет skills и competences.",
+      "web_ref": "turn407317151search3",
+      "notes": "Динамическая документация; версия страницы показана как ESCO v1.2.1, последнее обновление 10/12/2025.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-004",
+      "title": "International Standard Classification of Occupations (ISCO-08)",
+      "authors": [
+        "International Labour Organization"
+      ],
+      "year": 2008,
+      "doi": null,
+      "url": "https://ilostat.ilo.org/methods/concepts-and-definitions/classification-occupation/",
+      "family": "classification",
+      "source_type": "standard",
+      "evidence_level": "full_text",
+      "relevance": "Различение job, occupation, skill level и skill specialization.",
+      "web_ref": "turn407317151search5",
+      "notes": "2008 — обозначение версии/принятия по официальной странице; это не текущая локальная квалификационная шкала компании.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-005",
+      "title": "International Standard Industrial Classification of All Economic Activities (ISIC), Revision 5",
+      "authors": [
+        "United Nations Statistics Division"
+      ],
+      "year": 2024,
+      "doi": null,
+      "url": "https://unstats.un.org/unsd/classifications/Family/Detail/2095",
+      "family": "classification",
+      "source_type": "standard",
+      "evidence_level": "metadata",
+      "relevance": "Классификация экономической деятельности предприятия/подразделения, внешний слой отраслевого контекста.",
+      "web_ref": "turn244187693view3",
+      "notes": "2024 — Year Adopted; Year Published официально N/A. Полный классификатор не извлекался.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-006",
+      "title": "Introduction to APQC's Process Classification Framework",
+      "authors": [
+        "APQC"
+      ],
+      "year": null,
+      "doi": null,
+      "url": "https://www.apqc.org/sites/default/files/files/PCF%20Collateral/Intro%20to%20PCF%20-%20FINAL.pdf",
+      "family": "process_classification",
+      "source_type": "official_reference",
+      "evidence_level": "abstract",
+      "relevance": "Бизнес-процессы и их иерархия; PCF — каталог работы, а не исполненный процессный граф.",
+      "web_ref": "turn264980980search7",
+      "notes": "Дата из PDF не проверена; использовать стабильные element IDs и закреплённую версию.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-007",
+      "title": "SCOR Digital Standard: Introduction to Processes",
+      "authors": [
+        "Association for Supply Chain Management"
+      ],
+      "year": null,
+      "doi": null,
+      "url": "https://scor.ascm.org/processes/introduction",
+      "family": "process_classification",
+      "source_type": "standard",
+      "evidence_level": "full_text",
+      "relevance": "Orchestrate, Plan, Order, Source, Transform, Fulfill, Return; связывает потребность и ресурсный разрыв.",
+      "web_ref": "turn264980980search2",
+      "notes": "Открытая официальная страница процессов; полного стандарта и условий коммерческого переиспользования не проверяли.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-008",
+      "title": "ISO 30409:2016 — Human resource management — Workforce planning",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2016,
+      "doi": null,
+      "url": "https://www.iso.org/standard/64150.html",
+      "family": "workforce_planning",
+      "source_type": "standard",
+      "evidence_level": "abstract",
+      "relevance": "Нормативная рамка планирования рабочей силы для организаций разного размера и отрасли.",
+      "web_ref": "turn264980980search3",
+      "notes": "Прочитана официальная аннотация, не платный полный стандарт.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-009",
+      "title": "ISO 10075-1:2017 — Ergonomic principles related to mental workload — Part 1: General issues and concepts, terms and definitions",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2017,
+      "doi": null,
+      "url": "https://www.iso.org/standard/66900.html",
+      "family": "human_factors",
+      "source_type": "standard",
+      "evidence_level": "abstract",
+      "relevance": "Терминология mental stress/strain и кратко-/долгосрочных последствий нагрузки.",
+      "web_ref": "turn264980980search5",
+      "notes": "Аннотация; стандарт не задаёт сам по себе методы измерения или task design.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-010",
+      "title": "ISO 6385:2016 — Ergonomics principles in the design of work systems",
+      "authors": [
+        "International Organization for Standardization"
+      ],
+      "year": 2016,
+      "doi": null,
+      "url": "https://www.iso.org/standard/63785.html",
+      "family": "human_factors",
+      "source_type": "standard",
+      "evidence_level": "abstract",
+      "relevance": "Совместный учёт человеческих, социальных и технических требований к системе труда.",
+      "web_ref": "turn264980980search6",
+      "notes": "Прочитана официальная аннотация, не полный стандарт.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-011",
+      "title": "Workforce planning incorporating skills: State of the art",
+      "authors": [
+        "Philippe De Bruecker",
+        "Jorne Van den Bergh",
+        "Jeroen Beliën",
+        "Erik Demeulemeester"
+      ],
+      "year": 2015,
+      "doi": "10.1016/j.ejor.2014.10.038",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0377221714008601",
+      "family": "workforce_planning",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Классификация навыков, staffing и scheduling; последствия cross-training, substitution, teamwork.",
+      "web_ref": "turn220530835search0",
+      "notes": "Аннотация и разделы preview; полный текст не прочитан.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-012",
+      "title": "Personnel scheduling: A literature review",
+      "authors": [
+        "Jorne Van den Bergh",
+        "Jeroen Beliën",
+        "Philippe De Bruecker",
+        "Erik Demeulemeester",
+        "Liesje De Boeck"
+      ],
+      "year": 2013,
+      "doi": "10.1016/j.ejor.2012.11.029",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0377221712008776",
+      "family": "workforce_planning",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Многомерная классификация scheduling, hard/soft constraints, неопределённость, отрасли.",
+      "web_ref": "turn220530835search1",
+      "notes": "291 статья по описанию авторов; эти 291 записи пока индивидуально не проверены.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-013",
+      "title": "Staff scheduling and rostering: A review of applications, methods and models",
+      "authors": [
+        "A. T. Ernst",
+        "H. Jiang",
+        "M. Krishnamoorthy",
+        "D. Sier"
+      ],
+      "year": 2004,
+      "doi": "10.1016/S0377-2217(03)00095-X",
+      "url": "https://www.sciencedirect.com/science/article/pii/S037722170300095X",
+      "family": "workforce_planning",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Связка прогноз спроса → staffing levels → расписание → reporting; удовлетворённость работников и ограничения.",
+      "web_ref": "turn220530835search2",
+      "notes": "Аннотация; полный текст не прочитан.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-014",
+      "title": "Telephone Call Centers: Tutorial, Review, and Research Prospects",
+      "authors": [
+        "Noah Gans",
+        "Ger Koole",
+        "Avishai Mandelbaum"
+      ],
+      "year": 2003,
+      "doi": "10.1287/msom.5.2.79.16071",
+      "url": "https://pubsonline.informs.org/doi/10.1287/msom.5.2.79.16071",
+      "family": "service_staffing",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Очереди, staffing, hiring, SLA, abandonment и человеческое поведение в услугах.",
+      "web_ref": "turn220530835search3",
+      "notes": "Аннотация; диапазон страниц 79–141 взят из Cite as, не общего диапазона номера.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-015",
+      "title": "The Modern Call Center: A Multi-Disciplinary Perspective on Operations Management Research",
+      "authors": [
+        "Zeynep Aksin",
+        "Mor Armony",
+        "Vijay Mehrotra"
+      ],
+      "year": 2007,
+      "doi": "10.1111/j.1937-5956.2007.tb00288.x",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1937-5956.2007.tb00288.x",
+      "family": "service_staffing",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Связь operations, HR, поведения клиентов, продаж и маркетинга.",
+      "web_ref": "turn563501833search0",
+      "notes": "Год номера 2007; онлайн-страница указывает upload/publication history 2009.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-016",
+      "title": "Dimensioning Large Call Centers",
+      "authors": [
+        "Sem Borst",
+        "Avi Mandelbaum",
+        "Martin I. Reiman"
+      ],
+      "year": 2004,
+      "doi": "10.1287/opre.1030.0081",
+      "url": "https://pubsonline.informs.org/doi/10.1287/opre.1030.0081",
+      "family": "service_staffing",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "M/M/N и quality-/efficiency-driven regimes; staff reserve для заданного качества сервиса.",
+      "web_ref": "turn563501833search2",
+      "notes": "Допущения M/M/N обязательны; формула не универсальный норматив численности.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-017",
+      "title": "A Staffing Algorithm for Call Centers with Skill-Based Routing",
+      "authors": [
+        "Rodney B. Wallace",
+        "Ward Whitt"
+      ],
+      "year": 2005,
+      "doi": "10.1287/msom.1050.0086",
+      "url": "https://pubsonline.informs.org/doi/abs/10.1287/msom.1050.0086",
+      "family": "service_staffing",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "Совместное управление маршрутизацией и численностью при ограниченной перекрёстной подготовке.",
+      "web_ref": "turn563501833search3",
+      "notes": "Выводы близости к полной гибкости условны, в частности при независимости времени обслуживания от типа обращения/оператора.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-018",
+      "title": "An Annotated Bibliography of Personnel Scheduling and Rostering",
+      "authors": [
+        "A. T. Ernst",
+        "H. Jiang",
+        "M. Krishnamoorthy",
+        "B. Owens",
+        "D. Sier"
+      ],
+      "year": 2004,
+      "doi": "10.1023/B:ANOR.0000019087.46656.e2",
+      "url": "https://doi.org/10.1023/B:ANOR.0000019087.46656.e2",
+      "family": "workforce_planning",
+      "source_type": "bibliography",
+      "evidence_level": "abstract",
+      "relevance": "Около 700 ссылок, классифицированных по задачам, применениям и методам: приоритетная точка snowballing.",
+      "web_ref": "turn563501833search4",
+      "notes": "700 — число у авторов, не число импортированных или проверенных нами уникальных работ.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-019",
+      "title": "Multitask Principal–Agent Analyses: Incentive Contracts, Asset Ownership, and Job Design",
+      "authors": [
+        "Bengt Holmström",
+        "Paul Milgrom"
+      ],
+      "year": 1991,
+      "doi": "10.1093/jleo/7.special_issue.24",
+      "url": "https://web.stanford.edu/~milgrom/publishedarticles/Multitask%20Principal%20Agent.pdf",
+      "family": "incentives_performance",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "Многозадачность и перераспределение внимания из-за стимулов: локальная метрика может ухудшать качество и обслуживание оборудования.",
+      "web_ref": "turn741567237search4",
+      "notes": "Прочитан вводный фрагмент авторского PDF; DOI сверён с издателем turn484515149search6.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-020",
+      "title": "Incentive Contracts and Performance Measurement",
+      "authors": [
+        "George P. Baker"
+      ],
+      "year": 1992,
+      "doi": "10.1086/261831",
+      "url": "https://www.journals.uchicago.edu/doi/10.1086/261831",
+      "family": "incentives_performance",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "Разрыв между performance measure и целью организации; эффект gaming.",
+      "web_ref": "turn741567237search0",
+      "notes": "Аннотация; не эмпирическая оценка любой отдельной компании.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-021",
+      "title": "The O-Ring Theory of Economic Development",
+      "authors": [
+        "Michael Kremer"
+      ],
+      "year": 1993,
+      "doi": "10.2307/2118400",
+      "url": "https://academic.oup.com/qje/article-abstract/108/3/551/1881767",
+      "family": "team_complementarity",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "Комплементарность задач и квалификаций, ошибки в связанных операциях.",
+      "web_ref": "turn484515149search4",
+      "notes": "Теоретическая production function с сильными допущениями; не универсальная функция качества человека.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-022",
+      "title": "Performance Pay and Productivity",
+      "authors": [
+        "Edward P. Lazear"
+      ],
+      "year": 2000,
+      "doi": "10.1257/aer.90.5.1346",
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aer.90.5.1346",
+      "family": "incentives_performance",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Контекстная оценка изменения оплаты и состава работников; разделение incentive и selection effects.",
+      "web_ref": "turn741567237search1",
+      "notes": "Журнальная версия; не дублировать с NBER 1996 как независимым исследованием.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-023",
+      "title": "Team Incentives and Worker Heterogeneity: An Empirical Analysis of the Impact of Teams on Productivity and Participation",
+      "authors": [
+        "Barton H. Hamilton",
+        "Jack A. Nickerson",
+        "Hideo Owan"
+      ],
+      "year": 2003,
+      "doi": "10.1086/374182",
+      "url": "https://www.journals.uchicago.edu/doi/10.1086/374182",
+      "family": "team_complementarity",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Командный состав, collaborative skills и неоднородность работников в производстве.",
+      "web_ref": "turn484515149search0",
+      "notes": "Один garment plant; переносимость подлежит проверке.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-024",
+      "title": "Peers at Work",
+      "authors": [
+        "Alexandre Mas",
+        "Enrico Moretti"
+      ],
+      "year": 2009,
+      "doi": "10.1257/aer.99.1.112",
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aer.99.1.112",
+      "family": "team_complementarity",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Производительность зависит от коллег, пространственного взаимодействия и социального контекста.",
+      "web_ref": "turn484515149search2",
+      "notes": "Эмпирический контекст supermarket workers; эффект не константа человека.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-025",
+      "title": "The Skill Content of Recent Technological Change: An Empirical Exploration",
+      "authors": [
+        "David H. Autor",
+        "Frank Levy",
+        "Richard J. Murnane"
+      ],
+      "year": 2003,
+      "doi": "10.1162/003355303322552801",
+      "url": "https://doi.org/10.1162/003355303322552801",
+      "family": "tasks_technology",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Разделение задач и профессий; изменение задач внутри одной профессии при технологическом сдвиге.",
+      "web_ref": "turn354507829search3",
+      "notes": "Журнальная версия; не применять старую границу routine/nonroutine как описание возможностей LLM 2026.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-026",
+      "title": "Skills, Tasks and Technologies: Implications for Employment and Earnings",
+      "authors": [
+        "Daron Acemoglu",
+        "David Autor"
+      ],
+      "year": 2010,
+      "doi": "10.3386/w16082",
+      "url": "https://www.nber.org/papers/w16082",
+      "family": "tasks_technology",
+      "source_type": "working_paper",
+      "evidence_level": "abstract",
+      "relevance": "Task-based model: эндогенное назначение квалификаций на задачи, технологии и торговые условия.",
+      "web_ref": "turn354507829search8",
+      "notes": "Запись относится к NBER Working Paper 2010; опубликованная глава Handbook — связанная версия, отдельно не считалась.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-027",
+      "title": "The Growing Importance of Social Skills in the Labor Market",
+      "authors": [
+        "David J. Deming"
+      ],
+      "year": 2017,
+      "doi": "10.1093/qje/qjx022",
+      "url": "https://doi.org/10.1093/qje/qjx022",
+      "family": "team_complementarity",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Социальные навыки снижают издержки координации и помогают разделению задач.",
+      "web_ref": "turn354507829search4",
+      "notes": "Есть публичные replication code/data; проверка их запуска не проводилась.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-028",
+      "title": "Skill Requirements across Firms and Labor Markets: Evidence from Job Postings for Professionals",
+      "authors": [
+        "David Deming",
+        "Lisa B. Kahn"
+      ],
+      "year": 2018,
+      "doi": "10.1086/694106",
+      "url": "https://www.nber.org/books-and-chapters/firms-and-distribution-income-roles-productivity-and-luck/skill-requirements-across-firms-and-labor-markets-evidence-job-postings-professionals",
+      "family": "skills_demand",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Потребности в навыках различаются внутри узко заданной профессии; дополнение occupational averages локальным контекстом.",
+      "web_ref": "turn354507829search10",
+      "notes": "Метаданные журнальной версии; аннотация проверена также по NBER working paper turn354507829search1.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-029",
+      "title": "Some Social and Psychological Consequences of the Longwall Method of Coal-Getting: An Examination of the Psychological Situation and Defences of a Work Group in Relation to the Social Structure and Technological Content of the Work System",
+      "authors": [
+        "E. L. Trist",
+        "K. W. Bamforth"
+      ],
+      "year": 1951,
+      "doi": "10.1177/001872675100400101",
+      "url": "https://doi.org/10.1177/001872675100400101",
+      "family": "sociotechnical_systems",
+      "source_type": "empirical_article",
+      "evidence_level": "metadata",
+      "relevance": "Классическая основа социотехнических систем: совместное устройство социальной и технической работы.",
+      "web_ref": "turn193434334search0",
+      "notes": "Проверены библиографические данные издателя; полный текст не читался.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-030",
+      "title": "The Principles of Sociotechnical Design",
+      "authors": [
+        "Albert Cherns"
+      ],
+      "year": 1976,
+      "doi": "10.1177/001872677602900806",
+      "url": "https://journals.sagepub.com/doi/10.1177/001872677602900806",
+      "family": "sociotechnical_systems",
+      "source_type": "conceptual_article",
+      "evidence_level": "abstract",
+      "relevance": "Принципы проектирования организационной системы совместно с работниками.",
+      "web_ref": "turn193434334search1",
+      "notes": "Метаданные и начальный PDF-фрагмент, не полный разбор.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-031",
+      "title": "Job Demands, Job Decision Latitude, and Mental Strain: Implications for Job Redesign",
+      "authors": [
+        "Robert A. Karasek Jr."
+      ],
+      "year": 1979,
+      "doi": "10.2307/2392498",
+      "url": "https://www.jstor.org/stable/2392498",
+      "family": "human_factors",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Взаимодействие требований к работе и автономии; нагрузка не описывается одним output rate.",
+      "web_ref": "turn537717622search6",
+      "notes": "Национальные survey data; association и модель, не индивидуальный диагностический инструмент.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-032",
+      "title": "The Job Demands–Resources Model of Burnout",
+      "authors": [
+        "Evangelia Demerouti",
+        "Arnold B. Bakker",
+        "Friedhelm Nachreiner",
+        "Wilmar B. Schaufeli"
+      ],
+      "year": 2001,
+      "doi": "10.1037/0021-9010.86.3.499",
+      "url": "https://www.wilmarschaufeli.nl/publications/Schaufeli/160.pdf",
+      "family": "human_factors",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Раздельный учёт требований работы и ресурсов, истощения и disengagement.",
+      "web_ref": "turn193434334search8",
+      "notes": "Авторский PDF; наблюдательная модель, не основание предсказывать состояние конкретного сотрудника.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-033",
+      "title": "Sociotechnical principles for system design",
+      "authors": [
+        "Chris W. Clegg"
+      ],
+      "year": 2000,
+      "doi": "10.1016/S0003-6870(00)00009-0",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0003687000000090",
+      "family": "sociotechnical_systems",
+      "source_type": "conceptual_article",
+      "evidence_level": "abstract",
+      "relevance": "Meta/content/process principles для совместного социально-технического проектирования.",
+      "web_ref": "turn235903846search6",
+      "notes": "Метаданные автора сверены PubMed turn235903846search5; полный текст не прочитан.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-034",
+      "title": "Generative AI at Work",
+      "authors": [
+        "Erik Brynjolfsson",
+        "Danielle Li",
+        "Lindsey Raymond"
+      ],
+      "year": 2025,
+      "doi": "10.1093/qje/qjae044",
+      "url": "https://academic.oup.com/qje/article/140/2/889/7990658",
+      "family": "human_ai_work",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Неоднородный эффект AI по опыту, скорости и качеству; модель должна учитывать контекст задачи и работника.",
+      "web_ref": "turn537717622search0",
+      "notes": "Журнальная версия: 5172 агента и 15% средний эффект по abstract; NBER 2023 содержит иные числа, не смешивать версии.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-035",
+      "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+      "authors": [
+        "Shakked Noy",
+        "Whitney Zhang"
+      ],
+      "year": 2023,
+      "doi": "10.1126/science.adh2586",
+      "url": "https://doi.org/10.1126/science.adh2586",
+      "family": "human_ai_work",
+      "source_type": "experimental_article",
+      "evidence_level": "abstract",
+      "relevance": "Рандомизированная оценка времени и качества письменных профессиональных заданий.",
+      "web_ref": "turn537717622search2",
+      "notes": "453 участника в журнальной версии; не равнозначно измерению полного бизнеса или долгосрочной занятости.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-036",
+      "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+      "authors": [
+        "Fabrizio Dell’Acqua",
+        "Edward McFowland III",
+        "Ethan Mollick",
+        "Hila Lifshitz",
+        "Katherine C. Kellogg",
+        "Saran Rajendran",
+        "Lisa Krayer",
+        "François Candelon",
+        "Karim R. Lakhani"
+      ],
+      "year": 2026,
+      "doi": "10.1287/orsc.2025.21838",
+      "url": "https://doi.org/10.1287/orsc.2025.21838",
+      "family": "human_ai_work",
+      "source_type": "experimental_article",
+      "evidence_level": "abstract",
+      "relevance": "В рамках одного knowledge workflow AI может улучшать одни задачи и ухудшать другие; проверять task-model fit.",
+      "web_ref": "turn244187693view0",
+      "notes": "Открыт авторский PDF журнальной версии, прочитаны metadata/abstract/introduction. Не считать полным критическим чтением.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-037",
+      "title": "Workload Indicators of Staffing Need (WISN): User Manual, 2nd edition",
+      "authors": [
+        "World Health Organization"
+      ],
+      "year": 2023,
+      "doi": null,
+      "url": "https://www.who.int/publications/i/item/9789240070066",
+      "family": "healthcare_staffing",
+      "source_type": "manual",
+      "evidence_level": "abstract",
+      "relevance": "Пример перехода от workload components и временных стандартов к кадровой потребности.",
+      "web_ref": "turn614113089search0",
+      "notes": "ISBN 9789240070066; CC BY-NC-SA 3.0 IGO по официальной странице. Коммерческий перенос текста/адаптации требует проверки условий.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-038",
+      "title": "Nurse Staffing and Inpatient Hospital Mortality",
+      "authors": [
+        "Jack Needleman",
+        "Peter Buerhaus",
+        "V. Shane Pankratz",
+        "Cynthia L. Leibson",
+        "Susanna R. Stevens",
+        "Marcelline Harris"
+      ],
+      "year": 2011,
+      "doi": "10.1056/NEJMsa1001025",
+      "url": "https://doi.org/10.1056/NEJMsa1001025",
+      "family": "healthcare_staffing",
+      "source_type": "empirical_article",
+      "evidence_level": "abstract",
+      "relevance": "Потребность в staff должна зависеть от нагрузки и качества исхода, а не только среднего числа операций.",
+      "web_ref": "turn614113089search3",
+      "notes": "Ретроспективное наблюдательное исследование одного медцентра; ассоциация, не произвольная причинная гарантия.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-039",
+      "title": "Firm-Specific Human Capital: A Skill-Weights Approach",
+      "authors": [
+        "Edward P. Lazear"
+      ],
+      "year": 2009,
+      "doi": "10.1086/648671",
+      "url": "https://www.journals.uchicago.edu/doi/10.1086/648671",
+      "family": "skills_demand",
+      "source_type": "theoretical_article",
+      "evidence_level": "abstract",
+      "relevance": "Универсальные навыки имеют разные комбинации и веса для разных компаний.",
+      "web_ref": "turn614113089search5",
+      "notes": "Не выводит автоматически валидные численные веса конкретного предприятия.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-040",
+      "title": "Causal Inference: What If",
+      "authors": [
+        "Miguel A. Hernán",
+        "James M. Robins"
+      ],
+      "year": 2020,
+      "doi": null,
+      "url": "https://miguelhernan.org/whatifbook",
+      "family": "causal_evaluation",
+      "source_type": "book",
+      "evidence_level": "metadata",
+      "relevance": "Основа протоколов причинной оценки staffing/process interventions и работы с confounding.",
+      "web_ref": "turn614113089search8",
+      "notes": "Официальная страница авторов: living online book, обновления могут менять текст; закреплять версию.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-041",
+      "title": "The crosswalk between ESCO and O*NET",
+      "authors": [
+        "European Commission ESCO team"
+      ],
+      "year": 2022,
+      "doi": null,
+      "url": "https://esco.ec.europa.eu/en/about-esco/data-science-and-esco/crosswalk-between-esco-and-onet",
+      "family": "classification_mapping",
+      "source_type": "technical_report",
+      "evidence_level": "full_text",
+      "relevance": "Many-to-many mapping с exact/narrow/broad/close/related отношениями и human validation.",
+      "web_ref": "turn235903846search1",
+      "notes": "2022 по report publication 2022-09-30; related matches не проходили тот же QA/US DOL validation.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-042",
+      "title": "Human Capital: A Theoretical and Empirical Analysis with Special Reference to Education, First Edition",
+      "authors": [
+        "Gary S. Becker"
+      ],
+      "year": 1964,
+      "doi": null,
+      "url": "https://www.nber.org/books-and-chapters/human-capital-theoretical-and-empirical-analysis-special-reference-education-first-edition",
+      "family": "human_capital",
+      "source_type": "book",
+      "evidence_level": "abstract",
+      "relevance": "Обучение и подготовка как инвестиции; база для выбора hire/train/redeploy.",
+      "web_ref": "turn235903846search7",
+      "notes": "Прочитано описание издателя; исторический контекст, не современный универсальный коэффициент ROI.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-043",
+      "title": "Development of NASA-TLX (Task Load Index): Results of Empirical and Theoretical Research",
+      "authors": [
+        "Sandra G. Hart",
+        "Lowell E. Staveland"
+      ],
+      "year": 1988,
+      "doi": "10.1016/S0166-4115(08)62386-9",
+      "url": "https://doi.org/10.1016/S0166-4115(08)62386-9",
+      "family": "human_factors",
+      "source_type": "book_chapter",
+      "evidence_level": "abstract",
+      "relevance": "Многомерная субъективная оценка workload; отдельная наблюдаемая величина для валидации нагрузки.",
+      "web_ref": "turn235903846search8",
+      "notes": "1988 — год главы; цифры (08) в DOI не год публикации. Текущая официальная страница инструмента: NASA.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    },
+    {
+      "id": "WF-044",
+      "title": "A review of multi-objective optimization methods for personnel rostering problems",
+      "authors": [
+        "Elín Björk Böðvarsdóttir",
+        "Thomas Stidsen"
+      ],
+      "year": 2026,
+      "doi": "10.1007/s10951-025-00845-0",
+      "url": "https://link.springer.com/article/10.1007/s10951-025-00845-0",
+      "family": "workforce_planning",
+      "source_type": "review",
+      "evidence_level": "abstract",
+      "relevance": "Многокритериальное расписание с предпочтениями работодателя, работников и клиентов; выбор между Pareto-alternatives и участие decision maker.",
+      "web_ref": "turn838205402view0",
+      "notes": "Online publication 2025-05-21, Journal of Scheduling volume29 pages1–19(2026). Прочитаны abstract, introduction, метод и conclusion; полный критический разбор всех52 работ не выполнен.",
+      "verified_on": "2026-11-18",
+      "review_status": "seed_verified_primary_record_not_systematic_full_text_review"
+    }
+  ]
+}

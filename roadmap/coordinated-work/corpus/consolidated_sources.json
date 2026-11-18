@@ -1,0 +1,3930 @@
+[
+  {
+    "id": "CW-S0001",
+    "aliases": [
+      "OPS001"
+    ],
+    "title": "A Proof for the Queuing Formula: L = λW",
+    "authors": "John D. C. Little",
+    "year": 1961,
+    "doi": "10.1287/opre.9.3.383",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.9.3.383",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Связь среднего количества работ в системе, потока и времени; не является сама по себе правилом найма.",
+    "notes": "",
+    "web_refs": [
+      "turn917664967view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0002",
+    "aliases": [
+      "OPS002"
+    ],
+    "title": "The single server queue in heavy traffic",
+    "authors": "J. F. C. Kingman",
+    "year": 1961,
+    "doi": "10.1017/s0305004100036094",
+    "url": "https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/abs/single-server-queue-in-heavy-traffic/81C55BC00A68FE6D5385638AA0B0AF37",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Приближения для очередей при большой загрузке; необходимо восстановить точные предпосылки перед переносом на предприятие.",
+    "notes": "Издатель прямо сообщает об отсутствии abstract; проверены метаданные, не прочитан полный текст.",
+    "web_refs": [
+      "turn917664967view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0003",
+    "aliases": [
+      "OPS003"
+    ],
+    "title": "On Queues in Heavy Traffic",
+    "authors": "J. F. C. Kingman",
+    "year": 1962,
+    "doi": "10.1111/j.2517-6161.1962.tb00465.x",
+    "url": "https://academic.oup.com/jrsssb/article/24/2/383/7035157",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Различение высокой утилизации и приемлемой задержки; базис стресс-тестов загрузки.",
+    "notes": "",
+    "web_refs": [
+      "turn516041478search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0004",
+    "aliases": [
+      "OPS004"
+    ],
+    "title": "Factory Physics, Third Edition",
+    "authors": "Wallace J. Hopp; Mark L. Spearman",
+    "year": 2008,
+    "doi": null,
+    "url": "https://waveland.com/browse.php?t=587",
+    "family": "production_flows",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Систематизация изменчивости, мощности, незавершенного производства, потоков и производственных решений.",
+    "notes": "Зафиксирован copyright 2008 третьего издания на странице издателя; ISBN 9781577667391; полный текст книги не прочитан.",
+    "web_refs": [
+      "turn493848807view7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0005",
+    "aliases": [
+      "OPS005"
+    ],
+    "title": "CONWIP: a pull alternative to kanban",
+    "authors": "Mark L. Spearman; David L. Woodruff; Wallace J. Hopp",
+    "year": 1990,
+    "doi": "10.1080/00207549008942761",
+    "url": "https://www.tandfonline.com/doi/abs/10.1080/00207549008942761",
+    "family": "production_flows",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Политика ограничения общего WIP для сравнения с наивным максимизированием локальной загрузки.",
+    "notes": "",
+    "web_refs": [
+      "turn516041478search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0006",
+    "aliases": [
+      "OPS006"
+    ],
+    "title": "Push and Pull Production Systems: Issues and Comparisons",
+    "authors": "Mark L. Spearman; Michael A. Zazanis",
+    "year": 1992,
+    "doi": "10.1287/opre.40.3.521",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/opre.40.3.521",
+    "family": "production_flows",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Проверяет гипотезы о pull и роли ограниченного WIP; гибридные политики вместо универсального рецепта.",
+    "notes": "",
+    "web_refs": [
+      "turn917664967view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0007",
+    "aliases": [
+      "OPS007"
+    ],
+    "title": "To Pull or Not to Pull: What Is the Question?",
+    "authors": "Wallace J. Hopp; Mark L. Spearman",
+    "year": 2004,
+    "doi": "10.1287/msom.1030.0028",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/msom.1030.0028",
+    "family": "production_flows",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Уточняет понятие pull и отделяет его от kanban и make-to-order; полезно для онтологии политик.",
+    "notes": "",
+    "web_refs": [
+      "turn737751137search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0008",
+    "aliases": [
+      "OPS008"
+    ],
+    "title": "Information Distortion in a Supply Chain: The Bullwhip Effect",
+    "authors": "Hau L. Lee; V. Padmanabhan; Seungjin Whang",
+    "year": 1997,
+    "doi": "10.1287/mnsc.43.4.546",
+    "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.43.4.546",
+    "family": "supply_chain",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Искажение сигналов спроса усиливает колебания вверх по цепи; различать продажи, заказы и прогнозы.",
+    "notes": "",
+    "web_refs": [
+      "turn917664967view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0009",
+    "aliases": [
+      "OPS009"
+    ],
+    "title": "The Bullwhip Effect in Supply Chains",
+    "authors": "Hau L. Lee; V. Padmanabhan; Seungjin Whang",
+    "year": 1997,
+    "doi": null,
+    "url": "https://shop.sloanreview.mit.edu/store/the-bullwhip-effect-in-supply-chains",
+    "family": "supply_chain",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Авторское практическое изложение причин bullwhip и возможных мер; отдельная публикация от технической статьи.",
+    "notes": "Sloan Management Review; не смешивать с переизданием статьи Management Science 2004 года.",
+    "web_refs": [
+      "turn107907234search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0010",
+    "aliases": [
+      "OPS010"
+    ],
+    "title": "Misperceptions of feedback in dynamic decision making",
+    "authors": "John D. Sterman",
+    "year": 1989,
+    "doi": "10.1016/0749-5978(89)90041-1",
+    "url": "https://www.sciencedirect.com/science/article/pii/0749597889900411",
+    "family": "system_dynamics",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Даже полная информация не устраняет ошибочных решений с задержками; агенту нужна явная динамическая модель.",
+    "notes": "",
+    "web_refs": [
+      "turn107907234search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0011",
+    "aliases": [
+      "OPS011"
+    ],
+    "title": "Heavy-Traffic Limits for Queues with Many Exponential Servers",
+    "authors": "Shlomo Halfin; Ward Whitt",
+    "year": 1981,
+    "doi": "10.1287/opre.29.3.567",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.29.3.567",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Основа режимов балансирования качества и эффективности в массовом обслуживании.",
+    "notes": "",
+    "web_refs": [
+      "turn560247214search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0012",
+    "aliases": [
+      "OPS012"
+    ],
+    "title": "Networks of Waiting Lines",
+    "authors": "James R. Jackson",
+    "year": 1957,
+    "doi": "10.1287/opre.5.4.518",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.5.4.518",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Классический формализм сетей очередей; модель цепочки участков при определенных предпосылках.",
+    "notes": "",
+    "web_refs": [
+      "turn560247214search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0013",
+    "aliases": [
+      "OPS013"
+    ],
+    "title": "Jobshop-Like Queueing Systems",
+    "authors": "James R. Jackson",
+    "year": 1963,
+    "doi": "10.1287/mnsc.10.1.131",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/mnsc.10.1.131",
+    "family": "queueing",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Стационарные распределения сетей обслуживания; важны область применимости и ограничения предпосылок.",
+    "notes": "",
+    "web_refs": [
+      "turn560247214search39"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0014",
+    "aliases": [
+      "OPS014"
+    ],
+    "title": "Stability Properties of Constrained Queueing Systems and Scheduling Policies for Maximum Throughput in Multihop Radio Networks",
+    "authors": "Leandros Tassiulas; Anthony Ephremides",
+    "year": 1992,
+    "doi": null,
+    "url": "https://drum.lib.umd.edu/items/571fda52-aefb-4497-9a2d-69d8c7c907b9",
+    "family": "network_control",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Область устойчивости ограниченной сети и выбор расписаний; перенос на компанию является исследовательской гипотезой.",
+    "notes": "DOI журнального издания не подтвержден: не подставлять DOI 10.1109/CDC.1990.204000, относящийся к конференционной версии 1990 года.",
+    "web_refs": [
+      "turn560247214search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0015",
+    "aliases": [
+      "OPS015"
+    ],
+    "title": "Rate control for communication networks: shadow prices, proportional fairness and stability",
+    "authors": "F. P. Kelly; A. K. Maulloo; D. K. H. Tan",
+    "year": 1998,
+    "doi": "10.1057/palgrave.jors.2600523",
+    "url": "https://www.statslab.cam.ac.uk/~fpk1/rate.html",
+    "family": "network_control",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Координация потоков посредством ограничений и теневых цен; применимость к трудовым ресурсам требует отдельной проверки.",
+    "notes": "DOI проверен по издательской странице turn560247214search1; авторский сайт использован как каноническая открытая страница.",
+    "web_refs": [
+      "turn560247214search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0016",
+    "aliases": [
+      "OPS016"
+    ],
+    "title": "Robust Convex Optimization",
+    "authors": "Aharon Ben-Tal; Arkadi Nemirovski",
+    "year": 1998,
+    "doi": "10.1287/moor.23.4.769",
+    "url": "https://pubsonline.informs.org/doi/10.1287/moor.23.4.769",
+    "family": "robust_optimization",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Решения, допустимые для множества неопределенности; формальный базис для сценарных условий среды.",
+    "notes": "",
+    "web_refs": [
+      "turn283103404search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0017",
+    "aliases": [
+      "OPS017"
+    ],
+    "title": "The Price of Robustness",
+    "authors": "Dimitris Bertsimas; Melvyn Sim",
+    "year": 2004,
+    "doi": "10.1287/opre.1030.0065",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1030.0065",
+    "family": "robust_optimization",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Управляемая консервативность робастного решения; нельзя одновременно обещать идеальную эффективность и защиту от всех шоков.",
+    "notes": "",
+    "web_refs": [
+      "turn917664967view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0018",
+    "aliases": [
+      "OPS018"
+    ],
+    "title": "Constrained model predictive control: Stability and optimality",
+    "authors": "D. Q. Mayne; J. B. Rawlings; C. V. Rao; P. O. M. Scokaert",
+    "year": 2000,
+    "doi": "10.1016/s0005-1098(99)00214-9",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0005109899002149",
+    "family": "predictive_control",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Рекурсивное перепланирование с ограничениями; устойчивость требует условий, а не только обновляемого прогноза.",
+    "notes": "DOI, авторы, год и abstract подтверждены непосредственно издателем; полный текст не прочитан.",
+    "web_refs": [
+      "turn465100925search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0019",
+    "aliases": [
+      "OPS019"
+    ],
+    "title": "Lectures on Stochastic Programming: Modeling and Theory, Second Edition",
+    "authors": "Alexander Shapiro; Darinka Dentcheva; Andrzej Ruszczyński",
+    "year": 2014,
+    "doi": "10.1137/1.9781611973433",
+    "url": "https://epubs.siam.org/doi/10.1137/1.9781611973433",
+    "family": "stochastic_optimization",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Многоэтапные решения, вероятностные ограничения и меры риска для планирования под неопределенностью.",
+    "notes": "Проверен 2014 год книги, не использовать дату загрузки front matter 2019 как год издания.",
+    "web_refs": [
+      "turn633837191search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0020",
+    "aliases": [
+      "OPS020"
+    ],
+    "title": "An Introduction to Cybernetics",
+    "authors": "W. Ross Ashby",
+    "year": 1956,
+    "doi": null,
+    "url": "https://www.ashby.info/Ashby-Introduction-to-Cybernetics.pdf",
+    "family": "cybernetics",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Разнообразие регулятора и возмущений, состояния и устойчивость; источник концептуального слоя.",
+    "notes": "Доступен авторизованный полный текст; в текущем проходе прочитаны титул/метаданные, не вся книга. PDF второго отпечатка 1957, исходная книга 1956.",
+    "web_refs": [
+      "turn990426615search7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0021",
+    "aliases": [
+      "OPS021"
+    ],
+    "title": "Every good regulator of a system must be a model of that system",
+    "authors": "Roger C. Conant; W. Ross Ashby",
+    "year": 1970,
+    "doi": "10.1080/00207727008920220",
+    "url": "https://www.tandfonline.com/doi/abs/10.1080/00207727008920220",
+    "family": "cybernetics",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Регулятор нуждается в представлении регулируемой системы; содержание theorem нужно использовать с исходными условиями.",
+    "notes": "",
+    "web_refs": [
+      "turn990426615search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0022",
+    "aliases": [
+      "OPS022"
+    ],
+    "title": "Industrial Dynamics",
+    "authors": "Jay W. Forrester",
+    "year": 1961,
+    "doi": null,
+    "url": "https://cdn.libraries.mit.edu/dissemination/diponline/AC0069_NewReleases/NewsRelease_1960/AC0069_1961/AC0069_196111_016.pdf",
+    "family": "system_dynamics",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Динамика запасов, потоков, задержек и управленческих политик предприятия.",
+    "notes": "Первичное сообщение MIT о выпуске книги; содержательный анализ книги еще не выполнен.",
+    "web_refs": [
+      "turn990426615search9"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0023",
+    "aliases": [
+      "OPS023"
+    ],
+    "title": "Brain of the Firm, Second Edition",
+    "authors": "Stafford Beer",
+    "year": 1981,
+    "doi": null,
+    "url": "https://www.wiley.com/en-gb/brain-of-the-firm-2nd-edition-p-9780471948391",
+    "family": "organizational_cybernetics",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Рекурсивная архитектура жизнеспособной организации и распределение функций управления.",
+    "notes": "Год второго издания 1981 проверен в библиографии архива: turn493848807view9; страница Wiley относится к позднему переизданию.",
+    "web_refs": [
+      "turn966172842search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0024",
+    "aliases": [
+      "OPS024"
+    ],
+    "title": "Diagnosing the System for Organizations",
+    "authors": "Stafford Beer",
+    "year": 1985,
+    "doi": null,
+    "url": "https://www.wiley.com/en-us/diagnosing-the-system-for-organizations-p-9780471951360",
+    "family": "organizational_cybernetics",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Диагностика структуры организации и координации ее частей; исходник для классификации нарушений.",
+    "notes": "Год первого издания 1985 проверен в архивной библиографии turn493848807view9; Wiley продает переиздание.",
+    "web_refs": [
+      "turn966172842search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0025",
+    "aliases": [
+      "OPS025"
+    ],
+    "title": "The Architecture of Complexity",
+    "authors": "Herbert A. Simon",
+    "year": 1962,
+    "doi": null,
+    "url": "https://digitalcollections.library.cmu.edu/search?purl=http%3A%2F%2Fdoi.library.cmu.edu%2F10.1184%2Fpmc%2Fsimon%2Fbox00064%2Ffld04924%2Fbdl0001%2Fdoc0001",
+    "family": "complex_systems",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Иерархия и почти разложимость; границы отделов не должны терять межпроцессные зависимости.",
+    "notes": "Авторский архив CMU; копия текста также доступна в MIT turn966172842search50. Полное чтение не выполнено.",
+    "web_refs": [
+      "turn966172842search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0026",
+    "aliases": [
+      "OPS026"
+    ],
+    "title": "Scheduling: Theory, Algorithms, and Systems, Sixth Edition",
+    "authors": "Michael L. Pinedo",
+    "year": 2022,
+    "doi": "10.1007/978-3-031-05921-6",
+    "url": "https://link.springer.com/book/10.1007/978-3-031-05921-6",
+    "family": "scheduling",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Общая систематика scheduling для производства и услуг; база сравнения алгоритмов.",
+    "notes": "Существует также издательская страница следующего издания 2026, но в корпусе закреплена проверенная версия 2022.",
+    "web_refs": [
+      "turn465100925search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0027",
+    "aliases": [
+      "OPS027"
+    ],
+    "title": "Resource-constrained project scheduling: Notation, classification, models, and methods",
+    "authors": "Peter Brucker; Andreas Drexl; Rolf Möhring; Klaus Neumann; Erwin Pesch",
+    "year": 1999,
+    "doi": null,
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221798002045",
+    "family": "scheduling_taxonomy",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Классификация ресурсов, ограничений и вариантов проектного планирования; не создавать заново уже известные категории.",
+    "notes": "",
+    "web_refs": [
+      "turn737751137search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0028",
+    "aliases": [
+      "OPS028"
+    ],
+    "title": "Project scheduling under uncertainty: Survey and research potentials",
+    "authors": "Willy Herroelen; Roel Leus",
+    "year": 2005,
+    "doi": null,
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221704002401",
+    "family": "scheduling_uncertainty",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Робастные и реактивные расписания, устойчивость плана при нарушениях.",
+    "notes": "",
+    "web_refs": [
+      "turn737751137search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0029",
+    "aliases": [
+      "OPS029"
+    ],
+    "title": "Robust and reactive project scheduling: a review and classification of procedures",
+    "authors": "Willy Herroelen; Roel Leus",
+    "year": 2004,
+    "doi": "10.1080/00207540310001638055",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/00207540310001638055",
+    "family": "scheduling_uncertainty",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Разделяет подготовку устойчивого базового плана и оперативную реакцию на возмущения.",
+    "notes": "Год тома 2004 подтвержден непосредственно издателем: International Journal of Production Research 42(8), 1599–1620; дата online-transfer 2007 не является годом статьи.",
+    "web_refs": [
+      "turn530391708search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0030",
+    "aliases": [
+      "OPS030"
+    ],
+    "title": "A survey of variants and extensions of the resource-constrained project scheduling problem",
+    "authors": "Sönke Hartmann; Dirk Briskorn",
+    "year": 2010,
+    "doi": null,
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221709008558",
+    "family": "scheduling_taxonomy",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Отправная классификация RCPSP, задач, режимов и ограничений ресурсов.",
+    "notes": "",
+    "web_refs": [
+      "turn873155038search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0031",
+    "aliases": [
+      "OPS031"
+    ],
+    "title": "An updated survey of variants and extensions of the resource-constrained project scheduling problem",
+    "authors": "Sönke Hartmann; Dirk Briskorn",
+    "year": 2022,
+    "doi": "10.1016/j.ejor.2021.05.004",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221721003982",
+    "family": "scheduling_taxonomy",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Обновляет семейство вариантов RCPSP за последующее десятилетие.",
+    "notes": "Издатель подтверждает том 297(1), 1–14, 16 февраля 2022; DOI содержит год ранней онлайн-публикации 2021.",
+    "web_refs": [
+      "turn465100925search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0032",
+    "aliases": [
+      "OPS032"
+    ],
+    "title": "Fifty years of research on resource-constrained project scheduling explored from different perspectives",
+    "authors": "Christian Artigues; Sönke Hartmann; Mario Vanhoucke",
+    "year": 2026,
+    "doi": "10.1016/j.ejor.2025.03.024",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221725002218",
+    "family": "scheduling_taxonomy",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Свежий обзор методов, сложности, структурных свойств, сбора и калибровки проектных данных.",
+    "notes": "Издатель: том 328(2), 367–389, 16 января 2026; сам обзор прямо не претендует на исчерпывающий охват.",
+    "web_refs": [
+      "turn633837191search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0033",
+    "aliases": [
+      "OPS033"
+    ],
+    "title": "Process Mining: Data Science in Action, Second Edition",
+    "authors": "Wil M. P. van der Aalst",
+    "year": 2016,
+    "doi": "10.1007/978-3-662-49851-4",
+    "url": "https://link.springer.com/book/10.1007/978-3-662-49851-4",
+    "family": "process_mining",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Восстановление фактических процессов из событий и проверка соответствия процессной модели.",
+    "notes": "",
+    "web_refs": [
+      "turn141782578search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0034",
+    "aliases": [
+      "OPS034",
+      "AE08"
+    ],
+    "title": "Business Process Model and Notation (BPMN), Version 2.0.2",
+    "authors": "Object Management Group",
+    "year": 2014,
+    "doi": null,
+    "url": "https://www.omg.org/spec/BPMN/2.0.2",
+    "family": "process_standards",
+    "source_type": "standard",
+    "evidence_level": "metadata",
+    "relevance": "Обмен исполняемыми и аналитическими моделями процессов; отдельно требуются семантика ресурсов и доказательства.",
+    "notes": "Страница версий датирует 2.0.2 январем 2014; PDF copyright 2013/formal 2013-12-09. Не смешивать эти даты.",
+    "web_refs": [
+      "turn141782578search7",
+      "turn722260500view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json",
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0035",
+    "aliases": [
+      "OPS035"
+    ],
+    "title": "ISO 22400-1:2014 — Key performance indicators (KPIs) for manufacturing operations management — Part 1: Overview, concepts and terminology",
+    "authors": "ISO",
+    "year": 2014,
+    "doi": null,
+    "url": "https://www.iso.org/standard/56847.html",
+    "family": "performance_standards",
+    "source_type": "standard",
+    "evidence_level": "abstract",
+    "relevance": "Согласованные определения и структура KPI; общая терминология для производственной среды агента.",
+    "notes": "",
+    "web_refs": [
+      "turn141782578search13"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0036",
+    "aliases": [
+      "OPS036"
+    ],
+    "title": "ISO 22400-2:2014 — Key performance indicators (KPIs) for manufacturing operations management — Part 2: Definitions and descriptions",
+    "authors": "ISO",
+    "year": 2014,
+    "doi": null,
+    "url": "https://www.iso.org/standard/54497.html",
+    "family": "performance_standards",
+    "source_type": "standard",
+    "evidence_level": "abstract",
+    "relevance": "Формулы и применимость производственных KPI; нужна фиксация версии и единиц измерения.",
+    "notes": "Обнаружен более новый PRF-проект 87563; статус действующей редакции проверять при реализации. Полный стандарт не прочитан.",
+    "web_refs": [
+      "turn141782578search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0037",
+    "aliases": [
+      "OPS037"
+    ],
+    "title": "ISO 23247-1:2021 — Digital twin framework for manufacturing — Part 1: Overview and general principles",
+    "authors": "ISO",
+    "year": 2021,
+    "doi": null,
+    "url": "https://www.iso.org/standard/75066.html",
+    "family": "digital_twins",
+    "source_type": "standard",
+    "evidence_level": "metadata",
+    "relevance": "Общие принципы производственного цифрового двойника.",
+    "notes": "",
+    "web_refs": [
+      "turn141782578search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0038",
+    "aliases": [
+      "OPS038"
+    ],
+    "title": "ISO 23247-2:2021 — Digital twin framework for manufacturing — Part 2: Reference architecture",
+    "authors": "ISO",
+    "year": 2021,
+    "doi": null,
+    "url": "https://www.iso.org/standard/78743.html",
+    "family": "digital_twins",
+    "source_type": "standard",
+    "evidence_level": "metadata",
+    "relevance": "Архитектура двойника как возможная структура проверяемого контекста агента.",
+    "notes": "",
+    "web_refs": [
+      "turn141782578search26"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0039",
+    "aliases": [
+      "OPS039"
+    ],
+    "title": "ISO 23247-5:2026 — Digital twin framework for manufacturing — Part 5: Digital thread for digital twin",
+    "authors": "ISO",
+    "year": 2026,
+    "doi": null,
+    "url": "https://www.iso.org/standard/87425.html",
+    "family": "digital_twins",
+    "source_type": "standard",
+    "evidence_level": "metadata",
+    "relevance": "Связывание данных жизненного цикла цифрового двойника; перспективный источник provenance.",
+    "notes": "Проверено наличие опубликованного Edition 1, 2026, а не только DIS-проекта.",
+    "web_refs": [
+      "turn141782578search21"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0040",
+    "aliases": [
+      "OPS040"
+    ],
+    "title": "Framework for a Digital Twin in Manufacturing",
+    "authors": "Guodong Shao; Moneer M. Helu",
+    "year": 2020,
+    "doi": null,
+    "url": "https://www.nist.gov/publications/framework-digital-twin-manufacturing",
+    "family": "digital_twins",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Контекстная реализация, композиция и повторное использование компонентов цифрового двойника.",
+    "notes": "",
+    "web_refs": [
+      "turn493848807view8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0041",
+    "aliases": [
+      "OPS041"
+    ],
+    "title": "Use Case Scenarios for Digital Twin Implementation Based on ISO 23247",
+    "authors": "Guodong Shao",
+    "year": 2021,
+    "doi": "10.6028/nist.ams.400-2",
+    "url": "https://www.nist.gov/publications/use-case-scenarios-digital-twin-implementation-based-iso-23247",
+    "family": "digital_twins",
+    "source_type": "report",
+    "evidence_level": "abstract",
+    "relevance": "Три конкретных сценария реализации двойника; база инженерных примеров и тестового стенда.",
+    "notes": "",
+    "web_refs": [
+      "turn917664967view8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0042",
+    "aliases": [
+      "OPS042"
+    ],
+    "title": "Viability of intertwined supply networks: extending the supply chain resilience angles towards survivability. A position paper motivated by COVID-19 outbreak",
+    "authors": "Dmitry Ivanov; Alexandre Dolgui",
+    "year": 2020,
+    "doi": "10.1080/00207543.2020.1750727",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/00207543.2020.1750727",
+    "family": "resilience_viability",
+    "source_type": "position_paper",
+    "evidence_level": "metadata",
+    "relevance": "Различение восстановления после сбоя и долгосрочной жизнеспособности взаимозависимых сетей.",
+    "notes": "",
+    "web_refs": [
+      "turn873155038search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0043",
+    "aliases": [
+      "OPS043"
+    ],
+    "title": "A digital supply chain twin for managing the disruption risks and resilience in the era of Industry 4.0",
+    "authors": "Dmitry Ivanov; Alexandre Dolgui",
+    "year": 2021,
+    "doi": "10.1080/09537287.2020.1768450",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/09537287.2020.1768450",
+    "family": "resilience_viability",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Двойник цепочки как основа прогнозных и реактивных решений при нарушениях поставок.",
+    "notes": "Online 2020; том 32(9), страницы 775–788, 2021.",
+    "web_refs": [
+      "turn633837191search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0044",
+    "aliases": [
+      "OPS044"
+    ],
+    "title": "Stress testing supply chains and creating viable ecosystems",
+    "authors": "Dmitry Ivanov; Alexandre Dolgui",
+    "year": 2022,
+    "doi": "10.1007/s12063-021-00194-z",
+    "url": "https://link.springer.com/article/10.1007/s12063-021-00194-z",
+    "family": "resilience_viability",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Стресс-тесты и жизнеспособность экосистем, включая длительные кризисы.",
+    "notes": "Online 2021; том 15, 475–486, 2022.",
+    "web_refs": [
+      "turn493848807view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0045",
+    "aliases": [
+      "OPS045"
+    ],
+    "title": "Toward supply chain viability theory: from lessons learned through COVID-19 pandemic to viable ecosystems",
+    "authors": "Dmitry Ivanov; Alexandre Dolgui; Jennifer V. Blackhurst; Tsan-Ming Choi",
+    "year": 2023,
+    "doi": "10.1080/00207543.2023.2177049",
+    "url": "https://www.tandfonline.com/doi/full/10.1080/00207543.2023.2177049",
+    "family": "resilience_viability",
+    "source_type": "editorial_review",
+    "evidence_level": "abstract",
+    "relevance": "Семь направлений жизнеспособности цепочек; связь адаптивных сетей, планирования и долгих кризисов.",
+    "notes": "",
+    "web_refs": [
+      "turn633837191search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0046",
+    "aliases": [
+      "OPS046"
+    ],
+    "title": "The Goal: A Process of Ongoing Improvement",
+    "authors": "Eliyahu M. Goldratt; Jeff Cox",
+    "year": 1984,
+    "doi": null,
+    "url": "https://northriverpress.com/the-goal-a-process-of-ongoing-improvement/",
+    "family": "theory_of_constraints",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Управленческая постановка ограничений и согласования локальных улучшений с системным результатом.",
+    "notes": "Первый выпуск 1984 подтвержден издателем turn873155038search4; авторство Goldratt и Jeff Cox подтверждено turn465100925search0. Это бизнес-роман, а не доказательство универсальной теоремы.",
+    "web_refs": [
+      "turn873155038search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0047",
+    "aliases": [
+      "OPS047"
+    ],
+    "title": "On the Theory of Constraints and the Goal System",
+    "authors": "Mark L. Spearman",
+    "year": 1997,
+    "doi": "10.1111/j.1937-5956.1997.tb00412.x",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1937-5956.1997.tb00412.x",
+    "family": "theory_of_constraints",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Научная критическая проверка претензий Theory of Constraints; полезно против догматизации одного подхода.",
+    "notes": "",
+    "web_refs": [
+      "turn822597009search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0048",
+    "aliases": [
+      "OPS048"
+    ],
+    "title": "Verification and validation of simulation models",
+    "authors": "Robert G. Sargent",
+    "year": 2013,
+    "doi": "10.1057/jos.2012.20",
+    "url": "https://www.tandfonline.com/doi/full/10.1057/jos.2012.20",
+    "family": "simulation_validation",
+    "source_type": "methodology",
+    "evidence_level": "abstract",
+    "relevance": "Разделяет корректность реализации, данных, концептуальной модели и операционную валидность.",
+    "notes": "Год журнального выпуска 2013; online-transfer 2017 не является годом статьи.",
+    "web_refs": [
+      "turn822597009search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0049",
+    "aliases": [
+      "OPS049"
+    ],
+    "title": "Measuring the efficiency of decision making units",
+    "authors": "A. Charnes; W. W. Cooper; E. Rhodes",
+    "year": 1978,
+    "doi": "10.1016/0377-2217(78)90138-8",
+    "url": "https://www.sciencedirect.com/science/article/pii/0377221778901388",
+    "family": "performance_measurement",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Множественные входы и выходы в оценке относительной эффективности; не устанавливает индивидуальную причинную заслугу работников.",
+    "notes": "",
+    "web_refs": [
+      "turn822597009search7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0050",
+    "aliases": [
+      "OPS050"
+    ],
+    "title": "Linear Programming and Extensions",
+    "authors": "George B. Dantzig",
+    "year": 1963,
+    "doi": null,
+    "url": "https://press.princeton.edu/books/paperback/9780691059136/linear-programming-and-extensions",
+    "family": "resource_allocation",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Линейное распределение ограниченных ресурсов, транспортные задачи и экономический смысл двойственных оценок.",
+    "notes": "Издательская страница переиздания 1998 прямо указывает copyright 1963.",
+    "web_refs": [
+      "turn530391708search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0051",
+    "aliases": [
+      "OPS051"
+    ],
+    "title": "Structure of the World Economy: Outline of a Simple Input-Output Formulation",
+    "authors": "Wassily Leontief",
+    "year": 1973,
+    "doi": null,
+    "url": "https://www.nobelprize.org/uploads/2018/06/leontief-lecture.pdf",
+    "family": "input_output",
+    "source_type": "lecture",
+    "evidence_level": "full_text",
+    "relevance": "Явные входы/выходы, межотраслевые зависимости, физические балансы, внешние переменные и сценарии.",
+    "notes": "Открыт первичный полный PDF, прочитаны предоставленные фрагменты: определение сети взаимозависимых процессов, коэффициенты, балансы, различение эндогенных и экзогенных величин. Полное построчное чтение не заявляется.",
+    "web_refs": [
+      "turn325022661view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0052",
+    "aliases": [
+      "OPS052"
+    ],
+    "title": "PSPLIB - A project scheduling problem library: OR Software - ORSEP Operations Research Software Exchange Program",
+    "authors": "Rainer Kolisch; Arno Sprecher",
+    "year": 1997,
+    "doi": "10.1016/s0377-2217(96)00170-1",
+    "url": "https://portal.fis.tum.de/en/publications/psplib-a-project-scheduling-problem-library-or-software-orsep-ope/",
+    "family": "scheduling_benchmarks",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Общие benchmark-наборы для single-mode и multi-mode RCPSP; сравнение с известными лучшими решениями.",
+    "notes": "",
+    "web_refs": [
+      "turn325022661view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0053",
+    "aliases": [
+      "OPS053"
+    ],
+    "title": "Workflow Patterns",
+    "authors": "W. M. P. van der Aalst; A. H. M. ter Hofstede; B. Kiepuszewski; A. P. Barros",
+    "year": 2003,
+    "doi": "10.1023/a:1022883727209",
+    "url": "https://research.tue.nl/p/en/research-outputs/workflow-patterns-2",
+    "family": "workflow_semantics",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Семейства управления потоком исполнения; основа классификации ветвлений, синхронизации и вариантов процессов.",
+    "notes": "",
+    "web_refs": [
+      "turn325022661view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0054",
+    "aliases": [
+      "OPS054"
+    ],
+    "title": "Petri nets: Properties, analysis and applications",
+    "authors": "Tadao Murata",
+    "year": 1989,
+    "doi": "10.1109/5.24143",
+    "url": "https://ieeexplore.ieee.org/abstract/document/24143/",
+    "family": "formal_process_models",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Структурные свойства, достижимость, анализ параллельных процессов и стохастическое моделирование производительности.",
+    "notes": "",
+    "web_refs": [
+      "turn549025141search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "operations_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0055",
+    "aliases": [
+      "WF-001"
+    ],
+    "title": "The O*NET Content Model",
+    "authors": "National Center for O*NET Development",
+    "year": null,
+    "doi": null,
+    "url": "https://www.onetcenter.org/content.html",
+    "family": "classification",
+    "source_type": "official_reference",
+    "evidence_level": "full_text",
+    "relevance": "Разделение worker, job и market; модель требований, задач, контекста и опыта.",
+    "notes": "Ознакомление с открытой моделью, не проверка валидности каждого показателя.",
+    "web_refs": [
+      "turn244187693view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0056",
+    "aliases": [
+      "WF-002"
+    ],
+    "title": "O*NET 31.0 Database",
+    "authors": "National Center for O*NET Development",
+    "year": null,
+    "doi": null,
+    "url": "https://www.onetcenter.org/database.html",
+    "family": "classification",
+    "source_type": "dataset",
+    "evidence_level": "metadata",
+    "relevance": "Машиночитаемые данные о профессиях, знаниях, задачах и контексте; источник versioned snapshots.",
+    "notes": "Версия 31.0 наблюдалась на странице 2026-11-18; дату выпуска отдельно не проверяли.",
+    "web_refs": [
+      "turn407317151search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0057",
+    "aliases": [
+      "WF-003"
+    ],
+    "title": "Two pillar structure of ESCO",
+    "authors": "European Commission",
+    "year": null,
+    "doi": null,
+    "url": "https://esco.ec.europa.eu/en/about-esco/escopedia/escopedia/two-pillar-structure-esco",
+    "family": "classification",
+    "source_type": "official_reference",
+    "evidence_level": "full_text",
+    "relevance": "Связи профессий с обязательными/необязательными знаниями и навыками; ESCO не разделяет skills и competences.",
+    "notes": "Динамическая документация; версия страницы показана как ESCO v1.2.1, последнее обновление 10/12/2025.",
+    "web_refs": [
+      "turn407317151search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0058",
+    "aliases": [
+      "WF-004"
+    ],
+    "title": "International Standard Classification of Occupations (ISCO-08)",
+    "authors": "International Labour Organization",
+    "year": 2008,
+    "doi": null,
+    "url": "https://ilostat.ilo.org/methods/concepts-and-definitions/classification-occupation/",
+    "family": "classification",
+    "source_type": "standard",
+    "evidence_level": "full_text",
+    "relevance": "Различение job, occupation, skill level и skill specialization.",
+    "notes": "2008 — обозначение версии/принятия по официальной странице; это не текущая локальная квалификационная шкала компании.",
+    "web_refs": [
+      "turn407317151search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0059",
+    "aliases": [
+      "WF-005"
+    ],
+    "title": "International Standard Industrial Classification of All Economic Activities (ISIC), Revision 5",
+    "authors": "United Nations Statistics Division",
+    "year": 2024,
+    "doi": null,
+    "url": "https://unstats.un.org/unsd/classifications/Family/Detail/2095",
+    "family": "classification",
+    "source_type": "standard",
+    "evidence_level": "metadata",
+    "relevance": "Классификация экономической деятельности предприятия/подразделения, внешний слой отраслевого контекста.",
+    "notes": "2024 — Year Adopted; Year Published официально N/A. Полный классификатор не извлекался.",
+    "web_refs": [
+      "turn244187693view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0060",
+    "aliases": [
+      "WF-006"
+    ],
+    "title": "Introduction to APQC's Process Classification Framework",
+    "authors": "APQC",
+    "year": null,
+    "doi": null,
+    "url": "https://www.apqc.org/sites/default/files/files/PCF%20Collateral/Intro%20to%20PCF%20-%20FINAL.pdf",
+    "family": "process_classification",
+    "source_type": "official_reference",
+    "evidence_level": "abstract",
+    "relevance": "Бизнес-процессы и их иерархия; PCF — каталог работы, а не исполненный процессный граф.",
+    "notes": "Дата из PDF не проверена; использовать стабильные element IDs и закреплённую версию.",
+    "web_refs": [
+      "turn264980980search7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0061",
+    "aliases": [
+      "WF-007"
+    ],
+    "title": "SCOR Digital Standard: Introduction to Processes",
+    "authors": "Association for Supply Chain Management",
+    "year": null,
+    "doi": null,
+    "url": "https://scor.ascm.org/processes/introduction",
+    "family": "process_classification",
+    "source_type": "standard",
+    "evidence_level": "full_text",
+    "relevance": "Orchestrate, Plan, Order, Source, Transform, Fulfill, Return; связывает потребность и ресурсный разрыв.",
+    "notes": "Открытая официальная страница процессов; полного стандарта и условий коммерческого переиспользования не проверяли.",
+    "web_refs": [
+      "turn264980980search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0062",
+    "aliases": [
+      "WF-008"
+    ],
+    "title": "ISO 30409:2016 — Human resource management — Workforce planning",
+    "authors": "International Organization for Standardization",
+    "year": 2016,
+    "doi": null,
+    "url": "https://www.iso.org/standard/64150.html",
+    "family": "workforce_planning",
+    "source_type": "standard",
+    "evidence_level": "abstract",
+    "relevance": "Нормативная рамка планирования рабочей силы для организаций разного размера и отрасли.",
+    "notes": "Прочитана официальная аннотация, не платный полный стандарт.",
+    "web_refs": [
+      "turn264980980search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0063",
+    "aliases": [
+      "WF-009"
+    ],
+    "title": "ISO 10075-1:2017 — Ergonomic principles related to mental workload — Part 1: General issues and concepts, terms and definitions",
+    "authors": "International Organization for Standardization",
+    "year": 2017,
+    "doi": null,
+    "url": "https://www.iso.org/standard/66900.html",
+    "family": "human_factors",
+    "source_type": "standard",
+    "evidence_level": "abstract",
+    "relevance": "Терминология mental stress/strain и кратко-/долгосрочных последствий нагрузки.",
+    "notes": "Аннотация; стандарт не задаёт сам по себе методы измерения или task design.",
+    "web_refs": [
+      "turn264980980search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0064",
+    "aliases": [
+      "WF-010"
+    ],
+    "title": "ISO 6385:2016 — Ergonomics principles in the design of work systems",
+    "authors": "International Organization for Standardization",
+    "year": 2016,
+    "doi": null,
+    "url": "https://www.iso.org/standard/63785.html",
+    "family": "human_factors",
+    "source_type": "standard",
+    "evidence_level": "abstract",
+    "relevance": "Совместный учёт человеческих, социальных и технических требований к системе труда.",
+    "notes": "Прочитана официальная аннотация, не полный стандарт.",
+    "web_refs": [
+      "turn264980980search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0065",
+    "aliases": [
+      "WF-011"
+    ],
+    "title": "Workforce planning incorporating skills: State of the art",
+    "authors": "Philippe De Bruecker; Jorne Van den Bergh; Jeroen Beliën; Erik Demeulemeester",
+    "year": 2015,
+    "doi": "10.1016/j.ejor.2014.10.038",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221714008601",
+    "family": "workforce_planning",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Классификация навыков, staffing и scheduling; последствия cross-training, substitution, teamwork.",
+    "notes": "Аннотация и разделы preview; полный текст не прочитан.",
+    "web_refs": [
+      "turn220530835search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0066",
+    "aliases": [
+      "WF-012"
+    ],
+    "title": "Personnel scheduling: A literature review",
+    "authors": "Jorne Van den Bergh; Jeroen Beliën; Philippe De Bruecker; Erik Demeulemeester; Liesje De Boeck",
+    "year": 2013,
+    "doi": "10.1016/j.ejor.2012.11.029",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0377221712008776",
+    "family": "workforce_planning",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Многомерная классификация scheduling, hard/soft constraints, неопределённость, отрасли.",
+    "notes": "291 статья по описанию авторов; эти 291 записи пока индивидуально не проверены.",
+    "web_refs": [
+      "turn220530835search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0067",
+    "aliases": [
+      "WF-013"
+    ],
+    "title": "Staff scheduling and rostering: A review of applications, methods and models",
+    "authors": "A. T. Ernst; H. Jiang; M. Krishnamoorthy; D. Sier",
+    "year": 2004,
+    "doi": "10.1016/s0377-2217(03)00095-x",
+    "url": "https://www.sciencedirect.com/science/article/pii/S037722170300095X",
+    "family": "workforce_planning",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Связка прогноз спроса → staffing levels → расписание → reporting; удовлетворённость работников и ограничения.",
+    "notes": "Аннотация; полный текст не прочитан.",
+    "web_refs": [
+      "turn220530835search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0068",
+    "aliases": [
+      "WF-014"
+    ],
+    "title": "Telephone Call Centers: Tutorial, Review, and Research Prospects",
+    "authors": "Noah Gans; Ger Koole; Avishai Mandelbaum",
+    "year": 2003,
+    "doi": "10.1287/msom.5.2.79.16071",
+    "url": "https://pubsonline.informs.org/doi/10.1287/msom.5.2.79.16071",
+    "family": "service_staffing",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Очереди, staffing, hiring, SLA, abandonment и человеческое поведение в услугах.",
+    "notes": "Аннотация; диапазон страниц 79–141 взят из Cite as, не общего диапазона номера.",
+    "web_refs": [
+      "turn220530835search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0069",
+    "aliases": [
+      "WF-015"
+    ],
+    "title": "The Modern Call Center: A Multi-Disciplinary Perspective on Operations Management Research",
+    "authors": "Zeynep Aksin; Mor Armony; Vijay Mehrotra",
+    "year": 2007,
+    "doi": "10.1111/j.1937-5956.2007.tb00288.x",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/j.1937-5956.2007.tb00288.x",
+    "family": "service_staffing",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Связь operations, HR, поведения клиентов, продаж и маркетинга.",
+    "notes": "Год номера 2007; онлайн-страница указывает upload/publication history 2009.",
+    "web_refs": [
+      "turn563501833search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0070",
+    "aliases": [
+      "WF-016"
+    ],
+    "title": "Dimensioning Large Call Centers",
+    "authors": "Sem Borst; Avi Mandelbaum; Martin I. Reiman",
+    "year": 2004,
+    "doi": "10.1287/opre.1030.0081",
+    "url": "https://pubsonline.informs.org/doi/10.1287/opre.1030.0081",
+    "family": "service_staffing",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "M/M/N и quality-/efficiency-driven regimes; staff reserve для заданного качества сервиса.",
+    "notes": "Допущения M/M/N обязательны; формула не универсальный норматив численности.",
+    "web_refs": [
+      "turn563501833search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0071",
+    "aliases": [
+      "WF-017"
+    ],
+    "title": "A Staffing Algorithm for Call Centers with Skill-Based Routing",
+    "authors": "Rodney B. Wallace; Ward Whitt",
+    "year": 2005,
+    "doi": "10.1287/msom.1050.0086",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/msom.1050.0086",
+    "family": "service_staffing",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "Совместное управление маршрутизацией и численностью при ограниченной перекрёстной подготовке.",
+    "notes": "Выводы близости к полной гибкости условны, в частности при независимости времени обслуживания от типа обращения/оператора.",
+    "web_refs": [
+      "turn563501833search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0072",
+    "aliases": [
+      "WF-018"
+    ],
+    "title": "An Annotated Bibliography of Personnel Scheduling and Rostering",
+    "authors": "A. T. Ernst; H. Jiang; M. Krishnamoorthy; B. Owens; D. Sier",
+    "year": 2004,
+    "doi": "10.1023/b:anor.0000019087.46656.e2",
+    "url": "https://doi.org/10.1023/B:ANOR.0000019087.46656.e2",
+    "family": "workforce_planning",
+    "source_type": "bibliography",
+    "evidence_level": "abstract",
+    "relevance": "Около 700 ссылок, классифицированных по задачам, применениям и методам: приоритетная точка snowballing.",
+    "notes": "700 — число у авторов, не число импортированных или проверенных нами уникальных работ.",
+    "web_refs": [
+      "turn563501833search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0073",
+    "aliases": [
+      "WF-019"
+    ],
+    "title": "Multitask Principal–Agent Analyses: Incentive Contracts, Asset Ownership, and Job Design",
+    "authors": "Bengt Holmström; Paul Milgrom",
+    "year": 1991,
+    "doi": "10.1093/jleo/7.special_issue.24",
+    "url": "https://web.stanford.edu/~milgrom/publishedarticles/Multitask%20Principal%20Agent.pdf",
+    "family": "incentives_performance",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "Многозадачность и перераспределение внимания из-за стимулов: локальная метрика может ухудшать качество и обслуживание оборудования.",
+    "notes": "Прочитан вводный фрагмент авторского PDF; DOI сверён с издателем turn484515149search6.",
+    "web_refs": [
+      "turn741567237search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0074",
+    "aliases": [
+      "WF-020"
+    ],
+    "title": "Incentive Contracts and Performance Measurement",
+    "authors": "George P. Baker",
+    "year": 1992,
+    "doi": "10.1086/261831",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/261831",
+    "family": "incentives_performance",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "Разрыв между performance measure и целью организации; эффект gaming.",
+    "notes": "Аннотация; не эмпирическая оценка любой отдельной компании.",
+    "web_refs": [
+      "turn741567237search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0075",
+    "aliases": [
+      "WF-021"
+    ],
+    "title": "The O-Ring Theory of Economic Development",
+    "authors": "Michael Kremer",
+    "year": 1993,
+    "doi": "10.2307/2118400",
+    "url": "https://academic.oup.com/qje/article-abstract/108/3/551/1881767",
+    "family": "team_complementarity",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "Комплементарность задач и квалификаций, ошибки в связанных операциях.",
+    "notes": "Теоретическая production function с сильными допущениями; не универсальная функция качества человека.",
+    "web_refs": [
+      "turn484515149search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0076",
+    "aliases": [
+      "WF-022"
+    ],
+    "title": "Performance Pay and Productivity",
+    "authors": "Edward P. Lazear",
+    "year": 2000,
+    "doi": "10.1257/aer.90.5.1346",
+    "url": "https://www.aeaweb.org/articles?id=10.1257/aer.90.5.1346",
+    "family": "incentives_performance",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Контекстная оценка изменения оплаты и состава работников; разделение incentive и selection effects.",
+    "notes": "Журнальная версия; не дублировать с NBER 1996 как независимым исследованием.",
+    "web_refs": [
+      "turn741567237search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0077",
+    "aliases": [
+      "WF-023"
+    ],
+    "title": "Team Incentives and Worker Heterogeneity: An Empirical Analysis of the Impact of Teams on Productivity and Participation",
+    "authors": "Barton H. Hamilton; Jack A. Nickerson; Hideo Owan",
+    "year": 2003,
+    "doi": "10.1086/374182",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/374182",
+    "family": "team_complementarity",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Командный состав, collaborative skills и неоднородность работников в производстве.",
+    "notes": "Один garment plant; переносимость подлежит проверке.",
+    "web_refs": [
+      "turn484515149search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0078",
+    "aliases": [
+      "WF-024"
+    ],
+    "title": "Peers at Work",
+    "authors": "Alexandre Mas; Enrico Moretti",
+    "year": 2009,
+    "doi": "10.1257/aer.99.1.112",
+    "url": "https://www.aeaweb.org/articles?id=10.1257/aer.99.1.112",
+    "family": "team_complementarity",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Производительность зависит от коллег, пространственного взаимодействия и социального контекста.",
+    "notes": "Эмпирический контекст supermarket workers; эффект не константа человека.",
+    "web_refs": [
+      "turn484515149search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0079",
+    "aliases": [
+      "WF-025"
+    ],
+    "title": "The Skill Content of Recent Technological Change: An Empirical Exploration",
+    "authors": "David H. Autor; Frank Levy; Richard J. Murnane",
+    "year": 2003,
+    "doi": "10.1162/003355303322552801",
+    "url": "https://doi.org/10.1162/003355303322552801",
+    "family": "tasks_technology",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Разделение задач и профессий; изменение задач внутри одной профессии при технологическом сдвиге.",
+    "notes": "Журнальная версия; не применять старую границу routine/nonroutine как описание возможностей LLM 2026.",
+    "web_refs": [
+      "turn354507829search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0080",
+    "aliases": [
+      "WF-026"
+    ],
+    "title": "Skills, Tasks and Technologies: Implications for Employment and Earnings",
+    "authors": "Daron Acemoglu; David Autor",
+    "year": 2010,
+    "doi": "10.3386/w16082",
+    "url": "https://www.nber.org/papers/w16082",
+    "family": "tasks_technology",
+    "source_type": "working_paper",
+    "evidence_level": "abstract",
+    "relevance": "Task-based model: эндогенное назначение квалификаций на задачи, технологии и торговые условия.",
+    "notes": "Запись относится к NBER Working Paper 2010; опубликованная глава Handbook — связанная версия, отдельно не считалась.",
+    "web_refs": [
+      "turn354507829search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0081",
+    "aliases": [
+      "WF-027"
+    ],
+    "title": "The Growing Importance of Social Skills in the Labor Market",
+    "authors": "David J. Deming",
+    "year": 2017,
+    "doi": "10.1093/qje/qjx022",
+    "url": "https://doi.org/10.1093/qje/qjx022",
+    "family": "team_complementarity",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Социальные навыки снижают издержки координации и помогают разделению задач.",
+    "notes": "Есть публичные replication code/data; проверка их запуска не проводилась.",
+    "web_refs": [
+      "turn354507829search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0082",
+    "aliases": [
+      "WF-028"
+    ],
+    "title": "Skill Requirements across Firms and Labor Markets: Evidence from Job Postings for Professionals",
+    "authors": "David Deming; Lisa B. Kahn",
+    "year": 2018,
+    "doi": "10.1086/694106",
+    "url": "https://www.nber.org/books-and-chapters/firms-and-distribution-income-roles-productivity-and-luck/skill-requirements-across-firms-and-labor-markets-evidence-job-postings-professionals",
+    "family": "skills_demand",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Потребности в навыках различаются внутри узко заданной профессии; дополнение occupational averages локальным контекстом.",
+    "notes": "Метаданные журнальной версии; аннотация проверена также по NBER working paper turn354507829search1.",
+    "web_refs": [
+      "turn354507829search10"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0083",
+    "aliases": [
+      "WF-029"
+    ],
+    "title": "Some Social and Psychological Consequences of the Longwall Method of Coal-Getting: An Examination of the Psychological Situation and Defences of a Work Group in Relation to the Social Structure and Technological Content of the Work System",
+    "authors": "E. L. Trist; K. W. Bamforth",
+    "year": 1951,
+    "doi": "10.1177/001872675100400101",
+    "url": "https://doi.org/10.1177/001872675100400101",
+    "family": "sociotechnical_systems",
+    "source_type": "empirical_article",
+    "evidence_level": "metadata",
+    "relevance": "Классическая основа социотехнических систем: совместное устройство социальной и технической работы.",
+    "notes": "Проверены библиографические данные издателя; полный текст не читался.",
+    "web_refs": [
+      "turn193434334search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0084",
+    "aliases": [
+      "WF-030"
+    ],
+    "title": "The Principles of Sociotechnical Design",
+    "authors": "Albert Cherns",
+    "year": 1976,
+    "doi": "10.1177/001872677602900806",
+    "url": "https://journals.sagepub.com/doi/10.1177/001872677602900806",
+    "family": "sociotechnical_systems",
+    "source_type": "conceptual_article",
+    "evidence_level": "abstract",
+    "relevance": "Принципы проектирования организационной системы совместно с работниками.",
+    "notes": "Метаданные и начальный PDF-фрагмент, не полный разбор.",
+    "web_refs": [
+      "turn193434334search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0085",
+    "aliases": [
+      "WF-031"
+    ],
+    "title": "Job Demands, Job Decision Latitude, and Mental Strain: Implications for Job Redesign",
+    "authors": "Robert A. Karasek Jr.",
+    "year": 1979,
+    "doi": "10.2307/2392498",
+    "url": "https://www.jstor.org/stable/2392498",
+    "family": "human_factors",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Взаимодействие требований к работе и автономии; нагрузка не описывается одним output rate.",
+    "notes": "Национальные survey data; association и модель, не индивидуальный диагностический инструмент.",
+    "web_refs": [
+      "turn537717622search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0086",
+    "aliases": [
+      "WF-032"
+    ],
+    "title": "The Job Demands–Resources Model of Burnout",
+    "authors": "Evangelia Demerouti; Arnold B. Bakker; Friedhelm Nachreiner; Wilmar B. Schaufeli",
+    "year": 2001,
+    "doi": "10.1037/0021-9010.86.3.499",
+    "url": "https://www.wilmarschaufeli.nl/publications/Schaufeli/160.pdf",
+    "family": "human_factors",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Раздельный учёт требований работы и ресурсов, истощения и disengagement.",
+    "notes": "Авторский PDF; наблюдательная модель, не основание предсказывать состояние конкретного сотрудника.",
+    "web_refs": [
+      "turn193434334search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0087",
+    "aliases": [
+      "WF-033"
+    ],
+    "title": "Sociotechnical principles for system design",
+    "authors": "Chris W. Clegg",
+    "year": 2000,
+    "doi": "10.1016/s0003-6870(00)00009-0",
+    "url": "https://www.sciencedirect.com/science/article/pii/S0003687000000090",
+    "family": "sociotechnical_systems",
+    "source_type": "conceptual_article",
+    "evidence_level": "abstract",
+    "relevance": "Meta/content/process principles для совместного социально-технического проектирования.",
+    "notes": "Метаданные автора сверены PubMed turn235903846search5; полный текст не прочитан.",
+    "web_refs": [
+      "turn235903846search6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0088",
+    "aliases": [
+      "WF-034"
+    ],
+    "title": "Generative AI at Work",
+    "authors": "Erik Brynjolfsson; Danielle Li; Lindsey Raymond",
+    "year": 2025,
+    "doi": "10.1093/qje/qjae044",
+    "url": "https://academic.oup.com/qje/article/140/2/889/7990658",
+    "family": "human_ai_work",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Неоднородный эффект AI по опыту, скорости и качеству; модель должна учитывать контекст задачи и работника.",
+    "notes": "Журнальная версия: 5172 агента и 15% средний эффект по abstract; NBER 2023 содержит иные числа, не смешивать версии.",
+    "web_refs": [
+      "turn537717622search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0089",
+    "aliases": [
+      "WF-035"
+    ],
+    "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+    "authors": "Shakked Noy; Whitney Zhang",
+    "year": 2023,
+    "doi": "10.1126/science.adh2586",
+    "url": "https://doi.org/10.1126/science.adh2586",
+    "family": "human_ai_work",
+    "source_type": "experimental_article",
+    "evidence_level": "abstract",
+    "relevance": "Рандомизированная оценка времени и качества письменных профессиональных заданий.",
+    "notes": "453 участника в журнальной версии; не равнозначно измерению полного бизнеса или долгосрочной занятости.",
+    "web_refs": [
+      "turn537717622search2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0090",
+    "aliases": [
+      "WF-036"
+    ],
+    "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+    "authors": "Fabrizio Dell’Acqua; Edward McFowland III; Ethan Mollick; Hila Lifshitz; Katherine C. Kellogg; Saran Rajendran; Lisa Krayer; François Candelon; Karim R. Lakhani",
+    "year": 2026,
+    "doi": "10.1287/orsc.2025.21838",
+    "url": "https://doi.org/10.1287/orsc.2025.21838",
+    "family": "human_ai_work",
+    "source_type": "experimental_article",
+    "evidence_level": "abstract",
+    "relevance": "В рамках одного knowledge workflow AI может улучшать одни задачи и ухудшать другие; проверять task-model fit.",
+    "notes": "Открыт авторский PDF журнальной версии, прочитаны metadata/abstract/introduction. Не считать полным критическим чтением.",
+    "web_refs": [
+      "turn244187693view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0091",
+    "aliases": [
+      "WF-037"
+    ],
+    "title": "Workload Indicators of Staffing Need (WISN): User Manual, 2nd edition",
+    "authors": "World Health Organization",
+    "year": 2023,
+    "doi": null,
+    "url": "https://www.who.int/publications/i/item/9789240070066",
+    "family": "healthcare_staffing",
+    "source_type": "manual",
+    "evidence_level": "abstract",
+    "relevance": "Пример перехода от workload components и временных стандартов к кадровой потребности.",
+    "notes": "ISBN 9789240070066; CC BY-NC-SA 3.0 IGO по официальной странице. Коммерческий перенос текста/адаптации требует проверки условий.",
+    "web_refs": [
+      "turn614113089search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0092",
+    "aliases": [
+      "WF-038"
+    ],
+    "title": "Nurse Staffing and Inpatient Hospital Mortality",
+    "authors": "Jack Needleman; Peter Buerhaus; V. Shane Pankratz; Cynthia L. Leibson; Susanna R. Stevens; Marcelline Harris",
+    "year": 2011,
+    "doi": "10.1056/nejmsa1001025",
+    "url": "https://doi.org/10.1056/NEJMsa1001025",
+    "family": "healthcare_staffing",
+    "source_type": "empirical_article",
+    "evidence_level": "abstract",
+    "relevance": "Потребность в staff должна зависеть от нагрузки и качества исхода, а не только среднего числа операций.",
+    "notes": "Ретроспективное наблюдательное исследование одного медцентра; ассоциация, не произвольная причинная гарантия.",
+    "web_refs": [
+      "turn614113089search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0093",
+    "aliases": [
+      "WF-039"
+    ],
+    "title": "Firm-Specific Human Capital: A Skill-Weights Approach",
+    "authors": "Edward P. Lazear",
+    "year": 2009,
+    "doi": "10.1086/648671",
+    "url": "https://www.journals.uchicago.edu/doi/10.1086/648671",
+    "family": "skills_demand",
+    "source_type": "theoretical_article",
+    "evidence_level": "abstract",
+    "relevance": "Универсальные навыки имеют разные комбинации и веса для разных компаний.",
+    "notes": "Не выводит автоматически валидные численные веса конкретного предприятия.",
+    "web_refs": [
+      "turn614113089search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0094",
+    "aliases": [
+      "WF-040"
+    ],
+    "title": "Causal Inference: What If",
+    "authors": "Miguel A. Hernán; James M. Robins",
+    "year": 2020,
+    "doi": null,
+    "url": "https://miguelhernan.org/whatifbook",
+    "family": "causal_evaluation",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Основа протоколов причинной оценки staffing/process interventions и работы с confounding.",
+    "notes": "Официальная страница авторов: living online book, обновления могут менять текст; закреплять версию.",
+    "web_refs": [
+      "turn614113089search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0095",
+    "aliases": [
+      "WF-041"
+    ],
+    "title": "The crosswalk between ESCO and O*NET",
+    "authors": "European Commission ESCO team",
+    "year": 2022,
+    "doi": null,
+    "url": "https://esco.ec.europa.eu/en/about-esco/data-science-and-esco/crosswalk-between-esco-and-onet",
+    "family": "classification_mapping",
+    "source_type": "technical_report",
+    "evidence_level": "full_text",
+    "relevance": "Many-to-many mapping с exact/narrow/broad/close/related отношениями и human validation.",
+    "notes": "2022 по report publication 2022-09-30; related matches не проходили тот же QA/US DOL validation.",
+    "web_refs": [
+      "turn235903846search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0096",
+    "aliases": [
+      "WF-042"
+    ],
+    "title": "Human Capital: A Theoretical and Empirical Analysis with Special Reference to Education, First Edition",
+    "authors": "Gary S. Becker",
+    "year": 1964,
+    "doi": null,
+    "url": "https://www.nber.org/books-and-chapters/human-capital-theoretical-and-empirical-analysis-special-reference-education-first-edition",
+    "family": "human_capital",
+    "source_type": "book",
+    "evidence_level": "abstract",
+    "relevance": "Обучение и подготовка как инвестиции; база для выбора hire/train/redeploy.",
+    "notes": "Прочитано описание издателя; исторический контекст, не современный универсальный коэффициент ROI.",
+    "web_refs": [
+      "turn235903846search7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0097",
+    "aliases": [
+      "WF-043"
+    ],
+    "title": "Development of NASA-TLX (Task Load Index): Results of Empirical and Theoretical Research",
+    "authors": "Sandra G. Hart; Lowell E. Staveland",
+    "year": 1988,
+    "doi": "10.1016/s0166-4115(08)62386-9",
+    "url": "https://doi.org/10.1016/S0166-4115(08)62386-9",
+    "family": "human_factors",
+    "source_type": "book_chapter",
+    "evidence_level": "abstract",
+    "relevance": "Многомерная субъективная оценка workload; отдельная наблюдаемая величина для валидации нагрузки.",
+    "notes": "1988 — год главы; цифры (08) в DOI не год публикации. Текущая официальная страница инструмента: NASA.",
+    "web_refs": [
+      "turn235903846search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0098",
+    "aliases": [
+      "WF-044"
+    ],
+    "title": "A review of multi-objective optimization methods for personnel rostering problems",
+    "authors": "Elín Björk Böðvarsdóttir; Thomas Stidsen",
+    "year": 2026,
+    "doi": "10.1007/s10951-025-00845-0",
+    "url": "https://link.springer.com/article/10.1007/s10951-025-00845-0",
+    "family": "workforce_planning",
+    "source_type": "review",
+    "evidence_level": "abstract",
+    "relevance": "Многокритериальное расписание с предпочтениями работодателя, работников и клиентов; выбор между Pareto-alternatives и участие decision maker.",
+    "notes": "Online publication 2025-05-21, Journal of Scheduling volume29 pages1–19(2026). Прочитаны abstract, introduction, метод и conclusion; полный критический разбор всех52 работ не выполнен.",
+    "web_refs": [
+      "turn838205402view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "workforce_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0099",
+    "aliases": [
+      "AE01"
+    ],
+    "title": "PROV-DM: The PROV Data Model",
+    "authors": "Luc Moreau; Paolo Missier (eds.)",
+    "year": 2013,
+    "doi": null,
+    "url": "https://www.w3.org/TR/prov-dm/",
+    "family": "provenance",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Происхождение фактов, действий, ответственных агентов и производных артефактов.",
+    "notes": "W3C Recommendation",
+    "web_refs": [
+      "turn497600321view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0100",
+    "aliases": [
+      "AE02"
+    ],
+    "title": "PROV-O: The PROV Ontology",
+    "authors": "Timothy Lebo; Satya Sahoo; Deborah McGuinness (eds.)",
+    "year": 2013,
+    "doi": null,
+    "url": "https://www.w3.org/TR/prov-o/",
+    "family": "provenance",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Машиночитаемое представление связей происхождения и ответственности.",
+    "notes": "W3C Recommendation",
+    "web_refs": [
+      "turn497600321view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0101",
+    "aliases": [
+      "AE03"
+    ],
+    "title": "Shapes Constraint Language (SHACL)",
+    "authors": "W3C RDF Data Shapes Working Group",
+    "year": 2017,
+    "doi": null,
+    "url": "https://www.w3.org/TR/2017/REC-shacl-20170720/",
+    "family": "knowledge_validation",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Проверка графа данных на заданные условия; основа исполнимых требований профиля.",
+    "notes": "W3C Recommendation, version pinned to 2017",
+    "web_refs": [
+      "turn497600321view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0102",
+    "aliases": [
+      "AE04"
+    ],
+    "title": "The Organization Ontology",
+    "authors": "W3C Government Linked Data Working Group",
+    "year": 2014,
+    "doi": null,
+    "url": "https://www.w3.org/TR/vocab-org/",
+    "family": "organization_ontology",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Организация, подразделение, членство, роль, должность, площадка и изменения структуры.",
+    "notes": "W3C Recommendation",
+    "web_refs": [
+      "turn497600321view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0103",
+    "aliases": [
+      "AE05"
+    ],
+    "title": "Data on the Web Best Practices: Data Quality Vocabulary",
+    "authors": "W3C Data on the Web Best Practices Working Group",
+    "year": 2016,
+    "doi": null,
+    "url": "https://www.w3.org/TR/vocab-dqv/",
+    "family": "knowledge_quality",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Описание качества и пригодности данных к конкретной цели; не универсальная оценка истины.",
+    "notes": "W3C Working Group Note, not Recommendation",
+    "web_refs": [
+      "turn497600321view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0104",
+    "aliases": [
+      "AE06"
+    ],
+    "title": "OWL 2 Web Ontology Language Document Overview (Second Edition)",
+    "authors": "W3C OWL Working Group",
+    "year": 2012,
+    "doi": null,
+    "url": "https://www.w3.org/TR/owl2-overview/",
+    "family": "knowledge_representation",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Формальная семантика классов и отношений, профили выразительности.",
+    "notes": "W3C Recommendation, informative overview",
+    "web_refs": [
+      "turn497600321view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0105",
+    "aliases": [
+      "AE07"
+    ],
+    "title": "SKOS Simple Knowledge Organization System Reference",
+    "authors": "Alistair Miles; Sean Bechhofer (eds.)",
+    "year": 2009,
+    "doi": null,
+    "url": "https://www.w3.org/TR/skos-reference/",
+    "family": "classification_mapping",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Многоязычные термины, иерархии, концептуальные схемы и отображения классификаций.",
+    "notes": "W3C Recommendation",
+    "web_refs": [
+      "turn497600321view6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0106",
+    "aliases": [
+      "AE09"
+    ],
+    "title": "Decision Model and Notation (DMN), Version 1.5",
+    "authors": "Object Management Group",
+    "year": 2024,
+    "doi": null,
+    "url": "https://www.omg.org/spec/DMN/1.5",
+    "family": "decision_models",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "metadata",
+    "relevance": "Формальная спецификация решений для отделения правила решения от маршрута процесса.",
+    "notes": "Formal specification, August 2024; not asserted latest",
+    "web_refs": [
+      "turn722260500view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0107",
+    "aliases": [
+      "AE10"
+    ],
+    "title": "Process Mining Manifesto",
+    "authors": "Wil van der Aalst et al.",
+    "year": 2012,
+    "doi": "10.1007/978-3-642-28108-2_19",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-642-28108-2_19",
+    "family": "process_mining",
+    "source_type": "primary_publication",
+    "evidence_level": "metadata",
+    "relevance": "Общая исследовательская программа восстановления и проверки реальных процессов по событиям.",
+    "notes": "BPM 2011 workshops, published 2012",
+    "web_refs": [
+      "turn722260500view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0108",
+    "aliases": [
+      "AE11"
+    ],
+    "title": "Object-Centric Process Mining: Dealing with Divergence and Convergence in Event Data",
+    "authors": "Wil M. P. van der Aalst",
+    "year": 2019,
+    "doi": "10.1007/978-3-030-30446-1_1",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-030-30446-1_1",
+    "family": "process_mining",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Общие события нескольких объектов; предотвращение искажений при сведении сложного процесса к одному case ID.",
+    "notes": "SEFM 2019, pp. 3–25",
+    "web_refs": [
+      "turn713036359view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0109",
+    "aliases": [
+      "AE12"
+    ],
+    "title": "OCEL (Object-Centric Event Log) 2.0 Specification",
+    "authors": "Alessandro Berti et al.",
+    "year": 2024,
+    "doi": "10.48550/arxiv.2403.01975",
+    "url": "https://arxiv.org/abs/2403.01975",
+    "family": "event_logs",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Связи объектов и событий, изменение атрибутов во времени, форматы обмена журналами.",
+    "notes": "arXiv submitted 2024; specification itself dated October 16, 2023",
+    "web_refs": [
+      "turn722260500view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0110",
+    "aliases": [
+      "AE13"
+    ],
+    "title": "Digital Twin: Mitigating Unpredictable, Undesirable Emergent Behavior in Complex Systems",
+    "authors": "Michael Grieves; John Vickers",
+    "year": 2017,
+    "doi": "10.1007/978-3-319-38756-7_4",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-319-38756-7_4",
+    "family": "digital_twins",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Связь физической системы с виртуальным представлением и проверкой поведения по жизненному циклу.",
+    "notes": "2017 book edition; first online August 17, 2016",
+    "web_refs": [
+      "turn722260500view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0111",
+    "aliases": [
+      "AE14"
+    ],
+    "title": "The Digital Twin Paradigm for Future NASA and U.S. Air Force Vehicles",
+    "authors": "Edward H. Glaessgen; D. S. Stargel",
+    "year": 2012,
+    "doi": null,
+    "url": "https://ntrs.nasa.gov/citations/20120008178",
+    "family": "digital_twins",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Интеграция симуляции, текущего состояния, обслуживания и истории системы.",
+    "notes": "NASA NTRS; AIAA Paper 2012-1818",
+    "web_refs": [
+      "turn722260500view6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0112",
+    "aliases": [
+      "AE15"
+    ],
+    "title": "Credibility consideration for digital twins in manufacturing",
+    "authors": "Guodong Shao; Joe Hightower; William Schindel",
+    "year": 2022,
+    "doi": "10.1016/j.mfglet.2022.11.009",
+    "url": "https://www.nist.gov/publications/credibility-consideration-digital-twins-manufacturing",
+    "family": "digital_twin_validation",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Verification, validation, uncertainty quantification и дополнительные основания доверия к двойнику.",
+    "notes": "Manufacturing Letters; DOI verified in publisher search result turn174704417search11",
+    "web_refs": [
+      "turn616570291view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0113",
+    "aliases": [
+      "AE16"
+    ],
+    "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+    "authors": "Elham Tabassi",
+    "year": 2023,
+    "doi": "10.6028/nist.ai.100-1",
+    "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+    "family": "governance",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Управление рисками и ответственностью организаций по жизненному циклу AI.",
+    "notes": "NIST AI 100-1; voluntary framework",
+    "web_refs": [
+      "turn616570291view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0114",
+    "aliases": [
+      "AE17"
+    ],
+    "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+    "authors": "Chloe Autio et al.",
+    "year": 2024,
+    "doi": "10.6028/nist.ai.600-1",
+    "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+    "family": "governance",
+    "source_type": "official_standard_or_report",
+    "evidence_level": "abstract",
+    "relevance": "Профиль рисков generative AI поверх AI RMF; источник требований для последующей конкретизации.",
+    "notes": "NIST AI 600-1; voluntary profile",
+    "web_refs": [
+      "turn713036359view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0115",
+    "aliases": [
+      "AE18"
+    ],
+    "title": "The FAIR Guiding Principles for scientific data management and stewardship",
+    "authors": "Mark D. Wilkinson et al.",
+    "year": 2016,
+    "doi": "10.1038/sdata.2016.18",
+    "url": "https://www.nature.com/articles/sdata201618",
+    "family": "reproducibility",
+    "source_type": "primary_publication",
+    "evidence_level": "metadata",
+    "relevance": "Находимость, доступность, совместимость и повторное использование исследовательских артефактов.",
+    "notes": "Scientific Data 3:160018; publisher opening blocked, indexed author metadata verified via PubMed",
+    "web_refs": [
+      "turn713036359view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0116",
+    "aliases": [
+      "AE19"
+    ],
+    "title": "Datasheets for Datasets",
+    "authors": "Timnit Gebru et al.",
+    "year": 2021,
+    "doi": "10.1145/3458723",
+    "url": "https://arxiv.org/abs/1803.09010",
+    "family": "data_documentation",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Мотивация, состав, сбор, рекомендуемое применение и ограничения данных.",
+    "notes": "CACM December 2021; first preprint 2018; publisher DOI verified in turn589990624search7",
+    "web_refs": [
+      "turn105164181view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0117",
+    "aliases": [
+      "AE20"
+    ],
+    "title": "Model Cards for Model Reporting",
+    "authors": "Margaret Mitchell et al.",
+    "year": 2019,
+    "doi": "10.1145/3287560.3287596",
+    "url": "https://arxiv.org/abs/1810.03993",
+    "family": "model_documentation",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Назначение, ограничения и результаты оценивания модели в разных условиях.",
+    "notes": "FAT* 2019; publisher DOI verified in turn589990624search0",
+    "web_refs": [
+      "turn105164181view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0118",
+    "aliases": [
+      "AE21"
+    ],
+    "title": "Hidden Technical Debt in Machine Learning Systems",
+    "authors": "D. Sculley et al.",
+    "year": 2015,
+    "doi": null,
+    "url": "https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html",
+    "family": "ml_systems",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Зависимости данных, скрытые обратные связи, незадекларированные потребители и изменения мира.",
+    "notes": "NIPS 2015",
+    "web_refs": [
+      "turn713036359view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0119",
+    "aliases": [
+      "AE22"
+    ],
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "authors": "Shunyu Yao et al.",
+    "year": 2023,
+    "doi": null,
+    "url": "https://arxiv.org/abs/2210.03629",
+    "family": "agent_methods",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Чередование рассуждения и взаимодействия со средой; baseline для retrieval/action цикла.",
+    "notes": "ICLR 2023; first preprint October 2022",
+    "web_refs": [
+      "turn105164181view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0120",
+    "aliases": [
+      "AE23"
+    ],
+    "title": "AgentBench: Evaluating LLMs as Agents",
+    "authors": "Xiao Liu et al.",
+    "year": 2024,
+    "doi": null,
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/e9df36b21ff4ee211a8b71ee8b7e9f57-Abstract-Conference.html",
+    "family": "agent_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Многообразные интерактивные среды и диагностика планирования, решений, следования инструкциям.",
+    "notes": "ICLR 2024",
+    "web_refs": [
+      "turn534597872view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0121",
+    "aliases": [
+      "AE24"
+    ],
+    "title": "WorkArena: How Capable are Web Agents at Solving Common Knowledge Work Tasks?",
+    "authors": "Alexandre Drouin et al.",
+    "year": 2024,
+    "doi": null,
+    "url": "https://proceedings.mlr.press/v235/drouin24a.html",
+    "family": "enterprise_agent_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Выполнение задач работников в корпоративном ПО; платформа BrowserGym.",
+    "notes": "ICML 2024, PMLR 235:11642–11662",
+    "web_refs": [
+      "turn534597872view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0122",
+    "aliases": [
+      "AE25"
+    ],
+    "title": "WorkArena++: Towards Compositional Planning and Reasoning-based Common Knowledge Work Tasks",
+    "authors": "Léo Boisvert et al.",
+    "year": 2024,
+    "doi": "10.52202/079017-0195",
+    "url": "https://proceedings.nips.cc/paper_files/paper/2024/hash/0b82662b6c32e887bb252a74d8cb2d5e-Abstract-Datasets_and_Benchmarks_Track.html",
+    "family": "enterprise_agent_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Составные корпоративные сценарии, retrieval, контекст и многошаговое планирование.",
+    "notes": "NeurIPS 2024 datasets and benchmarks",
+    "web_refs": [
+      "turn534597872view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0123",
+    "aliases": [
+      "AE26"
+    ],
+    "title": "TheAgentCompany: Benchmarking LLM Agents on Consequential Real World Tasks",
+    "authors": "Frank F. Xu et al.",
+    "year": 2025,
+    "doi": "10.48550/arxiv.2412.14161",
+    "url": "https://arxiv.org/abs/2412.14161",
+    "family": "enterprise_agent_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Самодостаточная модель небольшой software-компании: сайты, данные, код и взаимодействия с коллегами.",
+    "notes": "First preprint 2024; v3 September 2025; NeurIPS 2025 official page turn777784808search18",
+    "web_refs": [
+      "turn534597872view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0124",
+    "aliases": [
+      "AE27"
+    ],
+    "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+    "authors": "Shunyu Yao; Noah Shinn; Pedram Razavi; Karthik Narasimhan",
+    "year": 2024,
+    "doi": "10.48550/arxiv.2406.12045",
+    "url": "https://arxiv.org/abs/2406.12045",
+    "family": "policy_and_tool_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Соблюдение правил предметной области, состояние БД, повторяемая надежность pass^k.",
+    "notes": "arXiv preprint",
+    "web_refs": [
+      "turn534597872view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0125",
+    "aliases": [
+      "AE28"
+    ],
+    "title": "τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment",
+    "authors": "Victor Barres; Honghua Dong; Soham Ray; Xujie Si; Karthik Narasimhan",
+    "year": 2025,
+    "doi": "10.48550/arxiv.2506.07982",
+    "url": "https://arxiv.org/abs/2506.07982",
+    "family": "policy_and_tool_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Общая динамическая среда, где человек и агент меняют состояние; раздельная оценка reasoning и coordination.",
+    "notes": "2025 preprint version; no current leaderboard claims",
+    "web_refs": [
+      "turn534597872view6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0126",
+    "aliases": [
+      "AE29"
+    ],
+    "title": "OSWorld: Benchmarking Multimodal Agents for Open-Ended Tasks in Real Computer Environments",
+    "authors": "Tianbao Xie et al.",
+    "year": 2024,
+    "doi": "10.52202/079017-1650",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/5d413e48f84dc61244b6be550f1cd8f5-Abstract-Datasets_and_Benchmarks_Track.html",
+    "family": "execution_environment_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Воспроизводимое начальное состояние среды и проверка фактического выполнения.",
+    "notes": "NeurIPS 2024 datasets and benchmarks",
+    "web_refs": [
+      "turn176720263view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0127",
+    "aliases": [
+      "AE30"
+    ],
+    "title": "SWE-bench: Can Language Models Resolve Real-world Github Issues?",
+    "authors": "Carlos E. Jimenez et al.",
+    "year": 2024,
+    "doi": null,
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/edac78c3e300629acfe6cbe9ca88fb84-Abstract-Conference.html",
+    "family": "execution_environment_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Реальные репозитории и исполнимые проверки результата; перенос принципа за пределы code tasks.",
+    "notes": "ICLR 2024",
+    "web_refs": [
+      "turn176720263view1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0128",
+    "aliases": [
+      "AE31"
+    ],
+    "title": "WebArena: A Realistic Web Environment for Building Autonomous Agents",
+    "authors": "Shuyan Zhou et al.",
+    "year": 2024,
+    "doi": null,
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/4410c0711e9154a7a2d26f9b3816d1ef-Abstract-Conference.html",
+    "family": "execution_environment_benchmarks",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Функциональная корректность действий в воспроизводимой веб-среде и внешние инструкции.",
+    "notes": "ICLR 2024",
+    "web_refs": [
+      "turn176720263view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0129",
+    "aliases": [
+      "AE32"
+    ],
+    "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+    "authors": "Edoardo Debenedetti et al.",
+    "year": 2024,
+    "doi": "10.52202/079017-2636",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html",
+    "family": "agent_security",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Недоверенные данные инструментов не должны менять права и правила агента; отдельная adversarial оценка.",
+    "notes": "NeurIPS 2024 datasets and benchmarks",
+    "web_refs": [
+      "turn176720263view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0130",
+    "aliases": [
+      "AE33"
+    ],
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "authors": "Patrick Lewis et al.",
+    "year": 2020,
+    "doi": null,
+    "url": "https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html",
+    "family": "retrieval",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Параметрическая и непараметрическая память; источник сильного retrieval baseline.",
+    "notes": "NeurIPS 2020",
+    "web_refs": [
+      "turn176720263view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0131",
+    "aliases": [
+      "AE34"
+    ],
+    "title": "Lost in the Middle: How Language Models Use Long Contexts",
+    "authors": "Nelson F. Liu et al.",
+    "year": 2024,
+    "doi": "10.1162/tacl_a_00638",
+    "url": "https://aclanthology.org/2024.tacl-1.9/",
+    "family": "context_reliability",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Присутствие факта в большом контексте не гарантирует использования; позиционные абляции.",
+    "notes": "TACL 12:157–173; 2023 preprint",
+    "web_refs": [
+      "turn176720263view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0132",
+    "aliases": [
+      "AE35"
+    ],
+    "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+    "authors": "Di Wu et al.",
+    "year": 2025,
+    "doi": null,
+    "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/d813d324dbf0598bbdc9c8e79740ed01-Abstract-Conference.html",
+    "family": "temporal_memory",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Временное рассуждение, обновление знаний и воздержание от ответа при пробеле.",
+    "notes": "ICLR 2025",
+    "web_refs": [
+      "turn176720263view6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0133",
+    "aliases": [
+      "AE36"
+    ],
+    "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory Toward Experienced Colleagues",
+    "authors": "Di Wu; Zixiang Ji; Asmi Kawatkar; Bryan Kwan; Jia-Chen Gu; Nanyun Peng; Kai-Wei Chang",
+    "year": 2026,
+    "doi": "10.48550/arxiv.2605.12493",
+    "url": "https://arxiv.org/abs/2605.12493",
+    "family": "environment_memory",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Знание статической/динамической среды, рабочих процессов, исключений и предпосылок; близкий prior art.",
+    "notes": "Work in Progress; submitted May 12, 2026",
+    "web_refs": [
+      "turn176720263view7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0134",
+    "aliases": [
+      "AE37"
+    ],
+    "title": "Robots That Ask For Help: Uncertainty Alignment for Large Language Model Planners",
+    "authors": "Allen Z. Ren et al.",
+    "year": 2023,
+    "doi": null,
+    "url": "https://proceedings.mlr.press/v229/ren23a.html",
+    "family": "uncertainty_and_escalation",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Калиброванное обращение за помощью при неопределенности планировщика; условия статистических гарантий требуют чтения.",
+    "notes": "CoRL 2023, PMLR 229:661–682",
+    "web_refs": [
+      "turn358823508view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0135",
+    "aliases": [
+      "AE38"
+    ],
+    "title": "Safe Reinforcement Learning via Shielding",
+    "authors": "Mohammed Alshiekh et al.",
+    "year": 2018,
+    "doi": null,
+    "url": "https://arxiv.org/abs/1708.08611",
+    "family": "runtime_verification",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Отдельный проверяющий механизм ограничивает или исправляет действия на основании формальной спецификации.",
+    "notes": "AAAI 2018; first preprint 2017; publisher opening access denied",
+    "web_refs": [
+      "turn105164181view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0136",
+    "aliases": [
+      "AE39"
+    ],
+    "title": "A Comprehensive Survey on Safe Reinforcement Learning",
+    "authors": "Javier García; Fernando Fernández",
+    "year": 2015,
+    "doi": null,
+    "url": "https://jmlr.org/papers/v16/garcia15a.html",
+    "family": "constrained_learning",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Различение оптимальности и ограничений на процесс обучения/исполнения.",
+    "notes": "JMLR 16(42):1437–1480; primary survey article",
+    "web_refs": [
+      "turn358823508view2"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0137",
+    "aliases": [
+      "AE40"
+    ],
+    "title": "Causal inference and the data-fusion problem",
+    "authors": "Elias Bareinboim; Judea Pearl",
+    "year": 2016,
+    "doi": "10.1073/pnas.1510507113",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4941504/",
+    "family": "causal_transportability",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Перенос выводов между разными популяциями, режимами и способами получения данных.",
+    "notes": "PNAS 113(27):7345–7352; full text available, targeted reading only",
+    "web_refs": [
+      "turn358823508view3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0138",
+    "aliases": [
+      "AE41"
+    ],
+    "title": "Towards Causal Representation Learning",
+    "authors": "Bernhard Schölkopf et al.",
+    "year": 2021,
+    "doi": "10.48550/arxiv.2102.11107",
+    "url": "https://arxiv.org/abs/2102.11107",
+    "family": "causal_representation",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Выделение причинных переменных и обобщение при изменении среды.",
+    "notes": "Preprint of Proceedings of the IEEE article; journal title uses Toward",
+    "web_refs": [
+      "turn358823508view4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0139",
+    "aliases": [
+      "AE42"
+    ],
+    "title": "Reflexion: language agents with verbal reinforcement learning",
+    "authors": "Noah Shinn; Federico Cassano; Ashwin Gopinath; Karthik Narasimhan; Shunyu Yao",
+    "year": 2023,
+    "doi": "10.52202/075280-0377",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html",
+    "family": "agent_learning",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Текстовая обратная связь и episodic memory; baseline для обучения на проверенных исходах.",
+    "notes": "NeurIPS 2023",
+    "web_refs": [
+      "turn358823508view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0140",
+    "aliases": [
+      "AE43"
+    ],
+    "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+    "authors": "Timo Schick et al.",
+    "year": 2023,
+    "doi": "10.52202/075280-2997",
+    "url": "https://papers.neurips.cc/paper_files/paper/2023/hash/d842425e4bf79ba039352da0f658a906-Abstract-Conference.html",
+    "family": "tool_use",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Выбор API, времени вызова, аргументов и использования результатов; не доказательство организационной целесообразности.",
+    "notes": "NeurIPS 2023",
+    "web_refs": [
+      "turn358823508view6"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0141",
+    "aliases": [
+      "AE44"
+    ],
+    "title": "On the Planning Abilities of Large Language Models - A Critical Investigation",
+    "authors": "Karthik Valmeekam; Matthew Marquez; Sarath Sreedharan; Subbarao Kambhampati",
+    "year": 2023,
+    "doi": "10.52202/075280-3320",
+    "url": "https://proceedings.neurips.cc/paper/2023/hash/efb2072a358cefb75886a315a6fcf880-Abstract-Conference.html",
+    "family": "planning_verification",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Раздельная проверка самостоятельных планов и LLM как эвристики для корректного планировщика; внешний verifier.",
+    "notes": "NeurIPS 2023",
+    "web_refs": [
+      "turn358823508view7"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0142",
+    "aliases": [
+      "AE45"
+    ],
+    "title": "STRIPS: A New Approach to the Application of Theorem Proving to Problem Solving",
+    "authors": "Richard Fikes; Nils J. Nilsson",
+    "year": 1971,
+    "doi": null,
+    "url": "https://ijcai.org/proceedings/1971/63",
+    "family": "classical_planning",
+    "source_type": "primary_publication",
+    "evidence_level": "abstract",
+    "relevance": "Состояние мира, операторы и цели; историческая основа исполнимых предусловий и эффектов.",
+    "notes": "IJCAI 1971, pp. 608–619; conference version, not counted separately from journal version",
+    "web_refs": [
+      "turn105164181view5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "agent_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0143",
+    "aliases": [
+      "M01"
+    ],
+    "title": "PRISMA Extension for Scoping Reviews (PRISMA-ScR): Checklist and Explanation",
+    "authors": "Andrea C. Tricco et al.",
+    "year": 2018,
+    "doi": "10.7326/m18-0850",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30178033/",
+    "family": "review_methodology",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Отчетность карты литературы; не критерий истинности выводов.",
+    "notes": "",
+    "web_refs": [
+      "turn471161489search8"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0144",
+    "aliases": [
+      "M02"
+    ],
+    "title": "PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews",
+    "authors": "Melissa L. Rethlefsen et al.",
+    "year": 2021,
+    "doi": "10.1186/s13643-020-01542-z",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/33499930/",
+    "family": "review_methodology",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Воспроизводимый журнал поиска и отбор источников.",
+    "notes": "",
+    "web_refs": [
+      "turn478759764search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0145",
+    "aliases": [
+      "M03"
+    ],
+    "title": "Towards a Methodology for Developing Evidence-Informed Management Knowledge by Means of Systematic Review",
+    "authors": "David Tranfield; David Denyer; Palminder Smart",
+    "year": 2003,
+    "doi": "10.1111/1467-8551.00375",
+    "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/1467-8551.00375",
+    "family": "review_methodology",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Связывает обзор литературы с исследовательским вопросом менеджмента.",
+    "notes": "",
+    "web_refs": [
+      "turn614957785search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0146",
+    "aliases": [
+      "M04"
+    ],
+    "title": "Organization Design: An Information Processing View",
+    "authors": "Jay R. Galbraith",
+    "year": 1974,
+    "doi": "10.1287/inte.4.3.28",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/inte.4.3.28",
+    "family": "organization_theory",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Неопределенность задач и организационные формы обработки информации.",
+    "notes": "",
+    "web_refs": [
+      "turn197671873search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0147",
+    "aliases": [
+      "M05"
+    ],
+    "title": "Automation and New Tasks: How Technology Displaces and Reinstates Labor",
+    "authors": "Daron Acemoglu; Pascual Restrepo",
+    "year": 2019,
+    "doi": "10.1257/jep.33.2.3",
+    "url": "https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3",
+    "family": "labor_economics",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Автоматизация и создание задач меняют спрос на труд; рост производительности не равен найму.",
+    "notes": "",
+    "web_refs": [
+      "turn197671873search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0148",
+    "aliases": [
+      "M06"
+    ],
+    "title": "Forecasting: Principles and Practice (3rd edition, online snapshot)",
+    "authors": "Rob J. Hyndman; George Athanasopoulos",
+    "year": null,
+    "doi": null,
+    "url": "https://otexts.com/fpp3/",
+    "family": "forecasting",
+    "source_type": "book_snapshot",
+    "evidence_level": "selected_sections",
+    "relevance": "Иерархические прогнозы и согласование распределений; snapshot 2026-11-14.",
+    "notes": "",
+    "web_refs": [
+      "turn478759764view0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0149",
+    "aliases": [
+      "M07"
+    ],
+    "title": "Optimal Forecast Reconciliation for Hierarchical and Grouped Time Series Through Trace Minimization",
+    "authors": "Shanika L. Wickramasuriya; George Athanasopoulos; Rob J. Hyndman",
+    "year": 2019,
+    "doi": "10.1080/01621459.2018.1448825",
+    "url": "https://doi.org/10.1080/01621459.2018.1448825",
+    "family": "forecasting",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Согласование прогнозов подразделений и компании при явных предпосылках.",
+    "notes": "",
+    "web_refs": [
+      "turn478759764search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0150",
+    "aliases": [
+      "M08"
+    ],
+    "title": "Strictly Proper Scoring Rules, Prediction, and Estimation",
+    "authors": "Tilmann Gneiting; Adrian E. Raftery",
+    "year": 2007,
+    "doi": "10.1198/016214506000001437",
+    "url": "https://sites.stat.washington.edu/raftery/Research/PDF/Gneiting2007jasa.pdf",
+    "family": "forecasting",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Проверка вероятностных прогнозов, отдельная от оценки управленческого решения.",
+    "notes": "",
+    "web_refs": [
+      "turn478759764search10"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0151",
+    "aliases": [
+      "M09"
+    ],
+    "title": "Exploration and Exploitation in Organizational Learning",
+    "authors": "James G. March",
+    "year": 1991,
+    "doi": "10.1287/orsc.2.1.71",
+    "url": "https://pubsonline.informs.org/doi/abs/10.1287/orsc.2.1.71",
+    "family": "organization_theory",
+    "source_type": "article",
+    "evidence_level": "abstract",
+    "relevance": "Различие текущего исполнения и инвестиций в будущие знания и возможности.",
+    "notes": "",
+    "web_refs": [
+      "turn478759764search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0152",
+    "aliases": [
+      "M10"
+    ],
+    "title": "Out of the Crisis (MIT Press edition)",
+    "authors": "W. Edwards Deming",
+    "year": 2000,
+    "doi": null,
+    "url": "https://mitpress.mit.edu/9780262541152/out-of-the-crisis/",
+    "family": "quality_management",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Системное управление качеством и долгосрочными изменениями; фиксируется издание 2000.",
+    "notes": "",
+    "web_refs": [
+      "turn745122500search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0153",
+    "aliases": [
+      "M11"
+    ],
+    "title": "A Behavioral Model of Rational Choice",
+    "authors": "Herbert A. Simon",
+    "year": 1955,
+    "doi": "10.2307/1884852",
+    "url": "https://doi.org/10.2307/1884852",
+    "family": "organization_theory",
+    "source_type": "article",
+    "evidence_level": "metadata",
+    "relevance": "Ограниченная рациональность как предпосылка выбора под неполным знанием.",
+    "notes": "",
+    "web_refs": [
+      "turn745122500search1"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0154",
+    "aliases": [
+      "M12"
+    ],
+    "title": "The Nature of the Firm",
+    "authors": "R. H. Coase",
+    "year": 1937,
+    "doi": "10.1111/j.1468-0335.1937.tb00002.x",
+    "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-0335.1937.tb00002.x",
+    "family": "organization_theory",
+    "source_type": "article",
+    "evidence_level": "selected_sections",
+    "relevance": "Выбор между внутренней координацией и рыночным приобретением ресурсов.",
+    "notes": "",
+    "web_refs": [
+      "turn745122500search3"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0155",
+    "aliases": [
+      "M13"
+    ],
+    "title": "Governing the Commons: The Evolution of Institutions for Collective Action (Canto Classics edition)",
+    "authors": "Elinor Ostrom",
+    "year": 2015,
+    "doi": "10.1017/cbo9781316423936",
+    "url": "https://www.cambridge.org/core/books/governing-the-commons/A8BB63BC4A1433A50A3FB92EDBBB97D5",
+    "family": "governance",
+    "source_type": "book",
+    "evidence_level": "metadata",
+    "relevance": "Условия управления общими ресурсами; перенос в фирму требует отдельного обоснования. Первое издание1990; запись о2015.",
+    "notes": "",
+    "web_refs": [
+      "turn745122500search5"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0156",
+    "aliases": [
+      "M14"
+    ],
+    "title": "OpenAlex API reference and paging documentation",
+    "authors": "OpenAlex",
+    "year": null,
+    "doi": null,
+    "url": "https://help.openalex.org/api/",
+    "family": "research_infrastructure",
+    "source_type": "official_reference",
+    "evidence_level": "selected_sections",
+    "relevance": "Инфраструктура расширения библиографии; документация проверена18.11.2026, массовый импорт API в этой сессии не выполнен.",
+    "notes": "",
+    "web_refs": [
+      "turn471161489search4"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  },
+  {
+    "id": "CW-S0157",
+    "aliases": [
+      "M15"
+    ],
+    "title": "The interdisciplinary study of coordination",
+    "authors": "Thomas W. Malone; Kevin Crowston",
+    "year": 1994,
+    "doi": "10.1145/174666.174668",
+    "url": "https://doi.org/10.1145/174666.174668",
+    "family": "organization_theory",
+    "source_type": "journal_review",
+    "evidence_level": "abstract",
+    "relevance": "Теория координации как управление зависимостями деятельности; обязательный предшественник для проверки оригинальности предлагаемого профиля знаний и решений агентов.",
+    "notes": "ACM Computing Surveys 26(1), 87–119. Author-hosted November 1993 working-paper HTML at https://ccs.mit.edu/papers/CCSWP157.html identifies the March 1994 journal publication. Version identities are not automatically collapsed.",
+    "web_refs": [
+      "turn666029438search0"
+    ],
+    "status": "primary_record_checked",
+    "full_text_critical_appraisal_complete": false,
+    "checked_on": "2026-11-18",
+    "provenance_files": [
+      "root_sources.json"
+    ]
+  }
+]

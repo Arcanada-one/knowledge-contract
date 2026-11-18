@@ -2,7 +2,7 @@
 title: "Knowledge Roadmap: Publications, Research and Practical Validation"
 sources: none
 status: repository-editorial-proposal
-updated: 2026-11-14
+updated: 2026-11-18
 ---
 
 # Knowledge Roadmap: Publications, Research and Practical Validation
@@ -85,6 +85,14 @@ The [Agent Situation](papers/agent-situation/PAPER.md) research draft examines i
 
 This subprogramme belongs to Agent Application and does not add a new roadmap identity. It does not replace that workstream's required outputs or declare its acceptance complete. Its exploratory finite checks do not impose new prerequisites on the baseline exact-consumer pilot. The research question is how an agent can expose the available, missing, changing and task-relevant parts of its situation without treating a compact context as complete knowledge or authority.
 
+### Coordinated Work within Agent Application
+
+The [Coordinated Work programme](roadmap/coordinated-work/README.md), prepared on 18 November 2026, investigates organizational needs, competencies, work networks, resource constraints and evidence-backed agent decisions. It extends the organizational domain profile of Agent Situation and Context Assembly; it does not introduce a competing agent-startup theory or a new native artifact kind.
+
+The initial evidence register retains 1,176 bibliographic records: 157 checked primary records and 1,019 citation candidates extracted from two older personnel-scheduling bibliographies. No complete critical full-text appraisal is claimed. Identity review retains 26 same-title/year groups and four near-title pairs; the number of unique scholarly works remains unresolved. The programme defines sixteen possible paper boundaries and seventy-two deliverable steps across nine phases. These are research-plan entries, not created or assigned Muneral tasks.
+
+The first reproducible demonstration contains ten deterministic flow cases, one hundred case-period observations and 190 elementary checks. It distinguishes customer shipments, work in process and unmet demand, and does not validate an agent, a hiring policy or a real organization. The programme is repository-only preparation: publication documents, independent review, corpus admission and website delivery require their own later evidence and decisions.
+
 ## 5. Practical validation under current authorization and evidence gates
 
 | Capability | Content to prepare or verify | Evidence required for bounded authorized engineering |
@@ -115,3 +123,4 @@ The later site handoff uses the accepted source SHA, not a mutable branch name. 
 The catalogue, canonical documents, [claim-evidence index](engineering/studies/evidence-index.json), [historical recovery gaps](engineering/studies/historical-recovery-gaps.json), [foundations map](reference/foundations/README.md), existing roadmap definitions and exact linked PRs support the artifact inventory. This is an author-maintained editorial projection, not a fresh audit of all Muneral statuses. Report discrepancies rather than fabricating IDs or silently closing tasks.
 
 Preserve negative results, comparator ties, unknowns and draft labels. Separate author checks from Agent-Brain's recorded review and from external human peer review. Any claimed completion must identify its subject, exact revision, evidence and limits. Future research is not an unbounded blocker to publishing a precise limited result.
+

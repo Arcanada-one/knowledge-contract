@@ -1,0 +1,311 @@
+{
+  "version": 2,
+  "units": {
+    "time": "period; arbitrary fixed duration",
+    "material_and_output": "good item units",
+    "stage_capacity": "processing work units per period",
+    "work_content": "processing work units per good item",
+    "availability": "dimensionless fraction"
+  },
+  "assumptions": [
+    "Three sequential stages, identical good-unit commodity, zero initial inventory, no scrap.",
+    "Deterministic constant supply, demand, processing capacity, availability and work content.",
+    "Supply is an availability ceiling; unused material is not forced into the modeled boundary.",
+    "Zero transport lag and continuous fluid approximation: upstream output is available to downstream processing within the same period.",
+    "Unlimited internal and finished-goods storage; unserved potential demand is measured, but is not carried forward as a customer-order backlog.",
+    "Admission limits are experiment inputs, not decisions inferred by an agent or optimizer.",
+    "Setup loss and rework are fixed aggregate workload adjustments, not explicit stochastic event models.",
+    "Zero internal WIP does not imply demand fulfillment: base_gated has demand 70 and shipments 60 per period."
+  ],
+  "cases": [
+    {
+      "id": "base_local",
+      "title": "Local release ignores the downstream bottleneck",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 70,
+      "release_limit_per_period": 80,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 60,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "base_gated",
+      "title": "Admission limit matches the effective bottleneck",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 70,
+      "release_limit_per_period": 60,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 60,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "non_bottleneck_boost",
+      "title": "Increase capacities of stages 1 and 3 only",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 70,
+      "release_limit_per_period": 80,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 160,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 60,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 180,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "bottleneck_boost",
+      "title": "Raise stage 2; demand now limits accepted output",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 70,
+      "release_limit_per_period": 70,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 85,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "input_limited",
+      "title": "More demand after stage 2 expansion; supply binds",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 100,
+      "release_limit_per_period": 80,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 85,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "demand_excess_local",
+      "title": "Local release exceeds customer acceptance",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 50,
+      "release_limit_per_period": 80,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 85,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "downstream_bottleneck",
+      "title": "Stage 3 becomes the bottleneck",
+      "horizon_periods": 10,
+      "supply_per_period": 80,
+      "demand_per_period": 70,
+      "release_limit_per_period": 80,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 60,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 45,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "setup_loss",
+      "title": "One third of stage 2 processing time lost to setup",
+      "horizon_periods": 10,
+      "supply_per_period": 100,
+      "demand_per_period": 100,
+      "release_limit_per_period": 60,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": "2/3",
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "rework_overhead",
+      "title": "Stage 2 needs 1.5 work units per good item",
+      "horizon_periods": 10,
+      "supply_per_period": 100,
+      "demand_per_period": 100,
+      "release_limit_per_period": 60,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": "3/2"
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    },
+    {
+      "id": "no_material",
+      "title": "No incoming material is available",
+      "horizon_periods": 10,
+      "supply_per_period": 0,
+      "demand_per_period": 70,
+      "release_limit_per_period": 60,
+      "stages": [
+        {
+          "name": "stage_1",
+          "nominal_capacity_per_period": 100,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_2",
+          "nominal_capacity_per_period": 60,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        },
+        {
+          "name": "stage_3",
+          "nominal_capacity_per_period": 90,
+          "availability_fraction": 1,
+          "work_units_per_good_unit": 1
+        }
+      ]
+    }
+  ],
+  "origin": {
+    "previous_revision": "three_stage_fluid_v1",
+    "previous_results": "development/v1/raw_results.json",
+    "previous_results_sha256": "ccc6eb197b36b1130b197263d8da558127665025525b5fff2ece45dfd355d829",
+    "previous_inputs_sha256": "5badb549e0e821a8ea680f0767e635b164ae40e816a9d0107a1eba5298ab5fe3",
+    "previous_snapshot_manifest": "development/v1/snapshot_manifest.json",
+    "change": "Track unserved potential demand explicitly; zero internal WIP does not imply that customer demand is satisfied. No customer-backlog state is introduced."
+  },
+  "demand_semantics": "Per-period potential need / maximum customer acceptance. unserved_demand = demand - shipped. Unserved potential is tracked separately and is not carried to the next period as an order backlog."
+}

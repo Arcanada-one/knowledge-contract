@@ -1,0 +1,12 @@
+{
+  "revision": 2,
+  "probe": "three_stage_fluid_v2",
+  "origin": {
+    "previous_revision": "three_stage_fluid_v1",
+    "previous_results": "development/v1/raw_results.json",
+    "previous_results_sha256": "ccc6eb197b36b1130b197263d8da558127665025525b5fff2ece45dfd355d829",
+    "previous_inputs_sha256": "5badb549e0e821a8ea680f0767e635b164ae40e816a9d0107a1eba5298ab5fe3",
+    "previous_snapshot_manifest": "development/v1/snapshot_manifest.json",
+    "change": "Track unserved potential demand explicitly; zero internal WIP does not imply that customer demand is satisfied. No customer-backlog state is introduced."
+  }
+}

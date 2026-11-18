@@ -1,0 +1,1159 @@
+[
+  {
+    "id": "A01",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Define review scope",
+    "title_ru": "Границы обзора",
+    "deliverable": "Границы обзора",
+    "acceptance": "Зафиксированы вопросы, единицы анализа, даты и основания исключения.",
+    "dependencies": [],
+    "status": "prepared",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A02",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Verify the seed bibliography",
+    "title_ru": "Проверенное библиографическое ядро",
+    "deliverable": "Проверенное библиографическое ядро",
+    "acceptance": "Каждая запись содержит первичный URL, дату проверки и фактическую глубину чтения.",
+    "dependencies": [
+      "A01"
+    ],
+    "status": "prepared",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A03",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Extract citation candidates",
+    "title_ru": "Извлечение цитатных кандидатов",
+    "deliverable": "Извлечение цитатных кандидатов",
+    "acceptance": "Сохранены библиографические факты, родительский источник и локатор; кандидаты не повышены до проверенных работ.",
+    "dependencies": [
+      "A02"
+    ],
+    "status": "prepared",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A04",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Resolve publication identities",
+    "title_ru": "Разрешение идентичности",
+    "deliverable": "Разрешение идентичности",
+    "acceptance": "Все группы совпадений рассмотрены по авторам, изданию и DOI; препринт и журнальная версия связаны явно.",
+    "dependencies": [
+      "A03"
+    ],
+    "status": "partial",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A05",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Expand field coverage",
+    "title_ru": "Расширение по научным направлениям",
+    "deliverable": "Расширение по научным направлениям",
+    "acceptance": "Каждое семейство имеет журнал запросов и новые источники до даты среза; устранён перекос старых обзоров.",
+    "dependencies": [
+      "A04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A06",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Screen full texts",
+    "title_ru": "Отбор полных текстов",
+    "deliverable": "Отбор полных текстов",
+    "acceptance": "Для каждого решения включить или исключить есть причина и доступный проверяющий контекст.",
+    "dependencies": [
+      "A05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A07",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Extract scoped claims",
+    "title_ru": "Карточки утверждений",
+    "deliverable": "Карточки утверждений",
+    "acceptance": "Утверждения имеют локатор, предпосылки, тип основания, границы переноса и контраргументы.",
+    "dependencies": [
+      "A06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "A08",
+    "phase": "Evidence corpus",
+    "phase_ru": "Корпус и карта исследований",
+    "title": "Review the scoping map",
+    "title_ru": "Публикация карты литературы",
+    "deliverable": "Публикация карты литературы",
+    "acceptance": "Есть воспроизводимый протокол, flow отбора, карта пробелов и отдельная содержательная рецензия.",
+    "dependencies": [
+      "A07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B01",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Define organizational units",
+    "title_ru": "Единицы организационного анализа",
+    "deliverable": "Единицы организационного анализа",
+    "acceptance": "Организация, отдел, процесс, операция и Work Item различены на примерах.",
+    "dependencies": [
+      "A08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B02",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Classify needs and situations",
+    "title_ru": "Фасеты ситуаций и потребностей",
+    "deliverable": "Фасеты ситуаций и потребностей",
+    "acceptance": "Оси независимы насколько возможно; неизвестное и новый класс представлены явно.",
+    "dependencies": [
+      "B01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B03",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Map sectors and processes",
+    "title_ru": "Сопоставление отраслей и процессов",
+    "deliverable": "Сопоставление отраслей и процессов",
+    "acceptance": "ISIC и APQC имеют раздельные роли; их коды не заменяют фактический граф компании.",
+    "dependencies": [
+      "B02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B04",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Map occupations and competencies",
+    "title_ru": "Сопоставление профессий и компетенций",
+    "deliverable": "Сопоставление профессий и компетенций",
+    "acceptance": "ISCO, ESCO и O*NET связаны типами exact, broader, narrower, related с версиями.",
+    "dependencies": [
+      "B03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B05",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Define resource semantics",
+    "title_ru": "Типы ресурсов",
+    "deliverable": "Типы ресурсов",
+    "acceptance": "Запас, возобновляемая мощность, доступ, информация и знания имеют отдельные правила учета.",
+    "dependencies": [
+      "B04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B06",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Define performance measures",
+    "title_ru": "Вектор производительности",
+    "deliverable": "Вектор производительности",
+    "acceptance": "Для каждой метрики заданы результат, единица, окно, знаменатель и ограничения интерпретации.",
+    "dependencies": [
+      "B05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B07",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Assess annotation agreement",
+    "title_ru": "Проверка согласия классификаторов",
+    "deliverable": "Проверка согласия классификаторов",
+    "acceptance": "На пилотной разметке измерено согласие и отдельно разрешены спорные случаи.",
+    "dependencies": [
+      "B06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "B08",
+    "phase": "Classification",
+    "phase_ru": "Классификации и словарь",
+    "title": "Evaluate held-out sectors",
+    "title_ru": "Проверка новых отраслей",
+    "deliverable": "Проверка новых отраслей",
+    "acceptance": "Новые кейсы размечаются без скрытого изменения определений; пробелы сохраняются.",
+    "dependencies": [
+      "B07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C01",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Build the typed work graph",
+    "title_ru": "Граф работы и ответственности",
+    "deliverable": "Граф работы и ответственности",
+    "acceptance": "Связи потока, полномочий, совместных ресурсов и свидетельств не смешаны.",
+    "dependencies": [
+      "B08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C02",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Define event semantics",
+    "title_ru": "Словарь событий",
+    "deliverable": "Словарь событий",
+    "acceptance": "Время события, наблюдения и получения раздельны; есть идемпотентность и source revision.",
+    "dependencies": [
+      "C01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C03",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Separate demand observations",
+    "title_ru": "Наблюдаемый и скрытый спрос",
+    "deliverable": "Наблюдаемый и скрытый спрос",
+    "acceptance": "Продажи, заявки, потерянный и потенциальный спрос не считаются одним показателем.",
+    "dependencies": [
+      "C02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C04",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Represent availability calendars",
+    "title_ru": "Календарь доступности",
+    "deliverable": "Календарь доступности",
+    "acceptance": "Часы одного человека не учтены дважды; смены, отсутствие и наставничество различены.",
+    "dependencies": [
+      "C03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C05",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Preserve provenance and conflicts",
+    "title_ru": "Происхождение и конфликты",
+    "deliverable": "Происхождение и конфликты",
+    "acceptance": "Конфликтующие источники сохраняются; порядок поступления не подменяет истинность.",
+    "dependencies": [
+      "C04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C06",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Specify freshness and invalidation",
+    "title_ru": "Обновление и срок пригодности",
+    "deliverable": "Обновление и срок пригодности",
+    "acceptance": "Изменение факта инвалидирует зависимые решения по формальным правилам.",
+    "dependencies": [
+      "C05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C07",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Prototype authorized adapters",
+    "title_ru": "Адаптеры действующих систем",
+    "deliverable": "Адаптеры действующих систем",
+    "acceptance": "ERP, HRIS, CRM и task tracker читаются через ограниченные интерфейсы и закрепленные схемы.",
+    "dependencies": [
+      "C06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "C08",
+    "phase": "Organization state",
+    "phase_ru": "Состояние организации",
+    "title": "Review the organization profile",
+    "title_ru": "Организационный профиль KC",
+    "deliverable": "Организационный профиль KC",
+    "acceptance": "Профиль согласован с Agent Situation и Artifact Registry без объявления новых native kinds.",
+    "dependencies": [
+      "C07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D01",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Define flow conservation",
+    "title_ru": "Явная модель баланса",
+    "deliverable": "Явная модель баланса",
+    "acceptance": "Начальные запасы, выпуск, отходы, возвраты и единицы заданы; знание не подчинено материальному балансу.",
+    "dependencies": [
+      "C08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D02",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Derive conditional throughput bounds",
+    "title_ru": "Узкие места и разрезы",
+    "deliverable": "Узкие места и разрезы",
+    "acceptance": "Верхняя граница отделена от достижимости и от стратегии управления.",
+    "dependencies": [
+      "D01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D03",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Model buffers and delays",
+    "title_ru": "Конечные буферы и задержки",
+    "deliverable": "Конечные буферы и задержки",
+    "acceptance": "Стенд отражает блокировки, starvation и ненулевое время прохождения.",
+    "dependencies": [
+      "D02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D04",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Model setup and rework",
+    "title_ru": "Переналадка и качество",
+    "deliverable": "Переналадка и качество",
+    "acceptance": "Номинальная и эффективная мощности раздельны; потери наблюдаемы.",
+    "dependencies": [
+      "D03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D05",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Compare release policies",
+    "title_ru": "Правила допуска работы",
+    "deliverable": "Правила допуска работы",
+    "acceptance": "CONWIP, простое pull-правило и оптимизатор сравниваются при равном спросе и ресурсах.",
+    "dependencies": [
+      "D04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D06",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Add product mix and shared resources",
+    "title_ru": "Несколько продуктов и общие ресурсы",
+    "deliverable": "Несколько продуктов и общие ресурсы",
+    "acceptance": "Невозможна двойная резервация общих мощностей; фиксируются несовместимые маршруты.",
+    "dependencies": [
+      "D05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D07",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Construct local-metric counterexamples",
+    "title_ru": "Контрпримеры локальным KPI",
+    "deliverable": "Контрпримеры локальным KPI",
+    "acceptance": "Есть случаи, где локальное ускорение ухудшает WIP, качество или обслуживание.",
+    "dependencies": [
+      "D06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "D08",
+    "phase": "Flow models",
+    "phase_ru": "Потоки и материальные ресурсы",
+    "title": "Review the flow model",
+    "title_ru": "Рецензия модели потока",
+    "deliverable": "Рецензия модели потока",
+    "acceptance": "Перечислены доказуемые свойства, контрпримеры и реальные данные, которых пока не хватает.",
+    "dependencies": [
+      "D07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E01",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Estimate task workload",
+    "title_ru": "Трудоемкость по задачам",
+    "deliverable": "Трудоемкость по задачам",
+    "acceptance": "Оценки условны по контексту, качеству и составу команды, с интервалами.",
+    "dependencies": [
+      "B08",
+      "C08",
+      "D08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E02",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Bind competency evidence",
+    "title_ru": "Проверка компетенций",
+    "deliverable": "Проверка компетенций",
+    "acceptance": "Название профессии не заменяет оценку способности и обязательный допуск.",
+    "dependencies": [
+      "E01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E03",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Optimize multiskill assignments",
+    "title_ru": "Многоквалификационное расписание",
+    "deliverable": "Многоквалификационное расписание",
+    "acceptance": "Одна и та же мощность не используется одновременно для разных требований.",
+    "dependencies": [
+      "E02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E04",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Model hiring lead times",
+    "title_ru": "Найм и выход на мощность",
+    "deliverable": "Найм и выход на мощность",
+    "acceptance": "Учтены срок поиска, onboarding, вероятность заполнения и часы наставника.",
+    "dependencies": [
+      "E03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E05",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Compare capacity alternatives",
+    "title_ru": "Альтернативы найму",
+    "deliverable": "Альтернативы найму",
+    "acceptance": "Для найма, обучения, перераспределения, автоматизации и бездействия рассчитаны сопоставимые сценарии.",
+    "dependencies": [
+      "E04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E06",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Separate performance from causation",
+    "title_ru": "Производительность и причинность",
+    "deliverable": "Производительность и причинность",
+    "acceptance": "Наблюдаемый выпуск не выдается за индивидуальный причинный вклад при неидентифицируемости.",
+    "dependencies": [
+      "E05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E07",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Constrain sustainable workload",
+    "title_ru": "Условия устойчивой нагрузки",
+    "deliverable": "Условия устойчивой нагрузки",
+    "acceptance": "Явны рабочие часы, предпочтения, качество и границы допустимого решения.",
+    "dependencies": [
+      "E06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "E08",
+    "phase": "Workforce decisions",
+    "phase_ru": "Люди и профессиональные возможности",
+    "title": "Produce auditable role requirements",
+    "title_ru": "Профиль потребности в роли",
+    "deliverable": "Профиль потребности в роли",
+    "acceptance": "Рекомендация содержит роль, количество, место, время, предпосылки, альтернативы и опровержение.",
+    "dependencies": [
+      "E07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F01",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Reconcile hierarchical forecasts",
+    "title_ru": "Согласование иерархических прогнозов",
+    "deliverable": "Согласование иерархических прогнозов",
+    "acceptance": "Прогнозы отделов согласованы с агрегатами; когерентность не названа точностью.",
+    "dependencies": [
+      "C08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F02",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Calibrate predictive uncertainty",
+    "title_ru": "Вероятностные интервалы",
+    "deliverable": "Вероятностные интервалы",
+    "acceptance": "Оценены coverage, proper score и ошибка по типам задач.",
+    "dependencies": [
+      "F01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F03",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Define external shock scenarios",
+    "title_ru": "Рыночные и политические сценарии",
+    "deliverable": "Рыночные и политические сценарии",
+    "acceptance": "Сценарий отличим от прогноза; источники, даты и область влияния указаны.",
+    "dependencies": [
+      "F02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F04",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Model decision delays",
+    "title_ru": "Задержки наблюдения и действий",
+    "deliverable": "Задержки наблюдения и действий",
+    "acceptance": "Учитываются freshness, закупка, найм, обучение и реакция спроса.",
+    "dependencies": [
+      "F03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F05",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Optimize under uncertainty",
+    "title_ru": "Выбор при неполном знании",
+    "deliverable": "Выбор при неполном знании",
+    "acceptance": "Указан допустимый риск и цена консервативности; вероятности не выдуманы.",
+    "dependencies": [
+      "F04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F06",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Check endogenous observations",
+    "title_ru": "Цензурирование и обратное влияние",
+    "deliverable": "Цензурирование и обратное влияние",
+    "acceptance": "Политика обслуживания и цены не скрывают потерянный спрос и обратные связи.",
+    "dependencies": [
+      "F05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F07",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Detect distribution shift",
+    "title_ru": "Дрейф и смена режима",
+    "deliverable": "Дрейф и смена режима",
+    "acceptance": "Есть измеримый триггер пересмотра, окно наблюдений и fallback.",
+    "dependencies": [
+      "F06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "F08",
+    "phase": "Forecasting and shocks",
+    "phase_ru": "Прогнозы и внешняя среда",
+    "title": "Backtest frozen forecast decisions",
+    "title_ru": "Проверка на отложенных периодах",
+    "deliverable": "Проверка на отложенных периодах",
+    "acceptance": "В каждом времени доступны только реально доступные тогда данные, без утечки будущего.",
+    "dependencies": [
+      "F07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G01",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Define decision prerequisites",
+    "title_ru": "Набор знаний для решения",
+    "deliverable": "Набор знаний для решения",
+    "acceptance": "Для каждого решения заданы обязательные и необязательные артефакты.",
+    "dependencies": [
+      "C08",
+      "D08",
+      "E08",
+      "F08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G02",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Assemble bounded context",
+    "title_ru": "Сборка контекста",
+    "deliverable": "Сборка контекста",
+    "acceptance": "Доставлены обязательные зависимости либо зарегистрирован конкретный дефицит.",
+    "dependencies": [
+      "G01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G03",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Define startup readiness",
+    "title_ru": "Режимы запуска",
+    "deliverable": "Режимы запуска",
+    "acceptance": "Различены наблюдение, моделирование, рекомендация и действие с текущими полномочиями.",
+    "dependencies": [
+      "G02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G04",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Separate proposal and verification",
+    "title_ru": "Предложения и внешняя проверка",
+    "deliverable": "Предложения и внешняя проверка",
+    "acceptance": "Ограничения проверяет независимый детерминированный механизм, а не только prompt.",
+    "dependencies": [
+      "G03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G05",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Calibrate abstention",
+    "title_ru": "Уточнение и отказ от вывода",
+    "deliverable": "Уточнение и отказ от вывода",
+    "acceptance": "Стоимость дополнительного наблюдения сопоставляется с ценой ошибки и задержки.",
+    "dependencies": [
+      "G04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G06",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Record decision evidence",
+    "title_ru": "Квитанция решения",
+    "deliverable": "Квитанция решения",
+    "acceptance": "Связаны версия модели, исходные данные, альтернативы, бюджет, права и ожидаемый эффект.",
+    "dependencies": [
+      "G05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G07",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Handle concurrent decisions",
+    "title_ru": "Конфликт и повторное выполнение",
+    "deliverable": "Конфликт и повторное выполнение",
+    "acceptance": "Резервирование ресурсов и идемпотентность исключают двойное выполнение.",
+    "dependencies": [
+      "G06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "G08",
+    "phase": "Agent decision contracts",
+    "phase_ru": "Знания и решения агентов",
+    "title": "Review learning updates",
+    "title_ru": "Возврат знаний в базу",
+    "deliverable": "Возврат знаний в базу",
+    "acceptance": "Наблюдение результата не становится принятой общей нормой без области и проверки.",
+    "dependencies": [
+      "G07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H01",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Freeze hypotheses and metrics",
+    "title_ru": "Регистрация гипотез и метрик",
+    "deliverable": "Регистрация гипотез и метрик",
+    "acceptance": "До основного опыта заданы первичные метрики, границы эффекта и правило опровержения.",
+    "dependencies": [
+      "G08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H02",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Build the manufacturing benchmark",
+    "title_ru": "Производственный стенд",
+    "deliverable": "Производственный стенд",
+    "acceptance": "Независимый генератор дает скрытые вариации маршрутов, материалов, качества и смен.",
+    "dependencies": [
+      "H01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H03",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Build the service benchmark",
+    "title_ru": "Сервисный стенд",
+    "deliverable": "Сервисный стенд",
+    "acceptance": "Есть разные навыки, SLA, abandonment, пики спроса и варианты маршрутизации.",
+    "dependencies": [
+      "H02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H04",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Build the project benchmark",
+    "title_ru": "Проектный стенд",
+    "deliverable": "Проектный стенд",
+    "acceptance": "Разработка, проверка, тестирование и поддержка связаны общей нагрузкой.",
+    "dependencies": [
+      "H03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H05",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Evaluate strong baselines",
+    "title_ru": "Сильные сравнительные методы",
+    "deliverable": "Сильные сравнительные методы",
+    "acceptance": "Сопоставлены человек/правило, OR-метод, обычный RAG и KC при равных данных и бюджете.",
+    "dependencies": [
+      "H04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H06",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Run ablations and uncertainty analysis",
+    "title_ru": "Абляции и статистический анализ",
+    "deliverable": "Абляции и статистический анализ",
+    "acceptance": "Изъятие механизмов отделено от объема контекста; интервалы учитывают зависимость наблюдений.",
+    "dependencies": [
+      "H05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H07",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Run a shadow evaluation",
+    "title_ru": "Теневой режим",
+    "deliverable": "Теневой режим",
+    "acceptance": "Записаны рекомендации и последующие факты; причинный эффект вмешательства не заявлен.",
+    "dependencies": [
+      "H06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "H08",
+    "phase": "Evaluation",
+    "phase_ru": "Эксперименты и опровержение",
+    "title": "Evaluate a bounded field intervention",
+    "title_ru": "Ограниченный причинный пилот",
+    "deliverable": "Ограниченный причинный пилот",
+    "acceptance": "Выбран дизайн с учетом межпроцессных spillovers, остановки и внешней применимости.",
+    "dependencies": [
+      "H07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I01",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Reassess novelty",
+    "title_ru": "Аудит научной новизны",
+    "deliverable": "Аудит научной новизны",
+    "acceptance": "Для каждого вклада указано ближайшее prior art и измеримое отличие.",
+    "dependencies": [
+      "A08",
+      "B08",
+      "H08"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I02",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Bind claims to evidence",
+    "title_ru": "Матрица утверждений и свидетельств",
+    "deliverable": "Матрица утверждений и свидетельств",
+    "acceptance": "Теоремы, конечные тесты, эмпирика и предположения имеют разные типы свидетельств.",
+    "dependencies": [
+      "I01"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I03",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Prepare canonical manuscripts",
+    "title_ru": "Рукописи и спецификации",
+    "deliverable": "Рукописи и спецификации",
+    "acceptance": "Новый PAPER или SPECIFICATION существует до появления записи в каталоге.",
+    "dependencies": [
+      "I02"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I04",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Freeze reproducibility packages",
+    "title_ru": "Воспроизводимые пакеты",
+    "deliverable": "Воспроизводимые пакеты",
+    "acceptance": "Версии кода, данных, сред и результаты закреплены; отрицательные результаты сохранены.",
+    "dependencies": [
+      "I03"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I05",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Obtain substantive review",
+    "title_ru": "Отдельная содержательная рецензия",
+    "deliverable": "Отдельная содержательная рецензия",
+    "acceptance": "Review указывает точный текст, критерии, пределы и выявленные ошибки.",
+    "dependencies": [
+      "I04"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I06",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Integrate through repository gates",
+    "title_ru": "Интеграция в репозиторий",
+    "deliverable": "Интеграция в репозиторий",
+    "acceptance": "Выполнены требуемые CI и source checks; сохранены права и DCO.",
+    "dependencies": [
+      "I05"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I07",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Publish and verify served content",
+    "title_ru": "Публикация и чтение с сайта",
+    "deliverable": "Публикация и чтение с сайта",
+    "acceptance": "Сверена реально отданная сайтом версия; merge не подменяет deployment.",
+    "dependencies": [
+      "I06"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  },
+  {
+    "id": "I08",
+    "phase": "Integration and publication",
+    "phase_ru": "Интеграция и публикация",
+    "title": "Admit indexing and maintain revisions",
+    "title_ru": "Индексирование и пересмотр",
+    "deliverable": "Индексирование и пересмотр",
+    "acceptance": "Принятие в индекс и полномочия исполнения отдельны; пересмотр сохраняет историю.",
+    "dependencies": [
+      "I07"
+    ],
+    "status": "planned",
+    "execution_system": "Muneral remains authoritative",
+    "external_task_id": null,
+    "execution_assigned": false
+  }
+]
