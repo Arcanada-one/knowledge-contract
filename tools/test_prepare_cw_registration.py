@@ -293,6 +293,9 @@ class PaperReleasePreparationControls(unittest.TestCase):
                          "hypotheses", "source", "paper_release_metrics")):
             with self.subTest(removed=removed):
                 graph = copy.deepcopy(self.graph)
+                # A malformed full output must never escape its own checker
+                # merely because the input stripped two mode selectors.
+                next(task for task in graph["tasks"] if task["id"] == "CW-A01")["outputs"][0]["created"] = True
                 for key in removed:
                     graph.pop(key, None)
                 with self.assertRaisesRegex(M.Invalid, "full-programme profile"):

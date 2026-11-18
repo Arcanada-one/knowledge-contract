@@ -159,6 +159,12 @@ class ProgrammeControls(unittest.TestCase):
         self.task("CW-A01")["outputs"][0]["id"] = "CW-A01.O0"
         self.reject("output owner identity mismatch: CW-A01")
 
+    def test_direct_full_programme_checker_refuses_non_object_output_record(self):
+        # A malformed output must fail at the real checker boundary, not just
+        # at the registrar's earlier generic normalization gate.
+        self.task("CW-A01")["outputs"][0] = 7
+        self.reject("invalid output record: CW-A01")
+
     def test_two_output_owners_cannot_share_the_same_proposed_path(self):
         first = self.task("CW-A01")["outputs"][0]["proposed_path"]
         self.task("CW-A02")["outputs"][0]["proposed_path"] = first
