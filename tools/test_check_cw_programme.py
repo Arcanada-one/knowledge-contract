@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Meaningful adverse controls for source coverage and proposal graph semantics."""
 from copy import deepcopy
+import unicodedata
 import unittest
 
 from tools import check_cw_programme as checker
@@ -41,6 +42,114 @@ class ProgrammeControls(unittest.TestCase):
         self.assertEqual((result["work_packages"], result["source_steps_preserved"], result["paper_boundaries_covered"],
                           result["hypotheses_covered"]), (104, 72, 16, 12))
         self.assertEqual(result["native_registration"], "NOT_VERIFIED")
+
+    def test_frozen_source_reference_refuses_coordinated_relabeling(self):
+        # A coherent graph and correct step blob do not authenticate a rewritten
+        # repository, commit, branch or path used in reader/source links.
+        for field, forged in (("head", "0" * 40),
+                              ("repository", "Other/relabelled-research"),
+                              ("branch", "forged/other-source"),
+                              ("step_path", "roadmap/coordinated-work/plan/other.json"),
+                              ("source_status", "published")):
+            with self.subTest(source_field=field):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["source"][field] = forged
+                self.reject("source identity drift from frozen reference")
+
+    def test_source_pin_rejects_boolean_aliases_and_unknown_fields(self):
+        # Python True == 1 must not masquerade as the original PR or task count.
+        for field, forged in (("pull_request", True), ("source_task_count", True),
+                              ("pull_request", 126), ("source_task_count", 73)):
+            with self.subTest(source_field=field, forged=forged):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["source"][field] = forged
+                self.reject("source identity drift from frozen reference")
+        self.graph = deepcopy(self.arguments[0])
+        self.graph["source"]["native_registration"] = "complete"
+        self.reject("source identity drift from frozen reference")
+        self.graph = deepcopy(self.arguments[0])
+        del self.graph["source"]["branch"]
+        self.reject("source identity drift from frozen reference")
+
+    def test_coordinated_output_relabel_is_refused_even_when_all_consumers_follow(self):
+        owner = "CW-A01"
+        task = self.task(owner)
+        original = task["outputs"][0]["id"]
+        forged = "CW-OTHER-PAPER.O999"
+        task["outputs"][0]["id"] = forged
+        rewritten = 0
+        for consumer in self.graph["tasks"]:
+            for edge in consumer["dependencies"]:
+                for index, consumed in enumerate(edge["consumes"]):
+                    if consumed == original:
+                        edge["consumes"][index] = forged
+                        rewritten += 1
+        for paper in self.graph["paper_release_contracts"]:
+            for gate in paper["required_gates"]:
+                for index, consumed in enumerate(gate["consumes"]):
+                    if consumed == original:
+                        gate["consumes"][index] = forged
+                        rewritten += 1
+        self.assertGreater(rewritten, 0, "must mutate an actual consumer")
+        self.reject("output owner identity mismatch: CW-A01")
+
+    def test_output_identity_requires_contiguous_task_local_numbering(self):
+        self.task("CW-A01")["outputs"][0]["id"] = "CW-A01.O0"
+        self.reject("output owner identity mismatch: CW-A01")
+
+    def test_two_output_owners_cannot_share_the_same_proposed_path(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        self.task("CW-A02")["outputs"][0]["proposed_path"] = first
+        self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_lexically_equivalent_output_paths_cannot_alias(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        self.task("CW-A02")["outputs"][0]["proposed_path"] = "./" + first
+        self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_repeated_separators_and_dot_components_cannot_alias_an_output(self):
+        first = self.task("CW-A01")["outputs"][0]["proposed_path"]
+        for alias in (first.replace("/", "//", 1), first.replace("/", "/./", 1), first + "/"):
+            with self.subTest(path=alias):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A02")["outputs"][0]["proposed_path"] = alias
+                self.reject("duplicate proposed output path: CW-A02/CW-A02.O1")
+
+    def test_output_file_directory_overlap_is_refused_in_either_order(self):
+        for paths in (("results/a.md", "results/a.md/child.md"),
+                      ("results/a.md/child.md", "results/a.md")):
+            with self.subTest(paths=paths):
+                self.graph = deepcopy(self.arguments[0])
+                for key, path in zip(("CW-A01", "CW-A02"), paths):
+                    self.task(key)["outputs"][0]["proposed_path"] = path
+                self.reject("overlapping proposed output paths: CW-A02/CW-A02.O1")
+
+    def test_output_destinations_require_safe_relative_file_paths(self):
+        for path in (None, 0, "", ".", "   ", "/absolute.md", "../escape.md",
+                     "results/../escape.md", "results\\name.md", "C:relative.md",
+                     "results/nu\x00l.md", "results/new\nline.md", "results/del\x7f.md"):
+            with self.subTest(path=path):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A01")["outputs"][0]["proposed_path"] = path
+                self.reject("unsafe proposed output path")
+
+    def test_unique_paths_still_require_canonical_spelling(self):
+        for path in ("./results/new.md", "results//new.md", "results/./new.md", "results/new.md/"):
+            with self.subTest(path=path):
+                self.graph = deepcopy(self.arguments[0])
+                self.task("CW-A01")["outputs"][0]["proposed_path"] = path
+                self.reject("noncanonical proposed output path")
+
+    def test_distinct_output_paths_allow_shared_parents_and_character_prefixes(self):
+        for paths in (("results/a.md", "results/a.md-extra"),
+                      ("results/one/a.md", "results/two/a.md"),
+                      ("different-root/a.md", "results/a.md")):
+            with self.subTest(paths=paths):
+                self.graph = deepcopy(self.arguments[0])
+                for key, path in zip(("CW-A01", "CW-A02"), paths):
+                    self.task(key)["outputs"][0]["proposed_path"] = path
+                result = checker.validate(self.graph, *self.arguments[1:])
+                self.assertEqual(result["work_packages"], 104)
 
     def test_actual_epic_and_source_task_identifier_collision(self):
         self.graph["epics"][1]["id"] = "CW-E01"
@@ -224,7 +333,78 @@ class ProgrammeControls(unittest.TestCase):
     def test_paper_identity_swapped_without_changing_membership(self):
         a, b = self.graph["papers"][:2]
         a["source_index"], b["source_index"] = b["source_index"], a["source_index"]
+        self.reject("paper frozen source identity mismatch")
+
+    def test_paper_source_text_mismatch_still_reaches_source_boundary_check(self):
+        # Preserve the old textual-provenance refusal as a separate oracle.
+        self.graph["papers"][0]["source_main_question"] = "synthetic unrelated question"
         self.reject("source paper boundary altered")
+
+    def test_full_paper_source_row_swap_cannot_relabel_paper_identity(self):
+        a, b = self.graph["papers"][:2]
+        for field in ("source_index", "source_title", "source_main_question",
+                      "source_engineering_companion"):
+            a[field], b[field] = b[field], a[field]
+        # Each record still matches some real frozen row, but the paper IDs
+        # must not silently point to the other manuscript.
+        self.reject("paper frozen source identity mismatch")
+
+    def test_full_hypothesis_source_row_swap_cannot_relabel_hypothesis(self):
+        a, b = self.graph["hypotheses"][:2]
+        for field in ("source_number", "source_statement", "source_comparison", "source_refutation"):
+            a[field], b[field] = b[field], a[field]
+        self.reject("hypothesis frozen source identity mismatch")
+
+    def test_out_of_range_paper_source_row_is_typed_refusal(self):
+        for number in (0, 17):
+            with self.subTest(source_index=number):
+                self.graph = deepcopy(self.arguments[0])
+                paper = self.graph["papers"][0]
+                paper.update(id=f"CW-P{number:02d}", source_index=number)
+                self.reject("paper frozen source identity mismatch")
+
+    def test_out_of_range_hypothesis_source_row_is_typed_refusal(self):
+        for number in (0, 13):
+            with self.subTest(source_number=number):
+                self.graph = deepcopy(self.arguments[0])
+                hypothesis = self.graph["hypotheses"][0]
+                hypothesis.update(id=f"CW-HYP{number:02d}", source_number=number)
+                self.reject("hypothesis frozen source identity mismatch")
+
+    def test_paper_index_requires_exact_int_not_a_subclass(self):
+        # Mutant control: isinstance(value, int) would accept bool and int subclasses.
+        class IntSubclass(int):
+            pass
+        for value in (True, IntSubclass(1)):
+            with self.subTest(source_index_type=type(value).__name__):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["papers"][0]["source_index"] = value
+                self.reject("paper frozen source identity mismatch")
+
+    def test_hypothesis_number_requires_exact_int_not_a_subclass(self):
+        # Same guard must hold independently for the hypothesis source table.
+        class IntSubclass(int):
+            pass
+        for value in (True, IntSubclass(1)):
+            with self.subTest(source_number_type=type(value).__name__):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["hypotheses"][0]["source_number"] = value
+                self.reject("hypothesis frozen source identity mismatch")
+
+    def test_all_16_claim_scopes_refuse_nfkc_compatibility_aliases(self):
+        # Kill a future NFKC-before-equality mutant, not a semantic claim.
+        for paper_id, pinned in checker.PAPER_CLAIM_SCOPES.items():
+            with self.subTest(paper_id=paper_id):
+                index = next(i for i, ch in enumerate(pinned) if "A" <= ch <= "Z" or "a" <= ch <= "z")
+                alias = pinned[:index] + chr(ord(pinned[index]) + 0xFEE0) + pinned[index + 1:]
+                self.assertNotEqual(alias, pinned)
+                self.assertEqual(unicodedata.normalize("NFKC", alias), pinned)
+                graph = deepcopy(self.graph)
+                contract = next(c for c in graph["paper_release_contracts"] if c["paper_id"] == paper_id)
+                contract["claim_scope"] = alias
+                with self.assertRaisesRegex(checker.InvalidProgramme,
+                                            "paper release claim scope changed without reviewed revision: " + paper_id):
+                    checker.validate(graph, *self.arguments[1:])
 
     def test_hypothesis_refutation_erased(self):
         self.graph["hypotheses"][0]["source_refutation"] = "Always succeeds"
@@ -300,6 +480,25 @@ class ProgrammeControls(unittest.TestCase):
     def test_all_16_declared_scope_pins_match_frozen_graph(self):
         actual = {c["paper_id"]: c["claim_scope"] for c in self.graph["paper_release_contracts"]}
         self.assertEqual(actual, checker.PAPER_CLAIM_SCOPES)
+
+    def test_all_16_scope_pins_refuse_case_and_outer_whitespace_aliases(self):
+        # Exact source identity must not silently become strip/casefold equality.
+        for paper_id, pinned in checker.PAPER_CLAIM_SCOPES.items():
+            for mutation, changed in (
+                ("case", pinned.swapcase()),
+                ("outer_whitespace", " " + pinned + " "),
+            ):
+                with self.subTest(paper_id=paper_id, mutation=mutation):
+                    self.assertNotEqual(changed, pinned)
+                    graph = deepcopy(self.graph)
+                    contract = next(c for c in graph["paper_release_contracts"]
+                                    if c["paper_id"] == paper_id)
+                    contract["claim_scope"] = changed
+                    with self.assertRaisesRegex(
+                        checker.InvalidProgramme,
+                        "paper release claim scope changed without reviewed revision: " + paper_id,
+                    ):
+                        checker.validate(graph, *self.arguments[1:])
 
     def test_unknown_field_effect_alias_cannot_bypass_claim_class_guard(self):
         contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P02")
@@ -387,6 +586,25 @@ class ProgrammeControls(unittest.TestCase):
         instances = self.release_instances()
         next(r for r in instances if r["paper_id"] == "CW-P13")["claim_scope"] = "Protocol only."
         with self.assertRaisesRegex(checker.InvalidProgramme, "claim_scope does not match"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_review_release_refuses_unreviewed_added_field_gate(self):
+        instances = self.release_instances()
+        paper = next(r for r in instances if r["paper_id"] == "CW-P01")
+        release = next(n for n in paper["nodes"] if n["template_task_id"] == "CW-I08")
+        release["dependencies"].append({
+            "node_id": "CW-H08", "type": "depends_on", "consumes": ["CW-H08.O1"],
+            "reason": "synthetic unrelated field intervention gate",
+        })
+        with self.assertRaisesRegex(checker.InvalidProgramme, "release edge provenance differs"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_release_edge_rationale_cannot_change_without_source_revision(self):
+        instances = self.release_instances()
+        paper = next(r for r in instances if r["paper_id"] == "CW-P01")
+        freeze = next(n for n in paper["nodes"] if n["template_task_id"] == "CW-I04")
+        freeze["dependencies"][0]["reason"] = "synthetic unreviewed rationale"
+        with self.assertRaisesRegex(checker.InvalidProgramme, "release edge provenance differs"):
             checker.validate_release_instances(self.graph, instances)
 
     def test_review_release_remains_independent_of_field_intervention(self):

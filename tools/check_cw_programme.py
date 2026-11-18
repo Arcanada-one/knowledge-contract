@@ -12,12 +12,26 @@ from collections import Counter, deque
 import hashlib
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = Path("roadmap/coordinated-work/plan")
 ROLES = {"KC-Brain", "KC-SWE", "Agent-Brain", "Agent-SWE", "DEUS-Arcana", "Research-Arcana"}
+
+# Source snapshot independently checked against the original Git object:
+# the frozen roadmap_steps.json at this exact commit has blob dd7aa8f8.
+# A graph-only edit must not redirect scientific provenance to another
+# repository, revision, branch or source path without explicit source review.
+SOURCE_SNAPSHOT = {
+    "repository": "Arcanada-one/knowledge-contract",
+    "pull_request": 125,
+    "head": "ea698baa3d4997b56c725d806c600173aa6064b9",
+    "branch": "research/coordinated-work-20261118-b15c4982",
+    "step_path": "roadmap/coordinated-work/plan/roadmap_steps.json",
+    "source_status": "prepared",
+    "source_task_count": 72,
+}
 
 # Provisional authored claim classes. Changing one requires an explicit reviewed
 # release-boundary revision; a graph-only edit must not silently promote a
@@ -306,6 +320,18 @@ def validate_release_instances(graph, instances):
                        and edge.get("consumes") == gate["consumes"]]
             require(len(matches) == 1,
                     f"required direct release evidence edge missing or mistyped: {paper_id}/{gate['task_id']}")
+    # A release instance is a deterministic source-bound proposal, not a
+    # place to insert additional empirical blockers or rewrite rationales
+    # without a reviewed source change. Subset/reachability checks alone
+    # accept unrelated extra gates while all required gates remain present.
+    canonical = {node["id"]: node["dependencies"]
+                 for release in instantiate_release_instances(graph) for node in release["nodes"]}
+    for key, node in nodes.items():
+        actual = sorted(json.dumps(edge, sort_keys=True, ensure_ascii=False)
+                        for edge in node["dependencies"])
+        expected = sorted(json.dumps(edge, sort_keys=True, ensure_ascii=False)
+                          for edge in canonical[key])
+        require(actual == expected, f"release edge provenance differs from source template: {key}")
     return {**metrics, "validated_release_stage_nodes": len(nodes),
             "evidence_acceptance": "NOT_VERIFIED", "native_registration": "NOT_VERIFIED"}
 
@@ -317,7 +343,13 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     require(graph.get("current_task_statuses_included") is False, "native status must remain separate")
     require(graph.get("external_task_id") is None and graph.get("execution_assigned") is False,
             "programme claims a native binding")
-    require(graph["source"]["step_blob"] == git_blob(baseline_bytes), "source72 blob mismatch")
+    source_record = graph.get("source")
+    require(isinstance(source_record, dict), "source provenance record missing")
+    require(source_record.get("step_blob") == git_blob(baseline_bytes), "source72 blob mismatch")
+    require(set(source_record) == set(SOURCE_SNAPSHOT) | {"step_blob"}
+            and all(type(source_record[key]) is type(expected) and source_record[key] == expected
+                    for key, expected in SOURCE_SNAPSHOT.items()),
+            "source identity drift from frozen reference")
     source = {row["id"]: row for row in baseline}
     require(len(source) == len(baseline) == 72, "baseline must retain 72 unique source rows")
     expected_source = {f"{family}{number:02}" for family in "ABCDEFGHI" for number in range(1, 9)}
@@ -336,6 +368,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     require(set(assigned) == set(by_id) and set(assigned.values()) == {1}, "epic membership is incomplete or duplicated")
 
     outputs = {}
+    output_paths = {}
     imported = {}
     dependencies = {}
     for row in [graph] + epics + tasks:
@@ -356,11 +389,35 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(task["epic_id"] in epic_by_id and key in epic_by_id[task["epic_id"]]["task_ids"], "epic relation mismatch")
         require(task["evidence_required"] and task["negative_controls"], f"unfalsifiable output contract: {key}")
         require(task["outputs"], f"missing output: {key}")
-        for output in task["outputs"]:
+        for output_number, output in enumerate(task["outputs"], start=1):
+            # An artifact identity must be bound to its producing Work Item.
+            # Uniqueness and matching the consumer references are insufficient:
+            # coordinated relabeling could otherwise silently assign an output
+            # to a different (or nonexistent) owner.
+            require(output.get("id") == f"{key}.O{output_number}",
+                    f"output owner identity mismatch: {key}")
             require(output["id"] not in outputs, "duplicate output identity")
             require(output["created"] is False, "future output claimed as created")
-            path = Path(output["proposed_path"])
-            require(not path.is_absolute() and ".." not in path.parts, "unsafe proposed output path")
+            # Proposed destinations are repository-relative POSIX file paths,
+            # independent of the host running this structural validator.
+            raw_path = output["proposed_path"]
+            require(isinstance(raw_path, str) and raw_path and raw_path == raw_path.strip()
+                    and not any(c in raw_path for c in ("\\", ":"))
+                    and not any(ord(c) < 32 or ord(c) == 127 for c in raw_path),
+                    "unsafe proposed output path")
+            path = PurePosixPath(raw_path)
+            require(path.parts and not path.is_absolute() and ".." not in path.parts,
+                    "unsafe proposed output path")
+            require(path not in output_paths,
+                    f"duplicate proposed output path: {key}/{output['id']}")
+            require(raw_path == path.as_posix(), "noncanonical proposed output path")
+            # All outputs are files: neither may occupy a directory needed by
+            # the other, regardless of traversal order. This is lexical only;
+            # an eventual writer must separately check its actual filesystem.
+            require(not any(previous in path.parents or path in previous.parents
+                            for previous in output_paths),
+                    f"overlapping proposed output paths: {key}/{output['id']}")
+            output_paths[path] = output["id"]
             outputs[output["id"]] = key
         dependencies[key] = [d["task_id"] for d in task["dependencies"]]
         require(task.get("origin") in {"imported", "addition"}, f"unknown task origin: {key}")
@@ -433,6 +490,13 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(set(boundary["additional_steps"]) <= {f"N{n:02}" for n in range(1, 33)},
                 f"boundary additional steps invalid: {boundary['id']}")
     for paper in papers:
+        # Source-table position and stable paper identity are a single frozen
+        # mapping. Swapping both the source index and prose must not allow
+        # a different paper to borrow an internally consistent source row.
+        require(type(paper.get("source_index")) is int
+                and 1 <= paper["source_index"] <= len(original_papers)
+                and paper["id"] == f"CW-P{paper['source_index']:02d}",
+                f"paper frozen source identity mismatch: {paper['id']}")
         require(paper["mapped_task_ids"] and set(paper["mapped_task_ids"]) <= set(by_id), "paper task coverage incomplete")
         require([paper[k] for k in ("source_title", "source_main_question", "source_engineering_companion")]
                 == original_papers[paper["source_index"] - 1], "source paper boundary altered")
@@ -440,6 +504,10 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
         require(set(paper["release_template_task_ids"]) == {f"CW-I{n:02}" for n in range(3, 9)}, "paper release gates incomplete")
     require({p["source_index"] for p in papers} == set(range(1, 17)), "source16 paper coverage mismatch")
     for hypothesis in hypotheses:
+        require(type(hypothesis.get("source_number")) is int
+                and 1 <= hypothesis["source_number"] <= len(original_hypotheses)
+                and hypothesis["id"] == f"CW-HYP{hypothesis['source_number']:02d}",
+                f"hypothesis frozen source identity mismatch: {hypothesis['id']}")
         require(hypothesis["mapped_task_ids"] and set(hypothesis["mapped_task_ids"]) <= set(by_id), "hypothesis task coverage incomplete")
         require([hypothesis[k] for k in ("source_statement", "source_comparison", "source_refutation")]
                 == original_hypotheses[hypothesis["source_number"] - 1],
