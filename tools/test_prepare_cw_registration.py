@@ -286,6 +286,27 @@ class PaperReleasePreparationControls(unittest.TestCase):
         path = TOOL.parent.parent / "roadmap/coordinated-work/plan/execution-graph.json"
         self.graph, self.digest = M.load_json(path)
 
+    def test_full_programme_cannot_downgrade_by_removing_schema_and_papers(self):
+        # This is the real 104-task programme, not the small synthetic fixture.
+        for removed in (("schema", "papers"),
+                        ("schema", "papers", "paper_release_contracts",
+                         "hypotheses", "source", "paper_release_metrics")):
+            with self.subTest(removed=removed):
+                graph = copy.deepcopy(self.graph)
+                for key in removed:
+                    graph.pop(key, None)
+                with self.assertRaisesRegex(M.Invalid, "full-programme profile"):
+                    M.prepare(graph, self.digest, SOURCE)
+
+    def test_full_programme_cannot_downgrade_by_also_changing_public_id(self):
+        graph = copy.deepcopy(self.graph)
+        graph["programme_id"] = "KC-CW-RENAMED"
+        for key in ("schema", "papers", "paper_release_contracts",
+                    "hypotheses", "source", "paper_release_metrics"):
+            graph.pop(key, None)
+        with self.assertRaisesRegex(M.Invalid, "full-programme profile"):
+            M.prepare(graph, self.digest, SOURCE)
+
     def test_programme_prepares_release_templates_separately_from_native_records(self):
         plan = M.prepare(self.graph, self.digest, SOURCE)
         self.assertEqual((plan["node_count"], plan["task_count"], plan["dependency_count"]), (128, 104, 247))
