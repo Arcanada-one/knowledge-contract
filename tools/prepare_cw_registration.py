@@ -41,7 +41,9 @@ def requires_full_programme_profile(graph):
     downgrade the 104-package Coordinated Work proposal to the generic lane.
     """
     tasks = graph.get("tasks")
-    task_ids = {row.get("id") for row in tasks if isinstance(row, dict)} if isinstance(tasks, list) else set()
+    task_ids = ({row["id"] for row in tasks
+                 if isinstance(row, dict) and isinstance(row.get("id"), str)}
+                if isinstance(tasks, list) else set())
     return (graph.get("programme_id") == FULL_PROGRAMME_ID
             or graph.get("schema") == FULL_PROGRAMME_SCHEMA
             or any(key in graph for key in ("papers", "hypotheses", "paper_release_contracts",

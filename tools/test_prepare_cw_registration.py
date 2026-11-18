@@ -105,6 +105,14 @@ class RegistrationControls(unittest.TestCase):
         self.assertEqual(plan["dependency_requests"][0]["to_proposal_id"], "CW-A01")
         self.assertNotIn("ownerId", plan["create_requests"][0]["body_template"])
 
+    def test_generic_unhashable_task_id_is_a_typed_refusal(self):
+        for invalid_id in ([], {}):
+            with self.subTest(task_id=invalid_id):
+                graph = copy.deepcopy(self.graph)
+                graph["tasks"][0]["id"] = invalid_id
+                with self.assertRaisesRegex(M.Invalid, "task id: expected a nonblank trimmed string"):
+                    M.prepare(graph, DIGEST, SOURCE)
+
     def test_consistent_snapshot_has_sanitized_public_receipt(self):
         public = self.verify()
         self.assertEqual(public["registration_snapshot"], "OFFLINE_CONSISTENT")
@@ -309,6 +317,14 @@ class PaperReleasePreparationControls(unittest.TestCase):
             graph.pop(key, None)
         with self.assertRaisesRegex(M.Invalid, "full-programme profile"):
             M.prepare(graph, self.digest, SOURCE)
+
+    def test_full_programme_unhashable_task_id_is_a_typed_refusal(self):
+        for invalid_id in ([], {}):
+            with self.subTest(task_id=invalid_id):
+                graph = copy.deepcopy(self.graph)
+                graph["tasks"][0]["id"] = invalid_id
+                with self.assertRaisesRegex(M.Invalid, "task id: expected a nonblank trimmed string"):
+                    M.prepare(graph, self.digest, SOURCE)
 
     def test_programme_prepares_release_templates_separately_from_native_records(self):
         plan = M.prepare(self.graph, self.digest, SOURCE)
