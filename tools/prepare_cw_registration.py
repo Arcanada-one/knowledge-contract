@@ -29,6 +29,34 @@ READBACK_SCHEMA = "kc-cw-muneral-readback/1"
 PUBLIC_SCHEMA = "kc-cw-registration-public-receipt/1"
 LIMITATION = "Offline consistency only; no Muneral request or source authentication was performed."
 
+FULL_PROGRAMME_ID = "KC-CW-20261118"
+FULL_PROGRAMME_SCHEMA = "CoordinatedWorkExecutionProposal/v1"
+FULL_PROGRAMME_TASK_IDS = {f"CW-N{number:02d}" for number in range(1, 33)}
+
+
+def requires_full_programme_profile(graph):
+    """Recognize the known scientific programme independently of removable mode keys.
+
+    Generic fixtures remain supported, but deleting schema/papers must not
+    downgrade the 104-package Coordinated Work proposal to the generic lane.
+    """
+    tasks = graph.get("tasks")
+    task_ids = {row.get("id") for row in tasks if isinstance(row, dict)} if isinstance(tasks, list) else set()
+    return (graph.get("programme_id") == FULL_PROGRAMME_ID
+            or graph.get("schema") == FULL_PROGRAMME_SCHEMA
+            or any(key in graph for key in ("papers", "hypotheses", "paper_release_contracts",
+                                            "paper_release_metrics"))
+            or bool(task_ids & FULL_PROGRAMME_TASK_IDS))
+
+
+def require_full_programme_profile(graph):
+    require(graph.get("programme_id") == FULL_PROGRAMME_ID
+            and graph.get("schema") == FULL_PROGRAMME_SCHEMA
+            and isinstance(graph.get("papers"), list) and len(graph["papers"]) == 16
+            and isinstance(graph.get("hypotheses"), list) and len(graph["hypotheses"]) == 12
+            and isinstance(graph.get("source"), dict),
+            "full-programme profile incomplete or downgraded")
+
 
 class Invalid(ValueError):
     pass
@@ -116,6 +144,8 @@ def criteria(value, label):
 def normalize_graph(graph):
     programme_id = nonblank(graph.get("programme_id"), "programme_id")
     require(bool(re.fullmatch(r"KC-CW-[A-Za-z0-9][A-Za-z0-9-]*", programme_id)), "invalid public programme identifier")
+    if requires_full_programme_profile(graph):
+        require_full_programme_profile(graph)
     epics, tasks = graph.get("epics"), graph.get("tasks")
     require(isinstance(epics, list) and bool(epics), "epics: nonempty array required")
     require(isinstance(tasks, list) and bool(tasks), "tasks: nonempty array required")
@@ -186,7 +216,7 @@ def normalize_graph(graph):
             edges.append({"from_proposal_id": key, "to_proposal_id": target,
                           "type": "depends_on", "consumes": consumes, "reason": dependency["reason"]})
     task_order, waves = topological(task_ids, parents)
-    if graph.get("schema") == "CoordinatedWorkExecutionProposal/v1" or "papers" in graph:
+    if requires_full_programme_profile(graph):
         try:
             # Share the full-programme output gate before any scope text is
             # generated; the generic imported/synthetic mode remains supported.
@@ -299,7 +329,7 @@ def prepare(graph, digest, source_commit=None, bindings=None, release_instances=
         require(bool(re.fullmatch(r"[0-9a-f]{40}", source_commit)), "source_commit must be a full lowercase Git SHA")
     programme_id, nodes, order, edges, waves = normalize_graph(graph)
     generated_releases = []
-    if graph.get("schema") == "CoordinatedWorkExecutionProposal/v1" or "papers" in graph:
+    if requires_full_programme_profile(graph):
         try:
             generated_releases = (programme_checker.instantiate_release_instances(graph)
                                   if release_instances is None else release_instances)

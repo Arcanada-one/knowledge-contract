@@ -34,6 +34,16 @@ SOURCE_SNAPSHOT = {
     "source_task_count": 72,
 }
 
+# Exact, authored table content extracted from the historical source at
+# ea698baa3d4997b56c725d806c600173aa6064b9. These are SHA-256 of the
+# source_table() parsed 16×3 / 12×3 row arrays serialized as canonical UTF-8
+# JSON (ensure_ascii=False, separators=(",", ":")). The surrounding prose
+# remains editable. This is source provenance, NOT scientific validation.
+FROZEN_SOURCE_TABLES_SHA256 = {
+    "papers": "6fcd3b709b1598341e7c472b6240fc2b549b4a02b9c9da3ac428b837623e4e11",
+    "hypotheses": "78c8606f0565febe7d2ba64b7761d48f37189d4f36243258cb9568a4c4b64d29",
+}
+
 # Provisional authored claim classes. Changing one requires an explicit reviewed
 # release-boundary revision; a graph-only edit must not silently promote a
 # domain-model or literature-review paper into an empirical field-effect claim.
@@ -126,6 +136,11 @@ def source_table(text, heading):
     rows = [[cell.strip() for cell in line.strip().strip("|").split("|")]
             for line in section.splitlines() if line.startswith("| ")]
     return rows[2:]
+
+
+def source_table_sha256(rows):
+    payload = json.dumps(rows, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def topology(nodes, dependencies):
@@ -496,6 +511,10 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     original_papers = source_table(source_readme, "## Potential scientific series")
     original_hypotheses = source_table(source_experiments, "## Twelve testable hypotheses")
     require(len(original_papers) == 16 and len(original_hypotheses) == 12, "source boundary tables changed")
+    require(source_table_sha256(original_papers) == FROZEN_SOURCE_TABLES_SHA256["papers"],
+            "frozen source paper table drift")
+    require(source_table_sha256(original_hypotheses) == FROZEN_SOURCE_TABLES_SHA256["hypotheses"],
+            "frozen source hypothesis table drift")
     for boundary in papers + hypotheses:
         mapped = boundary["mapped_task_ids"]
         declared = ["CW-" + key for key in boundary["baseline_steps"] + boundary["additional_steps"]]

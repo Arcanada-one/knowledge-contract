@@ -9,6 +9,19 @@ import unittest
 from tools import check_cw_programme as checker
 
 
+def rewrite_first_source_cell(text, heading, before, after):
+    """Change the source-table cell, not arbitrary prose elsewhere in the file."""
+    prefix, section = text.split(heading, 1)
+    table, *remainder = section.split("\n## ", 1)
+    lines = table.splitlines(keepends=True)
+    positions = [index for index, line in enumerate(lines) if line.startswith("| ")]
+    assert len(positions) >= 3
+    row = positions[2]
+    assert before in lines[row]
+    lines[row] = lines[row].replace(before, after, 1)
+    return prefix + heading + "".join(lines) + ("\n## " + remainder[0] if remainder else "")
+
+
 class ProgrammeControls(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -43,6 +56,35 @@ class ProgrammeControls(unittest.TestCase):
         self.assertEqual((result["work_packages"], result["source_steps_preserved"], result["paper_boundaries_covered"],
                           result["hypotheses_covered"]), (104, 72, 16, 12))
         self.assertEqual(result["native_registration"], "NOT_VERIFIED")
+
+    def test_frozen_paper_table_refuses_coordinated_prose_rewrite(self):
+        paper = self.graph["papers"][0]
+        changed = paper["source_title"] + " [synthetic source mutation]"
+        readme = rewrite_first_source_cell(self.arguments[3],
+                                           "## Potential scientific series",
+                                           paper["source_title"], changed)
+        paper["source_title"] = changed
+        self.assertEqual(checker.source_table(readme, "## Potential scientific series")[0][0], changed)
+        with self.assertRaisesRegex(checker.InvalidProgramme, "frozen source paper table drift"):
+            checker.validate(self.graph, self.arguments[1], self.arguments[2], readme, self.arguments[4])
+
+    def test_frozen_hypothesis_table_refuses_coordinated_statement_rewrite(self):
+        hypothesis = self.graph["hypotheses"][0]
+        changed = hypothesis["source_statement"] + " [synthetic source mutation]"
+        experiments = rewrite_first_source_cell(self.arguments[4],
+                                                "## Twelve testable hypotheses",
+                                                hypothesis["source_statement"], changed)
+        hypothesis["source_statement"] = changed
+        self.assertEqual(checker.source_table(experiments, "## Twelve testable hypotheses")[0][0], changed)
+        with self.assertRaisesRegex(checker.InvalidProgramme, "frozen source hypothesis table drift"):
+            checker.validate(self.graph, self.arguments[1], self.arguments[2], self.arguments[3], experiments)
+
+    def test_non_table_source_prose_remains_editable(self):
+        readme = self.arguments[3] + "\n<!-- synthetic non-table editorial note -->\n"
+        experiments = self.arguments[4] + "\n<!-- synthetic non-table editorial note -->\n"
+        result = checker.validate(self.graph, self.arguments[1], self.arguments[2], readme, experiments)
+        self.assertEqual(result["paper_boundaries_covered"], 16)
+        self.assertEqual(result["hypotheses_covered"], 12)
 
     def test_frozen_source_reference_refuses_coordinated_relabeling(self):
         # A coherent graph and correct step blob do not authenticate a rewritten
@@ -116,6 +158,12 @@ class ProgrammeControls(unittest.TestCase):
     def test_output_identity_requires_contiguous_task_local_numbering(self):
         self.task("CW-A01")["outputs"][0]["id"] = "CW-A01.O0"
         self.reject("output owner identity mismatch: CW-A01")
+
+    def test_direct_full_programme_checker_refuses_non_object_output_record(self):
+        # A malformed output must fail at the real checker boundary, not just
+        # at the registrar's earlier generic normalization gate.
+        self.task("CW-A01")["outputs"][0] = 7
+        self.reject("invalid output record: CW-A01")
 
     def test_two_output_owners_cannot_share_the_same_proposed_path(self):
         first = self.task("CW-A01")["outputs"][0]["proposed_path"]
