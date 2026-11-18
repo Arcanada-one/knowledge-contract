@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "arcanada-roadmap-localizations",
   "source": {
-    "revision": "161a01afb1b756adf059ea2e1cbdd0dca29d83a2",
+    "revision": "c136966bcdba895c340b0bc41daa7a3f71cdbff4",
     "files": {
-      "ROADMAP.md": "3f02cb04ede1ac1538edef62e70d2f8fffcbe8ed9a61408c502b951e9b1ea760",
-      "roadmap/TASKS.md": "3a78d2584825be027917306c3ae6b7062f0ccf7be4accb884ef9e3483cb1a6a7",
+      "ROADMAP.md": "2a9cc334123f51aaec9fa8684221240f6b0b4716f83b6c284671c1a1f3b77e66",
+      "roadmap/TASKS.md": "a937068aa9fab164cd5471ff9a0613b379bd3e823ac5d286afc23df5cc8242db",
       "roadmap/SITE_DELIVERY.md": "8a3b8df420a512b7c6e00d31b9c587bbb3cb8d38540d4851e6ae856052a7a246",
       "roadmap/dependencies.json": "8e6784ef9444d3ecf7c68b8192c775127cecb4d221204069b5ad4bb2fc4aa8b9"
     }
