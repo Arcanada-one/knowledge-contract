@@ -53,6 +53,27 @@ class ProgrammeControls(unittest.TestCase):
         self.task("CW-H03")["source_dependencies"] = []
         self.reject("source provenance rewritten")
 
+    def test_deleted_removed_edge_history_is_refused(self):
+        self.task("CW-A03")["dependency_revisions"]["removed"] = []
+        self.reject("revision removed differs from frozen-to-proposed")
+
+    def test_repeated_added_edge_history_is_refused(self):
+        entries = self.task("CW-A03")["dependency_revisions"]["added"]
+        entries.append(deepcopy(entries[0]))
+        self.reject("duplicate revision added edge")
+
+    def test_blank_revision_edge_reason_is_refused(self):
+        self.task("CW-A03")["dependency_revisions"]["removed"][0]["reason"] = "   "
+        self.reject("revision removed edge lacks identity or reason")
+
+    def test_forged_removed_edge_identity_is_refused(self):
+        self.task("CW-A03")["dependency_revisions"]["removed"][0]["task_id"] = "CW-A01"
+        self.reject("revision removed differs from frozen-to-proposed")
+
+    def test_missing_general_dependency_revision_reason_is_refused(self):
+        self.task("CW-A03")["dependency_revision_reason"] = ""
+        self.reject("blank dependency revision rationale")
+
     def test_incomplete_epic_membership(self):
         self.graph["epics"][0]["task_ids"].pop()
         self.reject("epic membership")
