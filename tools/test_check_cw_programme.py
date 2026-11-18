@@ -289,6 +289,26 @@ class ProgrammeControls(unittest.TestCase):
                 hypothesis.update(id=f"CW-HYP{number:02d}", source_number=number)
                 self.reject("hypothesis frozen source identity mismatch")
 
+    def test_paper_index_requires_exact_int_not_a_subclass(self):
+        # Mutant control: isinstance(value, int) would accept bool and int subclasses.
+        class IntSubclass(int):
+            pass
+        for value in (True, IntSubclass(1)):
+            with self.subTest(source_index_type=type(value).__name__):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["papers"][0]["source_index"] = value
+                self.reject("paper frozen source identity mismatch")
+
+    def test_hypothesis_number_requires_exact_int_not_a_subclass(self):
+        # Same guard must hold independently for the hypothesis source table.
+        class IntSubclass(int):
+            pass
+        for value in (True, IntSubclass(1)):
+            with self.subTest(source_number_type=type(value).__name__):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["hypotheses"][0]["source_number"] = value
+                self.reject("hypothesis frozen source identity mismatch")
+
     def test_all_16_claim_scopes_refuse_nfkc_compatibility_aliases(self):
         # Kill a future NFKC-before-equality mutant, not a semantic claim.
         for paper_id, pinned in checker.PAPER_CLAIM_SCOPES.items():
