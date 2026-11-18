@@ -1,3 +1,7 @@
+---
+sources: none
+---
+
 # Coordinated Work review response
 
 This author-side correction responds to the scoped review of source `b99e779dcde890b3067548b407dd11b3efdc0935`. The corrected source still requires a review of its own revision. No native registration, independent translation acceptance, website delivery or empirical organizational benefit is claimed here.
