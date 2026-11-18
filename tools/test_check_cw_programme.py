@@ -43,6 +43,32 @@ class ProgrammeControls(unittest.TestCase):
                           result["hypotheses_covered"]), (104, 72, 16, 12))
         self.assertEqual(result["native_registration"], "NOT_VERIFIED")
 
+    def test_coordinated_output_relabel_is_refused_even_when_all_consumers_follow(self):
+        owner = "CW-A01"
+        task = self.task(owner)
+        original = task["outputs"][0]["id"]
+        forged = "CW-OTHER-PAPER.O999"
+        task["outputs"][0]["id"] = forged
+        rewritten = 0
+        for consumer in self.graph["tasks"]:
+            for edge in consumer["dependencies"]:
+                for index, consumed in enumerate(edge["consumes"]):
+                    if consumed == original:
+                        edge["consumes"][index] = forged
+                        rewritten += 1
+        for paper in self.graph["paper_release_contracts"]:
+            for gate in paper["required_gates"]:
+                for index, consumed in enumerate(gate["consumes"]):
+                    if consumed == original:
+                        gate["consumes"][index] = forged
+                        rewritten += 1
+        self.assertGreater(rewritten, 0, "must mutate an actual consumer")
+        self.reject("output owner identity mismatch: CW-A01")
+
+    def test_output_identity_requires_contiguous_task_local_numbering(self):
+        self.task("CW-A01")["outputs"][0]["id"] = "CW-A01.O0"
+        self.reject("output owner identity mismatch: CW-A01")
+
     def test_actual_epic_and_source_task_identifier_collision(self):
         self.graph["epics"][1]["id"] = "CW-E01"
         self.reject("identifier collision")
