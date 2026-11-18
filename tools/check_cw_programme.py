@@ -19,6 +19,20 @@ ROOT = Path(__file__).resolve().parents[1]
 PLAN = Path("roadmap/coordinated-work/plan")
 ROLES = {"KC-Brain", "KC-SWE", "Agent-Brain", "Agent-SWE", "DEUS-Arcana", "Research-Arcana"}
 
+# Source snapshot independently checked against the original Git object:
+# the frozen roadmap_steps.json at this exact commit has blob dd7aa8f8.
+# A graph-only edit must not redirect scientific provenance to another
+# repository, revision, branch or source path without explicit source review.
+SOURCE_SNAPSHOT = {
+    "repository": "Arcanada-one/knowledge-contract",
+    "pull_request": 125,
+    "head": "ea698baa3d4997b56c725d806c600173aa6064b9",
+    "branch": "research/coordinated-work-20261118-b15c4982",
+    "step_path": "roadmap/coordinated-work/plan/roadmap_steps.json",
+    "source_status": "prepared",
+    "source_task_count": 72,
+}
+
 # Provisional authored claim classes. Changing one requires an explicit reviewed
 # release-boundary revision; a graph-only edit must not silently promote a
 # domain-model or literature-review paper into an empirical field-effect claim.
@@ -329,7 +343,13 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     require(graph.get("current_task_statuses_included") is False, "native status must remain separate")
     require(graph.get("external_task_id") is None and graph.get("execution_assigned") is False,
             "programme claims a native binding")
-    require(graph["source"]["step_blob"] == git_blob(baseline_bytes), "source72 blob mismatch")
+    source_record = graph.get("source")
+    require(isinstance(source_record, dict), "source provenance record missing")
+    require(source_record.get("step_blob") == git_blob(baseline_bytes), "source72 blob mismatch")
+    require(set(source_record) == set(SOURCE_SNAPSHOT) | {"step_blob"}
+            and all(type(source_record[key]) is type(expected) and source_record[key] == expected
+                    for key, expected in SOURCE_SNAPSHOT.items()),
+            "source identity drift from frozen reference")
     source = {row["id"]: row for row in baseline}
     require(len(source) == len(baseline) == 72, "baseline must retain 72 unique source rows")
     expected_source = {f"{family}{number:02}" for family in "ABCDEFGHI" for number in range(1, 9)}

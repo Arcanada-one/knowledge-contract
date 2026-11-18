@@ -43,6 +43,34 @@ class ProgrammeControls(unittest.TestCase):
                           result["hypotheses_covered"]), (104, 72, 16, 12))
         self.assertEqual(result["native_registration"], "NOT_VERIFIED")
 
+    def test_frozen_source_reference_refuses_coordinated_relabeling(self):
+        # A coherent graph and correct step blob do not authenticate a rewritten
+        # repository, commit, branch or path used in reader/source links.
+        for field, forged in (("head", "0" * 40),
+                              ("repository", "Other/relabelled-research"),
+                              ("branch", "forged/other-source"),
+                              ("step_path", "roadmap/coordinated-work/plan/other.json"),
+                              ("source_status", "published")):
+            with self.subTest(source_field=field):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["source"][field] = forged
+                self.reject("source identity drift from frozen reference")
+
+    def test_source_pin_rejects_boolean_aliases_and_unknown_fields(self):
+        # Python True == 1 must not masquerade as the original PR or task count.
+        for field, forged in (("pull_request", True), ("source_task_count", True),
+                              ("pull_request", 126), ("source_task_count", 73)):
+            with self.subTest(source_field=field, forged=forged):
+                self.graph = deepcopy(self.arguments[0])
+                self.graph["source"][field] = forged
+                self.reject("source identity drift from frozen reference")
+        self.graph = deepcopy(self.arguments[0])
+        self.graph["source"]["native_registration"] = "complete"
+        self.reject("source identity drift from frozen reference")
+        self.graph = deepcopy(self.arguments[0])
+        del self.graph["source"]["branch"]
+        self.reject("source identity drift from frozen reference")
+
     def test_coordinated_output_relabel_is_refused_even_when_all_consumers_follow(self):
         owner = "CW-A01"
         task = self.task(owner)
