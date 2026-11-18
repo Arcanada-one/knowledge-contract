@@ -1,0 +1,2526 @@
+{
+  "schema": "kc-cw-pending-reviews/1",
+  "source": {
+    "artifact_id": "kc:cw-execution-graph",
+    "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+    "hash_domain": "sha256/raw-utf8-json-v1",
+    "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+  },
+  "source_readback": {
+    "method": "local_git_cat_file",
+    "commit_type_checked": true,
+    "repository_identity_authenticated": false
+  },
+  "method": {
+    "id": "kc:cw-offline-review-bindings",
+    "version": "1",
+    "implementation_sha256": "d59bf51de9c60f833a23495153ebe61affd201297c989da29de5adf1a40faaba"
+  },
+  "papers": [
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P01",
+        "revision": "content-c52d51fb8a17d2706a96c699a21faaa1784dab287981ee43103484b51d977ede",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "c52d51fb8a17d2706a96c699a21faaa1784dab287981ee43103484b51d977ede"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P01",
+          "class": "review",
+          "statement": "Reviewed research map with appraised primary sources and explicit unresolved gaps.",
+          "language": "en",
+          "selector": "/paper_release_contracts/0"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-A01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-A08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N09.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N10.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-A01.O1",
+          "output:CW-A02.O1",
+          "output:CW-A03.O1",
+          "output:CW-A04.O1",
+          "output:CW-A05.O1",
+          "output:CW-A06.O1",
+          "output:CW-A07.O1",
+          "output:CW-A08.O1",
+          "output:CW-N09.O1",
+          "output:CW-N10.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P02",
+        "revision": "content-7c07a3549f982a23d84ef01645b9b86f4538a1966d309787a352d3c9d95d3ba3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "7c07a3549f982a23d84ef01645b9b86f4538a1966d309787a352d3c9d95d3ba3"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P02",
+          "class": "domain_model",
+          "statement": "Representation of organizational needs and obligations; no measured organizational benefit is claimed.",
+          "language": "en",
+          "selector": "/paper_release_contracts/1"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-B01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-B02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-B06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N11.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-B01.O1",
+          "output:CW-B02.O1",
+          "output:CW-B06.O1",
+          "output:CW-C03.O1",
+          "output:CW-N11.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P03",
+        "revision": "content-d3f393540f87929c2b89beda67b6f5d460e1f420738e5ce650011e379a4c93d6",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "d3f393540f87929c2b89beda67b6f5d460e1f420738e5ce650011e379a4c93d6"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P03",
+          "class": "domain_model",
+          "statement": "Typed work dependencies and concurrent resource semantics under stated assumptions.",
+          "language": "en",
+          "selector": "/paper_release_contracts/2"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-C01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N23.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-C01.O1",
+          "output:CW-C02.O1",
+          "output:CW-C04.O1",
+          "output:CW-G07.O1",
+          "output:CW-N23.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P04",
+        "revision": "content-23bd354ddcdedfb129739ead0a8f065fbd60907578d339b076e5e92fb0336ed2",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "23bd354ddcdedfb129739ead0a8f065fbd60907578d339b076e5e92fb0336ed2"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P04",
+          "class": "resource_semantics",
+          "statement": "Resource types, units and conditional admissibility; no unrestricted universal resource law.",
+          "language": "en",
+          "selector": "/paper_release_contracts/3"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-B05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N12.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N14.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-B05.O1",
+          "output:CW-C04.O1",
+          "output:CW-D01.O1",
+          "output:CW-D04.O1",
+          "output:CW-D06.O1",
+          "output:CW-N12.O1",
+          "output:CW-N14.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P05",
+        "revision": "content-d2e91894373f462b30c19a2d295324d78a1439ab2bf217448da3435b920ff8e9",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "d2e91894373f462b30c19a2d295324d78a1439ab2bf217448da3435b920ff8e9"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P05",
+          "class": "capability_model",
+          "statement": "Task-specific capability, competency evidence and team conditions; occupation titles do not establish individual ability.",
+          "language": "en",
+          "selector": "/paper_release_contracts/4"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-B03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-B04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N21.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-B03.O1",
+          "output:CW-B04.O1",
+          "output:CW-E01.O1",
+          "output:CW-E02.O1",
+          "output:CW-E07.O1",
+          "output:CW-N21.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P06",
+        "revision": "content-131eb38ccb2db857198cc163e86d1fe309ca23e5f8892cae515d1901fc9c4972",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "131eb38ccb2db857198cc163e86d1fe309ca23e5f8892cae515d1901fc9c4972"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P06",
+          "class": "simulation_comparison",
+          "statement": "System performance and local-metric counterexamples in declared validated comparisons, not field effects.",
+          "language": "en",
+          "selector": "/paper_release_contracts/5"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-B06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N11.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N17.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N18.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N20.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-B06.O1",
+          "output:CW-D07.O1",
+          "output:CW-E06.O1",
+          "output:CW-H01.O1",
+          "output:CW-H05.O1",
+          "output:CW-H06.O1",
+          "output:CW-N11.O1",
+          "output:CW-N17.O1",
+          "output:CW-N18.O1",
+          "output:CW-N20.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P07",
+        "revision": "content-4d2f74fcf71da85f0298940dbdc1346d1a539e064d2ad546d4389f579276b8b2",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "4d2f74fcf71da85f0298940dbdc1346d1a539e064d2ad546d4389f579276b8b2"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P07",
+          "class": "simulation_comparison",
+          "statement": "Flow and release-policy comparisons within the validated manufacturing model and declared operating region.",
+          "language": "en",
+          "selector": "/paper_release_contracts/6"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-D01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N17.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N18.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N20.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-D01.O1",
+          "output:CW-D02.O1",
+          "output:CW-D03.O1",
+          "output:CW-D04.O1",
+          "output:CW-D05.O1",
+          "output:CW-D06.O1",
+          "output:CW-D07.O1",
+          "output:CW-D08.O1",
+          "output:CW-H01.O1",
+          "output:CW-H02.O1",
+          "output:CW-H05.O1",
+          "output:CW-H06.O1",
+          "output:CW-N17.O1",
+          "output:CW-N18.O1",
+          "output:CW-N20.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P08",
+        "revision": "content-c7c3b47c643bdf2c7cb802b43b9f57afdec203660fca0cd402f8817e6863ad83",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "c7c3b47c643bdf2c7cb802b43b9f57afdec203660fca0cd402f8817e6863ad83"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P08",
+          "class": "simulation_comparison",
+          "statement": "Qualification-aware staffing and scheduling comparisons in the declared service model.",
+          "language": "en",
+          "selector": "/paper_release_contracts/7"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-E01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N17.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N18.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N20.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N21.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-E01.O1",
+          "output:CW-E02.O1",
+          "output:CW-E03.O1",
+          "output:CW-E08.O1",
+          "output:CW-H01.O1",
+          "output:CW-H03.O1",
+          "output:CW-H05.O1",
+          "output:CW-H06.O1",
+          "output:CW-N17.O1",
+          "output:CW-N18.O1",
+          "output:CW-N20.O1",
+          "output:CW-N21.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P09",
+        "revision": "content-6d7a8390855a905be9ce2518844438a8e9be71f2256a3241bc4bfedadf56bdac",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "6d7a8390855a905be9ce2518844438a8e9be71f2256a3241bc4bfedadf56bdac"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P09",
+          "class": "organizational_effect",
+          "statement": "Measured organizational effects of hiring, training or automation under the evaluated bounded intervention.",
+          "language": "en",
+          "selector": "/paper_release_contracts/8"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-E04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N21.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N29.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-E04.O1",
+          "output:CW-E05.O1",
+          "output:CW-E06.O1",
+          "output:CW-F04.O1",
+          "output:CW-F06.O1",
+          "output:CW-H08.O1",
+          "output:CW-N21.O1",
+          "output:CW-N29.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P10",
+        "revision": "content-328b567671dc3a5d196c4f16b87cf687575fb52d7a8d89e10ccfc65f395ea068",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "328b567671dc3a5d196c4f16b87cf687575fb52d7a8d89e10ccfc65f395ea068"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P10",
+          "class": "forecast_backtest",
+          "statement": "Time-respecting forecast and uncertainty backtests; prediction quality is separate from intervention effects.",
+          "language": "en",
+          "selector": "/paper_release_contracts/9"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-F01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N16.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N20.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-F01.O1",
+          "output:CW-F02.O1",
+          "output:CW-F03.O1",
+          "output:CW-F04.O1",
+          "output:CW-F05.O1",
+          "output:CW-F06.O1",
+          "output:CW-F07.O1",
+          "output:CW-F08.O1",
+          "output:CW-N16.O1",
+          "output:CW-N20.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P11",
+        "revision": "content-11f6a818bb942051ebc16d756b24ef4b0a30e8ecfce88c7ba32eaddbf3873f37",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "11f6a818bb942051ebc16d756b24ef4b0a30e8ecfce88c7ba32eaddbf3873f37"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P11",
+          "class": "decision_profile",
+          "statement": "Organizational knowledge prerequisites and bounded context; effectiveness requires separately scoped comparative evidence.",
+          "language": "en",
+          "selector": "/paper_release_contracts/10"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-C05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-C08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G01.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N10.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N22.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N25.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-C05.O1",
+          "output:CW-C06.O1",
+          "output:CW-C08.O1",
+          "output:CW-G01.O1",
+          "output:CW-G02.O1",
+          "output:CW-G03.O1",
+          "output:CW-G05.O1",
+          "output:CW-N10.O1",
+          "output:CW-N22.O1",
+          "output:CW-N25.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P12",
+        "revision": "content-e72a0e788ad0ecbb150bd75f43fea07f9327390a41d65cceef316578480dcd6c",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "e72a0e788ad0ecbb150bd75f43fea07f9327390a41d65cceef316578480dcd6c"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P12",
+          "class": "conditional_admissibility",
+          "statement": "Conditional admissibility and verifiable decision records under explicit assumptions, not unconditional future safety.",
+          "language": "en",
+          "selector": "/paper_release_contracts/11"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-F05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N12.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N22.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N23.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-F05.O1",
+          "output:CW-G03.O1",
+          "output:CW-G04.O1",
+          "output:CW-G06.O1",
+          "output:CW-G07.O1",
+          "output:CW-N12.O1",
+          "output:CW-N22.O1",
+          "output:CW-N23.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P13",
+        "revision": "content-0c9fda2e15e67fc845c8a7ef5a35ca1585bbefba89c709a463c20d660443b691",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "0c9fda2e15e67fc845c8a7ef5a35ca1585bbefba89c709a463c20d660443b691"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P13",
+          "class": "organizational_effect",
+          "statement": "Causal effects under an identified bounded field design with observed interventions and stated interference limits.",
+          "language": "en",
+          "selector": "/paper_release_contracts/12"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-E06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N19.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N20.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N29.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-E06.O1",
+          "output:CW-F06.O1",
+          "output:CW-H07.O1",
+          "output:CW-H08.O1",
+          "output:CW-N19.O1",
+          "output:CW-N20.O1",
+          "output:CW-N29.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P14",
+        "revision": "content-5351d12f60a71f036ae0765731d119f93d6398d1347a96ac767af8998fca3e2a",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "5351d12f60a71f036ae0765731d119f93d6398d1347a96ac767af8998fca3e2a"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P14",
+          "class": "conditional_control",
+          "statement": "Conditional stability results and finite operational criteria within declared models; no universal field guarantee.",
+          "language": "en",
+          "selector": "/paper_release_contracts/13"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-D03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-D05.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F07.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N13.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N18.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-D03.O1",
+          "output:CW-D05.O1",
+          "output:CW-F04.O1",
+          "output:CW-F07.O1",
+          "output:CW-H02.O1",
+          "output:CW-H03.O1",
+          "output:CW-H04.O1",
+          "output:CW-N13.O1",
+          "output:CW-N18.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P15",
+        "revision": "content-feb8993982cab2a782e5a0bc3c96933b03cfb2016ba4aa72c4b76080d18f42a1",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "feb8993982cab2a782e5a0bc3c96933b03cfb2016ba4aa72c4b76080d18f42a1"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P15",
+          "class": "organizational_transfer",
+          "statement": "Held-out cross-organization transfer of observed intervention outcomes with independent reproduction and explicit transport limits.",
+          "language": "en",
+          "selector": "/paper_release_contracts/14"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-B08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-E06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-F06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H03.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H04.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-H08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N28.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N29.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-B08.O1",
+          "output:CW-E06.O1",
+          "output:CW-F06.O1",
+          "output:CW-H02.O1",
+          "output:CW-H03.O1",
+          "output:CW-H04.O1",
+          "output:CW-H06.O1",
+          "output:CW-H08.O1",
+          "output:CW-N28.O1",
+          "output:CW-N29.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    },
+    {
+      "schema": "kc-cw-offline-review-report/1",
+      "scope": "offline_packet_preparation_and_binding_only",
+      "subject": {
+        "artifact_id": "kc:cw-review-subject:CW-P16",
+        "revision": "content-df5be6d08fb2a20675f023b5e5c4d05a71839824ee8d9eb42b2dcedda1b59864",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "df5be6d08fb2a20675f023b5e5c4d05a71839824ee8d9eb42b2dcedda1b59864"
+      },
+      "criterion": {
+        "artifact_id": "kc:cw-review-binding-criterion",
+        "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+        "hash_domain": "sha256/raw-utf8-json-v1",
+        "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+      },
+      "purpose": "paper_result",
+      "descriptor": {
+        "schema": "kc-cw-review-subject/1",
+        "purpose": "paper_result",
+        "source": {
+          "repository": "Arcanada-one/knowledge-contract",
+          "path": "roadmap/coordinated-work/plan/execution-graph.json",
+          "artifact": {
+            "artifact_id": "kc:cw-execution-graph",
+            "revision": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+            "hash_domain": "sha256/raw-utf8-json-v1",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+          "revision_provenance": "caller_selected_expected_reference_not_authenticated"
+        },
+        "criterion": {
+          "artifact_id": "kc:cw-review-binding-criterion",
+          "revision": "content-aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3",
+          "hash_domain": "sha256/raw-utf8-json-v1",
+          "sha256": "aee14be76b537e3d9e4486d8af87433b46ed5958d123e6de6069be357cdd5ec3"
+        },
+        "claim": {
+          "paper_id": "CW-P16",
+          "class": "evidence_lifecycle",
+          "statement": "Versioned knowledge revision, contradiction handling and evidence invalidation; no automatic runtime authority.",
+          "language": "en",
+          "selector": "/paper_release_contracts/15"
+        },
+        "documents": [],
+        "applicability": null,
+        "evidence": [
+          {
+            "output_id": "CW-C06.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-G08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-I02.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-I08.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N10.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          },
+          {
+            "output_id": "CW-N32.O1",
+            "artifact": null,
+            "locator": null,
+            "origin": "missing"
+          }
+        ],
+        "review_policy": null,
+        "required_properties": [
+          "claim_coverage",
+          "claim_support",
+          "applicability",
+          "review_protocol",
+          "publication_rights"
+        ],
+        "missing_inputs": [
+          "applicability",
+          "complete_document:en",
+          "review_policy",
+          "output:CW-C06.O1",
+          "output:CW-G08.O1",
+          "output:CW-I02.O1",
+          "output:CW-I08.O1",
+          "output:CW-N10.O1",
+          "output:CW-N32.O1"
+        ]
+      },
+      "preparation_result": "unknown",
+      "binding_result": "unknown",
+      "supplied_observations": [],
+      "missing_properties": [
+        "applicability",
+        "claim_coverage",
+        "claim_support",
+        "publication_rights",
+        "review_protocol"
+      ],
+      "changed_material_fields": [],
+      "claim_support": "unknown",
+      "qualified_review": "unknown",
+      "reviewer_authenticity": "unknown",
+      "result": "unknown",
+      "impact": "requires_review",
+      "eligibility": "unknown",
+      "decision": "revalidate",
+      "reason_codes": [
+        "REVIEW_REQUIRED",
+        "reviewer_authenticity_not_established",
+        "competence_not_established",
+        "required_inputs_missing",
+        "required_observations_missing_or_unbound"
+      ],
+      "effects_authorized": false,
+      "limitations": [
+        "Supplied observations and protocol context are not authenticated.",
+        "The pure API compares an independently selected expected source reference; it does not authenticate that reference's Git provenance.",
+        "Byte identity and complete references do not establish semantic support, source fidelity or rights.",
+        "Missing declared inputs do not prove that no artifact exists elsewhere.",
+        "No current-use resolver, publication, native admission or deployment is implemented."
+      ]
+    }
+  ],
+  "review_required": 16,
+  "effects_authorized": false,
+  "scope": "Inventory of missing inputs in these prepared packets; not a global search or publication decision."
+}
