@@ -168,6 +168,94 @@ class ProgrammeControls(unittest.TestCase):
         decoded = checker.strict_json('{"ru":"проверка","zh":"检查","pair":"\\ud83d\\ude00","cost":1.5}')
         self.assertEqual(decoded, {"ru": "проверка", "zh": "检查", "pair": "😀", "cost": 1.5})
 
+    def release_instances(self):
+        return checker.instantiate_release_instances(self.graph)
+
+    def test_release_contracts_have_separate_counts_and_no_native_claim(self):
+        result = checker.validate_release_instances(self.graph, self.release_instances())
+        self.assertEqual((result["contracts"], result["required_evidence_edges"],
+                          result["validated_release_stage_nodes"]), (16, 138, 96))
+        self.assertEqual(result["native_release_instances_created"], 0)
+        self.assertEqual(result["evidence_acceptance"], "NOT_VERIFIED")
+
+    def test_p13_release_without_h08_is_refused(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P13")
+        manuscript = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I03")
+        manuscript["dependencies"] = [d for d in manuscript["dependencies"] if d["node_id"] != "CW-H08"]
+        with self.assertRaisesRegex(checker.InvalidProgramme, "not upstream: CW-P13/CW-H08"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_p09_and_p15_release_without_h08_are_refused(self):
+        for paper_id in ("CW-P09", "CW-P15"):
+            with self.subTest(paper_id=paper_id):
+                instances = self.release_instances()
+                release = next(r for r in instances if r["paper_id"] == paper_id)
+                manuscript = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I03")
+                manuscript["dependencies"] = [d for d in manuscript["dependencies"] if d["node_id"] != "CW-H08"]
+                with self.assertRaisesRegex(checker.InvalidProgramme, "not upstream: " + paper_id + "/CW-H08"):
+                    checker.validate_release_instances(self.graph, instances)
+
+    def test_coverage_link_cannot_replace_required_paper_gate(self):
+        contract = next(c for c in self.graph["paper_release_contracts"] if c["paper_id"] == "CW-P13")
+        contract["required_gates"] = [g for g in contract["required_gates"] if g["task_id"] != "CW-H08"]
+        self.graph["paper_release_metrics"]["required_evidence_edges"] -= 1
+        self.reject("required paper evidence gates differ: CW-P13")
+
+    def test_advisory_link_cannot_satisfy_release_evidence(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P13")
+        gate = next(d for d in release["nodes"][0]["dependencies"] if d["node_id"] == "CW-H08")
+        gate["type"] = "related_to"
+        with self.assertRaisesRegex(checker.InvalidProgramme, "advisory release edge"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_foreign_paper_reproducibility_package_does_not_satisfy_release(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P13")
+        freeze = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I04")
+        freeze["dependencies"][0].update(node_id="CW-P09.I03", consumes=["CW-P09.I03.O1"])
+        with self.assertRaisesRegex(checker.InvalidProgramme, "foreign artifact"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_generic_template_does_not_replace_specific_artifact_output(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P13")
+        freeze = next(n for n in release["nodes"] if n["template_task_id"] == "CW-I04")
+        freeze["dependencies"][0].update(node_id="CW-I03", consumes=["CW-I03.O1"])
+        with self.assertRaisesRegex(checker.InvalidProgramme, "artifact-specific release chain"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_release_scope_cannot_be_silently_weakened(self):
+        instances = self.release_instances()
+        next(r for r in instances if r["paper_id"] == "CW-P13")["claim_scope"] = "Protocol only."
+        with self.assertRaisesRegex(checker.InvalidProgramme, "claim_scope does not match"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_review_release_remains_independent_of_field_intervention(self):
+        instances = self.release_instances()
+        release = next(r for r in instances if r["paper_id"] == "CW-P01")
+        edges = {t["id"]: [d["task_id"] for d in t["dependencies"]] for t in self.graph["tasks"]}
+        edges.update({n["id"]: [d["node_id"] for d in n["dependencies"]] for n in release["nodes"]})
+        _, _, ancestors = checker.topology(set(edges), edges)
+        self.assertNotIn("CW-H08", ancestors["CW-P01.I08"])
+
+    def test_reproduction_cannot_wait_for_target_publication_package(self):
+        task = self.task("CW-N28")
+        task["dependencies"][-1].update(task_id="CW-I04", consumes=["CW-I04.O1"])
+        self.refresh_metrics()
+        self.reject("reproduction must use a frozen evaluation package")
+
+    def test_release_template_cannot_claim_native_assignment(self):
+        instances = self.release_instances()
+        instances[0]["nodes"][0]["execution_assigned"] = True
+        with self.assertRaisesRegex(checker.InvalidProgramme, "claims native execution"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_duplicate_paper_release_contract_is_refused(self):
+        self.graph["paper_release_contracts"][-1] = deepcopy(self.graph["paper_release_contracts"][0])
+        self.reject("duplicate or unknown paper release contract")
+
 
 if __name__ == "__main__":
     unittest.main()

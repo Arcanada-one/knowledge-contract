@@ -277,5 +277,48 @@ class RegistrationControls(unittest.TestCase):
             self.assertEqual(sentinel.read_text(), "preserve")
 
 
+class PaperReleasePreparationControls(unittest.TestCase):
+    def setUp(self):
+        path = TOOL.parent.parent / "roadmap/coordinated-work/plan/execution-graph.json"
+        self.graph, self.digest = M.load_json(path)
+
+    def test_programme_prepares_release_templates_separately_from_native_records(self):
+        plan = M.prepare(self.graph, self.digest, SOURCE)
+        self.assertEqual((plan["node_count"], plan["task_count"], plan["dependency_count"]), (128, 104, 247))
+        self.assertEqual((plan["paper_release_template_count"], plan["paper_release_stage_count"]), (16, 96))
+        self.assertEqual(plan["native_release_instances_created"], 0)
+        self.assertEqual(len(plan["create_requests"]), 128)
+        scope = next(r["text"] for r in plan["required_native_scope_records"] if r["proposal_id"] == "CW-I03")
+        self.assertIn("CW-P13", scope)
+        self.assertIn("CW-H08", scope)
+
+    def test_registrar_refuses_p13_instance_without_field_gate(self):
+        releases = M.programme_checker.instantiate_release_instances(self.graph)
+        p13 = next(r for r in releases if r["paper_id"] == "CW-P13")
+        p13["nodes"][0]["dependencies"] = [d for d in p13["nodes"][0]["dependencies"] if d["node_id"] != "CW-H08"]
+        with self.assertRaisesRegex(M.Invalid, "not upstream: CW-P13/CW-H08"):
+            M.prepare(self.graph, self.digest, SOURCE, release_instances=releases)
+
+    def test_registrar_refuses_missing_per_paper_contracts(self):
+        del self.graph["paper_release_contracts"]
+        with self.assertRaisesRegex(M.Invalid, "required-gate map"):
+            M.prepare(self.graph, self.digest, SOURCE)
+
+    def test_registrar_refuses_release_graph_from_another_source(self):
+        with tempfile.TemporaryDirectory() as temp:
+            graph_path = Path(temp) / "graph.json"
+            graph_path.write_text(json.dumps(self.graph, ensure_ascii=False))
+            _, digest = M.load_json(graph_path)
+            release_path = Path(temp) / "releases.json"
+            release_path.write_text(json.dumps({"schema": "CoordinatedWorkReleaseInstances/v1",
+                "graph_sha256": digest, "source_commit": "c" * 40,
+                "instances": M.programme_checker.instantiate_release_instances(self.graph)}))
+            with contextlib.redirect_stderr(io.StringIO()):
+                code = M.main(["--graph", str(graph_path), "--source-commit", SOURCE,
+                               "--release-instances", str(release_path), "--output", str(Path(temp) / "new")])
+            self.assertEqual(code, 2)
+            self.assertFalse((Path(temp) / "new").exists())
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

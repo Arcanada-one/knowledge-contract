@@ -7,6 +7,11 @@ import json
 import re
 from pathlib import Path
 
+try:
+    from .cw_programme_localizations import render_locale_programmes
+except ImportError:
+    from cw_programme_localizations import render_locale_programmes
+
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = ROOT / "roadmap/coordinated-work/plan"
 EPIC_EN = [
@@ -43,7 +48,8 @@ def render(graph):
           "It preserves all **72 original steps**, adds **32 explicit missing work packages**, "
           "and maps **16 potential papers and 12 hypotheses**. The [machine-readable graph](execution-graph.json) "
           "and [complete task contracts](TASK_CONTRACTS.md) are the source for registration. "
-          "The [Russian guide](PROGRAMME.ru.md) presents the same inventory.", "",
+          "The [Russian programme](PROGRAMME.ru.md) and [Simplified Chinese programme](PROGRAMME.zh-Hans.md) "
+          "present the same scope tables and bind their source to this English text.", "",
           "The 104 entries are work packages. Broad review batches, benchmark families and publication templates "
           "must be split into bounded children before dispatch. A proposed owner is not an actual assignment. "
           "The 128 programme/epic/package objects prepared for reconciliation are not 128 created Muneral objects.", "",
@@ -116,6 +122,28 @@ def render(graph):
     for p in graph["papers"]:
         en.append(f"| {p['id']} — {cell(p['source_title'])} | {cell(p['source_main_question'])} | "
                   f"{cell(p['source_engineering_companion'])} | {', '.join(p['mapped_task_ids'])} |")
+    en += ["", "## Per-paper release gates", "",
+           "Coverage mappings are not release permission. Each of the sixteen papers has an explicit claim "
+           "scope and typed required-evidence edges. The current proposal adds 138 such edges and sixteen "
+           "release-instance templates containing 96 stage nodes. These are counted separately from the "
+           "104 work packages and 247 package dependencies; none is a created native task or accepted result.", "",
+           "Each release instance substitutes its own outputs into I03–I08 and must place every required gate "
+           "upstream of its manuscript and final release. The validator rejects a P13 release missing H08, "
+           "an advisory link substituted for an evidence dependency, or another paper's stage output. "
+           "Registration preparation includes these contracts in the native scope templates and emits separate "
+           "release DAG templates; it sends no requests.", "",
+           "P09 and P13 organizational-effect scopes and P15 organizational-transfer scope require H08 plus "
+           "the causal and intervention prerequisites. Review, model and formal scopes do not acquire a "
+           "universal H08 dependency. An earlier protocol-only or narrower formal contribution needs a separate "
+           "reviewed scope contract that excludes unobserved effect claims; it cannot silently weaken one of "
+           "the contracts below.", "",
+           "External reproduction N28 consumes frozen H06 evaluation inputs and N16 data packages. Before "
+           "independent execution it pins code, environment, model, configuration and seeds. It does not wait "
+           "for I04 of the paper whose release it must gate; the final I04 package later includes its receipts.", "",
+           "| Paper | Declared claim scope | Required evidence gates |", "| --- | --- | --- |"]
+    for contract in graph["paper_release_contracts"]:
+        en.append(f"| {contract['paper_id']} | {cell(contract['claim_scope'])} | "
+                  f"{', '.join(gate['task_id'] for gate in contract['required_gates'])} |")
     en += ["", "## Hypotheses and possible refutation", "",
            "Each hypothesis maps to H01 preregistration and N20 statistical design plus the domain-specific "
            "work packages in the JSON. All outcomes remain unknown.", "",
@@ -137,67 +165,6 @@ def render(graph):
            "python3 -O -B -m unittest tools.test_check_cw_programme -v", "python3 -B tools/render_cw_programme.py --check", "```", "",
            "The checks validate finite structure, coverage and stated evidence boundaries. They do not certify "
            "scientific truth, novelty, review, native registration, deployment or effective use.", ""]
-
-    ru = ["# Согласованная деятельность: Программа исследований и инженерных работ", "",
-          "Подготовлено 18 ноября 2026 года. Это версионированное предложение для сверки и приёмки. "
-          "Фактические задачи, назначения, зависимости и статусы ведутся в Мунереле.", "",
-          "**23 эпика · 104 пакета работ · 247 зависимостей.** Все 72 исходных шага сохранены, добавлены 32 работы, "
-          "сопоставлены все 16 предполагаемых статей и 12 гипотез. "
-          "[Полная программа](PROGRAMME.md), [контракты всех работ](TASK_CONTRACTS.md) и "
-          "[машиночитаемый граф](execution-graph.json) содержат условия приёмки и происхождение каждой строки.", "",
-          "## Что делаем сначала", "",
-          "Первый эпик — согласованный анонс направления в журнале, трёх языковых версиях дорожной карты, "
-          "репозиториях и действующем графе задач Мунерела. Владелец регистрации — существующий KC-SWE; "
-          "Agent-SWE обеспечивает связи, для которых нужны полномочия в смежных проектах. "
-          "Публикация принятого анонса может идти параллельно регистрации задач. Завершение всего стартового "
-          "эпика требует обеих проверенных квитанций.", "",
-          "1. Зафиксировать исходные материалы и границы подтверждённых результатов.",
-          "2. Сохранить эпики, контракты задач, граф и полноту покрытия исследования.",
-          "3. Выпустить анонсы EN/RU/zh-Hans; проверить точные переводы, ссылки и фактическую видимость в браузере.",
-          "4. Сверить предложения с существующими задачами, переиспользовать подходящие, создать только недостающие.",
-          "5. Получить реальные UUID, владельцев, типизированные связи и обратное чтение Мунерела.",
-          "6. Передать первые ограниченные пакеты работ с конкретными входами и результатами.", "",
-          "## Граница исходных свидетельств", "",
-          f"[Исходный пакет]({source_url}) содержит 1176 библиографических записей: 157 проверенных первичных "
-          "записей и 1019 цитатных кандидатов. Число уникальных работ ещё не установлено; 26 групп совпадений "
-          "названия/года и 4 пары похожих названий требуют проверки. Полных критических разборов — 0. "
-          "Численный стенд r2 содержит 10 сценариев, 100 наблюдений «сценарий × период» и 190 элементарных "
-          "проверок. Это ограниченное свидетельство реализации численной модели, а не эффективности агента "
-          "или кадрового решения в реальной организации.", "",
-          "## Реестр эпиков", "", "| Эпик | Содержание | Пакетов | Предложенные владелец / исполнитель |",
-          "| --- | --- | ---: | --- |"]
-    for e in graph["epics"]:
-        ru.append(f"| {e['id']} | {cell(e['title'])} | {len(e['task_ids'])} | {e['proposed_owner_role']} / {e['proposed_executor_role']} |")
-    ru += ["", "## Полный перечень работ", "",
-           "Каждая ссылка ведёт к конкретному выходному артефакту, четырём критериям приёмки, "
-           "необходимым свидетельствам, отрицательному контролю и потребляемым результатам предшественников.", "",
-           "| Пакет | Работа | Предшественники |", "| --- | --- | --- |"]
-    for t in ordered:
-        ru.append(f"| {task_link(t['id'], tasks)} | {cell(t['title_ru'])} | {', '.join(d['task_id'] for d in t['dependencies']) or 'Исходные материалы'} |")
-    ru += ["", "## Порядок и научная приёмка", "",
-           "После фиксации исходников параллельно развиваются обзор, модель организации, правила данных и "
-           "дизайн экспериментов. Производственный, сервисный и проектный стенды не требуют завершения друг "
-           "друга. До подтверждающего сравнения обязательны применимость модели, независимый оракул и "
-           "статистический план. Затем возможны теневое применение, отдельно допустимое ограниченное "
-           "вмешательство и проверка переноса.", "",
-           "Максимальная цепочка зависимостей изменяется с 64 узлов исходной последовательности на 17 узлов "
-           "расширенного графа. Это характеристика графа, не оценка календарного ускорения. Сроки и загрузка "
-           "появятся после оценки работ и реального назначения исполнителей.", "",
-           "Для каждой из 16 возможных статей предусмотрены отдельные вопрос, инженерный спутник, "
-           "связанные пакеты работ и собственный цикл подготовки, воспроизводимости, рецензии, выпуска и "
-           "сопровождения. Полные таблицы статей и 12 опровергаемых гипотез приведены в "
-           "[основной программе](PROGRAMME.md#scientific-series-and-engineering-companions). "
-           "Названия статей не являются выполненными публикациями.", "",
-           "Обзор требует полного критического чтения выбранных источников; формальная работа — явных "
-           "предпосылок и доказательства; модельное сравнение — зарегистрированного дизайна и валидированного "
-           "стенда; причинный эффект — обоснованной идентификации и фактических данных. Готовый результат "
-           "одного типа не получает автоматически статус другого.", "",
-           "104 строки — пакеты, а не 104 уже запущенных исполнителя. Крупные обзоры, семейства стендов и "
-           "шаблоны выпуска разбиваются на ограниченные дочерние задачи. Нативная регистрация, научная "
-           "приёмка, публикация на сайте, индексирование и полномочия агента требуют собственных свидетельств.", "",
-           "[Порядок регистрации в Мунереле](../MUNERAL-REGISTRATION.md) сохраняет реальные границы доступа, "
-           "защиту от дубликатов, историю и точное обратное чтение. Затраты и сроки этой программы пока "
-           "NOT_MEASURED. Предложение не активирует платные или производственные эксперименты.", ""]
 
     contracts = ["# Work Contracts: Coordinated Work Package Register", "",
                  "Generated from [execution-graph.json](execution-graph.json). Proposed source contracts; "
@@ -225,7 +192,9 @@ def render(graph):
                           f"Original dependencies: {', '.join(t['source_dependencies']) or 'none'}.", "",
                           "Dependency revision: " + t["dependency_revision_reason"]]
         contracts.append("")
-    return {"PROGRAMME.md": "\n".join(en), "PROGRAMME.ru.md": "\n".join(ru), "TASK_CONTRACTS.md": "\n".join(contracts)}
+    result = {"PROGRAMME.md": "\n".join(en), "TASK_CONTRACTS.md": "\n".join(contracts)}
+    result.update(render_locale_programmes(graph, result["PROGRAMME.md"]))
+    return result
 
 
 def main():

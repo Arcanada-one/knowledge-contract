@@ -10484,7 +10484,7 @@
         },
         {
           "number": 3,
-          "text": "Record independent executor/environment/access and all unsuccessful reproductions or transfers.",
+          "text": "Before independent execution freeze a versioned prepublication executable, data, configuration, seeds and raw-result bundle from H06/N16, with exact source, code, environment and model bindings; record independent executor and assessor, access, and all unsuccessful reproductions or transfers. Final publication I04 packages then incorporate these receipts.",
           "origin": "elaboration"
         },
         {
@@ -10494,7 +10494,7 @@
         }
       ],
       "evidence_required": [
-        "holdout manifest, pinned package and reproduction receipts",
+        "Frozen prepublication executable/data/configuration/seed/raw-result bundle from H06/N16, holdout manifest, independent executor and assessor identities/scope, and reproduction receipts",
         "Exact versions, observed outcome, scope and unresolved limits."
       ],
       "negative_controls": [
@@ -10509,17 +10509,17 @@
           "consumes": [
             "CW-H06.O1"
           ],
-          "reason": "Uses Mechanism ablations and uncertainty report to define, constrain or evaluate Held-out transfer and external reproduction study."
+          "reason": "Consumes the frozen prepublication executable, configuration, seeds and raw-result bundle from controlled comparisons and ablations. Bind independent executor and assessor before reproducing; this package is available before the target paper release."
         },
         {
-          "task_id": "CW-I04",
+          "task_id": "CW-N16",
           "consumes": [
-            "CW-I04.O1"
+            "CW-N16.O1"
           ],
-          "reason": "Uses Frozen reproducibility package per artifact to define, constrain or evaluate Held-out transfer and external reproduction study."
+          "reason": "Consumes versioned eligible datasets and held-out split manifests, with exact source, environment and model bindings joined to the H06 executable/configuration/seed/raw-result bundle before independent reproduction."
         }
       ],
-      "dependency_revision_reason": "New bounded work package; prerequisites identify concrete consumed outputs.",
+      "dependency_revision_reason": "External reproduction uses existing evaluation/data packages H06 and N16, frozen before independent execution. It must not wait for I04 of the paper whose release requires the reproduction result.",
       "dependency_revisions": {
         "removed": [],
         "added": [
@@ -10531,7 +10531,16 @@
             "task_id": "CW-I04",
             "reason": "Uses Frozen reproducibility package per artifact to define, constrain or evaluate Held-out transfer and external reproduction study."
           }
-        ]
+        ],
+        "proposal_corrections": {
+          "removed": [
+            "CW-I04"
+          ],
+          "added": [
+            "CW-N16"
+          ],
+          "reason": "External reproduction uses existing evaluation/data packages H06 and N16, frozen before independent execution. It must not wait for I04 of the paper whose release requires the reproduction result."
+        }
       }
     },
     {
@@ -12471,7 +12480,8 @@
     "Organizational causal-effect claims additionally require E06/F06, N29 and H08 receipts; no graph rewrite waives this.",
     "Shadow-use claims require exact consumer/input/implementation/outcome binding from N26/N27 and H07; task creation or a synthetic fixture is insufficient.",
     "New native kinds, runtime admission, accepted publication, hiring or execution authority are not conferred by this programme.",
-    "Announce proposed papers and studies at launch; do not create completed publication catalogue entries for cards."
+    "Announce proposed papers and studies at launch; do not create completed publication catalogue entries for cards.",
+    "Each paper release instance must pass the typed required-gate contract and consume its own stage outputs. P09/P13/P15 field-effect or transfer scopes require H08; removing it is rejected. These separately counted release templates do not create native tasks or prove evidence acceptance."
   ],
   "review_limits": [
     "Planning review by a sibling assistant is not external independent scientific acceptance.",
@@ -12552,5 +12562,1406 @@
     "revision": "9967efa33776761c773873d6f24f1f1d60b28be3",
     "path": "collectives.yml",
     "blob": "0ea2a326cb05035565cb7ad0463f34b9408705d6"
+  },
+  "paper_release_contracts": [
+    {
+      "paper_id": "CW-P01",
+      "claim_class": "review",
+      "claim_scope": "Reviewed research map with appraised primary sources and explicit unresolved gaps.",
+      "required_gates": [
+        {
+          "task_id": "CW-A01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-A08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-A08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N09",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N09.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N10",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N10.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P01; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P02",
+      "claim_class": "domain_model",
+      "claim_scope": "Representation of organizational needs and obligations; no measured organizational benefit is claimed.",
+      "required_gates": [
+        {
+          "task_id": "CW-B01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P02; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-B02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P02; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-B06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P02; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P02; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N11",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N11.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P02; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P03",
+      "claim_class": "domain_model",
+      "claim_scope": "Typed work dependencies and concurrent resource semantics under stated assumptions.",
+      "required_gates": [
+        {
+          "task_id": "CW-C01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P03; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P03; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P03; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P03; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N23",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N23.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P03; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P04",
+      "claim_class": "resource_semantics",
+      "claim_scope": "Resource types, units and conditional admissibility; no unrestricted universal resource law.",
+      "required_gates": [
+        {
+          "task_id": "CW-B05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N12",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N12.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N14",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N14.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P04; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P05",
+      "claim_class": "capability_model",
+      "claim_scope": "Task-specific capability, competency evidence and team conditions; occupation titles do not establish individual ability.",
+      "required_gates": [
+        {
+          "task_id": "CW-B03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-B04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N21",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N21.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P05; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P06",
+      "claim_class": "simulation_comparison",
+      "claim_scope": "System performance and local-metric counterexamples in declared validated comparisons, not field effects.",
+      "required_gates": [
+        {
+          "task_id": "CW-B06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N11",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N11.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N20",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N20.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N17",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N17.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N18",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N18.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P06; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P07",
+      "claim_class": "simulation_comparison",
+      "claim_scope": "Flow and release-policy comparisons within the validated manufacturing model and declared operating region.",
+      "required_gates": [
+        {
+          "task_id": "CW-D01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N17",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N17.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N18",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N18.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N20",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N20.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P07; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P08",
+      "claim_class": "simulation_comparison",
+      "claim_scope": "Qualification-aware staffing and scheduling comparisons in the declared service model.",
+      "required_gates": [
+        {
+          "task_id": "CW-E01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N21",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N21.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N17",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N17.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N18",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N18.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N20",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N20.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P08; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P09",
+      "claim_class": "organizational_effect",
+      "claim_scope": "Measured organizational effects of hiring, training or automation under the evaluated bounded intervention.",
+      "required_gates": [
+        {
+          "task_id": "CW-E04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N21",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N21.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N29",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N29.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P09; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P10",
+      "claim_class": "forecast_backtest",
+      "claim_scope": "Time-respecting forecast and uncertainty backtests; prediction quality is separate from intervention effects.",
+      "required_gates": [
+        {
+          "task_id": "CW-F01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N16",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N16.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N20",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N20.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P10; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P11",
+      "claim_class": "decision_profile",
+      "claim_scope": "Organizational knowledge prerequisites and bounded context; effectiveness requires separately scoped comparative evidence.",
+      "required_gates": [
+        {
+          "task_id": "CW-C05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-C08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G01",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G01.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N10",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N10.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N22",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N22.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N25",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N25.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P11; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P12",
+      "claim_class": "conditional_admissibility",
+      "claim_scope": "Conditional admissibility and verifiable decision records under explicit assumptions, not unconditional future safety.",
+      "required_gates": [
+        {
+          "task_id": "CW-F05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N12",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N12.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N22",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N22.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N23",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N23.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P12; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P13",
+      "claim_class": "organizational_effect",
+      "claim_scope": "Causal effects under an identified bounded field design with observed interventions and stated interference limits.",
+      "required_gates": [
+        {
+          "task_id": "CW-E06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N19",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N19.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N20",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N20.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N29",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N29.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P13; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P14",
+      "claim_class": "conditional_control",
+      "claim_scope": "Conditional stability results and finite operational criteria within declared models; no universal field guarantee.",
+      "required_gates": [
+        {
+          "task_id": "CW-D03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-D05",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-D05.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F07",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F07.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N13",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N13.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N18",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N18.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P14; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P15",
+      "claim_class": "organizational_transfer",
+      "claim_scope": "Held-out cross-organization transfer of observed intervention outcomes with independent reproduction and explicit transport limits.",
+      "required_gates": [
+        {
+          "task_id": "CW-B08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-B08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H03",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H03.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H04",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H04.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-H08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-H08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N28",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N28.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-E06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-E06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-F06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-F06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N29",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N29.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P15; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    },
+    {
+      "paper_id": "CW-P16",
+      "claim_class": "evidence_lifecycle",
+      "claim_scope": "Versioned knowledge revision, contradiction handling and evidence invalidation; no automatic runtime authority.",
+      "required_gates": [
+        {
+          "task_id": "CW-C06",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-C06.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-G08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-G08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-I02",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-I02.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-I08",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-I08.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N10",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N10.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        },
+        {
+          "task_id": "CW-N32",
+          "type": "requires_evidence",
+          "consumes": [
+            "CW-N32.O1"
+          ],
+          "reason": "Required evidence for the declared claim scope of CW-P16; a coverage link or template alone does not satisfy this gate."
+        }
+      ],
+      "release_template_task_ids": [
+        "CW-I03",
+        "CW-I04",
+        "CW-I05",
+        "CW-I06",
+        "CW-I07",
+        "CW-I08"
+      ],
+      "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim",
+      "status": "proposed",
+      "external_artifact_id": null
+    }
+  ],
+  "paper_release_metrics": {
+    "contracts": 16,
+    "required_evidence_edges": 138,
+    "release_instance_templates": 16,
+    "release_stage_nodes": 96,
+    "native_release_instances_created": 0
   }
 }

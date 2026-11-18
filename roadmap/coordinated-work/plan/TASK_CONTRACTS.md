@@ -3172,19 +3172,19 @@ Proposed accountable: **KC-Brain**; executor: **Research-Arcana**; assessor: **D
 
 1. Separate organization, task-distribution and regime holdouts; independent executor access/versions recorded; unsuccessful transfer retained.
 2. Freeze organization, task-distribution and operating-regime holdouts and the transfer conditions.
-3. Record independent executor/environment/access and all unsuccessful reproductions or transfers.
+3. Before independent execution freeze a versioned prepublication executable, data, configuration, seeds and raw-result bundle from H06/N16, with exact source, code, environment and model bindings; record independent executor and assessor, access, and all unsuccessful reproductions or transfers. Final publication I04 packages then incorporate these receipts.
 4. The declared negative control is evaluated and its expected rejection or qualification is recorded.
 
 ### Evidence and adverse control (CW-N28)
 
-- holdout manifest, pinned package and reproduction receipts
+- Frozen prepublication executable/data/configuration/seed/raw-result bundle from H06/N16, holdout manifest, independent executor and assessor identities/scope, and reproduction receipts
 - Exact versions, observed outcome, scope and unresolved limits.
 - Adverse case: Retuning on the held-out organization must be reported and cannot retain untouched-transfer status. Expected: Rejected, flagged, or explicitly prevented from supporting the stronger claim.
 
 ### Consumed inputs (CW-N28)
 
-- `CW-H06` → `CW-H06.O1`: Uses Mechanism ablations and uncertainty report to define, constrain or evaluate Held-out transfer and external reproduction study.
-- `CW-I04` → `CW-I04.O1`: Uses Frozen reproducibility package per artifact to define, constrain or evaluate Held-out transfer and external reproduction study.
+- `CW-H06` → `CW-H06.O1`: Consumes the frozen prepublication executable, configuration, seeds and raw-result bundle from controlled comparisons and ablations. Bind independent executor and assessor before reproducing; this package is available before the target paper release.
+- `CW-N16` → `CW-N16.O1`: Consumes versioned eligible datasets and held-out split manifests, with exact source, environment and model bindings joined to the H06 executable/configuration/seed/raw-result bundle before independent reproduction.
 
 ## State recursive feasibility and stability conditions (CW-N13)
 

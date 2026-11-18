@@ -1,0 +1,854 @@
+{
+  "schema": "cw-programme-localizations/1",
+  "status": "author-prepared; independent fidelity review not recorded",
+  "source_fields": {
+    "epics": {
+      "CW-EP00": "Анонс и регистрация направления",
+      "CW-EP01": "Корпус, обзор и карта prior art",
+      "CW-EP02": "Онтология потребностей и компетенций",
+      "CW-EP03": "Состояние организации и разрешенные источники",
+      "CW-EP04": "Потоки, мощности и ограничения",
+      "CW-EP05": "Команды, компетенции и планирование мощности",
+      "CW-EP06": "Прогнозы, неопределенность и дрейф",
+      "CW-EP07": "Контракты решений и проверка агента",
+      "CW-EP08": "План экспериментов и сравнительная оценка",
+      "CW-EP09": "Научные публикации и выпуск на трех языках",
+      "CW-EP10": "Формальная допустимость и типы ресурсов",
+      "CW-EP11": "Права, приватность и пакеты данных",
+      "CW-EP12": "Независимые оракулы и валидность моделей",
+      "CW-EP13": "Стенд производственных процессов",
+      "CW-EP14": "Стенд сервисных процессов",
+      "CW-EP15": "Стенд проектов и интеллектуальной работы",
+      "CW-EP16": "Причинность, наблюдаемость и интерференция",
+      "CW-EP17": "Исполнение, конкурентность и полная стоимость",
+      "CW-EP18": "Потребители и интеграция в экосистему",
+      "CW-EP19": "Понимание оператором и ценность информации",
+      "CW-EP20": "Теневое, полевое и внешнее воспроизведение",
+      "CW-EP21": "Динамика, устойчивость и рекурсивная допустимость",
+      "CW-EP22": "Совместимость KC и происхождение свидетельств"
+    },
+    "tasks": {
+      "CW-A01": "Define review scope",
+      "CW-A02": "Verify the seed bibliography",
+      "CW-A03": "Extract citation candidates",
+      "CW-A04": "Resolve publication identities",
+      "CW-A05": "Expand field coverage",
+      "CW-A06": "Screen full texts",
+      "CW-A07": "Extract scoped claims",
+      "CW-A08": "Review the scoping map",
+      "CW-B01": "Define organizational units",
+      "CW-B02": "Classify needs and situations",
+      "CW-B03": "Map sectors and processes",
+      "CW-B04": "Map occupations and competencies",
+      "CW-B05": "Define resource semantics",
+      "CW-B06": "Define performance measures",
+      "CW-B07": "Assess annotation agreement",
+      "CW-B08": "Evaluate held-out sectors",
+      "CW-C01": "Build the typed work graph",
+      "CW-C02": "Define event semantics",
+      "CW-C03": "Separate demand observations",
+      "CW-C04": "Represent availability calendars",
+      "CW-C05": "Preserve provenance and conflicts",
+      "CW-C06": "Specify freshness and invalidation",
+      "CW-C07": "Prototype authorized adapters",
+      "CW-C08": "Review the organization profile",
+      "CW-D01": "Define flow conservation",
+      "CW-D02": "Derive conditional throughput bounds",
+      "CW-D03": "Model buffers and delays",
+      "CW-D04": "Model setup and rework",
+      "CW-D05": "Compare release policies",
+      "CW-D06": "Add product mix and shared resources",
+      "CW-D07": "Construct local-metric counterexamples",
+      "CW-D08": "Review the flow model",
+      "CW-E01": "Estimate task workload",
+      "CW-E02": "Bind competency evidence",
+      "CW-E03": "Optimize multiskill assignments",
+      "CW-E04": "Model hiring lead times",
+      "CW-E05": "Compare capacity alternatives",
+      "CW-E06": "Separate performance from causation",
+      "CW-E07": "Constrain sustainable workload",
+      "CW-E08": "Produce auditable role requirements",
+      "CW-F01": "Reconcile hierarchical forecasts",
+      "CW-F02": "Calibrate predictive uncertainty",
+      "CW-F03": "Define external shock scenarios",
+      "CW-F04": "Model decision delays",
+      "CW-F05": "Optimize under uncertainty",
+      "CW-F06": "Check endogenous observations",
+      "CW-F07": "Detect distribution shift",
+      "CW-F08": "Backtest frozen forecast decisions",
+      "CW-G01": "Define decision prerequisites",
+      "CW-G02": "Assemble bounded context",
+      "CW-G03": "Define startup readiness",
+      "CW-G04": "Separate proposal and verification",
+      "CW-G05": "Calibrate abstention",
+      "CW-G06": "Record decision evidence",
+      "CW-G07": "Handle concurrent decisions",
+      "CW-G08": "Review learning updates",
+      "CW-H01": "Freeze hypotheses and metrics",
+      "CW-H02": "Build the manufacturing benchmark",
+      "CW-H03": "Build the service benchmark",
+      "CW-H04": "Build the project benchmark",
+      "CW-H05": "Evaluate strong baselines",
+      "CW-H06": "Run ablations and uncertainty analysis",
+      "CW-H07": "Run a shadow evaluation",
+      "CW-H08": "Evaluate a bounded field intervention",
+      "CW-I01": "Reassess novelty",
+      "CW-I02": "Bind claims to evidence",
+      "CW-I03": "Prepare canonical manuscripts",
+      "CW-I04": "Freeze reproducibility packages",
+      "CW-I05": "Obtain substantive review",
+      "CW-I06": "Integrate through repository gates",
+      "CW-I07": "Publish and verify served content",
+      "CW-I08": "Admit indexing and maintain revisions",
+      "CW-N01": "Freeze programme inputs and evidence boundary",
+      "CW-N02": "Define programme charter and output families",
+      "CW-N03": "Build and validate execution graph",
+      "CW-N04": "Prepare EN/RU/zh-Hans announcement bundle",
+      "CW-N05": "Publish repository and roadmap programme entries",
+      "CW-N06": "Register and read back Muneral graph",
+      "CW-N07": "Deliver announcement and programme landing",
+      "CW-N08": "Complete collective handoff and first work batch",
+      "CW-N09": "Frontload novelty discriminants",
+      "CW-N10": "Specify claim and evidence lineage",
+      "CW-N11": "Specify objectives, tradeoffs and infeasibility",
+      "CW-N12": "Discharge conditional admissibility obligations",
+      "CW-N13": "State recursive feasibility and stability conditions",
+      "CW-N14": "Implement dimensional and availability checks",
+      "CW-N15": "Bind data access, rights and measurement purposes",
+      "CW-N16": "Build reference datasets and data dictionaries",
+      "CW-N17": "Create independent oracles and mutation controls",
+      "CW-N18": "Validate conceptual and operational simulation models",
+      "CW-N19": "Register study protocols and matched baselines",
+      "CW-N20": "Plan statistical units, power and multiplicity",
+      "CW-N21": "Model team complementarity and capability change",
+      "CW-N22": "Specify organization decision adapter contracts",
+      "CW-N23": "Exercise concurrent decision and recovery semantics",
+      "CW-N24": "Measure scale, latency and total decision cost",
+      "CW-N25": "Evaluate decision explanation and human use",
+      "CW-N26": "Prepare Arcanada collective shadow consumer",
+      "CW-N27": "Prepare a second eligible organizational shadow consumer",
+      "CW-N28": "Run held-out transfer and external reproduction",
+      "CW-N29": "Design bounded field intervention",
+      "CW-N30": "Define claim-specific publication release matrix",
+      "CW-N31": "Maintain trilingual terminology and fidelity",
+      "CW-N32": "Maintain revisions, negative findings and withdrawal"
+    },
+    "papers": {
+      "CW-P01": {
+        "source_title": "Research map",
+        "source_main_question": "What is known, and which gap remains testable?",
+        "source_engineering_companion": "Search, screening, corpus, and claim map"
+      },
+      "CW-P02": {
+        "source_title": "Organizational needs",
+        "source_main_question": "How is a gap defined relative to an objective, conditions, and time?",
+        "source_engineering_companion": "Faceted need representation"
+      },
+      "CW-P03": {
+        "source_title": "Networks of work",
+        "source_main_question": "Which dependencies connect tasks and departments?",
+        "source_engineering_companion": "Typed process graph"
+      },
+      "CW-P04": {
+        "source_title": "Resource semantics",
+        "source_main_question": "How can resource types be combined without losing their distinct behavior?",
+        "source_engineering_companion": "Units, inventories, capacity, and availability schemas"
+      },
+      "CW-P05": {
+        "source_title": "Professional capabilities",
+        "source_main_question": "How do occupation, role, task, capability, and evidence relate?",
+        "source_engineering_companion": "Classifier mappings and competency profiles"
+      },
+      "CW-P06": {
+        "source_title": "System performance",
+        "source_main_question": "What constitutes improvement of the overall system?",
+        "source_engineering_companion": "Metrics and local-KPI counterexamples"
+      },
+      "CW-P07": {
+        "source_title": "Flow coordination",
+        "source_main_question": "When should admission be limited or capacity expanded?",
+        "source_engineering_companion": "Queue, buffer, and release experiments"
+      },
+      "CW-P08": {
+        "source_title": "Team composition",
+        "source_main_question": "Which combination and quantity of qualifications are needed?",
+        "source_engineering_companion": "Joint staffing and scheduling models"
+      },
+      "CW-P09": {
+        "source_title": "Capability development",
+        "source_main_question": "How should hiring, training, and automation be compared?",
+        "source_engineering_companion": "Ramp-up, mentoring, and investment models"
+      },
+      "CW-P10": {
+        "source_title": "Environment and forecasts",
+        "source_main_question": "How do external changes affect requirements?",
+        "source_engineering_companion": "Probabilistic forecasts and scenarios"
+      },
+      "CW-P11": {
+        "source_title": "Knowledge sufficiency",
+        "source_main_question": "Which evidence is necessary for a particular decision?",
+        "source_engineering_companion": "Organizational Agent Situation profile"
+      },
+      "CW-P12": {
+        "source_title": "Justified choice",
+        "source_main_question": "How does knowledge support an admissible action?",
+        "source_engineering_companion": "Preconditions, verifier, and decision record"
+      },
+      "CW-P13": {
+        "source_title": "Causal evaluation",
+        "source_main_question": "How can worker, process, and environmental effects be separated?",
+        "source_engineering_companion": "Attribution and intervention protocols"
+      },
+      "CW-P14": {
+        "source_title": "Stable control",
+        "source_main_question": "Under what conditions are overload and harmful oscillation controlled?",
+        "source_engineering_companion": "Conditional results and stress tests"
+      },
+      "CW-P15": {
+        "source_title": "Transfer across organizations",
+        "source_main_question": "Which conclusions remain applicable in a new setting?",
+        "source_engineering_companion": "Held-out organizations and industries"
+      },
+      "CW-P16": {
+        "source_title": "Knowledge revision",
+        "source_main_question": "How should outcomes and counterexamples change the model?",
+        "source_engineering_companion": "Versioned hypotheses, rules, and evidence"
+      }
+    },
+    "hypotheses": {
+      "CW-HYP01": {
+        "source_statement": "1. The domain profile improves admissibility",
+        "source_comparison": "Strong ordinary RAG versus the profile, with matched information and budgets",
+        "source_refutation": "No reliable improvement, or improvement explained by extra context alone"
+      },
+      "CW-HYP02": {
+        "source_statement": "2. Cross-process dependencies reduce local harm",
+        "source_comparison": "Local-KPI policy versus a policy using connected-process objectives",
+        "source_refutation": "Overall service, quality, or accepted output worsens under the declared tradeoffs"
+      },
+      "CW-HYP03": {
+        "source_statement": "3. Knowledge invalidation reduces stale decisions",
+        "source_comparison": "Same profile with and without invalidation",
+        "source_refutation": "Stale-action frequency does not improve; separately assess update cost and false blocks"
+      },
+      "CW-HYP04": {
+        "source_statement": "4. External verification improves constraint compliance",
+        "source_comparison": "Prompt-only constraints versus an external verifier",
+        "source_refutation": "No compliance improvement, or increased false acceptance/rejection defeats the registered objective"
+      },
+      "CW-HYP05": {
+        "source_statement": "5. Qualification-aware staffing improves feasibility",
+        "source_comparison": "Joint skill coverage and scheduling versus aggregate workload division",
+        "source_refutation": "Assignments remain infeasible or gains disappear in held-out settings"
+      },
+      "CW-HYP06": {
+        "source_statement": "6. Explicit action lags improve capacity decisions",
+        "source_comparison": "Instantaneous availability assumption versus hiring, training, and mentoring lags",
+        "source_refutation": "Predicted capacity or service fails to improve after hidden support costs are included"
+      },
+      "CW-HYP07": {
+        "source_statement": "7. Causal constraints reduce false attribution",
+        "source_comparison": "Cases with identifiable effects and cases with insufficient identification",
+        "source_refutation": "Confident unsupported attribution persists or appropriate abstention fails"
+      },
+      "CW-HYP08": {
+        "source_statement": "8. Explicit uncertainty improves decision quality",
+        "source_comparison": "Probabilistic or robust decision versus a point estimate",
+        "source_refutation": "No benefit under a predefined quality criterion and accepted conservatism tradeoff"
+      },
+      "CW-HYP09": {
+        "source_statement": "9. Selective clarification improves utility",
+        "source_comparison": "Clarify selectively versus always act, always ask, and a simple threshold rule",
+        "source_refutation": "Information cost and errors yield no advantage over the simple rule"
+      },
+      "CW-HYP10": {
+        "source_statement": "10. Model rankings transfer",
+        "source_comparison": "Predicted intervention rankings versus independently observed held-out outcomes",
+        "source_refutation": "Effect direction or decision ranking fails within the stated transfer scope"
+      },
+      "CW-HYP11": {
+        "source_statement": "11. Control meets a declared stability criterion",
+        "source_comparison": "Loads, delays, and disturbances inside a specified operating region",
+        "source_refutation": "The registered stability or recovery criterion is violated"
+      },
+      "CW-HYP12": {
+        "source_statement": "12. Evidence supports independent reproduction",
+        "source_comparison": "Repeat using fixed source, data, configuration, and model versions",
+        "source_refutation": "Material differences lack a recorded stochastic or environmental explanation"
+      }
+    },
+    "release_contracts": {
+      "CW-P01": {
+        "claim_class": "review",
+        "claim_scope": "Reviewed research map with appraised primary sources and explicit unresolved gaps.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P02": {
+        "claim_class": "domain_model",
+        "claim_scope": "Representation of organizational needs and obligations; no measured organizational benefit is claimed.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P03": {
+        "claim_class": "domain_model",
+        "claim_scope": "Typed work dependencies and concurrent resource semantics under stated assumptions.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P04": {
+        "claim_class": "resource_semantics",
+        "claim_scope": "Resource types, units and conditional admissibility; no unrestricted universal resource law.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P05": {
+        "claim_class": "capability_model",
+        "claim_scope": "Task-specific capability, competency evidence and team conditions; occupation titles do not establish individual ability.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P06": {
+        "claim_class": "simulation_comparison",
+        "claim_scope": "System performance and local-metric counterexamples in declared validated comparisons, not field effects.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P07": {
+        "claim_class": "simulation_comparison",
+        "claim_scope": "Flow and release-policy comparisons within the validated manufacturing model and declared operating region.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P08": {
+        "claim_class": "simulation_comparison",
+        "claim_scope": "Qualification-aware staffing and scheduling comparisons in the declared service model.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P09": {
+        "claim_class": "organizational_effect",
+        "claim_scope": "Measured organizational effects of hiring, training or automation under the evaluated bounded intervention.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P10": {
+        "claim_class": "forecast_backtest",
+        "claim_scope": "Time-respecting forecast and uncertainty backtests; prediction quality is separate from intervention effects.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P11": {
+        "claim_class": "decision_profile",
+        "claim_scope": "Organizational knowledge prerequisites and bounded context; effectiveness requires separately scoped comparative evidence.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P12": {
+        "claim_class": "conditional_admissibility",
+        "claim_scope": "Conditional admissibility and verifiable decision records under explicit assumptions, not unconditional future safety.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P13": {
+        "claim_class": "organizational_effect",
+        "claim_scope": "Causal effects under an identified bounded field design with observed interventions and stated interference limits.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P14": {
+        "claim_class": "conditional_control",
+        "claim_scope": "Conditional stability results and finite operational criteria within declared models; no universal field guarantee.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P15": {
+        "claim_class": "organizational_transfer",
+        "claim_scope": "Held-out cross-organization transfer of observed intervention outcomes with independent reproduction and explicit transport limits.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      },
+      "CW-P16": {
+        "claim_class": "evidence_lifecycle",
+        "claim_scope": "Versioned knowledge revision, contradiction handling and evidence invalidation; no automatic runtime authority.",
+        "narrower_scope_policy": "separate_reviewed_contract_no_effect_claim"
+      }
+    },
+    "launch_outputs": {
+      "CW-N01": "Source and evidence freeze manifest",
+      "CW-N02": "Programme charter and output inventory",
+      "CW-N03": "Versioned execution programme and coverage validator",
+      "CW-N04": "Three-language announcement and research cards",
+      "CW-N05": "Repository and roadmap announcement integration",
+      "CW-N06": "Muneral registration and exact readback ledger",
+      "CW-N07": "Published three-language launch receipt",
+      "CW-N08": "Collective ownership and bounded first-batch handoff"
+    }
+  },
+  "locales": {
+    "ru": {
+      "papers": {
+        "CW-P01": {
+          "title": "Карта исследований",
+          "question": "Что уже известно и какой пробел остаётся проверяемым?",
+          "companion": "Поиск, отбор, корпус и карта утверждений"
+        },
+        "CW-P02": {
+          "title": "Потребности организации",
+          "question": "Как определить разрыв относительно цели, условий и времени?",
+          "companion": "Фасетное представление потребности"
+        },
+        "CW-P03": {
+          "title": "Сети работы",
+          "question": "Какие зависимости соединяют задачи и подразделения?",
+          "companion": "Типизированный граф процессов"
+        },
+        "CW-P04": {
+          "title": "Семантика ресурсов",
+          "question": "Как объединять типы ресурсов, сохраняя различия в их поведении?",
+          "companion": "Схемы единиц измерения, запасов, мощностей и доступности"
+        },
+        "CW-P05": {
+          "title": "Профессиональные способности",
+          "question": "Как связаны профессия, роль, задача, способность и свидетельство?",
+          "companion": "Сопоставления классификаторов и профили компетенций"
+        },
+        "CW-P06": {
+          "title": "Производительность системы",
+          "question": "Что считать улучшением всей системы?",
+          "companion": "Метрики и контрпримеры локальным KPI"
+        },
+        "CW-P07": {
+          "title": "Согласование потоков",
+          "question": "Когда следует ограничивать допуск работ или расширять мощность?",
+          "companion": "Эксперименты с очередями, буферами и допуском работ"
+        },
+        "CW-P08": {
+          "title": "Состав команды",
+          "question": "Какое сочетание и количество квалификаций требуется?",
+          "companion": "Совместные модели кадрового состава и расписания"
+        },
+        "CW-P09": {
+          "title": "Развитие способностей",
+          "question": "Как сравнивать найм, обучение и автоматизацию?",
+          "companion": "Модели выхода на мощность, наставничества и инвестиций"
+        },
+        "CW-P10": {
+          "title": "Среда и прогнозы",
+          "question": "Как внешние изменения влияют на потребности?",
+          "companion": "Вероятностные прогнозы и сценарии"
+        },
+        "CW-P11": {
+          "title": "Достаточность знаний",
+          "question": "Какие свидетельства необходимы для конкретного решения?",
+          "companion": "Организационный профиль Agent Situation"
+        },
+        "CW-P12": {
+          "title": "Обоснованный выбор",
+          "question": "Как знание поддерживает допустимое действие?",
+          "companion": "Предусловия, верификатор и запись решения"
+        },
+        "CW-P13": {
+          "title": "Причинная оценка",
+          "question": "Как разделить эффекты работника, процесса и среды?",
+          "companion": "Протоколы атрибуции и вмешательств"
+        },
+        "CW-P14": {
+          "title": "Устойчивое управление",
+          "question": "При каких условиях контролируются перегрузка и вредные колебания?",
+          "companion": "Условные результаты и стрессовые проверки"
+        },
+        "CW-P15": {
+          "title": "Перенос между организациями",
+          "question": "Какие выводы сохраняют применимость в новой среде?",
+          "companion": "Отложенные организации и отрасли"
+        },
+        "CW-P16": {
+          "title": "Пересмотр знаний",
+          "question": "Как результаты и контрпримеры должны менять модель?",
+          "companion": "Версионируемые гипотезы, правила и свидетельства"
+        }
+      },
+      "hypotheses": {
+        "CW-HYP01": {
+          "statement": "Доменный профиль повышает допустимость решений",
+          "comparison": "Сильный обычный RAG против профиля при одинаковой информации и бюджетах",
+          "refutation": "Нет надёжного улучшения либо оно объясняется только дополнительным контекстом"
+        },
+        "CW-HYP02": {
+          "statement": "Межпроцессные зависимости уменьшают локальный вред",
+          "comparison": "Политика локальных KPI против политики, учитывающей цели связанных процессов",
+          "refutation": "При заявленных компромиссах ухудшаются общее обслуживание, качество или принятый результат"
+        },
+        "CW-HYP03": {
+          "statement": "Инвалидация знаний уменьшает число устаревших решений",
+          "comparison": "Один профиль с инвалидацией и без неё",
+          "refutation": "Частота устаревших действий не улучшается; стоимость обновления и ложные блокировки оцениваются отдельно"
+        },
+        "CW-HYP04": {
+          "statement": "Внешняя проверка улучшает соблюдение ограничений",
+          "comparison": "Ограничения только в промпте против внешнего верификатора",
+          "refutation": "Соблюдение не улучшается либо рост ложных допусков или отказов нарушает зарегистрированную цель"
+        },
+        "CW-HYP05": {
+          "statement": "Учёт квалификации при планировании персонала улучшает выполнимость",
+          "comparison": "Совместное покрытие навыков и расписание против деления совокупной трудоёмкости",
+          "refutation": "Назначения остаются невыполнимыми либо выигрыш исчезает на отложенных данных"
+        },
+        "CW-HYP06": {
+          "statement": "Явные задержки действий улучшают решения о мощности",
+          "comparison": "Предположение мгновенной доступности против задержек найма, обучения и наставничества",
+          "refutation": "После учёта скрытых затрат поддержки прогнозируемая мощность или обслуживание не улучшаются"
+        },
+        "CW-HYP07": {
+          "statement": "Причинные ограничения уменьшают ложную атрибуцию",
+          "comparison": "Случаи идентифицируемых эффектов и случаи недостаточной идентификации",
+          "refutation": "Сохраняется уверенная необоснованная атрибуция либо не происходит уместного отказа от вывода"
+        },
+        "CW-HYP08": {
+          "statement": "Явная неопределённость повышает качество решений",
+          "comparison": "Вероятностное или робастное решение против точечной оценки",
+          "refutation": "Нет пользы по заранее заданному критерию качества и принятому компромиссу консерватизма"
+        },
+        "CW-HYP09": {
+          "statement": "Избирательное уточнение повышает полезность",
+          "comparison": "Выборочное уточнение против постоянного действия, постоянного вопроса и простого порогового правила",
+          "refutation": "Затраты на информацию и ошибки не дают преимущества перед простым правилом"
+        },
+        "CW-HYP10": {
+          "statement": "Ранжирование моделей переносится",
+          "comparison": "Предсказанные ранги вмешательств против независимо наблюдаемых результатов на отложенных данных",
+          "refutation": "Направление эффекта или порядок решений не сохраняется в заявленной области переноса"
+        },
+        "CW-HYP11": {
+          "statement": "Управление соответствует заявленному критерию устойчивости",
+          "comparison": "Нагрузки, задержки и возмущения в заданной области работы",
+          "refutation": "Зарегистрированный критерий устойчивости или восстановления нарушается"
+        },
+        "CW-HYP12": {
+          "statement": "Свидетельства обеспечивают независимое воспроизведение",
+          "comparison": "Повтор с зафиксированными версиями источников, данных, конфигурации и моделей",
+          "refutation": "Существенные различия не имеют документированного стохастического или средового объяснения"
+        }
+      },
+      "release_scopes": {
+        "CW-P01": "Рецензированная карта исследований с критически оценёнными первичными источниками и явно указанными нерешёнными вопросами.",
+        "CW-P02": "Представление потребностей и обязательств организации; измеренная польза для организации не заявляется.",
+        "CW-P03": "Типизированные рабочие зависимости и семантика совместного использования ресурсов при явных предпосылках.",
+        "CW-P04": "Типы ресурсов, единицы измерения и условная допустимость; универсальный неограниченный закон ресурсов не заявляется.",
+        "CW-P05": "Способность применительно к задаче, свидетельства компетенций и условия работы команды; название профессии не устанавливает способность конкретного человека.",
+        "CW-P06": "Производительность системы и контрпримеры локальным метрикам в заявленных валидированных сравнениях; это не полевые эффекты.",
+        "CW-P07": "Сравнения потоков и правил допуска работ в пределах валидированной производственной модели и заявленной области работы.",
+        "CW-P08": "Сравнения кадрового состава и расписаний с учётом квалификации в заявленной сервисной модели.",
+        "CW-P09": "Измеренные организационные эффекты найма, обучения или автоматизации в пределах оценённого ограниченного вмешательства.",
+        "CW-P10": "Обратные проверки прогнозов и неопределённости с соблюдением временного порядка; качество предсказания отделено от эффектов вмешательств.",
+        "CW-P11": "Организационные предпосылки знания и ограниченный контекст; эффективность требует отдельно определённых сравнительных свидетельств.",
+        "CW-P12": "Условная допустимость и проверяемые записи решений при явных предпосылках; безусловная безопасность в будущем не заявляется.",
+        "CW-P13": "Причинные эффекты в пределах идентифицированного ограниченного полевого дизайна с наблюдаемыми вмешательствами и явными границами интерференции.",
+        "CW-P14": "Условные результаты об устойчивости и конечные операционные критерии в заявленных моделях; универсальная полевая гарантия не заявляется.",
+        "CW-P15": "Перенос наблюдаемых результатов вмешательства на отложенные организации с независимым воспроизведением и явными границами переноса.",
+        "CW-P16": "Версионируемый пересмотр знания, обработка противоречий и инвалидация свидетельств; автоматические полномочия среды исполнения не предоставляются."
+      },
+      "launch_outputs": {
+        "CW-N01": "Манифест зафиксированных исходников и свидетельств",
+        "CW-N02": "Устав программы и перечень выходных артефактов",
+        "CW-N03": "Версионируемая программа исполнения и проверка полноты покрытия",
+        "CW-N04": "Анонс и карточки исследований на трёх языках",
+        "CW-N05": "Связанные анонсы в репозитории и дорожной карте",
+        "CW-N06": "Регистрация в Muneral и реестр точного обратного чтения",
+        "CW-N07": "Квитанция фактической публикации запуска на трёх языках",
+        "CW-N08": "Согласование ответственности коллектива и передача ограниченной первой очереди"
+      }
+    },
+    "zh-Hans": {
+      "epics": {
+        "CW-EP00": "方向公告与任务登记",
+        "CW-EP01": "文献库与研究图谱",
+        "CW-EP02": "需求与能力本体",
+        "CW-EP03": "组织状态与允许使用的来源",
+        "CW-EP04": "流量、产能与约束",
+        "CW-EP05": "团队与能力规划",
+        "CW-EP06": "预测、不确定性与漂移",
+        "CW-EP07": "决策契约与智能体核验",
+        "CW-EP08": "实验设计与比较评估",
+        "CW-EP09": "三语科学出版",
+        "CW-EP10": "形式化可容许性与资源类型",
+        "CW-EP11": "数据权利、隐私与参考资料包",
+        "CW-EP12": "独立判定基准与模型有效性",
+        "CW-EP13": "制造流程实验平台",
+        "CW-EP14": "服务流程实验平台",
+        "CW-EP15": "项目与知识工作实验平台",
+        "CW-EP16": "因果性、可观测性与干扰",
+        "CW-EP17": "执行、并发与总成本",
+        "CW-EP18": "使用方与生态系统整合",
+        "CW-EP19": "操作人员理解与信息价值",
+        "CW-EP20": "影子评估、实地研究与外部复现",
+        "CW-EP21": "动力学、稳定性与递归可行性",
+        "CW-EP22": "KC 兼容性与证据来源链"
+      },
+      "tasks": {
+        "CW-A01": "界定文献综述的范围",
+        "CW-A02": "核验初始参考文献",
+        "CW-A03": "提取引文候选记录",
+        "CW-A04": "确认文献身份并消解重复",
+        "CW-A05": "扩大研究领域覆盖",
+        "CW-A06": "筛选并评价全文",
+        "CW-A07": "提取具有明确适用范围的论断",
+        "CW-A08": "评审范围综述图谱",
+        "CW-B01": "定义组织分析单元",
+        "CW-B02": "对需求与情境进行分类",
+        "CW-B03": "映射行业与流程",
+        "CW-B04": "映射职业与胜任能力",
+        "CW-B05": "定义资源语义",
+        "CW-B06": "定义绩效度量",
+        "CW-B07": "评估标注一致性",
+        "CW-B08": "在留出的行业中评估",
+        "CW-C01": "构建具有类型的工作图",
+        "CW-C02": "定义事件语义",
+        "CW-C03": "区分需求观测与潜在需求",
+        "CW-C04": "表示资源可用日历",
+        "CW-C05": "保留来源与冲突",
+        "CW-C06": "规定知识时效与失效机制",
+        "CW-C07": "制作具有授权边界的适配器原型",
+        "CW-C08": "评审组织领域配置",
+        "CW-D01": "定义流量守恒",
+        "CW-D02": "推导附带条件的吞吐量上界",
+        "CW-D03": "建模缓冲区与延迟",
+        "CW-D04": "建模换型与返工",
+        "CW-D05": "比较工作投放策略",
+        "CW-D06": "加入产品组合与共享资源",
+        "CW-D07": "构造局部指标的反例",
+        "CW-D08": "评审流量模型",
+        "CW-E01": "估算各任务的劳动工作量",
+        "CW-E02": "关联胜任能力证据",
+        "CW-E03": "优化多技能人员分配",
+        "CW-E04": "建模招聘提前期与产能爬坡",
+        "CW-E05": "比较招聘之外的产能方案",
+        "CW-E06": "区分绩效观察与因果作用",
+        "CW-E07": "约束可持续工作负荷",
+        "CW-E08": "形成可审计的岗位需求",
+        "CW-F01": "协调层级预测",
+        "CW-F02": "校准预测不确定性",
+        "CW-F03": "定义外部冲击情景",
+        "CW-F04": "建模决策延迟",
+        "CW-F05": "在不确定条件下优化",
+        "CW-F06": "检查观测的内生性",
+        "CW-F07": "检测分布漂移",
+        "CW-F08": "回测冻结的预测与决策",
+        "CW-G01": "定义决策前提",
+        "CW-G02": "组装有界上下文",
+        "CW-G03": "定义启动就绪条件",
+        "CW-G04": "分离方案提出与核验",
+        "CW-G05": "校准澄清与拒绝推断",
+        "CW-G06": "记录决策证据",
+        "CW-G07": "处理并发决策",
+        "CW-G08": "评审学习产生的更新",
+        "CW-H01": "冻结假设与度量",
+        "CW-H02": "构建制造业基准实验平台",
+        "CW-H03": "构建服务业基准实验平台",
+        "CW-H04": "构建项目基准实验平台",
+        "CW-H05": "评估强基线方法",
+        "CW-H06": "开展消融与不确定性分析",
+        "CW-H07": "开展影子评估",
+        "CW-H08": "评估有界实地干预",
+        "CW-I01": "重新评估创新性",
+        "CW-I02": "将论断与证据关联",
+        "CW-I03": "编写规范来源稿件",
+        "CW-I04": "冻结可复现资料包",
+        "CW-I05": "取得实质性评审",
+        "CW-I06": "通过仓库检查整合",
+        "CW-I07": "发布并核验实际提供的内容",
+        "CW-I08": "批准索引收录并维护修订",
+        "CW-N01": "冻结方案输入与已有证据的边界",
+        "CW-N02": "定义方案章程与成果类别",
+        "CW-N03": "构建并验证执行图",
+        "CW-N04": "准备英语、俄语与简体中文公告资料包",
+        "CW-N05": "发布仓库与路线图中的方案条目",
+        "CW-N06": "在 Muneral 登记任务图并读回核验",
+        "CW-N07": "交付三语公告与方案页面",
+        "CW-N08": "完成集体交接与首批有界工作",
+        "CW-N09": "提前比较创新性与最接近的既有研究",
+        "CW-N10": "规定论断与证据的来源链",
+        "CW-N11": "规定目标、权衡与不可行情形",
+        "CW-N12": "履行附带条件的可容许性证明义务",
+        "CW-N13": "陈述递归可行性与稳定性的条件",
+        "CW-N14": "实现量纲与可用性检查",
+        "CW-N15": "绑定数据访问权、使用权与测量目的",
+        "CW-N16": "构建参考数据集与数据字典",
+        "CW-N17": "建立独立判定基准与变异测试",
+        "CW-N18": "验证仿真模型的概念与操作适用性",
+        "CW-N19": "登记研究协议与匹配的基线",
+        "CW-N20": "规划统计单位、检验功效与多重比较",
+        "CW-N21": "建模团队互补、指导与能力变化",
+        "CW-N22": "规定组织决策适配器的契约",
+        "CW-N23": "检验并发决策与恢复语义",
+        "CW-N24": "测量规模、延迟与决策总成本",
+        "CW-N25": "评估决策解释与人的使用",
+        "CW-N26": "准备 Arcanada 现有工作的影子使用方",
+        "CW-N27": "准备第二个符合条件的组织影子使用方",
+        "CW-N28": "开展留出迁移评估与外部复现",
+        "CW-N29": "设计有界实地干预",
+        "CW-N30": "定义按论断区分的发布条件矩阵",
+        "CW-N31": "维护三语术语与翻译忠实性",
+        "CW-N32": "维护修订、否定结果与撤回"
+      },
+      "papers": {
+        "CW-P01": {
+          "title": "研究图谱",
+          "question": "哪些结论已经建立，哪些缺口仍可检验？",
+          "companion": "检索、筛选、文献库与论断图谱"
+        },
+        "CW-P02": {
+          "title": "组织需求",
+          "question": "如何相对于目标、条件与时间定义差距？",
+          "companion": "需求的分面表示"
+        },
+        "CW-P03": {
+          "title": "工作网络",
+          "question": "哪些依赖关系连接任务与部门？",
+          "companion": "具有类型的流程图"
+        },
+        "CW-P04": {
+          "title": "资源语义",
+          "question": "如何组合资源类型并保留各自不同的行为？",
+          "companion": "单位、库存、产能与可用性模式"
+        },
+        "CW-P05": {
+          "title": "职业能力",
+          "question": "职业、角色、任务、能力与证据如何关联？",
+          "companion": "分类体系映射与胜任能力配置"
+        },
+        "CW-P06": {
+          "title": "系统绩效",
+          "question": "什么构成整个系统的改善？",
+          "companion": "度量与局部 KPI 反例"
+        },
+        "CW-P07": {
+          "title": "流量协调",
+          "question": "何时应限制工作投放，何时应扩大产能？",
+          "companion": "队列、缓冲区与投放实验"
+        },
+        "CW-P08": {
+          "title": "团队组成",
+          "question": "需要怎样的资质组合与数量？",
+          "companion": "联合人员配置与排程模型"
+        },
+        "CW-P09": {
+          "title": "能力发展",
+          "question": "应如何比较招聘、培训与自动化？",
+          "companion": "产能爬坡、指导与投资模型"
+        },
+        "CW-P10": {
+          "title": "环境与预测",
+          "question": "外部变化如何影响需求？",
+          "companion": "概率预测与情景"
+        },
+        "CW-P11": {
+          "title": "知识充分性",
+          "question": "某项具体决策需要哪些证据？",
+          "companion": "组织领域的 Agent Situation 配置"
+        },
+        "CW-P12": {
+          "title": "有据可依的选择",
+          "question": "知识如何支持可容许的行动？",
+          "companion": "前提条件、核验器与决策记录"
+        },
+        "CW-P13": {
+          "title": "因果评估",
+          "question": "如何区分人员、流程与环境的作用？",
+          "companion": "归因与干预协议"
+        },
+        "CW-P14": {
+          "title": "稳定控制",
+          "question": "在什么条件下可以控制过载与有害振荡？",
+          "companion": "附带条件的结果与压力测试"
+        },
+        "CW-P15": {
+          "title": "跨组织迁移",
+          "question": "哪些结论在新环境下仍然适用？",
+          "companion": "留出的组织与行业"
+        },
+        "CW-P16": {
+          "title": "知识修订",
+          "question": "结果与反例应如何改变模型？",
+          "companion": "版本化的假设、规则与证据"
+        }
+      },
+      "hypotheses": {
+        "CW-HYP01": {
+          "statement": "领域配置提高决策的可容许性",
+          "comparison": "在信息与预算匹配时，比较强普通 RAG 与领域配置",
+          "refutation": "未出现可靠改善，或改善仅由额外上下文解释"
+        },
+        "CW-HYP02": {
+          "statement": "跨流程依赖减少局部优化造成的损害",
+          "comparison": "比较局部 KPI 策略与使用相连流程目标的策略",
+          "refutation": "在声明的权衡下，整体服务、质量或验收通过的产出变差"
+        },
+        "CW-HYP03": {
+          "statement": "知识失效处理减少过时决策",
+          "comparison": "比较同一配置启用与停用失效处理的情况",
+          "refutation": "过时行动频率没有改善；更新成本与误阻断须另行评估"
+        },
+        "CW-HYP04": {
+          "statement": "外部核验改善约束遵守",
+          "comparison": "比较仅在提示词中列出约束与使用外部核验器",
+          "refutation": "约束遵守未改善，或误接受与误拒绝的增加破坏了已登记目标"
+        },
+        "CW-HYP05": {
+          "statement": "考虑资质的人员配置提高可行性",
+          "comparison": "比较联合技能覆盖与排程，以及仅按总工作量分配",
+          "refutation": "分配仍不可行，或收益在留出情境中消失"
+        },
+        "CW-HYP06": {
+          "statement": "显式行动时滞改善产能决策",
+          "comparison": "比较即时可用假设与招聘、培训、指导的时滞",
+          "refutation": "计入隐藏支持成本后，预测产能或服务没有改善"
+        },
+        "CW-HYP07": {
+          "statement": "因果约束减少错误归因",
+          "comparison": "比较效应可识别的情形与识别不足的情形",
+          "refutation": "仍存在高置信度但无依据的归因，或未能适当地拒绝推断"
+        },
+        "CW-HYP08": {
+          "statement": "显式不确定性提高决策质量",
+          "comparison": "比较概率或鲁棒决策与点估计",
+          "refutation": "按预先设定的质量准则及已接受的保守性权衡衡量，没有收益"
+        },
+        "CW-HYP09": {
+          "statement": "选择性澄清提高效用",
+          "comparison": "比较选择性澄清、总是行动、总是提问与简单阈值规则",
+          "refutation": "信息成本与错误合计后，相对于简单规则没有优势"
+        },
+        "CW-HYP10": {
+          "statement": "模型排序能够迁移",
+          "comparison": "比较预测的干预排序与独立观察到的留出结果",
+          "refutation": "在声明的迁移范围内，效应方向或决策排序不成立"
+        },
+        "CW-HYP11": {
+          "statement": "控制满足已声明的稳定性准则",
+          "comparison": "在规定运行区域内考察负荷、延迟与扰动",
+          "refutation": "违反已登记的稳定性或恢复准则"
+        },
+        "CW-HYP12": {
+          "statement": "证据支持独立复现",
+          "comparison": "使用固定来源、数据、配置与模型版本重复执行",
+          "refutation": "实质性差异没有已记录的随机性或环境解释"
+        }
+      },
+      "release_scopes": {
+        "CW-P01": "经评审的研究图谱，包含已评价的原始来源以及明确未解决的缺口。",
+        "CW-P02": "组织需求与义务的表示；不宣称已测得组织收益。",
+        "CW-P03": "在明确假设下，表示具有类型的工作依赖与并发资源语义。",
+        "CW-P04": "资源类型、单位与附带条件的可容许性；不宣称不受限制的普遍资源定律。",
+        "CW-P05": "与任务相关的能力、胜任能力证据及团队条件；职业名称不能证明个人能力。",
+        "CW-P06": "在声明并已验证的比较中研究系统绩效与局部指标反例；不将其视为实地效应。",
+        "CW-P07": "在已验证的制造模型与声明的运行区域内比较流量及工作投放策略。",
+        "CW-P08": "在声明的服务模型中比较考虑资质的人员配置与排程。",
+        "CW-P09": "在已评估的有界干预范围内，测量招聘、培训或自动化的组织效应。",
+        "CW-P10": "遵守时间顺序的预测与不确定性回测；预测质量与干预效应分开处理。",
+        "CW-P11": "组织知识前提与有界上下文；有效性需要范围另行明确的比较证据。",
+        "CW-P12": "在明确假设下的附带条件的可容许性与可核验决策记录；不宣称无条件的未来安全。",
+        "CW-P13": "在可识别的有界实地设计下估计因果效应，并记录干预与干扰限制。",
+        "CW-P14": "在声明模型内给出附带条件的稳定性结果与有限操作准则；不提供普遍实地保证。",
+        "CW-P15": "将观察到的干预结果迁移到留出组织，并进行独立复现、明确迁移范围限制。",
+        "CW-P16": "版本化的知识修订、矛盾处理与证据失效；不自动授予运行时权限。"
+      },
+      "launch_outputs": {
+        "CW-N01": "冻结来源与证据的清单",
+        "CW-N02": "方案章程与成果目录",
+        "CW-N03": "版本化执行方案与覆盖验证器",
+        "CW-N04": "三语公告与研究卡片",
+        "CW-N05": "仓库与路线图公告整合",
+        "CW-N06": "Muneral 登记与精确读回记录",
+        "CW-N07": "三语发布完成回执",
+        "CW-N08": "集体责任约定与首批有界工作交接"
+      }
+    }
+  }
+}

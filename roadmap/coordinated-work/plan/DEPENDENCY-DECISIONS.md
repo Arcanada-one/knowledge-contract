@@ -28,6 +28,8 @@ The frozen source graph has 72 work packages, 78 edges and a longest chain of 64
 | Evidence before organizational effects | H06/N26/N24/N25 → H07; H07/N29 → H08 | Controlled comparison precedes eligible shadow observation. A causal field claim additionally needs the intervention protocol, identification, authority, spillover treatment, stopping and rollback. |
 | Novelty informs design | A07 → N09; A08/B08/N09 → I01 | Contribution appraisal begins before field results. The nearest predecessor can remove a novelty claim or change the experimental question. |
 | Release by claim type | N30; I03–I08 | Review/formal work need not wait for a field trial. Each artifact instantiates its own release gates. Organizational-effect claims still require H08 and the appropriate causal evidence. |
+| Bind evidence to each paper release | Per-paper contracts and I03–I08 instances | Sixteen typed contracts add 138 required-evidence edges, counted separately from the work-package DAG. P09/P13/P15 require H08 and the causal/intervention inputs; every instance must put its own required outputs upstream of manuscript and publication. Coverage alone does not satisfy release. |
+| Reproduce before releasing the target paper | H06/N16 → N28 | Reuse frozen evaluation inputs and eligible data, pinning code, environment, model, configuration and seeds before independent execution. Replace the earlier generic I04 prerequisite; final per-paper I04 incorporates reproduction receipts rather than blocking the reproduction that it needs. |
 | Define publication policy early | N30 without a universal H01 dependency | The publication matrix defines which empirical claims require prior registration. Writing that matrix does not itself satisfy any empirical gate. |
 | Publish truthful announcements while registration is pending | N04/N05 → N07; N06/N07 → N08 | An accepted announcement may disclose pending native registration. Complete launch acceptance still requires both served-content verification and actual task/edge readback. |
 | Maintain drafts as well as releases | N10/G08 → N32 | Correction, contradiction handling and invalidation policy are needed before indexing. Applying a correction to published material still requires its release and served-content checks. |
@@ -50,6 +52,14 @@ These are precedence waves computed from the graph, not a calendar or permission
 A native registration blocker does not falsely become a successful registration. N07 can truthfully report pending registration; N08 remains open until the intended nodes, acceptance contracts and dependency edges are read back from Muneral.
 
 The full-text review, benchmark families, comparative runs and per-artifact release templates need smaller child scopes. A06/A07, H02–H06 and I03–I08 are explicitly listed for this decomposition in the graph.
+
+## Per-paper release graph correction
+
+The review of `b99e779dcde890b3067548b407dd11b3efdc0935` found that H08 had no downstream release consumer: P09, P13 and P15 mentioned it only in coverage mappings. The correction preserves all source rows and the 104-package, 247-edge DAG while adding sixteen explicit release contracts, 138 typed required-evidence edges and sixteen proposed six-stage release instances. Their 96 stage nodes are templates, not newly registered work or accepted evidence.
+
+The central checker and offline registration preparer now validate the per-paper scope, consumed outputs and actual upstream path to that paper's I03 and I08 stages. A P13 instance with H08 removed is a mandatory negative control. P09 and P15 field/transfer instances carry the same H08 obligation. A review or formal paper is not given a universal field dependency. Earlier narrower work must receive a separately reviewed scope contract and cannot claim unobserved organizational effects.
+
+N28 now consumes H06 and N16 outputs instead of a generic I04 package. The independent executor freezes exact reproduction inputs before running; the target paper's later I04 package includes the reproduction receipt. This prevents a paper from waiting for its own publication package before obtaining the reproduction evidence required for release.
 
 ## Representative semantic checks
 

@@ -2,7 +2,7 @@
 
 Prepared 18 November 2026. Status: **source proposal for reconciliation and review**. Muneral remains the authority for actual task identities, assignments, dependencies and execution states.
 
-This programme has **23 epics, 104 work packages and 247 output-consuming blocking edges**. It preserves all **72 original steps**, adds **32 explicit missing work packages**, and maps **16 potential papers and 12 hypotheses**. The [machine-readable graph](execution-graph.json) and [complete task contracts](TASK_CONTRACTS.md) are the source for registration. The [Russian guide](PROGRAMME.ru.md) presents the same inventory.
+This programme has **23 epics, 104 work packages and 247 output-consuming blocking edges**. It preserves all **72 original steps**, adds **32 explicit missing work packages**, and maps **16 potential papers and 12 hypotheses**. The [machine-readable graph](execution-graph.json) and [complete task contracts](TASK_CONTRACTS.md) are the source for registration. The [Russian programme](PROGRAMME.ru.md) and [Simplified Chinese programme](PROGRAMME.zh-Hans.md) present the same scope tables and bind their source to this English text.
 
 The 104 entries are work packages. Broad review batches, benchmark families and publication templates must be split into bounded children before dispatch. A proposed owner is not an actual assignment. The 128 programme/epic/package objects prepared for reconciliation are not 128 created Muneral objects.
 
@@ -195,7 +195,7 @@ Every linked contract records numbered acceptance criteria, exact proposed outpu
 | [CW-N25](TASK_CONTRACTS.md#evaluate-decision-explanation-and-human-use-cw-n25) | Evaluate decision explanation and human use | CW-EP19 | CW-G06, CW-N19 |
 | [CW-H07](TASK_CONTRACTS.md#run-a-shadow-evaluation-cw-h07) | Run a shadow evaluation | CW-EP20 | CW-H06, CW-N26, CW-N24, CW-N25 |
 | [CW-H08](TASK_CONTRACTS.md#evaluate-a-bounded-field-intervention-cw-h08) | Evaluate a bounded field intervention | CW-EP20 | CW-H07, CW-E06, CW-N29 |
-| [CW-N28](TASK_CONTRACTS.md#run-held-out-transfer-and-external-reproduction-cw-n28) | Run held-out transfer and external reproduction | CW-EP20 | CW-H06, CW-I04 |
+| [CW-N28](TASK_CONTRACTS.md#run-held-out-transfer-and-external-reproduction-cw-n28) | Run held-out transfer and external reproduction | CW-EP20 | CW-H06, CW-N16 |
 | [CW-N13](TASK_CONTRACTS.md#state-recursive-feasibility-and-stability-conditions-cw-n13) | State recursive feasibility and stability conditions | CW-EP21 | CW-N12, CW-D03, CW-F04 |
 | [CW-N10](TASK_CONTRACTS.md#specify-claim-and-evidence-lineage-cw-n10) | Specify claim and evidence lineage | CW-EP22 | CW-A01 |
 
@@ -221,6 +221,35 @@ These are candidate boundaries, not sixteen completed or accepted papers. Final 
 | CW-P14 — Stable control | Under what conditions are overload and harmful oscillation controlled? | Conditional results and stress tests | CW-D03, CW-D05, CW-F04, CW-F07, CW-H02, CW-H03, CW-H04, CW-N13, CW-N18 |
 | CW-P15 — Transfer across organizations | Which conclusions remain applicable in a new setting? | Held-out organizations and industries | CW-B08, CW-H02, CW-H03, CW-H04, CW-H06, CW-H08, CW-N28 |
 | CW-P16 — Knowledge revision | How should outcomes and counterexamples change the model? | Versioned hypotheses, rules, and evidence | CW-C06, CW-G08, CW-I02, CW-I08, CW-N10, CW-N32 |
+
+## Per-paper release gates
+
+Coverage mappings are not release permission. Each of the sixteen papers has an explicit claim scope and typed required-evidence edges. The current proposal adds 138 such edges and sixteen release-instance templates containing 96 stage nodes. These are counted separately from the 104 work packages and 247 package dependencies; none is a created native task or accepted result.
+
+Each release instance substitutes its own outputs into I03–I08 and must place every required gate upstream of its manuscript and final release. The validator rejects a P13 release missing H08, an advisory link substituted for an evidence dependency, or another paper's stage output. Registration preparation includes these contracts in the native scope templates and emits separate release DAG templates; it sends no requests.
+
+P09 and P13 organizational-effect scopes and P15 organizational-transfer scope require H08 plus the causal and intervention prerequisites. Review, model and formal scopes do not acquire a universal H08 dependency. An earlier protocol-only or narrower formal contribution needs a separate reviewed scope contract that excludes unobserved effect claims; it cannot silently weaken one of the contracts below.
+
+External reproduction N28 consumes frozen H06 evaluation inputs and N16 data packages. Before independent execution it pins code, environment, model, configuration and seeds. It does not wait for I04 of the paper whose release it must gate; the final I04 package later includes its receipts.
+
+| Paper | Declared claim scope | Required evidence gates |
+| --- | --- | --- |
+| CW-P01 | Reviewed research map with appraised primary sources and explicit unresolved gaps. | CW-A01, CW-A02, CW-A03, CW-A04, CW-A05, CW-A06, CW-A07, CW-A08, CW-N09, CW-N10 |
+| CW-P02 | Representation of organizational needs and obligations; no measured organizational benefit is claimed. | CW-B01, CW-B02, CW-B06, CW-C03, CW-N11 |
+| CW-P03 | Typed work dependencies and concurrent resource semantics under stated assumptions. | CW-C01, CW-C02, CW-C04, CW-G07, CW-N23 |
+| CW-P04 | Resource types, units and conditional admissibility; no unrestricted universal resource law. | CW-B05, CW-C04, CW-D01, CW-D04, CW-D06, CW-N12, CW-N14 |
+| CW-P05 | Task-specific capability, competency evidence and team conditions; occupation titles do not establish individual ability. | CW-B03, CW-B04, CW-E01, CW-E02, CW-E07, CW-N21 |
+| CW-P06 | System performance and local-metric counterexamples in declared validated comparisons, not field effects. | CW-B06, CW-D07, CW-E06, CW-H05, CW-N11, CW-N20, CW-H01, CW-N17, CW-N18, CW-H06 |
+| CW-P07 | Flow and release-policy comparisons within the validated manufacturing model and declared operating region. | CW-D01, CW-D02, CW-D03, CW-D04, CW-D05, CW-D06, CW-D07, CW-D08, CW-H02, CW-N17, CW-N18, CW-H01, CW-H05, CW-H06, CW-N20 |
+| CW-P08 | Qualification-aware staffing and scheduling comparisons in the declared service model. | CW-E01, CW-E02, CW-E03, CW-E08, CW-H03, CW-N21, CW-H01, CW-N17, CW-N18, CW-H05, CW-H06, CW-N20 |
+| CW-P09 | Measured organizational effects of hiring, training or automation under the evaluated bounded intervention. | CW-E04, CW-E05, CW-F04, CW-H08, CW-N21, CW-N29, CW-E06, CW-F06 |
+| CW-P10 | Time-respecting forecast and uncertainty backtests; prediction quality is separate from intervention effects. | CW-F01, CW-F02, CW-F03, CW-F04, CW-F05, CW-F06, CW-F07, CW-F08, CW-N16, CW-N20 |
+| CW-P11 | Organizational knowledge prerequisites and bounded context; effectiveness requires separately scoped comparative evidence. | CW-C05, CW-C06, CW-C08, CW-G01, CW-G02, CW-G03, CW-G05, CW-N10, CW-N22, CW-N25 |
+| CW-P12 | Conditional admissibility and verifiable decision records under explicit assumptions, not unconditional future safety. | CW-F05, CW-G03, CW-G04, CW-G06, CW-G07, CW-N12, CW-N22, CW-N23 |
+| CW-P13 | Causal effects under an identified bounded field design with observed interventions and stated interference limits. | CW-E06, CW-F06, CW-H07, CW-H08, CW-N19, CW-N20, CW-N29 |
+| CW-P14 | Conditional stability results and finite operational criteria within declared models; no universal field guarantee. | CW-D03, CW-D05, CW-F04, CW-F07, CW-H02, CW-H03, CW-H04, CW-N13, CW-N18 |
+| CW-P15 | Held-out cross-organization transfer of observed intervention outcomes with independent reproduction and explicit transport limits. | CW-B08, CW-H02, CW-H03, CW-H04, CW-H06, CW-H08, CW-N28, CW-E06, CW-F06, CW-N29 |
+| CW-P16 | Versioned knowledge revision, contradiction handling and evidence invalidation; no automatic runtime authority. | CW-C06, CW-G08, CW-I02, CW-I08, CW-N10, CW-N32 |
 
 ## Hypotheses and possible refutation
 

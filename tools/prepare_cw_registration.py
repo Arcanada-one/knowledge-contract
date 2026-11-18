@@ -18,6 +18,11 @@ import re
 import sys
 import uuid
 
+try:
+    from tools import check_cw_programme as programme_checker
+except ModuleNotFoundError:
+    import check_cw_programme as programme_checker
+
 PROJECT_UUID = "5d427422-4a5e-45a7-bc3b-f0aa11579a5b"
 BINDINGS_SCHEMA = "kc-cw-muneral-bindings/1"
 READBACK_SCHEMA = "kc-cw-muneral-readback/1"
@@ -179,6 +184,13 @@ def normalize_graph(graph):
             edges.append({"from_proposal_id": key, "to_proposal_id": target,
                           "type": "depends_on", "consumes": consumes, "reason": dependency["reason"]})
     task_order, waves = topological(task_ids, parents)
+    if graph.get("schema") == "CoordinatedWorkExecutionProposal/v1" or "papers" in graph:
+        try:
+            programme_checker.validate_release_contracts(graph)
+        except programme_checker.InvalidProgramme as exc:
+            raise Invalid(str(exc)) from exc
+        for template_id in ["CW-N30"] + [f"CW-I{n:02}" for n in range(3, 9)]:
+            nodes[template_id]["paper_release_contracts"] = graph["paper_release_contracts"]
     create_order = [programme_id] + sorted(epic_ids) + task_order
     return programme_id, nodes, create_order, edges, waves
 
@@ -267,7 +279,8 @@ def description(node, digest, source_commit):
         lines[6:6] = ["This is a broad work package requiring bounded child-task instantiation before implementation dispatch."]
     lines.extend(f"AC{ac['number']}. {ac['text']}" for ac in node["acceptance_criteria"])
     for field, heading in (("outputs", "Outputs"), ("evidence_required", "Required evidence"),
-                           ("negative_controls", "Negative controls"), ("dependencies", "Required prerequisite outputs")):
+                            ("negative_controls", "Negative controls"), ("dependencies", "Required prerequisite outputs"),
+                            ("paper_release_contracts", "Required per-paper release contracts; instantiate and validate before dispatch")):
         if node.get(field):
             lines += ["", heading + ":"]
             for value in node[field]:
@@ -275,11 +288,21 @@ def description(node, digest, source_commit):
     return "\n".join(lines)
 
 
-def prepare(graph, digest, source_commit=None, bindings=None):
+def prepare(graph, digest, source_commit=None, bindings=None, release_instances=None):
     require(isinstance(digest, str) and bool(re.fullmatch(r"[0-9a-f]{64}", digest)), "graph digest must be exact SHA-256")
     if source_commit is not None:
         require(bool(re.fullmatch(r"[0-9a-f]{40}", source_commit)), "source_commit must be a full lowercase Git SHA")
     programme_id, nodes, order, edges, waves = normalize_graph(graph)
+    generated_releases = []
+    if graph.get("schema") == "CoordinatedWorkExecutionProposal/v1" or "papers" in graph:
+        try:
+            generated_releases = (programme_checker.instantiate_release_instances(graph)
+                                  if release_instances is None else release_instances)
+            programme_checker.validate_release_instances(graph, generated_releases)
+        except programme_checker.InvalidProgramme as exc:
+            raise Invalid(str(exc)) from exc
+    else:
+        require(release_instances is None, "release instances require a declared paper programme")
     bindings = new_bindings(programme_id, nodes, digest, source_commit) if bindings is None else bindings
     bound = check_bindings(bindings, programme_id, nodes, digest, source_commit)
     inventoried_projects = complete_inventories(bindings)
@@ -327,6 +350,11 @@ def prepare(graph, digest, source_commit=None, bindings=None):
         "epic_count": len(graph["epics"]), "dependency_count": len(edges),
         "actual_uuid_bindings_supplied": sum(bool(row["task_uuid"]) for row in bound.values()),
         "create_requests": actions, "dependency_requests": edge_actions,
+        "paper_release_instance_templates": generated_releases,
+        "paper_release_template_count": len(generated_releases),
+        "paper_release_stage_count": sum(len(r["nodes"]) for r in generated_releases),
+        "native_release_instances_created": 0,
+        "paper_release_limitation": "Separate proposed release DAGs; not native requests, accepted evidence or publication authorization.",
         "required_native_scope_records": [
             {"proposal_id": key, "task_uuid": bound[key]["task_uuid"],
              "record_type": bound[key]["scope_record_type"],
@@ -421,13 +449,22 @@ def main(argv=None):
     parser.add_argument("--source-commit", help="Exact committed source; omit only while preparing an uncommitted candidate")
     parser.add_argument("--bindings", help="Private reconciled native UUID mapping; never publish this file")
     parser.add_argument("--readback", help="Private normalized exact readbacks; requires --bindings")
+    parser.add_argument("--release-instances", help="Optional exact-source release DAG templates to validate before preparation")
     parser.add_argument("--output", required=True, help="New output directory; existing files are not overwritten")
     args = parser.parse_args(argv)
     try:
         graph, digest = load_json(args.graph)
         bindings = load_json(args.bindings)[0] if args.bindings else None
         require(not args.readback or bindings is not None, "--readback requires --bindings")
-        plan = prepare(graph, digest, args.source_commit, bindings)
+        supplied_releases = None
+        if args.release_instances:
+            release_file = load_json(args.release_instances)[0]
+            require(release_file.get("schema") == "CoordinatedWorkReleaseInstances/v1", "unsupported release instance schema")
+            require(release_file.get("graph_sha256") == digest and release_file.get("source_commit") == args.source_commit,
+                    "release instances must bind this exact graph and source")
+            supplied_releases = release_file.get("instances")
+            require(isinstance(supplied_releases, list), "release instances must be an explicit array")
+        plan = prepare(graph, digest, args.source_commit, bindings, supplied_releases)
         receipt = verify_readback(graph, digest, args.source_commit, bindings, load_json(args.readback)[0]) if args.readback else None
         out = Path(args.output)
         require(not out.exists(), "output directory already exists; choose a new versioned directory")
@@ -438,6 +475,13 @@ def main(argv=None):
             plan["dependency_requests"] = []
         write_json(out / "registration-plan.private.json", plan)
         write_json(out / "bindings.private.json", private_bindings)
+        if plan["paper_release_instance_templates"]:
+            write_json(out / "paper-release-instances.private.json", {
+                "schema": "CoordinatedWorkReleaseInstances/v1", "graph_sha256": digest,
+                "source_commit": args.source_commit, "instances": plan["paper_release_instance_templates"],
+                "native_release_instances_created": 0,
+                "limitation": plan["paper_release_limitation"],
+            })
         scopes = out / "scope-records.private"
         scopes.mkdir(mode=0o700)
         for record in plan["required_native_scope_records"]:
@@ -450,6 +494,9 @@ def main(argv=None):
             "mode": plan["mode"], "programme_id": plan["programme_id"],
             "node_count": plan["node_count"], "task_count": plan["task_count"],
             "epic_count": plan["epic_count"], "dependency_count": plan["dependency_count"],
+            "paper_release_template_count": plan["paper_release_template_count"],
+            "paper_release_stage_count": plan["paper_release_stage_count"],
+            "native_release_instances_created": 0,
             "actual_uuid_bindings_supplied": plan["actual_uuid_bindings_supplied"],
             "native_requests_executed": 0, "source_commit": args.source_commit,
             "readback_consistency": "NOT_CHECKED" if receipt is None else "OFFLINE_CONSISTENT",

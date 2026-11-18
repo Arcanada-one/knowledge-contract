@@ -14,6 +14,23 @@ def n(value):
     return Q(str(value))
 
 
+def unique_records(records, key, label):
+    """Reject ambiguous identities before a dictionary can discard a record."""
+    if not isinstance(records, list) or not records:
+        raise ValueError(f'{label} must be a nonempty list')
+    indexed = {}
+    for position, record in enumerate(records):
+        if not isinstance(record, dict):
+            raise ValueError(f'{label}[{position}] must be an object')
+        identity = record.get(key)
+        if not isinstance(identity, str) or not identity.strip():
+            raise ValueError(f'{label}[{position}].{key} must be a nonempty string')
+        if identity in indexed:
+            raise ValueError(f'{label} has duplicate {key}: {identity}')
+        indexed[identity] = record
+    return indexed
+
+
 def main():
     base = Path(__file__).parent
     parser = argparse.ArgumentParser(description=__doc__)
@@ -23,10 +40,15 @@ def main():
     parser.add_argument('--report', type=Path, default=base/'verification_report.json')
     args = parser.parse_args()
     raw_input = args.inputs.read_bytes()
-    cases = {c['id']: c for c in json.loads(raw_input)['cases']}
     actual_doc = json.loads(args.actual.read_text())
-    actual = {r['case_id']: r for r in actual_doc['results']}
-    expected = {r['case_id']: r for r in json.loads(args.expected.read_text())['expected']}
+    try:
+        cases = unique_records(json.loads(raw_input)['cases'], 'id', 'cases')
+        actual = unique_records(actual_doc['results'], 'case_id', 'results')
+        expected = unique_records(json.loads(args.expected.read_text())['expected'], 'case_id', 'expected')
+        if set(cases) != set(actual) or set(cases) != set(expected):
+            raise ValueError('case identities differ across cases, results and expected')
+    except (KeyError, ValueError) as exc:
+        parser.error(f'invalid probe inputs: {exc}')
     checks = []
     def check(name, condition, details=None):
         checks.append(dict(check=name, passed=bool(condition), details=details))

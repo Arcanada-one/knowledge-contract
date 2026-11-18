@@ -70,7 +70,7 @@ The following 16 sections are potential papers. Each requires an independently u
 
 ## Work sequence and deliverables
 
-The [expanded execution programme](plan/PROGRAMME.md), [Russian guide](plan/PROGRAMME.ru.md), [104 work contracts](plan/TASK_CONTRACTS.md) and [typed graph](plan/execution-graph.json) preserve the original plan and add launch, formal, data, validation and integration work. See the [native reconciliation procedure](MUNERAL-REGISTRATION.md) before treating any proposal as an assigned task.
+The expanded execution programme in [English](plan/PROGRAMME.md), [Russian](plan/PROGRAMME.ru.md) and [Simplified Chinese](plan/PROGRAMME.zh-Hans.md), [104 work contracts](plan/TASK_CONTRACTS.md) and [typed graph](plan/execution-graph.json) preserve the original plan and add launch, formal, data, validation and integration work. See the [native reconciliation procedure](MUNERAL-REGISTRATION.md) before treating any proposal as an assigned task.
 
 The [roadmap](plan/roadmap_steps.json) contains 72 steps in nine phases, eight steps per phase: evidence corpus; classification; organization state; flow models; workforce decisions; forecasting and shocks; agent decision contracts; evaluation; integration and publication. Each step has a deliverable, acceptance condition, and dependencies. These entries are a planning artifact; they do not assert that external tasks have been created, people assigned, or budgets reserved. Muneral remains the execution system of record.
 

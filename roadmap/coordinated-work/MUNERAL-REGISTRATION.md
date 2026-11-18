@@ -33,9 +33,14 @@ The route map describes observations from 11 November. The current owner must ch
 | `bindings.private.json` | One-to-one logical-key → actual UUID mapping scaffold, reconciliation decisions, native role bindings and inventory evidence | Private; never commit native identities or receipts publicly |
 | `scope-records.private/*.txt` | Exact UTF-8 contract text for a new task description or versioned native CONTENT on a reused task | Private registration inputs; exact bytes are checked later |
 | `preparation-summary.json` | Counts, source binding state, and explicit zero native requests | May be used as a bounded preparation observation |
+| `paper-release-instances.private.json` | Six artifact-specific release-stage templates per proposed paper, with mandatory evidence inputs | Preparation only; these 96 stage templates are separate from the 128 programme/epic/package objects and are not native registrations |
 | `registration-receipt.public.json` | A strictly limited status projection, generated only after complete supplied-readback consistency | Sanitized candidate; still requires owner review and publication policy |
 
 The tool checks global identifier uniqueness across the programme, epics and work packages. This matters because imported step `CW-E01` must not also identify an epic. Epics therefore use a separate `CW-EP…` namespace. It also checks epic membership, numbered ACs, dependency direction, acyclicity, consumed-output references and separation between proposed and native state.
+
+The graph also declares 16 paper-specific release contracts and 138 required-evidence edges, separately from the 247 work-package edges. Preparation instantiates and validates six proposed release stages per paper. P09, P13 and P15 retain H08 and the stated causal/intervention inputs upstream of their own manuscript and release. A review or formal result follows its own scope; a narrower preliminary paper requires a separately reviewed contract. This is a structural refusal check, not an acceptance of a study or permission to publish. The 96 stage templates must be reconciled and bounded by the owner before any native creation; they do not enlarge the automatic 128-object registration batch.
+
+To check a previously prepared release-instance file, pass `--release-instances /private/path/paper-release-instances.private.json` with the same `--source-commit` and exact graph bytes. A different source commit, graph digest, paper scope, stage identity or missing evidence gate is refused before preparation. This option performs no native request.
 
 Registration contains one proposed programme container, the proposal's epic containers, and its work packages. Their combined count is **not** a count of implemented or accepted work packages. Work packages marked `needs_child_instantiation` still require bounded child tasks before implementation dispatch. Successful JSON generation does not admit that scope.
 

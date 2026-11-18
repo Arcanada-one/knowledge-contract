@@ -101,6 +101,157 @@ def topology(nodes, dependencies):
     return order, depth, ancestors
 
 
+def validate_release_contracts(graph):
+    """Check declared evidence gates, separately from the 104-package DAG."""
+    tasks = {row["id"]: row for row in graph["tasks"]}
+    papers = {row["id"]: row for row in graph["papers"]}
+    contracts = graph.get("paper_release_contracts")
+    require(isinstance(contracts, list) and len(contracts) == len(papers),
+            "per-paper required-gate map is missing or incomplete")
+    seen = set()
+    for contract in contracts:
+        key = contract.get("paper_id")
+        require(key in papers and key not in seen, "duplicate or unknown paper release contract")
+        seen.add(key)
+        require(contract.get("status") == "proposed" and contract.get("external_artifact_id") is None,
+                "paper release contract promoted to accepted artifact")
+        require(isinstance(contract.get("claim_scope"), str) and contract["claim_scope"].strip(),
+                "paper release claim scope missing")
+        require(contract.get("narrower_scope_policy") == "separate_reviewed_contract_no_effect_claim",
+                "narrower claims require a separate reviewed release contract")
+        required = set(papers[key]["mapped_task_ids"])
+        if key in {"CW-P09", "CW-P13", "CW-P15"}:
+            required.update({"CW-E06", "CW-F06", "CW-N29", "CW-H08"})
+            expected_class = "organizational_transfer" if key == "CW-P15" else "organizational_effect"
+            require(contract.get("claim_class") == expected_class, f"field claim scope silently changed: {key}")
+        if key in {"CW-P06", "CW-P07", "CW-P08"}:
+            required.update({"CW-H01", "CW-N17", "CW-N18", "CW-H05", "CW-H06", "CW-N20"})
+            require(contract.get("claim_class") == "simulation_comparison", f"comparison scope changed: {key}")
+        gates = contract.get("required_gates")
+        require(isinstance(gates, list) and gates, f"required paper gates missing: {key}")
+        actual = []
+        for gate in gates:
+            task_id = gate.get("task_id")
+            require(task_id in tasks and task_id not in actual, f"invalid or duplicate paper gate: {key}")
+            actual.append(task_id)
+            require(gate.get("type") == "requires_evidence" and isinstance(gate.get("reason"), str)
+                    and gate["reason"].strip(), f"untyped paper evidence gate: {key}")
+            wanted_outputs = [output["id"] for output in tasks[task_id]["outputs"]]
+            require(gate.get("consumes") == wanted_outputs, f"paper gate consumes the wrong output: {key}/{task_id}")
+        require(set(actual) == required, f"required paper evidence gates differ: {key}")
+        require(contract.get("release_template_task_ids") == [f"CW-I{n:02}" for n in range(3, 9)],
+                f"paper release-stage templates differ: {key}")
+    metrics = {"contracts": len(contracts),
+               "required_evidence_edges": sum(len(c["required_gates"]) for c in contracts),
+               "release_instance_templates": len(contracts), "release_stage_nodes": 6 * len(contracts),
+               "native_release_instances_created": 0}
+    require(graph.get("paper_release_metrics") == metrics, "paper release metrics do not match contracts")
+    return metrics
+
+
+def instantiate_release_instances(graph):
+    """Produce scope-bound release DAG templates; no native tasks or receipts."""
+    validate_release_contracts(graph)
+    tasks = {row["id"]: row for row in graph["tasks"]}
+    result = []
+    for contract in graph["paper_release_contracts"]:
+        paper_id = contract["paper_id"]
+        template_ids = contract["release_template_task_ids"]
+        aliases = {key: paper_id + "." + key.removeprefix("CW-") for key in template_ids}
+        nodes = []
+        for template_id in template_ids:
+            node_id = aliases[template_id]
+            dependencies = []
+            for edge in tasks[template_id]["dependencies"]:
+                source = edge["task_id"]
+                target = aliases.get(source, source)
+                consumes = [value.replace(source + ".", target + ".", 1) for value in edge["consumes"]]
+                dependencies.append({"node_id": target, "type": "depends_on", "consumes": consumes,
+                                     "reason": "Consumes this artifact's own stage output or required shared input."})
+            if template_id == "CW-I03":
+                existing = {edge["node_id"] for edge in dependencies}
+                for gate in contract["required_gates"]:
+                    if gate["task_id"] not in existing:
+                        dependencies.append({"node_id": gate["task_id"], "type": "requires_evidence",
+                                             "consumes": list(gate["consumes"]), "reason": gate["reason"]})
+            nodes.append({"id": node_id, "template_task_id": template_id, "status": "proposed",
+                          "external_task_id": None, "execution_assigned": False,
+                          "outputs": [{"id": node_id + ".O1", "created": False}],
+                          "dependencies": dependencies})
+        result.append({"paper_id": paper_id, "claim_class": contract["claim_class"],
+                       "claim_scope": contract["claim_scope"], "status": "proposed",
+                       "external_artifact_id": None, "release_target_id": aliases["CW-I08"],
+                       "nodes": nodes})
+    return result
+
+
+def validate_release_instances(graph, instances):
+    """Require actual typed upstream gates in each supplied release DAG template.
+
+    This is structural validation, not evidence acceptance or native admission.
+    """
+    metrics = validate_release_contracts(graph)
+    require(isinstance(instances, list) and len(instances) == metrics["contracts"],
+            "release instance coverage differs from paper contracts")
+    tasks = {row["id"]: row for row in graph["tasks"]}
+    contracts = {row["paper_id"]: row for row in graph["paper_release_contracts"]}
+    dependencies = {key: [edge["task_id"] for edge in row["dependencies"]] for key, row in tasks.items()}
+    outputs = {output["id"]: key for key, row in tasks.items() for output in row["outputs"]}
+    seen, nodes = set(), {}
+    for instance in instances:
+        paper_id = instance.get("paper_id")
+        require(paper_id in contracts and paper_id not in seen, "duplicate or unknown release instance")
+        seen.add(paper_id)
+        contract = contracts[paper_id]
+        for key in ("claim_class", "claim_scope"):
+            require(instance.get(key) == contract[key], f"release instance {key} does not match contract: {paper_id}")
+        require(instance.get("status") == "proposed" and instance.get("external_artifact_id") is None,
+                "release instance claims completed publication")
+        expected_ids = {paper_id + f".I{n:02}" for n in range(3, 9)}
+        stage_rows = instance.get("nodes")
+        require(isinstance(stage_rows, list) and len(stage_rows) == 6
+                and {row.get("id") for row in stage_rows} == expected_ids,
+                f"release stage identity mismatch: {paper_id}")
+        require(instance.get("release_target_id") == paper_id + ".I08", "wrong release target")
+        for row in stage_rows:
+            key = row["id"]
+            require(key not in dependencies and key not in nodes, "release node identifier collision")
+            require(row.get("template_task_id") == "CW-" + key.split(".")[-1], "release stage template mismatch")
+            require(row.get("status") == "proposed" and row.get("external_task_id") is None
+                    and row.get("execution_assigned") is False, "release node claims native execution")
+            require(row.get("outputs") == [{"id": key + ".O1", "created": False}], "release stage output mismatch")
+            outputs[key + ".O1"] = key
+            edges = row.get("dependencies")
+            require(isinstance(edges, list) and edges, "release stage requires typed dependencies")
+            dependencies[key] = [edge.get("node_id") for edge in edges]
+            nodes[key] = row
+    for key, node in nodes.items():
+        paper_id = key.split(".")[0]
+        allowed = set(tasks) | {paper_id + f".I{n:02}" for n in range(3, 9)}
+        for edge in node["dependencies"]:
+            parent = edge.get("node_id")
+            require(parent in allowed, f"foreign artifact cannot satisfy release stage: {key}")
+            require(edge.get("type") in {"depends_on", "requires_evidence"}, "advisory release edge is not a gate")
+            consumes = edge.get("consumes")
+            require(isinstance(consumes, list) and consumes and len(consumes) == len(set(consumes))
+                    and all(outputs.get(value) == parent for value in consumes), "release edge consumes wrong output")
+        template = tasks[node["template_task_id"]]
+        expected_inputs = {paper_id + "." + edge["task_id"].removeprefix("CW-")
+                           if edge["task_id"] in {f"CW-I{n:02}" for n in range(3, 9)} else edge["task_id"]
+                           for edge in template["dependencies"]}
+        require(expected_inputs <= set(dependencies[key]), f"artifact-specific release chain missing: {key}")
+    _, _, ancestors = topology(set(dependencies), dependencies)
+    for instance in instances:
+        paper_id = instance["paper_id"]
+        for gate in contracts[paper_id]["required_gates"]:
+            require(gate["task_id"] in ancestors[paper_id + ".I03"],
+                    f"required paper gate is not upstream: {paper_id}/{gate['task_id']}")
+            require(gate["task_id"] in ancestors[instance["release_target_id"]],
+                    f"required paper gate does not reach publication: {paper_id}/{gate['task_id']}")
+    return {**metrics, "validated_release_stage_nodes": len(nodes),
+            "evidence_acceptance": "NOT_VERIFIED", "native_registration": "NOT_VERIFIED"}
+
+
 def validate(graph, baseline, baseline_bytes, source_readme, source_experiments):
     require(graph.get("schema") == "CoordinatedWorkExecutionProposal/v1", "unknown proposal schema")
     require(graph.get("authority") == "Muneral", "wrong execution authority")
@@ -209,6 +360,10 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
                 "hypothesis preregistration/analysis link lost")
     require({h["source_number"] for h in hypotheses} == set(range(1, 13)), "source12 hypothesis coverage mismatch")
 
+    release_result = validate_release_instances(graph, instantiate_release_instances(graph))
+    require(set(dependencies["CW-N28"]) == {"CW-H06", "CW-N16"},
+            "reproduction must use a frozen evaluation package, not its own publication release")
+
     # Real counterexamples to indiscriminate serialization, not a speed claim.
     for domain in ("CW-H02", "CW-H03", "CW-H04"):
         require(not (ancestors[domain] & ({"CW-H02", "CW-H03", "CW-H04"} - {domain})), "independent domain stands serialized")
@@ -231,6 +386,9 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
             "paper_boundaries_covered": len(papers), "hypotheses_covered": len(hypotheses),
             "blocking_edges": metrics["edges"], "longest_dependency_chain_nodes": max(depth.values()),
             "source_longest_dependency_chain_nodes": max(source_depth.values()),
+            "paper_release_contracts": release_result["contracts"],
+            "paper_required_evidence_edges": release_result["required_evidence_edges"],
+            "release_stage_templates": release_result["validated_release_stage_nodes"],
             "ready_roots_in_proposal": [key for key in order if not dependencies[key]],
             "native_registration": "NOT_VERIFIED", "scope": "proposal structure and source coverage only"}
 

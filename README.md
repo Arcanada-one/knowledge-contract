@@ -34,7 +34,7 @@ The manuscript is a **research draft included in the source catalogue**. Its cat
 
 ## Coordinated Work research programme
 
-The [Coordinated Work programme](roadmap/coordinated-work/README.md) studies organizational needs, work networks, competencies, resource constraints and justified agent decisions. Its [execution programme](roadmap/coordinated-work/plan/PROGRAMME.md) and [Russian guide](roadmap/coordinated-work/plan/PROGRAMME.ru.md) cover 23 proposed epics, 104 work packages, 16 potential papers and 12 hypotheses. The first epic coordinates Journal announcements, the three-language roadmap, repository navigation and reconciliation with existing Muneral work. These are research and delivery proposals; publication, native registration and operational effects require separate evidence.
+The [Coordinated Work programme](roadmap/coordinated-work/README.md) studies organizational needs, work networks, competencies, resource constraints and justified agent decisions. Its [English](roadmap/coordinated-work/plan/PROGRAMME.md), [Russian](roadmap/coordinated-work/plan/PROGRAMME.ru.md) and [Simplified Chinese](roadmap/coordinated-work/plan/PROGRAMME.zh-Hans.md) execution programmes cover 23 proposed epics, 104 work packages, 16 potential papers and 12 hypotheses. The first epic coordinates Journal announcements, the three-language roadmap, repository navigation and reconciliation with existing Muneral work. These are research and delivery proposals; publication, native registration and operational effects require separate evidence.
 
 ## What the work establishes
 
