@@ -9,6 +9,27 @@ permissions:
   contents: read
 
 jobs:
+  coordinated-work-programme:
+    name: Coordinated Work proposal and registration controls
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate source coverage, dependencies and preserved evidence boundaries
+        run: python3 -B tools/check_cw_programme.py
+      - name: Refuse planning and native-binding counterexamples in both Python modes
+        run: |
+          python3 -B -m unittest tools.test_check_cw_programme tools.test_prepare_cw_registration -v
+          python3 -O -B -m unittest tools.test_check_cw_programme tools.test_prepare_cw_registration -v
+      - name: Verify complete human-readable work contracts
+        run: python3 -B tools/render_cw_programme.py --check
+      - name: Prepare only offline registration templates from this exact checkout
+        run: |
+          python3 -B tools/prepare_cw_registration.py \
+            --graph roadmap/coordinated-work/plan/execution-graph.json \
+            --source-commit "$GITHUB_SHA" \
+            --output "$RUNNER_TEMP/cw-registration-proposal"
   candidate-export:
     name: candidate-export
     runs-on: ubuntu-latest

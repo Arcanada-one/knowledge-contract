@@ -93,6 +93,8 @@ The initial evidence register retains 1,176 bibliographic records: 157 checked p
 
 The first reproducible demonstration contains ten deterministic flow cases, one hundred case-period observations and 190 elementary checks. It distinguishes customer shipments, work in process and unmet demand, and does not validate an agent, a hiring policy or a real organization. The programme is repository-only preparation: publication documents, independent review, corpus admission and website delivery require their own later evidence and decisions.
 
+The [execution programme](roadmap/coordinated-work/plan/PROGRAMME.md) expands these source steps into epics, task contracts, and a typed dependency graph. Its first epic covers announcements in the Journal, the three-language roadmap, repository navigation, and reconciliation with existing Muneral work. Source review, models, and domain stands may proceed in parallel after their specific inputs are accepted. The original seventy-two rows remain a provenance baseline; proposed tasks, dependencies, and owners do not establish native registration or execution status.
+
 ## 5. Practical validation under current authorization and evidence gates
 
 | Capability | Content to prepare or verify | Evidence required for bounded authorized engineering |

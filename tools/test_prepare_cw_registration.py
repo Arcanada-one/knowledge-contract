@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Pavel Valentov and Knowledge Contract Arcana contributors
+# SPDX-License-Identifier: Apache-2.0
+"""Synthetic controls for the offline CW registrar; no real task UUIDs or API calls."""
+import copy
+import contextlib
+import hashlib
+import importlib.util
+import io
+import json
+from pathlib import Path
+import tempfile
+import unittest
+
+TOOL = Path(__file__).with_name("prepare_cw_registration.py")
+SPEC = importlib.util.spec_from_file_location("cw_registration", TOOL)
+M = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(M)
+
+DIGEST = "a" * 64
+SOURCE = "b" * 40
+
+
+def fixture():
+    ac = [{"number": 1, "text": "Record the scoped output and its negative control."}]
+    tasks = []
+    for key in ("CW-A01", "CW-A02"):
+        tasks.append({
+            "id": key, "epic_id": "CW-E00", "title": "Synthetic task " + key,
+            "status": "proposed", "external_task_id": None, "execution_assigned": False,
+            "proposed_owner_role": "KC-Brain", "proposed_executor_role": "KC-SWE",
+            "outputs": [{"id": key + ".O1", "description": "Synthetic output", "kind": "test"}],
+            "acceptance_criteria": copy.deepcopy(ac), "dependencies": [],
+            "negative_controls": ["Synthetic negative case"], "evidence_required": ["Synthetic receipt"],
+        })
+    tasks[1]["dependencies"] = [{"task_id": "CW-A01", "consumes": ["CW-A01.O1"], "reason": "Consumes the first output."}]
+    graph = {
+        "programme_id": "KC-CW-SYNTHETIC", "title": "Synthetic programme",
+        "description": "Synthetic authored programme scope.",
+        "proposed_owner_role": "KC-Brain", "proposed_executor_role": "KC-SWE",
+        "acceptance_criteria": copy.deepcopy(ac),
+        "epics": [{"id": "CW-E00", "title": "Synthetic epic", "description": "Synthetic only.",
+                   "proposed_owner_role": "KC-Brain", "proposed_executor_role": "KC-SWE",
+                   "task_ids": ["CW-A01", "CW-A02"], "acceptance_criteria": copy.deepcopy(ac)}],
+        "tasks": tasks,
+    }
+    return graph
+
+
+def recorded_fixture(graph):
+    plan = M.prepare(graph, DIGEST, SOURCE)
+    bindings = plan["bindings_template"]
+    bindings["inventories"] = [{"project_uuid": M.PROJECT_UUID, "coverage": "complete_project_index",
+                               "observed_at": "2026-11-18T00:00:00Z", "evidence_ref": "urn:synthetic:inventory"}]
+    for role, data in bindings["roles"].items():
+        data.update(native_id="synthetic-native-" + role, evidence_ref="urn:synthetic:role:" + role)
+    by_key = {}
+    for number, row in enumerate(bindings["items"], 1):
+        # Explicitly synthetic fixture identifiers; never used in request handoffs.
+        row.update(task_uuid=f"10000000-0000-4000-8000-{number:012d}", decision="create",
+                   reconciliation_evidence_ref="urn:synthetic:reconcile:" + row["proposal_id"])
+        by_key[row["proposal_id"]] = row
+    programme, nodes, _, edges, _ = M.normalize_graph(graph)
+    snapshot = {"schema": M.READBACK_SCHEMA, "programme_id": programme, "graph_sha256": DIGEST,
+                "source_commit": SOURCE, "observed_at": "2026-11-18T00:01:00Z", "tasks": [], "dependencies": []}
+    for key, node in nodes.items():
+        row = by_key[key]
+        snapshot["tasks"].append({
+            "proposal_id": key, "task_uuid": row["task_uuid"], "project_uuid": row["project_uuid"],
+            "parent_uuid": by_key[node["parent"]]["task_uuid"] if node["parent"] else None,
+            "owner_role": node["proposed_owner_role"], "executor_role": node["proposed_executor_role"],
+            "owner_native_id": bindings["roles"][node["proposed_owner_role"]]["native_id"],
+            "executor_native_id": bindings["roles"][node["proposed_executor_role"]]["native_id"],
+            "task_evidence_ref": "urn:synthetic:task", "owner_evidence_ref": "urn:synthetic:owner",
+            "assignees_evidence_ref": "urn:synthetic:assignees", "readiness_evidence_ref": "urn:synthetic:readiness",
+            "scope_record_type": "description", "scope_evidence_ref": "urn:synthetic:scope",
+            "scope_record_sha256": hashlib.sha256(M.description(node, DIGEST, SOURCE).encode("utf-8")).hexdigest(),
+        })
+    for edge in edges:
+        snapshot["dependencies"].append({"from_uuid": by_key[edge["from_proposal_id"]]["task_uuid"],
+                                        "to_uuid": by_key[edge["to_proposal_id"]]["task_uuid"],
+                                        "type": "depends_on", "evidence_ref": "urn:synthetic:edge"})
+    return bindings, snapshot
+
+
+class RegistrationControls(unittest.TestCase):
+    def setUp(self):
+        self.graph = fixture()
+        self.bindings, self.snapshot = recorded_fixture(self.graph)
+
+    def verify(self):
+        return M.verify_readback(self.graph, DIGEST, SOURCE, self.bindings, self.snapshot)
+
+    def test_unbound_graph_produces_templates_not_registration_claim(self):
+        plan = M.prepare(self.graph, DIGEST)
+        self.assertEqual(plan["actual_uuid_bindings_supplied"], 0)
+        self.assertEqual(len(plan["create_requests"]), 4)
+        self.assertTrue(all(not action["recorded_prerequisites_complete"] for action in plan["create_requests"]))
+        self.assertEqual(plan["create_requests"][0]["proposal_id"], "KC-CW-SYNTHETIC")
+        self.assertEqual(plan["dependency_requests"][0]["from_proposal_id"], "CW-A02")
+        self.assertEqual(plan["dependency_requests"][0]["to_proposal_id"], "CW-A01")
+        self.assertNotIn("ownerId", plan["create_requests"][0]["body_template"])
+
+    def test_consistent_snapshot_has_sanitized_public_receipt(self):
+        public = self.verify()
+        self.assertEqual(public["registration_snapshot"], "OFFLINE_CONSISTENT")
+        self.assertEqual(public["execution_status"], "NOT_INFERRED")
+        encoded = json.dumps(public)
+        for item in self.bindings["items"]:
+            self.assertNotIn(item["task_uuid"], encoded)
+        self.assertNotIn("urn:synthetic", encoded)
+        self.assertNotIn("synthetic-native-", encoded)
+        self.assertEqual(public["matched_blocking_dependencies"], 1)
+
+    def test_reconciled_binding_omits_duplicate_create(self):
+        plan = M.prepare(self.graph, DIGEST, SOURCE, self.bindings)
+        self.assertEqual(plan["create_requests"], [])
+
+    def test_unknown_outcome_never_becomes_repost_candidate(self):
+        plan = M.prepare(self.graph, DIGEST, SOURCE)
+        binding = plan["bindings_template"]
+        binding["items"][0]["decision"] = "unknown_outcome"
+        after = M.prepare(self.graph, DIGEST, SOURCE, binding)
+        self.assertIn("unknown_outcome_do_not_repost", after["create_requests"][0]["holds"])
+
+    def test_own_task_listing_cannot_prove_complete_inventory(self):
+        self.bindings["inventories"][0]["coverage"] = "own_tasks_only"
+        with self.assertRaisesRegex(M.Invalid, "authoritative inventories"):
+            self.verify()
+
+    def test_unknown_outcome_with_unconfirmed_uuid_rejected(self):
+        self.bindings["items"][0]["decision"] = "unknown_outcome"
+        with self.assertRaisesRegex(M.Invalid, "unknown outcome"):
+            self.verify()
+
+    def test_unresolved_mapping_cannot_make_public_receipt(self):
+        self.bindings["items"][0].update(task_uuid=None, decision="unresolved")
+        with self.assertRaisesRegex(M.Invalid, "every actual UUID"):
+            self.verify()
+
+    def test_uuid_alias_cannot_collapse_two_proposal_scopes(self):
+        self.bindings["items"][1]["task_uuid"] = self.bindings["items"][0]["task_uuid"]
+        with self.assertRaisesRegex(M.Invalid, "multiple proposal scopes"):
+            self.verify()
+
+    def test_parent_readback_mismatch(self):
+        self.snapshot["tasks"][-1]["parent_uuid"] = None
+        with self.assertRaisesRegex(M.Invalid, "parent mismatch"):
+            self.verify()
+
+    def test_reused_native_parent_can_be_preserved_with_explicit_link(self):
+        row = self.bindings["items"][-1]
+        row.update(decision="reuse", parent_mode="reference_only", preserved_parent_uuid=None,
+                   logical_parent_evidence_ref="urn:synthetic:parent-mapping")
+        self.snapshot["tasks"][-1]["parent_uuid"] = None
+        public = self.verify()
+        self.assertEqual(public["reference_only_parent_bindings"], 1)
+
+    def test_parent_reference_without_evidence_rejected(self):
+        row = self.bindings["items"][-1]
+        row.update(decision="reuse", parent_mode="reference_only")
+        with self.assertRaisesRegex(M.Invalid, "logical parent evidence"):
+            self.verify()
+
+    def test_owner_role_mismatch(self):
+        self.snapshot["tasks"][-1]["owner_role"] = "Agent-Brain"
+        with self.assertRaisesRegex(M.Invalid, "owner role mismatch"):
+            self.verify()
+
+    def test_executor_identity_mismatch(self):
+        self.snapshot["tasks"][-1]["executor_native_id"] = "synthetic-different-agent"
+        with self.assertRaisesRegex(M.Invalid, "executor native identity"):
+            self.verify()
+
+    def test_stale_source_commit_rejected(self):
+        self.snapshot["source_commit"] = "c" * 40
+        with self.assertRaisesRegex(M.Invalid, "source_commit mismatch"):
+            self.verify()
+
+    def test_different_native_acceptance_scope_rejected(self):
+        self.snapshot["tasks"][-1]["scope_record_sha256"] = "e" * 64
+        with self.assertRaisesRegex(M.Invalid, "scope record digest mismatch"):
+            self.verify()
+
+    def test_reused_task_can_bind_versioned_native_content(self):
+        self.bindings["items"][-1].update(decision="reuse", scope_record_type="content")
+        self.snapshot["tasks"][-1]["scope_record_type"] = "content"
+        self.verify()
+
+    def test_epic_and_work_package_id_collision_rejected(self):
+        self.graph["epics"][0]["id"] = "CW-A01"
+        for item in self.graph["tasks"]:
+            item["epic_id"] = "CW-A01"
+        with self.assertRaisesRegex(M.Invalid, "duplicate proposal id"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_changed_graph_bytes_rejected(self):
+        self.bindings["graph_sha256"] = "d" * 64
+        with self.assertRaisesRegex(M.Invalid, "graph_sha256"):
+            self.verify()
+
+    def test_reversed_dependency_not_accepted(self):
+        edge = self.snapshot["dependencies"][0]
+        edge["from_uuid"], edge["to_uuid"] = edge["to_uuid"], edge["from_uuid"]
+        with self.assertRaisesRegex(M.Invalid, "dependency mismatch"):
+            self.verify()
+
+    def test_missing_dependency_not_accepted(self):
+        self.snapshot["dependencies"] = []
+        with self.assertRaisesRegex(M.Invalid, "dependency mismatch"):
+            self.verify()
+
+    def test_advisory_link_does_not_satisfy_blocker(self):
+        self.snapshot["dependencies"][0]["type"] = "related_to"
+        with self.assertRaisesRegex(M.Invalid, "dependency mismatch"):
+            self.verify()
+
+    def test_unmodelled_external_blocker_is_not_silently_ignored(self):
+        self.snapshot["dependencies"].append({"from_uuid": self.snapshot["tasks"][-1]["task_uuid"],
+            "to_uuid": "10000000-0000-4000-8000-999999999999", "type": "depends_on", "evidence_ref": "urn:synthetic:extra"})
+        with self.assertRaisesRegex(M.Invalid, "unexpected"):
+            self.verify()
+
+    def test_duplicate_blocking_readback_rejected(self):
+        self.snapshot["dependencies"].append(copy.deepcopy(self.snapshot["dependencies"][0]))
+        with self.assertRaisesRegex(M.Invalid, "duplicate native blocking"):
+            self.verify()
+
+    def test_claimed_native_state_in_proposal_rejected(self):
+        self.graph["tasks"][0]["execution_assigned"] = True
+        with self.assertRaisesRegex(M.Invalid, "proposed state"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_missing_consumed_output_rejected(self):
+        self.graph["tasks"][1]["dependencies"][0]["consumes"] = ["CW-A01.DOES-NOT-EXIST"]
+        with self.assertRaisesRegex(M.Invalid, "consumed outputs"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_cycle_rejected(self):
+        self.graph["tasks"][0]["dependencies"] = [{"task_id": "CW-A02", "consumes": ["CW-A02.O1"], "reason": "Synthetic cycle."}]
+        with self.assertRaisesRegex(M.Invalid, "cycle"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_epic_ac_cannot_be_silently_invented(self):
+        del self.graph["epics"][0]["acceptance_criteria"]
+        with self.assertRaisesRegex(M.Invalid, "numbered AC"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_duplicate_json_keys_and_nonfinite_number_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "bad.json"
+            for raw in ('{"tasks": [], "tasks": [1]}', '{"score": NaN}'):
+                path.write_text(raw)
+                with self.assertRaises(M.Invalid):
+                    M.load_json(path)
+
+    def test_unicode_surrogate_is_rejected_before_serialization(self):
+        self.graph["tasks"][0]["title"] = "bad\ud800"
+        with self.assertRaisesRegex(M.Invalid, "surrogate"):
+            M.prepare(self.graph, DIGEST)
+
+    def test_empty_bindings_are_not_replaced_with_default(self):
+        with self.assertRaisesRegex(M.Invalid, "bindings schema"):
+            M.prepare(self.graph, DIGEST, SOURCE, {})
+
+    def test_cli_does_not_overwrite_prior_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "graph.json"
+            out = Path(temp) / "existing"
+            source.write_text(json.dumps(self.graph))
+            out.mkdir()
+            sentinel = out / "keep.txt"
+            sentinel.write_text("preserve")
+            with contextlib.redirect_stderr(io.StringIO()):
+                result = M.main(["--graph", str(source), "--output", str(out)])
+            self.assertEqual(result, 2)
+            self.assertEqual(sentinel.read_text(), "preserve")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
