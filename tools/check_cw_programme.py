@@ -29,6 +29,7 @@ SOURCE_SNAPSHOT = {
     "head": "ea698baa3d4997b56c725d806c600173aa6064b9",
     "branch": "research/coordinated-work-20261118-b15c4982",
     "step_path": "roadmap/coordinated-work/plan/roadmap_steps.json",
+    "step_blob": "dd7aa8f8d96717ae13f749fc364598a0c5e60519",
     "source_status": "prepared",
     "source_task_count": 72,
 }
@@ -151,6 +152,53 @@ def topology(nodes, dependencies):
                 queue.append(child)
     require(len(order) == len(nodes), "dependency cycle")
     return order, depth, ancestors
+
+
+def validate_output_contracts(tasks):
+    """Validate full-programme output identity and lexical destination ownership.
+
+    Shared by the finite source checker and offline registration preparation.
+    This preserves the owner's POSIX path policy and does not resolve actual
+    filesystem aliases or authorize artifact creation.
+    """
+    outputs = {}
+    output_paths = {}
+    for task in tasks:
+        key = task["id"]
+        require(isinstance(task.get("outputs"), list) and task["outputs"],
+                f"missing output: {key}")
+        for output_number, output in enumerate(task["outputs"], start=1):
+            require(isinstance(output, dict), f"invalid output record: {key}")
+            # An artifact identity must be bound to its producing Work Item.
+            # Uniqueness and matching the consumer references are insufficient:
+            # coordinated relabeling could otherwise silently assign an output
+            # to a different (or nonexistent) owner.
+            require(output.get("id") == f"{key}.O{output_number}",
+                    f"output owner identity mismatch: {key}")
+            require(output["id"] not in outputs, "duplicate output identity")
+            require(output.get("created") is False, "future output claimed as created")
+            # Proposed destinations are repository-relative POSIX file paths,
+            # independent of the host running this structural validator.
+            raw_path = output.get("proposed_path")
+            require(isinstance(raw_path, str) and raw_path and raw_path == raw_path.strip()
+                    and not any(c in raw_path for c in ("\\", ":"))
+                    and not any(ord(c) < 32 or ord(c) == 127 for c in raw_path),
+                    "unsafe proposed output path")
+            path = PurePosixPath(raw_path)
+            require(path.parts and not path.is_absolute() and ".." not in path.parts,
+                    "unsafe proposed output path")
+            require(path not in output_paths,
+                    f"duplicate proposed output path: {key}/{output['id']}")
+            require(raw_path == path.as_posix(), "noncanonical proposed output path")
+            # All outputs are files: neither may occupy a directory needed by
+            # the other, regardless of traversal order. This is lexical only;
+            # an eventual writer must separately check its actual filesystem.
+            require(not any(previous in path.parents or path in previous.parents
+                            for previous in output_paths),
+                    f"overlapping proposed output paths: {key}/{output['id']}")
+            output_paths[path] = output["id"]
+            outputs[output["id"]] = key
+    return outputs
 
 
 def validate_release_contracts(graph):
@@ -346,7 +394,7 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     source_record = graph.get("source")
     require(isinstance(source_record, dict), "source provenance record missing")
     require(source_record.get("step_blob") == git_blob(baseline_bytes), "source72 blob mismatch")
-    require(set(source_record) == set(SOURCE_SNAPSHOT) | {"step_blob"}
+    require(set(source_record) == set(SOURCE_SNAPSHOT)
             and all(type(source_record[key]) is type(expected) and source_record[key] == expected
                     for key, expected in SOURCE_SNAPSHOT.items()),
             "source identity drift from frozen reference")
@@ -367,8 +415,6 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
     assigned = Counter(key for row in epics for key in row["task_ids"])
     require(set(assigned) == set(by_id) and set(assigned.values()) == {1}, "epic membership is incomplete or duplicated")
 
-    outputs = {}
-    output_paths = {}
     imported = {}
     dependencies = {}
     for row in [graph] + epics + tasks:
@@ -384,41 +430,11 @@ def validate(graph, baseline, baseline_bytes, source_readme, source_experiments)
                 f"acceptance criteria not consecutively numbered: {row_id}")
         require(all(isinstance(a["text"], str) and a["text"].strip() for a in criteria), "empty acceptance criterion")
 
+    outputs = validate_output_contracts(tasks)
     for task in tasks:
         key = task["id"]
         require(task["epic_id"] in epic_by_id and key in epic_by_id[task["epic_id"]]["task_ids"], "epic relation mismatch")
         require(task["evidence_required"] and task["negative_controls"], f"unfalsifiable output contract: {key}")
-        require(task["outputs"], f"missing output: {key}")
-        for output_number, output in enumerate(task["outputs"], start=1):
-            # An artifact identity must be bound to its producing Work Item.
-            # Uniqueness and matching the consumer references are insufficient:
-            # coordinated relabeling could otherwise silently assign an output
-            # to a different (or nonexistent) owner.
-            require(output.get("id") == f"{key}.O{output_number}",
-                    f"output owner identity mismatch: {key}")
-            require(output["id"] not in outputs, "duplicate output identity")
-            require(output["created"] is False, "future output claimed as created")
-            # Proposed destinations are repository-relative POSIX file paths,
-            # independent of the host running this structural validator.
-            raw_path = output["proposed_path"]
-            require(isinstance(raw_path, str) and raw_path and raw_path == raw_path.strip()
-                    and not any(c in raw_path for c in ("\\", ":"))
-                    and not any(ord(c) < 32 or ord(c) == 127 for c in raw_path),
-                    "unsafe proposed output path")
-            path = PurePosixPath(raw_path)
-            require(path.parts and not path.is_absolute() and ".." not in path.parts,
-                    "unsafe proposed output path")
-            require(path not in output_paths,
-                    f"duplicate proposed output path: {key}/{output['id']}")
-            require(raw_path == path.as_posix(), "noncanonical proposed output path")
-            # All outputs are files: neither may occupy a directory needed by
-            # the other, regardless of traversal order. This is lexical only;
-            # an eventual writer must separately check its actual filesystem.
-            require(not any(previous in path.parents or path in previous.parents
-                            for previous in output_paths),
-                    f"overlapping proposed output paths: {key}/{output['id']}")
-            output_paths[path] = output["id"]
-            outputs[output["id"]] = key
         dependencies[key] = [d["task_id"] for d in task["dependencies"]]
         require(task.get("origin") in {"imported", "addition"}, f"unknown task origin: {key}")
         if task["origin"] == "imported":

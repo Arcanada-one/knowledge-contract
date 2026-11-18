@@ -150,6 +150,8 @@ def normalize_graph(graph):
         criteria(task.get("acceptance_criteria"), key)
         outputs = task.get("outputs")
         require(isinstance(outputs, list) and bool(outputs), f"{key}: outputs required")
+        require(all(isinstance(output, dict) for output in outputs),
+                f"{key}: output record must be an object")
         output_ids = [nonblank(o.get("id"), f"{key} output id") for o in outputs]
         require(len(output_ids) == len(set(output_ids)), f"{key}: duplicate output ids")
         for output in outputs:
@@ -186,6 +188,9 @@ def normalize_graph(graph):
     task_order, waves = topological(task_ids, parents)
     if graph.get("schema") == "CoordinatedWorkExecutionProposal/v1" or "papers" in graph:
         try:
+            # Share the full-programme output gate before any scope text is
+            # generated; the generic imported/synthetic mode remains supported.
+            programme_checker.validate_output_contracts(tasks)
             programme_checker.validate_release_contracts(graph)
         except programme_checker.InvalidProgramme as exc:
             raise Invalid(str(exc)) from exc
