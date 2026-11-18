@@ -306,6 +306,18 @@ def validate_release_instances(graph, instances):
                        and edge.get("consumes") == gate["consumes"]]
             require(len(matches) == 1,
                     f"required direct release evidence edge missing or mistyped: {paper_id}/{gate['task_id']}")
+    # A release instance is a deterministic source-bound proposal, not a
+    # place to insert additional empirical blockers or rewrite rationales
+    # without a reviewed source change. Subset/reachability checks alone
+    # accept unrelated extra gates while all required gates remain present.
+    canonical = {node["id"]: node["dependencies"]
+                 for release in instantiate_release_instances(graph) for node in release["nodes"]}
+    for key, node in nodes.items():
+        actual = sorted(json.dumps(edge, sort_keys=True, ensure_ascii=False)
+                        for edge in node["dependencies"])
+        expected = sorted(json.dumps(edge, sort_keys=True, ensure_ascii=False)
+                          for edge in canonical[key])
+        require(actual == expected, f"release edge provenance differs from source template: {key}")
     return {**metrics, "validated_release_stage_nodes": len(nodes),
             "evidence_acceptance": "NOT_VERIFIED", "native_registration": "NOT_VERIFIED"}
 

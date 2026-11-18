@@ -389,6 +389,25 @@ class ProgrammeControls(unittest.TestCase):
         with self.assertRaisesRegex(checker.InvalidProgramme, "claim_scope does not match"):
             checker.validate_release_instances(self.graph, instances)
 
+    def test_review_release_refuses_unreviewed_added_field_gate(self):
+        instances = self.release_instances()
+        paper = next(r for r in instances if r["paper_id"] == "CW-P01")
+        release = next(n for n in paper["nodes"] if n["template_task_id"] == "CW-I08")
+        release["dependencies"].append({
+            "node_id": "CW-H08", "type": "depends_on", "consumes": ["CW-H08.O1"],
+            "reason": "synthetic unrelated field intervention gate",
+        })
+        with self.assertRaisesRegex(checker.InvalidProgramme, "release edge provenance differs"):
+            checker.validate_release_instances(self.graph, instances)
+
+    def test_release_edge_rationale_cannot_change_without_source_revision(self):
+        instances = self.release_instances()
+        paper = next(r for r in instances if r["paper_id"] == "CW-P01")
+        freeze = next(n for n in paper["nodes"] if n["template_task_id"] == "CW-I04")
+        freeze["dependencies"][0]["reason"] = "synthetic unreviewed rationale"
+        with self.assertRaisesRegex(checker.InvalidProgramme, "release edge provenance differs"):
+            checker.validate_release_instances(self.graph, instances)
+
     def test_review_release_remains_independent_of_field_intervention(self):
         instances = self.release_instances()
         release = next(r for r in instances if r["paper_id"] == "CW-P01")
