@@ -80,7 +80,8 @@ class Artifact:
         require(isinstance(self.artifact_id, str) and ID.fullmatch(self.artifact_id), "invalid artifact ID")
         require(isinstance(self.revision, str) and ID.fullmatch(self.revision), "invalid revision")
         require(type(self.data) is bytes, "artifact data must be immutable bytes")
-        require(self.hash_domain in {"sha256/raw-bytes-v1", "sha256/raw-utf8-json-v1"}, "unsupported hash domain")
+        require(isinstance(self.hash_domain, str) and self.hash_domain in {"sha256/raw-bytes-v1", "sha256/raw-utf8-json-v1"},
+                "unsupported hash domain")
         if self.hash_domain == "sha256/raw-utf8-json-v1":
             decode(self.data)
 
@@ -100,7 +101,8 @@ class Evidence:
         require(isinstance(self.artifact, Artifact), "evidence needs actual artifact bytes")
         require(bool(self.artifact.data), "evidence artifact is empty")
         nonblank(self.locator, "evidence location")
-        require(self.origin in ORIGINS, "unsupported evidence origin; a plan is not an output")
+        require(isinstance(self.origin, str) and self.origin in ORIGINS,
+                "unsupported evidence origin; a plan is not an output")
 
 
 @dataclass(frozen=True)
@@ -146,7 +148,7 @@ def bind_subject(*, graph, expected_source_ref, criterion, purpose, paper_id=Non
     require(isinstance(graph, Artifact) and isinstance(criterion, Artifact), "graph and criterion artifacts required")
     require(graph.ref == expected_source_ref, "source bytes do not match the independently selected expected reference")
     require(re.fullmatch(r"[0-9a-f]{40}", graph.revision), "source must name a full Git commit")
-    require(purpose in PROPERTIES, "unsupported review purpose")
+    require(isinstance(purpose, str) and purpose in PROPERTIES, "unsupported review purpose")
     rule = decode(criterion.data)
     require(set(rule) == {"schema", "scope", "properties"} and rule["schema"] == CRITERION_PROFILE
             and rule["scope"] == "offline_packet_preparation_and_binding_only"

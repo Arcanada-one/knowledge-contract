@@ -168,6 +168,28 @@ class ReviewBindingTests(unittest.TestCase):
         self.assertNotIn("review_context_missing_or_mismatched", problems)
         self.assert_unknown_authority(report)
 
+    def test_unhashable_enum_inputs_are_typed_preparation_refusals(self):
+        # Structural input errors are not scientific negative assessments.
+        # These containers were TypeError before the bounded type guards.
+        valid = synthetic_artifact("valid-enum", b"SYNTHETIC control bytes.")
+        self.assertEqual(valid.hash_domain, "sha256/raw-bytes-v1")
+        self.assertEqual(review.Evidence(valid, "SYNTHETIC locator", "original_result").origin,
+                         "original_result")
+        self.assertEqual(review.bind_subject(**self.fixtures()).missing, ())
+        for malformed in ([], {}):
+            with self.subTest(field="hash_domain", kind=type(malformed).__name__):
+                with self.assertRaisesRegex(review.Invalid, "unsupported hash domain"):
+                    review.Artifact("synthetic:invalid-domain", "synthetic-v1",
+                                    b"SYNTHETIC bytes", malformed)
+            with self.subTest(field="evidence_origin", kind=type(malformed).__name__):
+                with self.assertRaisesRegex(review.Invalid, "unsupported evidence origin"):
+                    review.Evidence(valid, "SYNTHETIC locator", malformed)
+            with self.subTest(field="purpose", kind=type(malformed).__name__):
+                options = self.fixtures()
+                options["purpose"] = malformed
+                with self.assertRaisesRegex(review.Invalid, "unsupported review purpose"):
+                    review.bind_subject(**options)
+
     def test_complete_paper_packets_bind_but_never_establish_review(self):
         for paper_id in ("CW-P01", "CW-P02", "CW-P13"):
             with self.subTest(paper=paper_id):

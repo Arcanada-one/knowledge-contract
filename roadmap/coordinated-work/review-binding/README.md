@@ -38,6 +38,15 @@ The implementation entry point is
 | `bind_subject(...)` | Bind the graph, criterion, purpose, paper identity when applicable, full declared EN/RU/zh-Hans documents, applicability, evidence and review policy into one identified subject |
 | `inspect_subject(...)` | Inspect that subject, supplied `KCObservation/v1` records, review materials and an optional predecessor descriptor; report bindings, unresolved obligations and changes |
 
+**Typed preparation boundary.** Malformed list or dictionary inputs in the
+`hash_domain`, evidence `origin` or review `purpose` selectors must produce
+`Invalid`, not an incidental Python `TypeError` from hash-set or mapping
+membership. These are malformed *representations*, not negative assessments of
+any scientific claim. Positive legal string selectors are unchanged. The
+`test_unhashable_enum_inputs_are_typed_preparation_refusals` regression checks
+both container kinds for all three selectors; this is a bounded check, not a
+guarantee about every malformed Python value or native admission.
+
 `expected_source_ref` is a required argument selected separately from the packet.
 The pure API compares the supplied graph bytes with that full reference and
 reports its provenance as caller-selected, without authenticating the reference's
