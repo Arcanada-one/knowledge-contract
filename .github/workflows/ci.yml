@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: 0
           persist-credentials: false
       - name: Validate source coverage, dependencies and preserved evidence boundaries
         run: python3 -B tools/check_cw_programme.py
@@ -22,6 +23,10 @@ jobs:
         run: |
           python3 -B -m unittest tools.test_check_cw_programme tools.test_prepare_cw_registration tools.test_cw_flow_probe_input_validation tools.test_cw_programme_localizations -v
           python3 -O -B -m unittest tools.test_check_cw_programme tools.test_prepare_cw_registration tools.test_cw_flow_probe_input_validation tools.test_cw_programme_localizations -v
+      - name: Reproduce the historical prose gap and its exact-source correction
+        run: |
+          python3 -B -m unittest tools.test_reproduce_cw_scope_gap -v
+          python3 -O -B -m unittest tools.test_reproduce_cw_scope_gap -v
       - name: Verify complete human-readable work contracts
         run: python3 -B tools/render_cw_programme.py --check
       - name: Prepare only offline registration templates from this exact checkout
@@ -169,6 +174,12 @@ jobs:
           set -euo pipefail
           cd tools
           "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest test_book_package test_build_book_package test_book_package_review test_contract_profile test_index_release_receipt test_pipeline_receipts test_document_classification test_private_retention_readback test_package_tree_verification test_kc_admission_observation -v
+      - name: Bind review packets without promoting supplied reviews to accepted evidence
+        run: |
+          "$RUNNER_TEMP/bp-venv/bin/python" -B -m unittest tools.test_prepare_cw_review -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -O -B -m unittest tools.test_prepare_cw_review -v
+          "$RUNNER_TEMP/bp-venv/bin/python" -B tools/prepare_cw_review.py \
+            --source-commit "$GITHUB_SHA" > "$RUNNER_TEMP/cw-pending-reviews.json"
       - name: Valid fixture package passes the validator
         run: |
           set -euo pipefail

@@ -1,0 +1,18 @@
+{
+  "schema": "kc-cw-review-binding-criterion/1",
+  "scope": "offline_packet_preparation_and_binding_only",
+  "properties": {
+    "paper_result": [
+      "claim_coverage",
+      "claim_support",
+      "applicability",
+      "review_protocol",
+      "publication_rights"
+    ],
+    "programme_announcement": [
+      "announcement_accuracy",
+      "review_protocol",
+      "publication_rights"
+    ]
+  }
+}

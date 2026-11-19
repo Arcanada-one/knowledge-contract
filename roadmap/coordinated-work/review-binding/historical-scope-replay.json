@@ -1,0 +1,167 @@
+{
+  "artifact_kind": "new_synthetic_replay",
+  "baseline": {
+    "corrected": {
+      "full_validation": "ACCEPTED",
+      "instance_validation": "ACCEPTED",
+      "instantiation": "ACCEPTED",
+      "outcome": "ACCEPTED",
+      "release_instance_count": 16,
+      "release_stage_count": 96
+    },
+    "historical": {
+      "full_validation": "ACCEPTED",
+      "instance_validation": "ACCEPTED",
+      "instantiation": "ACCEPTED",
+      "outcome": "ACCEPTED",
+      "release_instance_count": 16,
+      "release_stage_count": 96
+    }
+  },
+  "cases": [
+    {
+      "changed_json_pointer": "/paper_release_contracts/1/claim_scope",
+      "claim_class_unchanged": "domain_model",
+      "expected_contrast_observed": true,
+      "historical_template_copies_synthetic_scope": true,
+      "observations": {
+        "corrected": {
+          "full_validation": "NOT_RUN",
+          "instance_validation": "NOT_RUN",
+          "instantiation": "NOT_RUN",
+          "outcome": "REFUSED",
+          "reason": "paper release claim scope changed without reviewed revision: CW-P02",
+          "refused_by": "validate"
+        },
+        "historical": {
+          "full_validation": "ACCEPTED",
+          "generated_claim_class": "domain_model",
+          "generated_claim_scope": "Certified causal productivity increase of 99% in all workplaces.",
+          "instance_validation": "ACCEPTED",
+          "instantiation": "ACCEPTED",
+          "outcome": "ACCEPTED",
+          "release_instance_count": 16,
+          "release_stage_count": 96
+        }
+      },
+      "only_claim_scope_changed": true,
+      "original_scope": "Representation of organizational needs and obligations; no measured organizational benefit is claimed.",
+      "paper_id": "CW-P02",
+      "synthetic_scope": "Certified causal productivity increase of 99% in all workplaces."
+    },
+    {
+      "changed_json_pointer": "/paper_release_contracts/0/claim_scope",
+      "claim_class_unchanged": "review",
+      "expected_contrast_observed": true,
+      "historical_template_copies_synthetic_scope": true,
+      "observations": {
+        "corrected": {
+          "full_validation": "NOT_RUN",
+          "instance_validation": "NOT_RUN",
+          "instantiation": "NOT_RUN",
+          "outcome": "REFUSED",
+          "reason": "paper release claim scope changed without reviewed revision: CW-P01",
+          "refused_by": "validate"
+        },
+        "historical": {
+          "full_validation": "ACCEPTED",
+          "generated_claim_class": "review",
+          "generated_claim_scope": "This literature review proves universal real-world profit gains.",
+          "instance_validation": "ACCEPTED",
+          "instantiation": "ACCEPTED",
+          "outcome": "ACCEPTED",
+          "release_instance_count": 16,
+          "release_stage_count": 96
+        }
+      },
+      "only_claim_scope_changed": true,
+      "original_scope": "Reviewed research map with appraised primary sources and explicit unresolved gaps.",
+      "paper_id": "CW-P01",
+      "synthetic_scope": "This literature review proves universal real-world profit gains."
+    }
+  ],
+  "native_requests_executed": 0,
+  "original_c167_bytes_recovered": false,
+  "provenance": {
+    "identity_check": "local Git path and blob bytes",
+    "inputs_from_commit": "9ba73c9971ceb0f02b91946d5061ef4f961df772",
+    "sources": [
+      {
+        "commit": "9ba73c9971ceb0f02b91946d5061ef4f961df772",
+        "label": "historical",
+        "objects": [
+          {
+            "bytes": 29812,
+            "git_blob": "24adea75bd01aa07c9a46c3b837ef2779c2a69b7",
+            "path": "tools/check_cw_programme.py",
+            "sha256": "e0fd22150388c6944252bc305735d9434407bc551c246cc578c3cca752ec0adc"
+          },
+          {
+            "bytes": 540161,
+            "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+            "path": "roadmap/coordinated-work/plan/execution-graph.json",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          {
+            "bytes": 48013,
+            "git_blob": "dd7aa8f8d96717ae13f749fc364598a0c5e60519",
+            "path": "roadmap/coordinated-work/plan/roadmap_steps.json",
+            "sha256": "18995b3e61270ed84911c7a4c449b9978083e08f9bb8f744723f8778d553c455"
+          },
+          {
+            "bytes": 9946,
+            "git_blob": "0588ec8910341d78fdd0ba4de6c9de52a70bf0ec",
+            "path": "roadmap/coordinated-work/README.md",
+            "sha256": "69c8067a23b9e6f4bbe046f01dcdd0b7b4a8b4f5d5edba75912c54b7804b489a"
+          },
+          {
+            "bytes": 9790,
+            "git_blob": "75591312de806eeb6425ee04238d15ac01eabb7c",
+            "path": "roadmap/coordinated-work/EXPERIMENTS.md",
+            "sha256": "fdacd3dbd671a101b991d15e42ef6b604668e2659252fdc08c9575f837e2278a"
+          }
+        ]
+      },
+      {
+        "commit": "9cbcd22fc215e8089363912dc531e42ef6845e29",
+        "label": "corrected",
+        "objects": [
+          {
+            "bytes": 32292,
+            "git_blob": "2fa62c24e66d24eb0bc7dd716b56277817acac53",
+            "path": "tools/check_cw_programme.py",
+            "sha256": "1785b2c421e63b6d851493ae4540ee01ee879a3e8595d0b1dedfec4936d0b6a5"
+          },
+          {
+            "bytes": 540161,
+            "git_blob": "0471a791e329f2f0f38ad8645a6c99f7246558a1",
+            "path": "roadmap/coordinated-work/plan/execution-graph.json",
+            "sha256": "8c7b7e6fb1f95df9f9c1c85ce083fa7ba3250ed6637ae7ce1a41d6cc1c49e3a6"
+          },
+          {
+            "bytes": 48013,
+            "git_blob": "dd7aa8f8d96717ae13f749fc364598a0c5e60519",
+            "path": "roadmap/coordinated-work/plan/roadmap_steps.json",
+            "sha256": "18995b3e61270ed84911c7a4c449b9978083e08f9bb8f744723f8778d553c455"
+          },
+          {
+            "bytes": 9946,
+            "git_blob": "0588ec8910341d78fdd0ba4de6c9de52a70bf0ec",
+            "path": "roadmap/coordinated-work/README.md",
+            "sha256": "69c8067a23b9e6f4bbe046f01dcdd0b7b4a8b4f5d5edba75912c54b7804b489a"
+          },
+          {
+            "bytes": 9790,
+            "git_blob": "75591312de806eeb6425ee04238d15ac01eabb7c",
+            "path": "roadmap/coordinated-work/EXPERIMENTS.md",
+            "sha256": "fdacd3dbd671a101b991d15e42ef6b604668e2659252fdc08c9575f837e2278a"
+          }
+        ]
+      }
+    ],
+    "working_tree_inputs_used": false
+  },
+  "schema": "kc-cw-claim-scope-replay/1",
+  "scope": "Finite behavior of two pinned validators on two new synthetic prose mutations; not recovery of c167 raw reports, scientific acceptance, publication, or native authority.",
+  "status": "REPRODUCED"
+}
