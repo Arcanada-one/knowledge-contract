@@ -296,6 +296,7 @@ def inspect_subject(subject, *, observations=(), review_materials=(), previous_d
             changes = ["descriptor_raw_bytes"]
     for raw in observations:
         observation = decode(raw)
+        require(observation.get("schema") == "KCObservation/v1", "malformed observation: unsupported record schema")
         errors = exchange.check_record(observation)
         require(not errors and observation.get("schema") == "KCObservation/v1",
                 "malformed observation: " + "; ".join(errors))

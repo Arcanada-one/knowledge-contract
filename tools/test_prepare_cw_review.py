@@ -168,6 +168,24 @@ class ReviewBindingTests(unittest.TestCase):
         self.assertNotIn("review_context_missing_or_mismatched", problems)
         self.assert_unknown_authority(report)
 
+    def test_malformed_observation_schema_is_a_typed_preparation_refusal(self):
+        # A complete packet remains a bounded binding pass; changing only the
+        # observation schema must refuse preparation without dispatch exceptions.
+        subject = review.bind_subject(**self.fixtures())
+        observations, materials = self.observations(subject)
+        report = review.inspect_subject(subject, observations=observations, review_materials=materials)
+        self.assertEqual(report["preparation_result"], "pass")
+        self.assertEqual(report["binding_result"], "pass")
+        self.assert_unknown_authority(report)
+        for malformed in ("unsupported/v1", [], {}):
+            with self.subTest(schema=malformed):
+                record = review.decode(observations[0])
+                record["schema"] = malformed
+                with self.assertRaisesRegex(review.Invalid, "malformed observation"):
+                    review.inspect_subject(
+                        subject, observations=(review.encode(record), *observations[1:]),
+                        review_materials=materials)
+
     def test_unhashable_enum_inputs_are_typed_preparation_refusals(self):
         # Structural input errors are not scientific negative assessments.
         # These containers were TypeError before the bounded type guards.

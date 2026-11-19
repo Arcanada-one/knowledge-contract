@@ -47,6 +47,12 @@ any scientific claim. Positive legal string selectors are unchanged. The
 both container kinds for all three selectors; this is a bounded check, not a
 guarantee about every malformed Python value or native admission.
 
+Malformed observation `schema` values are refused as `Invalid` before exchange
+schema dispatch. The complete synthetic packet control still passes mechanical
+bindings with review and authority unknown. The regression changes only that
+selector to an unsupported string, list or dictionary; it does not establish
+robustness for every malformed value or authenticate a supplied observation.
+
 `expected_source_ref` is a required argument selected separately from the packet.
 The pure API compares the supplied graph bytes with that full reference and
 reports its provenance as caller-selected, without authenticating the reference's
