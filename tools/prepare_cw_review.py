@@ -253,8 +253,10 @@ def context_matches(artifact, observation):
         return False
     if any(context[key] != observation[key] for key in ("subject", "criterion", "property", "scope", "method")):
         return False
-    if context["reviewer"] != observation["observer"] or context["review_kind"] not in {
-            "editorial", "internal_technical", "independent_agent", "external_peer"}:
+    if (context["reviewer"] != observation["observer"]
+            or not isinstance(context["review_kind"], str)
+            or context["review_kind"] not in {
+                "editorial", "internal_technical", "independent_agent", "external_peer"}):
         return False
     return all(isinstance(context[key], str) and bool(context[key].strip()) for key in
                ("reviewer_access", "shared_dependencies", "independence_boundary", "competence_basis"))

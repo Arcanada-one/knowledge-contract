@@ -463,6 +463,27 @@ class ReviewBindingTests(unittest.TestCase):
                 self.assertNotIn("evidence_bytes_missing_or_changed", problems)
                 self.assert_unknown_authority(report)
 
+    def test_review_kind_malformed_json_values_are_reported_as_context_mismatches(self):
+        subject = review.bind_subject(**self.fixtures())
+        for valid_kind in ("editorial", "internal_technical", "independent_agent", "external_peer"):
+            with self.subTest(review_kind=valid_kind):
+                raw, material = self.observation(subject, "claim_support",
+                                                 context_changes={"review_kind": valid_kind})
+                report = review.inspect_subject(subject, observations=[raw], review_materials=[material])
+                row = report["supplied_observations"][0]
+                self.assertEqual(row["binding_result"], "pass")
+                self.assertEqual(row["problems"], [])
+        for invalid_kind in ("synthetic_unsupported_kind", [], {}):
+            with self.subTest(review_kind=invalid_kind):
+                raw, material = self.observation(subject, "claim_support",
+                                                 context_changes={"review_kind": invalid_kind})
+                report = review.inspect_subject(subject, observations=[raw], review_materials=[material])
+                row = report["supplied_observations"][0]
+                self.assertEqual(row["binding_result"], "fail")
+                self.assertEqual(row["claimed_result"], "pass")
+                self.assertIn("review_context_missing_or_mismatched", row["problems"])
+                self.assertIs(report["effects_authorized"], False)
+
     def test_self_declared_external_review_and_competence_never_authenticate(self):
         subject = review.bind_subject(**self.fixtures())
         pairs = [self.observation(subject, prop, context_changes={
