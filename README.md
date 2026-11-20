@@ -6,6 +6,12 @@ Read the [36 document names in this integration candidate](DOCUMENTS.md), the [c
 
 Knowledge Contract connects a body of knowledge to its intended use, sources, dependencies, constraints and assessment. It helps a person or agent distinguish what a source says, what is supported, what applies to the task, and what may be done with it.
 
+## We are looking for sponsors
+
+We are looking for sponsors to help maintain the open specifications and research, publish reproducible demonstrations, and improve the documentation and tools that help others test and reuse this work.
+
+Interested in sponsoring Knowledge Contract? Contact [sponsor@arcanada.ai](mailto:sponsor@arcanada.ai).
+
 ## Read the publication
 
 Publication edition **1.1** contains English scientific and engineering documents with a shared vocabulary and traceable supporting records. It incorporates the review of edition 1.0; the [correction record](reviews/edition-corrections/REVIEW.md) identifies the changes, verification and remaining limits.
@@ -76,3 +82,7 @@ The project is authored by **Pavel Valentov**. Cite the specific paper, specific
 Text and documentation use [CC BY 4.0](LICENSE). Code and schemas use [Apache-2.0](LICENSE-CODE). Third-party works retain their own rights and are identified in [SOURCES.md](SOURCES.md). The API backend remains private under the established [openness policy](OPENNESS.md).
 
 Contributions follow [CONTRIBUTING.md](CONTRIBUTING.md), including source credit, substantive review and DCO sign-off. Report security concerns through [SECURITY.md](SECURITY.md).
+
+## Support the project
+
+See [Project Support](SPONSORSHIP.md) for the public work sponsorship would fund, its licensing scope and the current funding setup status. Contributions of review, reproducible checks, documentation and code are also welcome.
