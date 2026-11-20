@@ -76,3 +76,7 @@ The project is authored by **Pavel Valentov**. Cite the specific paper, specific
 Text and documentation use [CC BY 4.0](LICENSE). Code and schemas use [Apache-2.0](LICENSE-CODE). Third-party works retain their own rights and are identified in [SOURCES.md](SOURCES.md). The API backend remains private under the established [openness policy](OPENNESS.md).
 
 Contributions follow [CONTRIBUTING.md](CONTRIBUTING.md), including source credit, substantive review and DCO sign-off. Report security concerns through [SECURITY.md](SECURITY.md).
+
+## Support the project
+
+See [Project Support](SPONSORSHIP.md) for the public work sponsorship would fund, its licensing scope and the current funding setup status. Contributions of review, reproducible checks, documentation and code are also welcome.
