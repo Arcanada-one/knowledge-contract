@@ -1,0 +1,48 @@
+{
+  "schema": "CoordinatedWorkExecutionProposal/v1",
+  "epics": 23,
+  "work_packages": 104,
+  "source_steps_preserved": 72,
+  "paper_boundaries_covered": 16,
+  "hypotheses_covered": 12,
+  "blocking_edges": 247,
+  "longest_dependency_chain_nodes": 17,
+  "source_longest_dependency_chain_nodes": 64,
+  "ready_roots_in_proposal": [
+    "CW-N01"
+  ],
+  "native_registration": "NOT_VERIFIED",
+  "scope": "proposal structure and source coverage only",
+  "recorded_on": "2026-11-18",
+  "graph_sha256": "440a58fe7dc1e28ab27c824671a544f7b0744055b2333f505bb708d776ec8ca1",
+  "tool_sha256": {
+    "tools/check_cw_programme.py": "128361cce555cbc19b2634fd428a8b908c872b0fd7b053f1177ae64afc000498",
+    "tools/test_check_cw_programme.py": "393ffb5e31f6ab703e185fc64ec32a5f10fb98974c856390bc7fbce988266f21",
+    "tools/prepare_cw_registration.py": "45c4a5e0b411418606d6d549fe8b30ff80a6c8bafdfba139dfdf8fc235ad4217",
+    "tools/test_prepare_cw_registration.py": "400d4b6e9b589f8ac4436e0fcf6751f9eff407b5bc9bfaeeec0e9adc803e4f08",
+    "tools/render_cw_programme.py": "a367721ff9e92d03e2f216bbc42d68bb799023a8e5987ca78b1d8a5d41f46838"
+  },
+  "local_checks": {
+    "programme_and_registrar_tests": {
+      "normal": 60,
+      "optimized": 60,
+      "failures": 0
+    },
+    "existing_publication_source_separation_dco_workflow_tests": {
+      "passed": 93,
+      "failures": 0,
+      "pandoc": "3.1.3"
+    },
+    "publication_integrity": "PASS",
+    "source_registry": "PASS",
+    "requirement_register": {
+      "passed": true,
+      "requirements": 387
+    },
+    "changed_markdown_lint": "PASS, markdownlint-cli2 0.24.0; 15 files"
+  },
+  "independent_scientific_review": "NOT_VERIFIED",
+  "hosted_ci": "not asserted by this local receipt",
+  "native_requests_executed": 0,
+  "causal_or_operational_improvement": "NOT_MEASURED"
+}

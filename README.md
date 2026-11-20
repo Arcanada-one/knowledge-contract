@@ -38,6 +38,10 @@ The new [Semantic Verification](engineering/specifications/semantic-verification
 
 The manuscript is a **research draft included in the source catalogue**. Its catalogue entry does not assert independent review, a new released edition, deployment or corpus-index admission. Existing publication and raw-evidence histories remain unchanged.
 
+## Coordinated Work research programme
+
+The [Coordinated Work programme](roadmap/coordinated-work/README.md) studies organizational needs, work networks, competencies, resource constraints and justified agent decisions. Its [English](roadmap/coordinated-work/plan/PROGRAMME.md), [Russian](roadmap/coordinated-work/plan/PROGRAMME.ru.md) and [Simplified Chinese](roadmap/coordinated-work/plan/PROGRAMME.zh-Hans.md) execution programmes cover 23 proposed epics, 104 work packages, 16 potential papers and 12 hypotheses. The first epic coordinates Journal announcements, the three-language roadmap, repository navigation and reconciliation with existing Muneral work. These are research and delivery proposals; publication, native registration and operational effects require separate evidence.
+
 ## What the work establishes
 
 The scientific papers give explicit models and conditional arguments for preserving meaning, composing context, keeping assessments tied to their subjects, and controlling reuse. The engineering studies report what was actually observed on finite inputs. They preserve false trusted-input acceptances, baseline ties and unmeasured quantities rather than concealing them behind a global success claim.

@@ -2,7 +2,7 @@
 title: "Knowledge Roadmap: Publications, Research and Practical Validation"
 sources: none
 status: repository-editorial-proposal
-updated: 2026-11-14
+updated: 2026-11-18
 ---
 
 # Knowledge Roadmap: Publications, Research and Practical Validation
@@ -84,6 +84,16 @@ A required edge means that the reviewed prerequisite output is needed for depend
 The [Agent Situation](papers/agent-situation/PAPER.md) research draft examines initialization, changes of situation and bounded context. The separate [Context Controls](engineering/studies/agent-situation-controls/STUDY.md) research-draft study reports only the finite checks actually executed in its named scope. The [draft engineering design](roadmap/agent-situation/ENGINEERING.md) remains nonnormative, and the [LLM experiment plan](roadmap/agent-situation/EXPERIMENT.md) remains an unexecuted protocol until an authorized run produces its own evidence. The current candidate reading inventory contains 36 works, also including Semantic Bridge, Source Rule Checks and the Semantic Verification research-draft specification; the earlier pinned counts above retain their historical scope.
 
 This subprogramme belongs to Agent Application and does not add a new roadmap identity. It does not replace that workstream's required outputs or declare its acceptance complete. Its exploratory finite checks do not impose new prerequisites on the baseline exact-consumer pilot. The research question is how an agent can expose the available, missing, changing and task-relevant parts of its situation without treating a compact context as complete knowledge or authority.
+
+### Coordinated Work within Agent Application
+
+The [Coordinated Work programme](roadmap/coordinated-work/README.md), prepared on 18 November 2026, investigates organizational needs, competencies, work networks, resource constraints and evidence-backed agent decisions. It extends the organizational domain profile of Agent Situation and Context Assembly; it does not introduce a competing agent-startup theory or a new native artifact kind.
+
+The initial evidence register retains 1,176 bibliographic records: 157 checked primary records and 1,019 citation candidates extracted from two older personnel-scheduling bibliographies. No complete critical full-text appraisal is claimed. Identity review retains 26 same-title/year groups and four near-title pairs; the number of unique scholarly works remains unresolved. The programme defines sixteen possible paper boundaries and seventy-two deliverable steps across nine phases. These are research-plan entries, not created or assigned Muneral tasks.
+
+The first reproducible demonstration contains ten deterministic flow cases, one hundred case-period observations and 190 elementary checks. It distinguishes customer shipments, work in process and unmet demand, and does not validate an agent, a hiring policy or a real organization. The programme is repository-only preparation: publication documents, independent review, corpus admission and website delivery require their own later evidence and decisions.
+
+The [execution programme](roadmap/coordinated-work/plan/PROGRAMME.md) expands these source steps into epics, task contracts, and a typed dependency graph. Its first epic covers announcements in the Journal, the three-language roadmap, repository navigation, and reconciliation with existing Muneral work. Source review, models, and domain stands may proceed in parallel after their specific inputs are accepted. The original seventy-two rows remain a provenance baseline; proposed tasks, dependencies, and owners do not establish native registration or execution status.
 
 ## 5. Practical validation under current authorization and evidence gates
 

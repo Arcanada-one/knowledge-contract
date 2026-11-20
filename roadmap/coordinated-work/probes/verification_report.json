@@ -1,0 +1,1062 @@
+{
+  "probe": "three_stage_fluid_v2",
+  "revision": 2,
+  "origin": {
+    "previous_revision": "three_stage_fluid_v1",
+    "previous_results": "development/v1/raw_results.json",
+    "previous_results_sha256": "ccc6eb197b36b1130b197263d8da558127665025525b5fff2ece45dfd355d829",
+    "previous_inputs_sha256": "5badb549e0e821a8ea680f0767e635b164ae40e816a9d0107a1eba5298ab5fe3",
+    "previous_snapshot_manifest": "development/v1/snapshot_manifest.json",
+    "change": "Track unserved potential demand explicitly; zero internal WIP does not imply that customer demand is satisfied. No customer-backlog state is introduced."
+  },
+  "status": "PASS",
+  "classification": "finite numerical, inventory and demand accounting checks only; no empirical or agent validation; no universal stability claim",
+  "input_sha256": "a86acc1f45a0328532b786841ddaf9bb9a581ec5084f28f496d9b304cd54334d",
+  "actual_sha256": "3649d8b96fec4e5e1d897118ec3a71f8eabb970a8084c528e604cacdfc52ed96",
+  "expected_sha256": "425df0111dc0276b39916fdfe05bd3dc524d9fbca020bb8ccb7a4fca1caf49d5",
+  "cases": 10,
+  "checks_count": 190,
+  "failures": [],
+  "checks": [
+    {
+      "check": "input_digest",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "case_ids",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "600",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "700",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "base_local:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_local:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "600",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "700",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "base_gated:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "base_gated:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "600",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "700",
+          "stage_1_work": "1600",
+          "stage_2_work": "600",
+          "stage_3_work": "1800"
+        }
+      }
+    },
+    {
+      "check": "non_bottleneck_boost:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "non_bottleneck_boost:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "700",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "700",
+          "stage_1_work": "1000",
+          "stage_2_work": "850",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "bottleneck_boost:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "bottleneck_boost:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "800",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "1000",
+          "stage_1_work": "1000",
+          "stage_2_work": "850",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "input_limited:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "input_limited:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "500",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "500",
+          "stage_1_work": "1000",
+          "stage_2_work": "850",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "demand_excess_local:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "demand_excess_local:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "450",
+        "cuts": {
+          "material": "800",
+          "customer_acceptance": "700",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "450"
+        }
+      }
+    },
+    {
+      "check": "downstream_bottleneck:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "downstream_bottleneck:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "600",
+        "cuts": {
+          "material": "1000",
+          "customer_acceptance": "1000",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "setup_loss:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "setup_loss:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "600",
+        "cuts": {
+          "material": "1000",
+          "customer_acceptance": "1000",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "rework_overhead:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rework_overhead:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:horizon",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:admitted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:stage_2_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:stage_3_processed",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:unused_supply",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:totals:unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:inventory:buffer_12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:inventory:buffer_23",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:inventory:finished_goods",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:each_period_shipped",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:fixture:each_period_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:independent_bound",
+      "passed": true,
+      "details": {
+        "upper_bound": "0",
+        "cuts": {
+          "material": "0",
+          "customer_acceptance": "700",
+          "stage_1_work": "1000",
+          "stage_2_work": "600",
+          "stage_3_work": "900"
+        }
+      }
+    },
+    {
+      "check": "no_material:period_balances_and_resource_limits",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:reported_totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:system_conservation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:demand_accounting",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "no_material:independent_unserved_lower_bound",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "paired:admission_limit_same_output",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "paired:admission_limit_less_wip",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "paired:admission_limit_same_unserved_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "counterexample:zero_wip_does_not_solve_demand",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "paired:non_bottleneck_boost_same_output",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "paired:bottleneck_boost_more_output",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "counterexample:setup_below_nominal_min",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "counterexample:rework_below_nominal_min",
+      "passed": true,
+      "details": null
+    }
+  ]
+}

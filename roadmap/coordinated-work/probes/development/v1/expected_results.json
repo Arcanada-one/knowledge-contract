@@ -1,0 +1,165 @@
+{
+  "origin": "Hand-specified arithmetic fixtures; never generated from the simulator",
+  "expected": [
+    {
+      "case_id": "base_local",
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 60
+    },
+    {
+      "case_id": "base_gated",
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 200
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 60
+    },
+    {
+      "case_id": "non_bottleneck_boost",
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 60
+    },
+    {
+      "case_id": "bottleneck_boost",
+      "totals": {
+        "admitted": 700,
+        "stage_2_processed": 700,
+        "stage_3_processed": 700,
+        "shipped": 700,
+        "unused_supply": 100
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 70
+    },
+    {
+      "case_id": "input_limited",
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 800,
+        "stage_3_processed": 800,
+        "shipped": 800,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 80
+    },
+    {
+      "case_id": "demand_excess_local",
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 800,
+        "stage_3_processed": 800,
+        "shipped": 500,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 300
+      },
+      "shipped_each_period": 50
+    },
+    {
+      "case_id": "downstream_bottleneck",
+      "totals": {
+        "admitted": 800,
+        "stage_2_processed": 600,
+        "stage_3_processed": 450,
+        "shipped": 450,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 200,
+        "buffer_23": 150,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 45
+    },
+    {
+      "case_id": "setup_loss",
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 400
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 60
+    },
+    {
+      "case_id": "rework_overhead",
+      "totals": {
+        "admitted": 600,
+        "stage_2_processed": 600,
+        "stage_3_processed": 600,
+        "shipped": 600,
+        "unused_supply": 400
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 60
+    },
+    {
+      "case_id": "no_material",
+      "totals": {
+        "admitted": 0,
+        "stage_2_processed": 0,
+        "stage_3_processed": 0,
+        "shipped": 0,
+        "unused_supply": 0
+      },
+      "ending_inventory": {
+        "buffer_12": 0,
+        "buffer_23": 0,
+        "finished_goods": 0
+      },
+      "shipped_each_period": 0
+    }
+  ]
+}

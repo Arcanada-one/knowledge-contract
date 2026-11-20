@@ -1,0 +1,280 @@
+{
+  "automatic_merges": [
+    {
+      "kind": "core",
+      "kept": "OPS034",
+      "merged": "AE08",
+      "basis": "identical DOI or identical URL and normalized title"
+    }
+  ],
+  "same_title_year": [
+    {
+      "normalized_title": "staffschedulingandrosteringareviewofapplicationsmethodsandmodels",
+      "year": 2004,
+      "records": [
+        "CW-S0067",
+        "CW-C0831"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "telephonecallcenterstutorialreviewandresearchprospects",
+      "year": 2003,
+      "records": [
+        "CW-S0068",
+        "CW-C0282"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "themoderncallcenteramultidisciplinaryperspectiveonoperationsmanagementresearch",
+      "year": 2007,
+      "records": [
+        "CW-S0069",
+        "CW-C0721"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "astaffingalgorithmforcallcenterswithskillbasedrouting",
+      "year": 2005,
+      "records": [
+        "CW-S0071",
+        "CW-C1002"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "anannotatedbibliographyofpersonnelschedulingandrostering",
+      "year": 2004,
+      "records": [
+        "CW-S0072",
+        "CW-C0830"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "buildingbetternurseschedulingalgorithms",
+      "year": 2004,
+      "records": [
+        "CW-C0014",
+        "CW-C0718"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "surveycategorizationandcomparisonofrecenttourschedulingliterature",
+      "year": 2004,
+      "records": [
+        "CW-C0026",
+        "CW-C0725"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "callcenterstaffingwithsimulationandcuttingplanemethods",
+      "year": 2004,
+      "records": [
+        "CW-C0045",
+        "CW-C0733"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "mixedintegerprogrammingtoscheduleasingleshiftworkforceunderannualizedhours",
+      "year": 2004,
+      "records": [
+        "CW-C0051",
+        "CW-C0740"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "workforceallocationincyclicalschedulingproblemsasurvey",
+      "year": 1976,
+      "records": [
+        "CW-C0060",
+        "CW-C0745"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "acomparativeevaluationoflabortourschedulingmethods",
+      "year": 1991,
+      "records": [
+        "CW-C0095",
+        "CW-C0755"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "computermodelsforschedulingbusesandtheircrews",
+      "year": 1976,
+      "records": [
+        "CW-C0120",
+        "CW-C0712"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "planningannualisedhourswithafinitesetofweeklyworkinghoursandjointholidays",
+      "year": 2004,
+      "records": [
+        "CW-C0192",
+        "CW-C0805"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "trafficdelaysattollbooths",
+      "year": 1954,
+      "records": [
+        "CW-C0233",
+        "CW-C0824"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "multiskilledworkforceoptimisation",
+      "year": 2004,
+      "records": [
+        "CW-C0236",
+        "CW-C0826"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "anoverviewofmodelsandtechniquesforintegratingvehicleandcrewscheduling",
+      "year": 1999,
+      "records": [
+        "CW-C0274",
+        "CW-C0842"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "adecisionsupportsystemforcrewplanninginpassengertransportationusingaflexiblebranchandpricealgorithm",
+      "year": 2004,
+      "records": [
+        "CW-C0276",
+        "CW-C0895"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "acomparisonofheuristicsforassigningindividualemployeestolabortourschedules",
+      "year": 2004,
+      "records": [
+        "CW-C0296",
+        "CW-C0849"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "aneuralnetworkapplicationinpersonnelscheduling",
+      "year": 2004,
+      "records": [
+        "CW-C0315",
+        "CW-C0861"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "animplicittourschedulingmodelwithapplicationsinhealthcare",
+      "year": 2004,
+      "records": [
+        "CW-C0364",
+        "CW-C0878"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "airlinecrewrosteringproblemtypesmodelingandoptimization",
+      "year": 2004,
+      "records": [
+        "CW-C0397",
+        "CW-C0888"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "petraaprogrammableoptimizationengineandtoolboxforpersonnelrosteringapplications",
+      "year": 1999,
+      "records": [
+        "CW-C0481",
+        "CW-C0713"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "solvingtheproblemofrerosteringnursescheduleswithhardconstraintsnewmulticommodityflowmodels",
+      "year": 2004,
+      "records": [
+        "CW-C0518",
+        "CW-C0925"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "usingbendersdecompositiontoimplicitlymodeltourscheduling",
+      "year": 2004,
+      "records": [
+        "CW-C0557",
+        "CW-C0956"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "onmanpowerschedulingalgorithms",
+      "year": 1982,
+      "records": [
+        "CW-C0634",
+        "CW-C0989"
+      ],
+      "status": "manual_identity_review_required"
+    },
+    {
+      "normalized_title": "animplicitgoalprogrammingmodelforthetourschedulingproblemconsideringtheemployeeworkpreferences",
+      "year": 2004,
+      "records": [
+        "CW-C0638",
+        "CW-C0992"
+      ],
+      "status": "manual_identity_review_required"
+    }
+  ],
+  "near_title": [
+    {
+      "records": [
+        "CW-C0110",
+        "CW-C0111"
+      ],
+      "title_similarity": 0.9783,
+      "status": "possible_duplicate_not_merged"
+    },
+    {
+      "records": [
+        "CW-C0243",
+        "CW-C0831"
+      ],
+      "title_similarity": 0.9771,
+      "status": "possible_duplicate_not_merged"
+    },
+    {
+      "records": [
+        "CW-C0981",
+        "CW-C0982"
+      ],
+      "title_similarity": 0.95,
+      "status": "possible_duplicate_not_merged"
+    },
+    {
+      "records": [
+        "CW-C0983",
+        "CW-C0984"
+      ],
+      "title_similarity": 0.95,
+      "status": "possible_duplicate_not_merged"
+    }
+  ]
+}
