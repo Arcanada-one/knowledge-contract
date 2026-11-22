@@ -1,0 +1,67 @@
+[
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "init",
+      "--initial-branch=main"
+    ],
+    "returncode": 0,
+    "stdout": "Initialized empty Git repository in /workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-1/fixture-repository/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "config",
+      "user.name",
+      "Knowledge Contract offline fixture"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "config",
+      "user.email",
+      "fixture@example.invalid"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "add",
+      "--",
+      "source.txt",
+      "packet.json"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "commit",
+      "-m",
+      "Initial synthetic inputs"
+    ],
+    "returncode": 0,
+    "stdout": "[main (root-commit) 0951668] Initial synthetic inputs\n 2 files changed, 3 insertions(+)\n create mode 100644 packet.json\n create mode 100644 source.txt\n",
+    "stderr": ""
+  }
+]

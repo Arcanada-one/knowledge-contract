@@ -252,6 +252,10 @@ jobs:
         run: python3 -B -m unittest tools.test_repository_observer -v
       - name: Check repository session restart and fresh preflight
         run: python3 -B -m unittest tools.test_repository_session -v
+      - name: Check captured rule consumption and complete lab inventory
+        run: python3 -B -m unittest tools.test_repository_rule_consumer tools.test_repository_rule_lab -v
+      - name: Execute the offline rule laboratory in fresh processes
+        run: python3 -B tools/run_repository_rule_lab.py --output "$RUNNER_TEMP/kc-rule-lab"
 
   licensing:
     name: licensing

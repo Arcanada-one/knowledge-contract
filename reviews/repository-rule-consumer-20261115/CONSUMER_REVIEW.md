@@ -1,0 +1,15 @@
+# Captured Rule Consumer: internal review
+
+The prospective twelve-test integration inventory passed on the first recorded run. The unit runner reports **12 tests, 3.742 seconds, OK**. All six source hashes recorded immediately before and after the run match. There is no blocking finding within the declared two-file committed-context profile.
+
+The review covers the consumer implementation separately authored by the parent, using my fixed source/packet fixtures and expected lifecycle outcomes. It is an internal non-author check on the same controller, host, and model family, not external independence. Exact hashes and scope are in `CONSUMER_REVIEW.json`; original execution output is retained in `consumer-test-run-01/`.
+
+The decisive integration control is the dirty pair: the standalone Bridge CLI really evaluates the dirty, internally consistent pair as FALSE, while the consumer evaluates the previously committed pair as TRUE and records its original bytes. Separate source-only and packet-only commits block a new calculation. Repeating EVALUATE does not adopt the candidate; explicit RESUME permits a subsequent evaluation. A committed deletion, later restoration, resume and evaluation also retain these states across separate CLI processes.
+
+Other finite controls cover an unrelated commit, unknown versus withheld observation states, unsupported syntax, source-digest mismatch, duplicate packet members, scope/path/root requirements, a legally narrower Session that cannot become this consumer's profile, resealed false analysis and binding, historical inspection with no Git executable available, exclusive output, a simulated final-link failure, existing Bridge byte limits, and 32 actual captures followed by refusal of a 33rd acquisition.
+
+The retained analysis is replayed during bundle validation. Consequently, validation of a previous evaluated bundle can calculate its historical result even when the next capture is blocked; the refusal claim concerns a new analysis of the newly blocked capture. File-context READY/VALID remains distinct from semantic EVALUATED/INVALID/UNSUPPORTED. EVALUATED with an unknown or withheld exception can be UNDETERMINED and grants no permission.
+
+The publication check injects an `os.link` refusal. It does not demonstrate an actual process crash, power-loss durability, or exactly-once behavior. A preflight that never publishes is not recovered as a recorded attempt. The caller can choose a predecessor and the digests do not authenticate the producer. The 32 MiB bound belongs to serialized CLI I/O; no claim is made here about admitting arbitrary oversized in-memory dictionaries.
+
+The sibling reviewer separately found the pre-replay capture-bound ordering defect; root corrected it before this run. That probe and its historical record are not included in my twelve-test count. Existing Observer, Session, and Bridge evidence remains separate, as do paid-model, native laboratory, natural-language fidelity, and current authority questions.

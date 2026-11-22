@@ -1,0 +1,138 @@
+{
+  "schema": "repository-rule-lab-cases/1",
+  "scope": "Offline synthetic committed-file lifecycle; no LLM or authority",
+  "cases": [
+    {
+      "id": "start",
+      "operation": "start",
+      "prepare": "initial",
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      }
+    },
+    {
+      "id": "evaluate-unknown",
+      "operation": "evaluate",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      }
+    },
+    {
+      "id": "ignore-uncommitted-decoys",
+      "operation": "evaluate",
+      "prepare": "dirty-decoys",
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      }
+    },
+    {
+      "id": "packet-change-blocked",
+      "operation": "evaluate",
+      "prepare": "packet-change",
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      }
+    },
+    {
+      "id": "repeat-requires-resume",
+      "operation": "evaluate",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "RESUME_REQUIRED",
+        "truth": null
+      }
+    },
+    {
+      "id": "explicit-resume",
+      "operation": "resume",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      }
+    },
+    {
+      "id": "evaluate-true",
+      "operation": "evaluate",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      }
+    },
+    {
+      "id": "unrelated-commit-preserves-context",
+      "operation": "evaluate",
+      "prepare": "unrelated",
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      }
+    },
+    {
+      "id": "source-change-blocked",
+      "operation": "evaluate",
+      "prepare": "unsupported-source",
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      }
+    },
+    {
+      "id": "resume-unsupported-source",
+      "operation": "resume",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      }
+    },
+    {
+      "id": "unsupported-is-not-truth",
+      "operation": "evaluate",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 2,
+        "result": "UNSUPPORTED",
+        "session_result": "VALID",
+        "truth": null
+      }
+    },
+    {
+      "id": "inspect-is-historical",
+      "operation": "inspect",
+      "prepare": "none",
+      "expected": {
+        "exit_code": 0,
+        "view": "HISTORICAL_ONLY",
+        "captured_result": "UNSUPPORTED",
+        "requires_fresh_capture": true
+      }
+    }
+  ]
+}

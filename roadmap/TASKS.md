@@ -437,6 +437,8 @@ The [dependency definition](dependencies.json) is the machine-readable companion
 
 **Artifact observation (14 November 2026).** Agent Situation and Context Controls are research-draft artifacts in an Agent Application subprogramme. Finite checks, the draft engineering design, the planned LLM trial and production use have separate evidence boundaries. Advanced retrieval work remains separate from the baseline exact-consumer pilot.
 
+**Artifact observation (15 November 2026).** Source main `a5b3618034256f14f389c2c7de8da409c7c5310c` contains the parent, observer, session and Semantic Bridge integrations. The [Rule Consumption laboratory](agent-situation/RULE_CONSUMER.md) now prepares their bounded composition: exact committed source/packet bytes, fresh preflight, explicit recovery, an actual twelve-step lifecycle and retained failed attempts. This is one offline authored scenario with no LLM or external effect; separate exact-revision review and KC-SWE consumer replay remain required. The advanced Agent Application dependencies and the distinct KCLIVE runtime criteria are unchanged.
+
 **Priority:** Next · **Owner:** Agent-Brain · **Required outputs:** Hybrid Retrieval, Theory Traceability, Extraction Fidelity.
 
 **Original gap (6 November 2026).** Prepared artifacts, indexed entries, exact retrieval and successful task use are separate stages.

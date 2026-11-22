@@ -1,0 +1,515 @@
+{
+  "schema": "repository-rule-lab-run/1",
+  "started_at": "2026-11-15T08:15:18.736558+00:00",
+  "completed_at": "2026-11-15T08:15:20.153134+00:00",
+  "elapsed_seconds": 1.41658,
+  "python": "3.12.14",
+  "programs_before": {
+    "tools/repository_rule_consumer.py": {
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "bytes": 12483
+    },
+    "tools/semantic_bridge.py": {
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "bytes": 18600
+    },
+    "tools/repository_session.py": {
+      "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+      "bytes": 19109
+    },
+    "tools/repository_observer.py": {
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "bytes": 20125
+    },
+    "engineering/studies/agent-situation-controls/situation.py": {
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "bytes": 14501
+    },
+    "tools/run_repository_rule_lab.py": {
+      "sha256": "657935f1dbd49fde4eb74c5e85639a06220d6af8c239e07d96112c328ebbc831",
+      "bytes": 11567
+    },
+    "tools/fixtures/repository-rule-lab/cases.json": {
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "bytes": 2324
+    }
+  },
+  "programs_after": {
+    "tools/repository_rule_consumer.py": {
+      "sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+      "bytes": 12483
+    },
+    "tools/semantic_bridge.py": {
+      "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+      "bytes": 18600
+    },
+    "tools/repository_session.py": {
+      "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+      "bytes": 19109
+    },
+    "tools/repository_observer.py": {
+      "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "bytes": 20125
+    },
+    "engineering/studies/agent-situation-controls/situation.py": {
+      "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "bytes": 14501
+    },
+    "tools/run_repository_rule_lab.py": {
+      "sha256": "657935f1dbd49fde4eb74c5e85639a06220d6af8c239e07d96112c328ebbc831",
+      "bytes": 11567
+    },
+    "tools/fixtures/repository-rule-lab/cases.json": {
+      "sha256": "d6951b85137df601354df6b9687aa9694eff09a032792805b2cde4469392c61e",
+      "bytes": 2324
+    }
+  },
+  "programs_unchanged": true,
+  "planned": 12,
+  "executed": 12,
+  "passed": 12,
+  "not_executed": [],
+  "complete": true,
+  "failure": null,
+  "cases": [
+    {
+      "id": "start",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "start",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/01-start.json",
+        "--source-path",
+        "source.txt",
+        "--packet-path",
+        "packet.json",
+        "--task-id",
+        "offline-rule-lifecycle",
+        "--scope",
+        "two-committed-inputs"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output": "01-start.json",
+      "stdout": "01-start.stdout.txt",
+      "stderr": "01-start.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "3904f4cd7422c65dce19a34e28cfc39e842919063b84440f07ee6c97bca9bf01",
+        "bytes": 19065
+      },
+      "passed": true
+    },
+    {
+      "id": "evaluate-unknown",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/02-evaluate-unknown.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/01-start.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      },
+      "output": "02-evaluate-unknown.json",
+      "stdout": "02-evaluate-unknown.stdout.txt",
+      "stderr": "02-evaluate-unknown.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      },
+      "output_identity": {
+        "sha256": "820a58b63c553368b38f4abac7a77eea373934d41e217fc1b19822290efbd9b5",
+        "bytes": 38787
+      },
+      "passed": true
+    },
+    {
+      "id": "ignore-uncommitted-decoys",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/03-ignore-uncommitted-decoys.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/02-evaluate-unknown.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      },
+      "output": "03-ignore-uncommitted-decoys.json",
+      "stdout": "03-ignore-uncommitted-decoys.stdout.txt",
+      "stderr": "03-ignore-uncommitted-decoys.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "UNDETERMINED"
+      },
+      "output_identity": {
+        "sha256": "23482f8f6593ee0f385346e5e8c06a4dc8a449450d91fdef13f0dd5e7be2cf1f",
+        "bytes": 54503
+      },
+      "passed": true
+    },
+    {
+      "id": "packet-change-blocked",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/04-packet-change-blocked.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/03-ignore-uncommitted-decoys.json"
+      ],
+      "exit_code": 1,
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      },
+      "output": "04-packet-change-blocked.json",
+      "stdout": "04-packet-change-blocked.stdout.txt",
+      "stderr": "04-packet-change-blocked.stderr.txt",
+      "observed": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "8b7ad1e07891136d5fb079b6b6eff6ccde0db7848d0e873e8f8faa2ba819cab6",
+        "bytes": 67150
+      },
+      "passed": true
+    },
+    {
+      "id": "repeat-requires-resume",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/05-repeat-requires-resume.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/04-packet-change-blocked.json"
+      ],
+      "exit_code": 1,
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "RESUME_REQUIRED",
+        "truth": null
+      },
+      "output": "05-repeat-requires-resume.json",
+      "stdout": "05-repeat-requires-resume.stdout.txt",
+      "stderr": "05-repeat-requires-resume.stderr.txt",
+      "observed": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "RESUME_REQUIRED",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "d41c952ee5da3d3aea40189c64f98dbd273bb7283803c2326da969a9d632c95d",
+        "bytes": 82841
+      },
+      "passed": true
+    },
+    {
+      "id": "explicit-resume",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "resume",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/06-explicit-resume.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/05-repeat-requires-resume.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output": "06-explicit-resume.json",
+      "stdout": "06-explicit-resume.stdout.txt",
+      "stderr": "06-explicit-resume.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "a51513b56b79c6a95e17875ff93d827c54d80ab4ecda7984e79a7fd459a32d70",
+        "bytes": 98570
+      },
+      "passed": true
+    },
+    {
+      "id": "evaluate-true",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/07-evaluate-true.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/06-explicit-resume.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      },
+      "output": "07-evaluate-true.json",
+      "stdout": "07-evaluate-true.stdout.txt",
+      "stderr": "07-evaluate-true.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      },
+      "output_identity": {
+        "sha256": "40edf2b921d51d7d7d8f8aec0ffdbb49c3269498564eb6bf8a161542de37ede8",
+        "bytes": 117383
+      },
+      "passed": true
+    },
+    {
+      "id": "unrelated-commit-preserves-context",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/08-unrelated-commit-preserves-context.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/07-evaluate-true.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      },
+      "output": "08-unrelated-commit-preserves-context.json",
+      "stdout": "08-unrelated-commit-preserves-context.stdout.txt",
+      "stderr": "08-unrelated-commit-preserves-context.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "EVALUATED",
+        "session_result": "VALID",
+        "truth": "TRUE"
+      },
+      "output_identity": {
+        "sha256": "7e268644261408bd9a4572453da8af426c3ec485e055c910079c3e0a3fa2e26a",
+        "bytes": 133131
+      },
+      "passed": true
+    },
+    {
+      "id": "source-change-blocked",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/09-source-change-blocked.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/08-unrelated-commit-preserves-context.json"
+      ],
+      "exit_code": 1,
+      "expected": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      },
+      "output": "09-source-change-blocked.json",
+      "stdout": "09-source-change-blocked.stdout.txt",
+      "stderr": "09-source-change-blocked.stderr.txt",
+      "observed": {
+        "exit_code": 1,
+        "result": "BLOCKED",
+        "session_result": "INVALID",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "55aeeb279a73f83b42f9e2a845c82b38982b7d47e5411daf4bb57359d36d9e38",
+        "bytes": 145654
+      },
+      "passed": true
+    },
+    {
+      "id": "resume-unsupported-source",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "resume",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/10-resume-unsupported-source.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/09-source-change-blocked.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output": "10-resume-unsupported-source.json",
+      "stdout": "10-resume-unsupported-source.stdout.txt",
+      "stderr": "10-resume-unsupported-source.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "result": "READY",
+        "session_result": "READY",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "33061ff72d947a72ee42bdcb6a85a69c869f0193b884d944b8a2d8feb3c4cd89",
+        "bytes": 160985
+      },
+      "passed": true
+    },
+    {
+      "id": "unsupported-is-not-truth",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "evaluate",
+        "--repo",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/fixture-repository",
+        "--output",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/11-unsupported-is-not-truth.json",
+        "--previous",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/10-resume-unsupported-source.json"
+      ],
+      "exit_code": 2,
+      "expected": {
+        "exit_code": 2,
+        "result": "UNSUPPORTED",
+        "session_result": "VALID",
+        "truth": null
+      },
+      "output": "11-unsupported-is-not-truth.json",
+      "stdout": "11-unsupported-is-not-truth.stdout.txt",
+      "stderr": "11-unsupported-is-not-truth.stderr.txt",
+      "observed": {
+        "exit_code": 2,
+        "result": "UNSUPPORTED",
+        "session_result": "VALID",
+        "truth": null
+      },
+      "output_identity": {
+        "sha256": "c6f19c63101c6ef035cf374adf337d55942429bd054d1ba16274714c2fb3fc9c",
+        "bytes": 177943
+      },
+      "passed": true
+    },
+    {
+      "id": "inspect-is-historical",
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-B",
+        "/workspace/scratch/5cd1d6f67b86/nov15-lab-work/tools/repository_rule_consumer.py",
+        "inspect",
+        "--input",
+        "/workspace/scratch/5cd1d6f67b86/nov15-rule-lab-run-2/11-unsupported-is-not-truth.json"
+      ],
+      "exit_code": 0,
+      "expected": {
+        "exit_code": 0,
+        "view": "HISTORICAL_ONLY",
+        "captured_result": "UNSUPPORTED",
+        "requires_fresh_capture": true
+      },
+      "output": "12-inspect-is-historical.json",
+      "stdout": "12-inspect-is-historical.stdout.txt",
+      "stderr": "12-inspect-is-historical.stderr.txt",
+      "observed": {
+        "exit_code": 0,
+        "view": "HISTORICAL_ONLY",
+        "captured_result": "UNSUPPORTED",
+        "requires_fresh_capture": true
+      },
+      "output_identity": {
+        "sha256": "bdae7af93c2f74d5b32b0c2052520baab1da72baa9e5ae52792a70bd4f023255",
+        "bytes": 387
+      },
+      "passed": true
+    }
+  ],
+  "result": "PASS",
+  "llm_calls": 0,
+  "cost": "NOT_MEASURED",
+  "effects_authorized": false,
+  "limits": "One authored offline lifecycle, not independent episodes or an LLM trial. Internal replay does not authenticate the producer. Committed files only; working tree, continuous history, native admission and authority are not established."
+}

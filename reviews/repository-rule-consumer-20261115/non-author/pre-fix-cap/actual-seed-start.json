@@ -1,0 +1,480 @@
+{
+  "analysis": null,
+  "bindings": null,
+  "effects_authorized": false,
+  "evidence_scope": "committed-files-at-capture",
+  "history_complete": false,
+  "implementation": {
+    "bridge": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+    "consumer": "11a1f99f3a1866ca59278f0b0d1d602b09a2afba025d656addfce0a5a7a8962f"
+  },
+  "inputs": {
+    "packet": "packet.json",
+    "source": "source.txt"
+  },
+  "llm_calls": 0,
+  "operation": "START",
+  "predecessor": null,
+  "receipt_id": "e675d1a7384b432dd9ee69c9cd3008455516c5624b2d5b31b435c1267e4f61c6",
+  "result": "READY",
+  "schema": "repository-rule-consumption/1",
+  "session": {
+    "adopted_context_id": "0e25046a2e995fb3d19dd59ed1bf1ffd6bb668979e91a6a6d6f4447189b95686",
+    "capture_id": "77b8eaadd2bc8f58d49513ff7efa6ac8a5635d213712e1f6e13b6067be23237c",
+    "context": {
+      "budget": 10000,
+      "cost": 2,
+      "dependencies": {
+        "packet.json": {
+          "state": "KNOWN",
+          "value": {
+            "blob": "b730a5f7c75626e4232b86cfb7a8a36fb0282bd1",
+            "mode": "100644",
+            "sha256": "7bc5584684aabd038e2c8888ade59b94fe886294865773c7ff385170ac57ab24",
+            "size": 467
+          }
+        },
+        "source.txt": {
+          "state": "KNOWN",
+          "value": {
+            "blob": "72b7c7672479b35a0e1132a7f613c93d81d5ed37",
+            "mode": "100644",
+            "sha256": "81de54709eb12d78dafcabf27af2e32eb652eddf035f3e1c051c08c3746459ea",
+            "size": 14
+          }
+        }
+      },
+      "reasons": [],
+      "required_cost": 2,
+      "required_paths": [
+        "packet.json",
+        "source.txt"
+      ],
+      "status": "READY"
+    },
+    "context_id": "0e25046a2e995fb3d19dd59ed1bf1ffd6bb668979e91a6a6d6f4447189b95686",
+    "history_complete": false,
+    "implementation": {
+      "model": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+      "observer": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+      "session": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a"
+    },
+    "ledger": {
+      "count": 1,
+      "entries": [
+        {
+          "capture": {
+            "branch": "refs/heads/master",
+            "capture_id": "77b8eaadd2bc8f58d49513ff7efa6ac8a5635d213712e1f6e13b6067be23237c",
+            "clock_domain": "unix-nanoseconds",
+            "commands": [
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "--version"
+                ],
+                "finished_at": 1794730435226716070,
+                "returncode": 0,
+                "started_at": 1794730435225229295,
+                "stderr_b64": "",
+                "stdout_b64": "Z2l0IHZlcnNpb24gMi41Mi4wCg=="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "rev-parse",
+                  "--show-prefix"
+                ],
+                "finished_at": 1794730435228433234,
+                "returncode": 0,
+                "started_at": 1794730435226744061,
+                "stderr_b64": "",
+                "stdout_b64": "Cg=="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "rev-parse",
+                  "--verify",
+                  "HEAD^{commit}"
+                ],
+                "finished_at": 1794730435230040416,
+                "returncode": 0,
+                "started_at": 1794730435228437691,
+                "stderr_b64": "",
+                "stdout_b64": "NWFlMzc2N2RhYmM0MTQ1NzZkNjcwODQwNzUyZjcxN2JhMDZhNTc2OQo="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "rev-parse",
+                  "--verify",
+                  "5ae3767dabc414576d670840752f717ba06a5769^{tree}"
+                ],
+                "finished_at": 1794730435231587319,
+                "returncode": 0,
+                "started_at": 1794730435230048558,
+                "stderr_b64": "",
+                "stdout_b64": "M2JhMjA0YjJiNjk0ODQ1M2JlZGM3ZDA1MWE5ZjI5MGY4NzUzMzk4MQo="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "symbolic-ref",
+                  "--quiet",
+                  "HEAD"
+                ],
+                "finished_at": 1794730435232866687,
+                "returncode": 0,
+                "started_at": 1794730435231591215,
+                "stderr_b64": "",
+                "stdout_b64": "cmVmcy9oZWFkcy9tYXN0ZXIK"
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "ls-tree",
+                  "-z",
+                  "--full-tree",
+                  "5ae3767dabc414576d670840752f717ba06a5769",
+                  "--",
+                  "packet.json"
+                ],
+                "finished_at": 1794730435234536221,
+                "returncode": 0,
+                "started_at": 1794730435232871815,
+                "stderr_b64": "",
+                "stdout_b64": "MTAwNjQ0IGJsb2IgYjczMGE1ZjdjNzU2MjZlNDIzMmI4NmNmYjdhOGEzNmZiMDI4MmJkMQlwYWNrZXQuanNvbgA="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "cat-file",
+                  "-s",
+                  "b730a5f7c75626e4232b86cfb7a8a36fb0282bd1"
+                ],
+                "finished_at": 1794730435236865359,
+                "returncode": 0,
+                "started_at": 1794730435234570352,
+                "stderr_b64": "",
+                "stdout_b64": "NDY3Cg=="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "cat-file",
+                  "blob",
+                  "b730a5f7c75626e4232b86cfb7a8a36fb0282bd1"
+                ],
+                "finished_at": 1794730435238480683,
+                "returncode": 0,
+                "started_at": 1794730435236870466,
+                "stderr_b64": "",
+                "stdout_b64": "ewogICJpbnRlcnByZXRhdGlvbl9zZXQiOiAiYWx0ZXJuYXRpdmVzIiwKICAib2JzZXJ2YXRpb25zIjoge30sCiAgInJlYWRpbmdzIjogWwogICAgewogICAgICAiYXR0cmlidXRpb24iOiB7CiAgICAgICAgImFnZW50IjogInJldmlld19maXh0dXJlIiwKICAgICAgICAiZGlzY291cnNlIjogImh5cG90aGV0aWNhbCIKICAgICAgfSwKICAgICAgImJpbmRpbmdzIjoge30sCiAgICAgICJlbmQiOiAxMywKICAgICAgImlkIjogInIxIiwKICAgICAgInF1b3RlIjogIlJVTEUgcjE6IFRSVUUiLAogICAgICAic3RhcnQiOiAwCiAgICB9CiAgXSwKICAic2NoZW1hIjogImtjLXNlbWFudGljLWJyaWRnZS8xIiwKICAic291cmNlX21lZGlhX3R5cGUiOiAidGV4dC9wbGFpbiIsCiAgInNvdXJjZV9zaGEyNTYiOiAiODFkZTU0NzA5ZWIxMmQ3OGRhZmNhYmYyN2FmMmUzMmViNjUyZWRkZjAzNWYzZTFjMDUxYzA4YzM3NDY0NTllYSIKfQo="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "ls-tree",
+                  "-z",
+                  "--full-tree",
+                  "5ae3767dabc414576d670840752f717ba06a5769",
+                  "--",
+                  "source.txt"
+                ],
+                "finished_at": 1794730435240552120,
+                "returncode": 0,
+                "started_at": 1794730435238513071,
+                "stderr_b64": "",
+                "stdout_b64": "MTAwNjQ0IGJsb2IgNzJiN2M3NjcyNDc5YjM1YTBlMTEzMmE3ZjYxM2M5M2Q4MWQ1ZWQzNwlzb3VyY2UudHh0AA=="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "cat-file",
+                  "-s",
+                  "72b7c7672479b35a0e1132a7f613c93d81d5ed37"
+                ],
+                "finished_at": 1794730435242101807,
+                "returncode": 0,
+                "started_at": 1794730435240562135,
+                "stderr_b64": "",
+                "stdout_b64": "MTQK"
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "cat-file",
+                  "blob",
+                  "72b7c7672479b35a0e1132a7f613c93d81d5ed37"
+                ],
+                "finished_at": 1794730435244041760,
+                "returncode": 0,
+                "started_at": 1794730435242105973,
+                "stderr_b64": "",
+                "stdout_b64": "UlVMRSByMTogVFJVRQo="
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "ls-files",
+                  "--stage",
+                  "-z",
+                  "--",
+                  "packet.json",
+                  "source.txt"
+                ],
+                "finished_at": 1794730435245828287,
+                "returncode": 0,
+                "started_at": 1794730435244056282,
+                "stderr_b64": "",
+                "stdout_b64": "MTAwNjQ0IGI3MzBhNWY3Yzc1NjI2ZTQyMzJiODZjZmI3YThhMzZmYjAyODJiZDEgMAlwYWNrZXQuanNvbgAxMDA2NDQgNzJiN2M3NjcyNDc5YjM1YTBlMTEzMmE3ZjYxM2M5M2Q4MWQ1ZWQzNyAwCXNvdXJjZS50eHQA"
+              },
+              {
+                "argv": [
+                  "git",
+                  "--no-pager",
+                  "--literal-pathspecs",
+                  "--no-optional-locks",
+                  "-c",
+                  "core.fsmonitor=false",
+                  "-c",
+                  "core.untrackedCache=false",
+                  "-c",
+                  "submodule.recurse=false",
+                  "-c",
+                  "protocol.allow=never",
+                  "rev-parse",
+                  "--verify",
+                  "HEAD^{commit}"
+                ],
+                "finished_at": 1794730435247415299,
+                "returncode": 0,
+                "started_at": 1794730435245833254,
+                "stderr_b64": "",
+                "stdout_b64": "NWFlMzc2N2RhYmM0MTQ1NzZkNjcwODQwNzUyZjcxN2JhMDZhNTc2OQo="
+              }
+            ],
+            "error": null,
+            "files": {
+              "packet.json": {
+                "blob": "b730a5f7c75626e4232b86cfb7a8a36fb0282bd1",
+                "content_b64": "ewogICJpbnRlcnByZXRhdGlvbl9zZXQiOiAiYWx0ZXJuYXRpdmVzIiwKICAib2JzZXJ2YXRpb25zIjoge30sCiAgInJlYWRpbmdzIjogWwogICAgewogICAgICAiYXR0cmlidXRpb24iOiB7CiAgICAgICAgImFnZW50IjogInJldmlld19maXh0dXJlIiwKICAgICAgICAiZGlzY291cnNlIjogImh5cG90aGV0aWNhbCIKICAgICAgfSwKICAgICAgImJpbmRpbmdzIjoge30sCiAgICAgICJlbmQiOiAxMywKICAgICAgImlkIjogInIxIiwKICAgICAgInF1b3RlIjogIlJVTEUgcjE6IFRSVUUiLAogICAgICAic3RhcnQiOiAwCiAgICB9CiAgXSwKICAic2NoZW1hIjogImtjLXNlbWFudGljLWJyaWRnZS8xIiwKICAic291cmNlX21lZGlhX3R5cGUiOiAidGV4dC9wbGFpbiIsCiAgInNvdXJjZV9zaGEyNTYiOiAiODFkZTU0NzA5ZWIxMmQ3OGRhZmNhYmYyN2FmMmUzMmViNjUyZWRkZjAzNWYzZTFjMDUxYzA4YzM3NDY0NTllYSIKfQo=",
+                "mode": "100644",
+                "sha256": "7bc5584684aabd038e2c8888ade59b94fe886294865773c7ff385170ac57ab24",
+                "size": 467,
+                "state": "PRESENT"
+              },
+              "source.txt": {
+                "blob": "72b7c7672479b35a0e1132a7f613c93d81d5ed37",
+                "content_b64": "UlVMRSByMTogVFJVRQo=",
+                "mode": "100644",
+                "sha256": "81de54709eb12d78dafcabf27af2e32eb652eddf035f3e1c051c08c3746459ea",
+                "size": 14,
+                "state": "PRESENT"
+              }
+            },
+            "head_end": "5ae3767dabc414576d670840752f717ba06a5769",
+            "head_start": "5ae3767dabc414576d670840752f717ba06a5769",
+            "history_complete": false,
+            "not_observed": [
+              "ci",
+              "effect_outcome",
+              "authority"
+            ],
+            "observed_at": 1794730435247419596,
+            "paths": [
+              "packet.json",
+              "source.txt"
+            ],
+            "producer": "local-git",
+            "python_version": "3.12.14",
+            "schema": "repository-observation/1",
+            "scope": "review",
+            "selected_index_b64": "MTAwNjQ0IGI3MzBhNWY3Yzc1NjI2ZTQyMzJiODZjZmI3YThhMzZmYjAyODJiZDEgMAlwYWNrZXQuanNvbgAxMDA2NDQgNzJiN2M3NjcyNDc5YjM1YTBlMTEzMmE3ZjYxM2M5M2Q4MWQ1ZWQzNyAwCXNvdXJjZS50eHQA",
+            "started_at": 1794730435225223417,
+            "status": "OK",
+            "tree": "3ba204b2b6948453bedc7d051a9f290f87533981",
+            "untracked_observed": false,
+            "working_tree_state": "NOT_OBSERVED",
+            "worktree_atomic": false
+          },
+          "hash": "49729ad0466dde035a007c3504fd7487582830b542f25f33acb98b753be89c1e",
+          "index": 0,
+          "previous": null
+        }
+      ],
+      "head_hash": "49729ad0466dde035a007c3504fd7487582830b542f25f33acb98b753be89c1e",
+      "schema": "repository-observation-ledger/1"
+    },
+    "ledger_head": "49729ad0466dde035a007c3504fd7487582830b542f25f33acb98b753be89c1e",
+    "llm_calls": 0,
+    "not_observed": [
+      "ci",
+      "effect_outcome",
+      "authority"
+    ],
+    "observed_at": 1794730435247419596,
+    "operation": "START",
+    "operations": [
+      "START"
+    ],
+    "predecessor": null,
+    "prior_validation": null,
+    "profile": {
+      "budget": 10000,
+      "paths": [
+        "packet.json",
+        "source.txt"
+      ],
+      "producer": "local-git",
+      "repository_root_digest": "e09f40fd0bf1099777df18e2f26cf996a6dce3e28a955a11c8c821be1c19b3e4",
+      "required_paths": [
+        "packet.json",
+        "source.txt"
+      ],
+      "schema": "repository-session-profile/1",
+      "scope": "review",
+      "task_id": "review"
+    },
+    "profile_digest": "028822db7d5afa66d918198db3a71712cf8e4112aa25c6ab07305d03454d9379",
+    "readiness_grants_permission": false,
+    "receipt_id": "b3a0bfbdd34c88eb36400ea4ec34397a68f0250a466b4513470497c19500aa75",
+    "result": "READY",
+    "resume_required": false,
+    "schema": "repository-session/1",
+    "sequence": 1
+  }
+}

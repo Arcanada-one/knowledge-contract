@@ -1,0 +1,34 @@
+{
+  "bridge_sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+  "expectation": {
+    "false_sequence_with_33_entries": "refuse before any ledger replay",
+    "independence": "non-author role, same controller and workspace",
+    "over_33": "refuse before any ledger replay",
+    "scope": "synthetic oversized-input rejection order; one actual Git seed capture",
+    "valid_32": "accept with real replay"
+  },
+  "module_sha256": "17f591ee66540dc70d3a41f121fcfd2d00e72803ada7127fa95830dc4b1e524c",
+  "pass": true,
+  "results": {
+    "false_sequence_with_33_entries": {
+      "actual_replay_entry_counts": [],
+      "error": "consumer capture bound or inventory violated",
+      "input_bytes": 491953,
+      "outcome": "REFUSED"
+    },
+    "over_33": {
+      "actual_replay_entry_counts": [],
+      "error": "consumer capture bound or inventory violated",
+      "input_bytes": 491954,
+      "outcome": "REFUSED"
+    },
+    "valid_32": {
+      "actual_replay_entry_counts": [
+        32
+      ],
+      "error": null,
+      "input_bytes": 477233,
+      "outcome": "ACCEPTED"
+    }
+  }
+}

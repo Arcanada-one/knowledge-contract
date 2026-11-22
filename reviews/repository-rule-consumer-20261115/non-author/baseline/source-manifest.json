@@ -1,0 +1,27 @@
+[
+  {
+    "path": "tools/repository_rule_consumer.py",
+    "sha256": "11a1f99f3a1866ca59278f0b0d1d602b09a2afba025d656addfce0a5a7a8962f",
+    "bytes": 11960
+  },
+  {
+    "path": "tools/semantic_bridge.py",
+    "sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+    "bytes": 18600
+  },
+  {
+    "path": "tools/repository_session.py",
+    "sha256": "ca4afc21b0256a0c7a7f4d22fea3c483e8ae223a618ef5b87132cd3195c7546a",
+    "bytes": 19109
+  },
+  {
+    "path": "tools/repository_observer.py",
+    "sha256": "0de30dfec05fab77730d905aa04e58efa6a23f50a5fb12e669b3326b3f230cba",
+    "bytes": 20125
+  },
+  {
+    "path": "engineering/studies/agent-situation-controls/situation.py",
+    "sha256": "4c15d461e4d67de5984f40a94a7b92f70745c5fc9f2f39aa2681c287c31ed1c1",
+    "bytes": 14501
+  }
+]

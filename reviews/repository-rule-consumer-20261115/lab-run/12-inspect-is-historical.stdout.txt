@@ -1,0 +1,1 @@
+{"adopted_context_id": "fa75b7ceca5e2d9b8fb27215d3176f18dd78d9ed5497abd86172a605f5e6ba74", "captured_result": "UNSUPPORTED", "effects_authorized": false, "evidence_scope": "committed-files-at-capture", "receipt_id": "12a800fba576ff74d24263d39861e8b799ad36f2af02f3a717ace62b15e0a3d7", "requires_fresh_capture": true, "resume_required": false, "view": "HISTORICAL_ONLY"}

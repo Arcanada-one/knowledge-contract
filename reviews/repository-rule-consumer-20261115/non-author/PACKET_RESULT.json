@@ -1,0 +1,50 @@
+{
+  "module_sha256": "b8363fa17e9090f28e4010357b00f4527cf812b3740e5e6382ebd15624195e25",
+  "integer_limit": 4300,
+  "cases": [
+    {
+      "case": "valid_object",
+      "expected": null,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "case": "duplicate_nested",
+      "expected": "duplicate_json_member",
+      "actual": "duplicate_json_member",
+      "pass": true
+    },
+    {
+      "case": "nonfinite",
+      "expected": "nonfinite_json",
+      "actual": "nonfinite_json",
+      "pass": true
+    },
+    {
+      "case": "invalid_utf8",
+      "expected": "malformed_json",
+      "actual": "malformed_json",
+      "pass": true
+    },
+    {
+      "case": "integer_limit",
+      "expected": "malformed_json",
+      "actual": "malformed_json",
+      "pass": true
+    },
+    {
+      "case": "too_large",
+      "expected": "input_size_bound",
+      "actual": "input_size_bound",
+      "pass": true
+    },
+    {
+      "case": "not_bytes",
+      "expected": "packet_type",
+      "actual": "packet_type",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "limit": "Strict byte API only; no natural-language fidelity, authentication, authority or native execution."
+}
