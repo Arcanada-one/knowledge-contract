@@ -2,12 +2,32 @@
 title: "Russian and Chinese Editions: Coverage and Remaining Work"
 sources: none
 status: source-pinned-file-inventory
-updated: 2026-11-14
+updated: 2026-11-16
 ---
 
 # Russian and Chinese Editions: Coverage and Remaining Work
 
 This inventory separates files integrated into the source branch, historical proposal coverage, missing authoring, fidelity review and actual website delivery. File presence is not a new semantic acceptance or a complete-translation verdict.
+
+## Source and candidate snapshots checked on 16 November
+
+The source catalogue at main `8c7cd3bc1247998cb9554c568da26949da31b749` contains **36 English works** and **31 complete-body paths per target language**, or **62 of 72 work-language slots**. The existing rendition PR104 at `1d2ba019c3b9c423422c1d6a6fe0ab14fe49404a` adds Context Controls in both languages, reaching **64 of 72**. The new content commit `a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78` adds Source Rule Checks in Russian and Simplified Chinese, reaching **66 of 72**, or **33 body files per language**. These are cumulative candidate counts, not 66 independently reviewed or publicly served translations.
+
+The [exact-ref file inventory](../reviews/renditions/source-rule-checks-20261116/coverage-snapshot.json) records the source, accepted-main and candidate identities. The [author record](../reviews/renditions/source-rule-checks-20261116/AUTHOR-RECORD.md) links the full texts, pinned-site structural checks, adverse controls and observed invocation failure/correction. The sidecar successor binds the two new target bodies to that actual content commit and retains all prior 64 records, including eight historical review objects. New entries remain unreviewed; this count does not revalidate the old reviews.
+
+| Work still missing both target bodies | Canonical English source |
+| --- | --- |
+| Agent Situation | [Agent Situation](../papers/agent-situation/PAPER.md) |
+| Semantic Bridge | [Semantic Bridge](../engineering/specifications/semantic-bridge/SPECIFICATION.md) |
+| Semantic Verification | [Semantic Verification](../engineering/specifications/semantic-verification/SPECIFICATION.md) |
+
+Reproduce the 36-work comparison without changing either snapshot:
+
+```sh
+python3 -B tools/report_translation_coverage.py --repo . --source-ref 8c7cd3bc1247998cb9554c568da26949da31b749 --base-ref 8c7cd3bc1247998cb9554c568da26949da31b749 --draft-ref a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78
+```
+
+The site's separately pinned 31-work publication is unchanged by these candidate additions. All historical 30-, 31- and 34-work scopes below remain dated facts or targets, not the current source denominator. Independent full-body review and actual website delivery remain separate acceptance steps.
 
 ## Source snapshot checked on 14 November
 

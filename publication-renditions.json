@@ -2023,8 +2023,8 @@
       },
       "rendition": {
         "path": "translations/ru/engineering/specifications/context-package/SPECIFICATION.md",
-        "sha256": "b9c4cf8e9b365863ea25b81c40f255ce9461ab9fee66828c0263dcd4260b051d",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "cb8e571da5ce1dd5efc9a612a7d960155065f0712859964c3c2b15958191a4c7",
+        "revision": "b23c6946a3e0c06db4cd3b820410cf0e36de7e05"
       },
       "sections": [
         {
@@ -2077,8 +2077,8 @@
       },
       "rendition": {
         "path": "translations/zh-Hans/engineering/specifications/context-package/SPECIFICATION.md",
-        "sha256": "c3583b6dbba62e4b9b0a473e7cf7ebc5c092872bb61527ec1d2c3660692ff5d8",
-        "revision": "101431f2cf0b141d317445fabd6b6122f9fe1dba"
+        "sha256": "f095a6e485c52a7751f1bfc787921726f78bfba7707baae1d597979eccd378dc",
+        "revision": "b23c6946a3e0c06db4cd3b820410cf0e36de7e05"
       },
       "sections": [
         {
@@ -4432,6 +4432,206 @@
         {
           "source": "7-acceptance-cases",
           "rendition": "7-acceptance-cases"
+        }
+      ]
+    },
+    {
+      "work": "agent-situation-controls",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/agent-situation-controls/STUDY.md",
+        "sha256": "41b6fbf4392fa27be2269ccbfb73b1e9049aa9cb7784c7b295960e8336366e05",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/agent-situation-controls/STUDY.md",
+        "sha256": "1887a67b4febd5e390ae6b96330617342798770256eedb2fe080008ee85606fa",
+        "revision": "b23c6946a3e0c06db4cd3b820410cf0e36de7e05"
+      },
+      "sections": [
+        {
+          "source": "1-question-and-bounded-claim",
+          "rendition": "1-question-and-bounded-claim"
+        },
+        {
+          "source": "2-materials-and-provenance",
+          "rendition": "2-materials-and-provenance"
+        },
+        {
+          "source": "3-model-and-execution-method",
+          "rendition": "3-model-and-execution-method"
+        },
+        {
+          "source": "4-preserved-failure-and-correction",
+          "rendition": "4-preserved-failure-and-correction"
+        },
+        {
+          "source": "5-results",
+          "rendition": "5-results"
+        },
+        {
+          "source": "6-reproduction-without-rewriting-retained-evidence",
+          "rendition": "6-reproduction-without-rewriting-retained-evidence"
+        },
+        {
+          "source": "7-limits-and-next-research-step",
+          "rendition": "7-limits-and-next-research-step"
+        }
+      ]
+    },
+    {
+      "work": "agent-situation-controls",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/agent-situation-controls/STUDY.md",
+        "sha256": "41b6fbf4392fa27be2269ccbfb73b1e9049aa9cb7784c7b295960e8336366e05",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/agent-situation-controls/STUDY.md",
+        "sha256": "ba68354f67e785dda4b691da0abb07f84b9673d04675613d191b0ec1369f9997",
+        "revision": "b23c6946a3e0c06db4cd3b820410cf0e36de7e05"
+      },
+      "sections": [
+        {
+          "source": "1-question-and-bounded-claim",
+          "rendition": "1-question-and-bounded-claim"
+        },
+        {
+          "source": "2-materials-and-provenance",
+          "rendition": "2-materials-and-provenance"
+        },
+        {
+          "source": "3-model-and-execution-method",
+          "rendition": "3-model-and-execution-method"
+        },
+        {
+          "source": "4-preserved-failure-and-correction",
+          "rendition": "4-preserved-failure-and-correction"
+        },
+        {
+          "source": "5-results",
+          "rendition": "5-results"
+        },
+        {
+          "source": "6-reproduction-without-rewriting-retained-evidence",
+          "rendition": "6-reproduction-without-rewriting-retained-evidence"
+        },
+        {
+          "source": "7-limits-and-next-research-step",
+          "rendition": "7-limits-and-next-research-step"
+        }
+      ]
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "ru",
+      "script": "Cyrl",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/ru/engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "3d34dd95336a7b5521b7dbd93c36842570f7c1ac5b7f987bc522af7de67cf9eb",
+        "revision": "a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78"
+      },
+      "sections": [
+        {
+          "source": "question-and-result",
+          "rendition": "question-and-result"
+        },
+        {
+          "source": "materials-operation-and-assumptions",
+          "rendition": "materials-operation-and-assumptions"
+        },
+        {
+          "source": "independent-expected-result-method",
+          "rendition": "independent-expected-result-method"
+        },
+        {
+          "source": "original-source-examples-and-actual-cli-use",
+          "rendition": "original-source-examples-and-actual-cli-use"
+        },
+        {
+          "source": "connection-to-algebra-and-geometry",
+          "rendition": "connection-to-algebra-and-geometry"
+        },
+        {
+          "source": "resolved-input-failure-and-review-boundary",
+          "rendition": "resolved-input-failure-and-review-boundary"
+        },
+        {
+          "source": "reproduction-and-interpretation",
+          "rendition": "reproduction-and-interpretation"
+        }
+      ]
+    },
+    {
+      "work": "semantic-bridge-conformance",
+      "language": "zh-Hans",
+      "script": "Hans",
+      "counts_as_independent_source": false,
+      "author": {
+        "identity": "KC-Brain"
+      },
+      "source": {
+        "path": "engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "4df280692b0fd5f591f4098f4f1fa68a837a4c606e6e9dc481b0b12ef2a3f612",
+        "revision": "8c7cd3bc1247998cb9554c568da26949da31b749",
+        "language": "en"
+      },
+      "rendition": {
+        "path": "translations/zh-Hans/engineering/studies/semantic-bridge-conformance/STUDY.md",
+        "sha256": "e41a8120e39c788ccfc775fd80cad86592944349586c0fcadd6ecc48f5cf3c3b",
+        "revision": "a17f6c4293f0ef4d1da52fe0918424e3a8ea7b78"
+      },
+      "sections": [
+        {
+          "source": "question-and-result",
+          "rendition": "question-and-result"
+        },
+        {
+          "source": "materials-operation-and-assumptions",
+          "rendition": "materials-operation-and-assumptions"
+        },
+        {
+          "source": "independent-expected-result-method",
+          "rendition": "independent-expected-result-method"
+        },
+        {
+          "source": "original-source-examples-and-actual-cli-use",
+          "rendition": "original-source-examples-and-actual-cli-use"
+        },
+        {
+          "source": "connection-to-algebra-and-geometry",
+          "rendition": "connection-to-algebra-and-geometry"
+        },
+        {
+          "source": "resolved-input-failure-and-review-boundary",
+          "rendition": "resolved-input-failure-and-review-boundary"
+        },
+        {
+          "source": "reproduction-and-interpretation",
+          "rendition": "reproduction-and-interpretation"
         }
       ]
     }
