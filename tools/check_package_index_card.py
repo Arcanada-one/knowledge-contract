@@ -98,7 +98,12 @@ def main() -> int:
     doc = json.loads(raw)
     contract = json.loads(SCHEMA_PATH.read_text(encoding='utf-8'))
     Draft202012Validator.check_schema(contract)
-    validator = Draft202012Validator(contract, format_checker=FormatChecker())
+    formats = FormatChecker()
+    if ('date-time' not in formats.checkers
+            or not formats.conforms('2026-11-25T00:00:00Z', 'date-time')
+            or formats.conforms('2026-02-30T00:00:00Z', 'date-time')):
+        refuse('IDX-CONFIG', 'required date-time format checker unavailable or ineffective')
+    validator = Draft202012Validator(contract, format_checker=formats)
     if not validator.is_valid(doc):
         refuse('IDX-STRUCTURE', 'receipt or card violates versioned schema')
     schema = doc.get("schema")
