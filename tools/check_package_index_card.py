@@ -7,6 +7,10 @@ import json
 import re
 import sys
 from pathlib import Path
+from jsonschema import Draft202012Validator, FormatChecker
+
+SCHEMA_PATH = Path(__file__).resolve().parents[1] / 'schemas' / 'package-index-card.schema.json'
+
 
 SOURCE_ID = re.compile(r"^d_[0-9a-f]{64}$")
 PACKAGE_ID = re.compile(r"^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$")
@@ -92,6 +96,11 @@ def main() -> int:
     args = ap.parse_args()
     raw = args.path.read_text(encoding="utf-8")
     doc = json.loads(raw)
+    contract = json.loads(SCHEMA_PATH.read_text(encoding='utf-8'))
+    Draft202012Validator.check_schema(contract)
+    validator = Draft202012Validator(contract, format_checker=FormatChecker())
+    if not validator.is_valid(doc):
+        refuse('IDX-STRUCTURE', 'receipt or card violates versioned schema')
     schema = doc.get("schema")
     if schema == "PackageIndexCard/v1":
         check_card(doc)
