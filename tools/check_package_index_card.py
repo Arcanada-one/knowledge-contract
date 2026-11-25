@@ -7,6 +7,10 @@ import json
 import re
 import sys
 from pathlib import Path
+from jsonschema import Draft202012Validator, FormatChecker
+
+SCHEMA_PATH = Path(__file__).resolve().parents[1] / 'schemas' / 'package-index-card.schema.json'
+
 
 SOURCE_ID = re.compile(r"^d_[0-9a-f]{64}$")
 PACKAGE_ID = re.compile(r"^d_[0-9a-f]{64}/[A-Za-z0-9][A-Za-z0-9._@+-]{0,119}$")
@@ -92,6 +96,16 @@ def main() -> int:
     args = ap.parse_args()
     raw = args.path.read_text(encoding="utf-8")
     doc = json.loads(raw)
+    contract = json.loads(SCHEMA_PATH.read_text(encoding='utf-8'))
+    Draft202012Validator.check_schema(contract)
+    formats = FormatChecker()
+    if ('date-time' not in formats.checkers
+            or not formats.conforms('2026-11-25T00:00:00Z', 'date-time')
+            or formats.conforms('2026-02-30T00:00:00Z', 'date-time')):
+        refuse('IDX-CONFIG', 'required date-time format checker unavailable or ineffective')
+    validator = Draft202012Validator(contract, format_checker=formats)
+    if not validator.is_valid(doc):
+        refuse('IDX-STRUCTURE', 'receipt or card violates versioned schema')
     schema = doc.get("schema")
     if schema == "PackageIndexCard/v1":
         check_card(doc)
